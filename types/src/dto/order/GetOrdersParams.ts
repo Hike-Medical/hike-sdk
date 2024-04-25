@@ -1,0 +1,9 @@
+import type { OrderAuthorizationStatus, OrderStatus, Prisma } from '../../../prisma';
+import type { PagedParams } from '../PagedParams';
+
+export interface GetOrdersParams extends PagedParams {
+  statuses?: OrderStatus[];
+  orderAuthorizationStatus?: OrderAuthorizationStatus;
+  sortBy?: string;
+  sortOrder?: Prisma.SortOrder;
+}
