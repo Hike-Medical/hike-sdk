@@ -8,6 +8,7 @@ export * from './api/patient.service';
 export * from './api/physician.service';
 export * from './auth/findSession';
 export * from './auth/getSessionCookieName';
+export * from './auth/isMinimumRole';
 export * from './auth/signIn';
 export * from './auth/verifyToken';
 export * from './errors/ResponseError';

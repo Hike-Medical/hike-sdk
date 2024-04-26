@@ -3,6 +3,7 @@ export * from './converters/formatConstant';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
 export * from './converters/toURL';
+export * from './guards/isAuthUser';
 export * from './guards/isDefined';
 export * from './guards/isString';
 export * from './guards/isTruthy';
