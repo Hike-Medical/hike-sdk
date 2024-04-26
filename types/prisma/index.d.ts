@@ -342,14 +342,14 @@ export const ProductAttributeType: {
 export type ProductAttributeType = (typeof ProductAttributeType)[keyof typeof ProductAttributeType]
 
 
-export const Role: {
+export const CompanyRole: {
   ADMIN: 'ADMIN',
   EDITOR: 'EDITOR',
   VIEWER: 'VIEWER',
   PATIENT: 'PATIENT'
 };
 
-export type Role = (typeof Role)[keyof typeof Role]
+export type CompanyRole = (typeof CompanyRole)[keyof typeof CompanyRole]
 
 }
 
@@ -421,9 +421,9 @@ export type ProductAttributeType = $Enums.ProductAttributeType
 
 export const ProductAttributeType: typeof $Enums.ProductAttributeType
 
-export type Role = $Enums.Role
+export type CompanyRole = $Enums.CompanyRole
 
-export const Role: typeof $Enums.Role
+export const CompanyRole: typeof $Enums.CompanyRole
 
 /**
  * ##  Prisma Client ʲˢ
@@ -863,8 +863,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.12.1
-   * Query Engine version: 473ed3124229e22d881cb7addf559799debae1ab
+   * Prisma Client JS version: 5.13.0
+   * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
    */
   export type PrismaVersion = {
     client: string
@@ -991,6 +991,11 @@ export namespace Prisma {
     include: any
   }
 
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
   /**
    * Get the type of the value, that the Promise holds.
    */
@@ -1039,7 +1044,9 @@ export namespace Prisma {
   } &
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
-      : {})
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
 
   /**
    * Subset + Intersection
@@ -3209,7 +3216,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * CompanyCountOutputType without action
    */
@@ -3220,14 +3226,12 @@ export namespace Prisma {
     select?: CompanyCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * CompanyCountOutputType without action
    */
   export type CompanyCountOutputTypeCountUserCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserCompanyWhereInput
   }
-
 
   /**
    * CompanyCountOutputType without action
@@ -3236,14 +3240,12 @@ export namespace Prisma {
     where?: FacilityWhereInput
   }
 
-
   /**
    * CompanyCountOutputType without action
    */
   export type CompanyCountOutputTypeCountApiKeysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ApiKeyWhereInput
   }
-
 
 
   /**
@@ -3259,7 +3261,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * FacilityCountOutputType without action
    */
@@ -3270,14 +3271,12 @@ export namespace Prisma {
     select?: FacilityCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * FacilityCountOutputType without action
    */
   export type FacilityCountOutputTypeCountUserFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserFacilityWhereInput
   }
-
 
 
   /**
@@ -3297,7 +3296,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * PatientCountOutputType without action
    */
@@ -3308,14 +3306,12 @@ export namespace Prisma {
     select?: PatientCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * PatientCountOutputType without action
    */
   export type PatientCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FootWhereInput
   }
-
 
   /**
    * PatientCountOutputType without action
@@ -3324,14 +3320,12 @@ export namespace Prisma {
     where?: EvaluationWhereInput
   }
 
-
   /**
    * PatientCountOutputType without action
    */
   export type PatientCountOutputTypeCountWorkbenchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchWhereInput
   }
-
 
 
   /**
@@ -3349,7 +3343,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * EvaluationCountOutputType without action
    */
@@ -3360,7 +3353,6 @@ export namespace Prisma {
     select?: EvaluationCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * EvaluationCountOutputType without action
    */
@@ -3368,14 +3360,12 @@ export namespace Prisma {
     where?: WorkbenchWhereInput
   }
 
-
   /**
    * EvaluationCountOutputType without action
    */
   export type EvaluationCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FootWhereInput
   }
-
 
 
   /**
@@ -3391,7 +3381,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * FootCountOutputType without action
    */
@@ -3402,14 +3391,12 @@ export namespace Prisma {
     select?: FootCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * FootCountOutputType without action
    */
   export type FootCountOutputTypeCountAssetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AssetWhereInput
   }
-
 
 
   /**
@@ -3425,7 +3412,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * AssetCountOutputType without action
    */
@@ -3436,14 +3422,12 @@ export namespace Prisma {
     select?: AssetCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * AssetCountOutputType without action
    */
   export type AssetCountOutputTypeCountWorkbenchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchWhereInput
   }
-
 
 
   /**
@@ -3465,7 +3449,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * ProductCountOutputType without action
    */
@@ -3476,14 +3459,12 @@ export namespace Prisma {
     select?: ProductCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * ProductCountOutputType without action
    */
   export type ProductCountOutputTypeCountBuildingBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
   }
-
 
   /**
    * ProductCountOutputType without action
@@ -3492,7 +3473,6 @@ export namespace Prisma {
     where?: ProductWhereInput
   }
 
-
   /**
    * ProductCountOutputType without action
    */
@@ -3500,14 +3480,12 @@ export namespace Prisma {
     where?: AssetWhereInput
   }
 
-
   /**
    * ProductCountOutputType without action
    */
   export type ProductCountOutputTypeCountWorkbenchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchWhereInput
   }
-
 
 
   /**
@@ -3525,7 +3503,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * WorkbenchCountOutputType without action
    */
@@ -3536,7 +3513,6 @@ export namespace Prisma {
     select?: WorkbenchCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * WorkbenchCountOutputType without action
    */
@@ -3544,14 +3520,12 @@ export namespace Prisma {
     where?: AssetWhereInput
   }
 
-
   /**
    * WorkbenchCountOutputType without action
    */
   export type WorkbenchCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
   }
-
 
 
   /**
@@ -3567,7 +3541,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * AddressCountOutputType without action
    */
@@ -3578,14 +3551,12 @@ export namespace Prisma {
     select?: AddressCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * AddressCountOutputType without action
    */
   export type AddressCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
   }
-
 
 
   /**
@@ -3601,7 +3572,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * ParcelCountOutputType without action
    */
@@ -3612,14 +3582,12 @@ export namespace Prisma {
     select?: ParcelCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * ParcelCountOutputType without action
    */
   export type ParcelCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
   }
-
 
 
   /**
@@ -3635,7 +3603,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * PhysicianCountOutputType without action
    */
@@ -3646,14 +3613,12 @@ export namespace Prisma {
     select?: PhysicianCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * PhysicianCountOutputType without action
    */
   export type PhysicianCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
   }
-
 
 
   /**
@@ -3669,7 +3634,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * DiagnosisCountOutputType without action
    */
@@ -3680,14 +3644,12 @@ export namespace Prisma {
     select?: DiagnosisCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * DiagnosisCountOutputType without action
    */
   export type DiagnosisCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
   }
-
 
 
   /**
@@ -3703,7 +3665,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * DeviceTypeCountOutputType without action
    */
@@ -3714,14 +3675,12 @@ export namespace Prisma {
     select?: DeviceTypeCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * DeviceTypeCountOutputType without action
    */
   export type DeviceTypeCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
   }
-
 
 
   /**
@@ -3737,7 +3696,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * VisitTypeCountOutputType without action
    */
@@ -3748,14 +3706,12 @@ export namespace Prisma {
     select?: VisitTypeCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * VisitTypeCountOutputType without action
    */
   export type VisitTypeCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
   }
-
 
 
   /**
@@ -3777,7 +3733,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * CatalogProductCountOutputType without action
    */
@@ -3788,14 +3743,12 @@ export namespace Prisma {
     select?: CatalogProductCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * CatalogProductCountOutputType without action
    */
   export type CatalogProductCountOutputTypeCountAttributesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CatalogProductAttributeWhereInput
   }
-
 
   /**
    * CatalogProductCountOutputType without action
@@ -3804,7 +3757,6 @@ export namespace Prisma {
     where?: CatalogProductVariantWhereInput
   }
 
-
   /**
    * CatalogProductCountOutputType without action
    */
@@ -3812,14 +3764,12 @@ export namespace Prisma {
     where?: CatalogCategoryWhereInput
   }
 
-
   /**
    * CatalogProductCountOutputType without action
    */
   export type CatalogProductCountOutputTypeCountVendorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CatalogVendorWhereInput
   }
-
 
 
   /**
@@ -3835,7 +3785,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * CatalogCategoryCountOutputType without action
    */
@@ -3846,14 +3795,12 @@ export namespace Prisma {
     select?: CatalogCategoryCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * CatalogCategoryCountOutputType without action
    */
   export type CatalogCategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CatalogProductWhereInput
   }
-
 
 
   /**
@@ -3869,7 +3816,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * CatalogVendorCountOutputType without action
    */
@@ -3880,14 +3826,12 @@ export namespace Prisma {
     select?: CatalogVendorCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * CatalogVendorCountOutputType without action
    */
   export type CatalogVendorCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CatalogProductWhereInput
   }
-
 
 
   /**
@@ -3909,7 +3853,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * UserCountOutputType without action
    */
@@ -3920,14 +3863,12 @@ export namespace Prisma {
     select?: UserCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountUserCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserCompanyWhereInput
   }
-
 
   /**
    * UserCountOutputType without action
@@ -3936,7 +3877,6 @@ export namespace Prisma {
     where?: UserFacilityWhereInput
   }
 
-
   /**
    * UserCountOutputType without action
    */
@@ -3944,14 +3884,12 @@ export namespace Prisma {
     where?: AccountWhereInput
   }
 
-
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountParcelsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ParcelWhereInput
   }
-
 
 
   /**
@@ -4153,6 +4091,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userCompanies?: boolean | Company$userCompaniesArgs<ExtArgs>
@@ -4587,7 +4526,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Company findUnique
    */
@@ -4597,7 +4535,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4605,7 +4543,6 @@ export namespace Prisma {
      */
     where: CompanyWhereUniqueInput
   }
-
 
   /**
    * Company findUniqueOrThrow
@@ -4616,7 +4553,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4624,7 +4561,6 @@ export namespace Prisma {
      */
     where: CompanyWhereUniqueInput
   }
-
 
   /**
    * Company findFirst
@@ -4635,7 +4571,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4673,7 +4609,6 @@ export namespace Prisma {
      */
     distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
   }
-
 
   /**
    * Company findFirstOrThrow
@@ -4684,7 +4619,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4723,7 +4658,6 @@ export namespace Prisma {
     distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
   }
 
-
   /**
    * Company findMany
    */
@@ -4733,7 +4667,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4767,7 +4701,6 @@ export namespace Prisma {
     distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
   }
 
-
   /**
    * Company create
    */
@@ -4777,7 +4710,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4785,7 +4718,6 @@ export namespace Prisma {
      */
     data: XOR<CompanyCreateInput, CompanyUncheckedCreateInput>
   }
-
 
   /**
    * Company createMany
@@ -4798,7 +4730,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Company update
    */
@@ -4808,7 +4739,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4820,7 +4751,6 @@ export namespace Prisma {
      */
     where: CompanyWhereUniqueInput
   }
-
 
   /**
    * Company updateMany
@@ -4836,7 +4766,6 @@ export namespace Prisma {
     where?: CompanyWhereInput
   }
 
-
   /**
    * Company upsert
    */
@@ -4846,7 +4775,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4863,7 +4792,6 @@ export namespace Prisma {
     update: XOR<CompanyUpdateInput, CompanyUncheckedUpdateInput>
   }
 
-
   /**
    * Company delete
    */
@@ -4873,7 +4801,7 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
     /**
@@ -4881,7 +4809,6 @@ export namespace Prisma {
      */
     where: CompanyWhereUniqueInput
   }
-
 
   /**
    * Company deleteMany
@@ -4893,7 +4820,6 @@ export namespace Prisma {
     where?: CompanyWhereInput
   }
 
-
   /**
    * Company.userCompanies
    */
@@ -4903,7 +4829,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     where?: UserCompanyWhereInput
@@ -4914,7 +4840,6 @@ export namespace Prisma {
     distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
   }
 
-
   /**
    * Company.facilities
    */
@@ -4924,7 +4849,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     where?: FacilityWhereInput
@@ -4935,7 +4860,6 @@ export namespace Prisma {
     distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
 
-
   /**
    * Company.apiKeys
    */
@@ -4945,7 +4869,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     where?: ApiKeyWhereInput
@@ -4956,7 +4880,6 @@ export namespace Prisma {
     distinct?: ApiKeyScalarFieldEnum | ApiKeyScalarFieldEnum[]
   }
 
-
   /**
    * Company without action
    */
@@ -4966,11 +4889,10 @@ export namespace Prisma {
      */
     select?: CompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CompanyInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -5167,6 +5089,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -5597,7 +5520,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Facility findUnique
    */
@@ -5607,7 +5529,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5615,7 +5537,6 @@ export namespace Prisma {
      */
     where: FacilityWhereUniqueInput
   }
-
 
   /**
    * Facility findUniqueOrThrow
@@ -5626,7 +5547,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5634,7 +5555,6 @@ export namespace Prisma {
      */
     where: FacilityWhereUniqueInput
   }
-
 
   /**
    * Facility findFirst
@@ -5645,7 +5565,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5683,7 +5603,6 @@ export namespace Prisma {
      */
     distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
-
 
   /**
    * Facility findFirstOrThrow
@@ -5694,7 +5613,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5733,7 +5652,6 @@ export namespace Prisma {
     distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
 
-
   /**
    * Facility findMany
    */
@@ -5743,7 +5661,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5777,7 +5695,6 @@ export namespace Prisma {
     distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
 
-
   /**
    * Facility create
    */
@@ -5787,7 +5704,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5795,7 +5712,6 @@ export namespace Prisma {
      */
     data: XOR<FacilityCreateInput, FacilityUncheckedCreateInput>
   }
-
 
   /**
    * Facility createMany
@@ -5808,7 +5724,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Facility update
    */
@@ -5818,7 +5733,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5830,7 +5745,6 @@ export namespace Prisma {
      */
     where: FacilityWhereUniqueInput
   }
-
 
   /**
    * Facility updateMany
@@ -5846,7 +5760,6 @@ export namespace Prisma {
     where?: FacilityWhereInput
   }
 
-
   /**
    * Facility upsert
    */
@@ -5856,7 +5769,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5873,7 +5786,6 @@ export namespace Prisma {
     update: XOR<FacilityUpdateInput, FacilityUncheckedUpdateInput>
   }
 
-
   /**
    * Facility delete
    */
@@ -5883,7 +5795,7 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
     /**
@@ -5891,7 +5803,6 @@ export namespace Prisma {
      */
     where: FacilityWhereUniqueInput
   }
-
 
   /**
    * Facility deleteMany
@@ -5903,7 +5814,6 @@ export namespace Prisma {
     where?: FacilityWhereInput
   }
 
-
   /**
    * Facility.userFacilities
    */
@@ -5913,7 +5823,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     where?: UserFacilityWhereInput
@@ -5924,7 +5834,6 @@ export namespace Prisma {
     distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
   }
 
-
   /**
    * Facility without action
    */
@@ -5934,11 +5843,10 @@ export namespace Prisma {
      */
     select?: FacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FacilityInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -6246,6 +6154,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     feet?: boolean | Patient$feetArgs<ExtArgs>
@@ -6696,7 +6605,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Patient findUnique
    */
@@ -6706,7 +6614,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6714,7 +6622,6 @@ export namespace Prisma {
      */
     where: PatientWhereUniqueInput
   }
-
 
   /**
    * Patient findUniqueOrThrow
@@ -6725,7 +6632,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6733,7 +6640,6 @@ export namespace Prisma {
      */
     where: PatientWhereUniqueInput
   }
-
 
   /**
    * Patient findFirst
@@ -6744,7 +6650,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6782,7 +6688,6 @@ export namespace Prisma {
      */
     distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
   }
-
 
   /**
    * Patient findFirstOrThrow
@@ -6793,7 +6698,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6832,7 +6737,6 @@ export namespace Prisma {
     distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
   }
 
-
   /**
    * Patient findMany
    */
@@ -6842,7 +6746,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6876,7 +6780,6 @@ export namespace Prisma {
     distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
   }
 
-
   /**
    * Patient create
    */
@@ -6886,7 +6789,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6894,7 +6797,6 @@ export namespace Prisma {
      */
     data: XOR<PatientCreateInput, PatientUncheckedCreateInput>
   }
-
 
   /**
    * Patient createMany
@@ -6907,7 +6809,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Patient update
    */
@@ -6917,7 +6818,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6929,7 +6830,6 @@ export namespace Prisma {
      */
     where: PatientWhereUniqueInput
   }
-
 
   /**
    * Patient updateMany
@@ -6945,7 +6845,6 @@ export namespace Prisma {
     where?: PatientWhereInput
   }
 
-
   /**
    * Patient upsert
    */
@@ -6955,7 +6854,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6972,7 +6871,6 @@ export namespace Prisma {
     update: XOR<PatientUpdateInput, PatientUncheckedUpdateInput>
   }
 
-
   /**
    * Patient delete
    */
@@ -6982,7 +6880,7 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
     /**
@@ -6990,7 +6888,6 @@ export namespace Prisma {
      */
     where: PatientWhereUniqueInput
   }
-
 
   /**
    * Patient deleteMany
@@ -7002,7 +6899,6 @@ export namespace Prisma {
     where?: PatientWhereInput
   }
 
-
   /**
    * Patient.feet
    */
@@ -7012,7 +6908,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     where?: FootWhereInput
@@ -7023,7 +6919,6 @@ export namespace Prisma {
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
 
-
   /**
    * Patient.evaluations
    */
@@ -7033,7 +6928,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     where?: EvaluationWhereInput
@@ -7044,7 +6939,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * Patient.workbenches
    */
@@ -7054,7 +6948,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     where?: WorkbenchWhereInput
@@ -7065,7 +6959,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Patient without action
    */
@@ -7075,11 +6968,10 @@ export namespace Prisma {
      */
     select?: PatientSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -7462,6 +7354,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type EvaluationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -7954,7 +7847,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Evaluation findUnique
    */
@@ -7964,7 +7856,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -7972,7 +7864,6 @@ export namespace Prisma {
      */
     where: EvaluationWhereUniqueInput
   }
-
 
   /**
    * Evaluation findUniqueOrThrow
@@ -7983,7 +7874,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -7991,7 +7882,6 @@ export namespace Prisma {
      */
     where: EvaluationWhereUniqueInput
   }
-
 
   /**
    * Evaluation findFirst
@@ -8002,7 +7892,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8040,7 +7930,6 @@ export namespace Prisma {
      */
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
-
 
   /**
    * Evaluation findFirstOrThrow
@@ -8051,7 +7940,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8090,7 +7979,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * Evaluation findMany
    */
@@ -8100,7 +7988,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8134,7 +8022,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * Evaluation create
    */
@@ -8144,7 +8031,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8152,7 +8039,6 @@ export namespace Prisma {
      */
     data: XOR<EvaluationCreateInput, EvaluationUncheckedCreateInput>
   }
-
 
   /**
    * Evaluation createMany
@@ -8165,7 +8051,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Evaluation update
    */
@@ -8175,7 +8060,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8187,7 +8072,6 @@ export namespace Prisma {
      */
     where: EvaluationWhereUniqueInput
   }
-
 
   /**
    * Evaluation updateMany
@@ -8203,7 +8087,6 @@ export namespace Prisma {
     where?: EvaluationWhereInput
   }
 
-
   /**
    * Evaluation upsert
    */
@@ -8213,7 +8096,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8230,7 +8113,6 @@ export namespace Prisma {
     update: XOR<EvaluationUpdateInput, EvaluationUncheckedUpdateInput>
   }
 
-
   /**
    * Evaluation delete
    */
@@ -8240,7 +8122,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     /**
@@ -8248,7 +8130,6 @@ export namespace Prisma {
      */
     where: EvaluationWhereUniqueInput
   }
-
 
   /**
    * Evaluation deleteMany
@@ -8260,7 +8141,6 @@ export namespace Prisma {
     where?: EvaluationWhereInput
   }
 
-
   /**
    * Evaluation.deviceType
    */
@@ -8270,12 +8150,11 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     where?: DeviceTypeWhereInput
   }
-
 
   /**
    * Evaluation.visitType
@@ -8286,12 +8165,11 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     where?: VisitTypeWhereInput
   }
-
 
   /**
    * Evaluation.referringPhysician
@@ -8302,12 +8180,11 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     where?: PhysicianWhereInput
   }
-
 
   /**
    * Evaluation.diagnosis
@@ -8318,12 +8195,11 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     where?: DiagnosisWhereInput
   }
-
 
   /**
    * Evaluation.workbenches
@@ -8334,7 +8210,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     where?: WorkbenchWhereInput
@@ -8345,7 +8221,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Evaluation.feet
    */
@@ -8355,7 +8230,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     where?: FootWhereInput
@@ -8366,7 +8241,6 @@ export namespace Prisma {
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
 
-
   /**
    * Evaluation without action
    */
@@ -8376,11 +8250,10 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -8680,6 +8553,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type FootInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -9130,7 +9004,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Foot findUnique
    */
@@ -9140,7 +9013,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9148,7 +9021,6 @@ export namespace Prisma {
      */
     where: FootWhereUniqueInput
   }
-
 
   /**
    * Foot findUniqueOrThrow
@@ -9159,7 +9031,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9167,7 +9039,6 @@ export namespace Prisma {
      */
     where: FootWhereUniqueInput
   }
-
 
   /**
    * Foot findFirst
@@ -9178,7 +9049,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9216,7 +9087,6 @@ export namespace Prisma {
      */
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
-
 
   /**
    * Foot findFirstOrThrow
@@ -9227,7 +9097,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9266,7 +9136,6 @@ export namespace Prisma {
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
 
-
   /**
    * Foot findMany
    */
@@ -9276,7 +9145,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9310,7 +9179,6 @@ export namespace Prisma {
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
 
-
   /**
    * Foot create
    */
@@ -9320,7 +9188,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9328,7 +9196,6 @@ export namespace Prisma {
      */
     data: XOR<FootCreateInput, FootUncheckedCreateInput>
   }
-
 
   /**
    * Foot createMany
@@ -9341,7 +9208,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Foot update
    */
@@ -9351,7 +9217,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9363,7 +9229,6 @@ export namespace Prisma {
      */
     where: FootWhereUniqueInput
   }
-
 
   /**
    * Foot updateMany
@@ -9379,7 +9244,6 @@ export namespace Prisma {
     where?: FootWhereInput
   }
 
-
   /**
    * Foot upsert
    */
@@ -9389,7 +9253,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9406,7 +9270,6 @@ export namespace Prisma {
     update: XOR<FootUpdateInput, FootUncheckedUpdateInput>
   }
 
-
   /**
    * Foot delete
    */
@@ -9416,7 +9279,7 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
     /**
@@ -9424,7 +9287,6 @@ export namespace Prisma {
      */
     where: FootWhereUniqueInput
   }
-
 
   /**
    * Foot deleteMany
@@ -9436,7 +9298,6 @@ export namespace Prisma {
     where?: FootWhereInput
   }
 
-
   /**
    * Foot.assets
    */
@@ -9446,7 +9307,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     where?: AssetWhereInput
@@ -9457,7 +9318,6 @@ export namespace Prisma {
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
-
   /**
    * Foot without action
    */
@@ -9467,11 +9327,10 @@ export namespace Prisma {
      */
     select?: FootSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: FootInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -9706,6 +9565,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type AssetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     foot?: boolean | FootDefaultArgs<ExtArgs>
@@ -10150,7 +10010,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Asset findUnique
    */
@@ -10160,7 +10019,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10168,7 +10027,6 @@ export namespace Prisma {
      */
     where: AssetWhereUniqueInput
   }
-
 
   /**
    * Asset findUniqueOrThrow
@@ -10179,7 +10037,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10187,7 +10045,6 @@ export namespace Prisma {
      */
     where: AssetWhereUniqueInput
   }
-
 
   /**
    * Asset findFirst
@@ -10198,7 +10055,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10236,7 +10093,6 @@ export namespace Prisma {
      */
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
-
 
   /**
    * Asset findFirstOrThrow
@@ -10247,7 +10103,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10286,7 +10142,6 @@ export namespace Prisma {
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
-
   /**
    * Asset findMany
    */
@@ -10296,7 +10151,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10330,7 +10185,6 @@ export namespace Prisma {
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
-
   /**
    * Asset create
    */
@@ -10340,7 +10194,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10348,7 +10202,6 @@ export namespace Prisma {
      */
     data: XOR<AssetCreateInput, AssetUncheckedCreateInput>
   }
-
 
   /**
    * Asset createMany
@@ -10361,7 +10214,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Asset update
    */
@@ -10371,7 +10223,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10383,7 +10235,6 @@ export namespace Prisma {
      */
     where: AssetWhereUniqueInput
   }
-
 
   /**
    * Asset updateMany
@@ -10399,7 +10250,6 @@ export namespace Prisma {
     where?: AssetWhereInput
   }
 
-
   /**
    * Asset upsert
    */
@@ -10409,7 +10259,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10426,7 +10276,6 @@ export namespace Prisma {
     update: XOR<AssetUpdateInput, AssetUncheckedUpdateInput>
   }
 
-
   /**
    * Asset delete
    */
@@ -10436,7 +10285,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     /**
@@ -10444,7 +10293,6 @@ export namespace Prisma {
      */
     where: AssetWhereUniqueInput
   }
-
 
   /**
    * Asset deleteMany
@@ -10456,7 +10304,6 @@ export namespace Prisma {
     where?: AssetWhereInput
   }
 
-
   /**
    * Asset.workbenches
    */
@@ -10466,7 +10313,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     where?: WorkbenchWhereInput
@@ -10477,7 +10324,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Asset without action
    */
@@ -10487,11 +10333,10 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -10681,6 +10526,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     buildingBlocks?: boolean | Product$buildingBlocksArgs<ExtArgs>
@@ -11117,7 +10963,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Product findUnique
    */
@@ -11127,7 +10972,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11135,7 +10980,6 @@ export namespace Prisma {
      */
     where: ProductWhereUniqueInput
   }
-
 
   /**
    * Product findUniqueOrThrow
@@ -11146,7 +10990,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11154,7 +10998,6 @@ export namespace Prisma {
      */
     where: ProductWhereUniqueInput
   }
-
 
   /**
    * Product findFirst
@@ -11165,7 +11008,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11203,7 +11046,6 @@ export namespace Prisma {
      */
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
-
 
   /**
    * Product findFirstOrThrow
@@ -11214,7 +11056,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11253,7 +11095,6 @@ export namespace Prisma {
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
-
   /**
    * Product findMany
    */
@@ -11263,7 +11104,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11297,7 +11138,6 @@ export namespace Prisma {
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
-
   /**
    * Product create
    */
@@ -11307,7 +11147,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11315,7 +11155,6 @@ export namespace Prisma {
      */
     data: XOR<ProductCreateInput, ProductUncheckedCreateInput>
   }
-
 
   /**
    * Product createMany
@@ -11328,7 +11167,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Product update
    */
@@ -11338,7 +11176,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11350,7 +11188,6 @@ export namespace Prisma {
      */
     where: ProductWhereUniqueInput
   }
-
 
   /**
    * Product updateMany
@@ -11366,7 +11203,6 @@ export namespace Prisma {
     where?: ProductWhereInput
   }
 
-
   /**
    * Product upsert
    */
@@ -11376,7 +11212,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11393,7 +11229,6 @@ export namespace Prisma {
     update: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
   }
 
-
   /**
    * Product delete
    */
@@ -11403,7 +11238,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     /**
@@ -11411,7 +11246,6 @@ export namespace Prisma {
      */
     where: ProductWhereUniqueInput
   }
-
 
   /**
    * Product deleteMany
@@ -11423,7 +11257,6 @@ export namespace Prisma {
     where?: ProductWhereInput
   }
 
-
   /**
    * Product.buildingBlocks
    */
@@ -11433,7 +11266,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     where?: ProductWhereInput
@@ -11443,7 +11276,6 @@ export namespace Prisma {
     skip?: number
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
-
 
   /**
    * Product.usedByProducts
@@ -11454,7 +11286,7 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
     where?: ProductWhereInput
@@ -11465,7 +11297,6 @@ export namespace Prisma {
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
-
   /**
    * Product.assets
    */
@@ -11475,7 +11306,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     where?: AssetWhereInput
@@ -11486,7 +11317,6 @@ export namespace Prisma {
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
-
   /**
    * Product.workbenches
    */
@@ -11496,7 +11326,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     where?: WorkbenchWhereInput
@@ -11507,7 +11337,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Product without action
    */
@@ -11517,11 +11346,10 @@ export namespace Prisma {
      */
     select?: ProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProductInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -11753,6 +11581,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type WorkbenchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -12203,7 +12032,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Workbench findUnique
    */
@@ -12213,7 +12041,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12221,7 +12049,6 @@ export namespace Prisma {
      */
     where: WorkbenchWhereUniqueInput
   }
-
 
   /**
    * Workbench findUniqueOrThrow
@@ -12232,7 +12059,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12240,7 +12067,6 @@ export namespace Prisma {
      */
     where: WorkbenchWhereUniqueInput
   }
-
 
   /**
    * Workbench findFirst
@@ -12251,7 +12077,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12289,7 +12115,6 @@ export namespace Prisma {
      */
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
-
 
   /**
    * Workbench findFirstOrThrow
@@ -12300,7 +12125,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12339,7 +12164,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Workbench findMany
    */
@@ -12349,7 +12173,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12383,7 +12207,6 @@ export namespace Prisma {
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
   }
 
-
   /**
    * Workbench create
    */
@@ -12393,7 +12216,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12401,7 +12224,6 @@ export namespace Prisma {
      */
     data: XOR<WorkbenchCreateInput, WorkbenchUncheckedCreateInput>
   }
-
 
   /**
    * Workbench createMany
@@ -12414,7 +12236,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Workbench update
    */
@@ -12424,7 +12245,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12436,7 +12257,6 @@ export namespace Prisma {
      */
     where: WorkbenchWhereUniqueInput
   }
-
 
   /**
    * Workbench updateMany
@@ -12452,7 +12272,6 @@ export namespace Prisma {
     where?: WorkbenchWhereInput
   }
 
-
   /**
    * Workbench upsert
    */
@@ -12462,7 +12281,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12479,7 +12298,6 @@ export namespace Prisma {
     update: XOR<WorkbenchUpdateInput, WorkbenchUncheckedUpdateInput>
   }
 
-
   /**
    * Workbench delete
    */
@@ -12489,7 +12307,7 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
     /**
@@ -12497,7 +12315,6 @@ export namespace Prisma {
      */
     where: WorkbenchWhereUniqueInput
   }
-
 
   /**
    * Workbench deleteMany
@@ -12509,7 +12326,6 @@ export namespace Prisma {
     where?: WorkbenchWhereInput
   }
 
-
   /**
    * Workbench.assets
    */
@@ -12519,7 +12335,7 @@ export namespace Prisma {
      */
     select?: AssetSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AssetInclude<ExtArgs> | null
     where?: AssetWhereInput
@@ -12530,7 +12346,6 @@ export namespace Prisma {
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
-
   /**
    * Workbench.orders
    */
@@ -12540,7 +12355,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     where?: OrderWhereInput
@@ -12551,7 +12366,6 @@ export namespace Prisma {
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
 
-
   /**
    * Workbench without action
    */
@@ -12561,11 +12375,10 @@ export namespace Prisma {
      */
     select?: WorkbenchSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: WorkbenchInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -12816,6 +12629,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
@@ -13261,7 +13075,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Order findUnique
    */
@@ -13271,7 +13084,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13279,7 +13092,6 @@ export namespace Prisma {
      */
     where: OrderWhereUniqueInput
   }
-
 
   /**
    * Order findUniqueOrThrow
@@ -13290,7 +13102,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13298,7 +13110,6 @@ export namespace Prisma {
      */
     where: OrderWhereUniqueInput
   }
-
 
   /**
    * Order findFirst
@@ -13309,7 +13120,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13347,7 +13158,6 @@ export namespace Prisma {
      */
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
-
 
   /**
    * Order findFirstOrThrow
@@ -13358,7 +13168,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13397,7 +13207,6 @@ export namespace Prisma {
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
 
-
   /**
    * Order findMany
    */
@@ -13407,7 +13216,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13441,7 +13250,6 @@ export namespace Prisma {
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
 
-
   /**
    * Order create
    */
@@ -13451,7 +13259,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13459,7 +13267,6 @@ export namespace Prisma {
      */
     data: XOR<OrderCreateInput, OrderUncheckedCreateInput>
   }
-
 
   /**
    * Order createMany
@@ -13472,7 +13279,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Order update
    */
@@ -13482,7 +13288,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13494,7 +13300,6 @@ export namespace Prisma {
      */
     where: OrderWhereUniqueInput
   }
-
 
   /**
    * Order updateMany
@@ -13510,7 +13315,6 @@ export namespace Prisma {
     where?: OrderWhereInput
   }
 
-
   /**
    * Order upsert
    */
@@ -13520,7 +13324,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13537,7 +13341,6 @@ export namespace Prisma {
     update: XOR<OrderUpdateInput, OrderUncheckedUpdateInput>
   }
 
-
   /**
    * Order delete
    */
@@ -13547,7 +13350,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     /**
@@ -13555,7 +13358,6 @@ export namespace Prisma {
      */
     where: OrderWhereUniqueInput
   }
-
 
   /**
    * Order deleteMany
@@ -13567,7 +13369,6 @@ export namespace Prisma {
     where?: OrderWhereInput
   }
 
-
   /**
    * Order.shippingAddress
    */
@@ -13577,12 +13378,11 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     where?: AddressWhereInput
   }
-
 
   /**
    * Order.parcel
@@ -13593,12 +13393,11 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     where?: ParcelWhereInput
   }
-
 
   /**
    * Order without action
@@ -13609,11 +13408,10 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -13827,6 +13625,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type AddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | Address$ordersArgs<ExtArgs>
@@ -14257,7 +14056,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Address findUnique
    */
@@ -14267,7 +14065,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14275,7 +14073,6 @@ export namespace Prisma {
      */
     where: AddressWhereUniqueInput
   }
-
 
   /**
    * Address findUniqueOrThrow
@@ -14286,7 +14083,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14294,7 +14091,6 @@ export namespace Prisma {
      */
     where: AddressWhereUniqueInput
   }
-
 
   /**
    * Address findFirst
@@ -14305,7 +14101,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14343,7 +14139,6 @@ export namespace Prisma {
      */
     distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
   }
-
 
   /**
    * Address findFirstOrThrow
@@ -14354,7 +14149,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14393,7 +14188,6 @@ export namespace Prisma {
     distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
   }
 
-
   /**
    * Address findMany
    */
@@ -14403,7 +14197,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14437,7 +14231,6 @@ export namespace Prisma {
     distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
   }
 
-
   /**
    * Address create
    */
@@ -14447,7 +14240,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14455,7 +14248,6 @@ export namespace Prisma {
      */
     data: XOR<AddressCreateInput, AddressUncheckedCreateInput>
   }
-
 
   /**
    * Address createMany
@@ -14468,7 +14260,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Address update
    */
@@ -14478,7 +14269,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14490,7 +14281,6 @@ export namespace Prisma {
      */
     where: AddressWhereUniqueInput
   }
-
 
   /**
    * Address updateMany
@@ -14506,7 +14296,6 @@ export namespace Prisma {
     where?: AddressWhereInput
   }
 
-
   /**
    * Address upsert
    */
@@ -14516,7 +14305,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14533,7 +14322,6 @@ export namespace Prisma {
     update: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
   }
 
-
   /**
    * Address delete
    */
@@ -14543,7 +14331,7 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
     /**
@@ -14551,7 +14339,6 @@ export namespace Prisma {
      */
     where: AddressWhereUniqueInput
   }
-
 
   /**
    * Address deleteMany
@@ -14563,7 +14350,6 @@ export namespace Prisma {
     where?: AddressWhereInput
   }
 
-
   /**
    * Address.orders
    */
@@ -14573,7 +14359,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     where?: OrderWhereInput
@@ -14584,7 +14370,6 @@ export namespace Prisma {
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
 
-
   /**
    * Address without action
    */
@@ -14594,11 +14379,10 @@ export namespace Prisma {
      */
     select?: AddressSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -14849,6 +14633,7 @@ export namespace Prisma {
     createdAt?: boolean
     createdBy?: boolean
   }
+
 
   export type ParcelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | Parcel$ordersArgs<ExtArgs>
@@ -15291,7 +15076,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Parcel findUnique
    */
@@ -15301,7 +15085,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15309,7 +15093,6 @@ export namespace Prisma {
      */
     where: ParcelWhereUniqueInput
   }
-
 
   /**
    * Parcel findUniqueOrThrow
@@ -15320,7 +15103,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15328,7 +15111,6 @@ export namespace Prisma {
      */
     where: ParcelWhereUniqueInput
   }
-
 
   /**
    * Parcel findFirst
@@ -15339,7 +15121,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15377,7 +15159,6 @@ export namespace Prisma {
      */
     distinct?: ParcelScalarFieldEnum | ParcelScalarFieldEnum[]
   }
-
 
   /**
    * Parcel findFirstOrThrow
@@ -15388,7 +15169,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15427,7 +15208,6 @@ export namespace Prisma {
     distinct?: ParcelScalarFieldEnum | ParcelScalarFieldEnum[]
   }
 
-
   /**
    * Parcel findMany
    */
@@ -15437,7 +15217,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15471,7 +15251,6 @@ export namespace Prisma {
     distinct?: ParcelScalarFieldEnum | ParcelScalarFieldEnum[]
   }
 
-
   /**
    * Parcel create
    */
@@ -15481,7 +15260,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15489,7 +15268,6 @@ export namespace Prisma {
      */
     data: XOR<ParcelCreateInput, ParcelUncheckedCreateInput>
   }
-
 
   /**
    * Parcel createMany
@@ -15502,7 +15280,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Parcel update
    */
@@ -15512,7 +15289,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15524,7 +15301,6 @@ export namespace Prisma {
      */
     where: ParcelWhereUniqueInput
   }
-
 
   /**
    * Parcel updateMany
@@ -15540,7 +15316,6 @@ export namespace Prisma {
     where?: ParcelWhereInput
   }
 
-
   /**
    * Parcel upsert
    */
@@ -15550,7 +15325,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15567,7 +15342,6 @@ export namespace Prisma {
     update: XOR<ParcelUpdateInput, ParcelUncheckedUpdateInput>
   }
 
-
   /**
    * Parcel delete
    */
@@ -15577,7 +15351,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     /**
@@ -15585,7 +15359,6 @@ export namespace Prisma {
      */
     where: ParcelWhereUniqueInput
   }
-
 
   /**
    * Parcel deleteMany
@@ -15597,7 +15370,6 @@ export namespace Prisma {
     where?: ParcelWhereInput
   }
 
-
   /**
    * Parcel.orders
    */
@@ -15607,7 +15379,7 @@ export namespace Prisma {
      */
     select?: OrderSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: OrderInclude<ExtArgs> | null
     where?: OrderWhereInput
@@ -15618,7 +15390,6 @@ export namespace Prisma {
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
   }
 
-
   /**
    * Parcel without action
    */
@@ -15628,11 +15399,10 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -15819,6 +15589,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type PhysicianInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | Physician$evaluationsArgs<ExtArgs>
@@ -16243,7 +16014,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Physician findUnique
    */
@@ -16253,7 +16023,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16261,7 +16031,6 @@ export namespace Prisma {
      */
     where: PhysicianWhereUniqueInput
   }
-
 
   /**
    * Physician findUniqueOrThrow
@@ -16272,7 +16041,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16280,7 +16049,6 @@ export namespace Prisma {
      */
     where: PhysicianWhereUniqueInput
   }
-
 
   /**
    * Physician findFirst
@@ -16291,7 +16059,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16329,7 +16097,6 @@ export namespace Prisma {
      */
     distinct?: PhysicianScalarFieldEnum | PhysicianScalarFieldEnum[]
   }
-
 
   /**
    * Physician findFirstOrThrow
@@ -16340,7 +16107,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16379,7 +16146,6 @@ export namespace Prisma {
     distinct?: PhysicianScalarFieldEnum | PhysicianScalarFieldEnum[]
   }
 
-
   /**
    * Physician findMany
    */
@@ -16389,7 +16155,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16423,7 +16189,6 @@ export namespace Prisma {
     distinct?: PhysicianScalarFieldEnum | PhysicianScalarFieldEnum[]
   }
 
-
   /**
    * Physician create
    */
@@ -16433,7 +16198,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16441,7 +16206,6 @@ export namespace Prisma {
      */
     data: XOR<PhysicianCreateInput, PhysicianUncheckedCreateInput>
   }
-
 
   /**
    * Physician createMany
@@ -16454,7 +16218,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Physician update
    */
@@ -16464,7 +16227,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16476,7 +16239,6 @@ export namespace Prisma {
      */
     where: PhysicianWhereUniqueInput
   }
-
 
   /**
    * Physician updateMany
@@ -16492,7 +16254,6 @@ export namespace Prisma {
     where?: PhysicianWhereInput
   }
 
-
   /**
    * Physician upsert
    */
@@ -16502,7 +16263,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16519,7 +16280,6 @@ export namespace Prisma {
     update: XOR<PhysicianUpdateInput, PhysicianUncheckedUpdateInput>
   }
 
-
   /**
    * Physician delete
    */
@@ -16529,7 +16289,7 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
     /**
@@ -16537,7 +16297,6 @@ export namespace Prisma {
      */
     where: PhysicianWhereUniqueInput
   }
-
 
   /**
    * Physician deleteMany
@@ -16549,7 +16308,6 @@ export namespace Prisma {
     where?: PhysicianWhereInput
   }
 
-
   /**
    * Physician.evaluations
    */
@@ -16559,7 +16317,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     where?: EvaluationWhereInput
@@ -16570,7 +16328,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * Physician without action
    */
@@ -16580,11 +16337,10 @@ export namespace Prisma {
      */
     select?: PhysicianSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: PhysicianInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -16780,6 +16536,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type DiagnosisInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | Diagnosis$evaluationsArgs<ExtArgs>
@@ -17206,7 +16963,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Diagnosis findUnique
    */
@@ -17216,7 +16972,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17224,7 +16980,6 @@ export namespace Prisma {
      */
     where: DiagnosisWhereUniqueInput
   }
-
 
   /**
    * Diagnosis findUniqueOrThrow
@@ -17235,7 +16990,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17243,7 +16998,6 @@ export namespace Prisma {
      */
     where: DiagnosisWhereUniqueInput
   }
-
 
   /**
    * Diagnosis findFirst
@@ -17254,7 +17008,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17292,7 +17046,6 @@ export namespace Prisma {
      */
     distinct?: DiagnosisScalarFieldEnum | DiagnosisScalarFieldEnum[]
   }
-
 
   /**
    * Diagnosis findFirstOrThrow
@@ -17303,7 +17056,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17342,7 +17095,6 @@ export namespace Prisma {
     distinct?: DiagnosisScalarFieldEnum | DiagnosisScalarFieldEnum[]
   }
 
-
   /**
    * Diagnosis findMany
    */
@@ -17352,7 +17104,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17386,7 +17138,6 @@ export namespace Prisma {
     distinct?: DiagnosisScalarFieldEnum | DiagnosisScalarFieldEnum[]
   }
 
-
   /**
    * Diagnosis create
    */
@@ -17396,7 +17147,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17404,7 +17155,6 @@ export namespace Prisma {
      */
     data: XOR<DiagnosisCreateInput, DiagnosisUncheckedCreateInput>
   }
-
 
   /**
    * Diagnosis createMany
@@ -17417,7 +17167,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Diagnosis update
    */
@@ -17427,7 +17176,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17439,7 +17188,6 @@ export namespace Prisma {
      */
     where: DiagnosisWhereUniqueInput
   }
-
 
   /**
    * Diagnosis updateMany
@@ -17455,7 +17203,6 @@ export namespace Prisma {
     where?: DiagnosisWhereInput
   }
 
-
   /**
    * Diagnosis upsert
    */
@@ -17465,7 +17212,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17482,7 +17229,6 @@ export namespace Prisma {
     update: XOR<DiagnosisUpdateInput, DiagnosisUncheckedUpdateInput>
   }
 
-
   /**
    * Diagnosis delete
    */
@@ -17492,7 +17238,7 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
     /**
@@ -17500,7 +17246,6 @@ export namespace Prisma {
      */
     where: DiagnosisWhereUniqueInput
   }
-
 
   /**
    * Diagnosis deleteMany
@@ -17512,7 +17257,6 @@ export namespace Prisma {
     where?: DiagnosisWhereInput
   }
 
-
   /**
    * Diagnosis.evaluations
    */
@@ -17522,7 +17266,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     where?: EvaluationWhereInput
@@ -17533,7 +17277,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * Diagnosis without action
    */
@@ -17543,11 +17286,10 @@ export namespace Prisma {
      */
     select?: DiagnosisSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DiagnosisInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -17723,6 +17465,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
 
   export type $BillingCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18137,7 +17880,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * BillingCode findUnique
    */
@@ -18152,7 +17894,6 @@ export namespace Prisma {
     where: BillingCodeWhereUniqueInput
   }
 
-
   /**
    * BillingCode findUniqueOrThrow
    */
@@ -18166,7 +17907,6 @@ export namespace Prisma {
      */
     where: BillingCodeWhereUniqueInput
   }
-
 
   /**
    * BillingCode findFirst
@@ -18212,7 +17952,6 @@ export namespace Prisma {
     distinct?: BillingCodeScalarFieldEnum | BillingCodeScalarFieldEnum[]
   }
 
-
   /**
    * BillingCode findFirstOrThrow
    */
@@ -18257,7 +17996,6 @@ export namespace Prisma {
     distinct?: BillingCodeScalarFieldEnum | BillingCodeScalarFieldEnum[]
   }
 
-
   /**
    * BillingCode findMany
    */
@@ -18297,7 +18035,6 @@ export namespace Prisma {
     distinct?: BillingCodeScalarFieldEnum | BillingCodeScalarFieldEnum[]
   }
 
-
   /**
    * BillingCode create
    */
@@ -18312,7 +18049,6 @@ export namespace Prisma {
     data: XOR<BillingCodeCreateInput, BillingCodeUncheckedCreateInput>
   }
 
-
   /**
    * BillingCode createMany
    */
@@ -18323,7 +18059,6 @@ export namespace Prisma {
     data: BillingCodeCreateManyInput | BillingCodeCreateManyInput[]
     skipDuplicates?: boolean
   }
-
 
   /**
    * BillingCode update
@@ -18343,7 +18078,6 @@ export namespace Prisma {
     where: BillingCodeWhereUniqueInput
   }
 
-
   /**
    * BillingCode updateMany
    */
@@ -18357,7 +18091,6 @@ export namespace Prisma {
      */
     where?: BillingCodeWhereInput
   }
-
 
   /**
    * BillingCode upsert
@@ -18381,7 +18114,6 @@ export namespace Prisma {
     update: XOR<BillingCodeUpdateInput, BillingCodeUncheckedUpdateInput>
   }
 
-
   /**
    * BillingCode delete
    */
@@ -18396,7 +18128,6 @@ export namespace Prisma {
     where: BillingCodeWhereUniqueInput
   }
 
-
   /**
    * BillingCode deleteMany
    */
@@ -18407,7 +18138,6 @@ export namespace Prisma {
     where?: BillingCodeWhereInput
   }
 
-
   /**
    * BillingCode without action
    */
@@ -18417,7 +18147,6 @@ export namespace Prisma {
      */
     select?: BillingCodeSelect<ExtArgs> | null
   }
-
 
 
   /**
@@ -18577,6 +18306,7 @@ export namespace Prisma {
     name?: boolean
     diabetic?: boolean
   }
+
 
   export type DeviceTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | DeviceType$evaluationsArgs<ExtArgs>
@@ -18995,7 +18725,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * DeviceType findUnique
    */
@@ -19005,7 +18734,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19013,7 +18742,6 @@ export namespace Prisma {
      */
     where: DeviceTypeWhereUniqueInput
   }
-
 
   /**
    * DeviceType findUniqueOrThrow
@@ -19024,7 +18752,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19032,7 +18760,6 @@ export namespace Prisma {
      */
     where: DeviceTypeWhereUniqueInput
   }
-
 
   /**
    * DeviceType findFirst
@@ -19043,7 +18770,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19081,7 +18808,6 @@ export namespace Prisma {
      */
     distinct?: DeviceTypeScalarFieldEnum | DeviceTypeScalarFieldEnum[]
   }
-
 
   /**
    * DeviceType findFirstOrThrow
@@ -19092,7 +18818,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19131,7 +18857,6 @@ export namespace Prisma {
     distinct?: DeviceTypeScalarFieldEnum | DeviceTypeScalarFieldEnum[]
   }
 
-
   /**
    * DeviceType findMany
    */
@@ -19141,7 +18866,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19175,7 +18900,6 @@ export namespace Prisma {
     distinct?: DeviceTypeScalarFieldEnum | DeviceTypeScalarFieldEnum[]
   }
 
-
   /**
    * DeviceType create
    */
@@ -19185,7 +18909,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19193,7 +18917,6 @@ export namespace Prisma {
      */
     data: XOR<DeviceTypeCreateInput, DeviceTypeUncheckedCreateInput>
   }
-
 
   /**
    * DeviceType createMany
@@ -19206,7 +18929,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * DeviceType update
    */
@@ -19216,7 +18938,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19228,7 +18950,6 @@ export namespace Prisma {
      */
     where: DeviceTypeWhereUniqueInput
   }
-
 
   /**
    * DeviceType updateMany
@@ -19244,7 +18965,6 @@ export namespace Prisma {
     where?: DeviceTypeWhereInput
   }
 
-
   /**
    * DeviceType upsert
    */
@@ -19254,7 +18974,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19271,7 +18991,6 @@ export namespace Prisma {
     update: XOR<DeviceTypeUpdateInput, DeviceTypeUncheckedUpdateInput>
   }
 
-
   /**
    * DeviceType delete
    */
@@ -19281,7 +19000,7 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
     /**
@@ -19289,7 +19008,6 @@ export namespace Prisma {
      */
     where: DeviceTypeWhereUniqueInput
   }
-
 
   /**
    * DeviceType deleteMany
@@ -19301,7 +19019,6 @@ export namespace Prisma {
     where?: DeviceTypeWhereInput
   }
 
-
   /**
    * DeviceType.evaluations
    */
@@ -19311,7 +19028,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     where?: EvaluationWhereInput
@@ -19322,7 +19039,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * DeviceType without action
    */
@@ -19332,11 +19048,10 @@ export namespace Prisma {
      */
     select?: DeviceTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: DeviceTypeInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -19487,6 +19202,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
   }
+
 
   export type VisitTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | VisitType$evaluationsArgs<ExtArgs>
@@ -19903,7 +19619,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * VisitType findUnique
    */
@@ -19913,7 +19628,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -19921,7 +19636,6 @@ export namespace Prisma {
      */
     where: VisitTypeWhereUniqueInput
   }
-
 
   /**
    * VisitType findUniqueOrThrow
@@ -19932,7 +19646,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -19940,7 +19654,6 @@ export namespace Prisma {
      */
     where: VisitTypeWhereUniqueInput
   }
-
 
   /**
    * VisitType findFirst
@@ -19951,7 +19664,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -19989,7 +19702,6 @@ export namespace Prisma {
      */
     distinct?: VisitTypeScalarFieldEnum | VisitTypeScalarFieldEnum[]
   }
-
 
   /**
    * VisitType findFirstOrThrow
@@ -20000,7 +19712,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20039,7 +19751,6 @@ export namespace Prisma {
     distinct?: VisitTypeScalarFieldEnum | VisitTypeScalarFieldEnum[]
   }
 
-
   /**
    * VisitType findMany
    */
@@ -20049,7 +19760,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20083,7 +19794,6 @@ export namespace Prisma {
     distinct?: VisitTypeScalarFieldEnum | VisitTypeScalarFieldEnum[]
   }
 
-
   /**
    * VisitType create
    */
@@ -20093,7 +19803,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20101,7 +19811,6 @@ export namespace Prisma {
      */
     data: XOR<VisitTypeCreateInput, VisitTypeUncheckedCreateInput>
   }
-
 
   /**
    * VisitType createMany
@@ -20114,7 +19823,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * VisitType update
    */
@@ -20124,7 +19832,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20136,7 +19844,6 @@ export namespace Prisma {
      */
     where: VisitTypeWhereUniqueInput
   }
-
 
   /**
    * VisitType updateMany
@@ -20152,7 +19859,6 @@ export namespace Prisma {
     where?: VisitTypeWhereInput
   }
 
-
   /**
    * VisitType upsert
    */
@@ -20162,7 +19868,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20179,7 +19885,6 @@ export namespace Prisma {
     update: XOR<VisitTypeUpdateInput, VisitTypeUncheckedUpdateInput>
   }
 
-
   /**
    * VisitType delete
    */
@@ -20189,7 +19894,7 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
     /**
@@ -20197,7 +19902,6 @@ export namespace Prisma {
      */
     where: VisitTypeWhereUniqueInput
   }
-
 
   /**
    * VisitType deleteMany
@@ -20209,7 +19913,6 @@ export namespace Prisma {
     where?: VisitTypeWhereInput
   }
 
-
   /**
    * VisitType.evaluations
    */
@@ -20219,7 +19922,7 @@ export namespace Prisma {
      */
     select?: EvaluationSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EvaluationInclude<ExtArgs> | null
     where?: EvaluationWhereInput
@@ -20230,7 +19933,6 @@ export namespace Prisma {
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
-
   /**
    * VisitType without action
    */
@@ -20240,11 +19942,10 @@ export namespace Prisma {
      */
     select?: VisitTypeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: VisitTypeInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -20443,6 +20144,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CatalogProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     attributes?: boolean | CatalogProduct$attributesArgs<ExtArgs>
@@ -20881,7 +20583,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * CatalogProduct findUnique
    */
@@ -20891,7 +20592,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -20899,7 +20600,6 @@ export namespace Prisma {
      */
     where: CatalogProductWhereUniqueInput
   }
-
 
   /**
    * CatalogProduct findUniqueOrThrow
@@ -20910,7 +20610,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -20918,7 +20618,6 @@ export namespace Prisma {
      */
     where: CatalogProductWhereUniqueInput
   }
-
 
   /**
    * CatalogProduct findFirst
@@ -20929,7 +20628,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -20967,7 +20666,6 @@ export namespace Prisma {
      */
     distinct?: CatalogProductScalarFieldEnum | CatalogProductScalarFieldEnum[]
   }
-
 
   /**
    * CatalogProduct findFirstOrThrow
@@ -20978,7 +20676,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21017,7 +20715,6 @@ export namespace Prisma {
     distinct?: CatalogProductScalarFieldEnum | CatalogProductScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct findMany
    */
@@ -21027,7 +20724,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21061,7 +20758,6 @@ export namespace Prisma {
     distinct?: CatalogProductScalarFieldEnum | CatalogProductScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct create
    */
@@ -21071,7 +20767,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21079,7 +20775,6 @@ export namespace Prisma {
      */
     data: XOR<CatalogProductCreateInput, CatalogProductUncheckedCreateInput>
   }
-
 
   /**
    * CatalogProduct createMany
@@ -21092,7 +20787,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * CatalogProduct update
    */
@@ -21102,7 +20796,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21114,7 +20808,6 @@ export namespace Prisma {
      */
     where: CatalogProductWhereUniqueInput
   }
-
 
   /**
    * CatalogProduct updateMany
@@ -21130,7 +20823,6 @@ export namespace Prisma {
     where?: CatalogProductWhereInput
   }
 
-
   /**
    * CatalogProduct upsert
    */
@@ -21140,7 +20832,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21157,7 +20849,6 @@ export namespace Prisma {
     update: XOR<CatalogProductUpdateInput, CatalogProductUncheckedUpdateInput>
   }
 
-
   /**
    * CatalogProduct delete
    */
@@ -21167,7 +20858,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     /**
@@ -21175,7 +20866,6 @@ export namespace Prisma {
      */
     where: CatalogProductWhereUniqueInput
   }
-
 
   /**
    * CatalogProduct deleteMany
@@ -21187,7 +20877,6 @@ export namespace Prisma {
     where?: CatalogProductWhereInput
   }
 
-
   /**
    * CatalogProduct.attributes
    */
@@ -21197,7 +20886,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     where?: CatalogProductAttributeWhereInput
@@ -21208,7 +20897,6 @@ export namespace Prisma {
     distinct?: CatalogProductAttributeScalarFieldEnum | CatalogProductAttributeScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct.variants
    */
@@ -21218,7 +20906,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     where?: CatalogProductVariantWhereInput
@@ -21229,7 +20917,6 @@ export namespace Prisma {
     distinct?: CatalogProductVariantScalarFieldEnum | CatalogProductVariantScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct.categories
    */
@@ -21239,7 +20926,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     where?: CatalogCategoryWhereInput
@@ -21250,7 +20937,6 @@ export namespace Prisma {
     distinct?: CatalogCategoryScalarFieldEnum | CatalogCategoryScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct.vendors
    */
@@ -21260,7 +20946,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     where?: CatalogVendorWhereInput
@@ -21271,7 +20957,6 @@ export namespace Prisma {
     distinct?: CatalogVendorScalarFieldEnum | CatalogVendorScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProduct without action
    */
@@ -21281,11 +20966,10 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -21489,6 +21173,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CatalogProductAttributeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | CatalogProductDefaultArgs<ExtArgs>
@@ -21916,7 +21601,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * CatalogProductAttribute findUnique
    */
@@ -21926,7 +21610,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -21934,7 +21618,6 @@ export namespace Prisma {
      */
     where: CatalogProductAttributeWhereUniqueInput
   }
-
 
   /**
    * CatalogProductAttribute findUniqueOrThrow
@@ -21945,7 +21628,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -21953,7 +21636,6 @@ export namespace Prisma {
      */
     where: CatalogProductAttributeWhereUniqueInput
   }
-
 
   /**
    * CatalogProductAttribute findFirst
@@ -21964,7 +21646,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22002,7 +21684,6 @@ export namespace Prisma {
      */
     distinct?: CatalogProductAttributeScalarFieldEnum | CatalogProductAttributeScalarFieldEnum[]
   }
-
 
   /**
    * CatalogProductAttribute findFirstOrThrow
@@ -22013,7 +21694,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22052,7 +21733,6 @@ export namespace Prisma {
     distinct?: CatalogProductAttributeScalarFieldEnum | CatalogProductAttributeScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProductAttribute findMany
    */
@@ -22062,7 +21742,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22096,7 +21776,6 @@ export namespace Prisma {
     distinct?: CatalogProductAttributeScalarFieldEnum | CatalogProductAttributeScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProductAttribute create
    */
@@ -22106,7 +21785,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22114,7 +21793,6 @@ export namespace Prisma {
      */
     data: XOR<CatalogProductAttributeCreateInput, CatalogProductAttributeUncheckedCreateInput>
   }
-
 
   /**
    * CatalogProductAttribute createMany
@@ -22127,7 +21805,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * CatalogProductAttribute update
    */
@@ -22137,7 +21814,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22149,7 +21826,6 @@ export namespace Prisma {
      */
     where: CatalogProductAttributeWhereUniqueInput
   }
-
 
   /**
    * CatalogProductAttribute updateMany
@@ -22165,7 +21841,6 @@ export namespace Prisma {
     where?: CatalogProductAttributeWhereInput
   }
 
-
   /**
    * CatalogProductAttribute upsert
    */
@@ -22175,7 +21850,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22192,7 +21867,6 @@ export namespace Prisma {
     update: XOR<CatalogProductAttributeUpdateInput, CatalogProductAttributeUncheckedUpdateInput>
   }
 
-
   /**
    * CatalogProductAttribute delete
    */
@@ -22202,7 +21876,7 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
     /**
@@ -22210,7 +21884,6 @@ export namespace Prisma {
      */
     where: CatalogProductAttributeWhereUniqueInput
   }
-
 
   /**
    * CatalogProductAttribute deleteMany
@@ -22222,7 +21895,6 @@ export namespace Prisma {
     where?: CatalogProductAttributeWhereInput
   }
 
-
   /**
    * CatalogProductAttribute without action
    */
@@ -22232,11 +21904,10 @@ export namespace Prisma {
      */
     select?: CatalogProductAttributeSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductAttributeInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -22449,6 +22120,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CatalogProductVariantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | CatalogProductDefaultArgs<ExtArgs>
@@ -22878,7 +22550,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * CatalogProductVariant findUnique
    */
@@ -22888,7 +22559,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -22896,7 +22567,6 @@ export namespace Prisma {
      */
     where: CatalogProductVariantWhereUniqueInput
   }
-
 
   /**
    * CatalogProductVariant findUniqueOrThrow
@@ -22907,7 +22577,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -22915,7 +22585,6 @@ export namespace Prisma {
      */
     where: CatalogProductVariantWhereUniqueInput
   }
-
 
   /**
    * CatalogProductVariant findFirst
@@ -22926,7 +22595,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -22964,7 +22633,6 @@ export namespace Prisma {
      */
     distinct?: CatalogProductVariantScalarFieldEnum | CatalogProductVariantScalarFieldEnum[]
   }
-
 
   /**
    * CatalogProductVariant findFirstOrThrow
@@ -22975,7 +22643,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23014,7 +22682,6 @@ export namespace Prisma {
     distinct?: CatalogProductVariantScalarFieldEnum | CatalogProductVariantScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProductVariant findMany
    */
@@ -23024,7 +22691,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23058,7 +22725,6 @@ export namespace Prisma {
     distinct?: CatalogProductVariantScalarFieldEnum | CatalogProductVariantScalarFieldEnum[]
   }
 
-
   /**
    * CatalogProductVariant create
    */
@@ -23068,7 +22734,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23076,7 +22742,6 @@ export namespace Prisma {
      */
     data: XOR<CatalogProductVariantCreateInput, CatalogProductVariantUncheckedCreateInput>
   }
-
 
   /**
    * CatalogProductVariant createMany
@@ -23089,7 +22754,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * CatalogProductVariant update
    */
@@ -23099,7 +22763,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23111,7 +22775,6 @@ export namespace Prisma {
      */
     where: CatalogProductVariantWhereUniqueInput
   }
-
 
   /**
    * CatalogProductVariant updateMany
@@ -23127,7 +22790,6 @@ export namespace Prisma {
     where?: CatalogProductVariantWhereInput
   }
 
-
   /**
    * CatalogProductVariant upsert
    */
@@ -23137,7 +22799,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23154,7 +22816,6 @@ export namespace Prisma {
     update: XOR<CatalogProductVariantUpdateInput, CatalogProductVariantUncheckedUpdateInput>
   }
 
-
   /**
    * CatalogProductVariant delete
    */
@@ -23164,7 +22825,7 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
     /**
@@ -23172,7 +22833,6 @@ export namespace Prisma {
      */
     where: CatalogProductVariantWhereUniqueInput
   }
-
 
   /**
    * CatalogProductVariant deleteMany
@@ -23184,7 +22844,6 @@ export namespace Prisma {
     where?: CatalogProductVariantWhereInput
   }
 
-
   /**
    * CatalogProductVariant without action
    */
@@ -23194,11 +22853,10 @@ export namespace Prisma {
      */
     select?: CatalogProductVariantSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductVariantInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -23385,6 +23043,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CatalogCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | CatalogCategory$productsArgs<ExtArgs>
@@ -23809,7 +23468,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * CatalogCategory findUnique
    */
@@ -23819,7 +23477,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -23827,7 +23485,6 @@ export namespace Prisma {
      */
     where: CatalogCategoryWhereUniqueInput
   }
-
 
   /**
    * CatalogCategory findUniqueOrThrow
@@ -23838,7 +23495,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -23846,7 +23503,6 @@ export namespace Prisma {
      */
     where: CatalogCategoryWhereUniqueInput
   }
-
 
   /**
    * CatalogCategory findFirst
@@ -23857,7 +23513,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -23895,7 +23551,6 @@ export namespace Prisma {
      */
     distinct?: CatalogCategoryScalarFieldEnum | CatalogCategoryScalarFieldEnum[]
   }
-
 
   /**
    * CatalogCategory findFirstOrThrow
@@ -23906,7 +23561,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -23945,7 +23600,6 @@ export namespace Prisma {
     distinct?: CatalogCategoryScalarFieldEnum | CatalogCategoryScalarFieldEnum[]
   }
 
-
   /**
    * CatalogCategory findMany
    */
@@ -23955,7 +23609,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -23989,7 +23643,6 @@ export namespace Prisma {
     distinct?: CatalogCategoryScalarFieldEnum | CatalogCategoryScalarFieldEnum[]
   }
 
-
   /**
    * CatalogCategory create
    */
@@ -23999,7 +23652,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -24007,7 +23660,6 @@ export namespace Prisma {
      */
     data: XOR<CatalogCategoryCreateInput, CatalogCategoryUncheckedCreateInput>
   }
-
 
   /**
    * CatalogCategory createMany
@@ -24020,7 +23672,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * CatalogCategory update
    */
@@ -24030,7 +23681,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -24042,7 +23693,6 @@ export namespace Prisma {
      */
     where: CatalogCategoryWhereUniqueInput
   }
-
 
   /**
    * CatalogCategory updateMany
@@ -24058,7 +23708,6 @@ export namespace Prisma {
     where?: CatalogCategoryWhereInput
   }
 
-
   /**
    * CatalogCategory upsert
    */
@@ -24068,7 +23717,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -24085,7 +23734,6 @@ export namespace Prisma {
     update: XOR<CatalogCategoryUpdateInput, CatalogCategoryUncheckedUpdateInput>
   }
 
-
   /**
    * CatalogCategory delete
    */
@@ -24095,7 +23743,7 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
     /**
@@ -24103,7 +23751,6 @@ export namespace Prisma {
      */
     where: CatalogCategoryWhereUniqueInput
   }
-
 
   /**
    * CatalogCategory deleteMany
@@ -24115,7 +23762,6 @@ export namespace Prisma {
     where?: CatalogCategoryWhereInput
   }
 
-
   /**
    * CatalogCategory.products
    */
@@ -24125,7 +23771,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     where?: CatalogProductWhereInput
@@ -24136,7 +23782,6 @@ export namespace Prisma {
     distinct?: CatalogProductScalarFieldEnum | CatalogProductScalarFieldEnum[]
   }
 
-
   /**
    * CatalogCategory without action
    */
@@ -24146,11 +23791,10 @@ export namespace Prisma {
      */
     select?: CatalogCategorySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogCategoryInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -24346,6 +23990,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type CatalogVendorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | CatalogVendor$productsArgs<ExtArgs>
@@ -24772,7 +24417,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * CatalogVendor findUnique
    */
@@ -24782,7 +24426,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24790,7 +24434,6 @@ export namespace Prisma {
      */
     where: CatalogVendorWhereUniqueInput
   }
-
 
   /**
    * CatalogVendor findUniqueOrThrow
@@ -24801,7 +24444,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24809,7 +24452,6 @@ export namespace Prisma {
      */
     where: CatalogVendorWhereUniqueInput
   }
-
 
   /**
    * CatalogVendor findFirst
@@ -24820,7 +24462,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24858,7 +24500,6 @@ export namespace Prisma {
      */
     distinct?: CatalogVendorScalarFieldEnum | CatalogVendorScalarFieldEnum[]
   }
-
 
   /**
    * CatalogVendor findFirstOrThrow
@@ -24869,7 +24510,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24908,7 +24549,6 @@ export namespace Prisma {
     distinct?: CatalogVendorScalarFieldEnum | CatalogVendorScalarFieldEnum[]
   }
 
-
   /**
    * CatalogVendor findMany
    */
@@ -24918,7 +24558,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24952,7 +24592,6 @@ export namespace Prisma {
     distinct?: CatalogVendorScalarFieldEnum | CatalogVendorScalarFieldEnum[]
   }
 
-
   /**
    * CatalogVendor create
    */
@@ -24962,7 +24601,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -24970,7 +24609,6 @@ export namespace Prisma {
      */
     data: XOR<CatalogVendorCreateInput, CatalogVendorUncheckedCreateInput>
   }
-
 
   /**
    * CatalogVendor createMany
@@ -24983,7 +24621,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * CatalogVendor update
    */
@@ -24993,7 +24630,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -25005,7 +24642,6 @@ export namespace Prisma {
      */
     where: CatalogVendorWhereUniqueInput
   }
-
 
   /**
    * CatalogVendor updateMany
@@ -25021,7 +24657,6 @@ export namespace Prisma {
     where?: CatalogVendorWhereInput
   }
 
-
   /**
    * CatalogVendor upsert
    */
@@ -25031,7 +24666,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -25048,7 +24683,6 @@ export namespace Prisma {
     update: XOR<CatalogVendorUpdateInput, CatalogVendorUncheckedUpdateInput>
   }
 
-
   /**
    * CatalogVendor delete
    */
@@ -25058,7 +24692,7 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
     /**
@@ -25066,7 +24700,6 @@ export namespace Prisma {
      */
     where: CatalogVendorWhereUniqueInput
   }
-
 
   /**
    * CatalogVendor deleteMany
@@ -25078,7 +24711,6 @@ export namespace Prisma {
     where?: CatalogVendorWhereInput
   }
 
-
   /**
    * CatalogVendor.products
    */
@@ -25088,7 +24720,7 @@ export namespace Prisma {
      */
     select?: CatalogProductSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogProductInclude<ExtArgs> | null
     where?: CatalogProductWhereInput
@@ -25099,7 +24731,6 @@ export namespace Prisma {
     distinct?: CatalogProductScalarFieldEnum | CatalogProductScalarFieldEnum[]
   }
 
-
   /**
    * CatalogVendor without action
    */
@@ -25109,11 +24740,10 @@ export namespace Prisma {
      */
     select?: CatalogVendorSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: CatalogVendorInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -25312,6 +24942,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userCompanies?: boolean | User$userCompaniesArgs<ExtArgs>
@@ -25750,7 +25381,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * User findUnique
    */
@@ -25760,7 +25390,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25768,7 +25398,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findUniqueOrThrow
@@ -25779,7 +25408,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25787,7 +25416,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findFirst
@@ -25798,7 +25426,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25836,7 +25464,6 @@ export namespace Prisma {
      */
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
-
 
   /**
    * User findFirstOrThrow
@@ -25847,7 +25474,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25886,7 +25513,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User findMany
    */
@@ -25896,7 +25522,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25930,7 +25556,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User create
    */
@@ -25940,7 +25565,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25948,7 +25573,6 @@ export namespace Prisma {
      */
     data?: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
-
 
   /**
    * User createMany
@@ -25961,7 +25585,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * User update
    */
@@ -25971,7 +25594,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -25983,7 +25606,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User updateMany
@@ -25999,7 +25621,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User upsert
    */
@@ -26009,7 +25630,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -26026,7 +25647,6 @@ export namespace Prisma {
     update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
   }
 
-
   /**
    * User delete
    */
@@ -26036,7 +25656,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -26044,7 +25664,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User deleteMany
@@ -26056,7 +25675,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User.userCompanies
    */
@@ -26066,7 +25684,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     where?: UserCompanyWhereInput
@@ -26077,7 +25695,6 @@ export namespace Prisma {
     distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
   }
 
-
   /**
    * User.userFacilities
    */
@@ -26087,7 +25704,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     where?: UserFacilityWhereInput
@@ -26098,7 +25715,6 @@ export namespace Prisma {
     distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
   }
 
-
   /**
    * User.accounts
    */
@@ -26108,7 +25724,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     where?: AccountWhereInput
@@ -26119,7 +25735,6 @@ export namespace Prisma {
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
   }
 
-
   /**
    * User.parcelsCreated
    */
@@ -26129,7 +25744,7 @@ export namespace Prisma {
      */
     select?: ParcelSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ParcelInclude<ExtArgs> | null
     where?: ParcelWhereInput
@@ -26140,7 +25755,6 @@ export namespace Prisma {
     distinct?: ParcelScalarFieldEnum | ParcelScalarFieldEnum[]
   }
 
-
   /**
    * User without action
    */
@@ -26150,11 +25764,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -26170,7 +25783,7 @@ export namespace Prisma {
   export type UserCompanyMinAggregateOutputType = {
     userId: string | null
     companyId: string | null
-    role: $Enums.Role | null
+    role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -26178,7 +25791,7 @@ export namespace Prisma {
   export type UserCompanyMaxAggregateOutputType = {
     userId: string | null
     companyId: string | null
-    role: $Enums.Role | null
+    role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -26293,7 +25906,7 @@ export namespace Prisma {
   export type UserCompanyGroupByOutputType = {
     userId: string
     companyId: string
-    role: $Enums.Role
+    role: $Enums.CompanyRole
     createdAt: Date
     updatedAt: Date
     _count: UserCompanyCountAggregateOutputType | null
@@ -26333,6 +25946,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
+
   export type UserCompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -26348,7 +25962,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       userId: string
       companyId: string
-      role: $Enums.Role
+      role: $Enums.CompanyRole
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["userCompany"]>
@@ -26750,14 +26364,13 @@ export namespace Prisma {
   interface UserCompanyFieldRefs {
     readonly userId: FieldRef<"UserCompany", 'String'>
     readonly companyId: FieldRef<"UserCompany", 'String'>
-    readonly role: FieldRef<"UserCompany", 'Role'>
+    readonly role: FieldRef<"UserCompany", 'CompanyRole'>
     readonly createdAt: FieldRef<"UserCompany", 'DateTime'>
     readonly updatedAt: FieldRef<"UserCompany", 'DateTime'>
   }
     
 
   // Custom InputTypes
-
   /**
    * UserCompany findUnique
    */
@@ -26767,7 +26380,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26775,7 +26388,6 @@ export namespace Prisma {
      */
     where: UserCompanyWhereUniqueInput
   }
-
 
   /**
    * UserCompany findUniqueOrThrow
@@ -26786,7 +26398,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26794,7 +26406,6 @@ export namespace Prisma {
      */
     where: UserCompanyWhereUniqueInput
   }
-
 
   /**
    * UserCompany findFirst
@@ -26805,7 +26416,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26843,7 +26454,6 @@ export namespace Prisma {
      */
     distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
   }
-
 
   /**
    * UserCompany findFirstOrThrow
@@ -26854,7 +26464,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26893,7 +26503,6 @@ export namespace Prisma {
     distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
   }
 
-
   /**
    * UserCompany findMany
    */
@@ -26903,7 +26512,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26937,7 +26546,6 @@ export namespace Prisma {
     distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
   }
 
-
   /**
    * UserCompany create
    */
@@ -26947,7 +26555,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26955,7 +26563,6 @@ export namespace Prisma {
      */
     data: XOR<UserCompanyCreateInput, UserCompanyUncheckedCreateInput>
   }
-
 
   /**
    * UserCompany createMany
@@ -26968,7 +26575,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * UserCompany update
    */
@@ -26978,7 +26584,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -26990,7 +26596,6 @@ export namespace Prisma {
      */
     where: UserCompanyWhereUniqueInput
   }
-
 
   /**
    * UserCompany updateMany
@@ -27006,7 +26611,6 @@ export namespace Prisma {
     where?: UserCompanyWhereInput
   }
 
-
   /**
    * UserCompany upsert
    */
@@ -27016,7 +26620,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -27033,7 +26637,6 @@ export namespace Prisma {
     update: XOR<UserCompanyUpdateInput, UserCompanyUncheckedUpdateInput>
   }
 
-
   /**
    * UserCompany delete
    */
@@ -27043,7 +26646,7 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
     /**
@@ -27051,7 +26654,6 @@ export namespace Prisma {
      */
     where: UserCompanyWhereUniqueInput
   }
-
 
   /**
    * UserCompany deleteMany
@@ -27063,7 +26665,6 @@ export namespace Prisma {
     where?: UserCompanyWhereInput
   }
 
-
   /**
    * UserCompany without action
    */
@@ -27073,11 +26674,10 @@ export namespace Prisma {
      */
     select?: UserCompanySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserCompanyInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -27246,6 +26846,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type UserFacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -27669,7 +27270,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * UserFacility findUnique
    */
@@ -27679,7 +27279,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27687,7 +27287,6 @@ export namespace Prisma {
      */
     where: UserFacilityWhereUniqueInput
   }
-
 
   /**
    * UserFacility findUniqueOrThrow
@@ -27698,7 +27297,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27706,7 +27305,6 @@ export namespace Prisma {
      */
     where: UserFacilityWhereUniqueInput
   }
-
 
   /**
    * UserFacility findFirst
@@ -27717,7 +27315,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27755,7 +27353,6 @@ export namespace Prisma {
      */
     distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
   }
-
 
   /**
    * UserFacility findFirstOrThrow
@@ -27766,7 +27363,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27805,7 +27402,6 @@ export namespace Prisma {
     distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
   }
 
-
   /**
    * UserFacility findMany
    */
@@ -27815,7 +27411,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27849,7 +27445,6 @@ export namespace Prisma {
     distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
   }
 
-
   /**
    * UserFacility create
    */
@@ -27859,7 +27454,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27867,7 +27462,6 @@ export namespace Prisma {
      */
     data: XOR<UserFacilityCreateInput, UserFacilityUncheckedCreateInput>
   }
-
 
   /**
    * UserFacility createMany
@@ -27880,7 +27474,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * UserFacility update
    */
@@ -27890,7 +27483,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27902,7 +27495,6 @@ export namespace Prisma {
      */
     where: UserFacilityWhereUniqueInput
   }
-
 
   /**
    * UserFacility updateMany
@@ -27918,7 +27510,6 @@ export namespace Prisma {
     where?: UserFacilityWhereInput
   }
 
-
   /**
    * UserFacility upsert
    */
@@ -27928,7 +27519,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27945,7 +27536,6 @@ export namespace Prisma {
     update: XOR<UserFacilityUpdateInput, UserFacilityUncheckedUpdateInput>
   }
 
-
   /**
    * UserFacility delete
    */
@@ -27955,7 +27545,7 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
     /**
@@ -27963,7 +27553,6 @@ export namespace Prisma {
      */
     where: UserFacilityWhereUniqueInput
   }
-
 
   /**
    * UserFacility deleteMany
@@ -27975,7 +27564,6 @@ export namespace Prisma {
     where?: UserFacilityWhereInput
   }
 
-
   /**
    * UserFacility without action
    */
@@ -27985,11 +27573,10 @@ export namespace Prisma {
      */
     select?: UserFacilitySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserFacilityInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -28166,6 +27753,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -28587,7 +28175,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Account findUnique
    */
@@ -28597,7 +28184,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28605,7 +28192,6 @@ export namespace Prisma {
      */
     where: AccountWhereUniqueInput
   }
-
 
   /**
    * Account findUniqueOrThrow
@@ -28616,7 +28202,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28624,7 +28210,6 @@ export namespace Prisma {
      */
     where: AccountWhereUniqueInput
   }
-
 
   /**
    * Account findFirst
@@ -28635,7 +28220,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28673,7 +28258,6 @@ export namespace Prisma {
      */
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
   }
-
 
   /**
    * Account findFirstOrThrow
@@ -28684,7 +28268,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28723,7 +28307,6 @@ export namespace Prisma {
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
   }
 
-
   /**
    * Account findMany
    */
@@ -28733,7 +28316,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28767,7 +28350,6 @@ export namespace Prisma {
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
   }
 
-
   /**
    * Account create
    */
@@ -28777,7 +28359,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28785,7 +28367,6 @@ export namespace Prisma {
      */
     data: XOR<AccountCreateInput, AccountUncheckedCreateInput>
   }
-
 
   /**
    * Account createMany
@@ -28798,7 +28379,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Account update
    */
@@ -28808,7 +28388,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28820,7 +28400,6 @@ export namespace Prisma {
      */
     where: AccountWhereUniqueInput
   }
-
 
   /**
    * Account updateMany
@@ -28836,7 +28415,6 @@ export namespace Prisma {
     where?: AccountWhereInput
   }
 
-
   /**
    * Account upsert
    */
@@ -28846,7 +28424,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28863,7 +28441,6 @@ export namespace Prisma {
     update: XOR<AccountUpdateInput, AccountUncheckedUpdateInput>
   }
 
-
   /**
    * Account delete
    */
@@ -28873,7 +28450,7 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
     /**
@@ -28881,7 +28458,6 @@ export namespace Prisma {
      */
     where: AccountWhereUniqueInput
   }
-
 
   /**
    * Account deleteMany
@@ -28893,7 +28469,6 @@ export namespace Prisma {
     where?: AccountWhereInput
   }
 
-
   /**
    * Account without action
    */
@@ -28903,11 +28478,10 @@ export namespace Prisma {
      */
     select?: AccountSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: AccountInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -29084,6 +28658,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
   }
+
 
   export type ApiKeyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -29505,7 +29080,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * ApiKey findUnique
    */
@@ -29515,7 +29089,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29523,7 +29097,6 @@ export namespace Prisma {
      */
     where: ApiKeyWhereUniqueInput
   }
-
 
   /**
    * ApiKey findUniqueOrThrow
@@ -29534,7 +29107,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29542,7 +29115,6 @@ export namespace Prisma {
      */
     where: ApiKeyWhereUniqueInput
   }
-
 
   /**
    * ApiKey findFirst
@@ -29553,7 +29125,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29591,7 +29163,6 @@ export namespace Prisma {
      */
     distinct?: ApiKeyScalarFieldEnum | ApiKeyScalarFieldEnum[]
   }
-
 
   /**
    * ApiKey findFirstOrThrow
@@ -29602,7 +29173,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29641,7 +29212,6 @@ export namespace Prisma {
     distinct?: ApiKeyScalarFieldEnum | ApiKeyScalarFieldEnum[]
   }
 
-
   /**
    * ApiKey findMany
    */
@@ -29651,7 +29221,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29685,7 +29255,6 @@ export namespace Prisma {
     distinct?: ApiKeyScalarFieldEnum | ApiKeyScalarFieldEnum[]
   }
 
-
   /**
    * ApiKey create
    */
@@ -29695,7 +29264,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29703,7 +29272,6 @@ export namespace Prisma {
      */
     data: XOR<ApiKeyCreateInput, ApiKeyUncheckedCreateInput>
   }
-
 
   /**
    * ApiKey createMany
@@ -29716,7 +29284,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * ApiKey update
    */
@@ -29726,7 +29293,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29738,7 +29305,6 @@ export namespace Prisma {
      */
     where: ApiKeyWhereUniqueInput
   }
-
 
   /**
    * ApiKey updateMany
@@ -29754,7 +29320,6 @@ export namespace Prisma {
     where?: ApiKeyWhereInput
   }
 
-
   /**
    * ApiKey upsert
    */
@@ -29764,7 +29329,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29781,7 +29346,6 @@ export namespace Prisma {
     update: XOR<ApiKeyUpdateInput, ApiKeyUncheckedUpdateInput>
   }
 
-
   /**
    * ApiKey delete
    */
@@ -29791,7 +29355,7 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
     /**
@@ -29799,7 +29363,6 @@ export namespace Prisma {
      */
     where: ApiKeyWhereUniqueInput
   }
-
 
   /**
    * ApiKey deleteMany
@@ -29811,7 +29374,6 @@ export namespace Prisma {
     where?: ApiKeyWhereInput
   }
 
-
   /**
    * ApiKey without action
    */
@@ -29821,11 +29383,10 @@ export namespace Prisma {
      */
     select?: ApiKeySelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -30561,16 +30122,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Role'
+   * Reference to a field of type 'CompanyRole'
    */
-  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+  export type EnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole'>
     
 
 
   /**
-   * Reference to a field of type 'Role[]'
+   * Reference to a field of type 'CompanyRole[]'
    */
-  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+  export type ListEnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole[]'>
     
 
 
@@ -32366,7 +31927,7 @@ export namespace Prisma {
     NOT?: UserCompanyWhereInput | UserCompanyWhereInput[]
     userId?: StringFilter<"UserCompany"> | string
     companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumRoleFilter<"UserCompany"> | $Enums.Role
+    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
     createdAt?: DateTimeFilter<"UserCompany"> | Date | string
     updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -32390,7 +31951,7 @@ export namespace Prisma {
     NOT?: UserCompanyWhereInput | UserCompanyWhereInput[]
     userId?: StringFilter<"UserCompany"> | string
     companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumRoleFilter<"UserCompany"> | $Enums.Role
+    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
     createdAt?: DateTimeFilter<"UserCompany"> | Date | string
     updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -32414,7 +31975,7 @@ export namespace Prisma {
     NOT?: UserCompanyScalarWhereWithAggregatesInput | UserCompanyScalarWhereWithAggregatesInput[]
     userId?: StringWithAggregatesFilter<"UserCompany"> | string
     companyId?: StringWithAggregatesFilter<"UserCompany"> | string
-    role?: EnumRoleWithAggregatesFilter<"UserCompany"> | $Enums.Role
+    role?: EnumCompanyRoleWithAggregatesFilter<"UserCompany"> | $Enums.CompanyRole
     createdAt?: DateTimeWithAggregatesFilter<"UserCompany"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UserCompany"> | Date | string
   }
@@ -34583,7 +34144,7 @@ export namespace Prisma {
   }
 
   export type UserCompanyCreateInput = {
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUserCompaniesInput
@@ -34593,13 +34154,13 @@ export namespace Prisma {
   export type UserCompanyUncheckedCreateInput = {
     userId: string
     companyId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserCompanyUpdateInput = {
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserCompaniesNestedInput
@@ -34609,7 +34170,7 @@ export namespace Prisma {
   export type UserCompanyUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34617,13 +34178,13 @@ export namespace Prisma {
   export type UserCompanyCreateManyInput = {
     userId: string
     companyId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserCompanyUpdateManyMutationInput = {
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34631,7 +34192,7 @@ export namespace Prisma {
   export type UserCompanyUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -36412,11 +35973,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  export type EnumCompanyRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyRoleFilter<$PrismaModel> | $Enums.CompanyRole
   }
 
   export type UserCompanyUserIdCompanyIdCompoundUniqueInput = {
@@ -36448,14 +36009,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+  export type EnumCompanyRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyRoleWithAggregatesFilter<$PrismaModel> | $Enums.CompanyRole
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
+    _min?: NestedEnumCompanyRoleFilter<$PrismaModel>
+    _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
   export type FacilityRelationFilter = {
@@ -38317,8 +37878,8 @@ export namespace Prisma {
     connect?: CompanyWhereUniqueInput
   }
 
-  export type EnumRoleFieldUpdateOperationsInput = {
-    set?: $Enums.Role
+  export type EnumCompanyRoleFieldUpdateOperationsInput = {
+    set?: $Enums.CompanyRole
   }
 
   export type UserUpdateOneRequiredWithoutUserCompaniesNestedInput = {
@@ -38939,25 +38500,25 @@ export namespace Prisma {
     _max?: NestedEnumProductAttributeTypeFilter<$PrismaModel>
   }
 
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  export type NestedEnumCompanyRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyRoleFilter<$PrismaModel> | $Enums.CompanyRole
   }
 
-  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+  export type NestedEnumCompanyRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyRoleWithAggregatesFilter<$PrismaModel> | $Enums.CompanyRole
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
+    _min?: NestedEnumCompanyRoleFilter<$PrismaModel>
+    _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
   export type UserCompanyCreateWithoutCompanyInput = {
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUserCompaniesInput
@@ -38965,7 +38526,7 @@ export namespace Prisma {
 
   export type UserCompanyUncheckedCreateWithoutCompanyInput = {
     userId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -39056,7 +38617,7 @@ export namespace Prisma {
     NOT?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
     userId?: StringFilter<"UserCompany"> | string
     companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumRoleFilter<"UserCompany"> | $Enums.Role
+    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
     createdAt?: DateTimeFilter<"UserCompany"> | Date | string
     updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
   }
@@ -42300,7 +41861,7 @@ export namespace Prisma {
   }
 
   export type UserCompanyCreateWithoutUserInput = {
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutUserCompaniesInput
@@ -42308,7 +41869,7 @@ export namespace Prisma {
 
   export type UserCompanyUncheckedCreateWithoutUserInput = {
     companyId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -42895,7 +42456,7 @@ export namespace Prisma {
 
   export type UserCompanyCreateManyCompanyInput = {
     userId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -42917,7 +42478,7 @@ export namespace Prisma {
   }
 
   export type UserCompanyUpdateWithoutCompanyInput = {
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserCompaniesNestedInput
@@ -42925,14 +42486,14 @@ export namespace Prisma {
 
   export type UserCompanyUncheckedUpdateWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCompanyUncheckedUpdateManyWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -44605,7 +44166,7 @@ export namespace Prisma {
 
   export type UserCompanyCreateManyUserInput = {
     companyId: string
-    role?: $Enums.Role
+    role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -44639,7 +44200,7 @@ export namespace Prisma {
   }
 
   export type UserCompanyUpdateWithoutUserInput = {
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutUserCompaniesNestedInput
@@ -44647,14 +44208,14 @@ export namespace Prisma {
 
   export type UserCompanyUncheckedUpdateWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCompanyUncheckedUpdateManyWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

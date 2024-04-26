@@ -1,6 +1,6 @@
-import { Role } from '@hike/types';
+import { CompanyRole } from '@hike/types';
 
-const sortedRoles: Role[] = ['ADMIN', 'EDITOR', 'VIEWER', 'PATIENT'];
+const sortedRoles: CompanyRole[] = ['ADMIN', 'EDITOR', 'VIEWER', 'PATIENT'];
 
 /**
  * Determines if a given role has sufficient access for a company.
@@ -8,7 +8,7 @@ const sortedRoles: Role[] = ['ADMIN', 'EDITOR', 'VIEWER', 'PATIENT'];
  * @param minimumRole The minimum role required for access.
  * @returns True if the role has sufficient access, false otherwise.
  */
-export const isMinimumRole = (role: Role | null | undefined, minimumRole: Role) => {
+export const isMinimumRole = (role: CompanyRole | null | undefined, minimumRole: CompanyRole) => {
   if (!role) {
     return false;
   }
