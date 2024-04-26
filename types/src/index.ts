@@ -1,4 +1,5 @@
 export type * from '../prisma';
+export type * from './auth/AuthStatus';
 export type * from './auth/AuthUser';
 export type * from './config/HikeConfig';
 export type * from './dto/PagedParams';

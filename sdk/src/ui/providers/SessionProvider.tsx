@@ -1,34 +1,32 @@
 'use client';
 
 import { findSession } from '@hike/services';
-import type { AuthUser } from '@hike/types';
+import type { AuthStatus, AuthUser } from '@hike/types';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 
-export type Status = 'authenticated' | 'unauthenticated' | 'loading';
-
 export interface SessionState {
-  session: AuthUser | null;
-  status: Status;
+  user: AuthUser | null;
+  status: AuthStatus;
   update: () => Promise<void>;
 }
 
-const SessionContext = createContext<SessionState>(undefined as never);
+export const SessionContext = createContext<SessionState>(undefined as never);
 
 // TODO: Implement token refresh at strategic times
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
-  const [session, setSession] = useState<AuthUser | null>(null);
-  const [status, setStatus] = useState<Status>('loading');
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [status, setStatus] = useState<AuthStatus>('LOADING');
 
   const update = async () => {
     try {
-      setStatus('loading');
+      setStatus('LOADING');
       const value = await findSession();
-      setSession(value);
-      setStatus(value ? 'authenticated' : 'unauthenticated');
+      setUser(value);
+      setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
     } catch (error) {
       // TODO: Handle session error
       console.log('Session error', error);
-      setStatus('unauthenticated');
+      setStatus('UNAUTHENTICATED');
     }
   };
 
@@ -36,7 +34,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
     update();
   }, []);
 
-  return <SessionContext.Provider value={{ session, status, update }}>{children}</SessionContext.Provider>;
+  return <SessionContext.Provider value={{ user, status, update }}>{children}</SessionContext.Provider>;
 };
 
 export const useSession = () => useContext(SessionContext);

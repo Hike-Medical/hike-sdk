@@ -30,18 +30,12 @@
     "dev": "npx tsc --watch",
     "lint": "npx eslint .",
     "format": "npx prettier --check . --ignore-path ../../../.gitignore",
-    "clean": "rm -rf node_modules dist",
-    "test": "jest"
+    "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
     "@hike/types": "workspace:*",
     "@hike/utils": "workspace:*",
     "@tanstack/react-query": "^5.21.2",
-    "axios": "^1.6.7",
-    "jose": "^5.2.4"
-  },
-  "jest": {
-    "testRegex": ".+\\.test\\.ts$",
-    "preset": "ts-jest"
+    "axios": "^1.6.7"
   }
 }

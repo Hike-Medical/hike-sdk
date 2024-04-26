@@ -30,7 +30,6 @@
     "dev": "npx tsc --watch",
     "lint": "npx eslint .",
     "format": "npx prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
-    "test": "jest",
     "clean": "rm -rf node_modules dist"
   }
 }

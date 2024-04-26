@@ -1,7 +1,7 @@
 {
-  "name": "@hike/sdk",
+  "name": "@hike/sdk-mobile",
   "version": "1.0.0",
-  "description": "Hike SDK enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
+  "description": "Hike SDK for React Native enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
   "keywords": [
     "insoles",
     "medical",
@@ -36,7 +36,6 @@
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
     "@hike/ui": "workspace:*",
-    "@hike/utils": "workspace:*",
-    "jose": "^5.2.4"
+    "@hike/utils": "workspace:*"
   }
 }
