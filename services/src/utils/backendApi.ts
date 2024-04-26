@@ -36,6 +36,9 @@ export const configureBackendApi = ({ apiKey, appEnv, appId, appVersion }: HikeC
     case 'development':
       backendApi.defaults.baseURL = 'http://localhost:8000/v2';
       break;
+      case 'staging':
+        backendApi.defaults.baseURL = 'https://api-staging.hike-medical-server.com/v2';
+        break;
     default:
       backendApi.defaults.baseURL = 'https://api.hikemedical.com/v2';
       break;
