@@ -1,5 +1,5 @@
 import type { HikeConfig } from '@hike/types';
-import { currentUrl } from '@hike/utils';
+import { currentUrl, extractCompanyId } from '@hike/utils';
 import axios from 'axios';
 
 /**
@@ -17,6 +17,10 @@ backendApi.interceptors.request.use(
 
     if (url) {
       newConfig.headers['x-current-url'] = url.href;
+
+      if (!newConfig.headers['x-company-id']) {
+        newConfig.headers['x-company-id'] = extractCompanyId(url);
+      }
     }
 
     return newConfig;
