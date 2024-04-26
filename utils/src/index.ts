@@ -9,6 +9,6 @@ export * from './guards/isString';
 export * from './guards/isTruthy';
 export * from './helpers/currentUrl';
 export * from './helpers/extractDomain';
-export * from './helpers/getHostUrl';
+export * from './helpers/httpUtils';
 export * from './helpers/range';
 export * from './helpers/truncateMiddle';

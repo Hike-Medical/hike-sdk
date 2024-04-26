@@ -34,9 +34,9 @@ export default {
 // Export functionality from SDK for external use
 export * from '@hike/services';
 export type * from '@hike/types'; // eslint-disable-line import/export
-export * from '@hike/ui';
 export * from '@hike/utils';
 
 // Export platform specific functionality
+export * from './auth/extractToken';
+export * from './auth/getSession';
 export * from './auth/verifyToken';
-export * from './ui/providers/SessionProvider';
