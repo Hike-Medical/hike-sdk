@@ -1,59 +1,59 @@
 import { describe, expect, test } from '@jest/globals';
 
-import { getHost, getHostUrl, getProtocol, getValue, isHttps } from '../src/helpers/httpUtils';
+import { getHeaderValue, getHost, getHostUrl, getProtocol, isHttps } from '../src/helpers/httpUtils';
 
 describe('httpUtils tests', () => {
   describe('getValue', () => {
     test('retrieves value from Headers instance', () => {
       const headers = new Headers();
       headers.append('content-type', 'application/json');
-      expect(getValue(headers, 'content-type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'content-type')).toBe('application/json');
     });
 
     test('retrieves value from record object', () => {
       const headers = { 'content-type': 'application/json' };
-      expect(getValue(headers, 'content-type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'content-type')).toBe('application/json');
     });
 
     test('returns null if the key does not exist', () => {
       const headers = new Headers();
-      expect(getValue(headers, 'authorization')).toBeNull();
+      expect(getHeaderValue(headers, 'authorization')).toBeNull();
     });
     test('handles case-insensitivity in Headers instance', () => {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      expect(getValue(headers, 'content-type')).toBe('application/json');
-      expect(getValue(headers, 'CONTENT-TYPE')).toBe('application/json');
-      expect(getValue(headers, 'Content-Type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'content-type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'CONTENT-TYPE')).toBe('application/json');
+      expect(getHeaderValue(headers, 'Content-Type')).toBe('application/json');
     });
 
     test('handles case-insensitivity in record object', () => {
       const headers = { 'Content-Type': 'application/json' };
-      expect(getValue(headers, 'content-type')).toBe('application/json');
-      expect(getValue(headers, 'CONTENT-TYPE')).toBe('application/json');
-      expect(getValue(headers, 'Content-Type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'content-type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'CONTENT-TYPE')).toBe('application/json');
+      expect(getHeaderValue(headers, 'Content-Type')).toBe('application/json');
     });
 
     test('returns correct values for mixed-case header keys in record object', () => {
       const headers = { 'content-TYPE': 'application/json' };
-      expect(getValue(headers, 'CONTENT-type')).toBe('application/json');
+      expect(getHeaderValue(headers, 'CONTENT-type')).toBe('application/json');
     });
 
     test('retrieves first value of array if header value is an array', () => {
       const headers = { 'Accept-Encoding': ['gzip', 'deflate'] };
-      expect(getValue(headers, 'accept-encoding')).toBe('gzip');
+      expect(getHeaderValue(headers, 'accept-encoding')).toBe('gzip');
     });
 
     test('returns null if the key does not exist regardless of casing', () => {
       const headers = new Headers();
       headers.append('Accept', 'application/json');
-      expect(getValue(headers, 'accept-ENCODING')).toBeNull();
+      expect(getHeaderValue(headers, 'accept-ENCODING')).toBeNull();
     });
 
     test('handles empty and undefined values in record object correctly', () => {
       const headers = { 'X-Custom-Header': '', 'Another-Header': undefined };
-      expect(getValue(headers, 'x-custom-header')).toBeNull();
-      expect(getValue(headers, 'another-header')).toBeNull();
+      expect(getHeaderValue(headers, 'x-custom-header')).toBeNull();
+      expect(getHeaderValue(headers, 'another-header')).toBeNull();
     });
   });
 
