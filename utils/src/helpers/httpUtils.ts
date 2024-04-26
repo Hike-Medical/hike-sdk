@@ -23,14 +23,12 @@ export interface BaseRequest {
  */
 export const getHeaderValue = (headers: BaseHeaders, key: string): string | null => {
   if ('get' in headers && typeof headers.get === 'function') {
-    console.log('headers', headers.get(key));
     return headers.get(key) || null;
   }
 
   const normalized = key.toLowerCase();
   const matched = Object.keys(headers).find((h) => h.toLowerCase() === normalized);
 
-  console.log('2', matched);
   if (matched) {
     const value = headers[matched];
     return (Array.isArray(value) ? value[0] : value) || null;
