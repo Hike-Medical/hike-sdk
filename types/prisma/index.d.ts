@@ -3204,13 +3204,13 @@ export namespace Prisma {
    */
 
   export type CompanyCountOutputType = {
-    userCompanies: number
+    users: number
     facilities: number
     apiKeys: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userCompanies?: boolean | CompanyCountOutputTypeCountUserCompaniesArgs
+    users?: boolean | CompanyCountOutputTypeCountUsersArgs
     facilities?: boolean | CompanyCountOutputTypeCountFacilitiesArgs
     apiKeys?: boolean | CompanyCountOutputTypeCountApiKeysArgs
   }
@@ -3229,7 +3229,7 @@ export namespace Prisma {
   /**
    * CompanyCountOutputType without action
    */
-  export type CompanyCountOutputTypeCountUserCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserCompanyWhereInput
   }
 
@@ -3253,11 +3253,11 @@ export namespace Prisma {
    */
 
   export type FacilityCountOutputType = {
-    userFacilities: number
+    users: number
   }
 
   export type FacilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userFacilities?: boolean | FacilityCountOutputTypeCountUserFacilitiesArgs
+    users?: boolean | FacilityCountOutputTypeCountUsersArgs
   }
 
   // Custom InputTypes
@@ -3274,7 +3274,7 @@ export namespace Prisma {
   /**
    * FacilityCountOutputType without action
    */
-  export type FacilityCountOutputTypeCountUserFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserFacilityWhereInput
   }
 
@@ -3839,15 +3839,15 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    userCompanies: number
-    userFacilities: number
+    companies: number
+    facilities: number
     accounts: number
     parcelsCreated: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userCompanies?: boolean | UserCountOutputTypeCountUserCompaniesArgs
-    userFacilities?: boolean | UserCountOutputTypeCountUserFacilitiesArgs
+    companies?: boolean | UserCountOutputTypeCountCompaniesArgs
+    facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     parcelsCreated?: boolean | UserCountOutputTypeCountParcelsCreatedArgs
   }
@@ -3866,14 +3866,14 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountUserCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserCompanyWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountUserFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserFacilityWhereInput
   }
 
@@ -4076,7 +4076,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userCompanies?: boolean | Company$userCompaniesArgs<ExtArgs>
+    users?: boolean | Company$usersArgs<ExtArgs>
     facilities?: boolean | Company$facilitiesArgs<ExtArgs>
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -4094,7 +4094,7 @@ export namespace Prisma {
 
 
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userCompanies?: boolean | Company$userCompaniesArgs<ExtArgs>
+    users?: boolean | Company$usersArgs<ExtArgs>
     facilities?: boolean | Company$facilitiesArgs<ExtArgs>
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -4104,7 +4104,7 @@ export namespace Prisma {
   export type $CompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Company"
     objects: {
-      userCompanies: Prisma.$UserCompanyPayload<ExtArgs>[]
+      users: Prisma.$UserCompanyPayload<ExtArgs>[]
       facilities: Prisma.$FacilityPayload<ExtArgs>[]
       apiKeys: Prisma.$ApiKeyPayload<ExtArgs>[]
     }
@@ -4481,7 +4481,7 @@ export namespace Prisma {
   export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    userCompanies<T extends Company$userCompaniesArgs<ExtArgs> = {}>(args?: Subset<T, Company$userCompaniesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     facilities<T extends Company$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -4821,9 +4821,9 @@ export namespace Prisma {
   }
 
   /**
-   * Company.userCompanies
+   * Company.users
    */
-  export type Company$userCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Company$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserCompany
      */
@@ -5076,7 +5076,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    userFacilities?: boolean | Facility$userFacilitiesArgs<ExtArgs>
+    users?: boolean | Facility$usersArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facility"]>
 
@@ -5093,7 +5093,7 @@ export namespace Prisma {
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    userFacilities?: boolean | Facility$userFacilitiesArgs<ExtArgs>
+    users?: boolean | Facility$usersArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5102,7 +5102,7 @@ export namespace Prisma {
     name: "Facility"
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs>
-      userFacilities: Prisma.$UserFacilityPayload<ExtArgs>[]
+      users: Prisma.$UserFacilityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5479,7 +5479,7 @@ export namespace Prisma {
 
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    userFacilities<T extends Facility$userFacilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Facility$userFacilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+    users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5815,9 +5815,9 @@ export namespace Prisma {
   }
 
   /**
-   * Facility.userFacilities
+   * Facility.users
    */
-  export type Facility$userFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Facility$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserFacility
      */
@@ -24926,8 +24926,8 @@ export namespace Prisma {
     photoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userCompanies?: boolean | User$userCompaniesArgs<ExtArgs>
-    userFacilities?: boolean | User$userFacilitiesArgs<ExtArgs>
+    companies?: boolean | User$companiesArgs<ExtArgs>
+    facilities?: boolean | User$facilitiesArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     parcelsCreated?: boolean | User$parcelsCreatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -24945,8 +24945,8 @@ export namespace Prisma {
 
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userCompanies?: boolean | User$userCompaniesArgs<ExtArgs>
-    userFacilities?: boolean | User$userFacilitiesArgs<ExtArgs>
+    companies?: boolean | User$companiesArgs<ExtArgs>
+    facilities?: boolean | User$facilitiesArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     parcelsCreated?: boolean | User$parcelsCreatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -24956,8 +24956,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      userCompanies: Prisma.$UserCompanyPayload<ExtArgs>[]
-      userFacilities: Prisma.$UserFacilityPayload<ExtArgs>[]
+      companies: Prisma.$UserCompanyPayload<ExtArgs>[]
+      facilities: Prisma.$UserFacilityPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       parcelsCreated: Prisma.$ParcelPayload<ExtArgs>[]
     }
@@ -25334,9 +25334,9 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    userCompanies<T extends User$userCompaniesArgs<ExtArgs> = {}>(args?: Subset<T, User$userCompaniesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    userFacilities<T extends User$userFacilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$userFacilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+    facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -25676,9 +25676,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.userCompanies
+   * User.companies
    */
-  export type User$userCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$companiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserCompany
      */
@@ -25696,9 +25696,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.userFacilities
+   * User.facilities
    */
-  export type User$userFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserFacility
      */
@@ -30163,7 +30163,7 @@ export namespace Prisma {
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    userCompanies?: UserCompanyListRelationFilter
+    users?: UserCompanyListRelationFilter
     facilities?: FacilityListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }
@@ -30176,7 +30176,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userCompanies?: UserCompanyOrderByRelationAggregateInput
+    users?: UserCompanyOrderByRelationAggregateInput
     facilities?: FacilityOrderByRelationAggregateInput
     apiKeys?: ApiKeyOrderByRelationAggregateInput
   }
@@ -30192,7 +30192,7 @@ export namespace Prisma {
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    userCompanies?: UserCompanyListRelationFilter
+    users?: UserCompanyListRelationFilter
     facilities?: FacilityListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }, "id">
@@ -30235,7 +30235,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    userFacilities?: UserFacilityListRelationFilter
+    users?: UserFacilityListRelationFilter
   }
 
   export type FacilityOrderByWithRelationInput = {
@@ -30247,7 +30247,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
-    userFacilities?: UserFacilityOrderByRelationAggregateInput
+    users?: UserFacilityOrderByRelationAggregateInput
   }
 
   export type FacilityWhereUniqueInput = Prisma.AtLeast<{
@@ -30262,7 +30262,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    userFacilities?: UserFacilityListRelationFilter
+    users?: UserFacilityListRelationFilter
   }, "id">
 
   export type FacilityOrderByWithAggregationInput = {
@@ -31858,8 +31858,8 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    userCompanies?: UserCompanyListRelationFilter
-    userFacilities?: UserFacilityListRelationFilter
+    companies?: UserCompanyListRelationFilter
+    facilities?: UserFacilityListRelationFilter
     accounts?: AccountListRelationFilter
     parcelsCreated?: ParcelListRelationFilter
   }
@@ -31872,8 +31872,8 @@ export namespace Prisma {
     photoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userCompanies?: UserCompanyOrderByRelationAggregateInput
-    userFacilities?: UserFacilityOrderByRelationAggregateInput
+    companies?: UserCompanyOrderByRelationAggregateInput
+    facilities?: UserFacilityOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     parcelsCreated?: ParcelOrderByRelationAggregateInput
   }
@@ -31889,8 +31889,8 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    userCompanies?: UserCompanyListRelationFilter
-    userFacilities?: UserFacilityListRelationFilter
+    companies?: UserCompanyListRelationFilter
+    facilities?: UserFacilityListRelationFilter
     accounts?: AccountListRelationFilter
     parcelsCreated?: ParcelListRelationFilter
   }, "id" | "email" | "phone">
@@ -32155,7 +32155,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -32168,7 +32168,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -32181,7 +32181,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -32194,7 +32194,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -32237,7 +32237,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    userFacilities?: UserFacilityCreateNestedManyWithoutFacilityInput
+    users?: UserFacilityCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateInput = {
@@ -32248,7 +32248,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
+    users?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUpdateInput = {
@@ -32259,7 +32259,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    userFacilities?: UserFacilityUpdateManyWithoutFacilityNestedInput
+    users?: UserFacilityUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateInput = {
@@ -32270,7 +32270,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
+    users?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityCreateManyInput = {
@@ -34065,8 +34065,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: UserCompanyCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
@@ -34079,8 +34079,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
@@ -34093,8 +34093,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -34107,8 +34107,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -34147,8 +34147,8 @@ export namespace Prisma {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserCompaniesInput
-    company: CompanyCreateNestedOneWithoutUserCompaniesInput
+    user: UserCreateNestedOneWithoutCompaniesInput
+    company: CompanyCreateNestedOneWithoutUsersInput
   }
 
   export type UserCompanyUncheckedCreateInput = {
@@ -34163,8 +34163,8 @@ export namespace Prisma {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserCompaniesNestedInput
-    company?: CompanyUpdateOneRequiredWithoutUserCompaniesNestedInput
+    user?: UserUpdateOneRequiredWithoutCompaniesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserCompanyUncheckedUpdateInput = {
@@ -34200,8 +34200,8 @@ export namespace Prisma {
   export type UserFacilityCreateInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserFacilitiesInput
-    facility: FacilityCreateNestedOneWithoutUserFacilitiesInput
+    user: UserCreateNestedOneWithoutFacilitiesInput
+    facility: FacilityCreateNestedOneWithoutUsersInput
   }
 
   export type UserFacilityUncheckedCreateInput = {
@@ -34214,8 +34214,8 @@ export namespace Prisma {
   export type UserFacilityUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserFacilitiesNestedInput
-    facility?: FacilityUpdateOneRequiredWithoutUserFacilitiesNestedInput
+    user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
+    facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserFacilityUncheckedUpdateInput = {
@@ -37866,15 +37866,15 @@ export namespace Prisma {
     deleteMany?: ParcelScalarWhereInput | ParcelScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutUserCompaniesInput = {
-    create?: XOR<UserCreateWithoutUserCompaniesInput, UserUncheckedCreateWithoutUserCompaniesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserCompaniesInput
+  export type UserCreateNestedOneWithoutCompaniesInput = {
+    create?: XOR<UserCreateWithoutCompaniesInput, UserUncheckedCreateWithoutCompaniesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CompanyCreateNestedOneWithoutUserCompaniesInput = {
-    create?: XOR<CompanyCreateWithoutUserCompaniesInput, CompanyUncheckedCreateWithoutUserCompaniesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutUserCompaniesInput
+  export type CompanyCreateNestedOneWithoutUsersInput = {
+    create?: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutUsersInput
     connect?: CompanyWhereUniqueInput
   }
 
@@ -37882,48 +37882,48 @@ export namespace Prisma {
     set?: $Enums.CompanyRole
   }
 
-  export type UserUpdateOneRequiredWithoutUserCompaniesNestedInput = {
-    create?: XOR<UserCreateWithoutUserCompaniesInput, UserUncheckedCreateWithoutUserCompaniesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserCompaniesInput
-    upsert?: UserUpsertWithoutUserCompaniesInput
+  export type UserUpdateOneRequiredWithoutCompaniesNestedInput = {
+    create?: XOR<UserCreateWithoutCompaniesInput, UserUncheckedCreateWithoutCompaniesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesInput
+    upsert?: UserUpsertWithoutCompaniesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserCompaniesInput, UserUpdateWithoutUserCompaniesInput>, UserUncheckedUpdateWithoutUserCompaniesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompaniesInput, UserUpdateWithoutCompaniesInput>, UserUncheckedUpdateWithoutCompaniesInput>
   }
 
-  export type CompanyUpdateOneRequiredWithoutUserCompaniesNestedInput = {
-    create?: XOR<CompanyCreateWithoutUserCompaniesInput, CompanyUncheckedCreateWithoutUserCompaniesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutUserCompaniesInput
-    upsert?: CompanyUpsertWithoutUserCompaniesInput
+  export type CompanyUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutUsersInput
+    upsert?: CompanyUpsertWithoutUsersInput
     connect?: CompanyWhereUniqueInput
-    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutUserCompaniesInput, CompanyUpdateWithoutUserCompaniesInput>, CompanyUncheckedUpdateWithoutUserCompaniesInput>
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutUsersInput, CompanyUpdateWithoutUsersInput>, CompanyUncheckedUpdateWithoutUsersInput>
   }
 
-  export type UserCreateNestedOneWithoutUserFacilitiesInput = {
-    create?: XOR<UserCreateWithoutUserFacilitiesInput, UserUncheckedCreateWithoutUserFacilitiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserFacilitiesInput
+  export type UserCreateNestedOneWithoutFacilitiesInput = {
+    create?: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFacilitiesInput
     connect?: UserWhereUniqueInput
   }
 
-  export type FacilityCreateNestedOneWithoutUserFacilitiesInput = {
-    create?: XOR<FacilityCreateWithoutUserFacilitiesInput, FacilityUncheckedCreateWithoutUserFacilitiesInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutUserFacilitiesInput
+  export type FacilityCreateNestedOneWithoutUsersInput = {
+    create?: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutUsersInput
     connect?: FacilityWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutUserFacilitiesNestedInput = {
-    create?: XOR<UserCreateWithoutUserFacilitiesInput, UserUncheckedCreateWithoutUserFacilitiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserFacilitiesInput
-    upsert?: UserUpsertWithoutUserFacilitiesInput
+  export type UserUpdateOneRequiredWithoutFacilitiesNestedInput = {
+    create?: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFacilitiesInput
+    upsert?: UserUpsertWithoutFacilitiesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserFacilitiesInput, UserUpdateWithoutUserFacilitiesInput>, UserUncheckedUpdateWithoutUserFacilitiesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFacilitiesInput, UserUpdateWithoutFacilitiesInput>, UserUncheckedUpdateWithoutFacilitiesInput>
   }
 
-  export type FacilityUpdateOneRequiredWithoutUserFacilitiesNestedInput = {
-    create?: XOR<FacilityCreateWithoutUserFacilitiesInput, FacilityUncheckedCreateWithoutUserFacilitiesInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutUserFacilitiesInput
-    upsert?: FacilityUpsertWithoutUserFacilitiesInput
+  export type FacilityUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutUsersInput
+    upsert?: FacilityUpsertWithoutUsersInput
     connect?: FacilityWhereUniqueInput
-    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutUserFacilitiesInput, FacilityUpdateWithoutUserFacilitiesInput>, FacilityUncheckedUpdateWithoutUserFacilitiesInput>
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutUsersInput, FacilityUpdateWithoutUsersInput>, FacilityUncheckedUpdateWithoutUsersInput>
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -38521,7 +38521,7 @@ export namespace Prisma {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserCompaniesInput
+    user: UserCreateNestedOneWithoutCompaniesInput
   }
 
   export type UserCompanyUncheckedCreateWithoutCompanyInput = {
@@ -38548,7 +38548,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userFacilities?: UserFacilityCreateNestedManyWithoutFacilityInput
+    users?: UserFacilityCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutCompanyInput = {
@@ -38558,7 +38558,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
+    users?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutCompanyInput = {
@@ -38686,7 +38686,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
 
@@ -38698,7 +38698,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -38710,7 +38710,7 @@ export namespace Prisma {
   export type UserFacilityCreateWithoutFacilityInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserFacilitiesInput
+    user: UserCreateNestedOneWithoutFacilitiesInput
   }
 
   export type UserFacilityUncheckedCreateWithoutFacilityInput = {
@@ -38748,7 +38748,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
 
@@ -38760,7 +38760,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -40953,8 +40953,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: UserCompanyCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
@@ -40966,8 +40966,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -41011,8 +41011,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
@@ -41024,8 +41024,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -41864,7 +41864,7 @@ export namespace Prisma {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutUserCompaniesInput
+    company: CompanyCreateNestedOneWithoutUsersInput
   }
 
   export type UserCompanyUncheckedCreateWithoutUserInput = {
@@ -41887,7 +41887,7 @@ export namespace Prisma {
   export type UserFacilityCreateWithoutUserInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
-    facility: FacilityCreateNestedOneWithoutUserFacilitiesInput
+    facility: FacilityCreateNestedOneWithoutUsersInput
   }
 
   export type UserFacilityUncheckedCreateWithoutUserInput = {
@@ -42066,7 +42066,7 @@ export namespace Prisma {
     createdBy?: StringFilter<"Parcel"> | string
   }
 
-  export type UserCreateWithoutUserCompaniesInput = {
+  export type UserCreateWithoutCompaniesInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -42074,12 +42074,12 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userFacilities?: UserFacilityCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
 
-  export type UserUncheckedCreateWithoutUserCompaniesInput = {
+  export type UserUncheckedCreateWithoutCompaniesInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -42087,17 +42087,17 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
-  export type UserCreateOrConnectWithoutUserCompaniesInput = {
+  export type UserCreateOrConnectWithoutCompaniesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserCompaniesInput, UserUncheckedCreateWithoutUserCompaniesInput>
+    create: XOR<UserCreateWithoutCompaniesInput, UserUncheckedCreateWithoutCompaniesInput>
   }
 
-  export type CompanyCreateWithoutUserCompaniesInput = {
+  export type CompanyCreateWithoutUsersInput = {
     id?: string
     name: string
     url?: string | null
@@ -42109,7 +42109,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
 
-  export type CompanyUncheckedCreateWithoutUserCompaniesInput = {
+  export type CompanyUncheckedCreateWithoutUsersInput = {
     id?: string
     name: string
     url?: string | null
@@ -42121,23 +42121,23 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
 
-  export type CompanyCreateOrConnectWithoutUserCompaniesInput = {
+  export type CompanyCreateOrConnectWithoutUsersInput = {
     where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutUserCompaniesInput, CompanyUncheckedCreateWithoutUserCompaniesInput>
+    create: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
   }
 
-  export type UserUpsertWithoutUserCompaniesInput = {
-    update: XOR<UserUpdateWithoutUserCompaniesInput, UserUncheckedUpdateWithoutUserCompaniesInput>
-    create: XOR<UserCreateWithoutUserCompaniesInput, UserUncheckedCreateWithoutUserCompaniesInput>
+  export type UserUpsertWithoutCompaniesInput = {
+    update: XOR<UserUpdateWithoutCompaniesInput, UserUncheckedUpdateWithoutCompaniesInput>
+    create: XOR<UserCreateWithoutCompaniesInput, UserUncheckedCreateWithoutCompaniesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUserCompaniesInput = {
+  export type UserUpdateToOneWithWhereWithoutCompaniesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserCompaniesInput, UserUncheckedUpdateWithoutUserCompaniesInput>
+    data: XOR<UserUpdateWithoutCompaniesInput, UserUncheckedUpdateWithoutCompaniesInput>
   }
 
-  export type UserUpdateWithoutUserCompaniesInput = {
+  export type UserUpdateWithoutCompaniesInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42145,12 +42145,12 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userFacilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserCompaniesInput = {
+  export type UserUncheckedUpdateWithoutCompaniesInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42158,23 +42158,23 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
-  export type CompanyUpsertWithoutUserCompaniesInput = {
-    update: XOR<CompanyUpdateWithoutUserCompaniesInput, CompanyUncheckedUpdateWithoutUserCompaniesInput>
-    create: XOR<CompanyCreateWithoutUserCompaniesInput, CompanyUncheckedCreateWithoutUserCompaniesInput>
+  export type CompanyUpsertWithoutUsersInput = {
+    update: XOR<CompanyUpdateWithoutUsersInput, CompanyUncheckedUpdateWithoutUsersInput>
+    create: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
     where?: CompanyWhereInput
   }
 
-  export type CompanyUpdateToOneWithWhereWithoutUserCompaniesInput = {
+  export type CompanyUpdateToOneWithWhereWithoutUsersInput = {
     where?: CompanyWhereInput
-    data: XOR<CompanyUpdateWithoutUserCompaniesInput, CompanyUncheckedUpdateWithoutUserCompaniesInput>
+    data: XOR<CompanyUpdateWithoutUsersInput, CompanyUncheckedUpdateWithoutUsersInput>
   }
 
-  export type CompanyUpdateWithoutUserCompaniesInput = {
+  export type CompanyUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42186,7 +42186,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
 
-  export type CompanyUncheckedUpdateWithoutUserCompaniesInput = {
+  export type CompanyUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42198,7 +42198,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type UserCreateWithoutUserFacilitiesInput = {
+  export type UserCreateWithoutFacilitiesInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -42206,12 +42206,12 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutUserInput
+    companies?: UserCompanyCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
 
-  export type UserUncheckedCreateWithoutUserFacilitiesInput = {
+  export type UserUncheckedCreateWithoutFacilitiesInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -42219,17 +42219,17 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
+    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
-  export type UserCreateOrConnectWithoutUserFacilitiesInput = {
+  export type UserCreateOrConnectWithoutFacilitiesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserFacilitiesInput, UserUncheckedCreateWithoutUserFacilitiesInput>
+    create: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
   }
 
-  export type FacilityCreateWithoutUserFacilitiesInput = {
+  export type FacilityCreateWithoutUsersInput = {
     id?: string
     name: string
     type: $Enums.FacilityType
@@ -42239,7 +42239,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutFacilitiesInput
   }
 
-  export type FacilityUncheckedCreateWithoutUserFacilitiesInput = {
+  export type FacilityUncheckedCreateWithoutUsersInput = {
     id?: string
     name: string
     companyId: string
@@ -42249,23 +42249,23 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type FacilityCreateOrConnectWithoutUserFacilitiesInput = {
+  export type FacilityCreateOrConnectWithoutUsersInput = {
     where: FacilityWhereUniqueInput
-    create: XOR<FacilityCreateWithoutUserFacilitiesInput, FacilityUncheckedCreateWithoutUserFacilitiesInput>
+    create: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
   }
 
-  export type UserUpsertWithoutUserFacilitiesInput = {
-    update: XOR<UserUpdateWithoutUserFacilitiesInput, UserUncheckedUpdateWithoutUserFacilitiesInput>
-    create: XOR<UserCreateWithoutUserFacilitiesInput, UserUncheckedCreateWithoutUserFacilitiesInput>
+  export type UserUpsertWithoutFacilitiesInput = {
+    update: XOR<UserUpdateWithoutFacilitiesInput, UserUncheckedUpdateWithoutFacilitiesInput>
+    create: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUserFacilitiesInput = {
+  export type UserUpdateToOneWithWhereWithoutFacilitiesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserFacilitiesInput, UserUncheckedUpdateWithoutUserFacilitiesInput>
+    data: XOR<UserUpdateWithoutFacilitiesInput, UserUncheckedUpdateWithoutFacilitiesInput>
   }
 
-  export type UserUpdateWithoutUserFacilitiesInput = {
+  export type UserUpdateWithoutFacilitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42273,12 +42273,12 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserFacilitiesInput = {
+  export type UserUncheckedUpdateWithoutFacilitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42286,23 +42286,23 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
-  export type FacilityUpsertWithoutUserFacilitiesInput = {
-    update: XOR<FacilityUpdateWithoutUserFacilitiesInput, FacilityUncheckedUpdateWithoutUserFacilitiesInput>
-    create: XOR<FacilityCreateWithoutUserFacilitiesInput, FacilityUncheckedCreateWithoutUserFacilitiesInput>
+  export type FacilityUpsertWithoutUsersInput = {
+    update: XOR<FacilityUpdateWithoutUsersInput, FacilityUncheckedUpdateWithoutUsersInput>
+    create: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
     where?: FacilityWhereInput
   }
 
-  export type FacilityUpdateToOneWithWhereWithoutUserFacilitiesInput = {
+  export type FacilityUpdateToOneWithWhereWithoutUsersInput = {
     where?: FacilityWhereInput
-    data: XOR<FacilityUpdateWithoutUserFacilitiesInput, FacilityUncheckedUpdateWithoutUserFacilitiesInput>
+    data: XOR<FacilityUpdateWithoutUsersInput, FacilityUncheckedUpdateWithoutUsersInput>
   }
 
-  export type FacilityUpdateWithoutUserFacilitiesInput = {
+  export type FacilityUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
@@ -42312,7 +42312,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
   }
 
-  export type FacilityUncheckedUpdateWithoutUserFacilitiesInput = {
+  export type FacilityUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -42330,8 +42330,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: UserCompanyCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -42343,8 +42343,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    userFacilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
+    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -42372,8 +42372,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -42385,8 +42385,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -42398,7 +42398,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
   }
 
@@ -42410,7 +42410,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCompanies?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -42438,7 +42438,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
   }
 
@@ -42450,7 +42450,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCompanies?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -42481,7 +42481,7 @@ export namespace Prisma {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserCompaniesNestedInput
+    user?: UserUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
   export type UserCompanyUncheckedUpdateWithoutCompanyInput = {
@@ -42505,7 +42505,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userFacilities?: UserFacilityUpdateManyWithoutFacilityNestedInput
+    users?: UserFacilityUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutCompanyInput = {
@@ -42515,7 +42515,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userFacilities?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
+    users?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyInput = {
@@ -42557,7 +42557,7 @@ export namespace Prisma {
   export type UserFacilityUpdateWithoutFacilityInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserFacilitiesNestedInput
+    user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
   }
 
   export type UserFacilityUncheckedUpdateWithoutFacilityInput = {
@@ -44203,7 +44203,7 @@ export namespace Prisma {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutUserCompaniesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserCompanyUncheckedUpdateWithoutUserInput = {
@@ -44223,7 +44223,7 @@ export namespace Prisma {
   export type UserFacilityUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facility?: FacilityUpdateOneRequiredWithoutUserFacilitiesNestedInput
+    facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserFacilityUncheckedUpdateWithoutUserInput = {
