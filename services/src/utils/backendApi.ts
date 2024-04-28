@@ -31,20 +31,21 @@ backendApi.interceptors.request.use(
 /**
  * Provisions the backend API instance with the provided confiurations.
  */
-export const configureBackendApi = ({ apiKey, appEnv, appId, appVersion }: HikeConfig) => {
-  switch (appEnv) {
-    case 'development':
-      backendApi.defaults.baseURL = 'http://localhost:8000/v2';
-      break;
-      case 'staging':
-        backendApi.defaults.baseURL = 'https://api-staging.hike-medical-server.com/v2';
-        break;
-    default:
-      backendApi.defaults.baseURL = 'https://api.hikemedical.com/v2';
-      break;
+export const configureBackendApi = ({ apiHosts, apiKey, appHost, appEnv, appId, appVersion }: HikeConfig) => {
+  const isDevelopment = appEnv === 'development';
+  const protocol = isDevelopment ? 'http' : 'https';
+  let backendHost = '';
+
+  // Determine the URL of the backend API
+  if (typeof apiHosts === 'string' && apiHosts) {
+    backendHost = apiHosts;
+  } else {
+    backendHost = apiHosts?.[appHost ?? ''] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
   }
 
+  backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
   backendApi.defaults.headers.common['x-api-key'] = apiKey;
+  backendApi.defaults.headers.common['x-app-host'] = appHost;
   backendApi.defaults.headers.common['x-app-env'] = appEnv;
   backendApi.defaults.headers.common['x-app-id'] = appId;
   backendApi.defaults.headers.common['x-app-version'] = appVersion;
