@@ -1,5 +1,5 @@
-import * as unitedStates from './unitedStates';
+import * as US from './US';
 
-export default {
-  unitedStates
+export const geography = {
+  US
 };
