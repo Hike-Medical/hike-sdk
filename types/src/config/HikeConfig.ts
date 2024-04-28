@@ -47,4 +47,9 @@ export interface HikeConfig {
    * The version of the app associated with the app.
    */
   readonly appVersion?: string;
+
+  /**
+   * The company associated with the app; can be overriden at runtime.
+   */
+  readonly companyId?: string;
 }
