@@ -31,7 +31,15 @@ backendApi.interceptors.request.use(
 /**
  * Provisions the backend API instance with the provided confiurations.
  */
-export const configureBackendApi = ({ apiHosts, apiKey, appHost, appEnv, appId, appVersion }: HikeConfig) => {
+export const configureBackendApi = ({
+  apiHosts,
+  apiKey,
+  appHost,
+  appEnv,
+  appId,
+  appVersion,
+  companyId
+}: HikeConfig) => {
   const isDevelopment = appEnv === 'development';
   const protocol = isDevelopment ? 'http' : 'https';
   let backendHost = '';
@@ -49,4 +57,5 @@ export const configureBackendApi = ({ apiHosts, apiKey, appHost, appEnv, appId, 
   backendApi.defaults.headers.common['x-app-env'] = appEnv;
   backendApi.defaults.headers.common['x-app-id'] = appId;
   backendApi.defaults.headers.common['x-app-version'] = appVersion;
+  backendApi.defaults.headers.common['x-company-id'] ??= companyId;
 };
