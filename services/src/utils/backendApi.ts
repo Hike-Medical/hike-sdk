@@ -52,10 +52,10 @@ export const configureBackendApi = ({
   }
 
   backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
-  backendApi.defaults.headers.common['x-api-key'] = apiKey;
-  backendApi.defaults.headers.common['x-app-host'] = appHost;
-  backendApi.defaults.headers.common['x-app-env'] = appEnv;
-  backendApi.defaults.headers.common['x-app-id'] = appId;
-  backendApi.defaults.headers.common['x-app-version'] = appVersion;
+  backendApi.defaults.headers.common['x-api-key'] ??= apiKey;
+  backendApi.defaults.headers.common['x-app-host'] ??= appHost;
+  backendApi.defaults.headers.common['x-app-env'] ??= appEnv;
+  backendApi.defaults.headers.common['x-app-id'] ??= appId;
+  backendApi.defaults.headers.common['x-app-version'] ??= appVersion;
   backendApi.defaults.headers.common['x-company-id'] ??= companyId;
 };
