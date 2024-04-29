@@ -1,5 +1,5 @@
 import type { HikeConfig } from '@hike/types';
-import { currentUrl, extractCompanyId } from '@hike/utils';
+import { currentUrl, extractCompanyId, isLocalHost } from '@hike/utils';
 import axios from 'axios';
 
 /**
@@ -41,7 +41,6 @@ export const configureBackendApi = ({
   companyId
 }: HikeConfig) => {
   const isDevelopment = appEnv === 'development';
-  const protocol = isDevelopment ? 'http' : 'https';
   let backendHost = '';
 
   // Determine the URL of the backend API
@@ -50,6 +49,8 @@ export const configureBackendApi = ({
   } else {
     backendHost = apiHosts?.[appHost ?? ''] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
   }
+
+  const protocol = isLocalHost(backendHost) ? 'http' : 'https';
 
   backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
   backendApi.defaults.headers.common['x-api-key'] ??= apiKey;

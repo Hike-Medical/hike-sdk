@@ -40,7 +40,7 @@ export const getHeaderValue = (headers: BaseHeaders, key: string): string | null
 /**
  * Checks if the provided host is a local host.
  */
-const isLocal = (host: string | null): boolean =>
+export const isLocalHost = (host: string | null): boolean =>
   (host?.startsWith('localhost') ||
     host?.startsWith('127.0.0.1') ||
     host?.startsWith('192.168.') ||
@@ -69,7 +69,7 @@ export const getProtocol = (headers: BaseHeaders): 'http' | 'https' => {
     return protocol;
   }
 
-  return isLocal(host) ? 'http' : 'https';
+  return isLocalHost(host) ? 'http' : 'https';
 };
 
 /**
