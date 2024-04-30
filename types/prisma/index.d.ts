@@ -264,7 +264,8 @@ export const ProductType: {
   LEFT_FOOT_SCAN: 'LEFT_FOOT_SCAN',
   BOTH_INSOLE_RENDER: 'BOTH_INSOLE_RENDER',
   BOTH_INSOLE_GCODE: 'BOTH_INSOLE_GCODE',
-  BOTH_FOOT_RENDER: 'BOTH_FOOT_RENDER'
+  BOTH_FOOT_RENDER: 'BOTH_FOOT_RENDER',
+  FOOT_MEASUREMENT_IMAGE: 'FOOT_MEASUREMENT_IMAGE'
 };
 
 export type ProductType = (typeof ProductType)[keyof typeof ProductType]
@@ -7109,7 +7110,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
@@ -7139,7 +7139,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
@@ -7171,7 +7170,6 @@ export namespace Prisma {
     prescribedActive: number
     notes: number
     questionnaire: number
-    workbenchId: number
     completedAt: number
     cancelledAt: number
     createdAt: number
@@ -7203,7 +7201,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7233,7 +7230,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7265,7 +7261,6 @@ export namespace Prisma {
     prescribedActive?: true
     notes?: true
     questionnaire?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7370,7 +7365,6 @@ export namespace Prisma {
     prescribedActive: boolean
     notes: string | null
     questionnaire: JsonValue | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date
@@ -7419,7 +7413,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: boolean
     questionnaire?: boolean
-    workbenchId?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7460,7 +7453,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: boolean
     questionnaire?: boolean
-    workbenchId?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7518,7 +7510,6 @@ export namespace Prisma {
       prescribedActive: boolean
       notes: string | null
       questionnaire: Prisma.JsonValue | null
-      workbenchId: string | null
       completedAt: Date | null
       cancelledAt: Date | null
       createdAt: Date
@@ -7956,7 +7947,6 @@ export namespace Prisma {
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
     readonly questionnaire: FieldRef<"Evaluation", 'Json'>
-    readonly workbenchId: FieldRef<"Evaluation", 'String'>
     readonly completedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
@@ -10472,6 +10462,7 @@ export namespace Prisma {
     type: $Enums.ProductType | null
     name: string | null
     description: string | null
+    isAugment: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10481,6 +10472,7 @@ export namespace Prisma {
     type: $Enums.ProductType | null
     name: string | null
     description: string | null
+    isAugment: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10490,6 +10482,7 @@ export namespace Prisma {
     type: number
     name: number
     description: number
+    isAugment: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -10501,6 +10494,7 @@ export namespace Prisma {
     type?: true
     name?: true
     description?: true
+    isAugment?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -10510,6 +10504,7 @@ export namespace Prisma {
     type?: true
     name?: true
     description?: true
+    isAugment?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -10519,6 +10514,7 @@ export namespace Prisma {
     type?: true
     name?: true
     description?: true
+    isAugment?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -10601,6 +10597,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description: string | null
+    isAugment: boolean
     createdAt: Date
     updatedAt: Date
     _count: ProductCountAggregateOutputType | null
@@ -10627,6 +10624,7 @@ export namespace Prisma {
     type?: boolean
     name?: boolean
     description?: boolean
+    isAugment?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     buildingBlocks?: boolean | Product$buildingBlocksArgs<ExtArgs>
@@ -10641,6 +10639,7 @@ export namespace Prisma {
     type?: boolean
     name?: boolean
     description?: boolean
+    isAugment?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -10668,6 +10667,7 @@ export namespace Prisma {
       type: $Enums.ProductType
       name: string
       description: string | null
+      isAugment: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["product"]>
@@ -11075,6 +11075,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Product", 'ProductType'>
     readonly name: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
+    readonly isAugment: FieldRef<"Product", 'Boolean'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
   }
@@ -29593,7 +29594,6 @@ export namespace Prisma {
     prescribedActive: 'prescribedActive',
     notes: 'notes',
     questionnaire: 'questionnaire',
-    workbenchId: 'workbenchId',
     completedAt: 'completedAt',
     cancelledAt: 'cancelledAt',
     createdAt: 'createdAt',
@@ -29647,6 +29647,7 @@ export namespace Prisma {
     type: 'type',
     name: 'name',
     description: 'description',
+    isAugment: 'isAugment',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -30560,7 +30561,6 @@ export namespace Prisma {
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
     questionnaire?: JsonNullableFilter<"Evaluation">
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -30600,7 +30600,6 @@ export namespace Prisma {
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
     questionnaire?: SortOrderInput | SortOrder
-    workbenchId?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -30643,7 +30642,6 @@ export namespace Prisma {
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
     questionnaire?: JsonNullableFilter<"Evaluation">
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -30683,7 +30681,6 @@ export namespace Prisma {
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
     questionnaire?: SortOrderInput | SortOrder
-    workbenchId?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -30721,7 +30718,6 @@ export namespace Prisma {
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     questionnaire?: JsonNullableWithAggregatesFilter<"Evaluation">
-    workbenchId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -30945,6 +30941,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
     name?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    isAugment?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     buildingBlocks?: ProductListRelationFilter
@@ -30958,6 +30955,7 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    isAugment?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     buildingBlocks?: ProductOrderByRelationAggregateInput
@@ -30974,6 +30972,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
     name?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    isAugment?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     buildingBlocks?: ProductListRelationFilter
@@ -30987,6 +30986,7 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    isAugment?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProductCountOrderByAggregateInput
@@ -31002,6 +31002,7 @@ export namespace Prisma {
     type?: EnumProductTypeWithAggregatesFilter<"Product"> | $Enums.ProductType
     name?: StringWithAggregatesFilter<"Product"> | string
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
+    isAugment?: BoolWithAggregatesFilter<"Product"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
   }
@@ -32607,7 +32608,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -32647,7 +32647,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -32675,7 +32674,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32715,7 +32713,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32749,7 +32746,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -32775,7 +32771,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32807,7 +32802,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33054,6 +33048,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
@@ -33067,6 +33062,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
@@ -33080,6 +33076,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
@@ -33093,6 +33090,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
@@ -33106,6 +33104,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -33115,6 +33114,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33124,6 +33124,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -35032,7 +35033,6 @@ export namespace Prisma {
     prescribedActive?: SortOrder
     notes?: SortOrder
     questionnaire?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -35062,7 +35062,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -35092,7 +35091,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -35422,6 +35420,7 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    isAugment?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -35431,6 +35430,7 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    isAugment?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -35440,6 +35440,7 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    isAugment?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -38946,7 +38947,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -38984,7 +38984,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -39164,7 +39163,6 @@ export namespace Prisma {
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
     questionnaire?: JsonNullableFilter<"Evaluation">
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -39383,7 +39381,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -39421,7 +39418,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40168,7 +40164,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40207,7 +40202,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40343,7 +40337,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40382,7 +40375,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40470,6 +40462,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
@@ -40482,6 +40475,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
@@ -40592,6 +40586,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
@@ -40604,6 +40599,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
@@ -40632,6 +40628,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
@@ -40644,6 +40641,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
@@ -40661,6 +40659,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     usedByProducts?: ProductCreateNestedManyWithoutBuildingBlocksInput
@@ -40673,6 +40672,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     usedByProducts?: ProductUncheckedCreateNestedManyWithoutBuildingBlocksInput
@@ -40789,6 +40789,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
     name?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
+    isAugment?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
   }
@@ -40893,6 +40894,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
@@ -40905,6 +40907,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     name: string
     description?: string | null
+    isAugment?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
@@ -40936,7 +40939,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40975,7 +40977,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41132,6 +41133,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
@@ -41144,6 +41146,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
@@ -41181,7 +41184,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41220,7 +41222,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41698,7 +41699,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41736,7 +41736,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41790,7 +41789,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41828,7 +41826,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41882,7 +41879,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41920,7 +41916,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41974,7 +41969,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42012,7 +42006,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43168,7 +43161,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43311,7 +43303,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43349,7 +43340,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43382,7 +43372,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43475,7 +43464,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43567,7 +43555,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43605,7 +43592,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43638,7 +43624,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43986,6 +43971,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
@@ -43998,6 +43984,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
@@ -44010,6 +43997,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -44019,6 +44007,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usedByProducts?: ProductUpdateManyWithoutBuildingBlocksNestedInput
@@ -44031,6 +44020,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usedByProducts?: ProductUncheckedUpdateManyWithoutBuildingBlocksNestedInput
@@ -44043,6 +44033,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isAugment?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -44383,7 +44374,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44409,7 +44399,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44447,7 +44436,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44480,7 +44468,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44511,7 +44498,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44537,7 +44523,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44575,7 +44560,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44608,7 +44592,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44639,7 +44622,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44665,7 +44647,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44703,7 +44684,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44736,7 +44716,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44767,7 +44746,6 @@ export namespace Prisma {
     prescribedActive?: boolean
     notes?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44793,7 +44771,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44831,7 +44808,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44864,7 +44840,6 @@ export namespace Prisma {
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
