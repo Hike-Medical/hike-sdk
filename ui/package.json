@@ -27,6 +27,8 @@
   ],
   "scripts": {
     "build": "npx tsc --build && npx tsc --project tsconfig.cjs.json",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "dev": "npx tsc --watch",
     "lint": "npx eslint .",
     "format": "npx prettier --check . --ignore-path ../../../.gitignore",
