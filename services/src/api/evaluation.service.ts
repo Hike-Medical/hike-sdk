@@ -1,4 +1,5 @@
 import type {
+  CreateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
@@ -7,6 +8,11 @@ import type {
   SearchEvaluationsParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
+
+export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation', params);
+  return response.data;
+};
 
 export const findEvaluationById = async (evaluationId: string): Promise<EvaluationExtended> => {
   const response = await backendApi.get(`evaluation/${evaluationId}`);
