@@ -8,6 +8,7 @@ export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/SearchProductsParams';
 export type * from './dto/evaluation/EvaluationsStats';
 export type * from './dto/evaluation/EvaluationsUploadResult';
+export type * from './dto/evaluation/GetEvaluationsByStatusParams';
 export type * from './dto/evaluation/SearchEvaluationsParams';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/GetOrdersParams';
