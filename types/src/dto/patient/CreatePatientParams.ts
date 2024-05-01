@@ -11,5 +11,5 @@ export interface CreatePatientParams {
   weight?: number;
   maritalStatus?: MaritalStatus;
   photoUrl?: string;
-  deceasedAt: Date | null;
+  deceasedAt?: Date | null;
 }
