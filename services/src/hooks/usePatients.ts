@@ -8,12 +8,9 @@ export interface UsePatientsOptions extends SearchPatientsParams {
   enabled?: boolean;
 }
 
-export const usePatients = ({ key = [], enabled = true, ...params }: UsePatientsOptions = {}) =>
+export const usePatients = ({ key = [], enabled = true, ...params }: UsePatientsOptions = { term: '' }) =>
   useQuery<PagedResponse<Patient[]>, ResponseError<null>>({
     queryKey: ['patients', ...key, params],
-    queryFn: async () => {
-      const hasParams = Object.values(params).some((value) => value !== undefined);
-      return hasParams ? await searchPatients(params) : await fetchPatients();
-    },
+    queryFn: async () => (params.term !== '' ? await searchPatients(params) : await fetchPatients(params)),
     enabled
   });

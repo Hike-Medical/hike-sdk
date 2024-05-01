@@ -1,15 +1,16 @@
 import type { Gender, MaritalStatus } from '../../../prisma';
 
 export interface CreatePatientParams {
+  externalId?: string | null;
   firstName: string;
   middleName?: string | null;
   lastName: string;
-  gender: Gender;
-  birthDate?: Date;
-  active?: boolean;
-  height?: number;
-  weight?: number;
-  maritalStatus?: MaritalStatus;
-  photoUrl?: string;
+  gender?: Gender | null;
+  birthDate?: Date | null;
+  height?: number | null;
+  weight?: number | null;
+  maritalStatus?: MaritalStatus | null;
+  photoUrl?: string | null;
   deceasedAt?: Date | null;
+  active?: boolean;
 }

@@ -15,6 +15,7 @@ export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/GetOrdersParams';
 export type * from './dto/patient/CreatePatientParams';
 export type * from './dto/patient/SearchPatientsParams';
+export type * from './dto/patient/UpdatePatientParams';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/UserExtended';
