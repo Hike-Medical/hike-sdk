@@ -21,6 +21,7 @@ export const getSession = async (request: BaseRequestWithCookies, publicKey: str
 
   return {
     id: decoded.id,
-    companies: decoded.companies
+    companies: decoded.companies,
+    expiresAt: decoded.exp ? new Date(decoded.exp * 1000) : new Date()
   };
 };
