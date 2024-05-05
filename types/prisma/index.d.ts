@@ -3938,6 +3938,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     logoUrl: string | null
+    slug: string | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3948,6 +3949,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     logoUrl: string | null
+    slug: string | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3958,6 +3960,7 @@ export namespace Prisma {
     name: number
     url: number
     logoUrl: number
+    slug: number
     active: number
     createdAt: number
     updatedAt: number
@@ -3970,6 +3973,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -3980,6 +3984,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -3990,6 +3995,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -4073,6 +4079,7 @@ export namespace Prisma {
     name: string
     url: string | null
     logoUrl: string | null
+    slug: string
     active: boolean
     createdAt: Date
     updatedAt: Date
@@ -4100,6 +4107,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     logoUrl?: boolean
+    slug?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4116,6 +4124,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     logoUrl?: boolean
+    slug?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4146,6 +4155,7 @@ export namespace Prisma {
       name: string
       url: string | null
       logoUrl: string | null
+      slug: string
       active: boolean
       createdAt: Date
       updatedAt: Date
@@ -4556,6 +4566,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Company", 'String'>
     readonly url: FieldRef<"Company", 'String'>
     readonly logoUrl: FieldRef<"Company", 'String'>
+    readonly slug: FieldRef<"Company", 'String'>
     readonly active: FieldRef<"Company", 'Boolean'>
     readonly createdAt: FieldRef<"Company", 'DateTime'>
     readonly updatedAt: FieldRef<"Company", 'DateTime'>
@@ -29526,6 +29537,7 @@ export namespace Prisma {
     name: 'name',
     url: 'url',
     logoUrl: 'logoUrl',
+    slug: 'slug',
     active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -30279,6 +30291,7 @@ export namespace Prisma {
     name?: StringFilter<"Company"> | string
     url?: StringNullableFilter<"Company"> | string | null
     logoUrl?: StringNullableFilter<"Company"> | string | null
+    slug?: StringFilter<"Company"> | string
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
@@ -30294,6 +30307,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -30306,6 +30320,7 @@ export namespace Prisma {
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: CompanyWhereInput | CompanyWhereInput[]
     OR?: CompanyWhereInput[]
     NOT?: CompanyWhereInput | CompanyWhereInput[]
@@ -30320,13 +30335,14 @@ export namespace Prisma {
     patients?: PatientListRelationFilter
     evaluations?: EvaluationListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
-  }, "id">
+  }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     url?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -30343,6 +30359,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Company"> | string
     url?: StringNullableWithAggregatesFilter<"Company"> | string | null
     logoUrl?: StringNullableWithAggregatesFilter<"Company"> | string | null
+    slug?: StringWithAggregatesFilter<"Company"> | string
     active?: BoolWithAggregatesFilter<"Company"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
@@ -32288,6 +32305,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32303,6 +32321,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32318,6 +32337,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32333,6 +32353,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32348,6 +32369,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32358,6 +32380,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32368,6 +32391,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34614,6 +34638,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -34624,6 +34649,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -34634,6 +34660,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39203,6 +39230,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39217,6 +39245,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39269,6 +39298,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39283,6 +39313,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39485,6 +39516,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39499,6 +39531,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39623,6 +39656,7 @@ export namespace Prisma {
     name?: StringFilter<"Company"> | string
     url?: StringNullableFilter<"Company"> | string | null
     logoUrl?: StringNullableFilter<"Company"> | string | null
+    slug?: StringFilter<"Company"> | string
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
@@ -39680,6 +39714,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39694,6 +39729,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -39943,6 +39979,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39957,6 +39994,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42760,6 +42798,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42774,6 +42813,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42841,6 +42881,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42855,6 +42896,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43061,6 +43103,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43075,6 +43118,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43105,6 +43149,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43119,6 +43164,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43693,6 +43739,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43707,6 +43754,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43721,6 +43769,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

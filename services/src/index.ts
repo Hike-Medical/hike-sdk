@@ -7,6 +7,7 @@ export * from './api/order.service';
 export * from './api/patient.service';
 export * from './api/physician.service';
 export * from './auth/defaultCompany';
+export * from './auth/findCompanyBySlug';
 export * from './auth/findSession';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
