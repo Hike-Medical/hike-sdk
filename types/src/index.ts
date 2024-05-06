@@ -18,6 +18,7 @@ export type * from './dto/patient/SearchPatientsParams';
 export type * from './dto/shipping/ValidateAddressBody';
 export type * from './dto/shipping/GetRatesResponse';
 export type * from './dto/shipping/GetLabelsResponse';
+export type * from './dto/shipping/GetLabelTrackingInfo';
 export type * from './dto/patient/UpdatePatientParams';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
