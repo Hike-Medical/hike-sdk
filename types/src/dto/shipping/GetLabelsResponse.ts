@@ -6,5 +6,6 @@ export interface GetLabelsResponse {
   packages: {
     packageId: number;
     pdfLink: string;
+    packages: string[];
   }[];
 }
