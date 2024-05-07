@@ -29,10 +29,10 @@ export type Facility = $Result.DefaultSelection<Prisma.$FacilityPayload>
  */
 export type Patient = $Result.DefaultSelection<Prisma.$PatientPayload>
 /**
- * Model PatientCompany
+ * Model CompanyPatient
  * 
  */
-export type PatientCompany = $Result.DefaultSelection<Prisma.$PatientCompanyPayload>
+export type CompanyPatient = $Result.DefaultSelection<Prisma.$CompanyPatientPayload>
 /**
  * Model Evaluation
  * 
@@ -129,15 +129,15 @@ export type CatalogVendor = $Result.DefaultSelection<Prisma.$CatalogVendorPayloa
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model UserCompany
+ * Model CompanyUser
  * 
  */
-export type UserCompany = $Result.DefaultSelection<Prisma.$UserCompanyPayload>
+export type CompanyUser = $Result.DefaultSelection<Prisma.$CompanyUserPayload>
 /**
- * Model UserFacility
+ * Model FacilityUser
  * 
  */
-export type UserFacility = $Result.DefaultSelection<Prisma.$UserFacilityPayload>
+export type FacilityUser = $Result.DefaultSelection<Prisma.$FacilityUserPayload>
 /**
  * Model Account
  * 
@@ -583,14 +583,14 @@ export class PrismaClient<
   get patient(): Prisma.PatientDelegate<ExtArgs>;
 
   /**
-   * `prisma.patientCompany`: Exposes CRUD operations for the **PatientCompany** model.
+   * `prisma.companyPatient`: Exposes CRUD operations for the **CompanyPatient** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more PatientCompanies
-    * const patientCompanies = await prisma.patientCompany.findMany()
+    * // Fetch zero or more CompanyPatients
+    * const companyPatients = await prisma.companyPatient.findMany()
     * ```
     */
-  get patientCompany(): Prisma.PatientCompanyDelegate<ExtArgs>;
+  get companyPatient(): Prisma.CompanyPatientDelegate<ExtArgs>;
 
   /**
    * `prisma.evaluation`: Exposes CRUD operations for the **Evaluation** model.
@@ -783,24 +783,24 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs>;
 
   /**
-   * `prisma.userCompany`: Exposes CRUD operations for the **UserCompany** model.
+   * `prisma.companyUser`: Exposes CRUD operations for the **CompanyUser** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserCompanies
-    * const userCompanies = await prisma.userCompany.findMany()
+    * // Fetch zero or more CompanyUsers
+    * const companyUsers = await prisma.companyUser.findMany()
     * ```
     */
-  get userCompany(): Prisma.UserCompanyDelegate<ExtArgs>;
+  get companyUser(): Prisma.CompanyUserDelegate<ExtArgs>;
 
   /**
-   * `prisma.userFacility`: Exposes CRUD operations for the **UserFacility** model.
+   * `prisma.facilityUser`: Exposes CRUD operations for the **FacilityUser** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserFacilities
-    * const userFacilities = await prisma.userFacility.findMany()
+    * // Fetch zero or more FacilityUsers
+    * const facilityUsers = await prisma.facilityUser.findMany()
     * ```
     */
-  get userFacility(): Prisma.UserFacilityDelegate<ExtArgs>;
+  get facilityUser(): Prisma.FacilityUserDelegate<ExtArgs>;
 
   /**
    * `prisma.account`: Exposes CRUD operations for the **Account** model.
@@ -1301,7 +1301,7 @@ export namespace Prisma {
     Company: 'Company',
     Facility: 'Facility',
     Patient: 'Patient',
-    PatientCompany: 'PatientCompany',
+    CompanyPatient: 'CompanyPatient',
     Evaluation: 'Evaluation',
     Foot: 'Foot',
     Asset: 'Asset',
@@ -1321,8 +1321,8 @@ export namespace Prisma {
     CatalogCategory: 'CatalogCategory',
     CatalogVendor: 'CatalogVendor',
     User: 'User',
-    UserCompany: 'UserCompany',
-    UserFacility: 'UserFacility',
+    CompanyUser: 'CompanyUser',
+    FacilityUser: 'FacilityUser',
     Account: 'Account',
     ApiKey: 'ApiKey'
   };
@@ -1341,7 +1341,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'patientCompany' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'user' | 'userCompany' | 'userFacility' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'companyPatient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'user' | 'companyUser' | 'facilityUser' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1543,69 +1543,69 @@ export namespace Prisma {
           }
         }
       }
-      PatientCompany: {
-        payload: Prisma.$PatientCompanyPayload<ExtArgs>
-        fields: Prisma.PatientCompanyFieldRefs
+      CompanyPatient: {
+        payload: Prisma.$CompanyPatientPayload<ExtArgs>
+        fields: Prisma.CompanyPatientFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PatientCompanyFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload> | null
+            args: Prisma.CompanyPatientFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PatientCompanyFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           findFirst: {
-            args: Prisma.PatientCompanyFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload> | null
+            args: Prisma.CompanyPatientFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PatientCompanyFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           findMany: {
-            args: Prisma.PatientCompanyFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>[]
+            args: Prisma.CompanyPatientFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>[]
           }
           create: {
-            args: Prisma.PatientCompanyCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           createMany: {
-            args: Prisma.PatientCompanyCreateManyArgs<ExtArgs>,
+            args: Prisma.CompanyPatientCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.PatientCompanyDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           update: {
-            args: Prisma.PatientCompanyUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           deleteMany: {
-            args: Prisma.PatientCompanyDeleteManyArgs<ExtArgs>,
+            args: Prisma.CompanyPatientDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.PatientCompanyUpdateManyArgs<ExtArgs>,
+            args: Prisma.CompanyPatientUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.PatientCompanyUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+            args: Prisma.CompanyPatientUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyPatientPayload>
           }
           aggregate: {
-            args: Prisma.PatientCompanyAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregatePatientCompany>
+            args: Prisma.CompanyPatientAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCompanyPatient>
           }
           groupBy: {
-            args: Prisma.PatientCompanyGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<PatientCompanyGroupByOutputType>[]
+            args: Prisma.CompanyPatientGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyPatientGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PatientCompanyCountArgs<ExtArgs>,
-            result: $Utils.Optional<PatientCompanyCountAggregateOutputType> | number
+            args: Prisma.CompanyPatientCountArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyPatientCountAggregateOutputType> | number
           }
         }
       }
@@ -2863,135 +2863,135 @@ export namespace Prisma {
           }
         }
       }
-      UserCompany: {
-        payload: Prisma.$UserCompanyPayload<ExtArgs>
-        fields: Prisma.UserCompanyFieldRefs
+      CompanyUser: {
+        payload: Prisma.$CompanyUserPayload<ExtArgs>
+        fields: Prisma.CompanyUserFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserCompanyFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload> | null
+            args: Prisma.CompanyUserFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserCompanyFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           findFirst: {
-            args: Prisma.UserCompanyFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload> | null
+            args: Prisma.CompanyUserFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserCompanyFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           findMany: {
-            args: Prisma.UserCompanyFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>[]
+            args: Prisma.CompanyUserFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>[]
           }
           create: {
-            args: Prisma.UserCompanyCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           createMany: {
-            args: Prisma.UserCompanyCreateManyArgs<ExtArgs>,
+            args: Prisma.CompanyUserCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.UserCompanyDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           update: {
-            args: Prisma.UserCompanyUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           deleteMany: {
-            args: Prisma.UserCompanyDeleteManyArgs<ExtArgs>,
+            args: Prisma.CompanyUserDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserCompanyUpdateManyArgs<ExtArgs>,
+            args: Prisma.CompanyUserUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserCompanyUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserCompanyPayload>
+            args: Prisma.CompanyUserUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyUserPayload>
           }
           aggregate: {
-            args: Prisma.UserCompanyAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUserCompany>
+            args: Prisma.CompanyUserAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCompanyUser>
           }
           groupBy: {
-            args: Prisma.UserCompanyGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserCompanyGroupByOutputType>[]
+            args: Prisma.CompanyUserGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyUserGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserCompanyCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserCompanyCountAggregateOutputType> | number
+            args: Prisma.CompanyUserCountArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyUserCountAggregateOutputType> | number
           }
         }
       }
-      UserFacility: {
-        payload: Prisma.$UserFacilityPayload<ExtArgs>
-        fields: Prisma.UserFacilityFieldRefs
+      FacilityUser: {
+        payload: Prisma.$FacilityUserPayload<ExtArgs>
+        fields: Prisma.FacilityUserFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserFacilityFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload> | null
+            args: Prisma.FacilityUserFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserFacilityFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           findFirst: {
-            args: Prisma.UserFacilityFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload> | null
+            args: Prisma.FacilityUserFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserFacilityFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           findMany: {
-            args: Prisma.UserFacilityFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>[]
+            args: Prisma.FacilityUserFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>[]
           }
           create: {
-            args: Prisma.UserFacilityCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           createMany: {
-            args: Prisma.UserFacilityCreateManyArgs<ExtArgs>,
+            args: Prisma.FacilityUserCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.UserFacilityDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           update: {
-            args: Prisma.UserFacilityUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           deleteMany: {
-            args: Prisma.UserFacilityDeleteManyArgs<ExtArgs>,
+            args: Prisma.FacilityUserDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserFacilityUpdateManyArgs<ExtArgs>,
+            args: Prisma.FacilityUserUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserFacilityUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserFacilityPayload>
+            args: Prisma.FacilityUserUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
           }
           aggregate: {
-            args: Prisma.UserFacilityAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUserFacility>
+            args: Prisma.FacilityUserAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFacilityUser>
           }
           groupBy: {
-            args: Prisma.UserFacilityGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserFacilityGroupByOutputType>[]
+            args: Prisma.FacilityUserGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityUserGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserFacilityCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserFacilityCountAggregateOutputType> | number
+            args: Prisma.FacilityUserCountArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityUserCountAggregateOutputType> | number
           }
         }
       }
@@ -3316,7 +3316,7 @@ export namespace Prisma {
    * CompanyCountOutputType without action
    */
   export type CompanyCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
   }
 
   /**
@@ -3330,7 +3330,7 @@ export namespace Prisma {
    * CompanyCountOutputType without action
    */
   export type CompanyCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
   }
 
   /**
@@ -3375,7 +3375,7 @@ export namespace Prisma {
    * FacilityCountOutputType without action
    */
   export type FacilityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
   }
 
 
@@ -3433,7 +3433,7 @@ export namespace Prisma {
    * PatientCountOutputType without action
    */
   export type PatientCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
   }
 
 
@@ -3976,14 +3976,14 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
   }
 
   /**
@@ -4217,9 +4217,9 @@ export namespace Prisma {
   export type $CompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Company"
     objects: {
-      users: Prisma.$UserCompanyPayload<ExtArgs>[]
+      users: Prisma.$CompanyUserPayload<ExtArgs>[]
       facilities: Prisma.$FacilityPayload<ExtArgs>[]
-      patients: Prisma.$PatientCompanyPayload<ExtArgs>[]
+      patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       apiKeys: Prisma.$ApiKeyPayload<ExtArgs>[]
     }
@@ -4596,11 +4596,11 @@ export namespace Prisma {
   export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     facilities<T extends Company$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     evaluations<T extends Company$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Company$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -4944,19 +4944,19 @@ export namespace Prisma {
    */
   export type Company$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
-    where?: UserCompanyWhereInput
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
-    cursor?: UserCompanyWhereUniqueInput
+    include?: CompanyUserInclude<ExtArgs> | null
+    where?: CompanyUserWhereInput
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
+    cursor?: CompanyUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
+    distinct?: CompanyUserScalarFieldEnum | CompanyUserScalarFieldEnum[]
   }
 
   /**
@@ -4984,19 +4984,19 @@ export namespace Prisma {
    */
   export type Company$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
-    where?: PatientCompanyWhereInput
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
-    cursor?: PatientCompanyWhereUniqueInput
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
@@ -5261,7 +5261,7 @@ export namespace Prisma {
     name: "Facility"
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs>
-      users: Prisma.$UserFacilityPayload<ExtArgs>[]
+      users: Prisma.$FacilityUserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5638,7 +5638,7 @@ export namespace Prisma {
 
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+    users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5978,19 +5978,19 @@ export namespace Prisma {
    */
   export type Facility$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
-    where?: UserFacilityWhereInput
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
-    cursor?: UserFacilityWhereUniqueInput
+    include?: FacilityUserInclude<ExtArgs> | null
+    where?: FacilityUserWhereInput
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    cursor?: FacilityUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
+    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
@@ -6322,7 +6322,7 @@ export namespace Prisma {
       feet: Prisma.$FootPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
-      companies: Prisma.$PatientCompanyPayload<ExtArgs>[]
+      companies: Prisma.$CompanyPatientPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6710,7 +6710,7 @@ export namespace Prisma {
 
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7117,19 +7117,19 @@ export namespace Prisma {
    */
   export type Patient$companiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
-    where?: PatientCompanyWhereInput
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
-    cursor?: PatientCompanyWhereUniqueInput
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
@@ -7148,16 +7148,16 @@ export namespace Prisma {
 
 
   /**
-   * Model PatientCompany
+   * Model CompanyPatient
    */
 
-  export type AggregatePatientCompany = {
-    _count: PatientCompanyCountAggregateOutputType | null
-    _min: PatientCompanyMinAggregateOutputType | null
-    _max: PatientCompanyMaxAggregateOutputType | null
+  export type AggregateCompanyPatient = {
+    _count: CompanyPatientCountAggregateOutputType | null
+    _min: CompanyPatientMinAggregateOutputType | null
+    _max: CompanyPatientMaxAggregateOutputType | null
   }
 
-  export type PatientCompanyMinAggregateOutputType = {
+  export type CompanyPatientMinAggregateOutputType = {
     patientId: string | null
     companyId: string | null
     externalId: string | null
@@ -7165,7 +7165,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type PatientCompanyMaxAggregateOutputType = {
+  export type CompanyPatientMaxAggregateOutputType = {
     patientId: string | null
     companyId: string | null
     externalId: string | null
@@ -7173,7 +7173,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type PatientCompanyCountAggregateOutputType = {
+  export type CompanyPatientCountAggregateOutputType = {
     patientId: number
     companyId: number
     externalId: number
@@ -7183,7 +7183,7 @@ export namespace Prisma {
   }
 
 
-  export type PatientCompanyMinAggregateInputType = {
+  export type CompanyPatientMinAggregateInputType = {
     patientId?: true
     companyId?: true
     externalId?: true
@@ -7191,7 +7191,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type PatientCompanyMaxAggregateInputType = {
+  export type CompanyPatientMaxAggregateInputType = {
     patientId?: true
     companyId?: true
     externalId?: true
@@ -7199,7 +7199,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type PatientCompanyCountAggregateInputType = {
+  export type CompanyPatientCountAggregateInputType = {
     patientId?: true
     companyId?: true
     externalId?: true
@@ -7208,104 +7208,104 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PatientCompanyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PatientCompany to aggregate.
+     * Filter which CompanyPatient to aggregate.
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PatientCompanies to fetch.
+     * Determine the order of CompanyPatients to fetch.
      */
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PatientCompanyWhereUniqueInput
+    cursor?: CompanyPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PatientCompanies from the position of the cursor.
+     * Take `±n` CompanyPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PatientCompanies.
+     * Skip the first `n` CompanyPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned PatientCompanies
+     * Count returned CompanyPatients
     **/
-    _count?: true | PatientCompanyCountAggregateInputType
+    _count?: true | CompanyPatientCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PatientCompanyMinAggregateInputType
+    _min?: CompanyPatientMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PatientCompanyMaxAggregateInputType
+    _max?: CompanyPatientMaxAggregateInputType
   }
 
-  export type GetPatientCompanyAggregateType<T extends PatientCompanyAggregateArgs> = {
-        [P in keyof T & keyof AggregatePatientCompany]: P extends '_count' | 'count'
+  export type GetCompanyPatientAggregateType<T extends CompanyPatientAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyPatient]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePatientCompany[P]>
-      : GetScalarType<T[P], AggregatePatientCompany[P]>
+        : GetScalarType<T[P], AggregateCompanyPatient[P]>
+      : GetScalarType<T[P], AggregateCompanyPatient[P]>
   }
 
 
 
 
-  export type PatientCompanyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientCompanyWhereInput
-    orderBy?: PatientCompanyOrderByWithAggregationInput | PatientCompanyOrderByWithAggregationInput[]
-    by: PatientCompanyScalarFieldEnum[] | PatientCompanyScalarFieldEnum
-    having?: PatientCompanyScalarWhereWithAggregatesInput
+  export type CompanyPatientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithAggregationInput | CompanyPatientOrderByWithAggregationInput[]
+    by: CompanyPatientScalarFieldEnum[] | CompanyPatientScalarFieldEnum
+    having?: CompanyPatientScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PatientCompanyCountAggregateInputType | true
-    _min?: PatientCompanyMinAggregateInputType
-    _max?: PatientCompanyMaxAggregateInputType
+    _count?: CompanyPatientCountAggregateInputType | true
+    _min?: CompanyPatientMinAggregateInputType
+    _max?: CompanyPatientMaxAggregateInputType
   }
 
-  export type PatientCompanyGroupByOutputType = {
+  export type CompanyPatientGroupByOutputType = {
     patientId: string
     companyId: string
     externalId: string | null
     createdAt: Date
     updatedAt: Date
-    _count: PatientCompanyCountAggregateOutputType | null
-    _min: PatientCompanyMinAggregateOutputType | null
-    _max: PatientCompanyMaxAggregateOutputType | null
+    _count: CompanyPatientCountAggregateOutputType | null
+    _min: CompanyPatientMinAggregateOutputType | null
+    _max: CompanyPatientMaxAggregateOutputType | null
   }
 
-  type GetPatientCompanyGroupByPayload<T extends PatientCompanyGroupByArgs> = Prisma.PrismaPromise<
+  type GetCompanyPatientGroupByPayload<T extends CompanyPatientGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PatientCompanyGroupByOutputType, T['by']> &
+      PickEnumerable<CompanyPatientGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PatientCompanyGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CompanyPatientGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PatientCompanyGroupByOutputType[P]>
-            : GetScalarType<T[P], PatientCompanyGroupByOutputType[P]>
+              : GetScalarType<T[P], CompanyPatientGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyPatientGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PatientCompanySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CompanyPatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
@@ -7313,9 +7313,9 @@ export namespace Prisma {
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["patientCompany"]>
+  }, ExtArgs["result"]["companyPatient"]>
 
-  export type PatientCompanySelectScalar = {
+  export type CompanyPatientSelectScalar = {
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
@@ -7324,14 +7324,14 @@ export namespace Prisma {
   }
 
 
-  export type PatientCompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
 
 
-  export type $PatientCompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PatientCompany"
+  export type $CompanyPatientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyPatient"
     objects: {
       patient: Prisma.$PatientPayload<ExtArgs>
       company: Prisma.$CompanyPayload<ExtArgs>
@@ -7342,160 +7342,160 @@ export namespace Prisma {
       externalId: string | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["patientCompany"]>
+    }, ExtArgs["result"]["companyPatient"]>
     composites: {}
   }
 
 
-  type PatientCompanyGetPayload<S extends boolean | null | undefined | PatientCompanyDefaultArgs> = $Result.GetResult<Prisma.$PatientCompanyPayload, S>
+  type CompanyPatientGetPayload<S extends boolean | null | undefined | CompanyPatientDefaultArgs> = $Result.GetResult<Prisma.$CompanyPatientPayload, S>
 
-  type PatientCompanyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<PatientCompanyFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: PatientCompanyCountAggregateInputType | true
+  type CompanyPatientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CompanyPatientFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CompanyPatientCountAggregateInputType | true
     }
 
-  export interface PatientCompanyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PatientCompany'], meta: { name: 'PatientCompany' } }
+  export interface CompanyPatientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyPatient'], meta: { name: 'CompanyPatient' } }
     /**
-     * Find zero or one PatientCompany that matches the filter.
-     * @param {PatientCompanyFindUniqueArgs} args - Arguments to find a PatientCompany
+     * Find zero or one CompanyPatient that matches the filter.
+     * @param {CompanyPatientFindUniqueArgs} args - Arguments to find a CompanyPatient
      * @example
-     * // Get one PatientCompany
-     * const patientCompany = await prisma.patientCompany.findUnique({
+     * // Get one CompanyPatient
+     * const companyPatient = await prisma.companyPatient.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends PatientCompanyFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyFindUniqueArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends CompanyPatientFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientFindUniqueArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one PatientCompany that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one CompanyPatient that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {PatientCompanyFindUniqueOrThrowArgs} args - Arguments to find a PatientCompany
+     * @param {CompanyPatientFindUniqueOrThrowArgs} args - Arguments to find a CompanyPatient
      * @example
-     * // Get one PatientCompany
-     * const patientCompany = await prisma.patientCompany.findUniqueOrThrow({
+     * // Get one CompanyPatient
+     * const companyPatient = await prisma.companyPatient.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends PatientCompanyFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends CompanyPatientFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first PatientCompany that matches the filter.
+     * Find the first CompanyPatient that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyFindFirstArgs} args - Arguments to find a PatientCompany
+     * @param {CompanyPatientFindFirstArgs} args - Arguments to find a CompanyPatient
      * @example
-     * // Get one PatientCompany
-     * const patientCompany = await prisma.patientCompany.findFirst({
+     * // Get one CompanyPatient
+     * const companyPatient = await prisma.companyPatient.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends PatientCompanyFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyFindFirstArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends CompanyPatientFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientFindFirstArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first PatientCompany that matches the filter or
+     * Find the first CompanyPatient that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyFindFirstOrThrowArgs} args - Arguments to find a PatientCompany
+     * @param {CompanyPatientFindFirstOrThrowArgs} args - Arguments to find a CompanyPatient
      * @example
-     * // Get one PatientCompany
-     * const patientCompany = await prisma.patientCompany.findFirstOrThrow({
+     * // Get one CompanyPatient
+     * const companyPatient = await prisma.companyPatient.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends PatientCompanyFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends CompanyPatientFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more PatientCompanies that matches the filter.
+     * Find zero or more CompanyPatients that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {CompanyPatientFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all PatientCompanies
-     * const patientCompanies = await prisma.patientCompany.findMany()
+     * // Get all CompanyPatients
+     * const companyPatients = await prisma.companyPatient.findMany()
      * 
-     * // Get first 10 PatientCompanies
-     * const patientCompanies = await prisma.patientCompany.findMany({ take: 10 })
+     * // Get first 10 CompanyPatients
+     * const companyPatients = await prisma.companyPatient.findMany({ take: 10 })
      * 
      * // Only select the `patientId`
-     * const patientCompanyWithPatientIdOnly = await prisma.patientCompany.findMany({ select: { patientId: true } })
+     * const companyPatientWithPatientIdOnly = await prisma.companyPatient.findMany({ select: { patientId: true } })
      * 
     **/
-    findMany<T extends PatientCompanyFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends CompanyPatientFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a PatientCompany.
-     * @param {PatientCompanyCreateArgs} args - Arguments to create a PatientCompany.
+     * Create a CompanyPatient.
+     * @param {CompanyPatientCreateArgs} args - Arguments to create a CompanyPatient.
      * @example
-     * // Create one PatientCompany
-     * const PatientCompany = await prisma.patientCompany.create({
+     * // Create one CompanyPatient
+     * const CompanyPatient = await prisma.companyPatient.create({
      *   data: {
-     *     // ... data to create a PatientCompany
+     *     // ... data to create a CompanyPatient
      *   }
      * })
      * 
     **/
-    create<T extends PatientCompanyCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyCreateArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends CompanyPatientCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientCreateArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many PatientCompanies.
-     *     @param {PatientCompanyCreateManyArgs} args - Arguments to create many PatientCompanies.
+     * Create many CompanyPatients.
+     *     @param {CompanyPatientCreateManyArgs} args - Arguments to create many CompanyPatients.
      *     @example
-     *     // Create many PatientCompanies
-     *     const patientCompany = await prisma.patientCompany.createMany({
+     *     // Create many CompanyPatients
+     *     const companyPatient = await prisma.companyPatient.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends PatientCompanyCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyCreateManyArgs<ExtArgs>>
+    createMany<T extends CompanyPatientCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a PatientCompany.
-     * @param {PatientCompanyDeleteArgs} args - Arguments to delete one PatientCompany.
+     * Delete a CompanyPatient.
+     * @param {CompanyPatientDeleteArgs} args - Arguments to delete one CompanyPatient.
      * @example
-     * // Delete one PatientCompany
-     * const PatientCompany = await prisma.patientCompany.delete({
+     * // Delete one CompanyPatient
+     * const CompanyPatient = await prisma.companyPatient.delete({
      *   where: {
-     *     // ... filter to delete one PatientCompany
+     *     // ... filter to delete one CompanyPatient
      *   }
      * })
      * 
     **/
-    delete<T extends PatientCompanyDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyDeleteArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends CompanyPatientDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientDeleteArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one PatientCompany.
-     * @param {PatientCompanyUpdateArgs} args - Arguments to update one PatientCompany.
+     * Update one CompanyPatient.
+     * @param {CompanyPatientUpdateArgs} args - Arguments to update one CompanyPatient.
      * @example
-     * // Update one PatientCompany
-     * const patientCompany = await prisma.patientCompany.update({
+     * // Update one CompanyPatient
+     * const companyPatient = await prisma.companyPatient.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7505,34 +7505,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends PatientCompanyUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyUpdateArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends CompanyPatientUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientUpdateArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more PatientCompanies.
-     * @param {PatientCompanyDeleteManyArgs} args - Arguments to filter PatientCompanies to delete.
+     * Delete zero or more CompanyPatients.
+     * @param {CompanyPatientDeleteManyArgs} args - Arguments to filter CompanyPatients to delete.
      * @example
-     * // Delete a few PatientCompanies
-     * const { count } = await prisma.patientCompany.deleteMany({
+     * // Delete a few CompanyPatients
+     * const { count } = await prisma.companyPatient.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends PatientCompanyDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PatientCompanyDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends CompanyPatientDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyPatientDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more PatientCompanies.
+     * Update zero or more CompanyPatients.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CompanyPatientUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many PatientCompanies
-     * const patientCompany = await prisma.patientCompany.updateMany({
+     * // Update many CompanyPatients
+     * const companyPatient = await prisma.companyPatient.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7542,59 +7542,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends PatientCompanyUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyUpdateManyArgs<ExtArgs>>
+    updateMany<T extends CompanyPatientUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one PatientCompany.
-     * @param {PatientCompanyUpsertArgs} args - Arguments to update or create a PatientCompany.
+     * Create or update one CompanyPatient.
+     * @param {CompanyPatientUpsertArgs} args - Arguments to update or create a CompanyPatient.
      * @example
-     * // Update or create a PatientCompany
-     * const patientCompany = await prisma.patientCompany.upsert({
+     * // Update or create a CompanyPatient
+     * const companyPatient = await prisma.companyPatient.upsert({
      *   create: {
-     *     // ... data to create a PatientCompany
+     *     // ... data to create a CompanyPatient
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the PatientCompany we want to update
+     *     // ... the filter for the CompanyPatient we want to update
      *   }
      * })
     **/
-    upsert<T extends PatientCompanyUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, PatientCompanyUpsertArgs<ExtArgs>>
-    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends CompanyPatientUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyPatientUpsertArgs<ExtArgs>>
+    ): Prisma__CompanyPatientClient<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of PatientCompanies.
+     * Count the number of CompanyPatients.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyCountArgs} args - Arguments to filter PatientCompanies to count.
+     * @param {CompanyPatientCountArgs} args - Arguments to filter CompanyPatients to count.
      * @example
-     * // Count the number of PatientCompanies
-     * const count = await prisma.patientCompany.count({
+     * // Count the number of CompanyPatients
+     * const count = await prisma.companyPatient.count({
      *   where: {
-     *     // ... the filter for the PatientCompanies we want to count
+     *     // ... the filter for the CompanyPatients we want to count
      *   }
      * })
     **/
-    count<T extends PatientCompanyCountArgs>(
-      args?: Subset<T, PatientCompanyCountArgs>,
+    count<T extends CompanyPatientCountArgs>(
+      args?: Subset<T, CompanyPatientCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PatientCompanyCountAggregateOutputType>
+          : GetScalarType<T['select'], CompanyPatientCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a PatientCompany.
+     * Allows you to perform aggregations operations on a CompanyPatient.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CompanyPatientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7614,13 +7614,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PatientCompanyAggregateArgs>(args: Subset<T, PatientCompanyAggregateArgs>): Prisma.PrismaPromise<GetPatientCompanyAggregateType<T>>
+    aggregate<T extends CompanyPatientAggregateArgs>(args: Subset<T, CompanyPatientAggregateArgs>): Prisma.PrismaPromise<GetCompanyPatientAggregateType<T>>
 
     /**
-     * Group by PatientCompany.
+     * Group by CompanyPatient.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCompanyGroupByArgs} args - Group by arguments.
+     * @param {CompanyPatientGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7635,14 +7635,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PatientCompanyGroupByArgs,
+      T extends CompanyPatientGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PatientCompanyGroupByArgs['orderBy'] }
-        : { orderBy?: PatientCompanyGroupByArgs['orderBy'] },
+        ? { orderBy: CompanyPatientGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyPatientGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7691,20 +7691,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PatientCompanyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatientCompanyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CompanyPatientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyPatientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the PatientCompany model
+   * Fields of the CompanyPatient model
    */
-  readonly fields: PatientCompanyFieldRefs;
+  readonly fields: CompanyPatientFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for PatientCompany.
+   * The delegate class that acts as a "Promise-like" for CompanyPatient.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PatientCompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CompanyPatientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -7736,324 +7736,324 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the PatientCompany model
+   * Fields of the CompanyPatient model
    */ 
-  interface PatientCompanyFieldRefs {
-    readonly patientId: FieldRef<"PatientCompany", 'String'>
-    readonly companyId: FieldRef<"PatientCompany", 'String'>
-    readonly externalId: FieldRef<"PatientCompany", 'String'>
-    readonly createdAt: FieldRef<"PatientCompany", 'DateTime'>
-    readonly updatedAt: FieldRef<"PatientCompany", 'DateTime'>
+  interface CompanyPatientFieldRefs {
+    readonly patientId: FieldRef<"CompanyPatient", 'String'>
+    readonly companyId: FieldRef<"CompanyPatient", 'String'>
+    readonly externalId: FieldRef<"CompanyPatient", 'String'>
+    readonly createdAt: FieldRef<"CompanyPatient", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanyPatient", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * PatientCompany findUnique
+   * CompanyPatient findUnique
    */
-  export type PatientCompanyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter, which PatientCompany to fetch.
+     * Filter, which CompanyPatient to fetch.
      */
-    where: PatientCompanyWhereUniqueInput
+    where: CompanyPatientWhereUniqueInput
   }
 
   /**
-   * PatientCompany findUniqueOrThrow
+   * CompanyPatient findUniqueOrThrow
    */
-  export type PatientCompanyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter, which PatientCompany to fetch.
+     * Filter, which CompanyPatient to fetch.
      */
-    where: PatientCompanyWhereUniqueInput
+    where: CompanyPatientWhereUniqueInput
   }
 
   /**
-   * PatientCompany findFirst
+   * CompanyPatient findFirst
    */
-  export type PatientCompanyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter, which PatientCompany to fetch.
+     * Filter, which CompanyPatient to fetch.
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PatientCompanies to fetch.
+     * Determine the order of CompanyPatients to fetch.
      */
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PatientCompanies.
+     * Sets the position for searching for CompanyPatients.
      */
-    cursor?: PatientCompanyWhereUniqueInput
+    cursor?: CompanyPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PatientCompanies from the position of the cursor.
+     * Take `±n` CompanyPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PatientCompanies.
+     * Skip the first `n` CompanyPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PatientCompanies.
+     * Filter by unique combinations of CompanyPatients.
      */
-    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
-   * PatientCompany findFirstOrThrow
+   * CompanyPatient findFirstOrThrow
    */
-  export type PatientCompanyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter, which PatientCompany to fetch.
+     * Filter, which CompanyPatient to fetch.
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PatientCompanies to fetch.
+     * Determine the order of CompanyPatients to fetch.
      */
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PatientCompanies.
+     * Sets the position for searching for CompanyPatients.
      */
-    cursor?: PatientCompanyWhereUniqueInput
+    cursor?: CompanyPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PatientCompanies from the position of the cursor.
+     * Take `±n` CompanyPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PatientCompanies.
+     * Skip the first `n` CompanyPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PatientCompanies.
+     * Filter by unique combinations of CompanyPatients.
      */
-    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
-   * PatientCompany findMany
+   * CompanyPatient findMany
    */
-  export type PatientCompanyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter, which PatientCompanies to fetch.
+     * Filter, which CompanyPatients to fetch.
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PatientCompanies to fetch.
+     * Determine the order of CompanyPatients to fetch.
      */
-    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing PatientCompanies.
+     * Sets the position for listing CompanyPatients.
      */
-    cursor?: PatientCompanyWhereUniqueInput
+    cursor?: CompanyPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PatientCompanies from the position of the cursor.
+     * Take `±n` CompanyPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PatientCompanies.
+     * Skip the first `n` CompanyPatients.
      */
     skip?: number
-    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
-   * PatientCompany create
+   * CompanyPatient create
    */
-  export type PatientCompanyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * The data needed to create a PatientCompany.
+     * The data needed to create a CompanyPatient.
      */
-    data: XOR<PatientCompanyCreateInput, PatientCompanyUncheckedCreateInput>
+    data: XOR<CompanyPatientCreateInput, CompanyPatientUncheckedCreateInput>
   }
 
   /**
-   * PatientCompany createMany
+   * CompanyPatient createMany
    */
-  export type PatientCompanyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many PatientCompanies.
+     * The data used to create many CompanyPatients.
      */
-    data: PatientCompanyCreateManyInput | PatientCompanyCreateManyInput[]
+    data: CompanyPatientCreateManyInput | CompanyPatientCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * PatientCompany update
+   * CompanyPatient update
    */
-  export type PatientCompanyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * The data needed to update a PatientCompany.
+     * The data needed to update a CompanyPatient.
      */
-    data: XOR<PatientCompanyUpdateInput, PatientCompanyUncheckedUpdateInput>
+    data: XOR<CompanyPatientUpdateInput, CompanyPatientUncheckedUpdateInput>
     /**
-     * Choose, which PatientCompany to update.
+     * Choose, which CompanyPatient to update.
      */
-    where: PatientCompanyWhereUniqueInput
+    where: CompanyPatientWhereUniqueInput
   }
 
   /**
-   * PatientCompany updateMany
+   * CompanyPatient updateMany
    */
-  export type PatientCompanyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update PatientCompanies.
+     * The data used to update CompanyPatients.
      */
-    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyInput>
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyInput>
     /**
-     * Filter which PatientCompanies to update
+     * Filter which CompanyPatients to update
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
   }
 
   /**
-   * PatientCompany upsert
+   * CompanyPatient upsert
    */
-  export type PatientCompanyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * The filter to search for the PatientCompany to update in case it exists.
+     * The filter to search for the CompanyPatient to update in case it exists.
      */
-    where: PatientCompanyWhereUniqueInput
+    where: CompanyPatientWhereUniqueInput
     /**
-     * In case the PatientCompany found by the `where` argument doesn't exist, create a new PatientCompany with this data.
+     * In case the CompanyPatient found by the `where` argument doesn't exist, create a new CompanyPatient with this data.
      */
-    create: XOR<PatientCompanyCreateInput, PatientCompanyUncheckedCreateInput>
+    create: XOR<CompanyPatientCreateInput, CompanyPatientUncheckedCreateInput>
     /**
-     * In case the PatientCompany was found with the provided `where` argument, update it with this data.
+     * In case the CompanyPatient was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PatientCompanyUpdateInput, PatientCompanyUncheckedUpdateInput>
+    update: XOR<CompanyPatientUpdateInput, CompanyPatientUncheckedUpdateInput>
   }
 
   /**
-   * PatientCompany delete
+   * CompanyPatient delete
    */
-  export type PatientCompanyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
     /**
-     * Filter which PatientCompany to delete.
+     * Filter which CompanyPatient to delete.
      */
-    where: PatientCompanyWhereUniqueInput
+    where: CompanyPatientWhereUniqueInput
   }
 
   /**
-   * PatientCompany deleteMany
+   * CompanyPatient deleteMany
    */
-  export type PatientCompanyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PatientCompanies to delete
+     * Filter which CompanyPatients to delete
      */
-    where?: PatientCompanyWhereInput
+    where?: CompanyPatientWhereInput
   }
 
   /**
-   * PatientCompany without action
+   * CompanyPatient without action
    */
-  export type PatientCompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyPatientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PatientCompany
+     * Select specific fields to fetch from the CompanyPatient
      */
-    select?: PatientCompanySelect<ExtArgs> | null
+    select?: CompanyPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientCompanyInclude<ExtArgs> | null
+    include?: CompanyPatientInclude<ExtArgs> | null
   }
 
 
@@ -26044,8 +26044,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      companies: Prisma.$UserCompanyPayload<ExtArgs>[]
-      facilities: Prisma.$UserFacilityPayload<ExtArgs>[]
+      companies: Prisma.$CompanyUserPayload<ExtArgs>[]
+      facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       parcelsCreated: Prisma.$ParcelPayload<ExtArgs>[]
     }
@@ -26422,9 +26422,9 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+    facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -26768,19 +26768,19 @@ export namespace Prisma {
    */
   export type User$companiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
-    where?: UserCompanyWhereInput
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
-    cursor?: UserCompanyWhereUniqueInput
+    include?: CompanyUserInclude<ExtArgs> | null
+    where?: CompanyUserWhereInput
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
+    cursor?: CompanyUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
+    distinct?: CompanyUserScalarFieldEnum | CompanyUserScalarFieldEnum[]
   }
 
   /**
@@ -26788,19 +26788,19 @@ export namespace Prisma {
    */
   export type User$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
-    where?: UserFacilityWhereInput
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
-    cursor?: UserFacilityWhereUniqueInput
+    include?: FacilityUserInclude<ExtArgs> | null
+    where?: FacilityUserWhereInput
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    cursor?: FacilityUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
+    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
@@ -26859,16 +26859,16 @@ export namespace Prisma {
 
 
   /**
-   * Model UserCompany
+   * Model CompanyUser
    */
 
-  export type AggregateUserCompany = {
-    _count: UserCompanyCountAggregateOutputType | null
-    _min: UserCompanyMinAggregateOutputType | null
-    _max: UserCompanyMaxAggregateOutputType | null
+  export type AggregateCompanyUser = {
+    _count: CompanyUserCountAggregateOutputType | null
+    _min: CompanyUserMinAggregateOutputType | null
+    _max: CompanyUserMaxAggregateOutputType | null
   }
 
-  export type UserCompanyMinAggregateOutputType = {
+  export type CompanyUserMinAggregateOutputType = {
     userId: string | null
     companyId: string | null
     role: $Enums.CompanyRole | null
@@ -26876,7 +26876,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type UserCompanyMaxAggregateOutputType = {
+  export type CompanyUserMaxAggregateOutputType = {
     userId: string | null
     companyId: string | null
     role: $Enums.CompanyRole | null
@@ -26884,7 +26884,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type UserCompanyCountAggregateOutputType = {
+  export type CompanyUserCountAggregateOutputType = {
     userId: number
     companyId: number
     role: number
@@ -26894,7 +26894,7 @@ export namespace Prisma {
   }
 
 
-  export type UserCompanyMinAggregateInputType = {
+  export type CompanyUserMinAggregateInputType = {
     userId?: true
     companyId?: true
     role?: true
@@ -26902,7 +26902,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type UserCompanyMaxAggregateInputType = {
+  export type CompanyUserMaxAggregateInputType = {
     userId?: true
     companyId?: true
     role?: true
@@ -26910,7 +26910,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type UserCompanyCountAggregateInputType = {
+  export type CompanyUserCountAggregateInputType = {
     userId?: true
     companyId?: true
     role?: true
@@ -26919,104 +26919,104 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserCompanyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserCompany to aggregate.
+     * Filter which CompanyUser to aggregate.
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserCompanies to fetch.
+     * Determine the order of CompanyUsers to fetch.
      */
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserCompanyWhereUniqueInput
+    cursor?: CompanyUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserCompanies from the position of the cursor.
+     * Take `±n` CompanyUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserCompanies.
+     * Skip the first `n` CompanyUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserCompanies
+     * Count returned CompanyUsers
     **/
-    _count?: true | UserCompanyCountAggregateInputType
+    _count?: true | CompanyUserCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserCompanyMinAggregateInputType
+    _min?: CompanyUserMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserCompanyMaxAggregateInputType
+    _max?: CompanyUserMaxAggregateInputType
   }
 
-  export type GetUserCompanyAggregateType<T extends UserCompanyAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserCompany]: P extends '_count' | 'count'
+  export type GetCompanyUserAggregateType<T extends CompanyUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyUser]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserCompany[P]>
-      : GetScalarType<T[P], AggregateUserCompany[P]>
+        : GetScalarType<T[P], AggregateCompanyUser[P]>
+      : GetScalarType<T[P], AggregateCompanyUser[P]>
   }
 
 
 
 
-  export type UserCompanyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserCompanyWhereInput
-    orderBy?: UserCompanyOrderByWithAggregationInput | UserCompanyOrderByWithAggregationInput[]
-    by: UserCompanyScalarFieldEnum[] | UserCompanyScalarFieldEnum
-    having?: UserCompanyScalarWhereWithAggregatesInput
+  export type CompanyUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyUserWhereInput
+    orderBy?: CompanyUserOrderByWithAggregationInput | CompanyUserOrderByWithAggregationInput[]
+    by: CompanyUserScalarFieldEnum[] | CompanyUserScalarFieldEnum
+    having?: CompanyUserScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserCompanyCountAggregateInputType | true
-    _min?: UserCompanyMinAggregateInputType
-    _max?: UserCompanyMaxAggregateInputType
+    _count?: CompanyUserCountAggregateInputType | true
+    _min?: CompanyUserMinAggregateInputType
+    _max?: CompanyUserMaxAggregateInputType
   }
 
-  export type UserCompanyGroupByOutputType = {
+  export type CompanyUserGroupByOutputType = {
     userId: string
     companyId: string
     role: $Enums.CompanyRole
     createdAt: Date
     updatedAt: Date
-    _count: UserCompanyCountAggregateOutputType | null
-    _min: UserCompanyMinAggregateOutputType | null
-    _max: UserCompanyMaxAggregateOutputType | null
+    _count: CompanyUserCountAggregateOutputType | null
+    _min: CompanyUserMinAggregateOutputType | null
+    _max: CompanyUserMaxAggregateOutputType | null
   }
 
-  type GetUserCompanyGroupByPayload<T extends UserCompanyGroupByArgs> = Prisma.PrismaPromise<
+  type GetCompanyUserGroupByPayload<T extends CompanyUserGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserCompanyGroupByOutputType, T['by']> &
+      PickEnumerable<CompanyUserGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserCompanyGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CompanyUserGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserCompanyGroupByOutputType[P]>
-            : GetScalarType<T[P], UserCompanyGroupByOutputType[P]>
+              : GetScalarType<T[P], CompanyUserGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyUserGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserCompanySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CompanyUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     companyId?: boolean
     role?: boolean
@@ -27024,9 +27024,9 @@ export namespace Prisma {
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userCompany"]>
+  }, ExtArgs["result"]["companyUser"]>
 
-  export type UserCompanySelectScalar = {
+  export type CompanyUserSelectScalar = {
     userId?: boolean
     companyId?: boolean
     role?: boolean
@@ -27035,14 +27035,14 @@ export namespace Prisma {
   }
 
 
-  export type UserCompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
 
 
-  export type $UserCompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserCompany"
+  export type $CompanyUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyUser"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       company: Prisma.$CompanyPayload<ExtArgs>
@@ -27053,160 +27053,160 @@ export namespace Prisma {
       role: $Enums.CompanyRole
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["userCompany"]>
+    }, ExtArgs["result"]["companyUser"]>
     composites: {}
   }
 
 
-  type UserCompanyGetPayload<S extends boolean | null | undefined | UserCompanyDefaultArgs> = $Result.GetResult<Prisma.$UserCompanyPayload, S>
+  type CompanyUserGetPayload<S extends boolean | null | undefined | CompanyUserDefaultArgs> = $Result.GetResult<Prisma.$CompanyUserPayload, S>
 
-  type UserCompanyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserCompanyFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: UserCompanyCountAggregateInputType | true
+  type CompanyUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CompanyUserFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CompanyUserCountAggregateInputType | true
     }
 
-  export interface UserCompanyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserCompany'], meta: { name: 'UserCompany' } }
+  export interface CompanyUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyUser'], meta: { name: 'CompanyUser' } }
     /**
-     * Find zero or one UserCompany that matches the filter.
-     * @param {UserCompanyFindUniqueArgs} args - Arguments to find a UserCompany
+     * Find zero or one CompanyUser that matches the filter.
+     * @param {CompanyUserFindUniqueArgs} args - Arguments to find a CompanyUser
      * @example
-     * // Get one UserCompany
-     * const userCompany = await prisma.userCompany.findUnique({
+     * // Get one CompanyUser
+     * const companyUser = await prisma.companyUser.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserCompanyFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends CompanyUserFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserFindUniqueArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one UserCompany that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one CompanyUser that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {UserCompanyFindUniqueOrThrowArgs} args - Arguments to find a UserCompany
+     * @param {CompanyUserFindUniqueOrThrowArgs} args - Arguments to find a CompanyUser
      * @example
-     * // Get one UserCompany
-     * const userCompany = await prisma.userCompany.findUniqueOrThrow({
+     * // Get one CompanyUser
+     * const companyUser = await prisma.companyUser.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserCompanyFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends CompanyUserFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first UserCompany that matches the filter.
+     * Find the first CompanyUser that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyFindFirstArgs} args - Arguments to find a UserCompany
+     * @param {CompanyUserFindFirstArgs} args - Arguments to find a CompanyUser
      * @example
-     * // Get one UserCompany
-     * const userCompany = await prisma.userCompany.findFirst({
+     * // Get one CompanyUser
+     * const companyUser = await prisma.companyUser.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserCompanyFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyFindFirstArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends CompanyUserFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserFindFirstArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first UserCompany that matches the filter or
+     * Find the first CompanyUser that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyFindFirstOrThrowArgs} args - Arguments to find a UserCompany
+     * @param {CompanyUserFindFirstOrThrowArgs} args - Arguments to find a CompanyUser
      * @example
-     * // Get one UserCompany
-     * const userCompany = await prisma.userCompany.findFirstOrThrow({
+     * // Get one CompanyUser
+     * const companyUser = await prisma.companyUser.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserCompanyFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends CompanyUserFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more UserCompanies that matches the filter.
+     * Find zero or more CompanyUsers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {CompanyUserFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserCompanies
-     * const userCompanies = await prisma.userCompany.findMany()
+     * // Get all CompanyUsers
+     * const companyUsers = await prisma.companyUser.findMany()
      * 
-     * // Get first 10 UserCompanies
-     * const userCompanies = await prisma.userCompany.findMany({ take: 10 })
+     * // Get first 10 CompanyUsers
+     * const companyUsers = await prisma.companyUser.findMany({ take: 10 })
      * 
      * // Only select the `userId`
-     * const userCompanyWithUserIdOnly = await prisma.userCompany.findMany({ select: { userId: true } })
+     * const companyUserWithUserIdOnly = await prisma.companyUser.findMany({ select: { userId: true } })
      * 
     **/
-    findMany<T extends UserCompanyFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends CompanyUserFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a UserCompany.
-     * @param {UserCompanyCreateArgs} args - Arguments to create a UserCompany.
+     * Create a CompanyUser.
+     * @param {CompanyUserCreateArgs} args - Arguments to create a CompanyUser.
      * @example
-     * // Create one UserCompany
-     * const UserCompany = await prisma.userCompany.create({
+     * // Create one CompanyUser
+     * const CompanyUser = await prisma.companyUser.create({
      *   data: {
-     *     // ... data to create a UserCompany
+     *     // ... data to create a CompanyUser
      *   }
      * })
      * 
     **/
-    create<T extends UserCompanyCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyCreateArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends CompanyUserCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserCreateArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many UserCompanies.
-     *     @param {UserCompanyCreateManyArgs} args - Arguments to create many UserCompanies.
+     * Create many CompanyUsers.
+     *     @param {CompanyUserCreateManyArgs} args - Arguments to create many CompanyUsers.
      *     @example
-     *     // Create many UserCompanies
-     *     const userCompany = await prisma.userCompany.createMany({
+     *     // Create many CompanyUsers
+     *     const companyUser = await prisma.companyUser.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends UserCompanyCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyCreateManyArgs<ExtArgs>>
+    createMany<T extends CompanyUserCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a UserCompany.
-     * @param {UserCompanyDeleteArgs} args - Arguments to delete one UserCompany.
+     * Delete a CompanyUser.
+     * @param {CompanyUserDeleteArgs} args - Arguments to delete one CompanyUser.
      * @example
-     * // Delete one UserCompany
-     * const UserCompany = await prisma.userCompany.delete({
+     * // Delete one CompanyUser
+     * const CompanyUser = await prisma.companyUser.delete({
      *   where: {
-     *     // ... filter to delete one UserCompany
+     *     // ... filter to delete one CompanyUser
      *   }
      * })
      * 
     **/
-    delete<T extends UserCompanyDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyDeleteArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends CompanyUserDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserDeleteArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one UserCompany.
-     * @param {UserCompanyUpdateArgs} args - Arguments to update one UserCompany.
+     * Update one CompanyUser.
+     * @param {CompanyUserUpdateArgs} args - Arguments to update one CompanyUser.
      * @example
-     * // Update one UserCompany
-     * const userCompany = await prisma.userCompany.update({
+     * // Update one CompanyUser
+     * const companyUser = await prisma.companyUser.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -27216,34 +27216,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserCompanyUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyUpdateArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends CompanyUserUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserUpdateArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more UserCompanies.
-     * @param {UserCompanyDeleteManyArgs} args - Arguments to filter UserCompanies to delete.
+     * Delete zero or more CompanyUsers.
+     * @param {CompanyUserDeleteManyArgs} args - Arguments to filter CompanyUsers to delete.
      * @example
-     * // Delete a few UserCompanies
-     * const { count } = await prisma.userCompany.deleteMany({
+     * // Delete a few CompanyUsers
+     * const { count } = await prisma.companyUser.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserCompanyDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCompanyDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends CompanyUserDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyUserDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserCompanies.
+     * Update zero or more CompanyUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CompanyUserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserCompanies
-     * const userCompany = await prisma.userCompany.updateMany({
+     * // Update many CompanyUsers
+     * const companyUser = await prisma.companyUser.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -27253,59 +27253,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserCompanyUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyUpdateManyArgs<ExtArgs>>
+    updateMany<T extends CompanyUserUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one UserCompany.
-     * @param {UserCompanyUpsertArgs} args - Arguments to update or create a UserCompany.
+     * Create or update one CompanyUser.
+     * @param {CompanyUserUpsertArgs} args - Arguments to update or create a CompanyUser.
      * @example
-     * // Update or create a UserCompany
-     * const userCompany = await prisma.userCompany.upsert({
+     * // Update or create a CompanyUser
+     * const companyUser = await prisma.companyUser.upsert({
      *   create: {
-     *     // ... data to create a UserCompany
+     *     // ... data to create a CompanyUser
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserCompany we want to update
+     *     // ... the filter for the CompanyUser we want to update
      *   }
      * })
     **/
-    upsert<T extends UserCompanyUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCompanyUpsertArgs<ExtArgs>>
-    ): Prisma__UserCompanyClient<$Result.GetResult<Prisma.$UserCompanyPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends CompanyUserUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyUserUpsertArgs<ExtArgs>>
+    ): Prisma__CompanyUserClient<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of UserCompanies.
+     * Count the number of CompanyUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyCountArgs} args - Arguments to filter UserCompanies to count.
+     * @param {CompanyUserCountArgs} args - Arguments to filter CompanyUsers to count.
      * @example
-     * // Count the number of UserCompanies
-     * const count = await prisma.userCompany.count({
+     * // Count the number of CompanyUsers
+     * const count = await prisma.companyUser.count({
      *   where: {
-     *     // ... the filter for the UserCompanies we want to count
+     *     // ... the filter for the CompanyUsers we want to count
      *   }
      * })
     **/
-    count<T extends UserCompanyCountArgs>(
-      args?: Subset<T, UserCompanyCountArgs>,
+    count<T extends CompanyUserCountArgs>(
+      args?: Subset<T, CompanyUserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserCompanyCountAggregateOutputType>
+          : GetScalarType<T['select'], CompanyUserCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserCompany.
+     * Allows you to perform aggregations operations on a CompanyUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CompanyUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -27325,13 +27325,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserCompanyAggregateArgs>(args: Subset<T, UserCompanyAggregateArgs>): Prisma.PrismaPromise<GetUserCompanyAggregateType<T>>
+    aggregate<T extends CompanyUserAggregateArgs>(args: Subset<T, CompanyUserAggregateArgs>): Prisma.PrismaPromise<GetCompanyUserAggregateType<T>>
 
     /**
-     * Group by UserCompany.
+     * Group by CompanyUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCompanyGroupByArgs} args - Group by arguments.
+     * @param {CompanyUserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -27346,14 +27346,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserCompanyGroupByArgs,
+      T extends CompanyUserGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserCompanyGroupByArgs['orderBy'] }
-        : { orderBy?: UserCompanyGroupByArgs['orderBy'] },
+        ? { orderBy: CompanyUserGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyUserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -27402,20 +27402,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserCompanyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserCompanyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CompanyUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserCompany model
+   * Fields of the CompanyUser model
    */
-  readonly fields: UserCompanyFieldRefs;
+  readonly fields: CompanyUserFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserCompany.
+   * The delegate class that acts as a "Promise-like" for CompanyUser.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserCompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CompanyUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -27447,352 +27447,352 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserCompany model
+   * Fields of the CompanyUser model
    */ 
-  interface UserCompanyFieldRefs {
-    readonly userId: FieldRef<"UserCompany", 'String'>
-    readonly companyId: FieldRef<"UserCompany", 'String'>
-    readonly role: FieldRef<"UserCompany", 'CompanyRole'>
-    readonly createdAt: FieldRef<"UserCompany", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserCompany", 'DateTime'>
+  interface CompanyUserFieldRefs {
+    readonly userId: FieldRef<"CompanyUser", 'String'>
+    readonly companyId: FieldRef<"CompanyUser", 'String'>
+    readonly role: FieldRef<"CompanyUser", 'CompanyRole'>
+    readonly createdAt: FieldRef<"CompanyUser", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanyUser", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserCompany findUnique
+   * CompanyUser findUnique
    */
-  export type UserCompanyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserCompany to fetch.
+     * Filter, which CompanyUser to fetch.
      */
-    where: UserCompanyWhereUniqueInput
+    where: CompanyUserWhereUniqueInput
   }
 
   /**
-   * UserCompany findUniqueOrThrow
+   * CompanyUser findUniqueOrThrow
    */
-  export type UserCompanyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserCompany to fetch.
+     * Filter, which CompanyUser to fetch.
      */
-    where: UserCompanyWhereUniqueInput
+    where: CompanyUserWhereUniqueInput
   }
 
   /**
-   * UserCompany findFirst
+   * CompanyUser findFirst
    */
-  export type UserCompanyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserCompany to fetch.
+     * Filter, which CompanyUser to fetch.
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserCompanies to fetch.
+     * Determine the order of CompanyUsers to fetch.
      */
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserCompanies.
+     * Sets the position for searching for CompanyUsers.
      */
-    cursor?: UserCompanyWhereUniqueInput
+    cursor?: CompanyUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserCompanies from the position of the cursor.
+     * Take `±n` CompanyUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserCompanies.
+     * Skip the first `n` CompanyUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserCompanies.
+     * Filter by unique combinations of CompanyUsers.
      */
-    distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
+    distinct?: CompanyUserScalarFieldEnum | CompanyUserScalarFieldEnum[]
   }
 
   /**
-   * UserCompany findFirstOrThrow
+   * CompanyUser findFirstOrThrow
    */
-  export type UserCompanyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserCompany to fetch.
+     * Filter, which CompanyUser to fetch.
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserCompanies to fetch.
+     * Determine the order of CompanyUsers to fetch.
      */
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserCompanies.
+     * Sets the position for searching for CompanyUsers.
      */
-    cursor?: UserCompanyWhereUniqueInput
+    cursor?: CompanyUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserCompanies from the position of the cursor.
+     * Take `±n` CompanyUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserCompanies.
+     * Skip the first `n` CompanyUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserCompanies.
+     * Filter by unique combinations of CompanyUsers.
      */
-    distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
+    distinct?: CompanyUserScalarFieldEnum | CompanyUserScalarFieldEnum[]
   }
 
   /**
-   * UserCompany findMany
+   * CompanyUser findMany
    */
-  export type UserCompanyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserCompanies to fetch.
+     * Filter, which CompanyUsers to fetch.
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserCompanies to fetch.
+     * Determine the order of CompanyUsers to fetch.
      */
-    orderBy?: UserCompanyOrderByWithRelationInput | UserCompanyOrderByWithRelationInput[]
+    orderBy?: CompanyUserOrderByWithRelationInput | CompanyUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserCompanies.
+     * Sets the position for listing CompanyUsers.
      */
-    cursor?: UserCompanyWhereUniqueInput
+    cursor?: CompanyUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserCompanies from the position of the cursor.
+     * Take `±n` CompanyUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserCompanies.
+     * Skip the first `n` CompanyUsers.
      */
     skip?: number
-    distinct?: UserCompanyScalarFieldEnum | UserCompanyScalarFieldEnum[]
+    distinct?: CompanyUserScalarFieldEnum | CompanyUserScalarFieldEnum[]
   }
 
   /**
-   * UserCompany create
+   * CompanyUser create
    */
-  export type UserCompanyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserCompany.
+     * The data needed to create a CompanyUser.
      */
-    data: XOR<UserCompanyCreateInput, UserCompanyUncheckedCreateInput>
+    data: XOR<CompanyUserCreateInput, CompanyUserUncheckedCreateInput>
   }
 
   /**
-   * UserCompany createMany
+   * CompanyUser createMany
    */
-  export type UserCompanyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserCompanies.
+     * The data used to create many CompanyUsers.
      */
-    data: UserCompanyCreateManyInput | UserCompanyCreateManyInput[]
+    data: CompanyUserCreateManyInput | CompanyUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserCompany update
+   * CompanyUser update
    */
-  export type UserCompanyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserCompany.
+     * The data needed to update a CompanyUser.
      */
-    data: XOR<UserCompanyUpdateInput, UserCompanyUncheckedUpdateInput>
+    data: XOR<CompanyUserUpdateInput, CompanyUserUncheckedUpdateInput>
     /**
-     * Choose, which UserCompany to update.
+     * Choose, which CompanyUser to update.
      */
-    where: UserCompanyWhereUniqueInput
+    where: CompanyUserWhereUniqueInput
   }
 
   /**
-   * UserCompany updateMany
+   * CompanyUser updateMany
    */
-  export type UserCompanyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserCompanies.
+     * The data used to update CompanyUsers.
      */
-    data: XOR<UserCompanyUpdateManyMutationInput, UserCompanyUncheckedUpdateManyInput>
+    data: XOR<CompanyUserUpdateManyMutationInput, CompanyUserUncheckedUpdateManyInput>
     /**
-     * Filter which UserCompanies to update
+     * Filter which CompanyUsers to update
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
   }
 
   /**
-   * UserCompany upsert
+   * CompanyUser upsert
    */
-  export type UserCompanyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserCompany to update in case it exists.
+     * The filter to search for the CompanyUser to update in case it exists.
      */
-    where: UserCompanyWhereUniqueInput
+    where: CompanyUserWhereUniqueInput
     /**
-     * In case the UserCompany found by the `where` argument doesn't exist, create a new UserCompany with this data.
+     * In case the CompanyUser found by the `where` argument doesn't exist, create a new CompanyUser with this data.
      */
-    create: XOR<UserCompanyCreateInput, UserCompanyUncheckedCreateInput>
+    create: XOR<CompanyUserCreateInput, CompanyUserUncheckedCreateInput>
     /**
-     * In case the UserCompany was found with the provided `where` argument, update it with this data.
+     * In case the CompanyUser was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserCompanyUpdateInput, UserCompanyUncheckedUpdateInput>
+    update: XOR<CompanyUserUpdateInput, CompanyUserUncheckedUpdateInput>
   }
 
   /**
-   * UserCompany delete
+   * CompanyUser delete
    */
-  export type UserCompanyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
     /**
-     * Filter which UserCompany to delete.
+     * Filter which CompanyUser to delete.
      */
-    where: UserCompanyWhereUniqueInput
+    where: CompanyUserWhereUniqueInput
   }
 
   /**
-   * UserCompany deleteMany
+   * CompanyUser deleteMany
    */
-  export type UserCompanyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserCompanies to delete
+     * Filter which CompanyUsers to delete
      */
-    where?: UserCompanyWhereInput
+    where?: CompanyUserWhereInput
   }
 
   /**
-   * UserCompany without action
+   * CompanyUser without action
    */
-  export type UserCompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CompanyUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCompany
+     * Select specific fields to fetch from the CompanyUser
      */
-    select?: UserCompanySelect<ExtArgs> | null
+    select?: CompanyUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserCompanyInclude<ExtArgs> | null
+    include?: CompanyUserInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model UserFacility
+   * Model FacilityUser
    */
 
-  export type AggregateUserFacility = {
-    _count: UserFacilityCountAggregateOutputType | null
-    _min: UserFacilityMinAggregateOutputType | null
-    _max: UserFacilityMaxAggregateOutputType | null
+  export type AggregateFacilityUser = {
+    _count: FacilityUserCountAggregateOutputType | null
+    _min: FacilityUserMinAggregateOutputType | null
+    _max: FacilityUserMaxAggregateOutputType | null
   }
 
-  export type UserFacilityMinAggregateOutputType = {
+  export type FacilityUserMinAggregateOutputType = {
     userId: string | null
     facilityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type UserFacilityMaxAggregateOutputType = {
+  export type FacilityUserMaxAggregateOutputType = {
     userId: string | null
     facilityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type UserFacilityCountAggregateOutputType = {
+  export type FacilityUserCountAggregateOutputType = {
     userId: number
     facilityId: number
     createdAt: number
@@ -27801,21 +27801,21 @@ export namespace Prisma {
   }
 
 
-  export type UserFacilityMinAggregateInputType = {
+  export type FacilityUserMinAggregateInputType = {
     userId?: true
     facilityId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type UserFacilityMaxAggregateInputType = {
+  export type FacilityUserMaxAggregateInputType = {
     userId?: true
     facilityId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type UserFacilityCountAggregateInputType = {
+  export type FacilityUserCountAggregateInputType = {
     userId?: true
     facilityId?: true
     createdAt?: true
@@ -27823,112 +27823,112 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserFacilityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserFacility to aggregate.
+     * Filter which FacilityUser to aggregate.
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserFacilities to fetch.
+     * Determine the order of FacilityUsers to fetch.
      */
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserFacilityWhereUniqueInput
+    cursor?: FacilityUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserFacilities from the position of the cursor.
+     * Take `±n` FacilityUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserFacilities.
+     * Skip the first `n` FacilityUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserFacilities
+     * Count returned FacilityUsers
     **/
-    _count?: true | UserFacilityCountAggregateInputType
+    _count?: true | FacilityUserCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserFacilityMinAggregateInputType
+    _min?: FacilityUserMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserFacilityMaxAggregateInputType
+    _max?: FacilityUserMaxAggregateInputType
   }
 
-  export type GetUserFacilityAggregateType<T extends UserFacilityAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserFacility]: P extends '_count' | 'count'
+  export type GetFacilityUserAggregateType<T extends FacilityUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateFacilityUser]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserFacility[P]>
-      : GetScalarType<T[P], AggregateUserFacility[P]>
+        : GetScalarType<T[P], AggregateFacilityUser[P]>
+      : GetScalarType<T[P], AggregateFacilityUser[P]>
   }
 
 
 
 
-  export type UserFacilityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserFacilityWhereInput
-    orderBy?: UserFacilityOrderByWithAggregationInput | UserFacilityOrderByWithAggregationInput[]
-    by: UserFacilityScalarFieldEnum[] | UserFacilityScalarFieldEnum
-    having?: UserFacilityScalarWhereWithAggregatesInput
+  export type FacilityUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityUserWhereInput
+    orderBy?: FacilityUserOrderByWithAggregationInput | FacilityUserOrderByWithAggregationInput[]
+    by: FacilityUserScalarFieldEnum[] | FacilityUserScalarFieldEnum
+    having?: FacilityUserScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserFacilityCountAggregateInputType | true
-    _min?: UserFacilityMinAggregateInputType
-    _max?: UserFacilityMaxAggregateInputType
+    _count?: FacilityUserCountAggregateInputType | true
+    _min?: FacilityUserMinAggregateInputType
+    _max?: FacilityUserMaxAggregateInputType
   }
 
-  export type UserFacilityGroupByOutputType = {
+  export type FacilityUserGroupByOutputType = {
     userId: string
     facilityId: string
     createdAt: Date
     updatedAt: Date
-    _count: UserFacilityCountAggregateOutputType | null
-    _min: UserFacilityMinAggregateOutputType | null
-    _max: UserFacilityMaxAggregateOutputType | null
+    _count: FacilityUserCountAggregateOutputType | null
+    _min: FacilityUserMinAggregateOutputType | null
+    _max: FacilityUserMaxAggregateOutputType | null
   }
 
-  type GetUserFacilityGroupByPayload<T extends UserFacilityGroupByArgs> = Prisma.PrismaPromise<
+  type GetFacilityUserGroupByPayload<T extends FacilityUserGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserFacilityGroupByOutputType, T['by']> &
+      PickEnumerable<FacilityUserGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserFacilityGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FacilityUserGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserFacilityGroupByOutputType[P]>
-            : GetScalarType<T[P], UserFacilityGroupByOutputType[P]>
+              : GetScalarType<T[P], FacilityUserGroupByOutputType[P]>
+            : GetScalarType<T[P], FacilityUserGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserFacilitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FacilityUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     facilityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     facility?: boolean | FacilityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userFacility"]>
+  }, ExtArgs["result"]["facilityUser"]>
 
-  export type UserFacilitySelectScalar = {
+  export type FacilityUserSelectScalar = {
     userId?: boolean
     facilityId?: boolean
     createdAt?: boolean
@@ -27936,14 +27936,14 @@ export namespace Prisma {
   }
 
 
-  export type UserFacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     facility?: boolean | FacilityDefaultArgs<ExtArgs>
   }
 
 
-  export type $UserFacilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserFacility"
+  export type $FacilityUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FacilityUser"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       facility: Prisma.$FacilityPayload<ExtArgs>
@@ -27953,160 +27953,160 @@ export namespace Prisma {
       facilityId: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["userFacility"]>
+    }, ExtArgs["result"]["facilityUser"]>
     composites: {}
   }
 
 
-  type UserFacilityGetPayload<S extends boolean | null | undefined | UserFacilityDefaultArgs> = $Result.GetResult<Prisma.$UserFacilityPayload, S>
+  type FacilityUserGetPayload<S extends boolean | null | undefined | FacilityUserDefaultArgs> = $Result.GetResult<Prisma.$FacilityUserPayload, S>
 
-  type UserFacilityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFacilityFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: UserFacilityCountAggregateInputType | true
+  type FacilityUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FacilityUserFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FacilityUserCountAggregateInputType | true
     }
 
-  export interface UserFacilityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserFacility'], meta: { name: 'UserFacility' } }
+  export interface FacilityUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityUser'], meta: { name: 'FacilityUser' } }
     /**
-     * Find zero or one UserFacility that matches the filter.
-     * @param {UserFacilityFindUniqueArgs} args - Arguments to find a UserFacility
+     * Find zero or one FacilityUser that matches the filter.
+     * @param {FacilityUserFindUniqueArgs} args - Arguments to find a FacilityUser
      * @example
-     * // Get one UserFacility
-     * const userFacility = await prisma.userFacility.findUnique({
+     * // Get one FacilityUser
+     * const facilityUser = await prisma.facilityUser.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserFacilityFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends FacilityUserFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserFindUniqueArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one UserFacility that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one FacilityUser that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {UserFacilityFindUniqueOrThrowArgs} args - Arguments to find a UserFacility
+     * @param {FacilityUserFindUniqueOrThrowArgs} args - Arguments to find a FacilityUser
      * @example
-     * // Get one UserFacility
-     * const userFacility = await prisma.userFacility.findUniqueOrThrow({
+     * // Get one FacilityUser
+     * const facilityUser = await prisma.facilityUser.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserFacilityFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends FacilityUserFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first UserFacility that matches the filter.
+     * Find the first FacilityUser that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityFindFirstArgs} args - Arguments to find a UserFacility
+     * @param {FacilityUserFindFirstArgs} args - Arguments to find a FacilityUser
      * @example
-     * // Get one UserFacility
-     * const userFacility = await prisma.userFacility.findFirst({
+     * // Get one FacilityUser
+     * const facilityUser = await prisma.facilityUser.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserFacilityFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityFindFirstArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends FacilityUserFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserFindFirstArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first UserFacility that matches the filter or
+     * Find the first FacilityUser that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityFindFirstOrThrowArgs} args - Arguments to find a UserFacility
+     * @param {FacilityUserFindFirstOrThrowArgs} args - Arguments to find a FacilityUser
      * @example
-     * // Get one UserFacility
-     * const userFacility = await prisma.userFacility.findFirstOrThrow({
+     * // Get one FacilityUser
+     * const facilityUser = await prisma.facilityUser.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserFacilityFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends FacilityUserFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more UserFacilities that matches the filter.
+     * Find zero or more FacilityUsers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {FacilityUserFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserFacilities
-     * const userFacilities = await prisma.userFacility.findMany()
+     * // Get all FacilityUsers
+     * const facilityUsers = await prisma.facilityUser.findMany()
      * 
-     * // Get first 10 UserFacilities
-     * const userFacilities = await prisma.userFacility.findMany({ take: 10 })
+     * // Get first 10 FacilityUsers
+     * const facilityUsers = await prisma.facilityUser.findMany({ take: 10 })
      * 
      * // Only select the `userId`
-     * const userFacilityWithUserIdOnly = await prisma.userFacility.findMany({ select: { userId: true } })
+     * const facilityUserWithUserIdOnly = await prisma.facilityUser.findMany({ select: { userId: true } })
      * 
     **/
-    findMany<T extends UserFacilityFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends FacilityUserFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a UserFacility.
-     * @param {UserFacilityCreateArgs} args - Arguments to create a UserFacility.
+     * Create a FacilityUser.
+     * @param {FacilityUserCreateArgs} args - Arguments to create a FacilityUser.
      * @example
-     * // Create one UserFacility
-     * const UserFacility = await prisma.userFacility.create({
+     * // Create one FacilityUser
+     * const FacilityUser = await prisma.facilityUser.create({
      *   data: {
-     *     // ... data to create a UserFacility
+     *     // ... data to create a FacilityUser
      *   }
      * })
      * 
     **/
-    create<T extends UserFacilityCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityCreateArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends FacilityUserCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserCreateArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many UserFacilities.
-     *     @param {UserFacilityCreateManyArgs} args - Arguments to create many UserFacilities.
+     * Create many FacilityUsers.
+     *     @param {FacilityUserCreateManyArgs} args - Arguments to create many FacilityUsers.
      *     @example
-     *     // Create many UserFacilities
-     *     const userFacility = await prisma.userFacility.createMany({
+     *     // Create many FacilityUsers
+     *     const facilityUser = await prisma.facilityUser.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends UserFacilityCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityCreateManyArgs<ExtArgs>>
+    createMany<T extends FacilityUserCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a UserFacility.
-     * @param {UserFacilityDeleteArgs} args - Arguments to delete one UserFacility.
+     * Delete a FacilityUser.
+     * @param {FacilityUserDeleteArgs} args - Arguments to delete one FacilityUser.
      * @example
-     * // Delete one UserFacility
-     * const UserFacility = await prisma.userFacility.delete({
+     * // Delete one FacilityUser
+     * const FacilityUser = await prisma.facilityUser.delete({
      *   where: {
-     *     // ... filter to delete one UserFacility
+     *     // ... filter to delete one FacilityUser
      *   }
      * })
      * 
     **/
-    delete<T extends UserFacilityDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityDeleteArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends FacilityUserDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserDeleteArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one UserFacility.
-     * @param {UserFacilityUpdateArgs} args - Arguments to update one UserFacility.
+     * Update one FacilityUser.
+     * @param {FacilityUserUpdateArgs} args - Arguments to update one FacilityUser.
      * @example
-     * // Update one UserFacility
-     * const userFacility = await prisma.userFacility.update({
+     * // Update one FacilityUser
+     * const facilityUser = await prisma.facilityUser.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -28116,34 +28116,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserFacilityUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityUpdateArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends FacilityUserUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserUpdateArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more UserFacilities.
-     * @param {UserFacilityDeleteManyArgs} args - Arguments to filter UserFacilities to delete.
+     * Delete zero or more FacilityUsers.
+     * @param {FacilityUserDeleteManyArgs} args - Arguments to filter FacilityUsers to delete.
      * @example
-     * // Delete a few UserFacilities
-     * const { count } = await prisma.userFacility.deleteMany({
+     * // Delete a few FacilityUsers
+     * const { count } = await prisma.facilityUser.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserFacilityDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFacilityDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends FacilityUserDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityUserDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserFacilities.
+     * Update zero or more FacilityUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FacilityUserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserFacilities
-     * const userFacility = await prisma.userFacility.updateMany({
+     * // Update many FacilityUsers
+     * const facilityUser = await prisma.facilityUser.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -28153,59 +28153,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserFacilityUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityUpdateManyArgs<ExtArgs>>
+    updateMany<T extends FacilityUserUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one UserFacility.
-     * @param {UserFacilityUpsertArgs} args - Arguments to update or create a UserFacility.
+     * Create or update one FacilityUser.
+     * @param {FacilityUserUpsertArgs} args - Arguments to update or create a FacilityUser.
      * @example
-     * // Update or create a UserFacility
-     * const userFacility = await prisma.userFacility.upsert({
+     * // Update or create a FacilityUser
+     * const facilityUser = await prisma.facilityUser.upsert({
      *   create: {
-     *     // ... data to create a UserFacility
+     *     // ... data to create a FacilityUser
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserFacility we want to update
+     *     // ... the filter for the FacilityUser we want to update
      *   }
      * })
     **/
-    upsert<T extends UserFacilityUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFacilityUpsertArgs<ExtArgs>>
-    ): Prisma__UserFacilityClient<$Result.GetResult<Prisma.$UserFacilityPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends FacilityUserUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityUserUpsertArgs<ExtArgs>>
+    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of UserFacilities.
+     * Count the number of FacilityUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityCountArgs} args - Arguments to filter UserFacilities to count.
+     * @param {FacilityUserCountArgs} args - Arguments to filter FacilityUsers to count.
      * @example
-     * // Count the number of UserFacilities
-     * const count = await prisma.userFacility.count({
+     * // Count the number of FacilityUsers
+     * const count = await prisma.facilityUser.count({
      *   where: {
-     *     // ... the filter for the UserFacilities we want to count
+     *     // ... the filter for the FacilityUsers we want to count
      *   }
      * })
     **/
-    count<T extends UserFacilityCountArgs>(
-      args?: Subset<T, UserFacilityCountArgs>,
+    count<T extends FacilityUserCountArgs>(
+      args?: Subset<T, FacilityUserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserFacilityCountAggregateOutputType>
+          : GetScalarType<T['select'], FacilityUserCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserFacility.
+     * Allows you to perform aggregations operations on a FacilityUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FacilityUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -28225,13 +28225,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserFacilityAggregateArgs>(args: Subset<T, UserFacilityAggregateArgs>): Prisma.PrismaPromise<GetUserFacilityAggregateType<T>>
+    aggregate<T extends FacilityUserAggregateArgs>(args: Subset<T, FacilityUserAggregateArgs>): Prisma.PrismaPromise<GetFacilityUserAggregateType<T>>
 
     /**
-     * Group by UserFacility.
+     * Group by FacilityUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFacilityGroupByArgs} args - Group by arguments.
+     * @param {FacilityUserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -28246,14 +28246,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserFacilityGroupByArgs,
+      T extends FacilityUserGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserFacilityGroupByArgs['orderBy'] }
-        : { orderBy?: UserFacilityGroupByArgs['orderBy'] },
+        ? { orderBy: FacilityUserGroupByArgs['orderBy'] }
+        : { orderBy?: FacilityUserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -28302,20 +28302,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserFacilityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserFacilityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FacilityUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserFacility model
+   * Fields of the FacilityUser model
    */
-  readonly fields: UserFacilityFieldRefs;
+  readonly fields: FacilityUserFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserFacility.
+   * The delegate class that acts as a "Promise-like" for FacilityUser.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserFacilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FacilityUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -28347,323 +28347,323 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserFacility model
+   * Fields of the FacilityUser model
    */ 
-  interface UserFacilityFieldRefs {
-    readonly userId: FieldRef<"UserFacility", 'String'>
-    readonly facilityId: FieldRef<"UserFacility", 'String'>
-    readonly createdAt: FieldRef<"UserFacility", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserFacility", 'DateTime'>
+  interface FacilityUserFieldRefs {
+    readonly userId: FieldRef<"FacilityUser", 'String'>
+    readonly facilityId: FieldRef<"FacilityUser", 'String'>
+    readonly createdAt: FieldRef<"FacilityUser", 'DateTime'>
+    readonly updatedAt: FieldRef<"FacilityUser", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserFacility findUnique
+   * FacilityUser findUnique
    */
-  export type UserFacilityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserFacility to fetch.
+     * Filter, which FacilityUser to fetch.
      */
-    where: UserFacilityWhereUniqueInput
+    where: FacilityUserWhereUniqueInput
   }
 
   /**
-   * UserFacility findUniqueOrThrow
+   * FacilityUser findUniqueOrThrow
    */
-  export type UserFacilityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserFacility to fetch.
+     * Filter, which FacilityUser to fetch.
      */
-    where: UserFacilityWhereUniqueInput
+    where: FacilityUserWhereUniqueInput
   }
 
   /**
-   * UserFacility findFirst
+   * FacilityUser findFirst
    */
-  export type UserFacilityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserFacility to fetch.
+     * Filter, which FacilityUser to fetch.
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserFacilities to fetch.
+     * Determine the order of FacilityUsers to fetch.
      */
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserFacilities.
+     * Sets the position for searching for FacilityUsers.
      */
-    cursor?: UserFacilityWhereUniqueInput
+    cursor?: FacilityUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserFacilities from the position of the cursor.
+     * Take `±n` FacilityUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserFacilities.
+     * Skip the first `n` FacilityUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserFacilities.
+     * Filter by unique combinations of FacilityUsers.
      */
-    distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
+    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
-   * UserFacility findFirstOrThrow
+   * FacilityUser findFirstOrThrow
    */
-  export type UserFacilityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserFacility to fetch.
+     * Filter, which FacilityUser to fetch.
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserFacilities to fetch.
+     * Determine the order of FacilityUsers to fetch.
      */
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserFacilities.
+     * Sets the position for searching for FacilityUsers.
      */
-    cursor?: UserFacilityWhereUniqueInput
+    cursor?: FacilityUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserFacilities from the position of the cursor.
+     * Take `±n` FacilityUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserFacilities.
+     * Skip the first `n` FacilityUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserFacilities.
+     * Filter by unique combinations of FacilityUsers.
      */
-    distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
+    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
-   * UserFacility findMany
+   * FacilityUser findMany
    */
-  export type UserFacilityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter, which UserFacilities to fetch.
+     * Filter, which FacilityUsers to fetch.
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserFacilities to fetch.
+     * Determine the order of FacilityUsers to fetch.
      */
-    orderBy?: UserFacilityOrderByWithRelationInput | UserFacilityOrderByWithRelationInput[]
+    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserFacilities.
+     * Sets the position for listing FacilityUsers.
      */
-    cursor?: UserFacilityWhereUniqueInput
+    cursor?: FacilityUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserFacilities from the position of the cursor.
+     * Take `±n` FacilityUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserFacilities.
+     * Skip the first `n` FacilityUsers.
      */
     skip?: number
-    distinct?: UserFacilityScalarFieldEnum | UserFacilityScalarFieldEnum[]
+    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
-   * UserFacility create
+   * FacilityUser create
    */
-  export type UserFacilityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserFacility.
+     * The data needed to create a FacilityUser.
      */
-    data: XOR<UserFacilityCreateInput, UserFacilityUncheckedCreateInput>
+    data: XOR<FacilityUserCreateInput, FacilityUserUncheckedCreateInput>
   }
 
   /**
-   * UserFacility createMany
+   * FacilityUser createMany
    */
-  export type UserFacilityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserFacilities.
+     * The data used to create many FacilityUsers.
      */
-    data: UserFacilityCreateManyInput | UserFacilityCreateManyInput[]
+    data: FacilityUserCreateManyInput | FacilityUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserFacility update
+   * FacilityUser update
    */
-  export type UserFacilityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserFacility.
+     * The data needed to update a FacilityUser.
      */
-    data: XOR<UserFacilityUpdateInput, UserFacilityUncheckedUpdateInput>
+    data: XOR<FacilityUserUpdateInput, FacilityUserUncheckedUpdateInput>
     /**
-     * Choose, which UserFacility to update.
+     * Choose, which FacilityUser to update.
      */
-    where: UserFacilityWhereUniqueInput
+    where: FacilityUserWhereUniqueInput
   }
 
   /**
-   * UserFacility updateMany
+   * FacilityUser updateMany
    */
-  export type UserFacilityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserFacilities.
+     * The data used to update FacilityUsers.
      */
-    data: XOR<UserFacilityUpdateManyMutationInput, UserFacilityUncheckedUpdateManyInput>
+    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyInput>
     /**
-     * Filter which UserFacilities to update
+     * Filter which FacilityUsers to update
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
   }
 
   /**
-   * UserFacility upsert
+   * FacilityUser upsert
    */
-  export type UserFacilityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserFacility to update in case it exists.
+     * The filter to search for the FacilityUser to update in case it exists.
      */
-    where: UserFacilityWhereUniqueInput
+    where: FacilityUserWhereUniqueInput
     /**
-     * In case the UserFacility found by the `where` argument doesn't exist, create a new UserFacility with this data.
+     * In case the FacilityUser found by the `where` argument doesn't exist, create a new FacilityUser with this data.
      */
-    create: XOR<UserFacilityCreateInput, UserFacilityUncheckedCreateInput>
+    create: XOR<FacilityUserCreateInput, FacilityUserUncheckedCreateInput>
     /**
-     * In case the UserFacility was found with the provided `where` argument, update it with this data.
+     * In case the FacilityUser was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserFacilityUpdateInput, UserFacilityUncheckedUpdateInput>
+    update: XOR<FacilityUserUpdateInput, FacilityUserUncheckedUpdateInput>
   }
 
   /**
-   * UserFacility delete
+   * FacilityUser delete
    */
-  export type UserFacilityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
     /**
-     * Filter which UserFacility to delete.
+     * Filter which FacilityUser to delete.
      */
-    where: UserFacilityWhereUniqueInput
+    where: FacilityUserWhereUniqueInput
   }
 
   /**
-   * UserFacility deleteMany
+   * FacilityUser deleteMany
    */
-  export type UserFacilityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserFacilities to delete
+     * Filter which FacilityUsers to delete
      */
-    where?: UserFacilityWhereInput
+    where?: FacilityUserWhereInput
   }
 
   /**
-   * UserFacility without action
+   * FacilityUser without action
    */
-  export type UserFacilityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserFacility
+     * Select specific fields to fetch from the FacilityUser
      */
-    select?: UserFacilitySelect<ExtArgs> | null
+    select?: FacilityUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserFacilityInclude<ExtArgs> | null
+    include?: FacilityUserInclude<ExtArgs> | null
   }
 
 
@@ -30537,7 +30537,7 @@ export namespace Prisma {
   export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
 
 
-  export const PatientCompanyScalarFieldEnum: {
+  export const CompanyPatientScalarFieldEnum: {
     patientId: 'patientId',
     companyId: 'companyId',
     externalId: 'externalId',
@@ -30545,7 +30545,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type PatientCompanyScalarFieldEnum = (typeof PatientCompanyScalarFieldEnum)[keyof typeof PatientCompanyScalarFieldEnum]
+  export type CompanyPatientScalarFieldEnum = (typeof CompanyPatientScalarFieldEnum)[keyof typeof CompanyPatientScalarFieldEnum]
 
 
   export const EvaluationScalarFieldEnum: {
@@ -30836,7 +30836,7 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const UserCompanyScalarFieldEnum: {
+  export const CompanyUserScalarFieldEnum: {
     userId: 'userId',
     companyId: 'companyId',
     role: 'role',
@@ -30844,17 +30844,17 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type UserCompanyScalarFieldEnum = (typeof UserCompanyScalarFieldEnum)[keyof typeof UserCompanyScalarFieldEnum]
+  export type CompanyUserScalarFieldEnum = (typeof CompanyUserScalarFieldEnum)[keyof typeof CompanyUserScalarFieldEnum]
 
 
-  export const UserFacilityScalarFieldEnum: {
+  export const FacilityUserScalarFieldEnum: {
     userId: 'userId',
     facilityId: 'facilityId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type UserFacilityScalarFieldEnum = (typeof UserFacilityScalarFieldEnum)[keyof typeof UserFacilityScalarFieldEnum]
+  export type FacilityUserScalarFieldEnum = (typeof FacilityUserScalarFieldEnum)[keyof typeof FacilityUserScalarFieldEnum]
 
 
   export const AccountScalarFieldEnum: {
@@ -31261,9 +31261,9 @@ export namespace Prisma {
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    users?: UserCompanyListRelationFilter
+    users?: CompanyUserListRelationFilter
     facilities?: FacilityListRelationFilter
-    patients?: PatientCompanyListRelationFilter
+    patients?: CompanyPatientListRelationFilter
     evaluations?: EvaluationListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }
@@ -31276,9 +31276,9 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    users?: UserCompanyOrderByRelationAggregateInput
+    users?: CompanyUserOrderByRelationAggregateInput
     facilities?: FacilityOrderByRelationAggregateInput
-    patients?: PatientCompanyOrderByRelationAggregateInput
+    patients?: CompanyPatientOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     apiKeys?: ApiKeyOrderByRelationAggregateInput
   }
@@ -31294,9 +31294,9 @@ export namespace Prisma {
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    users?: UserCompanyListRelationFilter
+    users?: CompanyUserListRelationFilter
     facilities?: FacilityListRelationFilter
-    patients?: PatientCompanyListRelationFilter
+    patients?: CompanyPatientListRelationFilter
     evaluations?: EvaluationListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }, "id">
@@ -31339,7 +31339,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    users?: UserFacilityListRelationFilter
+    users?: FacilityUserListRelationFilter
   }
 
   export type FacilityOrderByWithRelationInput = {
@@ -31351,7 +31351,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
-    users?: UserFacilityOrderByRelationAggregateInput
+    users?: FacilityUserOrderByRelationAggregateInput
   }
 
   export type FacilityWhereUniqueInput = Prisma.AtLeast<{
@@ -31366,7 +31366,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    users?: UserFacilityListRelationFilter
+    users?: FacilityUserListRelationFilter
   }, "id">
 
   export type FacilityOrderByWithAggregationInput = {
@@ -31416,7 +31416,7 @@ export namespace Prisma {
     feet?: FootListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    companies?: PatientCompanyListRelationFilter
+    companies?: CompanyPatientListRelationFilter
   }
 
   export type PatientOrderByWithRelationInput = {
@@ -31437,7 +31437,7 @@ export namespace Prisma {
     feet?: FootOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
-    companies?: PatientCompanyOrderByRelationAggregateInput
+    companies?: CompanyPatientOrderByRelationAggregateInput
   }
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
@@ -31461,7 +31461,7 @@ export namespace Prisma {
     feet?: FootListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    companies?: PatientCompanyListRelationFilter
+    companies?: CompanyPatientListRelationFilter
   }, "id">
 
   export type PatientOrderByWithAggregationInput = {
@@ -31506,20 +31506,20 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
   }
 
-  export type PatientCompanyWhereInput = {
-    AND?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
-    OR?: PatientCompanyWhereInput[]
-    NOT?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
-    patientId?: StringFilter<"PatientCompany"> | string
-    companyId?: StringFilter<"PatientCompany"> | string
-    externalId?: StringNullableFilter<"PatientCompany"> | string | null
-    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
+  export type CompanyPatientWhereInput = {
+    AND?: CompanyPatientWhereInput | CompanyPatientWhereInput[]
+    OR?: CompanyPatientWhereInput[]
+    NOT?: CompanyPatientWhereInput | CompanyPatientWhereInput[]
+    patientId?: StringFilter<"CompanyPatient"> | string
+    companyId?: StringFilter<"CompanyPatient"> | string
+    externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }
 
-  export type PatientCompanyOrderByWithRelationInput = {
+  export type CompanyPatientOrderByWithRelationInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
@@ -31529,41 +31529,41 @@ export namespace Prisma {
     company?: CompanyOrderByWithRelationInput
   }
 
-  export type PatientCompanyWhereUniqueInput = Prisma.AtLeast<{
-    externalId_companyId?: PatientCompanyExternalIdCompanyIdCompoundUniqueInput
-    patientId_companyId?: PatientCompanyPatientIdCompanyIdCompoundUniqueInput
-    AND?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
-    OR?: PatientCompanyWhereInput[]
-    NOT?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
-    patientId?: StringFilter<"PatientCompany"> | string
-    companyId?: StringFilter<"PatientCompany"> | string
-    externalId?: StringNullableFilter<"PatientCompany"> | string | null
-    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
+  export type CompanyPatientWhereUniqueInput = Prisma.AtLeast<{
+    externalId_companyId?: CompanyPatientExternalIdCompanyIdCompoundUniqueInput
+    patientId_companyId?: CompanyPatientPatientIdCompanyIdCompoundUniqueInput
+    AND?: CompanyPatientWhereInput | CompanyPatientWhereInput[]
+    OR?: CompanyPatientWhereInput[]
+    NOT?: CompanyPatientWhereInput | CompanyPatientWhereInput[]
+    patientId?: StringFilter<"CompanyPatient"> | string
+    companyId?: StringFilter<"CompanyPatient"> | string
+    externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }, "patientId_companyId" | "externalId_companyId">
 
-  export type PatientCompanyOrderByWithAggregationInput = {
+  export type CompanyPatientOrderByWithAggregationInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: PatientCompanyCountOrderByAggregateInput
-    _max?: PatientCompanyMaxOrderByAggregateInput
-    _min?: PatientCompanyMinOrderByAggregateInput
+    _count?: CompanyPatientCountOrderByAggregateInput
+    _max?: CompanyPatientMaxOrderByAggregateInput
+    _min?: CompanyPatientMinOrderByAggregateInput
   }
 
-  export type PatientCompanyScalarWhereWithAggregatesInput = {
-    AND?: PatientCompanyScalarWhereWithAggregatesInput | PatientCompanyScalarWhereWithAggregatesInput[]
-    OR?: PatientCompanyScalarWhereWithAggregatesInput[]
-    NOT?: PatientCompanyScalarWhereWithAggregatesInput | PatientCompanyScalarWhereWithAggregatesInput[]
-    patientId?: StringWithAggregatesFilter<"PatientCompany"> | string
-    companyId?: StringWithAggregatesFilter<"PatientCompany"> | string
-    externalId?: StringNullableWithAggregatesFilter<"PatientCompany"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"PatientCompany"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"PatientCompany"> | Date | string
+  export type CompanyPatientScalarWhereWithAggregatesInput = {
+    AND?: CompanyPatientScalarWhereWithAggregatesInput | CompanyPatientScalarWhereWithAggregatesInput[]
+    OR?: CompanyPatientScalarWhereWithAggregatesInput[]
+    NOT?: CompanyPatientScalarWhereWithAggregatesInput | CompanyPatientScalarWhereWithAggregatesInput[]
+    patientId?: StringWithAggregatesFilter<"CompanyPatient"> | string
+    companyId?: StringWithAggregatesFilter<"CompanyPatient"> | string
+    externalId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
   }
 
   export type EvaluationWhereInput = {
@@ -33023,8 +33023,8 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    companies?: UserCompanyListRelationFilter
-    facilities?: UserFacilityListRelationFilter
+    companies?: CompanyUserListRelationFilter
+    facilities?: FacilityUserListRelationFilter
     accounts?: AccountListRelationFilter
     parcelsCreated?: ParcelListRelationFilter
   }
@@ -33037,8 +33037,8 @@ export namespace Prisma {
     photoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    companies?: UserCompanyOrderByRelationAggregateInput
-    facilities?: UserFacilityOrderByRelationAggregateInput
+    companies?: CompanyUserOrderByRelationAggregateInput
+    facilities?: FacilityUserOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     parcelsCreated?: ParcelOrderByRelationAggregateInput
   }
@@ -33054,8 +33054,8 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    companies?: UserCompanyListRelationFilter
-    facilities?: UserFacilityListRelationFilter
+    companies?: CompanyUserListRelationFilter
+    facilities?: FacilityUserListRelationFilter
     accounts?: AccountListRelationFilter
     parcelsCreated?: ParcelListRelationFilter
   }, "id" | "email" | "phone">
@@ -33086,20 +33086,20 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
-  export type UserCompanyWhereInput = {
-    AND?: UserCompanyWhereInput | UserCompanyWhereInput[]
-    OR?: UserCompanyWhereInput[]
-    NOT?: UserCompanyWhereInput | UserCompanyWhereInput[]
-    userId?: StringFilter<"UserCompany"> | string
-    companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"UserCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
+  export type CompanyUserWhereInput = {
+    AND?: CompanyUserWhereInput | CompanyUserWhereInput[]
+    OR?: CompanyUserWhereInput[]
+    NOT?: CompanyUserWhereInput | CompanyUserWhereInput[]
+    userId?: StringFilter<"CompanyUser"> | string
+    companyId?: StringFilter<"CompanyUser"> | string
+    role?: EnumCompanyRoleFilter<"CompanyUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }
 
-  export type UserCompanyOrderByWithRelationInput = {
+  export type CompanyUserOrderByWithRelationInput = {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
@@ -33109,55 +33109,55 @@ export namespace Prisma {
     company?: CompanyOrderByWithRelationInput
   }
 
-  export type UserCompanyWhereUniqueInput = Prisma.AtLeast<{
-    userId_companyId?: UserCompanyUserIdCompanyIdCompoundUniqueInput
-    AND?: UserCompanyWhereInput | UserCompanyWhereInput[]
-    OR?: UserCompanyWhereInput[]
-    NOT?: UserCompanyWhereInput | UserCompanyWhereInput[]
-    userId?: StringFilter<"UserCompany"> | string
-    companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"UserCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
+  export type CompanyUserWhereUniqueInput = Prisma.AtLeast<{
+    userId_companyId?: CompanyUserUserIdCompanyIdCompoundUniqueInput
+    AND?: CompanyUserWhereInput | CompanyUserWhereInput[]
+    OR?: CompanyUserWhereInput[]
+    NOT?: CompanyUserWhereInput | CompanyUserWhereInput[]
+    userId?: StringFilter<"CompanyUser"> | string
+    companyId?: StringFilter<"CompanyUser"> | string
+    role?: EnumCompanyRoleFilter<"CompanyUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }, "userId_companyId">
 
-  export type UserCompanyOrderByWithAggregationInput = {
+  export type CompanyUserOrderByWithAggregationInput = {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: UserCompanyCountOrderByAggregateInput
-    _max?: UserCompanyMaxOrderByAggregateInput
-    _min?: UserCompanyMinOrderByAggregateInput
+    _count?: CompanyUserCountOrderByAggregateInput
+    _max?: CompanyUserMaxOrderByAggregateInput
+    _min?: CompanyUserMinOrderByAggregateInput
   }
 
-  export type UserCompanyScalarWhereWithAggregatesInput = {
-    AND?: UserCompanyScalarWhereWithAggregatesInput | UserCompanyScalarWhereWithAggregatesInput[]
-    OR?: UserCompanyScalarWhereWithAggregatesInput[]
-    NOT?: UserCompanyScalarWhereWithAggregatesInput | UserCompanyScalarWhereWithAggregatesInput[]
-    userId?: StringWithAggregatesFilter<"UserCompany"> | string
-    companyId?: StringWithAggregatesFilter<"UserCompany"> | string
-    role?: EnumCompanyRoleWithAggregatesFilter<"UserCompany"> | $Enums.CompanyRole
-    createdAt?: DateTimeWithAggregatesFilter<"UserCompany"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserCompany"> | Date | string
+  export type CompanyUserScalarWhereWithAggregatesInput = {
+    AND?: CompanyUserScalarWhereWithAggregatesInput | CompanyUserScalarWhereWithAggregatesInput[]
+    OR?: CompanyUserScalarWhereWithAggregatesInput[]
+    NOT?: CompanyUserScalarWhereWithAggregatesInput | CompanyUserScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"CompanyUser"> | string
+    companyId?: StringWithAggregatesFilter<"CompanyUser"> | string
+    role?: EnumCompanyRoleWithAggregatesFilter<"CompanyUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanyUser"> | Date | string
   }
 
-  export type UserFacilityWhereInput = {
-    AND?: UserFacilityWhereInput | UserFacilityWhereInput[]
-    OR?: UserFacilityWhereInput[]
-    NOT?: UserFacilityWhereInput | UserFacilityWhereInput[]
-    userId?: StringFilter<"UserFacility"> | string
-    facilityId?: StringFilter<"UserFacility"> | string
-    createdAt?: DateTimeFilter<"UserFacility"> | Date | string
-    updatedAt?: DateTimeFilter<"UserFacility"> | Date | string
+  export type FacilityUserWhereInput = {
+    AND?: FacilityUserWhereInput | FacilityUserWhereInput[]
+    OR?: FacilityUserWhereInput[]
+    NOT?: FacilityUserWhereInput | FacilityUserWhereInput[]
+    userId?: StringFilter<"FacilityUser"> | string
+    facilityId?: StringFilter<"FacilityUser"> | string
+    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
   }
 
-  export type UserFacilityOrderByWithRelationInput = {
+  export type FacilityUserOrderByWithRelationInput = {
     userId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
@@ -33166,37 +33166,37 @@ export namespace Prisma {
     facility?: FacilityOrderByWithRelationInput
   }
 
-  export type UserFacilityWhereUniqueInput = Prisma.AtLeast<{
-    userId_facilityId?: UserFacilityUserIdFacilityIdCompoundUniqueInput
-    AND?: UserFacilityWhereInput | UserFacilityWhereInput[]
-    OR?: UserFacilityWhereInput[]
-    NOT?: UserFacilityWhereInput | UserFacilityWhereInput[]
-    userId?: StringFilter<"UserFacility"> | string
-    facilityId?: StringFilter<"UserFacility"> | string
-    createdAt?: DateTimeFilter<"UserFacility"> | Date | string
-    updatedAt?: DateTimeFilter<"UserFacility"> | Date | string
+  export type FacilityUserWhereUniqueInput = Prisma.AtLeast<{
+    userId_facilityId?: FacilityUserUserIdFacilityIdCompoundUniqueInput
+    AND?: FacilityUserWhereInput | FacilityUserWhereInput[]
+    OR?: FacilityUserWhereInput[]
+    NOT?: FacilityUserWhereInput | FacilityUserWhereInput[]
+    userId?: StringFilter<"FacilityUser"> | string
+    facilityId?: StringFilter<"FacilityUser"> | string
+    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
   }, "userId_facilityId">
 
-  export type UserFacilityOrderByWithAggregationInput = {
+  export type FacilityUserOrderByWithAggregationInput = {
     userId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: UserFacilityCountOrderByAggregateInput
-    _max?: UserFacilityMaxOrderByAggregateInput
-    _min?: UserFacilityMinOrderByAggregateInput
+    _count?: FacilityUserCountOrderByAggregateInput
+    _max?: FacilityUserMaxOrderByAggregateInput
+    _min?: FacilityUserMinOrderByAggregateInput
   }
 
-  export type UserFacilityScalarWhereWithAggregatesInput = {
-    AND?: UserFacilityScalarWhereWithAggregatesInput | UserFacilityScalarWhereWithAggregatesInput[]
-    OR?: UserFacilityScalarWhereWithAggregatesInput[]
-    NOT?: UserFacilityScalarWhereWithAggregatesInput | UserFacilityScalarWhereWithAggregatesInput[]
-    userId?: StringWithAggregatesFilter<"UserFacility"> | string
-    facilityId?: StringWithAggregatesFilter<"UserFacility"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"UserFacility"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserFacility"> | Date | string
+  export type FacilityUserScalarWhereWithAggregatesInput = {
+    AND?: FacilityUserScalarWhereWithAggregatesInput | FacilityUserScalarWhereWithAggregatesInput[]
+    OR?: FacilityUserScalarWhereWithAggregatesInput[]
+    NOT?: FacilityUserScalarWhereWithAggregatesInput | FacilityUserScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"FacilityUser"> | string
+    facilityId?: StringWithAggregatesFilter<"FacilityUser"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
   }
 
   export type AccountWhereInput = {
@@ -33320,9 +33320,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -33335,9 +33335,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -33350,9 +33350,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -33365,9 +33365,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -33410,7 +33410,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    users?: UserFacilityCreateNestedManyWithoutFacilityInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateInput = {
@@ -33421,7 +33421,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUpdateInput = {
@@ -33432,7 +33432,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    users?: UserFacilityUpdateManyWithoutFacilityNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateInput = {
@@ -33443,7 +33443,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityCreateManyInput = {
@@ -33493,7 +33493,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateInput = {
@@ -33514,7 +33514,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUpdateInput = {
@@ -33535,7 +33535,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
@@ -33556,7 +33556,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientCreateManyInput = {
@@ -33610,7 +33610,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyCreateInput = {
+  export type CompanyPatientCreateInput = {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -33618,7 +33618,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutPatientsInput
   }
 
-  export type PatientCompanyUncheckedCreateInput = {
+  export type CompanyPatientUncheckedCreateInput = {
     patientId: string
     companyId: string
     externalId?: string | null
@@ -33626,7 +33626,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyUpdateInput = {
+  export type CompanyPatientUpdateInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33634,7 +33634,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
   }
 
-  export type PatientCompanyUncheckedUpdateInput = {
+  export type CompanyPatientUncheckedUpdateInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33642,7 +33642,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyCreateManyInput = {
+  export type CompanyPatientCreateManyInput = {
     patientId: string
     companyId: string
     externalId?: string | null
@@ -33650,13 +33650,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyUpdateManyMutationInput = {
+  export type CompanyPatientUpdateManyMutationInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyUncheckedUpdateManyInput = {
+  export type CompanyPatientUncheckedUpdateManyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35288,8 +35288,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
@@ -35302,8 +35302,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
@@ -35316,8 +35316,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -35330,8 +35330,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -35366,7 +35366,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyCreateInput = {
+  export type CompanyUserCreateInput = {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35374,7 +35374,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutUsersInput
   }
 
-  export type UserCompanyUncheckedCreateInput = {
+  export type CompanyUserUncheckedCreateInput = {
     userId: string
     companyId: string
     role?: $Enums.CompanyRole
@@ -35382,7 +35382,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserCompanyUpdateInput = {
+  export type CompanyUserUpdateInput = {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35390,7 +35390,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
   }
 
-  export type UserCompanyUncheckedUpdateInput = {
+  export type CompanyUserUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
@@ -35398,7 +35398,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyCreateManyInput = {
+  export type CompanyUserCreateManyInput = {
     userId: string
     companyId: string
     role?: $Enums.CompanyRole
@@ -35406,13 +35406,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserCompanyUpdateManyMutationInput = {
+  export type CompanyUserUpdateManyMutationInput = {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyUncheckedUpdateManyInput = {
+  export type CompanyUserUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
@@ -35420,47 +35420,47 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityCreateInput = {
+  export type FacilityUserCreateInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutFacilitiesInput
     facility: FacilityCreateNestedOneWithoutUsersInput
   }
 
-  export type UserFacilityUncheckedCreateInput = {
+  export type FacilityUserUncheckedCreateInput = {
     userId: string
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityUpdateInput = {
+  export type FacilityUserUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
     facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
   }
 
-  export type UserFacilityUncheckedUpdateInput = {
+  export type FacilityUserUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityCreateManyInput = {
+  export type FacilityUserCreateManyInput = {
     userId: string
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityUpdateManyMutationInput = {
+  export type FacilityUserUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityUncheckedUpdateManyInput = {
+  export type FacilityUserUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35623,10 +35623,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type UserCompanyListRelationFilter = {
-    every?: UserCompanyWhereInput
-    some?: UserCompanyWhereInput
-    none?: UserCompanyWhereInput
+  export type CompanyUserListRelationFilter = {
+    every?: CompanyUserWhereInput
+    some?: CompanyUserWhereInput
+    none?: CompanyUserWhereInput
   }
 
   export type FacilityListRelationFilter = {
@@ -35635,10 +35635,10 @@ export namespace Prisma {
     none?: FacilityWhereInput
   }
 
-  export type PatientCompanyListRelationFilter = {
-    every?: PatientCompanyWhereInput
-    some?: PatientCompanyWhereInput
-    none?: PatientCompanyWhereInput
+  export type CompanyPatientListRelationFilter = {
+    every?: CompanyPatientWhereInput
+    some?: CompanyPatientWhereInput
+    none?: CompanyPatientWhereInput
   }
 
   export type EvaluationListRelationFilter = {
@@ -35658,7 +35658,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type UserCompanyOrderByRelationAggregateInput = {
+  export type CompanyUserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35666,7 +35666,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type PatientCompanyOrderByRelationAggregateInput = {
+  export type CompanyPatientOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35778,13 +35778,13 @@ export namespace Prisma {
     isNot?: CompanyWhereInput
   }
 
-  export type UserFacilityListRelationFilter = {
-    every?: UserFacilityWhereInput
-    some?: UserFacilityWhereInput
-    none?: UserFacilityWhereInput
+  export type FacilityUserListRelationFilter = {
+    every?: FacilityUserWhereInput
+    some?: FacilityUserWhereInput
+    none?: FacilityUserWhereInput
   }
 
-  export type UserFacilityOrderByRelationAggregateInput = {
+  export type FacilityUserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -36000,17 +36000,17 @@ export namespace Prisma {
     isNot?: PatientWhereInput
   }
 
-  export type PatientCompanyExternalIdCompanyIdCompoundUniqueInput = {
+  export type CompanyPatientExternalIdCompanyIdCompoundUniqueInput = {
     externalId: string
     companyId: string
   }
 
-  export type PatientCompanyPatientIdCompanyIdCompoundUniqueInput = {
+  export type CompanyPatientPatientIdCompanyIdCompoundUniqueInput = {
     patientId: string
     companyId: string
   }
 
-  export type PatientCompanyCountOrderByAggregateInput = {
+  export type CompanyPatientCountOrderByAggregateInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
@@ -36018,7 +36018,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PatientCompanyMaxOrderByAggregateInput = {
+  export type CompanyPatientMaxOrderByAggregateInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
@@ -36026,7 +36026,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PatientCompanyMinOrderByAggregateInput = {
+  export type CompanyPatientMinOrderByAggregateInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
@@ -37244,12 +37244,12 @@ export namespace Prisma {
     not?: NestedEnumCompanyRoleFilter<$PrismaModel> | $Enums.CompanyRole
   }
 
-  export type UserCompanyUserIdCompanyIdCompoundUniqueInput = {
+  export type CompanyUserUserIdCompanyIdCompoundUniqueInput = {
     userId: string
     companyId: string
   }
 
-  export type UserCompanyCountOrderByAggregateInput = {
+  export type CompanyUserCountOrderByAggregateInput = {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
@@ -37257,7 +37257,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserCompanyMaxOrderByAggregateInput = {
+  export type CompanyUserMaxOrderByAggregateInput = {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
@@ -37265,7 +37265,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserCompanyMinOrderByAggregateInput = {
+  export type CompanyUserMinOrderByAggregateInput = {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
@@ -37288,26 +37288,26 @@ export namespace Prisma {
     isNot?: FacilityWhereInput
   }
 
-  export type UserFacilityUserIdFacilityIdCompoundUniqueInput = {
+  export type FacilityUserUserIdFacilityIdCompoundUniqueInput = {
     userId: string
     facilityId: string
   }
 
-  export type UserFacilityCountOrderByAggregateInput = {
+  export type FacilityUserCountOrderByAggregateInput = {
     userId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type UserFacilityMaxOrderByAggregateInput = {
+  export type FacilityUserMaxOrderByAggregateInput = {
     userId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type UserFacilityMinOrderByAggregateInput = {
+  export type FacilityUserMinOrderByAggregateInput = {
     userId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
@@ -37377,11 +37377,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserCompanyCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput> | UserCompanyCreateWithoutCompanyInput[] | UserCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutCompanyInput | UserCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: UserCompanyCreateManyCompanyInputEnvelope
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
+  export type CompanyUserCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput> | CompanyUserCreateWithoutCompanyInput[] | CompanyUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutCompanyInput | CompanyUserCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyUserCreateManyCompanyInputEnvelope
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
   export type FacilityCreateNestedManyWithoutCompanyInput = {
@@ -37391,11 +37391,11 @@ export namespace Prisma {
     connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
   }
 
-  export type PatientCompanyCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+  export type CompanyPatientCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyPatientCreateManyCompanyInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type EvaluationCreateNestedManyWithoutCompanyInput = {
@@ -37412,11 +37412,11 @@ export namespace Prisma {
     connect?: ApiKeyWhereUniqueInput | ApiKeyWhereUniqueInput[]
   }
 
-  export type UserCompanyUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput> | UserCompanyCreateWithoutCompanyInput[] | UserCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutCompanyInput | UserCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: UserCompanyCreateManyCompanyInputEnvelope
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
+  export type CompanyUserUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput> | CompanyUserCreateWithoutCompanyInput[] | CompanyUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutCompanyInput | CompanyUserCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyUserCreateManyCompanyInputEnvelope
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
   export type FacilityUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -37426,11 +37426,11 @@ export namespace Prisma {
     connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
   }
 
-  export type PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+  export type CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyPatientCreateManyCompanyInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type EvaluationUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -37463,18 +37463,18 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type UserCompanyUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput> | UserCompanyCreateWithoutCompanyInput[] | UserCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutCompanyInput | UserCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: UserCompanyUpsertWithWhereUniqueWithoutCompanyInput | UserCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: UserCompanyCreateManyCompanyInputEnvelope
-    set?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    disconnect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    delete?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    update?: UserCompanyUpdateWithWhereUniqueWithoutCompanyInput | UserCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: UserCompanyUpdateManyWithWhereWithoutCompanyInput | UserCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
+  export type CompanyUserUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput> | CompanyUserCreateWithoutCompanyInput[] | CompanyUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutCompanyInput | CompanyUserCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyUserUpsertWithWhereUniqueWithoutCompanyInput | CompanyUserUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyUserCreateManyCompanyInputEnvelope
+    set?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    disconnect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    delete?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    update?: CompanyUserUpdateWithWhereUniqueWithoutCompanyInput | CompanyUserUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyUserUpdateManyWithWhereWithoutCompanyInput | CompanyUserUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
   export type FacilityUpdateManyWithoutCompanyNestedInput = {
@@ -37491,18 +37491,18 @@ export namespace Prisma {
     deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
-  export type PatientCompanyUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput | PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
-    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    update?: PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput | PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: PatientCompanyUpdateManyWithWhereWithoutCompanyInput | PatientCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+  export type CompanyPatientUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput | CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyPatientCreateManyCompanyInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput | CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutCompanyInput | CompanyPatientUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type EvaluationUpdateManyWithoutCompanyNestedInput = {
@@ -37533,18 +37533,18 @@ export namespace Prisma {
     deleteMany?: ApiKeyScalarWhereInput | ApiKeyScalarWhereInput[]
   }
 
-  export type UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput> | UserCompanyCreateWithoutCompanyInput[] | UserCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutCompanyInput | UserCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: UserCompanyUpsertWithWhereUniqueWithoutCompanyInput | UserCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: UserCompanyCreateManyCompanyInputEnvelope
-    set?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    disconnect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    delete?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    update?: UserCompanyUpdateWithWhereUniqueWithoutCompanyInput | UserCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: UserCompanyUpdateManyWithWhereWithoutCompanyInput | UserCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
+  export type CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput> | CompanyUserCreateWithoutCompanyInput[] | CompanyUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutCompanyInput | CompanyUserCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyUserUpsertWithWhereUniqueWithoutCompanyInput | CompanyUserUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyUserCreateManyCompanyInputEnvelope
+    set?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    disconnect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    delete?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    update?: CompanyUserUpdateWithWhereUniqueWithoutCompanyInput | CompanyUserUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyUserUpdateManyWithWhereWithoutCompanyInput | CompanyUserUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -37561,18 +37561,18 @@ export namespace Prisma {
     deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
-  export type PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput | PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
-    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    update?: PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput | PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: PatientCompanyUpdateManyWithWhereWithoutCompanyInput | PatientCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+  export type CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput | CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyPatientCreateManyCompanyInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput | CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutCompanyInput | CompanyPatientUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type EvaluationUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -37609,18 +37609,18 @@ export namespace Prisma {
     connect?: CompanyWhereUniqueInput
   }
 
-  export type UserFacilityCreateNestedManyWithoutFacilityInput = {
-    create?: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput> | UserFacilityCreateWithoutFacilityInput[] | UserFacilityUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutFacilityInput | UserFacilityCreateOrConnectWithoutFacilityInput[]
-    createMany?: UserFacilityCreateManyFacilityInputEnvelope
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
+  export type FacilityUserCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
+    createMany?: FacilityUserCreateManyFacilityInputEnvelope
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
-  export type UserFacilityUncheckedCreateNestedManyWithoutFacilityInput = {
-    create?: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput> | UserFacilityCreateWithoutFacilityInput[] | UserFacilityUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutFacilityInput | UserFacilityCreateOrConnectWithoutFacilityInput[]
-    createMany?: UserFacilityCreateManyFacilityInputEnvelope
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
+  export type FacilityUserUncheckedCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
+    createMany?: FacilityUserCreateManyFacilityInputEnvelope
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
   export type EnumFacilityTypeFieldUpdateOperationsInput = {
@@ -37635,32 +37635,32 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutFacilitiesInput, CompanyUpdateWithoutFacilitiesInput>, CompanyUncheckedUpdateWithoutFacilitiesInput>
   }
 
-  export type UserFacilityUpdateManyWithoutFacilityNestedInput = {
-    create?: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput> | UserFacilityCreateWithoutFacilityInput[] | UserFacilityUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutFacilityInput | UserFacilityCreateOrConnectWithoutFacilityInput[]
-    upsert?: UserFacilityUpsertWithWhereUniqueWithoutFacilityInput | UserFacilityUpsertWithWhereUniqueWithoutFacilityInput[]
-    createMany?: UserFacilityCreateManyFacilityInputEnvelope
-    set?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    disconnect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    delete?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    update?: UserFacilityUpdateWithWhereUniqueWithoutFacilityInput | UserFacilityUpdateWithWhereUniqueWithoutFacilityInput[]
-    updateMany?: UserFacilityUpdateManyWithWhereWithoutFacilityInput | UserFacilityUpdateManyWithWhereWithoutFacilityInput[]
-    deleteMany?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
+  export type FacilityUserUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
+    upsert?: FacilityUserUpsertWithWhereUniqueWithoutFacilityInput | FacilityUserUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: FacilityUserCreateManyFacilityInputEnvelope
+    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
-  export type UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput = {
-    create?: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput> | UserFacilityCreateWithoutFacilityInput[] | UserFacilityUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutFacilityInput | UserFacilityCreateOrConnectWithoutFacilityInput[]
-    upsert?: UserFacilityUpsertWithWhereUniqueWithoutFacilityInput | UserFacilityUpsertWithWhereUniqueWithoutFacilityInput[]
-    createMany?: UserFacilityCreateManyFacilityInputEnvelope
-    set?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    disconnect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    delete?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    update?: UserFacilityUpdateWithWhereUniqueWithoutFacilityInput | UserFacilityUpdateWithWhereUniqueWithoutFacilityInput[]
-    updateMany?: UserFacilityUpdateManyWithWhereWithoutFacilityInput | UserFacilityUpdateManyWithWhereWithoutFacilityInput[]
-    deleteMany?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
+  export type FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
+    upsert?: FacilityUserUpsertWithWhereUniqueWithoutFacilityInput | FacilityUserUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: FacilityUserCreateManyFacilityInputEnvelope
+    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
   export type FootCreateNestedManyWithoutPatientInput = {
@@ -37684,11 +37684,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type PatientCompanyCreateNestedManyWithoutPatientInput = {
-    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
-    createMany?: PatientCompanyCreateManyPatientInputEnvelope
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+  export type CompanyPatientCreateNestedManyWithoutPatientInput = {
+    create?: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput> | CompanyPatientCreateWithoutPatientInput[] | CompanyPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
+    createMany?: CompanyPatientCreateManyPatientInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type FootUncheckedCreateNestedManyWithoutPatientInput = {
@@ -37712,11 +37712,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type PatientCompanyUncheckedCreateNestedManyWithoutPatientInput = {
-    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
-    createMany?: PatientCompanyCreateManyPatientInputEnvelope
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+  export type CompanyPatientUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput> | CompanyPatientCreateWithoutPatientInput[] | CompanyPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
+    createMany?: CompanyPatientCreateManyPatientInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type NullableEnumGenderFieldUpdateOperationsInput = {
@@ -37781,18 +37781,18 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type PatientCompanyUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
-    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutPatientInput | PatientCompanyUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: PatientCompanyCreateManyPatientInputEnvelope
-    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    update?: PatientCompanyUpdateWithWhereUniqueWithoutPatientInput | PatientCompanyUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: PatientCompanyUpdateManyWithWhereWithoutPatientInput | PatientCompanyUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+  export type CompanyPatientUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput> | CompanyPatientCreateWithoutPatientInput[] | CompanyPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutPatientInput | CompanyPatientUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: CompanyPatientCreateManyPatientInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutPatientInput | CompanyPatientUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutPatientInput | CompanyPatientUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type FootUncheckedUpdateManyWithoutPatientNestedInput = {
@@ -37837,18 +37837,18 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
-    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutPatientInput | PatientCompanyUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: PatientCompanyCreateManyPatientInputEnvelope
-    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
-    update?: PatientCompanyUpdateWithWhereUniqueWithoutPatientInput | PatientCompanyUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: PatientCompanyUpdateManyWithWhereWithoutPatientInput | PatientCompanyUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+  export type CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput> | CompanyPatientCreateWithoutPatientInput[] | CompanyPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutPatientInput | CompanyPatientUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: CompanyPatientCreateManyPatientInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutPatientInput | CompanyPatientUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutPatientInput | CompanyPatientUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type PatientCreateNestedOneWithoutCompaniesInput = {
@@ -39130,18 +39130,18 @@ export namespace Prisma {
     deleteMany?: CatalogProductScalarWhereInput | CatalogProductScalarWhereInput[]
   }
 
-  export type UserCompanyCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput> | UserCompanyCreateWithoutUserInput[] | UserCompanyUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutUserInput | UserCompanyCreateOrConnectWithoutUserInput[]
-    createMany?: UserCompanyCreateManyUserInputEnvelope
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
+  export type CompanyUserCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput> | CompanyUserCreateWithoutUserInput[] | CompanyUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutUserInput | CompanyUserCreateOrConnectWithoutUserInput[]
+    createMany?: CompanyUserCreateManyUserInputEnvelope
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type UserFacilityCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput> | UserFacilityCreateWithoutUserInput[] | UserFacilityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutUserInput | UserFacilityCreateOrConnectWithoutUserInput[]
-    createMany?: UserFacilityCreateManyUserInputEnvelope
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
+  export type FacilityUserCreateNestedManyWithoutUserInput = {
+    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
+    createMany?: FacilityUserCreateManyUserInputEnvelope
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -39158,18 +39158,18 @@ export namespace Prisma {
     connect?: ParcelWhereUniqueInput | ParcelWhereUniqueInput[]
   }
 
-  export type UserCompanyUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput> | UserCompanyCreateWithoutUserInput[] | UserCompanyUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutUserInput | UserCompanyCreateOrConnectWithoutUserInput[]
-    createMany?: UserCompanyCreateManyUserInputEnvelope
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
+  export type CompanyUserUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput> | CompanyUserCreateWithoutUserInput[] | CompanyUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutUserInput | CompanyUserCreateOrConnectWithoutUserInput[]
+    createMany?: CompanyUserCreateManyUserInputEnvelope
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type UserFacilityUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput> | UserFacilityCreateWithoutUserInput[] | UserFacilityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutUserInput | UserFacilityCreateOrConnectWithoutUserInput[]
-    createMany?: UserFacilityCreateManyUserInputEnvelope
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
+  export type FacilityUserUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
+    createMany?: FacilityUserCreateManyUserInputEnvelope
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -39186,32 +39186,32 @@ export namespace Prisma {
     connect?: ParcelWhereUniqueInput | ParcelWhereUniqueInput[]
   }
 
-  export type UserCompanyUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput> | UserCompanyCreateWithoutUserInput[] | UserCompanyUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutUserInput | UserCompanyCreateOrConnectWithoutUserInput[]
-    upsert?: UserCompanyUpsertWithWhereUniqueWithoutUserInput | UserCompanyUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserCompanyCreateManyUserInputEnvelope
-    set?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    disconnect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    delete?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    update?: UserCompanyUpdateWithWhereUniqueWithoutUserInput | UserCompanyUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserCompanyUpdateManyWithWhereWithoutUserInput | UserCompanyUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
+  export type CompanyUserUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput> | CompanyUserCreateWithoutUserInput[] | CompanyUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutUserInput | CompanyUserCreateOrConnectWithoutUserInput[]
+    upsert?: CompanyUserUpsertWithWhereUniqueWithoutUserInput | CompanyUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompanyUserCreateManyUserInputEnvelope
+    set?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    disconnect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    delete?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    update?: CompanyUserUpdateWithWhereUniqueWithoutUserInput | CompanyUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompanyUserUpdateManyWithWhereWithoutUserInput | CompanyUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type UserFacilityUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput> | UserFacilityCreateWithoutUserInput[] | UserFacilityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutUserInput | UserFacilityCreateOrConnectWithoutUserInput[]
-    upsert?: UserFacilityUpsertWithWhereUniqueWithoutUserInput | UserFacilityUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserFacilityCreateManyUserInputEnvelope
-    set?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    disconnect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    delete?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    update?: UserFacilityUpdateWithWhereUniqueWithoutUserInput | UserFacilityUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserFacilityUpdateManyWithWhereWithoutUserInput | UserFacilityUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
+  export type FacilityUserUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
+    upsert?: FacilityUserUpsertWithWhereUniqueWithoutUserInput | FacilityUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FacilityUserCreateManyUserInputEnvelope
+    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    update?: FacilityUserUpdateWithWhereUniqueWithoutUserInput | FacilityUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FacilityUserUpdateManyWithWhereWithoutUserInput | FacilityUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -39242,32 +39242,32 @@ export namespace Prisma {
     deleteMany?: ParcelScalarWhereInput | ParcelScalarWhereInput[]
   }
 
-  export type UserCompanyUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput> | UserCompanyCreateWithoutUserInput[] | UserCompanyUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCompanyCreateOrConnectWithoutUserInput | UserCompanyCreateOrConnectWithoutUserInput[]
-    upsert?: UserCompanyUpsertWithWhereUniqueWithoutUserInput | UserCompanyUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserCompanyCreateManyUserInputEnvelope
-    set?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    disconnect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    delete?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    connect?: UserCompanyWhereUniqueInput | UserCompanyWhereUniqueInput[]
-    update?: UserCompanyUpdateWithWhereUniqueWithoutUserInput | UserCompanyUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserCompanyUpdateManyWithWhereWithoutUserInput | UserCompanyUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
+  export type CompanyUserUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput> | CompanyUserCreateWithoutUserInput[] | CompanyUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyUserCreateOrConnectWithoutUserInput | CompanyUserCreateOrConnectWithoutUserInput[]
+    upsert?: CompanyUserUpsertWithWhereUniqueWithoutUserInput | CompanyUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompanyUserCreateManyUserInputEnvelope
+    set?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    disconnect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    delete?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
+    update?: CompanyUserUpdateWithWhereUniqueWithoutUserInput | CompanyUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompanyUserUpdateManyWithWhereWithoutUserInput | CompanyUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type UserFacilityUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput> | UserFacilityCreateWithoutUserInput[] | UserFacilityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserFacilityCreateOrConnectWithoutUserInput | UserFacilityCreateOrConnectWithoutUserInput[]
-    upsert?: UserFacilityUpsertWithWhereUniqueWithoutUserInput | UserFacilityUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserFacilityCreateManyUserInputEnvelope
-    set?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    disconnect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    delete?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    connect?: UserFacilityWhereUniqueInput | UserFacilityWhereUniqueInput[]
-    update?: UserFacilityUpdateWithWhereUniqueWithoutUserInput | UserFacilityUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserFacilityUpdateManyWithWhereWithoutUserInput | UserFacilityUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
+  export type FacilityUserUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
+    upsert?: FacilityUserUpsertWithWhereUniqueWithoutUserInput | FacilityUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FacilityUserCreateManyUserInputEnvelope
+    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+    update?: FacilityUserUpdateWithWhereUniqueWithoutUserInput | FacilityUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FacilityUserUpdateManyWithWhereWithoutUserInput | FacilityUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
@@ -39949,27 +39949,27 @@ export namespace Prisma {
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
-  export type UserCompanyCreateWithoutCompanyInput = {
+  export type CompanyUserCreateWithoutCompanyInput = {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCompaniesInput
   }
 
-  export type UserCompanyUncheckedCreateWithoutCompanyInput = {
+  export type CompanyUserUncheckedCreateWithoutCompanyInput = {
     userId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserCompanyCreateOrConnectWithoutCompanyInput = {
-    where: UserCompanyWhereUniqueInput
-    create: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput>
+  export type CompanyUserCreateOrConnectWithoutCompanyInput = {
+    where: CompanyUserWhereUniqueInput
+    create: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput>
   }
 
-  export type UserCompanyCreateManyCompanyInputEnvelope = {
-    data: UserCompanyCreateManyCompanyInput | UserCompanyCreateManyCompanyInput[]
+  export type CompanyUserCreateManyCompanyInputEnvelope = {
+    data: CompanyUserCreateManyCompanyInput | CompanyUserCreateManyCompanyInput[]
     skipDuplicates?: boolean
   }
 
@@ -39980,7 +39980,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserFacilityCreateNestedManyWithoutFacilityInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutCompanyInput = {
@@ -39990,7 +39990,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserFacilityUncheckedCreateNestedManyWithoutFacilityInput
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutCompanyInput = {
@@ -40003,27 +40003,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PatientCompanyCreateWithoutCompanyInput = {
+  export type CompanyPatientCreateWithoutCompanyInput = {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
-  export type PatientCompanyUncheckedCreateWithoutCompanyInput = {
+  export type CompanyPatientUncheckedCreateWithoutCompanyInput = {
     patientId: string
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyCreateOrConnectWithoutCompanyInput = {
-    where: PatientCompanyWhereUniqueInput
-    create: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput>
+  export type CompanyPatientCreateOrConnectWithoutCompanyInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput>
   }
 
-  export type PatientCompanyCreateManyCompanyInputEnvelope = {
-    data: PatientCompanyCreateManyCompanyInput | PatientCompanyCreateManyCompanyInput[]
+  export type CompanyPatientCreateManyCompanyInputEnvelope = {
+    data: CompanyPatientCreateManyCompanyInput | CompanyPatientCreateManyCompanyInput[]
     skipDuplicates?: boolean
   }
 
@@ -40125,31 +40125,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserCompanyUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: UserCompanyWhereUniqueInput
-    update: XOR<UserCompanyUpdateWithoutCompanyInput, UserCompanyUncheckedUpdateWithoutCompanyInput>
-    create: XOR<UserCompanyCreateWithoutCompanyInput, UserCompanyUncheckedCreateWithoutCompanyInput>
+  export type CompanyUserUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyUserWhereUniqueInput
+    update: XOR<CompanyUserUpdateWithoutCompanyInput, CompanyUserUncheckedUpdateWithoutCompanyInput>
+    create: XOR<CompanyUserCreateWithoutCompanyInput, CompanyUserUncheckedCreateWithoutCompanyInput>
   }
 
-  export type UserCompanyUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: UserCompanyWhereUniqueInput
-    data: XOR<UserCompanyUpdateWithoutCompanyInput, UserCompanyUncheckedUpdateWithoutCompanyInput>
+  export type CompanyUserUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyUserWhereUniqueInput
+    data: XOR<CompanyUserUpdateWithoutCompanyInput, CompanyUserUncheckedUpdateWithoutCompanyInput>
   }
 
-  export type UserCompanyUpdateManyWithWhereWithoutCompanyInput = {
-    where: UserCompanyScalarWhereInput
-    data: XOR<UserCompanyUpdateManyMutationInput, UserCompanyUncheckedUpdateManyWithoutCompanyInput>
+  export type CompanyUserUpdateManyWithWhereWithoutCompanyInput = {
+    where: CompanyUserScalarWhereInput
+    data: XOR<CompanyUserUpdateManyMutationInput, CompanyUserUncheckedUpdateManyWithoutCompanyInput>
   }
 
-  export type UserCompanyScalarWhereInput = {
-    AND?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
-    OR?: UserCompanyScalarWhereInput[]
-    NOT?: UserCompanyScalarWhereInput | UserCompanyScalarWhereInput[]
-    userId?: StringFilter<"UserCompany"> | string
-    companyId?: StringFilter<"UserCompany"> | string
-    role?: EnumCompanyRoleFilter<"UserCompany"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"UserCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"UserCompany"> | Date | string
+  export type CompanyUserScalarWhereInput = {
+    AND?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
+    OR?: CompanyUserScalarWhereInput[]
+    NOT?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
+    userId?: StringFilter<"CompanyUser"> | string
+    companyId?: StringFilter<"CompanyUser"> | string
+    role?: EnumCompanyRoleFilter<"CompanyUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
   }
 
   export type FacilityUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -40181,31 +40181,31 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
   }
 
-  export type PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: PatientCompanyWhereUniqueInput
-    update: XOR<PatientCompanyUpdateWithoutCompanyInput, PatientCompanyUncheckedUpdateWithoutCompanyInput>
-    create: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput>
+  export type CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutCompanyInput, CompanyPatientUncheckedUpdateWithoutCompanyInput>
+    create: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput>
   }
 
-  export type PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: PatientCompanyWhereUniqueInput
-    data: XOR<PatientCompanyUpdateWithoutCompanyInput, PatientCompanyUncheckedUpdateWithoutCompanyInput>
+  export type CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutCompanyInput, CompanyPatientUncheckedUpdateWithoutCompanyInput>
   }
 
-  export type PatientCompanyUpdateManyWithWhereWithoutCompanyInput = {
-    where: PatientCompanyScalarWhereInput
-    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyWithoutCompanyInput>
+  export type CompanyPatientUpdateManyWithWhereWithoutCompanyInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutCompanyInput>
   }
 
-  export type PatientCompanyScalarWhereInput = {
-    AND?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
-    OR?: PatientCompanyScalarWhereInput[]
-    NOT?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
-    patientId?: StringFilter<"PatientCompany"> | string
-    companyId?: StringFilter<"PatientCompany"> | string
-    externalId?: StringNullableFilter<"PatientCompany"> | string | null
-    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
+  export type CompanyPatientScalarWhereInput = {
+    AND?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+    OR?: CompanyPatientScalarWhereInput[]
+    NOT?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+    patientId?: StringFilter<"CompanyPatient"> | string
+    companyId?: StringFilter<"CompanyPatient"> | string
+    externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -40293,8 +40293,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -40307,8 +40307,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -40318,25 +40318,25 @@ export namespace Prisma {
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
   }
 
-  export type UserFacilityCreateWithoutFacilityInput = {
+  export type FacilityUserCreateWithoutFacilityInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutFacilitiesInput
   }
 
-  export type UserFacilityUncheckedCreateWithoutFacilityInput = {
+  export type FacilityUserUncheckedCreateWithoutFacilityInput = {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityCreateOrConnectWithoutFacilityInput = {
-    where: UserFacilityWhereUniqueInput
-    create: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput>
+  export type FacilityUserCreateOrConnectWithoutFacilityInput = {
+    where: FacilityUserWhereUniqueInput
+    create: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput>
   }
 
-  export type UserFacilityCreateManyFacilityInputEnvelope = {
-    data: UserFacilityCreateManyFacilityInput | UserFacilityCreateManyFacilityInput[]
+  export type FacilityUserCreateManyFacilityInputEnvelope = {
+    data: FacilityUserCreateManyFacilityInput | FacilityUserCreateManyFacilityInput[]
     skipDuplicates?: boolean
   }
 
@@ -40359,8 +40359,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -40373,36 +40373,36 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type UserFacilityUpsertWithWhereUniqueWithoutFacilityInput = {
-    where: UserFacilityWhereUniqueInput
-    update: XOR<UserFacilityUpdateWithoutFacilityInput, UserFacilityUncheckedUpdateWithoutFacilityInput>
-    create: XOR<UserFacilityCreateWithoutFacilityInput, UserFacilityUncheckedCreateWithoutFacilityInput>
+  export type FacilityUserUpsertWithWhereUniqueWithoutFacilityInput = {
+    where: FacilityUserWhereUniqueInput
+    update: XOR<FacilityUserUpdateWithoutFacilityInput, FacilityUserUncheckedUpdateWithoutFacilityInput>
+    create: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput>
   }
 
-  export type UserFacilityUpdateWithWhereUniqueWithoutFacilityInput = {
-    where: UserFacilityWhereUniqueInput
-    data: XOR<UserFacilityUpdateWithoutFacilityInput, UserFacilityUncheckedUpdateWithoutFacilityInput>
+  export type FacilityUserUpdateWithWhereUniqueWithoutFacilityInput = {
+    where: FacilityUserWhereUniqueInput
+    data: XOR<FacilityUserUpdateWithoutFacilityInput, FacilityUserUncheckedUpdateWithoutFacilityInput>
   }
 
-  export type UserFacilityUpdateManyWithWhereWithoutFacilityInput = {
-    where: UserFacilityScalarWhereInput
-    data: XOR<UserFacilityUpdateManyMutationInput, UserFacilityUncheckedUpdateManyWithoutFacilityInput>
+  export type FacilityUserUpdateManyWithWhereWithoutFacilityInput = {
+    where: FacilityUserScalarWhereInput
+    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutFacilityInput>
   }
 
-  export type UserFacilityScalarWhereInput = {
-    AND?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
-    OR?: UserFacilityScalarWhereInput[]
-    NOT?: UserFacilityScalarWhereInput | UserFacilityScalarWhereInput[]
-    userId?: StringFilter<"UserFacility"> | string
-    facilityId?: StringFilter<"UserFacility"> | string
-    createdAt?: DateTimeFilter<"UserFacility"> | Date | string
-    updatedAt?: DateTimeFilter<"UserFacility"> | Date | string
+  export type FacilityUserScalarWhereInput = {
+    AND?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+    OR?: FacilityUserScalarWhereInput[]
+    NOT?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+    userId?: StringFilter<"FacilityUser"> | string
+    facilityId?: StringFilter<"FacilityUser"> | string
+    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
   }
 
   export type FootCreateWithoutPatientInput = {
@@ -40565,27 +40565,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PatientCompanyCreateWithoutPatientInput = {
+  export type CompanyPatientCreateWithoutPatientInput = {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
   }
 
-  export type PatientCompanyUncheckedCreateWithoutPatientInput = {
+  export type CompanyPatientUncheckedCreateWithoutPatientInput = {
     companyId: string
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyCreateOrConnectWithoutPatientInput = {
-    where: PatientCompanyWhereUniqueInput
-    create: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput>
+  export type CompanyPatientCreateOrConnectWithoutPatientInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput>
   }
 
-  export type PatientCompanyCreateManyPatientInputEnvelope = {
-    data: PatientCompanyCreateManyPatientInput | PatientCompanyCreateManyPatientInput[]
+  export type CompanyPatientCreateManyPatientInputEnvelope = {
+    data: CompanyPatientCreateManyPatientInput | CompanyPatientCreateManyPatientInput[]
     skipDuplicates?: boolean
   }
 
@@ -40675,20 +40675,20 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Workbench"> | Date | string
   }
 
-  export type PatientCompanyUpsertWithWhereUniqueWithoutPatientInput = {
-    where: PatientCompanyWhereUniqueInput
-    update: XOR<PatientCompanyUpdateWithoutPatientInput, PatientCompanyUncheckedUpdateWithoutPatientInput>
-    create: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput>
+  export type CompanyPatientUpsertWithWhereUniqueWithoutPatientInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutPatientInput, CompanyPatientUncheckedUpdateWithoutPatientInput>
+    create: XOR<CompanyPatientCreateWithoutPatientInput, CompanyPatientUncheckedCreateWithoutPatientInput>
   }
 
-  export type PatientCompanyUpdateWithWhereUniqueWithoutPatientInput = {
-    where: PatientCompanyWhereUniqueInput
-    data: XOR<PatientCompanyUpdateWithoutPatientInput, PatientCompanyUncheckedUpdateWithoutPatientInput>
+  export type CompanyPatientUpdateWithWhereUniqueWithoutPatientInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutPatientInput, CompanyPatientUncheckedUpdateWithoutPatientInput>
   }
 
-  export type PatientCompanyUpdateManyWithWhereWithoutPatientInput = {
-    where: PatientCompanyScalarWhereInput
-    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyWithoutPatientInput>
+  export type CompanyPatientUpdateManyWithWhereWithoutPatientInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutPatientInput>
   }
 
   export type PatientCreateWithoutCompaniesInput = {
@@ -40744,7 +40744,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
@@ -40758,7 +40758,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
@@ -40839,7 +40839,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
@@ -40853,7 +40853,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
@@ -40876,7 +40876,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutEvaluationsInput = {
@@ -40896,7 +40896,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutEvaluationsInput = {
@@ -40912,9 +40912,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
 
@@ -40926,9 +40926,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -41131,7 +41131,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutEvaluationsInput = {
@@ -41151,7 +41151,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type CompanyUpsertWithoutEvaluationsInput = {
@@ -41173,9 +41173,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
 
@@ -41187,9 +41187,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -41346,7 +41346,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutFeetInput = {
@@ -41366,7 +41366,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutFeetInput = {
@@ -41511,7 +41511,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutFeetInput = {
@@ -41531,7 +41531,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type EvaluationUpsertWithoutFeetInput = {
@@ -42077,7 +42077,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutWorkbenchesInput = {
@@ -42097,7 +42097,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
-    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutWorkbenchesInput = {
@@ -42306,7 +42306,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutWorkbenchesInput = {
@@ -42326,7 +42326,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type ProductUpsertWithoutWorkbenchesInput = {
@@ -42814,8 +42814,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
@@ -42827,8 +42827,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -42872,8 +42872,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
@@ -42885,8 +42885,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -43721,49 +43721,49 @@ export namespace Prisma {
     data: XOR<CatalogProductUpdateManyMutationInput, CatalogProductUncheckedUpdateManyWithoutVendorsInput>
   }
 
-  export type UserCompanyCreateWithoutUserInput = {
+  export type CompanyUserCreateWithoutUserInput = {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutUsersInput
   }
 
-  export type UserCompanyUncheckedCreateWithoutUserInput = {
+  export type CompanyUserUncheckedCreateWithoutUserInput = {
     companyId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserCompanyCreateOrConnectWithoutUserInput = {
-    where: UserCompanyWhereUniqueInput
-    create: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput>
+  export type CompanyUserCreateOrConnectWithoutUserInput = {
+    where: CompanyUserWhereUniqueInput
+    create: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput>
   }
 
-  export type UserCompanyCreateManyUserInputEnvelope = {
-    data: UserCompanyCreateManyUserInput | UserCompanyCreateManyUserInput[]
+  export type CompanyUserCreateManyUserInputEnvelope = {
+    data: CompanyUserCreateManyUserInput | CompanyUserCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserFacilityCreateWithoutUserInput = {
+  export type FacilityUserCreateWithoutUserInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     facility: FacilityCreateNestedOneWithoutUsersInput
   }
 
-  export type UserFacilityUncheckedCreateWithoutUserInput = {
+  export type FacilityUserUncheckedCreateWithoutUserInput = {
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityCreateOrConnectWithoutUserInput = {
-    where: UserFacilityWhereUniqueInput
-    create: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput>
+  export type FacilityUserCreateOrConnectWithoutUserInput = {
+    where: FacilityUserWhereUniqueInput
+    create: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput>
   }
 
-  export type UserFacilityCreateManyUserInputEnvelope = {
-    data: UserFacilityCreateManyUserInput | UserFacilityCreateManyUserInput[]
+  export type FacilityUserCreateManyUserInputEnvelope = {
+    data: FacilityUserCreateManyUserInput | FacilityUserCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -43833,36 +43833,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserCompanyUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserCompanyWhereUniqueInput
-    update: XOR<UserCompanyUpdateWithoutUserInput, UserCompanyUncheckedUpdateWithoutUserInput>
-    create: XOR<UserCompanyCreateWithoutUserInput, UserCompanyUncheckedCreateWithoutUserInput>
+  export type CompanyUserUpsertWithWhereUniqueWithoutUserInput = {
+    where: CompanyUserWhereUniqueInput
+    update: XOR<CompanyUserUpdateWithoutUserInput, CompanyUserUncheckedUpdateWithoutUserInput>
+    create: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput>
   }
 
-  export type UserCompanyUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserCompanyWhereUniqueInput
-    data: XOR<UserCompanyUpdateWithoutUserInput, UserCompanyUncheckedUpdateWithoutUserInput>
+  export type CompanyUserUpdateWithWhereUniqueWithoutUserInput = {
+    where: CompanyUserWhereUniqueInput
+    data: XOR<CompanyUserUpdateWithoutUserInput, CompanyUserUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserCompanyUpdateManyWithWhereWithoutUserInput = {
-    where: UserCompanyScalarWhereInput
-    data: XOR<UserCompanyUpdateManyMutationInput, UserCompanyUncheckedUpdateManyWithoutUserInput>
+  export type CompanyUserUpdateManyWithWhereWithoutUserInput = {
+    where: CompanyUserScalarWhereInput
+    data: XOR<CompanyUserUpdateManyMutationInput, CompanyUserUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type UserFacilityUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserFacilityWhereUniqueInput
-    update: XOR<UserFacilityUpdateWithoutUserInput, UserFacilityUncheckedUpdateWithoutUserInput>
-    create: XOR<UserFacilityCreateWithoutUserInput, UserFacilityUncheckedCreateWithoutUserInput>
+  export type FacilityUserUpsertWithWhereUniqueWithoutUserInput = {
+    where: FacilityUserWhereUniqueInput
+    update: XOR<FacilityUserUpdateWithoutUserInput, FacilityUserUncheckedUpdateWithoutUserInput>
+    create: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput>
   }
 
-  export type UserFacilityUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserFacilityWhereUniqueInput
-    data: XOR<UserFacilityUpdateWithoutUserInput, UserFacilityUncheckedUpdateWithoutUserInput>
+  export type FacilityUserUpdateWithWhereUniqueWithoutUserInput = {
+    where: FacilityUserWhereUniqueInput
+    data: XOR<FacilityUserUpdateWithoutUserInput, FacilityUserUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserFacilityUpdateManyWithWhereWithoutUserInput = {
-    where: UserFacilityScalarWhereInput
-    data: XOR<UserFacilityUpdateManyMutationInput, UserFacilityUncheckedUpdateManyWithoutUserInput>
+  export type FacilityUserUpdateManyWithWhereWithoutUserInput = {
+    where: FacilityUserScalarWhereInput
+    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutUserInput>
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -43935,7 +43935,7 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilities?: UserFacilityCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
@@ -43948,7 +43948,7 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
@@ -43967,7 +43967,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -43981,7 +43981,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -44010,7 +44010,7 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -44023,7 +44023,7 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -44048,7 +44048,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -44062,7 +44062,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -44075,7 +44075,7 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
@@ -44088,7 +44088,7 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
@@ -44142,7 +44142,7 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -44155,7 +44155,7 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
@@ -44199,8 +44199,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -44212,8 +44212,8 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: UserCompanyUncheckedCreateNestedManyWithoutUserInput
-    facilities?: UserFacilityUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     parcelsCreated?: ParcelUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -44241,8 +44241,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -44254,8 +44254,8 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: UserCompanyUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: UserFacilityUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     parcelsCreated?: ParcelUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -44267,9 +44267,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
   }
 
@@ -44281,9 +44281,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -44311,9 +44311,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
   }
 
@@ -44325,13 +44325,13 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type UserCompanyCreateManyCompanyInput = {
+  export type CompanyUserCreateManyCompanyInput = {
     userId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -44347,7 +44347,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyCreateManyCompanyInput = {
+  export type CompanyPatientCreateManyCompanyInput = {
     patientId: string
     externalId?: string | null
     createdAt?: Date | string
@@ -44391,21 +44391,21 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserCompanyUpdateWithoutCompanyInput = {
+  export type CompanyUserUpdateWithoutCompanyInput = {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
-  export type UserCompanyUncheckedUpdateWithoutCompanyInput = {
+  export type CompanyUserUncheckedUpdateWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyUncheckedUpdateManyWithoutCompanyInput = {
+  export type CompanyUserUncheckedUpdateManyWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44419,7 +44419,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserFacilityUpdateManyWithoutFacilityNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutCompanyInput = {
@@ -44429,7 +44429,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserFacilityUncheckedUpdateManyWithoutFacilityNestedInput
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyInput = {
@@ -44441,21 +44441,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyUpdateWithoutCompanyInput = {
+  export type CompanyPatientUpdateWithoutCompanyInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
-  export type PatientCompanyUncheckedUpdateWithoutCompanyInput = {
+  export type CompanyPatientUncheckedUpdateWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyUncheckedUpdateManyWithoutCompanyInput = {
+  export type CompanyPatientUncheckedUpdateManyWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44577,25 +44577,25 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityCreateManyFacilityInput = {
+  export type FacilityUserCreateManyFacilityInput = {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityUpdateWithoutFacilityInput = {
+  export type FacilityUserUpdateWithoutFacilityInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
   }
 
-  export type UserFacilityUncheckedUpdateWithoutFacilityInput = {
+  export type FacilityUserUncheckedUpdateWithoutFacilityInput = {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityUncheckedUpdateManyWithoutFacilityInput = {
+  export type FacilityUserUncheckedUpdateManyWithoutFacilityInput = {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44661,7 +44661,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientCompanyCreateManyPatientInput = {
+  export type CompanyPatientCreateManyPatientInput = {
     companyId: string
     externalId?: string | null
     createdAt?: Date | string
@@ -44858,21 +44858,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyUpdateWithoutPatientInput = {
+  export type CompanyPatientUpdateWithoutPatientInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
   }
 
-  export type PatientCompanyUncheckedUpdateWithoutPatientInput = {
+  export type CompanyPatientUncheckedUpdateWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientCompanyUncheckedUpdateManyWithoutPatientInput = {
+  export type CompanyPatientUncheckedUpdateManyWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46221,14 +46221,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyCreateManyUserInput = {
+  export type CompanyUserCreateManyUserInput = {
     companyId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type UserFacilityCreateManyUserInput = {
+  export type FacilityUserCreateManyUserInput = {
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46256,40 +46256,40 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type UserCompanyUpdateWithoutUserInput = {
+  export type CompanyUserUpdateWithoutUserInput = {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
   }
 
-  export type UserCompanyUncheckedUpdateWithoutUserInput = {
+  export type CompanyUserUncheckedUpdateWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCompanyUncheckedUpdateManyWithoutUserInput = {
+  export type CompanyUserUncheckedUpdateManyWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityUpdateWithoutUserInput = {
+  export type FacilityUserUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
   }
 
-  export type UserFacilityUncheckedUpdateWithoutUserInput = {
+  export type FacilityUserUncheckedUpdateWithoutUserInput = {
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserFacilityUncheckedUpdateManyWithoutUserInput = {
+  export type FacilityUserUncheckedUpdateManyWithoutUserInput = {
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46453,9 +46453,9 @@ export namespace Prisma {
      */
     export type PatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PatientDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use PatientCompanyDefaultArgs instead
+     * @deprecated Use CompanyPatientDefaultArgs instead
      */
-    export type PatientCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PatientCompanyDefaultArgs<ExtArgs>
+    export type CompanyPatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyPatientDefaultArgs<ExtArgs>
     /**
      * @deprecated Use EvaluationDefaultArgs instead
      */
@@ -46533,13 +46533,13 @@ export namespace Prisma {
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserCompanyDefaultArgs instead
+     * @deprecated Use CompanyUserDefaultArgs instead
      */
-    export type UserCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCompanyDefaultArgs<ExtArgs>
+    export type CompanyUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyUserDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserFacilityDefaultArgs instead
+     * @deprecated Use FacilityUserDefaultArgs instead
      */
-    export type UserFacilityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserFacilityDefaultArgs<ExtArgs>
+    export type FacilityUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityUserDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
