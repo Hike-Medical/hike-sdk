@@ -1,5 +1,5 @@
 import type { HikeConfig } from '@hike/types';
-import { currentUrl, extractCompanyId, isLocalHost } from '@hike/utils';
+import { currentUrl, isLocalHost } from '@hike/utils';
 import axios from 'axios';
 
 /**
@@ -17,10 +17,6 @@ backendApi.interceptors.request.use(
 
     if (url) {
       newConfig.headers['x-current-url'] = url.href;
-
-      if (!newConfig.headers['x-company-id']) {
-        newConfig.headers['x-company-id'] = extractCompanyId(url);
-      }
     }
 
     return newConfig;
@@ -58,5 +54,15 @@ export const configureBackendApi = ({
   backendApi.defaults.headers.common['x-app-env'] ??= appEnv;
   backendApi.defaults.headers.common['x-app-id'] ??= appId;
   backendApi.defaults.headers.common['x-app-version'] ??= appVersion;
-  backendApi.defaults.headers.common['x-company-id'] ??= companyId;
+
+  if (companyId) {
+    configureBackendApiForCompany(companyId);
+  }
+};
+
+/**
+ * Provisions the backend API instance with company identifier on every request.
+ */
+export const configureBackendApiForCompany = (companyId: string) => {
+  backendApi.defaults.headers.common['x-company-id'] = companyId;
 };

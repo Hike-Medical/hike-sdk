@@ -41,6 +41,7 @@ export default hike.init({
   appEnv: process.env.NODE_ENV,
   appId: '@hike/my-web', // or process.env.npm_package_name
   appVersion: '1.0.0' // or process.env.npm_package_version
+  companyId: '***'
 });
 ```
 
