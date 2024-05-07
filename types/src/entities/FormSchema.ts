@@ -31,7 +31,7 @@ interface BaseFormField<T extends FormFieldValue> {
 
 export type FormField =
   | (BaseFormField<string> & { type: 'text'; multi?: boolean })
-  | (BaseFormField<string> & { type: 'number' })
+  | (BaseFormField<number> & { type: 'number' })
   | (BaseFormField<boolean> & { type: 'boolean' })
   | (BaseFormField<string> & { type: 'date'; display?: string })
   | (BaseFormField<string> & { type: 'address' })
