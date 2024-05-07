@@ -29,6 +29,11 @@ export type Facility = $Result.DefaultSelection<Prisma.$FacilityPayload>
  */
 export type Patient = $Result.DefaultSelection<Prisma.$PatientPayload>
 /**
+ * Model PatientCompany
+ * 
+ */
+export type PatientCompany = $Result.DefaultSelection<Prisma.$PatientCompanyPayload>
+/**
  * Model Evaluation
  * 
  */
@@ -586,6 +591,16 @@ export class PrismaClient<
     * ```
     */
   get patient(): Prisma.PatientDelegate<ExtArgs>;
+
+  /**
+   * `prisma.patientCompany`: Exposes CRUD operations for the **PatientCompany** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PatientCompanies
+    * const patientCompanies = await prisma.patientCompany.findMany()
+    * ```
+    */
+  get patientCompany(): Prisma.PatientCompanyDelegate<ExtArgs>;
 
   /**
    * `prisma.evaluation`: Exposes CRUD operations for the **Evaluation** model.
@@ -1316,6 +1331,7 @@ export namespace Prisma {
     Company: 'Company',
     Facility: 'Facility',
     Patient: 'Patient',
+    PatientCompany: 'PatientCompany',
     Evaluation: 'Evaluation',
     Foot: 'Foot',
     Asset: 'Asset',
@@ -1357,7 +1373,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'user' | 'userCompany' | 'userFacility' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'patientCompany' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'user' | 'userCompany' | 'userFacility' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1556,6 +1572,72 @@ export namespace Prisma {
           count: {
             args: Prisma.PatientCountArgs<ExtArgs>,
             result: $Utils.Optional<PatientCountAggregateOutputType> | number
+          }
+        }
+      }
+      PatientCompany: {
+        payload: Prisma.$PatientCompanyPayload<ExtArgs>
+        fields: Prisma.PatientCompanyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PatientCompanyFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PatientCompanyFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          findFirst: {
+            args: Prisma.PatientCompanyFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PatientCompanyFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          findMany: {
+            args: Prisma.PatientCompanyFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>[]
+          }
+          create: {
+            args: Prisma.PatientCompanyCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          createMany: {
+            args: Prisma.PatientCompanyCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PatientCompanyDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          update: {
+            args: Prisma.PatientCompanyUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          deleteMany: {
+            args: Prisma.PatientCompanyDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PatientCompanyUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PatientCompanyUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientCompanyPayload>
+          }
+          aggregate: {
+            args: Prisma.PatientCompanyAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePatientCompany>
+          }
+          groupBy: {
+            args: Prisma.PatientCompanyGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PatientCompanyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PatientCompanyCountArgs<ExtArgs>,
+            result: $Utils.Optional<PatientCompanyCountAggregateOutputType> | number
           }
         }
       }
@@ -3412,7 +3494,7 @@ export namespace Prisma {
    * CompanyCountOutputType without action
    */
   export type CompanyCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientWhereInput
+    where?: PatientCompanyWhereInput
   }
 
   /**
@@ -3515,7 +3597,7 @@ export namespace Prisma {
    * PatientCountOutputType without action
    */
   export type PatientCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CompanyWhereInput
+    where?: PatientCompanyWhereInput
   }
 
 
@@ -4341,7 +4423,7 @@ export namespace Prisma {
     objects: {
       users: Prisma.$UserCompanyPayload<ExtArgs>[]
       facilities: Prisma.$FacilityPayload<ExtArgs>[]
-      patients: Prisma.$PatientPayload<ExtArgs>[]
+      patients: Prisma.$PatientCompanyPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       apiKeys: Prisma.$ApiKeyPayload<ExtArgs>[]
     }
@@ -4722,7 +4804,7 @@ export namespace Prisma {
 
     facilities<T extends Company$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+    patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     evaluations<T extends Company$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Company$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -5106,19 +5188,19 @@ export namespace Prisma {
    */
   export type Company$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Patient
+     * Select specific fields to fetch from the PatientCompany
      */
-    select?: PatientSelect<ExtArgs> | null
+    select?: PatientCompanySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PatientInclude<ExtArgs> | null
-    where?: PatientWhereInput
-    orderBy?: PatientOrderByWithRelationInput | PatientOrderByWithRelationInput[]
-    cursor?: PatientWhereUniqueInput
+    include?: PatientCompanyInclude<ExtArgs> | null
+    where?: PatientCompanyWhereInput
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    cursor?: PatientCompanyWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
+    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
   }
 
   /**
@@ -6154,7 +6236,6 @@ export namespace Prisma {
 
   export type PatientMinAggregateOutputType = {
     id: string | null
-    externalId: string | null
     firstName: string | null
     middleName: string | null
     lastName: string | null
@@ -6172,7 +6253,6 @@ export namespace Prisma {
 
   export type PatientMaxAggregateOutputType = {
     id: string | null
-    externalId: string | null
     firstName: string | null
     middleName: string | null
     lastName: string | null
@@ -6190,7 +6270,6 @@ export namespace Prisma {
 
   export type PatientCountAggregateOutputType = {
     id: number
-    externalId: number
     firstName: number
     middleName: number
     lastName: number
@@ -6220,7 +6299,6 @@ export namespace Prisma {
 
   export type PatientMinAggregateInputType = {
     id?: true
-    externalId?: true
     firstName?: true
     middleName?: true
     lastName?: true
@@ -6238,7 +6316,6 @@ export namespace Prisma {
 
   export type PatientMaxAggregateInputType = {
     id?: true
-    externalId?: true
     firstName?: true
     middleName?: true
     lastName?: true
@@ -6256,7 +6333,6 @@ export namespace Prisma {
 
   export type PatientCountAggregateInputType = {
     id?: true
-    externalId?: true
     firstName?: true
     middleName?: true
     lastName?: true
@@ -6361,7 +6437,6 @@ export namespace Prisma {
 
   export type PatientGroupByOutputType = {
     id: string
-    externalId: string | null
     firstName: string
     middleName: string | null
     lastName: string
@@ -6398,7 +6473,6 @@ export namespace Prisma {
 
   export type PatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    externalId?: boolean
     firstName?: boolean
     middleName?: boolean
     lastName?: boolean
@@ -6421,7 +6495,6 @@ export namespace Prisma {
 
   export type PatientSelectScalar = {
     id?: boolean
-    externalId?: boolean
     firstName?: boolean
     middleName?: boolean
     lastName?: boolean
@@ -6453,11 +6526,10 @@ export namespace Prisma {
       feet: Prisma.$FootPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
-      companies: Prisma.$CompanyPayload<ExtArgs>[]
+      companies: Prisma.$PatientCompanyPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      externalId: string | null
       firstName: string
       middleName: string | null
       lastName: string
@@ -6842,7 +6914,7 @@ export namespace Prisma {
 
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6873,7 +6945,6 @@ export namespace Prisma {
    */ 
   interface PatientFieldRefs {
     readonly id: FieldRef<"Patient", 'String'>
-    readonly externalId: FieldRef<"Patient", 'String'>
     readonly firstName: FieldRef<"Patient", 'String'>
     readonly middleName: FieldRef<"Patient", 'String'>
     readonly lastName: FieldRef<"Patient", 'String'>
@@ -7250,19 +7321,19 @@ export namespace Prisma {
    */
   export type Patient$companiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Company
+     * Select specific fields to fetch from the PatientCompany
      */
-    select?: CompanySelect<ExtArgs> | null
+    select?: PatientCompanySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyInclude<ExtArgs> | null
-    where?: CompanyWhereInput
-    orderBy?: CompanyOrderByWithRelationInput | CompanyOrderByWithRelationInput[]
-    cursor?: CompanyWhereUniqueInput
+    include?: PatientCompanyInclude<ExtArgs> | null
+    where?: PatientCompanyWhereInput
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    cursor?: PatientCompanyWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
+    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
   }
 
   /**
@@ -7277,6 +7348,916 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PatientInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PatientCompany
+   */
+
+  export type AggregatePatientCompany = {
+    _count: PatientCompanyCountAggregateOutputType | null
+    _min: PatientCompanyMinAggregateOutputType | null
+    _max: PatientCompanyMaxAggregateOutputType | null
+  }
+
+  export type PatientCompanyMinAggregateOutputType = {
+    patientId: string | null
+    companyId: string | null
+    externalId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PatientCompanyMaxAggregateOutputType = {
+    patientId: string | null
+    companyId: string | null
+    externalId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PatientCompanyCountAggregateOutputType = {
+    patientId: number
+    companyId: number
+    externalId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PatientCompanyMinAggregateInputType = {
+    patientId?: true
+    companyId?: true
+    externalId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PatientCompanyMaxAggregateInputType = {
+    patientId?: true
+    companyId?: true
+    externalId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PatientCompanyCountAggregateInputType = {
+    patientId?: true
+    companyId?: true
+    externalId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PatientCompanyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PatientCompany to aggregate.
+     */
+    where?: PatientCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PatientCompanies to fetch.
+     */
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PatientCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PatientCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PatientCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PatientCompanies
+    **/
+    _count?: true | PatientCompanyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PatientCompanyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PatientCompanyMaxAggregateInputType
+  }
+
+  export type GetPatientCompanyAggregateType<T extends PatientCompanyAggregateArgs> = {
+        [P in keyof T & keyof AggregatePatientCompany]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePatientCompany[P]>
+      : GetScalarType<T[P], AggregatePatientCompany[P]>
+  }
+
+
+
+
+  export type PatientCompanyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PatientCompanyWhereInput
+    orderBy?: PatientCompanyOrderByWithAggregationInput | PatientCompanyOrderByWithAggregationInput[]
+    by: PatientCompanyScalarFieldEnum[] | PatientCompanyScalarFieldEnum
+    having?: PatientCompanyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PatientCompanyCountAggregateInputType | true
+    _min?: PatientCompanyMinAggregateInputType
+    _max?: PatientCompanyMaxAggregateInputType
+  }
+
+  export type PatientCompanyGroupByOutputType = {
+    patientId: string
+    companyId: string
+    externalId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PatientCompanyCountAggregateOutputType | null
+    _min: PatientCompanyMinAggregateOutputType | null
+    _max: PatientCompanyMaxAggregateOutputType | null
+  }
+
+  type GetPatientCompanyGroupByPayload<T extends PatientCompanyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PatientCompanyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PatientCompanyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PatientCompanyGroupByOutputType[P]>
+            : GetScalarType<T[P], PatientCompanyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PatientCompanySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    patientId?: boolean
+    companyId?: boolean
+    externalId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["patientCompany"]>
+
+  export type PatientCompanySelectScalar = {
+    patientId?: boolean
+    companyId?: boolean
+    externalId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type PatientCompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }
+
+
+  export type $PatientCompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PatientCompany"
+    objects: {
+      patient: Prisma.$PatientPayload<ExtArgs>
+      company: Prisma.$CompanyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      patientId: string
+      companyId: string
+      externalId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["patientCompany"]>
+    composites: {}
+  }
+
+
+  type PatientCompanyGetPayload<S extends boolean | null | undefined | PatientCompanyDefaultArgs> = $Result.GetResult<Prisma.$PatientCompanyPayload, S>
+
+  type PatientCompanyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PatientCompanyFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PatientCompanyCountAggregateInputType | true
+    }
+
+  export interface PatientCompanyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PatientCompany'], meta: { name: 'PatientCompany' } }
+    /**
+     * Find zero or one PatientCompany that matches the filter.
+     * @param {PatientCompanyFindUniqueArgs} args - Arguments to find a PatientCompany
+     * @example
+     * // Get one PatientCompany
+     * const patientCompany = await prisma.patientCompany.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PatientCompanyFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyFindUniqueArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one PatientCompany that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PatientCompanyFindUniqueOrThrowArgs} args - Arguments to find a PatientCompany
+     * @example
+     * // Get one PatientCompany
+     * const patientCompany = await prisma.patientCompany.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PatientCompanyFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first PatientCompany that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyFindFirstArgs} args - Arguments to find a PatientCompany
+     * @example
+     * // Get one PatientCompany
+     * const patientCompany = await prisma.patientCompany.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PatientCompanyFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyFindFirstArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first PatientCompany that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyFindFirstOrThrowArgs} args - Arguments to find a PatientCompany
+     * @example
+     * // Get one PatientCompany
+     * const patientCompany = await prisma.patientCompany.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PatientCompanyFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more PatientCompanies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PatientCompanies
+     * const patientCompanies = await prisma.patientCompany.findMany()
+     * 
+     * // Get first 10 PatientCompanies
+     * const patientCompanies = await prisma.patientCompany.findMany({ take: 10 })
+     * 
+     * // Only select the `patientId`
+     * const patientCompanyWithPatientIdOnly = await prisma.patientCompany.findMany({ select: { patientId: true } })
+     * 
+    **/
+    findMany<T extends PatientCompanyFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a PatientCompany.
+     * @param {PatientCompanyCreateArgs} args - Arguments to create a PatientCompany.
+     * @example
+     * // Create one PatientCompany
+     * const PatientCompany = await prisma.patientCompany.create({
+     *   data: {
+     *     // ... data to create a PatientCompany
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PatientCompanyCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyCreateArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many PatientCompanies.
+     *     @param {PatientCompanyCreateManyArgs} args - Arguments to create many PatientCompanies.
+     *     @example
+     *     // Create many PatientCompanies
+     *     const patientCompany = await prisma.patientCompany.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PatientCompanyCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PatientCompany.
+     * @param {PatientCompanyDeleteArgs} args - Arguments to delete one PatientCompany.
+     * @example
+     * // Delete one PatientCompany
+     * const PatientCompany = await prisma.patientCompany.delete({
+     *   where: {
+     *     // ... filter to delete one PatientCompany
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PatientCompanyDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyDeleteArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one PatientCompany.
+     * @param {PatientCompanyUpdateArgs} args - Arguments to update one PatientCompany.
+     * @example
+     * // Update one PatientCompany
+     * const patientCompany = await prisma.patientCompany.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PatientCompanyUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyUpdateArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more PatientCompanies.
+     * @param {PatientCompanyDeleteManyArgs} args - Arguments to filter PatientCompanies to delete.
+     * @example
+     * // Delete a few PatientCompanies
+     * const { count } = await prisma.patientCompany.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PatientCompanyDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientCompanyDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PatientCompanies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PatientCompanies
+     * const patientCompany = await prisma.patientCompany.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PatientCompanyUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PatientCompany.
+     * @param {PatientCompanyUpsertArgs} args - Arguments to update or create a PatientCompany.
+     * @example
+     * // Update or create a PatientCompany
+     * const patientCompany = await prisma.patientCompany.upsert({
+     *   create: {
+     *     // ... data to create a PatientCompany
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PatientCompany we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PatientCompanyUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientCompanyUpsertArgs<ExtArgs>>
+    ): Prisma__PatientCompanyClient<$Result.GetResult<Prisma.$PatientCompanyPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of PatientCompanies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyCountArgs} args - Arguments to filter PatientCompanies to count.
+     * @example
+     * // Count the number of PatientCompanies
+     * const count = await prisma.patientCompany.count({
+     *   where: {
+     *     // ... the filter for the PatientCompanies we want to count
+     *   }
+     * })
+    **/
+    count<T extends PatientCompanyCountArgs>(
+      args?: Subset<T, PatientCompanyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PatientCompanyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PatientCompany.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PatientCompanyAggregateArgs>(args: Subset<T, PatientCompanyAggregateArgs>): Prisma.PrismaPromise<GetPatientCompanyAggregateType<T>>
+
+    /**
+     * Group by PatientCompany.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PatientCompanyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PatientCompanyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PatientCompanyGroupByArgs['orderBy'] }
+        : { orderBy?: PatientCompanyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PatientCompanyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatientCompanyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PatientCompany model
+   */
+  readonly fields: PatientCompanyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PatientCompany.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PatientCompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the PatientCompany model
+   */ 
+  interface PatientCompanyFieldRefs {
+    readonly patientId: FieldRef<"PatientCompany", 'String'>
+    readonly companyId: FieldRef<"PatientCompany", 'String'>
+    readonly externalId: FieldRef<"PatientCompany", 'String'>
+    readonly createdAt: FieldRef<"PatientCompany", 'DateTime'>
+    readonly updatedAt: FieldRef<"PatientCompany", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PatientCompany findUnique
+   */
+  export type PatientCompanyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which PatientCompany to fetch.
+     */
+    where: PatientCompanyWhereUniqueInput
+  }
+
+  /**
+   * PatientCompany findUniqueOrThrow
+   */
+  export type PatientCompanyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which PatientCompany to fetch.
+     */
+    where: PatientCompanyWhereUniqueInput
+  }
+
+  /**
+   * PatientCompany findFirst
+   */
+  export type PatientCompanyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which PatientCompany to fetch.
+     */
+    where?: PatientCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PatientCompanies to fetch.
+     */
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PatientCompanies.
+     */
+    cursor?: PatientCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PatientCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PatientCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PatientCompanies.
+     */
+    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * PatientCompany findFirstOrThrow
+   */
+  export type PatientCompanyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which PatientCompany to fetch.
+     */
+    where?: PatientCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PatientCompanies to fetch.
+     */
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PatientCompanies.
+     */
+    cursor?: PatientCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PatientCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PatientCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PatientCompanies.
+     */
+    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * PatientCompany findMany
+   */
+  export type PatientCompanyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which PatientCompanies to fetch.
+     */
+    where?: PatientCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PatientCompanies to fetch.
+     */
+    orderBy?: PatientCompanyOrderByWithRelationInput | PatientCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PatientCompanies.
+     */
+    cursor?: PatientCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PatientCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PatientCompanies.
+     */
+    skip?: number
+    distinct?: PatientCompanyScalarFieldEnum | PatientCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * PatientCompany create
+   */
+  export type PatientCompanyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PatientCompany.
+     */
+    data: XOR<PatientCompanyCreateInput, PatientCompanyUncheckedCreateInput>
+  }
+
+  /**
+   * PatientCompany createMany
+   */
+  export type PatientCompanyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PatientCompanies.
+     */
+    data: PatientCompanyCreateManyInput | PatientCompanyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PatientCompany update
+   */
+  export type PatientCompanyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PatientCompany.
+     */
+    data: XOR<PatientCompanyUpdateInput, PatientCompanyUncheckedUpdateInput>
+    /**
+     * Choose, which PatientCompany to update.
+     */
+    where: PatientCompanyWhereUniqueInput
+  }
+
+  /**
+   * PatientCompany updateMany
+   */
+  export type PatientCompanyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PatientCompanies.
+     */
+    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyInput>
+    /**
+     * Filter which PatientCompanies to update
+     */
+    where?: PatientCompanyWhereInput
+  }
+
+  /**
+   * PatientCompany upsert
+   */
+  export type PatientCompanyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PatientCompany to update in case it exists.
+     */
+    where: PatientCompanyWhereUniqueInput
+    /**
+     * In case the PatientCompany found by the `where` argument doesn't exist, create a new PatientCompany with this data.
+     */
+    create: XOR<PatientCompanyCreateInput, PatientCompanyUncheckedCreateInput>
+    /**
+     * In case the PatientCompany was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PatientCompanyUpdateInput, PatientCompanyUncheckedUpdateInput>
+  }
+
+  /**
+   * PatientCompany delete
+   */
+  export type PatientCompanyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
+    /**
+     * Filter which PatientCompany to delete.
+     */
+    where: PatientCompanyWhereUniqueInput
+  }
+
+  /**
+   * PatientCompany deleteMany
+   */
+  export type PatientCompanyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PatientCompanies to delete
+     */
+    where?: PatientCompanyWhereInput
+  }
+
+  /**
+   * PatientCompany without action
+   */
+  export type PatientCompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientCompany
+     */
+    select?: PatientCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientCompanyInclude<ExtArgs> | null
   }
 
 
@@ -7313,7 +8294,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
@@ -7343,7 +8323,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
@@ -7374,7 +8353,6 @@ export namespace Prisma {
     prescribedAt: number
     prescribedActive: number
     notes: number
-    workbenchId: number
     completedAt: number
     cancelledAt: number
     createdAt: number
@@ -7406,7 +8384,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7436,7 +8413,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7467,7 +8443,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    workbenchId?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7571,7 +8546,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean
     notes: string | null
-    workbenchId: string | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date
@@ -7619,7 +8593,6 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    workbenchId?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7660,7 +8633,6 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    workbenchId?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7719,7 +8691,6 @@ export namespace Prisma {
       prescribedAt: Date | null
       prescribedActive: boolean
       notes: string | null
-      workbenchId: string | null
       completedAt: Date | null
       cancelledAt: Date | null
       createdAt: Date
@@ -8158,7 +9129,6 @@ export namespace Prisma {
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
-    readonly workbenchId: FieldRef<"Evaluation", 'String'>
     readonly completedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
@@ -31622,7 +32592,6 @@ export namespace Prisma {
 
   export const PatientScalarFieldEnum: {
     id: 'id',
-    externalId: 'externalId',
     firstName: 'firstName',
     middleName: 'middleName',
     lastName: 'lastName',
@@ -31639,6 +32608,17 @@ export namespace Prisma {
   };
 
   export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
+
+
+  export const PatientCompanyScalarFieldEnum: {
+    patientId: 'patientId',
+    companyId: 'companyId',
+    externalId: 'externalId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PatientCompanyScalarFieldEnum = (typeof PatientCompanyScalarFieldEnum)[keyof typeof PatientCompanyScalarFieldEnum]
 
 
   export const EvaluationScalarFieldEnum: {
@@ -31665,7 +32645,6 @@ export namespace Prisma {
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
     notes: 'notes',
-    workbenchId: 'workbenchId',
     completedAt: 'completedAt',
     cancelledAt: 'cancelledAt',
     createdAt: 'createdAt',
@@ -32387,7 +33366,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     users?: UserCompanyListRelationFilter
     facilities?: FacilityListRelationFilter
-    patients?: PatientListRelationFilter
+    patients?: PatientCompanyListRelationFilter
     evaluations?: EvaluationListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }
@@ -32402,7 +33381,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     users?: UserCompanyOrderByRelationAggregateInput
     facilities?: FacilityOrderByRelationAggregateInput
-    patients?: PatientOrderByRelationAggregateInput
+    patients?: PatientCompanyOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     apiKeys?: ApiKeyOrderByRelationAggregateInput
   }
@@ -32420,7 +33399,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     users?: UserCompanyListRelationFilter
     facilities?: FacilityListRelationFilter
-    patients?: PatientListRelationFilter
+    patients?: PatientCompanyListRelationFilter
     evaluations?: EvaluationListRelationFilter
     apiKeys?: ApiKeyListRelationFilter
   }, "id">
@@ -32524,7 +33503,6 @@ export namespace Prisma {
     OR?: PatientWhereInput[]
     NOT?: PatientWhereInput | PatientWhereInput[]
     id?: StringFilter<"Patient"> | string
-    externalId?: StringNullableFilter<"Patient"> | string | null
     firstName?: StringFilter<"Patient"> | string
     middleName?: StringNullableFilter<"Patient"> | string | null
     lastName?: StringFilter<"Patient"> | string
@@ -32541,12 +33519,11 @@ export namespace Prisma {
     feet?: FootListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    companies?: CompanyListRelationFilter
+    companies?: PatientCompanyListRelationFilter
   }
 
   export type PatientOrderByWithRelationInput = {
     id?: SortOrder
-    externalId?: SortOrderInput | SortOrder
     firstName?: SortOrder
     middleName?: SortOrderInput | SortOrder
     lastName?: SortOrder
@@ -32563,12 +33540,11 @@ export namespace Prisma {
     feet?: FootOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
-    companies?: CompanyOrderByRelationAggregateInput
+    companies?: PatientCompanyOrderByRelationAggregateInput
   }
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    externalId?: string
     AND?: PatientWhereInput | PatientWhereInput[]
     OR?: PatientWhereInput[]
     NOT?: PatientWhereInput | PatientWhereInput[]
@@ -32588,12 +33564,11 @@ export namespace Prisma {
     feet?: FootListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    companies?: CompanyListRelationFilter
-  }, "id" | "externalId">
+    companies?: PatientCompanyListRelationFilter
+  }, "id">
 
   export type PatientOrderByWithAggregationInput = {
     id?: SortOrder
-    externalId?: SortOrderInput | SortOrder
     firstName?: SortOrder
     middleName?: SortOrderInput | SortOrder
     lastName?: SortOrder
@@ -32619,7 +33594,6 @@ export namespace Prisma {
     OR?: PatientScalarWhereWithAggregatesInput[]
     NOT?: PatientScalarWhereWithAggregatesInput | PatientScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Patient"> | string
-    externalId?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     firstName?: StringWithAggregatesFilter<"Patient"> | string
     middleName?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     lastName?: StringWithAggregatesFilter<"Patient"> | string
@@ -32633,6 +33607,66 @@ export namespace Prisma {
     deceasedAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
+  }
+
+  export type PatientCompanyWhereInput = {
+    AND?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
+    OR?: PatientCompanyWhereInput[]
+    NOT?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
+    patientId?: StringFilter<"PatientCompany"> | string
+    companyId?: StringFilter<"PatientCompany"> | string
+    externalId?: StringNullableFilter<"PatientCompany"> | string | null
+    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }
+
+  export type PatientCompanyOrderByWithRelationInput = {
+    patientId?: SortOrder
+    companyId?: SortOrder
+    externalId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patient?: PatientOrderByWithRelationInput
+    company?: CompanyOrderByWithRelationInput
+  }
+
+  export type PatientCompanyWhereUniqueInput = Prisma.AtLeast<{
+    externalId_companyId?: PatientCompanyExternalIdCompanyIdCompoundUniqueInput
+    patientId_companyId?: PatientCompanyPatientIdCompanyIdCompoundUniqueInput
+    AND?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
+    OR?: PatientCompanyWhereInput[]
+    NOT?: PatientCompanyWhereInput | PatientCompanyWhereInput[]
+    patientId?: StringFilter<"PatientCompany"> | string
+    companyId?: StringFilter<"PatientCompany"> | string
+    externalId?: StringNullableFilter<"PatientCompany"> | string | null
+    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }, "patientId_companyId" | "externalId_companyId">
+
+  export type PatientCompanyOrderByWithAggregationInput = {
+    patientId?: SortOrder
+    companyId?: SortOrder
+    externalId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PatientCompanyCountOrderByAggregateInput
+    _max?: PatientCompanyMaxOrderByAggregateInput
+    _min?: PatientCompanyMinOrderByAggregateInput
+  }
+
+  export type PatientCompanyScalarWhereWithAggregatesInput = {
+    AND?: PatientCompanyScalarWhereWithAggregatesInput | PatientCompanyScalarWhereWithAggregatesInput[]
+    OR?: PatientCompanyScalarWhereWithAggregatesInput[]
+    NOT?: PatientCompanyScalarWhereWithAggregatesInput | PatientCompanyScalarWhereWithAggregatesInput[]
+    patientId?: StringWithAggregatesFilter<"PatientCompany"> | string
+    companyId?: StringWithAggregatesFilter<"PatientCompany"> | string
+    externalId?: StringNullableWithAggregatesFilter<"PatientCompany"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PatientCompany"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PatientCompany"> | Date | string
   }
 
   export type EvaluationWhereInput = {
@@ -32662,7 +33696,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -32702,7 +33735,6 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    workbenchId?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -32746,7 +33778,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -32786,7 +33817,6 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    workbenchId?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -32823,7 +33853,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    workbenchId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -34519,7 +35548,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -34534,7 +35563,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientUncheckedCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -34549,7 +35578,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -34564,7 +35593,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -34674,7 +35703,6 @@ export namespace Prisma {
 
   export type PatientCreateInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -34691,12 +35719,11 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: CompanyCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -34713,12 +35740,11 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: CompanyUncheckedCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -34735,12 +35761,11 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -34757,12 +35782,11 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUncheckedUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientCreateManyInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -34780,7 +35804,6 @@ export namespace Prisma {
 
   export type PatientUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -34798,7 +35821,6 @@ export namespace Prisma {
 
   export type PatientUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -34810,6 +35832,60 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatientCompanyCreateInput = {
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutCompaniesInput
+    company: CompanyCreateNestedOneWithoutPatientsInput
+  }
+
+  export type PatientCompanyUncheckedCreateInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatientCompanyUpdateInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+  }
+
+  export type PatientCompanyUncheckedUpdateInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatientCompanyCreateManyInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatientCompanyUpdateManyMutationInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatientCompanyUncheckedUpdateManyInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34832,7 +35908,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -34872,7 +35947,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -34900,7 +35974,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34940,7 +36013,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34974,7 +36046,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -34999,7 +36070,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35030,7 +36100,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36917,10 +37986,10 @@ export namespace Prisma {
     none?: FacilityWhereInput
   }
 
-  export type PatientListRelationFilter = {
-    every?: PatientWhereInput
-    some?: PatientWhereInput
-    none?: PatientWhereInput
+  export type PatientCompanyListRelationFilter = {
+    every?: PatientCompanyWhereInput
+    some?: PatientCompanyWhereInput
+    none?: PatientCompanyWhereInput
   }
 
   export type EvaluationListRelationFilter = {
@@ -36948,7 +38017,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type PatientOrderByRelationAggregateInput = {
+  export type PatientCompanyOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -37158,12 +38227,6 @@ export namespace Prisma {
     none?: WorkbenchWhereInput
   }
 
-  export type CompanyListRelationFilter = {
-    every?: CompanyWhereInput
-    some?: CompanyWhereInput
-    none?: CompanyWhereInput
-  }
-
   export type FootOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -37172,13 +38235,8 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CompanyOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type PatientCountOrderByAggregateInput = {
     id?: SortOrder
-    externalId?: SortOrder
     firstName?: SortOrder
     middleName?: SortOrder
     lastName?: SortOrder
@@ -37201,7 +38259,6 @@ export namespace Prisma {
 
   export type PatientMaxOrderByAggregateInput = {
     id?: SortOrder
-    externalId?: SortOrder
     firstName?: SortOrder
     middleName?: SortOrder
     lastName?: SortOrder
@@ -37219,7 +38276,6 @@ export namespace Prisma {
 
   export type PatientMinOrderByAggregateInput = {
     id?: SortOrder
-    externalId?: SortOrder
     firstName?: SortOrder
     middleName?: SortOrder
     lastName?: SortOrder
@@ -37290,6 +38346,45 @@ export namespace Prisma {
     _max?: NestedEnumMaritalStatusNullableFilter<$PrismaModel>
   }
 
+  export type PatientRelationFilter = {
+    is?: PatientWhereInput
+    isNot?: PatientWhereInput
+  }
+
+  export type PatientCompanyExternalIdCompanyIdCompoundUniqueInput = {
+    externalId: string
+    companyId: string
+  }
+
+  export type PatientCompanyPatientIdCompanyIdCompoundUniqueInput = {
+    patientId: string
+    companyId: string
+  }
+
+  export type PatientCompanyCountOrderByAggregateInput = {
+    patientId?: SortOrder
+    companyId?: SortOrder
+    externalId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PatientCompanyMaxOrderByAggregateInput = {
+    patientId?: SortOrder
+    companyId?: SortOrder
+    externalId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PatientCompanyMinOrderByAggregateInput = {
+    patientId?: SortOrder
+    companyId?: SortOrder
+    externalId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type EnumCareTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.CareType | EnumCareTypeFieldRefInput<$PrismaModel>
     in?: $Enums.CareType[] | ListEnumCareTypeFieldRefInput<$PrismaModel>
@@ -37331,11 +38426,6 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type PatientRelationFilter = {
-    is?: PatientWhereInput
-    isNot?: PatientWhereInput
   }
 
   export type DeviceTypeNullableRelationFilter = {
@@ -37397,7 +38487,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -37427,7 +38516,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -37457,7 +38545,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    workbenchId?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -38776,10 +39863,11 @@ export namespace Prisma {
     connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
   }
 
-  export type PatientCreateNestedManyWithoutCompaniesInput = {
-    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput> | PatientCreateWithoutCompaniesInput[] | PatientUncheckedCreateWithoutCompaniesInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput | PatientCreateOrConnectWithoutCompaniesInput[]
-    connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
+  export type PatientCompanyCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
+    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
   }
 
   export type EvaluationCreateNestedManyWithoutCompanyInput = {
@@ -38810,10 +39898,11 @@ export namespace Prisma {
     connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
   }
 
-  export type PatientUncheckedCreateNestedManyWithoutCompaniesInput = {
-    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput> | PatientCreateWithoutCompaniesInput[] | PatientUncheckedCreateWithoutCompaniesInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput | PatientCreateOrConnectWithoutCompaniesInput[]
-    connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
+  export type PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
+    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
   }
 
   export type EvaluationUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -38874,17 +39963,18 @@ export namespace Prisma {
     deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
-  export type PatientUpdateManyWithoutCompaniesNestedInput = {
-    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput> | PatientCreateWithoutCompaniesInput[] | PatientUncheckedCreateWithoutCompaniesInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput | PatientCreateOrConnectWithoutCompaniesInput[]
-    upsert?: PatientUpsertWithWhereUniqueWithoutCompaniesInput | PatientUpsertWithWhereUniqueWithoutCompaniesInput[]
-    set?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    disconnect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    delete?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    update?: PatientUpdateWithWhereUniqueWithoutCompaniesInput | PatientUpdateWithWhereUniqueWithoutCompaniesInput[]
-    updateMany?: PatientUpdateManyWithWhereWithoutCompaniesInput | PatientUpdateManyWithWhereWithoutCompaniesInput[]
-    deleteMany?: PatientScalarWhereInput | PatientScalarWhereInput[]
+  export type PatientCompanyUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
+    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput | PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
+    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    update?: PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput | PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: PatientCompanyUpdateManyWithWhereWithoutCompanyInput | PatientCompanyUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
   }
 
   export type EvaluationUpdateManyWithoutCompanyNestedInput = {
@@ -38943,17 +40033,18 @@ export namespace Prisma {
     deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
-  export type PatientUncheckedUpdateManyWithoutCompaniesNestedInput = {
-    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput> | PatientCreateWithoutCompaniesInput[] | PatientUncheckedCreateWithoutCompaniesInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput | PatientCreateOrConnectWithoutCompaniesInput[]
-    upsert?: PatientUpsertWithWhereUniqueWithoutCompaniesInput | PatientUpsertWithWhereUniqueWithoutCompaniesInput[]
-    set?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    disconnect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    delete?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    update?: PatientUpdateWithWhereUniqueWithoutCompaniesInput | PatientUpdateWithWhereUniqueWithoutCompaniesInput[]
-    updateMany?: PatientUpdateManyWithWhereWithoutCompaniesInput | PatientUpdateManyWithWhereWithoutCompaniesInput[]
-    deleteMany?: PatientScalarWhereInput | PatientScalarWhereInput[]
+  export type PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput> | PatientCompanyCreateWithoutCompanyInput[] | PatientCompanyUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutCompanyInput | PatientCompanyCreateOrConnectWithoutCompanyInput[]
+    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput | PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: PatientCompanyCreateManyCompanyInputEnvelope
+    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    update?: PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput | PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: PatientCompanyUpdateManyWithWhereWithoutCompanyInput | PatientCompanyUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
   }
 
   export type EvaluationUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -39065,10 +40156,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type CompanyCreateNestedManyWithoutPatientsInput = {
-    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput> | CompanyCreateWithoutPatientsInput[] | CompanyUncheckedCreateWithoutPatientsInput[]
-    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput | CompanyCreateOrConnectWithoutPatientsInput[]
-    connect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
+  export type PatientCompanyCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
+    createMany?: PatientCompanyCreateManyPatientInputEnvelope
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
   }
 
   export type FootUncheckedCreateNestedManyWithoutPatientInput = {
@@ -39092,10 +40184,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type CompanyUncheckedCreateNestedManyWithoutPatientsInput = {
-    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput> | CompanyCreateWithoutPatientsInput[] | CompanyUncheckedCreateWithoutPatientsInput[]
-    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput | CompanyCreateOrConnectWithoutPatientsInput[]
-    connect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
+  export type PatientCompanyUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
+    createMany?: PatientCompanyCreateManyPatientInputEnvelope
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
   }
 
   export type NullableEnumGenderFieldUpdateOperationsInput = {
@@ -39160,17 +40253,18 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type CompanyUpdateManyWithoutPatientsNestedInput = {
-    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput> | CompanyCreateWithoutPatientsInput[] | CompanyUncheckedCreateWithoutPatientsInput[]
-    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput | CompanyCreateOrConnectWithoutPatientsInput[]
-    upsert?: CompanyUpsertWithWhereUniqueWithoutPatientsInput | CompanyUpsertWithWhereUniqueWithoutPatientsInput[]
-    set?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    disconnect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    delete?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    connect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    update?: CompanyUpdateWithWhereUniqueWithoutPatientsInput | CompanyUpdateWithWhereUniqueWithoutPatientsInput[]
-    updateMany?: CompanyUpdateManyWithWhereWithoutPatientsInput | CompanyUpdateManyWithWhereWithoutPatientsInput[]
-    deleteMany?: CompanyScalarWhereInput | CompanyScalarWhereInput[]
+  export type PatientCompanyUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
+    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutPatientInput | PatientCompanyUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PatientCompanyCreateManyPatientInputEnvelope
+    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    update?: PatientCompanyUpdateWithWhereUniqueWithoutPatientInput | PatientCompanyUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PatientCompanyUpdateManyWithWhereWithoutPatientInput | PatientCompanyUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
   }
 
   export type FootUncheckedUpdateManyWithoutPatientNestedInput = {
@@ -39215,17 +40309,46 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type CompanyUncheckedUpdateManyWithoutPatientsNestedInput = {
-    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput> | CompanyCreateWithoutPatientsInput[] | CompanyUncheckedCreateWithoutPatientsInput[]
-    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput | CompanyCreateOrConnectWithoutPatientsInput[]
-    upsert?: CompanyUpsertWithWhereUniqueWithoutPatientsInput | CompanyUpsertWithWhereUniqueWithoutPatientsInput[]
-    set?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    disconnect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    delete?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    connect?: CompanyWhereUniqueInput | CompanyWhereUniqueInput[]
-    update?: CompanyUpdateWithWhereUniqueWithoutPatientsInput | CompanyUpdateWithWhereUniqueWithoutPatientsInput[]
-    updateMany?: CompanyUpdateManyWithWhereWithoutPatientsInput | CompanyUpdateManyWithWhereWithoutPatientsInput[]
-    deleteMany?: CompanyScalarWhereInput | CompanyScalarWhereInput[]
+  export type PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput> | PatientCompanyCreateWithoutPatientInput[] | PatientCompanyUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientCompanyCreateOrConnectWithoutPatientInput | PatientCompanyCreateOrConnectWithoutPatientInput[]
+    upsert?: PatientCompanyUpsertWithWhereUniqueWithoutPatientInput | PatientCompanyUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PatientCompanyCreateManyPatientInputEnvelope
+    set?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    disconnect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    delete?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    connect?: PatientCompanyWhereUniqueInput | PatientCompanyWhereUniqueInput[]
+    update?: PatientCompanyUpdateWithWhereUniqueWithoutPatientInput | PatientCompanyUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PatientCompanyUpdateManyWithWhereWithoutPatientInput | PatientCompanyUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+  }
+
+  export type PatientCreateNestedOneWithoutCompaniesInput = {
+    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput
+    connect?: PatientWhereUniqueInput
+  }
+
+  export type CompanyCreateNestedOneWithoutPatientsInput = {
+    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type PatientUpdateOneRequiredWithoutCompaniesNestedInput = {
+    create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput
+    upsert?: PatientUpsertWithoutCompaniesInput
+    connect?: PatientWhereUniqueInput
+    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutCompaniesInput, PatientUpdateWithoutCompaniesInput>, PatientUncheckedUpdateWithoutCompaniesInput>
+  }
+
+  export type CompanyUpdateOneRequiredWithoutPatientsNestedInput = {
+    create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput
+    upsert?: CompanyUpsertWithoutPatientsInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPatientsInput, CompanyUpdateWithoutPatientsInput>, CompanyUncheckedUpdateWithoutPatientsInput>
   }
 
   export type PatientCreateNestedOneWithoutEvaluationsInput = {
@@ -41486,51 +42609,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PatientCreateWithoutCompaniesInput = {
-    id?: string
+  export type PatientCompanyCreateWithoutCompanyInput = {
     externalId?: string | null
-    firstName: string
-    middleName?: string | null
-    lastName: string
-    gender?: $Enums.Gender | null
-    birthDate?: Date | string | null
-    height?: number | null
-    weight?: number | null
-    maritalStatus?: $Enums.MaritalStatus | null
-    photoUrl?: string | null
-    active?: boolean
-    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    feet?: FootCreateNestedManyWithoutPatientInput
-    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
-    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
-  export type PatientUncheckedCreateWithoutCompaniesInput = {
-    id?: string
+  export type PatientCompanyUncheckedCreateWithoutCompanyInput = {
+    patientId: string
     externalId?: string | null
-    firstName: string
-    middleName?: string | null
-    lastName: string
-    gender?: $Enums.Gender | null
-    birthDate?: Date | string | null
-    height?: number | null
-    weight?: number | null
-    maritalStatus?: $Enums.MaritalStatus | null
-    photoUrl?: string | null
-    active?: boolean
-    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
-    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
-    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
   }
 
-  export type PatientCreateOrConnectWithoutCompaniesInput = {
-    where: PatientWhereUniqueInput
-    create: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+  export type PatientCompanyCreateOrConnectWithoutCompanyInput = {
+    where: PatientCompanyWhereUniqueInput
+    create: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type PatientCompanyCreateManyCompanyInputEnvelope = {
+    data: PatientCompanyCreateManyCompanyInput | PatientCompanyCreateManyCompanyInput[]
+    skipDuplicates?: boolean
   }
 
   export type EvaluationCreateWithoutCompanyInput = {
@@ -41551,7 +42651,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41589,7 +42688,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41689,41 +42787,31 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
   }
 
-  export type PatientUpsertWithWhereUniqueWithoutCompaniesInput = {
-    where: PatientWhereUniqueInput
-    update: XOR<PatientUpdateWithoutCompaniesInput, PatientUncheckedUpdateWithoutCompaniesInput>
-    create: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+  export type PatientCompanyUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: PatientCompanyWhereUniqueInput
+    update: XOR<PatientCompanyUpdateWithoutCompanyInput, PatientCompanyUncheckedUpdateWithoutCompanyInput>
+    create: XOR<PatientCompanyCreateWithoutCompanyInput, PatientCompanyUncheckedCreateWithoutCompanyInput>
   }
 
-  export type PatientUpdateWithWhereUniqueWithoutCompaniesInput = {
-    where: PatientWhereUniqueInput
-    data: XOR<PatientUpdateWithoutCompaniesInput, PatientUncheckedUpdateWithoutCompaniesInput>
+  export type PatientCompanyUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: PatientCompanyWhereUniqueInput
+    data: XOR<PatientCompanyUpdateWithoutCompanyInput, PatientCompanyUncheckedUpdateWithoutCompanyInput>
   }
 
-  export type PatientUpdateManyWithWhereWithoutCompaniesInput = {
-    where: PatientScalarWhereInput
-    data: XOR<PatientUpdateManyMutationInput, PatientUncheckedUpdateManyWithoutCompaniesInput>
+  export type PatientCompanyUpdateManyWithWhereWithoutCompanyInput = {
+    where: PatientCompanyScalarWhereInput
+    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyWithoutCompanyInput>
   }
 
-  export type PatientScalarWhereInput = {
-    AND?: PatientScalarWhereInput | PatientScalarWhereInput[]
-    OR?: PatientScalarWhereInput[]
-    NOT?: PatientScalarWhereInput | PatientScalarWhereInput[]
-    id?: StringFilter<"Patient"> | string
-    externalId?: StringNullableFilter<"Patient"> | string | null
-    firstName?: StringFilter<"Patient"> | string
-    middleName?: StringNullableFilter<"Patient"> | string | null
-    lastName?: StringFilter<"Patient"> | string
-    gender?: EnumGenderNullableFilter<"Patient"> | $Enums.Gender | null
-    birthDate?: DateTimeNullableFilter<"Patient"> | Date | string | null
-    height?: FloatNullableFilter<"Patient"> | number | null
-    weight?: FloatNullableFilter<"Patient"> | number | null
-    maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
-    photoUrl?: StringNullableFilter<"Patient"> | string | null
-    active?: BoolFilter<"Patient"> | boolean
-    deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
-    createdAt?: DateTimeFilter<"Patient"> | Date | string
-    updatedAt?: DateTimeFilter<"Patient"> | Date | string
+  export type PatientCompanyScalarWhereInput = {
+    AND?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+    OR?: PatientCompanyScalarWhereInput[]
+    NOT?: PatientCompanyScalarWhereInput | PatientCompanyScalarWhereInput[]
+    patientId?: StringFilter<"PatientCompany"> | string
+    companyId?: StringFilter<"PatientCompany"> | string
+    externalId?: StringNullableFilter<"PatientCompany"> | string | null
+    createdAt?: DateTimeFilter<"PatientCompany"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientCompany"> | Date | string
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -41769,7 +42857,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    workbenchId?: StringNullableFilter<"Evaluation"> | string | null
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -41812,7 +42899,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCompanyCreateNestedManyWithoutCompanyInput
-    patients?: PatientCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -41826,7 +42913,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientUncheckedCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -41878,7 +42965,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -41892,7 +42979,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -41987,7 +43074,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42025,7 +43111,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42085,37 +43170,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CompanyCreateWithoutPatientsInput = {
-    id?: string
-    name: string
-    url?: string | null
-    logoUrl?: string | null
-    active?: boolean
+  export type PatientCompanyCreateWithoutPatientInput = {
+    externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyCreateNestedManyWithoutCompanyInput
-    facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
-    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    company: CompanyCreateNestedOneWithoutPatientsInput
   }
 
-  export type CompanyUncheckedCreateWithoutPatientsInput = {
-    id?: string
-    name: string
-    url?: string | null
-    logoUrl?: string | null
-    active?: boolean
+  export type PatientCompanyUncheckedCreateWithoutPatientInput = {
+    companyId: string
+    externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
-    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
-    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
 
-  export type CompanyCreateOrConnectWithoutPatientsInput = {
-    where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
+  export type PatientCompanyCreateOrConnectWithoutPatientInput = {
+    where: PatientCompanyWhereUniqueInput
+    create: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PatientCompanyCreateManyPatientInputEnvelope = {
+    data: PatientCompanyCreateManyPatientInput | PatientCompanyCreateManyPatientInput[]
+    skipDuplicates?: boolean
   }
 
   export type FootUpsertWithWhereUniqueWithoutPatientInput = {
@@ -42204,38 +43280,192 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Workbench"> | Date | string
   }
 
-  export type CompanyUpsertWithWhereUniqueWithoutPatientsInput = {
+  export type PatientCompanyUpsertWithWhereUniqueWithoutPatientInput = {
+    where: PatientCompanyWhereUniqueInput
+    update: XOR<PatientCompanyUpdateWithoutPatientInput, PatientCompanyUncheckedUpdateWithoutPatientInput>
+    create: XOR<PatientCompanyCreateWithoutPatientInput, PatientCompanyUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PatientCompanyUpdateWithWhereUniqueWithoutPatientInput = {
+    where: PatientCompanyWhereUniqueInput
+    data: XOR<PatientCompanyUpdateWithoutPatientInput, PatientCompanyUncheckedUpdateWithoutPatientInput>
+  }
+
+  export type PatientCompanyUpdateManyWithWhereWithoutPatientInput = {
+    where: PatientCompanyScalarWhereInput
+    data: XOR<PatientCompanyUpdateManyMutationInput, PatientCompanyUncheckedUpdateManyWithoutPatientInput>
+  }
+
+  export type PatientCreateWithoutCompaniesInput = {
+    id?: string
+    firstName: string
+    middleName?: string | null
+    lastName: string
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientUncheckedCreateWithoutCompaniesInput = {
+    id?: string
+    firstName: string
+    middleName?: string | null
+    lastName: string
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientCreateOrConnectWithoutCompaniesInput = {
+    where: PatientWhereUniqueInput
+    create: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+  }
+
+  export type CompanyCreateWithoutPatientsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserCompanyCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutPatientsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutPatientsInput = {
     where: CompanyWhereUniqueInput
-    update: XOR<CompanyUpdateWithoutPatientsInput, CompanyUncheckedUpdateWithoutPatientsInput>
     create: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
   }
 
-  export type CompanyUpdateWithWhereUniqueWithoutPatientsInput = {
-    where: CompanyWhereUniqueInput
+  export type PatientUpsertWithoutCompaniesInput = {
+    update: XOR<PatientUpdateWithoutCompaniesInput, PatientUncheckedUpdateWithoutCompaniesInput>
+    create: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
+    where?: PatientWhereInput
+  }
+
+  export type PatientUpdateToOneWithWhereWithoutCompaniesInput = {
+    where?: PatientWhereInput
+    data: XOR<PatientUpdateWithoutCompaniesInput, PatientUncheckedUpdateWithoutCompaniesInput>
+  }
+
+  export type PatientUpdateWithoutCompaniesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+  }
+
+  export type PatientUncheckedUpdateWithoutCompaniesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: StringFieldUpdateOperationsInput | string
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+  }
+
+  export type CompanyUpsertWithoutPatientsInput = {
+    update: XOR<CompanyUpdateWithoutPatientsInput, CompanyUncheckedUpdateWithoutPatientsInput>
+    create: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutPatientsInput = {
+    where?: CompanyWhereInput
     data: XOR<CompanyUpdateWithoutPatientsInput, CompanyUncheckedUpdateWithoutPatientsInput>
   }
 
-  export type CompanyUpdateManyWithWhereWithoutPatientsInput = {
-    where: CompanyScalarWhereInput
-    data: XOR<CompanyUpdateManyMutationInput, CompanyUncheckedUpdateManyWithoutPatientsInput>
+  export type CompanyUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
 
-  export type CompanyScalarWhereInput = {
-    AND?: CompanyScalarWhereInput | CompanyScalarWhereInput[]
-    OR?: CompanyScalarWhereInput[]
-    NOT?: CompanyScalarWhereInput | CompanyScalarWhereInput[]
-    id?: StringFilter<"Company"> | string
-    name?: StringFilter<"Company"> | string
-    url?: StringNullableFilter<"Company"> | string | null
-    logoUrl?: StringNullableFilter<"Company"> | string | null
-    active?: BoolFilter<"Company"> | boolean
-    createdAt?: DateTimeFilter<"Company"> | Date | string
-    updatedAt?: DateTimeFilter<"Company"> | Date | string
+  export type CompanyUncheckedUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientCreateWithoutEvaluationsInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -42251,12 +43481,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: CompanyCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutEvaluationsInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -42272,7 +43501,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: CompanyUncheckedCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutEvaluationsInput = {
@@ -42290,7 +43519,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
 
@@ -42304,7 +43533,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientUncheckedCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -42518,7 +43747,6 @@ export namespace Prisma {
 
   export type PatientUpdateWithoutEvaluationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -42534,12 +43762,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutEvaluationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -42555,7 +43782,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUncheckedUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type CompanyUpsertWithoutEvaluationsInput = {
@@ -42579,7 +43806,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
 
@@ -42593,7 +43820,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -42763,7 +43990,6 @@ export namespace Prisma {
 
   export type PatientCreateWithoutFeetInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -42779,12 +44005,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
-    companies?: CompanyCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutFeetInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -42800,7 +44025,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
-    companies?: CompanyUncheckedCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutFeetInput = {
@@ -42826,7 +44051,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42865,7 +44089,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42932,7 +44155,6 @@ export namespace Prisma {
 
   export type PatientUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -42948,12 +44170,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -42969,7 +44190,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUncheckedUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type EvaluationUpsertWithoutFeetInput = {
@@ -43001,7 +44222,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43040,7 +44260,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43502,7 +44721,6 @@ export namespace Prisma {
 
   export type PatientCreateWithoutWorkbenchesInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -43518,12 +44736,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
-    companies?: CompanyCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutWorkbenchesInput = {
     id?: string
-    externalId?: string | null
     firstName: string
     middleName?: string | null
     lastName: string
@@ -43539,7 +44756,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
-    companies?: CompanyUncheckedCreateNestedManyWithoutPatientsInput
+    companies?: PatientCompanyUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutWorkbenchesInput = {
@@ -43594,7 +44811,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43633,7 +44849,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43735,7 +44950,6 @@ export namespace Prisma {
 
   export type PatientUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -43751,12 +44965,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
     middleName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: StringFieldUpdateOperationsInput | string
@@ -43772,7 +44985,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
-    companies?: CompanyUncheckedUpdateManyWithoutPatientsNestedInput
+    companies?: PatientCompanyUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type ProductUpsertWithoutWorkbenchesInput = {
@@ -43839,7 +45052,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43878,7 +45090,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44356,7 +45567,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44394,7 +45604,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44448,7 +45657,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44486,7 +45694,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44540,7 +45747,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44578,7 +45784,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44632,7 +45837,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44670,7 +45874,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44789,7 +45992,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44828,7 +46030,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44900,7 +46101,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44939,7 +46139,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45665,7 +46864,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
   }
@@ -45679,7 +46878,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientUncheckedCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -45746,7 +46945,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
   }
@@ -45760,7 +46959,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -45967,7 +47166,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyCreateNestedManyWithoutCompanyInput
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    patients?: PatientCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
   }
 
@@ -45981,7 +47180,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCompanyUncheckedCreateNestedManyWithoutCompanyInput
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: PatientUncheckedCreateNestedManyWithoutCompaniesInput
+    patients?: PatientCompanyUncheckedCreateNestedManyWithoutCompanyInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -46011,7 +47210,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
   }
 
@@ -46025,7 +47224,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutCompaniesNestedInput
+    patients?: PatientCompanyUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -46041,6 +47240,13 @@ export namespace Prisma {
     name: string
     type: $Enums.FacilityType
     active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatientCompanyCreateManyCompanyInput = {
+    patientId: string
+    externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -46068,7 +47274,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -46132,62 +47337,23 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientUpdateWithoutCompaniesInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type PatientCompanyUpdateWithoutCompanyInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    firstName?: StringFieldUpdateOperationsInput | string
-    middleName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    height?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
-    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    feet?: FootUpdateManyWithoutPatientNestedInput
-    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
-    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
-  export type PatientUncheckedUpdateWithoutCompaniesInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type PatientCompanyUncheckedUpdateWithoutCompanyInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    firstName?: StringFieldUpdateOperationsInput | string
-    middleName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    height?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
-    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
-    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
-    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
   }
 
-  export type PatientUncheckedUpdateManyWithoutCompaniesInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type PatientCompanyUncheckedUpdateManyWithoutCompanyInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    firstName?: StringFieldUpdateOperationsInput | string
-    middleName?: NullableStringFieldUpdateOperationsInput | string | null
-    lastName?: StringFieldUpdateOperationsInput | string
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    height?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
-    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -46210,7 +47376,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46248,7 +47413,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46281,7 +47445,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46373,7 +47536,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -46389,6 +47551,13 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatientCompanyCreateManyPatientInput = {
+    companyId: string
+    externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -46464,7 +47633,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46502,7 +47670,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46535,7 +47702,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46585,40 +47751,23 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUpdateWithoutPatientsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
+  export type PatientCompanyUpdateWithoutPatientInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUpdateManyWithoutCompanyNestedInput
-    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
-    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
   }
 
-  export type CompanyUncheckedUpdateWithoutPatientsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
+  export type PatientCompanyUncheckedUpdateWithoutPatientInput = {
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserCompanyUncheckedUpdateManyWithoutCompanyNestedInput
-    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
-    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type CompanyUncheckedUpdateManyWithoutPatientsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
+  export type PatientCompanyUncheckedUpdateManyWithoutPatientInput = {
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -47311,7 +48460,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -47336,7 +48484,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47374,7 +48521,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47407,7 +48553,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47437,7 +48582,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -47462,7 +48606,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47500,7 +48643,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47533,7 +48675,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47563,7 +48704,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -47588,7 +48728,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47626,7 +48765,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47659,7 +48797,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47689,7 +48826,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    workbenchId?: string | null
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -47714,7 +48850,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47752,7 +48887,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47785,7 +48919,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    workbenchId?: NullableStringFieldUpdateOperationsInput | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48272,6 +49405,10 @@ export namespace Prisma {
      * @deprecated Use PatientDefaultArgs instead
      */
     export type PatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PatientDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PatientCompanyDefaultArgs instead
+     */
+    export type PatientCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PatientCompanyDefaultArgs<ExtArgs>
     /**
      * @deprecated Use EvaluationDefaultArgs instead
      */
