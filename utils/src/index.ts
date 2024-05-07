@@ -6,7 +6,6 @@ export * from './converters/toURL';
 export * from './geography';
 export * from './guards/isAuthUser';
 export * from './guards/isDefined';
-export * from './guards/isFormSchema';
 export * from './guards/isString';
 export * from './guards/isTruthy';
 export * from './helpers/currentUrl';

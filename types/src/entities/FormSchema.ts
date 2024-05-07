@@ -22,7 +22,6 @@ interface BaseFormField<T extends FormFieldValue> {
   hint?: string;
   required?: boolean;
   print?: boolean | { label: string };
-  value?: T;
   default?: T;
   rule?: {
     effect: 'SHOW' | 'HIDE' | 'ENABLE' | 'DISABLE';
