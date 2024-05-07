@@ -64,6 +64,11 @@ export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
  */
 export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
 /**
+ * Model ShippingPackage
+ * 
+ */
+export type ShippingPackage = $Result.DefaultSelection<Prisma.$ShippingPackagePayload>
+/**
  * Model Physician
  * 
  */
@@ -153,11 +158,6 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type ApiKey = $Result.DefaultSelection<Prisma.$ApiKeyPayload>
-/**
- * Model ShippingPackage
- * 
- */
-export type ShippingPackage = $Result.DefaultSelection<Prisma.$ShippingPackagePayload>
 
 /**
  * Enums
@@ -321,6 +321,22 @@ export const OrderAuthorizationStatus: {
 export type OrderAuthorizationStatus = (typeof OrderAuthorizationStatus)[keyof typeof OrderAuthorizationStatus]
 
 
+export const WeightUnit: {
+  KG: 'KG',
+  LB: 'LB'
+};
+
+export type WeightUnit = (typeof WeightUnit)[keyof typeof WeightUnit]
+
+
+export const DimensionUnit: {
+  CM: 'CM',
+  INCH: 'INCH'
+};
+
+export type DimensionUnit = (typeof DimensionUnit)[keyof typeof DimensionUnit]
+
+
 export const DiagnosisStandard: {
   ICD10: 'ICD10'
 };
@@ -347,22 +363,6 @@ export const CompanyRole: {
 };
 
 export type CompanyRole = (typeof CompanyRole)[keyof typeof CompanyRole]
-
-
-export const WeightUnit: {
-  KG: 'KG',
-  LB: 'LB'
-};
-
-export type WeightUnit = (typeof WeightUnit)[keyof typeof WeightUnit]
-
-
-export const DimensionUnit: {
-  CM: 'CM',
-  INCH: 'INCH'
-};
-
-export type DimensionUnit = (typeof DimensionUnit)[keyof typeof DimensionUnit]
 
 }
 
@@ -418,6 +418,14 @@ export type OrderAuthorizationStatus = $Enums.OrderAuthorizationStatus
 
 export const OrderAuthorizationStatus: typeof $Enums.OrderAuthorizationStatus
 
+export type WeightUnit = $Enums.WeightUnit
+
+export const WeightUnit: typeof $Enums.WeightUnit
+
+export type DimensionUnit = $Enums.DimensionUnit
+
+export const DimensionUnit: typeof $Enums.DimensionUnit
+
 export type DiagnosisStandard = $Enums.DiagnosisStandard
 
 export const DiagnosisStandard: typeof $Enums.DiagnosisStandard
@@ -429,14 +437,6 @@ export const ProductAttributeType: typeof $Enums.ProductAttributeType
 export type CompanyRole = $Enums.CompanyRole
 
 export const CompanyRole: typeof $Enums.CompanyRole
-
-export type WeightUnit = $Enums.WeightUnit
-
-export const WeightUnit: typeof $Enums.WeightUnit
-
-export type DimensionUnit = $Enums.DimensionUnit
-
-export const DimensionUnit: typeof $Enums.DimensionUnit
 
 /**
  * ##  Prisma Client ʲˢ
@@ -661,6 +661,16 @@ export class PrismaClient<
   get address(): Prisma.AddressDelegate<ExtArgs>;
 
   /**
+   * `prisma.shippingPackage`: Exposes CRUD operations for the **ShippingPackage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ShippingPackages
+    * const shippingPackages = await prisma.shippingPackage.findMany()
+    * ```
+    */
+  get shippingPackage(): Prisma.ShippingPackageDelegate<ExtArgs>;
+
+  /**
    * `prisma.physician`: Exposes CRUD operations for the **Physician** model.
     * Example usage:
     * ```ts
@@ -839,16 +849,6 @@ export class PrismaClient<
     * ```
     */
   get apiKey(): Prisma.ApiKeyDelegate<ExtArgs>;
-
-  /**
-   * `prisma.shippingPackage`: Exposes CRUD operations for the **ShippingPackage** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ShippingPackages
-    * const shippingPackages = await prisma.shippingPackage.findMany()
-    * ```
-    */
-  get shippingPackage(): Prisma.ShippingPackageDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1336,6 +1336,7 @@ export namespace Prisma {
     Workbench: 'Workbench',
     Order: 'Order',
     Address: 'Address',
+    ShippingPackage: 'ShippingPackage',
     Physician: 'Physician',
     Diagnosis: 'Diagnosis',
     BillingCode: 'BillingCode',
@@ -1353,8 +1354,7 @@ export namespace Prisma {
     FacilityUser: 'FacilityUser',
     User: 'User',
     Account: 'Account',
-    ApiKey: 'ApiKey',
-    ShippingPackage: 'ShippingPackage'
+    ApiKey: 'ApiKey'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1371,7 +1371,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'shippingPackage'
+      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2032,6 +2032,72 @@ export namespace Prisma {
           count: {
             args: Prisma.AddressCountArgs<ExtArgs>,
             result: $Utils.Optional<AddressCountAggregateOutputType> | number
+          }
+        }
+      }
+      ShippingPackage: {
+        payload: Prisma.$ShippingPackagePayload<ExtArgs>
+        fields: Prisma.ShippingPackageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ShippingPackageFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ShippingPackageFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          findFirst: {
+            args: Prisma.ShippingPackageFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ShippingPackageFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          findMany: {
+            args: Prisma.ShippingPackageFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>[]
+          }
+          create: {
+            args: Prisma.ShippingPackageCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          createMany: {
+            args: Prisma.ShippingPackageCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ShippingPackageDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          update: {
+            args: Prisma.ShippingPackageUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ShippingPackageDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ShippingPackageUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ShippingPackageUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
+          }
+          aggregate: {
+            args: Prisma.ShippingPackageAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateShippingPackage>
+          }
+          groupBy: {
+            args: Prisma.ShippingPackageGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ShippingPackageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ShippingPackageCountArgs<ExtArgs>,
+            result: $Utils.Optional<ShippingPackageCountAggregateOutputType> | number
           }
         }
       }
@@ -3223,72 +3289,6 @@ export namespace Prisma {
           }
         }
       }
-      ShippingPackage: {
-        payload: Prisma.$ShippingPackagePayload<ExtArgs>
-        fields: Prisma.ShippingPackageFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ShippingPackageFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ShippingPackageFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          findFirst: {
-            args: Prisma.ShippingPackageFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ShippingPackageFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          findMany: {
-            args: Prisma.ShippingPackageFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>[]
-          }
-          create: {
-            args: Prisma.ShippingPackageCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          createMany: {
-            args: Prisma.ShippingPackageCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.ShippingPackageDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          update: {
-            args: Prisma.ShippingPackageUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          deleteMany: {
-            args: Prisma.ShippingPackageDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ShippingPackageUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ShippingPackageUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ShippingPackagePayload>
-          }
-          aggregate: {
-            args: Prisma.ShippingPackageAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateShippingPackage>
-          }
-          groupBy: {
-            args: Prisma.ShippingPackageGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ShippingPackageGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ShippingPackageCountArgs<ExtArgs>,
-            result: $Utils.Optional<ShippingPackageCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -4191,6 +4191,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     logoUrl: string | null
+    slug: string | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4201,6 +4202,7 @@ export namespace Prisma {
     name: string | null
     url: string | null
     logoUrl: string | null
+    slug: string | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4211,6 +4213,7 @@ export namespace Prisma {
     name: number
     url: number
     logoUrl: number
+    slug: number
     preferences: number
     active: number
     createdAt: number
@@ -4224,6 +4227,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -4234,6 +4238,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -4244,6 +4249,7 @@ export namespace Prisma {
     name?: true
     url?: true
     logoUrl?: true
+    slug?: true
     preferences?: true
     active?: true
     createdAt?: true
@@ -4328,6 +4334,7 @@ export namespace Prisma {
     name: string
     url: string | null
     logoUrl: string | null
+    slug: string
     preferences: JsonValue | null
     active: boolean
     createdAt: Date
@@ -4356,6 +4363,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     logoUrl?: boolean
+    slug?: boolean
     preferences?: boolean
     active?: boolean
     createdAt?: boolean
@@ -4374,6 +4382,7 @@ export namespace Prisma {
     name?: boolean
     url?: boolean
     logoUrl?: boolean
+    slug?: boolean
     preferences?: boolean
     active?: boolean
     createdAt?: boolean
@@ -4407,6 +4416,7 @@ export namespace Prisma {
       name: string
       url: string | null
       logoUrl: string | null
+      slug: string
       preferences: Prisma.JsonValue | null
       active: boolean
       createdAt: Date
@@ -4820,6 +4830,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Company", 'String'>
     readonly url: FieldRef<"Company", 'String'>
     readonly logoUrl: FieldRef<"Company", 'String'>
+    readonly slug: FieldRef<"Company", 'String'>
     readonly preferences: FieldRef<"Company", 'Json'>
     readonly active: FieldRef<"Company", 'Boolean'>
     readonly createdAt: FieldRef<"Company", 'DateTime'>
@@ -14761,6 +14772,1038 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AddressInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ShippingPackage
+   */
+
+  export type AggregateShippingPackage = {
+    _count: ShippingPackageCountAggregateOutputType | null
+    _avg: ShippingPackageAvgAggregateOutputType | null
+    _sum: ShippingPackageSumAggregateOutputType | null
+    _min: ShippingPackageMinAggregateOutputType | null
+    _max: ShippingPackageMaxAggregateOutputType | null
+  }
+
+  export type ShippingPackageAvgAggregateOutputType = {
+    weight: number | null
+    length: number | null
+    width: number | null
+    height: number | null
+    insoleCapacity: number | null
+  }
+
+  export type ShippingPackageSumAggregateOutputType = {
+    weight: number | null
+    length: number | null
+    width: number | null
+    height: number | null
+    insoleCapacity: number | null
+  }
+
+  export type ShippingPackageMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    weight: number | null
+    weightUnit: $Enums.WeightUnit | null
+    length: number | null
+    width: number | null
+    height: number | null
+    dimensionUnit: $Enums.DimensionUnit | null
+    insoleCapacity: number | null
+    companyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShippingPackageMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    weight: number | null
+    weightUnit: $Enums.WeightUnit | null
+    length: number | null
+    width: number | null
+    height: number | null
+    dimensionUnit: $Enums.DimensionUnit | null
+    insoleCapacity: number | null
+    companyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShippingPackageCountAggregateOutputType = {
+    id: number
+    name: number
+    weight: number
+    weightUnit: number
+    length: number
+    width: number
+    height: number
+    dimensionUnit: number
+    insoleCapacity: number
+    companyId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ShippingPackageAvgAggregateInputType = {
+    weight?: true
+    length?: true
+    width?: true
+    height?: true
+    insoleCapacity?: true
+  }
+
+  export type ShippingPackageSumAggregateInputType = {
+    weight?: true
+    length?: true
+    width?: true
+    height?: true
+    insoleCapacity?: true
+  }
+
+  export type ShippingPackageMinAggregateInputType = {
+    id?: true
+    name?: true
+    weight?: true
+    weightUnit?: true
+    length?: true
+    width?: true
+    height?: true
+    dimensionUnit?: true
+    insoleCapacity?: true
+    companyId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShippingPackageMaxAggregateInputType = {
+    id?: true
+    name?: true
+    weight?: true
+    weightUnit?: true
+    length?: true
+    width?: true
+    height?: true
+    dimensionUnit?: true
+    insoleCapacity?: true
+    companyId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShippingPackageCountAggregateInputType = {
+    id?: true
+    name?: true
+    weight?: true
+    weightUnit?: true
+    length?: true
+    width?: true
+    height?: true
+    dimensionUnit?: true
+    insoleCapacity?: true
+    companyId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ShippingPackageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShippingPackage to aggregate.
+     */
+    where?: ShippingPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingPackages to fetch.
+     */
+    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ShippingPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ShippingPackages
+    **/
+    _count?: true | ShippingPackageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ShippingPackageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ShippingPackageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ShippingPackageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ShippingPackageMaxAggregateInputType
+  }
+
+  export type GetShippingPackageAggregateType<T extends ShippingPackageAggregateArgs> = {
+        [P in keyof T & keyof AggregateShippingPackage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShippingPackage[P]>
+      : GetScalarType<T[P], AggregateShippingPackage[P]>
+  }
+
+
+
+
+  export type ShippingPackageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShippingPackageWhereInput
+    orderBy?: ShippingPackageOrderByWithAggregationInput | ShippingPackageOrderByWithAggregationInput[]
+    by: ShippingPackageScalarFieldEnum[] | ShippingPackageScalarFieldEnum
+    having?: ShippingPackageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ShippingPackageCountAggregateInputType | true
+    _avg?: ShippingPackageAvgAggregateInputType
+    _sum?: ShippingPackageSumAggregateInputType
+    _min?: ShippingPackageMinAggregateInputType
+    _max?: ShippingPackageMaxAggregateInputType
+  }
+
+  export type ShippingPackageGroupByOutputType = {
+    id: string
+    name: string
+    weight: number
+    weightUnit: $Enums.WeightUnit
+    length: number
+    width: number
+    height: number
+    dimensionUnit: $Enums.DimensionUnit
+    insoleCapacity: number
+    companyId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ShippingPackageCountAggregateOutputType | null
+    _avg: ShippingPackageAvgAggregateOutputType | null
+    _sum: ShippingPackageSumAggregateOutputType | null
+    _min: ShippingPackageMinAggregateOutputType | null
+    _max: ShippingPackageMaxAggregateOutputType | null
+  }
+
+  type GetShippingPackageGroupByPayload<T extends ShippingPackageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ShippingPackageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ShippingPackageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ShippingPackageGroupByOutputType[P]>
+            : GetScalarType<T[P], ShippingPackageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ShippingPackageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    weight?: boolean
+    weightUnit?: boolean
+    length?: boolean
+    width?: boolean
+    height?: boolean
+    dimensionUnit?: boolean
+    insoleCapacity?: boolean
+    companyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["shippingPackage"]>
+
+  export type ShippingPackageSelectScalar = {
+    id?: boolean
+    name?: boolean
+    weight?: boolean
+    weightUnit?: boolean
+    length?: boolean
+    width?: boolean
+    height?: boolean
+    dimensionUnit?: boolean
+    insoleCapacity?: boolean
+    companyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type ShippingPackageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }
+
+
+  export type $ShippingPackagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ShippingPackage"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      weight: number
+      weightUnit: $Enums.WeightUnit
+      length: number
+      width: number
+      height: number
+      dimensionUnit: $Enums.DimensionUnit
+      insoleCapacity: number
+      companyId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["shippingPackage"]>
+    composites: {}
+  }
+
+
+  type ShippingPackageGetPayload<S extends boolean | null | undefined | ShippingPackageDefaultArgs> = $Result.GetResult<Prisma.$ShippingPackagePayload, S>
+
+  type ShippingPackageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ShippingPackageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ShippingPackageCountAggregateInputType | true
+    }
+
+  export interface ShippingPackageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ShippingPackage'], meta: { name: 'ShippingPackage' } }
+    /**
+     * Find zero or one ShippingPackage that matches the filter.
+     * @param {ShippingPackageFindUniqueArgs} args - Arguments to find a ShippingPackage
+     * @example
+     * // Get one ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ShippingPackageFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageFindUniqueArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one ShippingPackage that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ShippingPackageFindUniqueOrThrowArgs} args - Arguments to find a ShippingPackage
+     * @example
+     * // Get one ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ShippingPackageFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first ShippingPackage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageFindFirstArgs} args - Arguments to find a ShippingPackage
+     * @example
+     * // Get one ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ShippingPackageFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageFindFirstArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first ShippingPackage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageFindFirstOrThrowArgs} args - Arguments to find a ShippingPackage
+     * @example
+     * // Get one ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ShippingPackageFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more ShippingPackages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ShippingPackages
+     * const shippingPackages = await prisma.shippingPackage.findMany()
+     * 
+     * // Get first 10 ShippingPackages
+     * const shippingPackages = await prisma.shippingPackage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const shippingPackageWithIdOnly = await prisma.shippingPackage.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ShippingPackageFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a ShippingPackage.
+     * @param {ShippingPackageCreateArgs} args - Arguments to create a ShippingPackage.
+     * @example
+     * // Create one ShippingPackage
+     * const ShippingPackage = await prisma.shippingPackage.create({
+     *   data: {
+     *     // ... data to create a ShippingPackage
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ShippingPackageCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageCreateArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many ShippingPackages.
+     *     @param {ShippingPackageCreateManyArgs} args - Arguments to create many ShippingPackages.
+     *     @example
+     *     // Create many ShippingPackages
+     *     const shippingPackage = await prisma.shippingPackage.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ShippingPackageCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ShippingPackage.
+     * @param {ShippingPackageDeleteArgs} args - Arguments to delete one ShippingPackage.
+     * @example
+     * // Delete one ShippingPackage
+     * const ShippingPackage = await prisma.shippingPackage.delete({
+     *   where: {
+     *     // ... filter to delete one ShippingPackage
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ShippingPackageDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageDeleteArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one ShippingPackage.
+     * @param {ShippingPackageUpdateArgs} args - Arguments to update one ShippingPackage.
+     * @example
+     * // Update one ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ShippingPackageUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageUpdateArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ShippingPackages.
+     * @param {ShippingPackageDeleteManyArgs} args - Arguments to filter ShippingPackages to delete.
+     * @example
+     * // Delete a few ShippingPackages
+     * const { count } = await prisma.shippingPackage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ShippingPackageDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingPackageDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ShippingPackages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ShippingPackages
+     * const shippingPackage = await prisma.shippingPackage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ShippingPackageUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ShippingPackage.
+     * @param {ShippingPackageUpsertArgs} args - Arguments to update or create a ShippingPackage.
+     * @example
+     * // Update or create a ShippingPackage
+     * const shippingPackage = await prisma.shippingPackage.upsert({
+     *   create: {
+     *     // ... data to create a ShippingPackage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ShippingPackage we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ShippingPackageUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingPackageUpsertArgs<ExtArgs>>
+    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of ShippingPackages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageCountArgs} args - Arguments to filter ShippingPackages to count.
+     * @example
+     * // Count the number of ShippingPackages
+     * const count = await prisma.shippingPackage.count({
+     *   where: {
+     *     // ... the filter for the ShippingPackages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ShippingPackageCountArgs>(
+      args?: Subset<T, ShippingPackageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ShippingPackageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ShippingPackage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ShippingPackageAggregateArgs>(args: Subset<T, ShippingPackageAggregateArgs>): Prisma.PrismaPromise<GetShippingPackageAggregateType<T>>
+
+    /**
+     * Group by ShippingPackage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingPackageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ShippingPackageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ShippingPackageGroupByArgs['orderBy'] }
+        : { orderBy?: ShippingPackageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ShippingPackageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShippingPackageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ShippingPackage model
+   */
+  readonly fields: ShippingPackageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ShippingPackage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ShippingPackageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the ShippingPackage model
+   */ 
+  interface ShippingPackageFieldRefs {
+    readonly id: FieldRef<"ShippingPackage", 'String'>
+    readonly name: FieldRef<"ShippingPackage", 'String'>
+    readonly weight: FieldRef<"ShippingPackage", 'Float'>
+    readonly weightUnit: FieldRef<"ShippingPackage", 'WeightUnit'>
+    readonly length: FieldRef<"ShippingPackage", 'Float'>
+    readonly width: FieldRef<"ShippingPackage", 'Float'>
+    readonly height: FieldRef<"ShippingPackage", 'Float'>
+    readonly dimensionUnit: FieldRef<"ShippingPackage", 'DimensionUnit'>
+    readonly insoleCapacity: FieldRef<"ShippingPackage", 'Int'>
+    readonly companyId: FieldRef<"ShippingPackage", 'String'>
+    readonly createdAt: FieldRef<"ShippingPackage", 'DateTime'>
+    readonly updatedAt: FieldRef<"ShippingPackage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ShippingPackage findUnique
+   */
+  export type ShippingPackageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingPackage to fetch.
+     */
+    where: ShippingPackageWhereUniqueInput
+  }
+
+  /**
+   * ShippingPackage findUniqueOrThrow
+   */
+  export type ShippingPackageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingPackage to fetch.
+     */
+    where: ShippingPackageWhereUniqueInput
+  }
+
+  /**
+   * ShippingPackage findFirst
+   */
+  export type ShippingPackageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingPackage to fetch.
+     */
+    where?: ShippingPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingPackages to fetch.
+     */
+    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShippingPackages.
+     */
+    cursor?: ShippingPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShippingPackages.
+     */
+    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingPackage findFirstOrThrow
+   */
+  export type ShippingPackageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingPackage to fetch.
+     */
+    where?: ShippingPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingPackages to fetch.
+     */
+    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShippingPackages.
+     */
+    cursor?: ShippingPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShippingPackages.
+     */
+    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingPackage findMany
+   */
+  export type ShippingPackageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingPackages to fetch.
+     */
+    where?: ShippingPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingPackages to fetch.
+     */
+    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ShippingPackages.
+     */
+    cursor?: ShippingPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingPackages.
+     */
+    skip?: number
+    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingPackage create
+   */
+  export type ShippingPackageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ShippingPackage.
+     */
+    data: XOR<ShippingPackageCreateInput, ShippingPackageUncheckedCreateInput>
+  }
+
+  /**
+   * ShippingPackage createMany
+   */
+  export type ShippingPackageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ShippingPackages.
+     */
+    data: ShippingPackageCreateManyInput | ShippingPackageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ShippingPackage update
+   */
+  export type ShippingPackageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ShippingPackage.
+     */
+    data: XOR<ShippingPackageUpdateInput, ShippingPackageUncheckedUpdateInput>
+    /**
+     * Choose, which ShippingPackage to update.
+     */
+    where: ShippingPackageWhereUniqueInput
+  }
+
+  /**
+   * ShippingPackage updateMany
+   */
+  export type ShippingPackageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ShippingPackages.
+     */
+    data: XOR<ShippingPackageUpdateManyMutationInput, ShippingPackageUncheckedUpdateManyInput>
+    /**
+     * Filter which ShippingPackages to update
+     */
+    where?: ShippingPackageWhereInput
+  }
+
+  /**
+   * ShippingPackage upsert
+   */
+  export type ShippingPackageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ShippingPackage to update in case it exists.
+     */
+    where: ShippingPackageWhereUniqueInput
+    /**
+     * In case the ShippingPackage found by the `where` argument doesn't exist, create a new ShippingPackage with this data.
+     */
+    create: XOR<ShippingPackageCreateInput, ShippingPackageUncheckedCreateInput>
+    /**
+     * In case the ShippingPackage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ShippingPackageUpdateInput, ShippingPackageUncheckedUpdateInput>
+  }
+
+  /**
+   * ShippingPackage delete
+   */
+  export type ShippingPackageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
+    /**
+     * Filter which ShippingPackage to delete.
+     */
+    where: ShippingPackageWhereUniqueInput
+  }
+
+  /**
+   * ShippingPackage deleteMany
+   */
+  export type ShippingPackageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShippingPackages to delete
+     */
+    where?: ShippingPackageWhereInput
+  }
+
+  /**
+   * ShippingPackage without action
+   */
+  export type ShippingPackageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingPackage
+     */
+    select?: ShippingPackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingPackageInclude<ExtArgs> | null
   }
 
 
@@ -31485,1038 +32528,6 @@ export namespace Prisma {
 
 
   /**
-   * Model ShippingPackage
-   */
-
-  export type AggregateShippingPackage = {
-    _count: ShippingPackageCountAggregateOutputType | null
-    _avg: ShippingPackageAvgAggregateOutputType | null
-    _sum: ShippingPackageSumAggregateOutputType | null
-    _min: ShippingPackageMinAggregateOutputType | null
-    _max: ShippingPackageMaxAggregateOutputType | null
-  }
-
-  export type ShippingPackageAvgAggregateOutputType = {
-    weight: number | null
-    length: number | null
-    width: number | null
-    height: number | null
-    insoleCapacity: number | null
-  }
-
-  export type ShippingPackageSumAggregateOutputType = {
-    weight: number | null
-    length: number | null
-    width: number | null
-    height: number | null
-    insoleCapacity: number | null
-  }
-
-  export type ShippingPackageMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    weight: number | null
-    weightUnit: $Enums.WeightUnit | null
-    length: number | null
-    width: number | null
-    height: number | null
-    dimensionUnit: $Enums.DimensionUnit | null
-    insoleCapacity: number | null
-    companyId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ShippingPackageMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    weight: number | null
-    weightUnit: $Enums.WeightUnit | null
-    length: number | null
-    width: number | null
-    height: number | null
-    dimensionUnit: $Enums.DimensionUnit | null
-    insoleCapacity: number | null
-    companyId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ShippingPackageCountAggregateOutputType = {
-    id: number
-    name: number
-    weight: number
-    weightUnit: number
-    length: number
-    width: number
-    height: number
-    dimensionUnit: number
-    insoleCapacity: number
-    companyId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type ShippingPackageAvgAggregateInputType = {
-    weight?: true
-    length?: true
-    width?: true
-    height?: true
-    insoleCapacity?: true
-  }
-
-  export type ShippingPackageSumAggregateInputType = {
-    weight?: true
-    length?: true
-    width?: true
-    height?: true
-    insoleCapacity?: true
-  }
-
-  export type ShippingPackageMinAggregateInputType = {
-    id?: true
-    name?: true
-    weight?: true
-    weightUnit?: true
-    length?: true
-    width?: true
-    height?: true
-    dimensionUnit?: true
-    insoleCapacity?: true
-    companyId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ShippingPackageMaxAggregateInputType = {
-    id?: true
-    name?: true
-    weight?: true
-    weightUnit?: true
-    length?: true
-    width?: true
-    height?: true
-    dimensionUnit?: true
-    insoleCapacity?: true
-    companyId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ShippingPackageCountAggregateInputType = {
-    id?: true
-    name?: true
-    weight?: true
-    weightUnit?: true
-    length?: true
-    width?: true
-    height?: true
-    dimensionUnit?: true
-    insoleCapacity?: true
-    companyId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type ShippingPackageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ShippingPackage to aggregate.
-     */
-    where?: ShippingPackageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ShippingPackages to fetch.
-     */
-    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ShippingPackageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ShippingPackages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ShippingPackages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ShippingPackages
-    **/
-    _count?: true | ShippingPackageCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ShippingPackageAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ShippingPackageSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ShippingPackageMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ShippingPackageMaxAggregateInputType
-  }
-
-  export type GetShippingPackageAggregateType<T extends ShippingPackageAggregateArgs> = {
-        [P in keyof T & keyof AggregateShippingPackage]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateShippingPackage[P]>
-      : GetScalarType<T[P], AggregateShippingPackage[P]>
-  }
-
-
-
-
-  export type ShippingPackageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ShippingPackageWhereInput
-    orderBy?: ShippingPackageOrderByWithAggregationInput | ShippingPackageOrderByWithAggregationInput[]
-    by: ShippingPackageScalarFieldEnum[] | ShippingPackageScalarFieldEnum
-    having?: ShippingPackageScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ShippingPackageCountAggregateInputType | true
-    _avg?: ShippingPackageAvgAggregateInputType
-    _sum?: ShippingPackageSumAggregateInputType
-    _min?: ShippingPackageMinAggregateInputType
-    _max?: ShippingPackageMaxAggregateInputType
-  }
-
-  export type ShippingPackageGroupByOutputType = {
-    id: string
-    name: string
-    weight: number
-    weightUnit: $Enums.WeightUnit
-    length: number
-    width: number
-    height: number
-    dimensionUnit: $Enums.DimensionUnit
-    insoleCapacity: number
-    companyId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: ShippingPackageCountAggregateOutputType | null
-    _avg: ShippingPackageAvgAggregateOutputType | null
-    _sum: ShippingPackageSumAggregateOutputType | null
-    _min: ShippingPackageMinAggregateOutputType | null
-    _max: ShippingPackageMaxAggregateOutputType | null
-  }
-
-  type GetShippingPackageGroupByPayload<T extends ShippingPackageGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ShippingPackageGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ShippingPackageGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ShippingPackageGroupByOutputType[P]>
-            : GetScalarType<T[P], ShippingPackageGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ShippingPackageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    weight?: boolean
-    weightUnit?: boolean
-    length?: boolean
-    width?: boolean
-    height?: boolean
-    dimensionUnit?: boolean
-    insoleCapacity?: boolean
-    companyId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["shippingPackage"]>
-
-  export type ShippingPackageSelectScalar = {
-    id?: boolean
-    name?: boolean
-    weight?: boolean
-    weightUnit?: boolean
-    length?: boolean
-    width?: boolean
-    height?: boolean
-    dimensionUnit?: boolean
-    insoleCapacity?: boolean
-    companyId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-
-  export type ShippingPackageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }
-
-
-  export type $ShippingPackagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ShippingPackage"
-    objects: {
-      company: Prisma.$CompanyPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      weight: number
-      weightUnit: $Enums.WeightUnit
-      length: number
-      width: number
-      height: number
-      dimensionUnit: $Enums.DimensionUnit
-      insoleCapacity: number
-      companyId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["shippingPackage"]>
-    composites: {}
-  }
-
-
-  type ShippingPackageGetPayload<S extends boolean | null | undefined | ShippingPackageDefaultArgs> = $Result.GetResult<Prisma.$ShippingPackagePayload, S>
-
-  type ShippingPackageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ShippingPackageFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: ShippingPackageCountAggregateInputType | true
-    }
-
-  export interface ShippingPackageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ShippingPackage'], meta: { name: 'ShippingPackage' } }
-    /**
-     * Find zero or one ShippingPackage that matches the filter.
-     * @param {ShippingPackageFindUniqueArgs} args - Arguments to find a ShippingPackage
-     * @example
-     * // Get one ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ShippingPackageFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageFindUniqueArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one ShippingPackage that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {ShippingPackageFindUniqueOrThrowArgs} args - Arguments to find a ShippingPackage
-     * @example
-     * // Get one ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ShippingPackageFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first ShippingPackage that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageFindFirstArgs} args - Arguments to find a ShippingPackage
-     * @example
-     * // Get one ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ShippingPackageFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageFindFirstArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first ShippingPackage that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageFindFirstOrThrowArgs} args - Arguments to find a ShippingPackage
-     * @example
-     * // Get one ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ShippingPackageFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more ShippingPackages that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ShippingPackages
-     * const shippingPackages = await prisma.shippingPackage.findMany()
-     * 
-     * // Get first 10 ShippingPackages
-     * const shippingPackages = await prisma.shippingPackage.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const shippingPackageWithIdOnly = await prisma.shippingPackage.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends ShippingPackageFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a ShippingPackage.
-     * @param {ShippingPackageCreateArgs} args - Arguments to create a ShippingPackage.
-     * @example
-     * // Create one ShippingPackage
-     * const ShippingPackage = await prisma.shippingPackage.create({
-     *   data: {
-     *     // ... data to create a ShippingPackage
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ShippingPackageCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageCreateArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many ShippingPackages.
-     *     @param {ShippingPackageCreateManyArgs} args - Arguments to create many ShippingPackages.
-     *     @example
-     *     // Create many ShippingPackages
-     *     const shippingPackage = await prisma.shippingPackage.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends ShippingPackageCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a ShippingPackage.
-     * @param {ShippingPackageDeleteArgs} args - Arguments to delete one ShippingPackage.
-     * @example
-     * // Delete one ShippingPackage
-     * const ShippingPackage = await prisma.shippingPackage.delete({
-     *   where: {
-     *     // ... filter to delete one ShippingPackage
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ShippingPackageDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageDeleteArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one ShippingPackage.
-     * @param {ShippingPackageUpdateArgs} args - Arguments to update one ShippingPackage.
-     * @example
-     * // Update one ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ShippingPackageUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageUpdateArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more ShippingPackages.
-     * @param {ShippingPackageDeleteManyArgs} args - Arguments to filter ShippingPackages to delete.
-     * @example
-     * // Delete a few ShippingPackages
-     * const { count } = await prisma.shippingPackage.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ShippingPackageDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ShippingPackageDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ShippingPackages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ShippingPackages
-     * const shippingPackage = await prisma.shippingPackage.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ShippingPackageUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ShippingPackage.
-     * @param {ShippingPackageUpsertArgs} args - Arguments to update or create a ShippingPackage.
-     * @example
-     * // Update or create a ShippingPackage
-     * const shippingPackage = await prisma.shippingPackage.upsert({
-     *   create: {
-     *     // ... data to create a ShippingPackage
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ShippingPackage we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ShippingPackageUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ShippingPackageUpsertArgs<ExtArgs>>
-    ): Prisma__ShippingPackageClient<$Result.GetResult<Prisma.$ShippingPackagePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of ShippingPackages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageCountArgs} args - Arguments to filter ShippingPackages to count.
-     * @example
-     * // Count the number of ShippingPackages
-     * const count = await prisma.shippingPackage.count({
-     *   where: {
-     *     // ... the filter for the ShippingPackages we want to count
-     *   }
-     * })
-    **/
-    count<T extends ShippingPackageCountArgs>(
-      args?: Subset<T, ShippingPackageCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ShippingPackageCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ShippingPackage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ShippingPackageAggregateArgs>(args: Subset<T, ShippingPackageAggregateArgs>): Prisma.PrismaPromise<GetShippingPackageAggregateType<T>>
-
-    /**
-     * Group by ShippingPackage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ShippingPackageGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ShippingPackageGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ShippingPackageGroupByArgs['orderBy'] }
-        : { orderBy?: ShippingPackageGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ShippingPackageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShippingPackageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ShippingPackage model
-   */
-  readonly fields: ShippingPackageFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ShippingPackage.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ShippingPackageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the ShippingPackage model
-   */ 
-  interface ShippingPackageFieldRefs {
-    readonly id: FieldRef<"ShippingPackage", 'String'>
-    readonly name: FieldRef<"ShippingPackage", 'String'>
-    readonly weight: FieldRef<"ShippingPackage", 'Float'>
-    readonly weightUnit: FieldRef<"ShippingPackage", 'WeightUnit'>
-    readonly length: FieldRef<"ShippingPackage", 'Float'>
-    readonly width: FieldRef<"ShippingPackage", 'Float'>
-    readonly height: FieldRef<"ShippingPackage", 'Float'>
-    readonly dimensionUnit: FieldRef<"ShippingPackage", 'DimensionUnit'>
-    readonly insoleCapacity: FieldRef<"ShippingPackage", 'Int'>
-    readonly companyId: FieldRef<"ShippingPackage", 'String'>
-    readonly createdAt: FieldRef<"ShippingPackage", 'DateTime'>
-    readonly updatedAt: FieldRef<"ShippingPackage", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ShippingPackage findUnique
-   */
-  export type ShippingPackageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter, which ShippingPackage to fetch.
-     */
-    where: ShippingPackageWhereUniqueInput
-  }
-
-  /**
-   * ShippingPackage findUniqueOrThrow
-   */
-  export type ShippingPackageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter, which ShippingPackage to fetch.
-     */
-    where: ShippingPackageWhereUniqueInput
-  }
-
-  /**
-   * ShippingPackage findFirst
-   */
-  export type ShippingPackageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter, which ShippingPackage to fetch.
-     */
-    where?: ShippingPackageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ShippingPackages to fetch.
-     */
-    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ShippingPackages.
-     */
-    cursor?: ShippingPackageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ShippingPackages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ShippingPackages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ShippingPackages.
-     */
-    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
-  }
-
-  /**
-   * ShippingPackage findFirstOrThrow
-   */
-  export type ShippingPackageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter, which ShippingPackage to fetch.
-     */
-    where?: ShippingPackageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ShippingPackages to fetch.
-     */
-    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ShippingPackages.
-     */
-    cursor?: ShippingPackageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ShippingPackages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ShippingPackages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ShippingPackages.
-     */
-    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
-  }
-
-  /**
-   * ShippingPackage findMany
-   */
-  export type ShippingPackageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter, which ShippingPackages to fetch.
-     */
-    where?: ShippingPackageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ShippingPackages to fetch.
-     */
-    orderBy?: ShippingPackageOrderByWithRelationInput | ShippingPackageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ShippingPackages.
-     */
-    cursor?: ShippingPackageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ShippingPackages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ShippingPackages.
-     */
-    skip?: number
-    distinct?: ShippingPackageScalarFieldEnum | ShippingPackageScalarFieldEnum[]
-  }
-
-  /**
-   * ShippingPackage create
-   */
-  export type ShippingPackageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ShippingPackage.
-     */
-    data: XOR<ShippingPackageCreateInput, ShippingPackageUncheckedCreateInput>
-  }
-
-  /**
-   * ShippingPackage createMany
-   */
-  export type ShippingPackageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ShippingPackages.
-     */
-    data: ShippingPackageCreateManyInput | ShippingPackageCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ShippingPackage update
-   */
-  export type ShippingPackageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ShippingPackage.
-     */
-    data: XOR<ShippingPackageUpdateInput, ShippingPackageUncheckedUpdateInput>
-    /**
-     * Choose, which ShippingPackage to update.
-     */
-    where: ShippingPackageWhereUniqueInput
-  }
-
-  /**
-   * ShippingPackage updateMany
-   */
-  export type ShippingPackageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ShippingPackages.
-     */
-    data: XOR<ShippingPackageUpdateManyMutationInput, ShippingPackageUncheckedUpdateManyInput>
-    /**
-     * Filter which ShippingPackages to update
-     */
-    where?: ShippingPackageWhereInput
-  }
-
-  /**
-   * ShippingPackage upsert
-   */
-  export type ShippingPackageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ShippingPackage to update in case it exists.
-     */
-    where: ShippingPackageWhereUniqueInput
-    /**
-     * In case the ShippingPackage found by the `where` argument doesn't exist, create a new ShippingPackage with this data.
-     */
-    create: XOR<ShippingPackageCreateInput, ShippingPackageUncheckedCreateInput>
-    /**
-     * In case the ShippingPackage was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ShippingPackageUpdateInput, ShippingPackageUncheckedUpdateInput>
-  }
-
-  /**
-   * ShippingPackage delete
-   */
-  export type ShippingPackageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-    /**
-     * Filter which ShippingPackage to delete.
-     */
-    where: ShippingPackageWhereUniqueInput
-  }
-
-  /**
-   * ShippingPackage deleteMany
-   */
-  export type ShippingPackageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ShippingPackages to delete
-     */
-    where?: ShippingPackageWhereInput
-  }
-
-  /**
-   * ShippingPackage without action
-   */
-  export type ShippingPackageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ShippingPackage
-     */
-    select?: ShippingPackageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ShippingPackageInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -32535,6 +32546,7 @@ export namespace Prisma {
     name: 'name',
     url: 'url',
     logoUrl: 'logoUrl',
+    slug: 'slug',
     preferences: 'preferences',
     active: 'active',
     createdAt: 'createdAt',
@@ -32710,6 +32722,24 @@ export namespace Prisma {
   };
 
   export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+
+
+  export const ShippingPackageScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    weight: 'weight',
+    weightUnit: 'weightUnit',
+    length: 'length',
+    width: 'width',
+    height: 'height',
+    dimensionUnit: 'dimensionUnit',
+    insoleCapacity: 'insoleCapacity',
+    companyId: 'companyId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ShippingPackageScalarFieldEnum = (typeof ShippingPackageScalarFieldEnum)[keyof typeof ShippingPackageScalarFieldEnum]
 
 
   export const PhysicianScalarFieldEnum: {
@@ -32921,24 +32951,6 @@ export namespace Prisma {
   };
 
   export type ApiKeyScalarFieldEnum = (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum]
-
-
-  export const ShippingPackageScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    weight: 'weight',
-    weightUnit: 'weightUnit',
-    length: 'length',
-    width: 'width',
-    height: 'height',
-    dimensionUnit: 'dimensionUnit',
-    insoleCapacity: 'insoleCapacity',
-    companyId: 'companyId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type ShippingPackageScalarFieldEnum = (typeof ShippingPackageScalarFieldEnum)[keyof typeof ShippingPackageScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -33233,48 +33245,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DiagnosisStandard'
-   */
-  export type EnumDiagnosisStandardFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiagnosisStandard'>
-    
-
-
-  /**
-   * Reference to a field of type 'DiagnosisStandard[]'
-   */
-  export type ListEnumDiagnosisStandardFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiagnosisStandard[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'ProductAttributeType'
-   */
-  export type EnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType'>
-    
-
-
-  /**
-   * Reference to a field of type 'ProductAttributeType[]'
-   */
-  export type ListEnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'CompanyRole'
-   */
-  export type EnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole'>
-    
-
-
-  /**
-   * Reference to a field of type 'CompanyRole[]'
-   */
-  export type ListEnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole[]'>
-    
-
-
-  /**
    * Reference to a field of type 'WeightUnit'
    */
   export type EnumWeightUnitFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeightUnit'>
@@ -33314,6 +33284,48 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'DiagnosisStandard'
+   */
+  export type EnumDiagnosisStandardFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiagnosisStandard'>
+    
+
+
+  /**
+   * Reference to a field of type 'DiagnosisStandard[]'
+   */
+  export type ListEnumDiagnosisStandardFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiagnosisStandard[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProductAttributeType'
+   */
+  export type EnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProductAttributeType[]'
+   */
+  export type ListEnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CompanyRole'
+   */
+  export type EnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'CompanyRole[]'
+   */
+  export type ListEnumCompanyRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyRole[]'>
+    
   /**
    * Deep Input Types
    */
@@ -33327,6 +33339,7 @@ export namespace Prisma {
     name?: StringFilter<"Company"> | string
     url?: StringNullableFilter<"Company"> | string | null
     logoUrl?: StringNullableFilter<"Company"> | string | null
+    slug?: StringFilter<"Company"> | string
     preferences?: JsonNullableFilter<"Company">
     active?: BoolFilter<"Company"> | boolean
     createdAt?: DateTimeFilter<"Company"> | Date | string
@@ -33344,6 +33357,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
+    slug?: SortOrder
     preferences?: SortOrderInput | SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -33358,6 +33372,7 @@ export namespace Prisma {
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: CompanyWhereInput | CompanyWhereInput[]
     OR?: CompanyWhereInput[]
     NOT?: CompanyWhereInput | CompanyWhereInput[]
@@ -33374,13 +33389,14 @@ export namespace Prisma {
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
-  }, "id">
+  }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     url?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
+    slug?: SortOrder
     preferences?: SortOrderInput | SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -33398,6 +33414,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Company"> | string
     url?: StringNullableWithAggregatesFilter<"Company"> | string | null
     logoUrl?: StringNullableWithAggregatesFilter<"Company"> | string | null
+    slug?: StringWithAggregatesFilter<"Company"> | string
     preferences?: JsonNullableWithAggregatesFilter<"Company">
     active?: BoolWithAggregatesFilter<"Company"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
@@ -34319,6 +34336,98 @@ export namespace Prisma {
     countryCode?: StringWithAggregatesFilter<"Address"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
+  }
+
+  export type ShippingPackageWhereInput = {
+    AND?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
+    OR?: ShippingPackageWhereInput[]
+    NOT?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
+    id?: StringFilter<"ShippingPackage"> | string
+    name?: StringFilter<"ShippingPackage"> | string
+    weight?: FloatFilter<"ShippingPackage"> | number
+    weightUnit?: EnumWeightUnitFilter<"ShippingPackage"> | $Enums.WeightUnit
+    length?: FloatFilter<"ShippingPackage"> | number
+    width?: FloatFilter<"ShippingPackage"> | number
+    height?: FloatFilter<"ShippingPackage"> | number
+    dimensionUnit?: EnumDimensionUnitFilter<"ShippingPackage"> | $Enums.DimensionUnit
+    insoleCapacity?: IntFilter<"ShippingPackage"> | number
+    companyId?: StringFilter<"ShippingPackage"> | string
+    createdAt?: DateTimeFilter<"ShippingPackage"> | Date | string
+    updatedAt?: DateTimeFilter<"ShippingPackage"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }
+
+  export type ShippingPackageOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    weight?: SortOrder
+    weightUnit?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    dimensionUnit?: SortOrder
+    insoleCapacity?: SortOrder
+    companyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+  }
+
+  export type ShippingPackageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
+    OR?: ShippingPackageWhereInput[]
+    NOT?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
+    name?: StringFilter<"ShippingPackage"> | string
+    weight?: FloatFilter<"ShippingPackage"> | number
+    weightUnit?: EnumWeightUnitFilter<"ShippingPackage"> | $Enums.WeightUnit
+    length?: FloatFilter<"ShippingPackage"> | number
+    width?: FloatFilter<"ShippingPackage"> | number
+    height?: FloatFilter<"ShippingPackage"> | number
+    dimensionUnit?: EnumDimensionUnitFilter<"ShippingPackage"> | $Enums.DimensionUnit
+    insoleCapacity?: IntFilter<"ShippingPackage"> | number
+    companyId?: StringFilter<"ShippingPackage"> | string
+    createdAt?: DateTimeFilter<"ShippingPackage"> | Date | string
+    updatedAt?: DateTimeFilter<"ShippingPackage"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }, "id">
+
+  export type ShippingPackageOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    weight?: SortOrder
+    weightUnit?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    dimensionUnit?: SortOrder
+    insoleCapacity?: SortOrder
+    companyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ShippingPackageCountOrderByAggregateInput
+    _avg?: ShippingPackageAvgOrderByAggregateInput
+    _max?: ShippingPackageMaxOrderByAggregateInput
+    _min?: ShippingPackageMinOrderByAggregateInput
+    _sum?: ShippingPackageSumOrderByAggregateInput
+  }
+
+  export type ShippingPackageScalarWhereWithAggregatesInput = {
+    AND?: ShippingPackageScalarWhereWithAggregatesInput | ShippingPackageScalarWhereWithAggregatesInput[]
+    OR?: ShippingPackageScalarWhereWithAggregatesInput[]
+    NOT?: ShippingPackageScalarWhereWithAggregatesInput | ShippingPackageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ShippingPackage"> | string
+    name?: StringWithAggregatesFilter<"ShippingPackage"> | string
+    weight?: FloatWithAggregatesFilter<"ShippingPackage"> | number
+    weightUnit?: EnumWeightUnitWithAggregatesFilter<"ShippingPackage"> | $Enums.WeightUnit
+    length?: FloatWithAggregatesFilter<"ShippingPackage"> | number
+    width?: FloatWithAggregatesFilter<"ShippingPackage"> | number
+    height?: FloatWithAggregatesFilter<"ShippingPackage"> | number
+    dimensionUnit?: EnumDimensionUnitWithAggregatesFilter<"ShippingPackage"> | $Enums.DimensionUnit
+    insoleCapacity?: IntWithAggregatesFilter<"ShippingPackage"> | number
+    companyId?: StringWithAggregatesFilter<"ShippingPackage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
   }
 
   export type PhysicianWhereInput = {
@@ -35408,103 +35517,12 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ApiKey"> | Date | string
   }
 
-  export type ShippingPackageWhereInput = {
-    AND?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
-    OR?: ShippingPackageWhereInput[]
-    NOT?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
-    id?: StringFilter<"ShippingPackage"> | string
-    name?: StringFilter<"ShippingPackage"> | string
-    weight?: FloatFilter<"ShippingPackage"> | number
-    weightUnit?: EnumWeightUnitFilter<"ShippingPackage"> | $Enums.WeightUnit
-    length?: FloatFilter<"ShippingPackage"> | number
-    width?: FloatFilter<"ShippingPackage"> | number
-    height?: FloatFilter<"ShippingPackage"> | number
-    dimensionUnit?: EnumDimensionUnitFilter<"ShippingPackage"> | $Enums.DimensionUnit
-    insoleCapacity?: IntFilter<"ShippingPackage"> | number
-    companyId?: StringFilter<"ShippingPackage"> | string
-    createdAt?: DateTimeFilter<"ShippingPackage"> | Date | string
-    updatedAt?: DateTimeFilter<"ShippingPackage"> | Date | string
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-  }
-
-  export type ShippingPackageOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    weight?: SortOrder
-    weightUnit?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    dimensionUnit?: SortOrder
-    insoleCapacity?: SortOrder
-    companyId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    company?: CompanyOrderByWithRelationInput
-  }
-
-  export type ShippingPackageWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
-    OR?: ShippingPackageWhereInput[]
-    NOT?: ShippingPackageWhereInput | ShippingPackageWhereInput[]
-    name?: StringFilter<"ShippingPackage"> | string
-    weight?: FloatFilter<"ShippingPackage"> | number
-    weightUnit?: EnumWeightUnitFilter<"ShippingPackage"> | $Enums.WeightUnit
-    length?: FloatFilter<"ShippingPackage"> | number
-    width?: FloatFilter<"ShippingPackage"> | number
-    height?: FloatFilter<"ShippingPackage"> | number
-    dimensionUnit?: EnumDimensionUnitFilter<"ShippingPackage"> | $Enums.DimensionUnit
-    insoleCapacity?: IntFilter<"ShippingPackage"> | number
-    companyId?: StringFilter<"ShippingPackage"> | string
-    createdAt?: DateTimeFilter<"ShippingPackage"> | Date | string
-    updatedAt?: DateTimeFilter<"ShippingPackage"> | Date | string
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-  }, "id">
-
-  export type ShippingPackageOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    weight?: SortOrder
-    weightUnit?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    dimensionUnit?: SortOrder
-    insoleCapacity?: SortOrder
-    companyId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: ShippingPackageCountOrderByAggregateInput
-    _avg?: ShippingPackageAvgOrderByAggregateInput
-    _max?: ShippingPackageMaxOrderByAggregateInput
-    _min?: ShippingPackageMinOrderByAggregateInput
-    _sum?: ShippingPackageSumOrderByAggregateInput
-  }
-
-  export type ShippingPackageScalarWhereWithAggregatesInput = {
-    AND?: ShippingPackageScalarWhereWithAggregatesInput | ShippingPackageScalarWhereWithAggregatesInput[]
-    OR?: ShippingPackageScalarWhereWithAggregatesInput[]
-    NOT?: ShippingPackageScalarWhereWithAggregatesInput | ShippingPackageScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ShippingPackage"> | string
-    name?: StringWithAggregatesFilter<"ShippingPackage"> | string
-    weight?: FloatWithAggregatesFilter<"ShippingPackage"> | number
-    weightUnit?: EnumWeightUnitWithAggregatesFilter<"ShippingPackage"> | $Enums.WeightUnit
-    length?: FloatWithAggregatesFilter<"ShippingPackage"> | number
-    width?: FloatWithAggregatesFilter<"ShippingPackage"> | number
-    height?: FloatWithAggregatesFilter<"ShippingPackage"> | number
-    dimensionUnit?: EnumDimensionUnitWithAggregatesFilter<"ShippingPackage"> | $Enums.DimensionUnit
-    insoleCapacity?: IntWithAggregatesFilter<"ShippingPackage"> | number
-    companyId?: StringWithAggregatesFilter<"ShippingPackage"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
-  }
-
   export type CompanyCreateInput = {
     id?: string
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -35522,6 +35540,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -35539,6 +35558,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35556,6 +35576,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35573,6 +35594,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -35584,6 +35606,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35595,6 +35618,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36636,6 +36660,110 @@ export namespace Prisma {
     administrativeArea?: StringFieldUpdateOperationsInput | string
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingPackageCreateInput = {
+    id?: string
+    name: string
+    weight: number
+    weightUnit?: $Enums.WeightUnit
+    length: number
+    width: number
+    height: number
+    dimensionUnit?: $Enums.DimensionUnit
+    insoleCapacity: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutPackagesInput
+  }
+
+  export type ShippingPackageUncheckedCreateInput = {
+    id?: string
+    name: string
+    weight: number
+    weightUnit?: $Enums.WeightUnit
+    length: number
+    width: number
+    height: number
+    dimensionUnit?: $Enums.DimensionUnit
+    insoleCapacity: number
+    companyId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShippingPackageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    weight?: FloatFieldUpdateOperationsInput | number
+    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
+    length?: FloatFieldUpdateOperationsInput | number
+    width?: FloatFieldUpdateOperationsInput | number
+    height?: FloatFieldUpdateOperationsInput | number
+    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
+    insoleCapacity?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutPackagesNestedInput
+  }
+
+  export type ShippingPackageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    weight?: FloatFieldUpdateOperationsInput | number
+    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
+    length?: FloatFieldUpdateOperationsInput | number
+    width?: FloatFieldUpdateOperationsInput | number
+    height?: FloatFieldUpdateOperationsInput | number
+    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
+    insoleCapacity?: IntFieldUpdateOperationsInput | number
+    companyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingPackageCreateManyInput = {
+    id?: string
+    name: string
+    weight: number
+    weightUnit?: $Enums.WeightUnit
+    length: number
+    width: number
+    height: number
+    dimensionUnit?: $Enums.DimensionUnit
+    insoleCapacity: number
+    companyId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShippingPackageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    weight?: FloatFieldUpdateOperationsInput | number
+    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
+    length?: FloatFieldUpdateOperationsInput | number
+    width?: FloatFieldUpdateOperationsInput | number
+    height?: FloatFieldUpdateOperationsInput | number
+    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
+    insoleCapacity?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingPackageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    weight?: FloatFieldUpdateOperationsInput | number
+    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
+    length?: FloatFieldUpdateOperationsInput | number
+    width?: FloatFieldUpdateOperationsInput | number
+    height?: FloatFieldUpdateOperationsInput | number
+    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
+    insoleCapacity?: IntFieldUpdateOperationsInput | number
+    companyId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -37783,110 +37911,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ShippingPackageCreateInput = {
-    id?: string
-    name: string
-    weight: number
-    weightUnit?: $Enums.WeightUnit
-    length: number
-    width: number
-    height: number
-    dimensionUnit?: $Enums.DimensionUnit
-    insoleCapacity: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutPackagesInput
-  }
-
-  export type ShippingPackageUncheckedCreateInput = {
-    id?: string
-    name: string
-    weight: number
-    weightUnit?: $Enums.WeightUnit
-    length: number
-    width: number
-    height: number
-    dimensionUnit?: $Enums.DimensionUnit
-    insoleCapacity: number
-    companyId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ShippingPackageUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
-    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
-    length?: FloatFieldUpdateOperationsInput | number
-    width?: FloatFieldUpdateOperationsInput | number
-    height?: FloatFieldUpdateOperationsInput | number
-    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
-    insoleCapacity?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutPackagesNestedInput
-  }
-
-  export type ShippingPackageUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
-    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
-    length?: FloatFieldUpdateOperationsInput | number
-    width?: FloatFieldUpdateOperationsInput | number
-    height?: FloatFieldUpdateOperationsInput | number
-    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
-    insoleCapacity?: IntFieldUpdateOperationsInput | number
-    companyId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ShippingPackageCreateManyInput = {
-    id?: string
-    name: string
-    weight: number
-    weightUnit?: $Enums.WeightUnit
-    length: number
-    width: number
-    height: number
-    dimensionUnit?: $Enums.DimensionUnit
-    insoleCapacity: number
-    companyId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ShippingPackageUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
-    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
-    length?: FloatFieldUpdateOperationsInput | number
-    width?: FloatFieldUpdateOperationsInput | number
-    height?: FloatFieldUpdateOperationsInput | number
-    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
-    insoleCapacity?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ShippingPackageUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    weight?: FloatFieldUpdateOperationsInput | number
-    weightUnit?: EnumWeightUnitFieldUpdateOperationsInput | $Enums.WeightUnit
-    length?: FloatFieldUpdateOperationsInput | number
-    width?: FloatFieldUpdateOperationsInput | number
-    height?: FloatFieldUpdateOperationsInput | number
-    dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
-    insoleCapacity?: IntFieldUpdateOperationsInput | number
-    companyId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -38025,6 +38049,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     preferences?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -38036,6 +38061,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38046,6 +38072,7 @@ export namespace Prisma {
     name?: SortOrder
     url?: SortOrder
     logoUrl?: SortOrder
+    slug?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39037,6 +39064,128 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumWeightUnitFilter<$PrismaModel = never> = {
+    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumWeightUnitFilter<$PrismaModel> | $Enums.WeightUnit
+  }
+
+  export type EnumDimensionUnitFilter<$PrismaModel = never> = {
+    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type ShippingPackageCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    weight?: SortOrder
+    weightUnit?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    dimensionUnit?: SortOrder
+    insoleCapacity?: SortOrder
+    companyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShippingPackageAvgOrderByAggregateInput = {
+    weight?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    insoleCapacity?: SortOrder
+  }
+
+  export type ShippingPackageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    weight?: SortOrder
+    weightUnit?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    dimensionUnit?: SortOrder
+    insoleCapacity?: SortOrder
+    companyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShippingPackageMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    weight?: SortOrder
+    weightUnit?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    dimensionUnit?: SortOrder
+    insoleCapacity?: SortOrder
+    companyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShippingPackageSumOrderByAggregateInput = {
+    weight?: SortOrder
+    length?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    insoleCapacity?: SortOrder
+  }
+
+  export type EnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel> | $Enums.WeightUnit
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWeightUnitFilter<$PrismaModel>
+    _max?: NestedEnumWeightUnitFilter<$PrismaModel>
+  }
+
+  export type EnumDimensionUnitWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel> | $Enums.DimensionUnit
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDimensionUnitFilter<$PrismaModel>
+    _max?: NestedEnumDimensionUnitFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type PhysicianCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -39720,128 +39869,6 @@ export namespace Prisma {
     companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type EnumWeightUnitFilter<$PrismaModel = never> = {
-    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumWeightUnitFilter<$PrismaModel> | $Enums.WeightUnit
-  }
-
-  export type EnumDimensionUnitFilter<$PrismaModel = never> = {
-    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type ShippingPackageCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    weight?: SortOrder
-    weightUnit?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    dimensionUnit?: SortOrder
-    insoleCapacity?: SortOrder
-    companyId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ShippingPackageAvgOrderByAggregateInput = {
-    weight?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    insoleCapacity?: SortOrder
-  }
-
-  export type ShippingPackageMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    weight?: SortOrder
-    weightUnit?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    dimensionUnit?: SortOrder
-    insoleCapacity?: SortOrder
-    companyId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ShippingPackageMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    weight?: SortOrder
-    weightUnit?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    dimensionUnit?: SortOrder
-    insoleCapacity?: SortOrder
-    companyId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ShippingPackageSumOrderByAggregateInput = {
-    weight?: SortOrder
-    length?: SortOrder
-    width?: SortOrder
-    height?: SortOrder
-    insoleCapacity?: SortOrder
-  }
-
-  export type EnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel> | $Enums.WeightUnit
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumWeightUnitFilter<$PrismaModel>
-    _max?: NestedEnumWeightUnitFilter<$PrismaModel>
-  }
-
-  export type EnumDimensionUnitWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel> | $Enums.DimensionUnit
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDimensionUnitFilter<$PrismaModel>
-    _max?: NestedEnumDimensionUnitFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FacilityCreateNestedManyWithoutCompanyInput = {
@@ -41133,6 +41160,36 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type CompanyCreateNestedOneWithoutPackagesInput = {
+    create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type EnumWeightUnitFieldUpdateOperationsInput = {
+    set?: $Enums.WeightUnit
+  }
+
+  export type EnumDimensionUnitFieldUpdateOperationsInput = {
+    set?: $Enums.DimensionUnit
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type CompanyUpdateOneRequiredWithoutPackagesNestedInput = {
+    create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
+    upsert?: CompanyUpsertWithoutPackagesInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPackagesInput, CompanyUpdateWithoutPackagesInput>, CompanyUncheckedUpdateWithoutPackagesInput>
+  }
+
   export type EvaluationCreateNestedManyWithoutReferringPhysicianInput = {
     create?: XOR<EvaluationCreateWithoutReferringPhysicianInput, EvaluationUncheckedCreateWithoutReferringPhysicianInput> | EvaluationCreateWithoutReferringPhysicianInput[] | EvaluationUncheckedCreateWithoutReferringPhysicianInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutReferringPhysicianInput | EvaluationCreateOrConnectWithoutReferringPhysicianInput[]
@@ -41885,36 +41942,6 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutApiKeysInput, CompanyUpdateWithoutApiKeysInput>, CompanyUncheckedUpdateWithoutApiKeysInput>
   }
 
-  export type CompanyCreateNestedOneWithoutPackagesInput = {
-    create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
-    connect?: CompanyWhereUniqueInput
-  }
-
-  export type EnumWeightUnitFieldUpdateOperationsInput = {
-    set?: $Enums.WeightUnit
-  }
-
-  export type EnumDimensionUnitFieldUpdateOperationsInput = {
-    set?: $Enums.DimensionUnit
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type CompanyUpdateOneRequiredWithoutPackagesNestedInput = {
-    create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
-    upsert?: CompanyUpsertWithoutPackagesInput
-    connect?: CompanyWhereUniqueInput
-    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPackagesInput, CompanyUpdateWithoutPackagesInput>, CompanyUncheckedUpdateWithoutPackagesInput>
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -42393,6 +42420,56 @@ export namespace Prisma {
     _max?: NestedEnumOrderAuthorizationStatusFilter<$PrismaModel>
   }
 
+  export type NestedEnumWeightUnitFilter<$PrismaModel = never> = {
+    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumWeightUnitFilter<$PrismaModel> | $Enums.WeightUnit
+  }
+
+  export type NestedEnumDimensionUnitFilter<$PrismaModel = never> = {
+    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
+  }
+
+  export type NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel> | $Enums.WeightUnit
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWeightUnitFilter<$PrismaModel>
+    _max?: NestedEnumWeightUnitFilter<$PrismaModel>
+  }
+
+  export type NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
+    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
+    not?: NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel> | $Enums.DimensionUnit
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDimensionUnitFilter<$PrismaModel>
+    _max?: NestedEnumDimensionUnitFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type NestedEnumDiagnosisStandardFilter<$PrismaModel = never> = {
     equals?: $Enums.DiagnosisStandard | EnumDiagnosisStandardFieldRefInput<$PrismaModel>
     in?: $Enums.DiagnosisStandard[] | ListEnumDiagnosisStandardFieldRefInput<$PrismaModel>
@@ -42464,56 +42541,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCompanyRoleFilter<$PrismaModel>
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
-  }
-
-  export type NestedEnumWeightUnitFilter<$PrismaModel = never> = {
-    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumWeightUnitFilter<$PrismaModel> | $Enums.WeightUnit
-  }
-
-  export type NestedEnumDimensionUnitFilter<$PrismaModel = never> = {
-    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
-  }
-
-  export type NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel> | $Enums.WeightUnit
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumWeightUnitFilter<$PrismaModel>
-    _max?: NestedEnumWeightUnitFilter<$PrismaModel>
-  }
-
-  export type NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.DimensionUnit | EnumDimensionUnitFieldRefInput<$PrismaModel>
-    in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
-    not?: NestedEnumDimensionUnitWithAggregatesFilter<$PrismaModel> | $Enums.DimensionUnit
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDimensionUnitFilter<$PrismaModel>
-    _max?: NestedEnumDimensionUnitFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FacilityCreateWithoutCompanyInput = {
@@ -42928,6 +42955,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -42944,6 +42972,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -42998,6 +43027,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43014,6 +43044,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43387,6 +43418,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -43403,6 +43435,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -43678,6 +43711,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43694,6 +43728,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45226,6 +45261,90 @@ export namespace Prisma {
     data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutShippingAddressInput>
   }
 
+  export type CompanyCreateWithoutPackagesInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutPackagesInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutPackagesInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
+  }
+
+  export type CompanyUpsertWithoutPackagesInput = {
+    update: XOR<CompanyUpdateWithoutPackagesInput, CompanyUncheckedUpdateWithoutPackagesInput>
+    create: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutPackagesInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutPackagesInput, CompanyUncheckedUpdateWithoutPackagesInput>
+  }
+
+  export type CompanyUpdateWithoutPackagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutPackagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
   export type EvaluationCreateWithoutReferringPhysicianInput = {
     id?: string
     externalId?: string | null
@@ -46300,6 +46419,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46316,6 +46436,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46377,6 +46498,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46393,6 +46515,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46444,6 +46567,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46460,6 +46584,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46537,6 +46662,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46553,6 +46679,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46933,6 +47060,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46949,6 +47077,7 @@ export namespace Prisma {
     name: string
     url?: string | null
     logoUrl?: string | null
+    slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
     createdAt?: Date | string
@@ -46981,6 +47110,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46997,6 +47127,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47004,86 +47135,6 @@ export namespace Prisma {
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
-    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type CompanyCreateWithoutPackagesInput = {
-    id?: string
-    name: string
-    url?: string | null
-    logoUrl?: string | null
-    preferences?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    facilities?: FacilityCreateNestedManyWithoutCompanyInput
-    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
-    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
-    users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyUncheckedCreateWithoutPackagesInput = {
-    id?: string
-    name: string
-    url?: string | null
-    logoUrl?: string | null
-    preferences?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
-    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
-    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
-    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyCreateOrConnectWithoutPackagesInput = {
-    where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
-  }
-
-  export type CompanyUpsertWithoutPackagesInput = {
-    update: XOR<CompanyUpdateWithoutPackagesInput, CompanyUncheckedUpdateWithoutPackagesInput>
-    create: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
-    where?: CompanyWhereInput
-  }
-
-  export type CompanyUpdateToOneWithWhereWithoutPackagesInput = {
-    where?: CompanyWhereInput
-    data: XOR<CompanyUpdateWithoutPackagesInput, CompanyUncheckedUpdateWithoutPackagesInput>
-  }
-
-  export type CompanyUpdateWithoutPackagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    preferences?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
-    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
-    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
-    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type CompanyUncheckedUpdateWithoutPackagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    preferences?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
-    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
-    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -49224,6 +49275,10 @@ export namespace Prisma {
      */
     export type AddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AddressDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ShippingPackageDefaultArgs instead
+     */
+    export type ShippingPackageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingPackageDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use PhysicianDefaultArgs instead
      */
     export type PhysicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PhysicianDefaultArgs<ExtArgs>
@@ -49295,10 +49350,6 @@ export namespace Prisma {
      * @deprecated Use ApiKeyDefaultArgs instead
      */
     export type ApiKeyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ApiKeyDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ShippingPackageDefaultArgs instead
-     */
-    export type ShippingPackageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingPackageDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
