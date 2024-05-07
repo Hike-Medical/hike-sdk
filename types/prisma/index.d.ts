@@ -94,6 +94,16 @@ export type DeviceType = $Result.DefaultSelection<Prisma.$DeviceTypePayload>
  */
 export type VisitType = $Result.DefaultSelection<Prisma.$VisitTypePayload>
 /**
+ * Model FormTemplate
+ * 
+ */
+export type FormTemplate = $Result.DefaultSelection<Prisma.$FormTemplatePayload>
+/**
+ * Model FormSubmission
+ * 
+ */
+export type FormSubmission = $Result.DefaultSelection<Prisma.$FormSubmissionPayload>
+/**
  * Model CatalogProduct
  * 
  */
@@ -713,6 +723,26 @@ export class PrismaClient<
   get visitType(): Prisma.VisitTypeDelegate<ExtArgs>;
 
   /**
+   * `prisma.formTemplate`: Exposes CRUD operations for the **FormTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FormTemplates
+    * const formTemplates = await prisma.formTemplate.findMany()
+    * ```
+    */
+  get formTemplate(): Prisma.FormTemplateDelegate<ExtArgs>;
+
+  /**
+   * `prisma.formSubmission`: Exposes CRUD operations for the **FormSubmission** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FormSubmissions
+    * const formSubmissions = await prisma.formSubmission.findMany()
+    * ```
+    */
+  get formSubmission(): Prisma.FormSubmissionDelegate<ExtArgs>;
+
+  /**
    * `prisma.catalogProduct`: Exposes CRUD operations for the **CatalogProduct** model.
     * Example usage:
     * ```ts
@@ -1314,6 +1344,8 @@ export namespace Prisma {
     BillingCode: 'BillingCode',
     DeviceType: 'DeviceType',
     VisitType: 'VisitType',
+    FormTemplate: 'FormTemplate',
+    FormSubmission: 'FormSubmission',
     CatalogProduct: 'CatalogProduct',
     CatalogProductAttribute: 'CatalogProductAttribute',
     CatalogProductVariant: 'CatalogProductVariant',
@@ -1341,7 +1373,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'parcel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2401,6 +2433,138 @@ export namespace Prisma {
           }
         }
       }
+      FormTemplate: {
+        payload: Prisma.$FormTemplatePayload<ExtArgs>
+        fields: Prisma.FormTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FormTemplateFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FormTemplateFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.FormTemplateFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FormTemplateFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.FormTemplateFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.FormTemplateCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.FormTemplateCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.FormTemplateDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          update: {
+            args: Prisma.FormTemplateUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.FormTemplateDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FormTemplateUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.FormTemplateUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.FormTemplateAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFormTemplate>
+          }
+          groupBy: {
+            args: Prisma.FormTemplateGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FormTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FormTemplateCountArgs<ExtArgs>,
+            result: $Utils.Optional<FormTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      FormSubmission: {
+        payload: Prisma.$FormSubmissionPayload<ExtArgs>
+        fields: Prisma.FormSubmissionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FormSubmissionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FormSubmissionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          findFirst: {
+            args: Prisma.FormSubmissionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FormSubmissionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          findMany: {
+            args: Prisma.FormSubmissionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>[]
+          }
+          create: {
+            args: Prisma.FormSubmissionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          createMany: {
+            args: Prisma.FormSubmissionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.FormSubmissionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          update: {
+            args: Prisma.FormSubmissionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          deleteMany: {
+            args: Prisma.FormSubmissionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FormSubmissionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.FormSubmissionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FormSubmissionPayload>
+          }
+          aggregate: {
+            args: Prisma.FormSubmissionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFormSubmission>
+          }
+          groupBy: {
+            args: Prisma.FormSubmissionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FormSubmissionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FormSubmissionCountArgs<ExtArgs>,
+            result: $Utils.Optional<FormSubmissionCountAggregateOutputType> | number
+          }
+        }
+      }
       CatalogProduct: {
         payload: Prisma.$CatalogProductPayload<ExtArgs>
         fields: Prisma.CatalogProductFieldRefs
@@ -3442,11 +3606,13 @@ export namespace Prisma {
    */
 
   export type EvaluationCountOutputType = {
+    formSubmissions: number
     workbenches: number
     feet: number
   }
 
   export type EvaluationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    formSubmissions?: boolean | EvaluationCountOutputTypeCountFormSubmissionsArgs
     workbenches?: boolean | EvaluationCountOutputTypeCountWorkbenchesArgs
     feet?: boolean | EvaluationCountOutputTypeCountFeetArgs
   }
@@ -3460,6 +3626,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the EvaluationCountOutputType
      */
     select?: EvaluationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EvaluationCountOutputType without action
+   */
+  export type EvaluationCountOutputTypeCountFormSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormSubmissionWhereInput
   }
 
   /**
@@ -3820,6 +3993,37 @@ export namespace Prisma {
    */
   export type VisitTypeCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
+  }
+
+
+  /**
+   * Count Type FormTemplateCountOutputType
+   */
+
+  export type FormTemplateCountOutputType = {
+    submissions: number
+  }
+
+  export type FormTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    submissions?: boolean | FormTemplateCountOutputTypeCountSubmissionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FormTemplateCountOutputType without action
+   */
+  export type FormTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplateCountOutputType
+     */
+    select?: FormTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FormTemplateCountOutputType without action
+   */
+  export type FormTemplateCountOutputTypeCountSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormSubmissionWhereInput
   }
 
 
@@ -7250,7 +7454,6 @@ export namespace Prisma {
     prescribedAt: number
     prescribedActive: number
     notes: number
-    questionnaire: number
     completedAt: number
     cancelledAt: number
     createdAt: number
@@ -7341,7 +7544,6 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    questionnaire?: true
     completedAt?: true
     cancelledAt?: true
     createdAt?: true
@@ -7445,7 +7647,6 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean
     notes: string | null
-    questionnaire: JsonValue | null
     completedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date
@@ -7493,7 +7694,6 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    questionnaire?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7504,6 +7704,7 @@ export namespace Prisma {
     visitType?: boolean | Evaluation$visitTypeArgs<ExtArgs>
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
+    formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
@@ -7533,7 +7734,6 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    questionnaire?: boolean
     completedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
@@ -7548,6 +7748,7 @@ export namespace Prisma {
     visitType?: boolean | Evaluation$visitTypeArgs<ExtArgs>
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
+    formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
@@ -7563,6 +7764,7 @@ export namespace Prisma {
       visitType: Prisma.$VisitTypePayload<ExtArgs> | null
       referringPhysician: Prisma.$PhysicianPayload<ExtArgs> | null
       diagnosis: Prisma.$DiagnosisPayload<ExtArgs> | null
+      formSubmissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       feet: Prisma.$FootPayload<ExtArgs>[]
     }
@@ -7590,7 +7792,6 @@ export namespace Prisma {
       prescribedAt: Date | null
       prescribedActive: boolean
       notes: string | null
-      questionnaire: Prisma.JsonValue | null
       completedAt: Date | null
       cancelledAt: Date | null
       createdAt: Date
@@ -7972,6 +8173,8 @@ export namespace Prisma {
 
     diagnosis<T extends Evaluation$diagnosisArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$diagnosisArgs<ExtArgs>>): Prisma__DiagnosisClient<$Result.GetResult<Prisma.$DiagnosisPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
+    formSubmissions<T extends Evaluation$formSubmissionsArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$formSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     workbenches<T extends Evaluation$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     feet<T extends Evaluation$feetArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -8027,7 +8230,6 @@ export namespace Prisma {
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
-    readonly questionnaire: FieldRef<"Evaluation", 'Json'>
     readonly completedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
@@ -8388,6 +8590,26 @@ export namespace Prisma {
      */
     include?: DiagnosisInclude<ExtArgs> | null
     where?: DiagnosisWhereInput
+  }
+
+  /**
+   * Evaluation.formSubmissions
+   */
+  export type Evaluation$formSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    where?: FormSubmissionWhereInput
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    cursor?: FormSubmissionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
   }
 
   /**
@@ -20138,6 +20360,1857 @@ export namespace Prisma {
 
 
   /**
+   * Model FormTemplate
+   */
+
+  export type AggregateFormTemplate = {
+    _count: FormTemplateCountAggregateOutputType | null
+    _min: FormTemplateMinAggregateOutputType | null
+    _max: FormTemplateMaxAggregateOutputType | null
+  }
+
+  export type FormTemplateMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FormTemplateMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FormTemplateCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    schema: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FormTemplateMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FormTemplateMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FormTemplateCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    schema?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FormTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FormTemplate to aggregate.
+     */
+    where?: FormTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormTemplates to fetch.
+     */
+    orderBy?: FormTemplateOrderByWithRelationInput | FormTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FormTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FormTemplates
+    **/
+    _count?: true | FormTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FormTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FormTemplateMaxAggregateInputType
+  }
+
+  export type GetFormTemplateAggregateType<T extends FormTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateFormTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFormTemplate[P]>
+      : GetScalarType<T[P], AggregateFormTemplate[P]>
+  }
+
+
+
+
+  export type FormTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormTemplateWhereInput
+    orderBy?: FormTemplateOrderByWithAggregationInput | FormTemplateOrderByWithAggregationInput[]
+    by: FormTemplateScalarFieldEnum[] | FormTemplateScalarFieldEnum
+    having?: FormTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FormTemplateCountAggregateInputType | true
+    _min?: FormTemplateMinAggregateInputType
+    _max?: FormTemplateMaxAggregateInputType
+  }
+
+  export type FormTemplateGroupByOutputType = {
+    id: string
+    title: string
+    description: string | null
+    schema: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    _count: FormTemplateCountAggregateOutputType | null
+    _min: FormTemplateMinAggregateOutputType | null
+    _max: FormTemplateMaxAggregateOutputType | null
+  }
+
+  type GetFormTemplateGroupByPayload<T extends FormTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FormTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FormTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FormTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], FormTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FormTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    schema?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    submissions?: boolean | FormTemplate$submissionsArgs<ExtArgs>
+    _count?: boolean | FormTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["formTemplate"]>
+
+  export type FormTemplateSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    schema?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type FormTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    submissions?: boolean | FormTemplate$submissionsArgs<ExtArgs>
+    _count?: boolean | FormTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $FormTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FormTemplate"
+    objects: {
+      submissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string | null
+      schema: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["formTemplate"]>
+    composites: {}
+  }
+
+
+  type FormTemplateGetPayload<S extends boolean | null | undefined | FormTemplateDefaultArgs> = $Result.GetResult<Prisma.$FormTemplatePayload, S>
+
+  type FormTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FormTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FormTemplateCountAggregateInputType | true
+    }
+
+  export interface FormTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FormTemplate'], meta: { name: 'FormTemplate' } }
+    /**
+     * Find zero or one FormTemplate that matches the filter.
+     * @param {FormTemplateFindUniqueArgs} args - Arguments to find a FormTemplate
+     * @example
+     * // Get one FormTemplate
+     * const formTemplate = await prisma.formTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends FormTemplateFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateFindUniqueArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one FormTemplate that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {FormTemplateFindUniqueOrThrowArgs} args - Arguments to find a FormTemplate
+     * @example
+     * // Get one FormTemplate
+     * const formTemplate = await prisma.formTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends FormTemplateFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first FormTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateFindFirstArgs} args - Arguments to find a FormTemplate
+     * @example
+     * // Get one FormTemplate
+     * const formTemplate = await prisma.formTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends FormTemplateFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateFindFirstArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first FormTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateFindFirstOrThrowArgs} args - Arguments to find a FormTemplate
+     * @example
+     * // Get one FormTemplate
+     * const formTemplate = await prisma.formTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends FormTemplateFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more FormTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FormTemplates
+     * const formTemplates = await prisma.formTemplate.findMany()
+     * 
+     * // Get first 10 FormTemplates
+     * const formTemplates = await prisma.formTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const formTemplateWithIdOnly = await prisma.formTemplate.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends FormTemplateFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a FormTemplate.
+     * @param {FormTemplateCreateArgs} args - Arguments to create a FormTemplate.
+     * @example
+     * // Create one FormTemplate
+     * const FormTemplate = await prisma.formTemplate.create({
+     *   data: {
+     *     // ... data to create a FormTemplate
+     *   }
+     * })
+     * 
+    **/
+    create<T extends FormTemplateCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateCreateArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many FormTemplates.
+     *     @param {FormTemplateCreateManyArgs} args - Arguments to create many FormTemplates.
+     *     @example
+     *     // Create many FormTemplates
+     *     const formTemplate = await prisma.formTemplate.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends FormTemplateCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a FormTemplate.
+     * @param {FormTemplateDeleteArgs} args - Arguments to delete one FormTemplate.
+     * @example
+     * // Delete one FormTemplate
+     * const FormTemplate = await prisma.formTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one FormTemplate
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends FormTemplateDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateDeleteArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one FormTemplate.
+     * @param {FormTemplateUpdateArgs} args - Arguments to update one FormTemplate.
+     * @example
+     * // Update one FormTemplate
+     * const formTemplate = await prisma.formTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends FormTemplateUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateUpdateArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more FormTemplates.
+     * @param {FormTemplateDeleteManyArgs} args - Arguments to filter FormTemplates to delete.
+     * @example
+     * // Delete a few FormTemplates
+     * const { count } = await prisma.formTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends FormTemplateDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormTemplateDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FormTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FormTemplates
+     * const formTemplate = await prisma.formTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends FormTemplateUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FormTemplate.
+     * @param {FormTemplateUpsertArgs} args - Arguments to update or create a FormTemplate.
+     * @example
+     * // Update or create a FormTemplate
+     * const formTemplate = await prisma.formTemplate.upsert({
+     *   create: {
+     *     // ... data to create a FormTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FormTemplate we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends FormTemplateUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FormTemplateUpsertArgs<ExtArgs>>
+    ): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of FormTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateCountArgs} args - Arguments to filter FormTemplates to count.
+     * @example
+     * // Count the number of FormTemplates
+     * const count = await prisma.formTemplate.count({
+     *   where: {
+     *     // ... the filter for the FormTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends FormTemplateCountArgs>(
+      args?: Subset<T, FormTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FormTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FormTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FormTemplateAggregateArgs>(args: Subset<T, FormTemplateAggregateArgs>): Prisma.PrismaPromise<GetFormTemplateAggregateType<T>>
+
+    /**
+     * Group by FormTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FormTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FormTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: FormTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FormTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFormTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FormTemplate model
+   */
+  readonly fields: FormTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FormTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FormTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    submissions<T extends FormTemplate$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, FormTemplate$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the FormTemplate model
+   */ 
+  interface FormTemplateFieldRefs {
+    readonly id: FieldRef<"FormTemplate", 'String'>
+    readonly title: FieldRef<"FormTemplate", 'String'>
+    readonly description: FieldRef<"FormTemplate", 'String'>
+    readonly schema: FieldRef<"FormTemplate", 'Json'>
+    readonly createdAt: FieldRef<"FormTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"FormTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FormTemplate findUnique
+   */
+  export type FormTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FormTemplate to fetch.
+     */
+    where: FormTemplateWhereUniqueInput
+  }
+
+  /**
+   * FormTemplate findUniqueOrThrow
+   */
+  export type FormTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FormTemplate to fetch.
+     */
+    where: FormTemplateWhereUniqueInput
+  }
+
+  /**
+   * FormTemplate findFirst
+   */
+  export type FormTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FormTemplate to fetch.
+     */
+    where?: FormTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormTemplates to fetch.
+     */
+    orderBy?: FormTemplateOrderByWithRelationInput | FormTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FormTemplates.
+     */
+    cursor?: FormTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FormTemplates.
+     */
+    distinct?: FormTemplateScalarFieldEnum | FormTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FormTemplate findFirstOrThrow
+   */
+  export type FormTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FormTemplate to fetch.
+     */
+    where?: FormTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormTemplates to fetch.
+     */
+    orderBy?: FormTemplateOrderByWithRelationInput | FormTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FormTemplates.
+     */
+    cursor?: FormTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FormTemplates.
+     */
+    distinct?: FormTemplateScalarFieldEnum | FormTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FormTemplate findMany
+   */
+  export type FormTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FormTemplates to fetch.
+     */
+    where?: FormTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormTemplates to fetch.
+     */
+    orderBy?: FormTemplateOrderByWithRelationInput | FormTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FormTemplates.
+     */
+    cursor?: FormTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormTemplates.
+     */
+    skip?: number
+    distinct?: FormTemplateScalarFieldEnum | FormTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FormTemplate create
+   */
+  export type FormTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FormTemplate.
+     */
+    data: XOR<FormTemplateCreateInput, FormTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * FormTemplate createMany
+   */
+  export type FormTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FormTemplates.
+     */
+    data: FormTemplateCreateManyInput | FormTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FormTemplate update
+   */
+  export type FormTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FormTemplate.
+     */
+    data: XOR<FormTemplateUpdateInput, FormTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which FormTemplate to update.
+     */
+    where: FormTemplateWhereUniqueInput
+  }
+
+  /**
+   * FormTemplate updateMany
+   */
+  export type FormTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FormTemplates.
+     */
+    data: XOR<FormTemplateUpdateManyMutationInput, FormTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which FormTemplates to update
+     */
+    where?: FormTemplateWhereInput
+  }
+
+  /**
+   * FormTemplate upsert
+   */
+  export type FormTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FormTemplate to update in case it exists.
+     */
+    where: FormTemplateWhereUniqueInput
+    /**
+     * In case the FormTemplate found by the `where` argument doesn't exist, create a new FormTemplate with this data.
+     */
+    create: XOR<FormTemplateCreateInput, FormTemplateUncheckedCreateInput>
+    /**
+     * In case the FormTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FormTemplateUpdateInput, FormTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * FormTemplate delete
+   */
+  export type FormTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which FormTemplate to delete.
+     */
+    where: FormTemplateWhereUniqueInput
+  }
+
+  /**
+   * FormTemplate deleteMany
+   */
+  export type FormTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FormTemplates to delete
+     */
+    where?: FormTemplateWhereInput
+  }
+
+  /**
+   * FormTemplate.submissions
+   */
+  export type FormTemplate$submissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    where?: FormSubmissionWhereInput
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    cursor?: FormSubmissionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
+  }
+
+  /**
+   * FormTemplate without action
+   */
+  export type FormTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormTemplate
+     */
+    select?: FormTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FormSubmission
+   */
+
+  export type AggregateFormSubmission = {
+    _count: FormSubmissionCountAggregateOutputType | null
+    _min: FormSubmissionMinAggregateOutputType | null
+    _max: FormSubmissionMaxAggregateOutputType | null
+  }
+
+  export type FormSubmissionMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    evaluationId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FormSubmissionMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    evaluationId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FormSubmissionCountAggregateOutputType = {
+    id: number
+    templateId: number
+    evaluationId: number
+    data: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FormSubmissionMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    evaluationId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FormSubmissionMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    evaluationId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FormSubmissionCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    evaluationId?: true
+    data?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FormSubmissionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FormSubmission to aggregate.
+     */
+    where?: FormSubmissionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormSubmissions to fetch.
+     */
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FormSubmissionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormSubmissions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormSubmissions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FormSubmissions
+    **/
+    _count?: true | FormSubmissionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FormSubmissionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FormSubmissionMaxAggregateInputType
+  }
+
+  export type GetFormSubmissionAggregateType<T extends FormSubmissionAggregateArgs> = {
+        [P in keyof T & keyof AggregateFormSubmission]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFormSubmission[P]>
+      : GetScalarType<T[P], AggregateFormSubmission[P]>
+  }
+
+
+
+
+  export type FormSubmissionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormSubmissionWhereInput
+    orderBy?: FormSubmissionOrderByWithAggregationInput | FormSubmissionOrderByWithAggregationInput[]
+    by: FormSubmissionScalarFieldEnum[] | FormSubmissionScalarFieldEnum
+    having?: FormSubmissionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FormSubmissionCountAggregateInputType | true
+    _min?: FormSubmissionMinAggregateInputType
+    _max?: FormSubmissionMaxAggregateInputType
+  }
+
+  export type FormSubmissionGroupByOutputType = {
+    id: string
+    templateId: string
+    evaluationId: string
+    data: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    _count: FormSubmissionCountAggregateOutputType | null
+    _min: FormSubmissionMinAggregateOutputType | null
+    _max: FormSubmissionMaxAggregateOutputType | null
+  }
+
+  type GetFormSubmissionGroupByPayload<T extends FormSubmissionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FormSubmissionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FormSubmissionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FormSubmissionGroupByOutputType[P]>
+            : GetScalarType<T[P], FormSubmissionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FormSubmissionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    evaluationId?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    template?: boolean | FormTemplateDefaultArgs<ExtArgs>
+    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["formSubmission"]>
+
+  export type FormSubmissionSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    evaluationId?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type FormSubmissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | FormTemplateDefaultArgs<ExtArgs>
+    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+  }
+
+
+  export type $FormSubmissionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FormSubmission"
+    objects: {
+      template: Prisma.$FormTemplatePayload<ExtArgs>
+      evaluation: Prisma.$EvaluationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      evaluationId: string
+      data: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["formSubmission"]>
+    composites: {}
+  }
+
+
+  type FormSubmissionGetPayload<S extends boolean | null | undefined | FormSubmissionDefaultArgs> = $Result.GetResult<Prisma.$FormSubmissionPayload, S>
+
+  type FormSubmissionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FormSubmissionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FormSubmissionCountAggregateInputType | true
+    }
+
+  export interface FormSubmissionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FormSubmission'], meta: { name: 'FormSubmission' } }
+    /**
+     * Find zero or one FormSubmission that matches the filter.
+     * @param {FormSubmissionFindUniqueArgs} args - Arguments to find a FormSubmission
+     * @example
+     * // Get one FormSubmission
+     * const formSubmission = await prisma.formSubmission.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends FormSubmissionFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionFindUniqueArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one FormSubmission that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {FormSubmissionFindUniqueOrThrowArgs} args - Arguments to find a FormSubmission
+     * @example
+     * // Get one FormSubmission
+     * const formSubmission = await prisma.formSubmission.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends FormSubmissionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first FormSubmission that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionFindFirstArgs} args - Arguments to find a FormSubmission
+     * @example
+     * // Get one FormSubmission
+     * const formSubmission = await prisma.formSubmission.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends FormSubmissionFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionFindFirstArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first FormSubmission that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionFindFirstOrThrowArgs} args - Arguments to find a FormSubmission
+     * @example
+     * // Get one FormSubmission
+     * const formSubmission = await prisma.formSubmission.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends FormSubmissionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more FormSubmissions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FormSubmissions
+     * const formSubmissions = await prisma.formSubmission.findMany()
+     * 
+     * // Get first 10 FormSubmissions
+     * const formSubmissions = await prisma.formSubmission.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const formSubmissionWithIdOnly = await prisma.formSubmission.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends FormSubmissionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a FormSubmission.
+     * @param {FormSubmissionCreateArgs} args - Arguments to create a FormSubmission.
+     * @example
+     * // Create one FormSubmission
+     * const FormSubmission = await prisma.formSubmission.create({
+     *   data: {
+     *     // ... data to create a FormSubmission
+     *   }
+     * })
+     * 
+    **/
+    create<T extends FormSubmissionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionCreateArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many FormSubmissions.
+     *     @param {FormSubmissionCreateManyArgs} args - Arguments to create many FormSubmissions.
+     *     @example
+     *     // Create many FormSubmissions
+     *     const formSubmission = await prisma.formSubmission.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends FormSubmissionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a FormSubmission.
+     * @param {FormSubmissionDeleteArgs} args - Arguments to delete one FormSubmission.
+     * @example
+     * // Delete one FormSubmission
+     * const FormSubmission = await prisma.formSubmission.delete({
+     *   where: {
+     *     // ... filter to delete one FormSubmission
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends FormSubmissionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionDeleteArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one FormSubmission.
+     * @param {FormSubmissionUpdateArgs} args - Arguments to update one FormSubmission.
+     * @example
+     * // Update one FormSubmission
+     * const formSubmission = await prisma.formSubmission.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends FormSubmissionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionUpdateArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more FormSubmissions.
+     * @param {FormSubmissionDeleteManyArgs} args - Arguments to filter FormSubmissions to delete.
+     * @example
+     * // Delete a few FormSubmissions
+     * const { count } = await prisma.formSubmission.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends FormSubmissionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FormSubmissionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FormSubmissions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FormSubmissions
+     * const formSubmission = await prisma.formSubmission.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends FormSubmissionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FormSubmission.
+     * @param {FormSubmissionUpsertArgs} args - Arguments to update or create a FormSubmission.
+     * @example
+     * // Update or create a FormSubmission
+     * const formSubmission = await prisma.formSubmission.upsert({
+     *   create: {
+     *     // ... data to create a FormSubmission
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FormSubmission we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends FormSubmissionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FormSubmissionUpsertArgs<ExtArgs>>
+    ): Prisma__FormSubmissionClient<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of FormSubmissions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionCountArgs} args - Arguments to filter FormSubmissions to count.
+     * @example
+     * // Count the number of FormSubmissions
+     * const count = await prisma.formSubmission.count({
+     *   where: {
+     *     // ... the filter for the FormSubmissions we want to count
+     *   }
+     * })
+    **/
+    count<T extends FormSubmissionCountArgs>(
+      args?: Subset<T, FormSubmissionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FormSubmissionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FormSubmission.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FormSubmissionAggregateArgs>(args: Subset<T, FormSubmissionAggregateArgs>): Prisma.PrismaPromise<GetFormSubmissionAggregateType<T>>
+
+    /**
+     * Group by FormSubmission.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FormSubmissionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FormSubmissionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FormSubmissionGroupByArgs['orderBy'] }
+        : { orderBy?: FormSubmissionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FormSubmissionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFormSubmissionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FormSubmission model
+   */
+  readonly fields: FormSubmissionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FormSubmission.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FormSubmissionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    template<T extends FormTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FormTemplateDefaultArgs<ExtArgs>>): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    evaluation<T extends EvaluationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationDefaultArgs<ExtArgs>>): Prisma__EvaluationClient<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the FormSubmission model
+   */ 
+  interface FormSubmissionFieldRefs {
+    readonly id: FieldRef<"FormSubmission", 'String'>
+    readonly templateId: FieldRef<"FormSubmission", 'String'>
+    readonly evaluationId: FieldRef<"FormSubmission", 'String'>
+    readonly data: FieldRef<"FormSubmission", 'Json'>
+    readonly createdAt: FieldRef<"FormSubmission", 'DateTime'>
+    readonly updatedAt: FieldRef<"FormSubmission", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FormSubmission findUnique
+   */
+  export type FormSubmissionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter, which FormSubmission to fetch.
+     */
+    where: FormSubmissionWhereUniqueInput
+  }
+
+  /**
+   * FormSubmission findUniqueOrThrow
+   */
+  export type FormSubmissionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter, which FormSubmission to fetch.
+     */
+    where: FormSubmissionWhereUniqueInput
+  }
+
+  /**
+   * FormSubmission findFirst
+   */
+  export type FormSubmissionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter, which FormSubmission to fetch.
+     */
+    where?: FormSubmissionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormSubmissions to fetch.
+     */
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FormSubmissions.
+     */
+    cursor?: FormSubmissionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormSubmissions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormSubmissions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FormSubmissions.
+     */
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
+  }
+
+  /**
+   * FormSubmission findFirstOrThrow
+   */
+  export type FormSubmissionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter, which FormSubmission to fetch.
+     */
+    where?: FormSubmissionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormSubmissions to fetch.
+     */
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FormSubmissions.
+     */
+    cursor?: FormSubmissionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormSubmissions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormSubmissions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FormSubmissions.
+     */
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
+  }
+
+  /**
+   * FormSubmission findMany
+   */
+  export type FormSubmissionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter, which FormSubmissions to fetch.
+     */
+    where?: FormSubmissionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FormSubmissions to fetch.
+     */
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FormSubmissions.
+     */
+    cursor?: FormSubmissionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FormSubmissions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FormSubmissions.
+     */
+    skip?: number
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
+  }
+
+  /**
+   * FormSubmission create
+   */
+  export type FormSubmissionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FormSubmission.
+     */
+    data: XOR<FormSubmissionCreateInput, FormSubmissionUncheckedCreateInput>
+  }
+
+  /**
+   * FormSubmission createMany
+   */
+  export type FormSubmissionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FormSubmissions.
+     */
+    data: FormSubmissionCreateManyInput | FormSubmissionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FormSubmission update
+   */
+  export type FormSubmissionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FormSubmission.
+     */
+    data: XOR<FormSubmissionUpdateInput, FormSubmissionUncheckedUpdateInput>
+    /**
+     * Choose, which FormSubmission to update.
+     */
+    where: FormSubmissionWhereUniqueInput
+  }
+
+  /**
+   * FormSubmission updateMany
+   */
+  export type FormSubmissionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FormSubmissions.
+     */
+    data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyInput>
+    /**
+     * Filter which FormSubmissions to update
+     */
+    where?: FormSubmissionWhereInput
+  }
+
+  /**
+   * FormSubmission upsert
+   */
+  export type FormSubmissionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FormSubmission to update in case it exists.
+     */
+    where: FormSubmissionWhereUniqueInput
+    /**
+     * In case the FormSubmission found by the `where` argument doesn't exist, create a new FormSubmission with this data.
+     */
+    create: XOR<FormSubmissionCreateInput, FormSubmissionUncheckedCreateInput>
+    /**
+     * In case the FormSubmission was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FormSubmissionUpdateInput, FormSubmissionUncheckedUpdateInput>
+  }
+
+  /**
+   * FormSubmission delete
+   */
+  export type FormSubmissionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    /**
+     * Filter which FormSubmission to delete.
+     */
+    where: FormSubmissionWhereUniqueInput
+  }
+
+  /**
+   * FormSubmission deleteMany
+   */
+  export type FormSubmissionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FormSubmissions to delete
+     */
+    where?: FormSubmissionWhereInput
+  }
+
+  /**
+   * FormSubmission without action
+   */
+  export type FormSubmissionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CatalogProduct
    */
 
@@ -30573,7 +32646,6 @@ export namespace Prisma {
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
     notes: 'notes',
-    questionnaire: 'questionnaire',
     completedAt: 'completedAt',
     cancelledAt: 'cancelledAt',
     createdAt: 'createdAt',
@@ -30757,6 +32829,30 @@ export namespace Prisma {
   export type VisitTypeScalarFieldEnum = (typeof VisitTypeScalarFieldEnum)[keyof typeof VisitTypeScalarFieldEnum]
 
 
+  export const FormTemplateScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    schema: 'schema',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FormTemplateScalarFieldEnum = (typeof FormTemplateScalarFieldEnum)[keyof typeof FormTemplateScalarFieldEnum]
+
+
+  export const FormSubmissionScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    evaluationId: 'evaluationId',
+    data: 'data',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FormSubmissionScalarFieldEnum = (typeof FormSubmissionScalarFieldEnum)[keyof typeof FormSubmissionScalarFieldEnum]
+
+
   export const CatalogProductScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -30905,6 +33001,13 @@ export namespace Prisma {
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -31550,7 +33653,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    questionnaire?: JsonNullableFilter<"Evaluation">
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -31561,6 +33663,7 @@ export namespace Prisma {
     visitType?: XOR<VisitTypeNullableRelationFilter, VisitTypeWhereInput> | null
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
+    formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
   }
@@ -31589,7 +33692,6 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    questionnaire?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -31600,6 +33702,7 @@ export namespace Prisma {
     visitType?: VisitTypeOrderByWithRelationInput
     referringPhysician?: PhysicianOrderByWithRelationInput
     diagnosis?: DiagnosisOrderByWithRelationInput
+    formSubmissions?: FormSubmissionOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     feet?: FootOrderByRelationAggregateInput
   }
@@ -31607,6 +33710,7 @@ export namespace Prisma {
   export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     externalId?: string
+    id_companyId?: EvaluationIdCompanyIdCompoundUniqueInput
     AND?: EvaluationWhereInput | EvaluationWhereInput[]
     OR?: EvaluationWhereInput[]
     NOT?: EvaluationWhereInput | EvaluationWhereInput[]
@@ -31631,7 +33735,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    questionnaire?: JsonNullableFilter<"Evaluation">
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -31642,9 +33745,10 @@ export namespace Prisma {
     visitType?: XOR<VisitTypeNullableRelationFilter, VisitTypeWhereInput> | null
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
+    formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
-  }, "id" | "externalId">
+  }, "id" | "externalId" | "id_companyId">
 
   export type EvaluationOrderByWithAggregationInput = {
     id?: SortOrder
@@ -31670,7 +33774,6 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    questionnaire?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -31707,7 +33810,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    questionnaire?: JsonNullableWithAggregatesFilter<"Evaluation">
     completedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -32623,6 +34725,130 @@ export namespace Prisma {
     NOT?: VisitTypeScalarWhereWithAggregatesInput | VisitTypeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"VisitType"> | string
     name?: StringWithAggregatesFilter<"VisitType"> | string
+  }
+
+  export type FormTemplateWhereInput = {
+    AND?: FormTemplateWhereInput | FormTemplateWhereInput[]
+    OR?: FormTemplateWhereInput[]
+    NOT?: FormTemplateWhereInput | FormTemplateWhereInput[]
+    id?: StringFilter<"FormTemplate"> | string
+    title?: StringFilter<"FormTemplate"> | string
+    description?: StringNullableFilter<"FormTemplate"> | string | null
+    schema?: JsonFilter<"FormTemplate">
+    createdAt?: DateTimeFilter<"FormTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"FormTemplate"> | Date | string
+    submissions?: FormSubmissionListRelationFilter
+  }
+
+  export type FormTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    schema?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    submissions?: FormSubmissionOrderByRelationAggregateInput
+  }
+
+  export type FormTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FormTemplateWhereInput | FormTemplateWhereInput[]
+    OR?: FormTemplateWhereInput[]
+    NOT?: FormTemplateWhereInput | FormTemplateWhereInput[]
+    title?: StringFilter<"FormTemplate"> | string
+    description?: StringNullableFilter<"FormTemplate"> | string | null
+    schema?: JsonFilter<"FormTemplate">
+    createdAt?: DateTimeFilter<"FormTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"FormTemplate"> | Date | string
+    submissions?: FormSubmissionListRelationFilter
+  }, "id">
+
+  export type FormTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    schema?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FormTemplateCountOrderByAggregateInput
+    _max?: FormTemplateMaxOrderByAggregateInput
+    _min?: FormTemplateMinOrderByAggregateInput
+  }
+
+  export type FormTemplateScalarWhereWithAggregatesInput = {
+    AND?: FormTemplateScalarWhereWithAggregatesInput | FormTemplateScalarWhereWithAggregatesInput[]
+    OR?: FormTemplateScalarWhereWithAggregatesInput[]
+    NOT?: FormTemplateScalarWhereWithAggregatesInput | FormTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FormTemplate"> | string
+    title?: StringWithAggregatesFilter<"FormTemplate"> | string
+    description?: StringNullableWithAggregatesFilter<"FormTemplate"> | string | null
+    schema?: JsonWithAggregatesFilter<"FormTemplate">
+    createdAt?: DateTimeWithAggregatesFilter<"FormTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FormTemplate"> | Date | string
+  }
+
+  export type FormSubmissionWhereInput = {
+    AND?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
+    OR?: FormSubmissionWhereInput[]
+    NOT?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
+    id?: StringFilter<"FormSubmission"> | string
+    templateId?: StringFilter<"FormSubmission"> | string
+    evaluationId?: StringFilter<"FormSubmission"> | string
+    data?: JsonFilter<"FormSubmission">
+    createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    template?: XOR<FormTemplateRelationFilter, FormTemplateWhereInput>
+    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
+  }
+
+  export type FormSubmissionOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    evaluationId?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    template?: FormTemplateOrderByWithRelationInput
+    evaluation?: EvaluationOrderByWithRelationInput
+  }
+
+  export type FormSubmissionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    evaluationId_templateId?: FormSubmissionEvaluationIdTemplateIdCompoundUniqueInput
+    AND?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
+    OR?: FormSubmissionWhereInput[]
+    NOT?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
+    templateId?: StringFilter<"FormSubmission"> | string
+    evaluationId?: StringFilter<"FormSubmission"> | string
+    data?: JsonFilter<"FormSubmission">
+    createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    template?: XOR<FormTemplateRelationFilter, FormTemplateWhereInput>
+    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
+  }, "id" | "evaluationId_templateId">
+
+  export type FormSubmissionOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    evaluationId?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FormSubmissionCountOrderByAggregateInput
+    _max?: FormSubmissionMaxOrderByAggregateInput
+    _min?: FormSubmissionMinOrderByAggregateInput
+  }
+
+  export type FormSubmissionScalarWhereWithAggregatesInput = {
+    AND?: FormSubmissionScalarWhereWithAggregatesInput | FormSubmissionScalarWhereWithAggregatesInput[]
+    OR?: FormSubmissionScalarWhereWithAggregatesInput[]
+    NOT?: FormSubmissionScalarWhereWithAggregatesInput | FormSubmissionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FormSubmission"> | string
+    templateId?: StringWithAggregatesFilter<"FormSubmission"> | string
+    evaluationId?: StringWithAggregatesFilter<"FormSubmission"> | string
+    data?: JsonWithAggregatesFilter<"FormSubmission">
+    createdAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
   }
 
   export type CatalogProductWhereInput = {
@@ -33652,7 +35878,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -33663,6 +35888,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -33691,11 +35917,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -33718,7 +35944,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33729,6 +35954,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -33757,11 +35983,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -33790,7 +36016,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -33815,7 +36040,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33846,7 +36070,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34862,6 +37085,134 @@ export namespace Prisma {
   export type VisitTypeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FormTemplateCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    schema: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: FormSubmissionCreateNestedManyWithoutTemplateInput
+  }
+
+  export type FormTemplateUncheckedCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    schema: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: FormSubmissionUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type FormTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: FormSubmissionUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type FormTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: FormSubmissionUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type FormTemplateCreateManyInput = {
+    id?: string
+    title: string
+    description?: string | null
+    schema: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionCreateInput = {
+    id?: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template: FormTemplateCreateNestedOneWithoutSubmissionsInput
+    evaluation: EvaluationCreateNestedOneWithoutFormSubmissionsInput
+  }
+
+  export type FormSubmissionUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    evaluationId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput
+    evaluation?: EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput
+  }
+
+  export type FormSubmissionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionCreateManyInput = {
+    id?: string
+    templateId: string
+    evaluationId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogProductCreateInput = {
@@ -36090,6 +38441,21 @@ export namespace Prisma {
     isNot?: DiagnosisWhereInput | null
   }
 
+  export type FormSubmissionListRelationFilter = {
+    every?: FormSubmissionWhereInput
+    some?: FormSubmissionWhereInput
+    none?: FormSubmissionWhereInput
+  }
+
+  export type FormSubmissionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EvaluationIdCompanyIdCompoundUniqueInput = {
+    id: string
+    companyId: string
+  }
+
   export type EvaluationCountOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
@@ -36114,7 +38480,6 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    questionnaire?: SortOrder
     completedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
@@ -36950,6 +39315,113 @@ export namespace Prisma {
   export type VisitTypeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type FormTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    schema?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FormTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FormTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type FormTemplateRelationFilter = {
+    is?: FormTemplateWhereInput
+    isNot?: FormTemplateWhereInput
+  }
+
+  export type FormSubmissionEvaluationIdTemplateIdCompoundUniqueInput = {
+    evaluationId: string
+    templateId: string
+  }
+
+  export type FormSubmissionCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    evaluationId?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FormSubmissionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    evaluationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FormSubmissionMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    evaluationId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type CatalogProductAttributeListRelationFilter = {
@@ -37914,6 +40386,13 @@ export namespace Prisma {
     connect?: DiagnosisWhereUniqueInput
   }
 
+  export type FormSubmissionCreateNestedManyWithoutEvaluationInput = {
+    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
+    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+  }
+
   export type WorkbenchCreateNestedManyWithoutEvaluationInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
@@ -37926,6 +40405,13 @@ export namespace Prisma {
     connectOrCreate?: FootCreateOrConnectWithoutEvaluationInput | FootCreateOrConnectWithoutEvaluationInput[]
     createMany?: FootCreateManyEvaluationInputEnvelope
     connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+  }
+
+  export type FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput = {
+    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
+    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
   }
 
   export type WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput = {
@@ -38010,6 +40496,20 @@ export namespace Prisma {
     update?: XOR<XOR<DiagnosisUpdateToOneWithWhereWithoutEvaluationsInput, DiagnosisUpdateWithoutEvaluationsInput>, DiagnosisUncheckedUpdateWithoutEvaluationsInput>
   }
 
+  export type FormSubmissionUpdateManyWithoutEvaluationNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput[]
+    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutEvaluationInput | FormSubmissionUpdateManyWithWhereWithoutEvaluationInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+  }
+
   export type WorkbenchUpdateManyWithoutEvaluationNestedInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
@@ -38036,6 +40536,20 @@ export namespace Prisma {
     update?: FootUpdateWithWhereUniqueWithoutEvaluationInput | FootUpdateWithWhereUniqueWithoutEvaluationInput[]
     updateMany?: FootUpdateManyWithWhereWithoutEvaluationInput | FootUpdateManyWithWhereWithoutEvaluationInput[]
     deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput[]
+    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutEvaluationInput | FormSubmissionUpdateManyWithWhereWithoutEvaluationInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput = {
@@ -38859,6 +41373,76 @@ export namespace Prisma {
     update?: EvaluationUpdateWithWhereUniqueWithoutVisitTypeInput | EvaluationUpdateWithWhereUniqueWithoutVisitTypeInput[]
     updateMany?: EvaluationUpdateManyWithWhereWithoutVisitTypeInput | EvaluationUpdateManyWithWhereWithoutVisitTypeInput[]
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type FormSubmissionCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput> | FormSubmissionCreateWithoutTemplateInput[] | FormSubmissionUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutTemplateInput | FormSubmissionCreateOrConnectWithoutTemplateInput[]
+    createMany?: FormSubmissionCreateManyTemplateInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+  }
+
+  export type FormSubmissionUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput> | FormSubmissionCreateWithoutTemplateInput[] | FormSubmissionUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutTemplateInput | FormSubmissionCreateOrConnectWithoutTemplateInput[]
+    createMany?: FormSubmissionCreateManyTemplateInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+  }
+
+  export type FormSubmissionUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput> | FormSubmissionCreateWithoutTemplateInput[] | FormSubmissionUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutTemplateInput | FormSubmissionCreateOrConnectWithoutTemplateInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutTemplateInput | FormSubmissionUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: FormSubmissionCreateManyTemplateInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutTemplateInput | FormSubmissionUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutTemplateInput | FormSubmissionUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput> | FormSubmissionCreateWithoutTemplateInput[] | FormSubmissionUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutTemplateInput | FormSubmissionCreateOrConnectWithoutTemplateInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutTemplateInput | FormSubmissionUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: FormSubmissionCreateManyTemplateInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutTemplateInput | FormSubmissionUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutTemplateInput | FormSubmissionUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+  }
+
+  export type FormTemplateCreateNestedOneWithoutSubmissionsInput = {
+    create?: XOR<FormTemplateCreateWithoutSubmissionsInput, FormTemplateUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: FormTemplateCreateOrConnectWithoutSubmissionsInput
+    connect?: FormTemplateWhereUniqueInput
+  }
+
+  export type EvaluationCreateNestedOneWithoutFormSubmissionsInput = {
+    create?: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFormSubmissionsInput
+    connect?: EvaluationWhereUniqueInput
+  }
+
+  export type FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput = {
+    create?: XOR<FormTemplateCreateWithoutSubmissionsInput, FormTemplateUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: FormTemplateCreateOrConnectWithoutSubmissionsInput
+    upsert?: FormTemplateUpsertWithoutSubmissionsInput
+    connect?: FormTemplateWhereUniqueInput
+    update?: XOR<XOR<FormTemplateUpdateToOneWithWhereWithoutSubmissionsInput, FormTemplateUpdateWithoutSubmissionsInput>, FormTemplateUncheckedUpdateWithoutSubmissionsInput>
+  }
+
+  export type EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput = {
+    create?: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFormSubmissionsInput
+    upsert?: EvaluationUpsertWithoutFormSubmissionsInput
+    connect?: EvaluationWhereUniqueInput
+    update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutFormSubmissionsInput, EvaluationUpdateWithoutFormSubmissionsInput>, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
   }
 
   export type CatalogProductAttributeCreateNestedManyWithoutProductInput = {
@@ -39941,6 +42525,28 @@ export namespace Prisma {
     _min?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
     _max?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedEnumProductAttributeTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductAttributeType | EnumProductAttributeTypeFieldRefInput<$PrismaModel>
@@ -40024,7 +42630,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40034,6 +42639,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -40061,11 +42667,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -40224,7 +42830,6 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    questionnaire?: JsonNullableFilter<"Evaluation">
     completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -40500,7 +43105,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -40510,6 +43114,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -40537,11 +43142,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -40882,6 +43487,32 @@ export namespace Prisma {
     create: XOR<DiagnosisCreateWithoutEvaluationsInput, DiagnosisUncheckedCreateWithoutEvaluationsInput>
   }
 
+  export type FormSubmissionCreateWithoutEvaluationInput = {
+    id?: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template: FormTemplateCreateNestedOneWithoutSubmissionsInput
+  }
+
+  export type FormSubmissionUncheckedCreateWithoutEvaluationInput = {
+    id?: string
+    templateId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionCreateOrConnectWithoutEvaluationInput = {
+    where: FormSubmissionWhereUniqueInput
+    create: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput>
+  }
+
+  export type FormSubmissionCreateManyEvaluationInputEnvelope = {
+    data: FormSubmissionCreateManyEvaluationInput | FormSubmissionCreateManyEvaluationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type WorkbenchCreateWithoutEvaluationInput = {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
@@ -41164,6 +43795,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput = {
+    where: FormSubmissionWhereUniqueInput
+    update: XOR<FormSubmissionUpdateWithoutEvaluationInput, FormSubmissionUncheckedUpdateWithoutEvaluationInput>
+    create: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput>
+  }
+
+  export type FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput = {
+    where: FormSubmissionWhereUniqueInput
+    data: XOR<FormSubmissionUpdateWithoutEvaluationInput, FormSubmissionUncheckedUpdateWithoutEvaluationInput>
+  }
+
+  export type FormSubmissionUpdateManyWithWhereWithoutEvaluationInput = {
+    where: FormSubmissionScalarWhereInput
+    data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyWithoutEvaluationInput>
+  }
+
+  export type FormSubmissionScalarWhereInput = {
+    AND?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+    OR?: FormSubmissionScalarWhereInput[]
+    NOT?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+    id?: StringFilter<"FormSubmission"> | string
+    templateId?: StringFilter<"FormSubmission"> | string
+    evaluationId?: StringFilter<"FormSubmission"> | string
+    data?: JsonFilter<"FormSubmission">
+    createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
+  }
+
   export type WorkbenchUpsertWithWhereUniqueWithoutEvaluationInput = {
     where: WorkbenchWhereUniqueInput
     update: XOR<WorkbenchUpdateWithoutEvaluationInput, WorkbenchUncheckedUpdateWithoutEvaluationInput>
@@ -41259,7 +43918,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -41270,6 +43928,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
 
@@ -41297,11 +43956,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -41430,7 +44089,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41441,6 +44099,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -41468,11 +44127,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -42019,7 +44678,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42030,6 +44688,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
 
@@ -42057,11 +44716,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -42260,7 +44919,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42271,6 +44929,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -42298,11 +44957,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -42775,7 +45434,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42785,6 +45443,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -42812,11 +45471,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -42865,7 +45524,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42875,6 +45533,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -42902,11 +45561,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -42955,7 +45614,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -42965,6 +45623,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -42992,11 +45651,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -43045,7 +45704,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -43055,6 +45713,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -43082,11 +45741,11 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
@@ -43115,6 +45774,244 @@ export namespace Prisma {
   export type EvaluationUpdateManyWithWhereWithoutVisitTypeInput = {
     where: EvaluationScalarWhereInput
     data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutVisitTypeInput>
+  }
+
+  export type FormSubmissionCreateWithoutTemplateInput = {
+    id?: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation: EvaluationCreateNestedOneWithoutFormSubmissionsInput
+  }
+
+  export type FormSubmissionUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    evaluationId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionCreateOrConnectWithoutTemplateInput = {
+    where: FormSubmissionWhereUniqueInput
+    create: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type FormSubmissionCreateManyTemplateInputEnvelope = {
+    data: FormSubmissionCreateManyTemplateInput | FormSubmissionCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FormSubmissionUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: FormSubmissionWhereUniqueInput
+    update: XOR<FormSubmissionUpdateWithoutTemplateInput, FormSubmissionUncheckedUpdateWithoutTemplateInput>
+    create: XOR<FormSubmissionCreateWithoutTemplateInput, FormSubmissionUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type FormSubmissionUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: FormSubmissionWhereUniqueInput
+    data: XOR<FormSubmissionUpdateWithoutTemplateInput, FormSubmissionUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type FormSubmissionUpdateManyWithWhereWithoutTemplateInput = {
+    where: FormSubmissionScalarWhereInput
+    data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type FormTemplateCreateWithoutSubmissionsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    schema: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormTemplateUncheckedCreateWithoutSubmissionsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    schema: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormTemplateCreateOrConnectWithoutSubmissionsInput = {
+    where: FormTemplateWhereUniqueInput
+    create: XOR<FormTemplateCreateWithoutSubmissionsInput, FormTemplateUncheckedCreateWithoutSubmissionsInput>
+  }
+
+  export type EvaluationCreateWithoutFormSubmissionsInput = {
+    id?: string
+    externalId?: string | null
+    type: $Enums.CareType
+    isDiabetic?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    primaryPractitioner?: string | null
+    diagnosisedAt?: Date | string | null
+    visitInformation?: NullableJsonNullValueInput | InputJsonValue
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedPractitioner?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    notes?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutEvaluationsInput
+    company: CompanyCreateNestedOneWithoutEvaluationsInput
+    deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
+    visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
+    referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
+    diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
+    feet?: FootCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationUncheckedCreateWithoutFormSubmissionsInput = {
+    id?: string
+    externalId?: string | null
+    type: $Enums.CareType
+    patientId: string
+    companyId: string
+    deviceTypeId?: string | null
+    isDiabetic?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    primaryPractitioner?: string | null
+    referringPhysicianId?: string | null
+    diagnosisId?: string | null
+    diagnosisedAt?: Date | string | null
+    visitInformation?: NullableJsonNullValueInput | InputJsonValue
+    visitTypeId?: string | null
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedPractitioner?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    notes?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
+    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationCreateOrConnectWithoutFormSubmissionsInput = {
+    where: EvaluationWhereUniqueInput
+    create: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
+  }
+
+  export type FormTemplateUpsertWithoutSubmissionsInput = {
+    update: XOR<FormTemplateUpdateWithoutSubmissionsInput, FormTemplateUncheckedUpdateWithoutSubmissionsInput>
+    create: XOR<FormTemplateCreateWithoutSubmissionsInput, FormTemplateUncheckedCreateWithoutSubmissionsInput>
+    where?: FormTemplateWhereInput
+  }
+
+  export type FormTemplateUpdateToOneWithWhereWithoutSubmissionsInput = {
+    where?: FormTemplateWhereInput
+    data: XOR<FormTemplateUpdateWithoutSubmissionsInput, FormTemplateUncheckedUpdateWithoutSubmissionsInput>
+  }
+
+  export type FormTemplateUpdateWithoutSubmissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormTemplateUncheckedUpdateWithoutSubmissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    schema?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EvaluationUpsertWithoutFormSubmissionsInput = {
+    update: XOR<EvaluationUpdateWithoutFormSubmissionsInput, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
+    create: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
+    where?: EvaluationWhereInput
+  }
+
+  export type EvaluationUpdateToOneWithWhereWithoutFormSubmissionsInput = {
+    where?: EvaluationWhereInput
+    data: XOR<EvaluationUpdateWithoutFormSubmissionsInput, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
+  }
+
+  export type EvaluationUpdateWithoutFormSubmissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitInformation?: NullableJsonNullValueInput | InputJsonValue
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
+    deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
+    visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
+    referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
+    diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
+    feet?: FootUpdateManyWithoutEvaluationNestedInput
+  }
+
+  export type EvaluationUncheckedUpdateWithoutFormSubmissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitInformation?: NullableJsonNullValueInput | InputJsonValue
+    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
+    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type CatalogProductAttributeCreateWithoutProductInput = {
@@ -44410,7 +47307,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44485,7 +47381,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44495,6 +47390,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -44522,11 +47418,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -44554,7 +47450,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44688,7 +47583,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -44786,7 +47680,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44796,6 +47689,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -44823,11 +47717,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -44855,7 +47749,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44926,6 +47819,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FormSubmissionCreateManyEvaluationInput = {
+    id?: string
+    templateId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type WorkbenchCreateManyEvaluationInput = {
     id?: string
     patientId: string
@@ -44954,6 +47855,30 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type FormSubmissionUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput
+  }
+
+  export type FormSubmissionUncheckedUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WorkbenchUpdateWithoutEvaluationInput = {
@@ -45582,7 +48507,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -45607,7 +48531,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45617,6 +48540,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -45644,11 +48568,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -45676,7 +48600,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45706,7 +48629,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -45731,7 +48653,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45741,6 +48662,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -45768,11 +48690,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -45800,7 +48722,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45830,7 +48751,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -45855,7 +48775,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45865,6 +48784,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -45892,11 +48812,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -45924,7 +48844,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45954,7 +48873,6 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
@@ -45979,7 +48897,6 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45989,6 +48906,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -46016,11 +48934,11 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
@@ -46048,9 +48966,40 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionCreateManyTemplateInput = {
+    id?: string
+    evaluationId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput
+  }
+
+  export type FormSubmissionUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -46472,6 +49421,10 @@ export namespace Prisma {
      */
     export type VisitTypeCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = VisitTypeCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use FormTemplateCountOutputTypeDefaultArgs instead
+     */
+    export type FormTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FormTemplateCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use CatalogProductCountOutputTypeDefaultArgs instead
      */
     export type CatalogProductCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CatalogProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -46551,6 +49504,14 @@ export namespace Prisma {
      * @deprecated Use VisitTypeDefaultArgs instead
      */
     export type VisitTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = VisitTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use FormTemplateDefaultArgs instead
+     */
+    export type FormTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FormTemplateDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use FormSubmissionDefaultArgs instead
+     */
+    export type FormSubmissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FormSubmissionDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CatalogProductDefaultArgs instead
      */
