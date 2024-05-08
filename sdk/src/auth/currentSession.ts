@@ -1,7 +1,7 @@
 import { AuthUser } from '@hike/types';
-import { isAuthUser } from '@hike/utils';
 import { errors } from 'jose';
 import { BaseRequestWithCookies, extractToken } from './extractToken';
+import { toAuthUser } from './toAuthUser';
 import { verifyToken } from './verifyToken';
 
 /**
@@ -14,14 +14,11 @@ import { verifyToken } from './verifyToken';
 export const currentSession = async (request: BaseRequestWithCookies, publicKey: string): Promise<AuthUser> => {
   const token = extractToken(request);
   const decoded = await verifyToken(token, publicKey);
+  const user = toAuthUser(decoded);
 
-  if (!isAuthUser(decoded)) {
+  if (!user) {
     throw new errors.JWTInvalid('Token type invalid');
   }
 
-  return {
-    id: decoded.id,
-    companies: decoded.companies,
-    expiresAt: decoded.exp ? new Date(decoded.exp * 1000) : new Date()
-  };
+  return user;
 };
