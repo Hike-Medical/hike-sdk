@@ -37,6 +37,6 @@ export type * from '@hike/types'; // eslint-disable-line import/export
 export * from '@hike/utils';
 
 // Export platform specific functionality
+export * from './auth/currentSession';
 export * from './auth/extractToken';
-export * from './auth/getSession';
 export * from './auth/verifyToken';
