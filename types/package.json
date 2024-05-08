@@ -26,10 +26,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc --build && npx tsc --project tsconfig.cjs.json",
-    "dev": "npx tsc --watch",
-    "lint": "npx eslint .",
-    "format": "npx prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
+    "build": "tsc --build && tsc --project tsconfig.cjs.json",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "format": "prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist"
   }
 }
