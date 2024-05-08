@@ -1,5 +1,6 @@
 import type { HikeConfig } from '@hike/types';
 import { currentUrl, isLocalHost } from '@hike/utils';
+import { refreshToken } from '../auth/refreshToken';
 import axios from 'axios';
 
 /**
@@ -22,6 +23,27 @@ backendApi.interceptors.request.use(
     return newConfig;
   },
   (error) => Promise.reject(error)
+);
+
+backendApi.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+    const alreadyRefreshed = originalRequest._alreadyRefreshed;
+
+    // Attempt to refresh the token
+    if (error.response?.status === 401 && !alreadyRefreshed) {
+      try {
+        await refreshToken();
+        return backendApi(originalRequest);
+      } catch (refreshError) {
+        window.location.href = '/';
+        return Promise.reject(refreshError);
+      }
+    }
+
+    return Promise.reject(error);
+  }
 );
 
 /**

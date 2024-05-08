@@ -15,6 +15,7 @@ export * from './auth/findSession';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
 export * from './auth/signIn';
+export * from './auth/refreshToken';
 export * from './errors/ResponseError';
 export * from './hooks/useCategories';
 export * from './hooks/useDeviceTypes';
