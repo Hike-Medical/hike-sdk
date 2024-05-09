@@ -11,7 +11,7 @@ export default {
     configureBackendApi(config);
 
     // Remove API Key from config to avoid leaking it to the client
-    const { apiKey: _, ...safeConfig } = config;
+    const { apiKey: _apiKey, cookies: _cookies, ...safeConfig } = config;
 
     return {
       /**

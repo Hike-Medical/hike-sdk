@@ -34,35 +34,40 @@ export const configureBackendApi = ({
   appEnv,
   appId,
   appVersion,
-  companyId
+  companyId,
+  cookies
 }: HikeConfig) => {
-  const isDevelopment = appEnv === 'development';
-  let backendHost = '';
-
-  // Determine the URL of the backend API
-  if (typeof apiHosts === 'string' && apiHosts) {
-    backendHost = apiHosts;
-  } else {
-    backendHost = apiHosts?.[appHost ?? ''] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
-  }
-
-  const protocol = isLocalHost(backendHost) ? 'http' : 'https';
-
-  backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
   backendApi.defaults.headers.common['x-api-key'] ??= apiKey;
   backendApi.defaults.headers.common['x-app-host'] ??= appHost;
   backendApi.defaults.headers.common['x-app-env'] ??= appEnv;
   backendApi.defaults.headers.common['x-app-id'] ??= appId;
   backendApi.defaults.headers.common['x-app-version'] ??= appVersion;
+  backendApi.defaults.headers.common['x-company-id'] ??= companyId;
 
-  if (companyId) {
-    configureBackendApiForCompany(companyId);
+  if (appHost) {
+    const isDevelopment = appEnv === 'development';
+    let backendHost = '';
+
+    // Determine the URL of the backend API
+    if (typeof apiHosts === 'string' && apiHosts) {
+      backendHost = apiHosts;
+    } else {
+      backendHost = apiHosts?.[appHost] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
+    }
+
+    const protocol = isLocalHost(backendHost) ? 'http' : 'https';
+    backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
   }
-};
 
-/**
- * Provisions the backend API instance with company identifier on every request.
- */
-export const configureBackendApiForCompany = (companyId: string) => {
-  backendApi.defaults.headers.common['x-company-id'] = companyId;
+  // Set the cookie for server-side requests
+  if (cookies && typeof window === 'undefined') {
+    backendApi.interceptors.request.use(
+      (config) => {
+        const newConfig = config;
+        newConfig.headers.set('Cookie', cookies);
+        return newConfig;
+      },
+      (error) => Promise.reject(error)
+    );
+  }
 };
