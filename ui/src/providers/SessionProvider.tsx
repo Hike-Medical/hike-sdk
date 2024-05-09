@@ -12,7 +12,6 @@ export interface SessionState {
 
 export const SessionContext = createContext<SessionState>(undefined as never);
 
-// TODO: Implement token refresh at strategic times
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');

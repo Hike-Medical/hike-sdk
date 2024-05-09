@@ -1,15 +1,9 @@
-'use client';
-
-import { configureBackendApi } from '@hike/services';
+import { init as serviceInit } from '@hike/services';
 import type { HikeConfig } from '@hike/types';
 import { ReactNode } from 'react';
+import { HikeProviderClient } from './HikeProviderClient';
 
-interface HikeProviderProps {
-  config: HikeConfig;
-  children: ReactNode;
-}
-
-export const HikeProvider = ({ config, children }: HikeProviderProps) => {
-  configureBackendApi(config);
-  return children;
+export const HikeProvider = ({ config, children }: { config: HikeConfig; children: ReactNode }) => {
+  const { safeConfig } = serviceInit(config); // Server-side initialization
+  return <HikeProviderClient config={safeConfig}>{children}</HikeProviderClient>;
 };
