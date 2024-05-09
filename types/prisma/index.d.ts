@@ -236,6 +236,16 @@ export const ShoeSystem: {
 export type ShoeSystem = (typeof ShoeSystem)[keyof typeof ShoeSystem]
 
 
+export const AssetType: {
+  FOOT_SCAN: 'FOOT_SCAN',
+  FOOT_RENDER: 'FOOT_RENDER',
+  INSOLE_RENDER: 'INSOLE_RENDER',
+  INSOLE_GCODE: 'INSOLE_GCODE'
+};
+
+export type AssetType = (typeof AssetType)[keyof typeof AssetType]
+
+
 export const AssetStatus: {
   AR_IDLE: 'AR_IDLE',
   AR_PENDING: 'AR_PENDING',
@@ -267,22 +277,22 @@ export const AssetStatus: {
 export type AssetStatus = (typeof AssetStatus)[keyof typeof AssetStatus]
 
 
-export const ProductType: {
-  INSOLE: 'INSOLE',
-  RIGHT_INSOLE_GCODE: 'RIGHT_INSOLE_GCODE',
-  LEFT_INSOLE_GCODE: 'LEFT_INSOLE_GCODE',
-  RIGHT_INSOLE_RENDER: 'RIGHT_INSOLE_RENDER',
-  LEFT_INSOLE_RENDER: 'LEFT_INSOLE_RENDER',
-  RIGHT_FOOT_RENDER: 'RIGHT_FOOT_RENDER',
-  LEFT_FOOT_RENDER: 'LEFT_FOOT_RENDER',
-  RIGHT_FOOT_SCAN: 'RIGHT_FOOT_SCAN',
+export const ProductName: {
   LEFT_FOOT_SCAN: 'LEFT_FOOT_SCAN',
+  RIGHT_FOOT_SCAN: 'RIGHT_FOOT_SCAN',
+  LEFT_FOOT_RENDER: 'LEFT_FOOT_RENDER',
+  RIGHT_FOOT_RENDER: 'RIGHT_FOOT_RENDER',
+  LEFT_INSOLE_RENDER: 'LEFT_INSOLE_RENDER',
+  RIGHT_INSOLE_RENDER: 'RIGHT_INSOLE_RENDER',
+  LEFT_INSOLE_GCODE: 'LEFT_INSOLE_GCODE',
+  RIGHT_INSOLE_GCODE: 'RIGHT_INSOLE_GCODE',
+  BOTH_FOOT_RENDER: 'BOTH_FOOT_RENDER',
   BOTH_INSOLE_RENDER: 'BOTH_INSOLE_RENDER',
   BOTH_INSOLE_GCODE: 'BOTH_INSOLE_GCODE',
-  BOTH_FOOT_RENDER: 'BOTH_FOOT_RENDER'
+  INSOLE: 'INSOLE'
 };
 
-export type ProductType = (typeof ProductType)[keyof typeof ProductType]
+export type ProductName = (typeof ProductName)[keyof typeof ProductName]
 
 
 export const WorkbenchStatus: {
@@ -398,13 +408,17 @@ export type ShoeSystem = $Enums.ShoeSystem
 
 export const ShoeSystem: typeof $Enums.ShoeSystem
 
+export type AssetType = $Enums.AssetType
+
+export const AssetType: typeof $Enums.AssetType
+
 export type AssetStatus = $Enums.AssetStatus
 
 export const AssetStatus: typeof $Enums.AssetStatus
 
-export type ProductType = $Enums.ProductType
+export type ProductName = $Enums.ProductName
 
-export const ProductType: typeof $Enums.ProductType
+export const ProductName: typeof $Enums.ProductName
 
 export type WorkbenchStatus = $Enums.WorkbenchStatus
 
@@ -3726,14 +3740,12 @@ export namespace Prisma {
   export type ProductCountOutputType = {
     buildingBlocks: number
     usedByProducts: number
-    assets: number
     workbenches: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     buildingBlocks?: boolean | ProductCountOutputTypeCountBuildingBlocksArgs
     usedByProducts?: boolean | ProductCountOutputTypeCountUsedByProductsArgs
-    assets?: boolean | ProductCountOutputTypeCountAssetsArgs
     workbenches?: boolean | ProductCountOutputTypeCountWorkbenchesArgs
   }
 
@@ -3760,13 +3772,6 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountUsedByProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
-  }
-
-  /**
-   * ProductCountOutputType without action
-   */
-  export type ProductCountOutputTypeCountAssetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AssetWhereInput
   }
 
   /**
@@ -9756,7 +9761,7 @@ export namespace Prisma {
   export type AssetMinAggregateOutputType = {
     id: string | null
     footId: string | null
-    productId: string | null
+    type: $Enums.AssetType | null
     fileUrl: string | null
     status: $Enums.AssetStatus | null
     statusReason: string | null
@@ -9769,7 +9774,7 @@ export namespace Prisma {
   export type AssetMaxAggregateOutputType = {
     id: string | null
     footId: string | null
-    productId: string | null
+    type: $Enums.AssetType | null
     fileUrl: string | null
     status: $Enums.AssetStatus | null
     statusReason: string | null
@@ -9782,7 +9787,7 @@ export namespace Prisma {
   export type AssetCountAggregateOutputType = {
     id: number
     footId: number
-    productId: number
+    type: number
     fileUrl: number
     metadata: number
     status: number
@@ -9799,7 +9804,7 @@ export namespace Prisma {
   export type AssetMinAggregateInputType = {
     id?: true
     footId?: true
-    productId?: true
+    type?: true
     fileUrl?: true
     status?: true
     statusReason?: true
@@ -9812,7 +9817,7 @@ export namespace Prisma {
   export type AssetMaxAggregateInputType = {
     id?: true
     footId?: true
-    productId?: true
+    type?: true
     fileUrl?: true
     status?: true
     statusReason?: true
@@ -9825,7 +9830,7 @@ export namespace Prisma {
   export type AssetCountAggregateInputType = {
     id?: true
     footId?: true
-    productId?: true
+    type?: true
     fileUrl?: true
     metadata?: true
     status?: true
@@ -9913,7 +9918,7 @@ export namespace Prisma {
   export type AssetGroupByOutputType = {
     id: string
     footId: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl: string | null
     metadata: JsonValue | null
     status: $Enums.AssetStatus
@@ -9945,7 +9950,7 @@ export namespace Prisma {
   export type AssetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     footId?: boolean
-    productId?: boolean
+    type?: boolean
     fileUrl?: boolean
     metadata?: boolean
     status?: boolean
@@ -9956,7 +9961,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     foot?: boolean | FootDefaultArgs<ExtArgs>
-    product?: boolean | ProductDefaultArgs<ExtArgs>
     workbenches?: boolean | Asset$workbenchesArgs<ExtArgs>
     _count?: boolean | AssetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["asset"]>
@@ -9964,7 +9968,7 @@ export namespace Prisma {
   export type AssetSelectScalar = {
     id?: boolean
     footId?: boolean
-    productId?: boolean
+    type?: boolean
     fileUrl?: boolean
     metadata?: boolean
     status?: boolean
@@ -9979,7 +9983,6 @@ export namespace Prisma {
 
   export type AssetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     foot?: boolean | FootDefaultArgs<ExtArgs>
-    product?: boolean | ProductDefaultArgs<ExtArgs>
     workbenches?: boolean | Asset$workbenchesArgs<ExtArgs>
     _count?: boolean | AssetCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -9989,13 +9992,12 @@ export namespace Prisma {
     name: "Asset"
     objects: {
       foot: Prisma.$FootPayload<ExtArgs>
-      product: Prisma.$ProductPayload<ExtArgs>
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       footId: string
-      productId: string
+      type: $Enums.AssetType
       fileUrl: string | null
       metadata: Prisma.JsonValue | null
       status: $Enums.AssetStatus
@@ -10372,8 +10374,6 @@ export namespace Prisma {
 
     foot<T extends FootDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FootDefaultArgs<ExtArgs>>): Prisma__FootClient<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     workbenches<T extends Asset$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Asset$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
@@ -10406,7 +10406,7 @@ export namespace Prisma {
   interface AssetFieldRefs {
     readonly id: FieldRef<"Asset", 'String'>
     readonly footId: FieldRef<"Asset", 'String'>
-    readonly productId: FieldRef<"Asset", 'String'>
+    readonly type: FieldRef<"Asset", 'AssetType'>
     readonly fileUrl: FieldRef<"Asset", 'String'>
     readonly metadata: FieldRef<"Asset", 'Json'>
     readonly status: FieldRef<"Asset", 'AssetStatus'>
@@ -10761,8 +10761,8 @@ export namespace Prisma {
 
   export type ProductMinAggregateOutputType = {
     id: string | null
-    type: $Enums.ProductType | null
-    name: string | null
+    type: $Enums.AssetType | null
+    name: $Enums.ProductName | null
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -10770,8 +10770,8 @@ export namespace Prisma {
 
   export type ProductMaxAggregateOutputType = {
     id: string | null
-    type: $Enums.ProductType | null
-    name: string | null
+    type: $Enums.AssetType | null
+    name: $Enums.ProductName | null
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -10780,6 +10780,7 @@ export namespace Prisma {
   export type ProductCountAggregateOutputType = {
     id: number
     type: number
+    sides: number
     name: number
     description: number
     createdAt: number
@@ -10809,6 +10810,7 @@ export namespace Prisma {
   export type ProductCountAggregateInputType = {
     id?: true
     type?: true
+    sides?: true
     name?: true
     description?: true
     createdAt?: true
@@ -10890,8 +10892,9 @@ export namespace Prisma {
 
   export type ProductGroupByOutputType = {
     id: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides: $Enums.Side[]
+    name: $Enums.ProductName
     description: string | null
     createdAt: Date
     updatedAt: Date
@@ -10917,13 +10920,13 @@ export namespace Prisma {
   export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     type?: boolean
+    sides?: boolean
     name?: boolean
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     buildingBlocks?: boolean | Product$buildingBlocksArgs<ExtArgs>
     usedByProducts?: boolean | Product$usedByProductsArgs<ExtArgs>
-    assets?: boolean | Product$assetsArgs<ExtArgs>
     workbenches?: boolean | Product$workbenchesArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
@@ -10931,6 +10934,7 @@ export namespace Prisma {
   export type ProductSelectScalar = {
     id?: boolean
     type?: boolean
+    sides?: boolean
     name?: boolean
     description?: boolean
     createdAt?: boolean
@@ -10941,7 +10945,6 @@ export namespace Prisma {
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     buildingBlocks?: boolean | Product$buildingBlocksArgs<ExtArgs>
     usedByProducts?: boolean | Product$usedByProductsArgs<ExtArgs>
-    assets?: boolean | Product$assetsArgs<ExtArgs>
     workbenches?: boolean | Product$workbenchesArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -10952,13 +10955,13 @@ export namespace Prisma {
     objects: {
       buildingBlocks: Prisma.$ProductPayload<ExtArgs>[]
       usedByProducts: Prisma.$ProductPayload<ExtArgs>[]
-      assets: Prisma.$AssetPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      type: $Enums.ProductType
-      name: string
+      type: $Enums.AssetType
+      sides: $Enums.Side[]
+      name: $Enums.ProductName
       description: string | null
       createdAt: Date
       updatedAt: Date
@@ -11331,8 +11334,6 @@ export namespace Prisma {
 
     usedByProducts<T extends Product$usedByProductsArgs<ExtArgs> = {}>(args?: Subset<T, Product$usedByProductsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    assets<T extends Product$assetsArgs<ExtArgs> = {}>(args?: Subset<T, Product$assetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     workbenches<T extends Product$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Product$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
@@ -11364,8 +11365,9 @@ export namespace Prisma {
    */ 
   interface ProductFieldRefs {
     readonly id: FieldRef<"Product", 'String'>
-    readonly type: FieldRef<"Product", 'ProductType'>
-    readonly name: FieldRef<"Product", 'String'>
+    readonly type: FieldRef<"Product", 'AssetType'>
+    readonly sides: FieldRef<"Product", 'Side[]'>
+    readonly name: FieldRef<"Product", 'ProductName'>
     readonly description: FieldRef<"Product", 'String'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
@@ -11705,26 +11707,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
-  }
-
-  /**
-   * Product.assets
-   */
-  export type Product$assetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Asset
-     */
-    select?: AssetSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AssetInclude<ExtArgs> | null
-    where?: AssetWhereInput
-    orderBy?: AssetOrderByWithRelationInput | AssetOrderByWithRelationInput[]
-    cursor?: AssetWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
   }
 
   /**
@@ -32646,7 +32628,7 @@ export namespace Prisma {
   export const AssetScalarFieldEnum: {
     id: 'id',
     footId: 'footId',
-    productId: 'productId',
+    type: 'type',
     fileUrl: 'fileUrl',
     metadata: 'metadata',
     status: 'status',
@@ -32664,6 +32646,7 @@ export namespace Prisma {
   export const ProductScalarFieldEnum: {
     id: 'id',
     type: 'type',
+    sides: 'sides',
     name: 'name',
     description: 'description',
     createdAt: 'createdAt',
@@ -33175,6 +33158,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AssetType'
+   */
+  export type EnumAssetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AssetType[]'
+   */
+  export type ListEnumAssetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'AssetStatus'
    */
   export type EnumAssetStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetStatus'>
@@ -33189,16 +33186,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'ProductType'
+   * Reference to a field of type 'ProductName'
    */
-  export type EnumProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductType'>
+  export type EnumProductNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductName'>
     
 
 
   /**
-   * Reference to a field of type 'ProductType[]'
+   * Reference to a field of type 'ProductName[]'
    */
-  export type ListEnumProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductType[]'>
+  export type ListEnumProductNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductName[]'>
     
 
 
@@ -33909,7 +33906,7 @@ export namespace Prisma {
     NOT?: AssetWhereInput | AssetWhereInput[]
     id?: StringFilter<"Asset"> | string
     footId?: StringFilter<"Asset"> | string
-    productId?: StringFilter<"Asset"> | string
+    type?: EnumAssetTypeFilter<"Asset"> | $Enums.AssetType
     fileUrl?: StringNullableFilter<"Asset"> | string | null
     metadata?: JsonNullableFilter<"Asset">
     status?: EnumAssetStatusFilter<"Asset"> | $Enums.AssetStatus
@@ -33920,14 +33917,13 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Asset"> | Date | string
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     foot?: XOR<FootRelationFilter, FootWhereInput>
-    product?: XOR<ProductRelationFilter, ProductWhereInput>
     workbenches?: WorkbenchListRelationFilter
   }
 
   export type AssetOrderByWithRelationInput = {
     id?: SortOrder
     footId?: SortOrder
-    productId?: SortOrder
+    type?: SortOrder
     fileUrl?: SortOrderInput | SortOrder
     metadata?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -33938,7 +33934,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     foot?: FootOrderByWithRelationInput
-    product?: ProductOrderByWithRelationInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
   }
 
@@ -33948,7 +33943,7 @@ export namespace Prisma {
     OR?: AssetWhereInput[]
     NOT?: AssetWhereInput | AssetWhereInput[]
     footId?: StringFilter<"Asset"> | string
-    productId?: StringFilter<"Asset"> | string
+    type?: EnumAssetTypeFilter<"Asset"> | $Enums.AssetType
     fileUrl?: StringNullableFilter<"Asset"> | string | null
     metadata?: JsonNullableFilter<"Asset">
     status?: EnumAssetStatusFilter<"Asset"> | $Enums.AssetStatus
@@ -33959,14 +33954,13 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Asset"> | Date | string
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     foot?: XOR<FootRelationFilter, FootWhereInput>
-    product?: XOR<ProductRelationFilter, ProductWhereInput>
     workbenches?: WorkbenchListRelationFilter
   }, "id">
 
   export type AssetOrderByWithAggregationInput = {
     id?: SortOrder
     footId?: SortOrder
-    productId?: SortOrder
+    type?: SortOrder
     fileUrl?: SortOrderInput | SortOrder
     metadata?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -33987,7 +33981,7 @@ export namespace Prisma {
     NOT?: AssetScalarWhereWithAggregatesInput | AssetScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Asset"> | string
     footId?: StringWithAggregatesFilter<"Asset"> | string
-    productId?: StringWithAggregatesFilter<"Asset"> | string
+    type?: EnumAssetTypeWithAggregatesFilter<"Asset"> | $Enums.AssetType
     fileUrl?: StringNullableWithAggregatesFilter<"Asset"> | string | null
     metadata?: JsonNullableWithAggregatesFilter<"Asset">
     status?: EnumAssetStatusWithAggregatesFilter<"Asset"> | $Enums.AssetStatus
@@ -34004,27 +33998,27 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     id?: StringFilter<"Product"> | string
-    type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
-    name?: StringFilter<"Product"> | string
+    type?: EnumAssetTypeFilter<"Product"> | $Enums.AssetType
+    sides?: EnumSideNullableListFilter<"Product">
+    name?: EnumProductNameFilter<"Product"> | $Enums.ProductName
     description?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     buildingBlocks?: ProductListRelationFilter
     usedByProducts?: ProductListRelationFilter
-    assets?: AssetListRelationFilter
     workbenches?: WorkbenchListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
     id?: SortOrder
     type?: SortOrder
+    sides?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     buildingBlocks?: ProductOrderByRelationAggregateInput
     usedByProducts?: ProductOrderByRelationAggregateInput
-    assets?: AssetOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
   }
 
@@ -34033,20 +34027,21 @@ export namespace Prisma {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
-    type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
-    name?: StringFilter<"Product"> | string
+    type?: EnumAssetTypeFilter<"Product"> | $Enums.AssetType
+    sides?: EnumSideNullableListFilter<"Product">
+    name?: EnumProductNameFilter<"Product"> | $Enums.ProductName
     description?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     buildingBlocks?: ProductListRelationFilter
     usedByProducts?: ProductListRelationFilter
-    assets?: AssetListRelationFilter
     workbenches?: WorkbenchListRelationFilter
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
     type?: SortOrder
+    sides?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -34061,8 +34056,9 @@ export namespace Prisma {
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Product"> | string
-    type?: EnumProductTypeWithAggregatesFilter<"Product"> | $Enums.ProductType
-    name?: StringWithAggregatesFilter<"Product"> | string
+    type?: EnumAssetTypeWithAggregatesFilter<"Product"> | $Enums.AssetType
+    sides?: EnumSideNullableListFilter<"Product">
+    name?: EnumProductNameWithAggregatesFilter<"Product"> | $Enums.ProductName
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -36179,6 +36175,7 @@ export namespace Prisma {
 
   export type AssetCreateInput = {
     id?: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -36189,14 +36186,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     foot: FootCreateNestedOneWithoutAssetsInput
-    product: ProductCreateNestedOneWithoutAssetsInput
     workbenches?: WorkbenchCreateNestedManyWithoutAssetsInput
   }
 
   export type AssetUncheckedCreateInput = {
     id?: string
     footId: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -36211,6 +36207,7 @@ export namespace Prisma {
 
   export type AssetUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -36221,14 +36218,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foot?: FootUpdateOneRequiredWithoutAssetsNestedInput
-    product?: ProductUpdateOneRequiredWithoutAssetsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutAssetsNestedInput
   }
 
   export type AssetUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     footId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -36244,7 +36240,7 @@ export namespace Prisma {
   export type AssetCreateManyInput = {
     id?: string
     footId: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -36258,6 +36254,7 @@ export namespace Prisma {
 
   export type AssetUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -36272,7 +36269,7 @@ export namespace Prisma {
   export type AssetUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     footId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -36286,60 +36283,61 @@ export namespace Prisma {
 
   export type ProductCreateInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
     usedByProducts?: ProductCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
     usedByProducts?: ProductUncheckedCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetUncheckedCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
     usedByProducts?: ProductUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
     usedByProducts?: ProductUncheckedUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUncheckedUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -36347,8 +36345,9 @@ export namespace Prisma {
 
   export type ProductUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36356,8 +36355,9 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38739,6 +38739,13 @@ export namespace Prisma {
     _max?: NestedEnumShoeSystemFilter<$PrismaModel>
   }
 
+  export type EnumAssetTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetType | EnumAssetTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetTypeFilter<$PrismaModel> | $Enums.AssetType
+  }
+
   export type EnumAssetStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AssetStatus | EnumAssetStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AssetStatus[] | ListEnumAssetStatusFieldRefInput<$PrismaModel>
@@ -38759,15 +38766,10 @@ export namespace Prisma {
     isNot?: FootWhereInput
   }
 
-  export type ProductRelationFilter = {
-    is?: ProductWhereInput
-    isNot?: ProductWhereInput
-  }
-
   export type AssetCountOrderByAggregateInput = {
     id?: SortOrder
     footId?: SortOrder
-    productId?: SortOrder
+    type?: SortOrder
     fileUrl?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
@@ -38782,7 +38784,7 @@ export namespace Prisma {
   export type AssetMaxOrderByAggregateInput = {
     id?: SortOrder
     footId?: SortOrder
-    productId?: SortOrder
+    type?: SortOrder
     fileUrl?: SortOrder
     status?: SortOrder
     statusReason?: SortOrder
@@ -38795,7 +38797,7 @@ export namespace Prisma {
   export type AssetMinOrderByAggregateInput = {
     id?: SortOrder
     footId?: SortOrder
-    productId?: SortOrder
+    type?: SortOrder
     fileUrl?: SortOrder
     status?: SortOrder
     statusReason?: SortOrder
@@ -38803,6 +38805,16 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumAssetTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetType | EnumAssetTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetTypeWithAggregatesFilter<$PrismaModel> | $Enums.AssetType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssetTypeFilter<$PrismaModel>
+    _max?: NestedEnumAssetTypeFilter<$PrismaModel>
   }
 
   export type EnumAssetStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -38815,11 +38827,19 @@ export namespace Prisma {
     _max?: NestedEnumAssetStatusFilter<$PrismaModel>
   }
 
-  export type EnumProductTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumProductTypeFilter<$PrismaModel> | $Enums.ProductType
+  export type EnumSideNullableListFilter<$PrismaModel = never> = {
+    equals?: $Enums.Side[] | ListEnumSideFieldRefInput<$PrismaModel> | null
+    has?: $Enums.Side | EnumSideFieldRefInput<$PrismaModel> | null
+    hasEvery?: $Enums.Side[] | ListEnumSideFieldRefInput<$PrismaModel>
+    hasSome?: $Enums.Side[] | ListEnumSideFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type EnumProductNameFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductName | EnumProductNameFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductNameFilter<$PrismaModel> | $Enums.ProductName
   }
 
   export type ProductListRelationFilter = {
@@ -38835,6 +38855,7 @@ export namespace Prisma {
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
     type?: SortOrder
+    sides?: SortOrder
     name?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -38859,14 +38880,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumProductTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProductType
+  export type EnumProductNameWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductName | EnumProductNameFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductNameWithAggregatesFilter<$PrismaModel> | $Enums.ProductName
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumProductTypeFilter<$PrismaModel>
-    _max?: NestedEnumProductTypeFilter<$PrismaModel>
+    _min?: NestedEnumProductNameFilter<$PrismaModel>
+    _max?: NestedEnumProductNameFilter<$PrismaModel>
   }
 
   export type EnumWorkbenchStatusFilter<$PrismaModel = never> = {
@@ -38874,6 +38895,11 @@ export namespace Prisma {
     in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumWorkbenchStatusFilter<$PrismaModel> | $Enums.WorkbenchStatus
+  }
+
+  export type ProductRelationFilter = {
+    is?: ProductWhereInput
+    isNot?: ProductWhereInput
   }
 
   export type OrderListRelationFilter = {
@@ -40721,12 +40747,6 @@ export namespace Prisma {
     connect?: FootWhereUniqueInput
   }
 
-  export type ProductCreateNestedOneWithoutAssetsInput = {
-    create?: XOR<ProductCreateWithoutAssetsInput, ProductUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: ProductCreateOrConnectWithoutAssetsInput
-    connect?: ProductWhereUniqueInput
-  }
-
   export type WorkbenchCreateNestedManyWithoutAssetsInput = {
     create?: XOR<WorkbenchCreateWithoutAssetsInput, WorkbenchUncheckedCreateWithoutAssetsInput> | WorkbenchCreateWithoutAssetsInput[] | WorkbenchUncheckedCreateWithoutAssetsInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutAssetsInput | WorkbenchCreateOrConnectWithoutAssetsInput[]
@@ -40737,6 +40757,10 @@ export namespace Prisma {
     create?: XOR<WorkbenchCreateWithoutAssetsInput, WorkbenchUncheckedCreateWithoutAssetsInput> | WorkbenchCreateWithoutAssetsInput[] | WorkbenchUncheckedCreateWithoutAssetsInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutAssetsInput | WorkbenchCreateOrConnectWithoutAssetsInput[]
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
+  }
+
+  export type EnumAssetTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AssetType
   }
 
   export type EnumAssetStatusFieldUpdateOperationsInput = {
@@ -40754,14 +40778,6 @@ export namespace Prisma {
     upsert?: FootUpsertWithoutAssetsInput
     connect?: FootWhereUniqueInput
     update?: XOR<XOR<FootUpdateToOneWithWhereWithoutAssetsInput, FootUpdateWithoutAssetsInput>, FootUncheckedUpdateWithoutAssetsInput>
-  }
-
-  export type ProductUpdateOneRequiredWithoutAssetsNestedInput = {
-    create?: XOR<ProductCreateWithoutAssetsInput, ProductUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: ProductCreateOrConnectWithoutAssetsInput
-    upsert?: ProductUpsertWithoutAssetsInput
-    connect?: ProductWhereUniqueInput
-    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutAssetsInput, ProductUpdateWithoutAssetsInput>, ProductUncheckedUpdateWithoutAssetsInput>
   }
 
   export type WorkbenchUpdateManyWithoutAssetsNestedInput = {
@@ -40790,6 +40806,10 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
+  export type ProductCreatesidesInput = {
+    set: $Enums.Side[]
+  }
+
   export type ProductCreateNestedManyWithoutUsedByProductsInput = {
     create?: XOR<ProductCreateWithoutUsedByProductsInput, ProductUncheckedCreateWithoutUsedByProductsInput> | ProductCreateWithoutUsedByProductsInput[] | ProductUncheckedCreateWithoutUsedByProductsInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutUsedByProductsInput | ProductCreateOrConnectWithoutUsedByProductsInput[]
@@ -40800,13 +40820,6 @@ export namespace Prisma {
     create?: XOR<ProductCreateWithoutBuildingBlocksInput, ProductUncheckedCreateWithoutBuildingBlocksInput> | ProductCreateWithoutBuildingBlocksInput[] | ProductUncheckedCreateWithoutBuildingBlocksInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutBuildingBlocksInput | ProductCreateOrConnectWithoutBuildingBlocksInput[]
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
-  }
-
-  export type AssetCreateNestedManyWithoutProductInput = {
-    create?: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput> | AssetCreateWithoutProductInput[] | AssetUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: AssetCreateOrConnectWithoutProductInput | AssetCreateOrConnectWithoutProductInput[]
-    createMany?: AssetCreateManyProductInputEnvelope
-    connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
   }
 
   export type WorkbenchCreateNestedManyWithoutProductInput = {
@@ -40828,13 +40841,6 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
-  export type AssetUncheckedCreateNestedManyWithoutProductInput = {
-    create?: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput> | AssetCreateWithoutProductInput[] | AssetUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: AssetCreateOrConnectWithoutProductInput | AssetCreateOrConnectWithoutProductInput[]
-    createMany?: AssetCreateManyProductInputEnvelope
-    connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-  }
-
   export type WorkbenchUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<WorkbenchCreateWithoutProductInput, WorkbenchUncheckedCreateWithoutProductInput> | WorkbenchCreateWithoutProductInput[] | WorkbenchUncheckedCreateWithoutProductInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutProductInput | WorkbenchCreateOrConnectWithoutProductInput[]
@@ -40842,8 +40848,13 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type EnumProductTypeFieldUpdateOperationsInput = {
-    set?: $Enums.ProductType
+  export type ProductUpdatesidesInput = {
+    set?: $Enums.Side[]
+    push?: $Enums.Side | $Enums.Side[]
+  }
+
+  export type EnumProductNameFieldUpdateOperationsInput = {
+    set?: $Enums.ProductName
   }
 
   export type ProductUpdateManyWithoutUsedByProductsNestedInput = {
@@ -40870,20 +40881,6 @@ export namespace Prisma {
     update?: ProductUpdateWithWhereUniqueWithoutBuildingBlocksInput | ProductUpdateWithWhereUniqueWithoutBuildingBlocksInput[]
     updateMany?: ProductUpdateManyWithWhereWithoutBuildingBlocksInput | ProductUpdateManyWithWhereWithoutBuildingBlocksInput[]
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
-  }
-
-  export type AssetUpdateManyWithoutProductNestedInput = {
-    create?: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput> | AssetCreateWithoutProductInput[] | AssetUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: AssetCreateOrConnectWithoutProductInput | AssetCreateOrConnectWithoutProductInput[]
-    upsert?: AssetUpsertWithWhereUniqueWithoutProductInput | AssetUpsertWithWhereUniqueWithoutProductInput[]
-    createMany?: AssetCreateManyProductInputEnvelope
-    set?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    disconnect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    delete?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    update?: AssetUpdateWithWhereUniqueWithoutProductInput | AssetUpdateWithWhereUniqueWithoutProductInput[]
-    updateMany?: AssetUpdateManyWithWhereWithoutProductInput | AssetUpdateManyWithWhereWithoutProductInput[]
-    deleteMany?: AssetScalarWhereInput | AssetScalarWhereInput[]
   }
 
   export type WorkbenchUpdateManyWithoutProductNestedInput = {
@@ -40924,20 +40921,6 @@ export namespace Prisma {
     update?: ProductUpdateWithWhereUniqueWithoutBuildingBlocksInput | ProductUpdateWithWhereUniqueWithoutBuildingBlocksInput[]
     updateMany?: ProductUpdateManyWithWhereWithoutBuildingBlocksInput | ProductUpdateManyWithWhereWithoutBuildingBlocksInput[]
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
-  }
-
-  export type AssetUncheckedUpdateManyWithoutProductNestedInput = {
-    create?: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput> | AssetCreateWithoutProductInput[] | AssetUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: AssetCreateOrConnectWithoutProductInput | AssetCreateOrConnectWithoutProductInput[]
-    upsert?: AssetUpsertWithWhereUniqueWithoutProductInput | AssetUpsertWithWhereUniqueWithoutProductInput[]
-    createMany?: AssetCreateManyProductInputEnvelope
-    set?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    disconnect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    delete?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
-    update?: AssetUpdateWithWhereUniqueWithoutProductInput | AssetUpdateWithWhereUniqueWithoutProductInput[]
-    updateMany?: AssetUpdateManyWithWhereWithoutProductInput | AssetUpdateManyWithWhereWithoutProductInput[]
-    deleteMany?: AssetScalarWhereInput | AssetScalarWhereInput[]
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutProductNestedInput = {
@@ -42335,11 +42318,28 @@ export namespace Prisma {
     _max?: NestedEnumShoeSystemFilter<$PrismaModel>
   }
 
+  export type NestedEnumAssetTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetType | EnumAssetTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetTypeFilter<$PrismaModel> | $Enums.AssetType
+  }
+
   export type NestedEnumAssetStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AssetStatus | EnumAssetStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AssetStatus[] | ListEnumAssetStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.AssetStatus[] | ListEnumAssetStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumAssetStatusFilter<$PrismaModel> | $Enums.AssetStatus
+  }
+
+  export type NestedEnumAssetTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetType | EnumAssetTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetType[] | ListEnumAssetTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetTypeWithAggregatesFilter<$PrismaModel> | $Enums.AssetType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssetTypeFilter<$PrismaModel>
+    _max?: NestedEnumAssetTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumAssetStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -42352,21 +42352,21 @@ export namespace Prisma {
     _max?: NestedEnumAssetStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumProductTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumProductTypeFilter<$PrismaModel> | $Enums.ProductType
+  export type NestedEnumProductNameFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductName | EnumProductNameFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductNameFilter<$PrismaModel> | $Enums.ProductName
   }
 
-  export type NestedEnumProductTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProductType
+  export type NestedEnumProductNameWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductName | EnumProductNameFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductName[] | ListEnumProductNameFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductNameWithAggregatesFilter<$PrismaModel> | $Enums.ProductName
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumProductTypeFilter<$PrismaModel>
-    _max?: NestedEnumProductTypeFilter<$PrismaModel>
+    _min?: NestedEnumProductNameFilter<$PrismaModel>
+    _max?: NestedEnumProductNameFilter<$PrismaModel>
   }
 
   export type NestedEnumWorkbenchStatusFilter<$PrismaModel = never> = {
@@ -44020,6 +44020,7 @@ export namespace Prisma {
 
   export type AssetCreateWithoutFootInput = {
     id?: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -44029,13 +44030,12 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    product: ProductCreateNestedOneWithoutAssetsInput
     workbenches?: WorkbenchCreateNestedManyWithoutAssetsInput
   }
 
   export type AssetUncheckedCreateWithoutFootInput = {
     id?: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -44206,7 +44206,7 @@ export namespace Prisma {
     NOT?: AssetScalarWhereInput | AssetScalarWhereInput[]
     id?: StringFilter<"Asset"> | string
     footId?: StringFilter<"Asset"> | string
-    productId?: StringFilter<"Asset"> | string
+    type?: EnumAssetTypeFilter<"Asset"> | $Enums.AssetType
     fileUrl?: StringNullableFilter<"Asset"> | string | null
     metadata?: JsonNullableFilter<"Asset">
     status?: EnumAssetStatusFilter<"Asset"> | $Enums.AssetStatus
@@ -44257,35 +44257,6 @@ export namespace Prisma {
   export type FootCreateOrConnectWithoutAssetsInput = {
     where: FootWhereUniqueInput
     create: XOR<FootCreateWithoutAssetsInput, FootUncheckedCreateWithoutAssetsInput>
-  }
-
-  export type ProductCreateWithoutAssetsInput = {
-    id?: string
-    type: $Enums.ProductType
-    name: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
-    usedByProducts?: ProductCreateNestedManyWithoutBuildingBlocksInput
-    workbenches?: WorkbenchCreateNestedManyWithoutProductInput
-  }
-
-  export type ProductUncheckedCreateWithoutAssetsInput = {
-    id?: string
-    type: $Enums.ProductType
-    name: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
-    usedByProducts?: ProductUncheckedCreateNestedManyWithoutBuildingBlocksInput
-    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutProductInput
-  }
-
-  export type ProductCreateOrConnectWithoutAssetsInput = {
-    where: ProductWhereUniqueInput
-    create: XOR<ProductCreateWithoutAssetsInput, ProductUncheckedCreateWithoutAssetsInput>
   }
 
   export type WorkbenchCreateWithoutAssetsInput = {
@@ -44370,41 +44341,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProductUpsertWithoutAssetsInput = {
-    update: XOR<ProductUpdateWithoutAssetsInput, ProductUncheckedUpdateWithoutAssetsInput>
-    create: XOR<ProductCreateWithoutAssetsInput, ProductUncheckedCreateWithoutAssetsInput>
-    where?: ProductWhereInput
-  }
-
-  export type ProductUpdateToOneWithWhereWithoutAssetsInput = {
-    where?: ProductWhereInput
-    data: XOR<ProductUpdateWithoutAssetsInput, ProductUncheckedUpdateWithoutAssetsInput>
-  }
-
-  export type ProductUpdateWithoutAssetsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
-    usedByProducts?: ProductUpdateManyWithoutBuildingBlocksNestedInput
-    workbenches?: WorkbenchUpdateManyWithoutProductNestedInput
-  }
-
-  export type ProductUncheckedUpdateWithoutAssetsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
-    usedByProducts?: ProductUncheckedUpdateManyWithoutBuildingBlocksNestedInput
-    workbenches?: WorkbenchUncheckedUpdateManyWithoutProductNestedInput
-  }
-
   export type WorkbenchUpsertWithWhereUniqueWithoutAssetsInput = {
     where: WorkbenchWhereUniqueInput
     update: XOR<WorkbenchUpdateWithoutAssetsInput, WorkbenchUncheckedUpdateWithoutAssetsInput>
@@ -44423,25 +44359,25 @@ export namespace Prisma {
 
   export type ProductCreateWithoutUsedByProductsInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
-    assets?: AssetCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutUsedByProductsInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
-    assets?: AssetUncheckedCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -44452,71 +44388,31 @@ export namespace Prisma {
 
   export type ProductCreateWithoutBuildingBlocksInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     usedByProducts?: ProductCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutBuildingBlocksInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     usedByProducts?: ProductUncheckedCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetUncheckedCreateNestedManyWithoutProductInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutBuildingBlocksInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutBuildingBlocksInput, ProductUncheckedCreateWithoutBuildingBlocksInput>
-  }
-
-  export type AssetCreateWithoutProductInput = {
-    id?: string
-    fileUrl?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status: $Enums.AssetStatus
-    statusCheckpoints?: AssetCreatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: string | null
-    statusUpdatedAt?: Date | string | null
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    foot: FootCreateNestedOneWithoutAssetsInput
-    workbenches?: WorkbenchCreateNestedManyWithoutAssetsInput
-  }
-
-  export type AssetUncheckedCreateWithoutProductInput = {
-    id?: string
-    footId: string
-    fileUrl?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status: $Enums.AssetStatus
-    statusCheckpoints?: AssetCreatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: string | null
-    statusUpdatedAt?: Date | string | null
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutAssetsInput
-  }
-
-  export type AssetCreateOrConnectWithoutProductInput = {
-    where: AssetWhereUniqueInput
-    create: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput>
-  }
-
-  export type AssetCreateManyProductInputEnvelope = {
-    data: AssetCreateManyProductInput | AssetCreateManyProductInput[]
-    skipDuplicates?: boolean
   }
 
   export type WorkbenchCreateWithoutProductInput = {
@@ -44580,8 +44476,9 @@ export namespace Prisma {
     OR?: ProductScalarWhereInput[]
     NOT?: ProductScalarWhereInput | ProductScalarWhereInput[]
     id?: StringFilter<"Product"> | string
-    type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
-    name?: StringFilter<"Product"> | string
+    type?: EnumAssetTypeFilter<"Product"> | $Enums.AssetType
+    sides?: EnumSideNullableListFilter<"Product">
+    name?: EnumProductNameFilter<"Product"> | $Enums.ProductName
     description?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -44601,22 +44498,6 @@ export namespace Prisma {
   export type ProductUpdateManyWithWhereWithoutBuildingBlocksInput = {
     where: ProductScalarWhereInput
     data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyWithoutBuildingBlocksInput>
-  }
-
-  export type AssetUpsertWithWhereUniqueWithoutProductInput = {
-    where: AssetWhereUniqueInput
-    update: XOR<AssetUpdateWithoutProductInput, AssetUncheckedUpdateWithoutProductInput>
-    create: XOR<AssetCreateWithoutProductInput, AssetUncheckedCreateWithoutProductInput>
-  }
-
-  export type AssetUpdateWithWhereUniqueWithoutProductInput = {
-    where: AssetWhereUniqueInput
-    data: XOR<AssetUpdateWithoutProductInput, AssetUncheckedUpdateWithoutProductInput>
-  }
-
-  export type AssetUpdateManyWithWhereWithoutProductInput = {
-    where: AssetScalarWhereInput
-    data: XOR<AssetUpdateManyMutationInput, AssetUncheckedUpdateManyWithoutProductInput>
   }
 
   export type WorkbenchUpsertWithWhereUniqueWithoutProductInput = {
@@ -44682,26 +44563,26 @@ export namespace Prisma {
 
   export type ProductCreateWithoutWorkbenchesInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductCreateNestedManyWithoutUsedByProductsInput
     usedByProducts?: ProductCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutWorkbenchesInput = {
     id?: string
-    type: $Enums.ProductType
-    name: string
+    type: $Enums.AssetType
+    sides?: ProductCreatesidesInput | $Enums.Side[]
+    name: $Enums.ProductName
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     buildingBlocks?: ProductUncheckedCreateNestedManyWithoutUsedByProductsInput
     usedByProducts?: ProductUncheckedCreateNestedManyWithoutBuildingBlocksInput
-    assets?: AssetUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutWorkbenchesInput = {
@@ -44780,6 +44661,7 @@ export namespace Prisma {
 
   export type AssetCreateWithoutWorkbenchesInput = {
     id?: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -44790,13 +44672,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     foot: FootCreateNestedOneWithoutAssetsInput
-    product: ProductCreateNestedOneWithoutAssetsInput
   }
 
   export type AssetUncheckedCreateWithoutWorkbenchesInput = {
     id?: string
     footId: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -44917,26 +44798,26 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
     usedByProducts?: ProductUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
     usedByProducts?: ProductUncheckedUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type EvaluationUpsertWithoutWorkbenchesInput = {
@@ -47899,7 +47780,7 @@ export namespace Prisma {
 
   export type AssetCreateManyFootInput = {
     id?: string
-    productId: string
+    type: $Enums.AssetType
     fileUrl?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status: $Enums.AssetStatus
@@ -47913,6 +47794,7 @@ export namespace Prisma {
 
   export type AssetUpdateWithoutFootInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -47922,13 +47804,12 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    product?: ProductUpdateOneRequiredWithoutAssetsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutAssetsNestedInput
   }
 
   export type AssetUncheckedUpdateWithoutFootInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -47943,7 +47824,7 @@ export namespace Prisma {
 
   export type AssetUncheckedUpdateManyWithoutFootInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -47999,20 +47880,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AssetCreateManyProductInput = {
-    id?: string
-    footId: string
-    fileUrl?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status: $Enums.AssetStatus
-    statusCheckpoints?: AssetCreatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: string | null
-    statusUpdatedAt?: Date | string | null
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type WorkbenchCreateManyProductInput = {
     id?: string
     patientId: string
@@ -48028,32 +47895,33 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutUsedByProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUpdateManyWithoutUsedByProductsNestedInput
-    assets?: AssetUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutUsedByProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buildingBlocks?: ProductUncheckedUpdateManyWithoutUsedByProductsNestedInput
-    assets?: AssetUncheckedUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutUsedByProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48061,77 +47929,34 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutBuildingBlocksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usedByProducts?: ProductUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutBuildingBlocksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     usedByProducts?: ProductUncheckedUpdateManyWithoutBuildingBlocksNestedInput
-    assets?: AssetUncheckedUpdateManyWithoutProductNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutBuildingBlocksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
-    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
+    sides?: ProductUpdatesidesInput | $Enums.Side[]
+    name?: EnumProductNameFieldUpdateOperationsInput | $Enums.ProductName
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AssetUpdateWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
-    statusCheckpoints?: AssetUpdatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: NullableStringFieldUpdateOperationsInput | string | null
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    foot?: FootUpdateOneRequiredWithoutAssetsNestedInput
-    workbenches?: WorkbenchUpdateManyWithoutAssetsNestedInput
-  }
-
-  export type AssetUncheckedUpdateWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    footId?: StringFieldUpdateOperationsInput | string
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
-    statusCheckpoints?: AssetUpdatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: NullableStringFieldUpdateOperationsInput | string | null
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    workbenches?: WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput
-  }
-
-  export type AssetUncheckedUpdateManyWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    footId?: StringFieldUpdateOperationsInput | string
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
-    statusCheckpoints?: AssetUpdatestatusCheckpointsInput | $Enums.AssetStatus[]
-    statusReason?: NullableStringFieldUpdateOperationsInput | string | null
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -48196,6 +48021,7 @@ export namespace Prisma {
 
   export type AssetUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -48206,13 +48032,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foot?: FootUpdateOneRequiredWithoutAssetsNestedInput
-    product?: ProductUpdateOneRequiredWithoutAssetsNestedInput
   }
 
   export type AssetUncheckedUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     footId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
@@ -48227,7 +48052,7 @@ export namespace Prisma {
   export type AssetUncheckedUpdateManyWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     footId?: StringFieldUpdateOperationsInput | string
-    productId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssetTypeFieldUpdateOperationsInput | $Enums.AssetType
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
     status?: EnumAssetStatusFieldUpdateOperationsInput | $Enums.AssetStatus
