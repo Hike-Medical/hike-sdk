@@ -1,15 +1,3 @@
-import { HikeConfig } from '@hike/types';
-import { configureBackendApi } from './utils/backendApi';
-
-export function init(config: HikeConfig) {
-  configureBackendApi(config);
-
-  // Remove sensitive information from config to avoid leaking it to the client
-  const { apiKey: _apiKey, cookies: _cookies, ...safeConfig } = config;
-
-  return { safeConfig };
-}
-
 export * from './api/billing-code.service';
 export * from './api/catalog.service';
 export * from './api/device-type.service';
@@ -27,6 +15,7 @@ export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
 export * from './auth/refreshToken';
 export * from './auth/signIn';
+export * from './configure';
 export * from './errors/ResponseError';
 export * from './hooks/useCategories';
 export * from './hooks/useCompaniesBySession';

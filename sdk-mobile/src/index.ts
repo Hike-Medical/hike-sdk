@@ -1,4 +1,5 @@
 import * as services from '@hike/services';
+import { configureServices } from '@hike/services';
 import type { HikeConfig } from '@hike/types';
 import * as utils from '@hike/utils';
 
@@ -7,7 +8,7 @@ export default {
    * Configures the Hike SDK.
    */
   init: (config: HikeConfig) => {
-    const safeConfig = services.init(config);
+    const safeConfig = configureServices(config);
 
     return {
       /**

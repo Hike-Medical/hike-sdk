@@ -1,4 +1,4 @@
-import { findCompanyBySlug, init as serviceInit } from '@hike/services';
+import { configureServices, findCompanyBySlug } from '@hike/services';
 import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
 
@@ -10,7 +10,7 @@ interface CompanyLayoutProps {
 export const CompanyProvider = async ({ slug, children }: CompanyLayoutProps): Promise<ReactNode> => {
   try {
     const company = await findCompanyBySlug(slug);
-    serviceInit({ companyId: company.id }); // Server-side initialization
+    configureServices({ companyId: company.id }); // Server-side initialization
     return <CompanyProviderClient company={company}>{children}</CompanyProviderClient>;
   } catch {
     return children;
