@@ -13,7 +13,7 @@ export const configureServices = (config: HikeConfig) => {
   backendApi.defaults.headers.common['x-app-version'] ??= config.appVersion;
   backendApi.defaults.headers.common['x-company-id'] ??= config.companyId;
 
-  if (config.appHost) {
+  if (config.appHost || config.apiHosts || config.apiKey) {
     const isDevelopment = config.appEnv === 'development';
     let backendHost = '';
 
@@ -21,7 +21,8 @@ export const configureServices = (config: HikeConfig) => {
     if (typeof config.apiHosts === 'string' && config.apiHosts) {
       backendHost = config.apiHosts;
     } else {
-      backendHost = config.apiHosts?.[config.appHost] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
+      backendHost =
+        config.apiHosts?.[config.appHost ?? ''] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
     }
 
     const protocol = isLocalHost(backendHost) ? 'http' : 'https';
