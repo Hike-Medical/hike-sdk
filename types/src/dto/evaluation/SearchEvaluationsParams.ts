@@ -4,7 +4,6 @@ import type { PagedParams } from '../PagedParams';
 export interface SearchEvaluationsParams extends PagedParams {
   patientId?: string;
   patientExternalId?: string;
-  externalId?: string;
   careType?: CareType;
   appointmentStartAt?: Date;
   appointmentEndAt?: Date;
