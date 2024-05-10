@@ -52,4 +52,9 @@ export interface HikeConfig {
    * The company associated with the app; can be overriden at runtime.
    */
   readonly companyId?: string;
+
+  /**
+   * The cookies to attach to each request.
+   */
+  readonly cookies?: string;
 }
