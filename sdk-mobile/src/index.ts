@@ -1,5 +1,5 @@
 import * as services from '@hike/services';
-import { configureBackendApi } from '@hike/services';
+import { configureServices } from '@hike/services';
 import type { HikeConfig } from '@hike/types';
 import * as utils from '@hike/utils';
 
@@ -8,10 +8,7 @@ export default {
    * Configures the Hike SDK.
    */
   init: (config: HikeConfig) => {
-    configureBackendApi(config);
-
-    // Remove API Key from config to avoid leaking it to the client
-    const { apiKey: _, ...safeConfig } = config;
+    const safeConfig = configureServices(config);
 
     return {
       /**

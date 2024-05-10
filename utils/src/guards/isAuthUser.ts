@@ -11,4 +11,6 @@ export const isAuthUser = (value: unknown): value is AuthUser =>
   'companies' in value &&
   typeof value.companies === 'object' &&
   value.companies !== null &&
-  Object.values(value.companies).every((role) => typeof role === 'string');
+  Object.values(value.companies).every((role) => typeof role === 'string') &&
+  'expiresAt' in value &&
+  typeof value.companies === 'object';

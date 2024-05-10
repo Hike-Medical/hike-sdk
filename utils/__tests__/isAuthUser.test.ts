@@ -9,7 +9,8 @@ describe('isAuthUser tests', () => {
       companies: {
         company1: 'ADMIN',
         company2: 'PATIENT'
-      }
+      },
+      expiresAt: new Date()
     };
 
     expect(isAuthUser(validAuthUser)).toBe(true);
