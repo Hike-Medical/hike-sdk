@@ -15,7 +15,14 @@ dayjs.extend(timezone);
  *
  */
 export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined =>
-  !value ? value : dayjs(value).tz(timeZone).startOf('day').utc().startOf('day').toDate();
+  !value
+    ? value
+    : dayjs(value)
+        .tz(timeZone || undefined)
+        .startOf('day')
+        .utc()
+        .startOf('day')
+        .toDate();
 
 /**
  * Converts a given UTC date to the start of the day in a specified local timezone.
@@ -27,4 +34,9 @@ export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | nul
  *
  */
 export const fromStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined =>
-  !value ? value : dayjs.tz(dayjs.utc(value).format('YYYY-MM-DD'), timeZone).startOf('day').toDate();
+  !value
+    ? value
+    : dayjs
+        .tz(dayjs.utc(value).format('YYYY-MM-DD'), timeZone || undefined)
+        .startOf('day')
+        .toDate();
