@@ -7374,7 +7374,6 @@ export namespace Prisma {
   export type EvaluationMinAggregateOutputType = {
     id: string | null
     externalId: string | null
-    poNumber: string | null
     type: $Enums.CareType | null
     patientId: string | null
     companyId: string | null
@@ -7404,7 +7403,6 @@ export namespace Prisma {
   export type EvaluationMaxAggregateOutputType = {
     id: string | null
     externalId: string | null
-    poNumber: string | null
     type: $Enums.CareType | null
     patientId: string | null
     companyId: string | null
@@ -7434,7 +7432,6 @@ export namespace Prisma {
   export type EvaluationCountAggregateOutputType = {
     id: number
     externalId: number
-    poNumber: number
     type: number
     patientId: number
     companyId: number
@@ -7467,7 +7464,6 @@ export namespace Prisma {
   export type EvaluationMinAggregateInputType = {
     id?: true
     externalId?: true
-    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7497,7 +7493,6 @@ export namespace Prisma {
   export type EvaluationMaxAggregateInputType = {
     id?: true
     externalId?: true
-    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7527,7 +7522,6 @@ export namespace Prisma {
   export type EvaluationCountAggregateInputType = {
     id?: true
     externalId?: true
-    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7631,7 +7625,6 @@ export namespace Prisma {
   export type EvaluationGroupByOutputType = {
     id: string
     externalId: string | null
-    poNumber: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -7679,7 +7672,6 @@ export namespace Prisma {
   export type EvaluationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     externalId?: boolean
-    poNumber?: boolean
     type?: boolean
     patientId?: boolean
     companyId?: boolean
@@ -7720,7 +7712,6 @@ export namespace Prisma {
   export type EvaluationSelectScalar = {
     id?: boolean
     externalId?: boolean
-    poNumber?: boolean
     type?: boolean
     patientId?: boolean
     companyId?: boolean
@@ -7779,7 +7770,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       externalId: string | null
-      poNumber: string | null
       type: $Enums.CareType
       patientId: string
       companyId: string
@@ -8218,7 +8208,6 @@ export namespace Prisma {
   interface EvaluationFieldRefs {
     readonly id: FieldRef<"Evaluation", 'String'>
     readonly externalId: FieldRef<"Evaluation", 'String'>
-    readonly poNumber: FieldRef<"Evaluation", 'String'>
     readonly type: FieldRef<"Evaluation", 'CareType'>
     readonly patientId: FieldRef<"Evaluation", 'String'>
     readonly companyId: FieldRef<"Evaluation", 'String'>
@@ -32603,7 +32592,6 @@ export namespace Prisma {
   export const EvaluationScalarFieldEnum: {
     id: 'id',
     externalId: 'externalId',
-    poNumber: 'poNumber',
     type: 'type',
     patientId: 'patientId',
     companyId: 'companyId',
@@ -33618,7 +33606,6 @@ export namespace Prisma {
     NOT?: EvaluationWhereInput | EvaluationWhereInput[]
     id?: StringFilter<"Evaluation"> | string
     externalId?: StringNullableFilter<"Evaluation"> | string | null
-    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -33658,7 +33645,6 @@ export namespace Prisma {
   export type EvaluationOrderByWithRelationInput = {
     id?: SortOrder
     externalId?: SortOrderInput | SortOrder
-    poNumber?: SortOrderInput | SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -33697,14 +33683,11 @@ export namespace Prisma {
 
   export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    externalId?: string
     id_companyId?: EvaluationIdCompanyIdCompoundUniqueInput
-    externalId_companyId?: EvaluationExternalIdCompanyIdCompoundUniqueInput
-    poNumber_companyId?: EvaluationPoNumberCompanyIdCompoundUniqueInput
     AND?: EvaluationWhereInput | EvaluationWhereInput[]
     OR?: EvaluationWhereInput[]
     NOT?: EvaluationWhereInput | EvaluationWhereInput[]
-    externalId?: StringNullableFilter<"Evaluation"> | string | null
-    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -33739,12 +33722,11 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
-  }, "id" | "id_companyId" | "externalId_companyId" | "poNumber_companyId">
+  }, "id" | "externalId" | "id_companyId">
 
   export type EvaluationOrderByWithAggregationInput = {
     id?: SortOrder
     externalId?: SortOrderInput | SortOrder
-    poNumber?: SortOrderInput | SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -33781,7 +33763,6 @@ export namespace Prisma {
     NOT?: EvaluationScalarWhereWithAggregatesInput | EvaluationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Evaluation"> | string
     externalId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    poNumber?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     type?: EnumCareTypeWithAggregatesFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringWithAggregatesFilter<"Evaluation"> | string
     companyId?: StringWithAggregatesFilter<"Evaluation"> | string
@@ -35855,7 +35836,6 @@ export namespace Prisma {
   export type EvaluationCreateInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -35889,7 +35869,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -35923,7 +35902,6 @@ export namespace Prisma {
   export type EvaluationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -35957,7 +35935,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -35991,7 +35968,6 @@ export namespace Prisma {
   export type EvaluationCreateManyInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -36022,7 +35998,6 @@ export namespace Prisma {
   export type EvaluationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -36047,7 +36022,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -38477,20 +38451,9 @@ export namespace Prisma {
     companyId: string
   }
 
-  export type EvaluationExternalIdCompanyIdCompoundUniqueInput = {
-    externalId: string
-    companyId: string
-  }
-
-  export type EvaluationPoNumberCompanyIdCompoundUniqueInput = {
-    poNumber: string
-    companyId: string
-  }
-
   export type EvaluationCountOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
-    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -38521,7 +38484,6 @@ export namespace Prisma {
   export type EvaluationMaxOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
-    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -38551,7 +38513,6 @@ export namespace Prisma {
   export type EvaluationMinOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
-    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -42615,7 +42576,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutCompanyInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -42648,7 +42608,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutCompanyInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     deviceTypeId?: string | null
@@ -42849,7 +42808,6 @@ export namespace Prisma {
     NOT?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
     id?: StringFilter<"Evaluation"> | string
     externalId?: StringNullableFilter<"Evaluation"> | string | null
-    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -43173,7 +43131,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -43206,7 +43163,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     companyId: string
     deviceTypeId?: string | null
@@ -43996,7 +43952,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutFeetInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -44029,7 +43984,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutFeetInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -44169,7 +44123,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -44202,7 +44155,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -44760,7 +44712,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutWorkbenchesInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -44793,7 +44744,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutWorkbenchesInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45003,7 +44953,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -45036,7 +44985,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -45400,7 +45348,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutReferringPhysicianInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45433,7 +45380,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutReferringPhysicianInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45492,7 +45438,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutDiagnosisInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45525,7 +45470,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutDiagnosisInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45584,7 +45528,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutDeviceTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45617,7 +45560,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutDeviceTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45676,7 +45618,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutVisitTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45709,7 +45650,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutVisitTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45833,7 +45773,6 @@ export namespace Prisma {
   export type EvaluationCreateWithoutFormSubmissionsInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45866,7 +45805,6 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutFormSubmissionsInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45944,7 +45882,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -45977,7 +45914,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -47215,7 +47151,6 @@ export namespace Prisma {
   export type EvaluationCreateManyCompanyInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     deviceTypeId?: string | null
@@ -47309,7 +47244,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -47342,7 +47276,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47375,7 +47308,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47551,7 +47483,6 @@ export namespace Prisma {
   export type EvaluationCreateManyPatientInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     companyId: string
     deviceTypeId?: string | null
@@ -47654,7 +47585,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -47687,7 +47617,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47720,7 +47649,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48419,7 +48347,6 @@ export namespace Prisma {
   export type EvaluationCreateManyReferringPhysicianInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48449,7 +48376,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48482,7 +48408,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48515,7 +48440,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48545,7 +48469,6 @@ export namespace Prisma {
   export type EvaluationCreateManyDiagnosisInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48575,7 +48498,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48608,7 +48530,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48641,7 +48562,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48671,7 +48591,6 @@ export namespace Prisma {
   export type EvaluationCreateManyDeviceTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48701,7 +48620,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48734,7 +48652,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48767,7 +48684,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48797,7 +48713,6 @@ export namespace Prisma {
   export type EvaluationCreateManyVisitTypeInput = {
     id?: string
     externalId?: string | null
-    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48827,7 +48742,6 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48860,7 +48774,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48893,7 +48806,6 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
