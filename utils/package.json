@@ -34,7 +34,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@hike/types": "workspace:*"
+    "@hike/types": "workspace:*",
+    "dayjs": "^1.11.10"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

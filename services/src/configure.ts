@@ -12,6 +12,7 @@ export const configureServices = (config: HikeConfig) => {
   backendApi.defaults.headers.common['x-app-id'] ??= config.appId;
   backendApi.defaults.headers.common['x-app-version'] ??= config.appVersion;
   backendApi.defaults.headers.common['x-company-id'] ??= config.companyId;
+  backendApi.defaults.headers.common['x-time-zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   if (config.appHost || config.apiHosts || config.apiKey) {
     const isDevelopment = config.appEnv === 'development';
