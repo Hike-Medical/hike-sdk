@@ -14,15 +14,22 @@ dayjs.extend(timezone);
  * // 2023-10-15T00:00:00.000Z
  *
  */
-export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined =>
-  !value
-    ? value
-    : dayjs(value)
-        .tz(timeZone || undefined)
-        .startOf('day')
-        .utc()
-        .startOf('day')
-        .toDate();
+export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined => {
+  if (!value) {
+    return value;
+  }
+
+  // Canadian locale intenally forced for all dates to ensure format is `YYYY-MM-DD`
+  const formatted = Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(value);
+
+  const date = new Date(formatted);
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+};
 
 /**
  * Converts a given UTC date to the start of the day in a specified local timezone.

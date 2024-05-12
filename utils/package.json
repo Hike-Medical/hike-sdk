@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@hike/types": "workspace:*",
-    "dayjs": "^1.11.10"
+    "dayjs": "^1.11.11"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
