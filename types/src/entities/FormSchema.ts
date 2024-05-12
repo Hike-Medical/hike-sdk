@@ -37,6 +37,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string> & { type: 'image' })
   | (BaseFormField<string> & { type: 'select'; options: { label: string; value: string }[] })
+  | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
   | (BaseFormField<string> & { type: 'select:weight' })
   | (BaseFormField<string[]> & { type: 'multiselect'; options: { label: string; value: string }[] });
