@@ -59,10 +59,10 @@ export type Workbench = $Result.DefaultSelection<Prisma.$WorkbenchPayload>
  */
 export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
 /**
- * Model Address
+ * Model FacilityAddress
  * 
  */
-export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
+export type FacilityAddress = $Result.DefaultSelection<Prisma.$FacilityAddressPayload>
 /**
  * Model ShippingPackage
  * 
@@ -321,6 +321,13 @@ export const OrderAuthorizationStatus: {
 export type OrderAuthorizationStatus = (typeof OrderAuthorizationStatus)[keyof typeof OrderAuthorizationStatus]
 
 
+export const Carrier: {
+  UPS: 'UPS'
+};
+
+export type Carrier = (typeof Carrier)[keyof typeof Carrier]
+
+
 export const WeightUnit: {
   KG: 'KG',
   LB: 'LB'
@@ -417,6 +424,10 @@ export const OrderStatus: typeof $Enums.OrderStatus
 export type OrderAuthorizationStatus = $Enums.OrderAuthorizationStatus
 
 export const OrderAuthorizationStatus: typeof $Enums.OrderAuthorizationStatus
+
+export type Carrier = $Enums.Carrier
+
+export const Carrier: typeof $Enums.Carrier
 
 export type WeightUnit = $Enums.WeightUnit
 
@@ -651,14 +662,14 @@ export class PrismaClient<
   get order(): Prisma.OrderDelegate<ExtArgs>;
 
   /**
-   * `prisma.address`: Exposes CRUD operations for the **Address** model.
+   * `prisma.facilityAddress`: Exposes CRUD operations for the **FacilityAddress** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Addresses
-    * const addresses = await prisma.address.findMany()
+    * // Fetch zero or more FacilityAddresses
+    * const facilityAddresses = await prisma.facilityAddress.findMany()
     * ```
     */
-  get address(): Prisma.AddressDelegate<ExtArgs>;
+  get facilityAddress(): Prisma.FacilityAddressDelegate<ExtArgs>;
 
   /**
    * `prisma.shippingPackage`: Exposes CRUD operations for the **ShippingPackage** model.
@@ -1335,7 +1346,7 @@ export namespace Prisma {
     Product: 'Product',
     Workbench: 'Workbench',
     Order: 'Order',
-    Address: 'Address',
+    FacilityAddress: 'FacilityAddress',
     ShippingPackage: 'ShippingPackage',
     Physician: 'Physician',
     Diagnosis: 'Diagnosis',
@@ -1371,7 +1382,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'address' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1969,69 +1980,69 @@ export namespace Prisma {
           }
         }
       }
-      Address: {
-        payload: Prisma.$AddressPayload<ExtArgs>
-        fields: Prisma.AddressFieldRefs
+      FacilityAddress: {
+        payload: Prisma.$FacilityAddressPayload<ExtArgs>
+        fields: Prisma.FacilityAddressFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AddressFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
+            args: Prisma.FacilityAddressFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AddressFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           findFirst: {
-            args: Prisma.AddressFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
+            args: Prisma.FacilityAddressFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AddressFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           findMany: {
-            args: Prisma.AddressFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>[]
+            args: Prisma.FacilityAddressFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>[]
           }
           create: {
-            args: Prisma.AddressCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           createMany: {
-            args: Prisma.AddressCreateManyArgs<ExtArgs>,
+            args: Prisma.FacilityAddressCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.AddressDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           update: {
-            args: Prisma.AddressUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           deleteMany: {
-            args: Prisma.AddressDeleteManyArgs<ExtArgs>,
+            args: Prisma.FacilityAddressDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.AddressUpdateManyArgs<ExtArgs>,
+            args: Prisma.FacilityAddressUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.AddressUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+            args: Prisma.FacilityAddressUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
           }
           aggregate: {
-            args: Prisma.AddressAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateAddress>
+            args: Prisma.FacilityAddressAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFacilityAddress>
           }
           groupBy: {
-            args: Prisma.AddressGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<AddressGroupByOutputType>[]
+            args: Prisma.FacilityAddressGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityAddressGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AddressCountArgs<ExtArgs>,
-            result: $Utils.Optional<AddressCountAggregateOutputType> | number
+            args: Prisma.FacilityAddressCountArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityAddressCountAggregateOutputType> | number
           }
         }
       }
@@ -3818,37 +3829,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type AddressCountOutputType
-   */
-
-  export type AddressCountOutputType = {
-    orders: number
-  }
-
-  export type AddressCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    orders?: boolean | AddressCountOutputTypeCountOrdersArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AddressCountOutputType without action
-   */
-  export type AddressCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AddressCountOutputType
-     */
-    select?: AddressCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AddressCountOutputType without action
-   */
-  export type AddressCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrderWhereInput
-  }
-
-
-  /**
    * Count Type PhysicianCountOutputType
    */
 
@@ -5449,6 +5429,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facility"]>
@@ -5466,6 +5447,7 @@ export namespace Prisma {
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -5475,6 +5457,7 @@ export namespace Prisma {
     name: "Facility"
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs>
+      address: Prisma.$FacilityAddressPayload<ExtArgs> | null
       users: Prisma.$FacilityUserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5852,6 +5835,8 @@ export namespace Prisma {
 
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    address<T extends Facility$addressArgs<ExtArgs> = {}>(args?: Subset<T, Facility$addressArgs<ExtArgs>>): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
@@ -6185,6 +6170,21 @@ export namespace Prisma {
      * Filter which Facilities to delete
      */
     where?: FacilityWhereInput
+  }
+
+  /**
+   * Facility.address
+   */
+  export type Facility$addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilityAddress
+     */
+    select?: FacilityAddressSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityAddressInclude<ExtArgs> | null
+    where?: FacilityAddressWhereInput
   }
 
   /**
@@ -13031,7 +13031,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
-    shippingAddress?: boolean | Order$shippingAddressArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
@@ -13053,7 +13052,6 @@ export namespace Prisma {
 
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
-    shippingAddress?: boolean | Order$shippingAddressArgs<ExtArgs>
   }
 
 
@@ -13061,7 +13059,6 @@ export namespace Prisma {
     name: "Order"
     objects: {
       workbench: Prisma.$WorkbenchPayload<ExtArgs>
-      shippingAddress: Prisma.$AddressPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13444,8 +13441,6 @@ export namespace Prisma {
 
     workbench<T extends WorkbenchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkbenchDefaultArgs<ExtArgs>>): Prisma__WorkbenchClient<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    shippingAddress<T extends Order$shippingAddressArgs<ExtArgs> = {}>(args?: Subset<T, Order$shippingAddressArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13786,21 +13781,6 @@ export namespace Prisma {
   }
 
   /**
-   * Order.shippingAddress
-   */
-  export type Order$shippingAddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
-    where?: AddressWhereInput
-  }
-
-  /**
    * Order without action
    */
   export type OrderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13816,393 +13796,431 @@ export namespace Prisma {
 
 
   /**
-   * Model Address
+   * Model FacilityAddress
    */
 
-  export type AggregateAddress = {
-    _count: AddressCountAggregateOutputType | null
-    _min: AddressMinAggregateOutputType | null
-    _max: AddressMaxAggregateOutputType | null
+  export type AggregateFacilityAddress = {
+    _count: FacilityAddressCountAggregateOutputType | null
+    _min: FacilityAddressMinAggregateOutputType | null
+    _max: FacilityAddressMaxAggregateOutputType | null
   }
 
-  export type AddressMinAggregateOutputType = {
+  export type FacilityAddressMinAggregateOutputType = {
     id: string | null
+    name: string | null
     addressLine1: string | null
     addressLine2: string | null
-    locality: string | null
-    administrativeArea: string | null
-    postalCode: string | null
+    city: string | null
+    stateOrProvince: string | null
+    zipOrPostalCode: string | null
     countryCode: string | null
+    shippingAccountId: string | null
+    shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
+    facilityId: string | null
   }
 
-  export type AddressMaxAggregateOutputType = {
+  export type FacilityAddressMaxAggregateOutputType = {
     id: string | null
+    name: string | null
     addressLine1: string | null
     addressLine2: string | null
-    locality: string | null
-    administrativeArea: string | null
-    postalCode: string | null
+    city: string | null
+    stateOrProvince: string | null
+    zipOrPostalCode: string | null
     countryCode: string | null
+    shippingAccountId: string | null
+    shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
+    facilityId: string | null
   }
 
-  export type AddressCountAggregateOutputType = {
+  export type FacilityAddressCountAggregateOutputType = {
     id: number
+    name: number
     addressLine1: number
     addressLine2: number
-    locality: number
-    administrativeArea: number
-    postalCode: number
+    city: number
+    stateOrProvince: number
+    zipOrPostalCode: number
     countryCode: number
+    shippingAccountId: number
+    shippingAccountCarrier: number
     createdAt: number
     updatedAt: number
+    facilityId: number
     _all: number
   }
 
 
-  export type AddressMinAggregateInputType = {
+  export type FacilityAddressMinAggregateInputType = {
     id?: true
+    name?: true
     addressLine1?: true
     addressLine2?: true
-    locality?: true
-    administrativeArea?: true
-    postalCode?: true
+    city?: true
+    stateOrProvince?: true
+    zipOrPostalCode?: true
     countryCode?: true
+    shippingAccountId?: true
+    shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
+    facilityId?: true
   }
 
-  export type AddressMaxAggregateInputType = {
+  export type FacilityAddressMaxAggregateInputType = {
     id?: true
+    name?: true
     addressLine1?: true
     addressLine2?: true
-    locality?: true
-    administrativeArea?: true
-    postalCode?: true
+    city?: true
+    stateOrProvince?: true
+    zipOrPostalCode?: true
     countryCode?: true
+    shippingAccountId?: true
+    shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
+    facilityId?: true
   }
 
-  export type AddressCountAggregateInputType = {
+  export type FacilityAddressCountAggregateInputType = {
     id?: true
+    name?: true
     addressLine1?: true
     addressLine2?: true
-    locality?: true
-    administrativeArea?: true
-    postalCode?: true
+    city?: true
+    stateOrProvince?: true
+    zipOrPostalCode?: true
     countryCode?: true
+    shippingAccountId?: true
+    shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
+    facilityId?: true
     _all?: true
   }
 
-  export type AddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Address to aggregate.
+     * Filter which FacilityAddress to aggregate.
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Addresses to fetch.
+     * Determine the order of FacilityAddresses to fetch.
      */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AddressWhereUniqueInput
+    cursor?: FacilityAddressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Addresses from the position of the cursor.
+     * Take `±n` FacilityAddresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Addresses.
+     * Skip the first `n` FacilityAddresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Addresses
+     * Count returned FacilityAddresses
     **/
-    _count?: true | AddressCountAggregateInputType
+    _count?: true | FacilityAddressCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AddressMinAggregateInputType
+    _min?: FacilityAddressMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AddressMaxAggregateInputType
+    _max?: FacilityAddressMaxAggregateInputType
   }
 
-  export type GetAddressAggregateType<T extends AddressAggregateArgs> = {
-        [P in keyof T & keyof AggregateAddress]: P extends '_count' | 'count'
+  export type GetFacilityAddressAggregateType<T extends FacilityAddressAggregateArgs> = {
+        [P in keyof T & keyof AggregateFacilityAddress]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAddress[P]>
-      : GetScalarType<T[P], AggregateAddress[P]>
+        : GetScalarType<T[P], AggregateFacilityAddress[P]>
+      : GetScalarType<T[P], AggregateFacilityAddress[P]>
   }
 
 
 
 
-  export type AddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AddressWhereInput
-    orderBy?: AddressOrderByWithAggregationInput | AddressOrderByWithAggregationInput[]
-    by: AddressScalarFieldEnum[] | AddressScalarFieldEnum
-    having?: AddressScalarWhereWithAggregatesInput
+  export type FacilityAddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityAddressWhereInput
+    orderBy?: FacilityAddressOrderByWithAggregationInput | FacilityAddressOrderByWithAggregationInput[]
+    by: FacilityAddressScalarFieldEnum[] | FacilityAddressScalarFieldEnum
+    having?: FacilityAddressScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AddressCountAggregateInputType | true
-    _min?: AddressMinAggregateInputType
-    _max?: AddressMaxAggregateInputType
+    _count?: FacilityAddressCountAggregateInputType | true
+    _min?: FacilityAddressMinAggregateInputType
+    _max?: FacilityAddressMaxAggregateInputType
   }
 
-  export type AddressGroupByOutputType = {
+  export type FacilityAddressGroupByOutputType = {
     id: string
+    name: string | null
     addressLine1: string
     addressLine2: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
     countryCode: string
+    shippingAccountId: string | null
+    shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date
     updatedAt: Date
-    _count: AddressCountAggregateOutputType | null
-    _min: AddressMinAggregateOutputType | null
-    _max: AddressMaxAggregateOutputType | null
+    facilityId: string
+    _count: FacilityAddressCountAggregateOutputType | null
+    _min: FacilityAddressMinAggregateOutputType | null
+    _max: FacilityAddressMaxAggregateOutputType | null
   }
 
-  type GetAddressGroupByPayload<T extends AddressGroupByArgs> = Prisma.PrismaPromise<
+  type GetFacilityAddressGroupByPayload<T extends FacilityAddressGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AddressGroupByOutputType, T['by']> &
+      PickEnumerable<FacilityAddressGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AddressGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FacilityAddressGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AddressGroupByOutputType[P]>
-            : GetScalarType<T[P], AddressGroupByOutputType[P]>
+              : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
+            : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FacilityAddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     addressLine1?: boolean
     addressLine2?: boolean
-    locality?: boolean
-    administrativeArea?: boolean
-    postalCode?: boolean
+    city?: boolean
+    stateOrProvince?: boolean
+    zipOrPostalCode?: boolean
     countryCode?: boolean
+    shippingAccountId?: boolean
+    shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    orders?: boolean | Address$ordersArgs<ExtArgs>
-    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["address"]>
+    facilityId?: boolean
+    facility?: boolean | FacilityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["facilityAddress"]>
 
-  export type AddressSelectScalar = {
+  export type FacilityAddressSelectScalar = {
     id?: boolean
+    name?: boolean
     addressLine1?: boolean
     addressLine2?: boolean
-    locality?: boolean
-    administrativeArea?: boolean
-    postalCode?: boolean
+    city?: boolean
+    stateOrProvince?: boolean
+    zipOrPostalCode?: boolean
     countryCode?: boolean
+    shippingAccountId?: boolean
+    shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    facilityId?: boolean
   }
 
 
-  export type AddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    orders?: boolean | Address$ordersArgs<ExtArgs>
-    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
+  export type FacilityAddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facility?: boolean | FacilityDefaultArgs<ExtArgs>
   }
 
 
-  export type $AddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Address"
+  export type $FacilityAddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FacilityAddress"
     objects: {
-      orders: Prisma.$OrderPayload<ExtArgs>[]
+      facility: Prisma.$FacilityPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      name: string | null
       addressLine1: string
       addressLine2: string | null
-      locality: string
-      administrativeArea: string
-      postalCode: string
+      city: string
+      stateOrProvince: string
+      zipOrPostalCode: string
       countryCode: string
+      shippingAccountId: string | null
+      shippingAccountCarrier: $Enums.Carrier | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["address"]>
+      facilityId: string
+    }, ExtArgs["result"]["facilityAddress"]>
     composites: {}
   }
 
 
-  type AddressGetPayload<S extends boolean | null | undefined | AddressDefaultArgs> = $Result.GetResult<Prisma.$AddressPayload, S>
+  type FacilityAddressGetPayload<S extends boolean | null | undefined | FacilityAddressDefaultArgs> = $Result.GetResult<Prisma.$FacilityAddressPayload, S>
 
-  type AddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<AddressFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: AddressCountAggregateInputType | true
+  type FacilityAddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FacilityAddressFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FacilityAddressCountAggregateInputType | true
     }
 
-  export interface AddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Address'], meta: { name: 'Address' } }
+  export interface FacilityAddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityAddress'], meta: { name: 'FacilityAddress' } }
     /**
-     * Find zero or one Address that matches the filter.
-     * @param {AddressFindUniqueArgs} args - Arguments to find a Address
+     * Find zero or one FacilityAddress that matches the filter.
+     * @param {FacilityAddressFindUniqueArgs} args - Arguments to find a FacilityAddress
      * @example
-     * // Get one Address
-     * const address = await prisma.address.findUnique({
+     * // Get one FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends AddressFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressFindUniqueArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends FacilityAddressFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressFindUniqueArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Address that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one FacilityAddress that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {AddressFindUniqueOrThrowArgs} args - Arguments to find a Address
+     * @param {FacilityAddressFindUniqueOrThrowArgs} args - Arguments to find a FacilityAddress
      * @example
-     * // Get one Address
-     * const address = await prisma.address.findUniqueOrThrow({
+     * // Get one FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends AddressFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Address that matches the filter.
+     * Find the first FacilityAddress that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindFirstArgs} args - Arguments to find a Address
+     * @param {FacilityAddressFindFirstArgs} args - Arguments to find a FacilityAddress
      * @example
-     * // Get one Address
-     * const address = await prisma.address.findFirst({
+     * // Get one FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends AddressFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressFindFirstArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends FacilityAddressFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressFindFirstArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Address that matches the filter or
+     * Find the first FacilityAddress that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindFirstOrThrowArgs} args - Arguments to find a Address
+     * @param {FacilityAddressFindFirstOrThrowArgs} args - Arguments to find a FacilityAddress
      * @example
-     * // Get one Address
-     * const address = await prisma.address.findFirstOrThrow({
+     * // Get one FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends AddressFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends FacilityAddressFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Addresses that matches the filter.
+     * Find zero or more FacilityAddresses that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {FacilityAddressFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Addresses
-     * const addresses = await prisma.address.findMany()
+     * // Get all FacilityAddresses
+     * const facilityAddresses = await prisma.facilityAddress.findMany()
      * 
-     * // Get first 10 Addresses
-     * const addresses = await prisma.address.findMany({ take: 10 })
+     * // Get first 10 FacilityAddresses
+     * const facilityAddresses = await prisma.facilityAddress.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const addressWithIdOnly = await prisma.address.findMany({ select: { id: true } })
+     * const facilityAddressWithIdOnly = await prisma.facilityAddress.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends AddressFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends FacilityAddressFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Address.
-     * @param {AddressCreateArgs} args - Arguments to create a Address.
+     * Create a FacilityAddress.
+     * @param {FacilityAddressCreateArgs} args - Arguments to create a FacilityAddress.
      * @example
-     * // Create one Address
-     * const Address = await prisma.address.create({
+     * // Create one FacilityAddress
+     * const FacilityAddress = await prisma.facilityAddress.create({
      *   data: {
-     *     // ... data to create a Address
+     *     // ... data to create a FacilityAddress
      *   }
      * })
      * 
     **/
-    create<T extends AddressCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressCreateArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends FacilityAddressCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressCreateArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Addresses.
-     *     @param {AddressCreateManyArgs} args - Arguments to create many Addresses.
+     * Create many FacilityAddresses.
+     *     @param {FacilityAddressCreateManyArgs} args - Arguments to create many FacilityAddresses.
      *     @example
-     *     // Create many Addresses
-     *     const address = await prisma.address.createMany({
+     *     // Create many FacilityAddresses
+     *     const facilityAddress = await prisma.facilityAddress.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends AddressCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressCreateManyArgs<ExtArgs>>
+    createMany<T extends FacilityAddressCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Address.
-     * @param {AddressDeleteArgs} args - Arguments to delete one Address.
+     * Delete a FacilityAddress.
+     * @param {FacilityAddressDeleteArgs} args - Arguments to delete one FacilityAddress.
      * @example
-     * // Delete one Address
-     * const Address = await prisma.address.delete({
+     * // Delete one FacilityAddress
+     * const FacilityAddress = await prisma.facilityAddress.delete({
      *   where: {
-     *     // ... filter to delete one Address
+     *     // ... filter to delete one FacilityAddress
      *   }
      * })
      * 
     **/
-    delete<T extends AddressDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressDeleteArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends FacilityAddressDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressDeleteArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Address.
-     * @param {AddressUpdateArgs} args - Arguments to update one Address.
+     * Update one FacilityAddress.
+     * @param {FacilityAddressUpdateArgs} args - Arguments to update one FacilityAddress.
      * @example
-     * // Update one Address
-     * const address = await prisma.address.update({
+     * // Update one FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14212,34 +14230,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends AddressUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressUpdateArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends FacilityAddressUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressUpdateArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Addresses.
-     * @param {AddressDeleteManyArgs} args - Arguments to filter Addresses to delete.
+     * Delete zero or more FacilityAddresses.
+     * @param {FacilityAddressDeleteManyArgs} args - Arguments to filter FacilityAddresses to delete.
      * @example
-     * // Delete a few Addresses
-     * const { count } = await prisma.address.deleteMany({
+     * // Delete a few FacilityAddresses
+     * const { count } = await prisma.facilityAddress.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends AddressDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AddressDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends FacilityAddressDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityAddressDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Addresses.
+     * Update zero or more FacilityAddresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FacilityAddressUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Addresses
-     * const address = await prisma.address.updateMany({
+     * // Update many FacilityAddresses
+     * const facilityAddress = await prisma.facilityAddress.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14249,59 +14267,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends AddressUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressUpdateManyArgs<ExtArgs>>
+    updateMany<T extends FacilityAddressUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Address.
-     * @param {AddressUpsertArgs} args - Arguments to update or create a Address.
+     * Create or update one FacilityAddress.
+     * @param {FacilityAddressUpsertArgs} args - Arguments to update or create a FacilityAddress.
      * @example
-     * // Update or create a Address
-     * const address = await prisma.address.upsert({
+     * // Update or create a FacilityAddress
+     * const facilityAddress = await prisma.facilityAddress.upsert({
      *   create: {
-     *     // ... data to create a Address
+     *     // ... data to create a FacilityAddress
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Address we want to update
+     *     // ... the filter for the FacilityAddress we want to update
      *   }
      * })
     **/
-    upsert<T extends AddressUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, AddressUpsertArgs<ExtArgs>>
-    ): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends FacilityAddressUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityAddressUpsertArgs<ExtArgs>>
+    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Addresses.
+     * Count the number of FacilityAddresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressCountArgs} args - Arguments to filter Addresses to count.
+     * @param {FacilityAddressCountArgs} args - Arguments to filter FacilityAddresses to count.
      * @example
-     * // Count the number of Addresses
-     * const count = await prisma.address.count({
+     * // Count the number of FacilityAddresses
+     * const count = await prisma.facilityAddress.count({
      *   where: {
-     *     // ... the filter for the Addresses we want to count
+     *     // ... the filter for the FacilityAddresses we want to count
      *   }
      * })
     **/
-    count<T extends AddressCountArgs>(
-      args?: Subset<T, AddressCountArgs>,
+    count<T extends FacilityAddressCountArgs>(
+      args?: Subset<T, FacilityAddressCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AddressCountAggregateOutputType>
+          : GetScalarType<T['select'], FacilityAddressCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Address.
+     * Allows you to perform aggregations operations on a FacilityAddress.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FacilityAddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -14321,13 +14339,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AddressAggregateArgs>(args: Subset<T, AddressAggregateArgs>): Prisma.PrismaPromise<GetAddressAggregateType<T>>
+    aggregate<T extends FacilityAddressAggregateArgs>(args: Subset<T, FacilityAddressAggregateArgs>): Prisma.PrismaPromise<GetFacilityAddressAggregateType<T>>
 
     /**
-     * Group by Address.
+     * Group by FacilityAddress.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AddressGroupByArgs} args - Group by arguments.
+     * @param {FacilityAddressGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -14342,14 +14360,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AddressGroupByArgs,
+      T extends FacilityAddressGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AddressGroupByArgs['orderBy'] }
-        : { orderBy?: AddressGroupByArgs['orderBy'] },
+        ? { orderBy: FacilityAddressGroupByArgs['orderBy'] }
+        : { orderBy?: FacilityAddressGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -14398,23 +14416,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FacilityAddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Address model
+   * Fields of the FacilityAddress model
    */
-  readonly fields: AddressFieldRefs;
+  readonly fields: FacilityAddressFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Address.
+   * The delegate class that acts as a "Promise-like" for FacilityAddress.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FacilityAddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    orders<T extends Address$ordersArgs<ExtArgs> = {}>(args?: Subset<T, Address$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, 'findMany'> | Null>;
+    facility<T extends FacilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FacilityDefaultArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14441,348 +14459,332 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Address model
+   * Fields of the FacilityAddress model
    */ 
-  interface AddressFieldRefs {
-    readonly id: FieldRef<"Address", 'String'>
-    readonly addressLine1: FieldRef<"Address", 'String'>
-    readonly addressLine2: FieldRef<"Address", 'String'>
-    readonly locality: FieldRef<"Address", 'String'>
-    readonly administrativeArea: FieldRef<"Address", 'String'>
-    readonly postalCode: FieldRef<"Address", 'String'>
-    readonly countryCode: FieldRef<"Address", 'String'>
-    readonly createdAt: FieldRef<"Address", 'DateTime'>
-    readonly updatedAt: FieldRef<"Address", 'DateTime'>
+  interface FacilityAddressFieldRefs {
+    readonly id: FieldRef<"FacilityAddress", 'String'>
+    readonly name: FieldRef<"FacilityAddress", 'String'>
+    readonly addressLine1: FieldRef<"FacilityAddress", 'String'>
+    readonly addressLine2: FieldRef<"FacilityAddress", 'String'>
+    readonly city: FieldRef<"FacilityAddress", 'String'>
+    readonly stateOrProvince: FieldRef<"FacilityAddress", 'String'>
+    readonly zipOrPostalCode: FieldRef<"FacilityAddress", 'String'>
+    readonly countryCode: FieldRef<"FacilityAddress", 'String'>
+    readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
+    readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
+    readonly createdAt: FieldRef<"FacilityAddress", 'DateTime'>
+    readonly updatedAt: FieldRef<"FacilityAddress", 'DateTime'>
+    readonly facilityId: FieldRef<"FacilityAddress", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Address findUnique
+   * FacilityAddress findUnique
    */
-  export type AddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter, which Address to fetch.
+     * Filter, which FacilityAddress to fetch.
      */
-    where: AddressWhereUniqueInput
+    where: FacilityAddressWhereUniqueInput
   }
 
   /**
-   * Address findUniqueOrThrow
+   * FacilityAddress findUniqueOrThrow
    */
-  export type AddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter, which Address to fetch.
+     * Filter, which FacilityAddress to fetch.
      */
-    where: AddressWhereUniqueInput
+    where: FacilityAddressWhereUniqueInput
   }
 
   /**
-   * Address findFirst
+   * FacilityAddress findFirst
    */
-  export type AddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter, which Address to fetch.
+     * Filter, which FacilityAddress to fetch.
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Addresses to fetch.
+     * Determine the order of FacilityAddresses to fetch.
      */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Addresses.
+     * Sets the position for searching for FacilityAddresses.
      */
-    cursor?: AddressWhereUniqueInput
+    cursor?: FacilityAddressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Addresses from the position of the cursor.
+     * Take `±n` FacilityAddresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Addresses.
+     * Skip the first `n` FacilityAddresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Addresses.
+     * Filter by unique combinations of FacilityAddresses.
      */
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
   }
 
   /**
-   * Address findFirstOrThrow
+   * FacilityAddress findFirstOrThrow
    */
-  export type AddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter, which Address to fetch.
+     * Filter, which FacilityAddress to fetch.
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Addresses to fetch.
+     * Determine the order of FacilityAddresses to fetch.
      */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Addresses.
+     * Sets the position for searching for FacilityAddresses.
      */
-    cursor?: AddressWhereUniqueInput
+    cursor?: FacilityAddressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Addresses from the position of the cursor.
+     * Take `±n` FacilityAddresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Addresses.
+     * Skip the first `n` FacilityAddresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Addresses.
+     * Filter by unique combinations of FacilityAddresses.
      */
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
   }
 
   /**
-   * Address findMany
+   * FacilityAddress findMany
    */
-  export type AddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter, which Addresses to fetch.
+     * Filter, which FacilityAddresses to fetch.
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Addresses to fetch.
+     * Determine the order of FacilityAddresses to fetch.
      */
-    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Addresses.
+     * Sets the position for listing FacilityAddresses.
      */
-    cursor?: AddressWhereUniqueInput
+    cursor?: FacilityAddressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Addresses from the position of the cursor.
+     * Take `±n` FacilityAddresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Addresses.
+     * Skip the first `n` FacilityAddresses.
      */
     skip?: number
-    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
   }
 
   /**
-   * Address create
+   * FacilityAddress create
    */
-  export type AddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * The data needed to create a Address.
+     * The data needed to create a FacilityAddress.
      */
-    data: XOR<AddressCreateInput, AddressUncheckedCreateInput>
+    data: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
   }
 
   /**
-   * Address createMany
+   * FacilityAddress createMany
    */
-  export type AddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Addresses.
+     * The data used to create many FacilityAddresses.
      */
-    data: AddressCreateManyInput | AddressCreateManyInput[]
+    data: FacilityAddressCreateManyInput | FacilityAddressCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Address update
+   * FacilityAddress update
    */
-  export type AddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * The data needed to update a Address.
+     * The data needed to update a FacilityAddress.
      */
-    data: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
+    data: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
     /**
-     * Choose, which Address to update.
+     * Choose, which FacilityAddress to update.
      */
-    where: AddressWhereUniqueInput
+    where: FacilityAddressWhereUniqueInput
   }
 
   /**
-   * Address updateMany
+   * FacilityAddress updateMany
    */
-  export type AddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Addresses.
+     * The data used to update FacilityAddresses.
      */
-    data: XOR<AddressUpdateManyMutationInput, AddressUncheckedUpdateManyInput>
+    data: XOR<FacilityAddressUpdateManyMutationInput, FacilityAddressUncheckedUpdateManyInput>
     /**
-     * Filter which Addresses to update
+     * Filter which FacilityAddresses to update
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
   }
 
   /**
-   * Address upsert
+   * FacilityAddress upsert
    */
-  export type AddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * The filter to search for the Address to update in case it exists.
+     * The filter to search for the FacilityAddress to update in case it exists.
      */
-    where: AddressWhereUniqueInput
+    where: FacilityAddressWhereUniqueInput
     /**
-     * In case the Address found by the `where` argument doesn't exist, create a new Address with this data.
+     * In case the FacilityAddress found by the `where` argument doesn't exist, create a new FacilityAddress with this data.
      */
-    create: XOR<AddressCreateInput, AddressUncheckedCreateInput>
+    create: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
     /**
-     * In case the Address was found with the provided `where` argument, update it with this data.
+     * In case the FacilityAddress was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
+    update: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
   }
 
   /**
-   * Address delete
+   * FacilityAddress delete
    */
-  export type AddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Address
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: AddressSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
     /**
-     * Filter which Address to delete.
+     * Filter which FacilityAddress to delete.
      */
-    where: AddressWhereUniqueInput
+    where: FacilityAddressWhereUniqueInput
   }
 
   /**
-   * Address deleteMany
+   * FacilityAddress deleteMany
    */
-  export type AddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Addresses to delete
+     * Filter which FacilityAddresses to delete
      */
-    where?: AddressWhereInput
+    where?: FacilityAddressWhereInput
   }
 
   /**
-   * Address.orders
+   * FacilityAddress without action
    */
-  export type Address$ordersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityAddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the FacilityAddress
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: FacilityAddressSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrderInclude<ExtArgs> | null
-    where?: OrderWhereInput
-    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
-    cursor?: OrderWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
-  }
-
-  /**
-   * Address without action
-   */
-  export type AddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Address
-     */
-    select?: AddressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AddressInclude<ExtArgs> | null
+    include?: FacilityAddressInclude<ExtArgs> | null
   }
 
 
@@ -32721,19 +32723,23 @@ export namespace Prisma {
   export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
-  export const AddressScalarFieldEnum: {
+  export const FacilityAddressScalarFieldEnum: {
     id: 'id',
+    name: 'name',
     addressLine1: 'addressLine1',
     addressLine2: 'addressLine2',
-    locality: 'locality',
-    administrativeArea: 'administrativeArea',
-    postalCode: 'postalCode',
+    city: 'city',
+    stateOrProvince: 'stateOrProvince',
+    zipOrPostalCode: 'zipOrPostalCode',
     countryCode: 'countryCode',
+    shippingAccountId: 'shippingAccountId',
+    shippingAccountCarrier: 'shippingAccountCarrier',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    facilityId: 'facilityId'
   };
 
-  export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+  export type FacilityAddressScalarFieldEnum = (typeof FacilityAddressScalarFieldEnum)[keyof typeof FacilityAddressScalarFieldEnum]
 
 
   export const ShippingPackageScalarFieldEnum: {
@@ -33257,6 +33263,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Carrier'
+   */
+  export type EnumCarrierFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Carrier'>
+    
+
+
+  /**
+   * Reference to a field of type 'Carrier[]'
+   */
+  export type ListEnumCarrierFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Carrier[]'>
+    
+
+
+  /**
    * Reference to a field of type 'WeightUnit'
    */
   export type EnumWeightUnitFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeightUnit'>
@@ -33445,6 +33465,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
   }
 
@@ -33457,6 +33478,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
+    address?: FacilityAddressOrderByWithRelationInput
     users?: FacilityUserOrderByRelationAggregateInput
   }
 
@@ -33472,6 +33494,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
   }, "id">
 
@@ -34202,7 +34225,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
     workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
-    shippingAddress?: XOR<AddressNullableRelationFilter, AddressWhereInput> | null
   }
 
   export type OrderOrderByWithRelationInput = {
@@ -34220,7 +34242,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     workbench?: WorkbenchOrderByWithRelationInput
-    shippingAddress?: AddressOrderByWithRelationInput
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
@@ -34241,7 +34262,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
     workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
-    shippingAddress?: XOR<AddressNullableRelationFilter, AddressWhereInput> | null
   }, "id">
 
   export type OrderOrderByWithAggregationInput = {
@@ -34282,79 +34302,99 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
-  export type AddressWhereInput = {
-    AND?: AddressWhereInput | AddressWhereInput[]
-    OR?: AddressWhereInput[]
-    NOT?: AddressWhereInput | AddressWhereInput[]
-    id?: StringFilter<"Address"> | string
-    addressLine1?: StringFilter<"Address"> | string
-    addressLine2?: StringNullableFilter<"Address"> | string | null
-    locality?: StringFilter<"Address"> | string
-    administrativeArea?: StringFilter<"Address"> | string
-    postalCode?: StringFilter<"Address"> | string
-    countryCode?: StringFilter<"Address"> | string
-    createdAt?: DateTimeFilter<"Address"> | Date | string
-    updatedAt?: DateTimeFilter<"Address"> | Date | string
-    orders?: OrderListRelationFilter
+  export type FacilityAddressWhereInput = {
+    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
+    OR?: FacilityAddressWhereInput[]
+    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
+    id?: StringFilter<"FacilityAddress"> | string
+    name?: StringNullableFilter<"FacilityAddress"> | string | null
+    addressLine1?: StringFilter<"FacilityAddress"> | string
+    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
+    city?: StringFilter<"FacilityAddress"> | string
+    stateOrProvince?: StringFilter<"FacilityAddress"> | string
+    zipOrPostalCode?: StringFilter<"FacilityAddress"> | string
+    countryCode?: StringFilter<"FacilityAddress"> | string
+    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
+    facilityId?: StringFilter<"FacilityAddress"> | string
+    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
   }
 
-  export type AddressOrderByWithRelationInput = {
+  export type FacilityAddressOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
     addressLine2?: SortOrderInput | SortOrder
-    locality?: SortOrder
-    administrativeArea?: SortOrder
-    postalCode?: SortOrder
+    city?: SortOrder
+    stateOrProvince?: SortOrder
+    zipOrPostalCode?: SortOrder
     countryCode?: SortOrder
+    shippingAccountId?: SortOrderInput | SortOrder
+    shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    orders?: OrderOrderByRelationAggregateInput
+    facilityId?: SortOrder
+    facility?: FacilityOrderByWithRelationInput
   }
 
-  export type AddressWhereUniqueInput = Prisma.AtLeast<{
+  export type FacilityAddressWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: AddressWhereInput | AddressWhereInput[]
-    OR?: AddressWhereInput[]
-    NOT?: AddressWhereInput | AddressWhereInput[]
-    addressLine1?: StringFilter<"Address"> | string
-    addressLine2?: StringNullableFilter<"Address"> | string | null
-    locality?: StringFilter<"Address"> | string
-    administrativeArea?: StringFilter<"Address"> | string
-    postalCode?: StringFilter<"Address"> | string
-    countryCode?: StringFilter<"Address"> | string
-    createdAt?: DateTimeFilter<"Address"> | Date | string
-    updatedAt?: DateTimeFilter<"Address"> | Date | string
-    orders?: OrderListRelationFilter
-  }, "id">
+    facilityId?: string
+    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
+    OR?: FacilityAddressWhereInput[]
+    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
+    name?: StringNullableFilter<"FacilityAddress"> | string | null
+    addressLine1?: StringFilter<"FacilityAddress"> | string
+    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
+    city?: StringFilter<"FacilityAddress"> | string
+    stateOrProvince?: StringFilter<"FacilityAddress"> | string
+    zipOrPostalCode?: StringFilter<"FacilityAddress"> | string
+    countryCode?: StringFilter<"FacilityAddress"> | string
+    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
+    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
+  }, "id" | "facilityId">
 
-  export type AddressOrderByWithAggregationInput = {
+  export type FacilityAddressOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
     addressLine2?: SortOrderInput | SortOrder
-    locality?: SortOrder
-    administrativeArea?: SortOrder
-    postalCode?: SortOrder
+    city?: SortOrder
+    stateOrProvince?: SortOrder
+    zipOrPostalCode?: SortOrder
     countryCode?: SortOrder
+    shippingAccountId?: SortOrderInput | SortOrder
+    shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: AddressCountOrderByAggregateInput
-    _max?: AddressMaxOrderByAggregateInput
-    _min?: AddressMinOrderByAggregateInput
+    facilityId?: SortOrder
+    _count?: FacilityAddressCountOrderByAggregateInput
+    _max?: FacilityAddressMaxOrderByAggregateInput
+    _min?: FacilityAddressMinOrderByAggregateInput
   }
 
-  export type AddressScalarWhereWithAggregatesInput = {
-    AND?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
-    OR?: AddressScalarWhereWithAggregatesInput[]
-    NOT?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Address"> | string
-    addressLine1?: StringWithAggregatesFilter<"Address"> | string
-    addressLine2?: StringNullableWithAggregatesFilter<"Address"> | string | null
-    locality?: StringWithAggregatesFilter<"Address"> | string
-    administrativeArea?: StringWithAggregatesFilter<"Address"> | string
-    postalCode?: StringWithAggregatesFilter<"Address"> | string
-    countryCode?: StringWithAggregatesFilter<"Address"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
+  export type FacilityAddressScalarWhereWithAggregatesInput = {
+    AND?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
+    OR?: FacilityAddressScalarWhereWithAggregatesInput[]
+    NOT?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    name?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
+    addressLine1?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    addressLine2?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
+    city?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    stateOrProvince?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    zipOrPostalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
+    createdAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
+    facilityId?: StringWithAggregatesFilter<"FacilityAddress"> | string
   }
 
   export type ShippingPackageWhereInput = {
@@ -35652,6 +35692,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
+    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
   }
 
@@ -35663,6 +35704,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
   }
 
@@ -35674,6 +35716,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
   }
 
@@ -35685,6 +35728,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
@@ -36497,6 +36541,7 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
+    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -36505,7 +36550,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     workbench: WorkbenchCreateNestedOneWithoutOrdersInput
-    shippingAddress?: AddressCreateNestedOneWithoutOrdersInput
   }
 
   export type OrderUncheckedCreateInput = {
@@ -36529,6 +36573,7 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36537,7 +36582,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbench?: WorkbenchUpdateOneRequiredWithoutOrdersNestedInput
-    shippingAddress?: AddressUpdateOneWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateInput = {
@@ -36577,6 +36621,7 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36602,92 +36647,115 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AddressCreateInput = {
+  export type FacilityAddressCreateInput = {
     id?: string
+    name?: string | null
     addressLine1: string
     addressLine2?: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
     countryCode: string
+    shippingAccountId?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    orders?: OrderCreateNestedManyWithoutShippingAddressInput
+    facility: FacilityCreateNestedOneWithoutAddressInput
   }
 
-  export type AddressUncheckedCreateInput = {
+  export type FacilityAddressUncheckedCreateInput = {
     id?: string
+    name?: string | null
     addressLine1: string
     addressLine2?: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
     countryCode: string
+    shippingAccountId?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    orders?: OrderUncheckedCreateNestedManyWithoutShippingAddressInput
+    facilityId: string
   }
 
-  export type AddressUpdateInput = {
+  export type FacilityAddressUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    orders?: OrderUpdateManyWithoutShippingAddressNestedInput
+    facility?: FacilityUpdateOneRequiredWithoutAddressNestedInput
   }
 
-  export type AddressUncheckedUpdateInput = {
+  export type FacilityAddressUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    orders?: OrderUncheckedUpdateManyWithoutShippingAddressNestedInput
+    facilityId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AddressCreateManyInput = {
+  export type FacilityAddressCreateManyInput = {
     id?: string
+    name?: string | null
     addressLine1: string
     addressLine2?: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
     countryCode: string
+    shippingAccountId?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    facilityId: string
   }
 
-  export type AddressUpdateManyMutationInput = {
+  export type FacilityAddressUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AddressUncheckedUpdateManyInput = {
+  export type FacilityAddressUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilityId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ShippingPackageCreateInput = {
@@ -38199,6 +38267,11 @@ export namespace Prisma {
     isNot?: CompanyWhereInput
   }
 
+  export type FacilityAddressNullableRelationFilter = {
+    is?: FacilityAddressWhereInput | null
+    isNot?: FacilityAddressWhereInput | null
+  }
+
   export type FacilityUserListRelationFilter = {
     every?: FacilityUserWhereInput
     some?: FacilityUserWhereInput
@@ -38994,11 +39067,6 @@ export namespace Prisma {
     isNot?: WorkbenchWhereInput
   }
 
-  export type AddressNullableRelationFilter = {
-    is?: AddressWhereInput | null
-    isNot?: AddressWhereInput | null
-  }
-
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
     workbenchId?: SortOrder
@@ -39067,40 +39135,74 @@ export namespace Prisma {
     _max?: NestedEnumOrderAuthorizationStatusFilter<$PrismaModel>
   }
 
-  export type AddressCountOrderByAggregateInput = {
-    id?: SortOrder
-    addressLine1?: SortOrder
-    addressLine2?: SortOrder
-    locality?: SortOrder
-    administrativeArea?: SortOrder
-    postalCode?: SortOrder
-    countryCode?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+  export type EnumCarrierNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Carrier | EnumCarrierFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCarrierNullableFilter<$PrismaModel> | $Enums.Carrier | null
   }
 
-  export type AddressMaxOrderByAggregateInput = {
-    id?: SortOrder
-    addressLine1?: SortOrder
-    addressLine2?: SortOrder
-    locality?: SortOrder
-    administrativeArea?: SortOrder
-    postalCode?: SortOrder
-    countryCode?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+  export type FacilityRelationFilter = {
+    is?: FacilityWhereInput
+    isNot?: FacilityWhereInput
   }
 
-  export type AddressMinOrderByAggregateInput = {
+  export type FacilityAddressCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     addressLine1?: SortOrder
     addressLine2?: SortOrder
-    locality?: SortOrder
-    administrativeArea?: SortOrder
-    postalCode?: SortOrder
+    city?: SortOrder
+    stateOrProvince?: SortOrder
+    zipOrPostalCode?: SortOrder
     countryCode?: SortOrder
+    shippingAccountId?: SortOrder
+    shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    facilityId?: SortOrder
+  }
+
+  export type FacilityAddressMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    addressLine1?: SortOrder
+    addressLine2?: SortOrder
+    city?: SortOrder
+    stateOrProvince?: SortOrder
+    zipOrPostalCode?: SortOrder
+    countryCode?: SortOrder
+    shippingAccountId?: SortOrder
+    shippingAccountCarrier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    facilityId?: SortOrder
+  }
+
+  export type FacilityAddressMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    addressLine1?: SortOrder
+    addressLine2?: SortOrder
+    city?: SortOrder
+    stateOrProvince?: SortOrder
+    zipOrPostalCode?: SortOrder
+    countryCode?: SortOrder
+    shippingAccountId?: SortOrder
+    shippingAccountCarrier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    facilityId?: SortOrder
+  }
+
+  export type EnumCarrierNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Carrier | EnumCarrierFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCarrierNullableWithAggregatesFilter<$PrismaModel> | $Enums.Carrier | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCarrierNullableFilter<$PrismaModel>
+    _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
   }
 
   export type EnumWeightUnitFilter<$PrismaModel = never> = {
@@ -39776,11 +39878,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type FacilityRelationFilter = {
-    is?: FacilityWhereInput
-    isNot?: FacilityWhereInput
-  }
-
   export type FacilityUserUserIdFacilityIdCompoundUniqueInput = {
     userId: string
     facilityId: string
@@ -40184,11 +40281,23 @@ export namespace Prisma {
     connect?: CompanyWhereUniqueInput
   }
 
+  export type FacilityAddressCreateNestedOneWithoutFacilityInput = {
+    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
+    connect?: FacilityAddressWhereUniqueInput
+  }
+
   export type FacilityUserCreateNestedManyWithoutFacilityInput = {
     create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
     connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
     createMany?: FacilityUserCreateManyFacilityInputEnvelope
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+  }
+
+  export type FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput = {
+    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
+    connect?: FacilityAddressWhereUniqueInput
   }
 
   export type FacilityUserUncheckedCreateNestedManyWithoutFacilityInput = {
@@ -40210,6 +40319,16 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutFacilitiesInput, CompanyUpdateWithoutFacilitiesInput>, CompanyUncheckedUpdateWithoutFacilitiesInput>
   }
 
+  export type FacilityAddressUpdateOneWithoutFacilityNestedInput = {
+    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
+    upsert?: FacilityAddressUpsertWithoutFacilityInput
+    disconnect?: FacilityAddressWhereInput | boolean
+    delete?: FacilityAddressWhereInput | boolean
+    connect?: FacilityAddressWhereUniqueInput
+    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
+  }
+
   export type FacilityUserUpdateManyWithoutFacilityNestedInput = {
     create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
     connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
@@ -40222,6 +40341,16 @@ export namespace Prisma {
     update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+  }
+
+  export type FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput = {
+    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
+    upsert?: FacilityAddressUpsertWithoutFacilityInput
+    disconnect?: FacilityAddressWhereInput | boolean
+    delete?: FacilityAddressWhereInput | boolean
+    connect?: FacilityAddressWhereUniqueInput
+    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
   }
 
   export type FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput = {
@@ -41125,12 +41254,6 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput
   }
 
-  export type AddressCreateNestedOneWithoutOrdersInput = {
-    create?: XOR<AddressCreateWithoutOrdersInput, AddressUncheckedCreateWithoutOrdersInput>
-    connectOrCreate?: AddressCreateOrConnectWithoutOrdersInput
-    connect?: AddressWhereUniqueInput
-  }
-
   export type EnumOrderStatusFieldUpdateOperationsInput = {
     set?: $Enums.OrderStatus
   }
@@ -41147,56 +41270,22 @@ export namespace Prisma {
     update?: XOR<XOR<WorkbenchUpdateToOneWithWhereWithoutOrdersInput, WorkbenchUpdateWithoutOrdersInput>, WorkbenchUncheckedUpdateWithoutOrdersInput>
   }
 
-  export type AddressUpdateOneWithoutOrdersNestedInput = {
-    create?: XOR<AddressCreateWithoutOrdersInput, AddressUncheckedCreateWithoutOrdersInput>
-    connectOrCreate?: AddressCreateOrConnectWithoutOrdersInput
-    upsert?: AddressUpsertWithoutOrdersInput
-    disconnect?: AddressWhereInput | boolean
-    delete?: AddressWhereInput | boolean
-    connect?: AddressWhereUniqueInput
-    update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutOrdersInput, AddressUpdateWithoutOrdersInput>, AddressUncheckedUpdateWithoutOrdersInput>
+  export type FacilityCreateNestedOneWithoutAddressInput = {
+    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
+    connect?: FacilityWhereUniqueInput
   }
 
-  export type OrderCreateNestedManyWithoutShippingAddressInput = {
-    create?: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput> | OrderCreateWithoutShippingAddressInput[] | OrderUncheckedCreateWithoutShippingAddressInput[]
-    connectOrCreate?: OrderCreateOrConnectWithoutShippingAddressInput | OrderCreateOrConnectWithoutShippingAddressInput[]
-    createMany?: OrderCreateManyShippingAddressInputEnvelope
-    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  export type NullableEnumCarrierFieldUpdateOperationsInput = {
+    set?: $Enums.Carrier | null
   }
 
-  export type OrderUncheckedCreateNestedManyWithoutShippingAddressInput = {
-    create?: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput> | OrderCreateWithoutShippingAddressInput[] | OrderUncheckedCreateWithoutShippingAddressInput[]
-    connectOrCreate?: OrderCreateOrConnectWithoutShippingAddressInput | OrderCreateOrConnectWithoutShippingAddressInput[]
-    createMany?: OrderCreateManyShippingAddressInputEnvelope
-    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-  }
-
-  export type OrderUpdateManyWithoutShippingAddressNestedInput = {
-    create?: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput> | OrderCreateWithoutShippingAddressInput[] | OrderUncheckedCreateWithoutShippingAddressInput[]
-    connectOrCreate?: OrderCreateOrConnectWithoutShippingAddressInput | OrderCreateOrConnectWithoutShippingAddressInput[]
-    upsert?: OrderUpsertWithWhereUniqueWithoutShippingAddressInput | OrderUpsertWithWhereUniqueWithoutShippingAddressInput[]
-    createMany?: OrderCreateManyShippingAddressInputEnvelope
-    set?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    disconnect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    delete?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    update?: OrderUpdateWithWhereUniqueWithoutShippingAddressInput | OrderUpdateWithWhereUniqueWithoutShippingAddressInput[]
-    updateMany?: OrderUpdateManyWithWhereWithoutShippingAddressInput | OrderUpdateManyWithWhereWithoutShippingAddressInput[]
-    deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
-  }
-
-  export type OrderUncheckedUpdateManyWithoutShippingAddressNestedInput = {
-    create?: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput> | OrderCreateWithoutShippingAddressInput[] | OrderUncheckedCreateWithoutShippingAddressInput[]
-    connectOrCreate?: OrderCreateOrConnectWithoutShippingAddressInput | OrderCreateOrConnectWithoutShippingAddressInput[]
-    upsert?: OrderUpsertWithWhereUniqueWithoutShippingAddressInput | OrderUpsertWithWhereUniqueWithoutShippingAddressInput[]
-    createMany?: OrderCreateManyShippingAddressInputEnvelope
-    set?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    disconnect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    delete?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-    update?: OrderUpdateWithWhereUniqueWithoutShippingAddressInput | OrderUpdateWithWhereUniqueWithoutShippingAddressInput[]
-    updateMany?: OrderUpdateManyWithWhereWithoutShippingAddressInput | OrderUpdateManyWithWhereWithoutShippingAddressInput[]
-    deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
+  export type FacilityUpdateOneRequiredWithoutAddressNestedInput = {
+    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
+    upsert?: FacilityUpsertWithoutAddressInput
+    connect?: FacilityWhereUniqueInput
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutAddressInput, FacilityUpdateWithoutAddressInput>, FacilityUncheckedUpdateWithoutAddressInput>
   }
 
   export type CompanyCreateNestedOneWithoutPackagesInput = {
@@ -42459,6 +42548,23 @@ export namespace Prisma {
     _max?: NestedEnumOrderAuthorizationStatusFilter<$PrismaModel>
   }
 
+  export type NestedEnumCarrierNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Carrier | EnumCarrierFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCarrierNullableFilter<$PrismaModel> | $Enums.Carrier | null
+  }
+
+  export type NestedEnumCarrierNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Carrier | EnumCarrierFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Carrier[] | ListEnumCarrierFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCarrierNullableWithAggregatesFilter<$PrismaModel> | $Enums.Carrier | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCarrierNullableFilter<$PrismaModel>
+    _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumWeightUnitFilter<$PrismaModel = never> = {
     equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
     in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
@@ -42589,6 +42695,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
   }
 
@@ -42599,6 +42706,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
   }
 
@@ -43031,6 +43139,41 @@ export namespace Prisma {
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
   }
 
+  export type FacilityAddressCreateWithoutFacilityInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityAddressUncheckedCreateWithoutFacilityInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    zipOrPostalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityAddressCreateOrConnectWithoutFacilityInput = {
+    where: FacilityAddressWhereUniqueInput
+    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+  }
+
   export type FacilityUserCreateWithoutFacilityInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43096,6 +43239,47 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type FacilityAddressUpsertWithoutFacilityInput = {
+    update: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
+    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
+    where?: FacilityAddressWhereInput
+  }
+
+  export type FacilityAddressUpdateToOneWithWhereWithoutFacilityInput = {
+    where?: FacilityAddressWhereInput
+    data: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
+  }
+
+  export type FacilityAddressUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilityAddressUncheckedUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacilityUserUpsertWithWhereUniqueWithoutFacilityInput = {
@@ -44868,6 +45052,7 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
+    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -44875,7 +45060,6 @@ export namespace Prisma {
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shippingAddress?: AddressCreateNestedOneWithoutOrdersInput
   }
 
   export type OrderUncheckedCreateWithoutWorkbenchInput = {
@@ -45152,35 +45336,6 @@ export namespace Prisma {
     create: XOR<WorkbenchCreateWithoutOrdersInput, WorkbenchUncheckedCreateWithoutOrdersInput>
   }
 
-  export type AddressCreateWithoutOrdersInput = {
-    id?: string
-    addressLine1: string
-    addressLine2?: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
-    countryCode: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AddressUncheckedCreateWithoutOrdersInput = {
-    id?: string
-    addressLine1: string
-    addressLine2?: string | null
-    locality: string
-    administrativeArea: string
-    postalCode: string
-    countryCode: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AddressCreateOrConnectWithoutOrdersInput = {
-    where: AddressWhereUniqueInput
-    create: XOR<AddressCreateWithoutOrdersInput, AddressUncheckedCreateWithoutOrdersInput>
-  }
-
   export type WorkbenchUpsertWithoutOrdersInput = {
     update: XOR<WorkbenchUpdateWithoutOrdersInput, WorkbenchUncheckedUpdateWithoutOrdersInput>
     create: XOR<WorkbenchCreateWithoutOrdersInput, WorkbenchUncheckedCreateWithoutOrdersInput>
@@ -45222,95 +45377,64 @@ export namespace Prisma {
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
   }
 
-  export type AddressUpsertWithoutOrdersInput = {
-    update: XOR<AddressUpdateWithoutOrdersInput, AddressUncheckedUpdateWithoutOrdersInput>
-    create: XOR<AddressCreateWithoutOrdersInput, AddressUncheckedCreateWithoutOrdersInput>
-    where?: AddressWhereInput
-  }
-
-  export type AddressUpdateToOneWithWhereWithoutOrdersInput = {
-    where?: AddressWhereInput
-    data: XOR<AddressUpdateWithoutOrdersInput, AddressUncheckedUpdateWithoutOrdersInput>
-  }
-
-  export type AddressUpdateWithoutOrdersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    addressLine1?: StringFieldUpdateOperationsInput | string
-    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
-    countryCode?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AddressUncheckedUpdateWithoutOrdersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    addressLine1?: StringFieldUpdateOperationsInput | string
-    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    locality?: StringFieldUpdateOperationsInput | string
-    administrativeArea?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
-    countryCode?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type OrderCreateWithoutShippingAddressInput = {
+  export type FacilityCreateWithoutAddressInput = {
     id?: string
-    status?: $Enums.OrderStatus
-    statusUpdatedAt?: Date | string | null
-    committedDeliveryAt?: Date | string | null
-    parcelId?: string | null
+    name: string
+    type: $Enums.FacilityType
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
-    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    workbench: WorkbenchCreateNestedOneWithoutOrdersInput
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
   }
 
-  export type OrderUncheckedCreateWithoutShippingAddressInput = {
+  export type FacilityUncheckedCreateWithoutAddressInput = {
     id?: string
-    workbenchId: string
-    status?: $Enums.OrderStatus
-    statusUpdatedAt?: Date | string | null
-    committedDeliveryAt?: Date | string | null
-    parcelId?: string | null
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
-    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
   }
 
-  export type OrderCreateOrConnectWithoutShippingAddressInput = {
-    where: OrderWhereUniqueInput
-    create: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput>
+  export type FacilityCreateOrConnectWithoutAddressInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
   }
 
-  export type OrderCreateManyShippingAddressInputEnvelope = {
-    data: OrderCreateManyShippingAddressInput | OrderCreateManyShippingAddressInput[]
-    skipDuplicates?: boolean
+  export type FacilityUpsertWithoutAddressInput = {
+    update: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
+    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
+    where?: FacilityWhereInput
   }
 
-  export type OrderUpsertWithWhereUniqueWithoutShippingAddressInput = {
-    where: OrderWhereUniqueInput
-    update: XOR<OrderUpdateWithoutShippingAddressInput, OrderUncheckedUpdateWithoutShippingAddressInput>
-    create: XOR<OrderCreateWithoutShippingAddressInput, OrderUncheckedCreateWithoutShippingAddressInput>
+  export type FacilityUpdateToOneWithWhereWithoutAddressInput = {
+    where?: FacilityWhereInput
+    data: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
   }
 
-  export type OrderUpdateWithWhereUniqueWithoutShippingAddressInput = {
-    where: OrderWhereUniqueInput
-    data: XOR<OrderUpdateWithoutShippingAddressInput, OrderUncheckedUpdateWithoutShippingAddressInput>
+  export type FacilityUpdateWithoutAddressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
   }
 
-  export type OrderUpdateManyWithWhereWithoutShippingAddressInput = {
-    where: OrderScalarWhereInput
-    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutShippingAddressInput>
+  export type FacilityUncheckedUpdateWithoutAddressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type CompanyCreateWithoutPackagesInput = {
@@ -46814,6 +46938,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
+    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutUsersInput = {
@@ -46824,6 +46949,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutUsersInput = {
@@ -46879,6 +47005,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutUsersInput = {
@@ -46889,6 +47016,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
   }
 
   export type UserUpsertWithoutFacilitiesInput = {
@@ -47284,6 +47412,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
   }
 
@@ -47294,6 +47423,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
@@ -48316,6 +48446,7 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -48323,7 +48454,6 @@ export namespace Prisma {
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shippingAddress?: AddressUpdateOneWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutWorkbenchInput = {
@@ -48347,66 +48477,6 @@ export namespace Prisma {
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
-    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type OrderCreateManyShippingAddressInput = {
-    id?: string
-    workbenchId: string
-    status?: $Enums.OrderStatus
-    statusUpdatedAt?: Date | string | null
-    committedDeliveryAt?: Date | string | null
-    parcelId?: string | null
-    active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type OrderUpdateWithoutShippingAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    workbench?: WorkbenchUpdateOneRequiredWithoutOrdersNestedInput
-  }
-
-  export type OrderUncheckedUpdateWithoutShippingAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
-    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
-    active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type OrderUncheckedUpdateManyWithoutShippingAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
-    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -49283,10 +49353,6 @@ export namespace Prisma {
      */
     export type WorkbenchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use AddressCountOutputTypeDefaultArgs instead
-     */
-    export type AddressCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AddressCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use PhysicianCountOutputTypeDefaultArgs instead
      */
     export type PhysicianCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PhysicianCountOutputTypeDefaultArgs<ExtArgs>
@@ -49359,9 +49425,9 @@ export namespace Prisma {
      */
     export type OrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrderDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use AddressDefaultArgs instead
+     * @deprecated Use FacilityAddressDefaultArgs instead
      */
-    export type AddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AddressDefaultArgs<ExtArgs>
+    export type FacilityAddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityAddressDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ShippingPackageDefaultArgs instead
      */
