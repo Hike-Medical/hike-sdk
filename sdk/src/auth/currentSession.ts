@@ -1,26 +1,24 @@
 import { AuthUser } from '@hike/types';
-import { isAuthUser } from '@hike/utils';
 import { errors } from 'jose';
 import { BaseRequestWithCookies, extractToken } from './extractToken';
+import { toAuthUser } from './toAuthUser';
 import { verifyToken } from './verifyToken';
 
 /**
- * Retrieves the session information for the authenticated user.
+ * Retrieves the current session information from the authenticated user's token.
  *
  * @param request - The request object containing the token.
  * @param publicKey - The public key used to verify the token.
  * @returns The authenticated user's session information, or throws an error if the token is invalid.
  */
-export const getSession = async (request: BaseRequestWithCookies, publicKey: string): Promise<AuthUser> => {
+export const currentSession = async (request: BaseRequestWithCookies, publicKey: string): Promise<AuthUser> => {
   const token = extractToken(request);
   const decoded = await verifyToken(token, publicKey);
+  const user = toAuthUser(decoded);
 
-  if (!isAuthUser(decoded)) {
+  if (!user) {
     throw new errors.JWTInvalid('Token type invalid');
   }
 
-  return {
-    id: decoded.id,
-    companies: decoded.companies
-  };
+  return user;
 };
