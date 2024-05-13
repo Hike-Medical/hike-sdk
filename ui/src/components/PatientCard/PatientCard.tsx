@@ -31,7 +31,7 @@ export default function PatientCard({
         variant="filled"
         color="#006CEA1A"
         tt="none" 
-        mt={15}
+        mt={10}
         p={15}
     >
         <Text fw={600} size='12px' c='black'> {text}</Text>
@@ -41,7 +41,7 @@ export default function PatientCard({
     <Paper shadow="md" p="md" style={{ maxWidth: 400 }}>
 
    
-        <Stack gap={'xs'}>
+        <Stack gap={'xs'} mb={5}>
           <Text fw={600} size='20px'> {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}</Text>
           <Text fw={500} size='12px'> Patient ID: {patientId}</Text>
           {birthDate && <Text fw={500} size='12px'>DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</Text>}
