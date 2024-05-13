@@ -23,7 +23,6 @@ export default {
     args: {
         firstName: 'Derrick',
         lastName: 'Rose',
-        isDiabetic: false,
         patientId: '100001',
         clinician: 'Dr. Smith',
         poNumber: '123456',
