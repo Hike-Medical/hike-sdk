@@ -7358,6 +7358,7 @@ export namespace Prisma {
   export type EvaluationMinAggregateOutputType = {
     id: string | null
     externalId: string | null
+    poNumber: string | null
     type: $Enums.CareType | null
     patientId: string | null
     companyId: string | null
@@ -7387,6 +7388,7 @@ export namespace Prisma {
   export type EvaluationMaxAggregateOutputType = {
     id: string | null
     externalId: string | null
+    poNumber: string | null
     type: $Enums.CareType | null
     patientId: string | null
     companyId: string | null
@@ -7416,6 +7418,7 @@ export namespace Prisma {
   export type EvaluationCountAggregateOutputType = {
     id: number
     externalId: number
+    poNumber: number
     type: number
     patientId: number
     companyId: number
@@ -7448,6 +7451,7 @@ export namespace Prisma {
   export type EvaluationMinAggregateInputType = {
     id?: true
     externalId?: true
+    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7477,6 +7481,7 @@ export namespace Prisma {
   export type EvaluationMaxAggregateInputType = {
     id?: true
     externalId?: true
+    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7506,6 +7511,7 @@ export namespace Prisma {
   export type EvaluationCountAggregateInputType = {
     id?: true
     externalId?: true
+    poNumber?: true
     type?: true
     patientId?: true
     companyId?: true
@@ -7609,6 +7615,7 @@ export namespace Prisma {
   export type EvaluationGroupByOutputType = {
     id: string
     externalId: string | null
+    poNumber: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -7656,6 +7663,7 @@ export namespace Prisma {
   export type EvaluationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     externalId?: boolean
+    poNumber?: boolean
     type?: boolean
     patientId?: boolean
     companyId?: boolean
@@ -7696,6 +7704,7 @@ export namespace Prisma {
   export type EvaluationSelectScalar = {
     id?: boolean
     externalId?: boolean
+    poNumber?: boolean
     type?: boolean
     patientId?: boolean
     companyId?: boolean
@@ -7754,6 +7763,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       externalId: string | null
+      poNumber: string | null
       type: $Enums.CareType
       patientId: string
       companyId: string
@@ -8192,6 +8202,7 @@ export namespace Prisma {
   interface EvaluationFieldRefs {
     readonly id: FieldRef<"Evaluation", 'String'>
     readonly externalId: FieldRef<"Evaluation", 'String'>
+    readonly poNumber: FieldRef<"Evaluation", 'String'>
     readonly type: FieldRef<"Evaluation", 'CareType'>
     readonly patientId: FieldRef<"Evaluation", 'String'>
     readonly companyId: FieldRef<"Evaluation", 'String'>
@@ -12768,7 +12779,6 @@ export namespace Prisma {
     status: $Enums.OrderStatus | null
     statusUpdatedAt: Date | null
     committedDeliveryAt: Date | null
-    shippingAddressId: string | null
     parcelId: string | null
     active: boolean | null
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
@@ -12784,7 +12794,6 @@ export namespace Prisma {
     status: $Enums.OrderStatus | null
     statusUpdatedAt: Date | null
     committedDeliveryAt: Date | null
-    shippingAddressId: string | null
     parcelId: string | null
     active: boolean | null
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
@@ -12800,7 +12809,6 @@ export namespace Prisma {
     status: number
     statusUpdatedAt: number
     committedDeliveryAt: number
-    shippingAddressId: number
     parcelId: number
     active: number
     orderAuthorizationStatus: number
@@ -12818,7 +12826,6 @@ export namespace Prisma {
     status?: true
     statusUpdatedAt?: true
     committedDeliveryAt?: true
-    shippingAddressId?: true
     parcelId?: true
     active?: true
     orderAuthorizationStatus?: true
@@ -12834,7 +12841,6 @@ export namespace Prisma {
     status?: true
     statusUpdatedAt?: true
     committedDeliveryAt?: true
-    shippingAddressId?: true
     parcelId?: true
     active?: true
     orderAuthorizationStatus?: true
@@ -12850,7 +12856,6 @@ export namespace Prisma {
     status?: true
     statusUpdatedAt?: true
     committedDeliveryAt?: true
-    shippingAddressId?: true
     parcelId?: true
     active?: true
     orderAuthorizationStatus?: true
@@ -12939,7 +12944,6 @@ export namespace Prisma {
     status: $Enums.OrderStatus
     statusUpdatedAt: Date | null
     committedDeliveryAt: Date | null
-    shippingAddressId: string | null
     parcelId: string | null
     active: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -12972,7 +12976,6 @@ export namespace Prisma {
     status?: boolean
     statusUpdatedAt?: boolean
     committedDeliveryAt?: boolean
-    shippingAddressId?: boolean
     parcelId?: boolean
     active?: boolean
     orderAuthorizationStatus?: boolean
@@ -12989,7 +12992,6 @@ export namespace Prisma {
     status?: boolean
     statusUpdatedAt?: boolean
     committedDeliveryAt?: boolean
-    shippingAddressId?: boolean
     parcelId?: boolean
     active?: boolean
     orderAuthorizationStatus?: boolean
@@ -13016,7 +13018,6 @@ export namespace Prisma {
       status: $Enums.OrderStatus
       statusUpdatedAt: Date | null
       committedDeliveryAt: Date | null
-      shippingAddressId: string | null
       parcelId: string | null
       active: boolean
       orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -13424,7 +13425,6 @@ export namespace Prisma {
     readonly status: FieldRef<"Order", 'OrderStatus'>
     readonly statusUpdatedAt: FieldRef<"Order", 'DateTime'>
     readonly committedDeliveryAt: FieldRef<"Order", 'DateTime'>
-    readonly shippingAddressId: FieldRef<"Order", 'String'>
     readonly parcelId: FieldRef<"Order", 'String'>
     readonly active: FieldRef<"Order", 'Boolean'>
     readonly orderAuthorizationStatus: FieldRef<"Order", 'OrderAuthorizationStatus'>
@@ -13762,7 +13762,7 @@ export namespace Prisma {
     addressLine2: string | null
     city: string | null
     stateOrProvince: string | null
-    zipOrPostalCode: string | null
+    postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
     shippingAccountCarrier: $Enums.Carrier | null
@@ -13778,7 +13778,7 @@ export namespace Prisma {
     addressLine2: string | null
     city: string | null
     stateOrProvince: string | null
-    zipOrPostalCode: string | null
+    postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
     shippingAccountCarrier: $Enums.Carrier | null
@@ -13794,7 +13794,7 @@ export namespace Prisma {
     addressLine2: number
     city: number
     stateOrProvince: number
-    zipOrPostalCode: number
+    postalCode: number
     countryCode: number
     shippingAccountId: number
     shippingAccountCarrier: number
@@ -13812,7 +13812,7 @@ export namespace Prisma {
     addressLine2?: true
     city?: true
     stateOrProvince?: true
-    zipOrPostalCode?: true
+    postalCode?: true
     countryCode?: true
     shippingAccountId?: true
     shippingAccountCarrier?: true
@@ -13828,7 +13828,7 @@ export namespace Prisma {
     addressLine2?: true
     city?: true
     stateOrProvince?: true
-    zipOrPostalCode?: true
+    postalCode?: true
     countryCode?: true
     shippingAccountId?: true
     shippingAccountCarrier?: true
@@ -13844,7 +13844,7 @@ export namespace Prisma {
     addressLine2?: true
     city?: true
     stateOrProvince?: true
-    zipOrPostalCode?: true
+    postalCode?: true
     countryCode?: true
     shippingAccountId?: true
     shippingAccountCarrier?: true
@@ -13933,7 +13933,7 @@ export namespace Prisma {
     addressLine2: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId: string | null
     shippingAccountCarrier: $Enums.Carrier | null
@@ -13966,7 +13966,7 @@ export namespace Prisma {
     addressLine2?: boolean
     city?: boolean
     stateOrProvince?: boolean
-    zipOrPostalCode?: boolean
+    postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
     shippingAccountCarrier?: boolean
@@ -13983,7 +13983,7 @@ export namespace Prisma {
     addressLine2?: boolean
     city?: boolean
     stateOrProvince?: boolean
-    zipOrPostalCode?: boolean
+    postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
     shippingAccountCarrier?: boolean
@@ -14010,7 +14010,7 @@ export namespace Prisma {
       addressLine2: string | null
       city: string
       stateOrProvince: string
-      zipOrPostalCode: string
+      postalCode: string
       countryCode: string
       shippingAccountId: string | null
       shippingAccountCarrier: $Enums.Carrier | null
@@ -14418,7 +14418,7 @@ export namespace Prisma {
     readonly addressLine2: FieldRef<"FacilityAddress", 'String'>
     readonly city: FieldRef<"FacilityAddress", 'String'>
     readonly stateOrProvince: FieldRef<"FacilityAddress", 'String'>
-    readonly zipOrPostalCode: FieldRef<"FacilityAddress", 'String'>
+    readonly postalCode: FieldRef<"FacilityAddress", 'String'>
     readonly countryCode: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
@@ -32555,6 +32555,7 @@ export namespace Prisma {
   export const EvaluationScalarFieldEnum: {
     id: 'id',
     externalId: 'externalId',
+    poNumber: 'poNumber',
     type: 'type',
     patientId: 'patientId',
     companyId: 'companyId',
@@ -32660,7 +32661,6 @@ export namespace Prisma {
     status: 'status',
     statusUpdatedAt: 'statusUpdatedAt',
     committedDeliveryAt: 'committedDeliveryAt',
-    shippingAddressId: 'shippingAddressId',
     parcelId: 'parcelId',
     active: 'active',
     orderAuthorizationStatus: 'orderAuthorizationStatus',
@@ -32680,7 +32680,7 @@ export namespace Prisma {
     addressLine2: 'addressLine2',
     city: 'city',
     stateOrProvince: 'stateOrProvince',
-    zipOrPostalCode: 'zipOrPostalCode',
+    postalCode: 'postalCode',
     countryCode: 'countryCode',
     shippingAccountId: 'shippingAccountId',
     shippingAccountCarrier: 'shippingAccountCarrier',
@@ -33591,6 +33591,7 @@ export namespace Prisma {
     NOT?: EvaluationWhereInput | EvaluationWhereInput[]
     id?: StringFilter<"Evaluation"> | string
     externalId?: StringNullableFilter<"Evaluation"> | string | null
+    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -33630,6 +33631,7 @@ export namespace Prisma {
   export type EvaluationOrderByWithRelationInput = {
     id?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    poNumber?: SortOrderInput | SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -33668,11 +33670,14 @@ export namespace Prisma {
 
   export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    externalId?: string
     id_companyId?: EvaluationIdCompanyIdCompoundUniqueInput
+    externalId_companyId?: EvaluationExternalIdCompanyIdCompoundUniqueInput
+    poNumber_companyId?: EvaluationPoNumberCompanyIdCompoundUniqueInput
     AND?: EvaluationWhereInput | EvaluationWhereInput[]
     OR?: EvaluationWhereInput[]
     NOT?: EvaluationWhereInput | EvaluationWhereInput[]
+    externalId?: StringNullableFilter<"Evaluation"> | string | null
+    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -33707,11 +33712,12 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
-  }, "id" | "externalId" | "id_companyId">
+  }, "id" | "id_companyId" | "externalId_companyId" | "poNumber_companyId">
 
   export type EvaluationOrderByWithAggregationInput = {
     id?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    poNumber?: SortOrderInput | SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -33748,6 +33754,7 @@ export namespace Prisma {
     NOT?: EvaluationScalarWhereWithAggregatesInput | EvaluationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Evaluation"> | string
     externalId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
+    poNumber?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     type?: EnumCareTypeWithAggregatesFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringWithAggregatesFilter<"Evaluation"> | string
     companyId?: StringWithAggregatesFilter<"Evaluation"> | string
@@ -34158,7 +34165,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     statusUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
-    shippingAddressId?: StringNullableFilter<"Order"> | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
@@ -34175,7 +34181,6 @@ export namespace Prisma {
     status?: SortOrder
     statusUpdatedAt?: SortOrderInput | SortOrder
     committedDeliveryAt?: SortOrderInput | SortOrder
-    shippingAddressId?: SortOrderInput | SortOrder
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
     orderAuthorizationStatus?: SortOrder
@@ -34195,7 +34200,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     statusUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
-    shippingAddressId?: StringNullableFilter<"Order"> | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
@@ -34212,7 +34216,6 @@ export namespace Prisma {
     status?: SortOrder
     statusUpdatedAt?: SortOrderInput | SortOrder
     committedDeliveryAt?: SortOrderInput | SortOrder
-    shippingAddressId?: SortOrderInput | SortOrder
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
     orderAuthorizationStatus?: SortOrder
@@ -34234,7 +34237,6 @@ export namespace Prisma {
     status?: EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
     statusUpdatedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     committedDeliveryAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
-    shippingAddressId?: StringNullableWithAggregatesFilter<"Order"> | string | null
     parcelId?: StringNullableWithAggregatesFilter<"Order"> | string | null
     active?: BoolWithAggregatesFilter<"Order"> | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusWithAggregatesFilter<"Order"> | $Enums.OrderAuthorizationStatus
@@ -34254,7 +34256,7 @@ export namespace Prisma {
     addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
     city?: StringFilter<"FacilityAddress"> | string
     stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    zipOrPostalCode?: StringFilter<"FacilityAddress"> | string
+    postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
@@ -34271,7 +34273,7 @@ export namespace Prisma {
     addressLine2?: SortOrderInput | SortOrder
     city?: SortOrder
     stateOrProvince?: SortOrder
-    zipOrPostalCode?: SortOrder
+    postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
@@ -34292,7 +34294,7 @@ export namespace Prisma {
     addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
     city?: StringFilter<"FacilityAddress"> | string
     stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    zipOrPostalCode?: StringFilter<"FacilityAddress"> | string
+    postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
@@ -34308,7 +34310,7 @@ export namespace Prisma {
     addressLine2?: SortOrderInput | SortOrder
     city?: SortOrder
     stateOrProvince?: SortOrder
-    zipOrPostalCode?: SortOrder
+    postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
@@ -34330,7 +34332,7 @@ export namespace Prisma {
     addressLine2?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
     city?: StringWithAggregatesFilter<"FacilityAddress"> | string
     stateOrProvince?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    zipOrPostalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
+    postalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
@@ -35841,6 +35843,7 @@ export namespace Prisma {
   export type EvaluationCreateInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -35874,6 +35877,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -35907,6 +35911,7 @@ export namespace Prisma {
   export type EvaluationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -35940,6 +35945,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -35973,6 +35979,7 @@ export namespace Prisma {
   export type EvaluationCreateManyInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -36003,6 +36010,7 @@ export namespace Prisma {
   export type EvaluationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -36027,6 +36035,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -36480,7 +36489,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -36497,7 +36505,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -36512,7 +36519,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36529,7 +36535,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36545,7 +36550,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -36560,7 +36564,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36576,7 +36579,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -36593,7 +36595,7 @@ export namespace Prisma {
     addressLine2?: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
@@ -36609,7 +36611,7 @@ export namespace Prisma {
     addressLine2?: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
@@ -36625,7 +36627,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -36641,7 +36643,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -36657,7 +36659,7 @@ export namespace Prisma {
     addressLine2?: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
@@ -36673,7 +36675,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -36688,7 +36690,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -38489,9 +38491,20 @@ export namespace Prisma {
     companyId: string
   }
 
+  export type EvaluationExternalIdCompanyIdCompoundUniqueInput = {
+    externalId: string
+    companyId: string
+  }
+
+  export type EvaluationPoNumberCompanyIdCompoundUniqueInput = {
+    poNumber: string
+    companyId: string
+  }
+
   export type EvaluationCountOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
+    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -38522,6 +38535,7 @@ export namespace Prisma {
   export type EvaluationMaxOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
+    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -38551,6 +38565,7 @@ export namespace Prisma {
   export type EvaluationMinOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
+    poNumber?: SortOrder
     type?: SortOrder
     patientId?: SortOrder
     companyId?: SortOrder
@@ -39008,7 +39023,6 @@ export namespace Prisma {
     status?: SortOrder
     statusUpdatedAt?: SortOrder
     committedDeliveryAt?: SortOrder
-    shippingAddressId?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
     orderAuthorizationStatus?: SortOrder
@@ -39024,7 +39038,6 @@ export namespace Prisma {
     status?: SortOrder
     statusUpdatedAt?: SortOrder
     committedDeliveryAt?: SortOrder
-    shippingAddressId?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
     orderAuthorizationStatus?: SortOrder
@@ -39040,7 +39053,6 @@ export namespace Prisma {
     status?: SortOrder
     statusUpdatedAt?: SortOrder
     committedDeliveryAt?: SortOrder
-    shippingAddressId?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
     orderAuthorizationStatus?: SortOrder
@@ -39089,7 +39101,7 @@ export namespace Prisma {
     addressLine2?: SortOrder
     city?: SortOrder
     stateOrProvince?: SortOrder
-    zipOrPostalCode?: SortOrder
+    postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
     shippingAccountCarrier?: SortOrder
@@ -39105,7 +39117,7 @@ export namespace Prisma {
     addressLine2?: SortOrder
     city?: SortOrder
     stateOrProvince?: SortOrder
-    zipOrPostalCode?: SortOrder
+    postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
     shippingAccountCarrier?: SortOrder
@@ -39121,7 +39133,7 @@ export namespace Prisma {
     addressLine2?: SortOrder
     city?: SortOrder
     stateOrProvince?: SortOrder
-    zipOrPostalCode?: SortOrder
+    postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
     shippingAccountCarrier?: SortOrder
@@ -42611,6 +42623,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutCompanyInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -42643,6 +42656,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutCompanyInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     deviceTypeId?: string | null
@@ -42843,6 +42857,7 @@ export namespace Prisma {
     NOT?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
     id?: StringFilter<"Evaluation"> | string
     externalId?: StringNullableFilter<"Evaluation"> | string | null
+    poNumber?: StringNullableFilter<"Evaluation"> | string | null
     type?: EnumCareTypeFilter<"Evaluation"> | $Enums.CareType
     patientId?: StringFilter<"Evaluation"> | string
     companyId?: StringFilter<"Evaluation"> | string
@@ -43031,7 +43046,7 @@ export namespace Prisma {
     addressLine2?: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
@@ -43046,7 +43061,7 @@ export namespace Prisma {
     addressLine2?: string | null
     city: string
     stateOrProvince: string
-    zipOrPostalCode: string
+    postalCode: string
     countryCode: string
     shippingAccountId?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
@@ -43144,7 +43159,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -43159,7 +43174,7 @@ export namespace Prisma {
     addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
     stateOrProvince?: StringFieldUpdateOperationsInput | string
-    zipOrPostalCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
@@ -43242,6 +43257,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -43274,6 +43290,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     companyId: string
     deviceTypeId?: string | null
@@ -44063,6 +44080,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutFeetInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -44095,6 +44113,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutFeetInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -44234,6 +44253,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -44266,6 +44286,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -44704,6 +44725,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutWorkbenchesInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -44736,6 +44758,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutWorkbenchesInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -44810,7 +44833,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -44825,7 +44847,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -44945,6 +44966,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -44977,6 +44999,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutWorkbenchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -45047,7 +45070,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     statusUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
-    shippingAddressId?: StringNullableFilter<"Order"> | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
@@ -45280,6 +45302,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutReferringPhysicianInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45312,6 +45335,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutReferringPhysicianInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45370,6 +45394,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutDiagnosisInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45402,6 +45427,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutDiagnosisInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45460,6 +45486,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutDeviceTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45492,6 +45519,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutDeviceTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45550,6 +45578,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutVisitTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45582,6 +45611,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutVisitTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45705,6 +45735,7 @@ export namespace Prisma {
   export type EvaluationCreateWithoutFormSubmissionsInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
     deviceSide?: $Enums.Side | null
@@ -45737,6 +45768,7 @@ export namespace Prisma {
   export type EvaluationUncheckedCreateWithoutFormSubmissionsInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -45814,6 +45846,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -45846,6 +45879,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -47087,6 +47121,7 @@ export namespace Prisma {
   export type EvaluationCreateManyCompanyInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     deviceTypeId?: string | null
@@ -47182,6 +47217,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -47214,6 +47250,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47246,6 +47283,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47421,6 +47459,7 @@ export namespace Prisma {
   export type EvaluationCreateManyPatientInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     companyId: string
     deviceTypeId?: string | null
@@ -47523,6 +47562,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -47555,6 +47595,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47587,6 +47628,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48066,7 +48108,6 @@ export namespace Prisma {
     status?: $Enums.OrderStatus
     statusUpdatedAt?: Date | string | null
     committedDeliveryAt?: Date | string | null
-    shippingAddressId?: string | null
     parcelId?: string | null
     active?: boolean
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
@@ -48126,7 +48167,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -48141,7 +48181,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -48156,7 +48195,6 @@ export namespace Prisma {
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    shippingAddressId?: NullableStringFieldUpdateOperationsInput | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
@@ -48169,6 +48207,7 @@ export namespace Prisma {
   export type EvaluationCreateManyReferringPhysicianInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48198,6 +48237,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48230,6 +48270,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48262,6 +48303,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutReferringPhysicianInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48291,6 +48333,7 @@ export namespace Prisma {
   export type EvaluationCreateManyDiagnosisInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48320,6 +48363,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48352,6 +48396,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48384,6 +48429,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutDiagnosisInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48413,6 +48459,7 @@ export namespace Prisma {
   export type EvaluationCreateManyDeviceTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48442,6 +48489,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48474,6 +48522,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48506,6 +48555,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutDeviceTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48535,6 +48585,7 @@ export namespace Prisma {
   export type EvaluationCreateManyVisitTypeInput = {
     id?: string
     externalId?: string | null
+    poNumber?: string | null
     type: $Enums.CareType
     patientId: string
     companyId: string
@@ -48564,6 +48615,7 @@ export namespace Prisma {
   export type EvaluationUpdateWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
@@ -48596,6 +48648,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
@@ -48628,6 +48681,7 @@ export namespace Prisma {
   export type EvaluationUncheckedUpdateManyWithoutVisitTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string

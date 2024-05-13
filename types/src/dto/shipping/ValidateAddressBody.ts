@@ -4,6 +4,6 @@ export interface ValidateAddressBody {
   addressLine2?: string;
   city: string;
   stateOrProvince: string;
-  zipOrPostalCode: string;
+  postalCode: string;
   country: string;
 }

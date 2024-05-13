@@ -12,7 +12,7 @@ export const validateAddress = async (address: ValidateAddressBody): Promise<boo
     addressLine2: address.addressLine2,
     city: address.city,
     stateOrProvince: address.stateOrProvince,
-    zipOrPostalCode: address.zipOrPostalCode,
+    postalCode: address.postalCode,
     countryCode: 'US'
   });
   return response.data;
