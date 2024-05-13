@@ -126,10 +126,9 @@ export default function EvaluationCard({
    
         <Stack gap={'xs'} mb={5}>
             <Group gap='xs'> 
-            <Text fw={600} size='20px'> {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}</Text>
+            <Text fw={600} size='20px'> {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}</Text>
             <IconCircle size = '14' color={renderStatusColor()} fill={renderStatusColor()}/>
             </Group>
-          <Text fw={500} size='12px'> Patient ID: {patientId}</Text>
           {poNumber && <Text fw={500} size='12px'> PO: {poNumber}</Text>}
           {birthDate && <Text fw={500} size='12px'>DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</Text>}
           {clinician && <Text fw={500} size='12px'> Clinician: {clinician}</Text>}
@@ -155,7 +154,7 @@ export default function EvaluationCard({
 
         <Text fw={500} size='14px'>{renderTimestampText()}</Text>
 
-        <Button color='#006CEA' p={10}>
+        <Button color='#006CEA' pl={20} pr={20}>
             <Text fw={600} size='14px' c='white'>{renderButtonText()}</Text>
         </Button>
         </Group>

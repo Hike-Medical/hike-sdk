@@ -60,7 +60,7 @@ export default function PatientCard({
 
         {lastVisit ? <Text fw={500} size='14px'>Last Visit: {lastVisit.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</Text> : <Box></Box>}
 
-        <Button color='#006CEA' p={10}>
+        <Button color='#006CEA' pl={20} pr={20}>
             <Text fw={600} size='14px' c='white'>View Evaluations</Text>
         </Button>
         </Group>
