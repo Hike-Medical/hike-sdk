@@ -35,4 +35,5 @@ export * from './hooks/useUpdateTrackingInfo';
 export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
+export * from './hooks/useFetchFacilities';
 export * from './utils/backendApi';

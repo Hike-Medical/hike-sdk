@@ -29,14 +29,18 @@ interface Package {
 export interface GetRatesOrLabels {
   packages: Package[];
   shipDate: string;
-  address: ValidateAddressBody;
+  address?: ValidateAddressBody;
+  addressId?: string;
+  billRecipient?: boolean;
 }
 
-export const getRateEstimates = async ({ packages, shipDate, address }: GetRatesOrLabels) => {
+export const getRateEstimates = async ({ packages, shipDate, address, addressId, billRecipient }: GetRatesOrLabels) => {
   const response = await backendApi.post('shipping/rates', {
     packages,
     shipDate,
-    address
+    address,
+    addressId,
+    billRecipient
   });
   return response.data;
 };
