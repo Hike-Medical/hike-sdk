@@ -30,7 +30,7 @@ interface BaseFormField<T extends FormFieldValue> {
 }
 
 export type FormField =
-  | (BaseFormField<string> & { type: 'text'; multi?: boolean })
+  | (BaseFormField<string> & { type: 'text' })
   | (BaseFormField<number> & { type: 'number' })
   | (BaseFormField<boolean> & { type: 'boolean' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
