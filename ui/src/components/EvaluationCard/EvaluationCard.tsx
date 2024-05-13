@@ -1,6 +1,6 @@
 import { toTitleCase } from '@hike/utils';
-import { Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
-import { IconCircle } from '@tabler/icons-react';
+import { ActionIcon, Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
+import { IconCircle, IconMenu2 } from '@tabler/icons-react';
 import React from 'react';
 
 
@@ -28,6 +28,7 @@ export interface EvaluationCardProps {
   authorizedAt?: Date
   cancelledAt?: Date
   completedAt?: Date
+  openModal: () => void;
 }
 
 export default function EvaluationCard({
@@ -44,7 +45,9 @@ export default function EvaluationCard({
     submittedAt,
     authorizedAt,
     cancelledAt,
-    completedAt
+    completedAt,
+    openModal,
+    
 }: EvaluationCardProps) {
     console.log(React)
 
@@ -70,7 +73,7 @@ export default function EvaluationCard({
     const renderStatusColor = () => {
         switch (evaluationStatus) {
             case EvaluationCardStatus.NOT_STARTED:
-            return '#868E96';
+            return '#F1F3F5';
             case EvaluationCardStatus.INCOMPLETE:
             return '#868E96';
             case EvaluationCardStatus.AWAITING_AUTH:
@@ -80,7 +83,7 @@ export default function EvaluationCard({
             case EvaluationCardStatus.COMPLETED:
             return '#69DB7C';
             case EvaluationCardStatus.CANCELLED:
-            return '#868E96';
+            return '#FFC9C9';
             default:
             return '';
         }
@@ -123,11 +126,24 @@ export default function EvaluationCard({
     return (
     <Paper shadow="md" p="md" style={{ maxWidth: 400 }}>
 
-   
+
         <Stack gap={'xs'} mb={5}>
-            <Group gap='xs'> 
-            <Text fw={600} size='20px'> {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}</Text>
-            <IconCircle size = '14' color={renderStatusColor()} fill={renderStatusColor()}/>
+            <Group justify='space-between' >
+                <Group gap='xs'> 
+                    <Text fw={600} size='20px'> {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}</Text>
+                    <IconCircle size = '14' color={renderStatusColor()} fill={renderStatusColor()}/>
+                </Group>
+
+                <ActionIcon
+                data-automation-id="evaluation-modal-button"
+                radius="100%"
+                variant="filled"
+                aria-label="Evaluation Modal"
+                styles={{ root: { background: '#FFFFFF90' } }}
+                onClick={openModal}
+                >
+            <IconMenu2 color='black'/>
+            </ActionIcon>
             </Group>
           {poNumber && <Text fw={500} size='12px'> PO: {poNumber}</Text>}
           {birthDate && <Text fw={500} size='12px'>DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</Text>}
