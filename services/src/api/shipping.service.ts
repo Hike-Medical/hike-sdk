@@ -1,10 +1,5 @@
-import { Facility, FacilityAddress, ShippingPackage, ValidateAddressBody } from '@hike/types';
+import { ShippingPackage, ValidateAddressBody } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
-
-export const fetchCompanyFacilitiesAndAddresses = async (): Promise<Facility & { address: FacilityAddress }> => {
-  const response = await backendApi.get('shipping/facility');
-  return response.data;
-};
 
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
   const response = await backendApi.get('shipping/packageTypes');
