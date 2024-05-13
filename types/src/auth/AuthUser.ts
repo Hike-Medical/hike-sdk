@@ -1,7 +1,7 @@
-import type { Role } from '../../prisma';
+import type { CompanyRole } from '../../prisma';
 
 export interface AuthUser {
   id: string;
-  email: string | null;
-  companies: Record<string, Role>;
+  companies: Record<string, CompanyRole>;
+  expiresAt: Date;
 }

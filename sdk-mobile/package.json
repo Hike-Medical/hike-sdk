@@ -1,0 +1,41 @@
+{
+  "name": "@hike/sdk-mobile",
+  "version": "1.0.0",
+  "description": "Hike SDK for React Native enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
+  "keywords": [
+    "insoles",
+    "medical",
+    "foot",
+    "health",
+    "orthotics",
+    "prosthetics",
+    "healthcare"
+  ],
+  "author": "support@hikemedical.com",
+  "license": "Apache-2.0",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build && tsc --project tsconfig.cjs.json",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "format": "prettier --check . --ignore-path ../../../.gitignore",
+    "clean": "rm -rf node_modules dist"
+  },
+  "dependencies": {
+    "@hike/services": "workspace:*",
+    "@hike/types": "workspace:*",
+    "@hike/ui": "workspace:*",
+    "@hike/utils": "workspace:*"
+  }
+}

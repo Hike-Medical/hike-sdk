@@ -41,6 +41,7 @@ export default hike.init({
   appEnv: process.env.NODE_ENV,
   appId: '@hike/my-web', // or process.env.npm_package_name
   appVersion: '1.0.0' // or process.env.npm_package_version
+  companyId: '***'
 });
 ```
 
@@ -67,7 +68,7 @@ For client-side applications, initialize the SDK on the server-side and then wra
 ```javascript
 // Inside your root App or Layout component
 import hikeClient from '@/utils/hikeClient';
-import { HikeProvider } from '@hike/sdk';
+import { HikeProvider } from '@hike/sdk/ui';
 
 export default function RootLayout({ children }) {
   return (
