@@ -2,9 +2,9 @@ import type { Gender, MaritalStatus } from '../../../prisma';
 
 export interface CreatePatientParams {
   externalId?: string | null;
-  firstName: string;
+  firstName?: string;
   middleName?: string | null;
-  lastName: string;
+  lastName?: string;
   gender?: Gender | null;
   birthDate?: Date | null;
   height?: number | null;
