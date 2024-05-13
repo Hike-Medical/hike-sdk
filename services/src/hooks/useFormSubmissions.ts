@@ -11,7 +11,7 @@ export interface UseFormSubmissionsOptions {
 
 export const useFormSubmissions = ({ key = [], evaluationId, enabled = true }: UseFormSubmissionsOptions) =>
   useQuery<FormSubmissionExtended[], ResponseError<null>>({
-    queryKey: ['formSubmissions', ...key, evaluationId],
+    queryKey: ['formSubmissions', evaluationId, ...key],
     queryFn: async () => await findFormSubmissionsByEvaluationId(evaluationId),
     enabled
   });
