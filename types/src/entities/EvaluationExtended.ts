@@ -1,4 +1,13 @@
-import type { DeviceType, Diagnosis, Evaluation, Patient, Physician, VisitType } from '../../prisma';
+import type {
+  Clinician,
+  DeviceType,
+  Diagnosis,
+  Evaluation,
+  Facility,
+  Patient,
+  Physician,
+  VisitType
+} from '../../prisma';
 
 export type EvaluationExtended = Evaluation & {
   patient: Patient;
@@ -6,4 +15,6 @@ export type EvaluationExtended = Evaluation & {
   visitType?: VisitType | null;
   diagnosis?: Diagnosis | null;
   referringPhysician?: Physician | null;
+  facility?: Facility | null;
+  clinicians: Clinician[];
 };
