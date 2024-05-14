@@ -26,4 +26,5 @@ export type * from './dto/shipping/ValidateAddressBody';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/FormSchema';
+export type * from './entities/PatientExtended';
 export type * from './entities/UserExtended';

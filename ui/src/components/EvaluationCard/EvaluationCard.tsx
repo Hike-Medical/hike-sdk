@@ -1,8 +1,7 @@
 import type { EvaluationStatus } from '@hike/types';
 import { toTitleCase } from '@hike/utils';
-import { ActionIcon, Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
-import { IconCircle, IconMenu2 } from '@tabler/icons-react';
-import React from 'react';
+import { Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
+import { IconCircle } from '@tabler/icons-react';
 
 export interface EvaluationCardProps {
   firstName: string;
@@ -19,10 +18,9 @@ export interface EvaluationCardProps {
   authorizedAt?: Date;
   cancelledAt?: Date;
   completedAt?: Date;
-  openModal: () => void;
 }
 
-export default function EvaluationCard({
+export function EvaluationCard({
   firstName,
   middleName,
   lastName,
@@ -36,11 +34,8 @@ export default function EvaluationCard({
   submittedAt,
   authorizedAt,
   cancelledAt,
-  completedAt,
-  openModal
+  completedAt
 }: EvaluationCardProps) {
-  console.log(React);
-
   const renderBadgeText = () => {
     switch (evaluationStatus) {
       case 'NOT_STARTED':
@@ -134,26 +129,13 @@ export default function EvaluationCard({
         <Group justify="space-between">
           <Group gap="xs">
             <Text fw={600} size="20px">
-              {' '}
               {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}
             </Text>
             <IconCircle size="14" color={renderStatusColor()} fill={renderStatusColor()} />
           </Group>
-
-          <ActionIcon
-            data-automation-id="evaluation-modal-button"
-            radius="100%"
-            variant="filled"
-            aria-label="Evaluation Modal"
-            styles={{ root: { background: '#FFFFFF90' } }}
-            onClick={openModal}
-          >
-            <IconMenu2 color="black" />
-          </ActionIcon>
         </Group>
         {poNumber && (
           <Text fw={500} size="12px">
-            {' '}
             PO: {poNumber}
           </Text>
         )}
@@ -164,7 +146,6 @@ export default function EvaluationCard({
         )}
         {clinician && (
           <Text fw={500} size="12px">
-            {' '}
             Clinician: {clinician}
           </Text>
         )}
@@ -186,11 +167,11 @@ export default function EvaluationCard({
           padding: '10px'
         }}
       >
-        <Text fw={500} size="14px">
+        <Text fw={500} size="12px">
           {renderTimestampText()}
         </Text>
 
-        <Button color="#006CEA" pl={20} pr={20}>
+        <Button color="#006CEA" pl={15} pr={15}>
           <Text fw={600} size="14px" c="white">
             {renderButtonText()}
           </Text>

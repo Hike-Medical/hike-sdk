@@ -1,5 +1,5 @@
 import React from 'react';
-import EvaluationCard, { EvaluationCardProps } from './EvaluationCard';
+import { EvaluationCard, EvaluationCardProps } from './EvaluationCard';
 
 export default {
   component: EvaluationCard,
