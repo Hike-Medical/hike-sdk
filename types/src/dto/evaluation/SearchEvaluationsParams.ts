@@ -8,7 +8,7 @@ export interface SearchEvaluationsParams extends PagedParams {
   appointmentStartAt?: Date;
   appointmentEndAt?: Date;
   appointmentStatus?: string;
-  practitioner?: string;
+  clinicianId?: string;
   visitTypeId?: string;
   facilityId?: string;
   sortBy?: 'appointmentAt';

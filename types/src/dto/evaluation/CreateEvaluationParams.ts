@@ -14,7 +14,7 @@ export interface CreateEvaluationParams {
   devicePosition?: VerticalPosition;
   appointmentAt?: Date;
   appointmentStatus?: string;
-  practitioner?: string[];
+  clinicianIds?: string[];
   referringPhysicianId?: string;
   diagnosisId?: string;
   diagnosisedAt?: Date;
