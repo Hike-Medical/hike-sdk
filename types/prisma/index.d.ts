@@ -3529,10 +3529,12 @@ export namespace Prisma {
 
   export type FacilityCountOutputType = {
     users: number
+    evaluation: number
   }
 
   export type FacilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | FacilityCountOutputTypeCountUsersArgs
+    evaluation?: boolean | FacilityCountOutputTypeCountEvaluationArgs
   }
 
   // Custom InputTypes
@@ -3551,6 +3553,13 @@ export namespace Prisma {
    */
   export type FacilityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FacilityUserWhereInput
+  }
+
+  /**
+   * FacilityCountOutputType without action
+   */
+  export type FacilityCountOutputTypeCountEvaluationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EvaluationWhereInput
   }
 
 
@@ -5415,6 +5424,7 @@ export namespace Prisma {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
+    evaluation?: boolean | Facility$evaluationArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facility"]>
 
@@ -5433,6 +5443,7 @@ export namespace Prisma {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
+    evaluation?: boolean | Facility$evaluationArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5443,6 +5454,7 @@ export namespace Prisma {
       company: Prisma.$CompanyPayload<ExtArgs>
       address: Prisma.$FacilityAddressPayload<ExtArgs> | null
       users: Prisma.$FacilityUserPayload<ExtArgs>[]
+      evaluation: Prisma.$EvaluationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5823,6 +5835,8 @@ export namespace Prisma {
 
     users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    evaluation<T extends Facility$evaluationArgs<ExtArgs> = {}>(args?: Subset<T, Facility$evaluationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6189,6 +6203,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
+  }
+
+  /**
+   * Facility.evaluation
+   */
+  export type Facility$evaluationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Evaluation
+     */
+    select?: EvaluationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EvaluationInclude<ExtArgs> | null
+    where?: EvaluationWhereInput
+    orderBy?: EvaluationOrderByWithRelationInput | EvaluationOrderByWithRelationInput[]
+    cursor?: EvaluationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
   }
 
   /**
@@ -7368,14 +7402,13 @@ export namespace Prisma {
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
     appointmentStatus: string | null
-    primaryPractitioner: string | null
     referringPhysicianId: string | null
     diagnosisId: string | null
     diagnosisedAt: Date | null
     visitTypeId: string | null
     visitedAt: Date | null
+    facilityId: string | null
     location: string | null
-    prescribedPractitioner: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
@@ -7398,14 +7431,13 @@ export namespace Prisma {
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
     appointmentStatus: string | null
-    primaryPractitioner: string | null
     referringPhysicianId: string | null
     diagnosisId: string | null
     diagnosisedAt: Date | null
     visitTypeId: string | null
     visitedAt: Date | null
+    facilityId: string | null
     location: string | null
-    prescribedPractitioner: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
@@ -7428,15 +7460,14 @@ export namespace Prisma {
     devicePosition: number
     appointmentAt: number
     appointmentStatus: number
-    primaryPractitioner: number
+    practitioners: number
     referringPhysicianId: number
     diagnosisId: number
     diagnosisedAt: number
-    visitInformation: number
     visitTypeId: number
     visitedAt: number
+    facilityId: number
     location: number
-    prescribedPractitioner: number
     prescribedAt: number
     prescribedActive: number
     notes: number
@@ -7461,14 +7492,13 @@ export namespace Prisma {
     devicePosition?: true
     appointmentAt?: true
     appointmentStatus?: true
-    primaryPractitioner?: true
     referringPhysicianId?: true
     diagnosisId?: true
     diagnosisedAt?: true
     visitTypeId?: true
     visitedAt?: true
+    facilityId?: true
     location?: true
-    prescribedPractitioner?: true
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
@@ -7491,14 +7521,13 @@ export namespace Prisma {
     devicePosition?: true
     appointmentAt?: true
     appointmentStatus?: true
-    primaryPractitioner?: true
     referringPhysicianId?: true
     diagnosisId?: true
     diagnosisedAt?: true
     visitTypeId?: true
     visitedAt?: true
+    facilityId?: true
     location?: true
-    prescribedPractitioner?: true
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
@@ -7521,15 +7550,14 @@ export namespace Prisma {
     devicePosition?: true
     appointmentAt?: true
     appointmentStatus?: true
-    primaryPractitioner?: true
+    practitioners?: true
     referringPhysicianId?: true
     diagnosisId?: true
     diagnosisedAt?: true
-    visitInformation?: true
     visitTypeId?: true
     visitedAt?: true
+    facilityId?: true
     location?: true
-    prescribedPractitioner?: true
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
@@ -7625,15 +7653,14 @@ export namespace Prisma {
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
     appointmentStatus: string | null
-    primaryPractitioner: string | null
+    practitioners: string[]
     referringPhysicianId: string | null
     diagnosisId: string | null
     diagnosisedAt: Date | null
-    visitInformation: JsonValue | null
     visitTypeId: string | null
     visitedAt: Date | null
+    facilityId: string | null
     location: string | null
-    prescribedPractitioner: string | null
     prescribedAt: Date | null
     prescribedActive: boolean
     notes: string | null
@@ -7673,15 +7700,14 @@ export namespace Prisma {
     devicePosition?: boolean
     appointmentAt?: boolean
     appointmentStatus?: boolean
-    primaryPractitioner?: boolean
+    practitioners?: boolean
     referringPhysicianId?: boolean
     diagnosisId?: boolean
     diagnosisedAt?: boolean
-    visitInformation?: boolean
     visitTypeId?: boolean
     visitedAt?: boolean
+    facilityId?: boolean
     location?: boolean
-    prescribedPractitioner?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
@@ -7695,6 +7721,7 @@ export namespace Prisma {
     visitType?: boolean | Evaluation$visitTypeArgs<ExtArgs>
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
+    facility?: boolean | Evaluation$facilityArgs<ExtArgs>
     formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
@@ -7714,15 +7741,14 @@ export namespace Prisma {
     devicePosition?: boolean
     appointmentAt?: boolean
     appointmentStatus?: boolean
-    primaryPractitioner?: boolean
+    practitioners?: boolean
     referringPhysicianId?: boolean
     diagnosisId?: boolean
     diagnosisedAt?: boolean
-    visitInformation?: boolean
     visitTypeId?: boolean
     visitedAt?: boolean
+    facilityId?: boolean
     location?: boolean
-    prescribedPractitioner?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
@@ -7740,6 +7766,7 @@ export namespace Prisma {
     visitType?: boolean | Evaluation$visitTypeArgs<ExtArgs>
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
+    facility?: boolean | Evaluation$facilityArgs<ExtArgs>
     formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
@@ -7756,6 +7783,7 @@ export namespace Prisma {
       visitType: Prisma.$VisitTypePayload<ExtArgs> | null
       referringPhysician: Prisma.$PhysicianPayload<ExtArgs> | null
       diagnosis: Prisma.$DiagnosisPayload<ExtArgs> | null
+      facility: Prisma.$FacilityPayload<ExtArgs> | null
       formSubmissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       feet: Prisma.$FootPayload<ExtArgs>[]
@@ -7773,15 +7801,14 @@ export namespace Prisma {
       devicePosition: $Enums.VerticalPosition | null
       appointmentAt: Date | null
       appointmentStatus: string | null
-      primaryPractitioner: string | null
+      practitioners: string[]
       referringPhysicianId: string | null
       diagnosisId: string | null
       diagnosisedAt: Date | null
-      visitInformation: Prisma.JsonValue | null
       visitTypeId: string | null
       visitedAt: Date | null
+      facilityId: string | null
       location: string | null
-      prescribedPractitioner: string | null
       prescribedAt: Date | null
       prescribedActive: boolean
       notes: string | null
@@ -8166,6 +8193,8 @@ export namespace Prisma {
 
     diagnosis<T extends Evaluation$diagnosisArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$diagnosisArgs<ExtArgs>>): Prisma__DiagnosisClient<$Result.GetResult<Prisma.$DiagnosisPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
+    facility<T extends Evaluation$facilityArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$facilityArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     formSubmissions<T extends Evaluation$formSubmissionsArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$formSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     workbenches<T extends Evaluation$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -8212,15 +8241,14 @@ export namespace Prisma {
     readonly devicePosition: FieldRef<"Evaluation", 'VerticalPosition'>
     readonly appointmentAt: FieldRef<"Evaluation", 'DateTime'>
     readonly appointmentStatus: FieldRef<"Evaluation", 'String'>
-    readonly primaryPractitioner: FieldRef<"Evaluation", 'String'>
+    readonly practitioners: FieldRef<"Evaluation", 'String[]'>
     readonly referringPhysicianId: FieldRef<"Evaluation", 'String'>
     readonly diagnosisId: FieldRef<"Evaluation", 'String'>
     readonly diagnosisedAt: FieldRef<"Evaluation", 'DateTime'>
-    readonly visitInformation: FieldRef<"Evaluation", 'Json'>
     readonly visitTypeId: FieldRef<"Evaluation", 'String'>
     readonly visitedAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly facilityId: FieldRef<"Evaluation", 'String'>
     readonly location: FieldRef<"Evaluation", 'String'>
-    readonly prescribedPractitioner: FieldRef<"Evaluation", 'String'>
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
@@ -8584,6 +8612,21 @@ export namespace Prisma {
      */
     include?: DiagnosisInclude<ExtArgs> | null
     where?: DiagnosisWhereInput
+  }
+
+  /**
+   * Evaluation.facility
+   */
+  export type Evaluation$facilityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facility
+     */
+    select?: FacilitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
   }
 
   /**
@@ -32565,15 +32608,14 @@ export namespace Prisma {
     devicePosition: 'devicePosition',
     appointmentAt: 'appointmentAt',
     appointmentStatus: 'appointmentStatus',
-    primaryPractitioner: 'primaryPractitioner',
+    practitioners: 'practitioners',
     referringPhysicianId: 'referringPhysicianId',
     diagnosisId: 'diagnosisId',
     diagnosisedAt: 'diagnosisedAt',
-    visitInformation: 'visitInformation',
     visitTypeId: 'visitTypeId',
     visitedAt: 'visitedAt',
+    facilityId: 'facilityId',
     location: 'location',
-    prescribedPractitioner: 'prescribedPractitioner',
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
     notes: 'notes',
@@ -33417,6 +33459,7 @@ export namespace Prisma {
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
+    evaluation?: EvaluationListRelationFilter
   }
 
   export type FacilityOrderByWithRelationInput = {
@@ -33430,6 +33473,7 @@ export namespace Prisma {
     company?: CompanyOrderByWithRelationInput
     address?: FacilityAddressOrderByWithRelationInput
     users?: FacilityUserOrderByRelationAggregateInput
+    evaluation?: EvaluationOrderByRelationAggregateInput
   }
 
   export type FacilityWhereUniqueInput = Prisma.AtLeast<{
@@ -33446,6 +33490,7 @@ export namespace Prisma {
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
+    evaluation?: EvaluationListRelationFilter
   }, "id">
 
   export type FacilityOrderByWithAggregationInput = {
@@ -33601,15 +33646,14 @@ export namespace Prisma {
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     appointmentStatus?: StringNullableFilter<"Evaluation"> | string | null
-    primaryPractitioner?: StringNullableFilter<"Evaluation"> | string | null
+    practitioners?: StringNullableListFilter<"Evaluation">
     referringPhysicianId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
-    visitInformation?: JsonNullableFilter<"Evaluation">
     visitTypeId?: StringNullableFilter<"Evaluation"> | string | null
     visitedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    facilityId?: StringNullableFilter<"Evaluation"> | string | null
     location?: StringNullableFilter<"Evaluation"> | string | null
-    prescribedPractitioner?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
@@ -33623,6 +33667,7 @@ export namespace Prisma {
     visitType?: XOR<VisitTypeNullableRelationFilter, VisitTypeWhereInput> | null
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
+    facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
@@ -33641,15 +33686,14 @@ export namespace Prisma {
     devicePosition?: SortOrderInput | SortOrder
     appointmentAt?: SortOrderInput | SortOrder
     appointmentStatus?: SortOrderInput | SortOrder
-    primaryPractitioner?: SortOrderInput | SortOrder
+    practitioners?: SortOrder
     referringPhysicianId?: SortOrderInput | SortOrder
     diagnosisId?: SortOrderInput | SortOrder
     diagnosisedAt?: SortOrderInput | SortOrder
-    visitInformation?: SortOrderInput | SortOrder
     visitTypeId?: SortOrderInput | SortOrder
     visitedAt?: SortOrderInput | SortOrder
+    facilityId?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
-    prescribedPractitioner?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
@@ -33663,6 +33707,7 @@ export namespace Prisma {
     visitType?: VisitTypeOrderByWithRelationInput
     referringPhysician?: PhysicianOrderByWithRelationInput
     diagnosis?: DiagnosisOrderByWithRelationInput
+    facility?: FacilityOrderByWithRelationInput
     formSubmissions?: FormSubmissionOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     feet?: FootOrderByRelationAggregateInput
@@ -33687,15 +33732,14 @@ export namespace Prisma {
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     appointmentStatus?: StringNullableFilter<"Evaluation"> | string | null
-    primaryPractitioner?: StringNullableFilter<"Evaluation"> | string | null
+    practitioners?: StringNullableListFilter<"Evaluation">
     referringPhysicianId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
-    visitInformation?: JsonNullableFilter<"Evaluation">
     visitTypeId?: StringNullableFilter<"Evaluation"> | string | null
     visitedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    facilityId?: StringNullableFilter<"Evaluation"> | string | null
     location?: StringNullableFilter<"Evaluation"> | string | null
-    prescribedPractitioner?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
@@ -33709,6 +33753,7 @@ export namespace Prisma {
     visitType?: XOR<VisitTypeNullableRelationFilter, VisitTypeWhereInput> | null
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
+    facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
@@ -33727,15 +33772,14 @@ export namespace Prisma {
     devicePosition?: SortOrderInput | SortOrder
     appointmentAt?: SortOrderInput | SortOrder
     appointmentStatus?: SortOrderInput | SortOrder
-    primaryPractitioner?: SortOrderInput | SortOrder
+    practitioners?: SortOrder
     referringPhysicianId?: SortOrderInput | SortOrder
     diagnosisId?: SortOrderInput | SortOrder
     diagnosisedAt?: SortOrderInput | SortOrder
-    visitInformation?: SortOrderInput | SortOrder
     visitTypeId?: SortOrderInput | SortOrder
     visitedAt?: SortOrderInput | SortOrder
+    facilityId?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
-    prescribedPractitioner?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
@@ -33764,15 +33808,14 @@ export namespace Prisma {
     devicePosition?: EnumVerticalPositionNullableWithAggregatesFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     appointmentStatus?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    primaryPractitioner?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
+    practitioners?: StringNullableListFilter<"Evaluation">
     referringPhysicianId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     diagnosisId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     diagnosisedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
-    visitInformation?: JsonNullableWithAggregatesFilter<"Evaluation">
     visitTypeId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     visitedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    facilityId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     location?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    prescribedPractitioner?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
@@ -35638,6 +35681,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateInput = {
@@ -35650,6 +35694,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUpdateInput = {
@@ -35662,6 +35707,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateInput = {
@@ -35674,6 +35720,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityCreateManyInput = {
@@ -35850,12 +35897,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -35869,6 +35914,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -35887,15 +35933,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -35918,12 +35963,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35937,6 +35980,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -35955,15 +35999,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35989,15 +36032,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -36017,12 +36059,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36045,15 +36085,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -38451,6 +38490,14 @@ export namespace Prisma {
     not?: NestedEnumVerticalPositionNullableFilter<$PrismaModel> | $Enums.VerticalPosition | null
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type PatientRelationFilter = {
     is?: PatientWhereInput
     isNot?: PatientWhereInput
@@ -38474,6 +38521,11 @@ export namespace Prisma {
   export type DiagnosisNullableRelationFilter = {
     is?: DiagnosisWhereInput | null
     isNot?: DiagnosisWhereInput | null
+  }
+
+  export type FacilityNullableRelationFilter = {
+    is?: FacilityWhereInput | null
+    isNot?: FacilityWhereInput | null
   }
 
   export type FormSubmissionListRelationFilter = {
@@ -38514,15 +38566,14 @@ export namespace Prisma {
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
     appointmentStatus?: SortOrder
-    primaryPractitioner?: SortOrder
+    practitioners?: SortOrder
     referringPhysicianId?: SortOrder
     diagnosisId?: SortOrder
     diagnosisedAt?: SortOrder
-    visitInformation?: SortOrder
     visitTypeId?: SortOrder
     visitedAt?: SortOrder
+    facilityId?: SortOrder
     location?: SortOrder
-    prescribedPractitioner?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
@@ -38545,14 +38596,13 @@ export namespace Prisma {
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
     appointmentStatus?: SortOrder
-    primaryPractitioner?: SortOrder
     referringPhysicianId?: SortOrder
     diagnosisId?: SortOrder
     diagnosisedAt?: SortOrder
     visitTypeId?: SortOrder
     visitedAt?: SortOrder
+    facilityId?: SortOrder
     location?: SortOrder
-    prescribedPractitioner?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
@@ -38575,14 +38625,13 @@ export namespace Prisma {
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
     appointmentStatus?: SortOrder
-    primaryPractitioner?: SortOrder
     referringPhysicianId?: SortOrder
     diagnosisId?: SortOrder
     diagnosisedAt?: SortOrder
     visitTypeId?: SortOrder
     visitedAt?: SortOrder
+    facilityId?: SortOrder
     location?: SortOrder
-    prescribedPractitioner?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
@@ -40241,6 +40290,13 @@ export namespace Prisma {
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
+  export type EvaluationCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput> | EvaluationCreateWithoutFacilityInput[] | EvaluationUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFacilityInput | EvaluationCreateOrConnectWithoutFacilityInput[]
+    createMany?: EvaluationCreateManyFacilityInputEnvelope
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+  }
+
   export type FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput = {
     create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
     connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
@@ -40252,6 +40308,13 @@ export namespace Prisma {
     connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
     createMany?: FacilityUserCreateManyFacilityInputEnvelope
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+  }
+
+  export type EvaluationUncheckedCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput> | EvaluationCreateWithoutFacilityInput[] | EvaluationUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFacilityInput | EvaluationCreateOrConnectWithoutFacilityInput[]
+    createMany?: EvaluationCreateManyFacilityInputEnvelope
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
   export type EnumFacilityTypeFieldUpdateOperationsInput = {
@@ -40290,6 +40353,20 @@ export namespace Prisma {
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
+  export type EvaluationUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput> | EvaluationCreateWithoutFacilityInput[] | EvaluationUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFacilityInput | EvaluationCreateOrConnectWithoutFacilityInput[]
+    upsert?: EvaluationUpsertWithWhereUniqueWithoutFacilityInput | EvaluationUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: EvaluationCreateManyFacilityInputEnvelope
+    set?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    disconnect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    delete?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    update?: EvaluationUpdateWithWhereUniqueWithoutFacilityInput | EvaluationUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: EvaluationUpdateManyWithWhereWithoutFacilityInput | EvaluationUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
   export type FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput = {
     create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
     connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
@@ -40312,6 +40389,20 @@ export namespace Prisma {
     update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+  }
+
+  export type EvaluationUncheckedUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput> | EvaluationCreateWithoutFacilityInput[] | EvaluationUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutFacilityInput | EvaluationCreateOrConnectWithoutFacilityInput[]
+    upsert?: EvaluationUpsertWithWhereUniqueWithoutFacilityInput | EvaluationUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: EvaluationCreateManyFacilityInputEnvelope
+    set?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    disconnect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    delete?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    update?: EvaluationUpdateWithWhereUniqueWithoutFacilityInput | EvaluationUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: EvaluationUpdateManyWithWhereWithoutFacilityInput | EvaluationUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
   }
 
   export type FootCreateNestedManyWithoutPatientInput = {
@@ -40502,6 +40593,10 @@ export namespace Prisma {
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
+  export type EvaluationCreatepractitionersInput = {
+    set: string[]
+  }
+
   export type PatientCreateNestedOneWithoutEvaluationsInput = {
     create?: XOR<PatientCreateWithoutEvaluationsInput, PatientUncheckedCreateWithoutEvaluationsInput>
     connectOrCreate?: PatientCreateOrConnectWithoutEvaluationsInput
@@ -40536,6 +40631,12 @@ export namespace Prisma {
     create?: XOR<DiagnosisCreateWithoutEvaluationsInput, DiagnosisUncheckedCreateWithoutEvaluationsInput>
     connectOrCreate?: DiagnosisCreateOrConnectWithoutEvaluationsInput
     connect?: DiagnosisWhereUniqueInput
+  }
+
+  export type FacilityCreateNestedOneWithoutEvaluationInput = {
+    create?: XOR<FacilityCreateWithoutEvaluationInput, FacilityUncheckedCreateWithoutEvaluationInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutEvaluationInput
+    connect?: FacilityWhereUniqueInput
   }
 
   export type FormSubmissionCreateNestedManyWithoutEvaluationInput = {
@@ -40592,6 +40693,11 @@ export namespace Prisma {
     set?: $Enums.VerticalPosition | null
   }
 
+  export type EvaluationUpdatepractitionersInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
   export type PatientUpdateOneRequiredWithoutEvaluationsNestedInput = {
     create?: XOR<PatientCreateWithoutEvaluationsInput, PatientUncheckedCreateWithoutEvaluationsInput>
     connectOrCreate?: PatientCreateOrConnectWithoutEvaluationsInput
@@ -40646,6 +40752,16 @@ export namespace Prisma {
     delete?: DiagnosisWhereInput | boolean
     connect?: DiagnosisWhereUniqueInput
     update?: XOR<XOR<DiagnosisUpdateToOneWithWhereWithoutEvaluationsInput, DiagnosisUpdateWithoutEvaluationsInput>, DiagnosisUncheckedUpdateWithoutEvaluationsInput>
+  }
+
+  export type FacilityUpdateOneWithoutEvaluationNestedInput = {
+    create?: XOR<FacilityCreateWithoutEvaluationInput, FacilityUncheckedCreateWithoutEvaluationInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutEvaluationInput
+    upsert?: FacilityUpsertWithoutEvaluationInput
+    disconnect?: FacilityWhereInput | boolean
+    delete?: FacilityWhereInput | boolean
+    connect?: FacilityWhereUniqueInput
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutEvaluationInput, FacilityUpdateWithoutEvaluationInput>, FacilityUncheckedUpdateWithoutEvaluationInput>
   }
 
   export type FormSubmissionUpdateManyWithoutEvaluationNestedInput = {
@@ -42597,6 +42713,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutCompanyInput = {
@@ -42608,6 +42725,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutCompanyInput = {
@@ -42630,12 +42748,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -42648,6 +42764,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -42665,15 +42782,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -42867,15 +42983,14 @@ export namespace Prisma {
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     appointmentStatus?: StringNullableFilter<"Evaluation"> | string | null
-    primaryPractitioner?: StringNullableFilter<"Evaluation"> | string | null
+    practitioners?: StringNullableListFilter<"Evaluation">
     referringPhysicianId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisId?: StringNullableFilter<"Evaluation"> | string | null
     diagnosisedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
-    visitInformation?: JsonNullableFilter<"Evaluation">
     visitTypeId?: StringNullableFilter<"Evaluation"> | string | null
     visitedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    facilityId?: StringNullableFilter<"Evaluation"> | string | null
     location?: StringNullableFilter<"Evaluation"> | string | null
-    prescribedPractitioner?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
@@ -43096,6 +43211,80 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type EvaluationCreateWithoutFacilityInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    isDiabetic?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
+    diagnosisedAt?: Date | string | null
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    notes?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutEvaluationsInput
+    company: CompanyCreateNestedOneWithoutEvaluationsInput
+    deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
+    visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
+    referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
+    diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
+    workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
+    feet?: FootCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationUncheckedCreateWithoutFacilityInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    patientId: string
+    companyId: string
+    deviceTypeId?: string | null
+    isDiabetic?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
+    referringPhysicianId?: string | null
+    diagnosisId?: string | null
+    diagnosisedAt?: Date | string | null
+    visitTypeId?: string | null
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    notes?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
+    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationCreateOrConnectWithoutFacilityInput = {
+    where: EvaluationWhereUniqueInput
+    create: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type EvaluationCreateManyFacilityInputEnvelope = {
+    data: EvaluationCreateManyFacilityInput | EvaluationCreateManyFacilityInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CompanyUpsertWithoutFacilitiesInput = {
     update: XOR<CompanyUpdateWithoutFacilitiesInput, CompanyUncheckedUpdateWithoutFacilitiesInput>
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
@@ -43208,6 +43397,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
   }
 
+  export type EvaluationUpsertWithWhereUniqueWithoutFacilityInput = {
+    where: EvaluationWhereUniqueInput
+    update: XOR<EvaluationUpdateWithoutFacilityInput, EvaluationUncheckedUpdateWithoutFacilityInput>
+    create: XOR<EvaluationCreateWithoutFacilityInput, EvaluationUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type EvaluationUpdateWithWhereUniqueWithoutFacilityInput = {
+    where: EvaluationWhereUniqueInput
+    data: XOR<EvaluationUpdateWithoutFacilityInput, EvaluationUncheckedUpdateWithoutFacilityInput>
+  }
+
+  export type EvaluationUpdateManyWithWhereWithoutFacilityInput = {
+    where: EvaluationScalarWhereInput
+    data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutFacilityInput>
+  }
+
   export type FootCreateWithoutPatientInput = {
     id?: string
     side: $Enums.Side
@@ -43264,12 +43469,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -43282,6 +43485,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -43299,15 +43503,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -43660,6 +43863,35 @@ export namespace Prisma {
     create: XOR<DiagnosisCreateWithoutEvaluationsInput, DiagnosisUncheckedCreateWithoutEvaluationsInput>
   }
 
+  export type FacilityCreateWithoutEvaluationInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityUncheckedCreateWithoutEvaluationInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityCreateOrConnectWithoutEvaluationInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutEvaluationInput, FacilityUncheckedCreateWithoutEvaluationInput>
+  }
+
   export type FormSubmissionCreateWithoutEvaluationInput = {
     id?: string
     data: JsonNullValueInput | InputJsonValue
@@ -43972,6 +44204,41 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FacilityUpsertWithoutEvaluationInput = {
+    update: XOR<FacilityUpdateWithoutEvaluationInput, FacilityUncheckedUpdateWithoutEvaluationInput>
+    create: XOR<FacilityCreateWithoutEvaluationInput, FacilityUncheckedCreateWithoutEvaluationInput>
+    where?: FacilityWhereInput
+  }
+
+  export type FacilityUpdateToOneWithWhereWithoutEvaluationInput = {
+    where?: FacilityWhereInput
+    data: XOR<FacilityUpdateWithoutEvaluationInput, FacilityUncheckedUpdateWithoutEvaluationInput>
+  }
+
+  export type FacilityUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
   export type FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput = {
     where: FormSubmissionWhereUniqueInput
     update: XOR<FormSubmissionUpdateWithoutEvaluationInput, FormSubmissionUncheckedUpdateWithoutEvaluationInput>
@@ -44087,12 +44354,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -44106,6 +44371,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -44123,15 +44389,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -44260,12 +44525,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44279,6 +44542,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -44296,15 +44560,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44732,12 +44995,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -44751,6 +45012,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -44768,15 +45030,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -44973,12 +45234,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44992,6 +45251,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -45009,15 +45269,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45164,6 +45423,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutAddressInput = {
@@ -45175,6 +45435,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutAddressInput = {
@@ -45202,6 +45463,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutAddressInput = {
@@ -45213,6 +45475,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type CompanyCreateWithoutPackagesInput = {
@@ -45309,12 +45572,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45327,6 +45588,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -45345,14 +45607,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45401,12 +45662,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45419,6 +45678,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -45437,14 +45697,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45493,12 +45752,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45511,6 +45768,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -45528,15 +45786,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45585,12 +45842,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45603,6 +45858,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
@@ -45621,14 +45877,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45742,12 +45997,10 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45761,6 +46014,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
@@ -45778,15 +46032,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -45853,12 +46106,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45872,6 +46123,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
@@ -45889,15 +46141,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46717,6 +46968,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
+    evaluation?: EvaluationCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutUsersInput = {
@@ -46728,6 +46980,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutUsersInput = {
@@ -46784,6 +47037,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
+    evaluation?: EvaluationUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutUsersInput = {
@@ -46795,6 +47049,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    evaluation?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type UserUpsertWithoutFacilitiesInput = {
@@ -47130,15 +47385,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -47192,6 +47446,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutCompanyInput = {
@@ -47203,6 +47458,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluation?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyInput = {
@@ -47224,12 +47480,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47242,6 +47496,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -47259,15 +47514,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47292,15 +47546,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47421,6 +47674,35 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type EvaluationCreateManyFacilityInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    patientId: string
+    companyId: string
+    deviceTypeId?: string | null
+    isDiabetic?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
+    referringPhysicianId?: string | null
+    diagnosisId?: string | null
+    diagnosisedAt?: Date | string | null
+    visitTypeId?: string | null
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    notes?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FacilityUserUpdateWithoutFacilityInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47435,6 +47717,99 @@ export namespace Prisma {
 
   export type FacilityUserUncheckedUpdateManyWithoutFacilityInput = {
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EvaluationUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
+    deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
+    visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
+    referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
+    diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
+    feet?: FootUpdateManyWithoutEvaluationNestedInput
+  }
+
+  export type EvaluationUncheckedUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
+    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
+    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
+  }
+
+  export type EvaluationUncheckedUpdateManyWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
+    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -47468,15 +47843,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -47569,12 +47943,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47587,6 +47959,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -47604,15 +47977,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47637,15 +48009,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48217,14 +48588,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -48244,12 +48614,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48262,6 +48630,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -48280,14 +48649,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48313,14 +48681,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48343,14 +48710,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -48370,12 +48736,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48388,6 +48752,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -48406,14 +48771,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48439,14 +48803,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48468,15 +48831,14 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: string | null
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -48496,12 +48858,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48514,6 +48874,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -48531,15 +48892,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48564,15 +48924,14 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48595,14 +48954,13 @@ export namespace Prisma {
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
     appointmentStatus?: string | null
-    primaryPractitioner?: string | null
+    practitioners?: EvaluationCreatepractitionersInput | string[]
     referringPhysicianId?: string | null
     diagnosisId?: string | null
     diagnosisedAt?: Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: Date | string | null
+    facilityId?: string | null
     location?: string | null
-    prescribedPractitioner?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
@@ -48622,12 +48980,10 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48640,6 +48996,7 @@ export namespace Prisma {
     deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
@@ -48658,14 +49015,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48691,14 +49047,13 @@ export namespace Prisma {
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    primaryPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
+    practitioners?: EvaluationUpdatepractitionersInput | string[]
     referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
     diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitInformation?: NullableJsonNullValueInput | InputJsonValue
     visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedPractitioner?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null

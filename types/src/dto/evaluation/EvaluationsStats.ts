@@ -6,5 +6,5 @@ export interface EvaluationsStats {
   incompleteCount: number;
   completedCount: number;
   uniquePractitionersCount: number;
-  uniqueLocationsCount: number;
+  uniqueFacilitiesCount: number;
 }
