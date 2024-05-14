@@ -5,6 +5,6 @@ export interface EvaluationsStats {
   futureAppointmentsCount: number;
   incompleteCount: number;
   completedCount: number;
-  uniquePractitionersCount: number;
-  uniqueLocationsCount: number;
+  uniqueCliniciansCount: number;
+  uniqueFacilitiesCount: number;
 }
