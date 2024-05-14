@@ -7379,7 +7379,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7409,7 +7410,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7440,7 +7442,8 @@ export namespace Prisma {
     prescribedAt: number
     prescribedActive: number
     notes: number
-    completedAt: number
+    submittedAt: number
+    deletedAt: number
     cancelledAt: number
     createdAt: number
     updatedAt: number
@@ -7472,7 +7475,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -7502,7 +7506,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -7533,7 +7538,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -7637,7 +7643,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -7685,7 +7692,8 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    completedAt?: boolean
+    submittedAt?: boolean
+    deletedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7726,7 +7734,8 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    completedAt?: boolean
+    submittedAt?: boolean
+    deletedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7785,7 +7794,8 @@ export namespace Prisma {
       prescribedAt: Date | null
       prescribedActive: boolean
       notes: string | null
-      completedAt: Date | null
+      submittedAt: Date | null
+      deletedAt: Date | null
       cancelledAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -8224,7 +8234,8 @@ export namespace Prisma {
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
-    readonly completedAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly deletedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
     readonly updatedAt: FieldRef<"Evaluation", 'DateTime'>
@@ -32577,7 +32588,8 @@ export namespace Prisma {
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
     notes: 'notes',
-    completedAt: 'completedAt',
+    submittedAt: 'submittedAt',
+    deletedAt: 'deletedAt',
     cancelledAt: 'cancelledAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -33613,7 +33625,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -33653,7 +33666,8 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -33699,7 +33713,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -33739,7 +33754,8 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -33776,7 +33792,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -35859,7 +35876,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35899,7 +35917,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35927,7 +35946,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35967,7 +35987,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36001,7 +36022,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -36026,7 +36048,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36057,7 +36080,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -38526,7 +38550,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38556,7 +38581,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38586,7 +38612,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -42639,7 +42666,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42677,7 +42705,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42879,7 +42908,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -43273,7 +43303,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43311,7 +43342,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44096,7 +44128,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44135,7 +44168,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44269,7 +44303,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44308,7 +44343,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44741,7 +44777,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44780,7 +44817,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44982,7 +45020,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45021,7 +45060,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45318,7 +45358,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45356,7 +45397,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45410,7 +45452,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45448,7 +45491,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45502,7 +45546,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45540,7 +45585,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45594,7 +45640,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45632,7 +45679,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45751,7 +45799,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45790,7 +45839,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45862,7 +45912,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45901,7 +45952,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47142,7 +47194,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47233,7 +47286,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47271,7 +47325,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47304,7 +47359,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47480,7 +47536,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47578,7 +47635,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47616,7 +47674,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47649,7 +47708,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48228,7 +48288,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48253,7 +48314,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48291,7 +48353,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48324,7 +48387,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48354,7 +48418,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48379,7 +48444,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48417,7 +48483,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48450,7 +48517,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48480,7 +48548,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48505,7 +48574,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48543,7 +48613,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48576,7 +48647,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48606,7 +48678,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48631,7 +48704,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48669,7 +48743,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48702,7 +48777,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
