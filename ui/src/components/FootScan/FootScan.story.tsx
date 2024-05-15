@@ -1,4 +1,4 @@
-import { Side } from '@prisma/client';
+import type { Side } from '@hike/types';
 import React, { useState } from 'react';
 import { FootScan, FootScanProps } from './FootScan';
 
