@@ -30,6 +30,7 @@ export * from './hooks/useFormSubmissions';
 export * from './hooks/useFormTemplates';
 export * from './hooks/useGetShippingRates';
 export * from './hooks/useOrders';
+export * from './hooks/usePatientById';
 export * from './hooks/usePatients';
 export * from './hooks/usePhysicians';
 export * from './hooks/useProducts';
