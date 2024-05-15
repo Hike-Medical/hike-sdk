@@ -9,7 +9,7 @@ export type EvaluationStatus =
   | 'COMPLETED';
 
 export interface GetEvaluationsByStatusParams extends PagedParams {
-  status?: EvaluationStatus;
+  status: EvaluationStatus;
   searchQuery?: string;
   clinicianId?: string;
   facilityId?: string;
