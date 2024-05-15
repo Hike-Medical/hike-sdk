@@ -22,6 +22,7 @@ export * from './hooks/useCompaniesBySession';
 export * from './hooks/useCompanyPackages';
 export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
+export * from './hooks/useEvaluationSearch';
 export * from './hooks/useEvaluationStats';
 export * from './hooks/useEvaluations';
 export * from './hooks/useFacilities';

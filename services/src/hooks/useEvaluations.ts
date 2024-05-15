@@ -1,26 +1,9 @@
-import type {
-  EvaluationExtended,
-  EvaluationsStats,
-  GetEvaluationsByStatusParams,
-  PagedResponse,
-  SearchEvaluationsParams
-} from '@hike/types';
+import type { EvaluationExtended, GetEvaluationsByStatusParams, PagedResponse } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
-import { findEvaluationsByStatus, searchEvaluations, statsForEvaluations } from '../api/evaluation.service';
+import { findEvaluationsByStatus } from '../api/evaluation.service';
 import { ResponseError } from '../errors/ResponseError';
 
 export interface UseEvaluationsOptions extends GetEvaluationsByStatusParams {
-  key?: string[];
-  enabled?: boolean;
-}
-
-export interface UseEvaluationCountOptions {
-  key?: string[];
-  enabled?: boolean;
-  clinicianId?: string;
-}
-
-export interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {
   key?: string[];
   enabled?: boolean;
 }
@@ -29,19 +12,5 @@ export const useEvaluations = ({ key = [], enabled = true, ...params }: UseEvalu
   useQuery<PagedResponse<EvaluationExtended[]>, ResponseError<null>>({
     queryKey: ['evaluations', ...key, params],
     queryFn: async () => await findEvaluationsByStatus(params),
-    enabled
-  });
-
-export const useEvaluationStatusCount = ({ key = [], enabled = true, ...params }: UseEvaluationCountOptions) =>
-  useQuery<EvaluationsStats, ResponseError<null>>({
-    queryKey: ['evaluationCount', ...key, params],
-    queryFn: async () => await statsForEvaluations(params.clinicianId),
-    enabled
-  });
-
-export const useEvaluationSearch = ({ key = [], enabled = true, ...params }: UseEvaluationsSearchOptions) =>
-  useQuery<PagedResponse<EvaluationExtended[]>, ResponseError<null>>({
-    queryKey: ['evaluationSearch', ...key, params],
-    queryFn: async () => await searchEvaluations(params),
     enabled
   });
