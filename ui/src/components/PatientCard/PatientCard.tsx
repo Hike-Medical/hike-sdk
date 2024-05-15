@@ -10,6 +10,7 @@ export interface PatientCardProps {
   lastVisit?: Date;
   isDiabetic: boolean;
   isVeteranAdministration: boolean;
+  openEvaluation: () => void;
 }
 
 export function PatientCard({
@@ -20,7 +21,8 @@ export function PatientCard({
   birthDate,
   lastVisit,
   isDiabetic,
-  isVeteranAdministration
+  isVeteranAdministration,
+  openEvaluation
 }: PatientCardProps) {
   const renderBadge = (text: string) => (
     <Badge variant="filled" color="#006CEA1A" tt="none" mt={10} p={15}>
@@ -67,7 +69,7 @@ export function PatientCard({
           <Box></Box>
         )}
 
-        <Button color="#006CEA" pl={20} pr={20}>
+        <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
           <Text fw={600} size="14px" c="white">
             View Evaluations
           </Text>
