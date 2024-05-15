@@ -6,6 +6,7 @@ import type {
   SearchPatientsParams,
   UpdatePatientParams
 } from '@hike/types';
+import { PatientExtended } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export const createPatient = async (params: CreatePatientParams): Promise<Patient> => {
@@ -13,7 +14,7 @@ export const createPatient = async (params: CreatePatientParams): Promise<Patien
   return response.data;
 };
 
-export const findPatientById = async (patientId: string): Promise<Patient> => {
+export const findPatientById = async (patientId: string): Promise<PatientExtended> => {
   const response = await backendApi.get(`patient/${patientId}`);
   return response.data;
 };

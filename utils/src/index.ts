@@ -2,6 +2,7 @@ export * from './constants';
 export * from './converters/formatConstant';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
+export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './geography';
 export * from './guards/isAuthUser';
