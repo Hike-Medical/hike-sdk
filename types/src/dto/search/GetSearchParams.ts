@@ -1,7 +1,7 @@
 import type { PagedParams } from '../PagedParams';
 import type { EvaluationStatus } from '../evaluation/GetEvaluationsByStatusParams';
 
-export interface GlobalSearchParams extends PagedParams {
+export interface GetSearchParams extends PagedParams {
   term: string;
   status?: EvaluationStatus;
 }

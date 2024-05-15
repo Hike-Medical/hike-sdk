@@ -36,7 +36,7 @@ export const searchEvaluations = async (
 /**
  * Retrieves the statistics for evaluations.
  */
-export const statsForEvaluations = async (clinicianId: string | undefined): Promise<EvaluationsStats> => {
+export const statsForEvaluations = async (clinicianId?: string): Promise<EvaluationsStats> => {
   const response = await backendApi.get('evaluation/stats', { params: { clinicianId } });
   return response.data;
 };
