@@ -5,12 +5,23 @@ import type {
   EvaluationsUploadResult,
   GetEvaluationsByStatusParams,
   PagedResponse,
-  SearchEvaluationsParams
+  SearchEvaluationsParams,
+  StartEvaluationInsoleParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
   const response = await backendApi.post('evaluation', params);
+  return response.data;
+};
+
+export const createInsoleEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/create/insole', params);
+  return response.data;
+};
+
+export const startInsoleEvaluation = async (params: StartEvaluationInsoleParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/start/insole', params);
   return response.data;
 };
 

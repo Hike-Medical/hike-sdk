@@ -76,7 +76,7 @@ export function PatientCard({
             )}
             <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
               <Text fw={600} size="14px" c="white">
-                View Evaluations
+                View Patient Profile
               </Text>
             </Button>
           </Group>
@@ -86,7 +86,7 @@ export function PatientCard({
           <Box></Box>
           <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
             <Text fw={600} size="14px" c="white">
-              View Patient
+              View Patient Profile
             </Text>
           </Button>
         </Group>
