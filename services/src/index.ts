@@ -20,6 +20,7 @@ export * from './errors/ResponseError';
 export * from './hooks/useCategories';
 export * from './hooks/useCompaniesBySession';
 export * from './hooks/useCompanyPackages';
+export * from './hooks/useCreateInsoleEvaluation';
 export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
 export * from './hooks/useEvaluationSearch';
