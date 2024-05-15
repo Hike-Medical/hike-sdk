@@ -14,7 +14,7 @@ export default {
       {
         isDiabetic: { control: 'boolean' },
         isVeteran: { control: 'boolean' },
-        visitedAt: { control: 'date' }
+        startedAt: { control: 'date' }
       }
     ]
   },
@@ -27,7 +27,7 @@ export default {
       {
         isDiabetic: false,
         isVeteran: false,
-        visitedAt: new Date('2024-05-12T00:00:00')
+        startedAt: new Date('2024-05-12T00:00:00')
       }
     ]
   } as PatientCardProps
