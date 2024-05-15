@@ -10,7 +10,7 @@ export interface PatientCardProps {
   evaluations?: {
     isDiabetic: boolean;
     isVeteran: boolean;
-    visitedAt?: Date;
+    startedAt?: Date;
   }[];
   openEvaluation: () => void;
 }
@@ -62,10 +62,10 @@ export function PatientCard({
               padding: '10px'
             }}
           >
-            {evaluations[0]?.visitedAt ? (
+            {evaluations[0]?.startedAt ? (
               <Text fw={500} size="14px">
                 Last Visit:{' '}
-                {evaluations[0].visitedAt?.toLocaleDateString('en-US', {
+                {evaluations[0].startedAt?.toLocaleDateString('en-US', {
                   month: '2-digit',
                   day: '2-digit',
                   year: 'numeric'
