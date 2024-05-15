@@ -2,26 +2,26 @@ import { toTitleCase } from '@hike/utils';
 import { Badge, Box, Button, Group, Paper, Stack, Text } from '@mantine/core';
 
 export interface PatientCardProps {
+  id: string;
   firstName: string;
   middleName?: string;
   lastName: string;
-  patientId: string;
   birthDate?: Date;
-  lastVisit?: Date;
-  isDiabetic: boolean;
-  isVeteranAdministration: boolean;
+  evaluations?: {
+    isDiabetic: boolean;
+    isVeteran: boolean;
+    visitedAt?: Date;
+  }[];
   openEvaluation: () => void;
 }
 
 export function PatientCard({
+  id,
   firstName,
   middleName,
   lastName,
-  patientId,
   birthDate,
-  lastVisit,
-  isDiabetic,
-  isVeteranAdministration,
+  evaluations,
   openEvaluation
 }: PatientCardProps) {
   const renderBadge = (text: string) => (
@@ -40,7 +40,7 @@ export function PatientCard({
           {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
         </Text>
         <Text fw={500} size="12px">
-          Patient ID: {patientId}
+          Patient ID: {id}
         </Text>
         {birthDate && (
           <Text fw={500} size="12px">
@@ -48,33 +48,40 @@ export function PatientCard({
           </Text>
         )}
       </Stack>
-      <Group gap={'xs'}>
-        {isDiabetic && renderBadge('Diabetic')}
-        {isVeteranAdministration && renderBadge('VA')}
-      </Group>
-
-      <Group
-        justify="space-between"
-        mt={8}
-        style={{
-          borderTop: '2px solid #ADB5BD',
-          padding: '10px'
-        }}
-      >
-        {lastVisit ? (
-          <Text fw={500} size="14px">
-            Last Visit: {lastVisit.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
-          </Text>
-        ) : (
-          <Box></Box>
-        )}
-
-        <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
-          <Text fw={600} size="14px" c="white">
-            View Evaluations
-          </Text>
-        </Button>
-      </Group>
+      {!!evaluations?.length && (
+        <>
+          <Group gap={'xs'}>
+            {evaluations[0]?.isDiabetic && renderBadge('Diabetic')}
+            {evaluations[0]?.isVeteran && renderBadge('VA')}
+          </Group>
+          <Group
+            justify="space-between"
+            mt={8}
+            style={{
+              borderTop: '2px solid #ADB5BD',
+              padding: '10px'
+            }}
+          >
+            {evaluations[0]?.visitedAt ? (
+              <Text fw={500} size="14px">
+                Last Visit:{' '}
+                {evaluations[0].visitedAt?.toLocaleDateString('en-US', {
+                  month: '2-digit',
+                  day: '2-digit',
+                  year: 'numeric'
+                })}
+              </Text>
+            ) : (
+              <Box></Box>
+            )}
+            <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
+              <Text fw={600} size="14px" c="white">
+                View Evaluations
+              </Text>
+            </Button>
+          </Group>
+        </>
+      )}
     </Paper>
   );
 }
