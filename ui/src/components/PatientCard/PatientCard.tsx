@@ -48,7 +48,7 @@ export function PatientCard({
           </Text>
         )}
       </Stack>
-      {!!evaluations?.length && (
+      {!!evaluations?.length ? (
         <>
           <Group gap={'xs'}>
             {evaluations[0]?.isDiabetic && renderBadge('Diabetic')}
@@ -81,6 +81,15 @@ export function PatientCard({
             </Button>
           </Group>
         </>
+      ) : (
+        <Group justify="space-between">
+          <Box></Box>
+          <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
+            <Text fw={600} size="14px" c="white">
+              View Patient
+            </Text>
+          </Button>
+        </Group>
       )}
     </Paper>
   );
