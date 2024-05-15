@@ -1,4 +1,3 @@
-import type { Side } from '@hike/types';
 import React, { useState } from 'react';
 import { FootScan, FootScanProps } from './FootScan';
 
@@ -12,7 +11,7 @@ const FootScanContainer = (args: FootScanProps) => {
 export default {
   component: FootScanContainer,
   args: {
-    side: Side.LEFT,
+    side: 'LEFT',
     status: 'NOT_STARTED'
   } as FootScanProps,
   argTypes: {
@@ -21,7 +20,7 @@ export default {
       control: { type: 'radio' }
     },
     side: {
-      options: [Side.LEFT, Side.RIGHT],
+      options: ['LEFT', 'RIGHT'],
       control: { type: 'radio' }
     }
   }
