@@ -8465,6 +8465,7 @@ export namespace Prisma {
     companyId: string | null
     deviceTypeId: string | null
     isDiabetic: boolean | null
+    isVeteran: boolean | null
     deviceSide: $Enums.Side | null
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
@@ -8479,7 +8480,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8494,6 +8496,7 @@ export namespace Prisma {
     companyId: string | null
     deviceTypeId: string | null
     isDiabetic: boolean | null
+    isVeteran: boolean | null
     deviceSide: $Enums.Side | null
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
@@ -8508,7 +8511,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean | null
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8523,6 +8527,7 @@ export namespace Prisma {
     companyId: number
     deviceTypeId: number
     isDiabetic: number
+    isVeteran: number
     deviceSide: number
     devicePosition: number
     appointmentAt: number
@@ -8537,7 +8542,8 @@ export namespace Prisma {
     prescribedAt: number
     prescribedActive: number
     notes: number
-    completedAt: number
+    submittedAt: number
+    deletedAt: number
     cancelledAt: number
     createdAt: number
     updatedAt: number
@@ -8554,6 +8560,7 @@ export namespace Prisma {
     companyId?: true
     deviceTypeId?: true
     isDiabetic?: true
+    isVeteran?: true
     deviceSide?: true
     devicePosition?: true
     appointmentAt?: true
@@ -8568,7 +8575,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8583,6 +8591,7 @@ export namespace Prisma {
     companyId?: true
     deviceTypeId?: true
     isDiabetic?: true
+    isVeteran?: true
     deviceSide?: true
     devicePosition?: true
     appointmentAt?: true
@@ -8597,7 +8606,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8612,6 +8622,7 @@ export namespace Prisma {
     companyId?: true
     deviceTypeId?: true
     isDiabetic?: true
+    isVeteran?: true
     deviceSide?: true
     devicePosition?: true
     appointmentAt?: true
@@ -8626,7 +8637,8 @@ export namespace Prisma {
     prescribedAt?: true
     prescribedActive?: true
     notes?: true
-    completedAt?: true
+    submittedAt?: true
+    deletedAt?: true
     cancelledAt?: true
     createdAt?: true
     updatedAt?: true
@@ -8714,6 +8726,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId: string | null
     isDiabetic: boolean
+    isVeteran: boolean
     deviceSide: $Enums.Side | null
     devicePosition: $Enums.VerticalPosition | null
     appointmentAt: Date | null
@@ -8728,7 +8741,8 @@ export namespace Prisma {
     prescribedAt: Date | null
     prescribedActive: boolean
     notes: string | null
-    completedAt: Date | null
+    submittedAt: Date | null
+    deletedAt: Date | null
     cancelledAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -8760,6 +8774,7 @@ export namespace Prisma {
     companyId?: boolean
     deviceTypeId?: boolean
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: boolean
     devicePosition?: boolean
     appointmentAt?: boolean
@@ -8774,7 +8789,8 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    completedAt?: boolean
+    submittedAt?: boolean
+    deletedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8802,6 +8818,7 @@ export namespace Prisma {
     companyId?: boolean
     deviceTypeId?: boolean
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: boolean
     devicePosition?: boolean
     appointmentAt?: boolean
@@ -8816,7 +8833,8 @@ export namespace Prisma {
     prescribedAt?: boolean
     prescribedActive?: boolean
     notes?: boolean
-    completedAt?: boolean
+    submittedAt?: boolean
+    deletedAt?: boolean
     cancelledAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8865,6 +8883,7 @@ export namespace Prisma {
       companyId: string
       deviceTypeId: string | null
       isDiabetic: boolean
+      isVeteran: boolean
       deviceSide: $Enums.Side | null
       devicePosition: $Enums.VerticalPosition | null
       appointmentAt: Date | null
@@ -8879,7 +8898,8 @@ export namespace Prisma {
       prescribedAt: Date | null
       prescribedActive: boolean
       notes: string | null
-      completedAt: Date | null
+      submittedAt: Date | null
+      deletedAt: Date | null
       cancelledAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -9308,6 +9328,7 @@ export namespace Prisma {
     readonly companyId: FieldRef<"Evaluation", 'String'>
     readonly deviceTypeId: FieldRef<"Evaluation", 'String'>
     readonly isDiabetic: FieldRef<"Evaluation", 'Boolean'>
+    readonly isVeteran: FieldRef<"Evaluation", 'Boolean'>
     readonly deviceSide: FieldRef<"Evaluation", 'Side'>
     readonly devicePosition: FieldRef<"Evaluation", 'VerticalPosition'>
     readonly appointmentAt: FieldRef<"Evaluation", 'DateTime'>
@@ -9322,7 +9343,8 @@ export namespace Prisma {
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
     readonly notes: FieldRef<"Evaluation", 'String'>
-    readonly completedAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly deletedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
     readonly updatedAt: FieldRef<"Evaluation", 'DateTime'>
@@ -33750,6 +33772,7 @@ export namespace Prisma {
     companyId: 'companyId',
     deviceTypeId: 'deviceTypeId',
     isDiabetic: 'isDiabetic',
+    isVeteran: 'isVeteran',
     deviceSide: 'deviceSide',
     devicePosition: 'devicePosition',
     appointmentAt: 'appointmentAt',
@@ -33764,7 +33787,8 @@ export namespace Prisma {
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
     notes: 'notes',
-    completedAt: 'completedAt',
+    submittedAt: 'submittedAt',
+    deletedAt: 'deletedAt',
     cancelledAt: 'cancelledAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -34842,6 +34866,7 @@ export namespace Prisma {
     companyId?: StringFilter<"Evaluation"> | string
     deviceTypeId?: StringNullableFilter<"Evaluation"> | string | null
     isDiabetic?: BoolFilter<"Evaluation"> | boolean
+    isVeteran?: BoolFilter<"Evaluation"> | boolean
     deviceSide?: EnumSideNullableFilter<"Evaluation"> | $Enums.Side | null
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -34856,7 +34881,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -34883,6 +34909,7 @@ export namespace Prisma {
     companyId?: SortOrder
     deviceTypeId?: SortOrderInput | SortOrder
     isDiabetic?: SortOrder
+    isVeteran?: SortOrder
     deviceSide?: SortOrderInput | SortOrder
     devicePosition?: SortOrderInput | SortOrder
     appointmentAt?: SortOrderInput | SortOrder
@@ -34897,7 +34924,8 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -34930,6 +34958,7 @@ export namespace Prisma {
     companyId?: StringFilter<"Evaluation"> | string
     deviceTypeId?: StringNullableFilter<"Evaluation"> | string | null
     isDiabetic?: BoolFilter<"Evaluation"> | boolean
+    isVeteran?: BoolFilter<"Evaluation"> | boolean
     deviceSide?: EnumSideNullableFilter<"Evaluation"> | $Enums.Side | null
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -34944,7 +34973,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -34971,6 +35001,7 @@ export namespace Prisma {
     companyId?: SortOrder
     deviceTypeId?: SortOrderInput | SortOrder
     isDiabetic?: SortOrder
+    isVeteran?: SortOrder
     deviceSide?: SortOrderInput | SortOrder
     devicePosition?: SortOrderInput | SortOrder
     appointmentAt?: SortOrderInput | SortOrder
@@ -34985,7 +35016,8 @@ export namespace Prisma {
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrderInput | SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -35006,6 +35038,7 @@ export namespace Prisma {
     companyId?: StringWithAggregatesFilter<"Evaluation"> | string
     deviceTypeId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     isDiabetic?: BoolWithAggregatesFilter<"Evaluation"> | boolean
+    isVeteran?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     deviceSide?: EnumSideNullableWithAggregatesFilter<"Evaluation"> | $Enums.Side | null
     devicePosition?: EnumVerticalPositionNullableWithAggregatesFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
@@ -35020,7 +35053,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
     notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -37157,6 +37191,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -37167,7 +37202,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -37194,6 +37230,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -37208,7 +37245,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -37225,6 +37263,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37235,7 +37274,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37262,6 +37302,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37276,7 +37317,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37296,6 +37338,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -37310,7 +37353,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -37322,6 +37366,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37332,7 +37377,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37347,6 +37393,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37361,7 +37408,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39867,6 +39915,7 @@ export namespace Prisma {
     companyId?: SortOrder
     deviceTypeId?: SortOrder
     isDiabetic?: SortOrder
+    isVeteran?: SortOrder
     deviceSide?: SortOrder
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
@@ -39881,7 +39930,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39896,6 +39946,7 @@ export namespace Prisma {
     companyId?: SortOrder
     deviceTypeId?: SortOrder
     isDiabetic?: SortOrder
+    isVeteran?: SortOrder
     deviceSide?: SortOrder
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
@@ -39910,7 +39961,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39925,6 +39977,7 @@ export namespace Prisma {
     companyId?: SortOrder
     deviceTypeId?: SortOrder
     isDiabetic?: SortOrder
+    isVeteran?: SortOrder
     deviceSide?: SortOrder
     devicePosition?: SortOrder
     appointmentAt?: SortOrder
@@ -39939,7 +39992,8 @@ export namespace Prisma {
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
     notes?: SortOrder
-    completedAt?: SortOrder
+    submittedAt?: SortOrder
+    deletedAt?: SortOrder
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -44191,6 +44245,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44201,7 +44256,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44226,6 +44282,7 @@ export namespace Prisma {
     patientId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44240,7 +44297,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44428,6 +44486,7 @@ export namespace Prisma {
     companyId?: StringFilter<"Evaluation"> | string
     deviceTypeId?: StringNullableFilter<"Evaluation"> | string | null
     isDiabetic?: BoolFilter<"Evaluation"> | boolean
+    isVeteran?: BoolFilter<"Evaluation"> | boolean
     deviceSide?: EnumSideNullableFilter<"Evaluation"> | $Enums.Side | null
     devicePosition?: EnumVerticalPositionNullableFilter<"Evaluation"> | $Enums.VerticalPosition | null
     appointmentAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -44442,7 +44501,8 @@ export namespace Prisma {
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
     notes?: StringNullableFilter<"Evaluation"> | string | null
-    completedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
@@ -44665,6 +44725,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44675,7 +44736,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44701,6 +44763,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44714,7 +44777,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44915,6 +44979,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44925,7 +44990,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44950,6 +45016,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -44964,7 +45031,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45157,6 +45225,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -45167,7 +45236,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45193,6 +45263,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -45207,7 +45278,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45997,6 +46069,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -46007,7 +46080,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46033,6 +46107,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -46047,7 +46122,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46170,6 +46246,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46180,7 +46257,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46206,6 +46284,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46220,7 +46299,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46642,6 +46722,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -46652,7 +46733,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46678,6 +46760,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -46692,7 +46775,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46883,6 +46967,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46893,7 +46978,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46919,6 +47005,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46933,7 +47020,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47223,6 +47311,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47233,7 +47322,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47259,6 +47349,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47272,7 +47363,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47315,6 +47407,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47325,7 +47418,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47351,6 +47445,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47364,7 +47459,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47407,6 +47503,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47417,7 +47514,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47442,6 +47540,7 @@ export namespace Prisma {
     patientId: string
     companyId: string
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47456,7 +47555,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47499,6 +47599,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47509,7 +47610,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47535,6 +47637,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47548,7 +47651,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47656,6 +47760,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47666,7 +47771,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47692,6 +47798,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -47706,7 +47813,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47767,6 +47875,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47777,7 +47886,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47803,6 +47913,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47817,7 +47928,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48814,6 +48926,7 @@ export namespace Prisma {
     poNumber?: string | null
     type: $Enums.CareType
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -48824,7 +48937,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48850,6 +48964,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -48864,7 +48979,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49147,6 +49263,7 @@ export namespace Prisma {
     patientId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -49161,7 +49278,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49241,6 +49359,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49251,7 +49370,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49276,6 +49396,7 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49290,7 +49411,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49309,6 +49431,7 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49323,7 +49446,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49449,6 +49573,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -49462,7 +49587,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49492,6 +49618,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49502,7 +49629,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49528,6 +49656,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49541,7 +49670,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49561,6 +49691,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49574,7 +49705,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49605,6 +49737,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -49619,7 +49752,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49704,6 +49838,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49714,7 +49849,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49739,6 +49875,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49753,7 +49890,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49772,6 +49910,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49786,7 +49925,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49862,6 +50002,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49872,7 +50013,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49898,6 +50040,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49912,7 +50055,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49931,6 +50075,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49945,7 +50090,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50505,6 +50651,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -50518,7 +50665,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50530,6 +50678,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50540,7 +50689,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50566,6 +50716,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50579,7 +50730,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50599,6 +50751,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50612,7 +50765,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50627,6 +50781,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -50640,7 +50795,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50652,6 +50808,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50662,7 +50819,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50688,6 +50846,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50701,7 +50860,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50721,6 +50881,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50734,7 +50895,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50748,6 +50910,7 @@ export namespace Prisma {
     patientId: string
     companyId: string
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -50762,7 +50925,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50774,6 +50938,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50784,7 +50949,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50809,6 +50975,7 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50823,7 +50990,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50842,6 +51010,7 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50856,7 +51025,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50871,6 +51041,7 @@ export namespace Prisma {
     companyId: string
     deviceTypeId?: string | null
     isDiabetic?: boolean
+    isVeteran?: boolean
     deviceSide?: $Enums.Side | null
     devicePosition?: $Enums.VerticalPosition | null
     appointmentAt?: Date | string | null
@@ -50884,7 +51055,8 @@ export namespace Prisma {
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
     notes?: string | null
-    completedAt?: Date | string | null
+    submittedAt?: Date | string | null
+    deletedAt?: Date | string | null
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50896,6 +51068,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50906,7 +51079,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50932,6 +51106,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50945,7 +51120,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50965,6 +51141,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50978,7 +51155,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -51294,6 +51472,7 @@ export namespace Prisma {
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51304,7 +51483,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -51330,6 +51510,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51344,7 +51525,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -51363,6 +51545,7 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
     deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
     devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
     appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51377,7 +51560,8 @@ export namespace Prisma {
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
     notes?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
