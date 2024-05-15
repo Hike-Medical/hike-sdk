@@ -12,6 +12,7 @@ export interface GetEvaluationsByStatusParams extends PagedParams {
   status: EvaluationStatus;
   searchQuery?: string;
   clinicianId?: string;
+  userId?: string;
   facilityId?: string;
   sortBy?: 'appointmentAt';
 }
