@@ -40,4 +40,6 @@ export * from './hooks/useUpdateTrackingInfo';
 export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
+export * from './hooks/useCreateNotes';
+export * from './hooks/useGetNotes';
 export * from './utils/backendApi';

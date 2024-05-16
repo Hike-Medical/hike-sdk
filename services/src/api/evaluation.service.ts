@@ -1,6 +1,8 @@
 import type {
   CreateEvaluationParams,
+  CreateNotesBody,
   EvaluationExtended,
+  EvaluationNotes,
   EvaluationsStats,
   EvaluationsUploadResult,
   GetEvaluationsByStatusParams,
@@ -49,5 +51,15 @@ export const uploadEvaluations = async (file: File): Promise<EvaluationsUploadRe
     headers: { 'Content-Type': 'multipart/form-data' }
   });
 
+  return response.data;
+};
+
+export const createNotes = async (evaluationId: string, body: CreateNotesBody): Promise<EvaluationNotes> => {
+  const response = await backendApi.post(`evaluation/${evaluationId}/notes`, body);
+  return response.data;
+};
+
+export const findNotes = async (evaluationId: string): Promise<EvaluationNotes[]> => {
+  const response = await backendApi.get(`evaluation/${evaluationId}/notes`);
   return response.data;
 };
