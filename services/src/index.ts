@@ -42,4 +42,7 @@ export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
 export * from './hooks/useCreateNotes';
 export * from './hooks/useGetNotes';
+export * from './hooks/useGetNote';
+export * from './hooks/useUpdateNote';
+export * from './hooks/useDeleteNote';
 export * from './utils/backendApi';

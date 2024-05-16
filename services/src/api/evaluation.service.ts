@@ -7,7 +7,8 @@ import type {
   EvaluationsUploadResult,
   GetEvaluationsByStatusParams,
   PagedResponse,
-  SearchEvaluationsParams
+  SearchEvaluationsParams,
+  UpdateNotesBody
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
@@ -62,4 +63,22 @@ export const createNotes = async (evaluationId: string, body: CreateNotesBody): 
 export const findNotes = async (evaluationId: string): Promise<EvaluationNotes[]> => {
   const response = await backendApi.get(`evaluation/${evaluationId}/notes`);
   return response.data;
+};
+
+export const findNoteById = async (evaluationId: string, noteId: string): Promise<EvaluationNotes> => {
+  const response = await backendApi.get(`evaluation/${evaluationId}/notes/${noteId}`);
+  return response.data;
+};
+
+export const updateNotes = async (
+  evaluationId: string,
+  noteId: string,
+  body: UpdateNotesBody
+): Promise<EvaluationNotes> => {
+  const response = await backendApi.put(`evaluation/${evaluationId}/notes/${noteId}`, body);
+  return response.data;
+};
+
+export const deleteNotes = async (evaluationId: string, noteId: string): Promise<void> => {
+  await backendApi.delete(`evaluation/${evaluationId}/notes/${noteId}`);
 };
