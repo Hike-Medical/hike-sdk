@@ -8,6 +8,7 @@ export interface SearchEvaluationsParams extends PagedParams {
   evaluationStatus?: EvaluationStatus;
   careType?: CareType;
   appointmentStartAt?: Date;
+  assignedOnly?: boolean;
   appointmentEndAt?: Date;
   appointmentStatus?: string;
   clinicianId?: string;

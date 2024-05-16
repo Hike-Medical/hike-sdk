@@ -48,8 +48,8 @@ export const searchEvaluations = async (
 /**
  * Retrieves the statistics for evaluations.
  */
-export const statsForEvaluations = async (isForUser?: boolean): Promise<EvaluationsStats> => {
-  const response = await backendApi.get('evaluation/stats', { params: { isForUser } });
+export const statsForEvaluations = async (assignedOnly?: boolean): Promise<EvaluationsStats> => {
+  const response = await backendApi.get('evaluation/stats', { params: { assignedOnly } });
   return response.data;
 };
 
