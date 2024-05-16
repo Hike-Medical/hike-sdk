@@ -10,7 +10,7 @@ export type * from './dto/catalog/SearchProductsParams';
 export type * from './dto/evaluation/CreateEvaluationParams';
 export type * from './dto/evaluation/EvaluationsStats';
 export type * from './dto/evaluation/EvaluationsUploadResult';
-export type * from './dto/evaluation/GetEvaluationsByStatusParams';
+export type * from './dto/evaluation/GetEvaluationsParams';
 export type * from './dto/evaluation/SearchEvaluationsParams';
 export type * from './dto/form/UpsertFormSubmissionParams';
 export type * from './dto/order/CreateOrderParams';
