@@ -10,6 +10,7 @@ export * from './api/physician.service';
 export * from './api/shipping.service';
 export * from './auth/defaultCompany';
 export * from './auth/findCompaniesBySession';
+export * from './auth/findCompanyById';
 export * from './auth/findCompanyBySlug';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';

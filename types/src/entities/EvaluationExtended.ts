@@ -1,5 +1,5 @@
 import type { Clinician, DeviceType, Diagnosis, Evaluation, Facility, Physician, VisitType } from '../../prisma';
-import { EvaluationStatus } from '../dto/evaluation/GetEvaluationsByStatusParams';
+import { EvaluationStatus } from '../dto/evaluation/GetEvaluationsParams';
 import { PatientExtended } from './PatientExtended';
 
 export type EvaluationExtended = Evaluation & {
