@@ -1,16 +1,28 @@
 import type {
+  CreateEvaluationInsoleParams,
   CreateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
   GetEvaluationsParams,
   PagedResponse,
-  SearchEvaluationsParams
+  SearchEvaluationsParams,
+  StartEvaluationInsoleParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
   const response = await backendApi.post('evaluation', params);
+  return response.data;
+};
+
+export const createInsoleEvaluation = async (params: CreateEvaluationInsoleParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/create/insole', params);
+  return response.data;
+};
+
+export const startInsoleEvaluation = async (params: StartEvaluationInsoleParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/start/insole', params);
   return response.data;
 };
 
@@ -34,8 +46,8 @@ export const searchEvaluations = async (
 /**
  * Retrieves the statistics for evaluations.
  */
-export const statsForEvaluations = async (clinicianId?: string): Promise<EvaluationsStats> => {
-  const response = await backendApi.get('evaluation/stats', { params: { clinicianId } });
+export const statsForEvaluations = async (assignedOnly?: boolean): Promise<EvaluationsStats> => {
+  const response = await backendApi.get('evaluation/stats', { params: { assignedOnly } });
   return response.data;
 };
 

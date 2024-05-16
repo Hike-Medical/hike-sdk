@@ -13,5 +13,6 @@ export interface SearchEvaluationsParams extends PagedParams {
   clinicianId?: string;
   visitTypeId?: string;
   facilityId?: string;
+  assignedOnly?: boolean;
   sortBy?: 'appointmentAt';
 }

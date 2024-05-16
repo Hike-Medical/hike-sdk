@@ -18,5 +18,6 @@ export interface GetEvaluationsParams extends PagedParams {
   excludedVisitTypes?: string[];
   appointmentStatuses?: string[];
   excludedAppointmentStatuses?: string[];
+  assignedOnly?: boolean;
   sortBy?: keyof Evaluation;
 }
