@@ -11,7 +11,7 @@ export type * from './dto/evaluation/CreateEvaluationInsoleParams';
 export type * from './dto/evaluation/CreateEvaluationParams';
 export type * from './dto/evaluation/EvaluationsStats';
 export type * from './dto/evaluation/EvaluationsUploadResult';
-export type * from './dto/evaluation/GetEvaluationsByStatusParams';
+export type * from './dto/evaluation/GetEvaluationsParams';
 export type * from './dto/evaluation/SearchEvaluationsParams';
 export type * from './dto/evaluation/StartEvaluationInsoleParams';
 export type * from './dto/form/UpsertFormSubmissionParams';

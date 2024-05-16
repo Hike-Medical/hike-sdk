@@ -4,7 +4,7 @@ import type {
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
-  GetEvaluationsByStatusParams,
+  GetEvaluationsParams,
   PagedResponse,
   SearchEvaluationsParams,
   StartEvaluationInsoleParams
@@ -31,17 +31,15 @@ export const findEvaluationById = async (evaluationId: string): Promise<Evaluati
   return response.data;
 };
 
-export const findEvaluationsByStatus = async (
-  params: GetEvaluationsByStatusParams
-): Promise<PagedResponse<EvaluationExtended[]>> => {
-  const response = await backendApi.get('evaluation/status', { params });
+export const findEvaluations = async (params: GetEvaluationsParams): Promise<PagedResponse<EvaluationExtended[]>> => {
+  const response = await backendApi.get('evaluation', { params });
   return response.data;
 };
 
 export const searchEvaluations = async (
   params: SearchEvaluationsParams
 ): Promise<PagedResponse<EvaluationExtended[]>> => {
-  const response = await backendApi.get('evaluation', { params });
+  const response = await backendApi.get('evaluation/search', { params });
   return response.data;
 };
 
