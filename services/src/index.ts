@@ -37,6 +37,7 @@ export * from './hooks/usePhysicians';
 export * from './hooks/useProducts';
 export * from './hooks/usePurchaseLabel';
 export * from './hooks/useSearch';
+export * from './hooks/useStartInsoleEvaluation';
 export * from './hooks/useUpdateTrackingInfo';
 export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';

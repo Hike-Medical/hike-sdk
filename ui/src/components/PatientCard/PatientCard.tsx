@@ -34,7 +34,7 @@ export function PatientCard({
   );
 
   return (
-    <Paper shadow="md" p="md" style={{ maxWidth: 400 }}>
+    <Paper shadow="md" p="md">
       <Stack gap={'xs'} mb={5}>
         <Text fw={600} size="20px">
           {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
@@ -76,7 +76,7 @@ export function PatientCard({
             )}
             <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
               <Text fw={600} size="14px" c="white">
-                View Patient Profile
+                Patient Profile
               </Text>
             </Button>
           </Group>
@@ -86,7 +86,7 @@ export function PatientCard({
           <Box></Box>
           <Button color="#006CEA" pl={20} pr={20} onClick={openEvaluation}>
             <Text fw={600} size="14px" c="white">
-              View Patient Profile
+              Patient Profile
             </Text>
           </Button>
         </Group>

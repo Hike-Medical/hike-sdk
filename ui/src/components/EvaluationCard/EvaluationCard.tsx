@@ -1,6 +1,6 @@
 import type { EvaluationStatus } from '@hike/types';
 import { toTitleCase } from '@hike/utils';
-import { Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
+import { Alert, Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
 import { IconCircle } from '@tabler/icons-react';
 
 export interface EvaluationCardProps {
@@ -18,6 +18,11 @@ export interface EvaluationCardProps {
   authorizedAt?: Date;
   cancelledAt?: Date;
   completedAt?: Date;
+  isLoading: boolean;
+  isError: boolean;
+  isSuccess: boolean;
+  startEvaluation: () => void;
+  navigateEvaluation: () => void;
 }
 
 export function EvaluationCard({
@@ -34,7 +39,12 @@ export function EvaluationCard({
   submittedAt,
   authorizedAt,
   cancelledAt,
-  completedAt
+  completedAt,
+  isLoading,
+  isError,
+  isSuccess,
+  startEvaluation,
+  navigateEvaluation
 }: EvaluationCardProps) {
   const renderBadgeText = () => {
     switch (evaluationStatus) {
@@ -123,8 +133,15 @@ export function EvaluationCard({
         return '';
     }
   };
+  if (isError) {
+    return (
+      <Alert variant="light" color="#BA1A1A" title="Failed to Search" mt="xs">
+        An error occurred with this evaluation.
+      </Alert>
+    );
+  }
   return (
-    <Paper shadow="md" p="md" style={{ maxWidth: 400 }}>
+    <Paper shadow="md" p="md">
       <Stack gap={'xs'} mb={5}>
         <Group justify="space-between">
           <Group gap="xs">
@@ -171,7 +188,14 @@ export function EvaluationCard({
           {renderTimestampText()}
         </Text>
 
-        <Button color="#006CEA" pl={15} pr={15}>
+        <Button
+          color="#006CEA"
+          pl={15}
+          pr={15}
+          disabled={isSuccess}
+          loading={isLoading}
+          onClick={evaluationStatus === 'NOT_STARTED' ? startEvaluation : navigateEvaluation}
+        >
           <Text fw={600} size="14px" c="white">
             {renderButtonText()}
           </Text>

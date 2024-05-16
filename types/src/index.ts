@@ -7,6 +7,7 @@ export type * from './dto/PagedParams';
 export type * from './dto/PagedResponse';
 export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/SearchProductsParams';
+export type * from './dto/evaluation/CreateEvaluationInsoleParams';
 export type * from './dto/evaluation/CreateEvaluationParams';
 export type * from './dto/evaluation/EvaluationsStats';
 export type * from './dto/evaluation/EvaluationsUploadResult';

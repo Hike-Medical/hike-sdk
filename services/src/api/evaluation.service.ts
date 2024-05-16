@@ -1,4 +1,5 @@
 import type {
+  CreateEvaluationInsoleParams,
   CreateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
@@ -15,7 +16,7 @@ export const createEvaluation = async (params: CreateEvaluationParams): Promise<
   return response.data;
 };
 
-export const createInsoleEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
+export const createInsoleEvaluation = async (params: CreateEvaluationInsoleParams): Promise<EvaluationExtended> => {
   const response = await backendApi.post('evaluation/create/insole', params);
   return response.data;
 };
@@ -47,8 +48,8 @@ export const searchEvaluations = async (
 /**
  * Retrieves the statistics for evaluations.
  */
-export const statsForEvaluations = async (userId?: string): Promise<EvaluationsStats> => {
-  const response = await backendApi.get('evaluation/stats', { params: { userId } });
+export const statsForEvaluations = async (isForUser?: boolean): Promise<EvaluationsStats> => {
+  const response = await backendApi.get('evaluation/stats', { params: { isForUser } });
   return response.data;
 };
 

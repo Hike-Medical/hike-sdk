@@ -5,13 +5,13 @@ import { ResponseError } from '../errors/ResponseError';
 
 export interface UseEvaluationStatsOptions {
   key?: string[];
-  userId?: string;
+  isForUser?: boolean;
   enabled?: boolean;
 }
 
 export const useEvaluationStats = ({ key = [], enabled = true, ...params }: UseEvaluationStatsOptions) =>
   useQuery<EvaluationsStats, ResponseError<null>>({
     queryKey: ['evaluationStats', ...key, params],
-    queryFn: async () => await statsForEvaluations(params.userId),
+    queryFn: async () => await statsForEvaluations(params.isForUser),
     enabled
   });

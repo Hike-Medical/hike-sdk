@@ -1,5 +1,4 @@
-import { CareType, OrderAuthorizationStatus, Side, VerticalPosition } from '../../../prisma';
-
+import { CareType, Side, VerticalPosition } from '../../../prisma';
 /**
  * Data transfer object for creating an evaluation.
  */
@@ -28,5 +27,4 @@ export interface CreateEvaluationParams {
   workbenchId?: string;
   completedAt?: Date;
   cancelledAt?: Date;
-  orderAuthorizationStatus?: OrderAuthorizationStatus;
 }
