@@ -32,7 +32,9 @@ export default {
     submittedAt: new Date('2024-05-12T00:00:00'),
     authorizedAt: new Date('2024-05-12T00:00:00'),
     cancelledAt: new Date('2024-05-12T00:00:00'),
-    completedAt: new Date('2024-05-12T00:00:00')
+    completedAt: new Date('2024-05-12T00:00:00'),
+    isDiabetic: true,
+    isVeteran: true
   } as EvaluationCardProps
 };
 export const Default = (args: EvaluationCardProps) => React.createElement(EvaluationCard, args);

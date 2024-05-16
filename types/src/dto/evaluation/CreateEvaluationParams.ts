@@ -1,5 +1,4 @@
 import { CareType, Side, VerticalPosition } from '../../../prisma';
-
 /**
  * Data transfer object for creating an evaluation.
  */
