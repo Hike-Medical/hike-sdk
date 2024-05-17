@@ -10138,7 +10138,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    createdByUser?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["evaluationNotes"]>
 
   export type EvaluationNotesSelectScalar = {
@@ -10156,7 +10156,7 @@ export namespace Prisma {
 
   export type EvaluationNotesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    createdByUser?: boolean | UserDefaultArgs<ExtArgs>
   }
 
 
@@ -10164,7 +10164,7 @@ export namespace Prisma {
     name: "EvaluationNotes"
     objects: {
       evaluation: Prisma.$EvaluationPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
+      createdByUser: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10543,7 +10543,7 @@ export namespace Prisma {
 
     evaluation<T extends EvaluationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationDefaultArgs<ExtArgs>>): Prisma__EvaluationClient<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    createdByUser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -36177,7 +36177,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    createdByUser?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type EvaluationNotesOrderByWithRelationInput = {
@@ -36191,7 +36191,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     evaluation?: EvaluationOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
+    createdByUser?: UserOrderByWithRelationInput
   }
 
   export type EvaluationNotesWhereUniqueInput = Prisma.AtLeast<{
@@ -36208,7 +36208,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    createdByUser?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type EvaluationNotesOrderByWithAggregationInput = {
@@ -38614,7 +38614,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     evaluation: EvaluationCreateNestedOneWithoutEvalNotesInput
-    user: UserCreateNestedOneWithoutNotesInput
+    createdByUser: UserCreateNestedOneWithoutNotesInput
   }
 
   export type EvaluationNotesUncheckedCreateInput = {
@@ -38638,7 +38638,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluation?: EvaluationUpdateOneRequiredWithoutEvalNotesNestedInput
-    user?: UserUpdateOneRequiredWithoutNotesNestedInput
+    createdByUser?: UserUpdateOneRequiredWithoutNotesNestedInput
   }
 
   export type EvaluationNotesUncheckedUpdateInput = {
@@ -40389,7 +40389,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
   }
 
@@ -40404,7 +40404,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -40419,7 +40419,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
   }
 
@@ -40434,7 +40434,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -44802,10 +44802,10 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type EvaluationNotesCreateNestedManyWithoutUserInput = {
-    create?: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput> | EvaluationNotesCreateWithoutUserInput[] | EvaluationNotesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutUserInput | EvaluationNotesCreateOrConnectWithoutUserInput[]
-    createMany?: EvaluationNotesCreateManyUserInputEnvelope
+  export type EvaluationNotesCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput> | EvaluationNotesCreateWithoutCreatedByUserInput[] | EvaluationNotesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutCreatedByUserInput | EvaluationNotesCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: EvaluationNotesCreateManyCreatedByUserInputEnvelope
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
   }
 
@@ -44836,10 +44836,10 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type EvaluationNotesUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput> | EvaluationNotesCreateWithoutUserInput[] | EvaluationNotesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutUserInput | EvaluationNotesCreateOrConnectWithoutUserInput[]
-    createMany?: EvaluationNotesCreateManyUserInputEnvelope
+  export type EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput> | EvaluationNotesCreateWithoutCreatedByUserInput[] | EvaluationNotesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutCreatedByUserInput | EvaluationNotesCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: EvaluationNotesCreateManyCreatedByUserInputEnvelope
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
   }
 
@@ -44891,17 +44891,17 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type EvaluationNotesUpdateManyWithoutUserNestedInput = {
-    create?: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput> | EvaluationNotesCreateWithoutUserInput[] | EvaluationNotesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutUserInput | EvaluationNotesCreateOrConnectWithoutUserInput[]
-    upsert?: EvaluationNotesUpsertWithWhereUniqueWithoutUserInput | EvaluationNotesUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: EvaluationNotesCreateManyUserInputEnvelope
+  export type EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput> | EvaluationNotesCreateWithoutCreatedByUserInput[] | EvaluationNotesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutCreatedByUserInput | EvaluationNotesCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput | EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: EvaluationNotesCreateManyCreatedByUserInputEnvelope
     set?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     disconnect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     delete?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
-    update?: EvaluationNotesUpdateWithWhereUniqueWithoutUserInput | EvaluationNotesUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: EvaluationNotesUpdateManyWithWhereWithoutUserInput | EvaluationNotesUpdateManyWithWhereWithoutUserInput[]
+    update?: EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput | EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput | EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput[]
     deleteMany?: EvaluationNotesScalarWhereInput | EvaluationNotesScalarWhereInput[]
   }
 
@@ -44957,17 +44957,17 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput> | EvaluationNotesCreateWithoutUserInput[] | EvaluationNotesUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutUserInput | EvaluationNotesCreateOrConnectWithoutUserInput[]
-    upsert?: EvaluationNotesUpsertWithWhereUniqueWithoutUserInput | EvaluationNotesUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: EvaluationNotesCreateManyUserInputEnvelope
+  export type EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput> | EvaluationNotesCreateWithoutCreatedByUserInput[] | EvaluationNotesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: EvaluationNotesCreateOrConnectWithoutCreatedByUserInput | EvaluationNotesCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput | EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: EvaluationNotesCreateManyCreatedByUserInputEnvelope
     set?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     disconnect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     delete?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
-    update?: EvaluationNotesUpdateWithWhereUniqueWithoutUserInput | EvaluationNotesUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: EvaluationNotesUpdateManyWithWhereWithoutUserInput | EvaluationNotesUpdateManyWithWhereWithoutUserInput[]
+    update?: EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput | EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput | EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput[]
     deleteMany?: EvaluationNotesScalarWhereInput | EvaluationNotesScalarWhereInput[]
   }
 
@@ -46652,7 +46652,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUncheckedCreateWithoutClinicianInput = {
@@ -46666,7 +46666,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserCreateOrConnectWithoutClinicianInput = {
@@ -46771,7 +46771,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClinicianInput = {
@@ -46785,7 +46785,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCliniciansInput = {
@@ -47140,7 +47140,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutNotesInput
+    createdByUser: UserCreateNestedOneWithoutNotesInput
   }
 
   export type EvaluationNotesUncheckedCreateWithoutEvaluationInput = {
@@ -50187,7 +50187,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
   }
 
@@ -50201,7 +50201,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -50276,7 +50276,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
   }
 
@@ -50290,7 +50290,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -50513,7 +50513,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
   }
 
@@ -50527,7 +50527,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -50592,7 +50592,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
   }
 
@@ -50606,7 +50606,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -50680,7 +50680,7 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type EvaluationNotesCreateWithoutUserInput = {
+  export type EvaluationNotesCreateWithoutCreatedByUserInput = {
     id?: string
     title?: string | null
     content?: string | null
@@ -50691,7 +50691,7 @@ export namespace Prisma {
     evaluation: EvaluationCreateNestedOneWithoutEvalNotesInput
   }
 
-  export type EvaluationNotesUncheckedCreateWithoutUserInput = {
+  export type EvaluationNotesUncheckedCreateWithoutCreatedByUserInput = {
     id?: string
     evaluationId: string
     title?: string | null
@@ -50702,13 +50702,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type EvaluationNotesCreateOrConnectWithoutUserInput = {
+  export type EvaluationNotesCreateOrConnectWithoutCreatedByUserInput = {
     where: EvaluationNotesWhereUniqueInput
-    create: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput>
+    create: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput>
   }
 
-  export type EvaluationNotesCreateManyUserInputEnvelope = {
-    data: EvaluationNotesCreateManyUserInput | EvaluationNotesCreateManyUserInput[]
+  export type EvaluationNotesCreateManyCreatedByUserInputEnvelope = {
+    data: EvaluationNotesCreateManyCreatedByUserInput | EvaluationNotesCreateManyCreatedByUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -50794,20 +50794,20 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
-  export type EvaluationNotesUpsertWithWhereUniqueWithoutUserInput = {
+  export type EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput = {
     where: EvaluationNotesWhereUniqueInput
-    update: XOR<EvaluationNotesUpdateWithoutUserInput, EvaluationNotesUncheckedUpdateWithoutUserInput>
-    create: XOR<EvaluationNotesCreateWithoutUserInput, EvaluationNotesUncheckedCreateWithoutUserInput>
+    update: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
+    create: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput>
   }
 
-  export type EvaluationNotesUpdateWithWhereUniqueWithoutUserInput = {
+  export type EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput = {
     where: EvaluationNotesWhereUniqueInput
-    data: XOR<EvaluationNotesUpdateWithoutUserInput, EvaluationNotesUncheckedUpdateWithoutUserInput>
+    data: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
   }
 
-  export type EvaluationNotesUpdateManyWithWhereWithoutUserInput = {
+  export type EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput = {
     where: EvaluationNotesScalarWhereInput
-    data: XOR<EvaluationNotesUpdateManyMutationInput, EvaluationNotesUncheckedUpdateManyWithoutUserInput>
+    data: XOR<EvaluationNotesUpdateManyMutationInput, EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput>
   }
 
   export type ClinicianUpsertWithoutUserInput = {
@@ -50849,7 +50849,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
   }
 
@@ -50863,7 +50863,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -50893,7 +50893,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
   }
 
@@ -50907,7 +50907,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -52050,7 +52050,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutNotesNestedInput
+    createdByUser?: UserUpdateOneRequiredWithoutNotesNestedInput
   }
 
   export type EvaluationNotesUncheckedUpdateWithoutEvaluationInput = {
@@ -53187,7 +53187,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type EvaluationNotesCreateManyUserInput = {
+  export type EvaluationNotesCreateManyCreatedByUserInput = {
     id?: string
     evaluationId: string
     title?: string | null
@@ -53258,7 +53258,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EvaluationNotesUpdateWithoutUserInput = {
+  export type EvaluationNotesUpdateWithoutCreatedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53269,7 +53269,7 @@ export namespace Prisma {
     evaluation?: EvaluationUpdateOneRequiredWithoutEvalNotesNestedInput
   }
 
-  export type EvaluationNotesUncheckedUpdateWithoutUserInput = {
+  export type EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53280,7 +53280,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EvaluationNotesUncheckedUpdateManyWithoutUserInput = {
+  export type EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
