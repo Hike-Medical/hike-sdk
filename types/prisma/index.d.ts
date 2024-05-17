@@ -31026,8 +31026,8 @@ export namespace Prisma {
     updatedAt?: boolean
     companies?: boolean | User$companiesArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -31045,8 +31045,8 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     companies?: boolean | User$companiesArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -31056,8 +31056,8 @@ export namespace Prisma {
     objects: {
       companies: Prisma.$CompanyUserPayload<ExtArgs>[]
       facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
-      accounts: Prisma.$AccountPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
+      accounts: Prisma.$AccountPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -31436,9 +31436,9 @@ export namespace Prisma {
 
     facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -31814,6 +31814,21 @@ export namespace Prisma {
   }
 
   /**
+   * User.clinician
+   */
+  export type User$clinicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clinician
+     */
+    select?: ClinicianSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClinicianInclude<ExtArgs> | null
+    where?: ClinicianWhereInput
+  }
+
+  /**
    * User.accounts
    */
   export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -31831,21 +31846,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
-  }
-
-  /**
-   * User.clinician
-   */
-  export type User$clinicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clinician
-     */
-    select?: ClinicianSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClinicianInclude<ExtArgs> | null
-    where?: ClinicianWhereInput
   }
 
   /**
@@ -36616,8 +36616,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     companies?: CompanyUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
-    accounts?: AccountListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    accounts?: AccountListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -36630,8 +36630,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     companies?: CompanyUserOrderByRelationAggregateInput
     facilities?: FacilityUserOrderByRelationAggregateInput
-    accounts?: AccountOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
+    accounts?: AccountOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -36647,8 +36647,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     companies?: CompanyUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
-    accounts?: AccountListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    accounts?: AccountListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -39107,8 +39107,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -39121,8 +39121,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -39135,8 +39135,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -39149,8 +39149,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -41247,15 +41247,15 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type ClinicianNullableRelationFilter = {
+    is?: ClinicianWhereInput | null
+    isNot?: ClinicianWhereInput | null
+  }
+
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
     none?: AccountWhereInput
-  }
-
-  export type ClinicianNullableRelationFilter = {
-    is?: ClinicianWhereInput | null
-    isNot?: ClinicianWhereInput | null
   }
 
   export type AccountOrderByRelationAggregateInput = {
@@ -43381,17 +43381,17 @@ export namespace Prisma {
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
+  export type ClinicianCreateNestedOneWithoutUserInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    connect?: ClinicianWhereUniqueInput
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-  }
-
-  export type ClinicianCreateNestedOneWithoutUserInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    connect?: ClinicianWhereUniqueInput
   }
 
   export type CompanyUserUncheckedCreateNestedManyWithoutUserInput = {
@@ -43408,17 +43408,17 @@ export namespace Prisma {
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
+  export type ClinicianUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    connect?: ClinicianWhereUniqueInput
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-  }
-
-  export type ClinicianUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    connect?: ClinicianWhereUniqueInput
   }
 
   export type CompanyUserUpdateManyWithoutUserNestedInput = {
@@ -43449,6 +43449,16 @@ export namespace Prisma {
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
+  export type ClinicianUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    upsert?: ClinicianUpsertWithoutUserInput
+    disconnect?: ClinicianWhereInput | boolean
+    delete?: ClinicianWhereInput | boolean
+    connect?: ClinicianWhereUniqueInput
+    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
+  }
+
   export type AccountUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -43461,16 +43471,6 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
-  }
-
-  export type ClinicianUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    upsert?: ClinicianUpsertWithoutUserInput
-    disconnect?: ClinicianWhereInput | boolean
-    delete?: ClinicianWhereInput | boolean
-    connect?: ClinicianWhereUniqueInput
-    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
   }
 
   export type CompanyUserUncheckedUpdateManyWithoutUserNestedInput = {
@@ -43501,6 +43501,16 @@ export namespace Prisma {
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
+  export type ClinicianUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    upsert?: ClinicianUpsertWithoutUserInput
+    disconnect?: ClinicianWhereInput | boolean
+    delete?: ClinicianWhereInput | boolean
+    connect?: ClinicianWhereUniqueInput
+    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -43513,16 +43523,6 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
-  }
-
-  export type ClinicianUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    upsert?: ClinicianUpsertWithoutUserInput
-    disconnect?: ClinicianWhereInput | boolean
-    delete?: ClinicianWhereInput | boolean
-    connect?: ClinicianWhereUniqueInput
-    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -48407,8 +48407,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -48420,8 +48420,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -48494,8 +48494,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -48507,8 +48507,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -48729,8 +48729,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFacilitiesInput = {
@@ -48742,8 +48742,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFacilitiesInput = {
@@ -48806,8 +48806,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFacilitiesInput = {
@@ -48819,8 +48819,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyUserCreateWithoutUserInput = {
@@ -48869,6 +48869,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ClinicianCreateWithoutUserInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationCreateNestedManyWithoutCliniciansInput
+  }
+
+  export type ClinicianUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCliniciansInput
+  }
+
+  export type ClinicianCreateOrConnectWithoutUserInput = {
+    where: ClinicianWhereUniqueInput
+    create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+  }
+
   export type AccountCreateWithoutUserInput = {
     profileId: string
     provider: string
@@ -48891,29 +48914,6 @@ export namespace Prisma {
   export type AccountCreateManyUserInputEnvelope = {
     data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
     skipDuplicates?: boolean
-  }
-
-  export type ClinicianCreateWithoutUserInput = {
-    id?: string
-    name: string
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    evaluations?: EvaluationCreateNestedManyWithoutCliniciansInput
-  }
-
-  export type ClinicianUncheckedCreateWithoutUserInput = {
-    id?: string
-    name: string
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCliniciansInput
-  }
-
-  export type ClinicianCreateOrConnectWithoutUserInput = {
-    where: ClinicianWhereUniqueInput
-    create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
   }
 
   export type CompanyUserUpsertWithWhereUniqueWithoutUserInput = {
@@ -48948,33 +48948,6 @@ export namespace Prisma {
     data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-  }
-
-  export type AccountUpdateManyWithWhereWithoutUserInput = {
-    where: AccountScalarWhereInput
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type AccountScalarWhereInput = {
-    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    OR?: AccountScalarWhereInput[]
-    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    userId?: StringFilter<"Account"> | string
-    profileId?: StringFilter<"Account"> | string
-    provider?: StringFilter<"Account"> | string
-    createdAt?: DateTimeFilter<"Account"> | Date | string
-    updatedAt?: DateTimeFilter<"Account"> | Date | string
-  }
-
   export type ClinicianUpsertWithoutUserInput = {
     update: XOR<ClinicianUpdateWithoutUserInput, ClinicianUncheckedUpdateWithoutUserInput>
     create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
@@ -49002,6 +48975,33 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUncheckedUpdateManyWithoutCliniciansNestedInput
+  }
+
+  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
+    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
+  }
+
+  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AccountUpdateManyWithWhereWithoutUserInput = {
+    where: AccountScalarWhereInput
+    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AccountScalarWhereInput = {
+    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    OR?: AccountScalarWhereInput[]
+    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    userId?: StringFilter<"Account"> | string
+    profileId?: StringFilter<"Account"> | string
+    provider?: StringFilter<"Account"> | string
+    createdAt?: DateTimeFilter<"Account"> | Date | string
+    updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
   export type UserCreateWithoutAccountsInput = {
