@@ -3825,7 +3825,7 @@ export namespace Prisma {
     formSubmissions: number
     workbenches: number
     feet: number
-    evalNotes: number
+    notes: number
   }
 
   export type EvaluationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3833,7 +3833,7 @@ export namespace Prisma {
     formSubmissions?: boolean | EvaluationCountOutputTypeCountFormSubmissionsArgs
     workbenches?: boolean | EvaluationCountOutputTypeCountWorkbenchesArgs
     feet?: boolean | EvaluationCountOutputTypeCountFeetArgs
-    evalNotes?: boolean | EvaluationCountOutputTypeCountEvalNotesArgs
+    notes?: boolean | EvaluationCountOutputTypeCountNotesArgs
   }
 
   // Custom InputTypes
@@ -3878,7 +3878,7 @@ export namespace Prisma {
   /**
    * EvaluationCountOutputType without action
    */
-  export type EvaluationCountOutputTypeCountEvalNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type EvaluationCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationNotesWhereInput
   }
 
@@ -4314,16 +4314,16 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    accounts: number
     companies: number
     facilities: number
-    accounts: number
     notes: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     companies?: boolean | UserCountOutputTypeCountCompaniesArgs
     facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
-    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
   }
 
@@ -4341,6 +4341,13 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyUserWhereInput
   }
@@ -4350,13 +4357,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FacilityUserWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
   }
 
   /**
@@ -8592,7 +8592,6 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
-    notes: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -8623,7 +8622,6 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
-    notes: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -8654,7 +8652,6 @@ export namespace Prisma {
     location: number
     prescribedAt: number
     prescribedActive: number
-    notes: number
     submittedAt: number
     startedAt: number
     cancelledAt: number
@@ -8687,7 +8684,6 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
-    notes?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -8718,7 +8714,6 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
-    notes?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -8749,7 +8744,6 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
-    notes?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -8853,7 +8847,6 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean
-    notes: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -8901,7 +8894,6 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
-    notes?: boolean
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
@@ -8918,7 +8910,7 @@ export namespace Prisma {
     formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
-    evalNotes?: boolean | Evaluation$evalNotesArgs<ExtArgs>
+    notes?: boolean | Evaluation$notesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["evaluation"]>
 
@@ -8945,7 +8937,6 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
-    notes?: boolean
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
@@ -8966,7 +8957,7 @@ export namespace Prisma {
     formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     feet?: boolean | Evaluation$feetArgs<ExtArgs>
-    evalNotes?: boolean | Evaluation$evalNotesArgs<ExtArgs>
+    notes?: boolean | Evaluation$notesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8985,7 +8976,7 @@ export namespace Prisma {
       formSubmissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       feet: Prisma.$FootPayload<ExtArgs>[]
-      evalNotes: Prisma.$EvaluationNotesPayload<ExtArgs>[]
+      notes: Prisma.$EvaluationNotesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9010,7 +9001,6 @@ export namespace Prisma {
       location: string | null
       prescribedAt: Date | null
       prescribedActive: boolean
-      notes: string | null
       submittedAt: Date | null
       startedAt: Date | null
       cancelledAt: Date | null
@@ -9403,7 +9393,7 @@ export namespace Prisma {
 
     feet<T extends Evaluation$feetArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    evalNotes<T extends Evaluation$evalNotesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$evalNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
+    notes<T extends Evaluation$notesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9455,7 +9445,6 @@ export namespace Prisma {
     readonly location: FieldRef<"Evaluation", 'String'>
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
-    readonly notes: FieldRef<"Evaluation", 'String'>
     readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly startedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
@@ -9915,9 +9904,9 @@ export namespace Prisma {
   }
 
   /**
-   * Evaluation.evalNotes
+   * Evaluation.notes
    */
-  export type Evaluation$evalNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Evaluation$notesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the EvaluationNotes
      */
@@ -32095,11 +32084,11 @@ export namespace Prisma {
     photoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    notes?: boolean | User$notesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    notes?: boolean | User$notesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -32115,11 +32104,11 @@ export namespace Prisma {
 
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    notes?: boolean | User$notesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    notes?: boolean | User$notesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -32127,11 +32116,11 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
+      accounts: Prisma.$AccountPayload<ExtArgs>[]
       companies: Prisma.$CompanyUserPayload<ExtArgs>[]
       facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
-      accounts: Prisma.$AccountPayload<ExtArgs>[]
-      notes: Prisma.$EvaluationNotesPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
+      notes: Prisma.$EvaluationNotesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -32506,15 +32495,15 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
+    clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -32850,6 +32839,26 @@ export namespace Prisma {
   }
 
   /**
+   * User.accounts
+   */
+  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: AccountSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccountInclude<ExtArgs> | null
+    where?: AccountWhereInput
+    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    cursor?: AccountWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
    * User.companies
    */
   export type User$companiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -32890,23 +32899,18 @@ export namespace Prisma {
   }
 
   /**
-   * User.accounts
+   * User.clinician
    */
-  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$clinicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Account
+     * Select specific fields to fetch from the Clinician
      */
-    select?: AccountSelect<ExtArgs> | null
+    select?: ClinicianSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AccountInclude<ExtArgs> | null
-    where?: AccountWhereInput
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    cursor?: AccountWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+    include?: ClinicianInclude<ExtArgs> | null
+    where?: ClinicianWhereInput
   }
 
   /**
@@ -32927,21 +32931,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EvaluationNotesScalarFieldEnum | EvaluationNotesScalarFieldEnum[]
-  }
-
-  /**
-   * User.clinician
-   */
-  export type User$clinicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clinician
-     */
-    select?: ClinicianSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClinicianInclude<ExtArgs> | null
-    where?: ClinicianWhereInput
   }
 
   /**
@@ -34866,7 +34855,6 @@ export namespace Prisma {
     location: 'location',
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
-    notes: 'notes',
     submittedAt: 'submittedAt',
     startedAt: 'startedAt',
     cancelledAt: 'cancelledAt',
@@ -35983,7 +35971,6 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
-    notes?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -36000,7 +35987,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
-    evalNotes?: EvaluationNotesListRelationFilter
+    notes?: EvaluationNotesListRelationFilter
   }
 
   export type EvaluationOrderByWithRelationInput = {
@@ -36026,7 +36013,6 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
-    notes?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
@@ -36043,7 +36029,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     feet?: FootOrderByRelationAggregateInput
-    evalNotes?: EvaluationNotesOrderByRelationAggregateInput
+    notes?: EvaluationNotesOrderByRelationAggregateInput
   }
 
   export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
@@ -36075,7 +36061,6 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
-    notes?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -36092,7 +36077,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     feet?: FootListRelationFilter
-    evalNotes?: EvaluationNotesListRelationFilter
+    notes?: EvaluationNotesListRelationFilter
   }, "id" | "id_companyId" | "externalId_companyId" | "poNumber_companyId">
 
   export type EvaluationOrderByWithAggregationInput = {
@@ -36118,7 +36103,6 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
-    notes?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
@@ -36155,7 +36139,6 @@ export namespace Prisma {
     location?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
-    notes?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
@@ -37806,11 +37789,11 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
-    accounts?: AccountListRelationFilter
-    notes?: EvaluationNotesListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    notes?: EvaluationNotesListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -37821,11 +37804,11 @@ export namespace Prisma {
     photoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accounts?: AccountOrderByRelationAggregateInput
     companies?: CompanyUserOrderByRelationAggregateInput
     facilities?: FacilityUserOrderByRelationAggregateInput
-    accounts?: AccountOrderByRelationAggregateInput
-    notes?: EvaluationNotesOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
+    notes?: EvaluationNotesOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -37839,11 +37822,11 @@ export namespace Prisma {
     photoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
-    accounts?: AccountListRelationFilter
-    notes?: EvaluationNotesListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    notes?: EvaluationNotesListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -38391,7 +38374,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -38408,7 +38390,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateInput = {
@@ -38434,7 +38416,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -38444,7 +38425,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUpdateInput = {
@@ -38463,7 +38444,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38480,7 +38460,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateInput = {
@@ -38506,7 +38486,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38516,7 +38495,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationCreateManyInput = {
@@ -38542,7 +38521,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -38566,7 +38544,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38597,7 +38574,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38613,7 +38589,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    evaluation: EvaluationCreateNestedOneWithoutEvalNotesInput
+    evaluation: EvaluationCreateNestedOneWithoutNotesInput
     createdByUser: UserCreateNestedOneWithoutNotesInput
   }
 
@@ -38637,7 +38613,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    evaluation?: EvaluationUpdateOneRequiredWithoutEvalNotesNestedInput
+    evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
     createdByUser?: UserUpdateOneRequiredWithoutNotesNestedInput
   }
 
@@ -40386,11 +40362,11 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -40401,11 +40377,11 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUpdateInput = {
@@ -40416,11 +40392,11 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -40431,11 +40407,11 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -41213,7 +41189,6 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
-    notes?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -41244,7 +41219,6 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
-    notes?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -41275,7 +41249,6 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
-    notes?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -43664,9 +43637,9 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type EvaluationCreateNestedOneWithoutEvalNotesInput = {
-    create?: XOR<EvaluationCreateWithoutEvalNotesInput, EvaluationUncheckedCreateWithoutEvalNotesInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutEvalNotesInput
+  export type EvaluationCreateNestedOneWithoutNotesInput = {
+    create?: XOR<EvaluationCreateWithoutNotesInput, EvaluationUncheckedCreateWithoutNotesInput>
+    connectOrCreate?: EvaluationCreateOrConnectWithoutNotesInput
     connect?: EvaluationWhereUniqueInput
   }
 
@@ -43681,12 +43654,12 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type EvaluationUpdateOneRequiredWithoutEvalNotesNestedInput = {
-    create?: XOR<EvaluationCreateWithoutEvalNotesInput, EvaluationUncheckedCreateWithoutEvalNotesInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutEvalNotesInput
-    upsert?: EvaluationUpsertWithoutEvalNotesInput
+  export type EvaluationUpdateOneRequiredWithoutNotesNestedInput = {
+    create?: XOR<EvaluationCreateWithoutNotesInput, EvaluationUncheckedCreateWithoutNotesInput>
+    connectOrCreate?: EvaluationCreateOrConnectWithoutNotesInput
+    upsert?: EvaluationUpsertWithoutNotesInput
     connect?: EvaluationWhereUniqueInput
-    update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutEvalNotesInput, EvaluationUpdateWithoutEvalNotesInput>, EvaluationUncheckedUpdateWithoutEvalNotesInput>
+    update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutNotesInput, EvaluationUpdateWithoutNotesInput>, EvaluationUncheckedUpdateWithoutNotesInput>
   }
 
   export type UserUpdateOneRequiredWithoutNotesNestedInput = {
@@ -44781,6 +44754,13 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFacilitiesInput, UserUpdateWithoutFacilitiesInput>, UserUncheckedUpdateWithoutFacilitiesInput>
   }
 
+  export type AccountCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
   export type CompanyUserCreateNestedManyWithoutUserInput = {
     create?: XOR<CompanyUserCreateWithoutUserInput, CompanyUserUncheckedCreateWithoutUserInput> | CompanyUserCreateWithoutUserInput[] | CompanyUserUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CompanyUserCreateOrConnectWithoutUserInput | CompanyUserCreateOrConnectWithoutUserInput[]
@@ -44795,11 +44775,10 @@ export namespace Prisma {
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
-  export type AccountCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type ClinicianCreateNestedOneWithoutUserInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    connect?: ClinicianWhereUniqueInput
   }
 
   export type EvaluationNotesCreateNestedManyWithoutCreatedByUserInput = {
@@ -44809,10 +44788,11 @@ export namespace Prisma {
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
   }
 
-  export type ClinicianCreateNestedOneWithoutUserInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    connect?: ClinicianWhereUniqueInput
+  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
   export type CompanyUserUncheckedCreateNestedManyWithoutUserInput = {
@@ -44829,11 +44809,10 @@ export namespace Prisma {
     connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
-  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type ClinicianUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    connect?: ClinicianWhereUniqueInput
   }
 
   export type EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput = {
@@ -44843,10 +44822,18 @@ export namespace Prisma {
     connect?: EvaluationNotesWhereUniqueInput | EvaluationNotesWhereUniqueInput[]
   }
 
-  export type ClinicianUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    connect?: ClinicianWhereUniqueInput
+  export type AccountUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
   export type CompanyUserUpdateManyWithoutUserNestedInput = {
@@ -44877,18 +44864,14 @@ export namespace Prisma {
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
-  export type AccountUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type ClinicianUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    upsert?: ClinicianUpsertWithoutUserInput
+    disconnect?: ClinicianWhereInput | boolean
+    delete?: ClinicianWhereInput | boolean
+    connect?: ClinicianWhereUniqueInput
+    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
   }
 
   export type EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput = {
@@ -44905,14 +44888,18 @@ export namespace Prisma {
     deleteMany?: EvaluationNotesScalarWhereInput | EvaluationNotesScalarWhereInput[]
   }
 
-  export type ClinicianUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    upsert?: ClinicianUpsertWithoutUserInput
-    disconnect?: ClinicianWhereInput | boolean
-    delete?: ClinicianWhereInput | boolean
-    connect?: ClinicianWhereUniqueInput
-    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
+  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
   export type CompanyUserUncheckedUpdateManyWithoutUserNestedInput = {
@@ -44943,18 +44930,14 @@ export namespace Prisma {
     deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
-  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type ClinicianUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
+    upsert?: ClinicianUpsertWithoutUserInput
+    disconnect?: ClinicianWhereInput | boolean
+    delete?: ClinicianWhereInput | boolean
+    connect?: ClinicianWhereUniqueInput
+    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
@@ -44969,16 +44952,6 @@ export namespace Prisma {
     update?: EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput | EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
     updateMany?: EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput | EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput[]
     deleteMany?: EvaluationNotesScalarWhereInput | EvaluationNotesScalarWhereInput[]
-  }
-
-  export type ClinicianUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
-    upsert?: ClinicianUpsertWithoutUserInput
-    disconnect?: ClinicianWhereInput | boolean
-    delete?: ClinicianWhereInput | boolean
-    connect?: ClinicianWhereUniqueInput
-    update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -45677,7 +45650,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -45693,7 +45665,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutCompanyInput = {
@@ -45718,7 +45690,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -45728,7 +45699,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutCompanyInput = {
@@ -45922,7 +45893,6 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
-    notes?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -46157,7 +46127,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46173,7 +46142,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutFacilityInput = {
@@ -46198,7 +46167,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46208,7 +46176,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutFacilityInput = {
@@ -46411,7 +46379,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46427,7 +46394,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutPatientInput = {
@@ -46452,7 +46419,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46462,7 +46428,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutPatientInput = {
@@ -46649,9 +46615,9 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
     notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -46663,9 +46629,9 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
@@ -46690,7 +46656,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46706,7 +46671,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutCliniciansInput = {
@@ -46732,7 +46697,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -46741,7 +46705,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutCliniciansInput = {
@@ -46768,9 +46732,9 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
     notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -46782,9 +46746,9 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
@@ -47518,7 +47482,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
   }
 
-  export type EvaluationCreateWithoutEvalNotesInput = {
+  export type EvaluationCreateWithoutNotesInput = {
     id?: string
     externalId?: string | null
     poNumber?: string | null
@@ -47534,7 +47498,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -47553,7 +47516,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutEvaluationInput
   }
 
-  export type EvaluationUncheckedCreateWithoutEvalNotesInput = {
+  export type EvaluationUncheckedCreateWithoutNotesInput = {
     id?: string
     externalId?: string | null
     poNumber?: string | null
@@ -47576,7 +47539,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -47588,9 +47550,9 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
-  export type EvaluationCreateOrConnectWithoutEvalNotesInput = {
+  export type EvaluationCreateOrConnectWithoutNotesInput = {
     where: EvaluationWhereUniqueInput
-    create: XOR<EvaluationCreateWithoutEvalNotesInput, EvaluationUncheckedCreateWithoutEvalNotesInput>
+    create: XOR<EvaluationCreateWithoutNotesInput, EvaluationUncheckedCreateWithoutNotesInput>
   }
 
   export type UserCreateWithoutNotesInput = {
@@ -47601,9 +47563,9 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
   }
 
@@ -47615,9 +47577,9 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -47626,18 +47588,18 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
   }
 
-  export type EvaluationUpsertWithoutEvalNotesInput = {
-    update: XOR<EvaluationUpdateWithoutEvalNotesInput, EvaluationUncheckedUpdateWithoutEvalNotesInput>
-    create: XOR<EvaluationCreateWithoutEvalNotesInput, EvaluationUncheckedCreateWithoutEvalNotesInput>
+  export type EvaluationUpsertWithoutNotesInput = {
+    update: XOR<EvaluationUpdateWithoutNotesInput, EvaluationUncheckedUpdateWithoutNotesInput>
+    create: XOR<EvaluationCreateWithoutNotesInput, EvaluationUncheckedCreateWithoutNotesInput>
     where?: EvaluationWhereInput
   }
 
-  export type EvaluationUpdateToOneWithWhereWithoutEvalNotesInput = {
+  export type EvaluationUpdateToOneWithWhereWithoutNotesInput = {
     where?: EvaluationWhereInput
-    data: XOR<EvaluationUpdateWithoutEvalNotesInput, EvaluationUncheckedUpdateWithoutEvalNotesInput>
+    data: XOR<EvaluationUpdateWithoutNotesInput, EvaluationUncheckedUpdateWithoutNotesInput>
   }
 
-  export type EvaluationUpdateWithoutEvalNotesInput = {
+  export type EvaluationUpdateWithoutNotesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47653,7 +47615,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47672,7 +47633,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
 
-  export type EvaluationUncheckedUpdateWithoutEvalNotesInput = {
+  export type EvaluationUncheckedUpdateWithoutNotesInput = {
     id?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47695,7 +47656,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47726,9 +47686,9 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
   }
 
@@ -47740,9 +47700,9 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -47807,7 +47767,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -47823,7 +47782,7 @@ export namespace Prisma {
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutFeetInput = {
@@ -47849,7 +47808,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -47858,7 +47816,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutFeetInput = {
@@ -47984,7 +47942,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48000,7 +47957,7 @@ export namespace Prisma {
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutFeetInput = {
@@ -48026,7 +47983,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48035,7 +47991,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type AssetUpsertWithWhereUniqueWithoutFootInput = {
@@ -48460,7 +48416,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -48476,7 +48431,7 @@ export namespace Prisma {
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutWorkbenchesInput = {
@@ -48502,7 +48457,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -48511,7 +48465,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutWorkbenchesInput = {
@@ -48705,7 +48659,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48721,7 +48674,7 @@ export namespace Prisma {
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutWorkbenchesInput = {
@@ -48747,7 +48700,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48756,7 +48708,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type AssetUpsertWithWhereUniqueWithoutWorkbenchesInput = {
@@ -49049,7 +49001,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49065,7 +49016,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutReferringPhysicianInput = {
@@ -49090,7 +49041,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49100,7 +49050,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutReferringPhysicianInput = {
@@ -49145,7 +49095,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49161,7 +49110,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutDiagnosisInput = {
@@ -49186,7 +49135,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49196,7 +49144,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutDiagnosisInput = {
@@ -49241,7 +49189,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49257,7 +49204,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutDeviceTypeInput = {
@@ -49282,7 +49229,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49292,7 +49238,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutDeviceTypeInput = {
@@ -49337,7 +49283,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49353,7 +49298,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutVisitTypeInput = {
@@ -49378,7 +49323,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49388,7 +49332,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutVisitTypeInput = {
@@ -49498,7 +49442,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49514,7 +49457,7 @@ export namespace Prisma {
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
     feet?: FootCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutFormSubmissionsInput = {
@@ -49540,7 +49483,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -49549,7 +49491,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
     feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    evalNotes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutFormSubmissionsInput = {
@@ -49613,7 +49555,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49629,7 +49570,7 @@ export namespace Prisma {
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutFormSubmissionsInput = {
@@ -49655,7 +49596,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49664,7 +49604,7 @@ export namespace Prisma {
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type CatalogProductAttributeCreateWithoutProductInput = {
@@ -50185,10 +50125,10 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -50199,10 +50139,10 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -50274,10 +50214,10 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -50288,10 +50228,10 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -50511,10 +50451,10 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: CompanyUserCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUncheckedCreateWithoutFacilitiesInput = {
@@ -50525,10 +50465,10 @@ export namespace Prisma {
     photoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserCreateOrConnectWithoutFacilitiesInput = {
@@ -50590,10 +50530,10 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: CompanyUserUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFacilitiesInput = {
@@ -50604,10 +50544,34 @@ export namespace Prisma {
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  }
+
+  export type AccountCreateWithoutUserInput = {
+    profileId: string
+    provider: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccountUncheckedCreateWithoutUserInput = {
+    profileId: string
+    provider: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccountCreateOrConnectWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
+  }
+
+  export type AccountCreateManyUserInputEnvelope = {
+    data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type CompanyUserCreateWithoutUserInput = {
@@ -50656,28 +50620,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AccountCreateWithoutUserInput = {
-    profileId: string
-    provider: string
+  export type ClinicianCreateWithoutUserInput = {
+    id?: string
+    name: string
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    evaluations?: EvaluationCreateNestedManyWithoutCliniciansInput
   }
 
-  export type AccountUncheckedCreateWithoutUserInput = {
-    profileId: string
-    provider: string
+  export type ClinicianUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCliniciansInput
   }
 
-  export type AccountCreateOrConnectWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountCreateManyUserInputEnvelope = {
-    data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
-    skipDuplicates?: boolean
+  export type ClinicianCreateOrConnectWithoutUserInput = {
+    where: ClinicianWhereUniqueInput
+    create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
   }
 
   export type EvaluationNotesCreateWithoutCreatedByUserInput = {
@@ -50688,7 +50651,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    evaluation: EvaluationCreateNestedOneWithoutEvalNotesInput
+    evaluation: EvaluationCreateNestedOneWithoutNotesInput
   }
 
   export type EvaluationNotesUncheckedCreateWithoutCreatedByUserInput = {
@@ -50712,27 +50675,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ClinicianCreateWithoutUserInput = {
-    id?: string
-    name: string
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    evaluations?: EvaluationCreateNestedManyWithoutCliniciansInput
+  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
+    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
   }
 
-  export type ClinicianUncheckedCreateWithoutUserInput = {
-    id?: string
-    name: string
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCliniciansInput
+  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
   }
 
-  export type ClinicianCreateOrConnectWithoutUserInput = {
-    where: ClinicianWhereUniqueInput
-    create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
+  export type AccountUpdateManyWithWhereWithoutUserInput = {
+    where: AccountScalarWhereInput
+    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AccountScalarWhereInput = {
+    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    OR?: AccountScalarWhereInput[]
+    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    userId?: StringFilter<"Account"> | string
+    profileId?: StringFilter<"Account"> | string
+    provider?: StringFilter<"Account"> | string
+    createdAt?: DateTimeFilter<"Account"> | Date | string
+    updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
   export type CompanyUserUpsertWithWhereUniqueWithoutUserInput = {
@@ -50767,49 +50734,6 @@ export namespace Prisma {
     data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-  }
-
-  export type AccountUpdateManyWithWhereWithoutUserInput = {
-    where: AccountScalarWhereInput
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type AccountScalarWhereInput = {
-    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    OR?: AccountScalarWhereInput[]
-    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    userId?: StringFilter<"Account"> | string
-    profileId?: StringFilter<"Account"> | string
-    provider?: StringFilter<"Account"> | string
-    createdAt?: DateTimeFilter<"Account"> | Date | string
-    updatedAt?: DateTimeFilter<"Account"> | Date | string
-  }
-
-  export type EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput = {
-    where: EvaluationNotesWhereUniqueInput
-    update: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
-    create: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput>
-  }
-
-  export type EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput = {
-    where: EvaluationNotesWhereUniqueInput
-    data: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
-  }
-
-  export type EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput = {
-    where: EvaluationNotesScalarWhereInput
-    data: XOR<EvaluationNotesUpdateManyMutationInput, EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput>
-  }
-
   export type ClinicianUpsertWithoutUserInput = {
     update: XOR<ClinicianUpdateWithoutUserInput, ClinicianUncheckedUpdateWithoutUserInput>
     create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
@@ -50839,6 +50763,22 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCliniciansNestedInput
   }
 
+  export type EvaluationNotesUpsertWithWhereUniqueWithoutCreatedByUserInput = {
+    where: EvaluationNotesWhereUniqueInput
+    update: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
+    create: XOR<EvaluationNotesCreateWithoutCreatedByUserInput, EvaluationNotesUncheckedCreateWithoutCreatedByUserInput>
+  }
+
+  export type EvaluationNotesUpdateWithWhereUniqueWithoutCreatedByUserInput = {
+    where: EvaluationNotesWhereUniqueInput
+    data: XOR<EvaluationNotesUpdateWithoutCreatedByUserInput, EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput>
+  }
+
+  export type EvaluationNotesUpdateManyWithWhereWithoutCreatedByUserInput = {
+    where: EvaluationNotesScalarWhereInput
+    data: XOR<EvaluationNotesUpdateManyMutationInput, EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput>
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     email?: string | null
@@ -50849,8 +50789,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -50863,8 +50803,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -50893,8 +50833,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -50907,8 +50847,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -51026,7 +50966,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -51118,7 +51057,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51134,7 +51072,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutCompanyInput = {
@@ -51159,7 +51097,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51169,7 +51106,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutCompanyInput = {
@@ -51194,7 +51131,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51335,7 +51271,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -51377,7 +51312,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51393,7 +51327,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutFacilityInput = {
@@ -51418,7 +51352,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51428,7 +51361,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutFacilityInput = {
@@ -51453,7 +51386,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51500,7 +51432,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -51597,7 +51528,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51613,7 +51543,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutPatientInput = {
@@ -51638,7 +51568,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51648,7 +51577,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutPatientInput = {
@@ -51673,7 +51602,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51761,7 +51689,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51777,7 +51704,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutCliniciansInput = {
@@ -51803,7 +51730,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51812,7 +51738,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutCliniciansInput = {
@@ -51838,7 +51764,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52424,7 +52349,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52448,7 +52372,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52464,7 +52387,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutReferringPhysicianInput = {
@@ -52489,7 +52412,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52499,7 +52421,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutReferringPhysicianInput = {
@@ -52524,7 +52446,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52554,7 +52475,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52578,7 +52498,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52594,7 +52513,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutDiagnosisInput = {
@@ -52619,7 +52538,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52629,7 +52547,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutDiagnosisInput = {
@@ -52654,7 +52572,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52684,7 +52601,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52708,7 +52624,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52724,7 +52639,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutDeviceTypeInput = {
@@ -52749,7 +52664,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52759,7 +52673,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutDeviceTypeInput = {
@@ -52784,7 +52698,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52814,7 +52727,6 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
-    notes?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52838,7 +52750,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52854,7 +52765,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
     feet?: FootUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutVisitTypeInput = {
@@ -52879,7 +52790,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52889,7 +52799,7 @@ export namespace Prisma {
     formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
     feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    evalNotes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateManyWithoutVisitTypeInput = {
@@ -52914,7 +52824,6 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -53167,6 +53076,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AccountCreateManyUserInput = {
+    profileId: string
+    provider: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CompanyUserCreateManyUserInput = {
     companyId: string
     role?: $Enums.CompanyRole
@@ -53180,13 +53096,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AccountCreateManyUserInput = {
-    profileId: string
-    provider: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type EvaluationNotesCreateManyCreatedByUserInput = {
     id?: string
     evaluationId: string
@@ -53196,6 +53105,27 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type AccountUpdateWithoutUserInput = {
+    profileId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccountUncheckedUpdateWithoutUserInput = {
+    profileId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccountUncheckedUpdateManyWithoutUserInput = {
+    profileId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CompanyUserUpdateWithoutUserInput = {
@@ -53237,27 +53167,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AccountUpdateWithoutUserInput = {
-    profileId?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccountUncheckedUpdateWithoutUserInput = {
-    profileId?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccountUncheckedUpdateManyWithoutUserInput = {
-    profileId?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type EvaluationNotesUpdateWithoutCreatedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53266,7 +53175,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    evaluation?: EvaluationUpdateOneRequiredWithoutEvalNotesNestedInput
+    evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
   }
 
   export type EvaluationNotesUncheckedUpdateWithoutCreatedByUserInput = {
