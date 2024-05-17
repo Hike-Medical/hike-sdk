@@ -1,6 +1,6 @@
 import type { CareType } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
-import type { EvaluationStatus } from './GetEvaluationsByStatusParams';
+import type { EvaluationStatus } from './GetEvaluationsParams';
 
 export interface SearchEvaluationsParams extends PagedParams {
   patientId?: string;
@@ -13,5 +13,5 @@ export interface SearchEvaluationsParams extends PagedParams {
   clinicianId?: string;
   visitTypeId?: string;
   facilityId?: string;
-  sortBy?: 'appointmentAt';
+  assignedOnly?: boolean;
 }

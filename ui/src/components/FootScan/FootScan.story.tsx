@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FootScan, FootScanProps } from './FootScan';
 
 const FootScanContainer = (args: FootScanProps) => {
   const [isSwitchOn, setIsSwitchOn] = useState(true);
-  console.log(React);
 
   return <FootScan {...args} setIsSwitchOn={setIsSwitchOn} isSwitchOn={isSwitchOn} />;
 };

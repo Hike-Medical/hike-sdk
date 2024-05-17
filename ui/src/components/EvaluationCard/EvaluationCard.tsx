@@ -1,7 +1,9 @@
 import type { EvaluationStatus } from '@hike/types';
 import { toTitleCase } from '@hike/utils';
-import { Badge, Button, Group, Paper, Stack, Text } from '@mantine/core';
-import { IconCircle } from '@tabler/icons-react';
+import { ActionIcon, Badge, Button, Divider, Drawer, Group, Paper, Stack, Text } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconCircle, IconCircleX, IconMenu2 } from '@tabler/icons-react';
+import { renderBadge } from '../PatientCard/RenderBadge';
 
 export interface EvaluationCardProps {
   firstName: string;
@@ -18,6 +20,13 @@ export interface EvaluationCardProps {
   authorizedAt?: Date;
   cancelledAt?: Date;
   completedAt?: Date;
+  isVeteran: boolean;
+  isDiabetic: boolean;
+  isLoading: boolean;
+  isSuccess: boolean;
+  drawerOptions?: JSX.Element;
+  startEvaluation: () => void;
+  navigateEvaluation: () => void;
 }
 
 export function EvaluationCard({
@@ -34,8 +43,16 @@ export function EvaluationCard({
   submittedAt,
   authorizedAt,
   cancelledAt,
-  completedAt
+  completedAt,
+  isLoading,
+  isSuccess,
+  isVeteran,
+  isDiabetic,
+  drawerOptions,
+  startEvaluation,
+  navigateEvaluation
 }: EvaluationCardProps) {
+  const [menuOpen, menuModalHandlers] = useDisclosure(false);
   const renderBadgeText = () => {
     switch (evaluationStatus) {
       case 'NOT_STARTED':
@@ -123,16 +140,22 @@ export function EvaluationCard({
         return '';
     }
   };
+
   return (
-    <Paper shadow="md" p="md" style={{ maxWidth: 400 }}>
+    <Paper shadow="md" p="md">
       <Stack gap={'xs'} mb={5}>
-        <Group justify="space-between">
-          <Group gap="xs">
-            <Text fw={600} size="20px">
+        <Group justify="space-between" wrap="nowrap">
+          <Group gap="xs" wrap="nowrap">
+            <Text fw={600} size="20px" style={{ flexShrink: 2 }}>
               {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}
             </Text>
             <IconCircle size="14" color={renderStatusColor()} fill={renderStatusColor()} />
           </Group>
+          {evaluationStatus !== 'NOT_STARTED' && evaluationStatus !== 'CANCELLED' && (
+            <ActionIcon mr={4} variant="transparent" size="lg" onClick={() => menuModalHandlers.open()}>
+              <IconMenu2 color="#000000" />
+            </ActionIcon>
+          )}
         </Group>
         {poNumber && (
           <Text fw={500} size="12px">
@@ -158,25 +181,68 @@ export function EvaluationCard({
           </Text>
         </Badge>
       </Group>
-
+      <Divider mt={10} />
       <Group
         justify="space-between"
         mt={8}
         style={{
-          borderTop: '2px solid #ADB5BD',
           padding: '10px'
         }}
+        wrap="nowrap"
       >
         <Text fw={500} size="12px">
           {renderTimestampText()}
         </Text>
 
-        <Button color="#006CEA" pl={15} pr={15}>
-          <Text fw={600} size="14px" c="white">
-            {renderButtonText()}
-          </Text>
+        <Button
+          color="#006CEA"
+          pl={15}
+          pr={15}
+          disabled={isSuccess}
+          radius={10}
+          loading={isLoading}
+          onClick={evaluationStatus === 'NOT_STARTED' ? startEvaluation : navigateEvaluation}
+          style={{ flexShrink: 0 }}
+        >
+          {renderButtonText()}
         </Button>
       </Group>
+      <Drawer
+        opened={menuOpen}
+        onClose={() => menuModalHandlers.close()}
+        position="bottom"
+        radius={15}
+        withCloseButton={false}
+      >
+        <Group justify="space-between" mt={10}>
+          <Stack gap={'s'}>
+            <Text fw={600} size="20px">
+              {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
+            </Text>
+
+            {poNumber && (
+              <Text fw={500} size="12px" c="#91A3B6">
+                PO: {poNumber}
+              </Text>
+            )}
+            {clinician && (
+              <Text fw={500} size="12px" c="#91A3B6">
+                Clinician: {clinician}
+              </Text>
+            )}
+          </Stack>
+          <ActionIcon mr={20} variant="transparent" size="lg" onClick={() => menuModalHandlers.close()}>
+            <IconCircleX color="#000000" size={30} />
+          </ActionIcon>
+        </Group>
+        <Group gap={'xs'} mt={5}>
+          {isDiabetic && renderBadge('Diabetic')}
+          {isVeteran && renderBadge('VA')}
+        </Group>
+
+        <Divider m={20} />
+        {drawerOptions}
+      </Drawer>
     </Paper>
   );
 }
