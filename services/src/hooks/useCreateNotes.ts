@@ -10,6 +10,6 @@ export interface CreateNotesParams {
 export const useCreateNotes = (mutationOptions?: UseMutationOptions<Notes, Error, CreateNotesParams>) =>
   useMutation({
     mutationKey: ['createNotes'],
-    mutationFn: async ({ evaluationId, data }: CreateNotesParams) => createNotes(evaluationId, data),
+    mutationFn: async ({ evaluationId, data }: CreateNotesParams) => await createNotes(evaluationId, data),
     ...mutationOptions
   });
