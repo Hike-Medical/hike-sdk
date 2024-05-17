@@ -1,3 +1,4 @@
+export * from './api/appointment.service';
 export * from './api/billing-code.service';
 export * from './api/catalog.service';
 export * from './api/device-type.service';
@@ -7,6 +8,7 @@ export * from './api/form.service';
 export * from './api/order.service';
 export * from './api/patient.service';
 export * from './api/physician.service';
+export * from './api/s3.service';
 export * from './api/shipping.service';
 export * from './auth/defaultCompany';
 export * from './auth/findCompaniesBySession';
