@@ -18,6 +18,7 @@ export * from './auth/refreshToken';
 export * from './auth/signIn';
 export * from './configure';
 export * from './errors/ResponseError';
+export * from './hooks/useCancelEvaluation';
 export * from './hooks/useCategories';
 export * from './hooks/useCompaniesBySession';
 export * from './hooks/useCompanyPackages';

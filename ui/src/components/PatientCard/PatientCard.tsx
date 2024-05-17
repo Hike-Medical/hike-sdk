@@ -1,5 +1,5 @@
 import { toTitleCase } from '@hike/utils';
-import { Box, Button, Group, Paper, Stack, Text } from '@mantine/core';
+import { Box, Button, Divider, Group, Paper, Stack, Text } from '@mantine/core';
 import { renderBadge } from './RenderBadge';
 
 export interface PatientCardProps {
@@ -46,11 +46,11 @@ export function PatientCard({
             {evaluations[0]?.isDiabetic && renderBadge('Diabetic')}
             {evaluations[0]?.isVeteran && renderBadge('VA')}
           </Group>
+          <Divider mt={10} />
           <Group
             justify="space-between"
             mt={8}
             style={{
-              borderTop: '2px solid #ADB5BD',
               padding: '10px'
             }}
             wrap="nowrap"

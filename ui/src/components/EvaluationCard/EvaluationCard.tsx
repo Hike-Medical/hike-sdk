@@ -4,6 +4,7 @@ import { ActionIcon, Badge, Button, Divider, Drawer, Group, Paper, Stack, Text }
 import { useDisclosure } from '@mantine/hooks';
 import { IconCircle, IconCircleX, IconMenu2 } from '@tabler/icons-react';
 import { renderBadge } from '../PatientCard/RenderBadge';
+
 export interface EvaluationCardProps {
   firstName: string;
   middleName?: string;
@@ -23,6 +24,7 @@ export interface EvaluationCardProps {
   isDiabetic: boolean;
   isLoading: boolean;
   isSuccess: boolean;
+  drawerOptions?: JSX.Element;
   startEvaluation: () => void;
   navigateEvaluation: () => void;
 }
@@ -46,6 +48,7 @@ export function EvaluationCard({
   isSuccess,
   isVeteran,
   isDiabetic,
+  drawerOptions,
   startEvaluation,
   navigateEvaluation
 }: EvaluationCardProps) {
@@ -178,12 +181,11 @@ export function EvaluationCard({
           </Text>
         </Badge>
       </Group>
-
+      <Divider mt={10} />
       <Group
         justify="space-between"
         mt={8}
         style={{
-          borderTop: '2px solid #ADB5BD',
           padding: '10px'
         }}
         wrap="nowrap"
@@ -212,7 +214,7 @@ export function EvaluationCard({
         radius={15}
         withCloseButton={false}
       >
-        <Group justify="space-between">
+        <Group justify="space-between" mt={10}>
           <Stack gap={'s'}>
             <Text fw={600} size="20px">
               {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
@@ -229,8 +231,8 @@ export function EvaluationCard({
               </Text>
             )}
           </Stack>
-          <ActionIcon mr={4} variant="transparent" size="lg" onClick={() => menuModalHandlers.close()}>
-            <IconCircleX color="#000000" />
+          <ActionIcon mr={20} variant="transparent" size="lg" onClick={() => menuModalHandlers.close()}>
+            <IconCircleX color="#000000" size={30} />
           </ActionIcon>
         </Group>
         <Group gap={'xs'} mt={5}>
@@ -239,6 +241,7 @@ export function EvaluationCard({
         </Group>
 
         <Divider m={20} />
+        {drawerOptions}
       </Drawer>
     </Paper>
   );
