@@ -14,7 +14,6 @@ import type {
   UpdateEvaluationParams,
   UpdateNotesBody
 } from '@hike/types';
-
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
