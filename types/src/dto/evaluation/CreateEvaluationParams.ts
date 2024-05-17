@@ -24,7 +24,6 @@ export interface CreateEvaluationParams {
   location?: string;
   prescribedAt?: Date;
   prescribedActive?: boolean;
-  notes?: string;
   workbenchId?: string;
   completedAt?: Date;
   cancelledAt?: Date;

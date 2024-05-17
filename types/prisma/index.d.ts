@@ -9951,32 +9951,32 @@ export namespace Prisma {
   export type EvaluationNotesMinAggregateOutputType = {
     id: string | null
     evaluationId: string | null
-    createdBy: string | null
     title: string | null
     content: string | null
     createdAt: Date | null
+    createdBy: string | null
     updatedAt: Date | null
   }
 
   export type EvaluationNotesMaxAggregateOutputType = {
     id: string | null
     evaluationId: string | null
-    createdBy: string | null
     title: string | null
     content: string | null
     createdAt: Date | null
+    createdBy: string | null
     updatedAt: Date | null
   }
 
   export type EvaluationNotesCountAggregateOutputType = {
     id: number
     evaluationId: number
-    createdBy: number
     title: number
     content: number
     tags: number
     blocks: number
     createdAt: number
+    createdBy: number
     updatedAt: number
     _all: number
   }
@@ -9985,32 +9985,32 @@ export namespace Prisma {
   export type EvaluationNotesMinAggregateInputType = {
     id?: true
     evaluationId?: true
-    createdBy?: true
     title?: true
     content?: true
     createdAt?: true
+    createdBy?: true
     updatedAt?: true
   }
 
   export type EvaluationNotesMaxAggregateInputType = {
     id?: true
     evaluationId?: true
-    createdBy?: true
     title?: true
     content?: true
     createdAt?: true
+    createdBy?: true
     updatedAt?: true
   }
 
   export type EvaluationNotesCountAggregateInputType = {
     id?: true
     evaluationId?: true
-    createdBy?: true
     title?: true
     content?: true
     tags?: true
     blocks?: true
     createdAt?: true
+    createdBy?: true
     updatedAt?: true
     _all?: true
   }
@@ -10090,12 +10090,12 @@ export namespace Prisma {
   export type EvaluationNotesGroupByOutputType = {
     id: string
     evaluationId: string
-    createdBy: string
     title: string | null
     content: string | null
     tags: string[]
     blocks: JsonValue | null
     createdAt: Date
+    createdBy: string | null
     updatedAt: Date
     _count: EvaluationNotesCountAggregateOutputType | null
     _min: EvaluationNotesMinAggregateOutputType | null
@@ -10119,33 +10119,33 @@ export namespace Prisma {
   export type EvaluationNotesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     evaluationId?: boolean
-    createdBy?: boolean
     title?: boolean
     content?: boolean
     tags?: boolean
     blocks?: boolean
     createdAt?: boolean
+    createdBy?: boolean
     updatedAt?: boolean
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
-    createdByUser?: boolean | UserDefaultArgs<ExtArgs>
+    createdByUser?: boolean | EvaluationNotes$createdByUserArgs<ExtArgs>
   }, ExtArgs["result"]["evaluationNotes"]>
 
   export type EvaluationNotesSelectScalar = {
     id?: boolean
     evaluationId?: boolean
-    createdBy?: boolean
     title?: boolean
     content?: boolean
     tags?: boolean
     blocks?: boolean
     createdAt?: boolean
+    createdBy?: boolean
     updatedAt?: boolean
   }
 
 
   export type EvaluationNotesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
-    createdByUser?: boolean | UserDefaultArgs<ExtArgs>
+    createdByUser?: boolean | EvaluationNotes$createdByUserArgs<ExtArgs>
   }
 
 
@@ -10153,17 +10153,17 @@ export namespace Prisma {
     name: "EvaluationNotes"
     objects: {
       evaluation: Prisma.$EvaluationPayload<ExtArgs>
-      createdByUser: Prisma.$UserPayload<ExtArgs>
+      createdByUser: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       evaluationId: string
-      createdBy: string
       title: string | null
       content: string | null
       tags: string[]
       blocks: Prisma.JsonValue | null
       createdAt: Date
+      createdBy: string | null
       updatedAt: Date
     }, ExtArgs["result"]["evaluationNotes"]>
     composites: {}
@@ -10532,7 +10532,7 @@ export namespace Prisma {
 
     evaluation<T extends EvaluationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationDefaultArgs<ExtArgs>>): Prisma__EvaluationClient<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    createdByUser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    createdByUser<T extends EvaluationNotes$createdByUserArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationNotes$createdByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10564,12 +10564,12 @@ export namespace Prisma {
   interface EvaluationNotesFieldRefs {
     readonly id: FieldRef<"EvaluationNotes", 'String'>
     readonly evaluationId: FieldRef<"EvaluationNotes", 'String'>
-    readonly createdBy: FieldRef<"EvaluationNotes", 'String'>
     readonly title: FieldRef<"EvaluationNotes", 'String'>
     readonly content: FieldRef<"EvaluationNotes", 'String'>
     readonly tags: FieldRef<"EvaluationNotes", 'String[]'>
     readonly blocks: FieldRef<"EvaluationNotes", 'Json'>
     readonly createdAt: FieldRef<"EvaluationNotes", 'DateTime'>
+    readonly createdBy: FieldRef<"EvaluationNotes", 'String'>
     readonly updatedAt: FieldRef<"EvaluationNotes", 'DateTime'>
   }
     
@@ -10867,6 +10867,21 @@ export namespace Prisma {
      * Filter which EvaluationNotes to delete
      */
     where?: EvaluationNotesWhereInput
+  }
+
+  /**
+   * EvaluationNotes.createdByUser
+   */
+  export type EvaluationNotes$createdByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -34868,12 +34883,12 @@ export namespace Prisma {
   export const EvaluationNotesScalarFieldEnum: {
     id: 'id',
     evaluationId: 'evaluationId',
-    createdBy: 'createdBy',
     title: 'title',
     content: 'content',
     tags: 'tags',
     blocks: 'blocks',
     createdAt: 'createdAt',
+    createdBy: 'createdBy',
     updatedAt: 'updatedAt'
   };
 
@@ -36152,26 +36167,26 @@ export namespace Prisma {
     NOT?: EvaluationNotesWhereInput | EvaluationNotesWhereInput[]
     id?: StringFilter<"EvaluationNotes"> | string
     evaluationId?: StringFilter<"EvaluationNotes"> | string
-    createdBy?: StringFilter<"EvaluationNotes"> | string
     title?: StringNullableFilter<"EvaluationNotes"> | string | null
     content?: StringNullableFilter<"EvaluationNotes"> | string | null
     tags?: StringNullableListFilter<"EvaluationNotes">
     blocks?: JsonNullableFilter<"EvaluationNotes">
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
-    createdByUser?: XOR<UserRelationFilter, UserWhereInput>
+    createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
   export type EvaluationNotesOrderByWithRelationInput = {
     id?: SortOrder
     evaluationId?: SortOrder
-    createdBy?: SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
     tags?: SortOrder
     blocks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
     evaluation?: EvaluationOrderByWithRelationInput
     createdByUser?: UserOrderByWithRelationInput
@@ -36183,26 +36198,26 @@ export namespace Prisma {
     OR?: EvaluationNotesWhereInput[]
     NOT?: EvaluationNotesWhereInput | EvaluationNotesWhereInput[]
     evaluationId?: StringFilter<"EvaluationNotes"> | string
-    createdBy?: StringFilter<"EvaluationNotes"> | string
     title?: StringNullableFilter<"EvaluationNotes"> | string | null
     content?: StringNullableFilter<"EvaluationNotes"> | string | null
     tags?: StringNullableListFilter<"EvaluationNotes">
     blocks?: JsonNullableFilter<"EvaluationNotes">
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
-    createdByUser?: XOR<UserRelationFilter, UserWhereInput>
+    createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type EvaluationNotesOrderByWithAggregationInput = {
     id?: SortOrder
     evaluationId?: SortOrder
-    createdBy?: SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
     tags?: SortOrder
     blocks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
     _count?: EvaluationNotesCountOrderByAggregateInput
     _max?: EvaluationNotesMaxOrderByAggregateInput
@@ -36215,12 +36230,12 @@ export namespace Prisma {
     NOT?: EvaluationNotesScalarWhereWithAggregatesInput | EvaluationNotesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"EvaluationNotes"> | string
     evaluationId?: StringWithAggregatesFilter<"EvaluationNotes"> | string
-    createdBy?: StringWithAggregatesFilter<"EvaluationNotes"> | string
     title?: StringNullableWithAggregatesFilter<"EvaluationNotes"> | string | null
     content?: StringNullableWithAggregatesFilter<"EvaluationNotes"> | string | null
     tags?: StringNullableListFilter<"EvaluationNotes">
     blocks?: JsonNullableWithAggregatesFilter<"EvaluationNotes">
     createdAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
+    createdBy?: StringNullableWithAggregatesFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
   }
 
@@ -38590,18 +38605,18 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     evaluation: EvaluationCreateNestedOneWithoutNotesInput
-    createdByUser: UserCreateNestedOneWithoutNotesInput
+    createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
 
   export type EvaluationNotesUncheckedCreateInput = {
     id?: string
     evaluationId: string
-    createdBy: string
     title?: string | null
     content?: string | null
     tags?: EvaluationNotesCreatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    createdBy?: string | null
     updatedAt?: Date | string
   }
 
@@ -38614,30 +38629,30 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
-    createdByUser?: UserUpdateOneRequiredWithoutNotesNestedInput
+    createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
 
   export type EvaluationNotesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: EvaluationNotesUpdatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EvaluationNotesCreateManyInput = {
     id?: string
     evaluationId: string
-    createdBy: string
     title?: string | null
     content?: string | null
     tags?: EvaluationNotesCreatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    createdBy?: string | null
     updatedAt?: Date | string
   }
 
@@ -38654,12 +38669,12 @@ export namespace Prisma {
   export type EvaluationNotesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: EvaluationNotesUpdatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -41299,40 +41314,35 @@ export namespace Prisma {
     isNot?: EvaluationWhereInput
   }
 
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type EvaluationNotesCountOrderByAggregateInput = {
     id?: SortOrder
     evaluationId?: SortOrder
-    createdBy?: SortOrder
     title?: SortOrder
     content?: SortOrder
     tags?: SortOrder
     blocks?: SortOrder
     createdAt?: SortOrder
+    createdBy?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type EvaluationNotesMaxOrderByAggregateInput = {
     id?: SortOrder
     evaluationId?: SortOrder
-    createdBy?: SortOrder
     title?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
+    createdBy?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type EvaluationNotesMinOrderByAggregateInput = {
     id?: SortOrder
     evaluationId?: SortOrder
-    createdBy?: SortOrder
     title?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
+    createdBy?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -42454,6 +42464,11 @@ export namespace Prisma {
     in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
     notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumCompanyRoleFilter<$PrismaModel> | $Enums.CompanyRole
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type CompanyUserUserIdCompanyIdCompoundUniqueInput = {
@@ -43662,10 +43677,12 @@ export namespace Prisma {
     update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutNotesInput, EvaluationUpdateWithoutNotesInput>, EvaluationUncheckedUpdateWithoutNotesInput>
   }
 
-  export type UserUpdateOneRequiredWithoutNotesNestedInput = {
+  export type UserUpdateOneWithoutNotesNestedInput = {
     create?: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
     connectOrCreate?: UserCreateOrConnectWithoutNotesInput
     upsert?: UserUpsertWithoutNotesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotesInput, UserUpdateWithoutNotesInput>, UserUncheckedUpdateWithoutNotesInput>
   }
@@ -47104,17 +47121,17 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    createdByUser: UserCreateNestedOneWithoutNotesInput
+    createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
 
   export type EvaluationNotesUncheckedCreateWithoutEvaluationInput = {
     id?: string
-    createdBy: string
     title?: string | null
     content?: string | null
     tags?: EvaluationNotesCreatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    createdBy?: string | null
     updatedAt?: Date | string
   }
 
@@ -47473,12 +47490,12 @@ export namespace Prisma {
     NOT?: EvaluationNotesScalarWhereInput | EvaluationNotesScalarWhereInput[]
     id?: StringFilter<"EvaluationNotes"> | string
     evaluationId?: StringFilter<"EvaluationNotes"> | string
-    createdBy?: StringFilter<"EvaluationNotes"> | string
     title?: StringNullableFilter<"EvaluationNotes"> | string | null
     content?: StringNullableFilter<"EvaluationNotes"> | string | null
     tags?: StringNullableListFilter<"EvaluationNotes">
     blocks?: JsonNullableFilter<"EvaluationNotes">
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
   }
 
@@ -51811,12 +51828,12 @@ export namespace Prisma {
 
   export type EvaluationNotesCreateManyEvaluationInput = {
     id?: string
-    createdBy: string
     title?: string | null
     content?: string | null
     tags?: EvaluationNotesCreatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    createdBy?: string | null
     updatedAt?: Date | string
   }
 
@@ -51975,28 +51992,28 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdByUser?: UserUpdateOneRequiredWithoutNotesNestedInput
+    createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
 
   export type EvaluationNotesUncheckedUpdateWithoutEvaluationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: EvaluationNotesUpdatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutEvaluationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: EvaluationNotesUpdatetagsInput | string[]
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
