@@ -1,4 +1,4 @@
-import { EvaluationNotes, UpdateNotesBody } from '@hike/types';
+import { Notes, UpdateNotesBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { updateNotes } from '../api/evaluation.service';
 
@@ -8,7 +8,7 @@ export interface UpdateNotesParam {
   data: UpdateNotesBody;
 }
 
-export const useUpdateNotes = (mutationOptions?: UseMutationOptions<EvaluationNotes, Error, UpdateNotesParam>) =>
+export const useUpdateNotes = (mutationOptions?: UseMutationOptions<Notes, Error, UpdateNotesParam>) =>
   useMutation({
     mutationKey: ['updateNotes'],
     mutationFn: async ({ evaluationId, noteId, data }: UpdateNotesParam) => updateNotes(evaluationId, noteId, data),

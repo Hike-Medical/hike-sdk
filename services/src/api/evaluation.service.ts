@@ -2,7 +2,7 @@ import type {
   CreateEvaluationParams,
   CreateNotesBody,
   EvaluationExtended,
-  EvaluationNotes,
+  Notes,
   EvaluationsStats,
   EvaluationsUploadResult,
   GetEvaluationsByStatusParams,
@@ -55,26 +55,22 @@ export const uploadEvaluations = async (file: File): Promise<EvaluationsUploadRe
   return response.data;
 };
 
-export const createNotes = async (evaluationId: string, body: CreateNotesBody): Promise<EvaluationNotes> => {
+export const createNotes = async (evaluationId: string, body: CreateNotesBody): Promise<Notes> => {
   const response = await backendApi.post(`evaluation/${evaluationId}/notes`, body);
   return response.data;
 };
 
-export const findNotes = async (evaluationId: string, tags?: string[]): Promise<EvaluationNotes[]> => {
+export const findNotes = async (evaluationId: string, tags?: string[]): Promise<Notes[]> => {
   const response = await backendApi.get(`evaluation/${evaluationId}/notes`, { params: { tags } });
   return response.data;
 };
 
-export const findNoteById = async (evaluationId: string, noteId: string): Promise<EvaluationNotes> => {
+export const findNoteById = async (evaluationId: string, noteId: string): Promise<Notes> => {
   const response = await backendApi.get(`evaluation/${evaluationId}/notes/${noteId}`);
   return response.data;
 };
 
-export const updateNotes = async (
-  evaluationId: string,
-  noteId: string,
-  body: UpdateNotesBody
-): Promise<EvaluationNotes> => {
+export const updateNotes = async (evaluationId: string, noteId: string, body: UpdateNotesBody): Promise<Notes> => {
   const response = await backendApi.put(`evaluation/${evaluationId}/notes/${noteId}`, body);
   return response.data;
 };
