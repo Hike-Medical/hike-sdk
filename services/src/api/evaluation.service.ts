@@ -60,8 +60,8 @@ export const createNotes = async (evaluationId: string, body: CreateNotesBody): 
   return response.data;
 };
 
-export const findNotes = async (evaluationId: string): Promise<EvaluationNotes[]> => {
-  const response = await backendApi.get(`evaluation/${evaluationId}/notes`);
+export const findNotes = async (evaluationId: string, tags?: string[]): Promise<EvaluationNotes[]> => {
+  const response = await backendApi.get(`evaluation/${evaluationId}/notes`, { params: { tags } });
   return response.data;
 };
 
