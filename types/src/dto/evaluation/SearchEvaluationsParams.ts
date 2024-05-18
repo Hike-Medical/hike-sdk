@@ -1,6 +1,6 @@
 import type { CareType } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
-import type { EvaluationStatus } from './GetEvaluationsParams';
+import type { EvaluationStatus } from './EvaluationStatus';
 
 export interface SearchEvaluationsParams extends PagedParams {
   patientId?: string;

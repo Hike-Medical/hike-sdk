@@ -1,5 +1,5 @@
 import type { PagedParams } from '../PagedParams';
-import type { EvaluationStatus } from '../evaluation/GetEvaluationsParams';
+import type { EvaluationStatus } from '../evaluation/EvaluationStatus';
 
 export interface GetSearchParams extends PagedParams {
   term: string;
