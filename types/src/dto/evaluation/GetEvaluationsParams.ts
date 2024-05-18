@@ -1,20 +1,20 @@
-import { Evaluation } from '../../../prisma';
+import { CareType, Evaluation } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
-
-export type EvaluationStatus =
-  | 'NOT_STARTED'
-  | 'CANCELLED'
-  | 'INCOMPLETE'
-  | 'AWAITING_AUTH'
-  | 'PROCESSING'
-  | 'COMPLETED';
+import type { EvaluationStatus } from './EvaluationStatus';
 
 export interface GetEvaluationsParams extends PagedParams {
-  statuses?: EvaluationStatus[];
   searchQuery?: string;
+  statuses?: EvaluationStatus[];
+  careType?: CareType;
+  poNumber?: string;
+  patientId?: string;
+  patientExternalId?: string;
   clinicianId?: string;
   facilityId?: string;
   visitTypes?: string[];
+  visitTypeId?: string;
+  appointmentStartAt?: Date;
+  appointmentEndAt?: Date;
   excludedVisitTypes?: string[];
   appointmentStatuses?: string[];
   excludedAppointmentStatuses?: string[];
