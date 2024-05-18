@@ -4,20 +4,28 @@ import type {
   CreateEvaluationParams,
   CreateNotesBody,
   EvaluationExtended,
-  Notes,
   EvaluationsStats,
   EvaluationsUploadResult,
   GetEvaluationsParams,
+  Notes,
   PagedResponse,
   SearchEvaluationsParams,
-  UpdateNotesBody,
-  StartEvaluationInsoleParams
+  StartEvaluationInsoleParams,
+  UpdateEvaluationParams,
+  UpdateNotesBody
 } from '@hike/types';
-
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
   const response = await backendApi.post('evaluation', params);
+  return response.data;
+};
+
+export const updateEvaluation = async (
+  evaluationId: string,
+  params: UpdateEvaluationParams
+): Promise<EvaluationExtended> => {
+  const response = await backendApi.patch(`evaluation/${evaluationId}`, params);
   return response.data;
 };
 

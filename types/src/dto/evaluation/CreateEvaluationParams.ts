@@ -1,4 +1,5 @@
 import { CareType, Side, VerticalPosition } from '../../../prisma';
+
 /**
  * Data transfer object for creating an evaluation.
  */
@@ -23,7 +24,6 @@ export interface CreateEvaluationParams {
   location?: string;
   prescribedAt?: Date;
   prescribedActive?: boolean;
-  notes?: string;
   workbenchId?: string;
   completedAt?: Date;
   cancelledAt?: Date;

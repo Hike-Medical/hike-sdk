@@ -9,7 +9,7 @@ interface SaveTrackingInfo {
 export const useUpdateTrackingInfo = (mutationOptions?: UseMutationOptions<void, Error, SaveTrackingInfo>) => {
   return useMutation({
     mutationKey: ['updateTrackingInfo'],
-    mutationFn: async ({ labelId, items }: SaveTrackingInfo) => updateTrackingInfo({ labelId, items }),
+    mutationFn: async ({ labelId, items }: SaveTrackingInfo) => await updateTrackingInfo({ labelId, items }),
     ...mutationOptions
   });
 };

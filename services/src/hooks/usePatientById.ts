@@ -12,6 +12,6 @@ export interface UseFindPatientByIdOptions {
 export const usePatientById = ({ key = [], enabled = true, ...params }: UseFindPatientByIdOptions) =>
   useQuery<PatientExtended, ResponseError<null>>({
     queryKey: ['patientsById', ...key, params],
-    queryFn: async () => findPatientById(params.patientId),
+    queryFn: async () => await findPatientById(params.patientId),
     enabled
   });

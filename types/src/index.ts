@@ -18,6 +18,7 @@ export type * from './dto/evaluation/CreateNotes';
 export type * from './dto/evaluation/UpdateNotes';
 export type * from './dto/evaluation/Notes';
 export type * from './dto/evaluation/StartEvaluationInsoleParams';
+export type * from './dto/evaluation/UpdateEvaluationParams';
 export type * from './dto/form/UpsertFormSubmissionParams';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/GetOrdersParams';

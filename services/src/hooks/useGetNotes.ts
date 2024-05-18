@@ -12,6 +12,6 @@ export const useGetNotes = (
 ) =>
   useQuery({
     queryKey: ['getNotes', evaluationId, tags],
-    queryFn: async () => findNotes(evaluationId, tags),
+    queryFn: async () => await findNotes(evaluationId, tags),
     ...queryOptions
   });

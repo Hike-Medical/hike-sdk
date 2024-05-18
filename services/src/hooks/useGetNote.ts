@@ -9,6 +9,6 @@ export const useGetNote = (
 ) =>
   useQuery({
     queryKey: ['getNote', evaluationId, noteId],
-    queryFn: async () => findNoteById(evaluationId, noteId),
+    queryFn: async () => await findNoteById(evaluationId, noteId),
     ...queryOptions
   });
