@@ -41,9 +41,4 @@ export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | nul
  *
  */
 export const fromStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined =>
-  !value
-    ? value
-    : dayjs
-        .tz(dayjs.utc(value).format('YYYY-MM-DD'), timeZone || undefined)
-        .startOf('day')
-        .toDate();
+  !value ? value : dayjs.tz(dayjs.utc(value).format('YYYY-MM-DD'), timeZone || undefined).toDate();
