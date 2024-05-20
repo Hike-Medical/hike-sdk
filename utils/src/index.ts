@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './converters/formatConstant';
+export * from './converters/parseDate';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
 export * from './converters/toTitleCase';
