@@ -1,7 +1,7 @@
 import type {
   ActionEvaluationParams,
+  CreateEvaluationByProductParams,
   CreateEvaluationParams,
-  CreateEvaluationProductParams,
   CreateNotesBody,
   EvaluationExtended,
   EvaluationsStats,
@@ -10,7 +10,7 @@ import type {
   Notes,
   PagedResponse,
   SearchEvaluationsParams,
-  StartEvaluationProductParams,
+  StartEvaluationByProductParams,
   UpdateEvaluationParams,
   UpdateNotesBody
 } from '@hike/types';
@@ -29,13 +29,15 @@ export const updateEvaluation = async (
   return response.data;
 };
 
-export const createProductEvaluation = async (params: CreateEvaluationProductParams): Promise<EvaluationExtended> => {
-  const response = await backendApi.post('evaluation/create/insole', params);
+export const createEvaluationByProduct = async (
+  params: CreateEvaluationByProductParams
+): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/create/product', params);
   return response.data;
 };
 
-export const startProductEvaluation = async (params: StartEvaluationProductParams): Promise<EvaluationExtended> => {
-  const response = await backendApi.post('evaluation/start/insole', params);
+export const startEvaluationByProduct = async (params: StartEvaluationByProductParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post('evaluation/start/product', params);
   return response.data;
 };
 

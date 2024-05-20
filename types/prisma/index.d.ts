@@ -251,7 +251,9 @@ export const ProductType: {
   FOOT_RENDER: 'FOOT_RENDER',
   INSOLE_RENDER: 'INSOLE_RENDER',
   INSOLE_GCODE: 'INSOLE_GCODE',
-  INSOLE: 'INSOLE'
+  INSOLE: 'INSOLE',
+  VENDOR_PREFAB: 'VENDOR_PREFAB',
+  CLINIC_STOCK: 'CLINIC_STOCK'
 };
 
 export type ProductType = (typeof ProductType)[keyof typeof ProductType]
@@ -15594,8 +15596,8 @@ export namespace Prisma {
     committedDeliveryAt: Date | null
     parcelId: string | null
     active: boolean | null
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
-    orderAuthorizationUpdatedAt: Date | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus | null
+    authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -15609,8 +15611,8 @@ export namespace Prisma {
     committedDeliveryAt: Date | null
     parcelId: string | null
     active: boolean | null
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
-    orderAuthorizationUpdatedAt: Date | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus | null
+    authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -15624,8 +15626,8 @@ export namespace Prisma {
     committedDeliveryAt: number
     parcelId: number
     active: number
-    orderAuthorizationStatus: number
-    orderAuthorizationUpdatedAt: number
+    authorizationStatus: number
+    authorizationUpdatedAt: number
     completedAt: number
     createdAt: number
     updatedAt: number
@@ -15641,8 +15643,8 @@ export namespace Prisma {
     committedDeliveryAt?: true
     parcelId?: true
     active?: true
-    orderAuthorizationStatus?: true
-    orderAuthorizationUpdatedAt?: true
+    authorizationStatus?: true
+    authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -15656,8 +15658,8 @@ export namespace Prisma {
     committedDeliveryAt?: true
     parcelId?: true
     active?: true
-    orderAuthorizationStatus?: true
-    orderAuthorizationUpdatedAt?: true
+    authorizationStatus?: true
+    authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -15671,8 +15673,8 @@ export namespace Prisma {
     committedDeliveryAt?: true
     parcelId?: true
     active?: true
-    orderAuthorizationStatus?: true
-    orderAuthorizationUpdatedAt?: true
+    authorizationStatus?: true
+    authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -15759,8 +15761,8 @@ export namespace Prisma {
     committedDeliveryAt: Date | null
     parcelId: string | null
     active: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt: Date | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -15791,8 +15793,8 @@ export namespace Prisma {
     committedDeliveryAt?: boolean
     parcelId?: boolean
     active?: boolean
-    orderAuthorizationStatus?: boolean
-    orderAuthorizationUpdatedAt?: boolean
+    authorizationStatus?: boolean
+    authorizationUpdatedAt?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -15807,8 +15809,8 @@ export namespace Prisma {
     committedDeliveryAt?: boolean
     parcelId?: boolean
     active?: boolean
-    orderAuthorizationStatus?: boolean
-    orderAuthorizationUpdatedAt?: boolean
+    authorizationStatus?: boolean
+    authorizationUpdatedAt?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -15833,8 +15835,8 @@ export namespace Prisma {
       committedDeliveryAt: Date | null
       parcelId: string | null
       active: boolean
-      orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-      orderAuthorizationUpdatedAt: Date | null
+      authorizationStatus: $Enums.OrderAuthorizationStatus
+      authorizationUpdatedAt: Date | null
       completedAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -16266,8 +16268,8 @@ export namespace Prisma {
     readonly committedDeliveryAt: FieldRef<"Order", 'DateTime'>
     readonly parcelId: FieldRef<"Order", 'String'>
     readonly active: FieldRef<"Order", 'Boolean'>
-    readonly orderAuthorizationStatus: FieldRef<"Order", 'OrderAuthorizationStatus'>
-    readonly orderAuthorizationUpdatedAt: FieldRef<"Order", 'DateTime'>
+    readonly authorizationStatus: FieldRef<"Order", 'OrderAuthorizationStatus'>
+    readonly authorizationUpdatedAt: FieldRef<"Order", 'DateTime'>
     readonly completedAt: FieldRef<"Order", 'DateTime'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
     readonly updatedAt: FieldRef<"Order", 'DateTime'>
@@ -36488,8 +36490,8 @@ export namespace Prisma {
     committedDeliveryAt: 'committedDeliveryAt',
     parcelId: 'parcelId',
     active: 'active',
-    orderAuthorizationStatus: 'orderAuthorizationStatus',
-    orderAuthorizationUpdatedAt: 'orderAuthorizationUpdatedAt',
+    authorizationStatus: 'authorizationStatus',
+    authorizationUpdatedAt: 'authorizationUpdatedAt',
     completedAt: 'completedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -38140,8 +38142,8 @@ export namespace Prisma {
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
@@ -38156,8 +38158,8 @@ export namespace Prisma {
     committedDeliveryAt?: SortOrderInput | SortOrder
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
-    orderAuthorizationStatus?: SortOrder
-    orderAuthorizationUpdatedAt?: SortOrderInput | SortOrder
+    authorizationStatus?: SortOrder
+    authorizationUpdatedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38175,8 +38177,8 @@ export namespace Prisma {
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
@@ -38191,8 +38193,8 @@ export namespace Prisma {
     committedDeliveryAt?: SortOrderInput | SortOrder
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
-    orderAuthorizationStatus?: SortOrder
-    orderAuthorizationUpdatedAt?: SortOrderInput | SortOrder
+    authorizationStatus?: SortOrder
+    authorizationUpdatedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38212,8 +38214,8 @@ export namespace Prisma {
     committedDeliveryAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     parcelId?: StringNullableWithAggregatesFilter<"Order"> | string | null
     active?: BoolWithAggregatesFilter<"Order"> | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusWithAggregatesFilter<"Order"> | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusWithAggregatesFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
@@ -40622,8 +40624,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40638,8 +40640,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40652,8 +40654,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40668,8 +40670,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40683,8 +40685,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40697,8 +40699,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40712,8 +40714,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43260,8 +43262,8 @@ export namespace Prisma {
     committedDeliveryAt?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
-    orderAuthorizationStatus?: SortOrder
-    orderAuthorizationUpdatedAt?: SortOrder
+    authorizationStatus?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43275,8 +43277,8 @@ export namespace Prisma {
     committedDeliveryAt?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
-    orderAuthorizationStatus?: SortOrder
-    orderAuthorizationUpdatedAt?: SortOrder
+    authorizationStatus?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43290,8 +43292,8 @@ export namespace Prisma {
     committedDeliveryAt?: SortOrder
     parcelId?: SortOrder
     active?: SortOrder
-    orderAuthorizationStatus?: SortOrder
-    orderAuthorizationUpdatedAt?: SortOrder
+    authorizationStatus?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -49852,8 +49854,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49866,8 +49868,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50159,8 +50161,8 @@ export namespace Prisma {
     committedDeliveryAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
@@ -53504,8 +53506,8 @@ export namespace Prisma {
     committedDeliveryAt?: Date | string | null
     parcelId?: string | null
     active?: boolean
-    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: Date | string | null
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -53588,8 +53590,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53602,8 +53604,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53616,8 +53618,8 @@ export namespace Prisma {
     committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    orderAuthorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
-    orderAuthorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
