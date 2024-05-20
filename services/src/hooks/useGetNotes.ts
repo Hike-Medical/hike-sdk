@@ -4,6 +4,7 @@ import { findNotes } from '../api/evaluation.service';
 
 export const useGetNotes = (
   evaluationId: string,
+  deleted: boolean = false,
   tags?: string[],
   queryOptions?: Omit<
     UseQueryOptions<Pick<Notes, 'id' | 'title' | 'content' | 'tags' | 'createdAt'>[], Error>,
@@ -11,7 +12,7 @@ export const useGetNotes = (
   >
 ) =>
   useQuery({
-    queryKey: ['getNotes', evaluationId, tags],
-    queryFn: async () => await findNotes(evaluationId, tags),
+    queryKey: ['getNotes', evaluationId, tags, deleted],
+    queryFn: async () => await findNotes(evaluationId, tags, deleted),
     ...queryOptions
   });
