@@ -14,6 +14,10 @@ export interface PatientCardProps {
     startedAt?: Date;
   }[];
   openEvaluation: () => void;
+  createEvaluation: () => void;
+  startEvaluation?: () => void;
+  isLoading: boolean;
+  isSuccess: boolean;
 }
 
 export function PatientCard({
@@ -23,11 +27,15 @@ export function PatientCard({
   lastName,
   birthDate,
   evaluations,
-  openEvaluation
+  openEvaluation,
+  createEvaluation,
+  startEvaluation,
+  isLoading,
+  isSuccess
 }: PatientCardProps) {
   return (
     <Paper shadow="md" p="md">
-      <Stack gap={'xs'} mb={5}>
+      <Stack gap={'xs'} mb={5} onClick={openEvaluation}>
         <Text fw={600} size="20px">
           {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
         </Text>
@@ -67,9 +75,18 @@ export function PatientCard({
             ) : (
               <Box></Box>
             )}
-            <Button color="#006CEA" pl={20} pr={20} radius={10} onClick={openEvaluation} style={{ flexShrink: 0 }}>
+            <Button
+              color="#006CEA"
+              pl={20}
+              pr={20}
+              radius={10}
+              onClick={openEvaluation}
+              style={{ flexShrink: 0 }}
+              loading={isLoading}
+              disabled={isSuccess}
+            >
               <Text fw={600} size="14px" c="white">
-                Patient Profile
+                Patient Evaluations
               </Text>
             </Button>
           </Group>
@@ -77,9 +94,17 @@ export function PatientCard({
       ) : (
         <Group justify="space-between">
           <Box></Box>
-          <Button color="#006CEA" pl={20} pr={20} radius={10} onClick={openEvaluation}>
-            <Text fw={600} size="14px" c="white">
-              Patient Profile
+          <Button
+            color="#D3F9D8"
+            pl={20}
+            pr={20}
+            radius={10}
+            onClick={startEvaluation ?? createEvaluation}
+            loading={isLoading}
+            disabled={isSuccess}
+          >
+            <Text fw={600} size="14px" c="black">
+              Start Evaluation
             </Text>
           </Button>
         </Group>

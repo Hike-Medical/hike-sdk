@@ -2,7 +2,7 @@ import type { EvaluationStatus } from '@hike/types';
 import { toTitleCase } from '@hike/utils';
 import { ActionIcon, Badge, Button, Divider, Drawer, Group, Paper, Stack, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconCircle, IconCircleX, IconMenu2 } from '@tabler/icons-react';
+import { IconCircleX, IconMenu2 } from '@tabler/icons-react';
 import { renderBadge } from '../PatientCard/RenderBadge';
 
 export interface EvaluationCardProps {
@@ -145,12 +145,9 @@ export function EvaluationCard({
     <Paper shadow="md" p="md">
       <Stack gap={'xs'} mb={5}>
         <Group justify="space-between" wrap="nowrap">
-          <Group gap="xs" wrap="nowrap">
-            <Text fw={600} size="20px" style={{ flexShrink: 2 }}>
-              {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}
-            </Text>
-            <IconCircle size="14" color={renderStatusColor()} fill={renderStatusColor()} />
-          </Group>
+          <Text fw={600} size="20px" style={{ flexShrink: 2 }}>
+            {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}
+          </Text>
           {evaluationStatus !== 'NOT_STARTED' && evaluationStatus !== 'CANCELLED' && (
             <ActionIcon mr={4} variant="transparent" size="lg" onClick={() => menuModalHandlers.open()}>
               <IconMenu2 color="#000000" />
