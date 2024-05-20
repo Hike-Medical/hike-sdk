@@ -10256,6 +10256,7 @@ export namespace Prisma {
     createdAt: Date | null
     createdBy: string | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type EvaluationNotesMaxAggregateOutputType = {
@@ -10266,6 +10267,7 @@ export namespace Prisma {
     createdAt: Date | null
     createdBy: string | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type EvaluationNotesCountAggregateOutputType = {
@@ -10278,6 +10280,7 @@ export namespace Prisma {
     createdAt: number
     createdBy: number
     updatedAt: number
+    deletedAt: number
     _all: number
   }
 
@@ -10290,6 +10293,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type EvaluationNotesMaxAggregateInputType = {
@@ -10300,6 +10304,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type EvaluationNotesCountAggregateInputType = {
@@ -10312,6 +10317,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
     _all?: true
   }
 
@@ -10397,6 +10403,7 @@ export namespace Prisma {
     createdAt: Date
     createdBy: string | null
     updatedAt: Date
+    deletedAt: Date | null
     _count: EvaluationNotesCountAggregateOutputType | null
     _min: EvaluationNotesMinAggregateOutputType | null
     _max: EvaluationNotesMaxAggregateOutputType | null
@@ -10426,6 +10433,7 @@ export namespace Prisma {
     createdAt?: boolean
     createdBy?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
     createdByUser?: boolean | EvaluationNotes$createdByUserArgs<ExtArgs>
   }, ExtArgs["result"]["evaluationNotes"]>
@@ -10440,6 +10448,7 @@ export namespace Prisma {
     createdAt?: boolean
     createdBy?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
   }
 
 
@@ -10465,6 +10474,7 @@ export namespace Prisma {
       createdAt: Date
       createdBy: string | null
       updatedAt: Date
+      deletedAt: Date | null
     }, ExtArgs["result"]["evaluationNotes"]>
     composites: {}
   }
@@ -10897,6 +10907,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"EvaluationNotes", 'DateTime'>
     readonly createdBy: FieldRef<"EvaluationNotes", 'String'>
     readonly updatedAt: FieldRef<"EvaluationNotes", 'DateTime'>
+    readonly deletedAt: FieldRef<"EvaluationNotes", 'DateTime'>
   }
     
 
@@ -36405,7 +36416,8 @@ export namespace Prisma {
     blocks: 'blocks',
     createdAt: 'createdAt',
     createdBy: 'createdBy',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
   };
 
   export type EvaluationNotesScalarFieldEnum = (typeof EvaluationNotesScalarFieldEnum)[keyof typeof EvaluationNotesScalarFieldEnum]
@@ -37684,6 +37696,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
@@ -37698,6 +37711,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     evaluation?: EvaluationOrderByWithRelationInput
     createdByUser?: UserOrderByWithRelationInput
   }
@@ -37715,6 +37729,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }, "id">
@@ -37729,6 +37744,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     _count?: EvaluationNotesCountOrderByAggregateInput
     _max?: EvaluationNotesMaxOrderByAggregateInput
     _min?: EvaluationNotesMinOrderByAggregateInput
@@ -37747,6 +37763,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableWithAggregatesFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"EvaluationNotes"> | Date | string | null
   }
 
   export type FootWhereInput = {
@@ -40112,6 +40129,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     evaluation: EvaluationCreateNestedOneWithoutNotesInput
     createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
@@ -40126,6 +40144,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesUpdateInput = {
@@ -40136,6 +40155,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
     createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
@@ -40150,6 +40170,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesCreateManyInput = {
@@ -40162,6 +40183,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesUpdateManyMutationInput = {
@@ -40172,6 +40194,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyInput = {
@@ -40184,6 +40207,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type FootCreateInput = {
@@ -42830,6 +42854,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EvaluationNotesMaxOrderByAggregateInput = {
@@ -42840,6 +42865,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EvaluationNotesMinOrderByAggregateInput = {
@@ -42850,6 +42876,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EnumSideFilter<$PrismaModel = never> = {
@@ -48557,6 +48584,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
 
@@ -48569,6 +48597,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesCreateOrConnectWithoutEvaluationInput = {
@@ -48889,6 +48918,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
   }
 
   export type EvaluationCreateWithoutNotesInput = {
@@ -52024,6 +52054,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     evaluation: EvaluationCreateNestedOneWithoutNotesInput
   }
 
@@ -52036,6 +52067,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesCreateOrConnectWithoutCreatedByUserInput = {
@@ -53154,6 +53186,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type ClinicianUpdateWithoutEvaluationsInput = {
@@ -53238,6 +53271,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
 
@@ -53250,6 +53284,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutEvaluationInput = {
@@ -53261,6 +53296,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AssetCreateManyFootInput = {
@@ -54462,6 +54498,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -54532,6 +54569,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
   }
 
@@ -54544,6 +54582,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput = {
@@ -54555,6 +54594,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
