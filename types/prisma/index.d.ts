@@ -3947,17 +3947,13 @@ export namespace Prisma {
 
   export type EvaluationCountOutputType = {
     clinicians: number
-    formSubmissions: number
     workbenches: number
-    feet: number
     notes: number
   }
 
   export type EvaluationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     clinicians?: boolean | EvaluationCountOutputTypeCountCliniciansArgs
-    formSubmissions?: boolean | EvaluationCountOutputTypeCountFormSubmissionsArgs
     workbenches?: boolean | EvaluationCountOutputTypeCountWorkbenchesArgs
-    feet?: boolean | EvaluationCountOutputTypeCountFeetArgs
     notes?: boolean | EvaluationCountOutputTypeCountNotesArgs
   }
 
@@ -3982,22 +3978,8 @@ export namespace Prisma {
   /**
    * EvaluationCountOutputType without action
    */
-  export type EvaluationCountOutputTypeCountFormSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FormSubmissionWhereInput
-  }
-
-  /**
-   * EvaluationCountOutputType without action
-   */
   export type EvaluationCountOutputTypeCountWorkbenchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchWhereInput
-  }
-
-  /**
-   * EvaluationCountOutputType without action
-   */
-  export type EvaluationCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FootWhereInput
   }
 
   /**
@@ -4126,11 +4108,15 @@ export namespace Prisma {
   export type WorkbenchCountOutputType = {
     assets: number
     orders: number
+    feet: number
+    formSubmissions: number
   }
 
   export type WorkbenchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assets?: boolean | WorkbenchCountOutputTypeCountAssetsArgs
     orders?: boolean | WorkbenchCountOutputTypeCountOrdersArgs
+    feet?: boolean | WorkbenchCountOutputTypeCountFeetArgs
+    formSubmissions?: boolean | WorkbenchCountOutputTypeCountFormSubmissionsArgs
   }
 
   // Custom InputTypes
@@ -4156,6 +4142,20 @@ export namespace Prisma {
    */
   export type WorkbenchCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
+  }
+
+  /**
+   * WorkbenchCountOutputType without action
+   */
+  export type WorkbenchCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FootWhereInput
+  }
+
+  /**
+   * WorkbenchCountOutputType without action
+   */
+  export type WorkbenchCountOutputTypeCountFormSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormSubmissionWhereInput
   }
 
 
@@ -9212,9 +9212,7 @@ export namespace Prisma {
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
     facility?: boolean | Evaluation$facilityArgs<ExtArgs>
     clinicians?: boolean | Evaluation$cliniciansArgs<ExtArgs>
-    formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
-    feet?: boolean | Evaluation$feetArgs<ExtArgs>
     notes?: boolean | Evaluation$notesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["evaluation"]>
@@ -9259,9 +9257,7 @@ export namespace Prisma {
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
     facility?: boolean | Evaluation$facilityArgs<ExtArgs>
     clinicians?: boolean | Evaluation$cliniciansArgs<ExtArgs>
-    formSubmissions?: boolean | Evaluation$formSubmissionsArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
-    feet?: boolean | Evaluation$feetArgs<ExtArgs>
     notes?: boolean | Evaluation$notesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -9278,9 +9274,7 @@ export namespace Prisma {
       diagnosis: Prisma.$DiagnosisPayload<ExtArgs> | null
       facility: Prisma.$FacilityPayload<ExtArgs> | null
       clinicians: Prisma.$ClinicianPayload<ExtArgs>[]
-      formSubmissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
-      feet: Prisma.$FootPayload<ExtArgs>[]
       notes: Prisma.$EvaluationNotesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9718,11 +9712,7 @@ export namespace Prisma {
 
     clinicians<T extends Evaluation$cliniciansArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$cliniciansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    formSubmissions<T extends Evaluation$formSubmissionsArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$formSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     workbenches<T extends Evaluation$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    feet<T extends Evaluation$feetArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     notes<T extends Evaluation$notesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -10194,26 +10184,6 @@ export namespace Prisma {
   }
 
   /**
-   * Evaluation.formSubmissions
-   */
-  export type Evaluation$formSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FormSubmission
-     */
-    select?: FormSubmissionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FormSubmissionInclude<ExtArgs> | null
-    where?: FormSubmissionWhereInput
-    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
-    cursor?: FormSubmissionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
-  }
-
-  /**
    * Evaluation.workbenches
    */
   export type Evaluation$workbenchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10231,26 +10201,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WorkbenchScalarFieldEnum | WorkbenchScalarFieldEnum[]
-  }
-
-  /**
-   * Evaluation.feet
-   */
-  export type Evaluation$feetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Foot
-     */
-    select?: FootSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FootInclude<ExtArgs> | null
-    where?: FootWhereInput
-    orderBy?: FootOrderByWithRelationInput | FootOrderByWithRelationInput[]
-    cursor?: FootWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
   }
 
   /**
@@ -10306,6 +10256,7 @@ export namespace Prisma {
     createdAt: Date | null
     createdBy: string | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type EvaluationNotesMaxAggregateOutputType = {
@@ -10316,6 +10267,7 @@ export namespace Prisma {
     createdAt: Date | null
     createdBy: string | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type EvaluationNotesCountAggregateOutputType = {
@@ -10328,6 +10280,7 @@ export namespace Prisma {
     createdAt: number
     createdBy: number
     updatedAt: number
+    deletedAt: number
     _all: number
   }
 
@@ -10340,6 +10293,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type EvaluationNotesMaxAggregateInputType = {
@@ -10350,6 +10304,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type EvaluationNotesCountAggregateInputType = {
@@ -10362,6 +10317,7 @@ export namespace Prisma {
     createdAt?: true
     createdBy?: true
     updatedAt?: true
+    deletedAt?: true
     _all?: true
   }
 
@@ -10447,6 +10403,7 @@ export namespace Prisma {
     createdAt: Date
     createdBy: string | null
     updatedAt: Date
+    deletedAt: Date | null
     _count: EvaluationNotesCountAggregateOutputType | null
     _min: EvaluationNotesMinAggregateOutputType | null
     _max: EvaluationNotesMaxAggregateOutputType | null
@@ -10476,6 +10433,7 @@ export namespace Prisma {
     createdAt?: boolean
     createdBy?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
     createdByUser?: boolean | EvaluationNotes$createdByUserArgs<ExtArgs>
   }, ExtArgs["result"]["evaluationNotes"]>
@@ -10490,6 +10448,7 @@ export namespace Prisma {
     createdAt?: boolean
     createdBy?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
   }
 
 
@@ -10515,6 +10474,7 @@ export namespace Prisma {
       createdAt: Date
       createdBy: string | null
       updatedAt: Date
+      deletedAt: Date | null
     }, ExtArgs["result"]["evaluationNotes"]>
     composites: {}
   }
@@ -10947,6 +10907,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"EvaluationNotes", 'DateTime'>
     readonly createdBy: FieldRef<"EvaluationNotes", 'String'>
     readonly updatedAt: FieldRef<"EvaluationNotes", 'DateTime'>
+    readonly deletedAt: FieldRef<"EvaluationNotes", 'DateTime'>
   }
     
 
@@ -11317,7 +11278,7 @@ export namespace Prisma {
   export type FootMinAggregateOutputType = {
     id: string | null
     patientId: string | null
-    evaluationId: string | null
+    workbenchId: string | null
     side: $Enums.Side | null
     shoeSize: number | null
     shoeWidth: $Enums.ShoeWidth | null
@@ -11334,7 +11295,7 @@ export namespace Prisma {
   export type FootMaxAggregateOutputType = {
     id: string | null
     patientId: string | null
-    evaluationId: string | null
+    workbenchId: string | null
     side: $Enums.Side | null
     shoeSize: number | null
     shoeWidth: $Enums.ShoeWidth | null
@@ -11351,7 +11312,7 @@ export namespace Prisma {
   export type FootCountAggregateOutputType = {
     id: number
     patientId: number
-    evaluationId: number
+    workbenchId: number
     side: number
     shoeSize: number
     shoeWidth: number
@@ -11379,7 +11340,7 @@ export namespace Prisma {
   export type FootMinAggregateInputType = {
     id?: true
     patientId?: true
-    evaluationId?: true
+    workbenchId?: true
     side?: true
     shoeSize?: true
     shoeWidth?: true
@@ -11396,7 +11357,7 @@ export namespace Prisma {
   export type FootMaxAggregateInputType = {
     id?: true
     patientId?: true
-    evaluationId?: true
+    workbenchId?: true
     side?: true
     shoeSize?: true
     shoeWidth?: true
@@ -11413,7 +11374,7 @@ export namespace Prisma {
   export type FootCountAggregateInputType = {
     id?: true
     patientId?: true
-    evaluationId?: true
+    workbenchId?: true
     side?: true
     shoeSize?: true
     shoeWidth?: true
@@ -11518,7 +11479,7 @@ export namespace Prisma {
   export type FootGroupByOutputType = {
     id: string
     patientId: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth: $Enums.ShoeWidth
@@ -11555,7 +11516,7 @@ export namespace Prisma {
   export type FootSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     patientId?: boolean
-    evaluationId?: boolean
+    workbenchId?: boolean
     side?: boolean
     shoeSize?: boolean
     shoeWidth?: boolean
@@ -11569,7 +11530,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
-    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+    workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
     assets?: boolean | Foot$assetsArgs<ExtArgs>
     _count?: boolean | FootCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["foot"]>
@@ -11577,7 +11538,7 @@ export namespace Prisma {
   export type FootSelectScalar = {
     id?: boolean
     patientId?: boolean
-    evaluationId?: boolean
+    workbenchId?: boolean
     side?: boolean
     shoeSize?: boolean
     shoeWidth?: boolean
@@ -11595,7 +11556,7 @@ export namespace Prisma {
 
   export type FootInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
-    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+    workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
     assets?: boolean | Foot$assetsArgs<ExtArgs>
     _count?: boolean | FootCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -11605,13 +11566,13 @@ export namespace Prisma {
     name: "Foot"
     objects: {
       patient: Prisma.$PatientPayload<ExtArgs>
-      evaluation: Prisma.$EvaluationPayload<ExtArgs>
+      workbench: Prisma.$WorkbenchPayload<ExtArgs>
       assets: Prisma.$AssetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       patientId: string
-      evaluationId: string
+      workbenchId: string
       side: $Enums.Side
       shoeSize: number
       shoeWidth: $Enums.ShoeWidth
@@ -12017,7 +11978,7 @@ export namespace Prisma {
 
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    evaluation<T extends EvaluationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationDefaultArgs<ExtArgs>>): Prisma__EvaluationClient<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    workbench<T extends WorkbenchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkbenchDefaultArgs<ExtArgs>>): Prisma__WorkbenchClient<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     assets<T extends Foot$assetsArgs<ExtArgs> = {}>(args?: Subset<T, Foot$assetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -12051,7 +12012,7 @@ export namespace Prisma {
   interface FootFieldRefs {
     readonly id: FieldRef<"Foot", 'String'>
     readonly patientId: FieldRef<"Foot", 'String'>
-    readonly evaluationId: FieldRef<"Foot", 'String'>
+    readonly workbenchId: FieldRef<"Foot", 'String'>
     readonly side: FieldRef<"Foot", 'Side'>
     readonly shoeSize: FieldRef<"Foot", 'Float'>
     readonly shoeWidth: FieldRef<"Foot", 'ShoeWidth'>
@@ -14715,6 +14676,8 @@ export namespace Prisma {
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
     assets?: boolean | Workbench$assetsArgs<ExtArgs>
     orders?: boolean | Workbench$ordersArgs<ExtArgs>
+    feet?: boolean | Workbench$feetArgs<ExtArgs>
+    formSubmissions?: boolean | Workbench$formSubmissionsArgs<ExtArgs>
     _count?: boolean | WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workbench"]>
 
@@ -14739,6 +14702,8 @@ export namespace Prisma {
     evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
     assets?: boolean | Workbench$assetsArgs<ExtArgs>
     orders?: boolean | Workbench$ordersArgs<ExtArgs>
+    feet?: boolean | Workbench$feetArgs<ExtArgs>
+    formSubmissions?: boolean | Workbench$formSubmissionsArgs<ExtArgs>
     _count?: boolean | WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -14751,6 +14716,8 @@ export namespace Prisma {
       evaluation: Prisma.$EvaluationPayload<ExtArgs>
       assets: Prisma.$AssetPayload<ExtArgs>[]
       orders: Prisma.$OrderPayload<ExtArgs>[]
+      feet: Prisma.$FootPayload<ExtArgs>[]
+      formSubmissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -15165,6 +15132,10 @@ export namespace Prisma {
 
     orders<T extends Workbench$ordersArgs<ExtArgs> = {}>(args?: Subset<T, Workbench$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    feet<T extends Workbench$feetArgs<ExtArgs> = {}>(args?: Subset<T, Workbench$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    formSubmissions<T extends Workbench$formSubmissionsArgs<ExtArgs> = {}>(args?: Subset<T, Workbench$formSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15559,6 +15530,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
+  }
+
+  /**
+   * Workbench.feet
+   */
+  export type Workbench$feetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Foot
+     */
+    select?: FootSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FootInclude<ExtArgs> | null
+    where?: FootWhereInput
+    orderBy?: FootOrderByWithRelationInput | FootOrderByWithRelationInput[]
+    cursor?: FootWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
+  }
+
+  /**
+   * Workbench.formSubmissions
+   */
+  export type Workbench$formSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSubmission
+     */
+    select?: FormSubmissionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSubmissionInclude<ExtArgs> | null
+    where?: FormSubmissionWhereInput
+    orderBy?: FormSubmissionOrderByWithRelationInput | FormSubmissionOrderByWithRelationInput[]
+    cursor?: FormSubmissionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
   }
 
   /**
@@ -24474,7 +24485,7 @@ export namespace Prisma {
   export type FormSubmissionMinAggregateOutputType = {
     id: string | null
     templateId: string | null
-    evaluationId: string | null
+    workbenchId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -24482,7 +24493,7 @@ export namespace Prisma {
   export type FormSubmissionMaxAggregateOutputType = {
     id: string | null
     templateId: string | null
-    evaluationId: string | null
+    workbenchId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -24490,7 +24501,7 @@ export namespace Prisma {
   export type FormSubmissionCountAggregateOutputType = {
     id: number
     templateId: number
-    evaluationId: number
+    workbenchId: number
     data: number
     createdAt: number
     updatedAt: number
@@ -24501,7 +24512,7 @@ export namespace Prisma {
   export type FormSubmissionMinAggregateInputType = {
     id?: true
     templateId?: true
-    evaluationId?: true
+    workbenchId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -24509,7 +24520,7 @@ export namespace Prisma {
   export type FormSubmissionMaxAggregateInputType = {
     id?: true
     templateId?: true
-    evaluationId?: true
+    workbenchId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -24517,7 +24528,7 @@ export namespace Prisma {
   export type FormSubmissionCountAggregateInputType = {
     id?: true
     templateId?: true
-    evaluationId?: true
+    workbenchId?: true
     data?: true
     createdAt?: true
     updatedAt?: true
@@ -24599,7 +24610,7 @@ export namespace Prisma {
   export type FormSubmissionGroupByOutputType = {
     id: string
     templateId: string
-    evaluationId: string
+    workbenchId: string
     data: JsonValue
     createdAt: Date
     updatedAt: Date
@@ -24625,18 +24636,18 @@ export namespace Prisma {
   export type FormSubmissionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     templateId?: boolean
-    evaluationId?: boolean
+    workbenchId?: boolean
     data?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     template?: boolean | FormTemplateDefaultArgs<ExtArgs>
-    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+    workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["formSubmission"]>
 
   export type FormSubmissionSelectScalar = {
     id?: boolean
     templateId?: boolean
-    evaluationId?: boolean
+    workbenchId?: boolean
     data?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -24645,7 +24656,7 @@ export namespace Prisma {
 
   export type FormSubmissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     template?: boolean | FormTemplateDefaultArgs<ExtArgs>
-    evaluation?: boolean | EvaluationDefaultArgs<ExtArgs>
+    workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
   }
 
 
@@ -24653,12 +24664,12 @@ export namespace Prisma {
     name: "FormSubmission"
     objects: {
       template: Prisma.$FormTemplatePayload<ExtArgs>
-      evaluation: Prisma.$EvaluationPayload<ExtArgs>
+      workbench: Prisma.$WorkbenchPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       templateId: string
-      evaluationId: string
+      workbenchId: string
       data: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
@@ -25055,7 +25066,7 @@ export namespace Prisma {
 
     template<T extends FormTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FormTemplateDefaultArgs<ExtArgs>>): Prisma__FormTemplateClient<$Result.GetResult<Prisma.$FormTemplatePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    evaluation<T extends EvaluationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EvaluationDefaultArgs<ExtArgs>>): Prisma__EvaluationClient<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    workbench<T extends WorkbenchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkbenchDefaultArgs<ExtArgs>>): Prisma__WorkbenchClient<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -25087,7 +25098,7 @@ export namespace Prisma {
   interface FormSubmissionFieldRefs {
     readonly id: FieldRef<"FormSubmission", 'String'>
     readonly templateId: FieldRef<"FormSubmission", 'String'>
-    readonly evaluationId: FieldRef<"FormSubmission", 'String'>
+    readonly workbenchId: FieldRef<"FormSubmission", 'String'>
     readonly data: FieldRef<"FormSubmission", 'Json'>
     readonly createdAt: FieldRef<"FormSubmission", 'DateTime'>
     readonly updatedAt: FieldRef<"FormSubmission", 'DateTime'>
@@ -36405,7 +36416,8 @@ export namespace Prisma {
     blocks: 'blocks',
     createdAt: 'createdAt',
     createdBy: 'createdBy',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
   };
 
   export type EvaluationNotesScalarFieldEnum = (typeof EvaluationNotesScalarFieldEnum)[keyof typeof EvaluationNotesScalarFieldEnum]
@@ -36414,7 +36426,7 @@ export namespace Prisma {
   export const FootScalarFieldEnum: {
     id: 'id',
     patientId: 'patientId',
-    evaluationId: 'evaluationId',
+    workbenchId: 'workbenchId',
     side: 'side',
     shoeSize: 'shoeSize',
     shoeWidth: 'shoeWidth',
@@ -36603,7 +36615,7 @@ export namespace Prisma {
   export const FormSubmissionScalarFieldEnum: {
     id: 'id',
     templateId: 'templateId',
-    evaluationId: 'evaluationId',
+    workbenchId: 'workbenchId',
     data: 'data',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -37515,9 +37527,7 @@ export namespace Prisma {
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
     facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     clinicians?: ClinicianListRelationFilter
-    formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    feet?: FootListRelationFilter
     notes?: EvaluationNotesListRelationFilter
   }
 
@@ -37557,9 +37567,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisOrderByWithRelationInput
     facility?: FacilityOrderByWithRelationInput
     clinicians?: ClinicianOrderByRelationAggregateInput
-    formSubmissions?: FormSubmissionOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
-    feet?: FootOrderByRelationAggregateInput
     notes?: EvaluationNotesOrderByRelationAggregateInput
   }
 
@@ -37605,9 +37613,7 @@ export namespace Prisma {
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
     facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     clinicians?: ClinicianListRelationFilter
-    formSubmissions?: FormSubmissionListRelationFilter
     workbenches?: WorkbenchListRelationFilter
-    feet?: FootListRelationFilter
     notes?: EvaluationNotesListRelationFilter
   }, "id" | "id_companyId" | "externalId_companyId" | "poNumber_companyId">
 
@@ -37690,6 +37696,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
@@ -37704,6 +37711,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     evaluation?: EvaluationOrderByWithRelationInput
     createdByUser?: UserOrderByWithRelationInput
   }
@@ -37721,6 +37729,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     createdByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }, "id">
@@ -37735,6 +37744,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     _count?: EvaluationNotesCountOrderByAggregateInput
     _max?: EvaluationNotesMaxOrderByAggregateInput
     _min?: EvaluationNotesMinOrderByAggregateInput
@@ -37753,6 +37763,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableWithAggregatesFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"EvaluationNotes"> | Date | string | null
   }
 
   export type FootWhereInput = {
@@ -37761,7 +37772,7 @@ export namespace Prisma {
     NOT?: FootWhereInput | FootWhereInput[]
     id?: StringFilter<"Foot"> | string
     patientId?: StringFilter<"Foot"> | string
-    evaluationId?: StringFilter<"Foot"> | string
+    workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
     shoeSize?: FloatFilter<"Foot"> | number
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
@@ -37775,14 +37786,14 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Foot"> | Date | string
     updatedAt?: DateTimeFilter<"Foot"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
-    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
+    workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
     assets?: AssetListRelationFilter
   }
 
   export type FootOrderByWithRelationInput = {
     id?: SortOrder
     patientId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     side?: SortOrder
     shoeSize?: SortOrder
     shoeWidth?: SortOrder
@@ -37796,7 +37807,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
-    evaluation?: EvaluationOrderByWithRelationInput
+    workbench?: WorkbenchOrderByWithRelationInput
     assets?: AssetOrderByRelationAggregateInput
   }
 
@@ -37806,7 +37817,7 @@ export namespace Prisma {
     OR?: FootWhereInput[]
     NOT?: FootWhereInput | FootWhereInput[]
     patientId?: StringFilter<"Foot"> | string
-    evaluationId?: StringFilter<"Foot"> | string
+    workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
     shoeSize?: FloatFilter<"Foot"> | number
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
@@ -37820,14 +37831,14 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Foot"> | Date | string
     updatedAt?: DateTimeFilter<"Foot"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
-    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
+    workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
     assets?: AssetListRelationFilter
   }, "id">
 
   export type FootOrderByWithAggregationInput = {
     id?: SortOrder
     patientId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     side?: SortOrder
     shoeSize?: SortOrder
     shoeWidth?: SortOrder
@@ -37853,7 +37864,7 @@ export namespace Prisma {
     NOT?: FootScalarWhereWithAggregatesInput | FootScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Foot"> | string
     patientId?: StringWithAggregatesFilter<"Foot"> | string
-    evaluationId?: StringWithAggregatesFilter<"Foot"> | string
+    workbenchId?: StringWithAggregatesFilter<"Foot"> | string
     side?: EnumSideWithAggregatesFilter<"Foot"> | $Enums.Side
     shoeSize?: FloatWithAggregatesFilter<"Foot"> | number
     shoeWidth?: EnumShoeWidthWithAggregatesFilter<"Foot"> | $Enums.ShoeWidth
@@ -38052,6 +38063,8 @@ export namespace Prisma {
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     assets?: AssetListRelationFilter
     orders?: OrderListRelationFilter
+    feet?: FootListRelationFilter
+    formSubmissions?: FormSubmissionListRelationFilter
   }
 
   export type WorkbenchOrderByWithRelationInput = {
@@ -38071,6 +38084,8 @@ export namespace Prisma {
     evaluation?: EvaluationOrderByWithRelationInput
     assets?: AssetOrderByRelationAggregateInput
     orders?: OrderOrderByRelationAggregateInput
+    feet?: FootOrderByRelationAggregateInput
+    formSubmissions?: FormSubmissionOrderByRelationAggregateInput
   }
 
   export type WorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -38093,6 +38108,8 @@ export namespace Prisma {
     evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
     assets?: AssetListRelationFilter
     orders?: OrderListRelationFilter
+    feet?: FootListRelationFilter
+    formSubmissions?: FormSubmissionListRelationFilter
   }, "id">
 
   export type WorkbenchOrderByWithAggregationInput = {
@@ -38734,44 +38751,44 @@ export namespace Prisma {
     NOT?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
     id?: StringFilter<"FormSubmission"> | string
     templateId?: StringFilter<"FormSubmission"> | string
-    evaluationId?: StringFilter<"FormSubmission"> | string
+    workbenchId?: StringFilter<"FormSubmission"> | string
     data?: JsonFilter<"FormSubmission">
     createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
     updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
     template?: XOR<FormTemplateRelationFilter, FormTemplateWhereInput>
-    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
+    workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
   }
 
   export type FormSubmissionOrderByWithRelationInput = {
     id?: SortOrder
     templateId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     template?: FormTemplateOrderByWithRelationInput
-    evaluation?: EvaluationOrderByWithRelationInput
+    workbench?: WorkbenchOrderByWithRelationInput
   }
 
   export type FormSubmissionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    evaluationId_templateId?: FormSubmissionEvaluationIdTemplateIdCompoundUniqueInput
+    workbenchId_templateId?: FormSubmissionWorkbenchIdTemplateIdCompoundUniqueInput
     AND?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
     OR?: FormSubmissionWhereInput[]
     NOT?: FormSubmissionWhereInput | FormSubmissionWhereInput[]
     templateId?: StringFilter<"FormSubmission"> | string
-    evaluationId?: StringFilter<"FormSubmission"> | string
+    workbenchId?: StringFilter<"FormSubmission"> | string
     data?: JsonFilter<"FormSubmission">
     createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
     updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
     template?: XOR<FormTemplateRelationFilter, FormTemplateWhereInput>
-    evaluation?: XOR<EvaluationRelationFilter, EvaluationWhereInput>
-  }, "id" | "evaluationId_templateId">
+    workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
+  }, "id" | "workbenchId_templateId">
 
   export type FormSubmissionOrderByWithAggregationInput = {
     id?: SortOrder
     templateId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -38786,7 +38803,7 @@ export namespace Prisma {
     NOT?: FormSubmissionScalarWhereWithAggregatesInput | FormSubmissionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"FormSubmission"> | string
     templateId?: StringWithAggregatesFilter<"FormSubmission"> | string
-    evaluationId?: StringWithAggregatesFilter<"FormSubmission"> | string
+    workbenchId?: StringWithAggregatesFilter<"FormSubmission"> | string
     data?: JsonWithAggregatesFilter<"FormSubmission">
     createdAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
@@ -39918,9 +39935,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -39953,9 +39968,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -39988,9 +40001,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -40023,9 +40034,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -40120,6 +40129,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     evaluation: EvaluationCreateNestedOneWithoutNotesInput
     createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
@@ -40134,6 +40144,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesUpdateInput = {
@@ -40144,6 +40155,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
     createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
@@ -40158,6 +40170,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesCreateManyInput = {
@@ -40170,6 +40183,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesUpdateManyMutationInput = {
@@ -40180,6 +40194,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyInput = {
@@ -40192,6 +40207,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type FootCreateInput = {
@@ -40209,14 +40225,14 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutFeetInput
-    evaluation: EvaluationCreateNestedOneWithoutFeetInput
+    workbench: WorkbenchCreateNestedOneWithoutFeetInput
     assets?: AssetCreateNestedManyWithoutFootInput
   }
 
   export type FootUncheckedCreateInput = {
     id?: string
     patientId: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth?: $Enums.ShoeWidth
@@ -40247,14 +40263,14 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutFeetNestedInput
-    evaluation?: EvaluationUpdateOneRequiredWithoutFeetNestedInput
+    workbench?: WorkbenchUpdateOneRequiredWithoutFeetNestedInput
     assets?: AssetUpdateManyWithoutFootNestedInput
   }
 
   export type FootUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
     shoeSize?: FloatFieldUpdateOperationsInput | number
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
@@ -40273,7 +40289,7 @@ export namespace Prisma {
   export type FootCreateManyInput = {
     id?: string
     patientId: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth?: $Enums.ShoeWidth
@@ -40307,7 +40323,7 @@ export namespace Prisma {
   export type FootUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
     shoeSize?: FloatFieldUpdateOperationsInput | number
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
@@ -40526,6 +40542,8 @@ export namespace Prisma {
     evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
     assets?: AssetCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateInput = {
@@ -40542,6 +40560,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUpdateInput = {
@@ -40558,6 +40578,8 @@ export namespace Prisma {
     evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
     assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateInput = {
@@ -40574,6 +40596,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchCreateManyInput = {
@@ -41289,13 +41313,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     template: FormTemplateCreateNestedOneWithoutSubmissionsInput
-    evaluation: EvaluationCreateNestedOneWithoutFormSubmissionsInput
+    workbench: WorkbenchCreateNestedOneWithoutFormSubmissionsInput
   }
 
   export type FormSubmissionUncheckedCreateInput = {
     id?: string
     templateId: string
-    evaluationId: string
+    workbenchId: string
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41307,13 +41331,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     template?: FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput
-    evaluation?: EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput
+    workbench?: WorkbenchUpdateOneRequiredWithoutFormSubmissionsNestedInput
   }
 
   export type FormSubmissionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     templateId?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41322,7 +41346,7 @@ export namespace Prisma {
   export type FormSubmissionCreateManyInput = {
     id?: string
     templateId: string
-    evaluationId: string
+    workbenchId: string
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41338,7 +41362,7 @@ export namespace Prisma {
   export type FormSubmissionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     templateId?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42658,12 +42682,6 @@ export namespace Prisma {
     none?: ClinicianWhereInput
   }
 
-  export type FormSubmissionListRelationFilter = {
-    every?: FormSubmissionWhereInput
-    some?: FormSubmissionWhereInput
-    none?: FormSubmissionWhereInput
-  }
-
   export type EvaluationNotesListRelationFilter = {
     every?: EvaluationNotesWhereInput
     some?: EvaluationNotesWhereInput
@@ -42671,10 +42689,6 @@ export namespace Prisma {
   }
 
   export type ClinicianOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type FormSubmissionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -42840,6 +42854,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EvaluationNotesMaxOrderByAggregateInput = {
@@ -42850,6 +42865,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EvaluationNotesMinOrderByAggregateInput = {
@@ -42860,6 +42876,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     createdBy?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type EnumSideFilter<$PrismaModel = never> = {
@@ -42901,6 +42918,11 @@ export namespace Prisma {
     not?: NestedEnumShoeSystemFilter<$PrismaModel> | $Enums.ShoeSystem
   }
 
+  export type WorkbenchRelationFilter = {
+    is?: WorkbenchWhereInput
+    isNot?: WorkbenchWhereInput
+  }
+
   export type AssetListRelationFilter = {
     every?: AssetWhereInput
     some?: AssetWhereInput
@@ -42914,7 +42936,7 @@ export namespace Prisma {
   export type FootCountOrderByAggregateInput = {
     id?: SortOrder
     patientId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     side?: SortOrder
     shoeSize?: SortOrder
     shoeWidth?: SortOrder
@@ -42936,7 +42958,7 @@ export namespace Prisma {
   export type FootMaxOrderByAggregateInput = {
     id?: SortOrder
     patientId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     side?: SortOrder
     shoeSize?: SortOrder
     shoeWidth?: SortOrder
@@ -42953,7 +42975,7 @@ export namespace Prisma {
   export type FootMinOrderByAggregateInput = {
     id?: SortOrder
     patientId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     side?: SortOrder
     shoeSize?: SortOrder
     shoeWidth?: SortOrder
@@ -43179,7 +43201,17 @@ export namespace Prisma {
     none?: OrderWhereInput
   }
 
+  export type FormSubmissionListRelationFilter = {
+    every?: FormSubmissionWhereInput
+    some?: FormSubmissionWhereInput
+    none?: FormSubmissionWhereInput
+  }
+
   export type OrderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FormSubmissionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -43245,11 +43277,6 @@ export namespace Prisma {
     in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumOrderAuthorizationStatusFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus
-  }
-
-  export type WorkbenchRelationFilter = {
-    is?: WorkbenchWhereInput
-    isNot?: WorkbenchWhereInput
   }
 
   export type OrderCountOrderByAggregateInput = {
@@ -43717,15 +43744,15 @@ export namespace Prisma {
     isNot?: FormTemplateWhereInput
   }
 
-  export type FormSubmissionEvaluationIdTemplateIdCompoundUniqueInput = {
-    evaluationId: string
+  export type FormSubmissionWorkbenchIdTemplateIdCompoundUniqueInput = {
+    workbenchId: string
     templateId: string
   }
 
   export type FormSubmissionCountOrderByAggregateInput = {
     id?: SortOrder
     templateId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43734,7 +43761,7 @@ export namespace Prisma {
   export type FormSubmissionMaxOrderByAggregateInput = {
     id?: SortOrder
     templateId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -43742,7 +43769,7 @@ export namespace Prisma {
   export type FormSubmissionMinOrderByAggregateInput = {
     id?: SortOrder
     templateId?: SortOrder
-    evaluationId?: SortOrder
+    workbenchId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -44886,25 +44913,11 @@ export namespace Prisma {
     connect?: ClinicianWhereUniqueInput | ClinicianWhereUniqueInput[]
   }
 
-  export type FormSubmissionCreateNestedManyWithoutEvaluationInput = {
-    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
-    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
-    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-  }
-
   export type WorkbenchCreateNestedManyWithoutEvaluationInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
     createMany?: WorkbenchCreateManyEvaluationInputEnvelope
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
-  }
-
-  export type FootCreateNestedManyWithoutEvaluationInput = {
-    create?: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput> | FootCreateWithoutEvaluationInput[] | FootUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FootCreateOrConnectWithoutEvaluationInput | FootCreateOrConnectWithoutEvaluationInput[]
-    createMany?: FootCreateManyEvaluationInputEnvelope
-    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
   }
 
   export type EvaluationNotesCreateNestedManyWithoutEvaluationInput = {
@@ -44920,25 +44933,11 @@ export namespace Prisma {
     connect?: ClinicianWhereUniqueInput | ClinicianWhereUniqueInput[]
   }
 
-  export type FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput = {
-    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
-    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
-    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-  }
-
   export type WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
     createMany?: WorkbenchCreateManyEvaluationInputEnvelope
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
-  }
-
-  export type FootUncheckedCreateNestedManyWithoutEvaluationInput = {
-    create?: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput> | FootCreateWithoutEvaluationInput[] | FootUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FootCreateOrConnectWithoutEvaluationInput | FootCreateOrConnectWithoutEvaluationInput[]
-    createMany?: FootCreateManyEvaluationInputEnvelope
-    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
   }
 
   export type EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput = {
@@ -45039,20 +45038,6 @@ export namespace Prisma {
     deleteMany?: ClinicianScalarWhereInput | ClinicianScalarWhereInput[]
   }
 
-  export type FormSubmissionUpdateManyWithoutEvaluationNestedInput = {
-    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
-    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput[]
-    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
-    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    update?: FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput[]
-    updateMany?: FormSubmissionUpdateManyWithWhereWithoutEvaluationInput | FormSubmissionUpdateManyWithWhereWithoutEvaluationInput[]
-    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
-  }
-
   export type WorkbenchUpdateManyWithoutEvaluationNestedInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
@@ -45065,20 +45050,6 @@ export namespace Prisma {
     update?: WorkbenchUpdateWithWhereUniqueWithoutEvaluationInput | WorkbenchUpdateWithWhereUniqueWithoutEvaluationInput[]
     updateMany?: WorkbenchUpdateManyWithWhereWithoutEvaluationInput | WorkbenchUpdateManyWithWhereWithoutEvaluationInput[]
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
-  }
-
-  export type FootUpdateManyWithoutEvaluationNestedInput = {
-    create?: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput> | FootCreateWithoutEvaluationInput[] | FootUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FootCreateOrConnectWithoutEvaluationInput | FootCreateOrConnectWithoutEvaluationInput[]
-    upsert?: FootUpsertWithWhereUniqueWithoutEvaluationInput | FootUpsertWithWhereUniqueWithoutEvaluationInput[]
-    createMany?: FootCreateManyEvaluationInputEnvelope
-    set?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    disconnect?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    delete?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    update?: FootUpdateWithWhereUniqueWithoutEvaluationInput | FootUpdateWithWhereUniqueWithoutEvaluationInput[]
-    updateMany?: FootUpdateManyWithWhereWithoutEvaluationInput | FootUpdateManyWithWhereWithoutEvaluationInput[]
-    deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
   }
 
   export type EvaluationNotesUpdateManyWithoutEvaluationNestedInput = {
@@ -45108,20 +45079,6 @@ export namespace Prisma {
     deleteMany?: ClinicianScalarWhereInput | ClinicianScalarWhereInput[]
   }
 
-  export type FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput = {
-    create?: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput> | FormSubmissionCreateWithoutEvaluationInput[] | FormSubmissionUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FormSubmissionCreateOrConnectWithoutEvaluationInput | FormSubmissionCreateOrConnectWithoutEvaluationInput[]
-    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput[]
-    createMany?: FormSubmissionCreateManyEvaluationInputEnvelope
-    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
-    update?: FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput | FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput[]
-    updateMany?: FormSubmissionUpdateManyWithWhereWithoutEvaluationInput | FormSubmissionUpdateManyWithWhereWithoutEvaluationInput[]
-    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
-  }
-
   export type WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput = {
     create?: XOR<WorkbenchCreateWithoutEvaluationInput, WorkbenchUncheckedCreateWithoutEvaluationInput> | WorkbenchCreateWithoutEvaluationInput[] | WorkbenchUncheckedCreateWithoutEvaluationInput[]
     connectOrCreate?: WorkbenchCreateOrConnectWithoutEvaluationInput | WorkbenchCreateOrConnectWithoutEvaluationInput[]
@@ -45134,20 +45091,6 @@ export namespace Prisma {
     update?: WorkbenchUpdateWithWhereUniqueWithoutEvaluationInput | WorkbenchUpdateWithWhereUniqueWithoutEvaluationInput[]
     updateMany?: WorkbenchUpdateManyWithWhereWithoutEvaluationInput | WorkbenchUpdateManyWithWhereWithoutEvaluationInput[]
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
-  }
-
-  export type FootUncheckedUpdateManyWithoutEvaluationNestedInput = {
-    create?: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput> | FootCreateWithoutEvaluationInput[] | FootUncheckedCreateWithoutEvaluationInput[]
-    connectOrCreate?: FootCreateOrConnectWithoutEvaluationInput | FootCreateOrConnectWithoutEvaluationInput[]
-    upsert?: FootUpsertWithWhereUniqueWithoutEvaluationInput | FootUpsertWithWhereUniqueWithoutEvaluationInput[]
-    createMany?: FootCreateManyEvaluationInputEnvelope
-    set?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    disconnect?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    delete?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
-    update?: FootUpdateWithWhereUniqueWithoutEvaluationInput | FootUpdateWithWhereUniqueWithoutEvaluationInput[]
-    updateMany?: FootUpdateManyWithWhereWithoutEvaluationInput | FootUpdateManyWithWhereWithoutEvaluationInput[]
-    deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput = {
@@ -45209,10 +45152,10 @@ export namespace Prisma {
     connect?: PatientWhereUniqueInput
   }
 
-  export type EvaluationCreateNestedOneWithoutFeetInput = {
-    create?: XOR<EvaluationCreateWithoutFeetInput, EvaluationUncheckedCreateWithoutFeetInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutFeetInput
-    connect?: EvaluationWhereUniqueInput
+  export type WorkbenchCreateNestedOneWithoutFeetInput = {
+    create?: XOR<WorkbenchCreateWithoutFeetInput, WorkbenchUncheckedCreateWithoutFeetInput>
+    connectOrCreate?: WorkbenchCreateOrConnectWithoutFeetInput
+    connect?: WorkbenchWhereUniqueInput
   }
 
   export type AssetCreateNestedManyWithoutFootInput = {
@@ -45261,12 +45204,12 @@ export namespace Prisma {
     update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutFeetInput, PatientUpdateWithoutFeetInput>, PatientUncheckedUpdateWithoutFeetInput>
   }
 
-  export type EvaluationUpdateOneRequiredWithoutFeetNestedInput = {
-    create?: XOR<EvaluationCreateWithoutFeetInput, EvaluationUncheckedCreateWithoutFeetInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutFeetInput
-    upsert?: EvaluationUpsertWithoutFeetInput
-    connect?: EvaluationWhereUniqueInput
-    update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutFeetInput, EvaluationUpdateWithoutFeetInput>, EvaluationUncheckedUpdateWithoutFeetInput>
+  export type WorkbenchUpdateOneRequiredWithoutFeetNestedInput = {
+    create?: XOR<WorkbenchCreateWithoutFeetInput, WorkbenchUncheckedCreateWithoutFeetInput>
+    connectOrCreate?: WorkbenchCreateOrConnectWithoutFeetInput
+    upsert?: WorkbenchUpsertWithoutFeetInput
+    connect?: WorkbenchWhereUniqueInput
+    update?: XOR<XOR<WorkbenchUpdateToOneWithWhereWithoutFeetInput, WorkbenchUpdateWithoutFeetInput>, WorkbenchUncheckedUpdateWithoutFeetInput>
   }
 
   export type AssetUpdateManyWithoutFootNestedInput = {
@@ -45524,6 +45467,20 @@ export namespace Prisma {
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
   }
 
+  export type FootCreateNestedManyWithoutWorkbenchInput = {
+    create?: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput> | FootCreateWithoutWorkbenchInput[] | FootUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FootCreateOrConnectWithoutWorkbenchInput | FootCreateOrConnectWithoutWorkbenchInput[]
+    createMany?: FootCreateManyWorkbenchInputEnvelope
+    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+  }
+
+  export type FormSubmissionCreateNestedManyWithoutWorkbenchInput = {
+    create?: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput> | FormSubmissionCreateWithoutWorkbenchInput[] | FormSubmissionUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutWorkbenchInput | FormSubmissionCreateOrConnectWithoutWorkbenchInput[]
+    createMany?: FormSubmissionCreateManyWorkbenchInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+  }
+
   export type AssetUncheckedCreateNestedManyWithoutWorkbenchesInput = {
     create?: XOR<AssetCreateWithoutWorkbenchesInput, AssetUncheckedCreateWithoutWorkbenchesInput> | AssetCreateWithoutWorkbenchesInput[] | AssetUncheckedCreateWithoutWorkbenchesInput[]
     connectOrCreate?: AssetCreateOrConnectWithoutWorkbenchesInput | AssetCreateOrConnectWithoutWorkbenchesInput[]
@@ -45535,6 +45492,20 @@ export namespace Prisma {
     connectOrCreate?: OrderCreateOrConnectWithoutWorkbenchInput | OrderCreateOrConnectWithoutWorkbenchInput[]
     createMany?: OrderCreateManyWorkbenchInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type FootUncheckedCreateNestedManyWithoutWorkbenchInput = {
+    create?: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput> | FootCreateWithoutWorkbenchInput[] | FootUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FootCreateOrConnectWithoutWorkbenchInput | FootCreateOrConnectWithoutWorkbenchInput[]
+    createMany?: FootCreateManyWorkbenchInputEnvelope
+    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+  }
+
+  export type FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput = {
+    create?: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput> | FormSubmissionCreateWithoutWorkbenchInput[] | FormSubmissionUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutWorkbenchInput | FormSubmissionCreateOrConnectWithoutWorkbenchInput[]
+    createMany?: FormSubmissionCreateManyWorkbenchInputEnvelope
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
   }
 
   export type EnumWorkbenchStatusFieldUpdateOperationsInput = {
@@ -45592,6 +45563,34 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type FootUpdateManyWithoutWorkbenchNestedInput = {
+    create?: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput> | FootCreateWithoutWorkbenchInput[] | FootUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FootCreateOrConnectWithoutWorkbenchInput | FootCreateOrConnectWithoutWorkbenchInput[]
+    upsert?: FootUpsertWithWhereUniqueWithoutWorkbenchInput | FootUpsertWithWhereUniqueWithoutWorkbenchInput[]
+    createMany?: FootCreateManyWorkbenchInputEnvelope
+    set?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    disconnect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    delete?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    update?: FootUpdateWithWhereUniqueWithoutWorkbenchInput | FootUpdateWithWhereUniqueWithoutWorkbenchInput[]
+    updateMany?: FootUpdateManyWithWhereWithoutWorkbenchInput | FootUpdateManyWithWhereWithoutWorkbenchInput[]
+    deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
+  }
+
+  export type FormSubmissionUpdateManyWithoutWorkbenchNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput> | FormSubmissionCreateWithoutWorkbenchInput[] | FormSubmissionUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutWorkbenchInput | FormSubmissionCreateOrConnectWithoutWorkbenchInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutWorkbenchInput | FormSubmissionUpsertWithWhereUniqueWithoutWorkbenchInput[]
+    createMany?: FormSubmissionCreateManyWorkbenchInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutWorkbenchInput | FormSubmissionUpdateWithWhereUniqueWithoutWorkbenchInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutWorkbenchInput | FormSubmissionUpdateManyWithWhereWithoutWorkbenchInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+  }
+
   export type AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput = {
     create?: XOR<AssetCreateWithoutWorkbenchesInput, AssetUncheckedCreateWithoutWorkbenchesInput> | AssetCreateWithoutWorkbenchesInput[] | AssetUncheckedCreateWithoutWorkbenchesInput[]
     connectOrCreate?: AssetCreateOrConnectWithoutWorkbenchesInput | AssetCreateOrConnectWithoutWorkbenchesInput[]
@@ -45617,6 +45616,34 @@ export namespace Prisma {
     update?: OrderUpdateWithWhereUniqueWithoutWorkbenchInput | OrderUpdateWithWhereUniqueWithoutWorkbenchInput[]
     updateMany?: OrderUpdateManyWithWhereWithoutWorkbenchInput | OrderUpdateManyWithWhereWithoutWorkbenchInput[]
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
+  }
+
+  export type FootUncheckedUpdateManyWithoutWorkbenchNestedInput = {
+    create?: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput> | FootCreateWithoutWorkbenchInput[] | FootUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FootCreateOrConnectWithoutWorkbenchInput | FootCreateOrConnectWithoutWorkbenchInput[]
+    upsert?: FootUpsertWithWhereUniqueWithoutWorkbenchInput | FootUpsertWithWhereUniqueWithoutWorkbenchInput[]
+    createMany?: FootCreateManyWorkbenchInputEnvelope
+    set?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    disconnect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    delete?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+    update?: FootUpdateWithWhereUniqueWithoutWorkbenchInput | FootUpdateWithWhereUniqueWithoutWorkbenchInput[]
+    updateMany?: FootUpdateManyWithWhereWithoutWorkbenchInput | FootUpdateManyWithWhereWithoutWorkbenchInput[]
+    deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput = {
+    create?: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput> | FormSubmissionCreateWithoutWorkbenchInput[] | FormSubmissionUncheckedCreateWithoutWorkbenchInput[]
+    connectOrCreate?: FormSubmissionCreateOrConnectWithoutWorkbenchInput | FormSubmissionCreateOrConnectWithoutWorkbenchInput[]
+    upsert?: FormSubmissionUpsertWithWhereUniqueWithoutWorkbenchInput | FormSubmissionUpsertWithWhereUniqueWithoutWorkbenchInput[]
+    createMany?: FormSubmissionCreateManyWorkbenchInputEnvelope
+    set?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    disconnect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    delete?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
+    update?: FormSubmissionUpdateWithWhereUniqueWithoutWorkbenchInput | FormSubmissionUpdateWithWhereUniqueWithoutWorkbenchInput[]
+    updateMany?: FormSubmissionUpdateManyWithWhereWithoutWorkbenchInput | FormSubmissionUpdateManyWithWhereWithoutWorkbenchInput[]
+    deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
   }
 
   export type WorkbenchCreateNestedOneWithoutOrdersInput = {
@@ -45909,10 +45936,10 @@ export namespace Prisma {
     connect?: FormTemplateWhereUniqueInput
   }
 
-  export type EvaluationCreateNestedOneWithoutFormSubmissionsInput = {
-    create?: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutFormSubmissionsInput
-    connect?: EvaluationWhereUniqueInput
+  export type WorkbenchCreateNestedOneWithoutFormSubmissionsInput = {
+    create?: XOR<WorkbenchCreateWithoutFormSubmissionsInput, WorkbenchUncheckedCreateWithoutFormSubmissionsInput>
+    connectOrCreate?: WorkbenchCreateOrConnectWithoutFormSubmissionsInput
+    connect?: WorkbenchWhereUniqueInput
   }
 
   export type FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput = {
@@ -45923,12 +45950,12 @@ export namespace Prisma {
     update?: XOR<XOR<FormTemplateUpdateToOneWithWhereWithoutSubmissionsInput, FormTemplateUpdateWithoutSubmissionsInput>, FormTemplateUncheckedUpdateWithoutSubmissionsInput>
   }
 
-  export type EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput = {
-    create?: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
-    connectOrCreate?: EvaluationCreateOrConnectWithoutFormSubmissionsInput
-    upsert?: EvaluationUpsertWithoutFormSubmissionsInput
-    connect?: EvaluationWhereUniqueInput
-    update?: XOR<XOR<EvaluationUpdateToOneWithWhereWithoutFormSubmissionsInput, EvaluationUpdateWithoutFormSubmissionsInput>, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
+  export type WorkbenchUpdateOneRequiredWithoutFormSubmissionsNestedInput = {
+    create?: XOR<WorkbenchCreateWithoutFormSubmissionsInput, WorkbenchUncheckedCreateWithoutFormSubmissionsInput>
+    connectOrCreate?: WorkbenchCreateOrConnectWithoutFormSubmissionsInput
+    upsert?: WorkbenchUpsertWithoutFormSubmissionsInput
+    connect?: WorkbenchWhereUniqueInput
+    update?: XOR<XOR<WorkbenchUpdateToOneWithWhereWithoutFormSubmissionsInput, WorkbenchUpdateWithoutFormSubmissionsInput>, WorkbenchUncheckedUpdateWithoutFormSubmissionsInput>
   }
 
   export type CatalogProductAttributeCreateNestedManyWithoutProductInput = {
@@ -47195,9 +47222,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47229,9 +47254,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47672,9 +47695,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47706,9 +47727,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47864,13 +47883,13 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    evaluation: EvaluationCreateNestedOneWithoutFeetInput
+    workbench: WorkbenchCreateNestedOneWithoutFeetInput
     assets?: AssetCreateNestedManyWithoutFootInput
   }
 
   export type FootUncheckedCreateWithoutPatientInput = {
     id?: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth?: $Enums.ShoeWidth
@@ -47924,9 +47943,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47958,9 +47975,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -47987,6 +48002,8 @@ export namespace Prisma {
     evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
     assets?: AssetCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateWithoutPatientInput = {
@@ -48002,6 +48019,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchCreateOrConnectWithoutPatientInput = {
@@ -48060,7 +48079,7 @@ export namespace Prisma {
     NOT?: FootScalarWhereInput | FootScalarWhereInput[]
     id?: StringFilter<"Foot"> | string
     patientId?: StringFilter<"Foot"> | string
-    evaluationId?: StringFilter<"Foot"> | string
+    workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
     shoeSize?: FloatFilter<"Foot"> | number
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
@@ -48201,9 +48220,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -48235,9 +48252,7 @@ export namespace Prisma {
     cancelledAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -48517,32 +48532,6 @@ export namespace Prisma {
     create: XOR<ClinicianCreateWithoutEvaluationsInput, ClinicianUncheckedCreateWithoutEvaluationsInput>
   }
 
-  export type FormSubmissionCreateWithoutEvaluationInput = {
-    id?: string
-    data: JsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    template: FormTemplateCreateNestedOneWithoutSubmissionsInput
-  }
-
-  export type FormSubmissionUncheckedCreateWithoutEvaluationInput = {
-    id?: string
-    templateId: string
-    data: JsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FormSubmissionCreateOrConnectWithoutEvaluationInput = {
-    where: FormSubmissionWhereUniqueInput
-    create: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput>
-  }
-
-  export type FormSubmissionCreateManyEvaluationInputEnvelope = {
-    data: FormSubmissionCreateManyEvaluationInput | FormSubmissionCreateManyEvaluationInput[]
-    skipDuplicates?: boolean
-  }
-
   export type WorkbenchCreateWithoutEvaluationInput = {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
@@ -48556,6 +48545,8 @@ export namespace Prisma {
     product: ProductCreateNestedOneWithoutWorkbenchesInput
     assets?: AssetCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateWithoutEvaluationInput = {
@@ -48571,6 +48562,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchCreateOrConnectWithoutEvaluationInput = {
@@ -48583,52 +48576,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type FootCreateWithoutEvaluationInput = {
-    id?: string
-    side: $Enums.Side
-    shoeSize: number
-    shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
-    shoeSystem?: $Enums.ShoeSystem
-    shoeBrand?: string | null
-    shoeModel?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: boolean
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    patient: PatientCreateNestedOneWithoutFeetInput
-    assets?: AssetCreateNestedManyWithoutFootInput
-  }
-
-  export type FootUncheckedCreateWithoutEvaluationInput = {
-    id?: string
-    patientId: string
-    side: $Enums.Side
-    shoeSize: number
-    shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
-    shoeSystem?: $Enums.ShoeSystem
-    shoeBrand?: string | null
-    shoeModel?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: boolean
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    assets?: AssetUncheckedCreateNestedManyWithoutFootInput
-  }
-
-  export type FootCreateOrConnectWithoutEvaluationInput = {
-    where: FootWhereUniqueInput
-    create: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput>
-  }
-
-  export type FootCreateManyEvaluationInputEnvelope = {
-    data: FootCreateManyEvaluationInput | FootCreateManyEvaluationInput[]
-    skipDuplicates?: boolean
-  }
-
   export type EvaluationNotesCreateWithoutEvaluationInput = {
     id?: string
     title?: string | null
@@ -48637,6 +48584,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     createdByUser?: UserCreateNestedOneWithoutNotesInput
   }
 
@@ -48649,6 +48597,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesCreateOrConnectWithoutEvaluationInput = {
@@ -48924,34 +48873,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Clinician"> | Date | string
   }
 
-  export type FormSubmissionUpsertWithWhereUniqueWithoutEvaluationInput = {
-    where: FormSubmissionWhereUniqueInput
-    update: XOR<FormSubmissionUpdateWithoutEvaluationInput, FormSubmissionUncheckedUpdateWithoutEvaluationInput>
-    create: XOR<FormSubmissionCreateWithoutEvaluationInput, FormSubmissionUncheckedCreateWithoutEvaluationInput>
-  }
-
-  export type FormSubmissionUpdateWithWhereUniqueWithoutEvaluationInput = {
-    where: FormSubmissionWhereUniqueInput
-    data: XOR<FormSubmissionUpdateWithoutEvaluationInput, FormSubmissionUncheckedUpdateWithoutEvaluationInput>
-  }
-
-  export type FormSubmissionUpdateManyWithWhereWithoutEvaluationInput = {
-    where: FormSubmissionScalarWhereInput
-    data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyWithoutEvaluationInput>
-  }
-
-  export type FormSubmissionScalarWhereInput = {
-    AND?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
-    OR?: FormSubmissionScalarWhereInput[]
-    NOT?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
-    id?: StringFilter<"FormSubmission"> | string
-    templateId?: StringFilter<"FormSubmission"> | string
-    evaluationId?: StringFilter<"FormSubmission"> | string
-    data?: JsonFilter<"FormSubmission">
-    createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
-    updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
-  }
-
   export type WorkbenchUpsertWithWhereUniqueWithoutEvaluationInput = {
     where: WorkbenchWhereUniqueInput
     update: XOR<WorkbenchUpdateWithoutEvaluationInput, WorkbenchUncheckedUpdateWithoutEvaluationInput>
@@ -48966,22 +48887,6 @@ export namespace Prisma {
   export type WorkbenchUpdateManyWithWhereWithoutEvaluationInput = {
     where: WorkbenchScalarWhereInput
     data: XOR<WorkbenchUpdateManyMutationInput, WorkbenchUncheckedUpdateManyWithoutEvaluationInput>
-  }
-
-  export type FootUpsertWithWhereUniqueWithoutEvaluationInput = {
-    where: FootWhereUniqueInput
-    update: XOR<FootUpdateWithoutEvaluationInput, FootUncheckedUpdateWithoutEvaluationInput>
-    create: XOR<FootCreateWithoutEvaluationInput, FootUncheckedCreateWithoutEvaluationInput>
-  }
-
-  export type FootUpdateWithWhereUniqueWithoutEvaluationInput = {
-    where: FootWhereUniqueInput
-    data: XOR<FootUpdateWithoutEvaluationInput, FootUncheckedUpdateWithoutEvaluationInput>
-  }
-
-  export type FootUpdateManyWithWhereWithoutEvaluationInput = {
-    where: FootScalarWhereInput
-    data: XOR<FootUpdateManyMutationInput, FootUncheckedUpdateManyWithoutEvaluationInput>
   }
 
   export type EvaluationNotesUpsertWithWhereUniqueWithoutEvaluationInput = {
@@ -49013,6 +48918,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
     createdBy?: StringNullableFilter<"EvaluationNotes"> | string | null
     updatedAt?: DateTimeFilter<"EvaluationNotes"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"EvaluationNotes"> | Date | string | null
   }
 
   export type EvaluationCreateWithoutNotesInput = {
@@ -49044,9 +48950,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationUncheckedCreateWithoutNotesInput = {
@@ -49078,9 +48982,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
   export type EvaluationCreateOrConnectWithoutNotesInput = {
@@ -49161,9 +49063,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
   }
 
   export type EvaluationUncheckedUpdateWithoutNotesInput = {
@@ -49195,9 +49095,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
   export type UserUpsertWithoutNotesInput = {
@@ -49284,77 +49182,43 @@ export namespace Prisma {
     create: XOR<PatientCreateWithoutFeetInput, PatientUncheckedCreateWithoutFeetInput>
   }
 
-  export type EvaluationCreateWithoutFeetInput = {
+  export type WorkbenchCreateWithoutFeetInput = {
     id?: string
-    externalId?: string | null
-    poNumber?: string | null
-    type: $Enums.CareType
-    isDiabetic?: boolean
-    isVeteran?: boolean
-    deviceSide?: $Enums.Side | null
-    devicePosition?: $Enums.VerticalPosition | null
-    appointmentAt?: Date | string | null
-    appointmentStatus?: string | null
-    diagnosisedAt?: Date | string | null
-    visitedAt?: Date | string | null
-    location?: string | null
-    prescribedAt?: Date | string | null
-    prescribedActive?: boolean
-    submittedAt?: Date | string | null
-    startedAt?: Date | string | null
-    cancelledAt?: Date | string | null
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: string | null
+    status?: $Enums.WorkbenchStatus
+    failedAt?: Date | string | null
+    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    patient: PatientCreateNestedOneWithoutEvaluationsInput
-    company: CompanyCreateNestedOneWithoutEvaluationsInput
-    deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
-    visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
-    referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
-    diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
-    facility?: FacilityCreateNestedOneWithoutEvaluationsInput
-    clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
-    workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    patient: PatientCreateNestedOneWithoutWorkbenchesInput
+    product: ProductCreateNestedOneWithoutWorkbenchesInput
+    evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
+    assets?: AssetCreateNestedManyWithoutWorkbenchesInput
+    orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
-  export type EvaluationUncheckedCreateWithoutFeetInput = {
+  export type WorkbenchUncheckedCreateWithoutFeetInput = {
     id?: string
-    externalId?: string | null
-    poNumber?: string | null
-    type: $Enums.CareType
     patientId: string
-    companyId: string
-    deviceTypeId?: string | null
-    isDiabetic?: boolean
-    isVeteran?: boolean
-    deviceSide?: $Enums.Side | null
-    devicePosition?: $Enums.VerticalPosition | null
-    appointmentAt?: Date | string | null
-    appointmentStatus?: string | null
-    referringPhysicianId?: string | null
-    diagnosisId?: string | null
-    diagnosisedAt?: Date | string | null
-    visitTypeId?: string | null
-    visitedAt?: Date | string | null
-    facilityId?: string | null
-    location?: string | null
-    prescribedAt?: Date | string | null
-    prescribedActive?: boolean
-    submittedAt?: Date | string | null
-    startedAt?: Date | string | null
-    cancelledAt?: Date | string | null
+    productId: string
+    evaluationId: string
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: string | null
+    status?: $Enums.WorkbenchStatus
+    failedAt?: Date | string | null
+    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
-    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
+    orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
-  export type EvaluationCreateOrConnectWithoutFeetInput = {
-    where: EvaluationWhereUniqueInput
-    create: XOR<EvaluationCreateWithoutFeetInput, EvaluationUncheckedCreateWithoutFeetInput>
+  export type WorkbenchCreateOrConnectWithoutFeetInput = {
+    where: WorkbenchWhereUniqueInput
+    create: XOR<WorkbenchCreateWithoutFeetInput, WorkbenchUncheckedCreateWithoutFeetInput>
   }
 
   export type AssetCreateWithoutFootInput = {
@@ -49448,83 +49312,49 @@ export namespace Prisma {
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
-  export type EvaluationUpsertWithoutFeetInput = {
-    update: XOR<EvaluationUpdateWithoutFeetInput, EvaluationUncheckedUpdateWithoutFeetInput>
-    create: XOR<EvaluationCreateWithoutFeetInput, EvaluationUncheckedCreateWithoutFeetInput>
-    where?: EvaluationWhereInput
+  export type WorkbenchUpsertWithoutFeetInput = {
+    update: XOR<WorkbenchUpdateWithoutFeetInput, WorkbenchUncheckedUpdateWithoutFeetInput>
+    create: XOR<WorkbenchCreateWithoutFeetInput, WorkbenchUncheckedCreateWithoutFeetInput>
+    where?: WorkbenchWhereInput
   }
 
-  export type EvaluationUpdateToOneWithWhereWithoutFeetInput = {
-    where?: EvaluationWhereInput
-    data: XOR<EvaluationUpdateWithoutFeetInput, EvaluationUncheckedUpdateWithoutFeetInput>
+  export type WorkbenchUpdateToOneWithWhereWithoutFeetInput = {
+    where?: WorkbenchWhereInput
+    data: XOR<WorkbenchUpdateWithoutFeetInput, WorkbenchUncheckedUpdateWithoutFeetInput>
   }
 
-  export type EvaluationUpdateWithoutFeetInput = {
+  export type WorkbenchUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    isVeteran?: BoolFieldUpdateOperationsInput | boolean
-    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
-    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
-    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
-    company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
-    deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
-    visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
-    referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
-    diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
-    facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
-    clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
-    workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
+    product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
+    evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
+    assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
+    orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
-  export type EvaluationUncheckedUpdateWithoutFeetInput = {
+  export type WorkbenchUncheckedUpdateWithoutFeetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    isVeteran?: BoolFieldUpdateOperationsInput | boolean
-    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
-    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
-    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
-    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    productId?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
-    workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
+    orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type AssetUpsertWithWhereUniqueWithoutFootInput = {
@@ -49576,13 +49406,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutFeetInput
-    evaluation: EvaluationCreateNestedOneWithoutFeetInput
+    workbench: WorkbenchCreateNestedOneWithoutFeetInput
   }
 
   export type FootUncheckedCreateWithoutAssetsInput = {
     id?: string
     patientId: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth?: $Enums.ShoeWidth
@@ -49615,6 +49445,8 @@ export namespace Prisma {
     product: ProductCreateNestedOneWithoutWorkbenchesInput
     evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
     orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateWithoutAssetsInput = {
@@ -49630,6 +49462,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchCreateOrConnectWithoutAssetsInput = {
@@ -49663,13 +49497,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutFeetNestedInput
-    evaluation?: EvaluationUpdateOneRequiredWithoutFeetNestedInput
+    workbench?: WorkbenchUpdateOneRequiredWithoutFeetNestedInput
   }
 
   export type FootUncheckedUpdateWithoutAssetsInput = {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
     shoeSize?: FloatFieldUpdateOperationsInput | number
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
@@ -49771,6 +49605,8 @@ export namespace Prisma {
     evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
     assets?: AssetCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateWithoutProductInput = {
@@ -49786,6 +49622,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchCreateOrConnectWithoutProductInput = {
@@ -49962,8 +49800,6 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -49996,8 +49832,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50076,6 +49910,78 @@ export namespace Prisma {
 
   export type OrderCreateManyWorkbenchInputEnvelope = {
     data: OrderCreateManyWorkbenchInput | OrderCreateManyWorkbenchInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FootCreateWithoutWorkbenchInput = {
+    id?: string
+    side: $Enums.Side
+    shoeSize: number
+    shoeWidth?: $Enums.ShoeWidth
+    shoeGender: $Enums.Gender
+    shoeSystem?: $Enums.ShoeSystem
+    shoeBrand?: string | null
+    shoeModel?: string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutFeetInput
+    assets?: AssetCreateNestedManyWithoutFootInput
+  }
+
+  export type FootUncheckedCreateWithoutWorkbenchInput = {
+    id?: string
+    patientId: string
+    side: $Enums.Side
+    shoeSize: number
+    shoeWidth?: $Enums.ShoeWidth
+    shoeGender: $Enums.Gender
+    shoeSystem?: $Enums.ShoeSystem
+    shoeBrand?: string | null
+    shoeModel?: string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    assets?: AssetUncheckedCreateNestedManyWithoutFootInput
+  }
+
+  export type FootCreateOrConnectWithoutWorkbenchInput = {
+    where: FootWhereUniqueInput
+    create: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput>
+  }
+
+  export type FootCreateManyWorkbenchInputEnvelope = {
+    data: FootCreateManyWorkbenchInput | FootCreateManyWorkbenchInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FormSubmissionCreateWithoutWorkbenchInput = {
+    id?: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template: FormTemplateCreateNestedOneWithoutSubmissionsInput
+  }
+
+  export type FormSubmissionUncheckedCreateWithoutWorkbenchInput = {
+    id?: string
+    templateId: string
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionCreateOrConnectWithoutWorkbenchInput = {
+    where: FormSubmissionWhereUniqueInput
+    create: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput>
+  }
+
+  export type FormSubmissionCreateManyWorkbenchInputEnvelope = {
+    data: FormSubmissionCreateManyWorkbenchInput | FormSubmissionCreateManyWorkbenchInput[]
     skipDuplicates?: boolean
   }
 
@@ -50205,8 +50111,6 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -50239,8 +50143,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -50294,6 +50196,50 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Order"> | Date | string
   }
 
+  export type FootUpsertWithWhereUniqueWithoutWorkbenchInput = {
+    where: FootWhereUniqueInput
+    update: XOR<FootUpdateWithoutWorkbenchInput, FootUncheckedUpdateWithoutWorkbenchInput>
+    create: XOR<FootCreateWithoutWorkbenchInput, FootUncheckedCreateWithoutWorkbenchInput>
+  }
+
+  export type FootUpdateWithWhereUniqueWithoutWorkbenchInput = {
+    where: FootWhereUniqueInput
+    data: XOR<FootUpdateWithoutWorkbenchInput, FootUncheckedUpdateWithoutWorkbenchInput>
+  }
+
+  export type FootUpdateManyWithWhereWithoutWorkbenchInput = {
+    where: FootScalarWhereInput
+    data: XOR<FootUpdateManyMutationInput, FootUncheckedUpdateManyWithoutWorkbenchInput>
+  }
+
+  export type FormSubmissionUpsertWithWhereUniqueWithoutWorkbenchInput = {
+    where: FormSubmissionWhereUniqueInput
+    update: XOR<FormSubmissionUpdateWithoutWorkbenchInput, FormSubmissionUncheckedUpdateWithoutWorkbenchInput>
+    create: XOR<FormSubmissionCreateWithoutWorkbenchInput, FormSubmissionUncheckedCreateWithoutWorkbenchInput>
+  }
+
+  export type FormSubmissionUpdateWithWhereUniqueWithoutWorkbenchInput = {
+    where: FormSubmissionWhereUniqueInput
+    data: XOR<FormSubmissionUpdateWithoutWorkbenchInput, FormSubmissionUncheckedUpdateWithoutWorkbenchInput>
+  }
+
+  export type FormSubmissionUpdateManyWithWhereWithoutWorkbenchInput = {
+    where: FormSubmissionScalarWhereInput
+    data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyWithoutWorkbenchInput>
+  }
+
+  export type FormSubmissionScalarWhereInput = {
+    AND?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+    OR?: FormSubmissionScalarWhereInput[]
+    NOT?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+    id?: StringFilter<"FormSubmission"> | string
+    templateId?: StringFilter<"FormSubmission"> | string
+    workbenchId?: StringFilter<"FormSubmission"> | string
+    data?: JsonFilter<"FormSubmission">
+    createdAt?: DateTimeFilter<"FormSubmission"> | Date | string
+    updatedAt?: DateTimeFilter<"FormSubmission"> | Date | string
+  }
+
   export type WorkbenchCreateWithoutOrdersInput = {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
@@ -50307,6 +50253,8 @@ export namespace Prisma {
     product: ProductCreateNestedOneWithoutWorkbenchesInput
     evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
     assets?: AssetCreateNestedManyWithoutWorkbenchesInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchUncheckedCreateWithoutOrdersInput = {
@@ -50322,6 +50270,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
+    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
   export type WorkbenchCreateOrConnectWithoutOrdersInput = {
@@ -50353,6 +50303,8 @@ export namespace Prisma {
     product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
     evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
     assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateWithoutOrdersInput = {
@@ -50368,6 +50320,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type FacilityCreateWithoutAddressInput = {
@@ -50546,9 +50500,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50580,9 +50532,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50640,9 +50590,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50674,9 +50622,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50734,9 +50680,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50768,9 +50712,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50828,9 +50770,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50862,9 +50802,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    formSubmissions?: FormSubmissionUncheckedCreateNestedManyWithoutEvaluationInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
     notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
   }
 
@@ -50899,12 +50837,12 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    evaluation: EvaluationCreateNestedOneWithoutFormSubmissionsInput
+    workbench: WorkbenchCreateNestedOneWithoutFormSubmissionsInput
   }
 
   export type FormSubmissionUncheckedCreateWithoutTemplateInput = {
     id?: string
-    evaluationId: string
+    workbenchId: string
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50959,77 +50897,43 @@ export namespace Prisma {
     create: XOR<FormTemplateCreateWithoutSubmissionsInput, FormTemplateUncheckedCreateWithoutSubmissionsInput>
   }
 
-  export type EvaluationCreateWithoutFormSubmissionsInput = {
+  export type WorkbenchCreateWithoutFormSubmissionsInput = {
     id?: string
-    externalId?: string | null
-    poNumber?: string | null
-    type: $Enums.CareType
-    isDiabetic?: boolean
-    isVeteran?: boolean
-    deviceSide?: $Enums.Side | null
-    devicePosition?: $Enums.VerticalPosition | null
-    appointmentAt?: Date | string | null
-    appointmentStatus?: string | null
-    diagnosisedAt?: Date | string | null
-    visitedAt?: Date | string | null
-    location?: string | null
-    prescribedAt?: Date | string | null
-    prescribedActive?: boolean
-    submittedAt?: Date | string | null
-    startedAt?: Date | string | null
-    cancelledAt?: Date | string | null
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: string | null
+    status?: $Enums.WorkbenchStatus
+    failedAt?: Date | string | null
+    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    patient: PatientCreateNestedOneWithoutEvaluationsInput
-    company: CompanyCreateNestedOneWithoutEvaluationsInput
-    deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
-    visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
-    referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
-    diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
-    facility?: FacilityCreateNestedOneWithoutEvaluationsInput
-    clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
-    workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
-    feet?: FootCreateNestedManyWithoutEvaluationInput
-    notes?: EvaluationNotesCreateNestedManyWithoutEvaluationInput
+    patient: PatientCreateNestedOneWithoutWorkbenchesInput
+    product: ProductCreateNestedOneWithoutWorkbenchesInput
+    evaluation: EvaluationCreateNestedOneWithoutWorkbenchesInput
+    assets?: AssetCreateNestedManyWithoutWorkbenchesInput
+    orders?: OrderCreateNestedManyWithoutWorkbenchInput
+    feet?: FootCreateNestedManyWithoutWorkbenchInput
   }
 
-  export type EvaluationUncheckedCreateWithoutFormSubmissionsInput = {
+  export type WorkbenchUncheckedCreateWithoutFormSubmissionsInput = {
     id?: string
-    externalId?: string | null
-    poNumber?: string | null
-    type: $Enums.CareType
     patientId: string
-    companyId: string
-    deviceTypeId?: string | null
-    isDiabetic?: boolean
-    isVeteran?: boolean
-    deviceSide?: $Enums.Side | null
-    devicePosition?: $Enums.VerticalPosition | null
-    appointmentAt?: Date | string | null
-    appointmentStatus?: string | null
-    referringPhysicianId?: string | null
-    diagnosisId?: string | null
-    diagnosisedAt?: Date | string | null
-    visitTypeId?: string | null
-    visitedAt?: Date | string | null
-    facilityId?: string | null
-    location?: string | null
-    prescribedAt?: Date | string | null
-    prescribedActive?: boolean
-    submittedAt?: Date | string | null
-    startedAt?: Date | string | null
-    cancelledAt?: Date | string | null
+    productId: string
+    evaluationId: string
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: string | null
+    status?: $Enums.WorkbenchStatus
+    failedAt?: Date | string | null
+    completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
-    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
-    feet?: FootUncheckedCreateNestedManyWithoutEvaluationInput
-    notes?: EvaluationNotesUncheckedCreateNestedManyWithoutEvaluationInput
+    assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
+    orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
+    feet?: FootUncheckedCreateNestedManyWithoutWorkbenchInput
   }
 
-  export type EvaluationCreateOrConnectWithoutFormSubmissionsInput = {
-    where: EvaluationWhereUniqueInput
-    create: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
+  export type WorkbenchCreateOrConnectWithoutFormSubmissionsInput = {
+    where: WorkbenchWhereUniqueInput
+    create: XOR<WorkbenchCreateWithoutFormSubmissionsInput, WorkbenchUncheckedCreateWithoutFormSubmissionsInput>
   }
 
   export type FormTemplateUpsertWithoutSubmissionsInput = {
@@ -51061,83 +50965,49 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EvaluationUpsertWithoutFormSubmissionsInput = {
-    update: XOR<EvaluationUpdateWithoutFormSubmissionsInput, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
-    create: XOR<EvaluationCreateWithoutFormSubmissionsInput, EvaluationUncheckedCreateWithoutFormSubmissionsInput>
-    where?: EvaluationWhereInput
+  export type WorkbenchUpsertWithoutFormSubmissionsInput = {
+    update: XOR<WorkbenchUpdateWithoutFormSubmissionsInput, WorkbenchUncheckedUpdateWithoutFormSubmissionsInput>
+    create: XOR<WorkbenchCreateWithoutFormSubmissionsInput, WorkbenchUncheckedCreateWithoutFormSubmissionsInput>
+    where?: WorkbenchWhereInput
   }
 
-  export type EvaluationUpdateToOneWithWhereWithoutFormSubmissionsInput = {
-    where?: EvaluationWhereInput
-    data: XOR<EvaluationUpdateWithoutFormSubmissionsInput, EvaluationUncheckedUpdateWithoutFormSubmissionsInput>
+  export type WorkbenchUpdateToOneWithWhereWithoutFormSubmissionsInput = {
+    where?: WorkbenchWhereInput
+    data: XOR<WorkbenchUpdateWithoutFormSubmissionsInput, WorkbenchUncheckedUpdateWithoutFormSubmissionsInput>
   }
 
-  export type EvaluationUpdateWithoutFormSubmissionsInput = {
+  export type WorkbenchUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    isVeteran?: BoolFieldUpdateOperationsInput | boolean
-    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
-    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
-    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
-    company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
-    deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
-    visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
-    referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
-    diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
-    facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
-    clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
-    notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
+    patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
+    product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
+    evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
+    assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
+    orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
   }
 
-  export type EvaluationUncheckedUpdateWithoutFormSubmissionsInput = {
+  export type WorkbenchUncheckedUpdateWithoutFormSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
     patientId?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    isVeteran?: BoolFieldUpdateOperationsInput | boolean
-    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
-    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
-    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
-    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
-    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    productId?: StringFieldUpdateOperationsInput | string
+    evaluationId?: StringFieldUpdateOperationsInput | string
+    customization?: NullableJsonNullValueInput | InputJsonValue
+    webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
-    notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
+    assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
+    orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type CatalogProductAttributeCreateWithoutProductInput = {
@@ -52184,6 +52054,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
     evaluation: EvaluationCreateNestedOneWithoutNotesInput
   }
 
@@ -52196,6 +52067,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type EvaluationNotesCreateOrConnectWithoutCreatedByUserInput = {
@@ -52602,9 +52474,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -52636,9 +52506,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -52857,9 +52725,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -52891,9 +52757,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -52928,7 +52792,7 @@ export namespace Prisma {
 
   export type FootCreateManyPatientInput = {
     id?: string
-    evaluationId: string
+    workbenchId: string
     side: $Enums.Side
     shoeSize: number
     shoeWidth?: $Enums.ShoeWidth
@@ -53006,13 +52870,13 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    evaluation?: EvaluationUpdateOneRequiredWithoutFeetNestedInput
+    workbench?: WorkbenchUpdateOneRequiredWithoutFeetNestedInput
     assets?: AssetUpdateManyWithoutFootNestedInput
   }
 
   export type FootUncheckedUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
     shoeSize?: FloatFieldUpdateOperationsInput | number
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
@@ -53030,7 +52894,7 @@ export namespace Prisma {
 
   export type FootUncheckedUpdateManyWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
     shoeSize?: FloatFieldUpdateOperationsInput | number
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
@@ -53073,9 +52937,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -53107,9 +52969,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -53155,6 +53015,8 @@ export namespace Prisma {
     evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
     assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateWithoutPatientInput = {
@@ -53170,6 +53032,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutPatientInput = {
@@ -53234,9 +53098,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -53268,9 +53130,7 @@ export namespace Prisma {
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -53304,14 +53164,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FormSubmissionCreateManyEvaluationInput = {
-    id?: string
-    templateId: string
-    data: JsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type WorkbenchCreateManyEvaluationInput = {
     id?: string
     patientId: string
@@ -53325,23 +53177,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type FootCreateManyEvaluationInput = {
-    id?: string
-    patientId: string
-    side: $Enums.Side
-    shoeSize: number
-    shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
-    shoeSystem?: $Enums.ShoeSystem
-    shoeBrand?: string | null
-    shoeModel?: string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: boolean
-    active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type EvaluationNotesCreateManyEvaluationInput = {
     id?: string
     title?: string | null
@@ -53351,6 +53186,7 @@ export namespace Prisma {
     createdAt?: Date | string
     createdBy?: string | null
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type ClinicianUpdateWithoutEvaluationsInput = {
@@ -53380,30 +53216,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FormSubmissionUpdateWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    data?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    template?: FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput
-  }
-
-  export type FormSubmissionUncheckedUpdateWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
-    data?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FormSubmissionUncheckedUpdateManyWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
-    data?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type WorkbenchUpdateWithoutEvaluationInput = {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
@@ -53417,6 +53229,8 @@ export namespace Prisma {
     product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
     assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateWithoutEvaluationInput = {
@@ -53432,6 +53246,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutEvaluationInput = {
@@ -53447,59 +53263,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FootUpdateWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
-    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
-    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
-    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: BoolFieldUpdateOperationsInput | boolean
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientUpdateOneRequiredWithoutFeetNestedInput
-    assets?: AssetUpdateManyWithoutFootNestedInput
-  }
-
-  export type FootUncheckedUpdateWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
-    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
-    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
-    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: BoolFieldUpdateOperationsInput | boolean
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assets?: AssetUncheckedUpdateManyWithoutFootNestedInput
-  }
-
-  export type FootUncheckedUpdateManyWithoutEvaluationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
-    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
-    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
-    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
-    questionnaire?: NullableJsonNullValueInput | InputJsonValue
-    isChild?: BoolFieldUpdateOperationsInput | boolean
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type EvaluationNotesUpdateWithoutEvaluationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53508,6 +53271,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdByUser?: UserUpdateOneWithoutNotesNestedInput
   }
 
@@ -53520,6 +53284,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutEvaluationInput = {
@@ -53531,6 +53296,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AssetCreateManyFootInput = {
@@ -53604,6 +53370,8 @@ export namespace Prisma {
     product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
     evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
     orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateWithoutAssetsInput = {
@@ -53619,6 +53387,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutAssetsInput = {
@@ -53729,6 +53499,8 @@ export namespace Prisma {
     evaluation?: EvaluationUpdateOneRequiredWithoutWorkbenchesNestedInput
     assets?: AssetUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateWithoutProductInput = {
@@ -53744,6 +53516,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
+    feet?: FootUncheckedUpdateManyWithoutWorkbenchNestedInput
+    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutProductInput = {
@@ -53769,6 +53543,31 @@ export namespace Prisma {
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus
     orderAuthorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FootCreateManyWorkbenchInput = {
+    id?: string
+    patientId: string
+    side: $Enums.Side
+    shoeSize: number
+    shoeWidth?: $Enums.ShoeWidth
+    shoeGender: $Enums.Gender
+    shoeSystem?: $Enums.ShoeSystem
+    shoeBrand?: string | null
+    shoeModel?: string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: boolean
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSubmissionCreateManyWorkbenchInput = {
+    id?: string
+    templateId: string
+    data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -53860,6 +53659,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FootUpdateWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
+    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
+    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
+    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutFeetNestedInput
+    assets?: AssetUpdateManyWithoutFootNestedInput
+  }
+
+  export type FootUncheckedUpdateWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
+    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
+    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
+    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assets?: AssetUncheckedUpdateManyWithoutFootNestedInput
+  }
+
+  export type FootUncheckedUpdateManyWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
+    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
+    shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
+    shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
+    questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    isChild?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionUpdateWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: FormTemplateUpdateOneRequiredWithoutSubmissionsNestedInput
+  }
+
+  export type FormSubmissionUncheckedUpdateWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSubmissionUncheckedUpdateManyWithoutWorkbenchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type EvaluationCreateManyReferringPhysicianInput = {
     id?: string
     externalId?: string | null
@@ -53917,9 +53793,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -53951,9 +53825,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54043,9 +53915,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54077,9 +53947,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54169,9 +54037,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54203,9 +54069,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54295,9 +54159,7 @@ export namespace Prisma {
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54329,9 +54191,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
-    formSubmissions?: FormSubmissionUncheckedUpdateManyWithoutEvaluationNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
-    feet?: FootUncheckedUpdateManyWithoutEvaluationNestedInput
     notes?: EvaluationNotesUncheckedUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -54366,7 +54226,7 @@ export namespace Prisma {
 
   export type FormSubmissionCreateManyTemplateInput = {
     id?: string
-    evaluationId: string
+    workbenchId: string
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54377,12 +54237,12 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    evaluation?: EvaluationUpdateOneRequiredWithoutFormSubmissionsNestedInput
+    workbench?: WorkbenchUpdateOneRequiredWithoutFormSubmissionsNestedInput
   }
 
   export type FormSubmissionUncheckedUpdateWithoutTemplateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54390,7 +54250,7 @@ export namespace Prisma {
 
   export type FormSubmissionUncheckedUpdateManyWithoutTemplateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    evaluationId?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54638,6 +54498,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -54708,6 +54569,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     evaluation?: EvaluationUpdateOneRequiredWithoutNotesNestedInput
   }
 
@@ -54720,6 +54582,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type EvaluationNotesUncheckedUpdateManyWithoutCreatedByUserInput = {
@@ -54731,6 +54594,7 @@ export namespace Prisma {
     blocks?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
