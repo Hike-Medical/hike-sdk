@@ -252,8 +252,7 @@ export const ProductType: {
   INSOLE_RENDER: 'INSOLE_RENDER',
   INSOLE_GCODE: 'INSOLE_GCODE',
   INSOLE: 'INSOLE',
-  VENDOR_PREFAB: 'VENDOR_PREFAB',
-  CLINIC_STOCK: 'CLINIC_STOCK'
+  MEDICAL_DEVICE: 'MEDICAL_DEVICE'
 };
 
 export type ProductType = (typeof ProductType)[keyof typeof ProductType]
