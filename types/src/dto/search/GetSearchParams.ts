@@ -3,5 +3,5 @@ import type { EvaluationStatus } from '../evaluation/EvaluationStatus';
 
 export interface GetSearchParams extends PagedParams {
   term: string;
-  status?: EvaluationStatus;
+  evaluationStatus?: EvaluationStatus;
 }
