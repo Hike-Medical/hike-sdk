@@ -26,6 +26,7 @@ export * from './hooks/useCreateEvaluationByProduct';
 export * from './hooks/useCreateNotes';
 export * from './hooks/useCreatePatient';
 export * from './hooks/useDeleteNote';
+export * from './hooks/useRecoverNote';
 export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
 export * from './hooks/useEvaluationSearch';

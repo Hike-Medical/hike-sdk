@@ -87,8 +87,13 @@ export const createNotes = async (evaluationId: string, body: CreateNotesBody): 
   return response.data;
 };
 
-export const findNotes = async (evaluationId: string, tags?: string[]): Promise<Notes[]> => {
-  const response = await backendApi.get(`evaluation/${evaluationId}/notes`, { params: { tags } });
+export const findNotes = async (evaluationId: string, tags?: string[], deleted?: boolean): Promise<Notes[]> => {
+  const response = await backendApi.get(`evaluation/${evaluationId}/notes`, { params: { tags, deleted } });
+  return response.data;
+};
+
+export const recoverNote = async (evaluationId: string, noteId: string): Promise<Notes> => {
+  const response = await backendApi.post(`evaluation/${evaluationId}/notes/${noteId}/recover`);
   return response.data;
 };
 
