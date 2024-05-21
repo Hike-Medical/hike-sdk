@@ -11,8 +11,8 @@ export const findFormTemplatesByIds = async (templateIds: string[]): Promise<For
   return response.data;
 };
 
-export const findFormSubmissionsByEvaluationId = async (evaluationId: string): Promise<FormSubmissionExtended[]> => {
-  const response = await backendApi.get(`form/evaluation/${evaluationId}/submission`);
+export const findFormSubmissionsByWorkbenchId = async (workbenchId: string): Promise<FormSubmissionExtended[]> => {
+  const response = await backendApi.get(`form/workbench/${workbenchId}/submission`);
   return response.data;
 };
 

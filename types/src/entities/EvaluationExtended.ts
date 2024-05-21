@@ -1,26 +1,28 @@
 import type {
   Clinician,
+  CompanyPatient,
   DeviceType,
   Diagnosis,
   Evaluation,
   Facility,
+  Order,
+  Patient,
   Physician,
   VisitType,
   Workbench
 } from '../../prisma';
 import { EvaluationStatus } from '../dto/evaluation/EvaluationStatus';
-import { PatientExtended } from './PatientExtended';
 
 export type EvaluationExtended = Evaluation & {
-  patient: PatientExtended;
-  workbench?: Workbench;
-  deviceType: DeviceType | null;
+  patient: Patient & { companies?: CompanyPatient[] };
+  workbenches?: (Workbench & { orders?: Order[] | null })[] | null;
+  deviceType?: DeviceType | null;
   visitType?: VisitType | null;
   diagnosis?: Diagnosis | null;
   referringPhysician?: Physician | null;
   facility?: Facility | null;
-  clinicians: Clinician[];
-  evaluationStatus?: EvaluationStatus;
+  clinicians?: Clinician[] | null;
+  status?: EvaluationStatus;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
 };

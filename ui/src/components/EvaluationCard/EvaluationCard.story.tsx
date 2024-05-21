@@ -26,7 +26,7 @@ export default {
     clinician: 'Dr. Smith',
     poNumber: '123456',
     birthDate: new Date('1997-12-12T00:00:00'),
-    evaluationStatus: 'COMPLETED',
+    status: 'COMPLETED',
     importedAt: new Date('2024-05-12T00:00:00'),
     startedAt: new Date('2024-05-12T00:00:00'),
     submittedAt: new Date('2024-05-12T00:00:00'),
