@@ -5,7 +5,7 @@ import type { EvaluationStatus } from './EvaluationStatus';
 export interface SearchEvaluationsParams extends PagedParams {
   patientId?: string;
   patientExternalId?: string;
-  evaluationStatus?: EvaluationStatus;
+  status?: EvaluationStatus;
   careType?: CareType;
   appointmentStartAt?: Date;
   appointmentEndAt?: Date;

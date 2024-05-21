@@ -3,7 +3,7 @@ import type { OrderAuthorizationStatus, OrderStatus } from '../../../prisma';
 export interface CreateOrderParams {
   workbenchId: string;
   status?: OrderStatus;
-  orderAuthorizationStatus: OrderAuthorizationStatus;
+  authorizationStatus: OrderAuthorizationStatus;
   committedDeliveryAt?: Date;
   shippingAddressId?: string;
   parcelId?: string;

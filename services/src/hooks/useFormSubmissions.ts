@@ -1,17 +1,17 @@
 import type { FormSubmissionExtended } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
-import { findFormSubmissionsByEvaluationId } from '../api/form.service';
+import { findFormSubmissionsByWorkbenchId } from '../api/form.service';
 import { ResponseError } from '../errors/ResponseError';
 
 export interface UseFormSubmissionsOptions {
   key?: string[];
-  evaluationId: string;
+  workbenchId: string;
   enabled?: boolean;
 }
 
-export const useFormSubmissions = ({ key = [], evaluationId, enabled = true }: UseFormSubmissionsOptions) =>
+export const useFormSubmissions = ({ key = [], workbenchId, enabled = true }: UseFormSubmissionsOptions) =>
   useQuery<FormSubmissionExtended[], ResponseError<null>>({
-    queryKey: ['formSubmissions', evaluationId, ...key],
-    queryFn: async () => await findFormSubmissionsByEvaluationId(evaluationId),
+    queryKey: ['formSubmissions', workbenchId, ...key],
+    queryFn: async () => await findFormSubmissionsByWorkbenchId(workbenchId),
     enabled
   });

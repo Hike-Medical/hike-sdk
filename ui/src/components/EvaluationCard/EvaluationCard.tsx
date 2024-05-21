@@ -12,7 +12,7 @@ export interface EvaluationCardProps {
   patientId: string;
   birthDate?: Date;
   poNumber?: string;
-  evaluationStatus: EvaluationStatus;
+  status: EvaluationStatus;
   clinician?: string;
   importedAt: Date;
   startedAt?: Date;
@@ -37,7 +37,7 @@ export function EvaluationCard({
   birthDate,
   poNumber,
   clinician,
-  evaluationStatus,
+  status,
   importedAt,
   startedAt,
   submittedAt,
@@ -54,7 +54,7 @@ export function EvaluationCard({
 }: EvaluationCardProps) {
   const [menuOpen, menuModalHandlers] = useDisclosure(false);
   const renderBadgeText = () => {
-    switch (evaluationStatus) {
+    switch (status) {
       case 'NOT_STARTED':
         return 'Not Started';
       case 'INCOMPLETE':
@@ -73,7 +73,7 @@ export function EvaluationCard({
   };
 
   const renderStatusColor = () => {
-    switch (evaluationStatus) {
+    switch (status) {
       case 'NOT_STARTED':
         return '#F1F3F5';
       case 'INCOMPLETE':
@@ -92,7 +92,7 @@ export function EvaluationCard({
   };
 
   const renderButtonText = () => {
-    switch (evaluationStatus) {
+    switch (status) {
       case 'NOT_STARTED':
         return 'Start Evaluation';
       case 'INCOMPLETE':
@@ -108,7 +108,7 @@ export function EvaluationCard({
   };
 
   const renderTimestampText = () => {
-    switch (evaluationStatus) {
+    switch (status) {
       case 'NOT_STARTED':
         return `Imported On: ${importedAt.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}`;
       case 'INCOMPLETE':
@@ -148,7 +148,7 @@ export function EvaluationCard({
           <Text fw={600} size="20px" style={{ flexShrink: 2 }}>
             {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)} - {patientId}
           </Text>
-          {evaluationStatus !== 'NOT_STARTED' && evaluationStatus !== 'CANCELLED' && (
+          {status !== 'NOT_STARTED' && status !== 'CANCELLED' && (
             <ActionIcon mr={4} variant="transparent" size="lg" onClick={() => menuModalHandlers.open()}>
               <IconMenu2 color="#000000" />
             </ActionIcon>
@@ -172,7 +172,7 @@ export function EvaluationCard({
       </Stack>
       <Group gap={'xs'}>
         <Badge variant="filled" color={renderStatusColor()} tt="none" mt={10} p={15}>
-          <Text fw={600} size="12px" c={evaluationStatus === 'INCOMPLETE' ? 'white' : 'black'} display={'inline'}>
+          <Text fw={600} size="12px" c={status === 'INCOMPLETE' ? 'white' : 'black'} display={'inline'}>
             {' '}
             {renderBadgeText()}
           </Text>
@@ -198,7 +198,7 @@ export function EvaluationCard({
           disabled={isSuccess}
           radius={10}
           loading={isLoading}
-          onClick={evaluationStatus === 'NOT_STARTED' ? startEvaluation : navigateEvaluation}
+          onClick={status === 'NOT_STARTED' ? startEvaluation : navigateEvaluation}
           style={{ flexShrink: 0 }}
         >
           {renderButtonText()}
