@@ -22,6 +22,7 @@ interface BaseFormField<T extends FormFieldValue> {
   hint?: string;
   required?: boolean;
   print?: boolean | { label: string };
+  description?: string;
   default?: T;
   rule?: {
     effect: 'show' | 'hide' | 'enable' | 'disable';
@@ -45,4 +46,5 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:diagnosis' })
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
-  | (BaseFormField<string[]> & { type: 'multiselect'; options: { label: string; value: string }[]; title?: string });
+  | (BaseFormField<string[]> & { type: 'multiselect'; options: { label: string; value: string }[]; title?: string })
+  | (BaseFormField<string> & { type: 'bubbleSelect'; options: { label: string; value: string }[]; title?: string });
