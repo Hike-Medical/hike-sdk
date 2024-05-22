@@ -9,6 +9,7 @@ export interface FormSection {
   description?: string;
   badge?: string;
   fields: FormField[];
+  footSide?: string;
 }
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
@@ -52,4 +53,5 @@ export type FormField =
       title?: string;
       navigation?: boolean;
     })
-  | (BaseFormField<string> & { type: 'bubbleSelect'; options: { label: string; value: string }[]; title?: string });
+  | (BaseFormField<string> & { type: 'bubbleSelect'; options: { label: string; value: string }[]; title?: string })
+  | (BaseFormField<string> & { type: 'singleSelect'; options: { label: string; value: string }[]; title?: string });
