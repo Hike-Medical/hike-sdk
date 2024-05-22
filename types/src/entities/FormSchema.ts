@@ -20,7 +20,6 @@ interface BaseFormField<T extends FormFieldValue> {
   name: string;
   label: string;
   placeholder?: string;
-  hint?: string;
   required?: boolean;
   print?: boolean | { label: string };
   description?: string;
@@ -55,5 +54,5 @@ export type FormField =
       title?: string;
       navigation?: boolean;
     })
-  | (BaseFormField<string> & { type: 'bubbleSelect'; options: { label: string; value: string }[]; title?: string })
+  | (BaseFormField<string> & { type: 'select:bubble'; options: { label: string; value: string }[]; title?: string })
   | (BaseFormField<string> & { type: 'singleSelect'; options: { label: string; value: string }[]; title?: string });
