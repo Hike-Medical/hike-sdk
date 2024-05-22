@@ -41,6 +41,8 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:height' })
   | (BaseFormField<string> & { type: 'select:weight' })
   | (BaseFormField<string> & { type: 'select:device-type' })
+  | (BaseFormField<string> & { type: 'select:device-type-side' })
+  | (BaseFormField<string> & { type: 'select:device-type-position' })
   | (BaseFormField<string> & { type: 'select:physician' })
   | (BaseFormField<string> & { type: 'select:diagnosis' })
   | (BaseFormField<string> & { type: 'select:facility' })
