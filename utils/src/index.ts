@@ -16,3 +16,4 @@ export * from './helpers/extractDomain';
 export * from './helpers/httpUtils';
 export * from './helpers/range';
 export * from './helpers/truncateMiddle';
+export * from './web-apis/camera';
