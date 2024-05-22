@@ -211,7 +211,8 @@ export type CareType = (typeof CareType)[keyof typeof CareType]
 
 export const Side: {
   LEFT: 'LEFT',
-  RIGHT: 'RIGHT'
+  RIGHT: 'RIGHT',
+  BILATERAL: 'BILATERAL'
 };
 
 export type Side = (typeof Side)[keyof typeof Side]
@@ -219,7 +220,9 @@ export type Side = (typeof Side)[keyof typeof Side]
 
 export const VerticalPosition: {
   UPPER: 'UPPER',
-  LOWER: 'LOWER'
+  LOWER: 'LOWER',
+  SPINAL: 'SPINAL',
+  CRANIAL: 'CRANIAL'
 };
 
 export type VerticalPosition = (typeof VerticalPosition)[keyof typeof VerticalPosition]
