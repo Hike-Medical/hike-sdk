@@ -28,6 +28,7 @@ export * from './hooks/useCreatePatient';
 export * from './hooks/useDeleteNote';
 export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
+export * from './hooks/useEvaluationByWorkbench';
 export * from './hooks/useEvaluationSearch';
 export * from './hooks/useEvaluationStats';
 export * from './hooks/useEvaluations';
