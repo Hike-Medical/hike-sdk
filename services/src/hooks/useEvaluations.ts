@@ -1,16 +1,25 @@
 import type { EvaluationExtended, GetEvaluationsParams, PagedResponse } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findEvaluations } from '../api/evaluation.service';
 import { ResponseError } from '../errors/ResponseError';
 
-export interface UseEvaluationsOptions extends GetEvaluationsParams {
-  key?: string[];
-  enabled?: boolean;
+export interface UseEvaluationsOptions
+  extends Omit<UseQueryOptions<PagedResponse<EvaluationExtended[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  params: GetEvaluationsParams;
+  queryKey?: QueryKey;
 }
 
-export const useEvaluations = ({ key = [], enabled = true, ...params }: UseEvaluationsOptions) =>
-  useQuery<PagedResponse<EvaluationExtended[]>, ResponseError<null>>({
-    queryKey: ['evaluations', ...key, params],
+export const useEvaluations = ({ params, queryKey = [], ...options }: UseEvaluationsOptions) => {
+  const key = ['evaluations', params, ...queryKey];
+
+  const query = useQuery({
+    queryKey: key,
     queryFn: async () => await findEvaluations(params),
-    enabled
+    ...options
   });
+
+  return {
+    queryKey: key,
+    ...query
+  };
+};
