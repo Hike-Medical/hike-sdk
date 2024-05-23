@@ -48,6 +48,7 @@ export * from './hooks/useProducts';
 export * from './hooks/usePurchaseLabel';
 export * from './hooks/useRecoverNote';
 export * from './hooks/useSearch';
+export * from './hooks/useSearchFacilities';
 export * from './hooks/useStartEvaluationByProduct';
 export * from './hooks/useUpdateNote';
 export * from './hooks/useUpdateTrackingInfo';
