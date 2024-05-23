@@ -37,7 +37,11 @@ export type FormField =
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string> & { type: 'image' })
-  | (BaseFormField<string> & { type: 'select'; options: { label: string; value: string }[] })
+  | (BaseFormField<string> & {
+      type: 'select';
+      options: { label: string; value: string }[];
+      ui?: 'dropdown' | 'radio' | 'segmented';
+    })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
   | (BaseFormField<string> & { type: 'select:weight' })
@@ -53,6 +57,4 @@ export type FormField =
       options: { label: string; value: string }[];
       title?: string;
       navigation?: boolean;
-    })
-  | (BaseFormField<string> & { type: 'select:bubble'; options: { label: string; value: string }[]; title?: string })
-  | (BaseFormField<string> & { type: 'singleSelect'; options: { label: string; value: string }[]; title?: string });
+    });
