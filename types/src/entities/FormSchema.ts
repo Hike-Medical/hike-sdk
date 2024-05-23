@@ -20,6 +20,7 @@ interface BaseFormField<T extends FormFieldValue> {
   label: string;
   placeholder?: string;
   hint?: string;
+  disabled?: boolean;
   required?: boolean;
   print?: boolean | { label: string };
   default?: T;
@@ -51,5 +52,10 @@ export type FormField =
       type: 'multiselect';
       options: { label: string; value: string }[];
       title?: string;
-      navigation?: boolean;
+      accordion?: boolean;
+    })
+  | (BaseFormField<string[]> & {
+      type: 'multiselect:nav';
+      options: { label: string; value: string }[];
+      title?: string;
     });
