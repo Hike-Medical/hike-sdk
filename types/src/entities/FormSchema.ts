@@ -3,13 +3,17 @@ import { FormSubmission, FormTemplate } from '../../prisma';
 export interface FormSchema {
   sections: FormSection[];
 }
-
+export interface Rule {
+  effect: 'show' | 'hide' | 'enable' | 'disable';
+  condition: { name: string; value: FormFieldValue };
+}
 export interface FormSection {
   title: string;
   description?: string;
   badge?: string;
   fields: FormField[];
   footSide?: string;
+  rule?: Rule;
 }
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
@@ -24,10 +28,7 @@ interface BaseFormField<T extends FormFieldValue> {
   print?: boolean | { label: string };
   description?: string;
   default?: T;
-  rule?: {
-    effect: 'show' | 'hide' | 'enable' | 'disable';
-    condition: { name: string; value: FormFieldValue };
-  };
+  rule?: Rule;
 }
 
 export type FormField =
