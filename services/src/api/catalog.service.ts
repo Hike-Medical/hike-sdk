@@ -9,7 +9,7 @@ import type {
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
-export const findProductId = async (productId: string): Promise<CatalogProductExtended> => {
+export const findProductById = async (productId: string): Promise<CatalogProductExtended> => {
   const response = await backendApi.get(`catalog/product/${productId}`);
   return response.data;
 };
