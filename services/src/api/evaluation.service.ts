@@ -51,6 +51,11 @@ export const findEvaluationById = async (evaluationId: string): Promise<Evaluati
   return response.data;
 };
 
+export const findEvaluationByWorkbenchId = async (workbenchId: string): Promise<EvaluationExtended> => {
+  const response = await backendApi.get(`evaluation/${workbenchId}/workbench`);
+  return response.data;
+};
+
 export const findEvaluations = async (params: GetEvaluationsParams): Promise<PagedResponse<EvaluationExtended[]>> => {
   const response = await backendApi.get('evaluation', { params });
   return response.data;
