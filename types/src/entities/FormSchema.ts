@@ -3,12 +3,17 @@ import { FormSubmission, FormTemplate } from '../../prisma';
 export interface FormSchema {
   sections: FormSection[];
 }
-
+export interface Rule {
+  effect: 'show' | 'hide' | 'enable' | 'disable';
+  condition: { name: string; value: FormFieldValue };
+}
 export interface FormSection {
   title: string;
   description?: string;
   badge?: string;
   fields: FormField[];
+  footSide?: string;
+  rule?: Rule;
 }
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
@@ -19,15 +24,12 @@ interface BaseFormField<T extends FormFieldValue> {
   name: string;
   label: string;
   placeholder?: string;
-  hint?: string;
   disabled?: boolean;
   required?: boolean;
   print?: boolean | { label: string };
+  description?: string;
   default?: T;
-  rule?: {
-    effect: 'show' | 'hide' | 'enable' | 'disable';
-    condition: { name: string; value: FormFieldValue };
-  };
+  rule?: Rule;
 }
 
 export type FormField =
@@ -37,7 +39,11 @@ export type FormField =
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string> & { type: 'image' })
-  | (BaseFormField<string> & { type: 'select'; options: { label: string; value: string }[] })
+  | (BaseFormField<string> & {
+      type: 'select';
+      options: { label: string; value: string }[];
+      ui?: 'dropdown' | 'radio' | 'segmented';
+    })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
   | (BaseFormField<string> & { type: 'select:weight' })

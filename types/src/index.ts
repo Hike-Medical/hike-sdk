@@ -21,6 +21,7 @@ export type * from './dto/evaluation/SearchEvaluationsParams';
 export type * from './dto/evaluation/StartEvaluationByProductParams';
 export type * from './dto/evaluation/UpdateEvaluationParams';
 export type * from './dto/evaluation/UpdateNotes';
+export type * from './dto/facility/SearchFacilityParams';
 export type * from './dto/form/UpsertFormSubmissionParams';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/GetOrdersParams';
