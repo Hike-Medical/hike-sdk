@@ -1,10 +1,3 @@
-import dayjs from 'dayjs';
-import timezone from 'dayjs/plugin/timezone';
-import utc from 'dayjs/plugin/utc';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
 /**
  * Converts a given local date to the start of that date in UTC.
  * This is useful for storing date-only information in a timezone-agnostic format.
@@ -32,13 +25,19 @@ export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | nul
 };
 
 /**
- * Converts a given UTC date to the start of the day in a specified local timezone.
+ * Converts a given UTC date to the start of the day in the local timezone.
  * This is useful for displaying UTC-stored dates in a local context.
  *
  * @example
- * fromStartOfUTC(new Date('2023-10-16T00:00:00Z'), 'America/New_York');
+ * fromStartOfUTC(new Date('2023-10-16T00:00:00Z'));
  * // 2023-10-15T20:00:00.000Z
  *
  */
-export const fromStartOfUTC = (value?: Date | null, timeZone?: string): Date | null | undefined =>
-  !value ? value : dayjs.tz(dayjs.utc(value).format('YYYY-MM-DD'), timeZone || undefined).toDate();
+export const fromStartOfUTC = (value?: Date | null): Date | null | undefined => {
+  if (!value) {
+    return value;
+  }
+
+  const timezoneOffset = value.getTimezoneOffset() * 60000;
+  return new Date(value.getTime() - timezoneOffset);
+};
