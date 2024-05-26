@@ -8,6 +8,7 @@ export * from './api/order.service';
 export * from './api/patient.service';
 export * from './api/physician.service';
 export * from './api/shipping.service';
+export * from './api/workbench.service';
 export * from './auth/defaultCompany';
 export * from './auth/findCompaniesBySession';
 export * from './auth/findCompanyById';
