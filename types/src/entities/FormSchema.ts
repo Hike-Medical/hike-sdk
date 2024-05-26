@@ -59,9 +59,4 @@ export type FormField =
       options: { label: string; value: string }[];
       title?: string;
       accordion?: boolean;
-    })
-  | (BaseFormField<string[]> & {
-      type: 'multiselect:nav';
-      options: { label: string; value: string }[];
-      title?: string;
     });
