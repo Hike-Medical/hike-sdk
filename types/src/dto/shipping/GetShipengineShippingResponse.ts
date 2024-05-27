@@ -1,4 +1,4 @@
-export interface GetShipmentsResponse {
+export interface GetShipengineShipmentsResponse {
   shipments: Shipment[];
   total: number;
   page: string;
@@ -6,7 +6,7 @@ export interface GetShipmentsResponse {
   links: ShipmentLinks;
 }
 
-interface Shipment {
+export interface Shipment {
   shipment_id: string;
   carrier_id: string;
   service_code: string;

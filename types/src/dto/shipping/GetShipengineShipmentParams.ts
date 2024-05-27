@@ -1,4 +1,4 @@
-export interface GetShipmentsParams {
+export interface GetShipengineShipmentsParams {
   shipment_status?: 'pending' | 'processing' | 'label_purchased' | 'cancelled';
   batch_id?: string;
   tag?: string;
