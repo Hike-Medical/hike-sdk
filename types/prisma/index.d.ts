@@ -11485,9 +11485,9 @@ export namespace Prisma {
     patientId: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize: number | null
     shoeWidth: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender: $Enums.Gender | null
     shoeSystem: $Enums.ShoeSystem
     shoeBrand: string | null
     shoeModel: string | null
@@ -11578,9 +11578,9 @@ export namespace Prisma {
       patientId: string
       workbenchId: string
       side: $Enums.Side
-      shoeSize: number
+      shoeSize: number | null
       shoeWidth: $Enums.ShoeWidth
-      shoeGender: $Enums.Gender
+      shoeGender: $Enums.Gender | null
       shoeSystem: $Enums.ShoeSystem
       shoeBrand: string | null
       shoeModel: string | null
@@ -37778,9 +37778,9 @@ export namespace Prisma {
     patientId?: StringFilter<"Foot"> | string
     workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
-    shoeSize?: FloatFilter<"Foot"> | number
+    shoeSize?: FloatNullableFilter<"Foot"> | number | null
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFilter<"Foot"> | $Enums.Gender
+    shoeGender?: EnumGenderNullableFilter<"Foot"> | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFilter<"Foot"> | $Enums.ShoeSystem
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
@@ -37799,9 +37799,9 @@ export namespace Prisma {
     patientId?: SortOrder
     workbenchId?: SortOrder
     side?: SortOrder
-    shoeSize?: SortOrder
+    shoeSize?: SortOrderInput | SortOrder
     shoeWidth?: SortOrder
-    shoeGender?: SortOrder
+    shoeGender?: SortOrderInput | SortOrder
     shoeSystem?: SortOrder
     shoeBrand?: SortOrderInput | SortOrder
     shoeModel?: SortOrderInput | SortOrder
@@ -37823,9 +37823,9 @@ export namespace Prisma {
     patientId?: StringFilter<"Foot"> | string
     workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
-    shoeSize?: FloatFilter<"Foot"> | number
+    shoeSize?: FloatNullableFilter<"Foot"> | number | null
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFilter<"Foot"> | $Enums.Gender
+    shoeGender?: EnumGenderNullableFilter<"Foot"> | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFilter<"Foot"> | $Enums.ShoeSystem
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
@@ -37844,9 +37844,9 @@ export namespace Prisma {
     patientId?: SortOrder
     workbenchId?: SortOrder
     side?: SortOrder
-    shoeSize?: SortOrder
+    shoeSize?: SortOrderInput | SortOrder
     shoeWidth?: SortOrder
-    shoeGender?: SortOrder
+    shoeGender?: SortOrderInput | SortOrder
     shoeSystem?: SortOrder
     shoeBrand?: SortOrderInput | SortOrder
     shoeModel?: SortOrderInput | SortOrder
@@ -37870,9 +37870,9 @@ export namespace Prisma {
     patientId?: StringWithAggregatesFilter<"Foot"> | string
     workbenchId?: StringWithAggregatesFilter<"Foot"> | string
     side?: EnumSideWithAggregatesFilter<"Foot"> | $Enums.Side
-    shoeSize?: FloatWithAggregatesFilter<"Foot"> | number
+    shoeSize?: FloatNullableWithAggregatesFilter<"Foot"> | number | null
     shoeWidth?: EnumShoeWidthWithAggregatesFilter<"Foot"> | $Enums.ShoeWidth
-    shoeGender?: EnumGenderWithAggregatesFilter<"Foot"> | $Enums.Gender
+    shoeGender?: EnumGenderNullableWithAggregatesFilter<"Foot"> | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemWithAggregatesFilter<"Foot"> | $Enums.ShoeSystem
     shoeBrand?: StringNullableWithAggregatesFilter<"Foot"> | string | null
     shoeModel?: StringNullableWithAggregatesFilter<"Foot"> | string | null
@@ -40217,9 +40217,9 @@ export namespace Prisma {
   export type FootCreateInput = {
     id?: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -40238,9 +40238,9 @@ export namespace Prisma {
     patientId: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -40255,9 +40255,9 @@ export namespace Prisma {
   export type FootUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40276,9 +40276,9 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40295,9 +40295,9 @@ export namespace Prisma {
     patientId: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -40311,9 +40311,9 @@ export namespace Prisma {
   export type FootUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40329,9 +40329,9 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42890,29 +42890,11 @@ export namespace Prisma {
     not?: NestedEnumSideFilter<$PrismaModel> | $Enums.Side
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type EnumShoeWidthFilter<$PrismaModel = never> = {
     equals?: $Enums.ShoeWidth | EnumShoeWidthFieldRefInput<$PrismaModel>
     in?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
     notIn?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
     not?: NestedEnumShoeWidthFilter<$PrismaModel> | $Enums.ShoeWidth
-  }
-
-  export type EnumGenderFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
   export type EnumShoeSystemFilter<$PrismaModel = never> = {
@@ -43007,22 +42989,6 @@ export namespace Prisma {
     _max?: NestedEnumSideFilter<$PrismaModel>
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type EnumShoeWidthWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ShoeWidth | EnumShoeWidthFieldRefInput<$PrismaModel>
     in?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
@@ -43031,16 +42997,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumShoeWidthFilter<$PrismaModel>
     _max?: NestedEnumShoeWidthFilter<$PrismaModel>
-  }
-
-  export type EnumGenderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderFilter<$PrismaModel>
-    _max?: NestedEnumGenderFilter<$PrismaModel>
   }
 
   export type EnumShoeSystemWithAggregatesFilter<$PrismaModel = never> = {
@@ -43418,6 +43374,17 @@ export namespace Prisma {
     _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type EnumWeightUnitFilter<$PrismaModel = never> = {
     equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
     in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
@@ -43502,6 +43469,22 @@ export namespace Prisma {
     width?: SortOrder
     height?: SortOrder
     insoleCapacity?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type EnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
@@ -45180,20 +45163,8 @@ export namespace Prisma {
     set?: $Enums.Side
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type EnumShoeWidthFieldUpdateOperationsInput = {
     set?: $Enums.ShoeWidth
-  }
-
-  export type EnumGenderFieldUpdateOperationsInput = {
-    set?: $Enums.Gender
   }
 
   export type EnumShoeSystemFieldUpdateOperationsInput = {
@@ -45694,6 +45665,14 @@ export namespace Prisma {
     create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
     connect?: CompanyWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type EnumWeightUnitFieldUpdateOperationsInput = {
@@ -46851,29 +46830,11 @@ export namespace Prisma {
     not?: NestedEnumSideFilter<$PrismaModel> | $Enums.Side
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedEnumShoeWidthFilter<$PrismaModel = never> = {
     equals?: $Enums.ShoeWidth | EnumShoeWidthFieldRefInput<$PrismaModel>
     in?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
     notIn?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
     not?: NestedEnumShoeWidthFilter<$PrismaModel> | $Enums.ShoeWidth
-  }
-
-  export type NestedEnumGenderFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
   export type NestedEnumShoeSystemFilter<$PrismaModel = never> = {
@@ -46893,22 +46854,6 @@ export namespace Prisma {
     _max?: NestedEnumSideFilter<$PrismaModel>
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type NestedEnumShoeWidthWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ShoeWidth | EnumShoeWidthFieldRefInput<$PrismaModel>
     in?: $Enums.ShoeWidth[] | ListEnumShoeWidthFieldRefInput<$PrismaModel>
@@ -46917,16 +46862,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumShoeWidthFilter<$PrismaModel>
     _max?: NestedEnumShoeWidthFilter<$PrismaModel>
-  }
-
-  export type NestedEnumGenderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderFilter<$PrismaModel>
-    _max?: NestedEnumGenderFilter<$PrismaModel>
   }
 
   export type NestedEnumShoeSystemWithAggregatesFilter<$PrismaModel = never> = {
@@ -47041,6 +46976,17 @@ export namespace Prisma {
     _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedEnumWeightUnitFilter<$PrismaModel = never> = {
     equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
     in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
@@ -47053,6 +46999,22 @@ export namespace Prisma {
     in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
     notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
     not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
@@ -47876,9 +47838,9 @@ export namespace Prisma {
   export type FootCreateWithoutPatientInput = {
     id?: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -47895,9 +47857,9 @@ export namespace Prisma {
     id?: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -48085,9 +48047,9 @@ export namespace Prisma {
     patientId?: StringFilter<"Foot"> | string
     workbenchId?: StringFilter<"Foot"> | string
     side?: EnumSideFilter<"Foot"> | $Enums.Side
-    shoeSize?: FloatFilter<"Foot"> | number
+    shoeSize?: FloatNullableFilter<"Foot"> | number | null
     shoeWidth?: EnumShoeWidthFilter<"Foot"> | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFilter<"Foot"> | $Enums.Gender
+    shoeGender?: EnumGenderNullableFilter<"Foot"> | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFilter<"Foot"> | $Enums.ShoeSystem
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
@@ -49398,9 +49360,9 @@ export namespace Prisma {
   export type FootCreateWithoutAssetsInput = {
     id?: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -49418,9 +49380,9 @@ export namespace Prisma {
     patientId: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -49489,9 +49451,9 @@ export namespace Prisma {
   export type FootUpdateWithoutAssetsInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49509,9 +49471,9 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49920,9 +49882,9 @@ export namespace Prisma {
   export type FootCreateWithoutWorkbenchInput = {
     id?: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -49939,9 +49901,9 @@ export namespace Prisma {
     id?: string
     patientId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -52798,9 +52760,9 @@ export namespace Prisma {
     id?: string
     workbenchId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -52863,9 +52825,9 @@ export namespace Prisma {
   export type FootUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52882,9 +52844,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52900,9 +52862,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53555,9 +53517,9 @@ export namespace Prisma {
     id?: string
     patientId: string
     side: $Enums.Side
-    shoeSize: number
+    shoeSize?: number | null
     shoeWidth?: $Enums.ShoeWidth
-    shoeGender: $Enums.Gender
+    shoeGender?: $Enums.Gender | null
     shoeSystem?: $Enums.ShoeSystem
     shoeBrand?: string | null
     shoeModel?: string | null
@@ -53666,9 +53628,9 @@ export namespace Prisma {
   export type FootUpdateWithoutWorkbenchInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53685,9 +53647,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53703,9 +53665,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
-    shoeSize?: FloatFieldUpdateOperationsInput | number
+    shoeSize?: NullableFloatFieldUpdateOperationsInput | number | null
     shoeWidth?: EnumShoeWidthFieldUpdateOperationsInput | $Enums.ShoeWidth
-    shoeGender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    shoeGender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     shoeSystem?: EnumShoeSystemFieldUpdateOperationsInput | $Enums.ShoeSystem
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
