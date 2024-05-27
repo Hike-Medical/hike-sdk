@@ -1,4 +1,4 @@
-import { ProductType } from '@hike/types';
+import { Asset, Foot, ProductType } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export interface GenerateSignedURLParams {
@@ -22,5 +22,12 @@ export const generateUrlToUploadFile = async ({
     fileNameWithExtension
   });
 
+  return response.data;
+};
+
+export type FootWithAssets = Foot & { assets: Asset[] };
+
+export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets[]> => {
+  const response = await backendApi.get(`workbench/${workbenchId}/feet`);
   return response.data;
 };
