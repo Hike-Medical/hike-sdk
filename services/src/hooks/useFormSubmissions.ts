@@ -7,11 +7,18 @@ export interface UseFormSubmissionsOptions {
   key?: string[];
   workbenchId: string;
   enabled?: boolean;
+  refetchOnMount?: boolean;
 }
 
-export const useFormSubmissions = ({ key = [], workbenchId, enabled = true }: UseFormSubmissionsOptions) =>
+export const useFormSubmissions = ({
+  key = [],
+  workbenchId,
+  enabled = true,
+  refetchOnMount = false
+}: UseFormSubmissionsOptions) =>
   useQuery<FormSubmissionExtended[], ResponseError<null>>({
     queryKey: ['formSubmissions', workbenchId, ...key],
     queryFn: async () => await findFormSubmissionsByWorkbenchId(workbenchId),
+    refetchOnMount,
     enabled
   });
