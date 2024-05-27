@@ -19,6 +19,7 @@ export * from './auth/signIn';
 export * from './configure';
 export * from './errors/ResponseError';
 export * from './hooks/useBillingCodes';
+export * from './hooks/useBillingCodesSearch';
 export * from './hooks/useCancelEvaluation';
 export * from './hooks/useCategories';
 export * from './hooks/useCompaniesBySession';

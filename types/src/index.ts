@@ -6,6 +6,7 @@ export type * from './config/HikeConfig';
 export type * from './dto/PagedParams';
 export type * from './dto/PagedResponse';
 export type * from './dto/billingCode/GetBillingCodesParams';
+export type * from './dto/billingCode/SearchBillingCodesParams';
 export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/SearchProductsParams';
 export type * from './dto/evaluation/ActionEvaluationParams';
