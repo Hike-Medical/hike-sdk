@@ -1,6 +1,11 @@
-import { ShippingPackage, ValidateAddressBody } from '@hike/types';
+import {
+  GetShipmentsParams,
+  GetShipmentsResponse,
+  ShippingLabelResponseByShipmentId,
+  ShippingPackage,
+  ValidateAddressBody
+} from '@hike/types';
 import { backendApi } from '../utils/backendApi';
-
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
   const response = await backendApi.get('shipping/packageTypes');
   return response.data;
@@ -61,4 +66,14 @@ interface SaveTrackingInfo {
 
 export const updateTrackingInfo = async ({ labelId, items }: SaveTrackingInfo) => {
   await backendApi.post(`shipping/labels/${labelId}/tracking`, { items });
+};
+
+export const fetchShipments = async (params: GetShipmentsParams): Promise<GetShipmentsResponse> => {
+  const response = await backendApi.get(`shipping/shipments`, { params });
+  return response.data;
+};
+
+export const fetchOrdersByShipmentId = async (shipmentId: string): Promise<ShippingLabelResponseByShipmentId> => {
+  const response = await backendApi.get(`shipping/orders/${shipmentId}`);
+  return response.data;
 };
