@@ -4,7 +4,7 @@ import { backendApi } from '../utils/backendApi';
 export interface GenerateSignedURLParams {
   footId: string;
   productType: ProductType;
-  fileNameWithExtension: string;
+  videoType: string;
 }
 
 export interface GenerateSignedURLResponse {
@@ -15,11 +15,11 @@ export interface GenerateSignedURLResponse {
 export const generateUrlToUploadFile = async ({
   footId,
   productType,
-  fileNameWithExtension
+  videoType
 }: GenerateSignedURLParams): Promise<GenerateSignedURLResponse> => {
   const response = await backendApi.post(`scan/${footId}/pre-signed-url`, {
     productType,
-    fileNameWithExtension
+    videoType
   });
 
   return response.data;

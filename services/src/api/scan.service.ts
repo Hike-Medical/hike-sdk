@@ -3,14 +3,15 @@ import { backendApi } from '../utils/backendApi';
 import { GenerateSignedURLResponse } from './workbench.service';
 
 export interface GenerateSignedURLDto {
+  footId: string;
   productType: ProductType;
-  fileNameWithExtension: string;
+  videoFormat: string;
 }
 
 export const getPreSignedURL = async (
   footId: string,
-  body: GenerateSignedURLDto
+  body: Omit<GenerateSignedURLDto, 'footId'>
 ): Promise<GenerateSignedURLResponse> => {
-  const response = await backendApi.post(`foot/${footId}/pre-signed-url`, body);
+  const response = await backendApi.post(`scan/${footId}/pre-signed-url`, body);
   return response.data;
 };
