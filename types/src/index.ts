@@ -41,6 +41,8 @@ export type * from './dto/shipping/GetShipengineShipmentParams';
 export type * from './dto/shipping/GetShipengineShippingResponse';
 export type * from './dto/shipping/GetShippingLabelLegacyResponse';
 export type * from './dto/shipping/ValidateAddressBody';
+export type * from './dto/foot/FootStatus';
+export type * from './dto/foot/SetFootInactive';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/FormSchema';
