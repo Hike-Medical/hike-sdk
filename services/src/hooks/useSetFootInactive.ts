@@ -2,13 +2,14 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { setInactive } from '../api/feet.service';
 import { SetFootInactive, Foot } from '@hike/types';
 
-export const useSetFootInactive = (
-  footId: string,
-  mutationOptions?: UseMutationOptions<Foot, unknown, SetFootInactive>
-) => {
+interface SetFootInactiveParams extends SetFootInactive {
+  footId: string;
+}
+
+export const useSetFootInactive = (mutationOptions?: UseMutationOptions<Foot, unknown, SetFootInactiveParams>) => {
   return useMutation({
-    mutationKey: ['setInactive', footId],
-    mutationFn: async (body: SetFootInactive) => await setInactive(footId, body),
+    mutationKey: ['setInactive'],
+    mutationFn: async (body: SetFootInactiveParams) => await setInactive(body.footId, body),
     ...mutationOptions
   });
 };
