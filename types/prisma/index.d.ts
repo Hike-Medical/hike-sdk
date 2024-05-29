@@ -249,6 +249,16 @@ export const ShoeSystem: {
 export type ShoeSystem = (typeof ShoeSystem)[keyof typeof ShoeSystem]
 
 
+export const InactiveReason: {
+  AMPUTATION: 'AMPUTATION',
+  SKIPPED: 'SKIPPED',
+  TOE_FILLER: 'TOE_FILLER',
+  ORDER_SIDE: 'ORDER_SIDE'
+};
+
+export type InactiveReason = (typeof InactiveReason)[keyof typeof InactiveReason]
+
+
 export const ProductType: {
   FOOT_SCAN: 'FOOT_SCAN',
   FOOT_RENDER: 'FOOT_RENDER',
@@ -411,6 +421,10 @@ export const ShoeWidth: typeof $Enums.ShoeWidth
 export type ShoeSystem = $Enums.ShoeSystem
 
 export const ShoeSystem: typeof $Enums.ShoeSystem
+
+export type InactiveReason = $Enums.InactiveReason
+
+export const InactiveReason: typeof $Enums.InactiveReason
 
 export type ProductType = $Enums.ProductType
 
@@ -11290,6 +11304,7 @@ export namespace Prisma {
     shoeSystem: $Enums.ShoeSystem | null
     shoeBrand: string | null
     shoeModel: string | null
+    inactiveReason: $Enums.InactiveReason | null
     isChild: boolean | null
     active: boolean | null
     createdAt: Date | null
@@ -11307,6 +11322,7 @@ export namespace Prisma {
     shoeSystem: $Enums.ShoeSystem | null
     shoeBrand: string | null
     shoeModel: string | null
+    inactiveReason: $Enums.InactiveReason | null
     isChild: boolean | null
     active: boolean | null
     createdAt: Date | null
@@ -11325,6 +11341,7 @@ export namespace Prisma {
     shoeBrand: number
     shoeModel: number
     questionnaire: number
+    inactiveReason: number
     isChild: number
     active: number
     createdAt: number
@@ -11352,6 +11369,7 @@ export namespace Prisma {
     shoeSystem?: true
     shoeBrand?: true
     shoeModel?: true
+    inactiveReason?: true
     isChild?: true
     active?: true
     createdAt?: true
@@ -11369,6 +11387,7 @@ export namespace Prisma {
     shoeSystem?: true
     shoeBrand?: true
     shoeModel?: true
+    inactiveReason?: true
     isChild?: true
     active?: true
     createdAt?: true
@@ -11387,6 +11406,7 @@ export namespace Prisma {
     shoeBrand?: true
     shoeModel?: true
     questionnaire?: true
+    inactiveReason?: true
     isChild?: true
     active?: true
     createdAt?: true
@@ -11492,6 +11512,7 @@ export namespace Prisma {
     shoeBrand: string | null
     shoeModel: string | null
     questionnaire: JsonValue | null
+    inactiveReason: $Enums.InactiveReason | null
     isChild: boolean
     active: boolean
     createdAt: Date
@@ -11529,6 +11550,7 @@ export namespace Prisma {
     shoeBrand?: boolean
     shoeModel?: boolean
     questionnaire?: boolean
+    inactiveReason?: boolean
     isChild?: boolean
     active?: boolean
     createdAt?: boolean
@@ -11551,6 +11573,7 @@ export namespace Prisma {
     shoeBrand?: boolean
     shoeModel?: boolean
     questionnaire?: boolean
+    inactiveReason?: boolean
     isChild?: boolean
     active?: boolean
     createdAt?: boolean
@@ -11585,6 +11608,7 @@ export namespace Prisma {
       shoeBrand: string | null
       shoeModel: string | null
       questionnaire: Prisma.JsonValue | null
+      inactiveReason: $Enums.InactiveReason | null
       isChild: boolean
       active: boolean
       createdAt: Date
@@ -12025,6 +12049,7 @@ export namespace Prisma {
     readonly shoeBrand: FieldRef<"Foot", 'String'>
     readonly shoeModel: FieldRef<"Foot", 'String'>
     readonly questionnaire: FieldRef<"Foot", 'Json'>
+    readonly inactiveReason: FieldRef<"Foot", 'InactiveReason'>
     readonly isChild: FieldRef<"Foot", 'Boolean'>
     readonly active: FieldRef<"Foot", 'Boolean'>
     readonly createdAt: FieldRef<"Foot", 'DateTime'>
@@ -36439,6 +36464,7 @@ export namespace Prisma {
     shoeBrand: 'shoeBrand',
     shoeModel: 'shoeModel',
     questionnaire: 'questionnaire',
+    inactiveReason: 'inactiveReason',
     isChild: 'isChild',
     active: 'active',
     createdAt: 'createdAt',
@@ -36980,6 +37006,20 @@ export namespace Prisma {
    * Reference to a field of type 'ShoeSystem[]'
    */
   export type ListEnumShoeSystemFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShoeSystem[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'InactiveReason'
+   */
+  export type EnumInactiveReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InactiveReason'>
+    
+
+
+  /**
+   * Reference to a field of type 'InactiveReason[]'
+   */
+  export type ListEnumInactiveReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InactiveReason[]'>
     
 
 
@@ -37785,6 +37825,7 @@ export namespace Prisma {
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
     questionnaire?: JsonNullableFilter<"Foot">
+    inactiveReason?: EnumInactiveReasonNullableFilter<"Foot"> | $Enums.InactiveReason | null
     isChild?: BoolFilter<"Foot"> | boolean
     active?: BoolFilter<"Foot"> | boolean
     createdAt?: DateTimeFilter<"Foot"> | Date | string
@@ -37806,6 +37847,7 @@ export namespace Prisma {
     shoeBrand?: SortOrderInput | SortOrder
     shoeModel?: SortOrderInput | SortOrder
     questionnaire?: SortOrderInput | SortOrder
+    inactiveReason?: SortOrderInput | SortOrder
     isChild?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -37830,6 +37872,7 @@ export namespace Prisma {
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
     questionnaire?: JsonNullableFilter<"Foot">
+    inactiveReason?: EnumInactiveReasonNullableFilter<"Foot"> | $Enums.InactiveReason | null
     isChild?: BoolFilter<"Foot"> | boolean
     active?: BoolFilter<"Foot"> | boolean
     createdAt?: DateTimeFilter<"Foot"> | Date | string
@@ -37851,6 +37894,7 @@ export namespace Prisma {
     shoeBrand?: SortOrderInput | SortOrder
     shoeModel?: SortOrderInput | SortOrder
     questionnaire?: SortOrderInput | SortOrder
+    inactiveReason?: SortOrderInput | SortOrder
     isChild?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -37877,6 +37921,7 @@ export namespace Prisma {
     shoeBrand?: StringNullableWithAggregatesFilter<"Foot"> | string | null
     shoeModel?: StringNullableWithAggregatesFilter<"Foot"> | string | null
     questionnaire?: JsonNullableWithAggregatesFilter<"Foot">
+    inactiveReason?: EnumInactiveReasonNullableWithAggregatesFilter<"Foot"> | $Enums.InactiveReason | null
     isChild?: BoolWithAggregatesFilter<"Foot"> | boolean
     active?: BoolWithAggregatesFilter<"Foot"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Foot"> | Date | string
@@ -40224,6 +40269,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -40245,6 +40291,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -40262,6 +40309,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40283,6 +40331,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40302,6 +40351,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -40318,6 +40368,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40336,6 +40387,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42904,6 +42956,13 @@ export namespace Prisma {
     not?: NestedEnumShoeSystemFilter<$PrismaModel> | $Enums.ShoeSystem
   }
 
+  export type EnumInactiveReasonNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InactiveReason | EnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInactiveReasonNullableFilter<$PrismaModel> | $Enums.InactiveReason | null
+  }
+
   export type WorkbenchRelationFilter = {
     is?: WorkbenchWhereInput
     isNot?: WorkbenchWhereInput
@@ -42931,6 +42990,7 @@ export namespace Prisma {
     shoeBrand?: SortOrder
     shoeModel?: SortOrder
     questionnaire?: SortOrder
+    inactiveReason?: SortOrder
     isChild?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -42952,6 +43012,7 @@ export namespace Prisma {
     shoeSystem?: SortOrder
     shoeBrand?: SortOrder
     shoeModel?: SortOrder
+    inactiveReason?: SortOrder
     isChild?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -42969,6 +43030,7 @@ export namespace Prisma {
     shoeSystem?: SortOrder
     shoeBrand?: SortOrder
     shoeModel?: SortOrder
+    inactiveReason?: SortOrder
     isChild?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -43007,6 +43069,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumShoeSystemFilter<$PrismaModel>
     _max?: NestedEnumShoeSystemFilter<$PrismaModel>
+  }
+
+  export type EnumInactiveReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InactiveReason | EnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInactiveReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.InactiveReason | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInactiveReasonNullableFilter<$PrismaModel>
+    _max?: NestedEnumInactiveReasonNullableFilter<$PrismaModel>
   }
 
   export type EnumProductTypeFilter<$PrismaModel = never> = {
@@ -45171,6 +45243,10 @@ export namespace Prisma {
     set?: $Enums.ShoeSystem
   }
 
+  export type NullableEnumInactiveReasonFieldUpdateOperationsInput = {
+    set?: $Enums.InactiveReason | null
+  }
+
   export type PatientUpdateOneRequiredWithoutFeetNestedInput = {
     create?: XOR<PatientCreateWithoutFeetInput, PatientUncheckedCreateWithoutFeetInput>
     connectOrCreate?: PatientCreateOrConnectWithoutFeetInput
@@ -46844,6 +46920,13 @@ export namespace Prisma {
     not?: NestedEnumShoeSystemFilter<$PrismaModel> | $Enums.ShoeSystem
   }
 
+  export type NestedEnumInactiveReasonNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.InactiveReason | EnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInactiveReasonNullableFilter<$PrismaModel> | $Enums.InactiveReason | null
+  }
+
   export type NestedEnumSideWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Side | EnumSideFieldRefInput<$PrismaModel>
     in?: $Enums.Side[] | ListEnumSideFieldRefInput<$PrismaModel>
@@ -46872,6 +46955,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumShoeSystemFilter<$PrismaModel>
     _max?: NestedEnumShoeSystemFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInactiveReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InactiveReason | EnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    in?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.InactiveReason[] | ListEnumInactiveReasonFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumInactiveReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.InactiveReason | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumInactiveReasonNullableFilter<$PrismaModel>
+    _max?: NestedEnumInactiveReasonNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumProductTypeFilter<$PrismaModel = never> = {
@@ -47845,6 +47938,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -47864,6 +47958,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -48054,6 +48149,7 @@ export namespace Prisma {
     shoeBrand?: StringNullableFilter<"Foot"> | string | null
     shoeModel?: StringNullableFilter<"Foot"> | string | null
     questionnaire?: JsonNullableFilter<"Foot">
+    inactiveReason?: EnumInactiveReasonNullableFilter<"Foot"> | $Enums.InactiveReason | null
     isChild?: BoolFilter<"Foot"> | boolean
     active?: BoolFilter<"Foot"> | boolean
     createdAt?: DateTimeFilter<"Foot"> | Date | string
@@ -49367,6 +49463,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -49387,6 +49484,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -49458,6 +49556,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49478,6 +49577,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49889,6 +49989,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -49908,6 +50009,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -52767,6 +52869,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -52832,6 +52935,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52851,6 +52955,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52869,6 +52974,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53524,6 +53630,7 @@ export namespace Prisma {
     shoeBrand?: string | null
     shoeModel?: string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: $Enums.InactiveReason | null
     isChild?: boolean
     active?: boolean
     createdAt?: Date | string
@@ -53635,6 +53742,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53654,6 +53762,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53672,6 +53781,7 @@ export namespace Prisma {
     shoeBrand?: NullableStringFieldUpdateOperationsInput | string | null
     shoeModel?: NullableStringFieldUpdateOperationsInput | string | null
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
+    inactiveReason?: NullableEnumInactiveReasonFieldUpdateOperationsInput | $Enums.InactiveReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
