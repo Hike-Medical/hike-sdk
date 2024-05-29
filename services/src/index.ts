@@ -56,6 +56,7 @@ export * from './hooks/useSearch';
 export * from './hooks/useSearchFacilities';
 export * from './hooks/useShipments';
 export * from './hooks/useStartEvaluationByProduct';
+export * from './hooks/useSubmitWorkbench';
 export * from './hooks/useUpdateNote';
 export * from './hooks/useUpdateTrackingInfo';
 export * from './hooks/useValidateShippingAddress';
