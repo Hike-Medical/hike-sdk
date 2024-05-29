@@ -6,7 +6,7 @@ interface SetFootInactiveParams extends SetFootInactive {
   footId: string;
 }
 
-export const useSetFootInactive = (mutationOptions?: UseMutationOptions<Foot, unknown, SetFootInactiveParams>) => {
+export const useSetFootInactive = (mutationOptions?: UseMutationOptions<Foot, Error, SetFootInactiveParams>) => {
   return useMutation({
     mutationKey: ['setInactive'],
     mutationFn: async (body: SetFootInactiveParams) => await setInactive(body.footId, body),
