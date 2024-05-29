@@ -1,16 +1,17 @@
-import type { CatalogCategory, PagedParams, PagedResponse } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
-import { fetchCatagories } from '../api/catalog.service';
+import type { CatalogCategory, GetCategoriesParams, PagedResponse } from '@hike/types';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { fetchCategories } from '../api/catalog.service';
 import { ResponseError } from '../errors/ResponseError';
 
-export interface UseCategoriesOptions extends PagedParams {
-  key?: string[];
-  enabled?: boolean;
+export interface UseCategoriesOptions
+  extends Omit<UseQueryOptions<PagedResponse<CatalogCategory[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  params?: GetCategoriesParams;
+  queryKey?: QueryKey;
 }
 
-export const useCategories = ({ key = [], enabled = true, ...params }: UseCategoriesOptions = {}) =>
-  useQuery<PagedResponse<CatalogCategory[]>, ResponseError<null>>({
-    queryKey: ['categories', ...key, params],
-    queryFn: async () => await fetchCatagories(params),
-    enabled
+export const useCategories = ({ params, queryKey = [], ...options }: UseCategoriesOptions = {}) =>
+  useQuery({
+    queryKey: ['categories', params, queryKey],
+    queryFn: async () => await fetchCategories(params),
+    ...options
   });
