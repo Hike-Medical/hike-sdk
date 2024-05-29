@@ -70,4 +70,5 @@ export * from './hooks/useGetFootStatus';
 export * from './hooks/useUploadVideoToS3';
 export * from './hooks/useUploadComplete';
 export * from './hooks/useSetFootInactive';
+export * from './hooks/useSetFootActive';
 export * from './utils/backendApi';

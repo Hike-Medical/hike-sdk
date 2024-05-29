@@ -10,3 +10,8 @@ export const setInactive = async (footId: string, body: SetFootInactive): Promis
   const response = await backendApi.post(`foot/${footId}/inactive`, body);
   return response.data;
 };
+
+export const setActive = async (footId: string): Promise<Foot> => {
+  const response = await backendApi.post(`foot/${footId}/active`);
+  return response.data;
+};
