@@ -1,5 +1,5 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { setActive } from '../api/feet.service';
+import { setActive } from '../api/foot.service';
 import { Foot } from '@hike/types';
 
 interface SetFootActiveParams {

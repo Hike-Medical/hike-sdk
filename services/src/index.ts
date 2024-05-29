@@ -9,7 +9,7 @@ export * from './api/patient.service';
 export * from './api/physician.service';
 export * from './api/shipping.service';
 export * from './api/workbench.service';
-export * from './api/feet.service';
+export * from './api/foot.service';
 export * from './api/asset.service';
 export * from './auth/defaultCompany';
 export * from './auth/findCompaniesBySession';
