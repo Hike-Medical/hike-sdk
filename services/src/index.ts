@@ -69,4 +69,5 @@ export * from './hooks/useGetPresignedURL';
 export * from './hooks/useGetFootStatus';
 export * from './hooks/useUploadVideoToS3';
 export * from './hooks/useUploadComplete';
+export * from './hooks/useSetFootInactive';
 export * from './utils/backendApi';
