@@ -252,8 +252,7 @@ export type ShoeSystem = (typeof ShoeSystem)[keyof typeof ShoeSystem]
 export const InactiveReason: {
   AMPUTATION: 'AMPUTATION',
   SKIPPED: 'SKIPPED',
-  TOE_FILLER: 'TOE_FILLER',
-  ORDER_SIDE: 'ORDER_SIDE'
+  TOE_FILLER: 'TOE_FILLER'
 };
 
 export type InactiveReason = (typeof InactiveReason)[keyof typeof InactiveReason]
