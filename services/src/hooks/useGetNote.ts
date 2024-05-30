@@ -1,14 +1,13 @@
 import { Notes } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { findNoteById } from '../api/evaluation.service';
+import { findNoteById } from '../api/notes.service';
 
 export const useGetNote = (
-  evaluationId: string,
   noteId: string,
   queryOptions?: Omit<UseQueryOptions<Notes, Error>, 'queryKey' | 'queryFn'>
 ) =>
   useQuery({
-    queryKey: ['getNote', evaluationId, noteId],
-    queryFn: async () => await findNoteById(evaluationId, noteId),
+    queryKey: ['getNote', noteId],
+    queryFn: async () => await findNoteById(noteId),
     ...queryOptions
   });

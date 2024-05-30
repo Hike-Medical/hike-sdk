@@ -1,16 +1,12 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { recoverNote } from '../api/evaluation.service';
+import { recoverNoteByIdForWorkbench } from '../api/notes.service';
 
 export const useRecoverNote = (
-  evaluationId: string,
   noteId: string,
-  mutationOptions?: Omit<
-    UseMutationOptions<unknown, Error, { evaluationId: string; noteId: string }>,
-    'mutationKey' | 'mutationFn'
-  >
+  mutationOptions?: Omit<UseMutationOptions<unknown, Error, { noteId: string }>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
-    mutationKey: ['recoverNote', evaluationId, noteId],
-    mutationFn: async () => await recoverNote(evaluationId, noteId),
+    mutationKey: ['recoverNote', noteId],
+    mutationFn: async () => await recoverNoteByIdForWorkbench(noteId),
     ...mutationOptions
   });

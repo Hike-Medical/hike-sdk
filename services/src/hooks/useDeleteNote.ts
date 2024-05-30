@@ -1,14 +1,13 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { deleteNotes } from '../api/evaluation.service';
+import { deleteNotesByIdForWorkbench } from '../api/notes.service';
 
 export interface DeleteNoteParams {
-  evaluationId: string;
   noteId: string;
 }
 
 export const useDeleteNote = (mutationOptions?: UseMutationOptions<void, Error, DeleteNoteParams>) =>
   useMutation({
     mutationKey: ['deleteNote'],
-    mutationFn: async ({ evaluationId, noteId }: DeleteNoteParams) => await deleteNotes(evaluationId, noteId),
+    mutationFn: async ({ noteId }: DeleteNoteParams) => await deleteNotesByIdForWorkbench(noteId),
     ...mutationOptions
   });

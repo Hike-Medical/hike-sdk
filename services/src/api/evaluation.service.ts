@@ -2,17 +2,14 @@ import type {
   ActionEvaluationParams,
   CreateEvaluationByProductParams,
   CreateEvaluationParams,
-  CreateNotesBody,
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
   GetEvaluationsParams,
-  Notes,
   PagedResponse,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
-  UpdateEvaluationParams,
-  UpdateNotesBody
+  UpdateEvaluationParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
@@ -85,33 +82,4 @@ export const uploadEvaluations = async (file: File): Promise<EvaluationsUploadRe
   });
 
   return response.data;
-};
-
-export const createNotes = async (evaluationId: string, body: CreateNotesBody): Promise<Notes> => {
-  const response = await backendApi.post(`evaluation/${evaluationId}/notes`, body);
-  return response.data;
-};
-
-export const findNotes = async (evaluationId: string, tags?: string[], deleted?: boolean): Promise<Notes[]> => {
-  const response = await backendApi.get(`evaluation/${evaluationId}/notes`, { params: { tags, deleted } });
-  return response.data;
-};
-
-export const recoverNote = async (evaluationId: string, noteId: string): Promise<Notes> => {
-  const response = await backendApi.post(`evaluation/${evaluationId}/notes/${noteId}/recover`);
-  return response.data;
-};
-
-export const findNoteById = async (evaluationId: string, noteId: string): Promise<Notes> => {
-  const response = await backendApi.get(`evaluation/${evaluationId}/notes/${noteId}`);
-  return response.data;
-};
-
-export const updateNotes = async (evaluationId: string, noteId: string, body: UpdateNotesBody): Promise<Notes> => {
-  const response = await backendApi.put(`evaluation/${evaluationId}/notes/${noteId}`, body);
-  return response.data;
-};
-
-export const deleteNotes = async (evaluationId: string, noteId: string): Promise<void> => {
-  await backendApi.delete(`evaluation/${evaluationId}/notes/${noteId}`);
 };
