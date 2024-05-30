@@ -22,6 +22,14 @@ export type FormFieldValue = string | string[] | number | number[] | boolean | n
 export type FormTemplateExtended = FormTemplate & { schema: FormSchema };
 export type FormSubmissionExtended = FormSubmission & { data: Record<string, FormFieldValue> };
 
+export interface FieldPrint {
+  label: string;
+  colspan: number;
+  position: number;
+  rowspan?: number;
+  format?: string;
+}
+
 interface BaseFormField<T extends FormFieldValue> {
   name: string;
   label: string;
@@ -29,7 +37,7 @@ interface BaseFormField<T extends FormFieldValue> {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
-  print?: boolean | { label: string };
+  print?: boolean | Record<string, FieldPrint>;
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;

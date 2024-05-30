@@ -66,6 +66,7 @@ export * from './hooks/useSetFootActive';
 export * from './hooks/useSetFootInactive';
 export * from './hooks/useShipments';
 export * from './hooks/useStartEvaluationByProduct';
+export * from './hooks/useSubmitWorkbench';
 export * from './hooks/useUpdateNote';
 export * from './hooks/useUpdateTrackingInfo';
 export * from './hooks/useUploadComplete';
