@@ -5,8 +5,7 @@ import type {
   GetCategoriesParams,
   GetProductsParams,
   GetVendorsParams,
-  PagedResponse,
-  SearchProductsParams
+  PagedResponse
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
@@ -25,35 +24,12 @@ export const fetchProducts = async (params?: GetProductsParams): Promise<PagedRe
   return response.data;
 };
 
-export const searchProducts = async (
-  params?: SearchProductsParams
-): Promise<PagedResponse<CatalogProductExtended[]>> => {
-  const response = await backendApi.get('catalog/product/search', { params });
-  return response.data;
-};
-
 export const fetchCategories = async (params?: GetCategoriesParams): Promise<PagedResponse<CatalogCategory[]>> => {
   const response = await backendApi.get('catalog/category', { params });
   return response.data;
 };
 
-export const fetchProductsByCategory = async (
-  categoryId: string,
-  params?: GetProductsParams
-): Promise<PagedResponse<CatalogProductExtended[]>> => {
-  const response = await backendApi.get(`catalog/product/category/${categoryId}`, { params });
-  return response.data;
-};
-
 export const fetchVendors = async (params?: GetVendorsParams): Promise<PagedResponse<CatalogVendor[]>> => {
   const response = await backendApi.get('catalog/vendor', { params });
-  return response.data;
-};
-
-export const fetchProductsByVendor = async (
-  vendorId: string,
-  params?: GetProductsParams
-): Promise<PagedResponse<CatalogProductExtended[]>> => {
-  const response = await backendApi.get(`catalog/vendor/${vendorId}`, { params });
   return response.data;
 };

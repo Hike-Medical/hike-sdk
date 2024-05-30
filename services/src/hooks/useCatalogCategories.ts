@@ -3,15 +3,15 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchCategories } from '../api/catalog.service';
 import { ResponseError } from '../errors/ResponseError';
 
-export interface UseCategoriesOptions
+export interface UseCatalogCategoriesOptions
   extends Omit<UseQueryOptions<PagedResponse<CatalogCategory[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetCategoriesParams;
   queryKey?: QueryKey;
 }
 
-export const useCategories = ({ params, queryKey = [], ...options }: UseCategoriesOptions = {}) =>
+export const useCatalogCategories = ({ params, queryKey = [], ...options }: UseCatalogCategoriesOptions = {}) =>
   useQuery({
-    queryKey: ['categories', params, queryKey],
+    queryKey: ['catalog-categories', params, queryKey],
     queryFn: async () => await fetchCategories(params),
     ...options
   });
