@@ -74,4 +74,5 @@ export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
 export * from './hooks/useUpsertFormSubmission';
+export * from './hooks/useUpdateEvaluation';
 export * from './utils/backendApi';
