@@ -1,4 +1,4 @@
-import requestCameraPermissions from '../src/web-apis/camera';
+import { requestCameraPermissions } from '../src/web-apis/camera';
 
 describe('requestCameraPermissions', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('requestCameraPermissions', () => {
     await expect(requestCameraPermissions()).resolves.toBeUndefined();
     expect(navigator.mediaDevices.getUserMedia).toHaveBeenCalledWith({ video: true });
     expect(mockStream.getTracks).toHaveBeenCalled();
-    expect(mockStream.getTracks()[0].stop).toHaveBeenCalled();
+    expect(mockStream.getTracks()[0]?.stop).toHaveBeenCalled();
   });
 
   it('should reject if camera access is denied', async () => {

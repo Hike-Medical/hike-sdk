@@ -33,11 +33,12 @@ export const toStartOfUTC = (value?: Date | null, timeZone?: string): Date | nul
  * // 2023-10-15T20:00:00.000Z
  *
  */
-export const fromStartOfUTC = (value?: Date | null): Date | null | undefined => {
+export const fromStartOfUTC = (value?: Date | null, timezoneOffset?: number): Date | null | undefined => {
   if (!value) {
     return value;
   }
 
-  const timezoneOffset = value.getTimezoneOffset() * 60000;
-  return new Date(value.getTime() - timezoneOffset);
+  const startDate = toStartOfUTC(value, 'UTC') ?? value;
+  const offset = timezoneOffset ?? startDate.getTimezoneOffset() * 60000;
+  return new Date(startDate.getTime() - offset);
 };
