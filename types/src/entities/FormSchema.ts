@@ -31,7 +31,7 @@ interface BaseFormField<T extends FormFieldValue> {
   required?: boolean;
   print?: boolean | { label: string };
   default?: T;
-  dbField?: { table: string; column: string; unique?: string };
+  dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;
 }
 
