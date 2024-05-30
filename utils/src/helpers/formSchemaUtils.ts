@@ -70,7 +70,7 @@ export const isFieldComplete = (
   isOnlyField: boolean
 ): boolean =>
   (!field.required && !isOnlyField) ||
-  (state && Object.keys(state).some((key) => key.startsWith(field.name))) ||
+  (state && Object.keys(state).some((key) => key.startsWith(field.name) && state[field.name] !== null)) ||
   !isFormFieldDisplayed(field, state);
 
 /**
