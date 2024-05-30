@@ -73,4 +73,5 @@ export * from './hooks/useUploadVideoToS3';
 export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
+export * from './hooks/useUpsertFormSubmission';
 export * from './utils/backendApi';
