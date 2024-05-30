@@ -3,13 +3,13 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { createNotes } from '../api/workbench.service';
 
 export interface CreateNotesParams {
-  evaluationId: string;
+  workbenchId: string;
   data: CreateNotesBody;
 }
 
 export const useCreateNotes = (mutationOptions?: UseMutationOptions<Notes, Error, CreateNotesParams>) =>
   useMutation({
     mutationKey: ['createNotes'],
-    mutationFn: async ({ evaluationId, data }: CreateNotesParams) => await createNotes(evaluationId, data),
+    mutationFn: async ({ workbenchId, data }: CreateNotesParams) => await createNotes(workbenchId, data),
     ...mutationOptions
   });

@@ -3,12 +3,12 @@ import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findNoteById } from '../api/workbench.service';
 
 export const useGetNote = (
-  evaluationId: string,
+  workbenchId: string,
   noteId: string,
   queryOptions?: Omit<UseQueryOptions<Notes, Error>, 'queryKey' | 'queryFn'>
 ) =>
   useQuery({
-    queryKey: ['getNote', evaluationId, noteId],
-    queryFn: async () => await findNoteById(evaluationId, noteId),
+    queryKey: ['getNote', workbenchId, noteId],
+    queryFn: async () => await findNoteById(workbenchId, noteId),
     ...queryOptions
   });
