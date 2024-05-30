@@ -1,6 +1,6 @@
 import { Notes, UpdateNotesBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { updateNotes } from '../api/evaluation.service';
+import { updateNotes } from '../api/workbench.service';
 
 export interface UpdateNotesParam {
   evaluationId: string;

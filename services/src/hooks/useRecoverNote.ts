@@ -1,5 +1,5 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { recoverNote } from '../api/evaluation.service';
+import { recoverNote } from '../api/workbench.service';
 
 export const useRecoverNote = (
   evaluationId: string,

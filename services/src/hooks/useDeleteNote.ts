@@ -1,5 +1,5 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { deleteNotes } from '../api/evaluation.service';
+import { deleteNotes } from '../api/workbench.service';
 
 export interface DeleteNoteParams {
   evaluationId: string;

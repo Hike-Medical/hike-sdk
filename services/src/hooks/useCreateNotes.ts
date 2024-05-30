@@ -1,6 +1,6 @@
 import { CreateNotesBody, Notes } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { createNotes } from '../api/evaluation.service';
+import { createNotes } from '../api/workbench.service';
 
 export interface CreateNotesParams {
   evaluationId: string;
