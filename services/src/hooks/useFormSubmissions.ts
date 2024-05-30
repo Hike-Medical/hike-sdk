@@ -1,17 +1,17 @@
 import type { FormSubmissionExtended } from '@hike/types';
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findFormSubmissionsByWorkbenchId } from '../api/form.service';
 import { ResponseError } from '../errors/ResponseError';
 
 export interface UseFormSubmissionsOptions
   extends Omit<UseQueryOptions<FormSubmissionExtended[], ResponseError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
-  key?: string[];
+  queryKey?: QueryKey;
 }
 
-export const useFormSubmissions = ({ workbenchId, key = [], ...options }: UseFormSubmissionsOptions) =>
+export const useFormSubmissions = ({ workbenchId, queryKey = [], ...options }: UseFormSubmissionsOptions) =>
   useQuery({
-    queryKey: ['formSubmissions', workbenchId, ...key],
+    queryKey: ['formSubmissions', workbenchId, queryKey],
     queryFn: async () => await findFormSubmissionsByWorkbenchId(workbenchId),
     ...options
   });
