@@ -1,6 +1,6 @@
 import { SubmitOrderBody, Workbench } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
-import { submitOrder } from 'api/workbench.service';
+import { submitOrder } from '../api/workbench.service';
 
 interface SubmitOrderParams {
   workbenchId: string;
