@@ -1,4 +1,4 @@
-import { EvaluationNotes as PrismaEvaluationNotes } from '../../../prisma';
+import { WorkbenchNotes as PrismaWorkbenchNotes } from '../../../prisma';
 
 export interface Block {
   image: string;
@@ -9,6 +9,6 @@ export interface Block {
   canvas: any[];
 }
 
-export interface Notes extends Omit<PrismaEvaluationNotes, 'blocks'> {
+export interface Notes extends Omit<PrismaWorkbenchNotes, 'blocks'> {
   blocks: Block[];
 }

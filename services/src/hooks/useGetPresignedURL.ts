@@ -1,6 +1,5 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { GenerateSignedURLDto, getPreSignedURL } from '../api/scan.service';
-import { GenerateSignedURLResponse } from '../api/workbench.service';
+import { GenerateSignedURLDto, GenerateSignedURLResponse, getPreSignedURL } from '../api/scan.service';
 
 export const useCreatePresignedUrl = (
   mutationOptions?: UseMutationOptions<GenerateSignedURLResponse, Error, GenerateSignedURLDto>
