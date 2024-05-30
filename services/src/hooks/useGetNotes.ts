@@ -1,7 +1,7 @@
 import { Notes } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { ResponseError } from 'errors/ResponseError';
-import { findNotes } from '../api/workbench.service';
+import { findNotesByWorkbenchId } from '../api/notes.service';
 
 export interface UseGetNotesOptions
   extends Omit<
@@ -19,7 +19,7 @@ export const useGetNotes = ({ workbenchId, tags, deleted = false, queryKey = [],
 
   const query = useQuery({
     queryKey: key,
-    queryFn: async () => await findNotes(workbenchId, tags, deleted),
+    queryFn: async () => await findNotesByWorkbenchId(workbenchId, tags, deleted),
     ...options
   });
 
