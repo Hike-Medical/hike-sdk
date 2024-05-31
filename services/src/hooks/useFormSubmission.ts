@@ -11,7 +11,7 @@ export interface UseFormSubmissionOptions
 }
 
 export const useFormSubmission = ({ templateId, workbenchId, queryKey = [], ...options }: UseFormSubmissionOptions) => {
-  const key = ['formSubmission', templateId, workbenchId, ...queryKey];
+  const key = ['formSubmission', templateId, workbenchId, queryKey];
 
   const query = useQuery({
     queryKey: key,
