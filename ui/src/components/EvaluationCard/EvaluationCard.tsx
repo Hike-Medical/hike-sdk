@@ -142,7 +142,7 @@ export function EvaluationCard({
   };
 
   return (
-    <Paper shadow="md" p="md">
+    <Paper withBorder p="md">
       <Stack gap={'xs'} mb={5}>
         <Group justify="space-between" wrap="nowrap">
           <Text fw={600} size="20px" style={{ flexShrink: 2 }}>
@@ -155,24 +155,24 @@ export function EvaluationCard({
           )}
         </Group>
         {poNumber && (
-          <Text fw={500} size="12px">
+          <Text fw={500} size="md">
             PO: {poNumber}
           </Text>
         )}
         {birthDate && (
-          <Text fw={500} size="12px">
+          <Text fw={500} size="md">
             DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
           </Text>
         )}
         {clinician && (
-          <Text fw={500} size="12px">
+          <Text fw={500} size="md">
             Clinician: {clinician}
           </Text>
         )}
       </Stack>
       <Group gap={'xs'}>
         <Badge variant="filled" color={renderStatusColor()} tt="none" mt={10} p={15}>
-          <Text fw={600} size="12px" c={status === 'INCOMPLETE' ? 'white' : 'black'} display={'inline'}>
+          <Text fw={600} size="md" c={status === 'INCOMPLETE' ? 'white' : 'black'} display={'inline'}>
             {' '}
             {renderBadgeText()}
           </Text>
@@ -187,7 +187,7 @@ export function EvaluationCard({
         }}
         wrap="nowrap"
       >
-        <Text fw={500} size="12px">
+        <Text fw={500} size="md">
           {renderTimestampText()}
         </Text>
 
@@ -218,12 +218,12 @@ export function EvaluationCard({
             </Text>
 
             {poNumber && (
-              <Text fw={500} size="12px" c="#91A3B6">
+              <Text fw={500} size="md" c="#91A3B6">
                 PO: {poNumber}
               </Text>
             )}
             {clinician && (
-              <Text fw={500} size="12px" c="#91A3B6">
+              <Text fw={500} size="md" c="#91A3B6">
                 Clinician: {clinician}
               </Text>
             )}

@@ -13468,6 +13468,7 @@ export namespace Prisma {
     status: $Enums.WorkbenchStatus | null
     failedAt: Date | null
     completedAt: Date | null
+    submittedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13481,6 +13482,7 @@ export namespace Prisma {
     status: $Enums.WorkbenchStatus | null
     failedAt: Date | null
     completedAt: Date | null
+    submittedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13495,6 +13497,7 @@ export namespace Prisma {
     status: number
     failedAt: number
     completedAt: number
+    submittedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -13510,6 +13513,7 @@ export namespace Prisma {
     status?: true
     failedAt?: true
     completedAt?: true
+    submittedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13523,6 +13527,7 @@ export namespace Prisma {
     status?: true
     failedAt?: true
     completedAt?: true
+    submittedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13537,6 +13542,7 @@ export namespace Prisma {
     status?: true
     failedAt?: true
     completedAt?: true
+    submittedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -13624,6 +13630,7 @@ export namespace Prisma {
     status: $Enums.WorkbenchStatus
     failedAt: Date | null
     completedAt: Date | null
+    submittedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: WorkbenchCountAggregateOutputType | null
@@ -13655,6 +13662,7 @@ export namespace Prisma {
     status?: boolean
     failedAt?: boolean
     completedAt?: boolean
+    submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -13678,6 +13686,7 @@ export namespace Prisma {
     status?: boolean
     failedAt?: boolean
     completedAt?: boolean
+    submittedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -13718,6 +13727,7 @@ export namespace Prisma {
       status: $Enums.WorkbenchStatus
       failedAt: Date | null
       completedAt: Date | null
+      submittedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["workbench"]>
@@ -14164,6 +14174,7 @@ export namespace Prisma {
     readonly status: FieldRef<"Workbench", 'WorkbenchStatus'>
     readonly failedAt: FieldRef<"Workbench", 'DateTime'>
     readonly completedAt: FieldRef<"Workbench", 'DateTime'>
+    readonly submittedAt: FieldRef<"Workbench", 'DateTime'>
     readonly createdAt: FieldRef<"Workbench", 'DateTime'>
     readonly updatedAt: FieldRef<"Workbench", 'DateTime'>
   }
@@ -36498,6 +36509,7 @@ export namespace Prisma {
     status: 'status',
     failedAt: 'failedAt',
     completedAt: 'completedAt',
+    submittedAt: 'submittedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -38018,6 +38030,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     createdAt?: DateTimeFilter<"Workbench"> | Date | string
     updatedAt?: DateTimeFilter<"Workbench"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -38040,6 +38053,7 @@ export namespace Prisma {
     status?: SortOrder
     failedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
@@ -38065,6 +38079,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     createdAt?: DateTimeFilter<"Workbench"> | Date | string
     updatedAt?: DateTimeFilter<"Workbench"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -38087,6 +38102,7 @@ export namespace Prisma {
     status?: SortOrder
     failedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: WorkbenchCountOrderByAggregateInput
@@ -38107,6 +38123,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusWithAggregatesFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableWithAggregatesFilter<"Workbench"> | Date | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"Workbench"> | Date | string | null
+    submittedAt?: DateTimeNullableWithAggregatesFilter<"Workbench"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Workbench"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Workbench"> | Date | string
   }
@@ -40497,6 +40514,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -40519,6 +40537,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -40535,6 +40554,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -40557,6 +40577,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -40576,6 +40597,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -40587,6 +40609,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -40601,6 +40624,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -43213,6 +43237,7 @@ export namespace Prisma {
     status?: SortOrder
     failedAt?: SortOrder
     completedAt?: SortOrder
+    submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -43226,6 +43251,7 @@ export namespace Prisma {
     status?: SortOrder
     failedAt?: SortOrder
     completedAt?: SortOrder
+    submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -43239,6 +43265,7 @@ export namespace Prisma {
     status?: SortOrder
     failedAt?: SortOrder
     completedAt?: SortOrder
+    submittedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -48050,6 +48077,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     product: ProductCreateNestedOneWithoutWorkbenchesInput
@@ -48070,6 +48098,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -48196,6 +48225,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
+    submittedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
     createdAt?: DateTimeFilter<"Workbench"> | Date | string
     updatedAt?: DateTimeFilter<"Workbench"> | Date | string
   }
@@ -48594,6 +48624,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -48614,6 +48645,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -48964,6 +48996,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -48985,6 +49018,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -49107,6 +49141,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -49128,6 +49163,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -49220,6 +49256,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -49241,6 +49278,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutWorkbenchInput
@@ -49384,6 +49422,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -49404,6 +49443,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -50098,6 +50138,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -50119,6 +50160,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -50183,6 +50225,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -50204,6 +50247,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -50258,6 +50302,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -50279,6 +50324,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -50310,6 +50356,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -50331,6 +50378,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -50911,6 +50959,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutWorkbenchesInput
@@ -50932,6 +50981,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assets?: AssetUncheckedCreateNestedManyWithoutWorkbenchesInput
@@ -50992,6 +51042,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -51013,6 +51064,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -52853,6 +52905,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -53018,6 +53071,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -53038,6 +53092,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -53056,6 +53111,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -53182,6 +53238,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -53220,6 +53277,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -53240,6 +53298,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -53258,6 +53317,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -53327,6 +53387,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -53348,6 +53409,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutWorkbenchNestedInput
@@ -53366,6 +53428,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -53379,6 +53442,7 @@ export namespace Prisma {
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
     completedAt?: Date | string | null
+    submittedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -53458,6 +53522,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutWorkbenchesNestedInput
@@ -53478,6 +53543,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assets?: AssetUncheckedUpdateManyWithoutWorkbenchesNestedInput
@@ -53496,6 +53562,7 @@ export namespace Prisma {
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

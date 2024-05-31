@@ -39,11 +39,11 @@ export function PatientCard({
         <Text fw={600} size="20px">
           {toTitleCase(firstName)} {middleName && toTitleCase(middleName)} {toTitleCase(lastName)}
         </Text>
-        <Text fw={500} size="12px">
+        <Text fw={500} size="md">
           Patient ID: {id}
         </Text>
         {birthDate && (
-          <Text fw={500} size="12px">
+          <Text fw={500} size="md">
             DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
           </Text>
         )}
