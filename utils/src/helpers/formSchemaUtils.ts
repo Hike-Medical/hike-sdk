@@ -68,10 +68,16 @@ export const isFieldComplete = (
   field: FormField,
   state: Record<string, FormFieldValue>,
   isOnlyField: boolean
-): boolean =>
-  (!field.required && !isOnlyField) ||
-  (state && Object.keys(state).some((key) => key.startsWith(field.name) && state[field.name] !== null)) ||
-  !isFormFieldDisplayed(field, state);
+): boolean => {
+  return (
+    (!field.required && !isOnlyField) ||
+    (state &&
+      Object.keys(state).some(
+        (key) => key.startsWith(field.name) && state[key] !== null && (state[key] !== '' || !field.required)
+      )) ||
+    !isFormFieldDisplayed(field, state)
+  );
+};
 
 /**
  * Determines if all the required fields in the form are answered.
