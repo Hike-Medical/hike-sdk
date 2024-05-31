@@ -3,8 +3,11 @@ import type { FormField, FormFieldValue, FormRule, FormSchema, FormSection } fro
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
  */
-export const isFormFieldDisplayed = (field: FormField, state: Record<string, FormFieldValue>): boolean =>
-  isFormRuleDisplayed(field, state);
+export const isFormFieldDisplayed = (
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
+): boolean => isFormRuleDisplayed(field, state, activeFoot);
 
 /**
  * Determines if a given form section should be displayed based on its rule and current form state.
@@ -12,14 +15,20 @@ export const isFormFieldDisplayed = (field: FormField, state: Record<string, For
 export const isFormSectionDisplayed = (section: FormSection, state: Record<string, FormFieldValue>): boolean =>
   isFormRuleDisplayed(section, state);
 
-const isFormRuleDisplayed = (formItem: { rule?: FormRule }, state: Record<string, FormFieldValue>): boolean => {
+export const isFormRuleDisplayed = (
+  formItem: { rule?: FormRule },
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
+): boolean => {
   if (!formItem.rule || !state) {
     return true;
   }
 
   const { effect, condition } = formItem.rule;
+
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name];
+
+  const selectedValue = state[condition.name + (activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -67,7 +76,8 @@ const isFormRuleDisplayed = (formItem: { rule?: FormRule }, state: Record<string
 export const isFieldComplete = (
   field: FormField,
   state: Record<string, FormFieldValue>,
-  isOnlyField: boolean
+  isOnlyField: boolean,
+  activeFoot?: string
 ): boolean => {
   return (
     (!field.required && !isOnlyField) ||
@@ -76,18 +86,22 @@ export const isFieldComplete = (
         (key) =>
           key.startsWith(field.name) && state[key] !== null && (state[key]?.toLocaleString() !== '' || !field.required)
       )) ||
-    !isFormFieldDisplayed(field, state)
+    !isFormFieldDisplayed(field, state, activeFoot)
   );
 };
 
 /**
  * Determines if all the required fields in the form are answered.
  */
-export const isFormValid = (schema: FormSchema | null | undefined, state: Record<string, FormFieldValue>): boolean =>
+export const isFormValid = (
+  schema: FormSchema | null | undefined,
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
+): boolean =>
   !!schema?.sections
     .filter((section) => isFormSectionDisplayed(section, state))
     .flatMap((section) => section.fields)
-    .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1));
+    .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot));
 
 /**
  * The initial values for the form fields based on the template and submission.
@@ -115,35 +129,46 @@ export const initialFormValues = (
 /**
  * Calculates statistics for a given form schema based on the current state.
  */
+export const getValidSections = (schema: FormSchema, state: Record<string, FormFieldValue>): FormSection[] => {
+  return schema.sections.filter((section) => isFormSectionDisplayed(section, state));
+};
+
+export const completedSections = (
+  validSections: FormSection[],
+  state: Record<string, FormFieldValue>
+): FormSection[] => {
+  return validSections.filter((section) =>
+    section.fields
+      .filter((field) => isFormFieldDisplayed(field, state))
+      .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1))
+  );
+};
+
 export const schemaStats = (
   schema: FormSchema,
-  state: Record<string, FormFieldValue>
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
 ): {
   sectionsCompleted: number;
   sectionsTotal: number;
-  sectionNext: number | null;
+  sectionNext: FormSection | null;
 } => {
-  const validSections = schema.sections.filter((section) => isFormSectionDisplayed(section, state));
-
-  const sectionsCompleted = validSections.filter(
-    (section) =>
-      isFormSectionDisplayed(section, state) &&
-      section.fields
-        .filter((field) => isFormFieldDisplayed(field, state))
-        .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1))
+  const validSections = getValidSections(schema, state);
+  const sectionsCompleted = validSections.filter((section) =>
+    section.fields
+      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot))
   ).length;
 
-  const sectionNext = validSections.findIndex(
-    (section) =>
-      isFormSectionDisplayed(section, state) &&
-      section.fields
-        .filter((field) => isFormFieldDisplayed(field, state))
-        .some((field, _, fields) => !isFieldComplete(field, state, fields.length === 1))
+  const sectionNext = validSections.find((section) =>
+    section.fields
+      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .some((field, _, fields) => !isFieldComplete(field, state, fields.length === 1, activeFoot))
   );
 
   return {
     sectionsCompleted,
     sectionsTotal: validSections.length,
-    sectionNext: sectionNext >= 0 ? sectionNext : null
+    sectionNext: sectionNext ?? validSections[0] ?? null
   };
 };
