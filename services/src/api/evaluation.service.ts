@@ -43,6 +43,16 @@ export const cancelEvaluation = async (params: ActionEvaluationParams): Promise<
   return response.data;
 };
 
+export const editEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post(`evaluation/${params.evaluationId}/edit`);
+  return response.data;
+};
+
+export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+  const response = await backendApi.post(`evaluation/${params.evaluationId}/remake`);
+  return response.data;
+};
+
 export const findEvaluationById = async (evaluationId: string): Promise<EvaluationExtended> => {
   const response = await backendApi.get(`evaluation/${evaluationId}`);
   return response.data;
