@@ -126,23 +126,12 @@ export const initialFormValues = (
       return acc;
     }, {}) ?? {};
 
-/**
- * Calculates statistics for a given form schema based on the current state.
- */
-export const getValidSections = (schema: FormSchema, state: Record<string, FormFieldValue>): FormSection[] => {
-  return schema.sections.filter((section) => isFormSectionDisplayed(section, state));
-};
-
-export const completedSections = (
-  validSections: FormSection[],
-  state: Record<string, FormFieldValue>
-): FormSection[] => {
-  return validSections.filter((section) =>
+export const completedSections = (validSections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
+  validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state))
       .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1))
   );
-};
 
 export const schemaStats = (
   schema: FormSchema,
@@ -153,7 +142,7 @@ export const schemaStats = (
   sectionsTotal: number;
   sectionNext: FormSection | null;
 } => {
-  const validSections = getValidSections(schema, state);
+  const validSections = schema.sections.filter((section) => isFormSectionDisplayed(section, state));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
