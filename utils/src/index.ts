@@ -1,6 +1,6 @@
 export * from './constants';
-export * from './converters/convertUTCToLocalTime';
 export * from './converters/formatConstant';
+export * from './converters/formatDate';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';

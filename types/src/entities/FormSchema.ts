@@ -19,8 +19,8 @@ export interface FormSection {
 }
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
-export type FormTemplateExtended = FormTemplate & { schema: FormSchema };
-export type FormSubmissionExtended = FormSubmission & { data: Record<string, FormFieldValue> };
+export type FormTemplateTyped = FormTemplate & { schema: FormSchema };
+export type FormSubmissionTyped = FormSubmission & { data: Record<string, FormFieldValue> };
 
 export interface FieldPrint {
   label: string;
