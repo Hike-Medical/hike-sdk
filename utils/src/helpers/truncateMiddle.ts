@@ -6,5 +6,5 @@
  * @param length The desired length of each of the truncated string.
  * @returns The truncated string with ellipses added in the middle if necessary.
  */
-export const truncateMiddle = (text: string | null | undefined, length: number) =>
+export const truncateMiddle = (text: string | null | undefined, length: number = 4) =>
   !text ? '' : text.length <= length * 2 ? text : `${text.slice(0, length).trim()}...${text.slice(-length).trim()}`;

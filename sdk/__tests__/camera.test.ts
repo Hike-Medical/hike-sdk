@@ -1,4 +1,4 @@
-import { requestCameraPermissions } from '../src/web-apis/camera';
+import { requestCameraPermissions } from '../src/ui/media/camera';
 
 describe('requestCameraPermissions', () => {
   beforeEach(() => {
