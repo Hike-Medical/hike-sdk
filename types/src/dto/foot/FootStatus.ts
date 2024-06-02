@@ -1,6 +1,7 @@
 import { InactiveReason } from '../../../prisma';
 
 export interface FootStatus {
+  id: string;
   notStarted: boolean;
   error: boolean;
   pending: boolean;
