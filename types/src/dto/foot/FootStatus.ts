@@ -1,4 +1,4 @@
-import { InactiveReason } from '../../../prisma';
+import { InactiveFootReason } from '../../../prisma';
 
 export interface FootStatus {
   id: string;
@@ -8,5 +8,5 @@ export interface FootStatus {
   rejected: boolean;
   success: boolean;
   active: boolean;
-  inactiveReason: InactiveReason | null;
+  inactiveReason: InactiveFootReason | null;
 }
