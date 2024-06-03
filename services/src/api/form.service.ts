@@ -1,21 +1,21 @@
-import type { FormSubmissionTyped, FormTemplateTyped, UpsertFormSubmissionParams } from '@hike/types';
+import type { FormSchemaTyped, FormSubmissionTyped, UpsertFormSubmissionParams } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
-export const findFormTemplateById = async (templateId: string): Promise<FormTemplateTyped> => {
-  const response = await backendApi.get(`form/template/${templateId}`);
+export const findFormSchemaById = async (schemaId: string): Promise<FormSchemaTyped> => {
+  const response = await backendApi.get(`form/schema/${schemaId}`);
   return response.data;
 };
 
-export const findFormTemplatesByIds = async (templateIds: string[]): Promise<FormTemplateTyped[]> => {
-  const response = await backendApi.get(`form/template?templateIds=${templateIds.join(',')}`);
+export const findFormSchemasByIds = async (schemaIds: string[]): Promise<FormSchemaTyped[]> => {
+  const response = await backendApi.get(`form/schema?schemaIds=${schemaIds.join(',')}`);
   return response.data;
 };
 
 export const findFormSubmission = async (
-  templateId: string,
+  schemaId: string,
   workbenchId: string
 ): Promise<FormSubmissionTyped | null> => {
-  const response = await backendApi.get(`form/template/${templateId}/workbench/${workbenchId}/submission`);
+  const response = await backendApi.get(`form/schema/${schemaId}/workbench/${workbenchId}/submission`);
   return response.data;
 };
 

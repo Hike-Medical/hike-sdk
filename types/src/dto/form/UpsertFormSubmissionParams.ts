@@ -1,5 +1,5 @@
 export interface UpsertFormSubmissionParams {
   workbenchId: string;
-  templateId: string;
+  schemaId: string;
   data: object;
 }

@@ -1,4 +1,4 @@
-import type { FormField, FormFieldValue, FormRule, FormSchema, FormSection } from '@hike/types';
+import type { FormField, FormFieldValue, FormRule, FormSchemaTyped, FormSection } from '@hike/types';
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -94,7 +94,7 @@ export const isFieldComplete = (
  * Determines if all the required fields in the form are answered.
  */
 export const isFormValid = (
-  schema: FormSchema | null | undefined,
+  schema: FormSchemaTyped['data'] | null | undefined,
   state: Record<string, FormFieldValue>,
   activeFoot?: string
 ): boolean =>
@@ -107,7 +107,7 @@ export const isFormValid = (
  * The initial values for the form fields based on the template and submission.
  */
 export const initialFormValues = (
-  schema: FormSchema | null | undefined,
+  schema: FormSchemaTyped['data'] | null | undefined,
   submission: Record<string, FormFieldValue> | null | undefined
 ): Record<string, FormFieldValue> =>
   schema?.sections
@@ -134,7 +134,7 @@ export const completedSections = (validSections: FormSection[], state: Record<st
   );
 
 export const schemaStats = (
-  schema: FormSchema,
+  schema: FormSchemaTyped['data'],
   state: Record<string, FormFieldValue>,
   activeFoot?: string
 ): {
