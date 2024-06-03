@@ -52,7 +52,7 @@ export type FormField =
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string> & {
       type: 'select';
-      options: { label: string; value: string }[];
+      options: { label: string; value: string; description?: string }[];
       ui?: 'dropdown' | 'radio' | 'segmented';
     })
   | (BaseFormField<string> & { type: 'select:gender' })
