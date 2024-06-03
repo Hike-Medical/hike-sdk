@@ -69,8 +69,6 @@ export const updateUserTemplate = async (
   userTemplateId: string,
   body: UpdateUserTemplateBody
 ): Promise<UserTemplateResponse> => {
-  console.log('userTemplateId', userTemplateId);
-  console.log('body', body);
   const response = await backendApi.put(`form/user-template/${userTemplateId}`, body);
   return response.data;
 };

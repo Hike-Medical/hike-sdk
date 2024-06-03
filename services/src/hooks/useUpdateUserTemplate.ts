@@ -16,7 +16,6 @@ export const useUpdateUserTemplate = (
   return useMutation({
     mutationKey: ['updateUserTemplate'],
     mutationFn: async (params: UpdateUserTemplateParams) => {
-      console.log('params', params);
       return await updateUserTemplate(params.userTemplateId, params.body);
     },
     ...mutationOptions
