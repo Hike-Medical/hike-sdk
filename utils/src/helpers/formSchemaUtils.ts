@@ -104,7 +104,7 @@ export const isFormValid = (
     .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot));
 
 /**
- * The initial values for the form fields based on the template and submission.
+ * The initial values for the form fields based on the schema and submission.
  */
 export const initialFormValues = (
   schema: FormSchemaTyped['data'] | null | undefined,
