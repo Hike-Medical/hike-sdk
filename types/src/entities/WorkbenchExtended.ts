@@ -1,13 +1,5 @@
-import type {
-  Asset,
-  Evaluation,
-  FormSubmission,
-  Order,
-  Patient,
-  Product,
-  Workbench,
-  WorkbenchNotes
-} from '../../prisma';
+import type { Asset, Evaluation, Order, Patient, Product, Workbench, WorkbenchNotes } from '../../prisma';
+import { FormSubmissionExtended } from './FormSubmissionExtended';
 
 export type WorkbenchExtended = Workbench & {
   patient: Patient;
@@ -15,6 +7,6 @@ export type WorkbenchExtended = Workbench & {
   evaluation: Evaluation;
   orders: Order[];
   assets: Asset[];
-  formSubmissions: FormSubmission[];
+  formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
 };

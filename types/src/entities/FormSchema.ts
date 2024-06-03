@@ -19,8 +19,8 @@ export interface FormSection {
 }
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
-export type FormTemplateExtended = FormTemplate & { schema: FormSchema };
-export type FormSubmissionExtended = FormSubmission & { data: Record<string, FormFieldValue> };
+export type FormTemplateTyped = FormTemplate & { schema: FormSchema };
+export type FormSubmissionTyped = FormSubmission & { data: Record<string, FormFieldValue> };
 
 export interface FieldPrint {
   label: string;
@@ -53,7 +53,7 @@ export type FormField =
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string> & {
       type: 'select';
-      options: { label: string; value: string }[];
+      options: { label: string; value: string; description?: string }[];
       ui?: 'dropdown' | 'radio' | 'segmented';
     })
   | (BaseFormField<string> & { type: 'select:gender' })

@@ -1,10 +1,10 @@
-import { FormSubmissionExtended } from 'entities/FormSchema';
+import { FormSubmissionTyped } from 'entities/FormSchema';
 import { UserTemplate } from '../../../prisma';
 
 interface Data {
   name: string;
   formTemplateId: string;
-  data: FormSubmissionExtended['data'];
+  data: FormSubmissionTyped['data'];
 }
 
 export interface UserTemplateResponse extends Omit<UserTemplate, 'data'> {

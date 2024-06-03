@@ -1,10 +1,10 @@
+import { FormSubmissionTyped, UpsertFormSubmissionParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { FormSubmissionExtended, UpsertFormSubmissionParams } from '@hike/types';
 import { upsertFormSubmission } from '../api/form.service';
 
 export const useUpsertSubmission = (
   mutationOptions?: Omit<
-    UseMutationOptions<FormSubmissionExtended, Error, UpsertFormSubmissionParams>,
+    UseMutationOptions<FormSubmissionTyped, Error, UpsertFormSubmissionParams>,
     'mutationKey' | 'mutationFn'
   >
 ) => {

@@ -9,17 +9,9 @@ export interface UseEvaluationsOptions
   queryKey?: QueryKey;
 }
 
-export const useEvaluations = ({ params, queryKey = [], ...options }: UseEvaluationsOptions) => {
-  const key = ['evaluations', params, ...queryKey];
-
-  const query = useQuery({
-    queryKey: key,
+export const useEvaluations = ({ params, queryKey = [], ...options }: UseEvaluationsOptions) =>
+  useQuery({
+    queryKey: ['evaluations', params, queryKey],
     queryFn: async () => await findEvaluations(params),
     ...options
   });
-
-  return {
-    queryKey: key,
-    ...query
-  };
-};
