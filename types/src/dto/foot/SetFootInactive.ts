@@ -1,5 +1,5 @@
-import { InactiveReason } from '../../../prisma';
+import { InactiveFootReason } from '../../../prisma';
 
 export interface SetFootInactive {
-  inactiveReason: InactiveReason;
+  inactiveReason: InactiveFootReason;
 }
