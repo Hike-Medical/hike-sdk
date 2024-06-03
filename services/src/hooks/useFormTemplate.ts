@@ -12,7 +12,7 @@ export interface UseFormTemplateOptions
 }
 
 export const useFormTemplate = ({ templateId, templateable, queryKey = [], ...options }: UseFormTemplateOptions) => {
-  const key = ['formTemplate', templateId, ...queryKey];
+  const key = ['formTemplate', templateId, templateable, ...queryKey];
 
   const query = useQuery({
     queryKey: key,
