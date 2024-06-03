@@ -6,16 +6,17 @@ import { ResponseError } from '../errors/ResponseError';
 export interface UseFormTemplateOptions
   extends Omit<UseQueryOptions<FormTemplateExtended | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   templateId: string;
+  templateable?: boolean;
   enabled?: boolean;
   queryKey?: QueryKey;
 }
 
-export const useFormTemplate = ({ templateId, queryKey = [], ...options }: UseFormTemplateOptions) => {
+export const useFormTemplate = ({ templateId, templateable, queryKey = [], ...options }: UseFormTemplateOptions) => {
   const key = ['formTemplate', templateId, ...queryKey];
 
   const query = useQuery({
     queryKey: key,
-    queryFn: async () => await findFormTemplateById(templateId),
+    queryFn: async () => await findFormTemplateById(templateId, templateable),
     ...options
   });
 

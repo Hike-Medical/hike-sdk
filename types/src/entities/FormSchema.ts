@@ -41,6 +41,7 @@ interface BaseFormField<T extends FormFieldValue> {
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;
+  templateable?: boolean;
 }
 
 export type FormField =

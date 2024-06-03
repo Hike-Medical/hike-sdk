@@ -114,6 +114,11 @@ export type FormTemplate = $Result.DefaultSelection<Prisma.$FormTemplatePayload>
  */
 export type FormSubmission = $Result.DefaultSelection<Prisma.$FormSubmissionPayload>
 /**
+ * Model UserTemplates
+ * 
+ */
+export type UserTemplates = $Result.DefaultSelection<Prisma.$UserTemplatesPayload>
+/**
  * Model CatalogProduct
  * 
  */
@@ -792,6 +797,16 @@ export class PrismaClient<
   get formSubmission(): Prisma.FormSubmissionDelegate<ExtArgs>;
 
   /**
+   * `prisma.userTemplates`: Exposes CRUD operations for the **UserTemplates** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserTemplates
+    * const userTemplates = await prisma.userTemplates.findMany()
+    * ```
+    */
+  get userTemplates(): Prisma.UserTemplatesDelegate<ExtArgs>;
+
+  /**
    * `prisma.catalogProduct`: Exposes CRUD operations for the **CatalogProduct** model.
     * Example usage:
     * ```ts
@@ -1397,6 +1412,7 @@ export namespace Prisma {
     VisitType: 'VisitType',
     FormTemplate: 'FormTemplate',
     FormSubmission: 'FormSubmission',
+    UserTemplates: 'UserTemplates',
     CatalogProduct: 'CatalogProduct',
     CatalogProductAttribute: 'CatalogProductAttribute',
     CatalogProductVariant: 'CatalogProductVariant',
@@ -1424,7 +1440,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formTemplate' | 'formSubmission' | 'userTemplates' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2825,6 +2841,76 @@ export namespace Prisma {
           count: {
             args: Prisma.FormSubmissionCountArgs<ExtArgs>,
             result: $Utils.Optional<FormSubmissionCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserTemplates: {
+        payload: Prisma.$UserTemplatesPayload<ExtArgs>
+        fields: Prisma.UserTemplatesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserTemplatesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserTemplatesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          findFirst: {
+            args: Prisma.UserTemplatesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserTemplatesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          findMany: {
+            args: Prisma.UserTemplatesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>[]
+          }
+          create: {
+            args: Prisma.UserTemplatesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          createMany: {
+            args: Prisma.UserTemplatesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserTemplatesCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>[]
+          }
+          delete: {
+            args: Prisma.UserTemplatesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          update: {
+            args: Prisma.UserTemplatesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserTemplatesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserTemplatesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserTemplatesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserTemplatesPayload>
+          }
+          aggregate: {
+            args: Prisma.UserTemplatesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateUserTemplates>
+          }
+          groupBy: {
+            args: Prisma.UserTemplatesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<UserTemplatesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserTemplatesCountArgs<ExtArgs>,
+            result: $Utils.Optional<UserTemplatesCountAggregateOutputType> | number
           }
         }
       }
@@ -25474,6 +25560,933 @@ export namespace Prisma {
 
 
   /**
+   * Model UserTemplates
+   */
+
+  export type AggregateUserTemplates = {
+    _count: UserTemplatesCountAggregateOutputType | null
+    _min: UserTemplatesMinAggregateOutputType | null
+    _max: UserTemplatesMaxAggregateOutputType | null
+  }
+
+  export type UserTemplatesMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserTemplatesMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserTemplatesCountAggregateOutputType = {
+    id: number
+    userId: number
+    templateId: number
+    title: number
+    description: number
+    data: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserTemplatesMinAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserTemplatesMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserTemplatesCountAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    title?: true
+    description?: true
+    data?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserTemplatesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserTemplates to aggregate.
+     */
+    where?: UserTemplatesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserTemplates to fetch.
+     */
+    orderBy?: UserTemplatesOrderByWithRelationInput | UserTemplatesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserTemplatesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserTemplates
+    **/
+    _count?: true | UserTemplatesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserTemplatesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserTemplatesMaxAggregateInputType
+  }
+
+  export type GetUserTemplatesAggregateType<T extends UserTemplatesAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserTemplates]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserTemplates[P]>
+      : GetScalarType<T[P], AggregateUserTemplates[P]>
+  }
+
+
+
+
+  export type UserTemplatesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserTemplatesWhereInput
+    orderBy?: UserTemplatesOrderByWithAggregationInput | UserTemplatesOrderByWithAggregationInput[]
+    by: UserTemplatesScalarFieldEnum[] | UserTemplatesScalarFieldEnum
+    having?: UserTemplatesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserTemplatesCountAggregateInputType | true
+    _min?: UserTemplatesMinAggregateInputType
+    _max?: UserTemplatesMaxAggregateInputType
+  }
+
+  export type UserTemplatesGroupByOutputType = {
+    id: string
+    userId: string
+    templateId: string
+    title: string
+    description: string | null
+    data: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    _count: UserTemplatesCountAggregateOutputType | null
+    _min: UserTemplatesMinAggregateOutputType | null
+    _max: UserTemplatesMaxAggregateOutputType | null
+  }
+
+  type GetUserTemplatesGroupByPayload<T extends UserTemplatesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserTemplatesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserTemplatesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserTemplatesGroupByOutputType[P]>
+            : GetScalarType<T[P], UserTemplatesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserTemplatesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    title?: boolean
+    description?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userTemplates"]>
+
+  export type UserTemplatesSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    title?: boolean
+    description?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $UserTemplatesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserTemplates"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      templateId: string
+      title: string
+      description: string | null
+      data: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userTemplates"]>
+    composites: {}
+  }
+
+
+  type UserTemplatesGetPayload<S extends boolean | null | undefined | UserTemplatesDefaultArgs> = $Result.GetResult<Prisma.$UserTemplatesPayload, S>
+
+  type UserTemplatesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserTemplatesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UserTemplatesCountAggregateInputType | true
+    }
+
+  export interface UserTemplatesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserTemplates'], meta: { name: 'UserTemplates' } }
+    /**
+     * Find zero or one UserTemplates that matches the filter.
+     * @param {UserTemplatesFindUniqueArgs} args - Arguments to find a UserTemplates
+     * @example
+     * // Get one UserTemplates
+     * const userTemplates = await prisma.userTemplates.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends UserTemplatesFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesFindUniqueArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one UserTemplates that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UserTemplatesFindUniqueOrThrowArgs} args - Arguments to find a UserTemplates
+     * @example
+     * // Get one UserTemplates
+     * const userTemplates = await prisma.userTemplates.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends UserTemplatesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first UserTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesFindFirstArgs} args - Arguments to find a UserTemplates
+     * @example
+     * // Get one UserTemplates
+     * const userTemplates = await prisma.userTemplates.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends UserTemplatesFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesFindFirstArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first UserTemplates that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesFindFirstOrThrowArgs} args - Arguments to find a UserTemplates
+     * @example
+     * // Get one UserTemplates
+     * const userTemplates = await prisma.userTemplates.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends UserTemplatesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more UserTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserTemplates
+     * const userTemplates = await prisma.userTemplates.findMany()
+     * 
+     * // Get first 10 UserTemplates
+     * const userTemplates = await prisma.userTemplates.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userTemplatesWithIdOnly = await prisma.userTemplates.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends UserTemplatesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a UserTemplates.
+     * @param {UserTemplatesCreateArgs} args - Arguments to create a UserTemplates.
+     * @example
+     * // Create one UserTemplates
+     * const UserTemplates = await prisma.userTemplates.create({
+     *   data: {
+     *     // ... data to create a UserTemplates
+     *   }
+     * })
+     * 
+    **/
+    create<T extends UserTemplatesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesCreateArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many UserTemplates.
+     * @param {UserTemplatesCreateManyArgs} args - Arguments to create many UserTemplates.
+     * @example
+     * // Create many UserTemplates
+     * const userTemplates = await prisma.userTemplates.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends UserTemplatesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserTemplates and returns the data saved in the database.
+     * @param {UserTemplatesCreateManyAndReturnArgs} args - Arguments to create many UserTemplates.
+     * @example
+     * // Create many UserTemplates
+     * const userTemplates = await prisma.userTemplates.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserTemplates and only return the `id`
+     * const userTemplatesWithIdOnly = await prisma.userTemplates.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends UserTemplatesCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a UserTemplates.
+     * @param {UserTemplatesDeleteArgs} args - Arguments to delete one UserTemplates.
+     * @example
+     * // Delete one UserTemplates
+     * const UserTemplates = await prisma.userTemplates.delete({
+     *   where: {
+     *     // ... filter to delete one UserTemplates
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends UserTemplatesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesDeleteArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one UserTemplates.
+     * @param {UserTemplatesUpdateArgs} args - Arguments to update one UserTemplates.
+     * @example
+     * // Update one UserTemplates
+     * const userTemplates = await prisma.userTemplates.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends UserTemplatesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesUpdateArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more UserTemplates.
+     * @param {UserTemplatesDeleteManyArgs} args - Arguments to filter UserTemplates to delete.
+     * @example
+     * // Delete a few UserTemplates
+     * const { count } = await prisma.userTemplates.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends UserTemplatesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserTemplatesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserTemplates
+     * const userTemplates = await prisma.userTemplates.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends UserTemplatesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserTemplates.
+     * @param {UserTemplatesUpsertArgs} args - Arguments to update or create a UserTemplates.
+     * @example
+     * // Update or create a UserTemplates
+     * const userTemplates = await prisma.userTemplates.upsert({
+     *   create: {
+     *     // ... data to create a UserTemplates
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserTemplates we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends UserTemplatesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, UserTemplatesUpsertArgs<ExtArgs>>
+    ): Prisma__UserTemplatesClient<$Result.GetResult<Prisma.$UserTemplatesPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of UserTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesCountArgs} args - Arguments to filter UserTemplates to count.
+     * @example
+     * // Count the number of UserTemplates
+     * const count = await prisma.userTemplates.count({
+     *   where: {
+     *     // ... the filter for the UserTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserTemplatesCountArgs>(
+      args?: Subset<T, UserTemplatesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserTemplatesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserTemplatesAggregateArgs>(args: Subset<T, UserTemplatesAggregateArgs>): Prisma.PrismaPromise<GetUserTemplatesAggregateType<T>>
+
+    /**
+     * Group by UserTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserTemplatesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserTemplatesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserTemplatesGroupByArgs['orderBy'] }
+        : { orderBy?: UserTemplatesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserTemplatesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserTemplatesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserTemplates model
+   */
+  readonly fields: UserTemplatesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserTemplates.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserTemplatesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the UserTemplates model
+   */ 
+  interface UserTemplatesFieldRefs {
+    readonly id: FieldRef<"UserTemplates", 'String'>
+    readonly userId: FieldRef<"UserTemplates", 'String'>
+    readonly templateId: FieldRef<"UserTemplates", 'String'>
+    readonly title: FieldRef<"UserTemplates", 'String'>
+    readonly description: FieldRef<"UserTemplates", 'String'>
+    readonly data: FieldRef<"UserTemplates", 'Json'>
+    readonly createdAt: FieldRef<"UserTemplates", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserTemplates", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserTemplates findUnique
+   */
+  export type UserTemplatesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter, which UserTemplates to fetch.
+     */
+    where: UserTemplatesWhereUniqueInput
+  }
+
+  /**
+   * UserTemplates findUniqueOrThrow
+   */
+  export type UserTemplatesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter, which UserTemplates to fetch.
+     */
+    where: UserTemplatesWhereUniqueInput
+  }
+
+  /**
+   * UserTemplates findFirst
+   */
+  export type UserTemplatesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter, which UserTemplates to fetch.
+     */
+    where?: UserTemplatesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserTemplates to fetch.
+     */
+    orderBy?: UserTemplatesOrderByWithRelationInput | UserTemplatesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserTemplates.
+     */
+    cursor?: UserTemplatesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserTemplates.
+     */
+    distinct?: UserTemplatesScalarFieldEnum | UserTemplatesScalarFieldEnum[]
+  }
+
+  /**
+   * UserTemplates findFirstOrThrow
+   */
+  export type UserTemplatesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter, which UserTemplates to fetch.
+     */
+    where?: UserTemplatesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserTemplates to fetch.
+     */
+    orderBy?: UserTemplatesOrderByWithRelationInput | UserTemplatesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserTemplates.
+     */
+    cursor?: UserTemplatesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserTemplates.
+     */
+    distinct?: UserTemplatesScalarFieldEnum | UserTemplatesScalarFieldEnum[]
+  }
+
+  /**
+   * UserTemplates findMany
+   */
+  export type UserTemplatesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter, which UserTemplates to fetch.
+     */
+    where?: UserTemplatesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserTemplates to fetch.
+     */
+    orderBy?: UserTemplatesOrderByWithRelationInput | UserTemplatesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserTemplates.
+     */
+    cursor?: UserTemplatesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserTemplates.
+     */
+    skip?: number
+    distinct?: UserTemplatesScalarFieldEnum | UserTemplatesScalarFieldEnum[]
+  }
+
+  /**
+   * UserTemplates create
+   */
+  export type UserTemplatesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a UserTemplates.
+     */
+    data: XOR<UserTemplatesCreateInput, UserTemplatesUncheckedCreateInput>
+  }
+
+  /**
+   * UserTemplates createMany
+   */
+  export type UserTemplatesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserTemplates.
+     */
+    data: UserTemplatesCreateManyInput | UserTemplatesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserTemplates createManyAndReturn
+   */
+  export type UserTemplatesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * The data used to create many UserTemplates.
+     */
+    data: UserTemplatesCreateManyInput | UserTemplatesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserTemplates update
+   */
+  export type UserTemplatesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a UserTemplates.
+     */
+    data: XOR<UserTemplatesUpdateInput, UserTemplatesUncheckedUpdateInput>
+    /**
+     * Choose, which UserTemplates to update.
+     */
+    where: UserTemplatesWhereUniqueInput
+  }
+
+  /**
+   * UserTemplates updateMany
+   */
+  export type UserTemplatesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserTemplates.
+     */
+    data: XOR<UserTemplatesUpdateManyMutationInput, UserTemplatesUncheckedUpdateManyInput>
+    /**
+     * Filter which UserTemplates to update
+     */
+    where?: UserTemplatesWhereInput
+  }
+
+  /**
+   * UserTemplates upsert
+   */
+  export type UserTemplatesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the UserTemplates to update in case it exists.
+     */
+    where: UserTemplatesWhereUniqueInput
+    /**
+     * In case the UserTemplates found by the `where` argument doesn't exist, create a new UserTemplates with this data.
+     */
+    create: XOR<UserTemplatesCreateInput, UserTemplatesUncheckedCreateInput>
+    /**
+     * In case the UserTemplates was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserTemplatesUpdateInput, UserTemplatesUncheckedUpdateInput>
+  }
+
+  /**
+   * UserTemplates delete
+   */
+  export type UserTemplatesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+    /**
+     * Filter which UserTemplates to delete.
+     */
+    where: UserTemplatesWhereUniqueInput
+  }
+
+  /**
+   * UserTemplates deleteMany
+   */
+  export type UserTemplatesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserTemplates to delete
+     */
+    where?: UserTemplatesWhereInput
+  }
+
+  /**
+   * UserTemplates without action
+   */
+  export type UserTemplatesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserTemplates
+     */
+    select?: UserTemplatesSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model CatalogProduct
    */
 
@@ -36665,6 +37678,20 @@ export namespace Prisma {
   export type FormSubmissionScalarFieldEnum = (typeof FormSubmissionScalarFieldEnum)[keyof typeof FormSubmissionScalarFieldEnum]
 
 
+  export const UserTemplatesScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    templateId: 'templateId',
+    title: 'title',
+    description: 'description',
+    data: 'data',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserTemplatesScalarFieldEnum = (typeof UserTemplatesScalarFieldEnum)[keyof typeof UserTemplatesScalarFieldEnum]
+
+
   export const CatalogProductScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -38872,6 +39899,73 @@ export namespace Prisma {
     data?: JsonWithAggregatesFilter<"FormSubmission">
     createdAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FormSubmission"> | Date | string
+  }
+
+  export type UserTemplatesWhereInput = {
+    AND?: UserTemplatesWhereInput | UserTemplatesWhereInput[]
+    OR?: UserTemplatesWhereInput[]
+    NOT?: UserTemplatesWhereInput | UserTemplatesWhereInput[]
+    id?: StringFilter<"UserTemplates"> | string
+    userId?: StringFilter<"UserTemplates"> | string
+    templateId?: StringFilter<"UserTemplates"> | string
+    title?: StringFilter<"UserTemplates"> | string
+    description?: StringNullableFilter<"UserTemplates"> | string | null
+    data?: JsonFilter<"UserTemplates">
+    createdAt?: DateTimeFilter<"UserTemplates"> | Date | string
+    updatedAt?: DateTimeFilter<"UserTemplates"> | Date | string
+  }
+
+  export type UserTemplatesOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserTemplatesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: UserTemplatesWhereInput | UserTemplatesWhereInput[]
+    OR?: UserTemplatesWhereInput[]
+    NOT?: UserTemplatesWhereInput | UserTemplatesWhereInput[]
+    userId?: StringFilter<"UserTemplates"> | string
+    templateId?: StringFilter<"UserTemplates"> | string
+    title?: StringFilter<"UserTemplates"> | string
+    description?: StringNullableFilter<"UserTemplates"> | string | null
+    data?: JsonFilter<"UserTemplates">
+    createdAt?: DateTimeFilter<"UserTemplates"> | Date | string
+    updatedAt?: DateTimeFilter<"UserTemplates"> | Date | string
+  }, "id">
+
+  export type UserTemplatesOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserTemplatesCountOrderByAggregateInput
+    _max?: UserTemplatesMaxOrderByAggregateInput
+    _min?: UserTemplatesMinOrderByAggregateInput
+  }
+
+  export type UserTemplatesScalarWhereWithAggregatesInput = {
+    AND?: UserTemplatesScalarWhereWithAggregatesInput | UserTemplatesScalarWhereWithAggregatesInput[]
+    OR?: UserTemplatesScalarWhereWithAggregatesInput[]
+    NOT?: UserTemplatesScalarWhereWithAggregatesInput | UserTemplatesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserTemplates"> | string
+    userId?: StringWithAggregatesFilter<"UserTemplates"> | string
+    templateId?: StringWithAggregatesFilter<"UserTemplates"> | string
+    title?: StringWithAggregatesFilter<"UserTemplates"> | string
+    description?: StringNullableWithAggregatesFilter<"UserTemplates"> | string | null
+    data?: JsonWithAggregatesFilter<"UserTemplates">
+    createdAt?: DateTimeWithAggregatesFilter<"UserTemplates"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserTemplates"> | Date | string
   }
 
   export type CatalogProductWhereInput = {
@@ -41447,6 +42541,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserTemplatesCreateInput = {
+    id?: string
+    userId: string
+    templateId: string
+    title: string
+    description?: string | null
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserTemplatesUncheckedCreateInput = {
+    id?: string
+    userId: string
+    templateId: string
+    title: string
+    description?: string | null
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserTemplatesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserTemplatesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserTemplatesCreateManyInput = {
+    id?: string
+    userId: string
+    templateId: string
+    title: string
+    description?: string | null
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserTemplatesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserTemplatesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CatalogProductCreateInput = {
     id?: string
     name: string
@@ -43855,6 +45026,37 @@ export namespace Prisma {
     id?: SortOrder
     templateId?: SortOrder
     workbenchId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserTemplatesCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserTemplatesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserTemplatesMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -54832,6 +56034,10 @@ export namespace Prisma {
      * @deprecated Use FormSubmissionDefaultArgs instead
      */
     export type FormSubmissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FormSubmissionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserTemplatesDefaultArgs instead
+     */
+    export type UserTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserTemplatesDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CatalogProductDefaultArgs instead
      */
