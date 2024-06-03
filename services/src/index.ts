@@ -78,4 +78,8 @@ export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
 export * from './hooks/useSubmitOrder';
+export * from './hooks/useFindUserTemplateById';
+export * from './hooks/useFindUserTemplates';
+export * from './hooks/useCreateUserTemplate';
+export * from './hooks/useUpdateUserTemplate';
 export * from './utils/backendApi';

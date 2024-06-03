@@ -25572,7 +25572,6 @@ export namespace Prisma {
   export type UserTemplateMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    templateId: string | null
     title: string | null
     description: string | null
     createdAt: Date | null
@@ -25582,7 +25581,6 @@ export namespace Prisma {
   export type UserTemplateMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    templateId: string | null
     title: string | null
     description: string | null
     createdAt: Date | null
@@ -25592,7 +25590,6 @@ export namespace Prisma {
   export type UserTemplateCountAggregateOutputType = {
     id: number
     userId: number
-    templateId: number
     title: number
     description: number
     data: number
@@ -25605,7 +25602,6 @@ export namespace Prisma {
   export type UserTemplateMinAggregateInputType = {
     id?: true
     userId?: true
-    templateId?: true
     title?: true
     description?: true
     createdAt?: true
@@ -25615,7 +25611,6 @@ export namespace Prisma {
   export type UserTemplateMaxAggregateInputType = {
     id?: true
     userId?: true
-    templateId?: true
     title?: true
     description?: true
     createdAt?: true
@@ -25625,7 +25620,6 @@ export namespace Prisma {
   export type UserTemplateCountAggregateInputType = {
     id?: true
     userId?: true
-    templateId?: true
     title?: true
     description?: true
     data?: true
@@ -25709,7 +25703,6 @@ export namespace Prisma {
   export type UserTemplateGroupByOutputType = {
     id: string
     userId: string
-    templateId: string
     title: string
     description: string | null
     data: JsonValue
@@ -25737,7 +25730,6 @@ export namespace Prisma {
   export type UserTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    templateId?: boolean
     title?: boolean
     description?: boolean
     data?: boolean
@@ -25748,7 +25740,6 @@ export namespace Prisma {
   export type UserTemplateSelectScalar = {
     id?: boolean
     userId?: boolean
-    templateId?: boolean
     title?: boolean
     description?: boolean
     data?: boolean
@@ -25764,7 +25755,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      templateId: string
       title: string
       description: string | null
       data: Prisma.JsonValue
@@ -26192,7 +26182,6 @@ export namespace Prisma {
   interface UserTemplateFieldRefs {
     readonly id: FieldRef<"UserTemplate", 'String'>
     readonly userId: FieldRef<"UserTemplate", 'String'>
-    readonly templateId: FieldRef<"UserTemplate", 'String'>
     readonly title: FieldRef<"UserTemplate", 'String'>
     readonly description: FieldRef<"UserTemplate", 'String'>
     readonly data: FieldRef<"UserTemplate", 'Json'>
@@ -37681,7 +37670,6 @@ export namespace Prisma {
   export const UserTemplateScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    templateId: 'templateId',
     title: 'title',
     description: 'description',
     data: 'data',
@@ -39907,7 +39895,6 @@ export namespace Prisma {
     NOT?: UserTemplateWhereInput | UserTemplateWhereInput[]
     id?: StringFilter<"UserTemplate"> | string
     userId?: StringFilter<"UserTemplate"> | string
-    templateId?: StringFilter<"UserTemplate"> | string
     title?: StringFilter<"UserTemplate"> | string
     description?: StringNullableFilter<"UserTemplate"> | string | null
     data?: JsonFilter<"UserTemplate">
@@ -39918,7 +39905,6 @@ export namespace Prisma {
   export type UserTemplateOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    templateId?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
     data?: SortOrder
@@ -39932,7 +39918,6 @@ export namespace Prisma {
     OR?: UserTemplateWhereInput[]
     NOT?: UserTemplateWhereInput | UserTemplateWhereInput[]
     userId?: StringFilter<"UserTemplate"> | string
-    templateId?: StringFilter<"UserTemplate"> | string
     title?: StringFilter<"UserTemplate"> | string
     description?: StringNullableFilter<"UserTemplate"> | string | null
     data?: JsonFilter<"UserTemplate">
@@ -39943,7 +39928,6 @@ export namespace Prisma {
   export type UserTemplateOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    templateId?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
     data?: SortOrder
@@ -39960,7 +39944,6 @@ export namespace Prisma {
     NOT?: UserTemplateScalarWhereWithAggregatesInput | UserTemplateScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserTemplate"> | string
     userId?: StringWithAggregatesFilter<"UserTemplate"> | string
-    templateId?: StringWithAggregatesFilter<"UserTemplate"> | string
     title?: StringWithAggregatesFilter<"UserTemplate"> | string
     description?: StringNullableWithAggregatesFilter<"UserTemplate"> | string | null
     data?: JsonWithAggregatesFilter<"UserTemplate">
@@ -42544,7 +42527,6 @@ export namespace Prisma {
   export type UserTemplateCreateInput = {
     id?: string
     userId: string
-    templateId: string
     title: string
     description?: string | null
     data: JsonNullValueInput | InputJsonValue
@@ -42555,7 +42537,6 @@ export namespace Prisma {
   export type UserTemplateUncheckedCreateInput = {
     id?: string
     userId: string
-    templateId: string
     title: string
     description?: string | null
     data: JsonNullValueInput | InputJsonValue
@@ -42566,7 +42547,6 @@ export namespace Prisma {
   export type UserTemplateUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     data?: JsonNullValueInput | InputJsonValue
@@ -42577,7 +42557,6 @@ export namespace Prisma {
   export type UserTemplateUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     data?: JsonNullValueInput | InputJsonValue
@@ -42588,7 +42567,6 @@ export namespace Prisma {
   export type UserTemplateCreateManyInput = {
     id?: string
     userId: string
-    templateId: string
     title: string
     description?: string | null
     data: JsonNullValueInput | InputJsonValue
@@ -42599,7 +42577,6 @@ export namespace Prisma {
   export type UserTemplateUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     data?: JsonNullValueInput | InputJsonValue
@@ -42610,7 +42587,6 @@ export namespace Prisma {
   export type UserTemplateUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    templateId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     data?: JsonNullValueInput | InputJsonValue
@@ -45033,7 +45009,6 @@ export namespace Prisma {
   export type UserTemplateCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    templateId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     data?: SortOrder
@@ -45044,7 +45019,6 @@ export namespace Prisma {
   export type UserTemplateMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    templateId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -45054,7 +45028,6 @@ export namespace Prisma {
   export type UserTemplateMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    templateId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
