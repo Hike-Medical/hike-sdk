@@ -1,17 +1,17 @@
 import type { EvaluationsStats } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { statsForEvaluations } from '../api/evaluation.service';
 import { ResponseError } from '../errors/ResponseError';
 
-export interface UseEvaluationStatsOptions {
-  key?: string[];
+export interface UseEvaluationStatsOptions
+  extends Omit<UseQueryOptions<EvaluationsStats, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   assignedOnly?: boolean;
-  enabled?: boolean;
+  queryKey?: QueryKey;
 }
 
-export const useEvaluationStats = ({ key = [], enabled = true, ...params }: UseEvaluationStatsOptions) =>
-  useQuery<EvaluationsStats, ResponseError<null>>({
-    queryKey: ['evaluationStats', ...key, params],
-    queryFn: async () => await statsForEvaluations(params.assignedOnly),
-    enabled
+export const useEvaluationStats = ({ assignedOnly, queryKey = [], ...options }: UseEvaluationStatsOptions = {}) =>
+  useQuery({
+    queryKey: ['evaluationStats', assignedOnly, queryKey],
+    queryFn: async () => await statsForEvaluations(assignedOnly),
+    ...options
   });
