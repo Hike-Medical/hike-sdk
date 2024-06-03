@@ -1,20 +1,19 @@
 import type {
-  FormSubmissionExtended,
-  FormTemplateExtended,
+  FormTemplateTyped,
   UpsertFormSubmissionParams,
   UserTemplateResponse,
-  FormSubmissionTyped,
-  FormTemplateTyped
+  FormSubmissionTyped
 } from '@hike/types';
 
 import { backendApi } from '../utils/backendApi';
 
-export const findFormTemplateById = async (templateId: string, templateable = false): Promise<FormTemplateExtended> => {
+export const findFormTemplateById = async (templateId: string, templateable = false): Promise<FormTemplateTyped> => {
   const response = await backendApi.get(`form/template/${templateId}`, {
     params: {
       templateable
     }
   });
+  return response.data;
 };
 
 export const findFormTemplatesByIds = async (templateIds: string[]): Promise<FormTemplateTyped[]> => {
