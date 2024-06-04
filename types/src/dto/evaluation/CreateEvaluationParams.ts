@@ -5,6 +5,7 @@ import { CareType, Side, VerticalPosition } from '../../../prisma';
  */
 export interface CreateEvaluationParams {
   externalId?: string;
+  poNumber?: string;
   type: CareType;
   patientId: string;
   deviceTypeId?: string;
@@ -13,19 +14,16 @@ export interface CreateEvaluationParams {
   devicePosition?: VerticalPosition;
   appointmentAt?: Date;
   appointmentStatus?: string;
-  primaryPractitioner?: string;
+  clinicianIds?: string[];
   referringPhysicianId?: string;
   diagnosisId?: string;
   diagnosisedAt?: Date;
-  visitInformation?: unknown;
   visitTypeId?: string;
   visitedAt?: Date;
+  facilityId?: string;
   location?: string;
-  prescribedPractitioner?: string;
   prescribedAt?: Date;
   prescribedActive?: boolean;
-  notes?: string;
-  questionnaire?: unknown;
   workbenchId?: string;
   completedAt?: Date;
   cancelledAt?: Date;

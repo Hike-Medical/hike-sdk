@@ -1,17 +1,18 @@
 import type { DeviceType, PagedParams, PagedResponse } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchDeviceTypes, searchDeviceTypes } from '../api/device-type.service';
 import { ResponseError } from '../errors/ResponseError';
 
-export interface UseDeviceTypesOptions extends PagedParams {
-  key?: string[];
+export interface UseDeviceTypesOptions
+  extends Omit<UseQueryOptions<PagedResponse<DeviceType[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   searchTerm?: string | null;
-  enabled?: boolean;
+  params?: PagedParams;
+  queryKey?: QueryKey;
 }
 
-export const useDeviceTypes = ({ key = [], searchTerm, enabled = true, ...params }: UseDeviceTypesOptions) =>
-  useQuery<PagedResponse<DeviceType[]>, ResponseError<null>>({
-    queryKey: ['deviceTypes', ...key, ...(searchTerm ? [searchTerm] : []), params],
+export const useDeviceTypes = ({ searchTerm, params, queryKey = [], ...options }: UseDeviceTypesOptions) =>
+  useQuery({
+    queryKey: ['deviceTypes', searchTerm, params, queryKey],
     queryFn: async () => (searchTerm ? await searchDeviceTypes(searchTerm, params) : await fetchDeviceTypes(params)),
-    enabled
+    ...options
   });

@@ -1,5 +1,5 @@
 export interface UpsertFormSubmissionParams {
-  evaluationId: string;
-  templateId: string;
+  workbenchId: string;
+  schemaId: string;
   data: object;
 }

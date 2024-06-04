@@ -7,7 +7,7 @@ export const useGetShippingRates = (
 ) => {
   return useMutation({
     mutationKey: ['getShippingRates'],
-    mutationFn: async (body: GetRatesOrLabels) => getRateEstimates(body),
+    mutationFn: async (body: GetRatesOrLabels) => await getRateEstimates(body),
     ...mutationOptions
   });
 };
