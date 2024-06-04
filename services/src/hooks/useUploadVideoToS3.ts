@@ -44,7 +44,6 @@ export const useUploadVideoToS3 = (
           method: 'PUT',
           body: video,
           headers: {
-            'Content-Type': 'video/mp4',
             ...(tagString && { 'x-amz-tagging': tagString })
           }
         });
