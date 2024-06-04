@@ -10,7 +10,6 @@ export const requestCameraPermissions = (): Promise<MediaStream> =>
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
-        stream.getTracks().forEach((track) => track.stop());
         resolve(stream);
       })
       .catch((error) => {
