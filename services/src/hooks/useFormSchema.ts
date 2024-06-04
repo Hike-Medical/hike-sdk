@@ -14,6 +14,6 @@ export interface UseFormSchemaOptions
 export const useFormSchema = ({ schemaId, templateable, queryKey = [], ...options }: UseFormSchemaOptions) =>
   useQuery({
     queryKey: ['formSchema', schemaId, templateable, queryKey],
-    queryFn: async () => await findFormSchemaById(schemaId),
+    queryFn: async () => await findFormSchemaById(schemaId, templateable),
     ...options
   });
