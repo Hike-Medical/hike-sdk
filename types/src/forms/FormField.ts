@@ -1,34 +1,7 @@
-import { FormSubmission, FormTemplate } from '../../prisma';
-
-export interface FormSchema {
-  sections: FormSection[];
-}
-
-export interface FormRule {
-  effect: 'show' | 'hide' | 'enable' | 'disable';
-  condition: { name: string; value: FormFieldValue };
-}
-
-export interface FormSection {
-  title: string;
-  description?: string;
-  badge?: string;
-  fields: FormField[];
-  meta?: Record<string, string>;
-  rule?: FormRule;
-}
+import { FieldPrint } from './FieldPrint';
+import { FormRule } from './FormRule';
 
 export type FormFieldValue = string | string[] | number | number[] | boolean | null | undefined;
-export type FormTemplateTyped = FormTemplate & { schema: FormSchema };
-export type FormSubmissionTyped = FormSubmission & { data: Record<string, FormFieldValue> };
-
-export interface FieldPrint {
-  label: string;
-  colspan: number;
-  position: number;
-  rowspan?: number;
-  format?: string;
-}
 
 interface BaseFormField<T extends FormFieldValue> {
   name: string;

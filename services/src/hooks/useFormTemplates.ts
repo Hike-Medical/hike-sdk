@@ -1,17 +1,13 @@
-import type { FormTemplateTyped } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
-import { findFormTemplatesByIds } from '../api/form.service';
-import { ResponseError } from '../errors/ResponseError';
+import { FormTemplateResponse } from '@hike/types';
+import { UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { findFormTemplates } from '../api/form.service';
 
-export interface UseFormTemplatesOptions {
-  key?: string[];
-  templateIds: string[];
-  enabled?: boolean;
-}
-
-export const useFormTemplates = ({ key = [], templateIds, enabled = true }: UseFormTemplatesOptions) =>
-  useQuery<FormTemplateTyped[], ResponseError<null>>({
-    queryKey: ['formTemplates', ...key, ...templateIds],
-    queryFn: async () => await findFormTemplatesByIds(templateIds),
-    enabled
+export const useFormTemplates = (
+  queryOptions?: Omit<UseQueryOptions<Partial<FormTemplateResponse>[], Error>, 'queryKey' | 'queryFn'>
+) => {
+  return useQuery({
+    queryKey: ['findFormTemplates'],
+    queryFn: async () => await findFormTemplates(),
+    ...queryOptions
   });
+};
