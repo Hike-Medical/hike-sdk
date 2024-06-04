@@ -1,4 +1,4 @@
-import { UserTemplateResponse } from '@hike/types';
+import { FormTemplateResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { UpdateUserTemplateBody, updateUserTemplate } from '../api/form.service';
 
@@ -9,7 +9,7 @@ interface UpdateUserTemplateParams {
 
 export const useUpdateUserTemplate = (
   mutationOptions?: Omit<
-    UseMutationOptions<UserTemplateResponse, Error, UpdateUserTemplateParams>,
+    UseMutationOptions<FormTemplateResponse, Error, UpdateUserTemplateParams>,
     'mutationKey' | 'mutationFn'
   >
 ) => {

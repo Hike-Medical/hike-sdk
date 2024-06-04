@@ -1,10 +1,10 @@
+import { FormTemplateResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { CreateUserTemplateBody, createUserTemplate } from '../api/form.service';
-import { UserTemplateResponse } from '@hike/types';
 
 export const useCreateUserTemplate = (
   mutationOptions?: Omit<
-    UseMutationOptions<UserTemplateResponse, Error, CreateUserTemplateBody>,
+    UseMutationOptions<FormTemplateResponse, Error, CreateUserTemplateBody>,
     'mutationKey' | 'mutationFn'
   >
 ) => {

@@ -1,10 +1,10 @@
-import { UserTemplateResponse } from '@hike/types';
+import { FormTemplateResponse } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findUserTemplateById } from '../api/form.service';
 
 export const useFindUserTemplateById = (
   userTemplateId: string,
-  queryOptions?: UseQueryOptions<UserTemplateResponse, Error>
+  queryOptions?: UseQueryOptions<FormTemplateResponse, Error>
 ) => {
   return useQuery({
     queryKey: ['findUserTemplateById', userTemplateId],

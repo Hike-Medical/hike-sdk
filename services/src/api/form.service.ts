@@ -1,8 +1,8 @@
 import type {
   FormSchemaTyped,
   FormSubmissionTyped,
-  UpsertFormSubmissionParams,
-  UserTemplateResponse
+  FormTemplateResponse,
+  UpsertFormSubmissionParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
@@ -40,17 +40,17 @@ export interface CreateUserTemplateBody {
   templateIds: string[];
 }
 
-export const createUserTemplate = async (body: CreateUserTemplateBody): Promise<UserTemplateResponse> => {
+export const createUserTemplate = async (body: CreateUserTemplateBody): Promise<FormTemplateResponse> => {
   const response = await backendApi.post(`form/user-template`, body);
   return response.data;
 };
 
-export const findUserTemplateById = async (userTemplateId: string): Promise<UserTemplateResponse> => {
+export const findUserTemplateById = async (userTemplateId: string): Promise<FormTemplateResponse> => {
   const response = await backendApi.get(`form/user-template/${userTemplateId}`);
   return response.data;
 };
 
-export const findUserTemplates = async (): Promise<Partial<UserTemplateResponse>[]> => {
+export const findUserTemplates = async (): Promise<Partial<FormTemplateResponse>[]> => {
   const response = await backendApi.get(`form/user-template`);
   return response.data;
 };
@@ -58,13 +58,13 @@ export const findUserTemplates = async (): Promise<Partial<UserTemplateResponse>
 export interface UpdateUserTemplateBody {
   title: string;
   description?: string;
-  data: UserTemplateResponse['data'];
+  data: FormTemplateResponse['data'];
 }
 
 export const updateUserTemplate = async (
   userTemplateId: string,
   body: UpdateUserTemplateBody
-): Promise<UserTemplateResponse> => {
+): Promise<FormTemplateResponse> => {
   const response = await backendApi.put(`form/user-template/${userTemplateId}`, body);
   return response.data;
 };
