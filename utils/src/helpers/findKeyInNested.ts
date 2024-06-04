@@ -4,10 +4,14 @@ import { Prisma } from '@hike/types';
  * Recursively searches for a specific key within a nested JSON object or array.
  */
 export const findKeyInNested = (
-  obj: Prisma.JsonObject | Prisma.JsonArray | Record<string, unknown>[],
+  obj: Prisma.JsonObject | Prisma.JsonArray | Record<string, unknown>[] | undefined,
   keyToFind: string
-): Prisma.JsonValue | Record<string, unknown> | undefined => {
+): Prisma.JsonValue | string | undefined => {
   let found: Prisma.JsonValue | undefined;
+
+  if (!obj) {
+    return undefined;
+  }
 
   const recurse = (currentObj: Prisma.JsonObject | Prisma.JsonArray | Record<string, unknown>[]): boolean => {
     if (Array.isArray(currentObj)) {
