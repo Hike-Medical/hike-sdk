@@ -1,8 +1,8 @@
 import type {
+  FormSubmissionTyped,
   FormTemplateTyped,
   UpsertFormSubmissionParams,
-  UserTemplateResponse,
-  FormSubmissionTyped
+  UserTemplateResponse
 } from '@hike/types';
 
 import { backendApi } from '../utils/backendApi';
