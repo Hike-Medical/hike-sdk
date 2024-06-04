@@ -24,6 +24,7 @@ export type * from './dto/evaluation/UpdateEvaluationParams';
 export type * from './dto/facility/SearchFacilityParams';
 export type * from './dto/foot/FootStatus';
 export type * from './dto/foot/SetFootInactive';
+export type * from './dto/form/RequestAdditionalTemplateInfo';
 export type * from './dto/form/UpsertFormSubmissionParams';
 export type * from './dto/legacy/LegacyOrderResponse';
 export type * from './dto/notes/CreateNotes';
