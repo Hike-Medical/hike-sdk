@@ -5,6 +5,7 @@ export * from './api/device-type.service';
 export * from './api/diagnosis.service';
 export * from './api/evaluation.service';
 export * from './api/foot.service';
+export * from './api/form-sync.service';
 export * from './api/form.service';
 export * from './api/notes.service';
 export * from './api/order.service';
