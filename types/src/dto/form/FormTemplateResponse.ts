@@ -1,10 +1,10 @@
 import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
-import { UserTemplate } from '../../../prisma';
+import { FormTemplate } from '../../../prisma';
 
-export interface FormTemplateResponse extends Omit<UserTemplate, 'data'> {
+export interface FormTemplateResponse extends Omit<FormTemplate, 'data'> {
   data: {
     name: string;
-    formSchemaId: string;
+    schemaId: string;
     data: FormSubmissionTyped['data'];
   }[];
 }

@@ -1,7 +1,9 @@
 import type {
+  CreateFormTemplateBody,
   FormSchemaTyped,
   FormSubmissionTyped,
   FormTemplateResponse,
+  UpdateFormTemplateBody,
   UpsertFormSubmissionParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
@@ -34,37 +36,25 @@ export const upsertFormSubmission = async (params: UpsertFormSubmissionParams): 
   return response.data;
 };
 
-export interface CreateUserTemplateBody {
-  title: string;
-  description?: string;
-  templateIds: string[];
-}
-
-export const createUserTemplate = async (body: CreateUserTemplateBody): Promise<FormTemplateResponse> => {
-  const response = await backendApi.post(`form/user-template`, body);
+export const createFormTemplate = async (body: CreateFormTemplateBody): Promise<FormTemplateResponse> => {
+  const response = await backendApi.post(`form/template`, body);
   return response.data;
 };
 
-export const findUserTemplateById = async (userTemplateId: string): Promise<FormTemplateResponse> => {
-  const response = await backendApi.get(`form/user-template/${userTemplateId}`);
+export const findFormTemplateById = async (templateId: string): Promise<FormTemplateResponse> => {
+  const response = await backendApi.get(`form/template/${templateId}`);
   return response.data;
 };
 
-export const findUserTemplates = async (): Promise<Partial<FormTemplateResponse>[]> => {
-  const response = await backendApi.get(`form/user-template`);
+export const findFormTemplates = async (): Promise<Partial<FormTemplateResponse>[]> => {
+  const response = await backendApi.get(`form/template`);
   return response.data;
 };
 
-export interface UpdateUserTemplateBody {
-  title: string;
-  description?: string;
-  data: FormTemplateResponse['data'];
-}
-
-export const updateUserTemplate = async (
-  userTemplateId: string,
-  body: UpdateUserTemplateBody
+export const updateFormTemplate = async (
+  templateId: string,
+  body: UpdateFormTemplateBody
 ): Promise<FormTemplateResponse> => {
-  const response = await backendApi.put(`form/user-template/${userTemplateId}`, body);
+  const response = await backendApi.put(`form/template/${templateId}`, body);
   return response.data;
 };
