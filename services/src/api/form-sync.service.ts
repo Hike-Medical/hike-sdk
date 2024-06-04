@@ -24,7 +24,6 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     deviceSide: formState.deviceSide !== undefined ? (formState.deviceSide as Side) : undefined,
     referringPhysicianId:
       formState.referringPhysicianId !== undefined ? (formState.referringPhysicianId as string) : undefined,
-    diagnosisId: formState.diagnosisId !== undefined ? (formState.diagnosisId as string) : undefined,
     diagnosisedAt: parseDate(formState.diagnosisedAt as string) ?? undefined,
     prescribedAt: parseDate(formState.prescribedAt as string) ?? undefined,
     facilityId: formState.facilityId !== undefined ? (formState.facilityId as string) : undefined,
