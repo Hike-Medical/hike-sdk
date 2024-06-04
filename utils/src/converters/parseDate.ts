@@ -4,7 +4,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 dayjs.extend(localizedFormat);
 
 export const parseDate = (value: string | number | Date | null | undefined): Date | null => {
-  if (value === null || value === undefined) {
+  if (value == null) {
     return null;
   }
 
