@@ -14,6 +14,7 @@ interface BaseFormField<T extends FormFieldValue> {
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;
+  templateable?: boolean;
 }
 
 export type FormField =
@@ -38,6 +39,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:diagnosis' })
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
+  | (BaseFormField<string> & { type: 'multiselect:billingCodes' })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';

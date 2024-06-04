@@ -6,13 +6,14 @@ import { ResponseError } from '../errors/ResponseError';
 export interface UseFormSchemaOptions
   extends Omit<UseQueryOptions<FormSchemaTyped | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   schemaId: string;
+  templateable?: boolean;
   enabled?: boolean;
   queryKey?: QueryKey;
 }
 
-export const useFormSchema = ({ schemaId, queryKey = [], ...options }: UseFormSchemaOptions) =>
+export const useFormSchema = ({ schemaId, templateable, queryKey = [], ...options }: UseFormSchemaOptions) =>
   useQuery({
-    queryKey: ['formSchema', schemaId, queryKey],
+    queryKey: ['formSchema', schemaId, templateable, queryKey],
     queryFn: async () => await findFormSchemaById(schemaId),
     ...options
   });
