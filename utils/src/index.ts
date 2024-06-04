@@ -18,4 +18,4 @@ export * from './helpers/formSchemaUtils';
 export * from './helpers/httpUtils';
 export * from './helpers/range';
 export * from './helpers/truncateMiddle';
-export * from './helpers/findUniqueKey';
+export * from './helpers/findKeyInNested';
