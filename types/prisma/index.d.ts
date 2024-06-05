@@ -31645,7 +31645,7 @@ export namespace Prisma {
     entityId: string | null
     entityType: string | null
     action: string | null
-    message: string | null
+    comments: string | null
     createdAt: Date | null
   }
 
@@ -31656,7 +31656,7 @@ export namespace Prisma {
     entityId: string | null
     entityType: string | null
     action: string | null
-    message: string | null
+    comments: string | null
     createdAt: Date | null
   }
 
@@ -31668,7 +31668,7 @@ export namespace Prisma {
     entityType: number
     action: number
     context: number
-    message: number
+    comments: number
     createdAt: number
     _all: number
   }
@@ -31681,7 +31681,7 @@ export namespace Prisma {
     entityId?: true
     entityType?: true
     action?: true
-    message?: true
+    comments?: true
     createdAt?: true
   }
 
@@ -31692,7 +31692,7 @@ export namespace Prisma {
     entityId?: true
     entityType?: true
     action?: true
-    message?: true
+    comments?: true
     createdAt?: true
   }
 
@@ -31704,7 +31704,7 @@ export namespace Prisma {
     entityType?: true
     action?: true
     context?: true
-    message?: true
+    comments?: true
     createdAt?: true
     _all?: true
   }
@@ -31789,7 +31789,7 @@ export namespace Prisma {
     entityType: string | null
     action: string
     context: JsonValue | null
-    message: string | null
+    comments: string | null
     createdAt: Date
     _count: AuditLogCountAggregateOutputType | null
     _min: AuditLogMinAggregateOutputType | null
@@ -31818,7 +31818,7 @@ export namespace Prisma {
     entityType?: boolean
     action?: boolean
     context?: boolean
-    message?: boolean
+    comments?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -31832,7 +31832,7 @@ export namespace Prisma {
     entityType?: boolean
     action?: boolean
     context?: boolean
-    message?: boolean
+    comments?: boolean
     createdAt?: boolean
   }
 
@@ -31857,7 +31857,7 @@ export namespace Prisma {
       entityType: string | null
       action: string
       context: Prisma.JsonValue | null
-      message: string | null
+      comments: string | null
       createdAt: Date
     }, ExtArgs["result"]["auditLog"]>
     composites: {}
@@ -32289,7 +32289,7 @@ export namespace Prisma {
     readonly entityType: FieldRef<"AuditLog", 'String'>
     readonly action: FieldRef<"AuditLog", 'String'>
     readonly context: FieldRef<"AuditLog", 'Json'>
-    readonly message: FieldRef<"AuditLog", 'String'>
+    readonly comments: FieldRef<"AuditLog", 'String'>
     readonly createdAt: FieldRef<"AuditLog", 'DateTime'>
   }
     
@@ -38905,7 +38905,7 @@ export namespace Prisma {
     entityType: 'entityType',
     action: 'action',
     context: 'context',
-    message: 'message',
+    comments: 'comments',
     createdAt: 'createdAt'
   };
 
@@ -41474,7 +41474,7 @@ export namespace Prisma {
     entityType?: StringNullableFilter<"AuditLog"> | string | null
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
-    message?: StringNullableFilter<"AuditLog"> | string | null
+    comments?: StringNullableFilter<"AuditLog"> | string | null
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -41488,7 +41488,7 @@ export namespace Prisma {
     entityType?: SortOrderInput | SortOrder
     action?: SortOrder
     context?: SortOrderInput | SortOrder
-    message?: SortOrderInput | SortOrder
+    comments?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     company?: CompanyOrderByWithRelationInput
@@ -41505,7 +41505,7 @@ export namespace Prisma {
     entityType?: StringNullableFilter<"AuditLog"> | string | null
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
-    message?: StringNullableFilter<"AuditLog"> | string | null
+    comments?: StringNullableFilter<"AuditLog"> | string | null
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -41519,7 +41519,7 @@ export namespace Prisma {
     entityType?: SortOrderInput | SortOrder
     action?: SortOrder
     context?: SortOrderInput | SortOrder
-    message?: SortOrderInput | SortOrder
+    comments?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: AuditLogCountOrderByAggregateInput
     _max?: AuditLogMaxOrderByAggregateInput
@@ -41537,7 +41537,7 @@ export namespace Prisma {
     entityType?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
     action?: StringWithAggregatesFilter<"AuditLog"> | string
     context?: JsonNullableWithAggregatesFilter<"AuditLog">
-    message?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
+    comments?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   }
 
@@ -44239,7 +44239,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutAuditsLogsInput
     company: CompanyCreateNestedOneWithoutAuditLogsInput
@@ -44253,7 +44253,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -44263,7 +44263,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
     company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
@@ -44277,7 +44277,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -44289,7 +44289,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -44299,7 +44299,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -44311,7 +44311,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -46624,7 +46624,7 @@ export namespace Prisma {
     entityType?: SortOrder
     action?: SortOrder
     context?: SortOrder
-    message?: SortOrder
+    comments?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -46635,7 +46635,7 @@ export namespace Prisma {
     entityId?: SortOrder
     entityType?: SortOrder
     action?: SortOrder
-    message?: SortOrder
+    comments?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -46646,7 +46646,7 @@ export namespace Prisma {
     entityId?: SortOrder
     entityType?: SortOrder
     action?: SortOrder
-    message?: SortOrder
+    comments?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -50137,7 +50137,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutAuditsLogsInput
   }
@@ -50149,7 +50149,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -50383,7 +50383,7 @@ export namespace Prisma {
     entityType?: StringNullableFilter<"AuditLog"> | string | null
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
-    message?: StringNullableFilter<"AuditLog"> | string | null
+    comments?: StringNullableFilter<"AuditLog"> | string | null
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
   }
 
@@ -55082,7 +55082,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
     company: CompanyCreateNestedOneWithoutAuditLogsInput
   }
@@ -55094,7 +55094,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -55472,7 +55472,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -55711,7 +55711,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
   }
@@ -55723,7 +55723,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -55734,7 +55734,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -57619,7 +57619,7 @@ export namespace Prisma {
     entityType?: string | null
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: string | null
+    comments?: string | null
     createdAt?: Date | string
   }
 
@@ -57725,7 +57725,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
   }
@@ -57737,7 +57737,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -57748,7 +57748,7 @@ export namespace Prisma {
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
-    message?: NullableStringFieldUpdateOperationsInput | string | null
+    comments?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
