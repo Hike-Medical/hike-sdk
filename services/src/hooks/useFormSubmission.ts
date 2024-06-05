@@ -5,17 +5,17 @@ import { ResponseError } from '../errors/ResponseError';
 
 export interface UseFormSubmissionOptions
   extends Omit<UseQueryOptions<FormSubmissionTyped | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
-  templateId: string;
+  schemaId: string;
   workbenchId: string;
   queryKey?: QueryKey;
 }
 
-export const useFormSubmission = ({ templateId, workbenchId, queryKey = [], ...options }: UseFormSubmissionOptions) => {
-  const key = ['formSubmission', templateId, workbenchId, queryKey];
+export const useFormSubmission = ({ schemaId, workbenchId, queryKey = [], ...options }: UseFormSubmissionOptions) => {
+  const key = ['formSubmission', schemaId, workbenchId, queryKey];
 
   const query = useQuery({
     queryKey: key,
-    queryFn: async () => await findFormSubmission(templateId, workbenchId),
+    queryFn: async () => await findFormSubmission(schemaId, workbenchId),
     ...options
   });
 

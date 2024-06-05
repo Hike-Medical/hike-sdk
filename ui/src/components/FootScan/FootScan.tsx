@@ -44,7 +44,7 @@ export function FootScan({ side, status, isSwitchOn, setIsSwitchOn }: FootScanPr
       case 'NOT_STARTED':
         return 'Start Recording';
       case 'APPROVED':
-        return 'Video Uploaded';
+        return 'Video Accepted';
       case 'REJECTED':
         return 'Rescan Required';
       case 'PROCESSING':
