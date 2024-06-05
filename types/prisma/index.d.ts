@@ -31646,7 +31646,7 @@ export namespace Prisma {
     entityType: string | null
     action: string | null
     message: string | null
-    timestamp: Date | null
+    createdAt: Date | null
   }
 
   export type AuditLogMaxAggregateOutputType = {
@@ -31657,7 +31657,7 @@ export namespace Prisma {
     entityType: string | null
     action: string | null
     message: string | null
-    timestamp: Date | null
+    createdAt: Date | null
   }
 
   export type AuditLogCountAggregateOutputType = {
@@ -31669,7 +31669,7 @@ export namespace Prisma {
     action: number
     context: number
     message: number
-    timestamp: number
+    createdAt: number
     _all: number
   }
 
@@ -31682,7 +31682,7 @@ export namespace Prisma {
     entityType?: true
     action?: true
     message?: true
-    timestamp?: true
+    createdAt?: true
   }
 
   export type AuditLogMaxAggregateInputType = {
@@ -31693,7 +31693,7 @@ export namespace Prisma {
     entityType?: true
     action?: true
     message?: true
-    timestamp?: true
+    createdAt?: true
   }
 
   export type AuditLogCountAggregateInputType = {
@@ -31705,7 +31705,7 @@ export namespace Prisma {
     action?: true
     context?: true
     message?: true
-    timestamp?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -31790,7 +31790,7 @@ export namespace Prisma {
     action: string
     context: JsonValue | null
     message: string | null
-    timestamp: Date
+    createdAt: Date
     _count: AuditLogCountAggregateOutputType | null
     _min: AuditLogMinAggregateOutputType | null
     _max: AuditLogMaxAggregateOutputType | null
@@ -31819,7 +31819,7 @@ export namespace Prisma {
     action?: boolean
     context?: boolean
     message?: boolean
-    timestamp?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["auditLog"]>
@@ -31833,7 +31833,7 @@ export namespace Prisma {
     action?: boolean
     context?: boolean
     message?: boolean
-    timestamp?: boolean
+    createdAt?: boolean
   }
 
 
@@ -31858,7 +31858,7 @@ export namespace Prisma {
       action: string
       context: Prisma.JsonValue | null
       message: string | null
-      timestamp: Date
+      createdAt: Date
     }, ExtArgs["result"]["auditLog"]>
     composites: {}
   }
@@ -32290,7 +32290,7 @@ export namespace Prisma {
     readonly action: FieldRef<"AuditLog", 'String'>
     readonly context: FieldRef<"AuditLog", 'Json'>
     readonly message: FieldRef<"AuditLog", 'String'>
-    readonly timestamp: FieldRef<"AuditLog", 'DateTime'>
+    readonly createdAt: FieldRef<"AuditLog", 'DateTime'>
   }
     
 
@@ -38906,7 +38906,7 @@ export namespace Prisma {
     action: 'action',
     context: 'context',
     message: 'message',
-    timestamp: 'timestamp'
+    createdAt: 'createdAt'
   };
 
   export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
@@ -41475,7 +41475,7 @@ export namespace Prisma {
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
     message?: StringNullableFilter<"AuditLog"> | string | null
-    timestamp?: DateTimeFilter<"AuditLog"> | Date | string
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }
@@ -41489,7 +41489,7 @@ export namespace Prisma {
     action?: SortOrder
     context?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
-    timestamp?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     company?: CompanyOrderByWithRelationInput
   }
@@ -41506,7 +41506,7 @@ export namespace Prisma {
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
     message?: StringNullableFilter<"AuditLog"> | string | null
-    timestamp?: DateTimeFilter<"AuditLog"> | Date | string
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }, "id">
@@ -41520,7 +41520,7 @@ export namespace Prisma {
     action?: SortOrder
     context?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
-    timestamp?: SortOrder
+    createdAt?: SortOrder
     _count?: AuditLogCountOrderByAggregateInput
     _max?: AuditLogMaxOrderByAggregateInput
     _min?: AuditLogMinOrderByAggregateInput
@@ -41538,7 +41538,7 @@ export namespace Prisma {
     action?: StringWithAggregatesFilter<"AuditLog"> | string
     context?: JsonNullableWithAggregatesFilter<"AuditLog">
     message?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
-    timestamp?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   }
 
   export type CompanyUserWhereInput = {
@@ -44240,7 +44240,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutAuditsLogsInput
     company: CompanyCreateNestedOneWithoutAuditLogsInput
   }
@@ -44254,7 +44254,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type AuditLogUpdateInput = {
@@ -44264,7 +44264,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
     company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
   }
@@ -44278,7 +44278,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AuditLogCreateManyInput = {
@@ -44290,7 +44290,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type AuditLogUpdateManyMutationInput = {
@@ -44300,7 +44300,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AuditLogUncheckedUpdateManyInput = {
@@ -44312,7 +44312,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CompanyUserCreateInput = {
@@ -46625,7 +46625,7 @@ export namespace Prisma {
     action?: SortOrder
     context?: SortOrder
     message?: SortOrder
-    timestamp?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AuditLogMaxOrderByAggregateInput = {
@@ -46636,7 +46636,7 @@ export namespace Prisma {
     entityType?: SortOrder
     action?: SortOrder
     message?: SortOrder
-    timestamp?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AuditLogMinOrderByAggregateInput = {
@@ -46647,7 +46647,7 @@ export namespace Prisma {
     entityType?: SortOrder
     action?: SortOrder
     message?: SortOrder
-    timestamp?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type EnumCompanyRoleFilter<$PrismaModel = never> = {
@@ -50138,7 +50138,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutAuditsLogsInput
   }
 
@@ -50150,7 +50150,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type AuditLogCreateOrConnectWithoutCompanyInput = {
@@ -50384,7 +50384,7 @@ export namespace Prisma {
     action?: StringFilter<"AuditLog"> | string
     context?: JsonNullableFilter<"AuditLog">
     message?: StringNullableFilter<"AuditLog"> | string | null
-    timestamp?: DateTimeFilter<"AuditLog"> | Date | string
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
   }
 
   export type CompanyCreateWithoutFacilitiesInput = {
@@ -55083,7 +55083,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
     company: CompanyCreateNestedOneWithoutAuditLogsInput
   }
 
@@ -55095,7 +55095,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type AuditLogCreateOrConnectWithoutUserInput = {
@@ -55473,7 +55473,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type FacilityUpdateWithoutCompanyInput = {
@@ -55712,7 +55712,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
   }
 
@@ -55724,7 +55724,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AuditLogUncheckedUpdateManyWithoutCompanyInput = {
@@ -55735,7 +55735,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacilityUserCreateManyFacilityInput = {
@@ -57620,7 +57620,7 @@ export namespace Prisma {
     action: string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: string | null
-    timestamp?: Date | string
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -57726,7 +57726,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
   }
 
@@ -57738,7 +57738,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AuditLogUncheckedUpdateManyWithoutUserInput = {
@@ -57749,7 +57749,7 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     context?: NullableJsonNullValueInput | InputJsonValue
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
