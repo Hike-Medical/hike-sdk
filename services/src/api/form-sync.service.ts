@@ -2,7 +2,7 @@ import type { EvaluationExtended, FormFieldValue, FormSection, Gender, Side, Ver
 import { formatConstant, parseDate } from '@hike/utils';
 import { updateEvaluation } from './evaluation.service';
 import { updatePatient } from './patient.service';
-
+import { updateInactiveFeetInWorkbench } from './workbench.service';
 /**
  * Updates patients with form submission.
  */
@@ -28,6 +28,13 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     prescribedAt: parseDate(formState.prescribedAt as string) ?? undefined,
     facilityId: formState.facilityId !== undefined ? (formState.facilityId as string) : undefined,
     location: formState.location !== undefined ? (formState.location as string) : undefined
+  });
+
+export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) =>
+  await updateInactiveFeetInWorkbench(workbenchId, {
+    isToeFiller:
+      formState.isToeFiller !== undefined ? ((formState.isToeFiller as string) === 'Yes' ? true : false) : undefined,
+    patientAmputation: formState.patientAmputation !== undefined ? (formState.patientAmputation as string[]) : undefined
   });
 
 /**
