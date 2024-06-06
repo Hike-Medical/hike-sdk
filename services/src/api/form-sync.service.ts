@@ -30,12 +30,15 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     location: formState.location !== undefined ? (formState.location as string) : undefined
   });
 
-export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) =>
-  await updateInactiveFeetInWorkbench(workbenchId, {
-    isToeFiller:
-      formState.isToeFiller !== undefined ? ((formState.isToeFiller as string) === 'Yes' ? true : false) : undefined,
-    patientAmputation: formState.patientAmputation !== undefined ? (formState.patientAmputation as string[]) : undefined
+export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) => {
+  const isToeFiller = formState.isToeFiller ? (formState.isToeFiller as string) === 'Yes' : undefined;
+  const patientAmputation = formState.patientAmputation ? (formState.patientAmputation as string[]) : undefined;
+
+  return await updateInactiveFeetInWorkbench(workbenchId, {
+    isToeFiller,
+    patientAmputation
   });
+};
 
 /**
  * Retrieves form defaults from evaluation.
