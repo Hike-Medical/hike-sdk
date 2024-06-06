@@ -85,3 +85,4 @@ export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
 export * from './utils/backendApi';
+export * from './utils/configureBaseUrl';

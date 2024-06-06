@@ -1,6 +1,6 @@
 import type { HikeConfig } from '@hike/types';
-import { isLocalHost } from '@hike/utils';
 import { backendApi } from './utils/backendApi';
+import { configureBaseUrl } from './utils/configureBaseUrl';
 
 /**
  * Provisions the services module.
@@ -14,20 +14,10 @@ export const configureServices = (config: HikeConfig) => {
   backendApi.defaults.headers.common['x-company-id'] ??= config.companyId;
   backendApi.defaults.headers.common['x-time-zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+  // Set the base URL for backend API requests
   if (config.appHost || config.apiHosts || config.apiKey) {
-    const isDevelopment = config.appEnv === 'development';
-    let backendHost = '';
-
-    // Determine the URL of the backend API
-    if (typeof config.apiHosts === 'string' && config.apiHosts) {
-      backendHost = config.apiHosts;
-    } else {
-      backendHost =
-        config.apiHosts?.[config.appHost ?? ''] || (isDevelopment ? 'localhost:8000' : 'api.hikemedical.com');
-    }
-
-    const protocol = isLocalHost(backendHost) ? 'http' : 'https';
-    backendApi.defaults.baseURL = `${protocol}://${backendHost}/v2`;
+    const baseUrl = configureBaseUrl(config);
+    backendApi.defaults.baseURL = `${baseUrl}/v2`;
   }
 
   // Set the cookie for server-side requests
