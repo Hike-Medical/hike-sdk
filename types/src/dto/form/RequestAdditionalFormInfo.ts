@@ -8,4 +8,5 @@ export interface AdditionalFormInfo {
   evaluationId: string;
   patientId: string;
   submittedAt: Date;
+  signatureBuffer: Buffer;
 }
