@@ -2,6 +2,7 @@ import type {
   CreateOrderParams,
   GetOrdersParams,
   Order,
+  OrderAuthorizationStatus,
   OrderExtended,
   OrderType,
   OrdersStats,
@@ -54,5 +55,13 @@ export const fetchOrdersByType = async (
  */
 export const statsForOrders = async (): Promise<OrdersStats> => {
   const response = await backendApi.get('order/stats');
+  return response.data;
+};
+
+export const modifyOrderAuthorization = async (
+  orderId: string,
+  authorizationStatus: OrderAuthorizationStatus
+): Promise<OrderExtended> => {
+  const response = await backendApi.post(`order/${orderId}/modify-authorization`, { authorizationStatus });
   return response.data;
 };
