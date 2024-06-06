@@ -34,6 +34,7 @@ export type * from './dto/notes/Notes';
 export type * from './dto/notes/UpdateNotes';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/GetOrdersParams';
+export type * from './dto/order/OrderType';
 export type * from './dto/order/OrdersStats';
 export type * from './dto/patient/CreatePatientParams';
 export type * from './dto/patient/SearchPatientsParams';

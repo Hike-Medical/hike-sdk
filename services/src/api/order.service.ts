@@ -1,4 +1,13 @@
-import type { CreateOrderParams, GetOrdersParams, Order, OrderExtended, OrdersStats, PagedResponse } from '@hike/types';
+import type {
+  CreateOrderParams,
+  GetOrdersParams,
+  Order,
+  OrderExtended,
+  OrderType,
+  OrdersStats,
+  PagedParams,
+  PagedResponse
+} from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export const createOrder = async (params: CreateOrderParams): Promise<Order> => {
@@ -13,6 +22,30 @@ export const findOrderById = async (orderId: string): Promise<OrderExtended> => 
 
 export const fetchOrders = async (params?: GetOrdersParams): Promise<PagedResponse<OrderExtended[]>> => {
   const response = await backendApi.get('order', { params });
+  return response.data;
+};
+
+export const fetchOrdersByType = async (
+  type: OrderType,
+  params?: PagedParams
+): Promise<PagedResponse<OrderExtended[]>> => {
+  let route: string;
+
+  switch (type) {
+    case 'authorized':
+      route = 'order/authorized';
+      break;
+    case 'onHold':
+      route = 'order/hold';
+      break;
+    case 'ready':
+      route = 'order/ready';
+      break;
+    default:
+      throw new Error('Invalid order type');
+  }
+
+  const response = await backendApi.get(`order/${route}`, { params });
   return response.data;
 };
 

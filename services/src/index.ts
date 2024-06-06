@@ -58,6 +58,7 @@ export * from './hooks/useGetPresignedURL';
 export * from './hooks/useGetShippingRates';
 export * from './hooks/useOrders';
 export * from './hooks/useOrdersByShipmentId';
+export * from './hooks/useOrdersByType';
 export * from './hooks/useOrdersStats';
 export * from './hooks/usePatientById';
 export * from './hooks/usePatients';
