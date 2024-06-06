@@ -33,13 +33,13 @@ export const fetchOrdersByType = async (
 
   switch (type) {
     case 'authorized':
-      route = 'order/authorized';
+      route = 'authorized';
       break;
     case 'onHold':
-      route = 'order/hold';
+      route = 'hold';
       break;
     case 'ready':
-      route = 'order/ready';
+      route = 'ready';
       break;
     default:
       throw new Error('Invalid order type');
