@@ -14,6 +14,12 @@ describe('isDefined tests', () => {
     expect(filteredArray).toHaveLength(0);
   });
 
+  test('should return an empty array when values are null or undefined', () => {
+    const array = [null, undefined, null];
+    const filteredArray = array.filter(isDefined);
+    expect(filteredArray).toHaveLength(0);
+  });
+
   test('should return the same array if no values are null', () => {
     const noNullArray = [1, 2, 3, 'a', 'b'];
     const filteredArray = noNullArray.filter(isDefined);

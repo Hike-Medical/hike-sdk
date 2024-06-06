@@ -1,4 +1,4 @@
-import type { FormField, FormSchema } from '@hike/types';
+import type { FormField, FormSchemaTyped } from '@hike/types';
 import { describe, expect } from '@jest/globals';
 import {
   initialFormValues,
@@ -161,7 +161,7 @@ describe('Form Schema Utils', () => {
 
   describe('isFormValid', () => {
     it('should be valid when all required fields are answered', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -177,7 +177,7 @@ describe('Form Schema Utils', () => {
     });
 
     it('should not be valid when required fields are not answered', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -193,7 +193,7 @@ describe('Form Schema Utils', () => {
     });
 
     it('should be valid when required fields are hidden', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -217,7 +217,7 @@ describe('Form Schema Utils', () => {
 
   describe('initialFormValues', () => {
     it('should set initial values from schema defaults', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -233,7 +233,7 @@ describe('Form Schema Utils', () => {
     });
 
     it('should set initial values from submission', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -249,7 +249,7 @@ describe('Form Schema Utils', () => {
     });
 
     it('should set labels from submission', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -324,7 +324,7 @@ describe('Form Schema Utils', () => {
 
   describe('schemaStats', () => {
     it('should calculate schema stats correctly for complete sections', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -342,12 +342,12 @@ describe('Form Schema Utils', () => {
       expect(result).toEqual({
         sectionsCompleted: 2,
         sectionsTotal: 2,
-        sectionNext: null
+        sectionNext: schema.sections[0]
       });
     });
 
     it('should calculate schema stats correctly for incomplete sections', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -365,12 +365,12 @@ describe('Form Schema Utils', () => {
       expect(result).toEqual({
         sectionsCompleted: 1,
         sectionsTotal: 2,
-        sectionNext: 1
+        sectionNext: schema.sections[1]
       });
     });
 
     it('should calculate schema stats correctly for sections with rules', () => {
-      const schema: FormSchema = {
+      const schema: FormSchemaTyped['data'] = {
         sections: [
           {
             title: 'Section 1',
@@ -402,7 +402,7 @@ describe('Form Schema Utils', () => {
       expect(result).toEqual({
         sectionsCompleted: 2,
         sectionsTotal: 2,
-        sectionNext: null
+        sectionNext: schema.sections[0]
       });
     });
   });
