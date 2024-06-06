@@ -1,3 +1,4 @@
 {
-  "extends": ["airbnb-typescript/base", "../../../.eslintrc.json"]
+  "extends": ["airbnb-typescript/base", "../../../.eslintrc.json"],
+  "ignorePatterns": ["__tests__/"]
 }
