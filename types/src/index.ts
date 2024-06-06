@@ -55,6 +55,7 @@ export type * from './entities/OrderExtended';
 export type * from './entities/PatientExtended';
 export type * from './entities/UserExtended';
 export type * from './entities/WorkbenchExtended';
+export type * from './forms/FieldPrint';
 export type * from './forms/FormField';
 export type * from './forms/FormRule';
 export type * from './forms/FormSchemaTyped';
