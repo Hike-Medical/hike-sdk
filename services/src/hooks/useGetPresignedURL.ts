@@ -1,12 +1,12 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { GenerateSignedURLDto, GenerateSignedURLResponse, getPreSignedURL } from '../api/scan.service';
+import { GenerateSignedURLParams, GenerateSignedURLResponse, getPreSignedURL } from '../api/scan.service';
 
 export const useCreatePresignedUrl = (
-  mutationOptions?: UseMutationOptions<GenerateSignedURLResponse, Error, GenerateSignedURLDto>
+  mutationOptions?: UseMutationOptions<GenerateSignedURLResponse, Error, GenerateSignedURLParams>
 ) => {
   return useMutation({
     mutationKey: ['createPresignedUrl'],
-    mutationFn: ({ footId, ...body }: GenerateSignedURLDto) => getPreSignedURL(footId, body),
+    mutationFn: ({ footId, ...body }: GenerateSignedURLParams) => getPreSignedURL(footId, body),
     ...mutationOptions
   });
 };
