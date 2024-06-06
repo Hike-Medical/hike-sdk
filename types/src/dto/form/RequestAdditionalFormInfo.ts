@@ -1,4 +1,4 @@
-export interface AdditionalTemplateInfo {
+export interface AdditionalFormInfo {
   firstName: string;
   lastName: string;
   poNumber: string;

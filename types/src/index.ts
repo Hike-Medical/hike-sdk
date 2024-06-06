@@ -26,7 +26,7 @@ export type * from './dto/foot/FootStatus';
 export type * from './dto/foot/SetFootInactive';
 export type * from './dto/form/CreateFormTemplateBody';
 export type * from './dto/form/FormTemplateResponse';
-export type * from './dto/form/RequestAdditionalTemplateInfo';
+export type * from './dto/form/RequestAdditionalFormInfo';
 export type * from './dto/form/UpdateFormTemplateBody';
 export type * from './dto/form/UpsertFormSubmissionParams';
 export type * from './dto/legacy/LegacyOrderResponse';
