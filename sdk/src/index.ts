@@ -38,4 +38,3 @@ export * from './auth/currentSession';
 export * from './auth/extractToken';
 export * from './auth/toAuthUser';
 export * from './auth/verifyToken';
-export * from './auth/parseCookies';
