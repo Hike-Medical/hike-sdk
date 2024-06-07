@@ -13,6 +13,11 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderBody): P
   return response.data;
 };
 
+export const continueWorkbench = async (workbenchId: string): Promise<Workbench> => {
+  const response = await backendApi.post(`workbench/${workbenchId}/continue`);
+  return response.data;
+};
+
 export const updateInactiveFeetInWorkbench = async (
   workbenchId: string,
   body: UpdateInactiveFeetBody
