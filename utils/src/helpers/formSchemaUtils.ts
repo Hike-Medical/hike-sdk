@@ -76,7 +76,7 @@ export const isFormRuleDisplayed = (
 export const isFieldComplete = (
   field: FormField,
   state: Record<string, FormFieldValue>,
-  isOnlyField: boolean,
+  isOnlyField?: boolean,
   activeFoot?: string
 ): boolean => {
   return (
