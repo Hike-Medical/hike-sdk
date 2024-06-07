@@ -58,3 +58,8 @@ export const updateFormTemplate = async (
   const response = await backendApi.put(`form/template/${templateId}`, body);
   return response.data;
 };
+
+export const deleteTemplate = async (templateId: string): Promise<void> => {
+  const response = await backendApi.delete(`/template/${templateId}`);
+  return response.data;
+};
