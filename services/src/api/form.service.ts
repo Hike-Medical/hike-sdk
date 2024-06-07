@@ -60,6 +60,6 @@ export const updateFormTemplate = async (
 };
 
 export const deleteTemplate = async (templateId: string): Promise<void> => {
-  const response = await backendApi.delete(`/template/${templateId}`);
+  const response = await backendApi.delete(`form/template/${templateId}`);
   return response.data;
 };
