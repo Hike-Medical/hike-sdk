@@ -21005,6 +21005,7 @@ export namespace Prisma {
     id: number
     summary: number
     description: number
+    justifications: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -21031,6 +21032,7 @@ export namespace Prisma {
     id?: true
     summary?: true
     description?: true
+    justifications?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -21112,6 +21114,7 @@ export namespace Prisma {
     id: string
     summary: string | null
     description: string
+    justifications: JsonValue | null
     createdAt: Date
     updatedAt: Date
     _count: BillingCodeCountAggregateOutputType | null
@@ -21137,6 +21140,7 @@ export namespace Prisma {
     id?: boolean
     summary?: boolean
     description?: boolean
+    justifications?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["billingCode"]>
@@ -21145,6 +21149,7 @@ export namespace Prisma {
     id?: boolean
     summary?: boolean
     description?: boolean
+    justifications?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -21158,6 +21163,7 @@ export namespace Prisma {
       id: string
       summary: string | null
       description: string
+      justifications: Prisma.JsonValue | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["billingCode"]>
@@ -21583,6 +21589,7 @@ export namespace Prisma {
     readonly id: FieldRef<"BillingCode", 'String'>
     readonly summary: FieldRef<"BillingCode", 'String'>
     readonly description: FieldRef<"BillingCode", 'String'>
+    readonly justifications: FieldRef<"BillingCode", 'Json'>
     readonly createdAt: FieldRef<"BillingCode", 'DateTime'>
     readonly updatedAt: FieldRef<"BillingCode", 'DateTime'>
   }
@@ -38783,6 +38790,7 @@ export namespace Prisma {
     id: 'id',
     summary: 'summary',
     description: 'description',
+    justifications: 'justifications',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -40831,6 +40839,7 @@ export namespace Prisma {
     id?: StringFilter<"BillingCode"> | string
     summary?: StringNullableFilter<"BillingCode"> | string | null
     description?: StringFilter<"BillingCode"> | string
+    justifications?: JsonNullableFilter<"BillingCode">
     createdAt?: DateTimeFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeFilter<"BillingCode"> | Date | string
   }
@@ -40839,6 +40848,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrderInput | SortOrder
     description?: SortOrder
+    justifications?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -40850,6 +40860,7 @@ export namespace Prisma {
     NOT?: BillingCodeWhereInput | BillingCodeWhereInput[]
     summary?: StringNullableFilter<"BillingCode"> | string | null
     description?: StringFilter<"BillingCode"> | string
+    justifications?: JsonNullableFilter<"BillingCode">
     createdAt?: DateTimeFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeFilter<"BillingCode"> | Date | string
   }, "id">
@@ -40858,6 +40869,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrderInput | SortOrder
     description?: SortOrder
+    justifications?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BillingCodeCountOrderByAggregateInput
@@ -40872,6 +40884,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"BillingCode"> | string
     summary?: StringNullableWithAggregatesFilter<"BillingCode"> | string | null
     description?: StringWithAggregatesFilter<"BillingCode"> | string
+    justifications?: JsonNullableWithAggregatesFilter<"BillingCode">
     createdAt?: DateTimeWithAggregatesFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BillingCode"> | Date | string
   }
@@ -43540,6 +43553,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43548,6 +43562,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43556,6 +43571,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -43564,6 +43580,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -43572,6 +43589,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43580,6 +43598,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -43588,6 +43607,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -46223,6 +46243,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrder
     description?: SortOrder
+    justifications?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
