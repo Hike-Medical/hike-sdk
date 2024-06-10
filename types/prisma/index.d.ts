@@ -144,6 +144,11 @@ export type CatalogCategory = $Result.DefaultSelection<Prisma.$CatalogCategoryPa
  */
 export type CatalogVendor = $Result.DefaultSelection<Prisma.$CatalogVendorPayload>
 /**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = $Result.DefaultSelection<Prisma.$AuditLogPayload>
+/**
  * Model CompanyUser
  * 
  */
@@ -320,7 +325,8 @@ export type WorkbenchStatus = (typeof WorkbenchStatus)[keyof typeof WorkbenchSta
 
 export const OrderStatus: {
   DRAFT: 'DRAFT',
-  NEEDS_PRINTING: 'NEEDS_PRINTING',
+  TOE_FILLER: 'TOE_FILLER',
+  NEEDS_MANUFACTURING: 'NEEDS_MANUFACTURING',
   NEEDS_GRINDING: 'NEEDS_GRINDING',
   NEEDS_GLUING: 'NEEDS_GLUING',
   NEEDS_FINISHING: 'NEEDS_FINISHING',
@@ -371,6 +377,15 @@ export const DiagnosisStandard: {
 };
 
 export type DiagnosisStandard = (typeof DiagnosisStandard)[keyof typeof DiagnosisStandard]
+
+
+export const FormSchemaType: {
+  EVALUATION: 'EVALUATION',
+  ORDER: 'ORDER',
+  DELIVERY: 'DELIVERY'
+};
+
+export type FormSchemaType = (typeof FormSchemaType)[keyof typeof FormSchemaType]
 
 
 export const ProductAttributeType: {
@@ -466,6 +481,10 @@ export const DimensionUnit: typeof $Enums.DimensionUnit
 export type DiagnosisStandard = $Enums.DiagnosisStandard
 
 export const DiagnosisStandard: typeof $Enums.DiagnosisStandard
+
+export type FormSchemaType = $Enums.FormSchemaType
+
+export const FormSchemaType: typeof $Enums.FormSchemaType
 
 export type ProductAttributeType = $Enums.ProductAttributeType
 
@@ -856,6 +875,16 @@ export class PrismaClient<
     * ```
     */
   get catalogVendor(): Prisma.CatalogVendorDelegate<ExtArgs>;
+
+  /**
+   * `prisma.auditLog`: Exposes CRUD operations for the **AuditLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AuditLogs
+    * const auditLogs = await prisma.auditLog.findMany()
+    * ```
+    */
+  get auditLog(): Prisma.AuditLogDelegate<ExtArgs>;
 
   /**
    * `prisma.companyUser`: Exposes CRUD operations for the **CompanyUser** model.
@@ -1419,6 +1448,7 @@ export namespace Prisma {
     CatalogProductVariant: 'CatalogProductVariant',
     CatalogCategory: 'CatalogCategory',
     CatalogVendor: 'CatalogVendor',
+    AuditLog: 'AuditLog',
     CompanyUser: 'CompanyUser',
     CompanyPatient: 'CompanyPatient',
     FacilityUser: 'FacilityUser',
@@ -1441,7 +1471,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'companyUser' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3265,6 +3295,76 @@ export namespace Prisma {
           }
         }
       }
+      AuditLog: {
+        payload: Prisma.$AuditLogPayload<ExtArgs>
+        fields: Prisma.AuditLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AuditLogFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AuditLogFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          findFirst: {
+            args: Prisma.AuditLogFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AuditLogFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          findMany: {
+            args: Prisma.AuditLogFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+          }
+          create: {
+            args: Prisma.AuditLogCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          createMany: {
+            args: Prisma.AuditLogCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AuditLogCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+          }
+          delete: {
+            args: Prisma.AuditLogDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          update: {
+            args: Prisma.AuditLogUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.AuditLogDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AuditLogUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.AuditLogUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AuditLogPayload>
+          }
+          aggregate: {
+            args: Prisma.AuditLogAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAuditLog>
+          }
+          groupBy: {
+            args: Prisma.AuditLogGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AuditLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AuditLogCountArgs<ExtArgs>,
+            result: $Utils.Optional<AuditLogCountAggregateOutputType> | number
+          }
+        }
+      }
       CompanyUser: {
         payload: Prisma.$CompanyUserPayload<ExtArgs>
         fields: Prisma.CompanyUserFieldRefs
@@ -3851,6 +3951,7 @@ export namespace Prisma {
     packages: number
     users: number
     patients: number
+    auditLogs: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3860,6 +3961,7 @@ export namespace Prisma {
     packages?: boolean | CompanyCountOutputTypeCountPackagesArgs
     users?: boolean | CompanyCountOutputTypeCountUsersArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
+    auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
   }
 
   // Custom InputTypes
@@ -3913,6 +4015,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyPatientWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountAuditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AuditLogWhereInput
   }
 
 
@@ -4547,6 +4656,7 @@ export namespace Prisma {
     companies: number
     facilities: number
     notes: number
+    auditsLogs: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4554,6 +4664,7 @@ export namespace Prisma {
     companies?: boolean | UserCountOutputTypeCountCompaniesArgs
     facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
+    auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
   }
 
   // Custom InputTypes
@@ -4593,6 +4704,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchNotesWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAuditsLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AuditLogWhereInput
   }
 
 
@@ -4798,6 +4916,7 @@ export namespace Prisma {
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
+    auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -4821,6 +4940,7 @@ export namespace Prisma {
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
+    auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4834,6 +4954,7 @@ export namespace Prisma {
       packages: Prisma.$ShippingPackagePayload<ExtArgs>[]
       users: Prisma.$CompanyUserPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
+      auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5247,6 +5368,8 @@ export namespace Prisma {
     users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5720,6 +5843,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Company.auditLogs
+   */
+  export type Company$auditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    where?: AuditLogWhereInput
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    cursor?: AuditLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
   }
 
   /**
@@ -20862,6 +21005,7 @@ export namespace Prisma {
     id: number
     summary: number
     description: number
+    justifications: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -20888,6 +21032,7 @@ export namespace Prisma {
     id?: true
     summary?: true
     description?: true
+    justifications?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -20969,6 +21114,7 @@ export namespace Prisma {
     id: string
     summary: string | null
     description: string
+    justifications: JsonValue | null
     createdAt: Date
     updatedAt: Date
     _count: BillingCodeCountAggregateOutputType | null
@@ -20994,6 +21140,7 @@ export namespace Prisma {
     id?: boolean
     summary?: boolean
     description?: boolean
+    justifications?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["billingCode"]>
@@ -21002,6 +21149,7 @@ export namespace Prisma {
     id?: boolean
     summary?: boolean
     description?: boolean
+    justifications?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -21015,6 +21163,7 @@ export namespace Prisma {
       id: string
       summary: string | null
       description: string
+      justifications: Prisma.JsonValue | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["billingCode"]>
@@ -21440,6 +21589,7 @@ export namespace Prisma {
     readonly id: FieldRef<"BillingCode", 'String'>
     readonly summary: FieldRef<"BillingCode", 'String'>
     readonly description: FieldRef<"BillingCode", 'String'>
+    readonly justifications: FieldRef<"BillingCode", 'Json'>
     readonly createdAt: FieldRef<"BillingCode", 'DateTime'>
     readonly updatedAt: FieldRef<"BillingCode", 'DateTime'>
   }
@@ -23632,7 +23782,7 @@ export namespace Prisma {
   export type FormSchemaMinAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
+    type: $Enums.FormSchemaType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -23640,7 +23790,7 @@ export namespace Prisma {
   export type FormSchemaMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
+    type: $Enums.FormSchemaType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -23648,7 +23798,7 @@ export namespace Prisma {
   export type FormSchemaCountAggregateOutputType = {
     id: number
     title: number
-    description: number
+    type: number
     data: number
     createdAt: number
     updatedAt: number
@@ -23659,7 +23809,7 @@ export namespace Prisma {
   export type FormSchemaMinAggregateInputType = {
     id?: true
     title?: true
-    description?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -23667,7 +23817,7 @@ export namespace Prisma {
   export type FormSchemaMaxAggregateInputType = {
     id?: true
     title?: true
-    description?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -23675,7 +23825,7 @@ export namespace Prisma {
   export type FormSchemaCountAggregateInputType = {
     id?: true
     title?: true
-    description?: true
+    type?: true
     data?: true
     createdAt?: true
     updatedAt?: true
@@ -23757,7 +23907,7 @@ export namespace Prisma {
   export type FormSchemaGroupByOutputType = {
     id: string
     title: string
-    description: string | null
+    type: $Enums.FormSchemaType | null
     data: JsonValue
     createdAt: Date
     updatedAt: Date
@@ -23783,7 +23933,7 @@ export namespace Prisma {
   export type FormSchemaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    description?: boolean
+    type?: boolean
     data?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -23794,7 +23944,7 @@ export namespace Prisma {
   export type FormSchemaSelectScalar = {
     id?: boolean
     title?: boolean
-    description?: boolean
+    type?: boolean
     data?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -23815,7 +23965,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      description: string | null
+      type: $Enums.FormSchemaType | null
       data: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
@@ -24242,7 +24392,7 @@ export namespace Prisma {
   interface FormSchemaFieldRefs {
     readonly id: FieldRef<"FormSchema", 'String'>
     readonly title: FieldRef<"FormSchema", 'String'>
-    readonly description: FieldRef<"FormSchema", 'String'>
+    readonly type: FieldRef<"FormSchema", 'FormSchemaType'>
     readonly data: FieldRef<"FormSchema", 'Json'>
     readonly createdAt: FieldRef<"FormSchema", 'DateTime'>
     readonly updatedAt: FieldRef<"FormSchema", 'DateTime'>
@@ -26482,8 +26632,18 @@ export namespace Prisma {
 
   export type AggregateCatalogProduct = {
     _count: CatalogProductCountAggregateOutputType | null
+    _avg: CatalogProductAvgAggregateOutputType | null
+    _sum: CatalogProductSumAggregateOutputType | null
     _min: CatalogProductMinAggregateOutputType | null
     _max: CatalogProductMaxAggregateOutputType | null
+  }
+
+  export type CatalogProductAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type CatalogProductSumAggregateOutputType = {
+    price: number | null
   }
 
   export type CatalogProductMinAggregateOutputType = {
@@ -26491,6 +26651,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     image: string | null
+    price: number | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -26501,6 +26662,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     image: string | null
+    price: number | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -26511,6 +26673,7 @@ export namespace Prisma {
     name: number
     description: number
     image: number
+    price: number
     active: number
     createdAt: number
     updatedAt: number
@@ -26518,11 +26681,20 @@ export namespace Prisma {
   }
 
 
+  export type CatalogProductAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type CatalogProductSumAggregateInputType = {
+    price?: true
+  }
+
   export type CatalogProductMinAggregateInputType = {
     id?: true
     name?: true
     description?: true
     image?: true
+    price?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -26533,6 +26705,7 @@ export namespace Prisma {
     name?: true
     description?: true
     image?: true
+    price?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -26543,6 +26716,7 @@ export namespace Prisma {
     name?: true
     description?: true
     image?: true
+    price?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -26587,6 +26761,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CatalogProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CatalogProductSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CatalogProductMinAggregateInputType
@@ -26617,6 +26803,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CatalogProductCountAggregateInputType | true
+    _avg?: CatalogProductAvgAggregateInputType
+    _sum?: CatalogProductSumAggregateInputType
     _min?: CatalogProductMinAggregateInputType
     _max?: CatalogProductMaxAggregateInputType
   }
@@ -26626,10 +26814,13 @@ export namespace Prisma {
     name: string
     description: string | null
     image: string | null
+    price: number | null
     active: boolean
     createdAt: Date
     updatedAt: Date
     _count: CatalogProductCountAggregateOutputType | null
+    _avg: CatalogProductAvgAggregateOutputType | null
+    _sum: CatalogProductSumAggregateOutputType | null
     _min: CatalogProductMinAggregateOutputType | null
     _max: CatalogProductMaxAggregateOutputType | null
   }
@@ -26653,6 +26844,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     image?: boolean
+    price?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -26668,6 +26860,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     image?: boolean
+    price?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -26696,6 +26889,7 @@ export namespace Prisma {
       name: string
       description: string | null
       image: string | null
+      price: number | null
       active: boolean
       createdAt: Date
       updatedAt: Date
@@ -27130,6 +27324,7 @@ export namespace Prisma {
     readonly name: FieldRef<"CatalogProduct", 'String'>
     readonly description: FieldRef<"CatalogProduct", 'String'>
     readonly image: FieldRef<"CatalogProduct", 'String'>
+    readonly price: FieldRef<"CatalogProduct", 'Float'>
     readonly active: FieldRef<"CatalogProduct", 'Boolean'>
     readonly createdAt: FieldRef<"CatalogProduct", 'DateTime'>
     readonly updatedAt: FieldRef<"CatalogProduct", 'DateTime'>
@@ -31500,6 +31695,1001 @@ export namespace Prisma {
 
 
   /**
+   * Model AuditLog
+   */
+
+  export type AggregateAuditLog = {
+    _count: AuditLogCountAggregateOutputType | null
+    _min: AuditLogMinAggregateOutputType | null
+    _max: AuditLogMaxAggregateOutputType | null
+  }
+
+  export type AuditLogMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    companyId: string | null
+    entityId: string | null
+    entityType: string | null
+    action: string | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type AuditLogMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    companyId: string | null
+    entityId: string | null
+    entityType: string | null
+    action: string | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type AuditLogCountAggregateOutputType = {
+    id: number
+    userId: number
+    companyId: number
+    entityId: number
+    entityType: number
+    action: number
+    context: number
+    comment: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type AuditLogMinAggregateInputType = {
+    id?: true
+    userId?: true
+    companyId?: true
+    entityId?: true
+    entityType?: true
+    action?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type AuditLogMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    companyId?: true
+    entityId?: true
+    entityType?: true
+    action?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type AuditLogCountAggregateInputType = {
+    id?: true
+    userId?: true
+    companyId?: true
+    entityId?: true
+    entityType?: true
+    action?: true
+    context?: true
+    comment?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type AuditLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AuditLog to aggregate.
+     */
+    where?: AuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AuditLogs to fetch.
+     */
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AuditLogs
+    **/
+    _count?: true | AuditLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AuditLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AuditLogMaxAggregateInputType
+  }
+
+  export type GetAuditLogAggregateType<T extends AuditLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateAuditLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAuditLog[P]>
+      : GetScalarType<T[P], AggregateAuditLog[P]>
+  }
+
+
+
+
+  export type AuditLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AuditLogWhereInput
+    orderBy?: AuditLogOrderByWithAggregationInput | AuditLogOrderByWithAggregationInput[]
+    by: AuditLogScalarFieldEnum[] | AuditLogScalarFieldEnum
+    having?: AuditLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AuditLogCountAggregateInputType | true
+    _min?: AuditLogMinAggregateInputType
+    _max?: AuditLogMaxAggregateInputType
+  }
+
+  export type AuditLogGroupByOutputType = {
+    id: string
+    userId: string
+    companyId: string
+    entityId: string | null
+    entityType: string | null
+    action: string
+    context: JsonValue | null
+    comment: string | null
+    createdAt: Date
+    _count: AuditLogCountAggregateOutputType | null
+    _min: AuditLogMinAggregateOutputType | null
+    _max: AuditLogMaxAggregateOutputType | null
+  }
+
+  type GetAuditLogGroupByPayload<T extends AuditLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AuditLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AuditLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AuditLogGroupByOutputType[P]>
+            : GetScalarType<T[P], AuditLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AuditLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    companyId?: boolean
+    entityId?: boolean
+    entityType?: boolean
+    action?: boolean
+    context?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["auditLog"]>
+
+  export type AuditLogSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    companyId?: boolean
+    entityId?: boolean
+    entityType?: boolean
+    action?: boolean
+    context?: boolean
+    comment?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type AuditLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }
+
+
+  export type $AuditLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AuditLog"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      company: Prisma.$CompanyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      companyId: string
+      entityId: string | null
+      entityType: string | null
+      action: string
+      context: Prisma.JsonValue | null
+      comment: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["auditLog"]>
+    composites: {}
+  }
+
+
+  type AuditLogGetPayload<S extends boolean | null | undefined | AuditLogDefaultArgs> = $Result.GetResult<Prisma.$AuditLogPayload, S>
+
+  type AuditLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AuditLogFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AuditLogCountAggregateInputType | true
+    }
+
+  export interface AuditLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AuditLog'], meta: { name: 'AuditLog' } }
+    /**
+     * Find zero or one AuditLog that matches the filter.
+     * @param {AuditLogFindUniqueArgs} args - Arguments to find a AuditLog
+     * @example
+     * // Get one AuditLog
+     * const auditLog = await prisma.auditLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends AuditLogFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogFindUniqueArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one AuditLog that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AuditLogFindUniqueOrThrowArgs} args - Arguments to find a AuditLog
+     * @example
+     * // Get one AuditLog
+     * const auditLog = await prisma.auditLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends AuditLogFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first AuditLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogFindFirstArgs} args - Arguments to find a AuditLog
+     * @example
+     * // Get one AuditLog
+     * const auditLog = await prisma.auditLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends AuditLogFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogFindFirstArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first AuditLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogFindFirstOrThrowArgs} args - Arguments to find a AuditLog
+     * @example
+     * // Get one AuditLog
+     * const auditLog = await prisma.auditLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends AuditLogFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more AuditLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AuditLogs
+     * const auditLogs = await prisma.auditLog.findMany()
+     * 
+     * // Get first 10 AuditLogs
+     * const auditLogs = await prisma.auditLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const auditLogWithIdOnly = await prisma.auditLog.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends AuditLogFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a AuditLog.
+     * @param {AuditLogCreateArgs} args - Arguments to create a AuditLog.
+     * @example
+     * // Create one AuditLog
+     * const AuditLog = await prisma.auditLog.create({
+     *   data: {
+     *     // ... data to create a AuditLog
+     *   }
+     * })
+     * 
+    **/
+    create<T extends AuditLogCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogCreateArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many AuditLogs.
+     * @param {AuditLogCreateManyArgs} args - Arguments to create many AuditLogs.
+     * @example
+     * // Create many AuditLogs
+     * const auditLog = await prisma.auditLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends AuditLogCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AuditLogs and returns the data saved in the database.
+     * @param {AuditLogCreateManyAndReturnArgs} args - Arguments to create many AuditLogs.
+     * @example
+     * // Create many AuditLogs
+     * const auditLog = await prisma.auditLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AuditLogs and only return the `id`
+     * const auditLogWithIdOnly = await prisma.auditLog.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends AuditLogCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a AuditLog.
+     * @param {AuditLogDeleteArgs} args - Arguments to delete one AuditLog.
+     * @example
+     * // Delete one AuditLog
+     * const AuditLog = await prisma.auditLog.delete({
+     *   where: {
+     *     // ... filter to delete one AuditLog
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends AuditLogDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogDeleteArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one AuditLog.
+     * @param {AuditLogUpdateArgs} args - Arguments to update one AuditLog.
+     * @example
+     * // Update one AuditLog
+     * const auditLog = await prisma.auditLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends AuditLogUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogUpdateArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more AuditLogs.
+     * @param {AuditLogDeleteManyArgs} args - Arguments to filter AuditLogs to delete.
+     * @example
+     * // Delete a few AuditLogs
+     * const { count } = await prisma.auditLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends AuditLogDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuditLogDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AuditLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AuditLogs
+     * const auditLog = await prisma.auditLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends AuditLogUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AuditLog.
+     * @param {AuditLogUpsertArgs} args - Arguments to update or create a AuditLog.
+     * @example
+     * // Update or create a AuditLog
+     * const auditLog = await prisma.auditLog.upsert({
+     *   create: {
+     *     // ... data to create a AuditLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AuditLog we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends AuditLogUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AuditLogUpsertArgs<ExtArgs>>
+    ): Prisma__AuditLogClient<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of AuditLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogCountArgs} args - Arguments to filter AuditLogs to count.
+     * @example
+     * // Count the number of AuditLogs
+     * const count = await prisma.auditLog.count({
+     *   where: {
+     *     // ... the filter for the AuditLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends AuditLogCountArgs>(
+      args?: Subset<T, AuditLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AuditLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AuditLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AuditLogAggregateArgs>(args: Subset<T, AuditLogAggregateArgs>): Prisma.PrismaPromise<GetAuditLogAggregateType<T>>
+
+    /**
+     * Group by AuditLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AuditLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AuditLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AuditLogGroupByArgs['orderBy'] }
+        : { orderBy?: AuditLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AuditLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuditLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AuditLog model
+   */
+  readonly fields: AuditLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AuditLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AuditLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the AuditLog model
+   */ 
+  interface AuditLogFieldRefs {
+    readonly id: FieldRef<"AuditLog", 'String'>
+    readonly userId: FieldRef<"AuditLog", 'String'>
+    readonly companyId: FieldRef<"AuditLog", 'String'>
+    readonly entityId: FieldRef<"AuditLog", 'String'>
+    readonly entityType: FieldRef<"AuditLog", 'String'>
+    readonly action: FieldRef<"AuditLog", 'String'>
+    readonly context: FieldRef<"AuditLog", 'Json'>
+    readonly comment: FieldRef<"AuditLog", 'String'>
+    readonly createdAt: FieldRef<"AuditLog", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AuditLog findUnique
+   */
+  export type AuditLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AuditLog to fetch.
+     */
+    where: AuditLogWhereUniqueInput
+  }
+
+  /**
+   * AuditLog findUniqueOrThrow
+   */
+  export type AuditLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AuditLog to fetch.
+     */
+    where: AuditLogWhereUniqueInput
+  }
+
+  /**
+   * AuditLog findFirst
+   */
+  export type AuditLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AuditLog to fetch.
+     */
+    where?: AuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AuditLogs to fetch.
+     */
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AuditLogs.
+     */
+    cursor?: AuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AuditLogs.
+     */
+    distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AuditLog findFirstOrThrow
+   */
+  export type AuditLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AuditLog to fetch.
+     */
+    where?: AuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AuditLogs to fetch.
+     */
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AuditLogs.
+     */
+    cursor?: AuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AuditLogs.
+     */
+    distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AuditLog findMany
+   */
+  export type AuditLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AuditLogs to fetch.
+     */
+    where?: AuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AuditLogs to fetch.
+     */
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AuditLogs.
+     */
+    cursor?: AuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AuditLogs.
+     */
+    skip?: number
+    distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AuditLog create
+   */
+  export type AuditLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AuditLog.
+     */
+    data: XOR<AuditLogCreateInput, AuditLogUncheckedCreateInput>
+  }
+
+  /**
+   * AuditLog createMany
+   */
+  export type AuditLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AuditLogs.
+     */
+    data: AuditLogCreateManyInput | AuditLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AuditLog createManyAndReturn
+   */
+  export type AuditLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * The data used to create many AuditLogs.
+     */
+    data: AuditLogCreateManyInput | AuditLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AuditLog update
+   */
+  export type AuditLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AuditLog.
+     */
+    data: XOR<AuditLogUpdateInput, AuditLogUncheckedUpdateInput>
+    /**
+     * Choose, which AuditLog to update.
+     */
+    where: AuditLogWhereUniqueInput
+  }
+
+  /**
+   * AuditLog updateMany
+   */
+  export type AuditLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AuditLogs.
+     */
+    data: XOR<AuditLogUpdateManyMutationInput, AuditLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AuditLogs to update
+     */
+    where?: AuditLogWhereInput
+  }
+
+  /**
+   * AuditLog upsert
+   */
+  export type AuditLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AuditLog to update in case it exists.
+     */
+    where: AuditLogWhereUniqueInput
+    /**
+     * In case the AuditLog found by the `where` argument doesn't exist, create a new AuditLog with this data.
+     */
+    create: XOR<AuditLogCreateInput, AuditLogUncheckedCreateInput>
+    /**
+     * In case the AuditLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AuditLogUpdateInput, AuditLogUncheckedUpdateInput>
+  }
+
+  /**
+   * AuditLog delete
+   */
+  export type AuditLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    /**
+     * Filter which AuditLog to delete.
+     */
+    where: AuditLogWhereUniqueInput
+  }
+
+  /**
+   * AuditLog deleteMany
+   */
+  export type AuditLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AuditLogs to delete
+     */
+    where?: AuditLogWhereInput
+  }
+
+  /**
+   * AuditLog without action
+   */
+  export type AuditLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CompanyUser
    */
 
@@ -34538,6 +35728,7 @@ export namespace Prisma {
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
+    auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -34558,6 +35749,7 @@ export namespace Prisma {
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
+    auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -34570,6 +35762,7 @@ export namespace Prisma {
       facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
+      auditsLogs: Prisma.$AuditLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -34979,6 +36172,8 @@ export namespace Prisma {
     clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    auditsLogs<T extends User$auditsLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -35425,6 +36620,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WorkbenchNotesScalarFieldEnum | WorkbenchNotesScalarFieldEnum[]
+  }
+
+  /**
+   * User.auditsLogs
+   */
+  export type User$auditsLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AuditLog
+     */
+    select?: AuditLogSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AuditLogInclude<ExtArgs> | null
+    where?: AuditLogWhereInput
+    orderBy?: AuditLogOrderByWithRelationInput | AuditLogOrderByWithRelationInput[]
+    cursor?: AuditLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
   }
 
   /**
@@ -37620,6 +38835,7 @@ export namespace Prisma {
     id: 'id',
     summary: 'summary',
     description: 'description',
+    justifications: 'justifications',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -37647,7 +38863,7 @@ export namespace Prisma {
   export const FormSchemaScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    description: 'description',
+    type: 'type',
     data: 'data',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -37686,6 +38902,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     image: 'image',
+    price: 'price',
     active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -37746,6 +38963,21 @@ export namespace Prisma {
   };
 
   export type CatalogVendorScalarFieldEnum = (typeof CatalogVendorScalarFieldEnum)[keyof typeof CatalogVendorScalarFieldEnum]
+
+
+  export const AuditLogScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    companyId: 'companyId',
+    entityId: 'entityId',
+    entityType: 'entityType',
+    action: 'action',
+    context: 'context',
+    comment: 'comment',
+    createdAt: 'createdAt'
+  };
+
+  export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
   export const CompanyUserScalarFieldEnum: {
@@ -38191,6 +39423,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'FormSchemaType'
+   */
+  export type EnumFormSchemaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FormSchemaType'>
+    
+
+
+  /**
+   * Reference to a field of type 'FormSchemaType[]'
+   */
+  export type ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FormSchemaType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ProductAttributeType'
    */
   export type EnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType'>
@@ -38240,6 +39486,7 @@ export namespace Prisma {
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
+    auditLogs?: AuditLogListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -38258,6 +39505,7 @@ export namespace Prisma {
     packages?: ShippingPackageOrderByRelationAggregateInput
     users?: CompanyUserOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
+    auditLogs?: AuditLogOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -38279,6 +39527,7 @@ export namespace Prisma {
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
+    auditLogs?: AuditLogListRelationFilter
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -39636,6 +40885,7 @@ export namespace Prisma {
     id?: StringFilter<"BillingCode"> | string
     summary?: StringNullableFilter<"BillingCode"> | string | null
     description?: StringFilter<"BillingCode"> | string
+    justifications?: JsonNullableFilter<"BillingCode">
     createdAt?: DateTimeFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeFilter<"BillingCode"> | Date | string
   }
@@ -39644,6 +40894,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrderInput | SortOrder
     description?: SortOrder
+    justifications?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -39655,6 +40906,7 @@ export namespace Prisma {
     NOT?: BillingCodeWhereInput | BillingCodeWhereInput[]
     summary?: StringNullableFilter<"BillingCode"> | string | null
     description?: StringFilter<"BillingCode"> | string
+    justifications?: JsonNullableFilter<"BillingCode">
     createdAt?: DateTimeFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeFilter<"BillingCode"> | Date | string
   }, "id">
@@ -39663,6 +40915,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrderInput | SortOrder
     description?: SortOrder
+    justifications?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BillingCodeCountOrderByAggregateInput
@@ -39677,6 +40930,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"BillingCode"> | string
     summary?: StringNullableWithAggregatesFilter<"BillingCode"> | string | null
     description?: StringWithAggregatesFilter<"BillingCode"> | string
+    justifications?: JsonNullableWithAggregatesFilter<"BillingCode">
     createdAt?: DateTimeWithAggregatesFilter<"BillingCode"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BillingCode"> | Date | string
   }
@@ -39772,7 +41026,7 @@ export namespace Prisma {
     NOT?: FormSchemaWhereInput | FormSchemaWhereInput[]
     id?: StringFilter<"FormSchema"> | string
     title?: StringFilter<"FormSchema"> | string
-    description?: StringNullableFilter<"FormSchema"> | string | null
+    type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonFilter<"FormSchema">
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
@@ -39782,7 +41036,7 @@ export namespace Prisma {
   export type FormSchemaOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39795,7 +41049,7 @@ export namespace Prisma {
     OR?: FormSchemaWhereInput[]
     NOT?: FormSchemaWhereInput | FormSchemaWhereInput[]
     title?: StringFilter<"FormSchema"> | string
-    description?: StringNullableFilter<"FormSchema"> | string | null
+    type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonFilter<"FormSchema">
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
@@ -39805,7 +41059,7 @@ export namespace Prisma {
   export type FormSchemaOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39820,7 +41074,7 @@ export namespace Prisma {
     NOT?: FormSchemaScalarWhereWithAggregatesInput | FormSchemaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"FormSchema"> | string
     title?: StringWithAggregatesFilter<"FormSchema"> | string
-    description?: StringNullableWithAggregatesFilter<"FormSchema"> | string | null
+    type?: EnumFormSchemaTypeNullableWithAggregatesFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonWithAggregatesFilter<"FormSchema">
     createdAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
@@ -39960,6 +41214,7 @@ export namespace Prisma {
     name?: StringFilter<"CatalogProduct"> | string
     description?: StringNullableFilter<"CatalogProduct"> | string | null
     image?: StringNullableFilter<"CatalogProduct"> | string | null
+    price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
@@ -39974,6 +41229,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -39991,6 +41247,7 @@ export namespace Prisma {
     name?: StringFilter<"CatalogProduct"> | string
     description?: StringNullableFilter<"CatalogProduct"> | string | null
     image?: StringNullableFilter<"CatalogProduct"> | string | null
+    price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
@@ -40005,12 +41262,15 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CatalogProductCountOrderByAggregateInput
+    _avg?: CatalogProductAvgOrderByAggregateInput
     _max?: CatalogProductMaxOrderByAggregateInput
     _min?: CatalogProductMinOrderByAggregateInput
+    _sum?: CatalogProductSumOrderByAggregateInput
   }
 
   export type CatalogProductScalarWhereWithAggregatesInput = {
@@ -40021,6 +41281,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"CatalogProduct"> | string
     description?: StringNullableWithAggregatesFilter<"CatalogProduct"> | string | null
     image?: StringNullableWithAggregatesFilter<"CatalogProduct"> | string | null
+    price?: FloatNullableWithAggregatesFilter<"CatalogProduct"> | number | null
     active?: BoolWithAggregatesFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CatalogProduct"> | Date | string
@@ -40296,6 +41557,84 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"CatalogVendor"> | Date | string
   }
 
+  export type AuditLogWhereInput = {
+    AND?: AuditLogWhereInput | AuditLogWhereInput[]
+    OR?: AuditLogWhereInput[]
+    NOT?: AuditLogWhereInput | AuditLogWhereInput[]
+    id?: StringFilter<"AuditLog"> | string
+    userId?: StringFilter<"AuditLog"> | string
+    companyId?: StringFilter<"AuditLog"> | string
+    entityId?: StringNullableFilter<"AuditLog"> | string | null
+    entityType?: StringNullableFilter<"AuditLog"> | string | null
+    action?: StringFilter<"AuditLog"> | string
+    context?: JsonNullableFilter<"AuditLog">
+    comment?: StringNullableFilter<"AuditLog"> | string | null
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }
+
+  export type AuditLogOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    companyId?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    entityType?: SortOrderInput | SortOrder
+    action?: SortOrder
+    context?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    company?: CompanyOrderByWithRelationInput
+  }
+
+  export type AuditLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AuditLogWhereInput | AuditLogWhereInput[]
+    OR?: AuditLogWhereInput[]
+    NOT?: AuditLogWhereInput | AuditLogWhereInput[]
+    userId?: StringFilter<"AuditLog"> | string
+    companyId?: StringFilter<"AuditLog"> | string
+    entityId?: StringNullableFilter<"AuditLog"> | string | null
+    entityType?: StringNullableFilter<"AuditLog"> | string | null
+    action?: StringFilter<"AuditLog"> | string
+    context?: JsonNullableFilter<"AuditLog">
+    comment?: StringNullableFilter<"AuditLog"> | string | null
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }, "id">
+
+  export type AuditLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    companyId?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    entityType?: SortOrderInput | SortOrder
+    action?: SortOrder
+    context?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: AuditLogCountOrderByAggregateInput
+    _max?: AuditLogMaxOrderByAggregateInput
+    _min?: AuditLogMinOrderByAggregateInput
+  }
+
+  export type AuditLogScalarWhereWithAggregatesInput = {
+    AND?: AuditLogScalarWhereWithAggregatesInput | AuditLogScalarWhereWithAggregatesInput[]
+    OR?: AuditLogScalarWhereWithAggregatesInput[]
+    NOT?: AuditLogScalarWhereWithAggregatesInput | AuditLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AuditLog"> | string
+    userId?: StringWithAggregatesFilter<"AuditLog"> | string
+    companyId?: StringWithAggregatesFilter<"AuditLog"> | string
+    entityId?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
+    entityType?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
+    action?: StringWithAggregatesFilter<"AuditLog"> | string
+    context?: JsonNullableWithAggregatesFilter<"AuditLog">
+    comment?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
+  }
+
   export type CompanyUserWhereInput = {
     AND?: CompanyUserWhereInput | CompanyUserWhereInput[]
     OR?: CompanyUserWhereInput[]
@@ -40485,6 +41824,7 @@ export namespace Prisma {
     facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
+    auditsLogs?: AuditLogListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -40500,6 +41840,7 @@ export namespace Prisma {
     facilities?: FacilityUserOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
     notes?: WorkbenchNotesOrderByRelationAggregateInput
+    auditsLogs?: AuditLogOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -40518,6 +41859,7 @@ export namespace Prisma {
     facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
+    auditsLogs?: AuditLogListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -40675,6 +42017,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -40693,6 +42036,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -40711,6 +42055,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -40729,6 +42074,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -42260,6 +43606,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -42268,6 +43615,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -42276,6 +43624,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -42284,6 +43633,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -42292,6 +43642,7 @@ export namespace Prisma {
     id?: string
     summary?: string | null
     description: string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -42300,6 +43651,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -42308,6 +43660,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    justifications?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -42400,7 +43753,7 @@ export namespace Prisma {
   export type FormSchemaCreateInput = {
     id?: string
     title: string
-    description?: string | null
+    type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42410,7 +43763,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedCreateInput = {
     id?: string
     title: string
-    description?: string | null
+    type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42420,7 +43773,7 @@ export namespace Prisma {
   export type FormSchemaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42430,7 +43783,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42440,7 +43793,7 @@ export namespace Prisma {
   export type FormSchemaCreateManyInput = {
     id?: string
     title: string
-    description?: string | null
+    type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42449,7 +43802,7 @@ export namespace Prisma {
   export type FormSchemaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42458,7 +43811,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42600,6 +43953,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42614,6 +43968,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42628,6 +43983,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42642,6 +43998,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42656,6 +44013,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42666,6 +44024,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42676,6 +44035,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42981,6 +44341,88 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AuditLogCreateInput = {
+    id?: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutAuditsLogsInput
+    company: CompanyCreateNestedOneWithoutAuditLogsInput
+  }
+
+  export type AuditLogUncheckedCreateInput = {
+    id?: string
+    userId: string
+    companyId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AuditLogUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
+  }
+
+  export type AuditLogUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AuditLogCreateManyInput = {
+    id?: string
+    userId: string
+    companyId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AuditLogUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AuditLogUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CompanyUserCreateInput = {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -43149,6 +44591,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -43164,6 +44607,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -43179,6 +44623,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -43194,6 +44639,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -43440,6 +44886,12 @@ export namespace Prisma {
     none?: CompanyPatientWhereInput
   }
 
+  export type AuditLogListRelationFilter = {
+    every?: AuditLogWhereInput
+    some?: AuditLogWhereInput
+    none?: AuditLogWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -43466,6 +44918,10 @@ export namespace Prisma {
   }
 
   export type CompanyPatientOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AuditLogOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -44847,6 +46303,7 @@ export namespace Prisma {
     id?: SortOrder
     summary?: SortOrder
     description?: SortOrder
+    justifications?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -44899,6 +46356,13 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
   }
+
+  export type EnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel> | $Enums.FormSchemaType | null
+  }
   export type JsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -44925,7 +46389,7 @@ export namespace Prisma {
   export type FormSchemaCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    type?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -44934,7 +46398,7 @@ export namespace Prisma {
   export type FormSchemaMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -44942,9 +46406,19 @@ export namespace Prisma {
   export type FormSchemaMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -45080,9 +46554,14 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrder
+    price?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CatalogProductAvgOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type CatalogProductMaxOrderByAggregateInput = {
@@ -45090,6 +46569,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrder
+    price?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -45100,9 +46580,14 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrder
+    price?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CatalogProductSumOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type EnumProductAttributeTypeFilter<$PrismaModel = never> = {
@@ -45263,16 +46748,50 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type AuditLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    companyId?: SortOrder
+    entityId?: SortOrder
+    entityType?: SortOrder
+    action?: SortOrder
+    context?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AuditLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    companyId?: SortOrder
+    entityId?: SortOrder
+    entityType?: SortOrder
+    action?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AuditLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    companyId?: SortOrder
+    entityId?: SortOrder
+    entityType?: SortOrder
+    action?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type EnumCompanyRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
     in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
     notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumCompanyRoleFilter<$PrismaModel> | $Enums.CompanyRole
-  }
-
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type CompanyUserUserIdCompanyIdCompoundUniqueInput = {
@@ -45524,6 +47043,13 @@ export namespace Prisma {
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
+  export type AuditLogCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
+    createMany?: AuditLogCreateManyCompanyInputEnvelope
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
   export type FacilityUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<FacilityCreateWithoutCompanyInput, FacilityUncheckedCreateWithoutCompanyInput> | FacilityCreateWithoutCompanyInput[] | FacilityUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: FacilityCreateOrConnectWithoutCompanyInput | FacilityCreateOrConnectWithoutCompanyInput[]
@@ -45564,6 +47090,13 @@ export namespace Prisma {
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
     createMany?: CompanyPatientCreateManyCompanyInputEnvelope
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type AuditLogUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
+    createMany?: AuditLogCreateManyCompanyInputEnvelope
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -45666,6 +47199,20 @@ export namespace Prisma {
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
+  export type AuditLogUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
+    upsert?: AuditLogUpsertWithWhereUniqueWithoutCompanyInput | AuditLogUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: AuditLogCreateManyCompanyInputEnvelope
+    set?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    disconnect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    delete?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    update?: AuditLogUpdateWithWhereUniqueWithoutCompanyInput | AuditLogUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: AuditLogUpdateManyWithWhereWithoutCompanyInput | AuditLogUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
   export type FacilityUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<FacilityCreateWithoutCompanyInput, FacilityUncheckedCreateWithoutCompanyInput> | FacilityCreateWithoutCompanyInput[] | FacilityUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: FacilityCreateOrConnectWithoutCompanyInput | FacilityCreateOrConnectWithoutCompanyInput[]
@@ -45748,6 +47295,20 @@ export namespace Prisma {
     update?: CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput | CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: CompanyPatientUpdateManyWithWhereWithoutCompanyInput | CompanyPatientUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type AuditLogUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
+    upsert?: AuditLogUpsertWithWhereUniqueWithoutCompanyInput | AuditLogUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: AuditLogCreateManyCompanyInputEnvelope
+    set?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    disconnect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    delete?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    update?: AuditLogUpdateWithWhereUniqueWithoutCompanyInput | AuditLogUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: AuditLogUpdateManyWithWhereWithoutCompanyInput | AuditLogUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutFacilitiesInput = {
@@ -47163,6 +48724,10 @@ export namespace Prisma {
     connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
   }
 
+  export type NullableEnumFormSchemaTypeFieldUpdateOperationsInput = {
+    set?: $Enums.FormSchemaType | null
+  }
+
   export type FormSubmissionUpdateManyWithoutSchemaNestedInput = {
     create?: XOR<FormSubmissionCreateWithoutSchemaInput, FormSubmissionUncheckedCreateWithoutSchemaInput> | FormSubmissionCreateWithoutSchemaInput[] | FormSubmissionUncheckedCreateWithoutSchemaInput[]
     connectOrCreate?: FormSubmissionCreateOrConnectWithoutSchemaInput | FormSubmissionCreateOrConnectWithoutSchemaInput[]
@@ -47487,6 +49052,34 @@ export namespace Prisma {
     deleteMany?: CatalogProductScalarWhereInput | CatalogProductScalarWhereInput[]
   }
 
+  export type UserCreateNestedOneWithoutAuditsLogsInput = {
+    create?: XOR<UserCreateWithoutAuditsLogsInput, UserUncheckedCreateWithoutAuditsLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAuditsLogsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CompanyCreateNestedOneWithoutAuditLogsInput = {
+    create?: XOR<CompanyCreateWithoutAuditLogsInput, CompanyUncheckedCreateWithoutAuditLogsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutAuditLogsInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAuditsLogsNestedInput = {
+    create?: XOR<UserCreateWithoutAuditsLogsInput, UserUncheckedCreateWithoutAuditsLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAuditsLogsInput
+    upsert?: UserUpsertWithoutAuditsLogsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAuditsLogsInput, UserUpdateWithoutAuditsLogsInput>, UserUncheckedUpdateWithoutAuditsLogsInput>
+  }
+
+  export type CompanyUpdateOneRequiredWithoutAuditLogsNestedInput = {
+    create?: XOR<CompanyCreateWithoutAuditLogsInput, CompanyUncheckedCreateWithoutAuditLogsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutAuditLogsInput
+    upsert?: CompanyUpsertWithoutAuditLogsInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutAuditLogsInput, CompanyUpdateWithoutAuditLogsInput>, CompanyUncheckedUpdateWithoutAuditLogsInput>
+  }
+
   export type CompanyCreateNestedOneWithoutUsersInput = {
     create?: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutUsersInput
@@ -47609,6 +49202,13 @@ export namespace Prisma {
     connect?: WorkbenchNotesWhereUniqueInput | WorkbenchNotesWhereUniqueInput[]
   }
 
+  export type AuditLogCreateNestedManyWithoutUserInput = {
+    create?: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput> | AuditLogCreateWithoutUserInput[] | AuditLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutUserInput | AuditLogCreateOrConnectWithoutUserInput[]
+    createMany?: AuditLogCreateManyUserInputEnvelope
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -47641,6 +49241,13 @@ export namespace Prisma {
     connectOrCreate?: WorkbenchNotesCreateOrConnectWithoutCreatedByUserInput | WorkbenchNotesCreateOrConnectWithoutCreatedByUserInput[]
     createMany?: WorkbenchNotesCreateManyCreatedByUserInputEnvelope
     connect?: WorkbenchNotesWhereUniqueInput | WorkbenchNotesWhereUniqueInput[]
+  }
+
+  export type AuditLogUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput> | AuditLogCreateWithoutUserInput[] | AuditLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutUserInput | AuditLogCreateOrConnectWithoutUserInput[]
+    createMany?: AuditLogCreateManyUserInputEnvelope
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -47709,6 +49316,20 @@ export namespace Prisma {
     deleteMany?: WorkbenchNotesScalarWhereInput | WorkbenchNotesScalarWhereInput[]
   }
 
+  export type AuditLogUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput> | AuditLogCreateWithoutUserInput[] | AuditLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutUserInput | AuditLogCreateOrConnectWithoutUserInput[]
+    upsert?: AuditLogUpsertWithWhereUniqueWithoutUserInput | AuditLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AuditLogCreateManyUserInputEnvelope
+    set?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    disconnect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    delete?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    update?: AuditLogUpdateWithWhereUniqueWithoutUserInput | AuditLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AuditLogUpdateManyWithWhereWithoutUserInput | AuditLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -47773,6 +49394,20 @@ export namespace Prisma {
     update?: WorkbenchNotesUpdateWithWhereUniqueWithoutCreatedByUserInput | WorkbenchNotesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
     updateMany?: WorkbenchNotesUpdateManyWithWhereWithoutCreatedByUserInput | WorkbenchNotesUpdateManyWithWhereWithoutCreatedByUserInput[]
     deleteMany?: WorkbenchNotesScalarWhereInput | WorkbenchNotesScalarWhereInput[]
+  }
+
+  export type AuditLogUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput> | AuditLogCreateWithoutUserInput[] | AuditLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AuditLogCreateOrConnectWithoutUserInput | AuditLogCreateOrConnectWithoutUserInput[]
+    upsert?: AuditLogUpsertWithWhereUniqueWithoutUserInput | AuditLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AuditLogCreateManyUserInputEnvelope
+    set?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    disconnect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    delete?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+    update?: AuditLogUpdateWithWhereUniqueWithoutUserInput | AuditLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AuditLogUpdateManyWithWhereWithoutUserInput | AuditLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -48364,6 +49999,23 @@ export namespace Prisma {
     _min?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
     _max?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
   }
+
+  export type NestedEnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel> | $Enums.FormSchemaType | null
+  }
+
+  export type NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
+  }
   export type NestedJsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -48637,6 +50289,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AuditLogCreateWithoutCompanyInput = {
+    id?: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutAuditsLogsInput
+  }
+
+  export type AuditLogUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    userId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AuditLogCreateOrConnectWithoutCompanyInput = {
+    where: AuditLogWhereUniqueInput
+    create: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type AuditLogCreateManyCompanyInputEnvelope = {
+    data: AuditLogCreateManyCompanyInput | AuditLogCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FacilityUpsertWithWhereUniqueWithoutCompanyInput = {
     where: FacilityWhereUniqueInput
     update: XOR<FacilityUpdateWithoutCompanyInput, FacilityUncheckedUpdateWithoutCompanyInput>
@@ -48830,6 +50514,37 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
   }
 
+  export type AuditLogUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: AuditLogWhereUniqueInput
+    update: XOR<AuditLogUpdateWithoutCompanyInput, AuditLogUncheckedUpdateWithoutCompanyInput>
+    create: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type AuditLogUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: AuditLogWhereUniqueInput
+    data: XOR<AuditLogUpdateWithoutCompanyInput, AuditLogUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type AuditLogUpdateManyWithWhereWithoutCompanyInput = {
+    where: AuditLogScalarWhereInput
+    data: XOR<AuditLogUpdateManyMutationInput, AuditLogUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type AuditLogScalarWhereInput = {
+    AND?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+    OR?: AuditLogScalarWhereInput[]
+    NOT?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+    id?: StringFilter<"AuditLog"> | string
+    userId?: StringFilter<"AuditLog"> | string
+    companyId?: StringFilter<"AuditLog"> | string
+    entityId?: StringNullableFilter<"AuditLog"> | string | null
+    entityType?: StringNullableFilter<"AuditLog"> | string | null
+    action?: StringFilter<"AuditLog"> | string
+    context?: JsonNullableFilter<"AuditLog">
+    comment?: StringNullableFilter<"AuditLog"> | string | null
+    createdAt?: DateTimeFilter<"AuditLog"> | Date | string
+  }
+
   export type CompanyCreateWithoutFacilitiesInput = {
     id?: string
     name: string
@@ -48845,6 +50560,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -48862,6 +50578,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -49024,6 +50741,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -49041,6 +50759,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type FacilityAddressUpsertWithoutFacilityInput = {
@@ -49434,6 +51153,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutClinicianInput = {
@@ -49448,6 +51168,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClinicianInput = {
@@ -49545,6 +51266,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClinicianInput = {
@@ -49559,6 +51281,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCliniciansInput = {
@@ -49637,6 +51360,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -49654,6 +51378,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -49918,6 +51643,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -49935,6 +51661,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -51362,6 +53089,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutNotesInput = {
@@ -51376,6 +53104,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutNotesInput = {
@@ -51455,6 +53184,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotesInput = {
@@ -51469,6 +53199,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WorkbenchCreateWithoutOrdersInput = {
@@ -51642,6 +53373,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -51659,6 +53391,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -51692,6 +53425,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -51709,6 +53443,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type EvaluationCreateWithoutReferringPhysicianInput = {
@@ -52108,7 +53843,7 @@ export namespace Prisma {
   export type FormSchemaCreateWithoutSubmissionsInput = {
     id?: string
     title: string
-    description?: string | null
+    type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52117,7 +53852,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedCreateWithoutSubmissionsInput = {
     id?: string
     title: string
-    description?: string | null
+    type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52185,7 +53920,7 @@ export namespace Prisma {
   export type FormSchemaUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52194,7 +53929,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52482,6 +54217,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52495,6 +54231,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52524,6 +54261,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52537,6 +54275,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52550,6 +54289,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52563,6 +54303,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52592,6 +54333,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52605,6 +54347,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52618,6 +54361,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52631,6 +54375,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52668,6 +54413,7 @@ export namespace Prisma {
     name?: StringFilter<"CatalogProduct"> | string
     description?: StringNullableFilter<"CatalogProduct"> | string | null
     image?: StringNullableFilter<"CatalogProduct"> | string | null
+    price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
@@ -52678,6 +54424,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52691,6 +54438,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     image?: string | null
+    price?: number | null
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52720,6 +54468,170 @@ export namespace Prisma {
     data: XOR<CatalogProductUpdateManyMutationInput, CatalogProductUncheckedUpdateManyWithoutVendorsInput>
   }
 
+  export type UserCreateWithoutAuditsLogsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
+    clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAuditsLogsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
+    clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAuditsLogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAuditsLogsInput, UserUncheckedCreateWithoutAuditsLogsInput>
+  }
+
+  export type CompanyCreateWithoutAuditLogsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutAuditLogsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutAuditLogsInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutAuditLogsInput, CompanyUncheckedCreateWithoutAuditLogsInput>
+  }
+
+  export type UserUpsertWithoutAuditsLogsInput = {
+    update: XOR<UserUpdateWithoutAuditsLogsInput, UserUncheckedUpdateWithoutAuditsLogsInput>
+    create: XOR<UserCreateWithoutAuditsLogsInput, UserUncheckedCreateWithoutAuditsLogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAuditsLogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAuditsLogsInput, UserUncheckedUpdateWithoutAuditsLogsInput>
+  }
+
+  export type UserUpdateWithoutAuditsLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAuditsLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  }
+
+  export type CompanyUpsertWithoutAuditLogsInput = {
+    update: XOR<CompanyUpdateWithoutAuditLogsInput, CompanyUncheckedUpdateWithoutAuditLogsInput>
+    create: XOR<CompanyCreateWithoutAuditLogsInput, CompanyUncheckedCreateWithoutAuditLogsInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutAuditLogsInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutAuditLogsInput, CompanyUncheckedUpdateWithoutAuditLogsInput>
+  }
+
+  export type CompanyUpdateWithoutAuditLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
   export type CompanyCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -52735,6 +54647,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -52752,6 +54665,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -52771,6 +54685,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -52785,6 +54700,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -52818,6 +54734,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -52835,6 +54752,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -52860,6 +54778,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -52874,6 +54793,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -52891,6 +54811,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -52908,6 +54829,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -52986,6 +54908,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -53003,6 +54926,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithoutCompaniesInput = {
@@ -53097,6 +55021,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFacilitiesInput = {
@@ -53111,6 +55036,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFacilitiesInput = {
@@ -53176,6 +55102,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFacilitiesInput = {
@@ -53190,6 +55117,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -53319,6 +55247,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AuditLogCreateWithoutUserInput = {
+    id?: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+    company: CompanyCreateNestedOneWithoutAuditLogsInput
+  }
+
+  export type AuditLogUncheckedCreateWithoutUserInput = {
+    id?: string
+    companyId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AuditLogCreateOrConnectWithoutUserInput = {
+    where: AuditLogWhereUniqueInput
+    create: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type AuditLogCreateManyUserInputEnvelope = {
+    data: AuditLogCreateManyUserInput | AuditLogCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -53423,6 +55383,22 @@ export namespace Prisma {
     data: XOR<WorkbenchNotesUpdateManyMutationInput, WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserInput>
   }
 
+  export type AuditLogUpsertWithWhereUniqueWithoutUserInput = {
+    where: AuditLogWhereUniqueInput
+    update: XOR<AuditLogUpdateWithoutUserInput, AuditLogUncheckedUpdateWithoutUserInput>
+    create: XOR<AuditLogCreateWithoutUserInput, AuditLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type AuditLogUpdateWithWhereUniqueWithoutUserInput = {
+    where: AuditLogWhereUniqueInput
+    data: XOR<AuditLogUpdateWithoutUserInput, AuditLogUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AuditLogUpdateManyWithWhereWithoutUserInput = {
+    where: AuditLogScalarWhereInput
+    data: XOR<AuditLogUpdateManyMutationInput, AuditLogUncheckedUpdateManyWithoutUserInput>
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     email?: string | null
@@ -53435,6 +55411,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -53449,6 +55426,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -53479,6 +55457,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -53493,6 +55472,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -53510,6 +55490,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -53527,6 +55508,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -53560,6 +55542,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -53577,6 +55560,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type FacilityCreateManyCompanyInput = {
@@ -53650,6 +55634,17 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type AuditLogCreateManyCompanyInput = {
+    id?: string
+    userId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
   }
 
   export type FacilityUpdateWithoutCompanyInput = {
@@ -53879,6 +55874,39 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AuditLogUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
+  }
+
+  export type AuditLogUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AuditLogUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacilityUserCreateManyFacilityInput = {
@@ -55656,6 +57684,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55669,6 +57698,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55682,6 +57712,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55692,6 +57723,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55705,6 +57737,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55718,6 +57751,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55753,6 +57787,17 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+  }
+
+  export type AuditLogCreateManyUserInput = {
+    id?: string
+    companyId: string
+    entityId?: string | null
+    entityType?: string | null
+    action: string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: string | null
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -55849,6 +57894,39 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AuditLogUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
+  }
+
+  export type AuditLogUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AuditLogUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityType?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: StringFieldUpdateOperationsInput | string
+    context?: NullableJsonNullValueInput | InputJsonValue
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
@@ -56032,6 +58110,10 @@ export namespace Prisma {
      * @deprecated Use CatalogVendorDefaultArgs instead
      */
     export type CatalogVendorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CatalogVendorDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AuditLogDefaultArgs instead
+     */
+    export type AuditLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AuditLogDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CompanyUserDefaultArgs instead
      */

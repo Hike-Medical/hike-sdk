@@ -4,6 +4,7 @@ interface UploadVideoParams {
   video: File | Buffer | Blob;
   s3Url: string;
   tagSet?: Record<string, string>;
+  onProgress?: (progress: number) => void; // Progress callback
 }
 
 export const useUploadVideoToS3 = (
@@ -11,47 +12,54 @@ export const useUploadVideoToS3 = (
 ) => {
   return useMutation({
     mutationKey: ['uploadVideoToS3'],
-    mutationFn: async ({ video, s3Url, tagSet }: UploadVideoParams) => {
-      let tagString: string | undefined;
+    mutationFn: ({ video, s3Url, tagSet, onProgress }: UploadVideoParams) => {
+      return new Promise<void>((resolve, reject) => {
+        let tagString: string | undefined;
 
-      if (tagSet) {
-        tagString = Object.entries(tagSet)
-          .map(([key, value]) => {
-            return `${key}=${value}`;
-          })
-          .join('&');
-      }
+        if (tagSet) {
+          tagString = Object.entries(tagSet)
+            .map(([key, value]) => `${key}=${value}`)
+            .join('&');
+        }
 
-      if (video instanceof File) {
-        const formData = new FormData();
-        formData.append('file', video);
-        const response = await fetch(s3Url, {
-          method: 'PUT',
-          body: video,
-          headers: {
-            'Content-Type': video.type,
-            ...(tagString && { 'x-amz-tagging': tagString })
+        const xhr = new XMLHttpRequest();
+
+        xhr.upload.addEventListener('progress', (event) => {
+          if (event.lengthComputable && onProgress) {
+            onProgress((event.loaded / event.total) * 100);
           }
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to upload video');
-        }
-      }
-
-      if (video instanceof Blob || video instanceof Buffer) {
-        const response = await fetch(s3Url, {
-          method: 'PUT',
-          body: video,
-          headers: {
-            ...(tagString && { 'x-amz-tagging': tagString })
-          }
+        xhr.upload.addEventListener('error', () => {
+          reject(new Error('Failed to upload video'));
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to upload video');
+        xhr.upload.addEventListener('abort', () => {
+          reject(new Error('Upload aborted'));
+        });
+
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve();
+            } else {
+              reject(new Error('Failed to upload video'));
+            }
+          }
+        };
+
+        xhr.open('PUT', s3Url, true);
+
+        if (video instanceof File) {
+          xhr.setRequestHeader('Content-Type', video.type);
         }
-      }
+
+        if (tagString) {
+          xhr.setRequestHeader('x-amz-tagging', tagString);
+        }
+
+        xhr.send(video);
+      });
     },
     ...mutationOptions
   });
