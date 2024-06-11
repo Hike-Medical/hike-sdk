@@ -115,7 +115,7 @@ export const formSchemaEvaluationDefaults = (
               `${evaluation.facility.address.addressLine1}, ${evaluation.facility.address.city}, ${evaluation.facility.address.stateOrProvince}`;
             break;
           default:
-            acc[field.name] = null;
+            acc[field.name] = undefined;
             break;
         }
 
