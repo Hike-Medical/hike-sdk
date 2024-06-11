@@ -121,6 +121,10 @@ export const initialFormValues = (
         // Load label for field if applicable
         const labelKey = `${field.name}-label`;
         acc[labelKey] ??= submission?.[labelKey];
+
+        // Load description for field if applicable
+        const descriptionKey = `${field.name}-description`;
+        acc[descriptionKey] ??= submission?.[descriptionKey];
       }
 
       return acc;

@@ -9,17 +9,9 @@ export interface UseBillingCodesOptions
   queryKey?: QueryKey;
 }
 
-export const useBillingCodes = ({ codes, queryKey = [], ...options }: UseBillingCodesOptions) => {
-  const key = ['useBillingCodes', codes, ...queryKey];
-
-  const query = useQuery({
-    queryKey: key,
+export const useBillingCodes = ({ codes, queryKey = [], ...options }: UseBillingCodesOptions) =>
+  useQuery({
+    queryKey: ['useBillingCodes', codes, queryKey],
     queryFn: async () => await fetchBillingCodes(codes.length ? { codes } : undefined),
     ...options
   });
-
-  return {
-    queryKey: key,
-    ...query
-  };
-};

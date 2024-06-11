@@ -53,6 +53,7 @@ export type * from './dto/workbench/SubmitOrderBody';
 export type * from './dto/workbench/UpdateInactiveFeetBody';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
+export type * from './entities/FacilityExtended';
 export type * from './entities/OrderExtended';
 export type * from './entities/PatientExtended';
 export type * from './entities/UserExtended';
