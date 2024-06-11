@@ -110,6 +110,9 @@ export const formSchemaEvaluationDefaults = (
           case 'facilityId':
             acc[field.name] = evaluation.facilityId;
             acc[`${field.name}-label`] = evaluation.facility?.name;
+            acc[`${field.name}-description`] ??=
+              evaluation.facility?.address &&
+              `${evaluation.facility.address.addressLine1}, ${evaluation.facility.address.city}, ${evaluation.facility.address.stateOrProvince}`;
             break;
           default:
             acc[field.name] = null;
