@@ -18,7 +18,7 @@ interface BaseFormField<T extends FormFieldValue> {
 }
 
 export type FormField =
-  | (BaseFormField<string> & { type: 'text'; suffix?: string; keyboard?: 'email' | 'url' | 'phone' })
+  | (BaseFormField<string> & { type: 'text'; suffix?: string; keyboard?: 'email' | 'url' | 'phone'; hidden?: boolean })
   | (BaseFormField<number> & { type: 'number'; suffix?: string; keyboard?: 'numeric' | 'decimal' })
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
@@ -40,6 +40,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
   | (BaseFormField<string> & { type: 'multiselect:billingCodes' })
+  | (BaseFormField<string> & { type: 'custom:orthofeet' })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';
