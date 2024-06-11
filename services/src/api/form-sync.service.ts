@@ -112,7 +112,7 @@ export const formSchemaEvaluationDefaults = (
             acc[`${field.name}-label`] = evaluation.facility?.name;
             break;
           default:
-            acc[field.name] = null;
+            acc[field.name] = undefined;
             break;
         }
 
