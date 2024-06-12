@@ -1,16 +1,16 @@
-import { SubmitOrderBody, Workbench } from '@hike/types';
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { SubmitOrderParams, Workbench } from '@hike/types';
+import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { submitOrder } from '../api/workbench.service';
 
-interface SubmitOrderParams {
+interface SubmitOrderContext {
   workbenchId: string;
-  body: SubmitOrderBody;
+  body: SubmitOrderParams;
 }
 
-export const useSubmitOrder = (options?: UseMutationOptions<Workbench, Error, SubmitOrderParams>) => {
+export const useSubmitOrder = (options?: UseMutationOptions<Workbench, Error, SubmitOrderContext>) => {
   return useMutation({
     mutationKey: ['submitOrder'],
-    mutationFn: async ({ workbenchId, body }: SubmitOrderParams) => await submitOrder(workbenchId, body),
+    mutationFn: async ({ workbenchId, body }: SubmitOrderContext) => await submitOrder(workbenchId, body),
     ...options
   });
 };
