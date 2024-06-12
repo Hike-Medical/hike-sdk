@@ -1,5 +1,6 @@
 import type {
   CreateOrderParams,
+  DeliverOrderParams,
   GetOrdersParams,
   Order,
   OrderAuthorizationStatus,
@@ -7,7 +8,8 @@ import type {
   OrderType,
   OrdersStats,
   PagedParams,
-  PagedResponse
+  PagedResponse,
+  UpdateOrderParams
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
@@ -58,10 +60,20 @@ export const statsForOrders = async (): Promise<OrdersStats> => {
   return response.data;
 };
 
+export const updateOrder = async (orderId: string, params: UpdateOrderParams): Promise<OrderExtended> => {
+  const response = await backendApi.patch(`order/${orderId}`, params);
+  return response.data;
+};
+
 export const modifyOrderAuthorization = async (
   orderId: string,
   authorizationStatus: OrderAuthorizationStatus
 ): Promise<OrderExtended> => {
   const response = await backendApi.post(`order/${orderId}/modify-authorization`, { authorizationStatus });
+  return response.data;
+};
+
+export const deliverOrder = async (params: DeliverOrderParams): Promise<Order> => {
+  const response = await backendApi.post('order/deliver', params);
   return response.data;
 };
