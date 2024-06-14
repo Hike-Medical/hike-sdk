@@ -25,6 +25,4 @@ export interface CreateEvaluationParams {
   prescribedAt?: Date;
   prescribedActive?: boolean;
   workbenchId?: string;
-  completedAt?: Date;
-  cancelledAt?: Date;
 }

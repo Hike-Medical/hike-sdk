@@ -112,19 +112,26 @@ export const initialFormValues = (
 ): Record<string, FormFieldValue> =>
   schema?.sections
     .flatMap((section) => section.fields)
-    .reduce((acc, field) => {
-      const value = submission?.[field.name] ?? field.default;
+    .reduce(
+      (acc, field) => {
+        const value = submission?.[field.name] ?? field.default;
 
-      if (value !== undefined) {
-        acc[field.name] = value;
+        if (value !== undefined) {
+          acc[field.name] = value;
 
-        // Load label for field if applicable
-        const labelKey = `${field.name}-label`;
-        acc[labelKey] ??= submission?.[labelKey];
-      }
+          // Load label for field if applicable
+          const labelKey = `${field.name}-label`;
+          acc[labelKey] ??= submission?.[labelKey];
 
-      return acc;
-    }, {}) ?? {};
+          // Load description for field if applicable
+          const descriptionKey = `${field.name}-description`;
+          acc[descriptionKey] ??= submission?.[descriptionKey];
+        }
+
+        return acc;
+      },
+      { ...submission } // Capture submissions not in schema
+    ) ?? {};
 
 export const completedSections = (validSections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
   validSections.filter((section) =>
