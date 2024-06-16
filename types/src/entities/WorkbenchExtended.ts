@@ -1,3 +1,4 @@
+import { CustomizationResponse } from 'dto/workbench/CustomizationResponse';
 import type { Asset, Evaluation, Order, Patient, Product, Workbench, WorkbenchNotes } from '../../prisma';
 import { FormSubmissionExtended } from '../forms/FormSubmissionExtended';
 import { EvaluationExtended } from './EvaluationExtended';
@@ -10,4 +11,5 @@ export type WorkbenchExtended = Workbench & {
   assets: Asset[];
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
+  customization: CustomizationResponse;
 };

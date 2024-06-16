@@ -55,6 +55,8 @@ export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFeetBody';
 export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/company/CompanyPreferences';
+export type * from './dto/manufacturing/RenderType';
+export type * from './dto/workbench/CustomizationResponse';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/FacilityExtended';
