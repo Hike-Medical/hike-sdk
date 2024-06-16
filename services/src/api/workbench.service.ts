@@ -1,7 +1,22 @@
-import { Asset, Foot, Order, SubmitOrderParams, UpdateInactiveFeetBody, Workbench } from '@hike/types';
+import {
+  Asset,
+  Foot,
+  Order,
+  PagedResponse,
+  SearchWorkbenchParams,
+  SubmitOrderParams,
+  UpdateInactiveFeetBody,
+  Workbench,
+  WorkbenchExtended
+} from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 
 export type FootWithAssets = Foot & { assets: Asset[] };
+
+export const searchWorkbenches = async (params: SearchWorkbenchParams): Promise<PagedResponse<WorkbenchExtended[]>> => {
+  const response = await backendApi.get('workbench/search', { params });
+  return response.data;
+};
 
 export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets[]> => {
   const response = await backendApi.get(`workbench/${workbenchId}/feet`);

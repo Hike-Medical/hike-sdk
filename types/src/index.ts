@@ -53,6 +53,7 @@ export type * from './dto/shipping/GetShippingLabelLegacyResponse';
 export type * from './dto/shipping/ValidateAddressBody';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFeetBody';
+export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/company/CompanyPreferences';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/EvaluationExtended';
