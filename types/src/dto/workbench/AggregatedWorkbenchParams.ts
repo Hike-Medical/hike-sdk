@@ -1,3 +1,5 @@
 import { PagedParams } from '../../dto/PagedParams';
 
-export interface GetAggregatedParams extends PagedParams {}
+export interface GetAggregatedParams extends PagedParams {
+  orderStatus?: string;
+}
