@@ -88,5 +88,6 @@ export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
 export * from './hooks/useDeleteFormTemplate';
 export * from './hooks/useGetHealth';
+export * from './hooks/useAggregatedWorkbenches';
 export * from './utils/backendApi';
 export * from './utils/configureBaseUrl';
