@@ -84,7 +84,7 @@ export const isFieldComplete = (
     (state &&
       Object.keys(state).some(
         (key) =>
-          key.startsWith(field.name) && state[key] !== null && (state[key]?.toLocaleString() !== '' || !field.required)
+          key.startsWith(field.name) && state[key] != null && (state[key]?.toLocaleString() !== '' || !field.required)
       )) ||
     !isFormFieldDisplayed(field, state, activeFoot)
   );
