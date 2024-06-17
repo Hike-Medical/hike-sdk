@@ -6,4 +6,5 @@ export interface GetOrdersParams extends PagedParams {
   authorizationStatus?: OrderAuthorizationStatus;
   sortBy?: string;
   sortOrder?: Prisma.SortOrder;
+  searchQuery?: string;
 }

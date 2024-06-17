@@ -1,13 +1,13 @@
 import type {
   CreateOrderParams,
   DeliverOrderParams,
+  GetOrdersByTypeParams,
   GetOrdersParams,
   Order,
   OrderAuthorizationStatus,
   OrderExtended,
   OrderType,
   OrdersStats,
-  PagedParams,
   PagedResponse,
   UpdateOrderParams
 } from '@hike/types';
@@ -30,7 +30,7 @@ export const fetchOrders = async (params?: GetOrdersParams): Promise<PagedRespon
 
 export const fetchOrdersByType = async (
   type: OrderType,
-  params?: PagedParams
+  params?: GetOrdersByTypeParams
 ): Promise<PagedResponse<OrderExtended[]>> => {
   let route: string;
 
