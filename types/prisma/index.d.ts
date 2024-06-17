@@ -38649,15 +38649,25 @@ export namespace Prisma {
 
   export type AggregateViewFlattenedWorkbench = {
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
+    _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
+    _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
     _min: ViewFlattenedWorkbenchMinAggregateOutputType | null
     _max: ViewFlattenedWorkbenchMaxAggregateOutputType | null
   }
 
+  export type ViewFlattenedWorkbenchAvgAggregateOutputType = {
+    orderSide: number | null
+  }
+
+  export type ViewFlattenedWorkbenchSumAggregateOutputType = {
+    orderSide: number | null
+  }
+
   export type ViewFlattenedWorkbenchMinAggregateOutputType = {
-    id: string | null
     orderId: string | null
     evaluationId: string | null
     workbenchId: string | null
+    companyId: string | null
     orderStatus: $Enums.OrderStatus | null
     poNumber: string | null
     clinicianName: string | null
@@ -38665,18 +38675,18 @@ export namespace Prisma {
     patientId: string | null
     patientFirstName: string | null
     patientLastName: string | null
-    orderPlacedAt: Date | null
-    authorizationDate: Date | null
+    orderCreatedAt: Date | null
+    authorizationUpdatedAt: Date | null
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
-    orderSide: $Enums.Side | null
+    orderSide: number | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
-    id: string | null
     orderId: string | null
     evaluationId: string | null
     workbenchId: string | null
+    companyId: string | null
     orderStatus: $Enums.OrderStatus | null
     poNumber: string | null
     clinicianName: string | null
@@ -38684,18 +38694,18 @@ export namespace Prisma {
     patientId: string | null
     patientFirstName: string | null
     patientLastName: string | null
-    orderPlacedAt: Date | null
-    authorizationDate: Date | null
+    orderCreatedAt: Date | null
+    authorizationUpdatedAt: Date | null
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
-    orderSide: $Enums.Side | null
+    orderSide: number | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
-    id: number
     orderId: number
     evaluationId: number
     workbenchId: number
+    companyId: number
     orderStatus: number
     poNumber: number
     clinicianName: number
@@ -38703,8 +38713,8 @@ export namespace Prisma {
     patientId: number
     patientFirstName: number
     patientLastName: number
-    orderPlacedAt: number
-    authorizationDate: number
+    orderCreatedAt: number
+    authorizationUpdatedAt: number
     orderCompletedAt: number
     isDiabetic: number
     orderSide: number
@@ -38712,11 +38722,19 @@ export namespace Prisma {
   }
 
 
+  export type ViewFlattenedWorkbenchAvgAggregateInputType = {
+    orderSide?: true
+  }
+
+  export type ViewFlattenedWorkbenchSumAggregateInputType = {
+    orderSide?: true
+  }
+
   export type ViewFlattenedWorkbenchMinAggregateInputType = {
-    id?: true
     orderId?: true
     evaluationId?: true
     workbenchId?: true
+    companyId?: true
     orderStatus?: true
     poNumber?: true
     clinicianName?: true
@@ -38724,18 +38742,18 @@ export namespace Prisma {
     patientId?: true
     patientFirstName?: true
     patientLastName?: true
-    orderPlacedAt?: true
-    authorizationDate?: true
+    orderCreatedAt?: true
+    authorizationUpdatedAt?: true
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
-    id?: true
     orderId?: true
     evaluationId?: true
     workbenchId?: true
+    companyId?: true
     orderStatus?: true
     poNumber?: true
     clinicianName?: true
@@ -38743,18 +38761,18 @@ export namespace Prisma {
     patientId?: true
     patientFirstName?: true
     patientLastName?: true
-    orderPlacedAt?: true
-    authorizationDate?: true
+    orderCreatedAt?: true
+    authorizationUpdatedAt?: true
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
-    id?: true
     orderId?: true
     evaluationId?: true
     workbenchId?: true
+    companyId?: true
     orderStatus?: true
     poNumber?: true
     clinicianName?: true
@@ -38762,8 +38780,8 @@ export namespace Prisma {
     patientId?: true
     patientFirstName?: true
     patientLastName?: true
-    orderPlacedAt?: true
-    authorizationDate?: true
+    orderCreatedAt?: true
+    authorizationUpdatedAt?: true
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
@@ -38808,6 +38826,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ViewFlattenedWorkbenchAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ViewFlattenedWorkbenchSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ViewFlattenedWorkbenchMinAggregateInputType
@@ -38838,28 +38868,32 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ViewFlattenedWorkbenchCountAggregateInputType | true
+    _avg?: ViewFlattenedWorkbenchAvgAggregateInputType
+    _sum?: ViewFlattenedWorkbenchSumAggregateInputType
     _min?: ViewFlattenedWorkbenchMinAggregateInputType
     _max?: ViewFlattenedWorkbenchMaxAggregateInputType
   }
 
   export type ViewFlattenedWorkbenchGroupByOutputType = {
-    id: string
     orderId: string
     evaluationId: string
     workbenchId: string
-    orderStatus: $Enums.OrderStatus
-    poNumber: string
-    clinicianName: string
-    clinicianId: string
-    patientId: string
-    patientFirstName: string
-    patientLastName: string
-    orderPlacedAt: Date
-    authorizationDate: Date
-    orderCompletedAt: Date
-    isDiabetic: boolean
-    orderSide: $Enums.Side
+    companyId: string
+    orderStatus: $Enums.OrderStatus | null
+    poNumber: string | null
+    clinicianName: string | null
+    clinicianId: string | null
+    patientId: string | null
+    patientFirstName: string | null
+    patientLastName: string | null
+    orderCreatedAt: Date | null
+    authorizationUpdatedAt: Date | null
+    orderCompletedAt: Date | null
+    isDiabetic: boolean | null
+    orderSide: number | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
+    _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
+    _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
     _min: ViewFlattenedWorkbenchMinAggregateOutputType | null
     _max: ViewFlattenedWorkbenchMaxAggregateOutputType | null
   }
@@ -38879,10 +38913,10 @@ export namespace Prisma {
 
 
   export type ViewFlattenedWorkbenchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     orderId?: boolean
     evaluationId?: boolean
     workbenchId?: boolean
+    companyId?: boolean
     orderStatus?: boolean
     poNumber?: boolean
     clinicianName?: boolean
@@ -38890,18 +38924,18 @@ export namespace Prisma {
     patientId?: boolean
     patientFirstName?: boolean
     patientLastName?: boolean
-    orderPlacedAt?: boolean
-    authorizationDate?: boolean
+    orderCreatedAt?: boolean
+    authorizationUpdatedAt?: boolean
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
-    id?: boolean
     orderId?: boolean
     evaluationId?: boolean
     workbenchId?: boolean
+    companyId?: boolean
     orderStatus?: boolean
     poNumber?: boolean
     clinicianName?: boolean
@@ -38909,8 +38943,8 @@ export namespace Prisma {
     patientId?: boolean
     patientFirstName?: boolean
     patientLastName?: boolean
-    orderPlacedAt?: boolean
-    authorizationDate?: boolean
+    orderCreatedAt?: boolean
+    authorizationUpdatedAt?: boolean
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
@@ -38922,22 +38956,22 @@ export namespace Prisma {
     name: "ViewFlattenedWorkbench"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
       orderId: string
       evaluationId: string
       workbenchId: string
-      orderStatus: $Enums.OrderStatus
-      poNumber: string
-      clinicianName: string
-      clinicianId: string
-      patientId: string
-      patientFirstName: string
-      patientLastName: string
-      orderPlacedAt: Date
-      authorizationDate: Date
-      orderCompletedAt: Date
-      isDiabetic: boolean
-      orderSide: $Enums.Side
+      companyId: string
+      orderStatus: $Enums.OrderStatus | null
+      poNumber: string | null
+      clinicianName: string | null
+      clinicianId: string | null
+      patientId: string | null
+      patientFirstName: string | null
+      patientLastName: string | null
+      orderCreatedAt: Date | null
+      authorizationUpdatedAt: Date | null
+      orderCompletedAt: Date | null
+      isDiabetic: boolean | null
+      orderSide: number | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -39030,8 +39064,8 @@ export namespace Prisma {
      * // Get first 10 ViewFlattenedWorkbenches
      * const viewFlattenedWorkbenches = await prisma.viewFlattenedWorkbench.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const viewFlattenedWorkbenchWithIdOnly = await prisma.viewFlattenedWorkbench.findMany({ select: { id: true } })
+     * // Only select the `orderId`
+     * const viewFlattenedWorkbenchWithOrderIdOnly = await prisma.viewFlattenedWorkbench.findMany({ select: { orderId: true } })
      * 
     **/
     findMany<T extends ViewFlattenedWorkbenchFindManyArgs<ExtArgs>>(
@@ -39081,9 +39115,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many ViewFlattenedWorkbenches and only return the `id`
-     * const viewFlattenedWorkbenchWithIdOnly = await prisma.viewFlattenedWorkbench.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many ViewFlattenedWorkbenches and only return the `orderId`
+     * const viewFlattenedWorkbenchWithOrderIdOnly = await prisma.viewFlattenedWorkbench.createManyAndReturn({ 
+     *   select: { orderId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -39358,10 +39392,10 @@ export namespace Prisma {
    * Fields of the ViewFlattenedWorkbench model
    */ 
   interface ViewFlattenedWorkbenchFieldRefs {
-    readonly id: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly evaluationId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly workbenchId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly companyId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderStatus'>
     readonly poNumber: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly clinicianName: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -39369,11 +39403,11 @@ export namespace Prisma {
     readonly patientId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly patientFirstName: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly patientLastName: FieldRef<"ViewFlattenedWorkbench", 'String'>
-    readonly orderPlacedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
-    readonly authorizationDate: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly orderCreatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly authorizationUpdatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly orderCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly isDiabetic: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
-    readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Side'>
+    readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
   }
     
 
@@ -40153,10 +40187,10 @@ export namespace Prisma {
 
 
   export const ViewFlattenedWorkbenchScalarFieldEnum: {
-    id: 'id',
     orderId: 'orderId',
     evaluationId: 'evaluationId',
     workbenchId: 'workbenchId',
+    companyId: 'companyId',
     orderStatus: 'orderStatus',
     poNumber: 'poNumber',
     clinicianName: 'clinicianName',
@@ -40164,8 +40198,8 @@ export namespace Prisma {
     patientId: 'patientId',
     patientFirstName: 'patientFirstName',
     patientLastName: 'patientLastName',
-    orderPlacedAt: 'orderPlacedAt',
-    authorizationDate: 'authorizationDate',
+    orderCreatedAt: 'orderCreatedAt',
+    authorizationUpdatedAt: 'authorizationUpdatedAt',
     orderCompletedAt: 'orderCompletedAt',
     isDiabetic: 'isDiabetic',
     orderSide: 'orderSide'
@@ -43132,107 +43166,109 @@ export namespace Prisma {
     AND?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     OR?: ViewFlattenedWorkbenchWhereInput[]
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
-    id?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
     workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    orderStatus?: EnumOrderStatusFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus
-    poNumber?: StringFilter<"ViewFlattenedWorkbench"> | string
-    clinicianName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    clinicianId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientFirstName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientLastName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    orderPlacedAt?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    authorizationDate?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    orderCompletedAt?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    isDiabetic?: BoolFilter<"ViewFlattenedWorkbench"> | boolean
-    orderSide?: EnumSideFilter<"ViewFlattenedWorkbench"> | $Enums.Side
+    companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
+    orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientFirstName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientLastName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    authorizationUpdatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
-    id?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
     workbenchId?: SortOrder
-    orderStatus?: SortOrder
-    poNumber?: SortOrder
-    clinicianName?: SortOrder
-    clinicianId?: SortOrder
-    patientId?: SortOrder
-    patientFirstName?: SortOrder
-    patientLastName?: SortOrder
-    orderPlacedAt?: SortOrder
-    authorizationDate?: SortOrder
-    orderCompletedAt?: SortOrder
-    isDiabetic?: SortOrder
-    orderSide?: SortOrder
+    companyId?: SortOrder
+    orderStatus?: SortOrderInput | SortOrder
+    poNumber?: SortOrderInput | SortOrder
+    clinicianName?: SortOrderInput | SortOrder
+    clinicianId?: SortOrderInput | SortOrder
+    patientId?: SortOrderInput | SortOrder
+    patientFirstName?: SortOrderInput | SortOrder
+    patientLastName?: SortOrderInput | SortOrder
+    orderCreatedAt?: SortOrderInput | SortOrder
+    authorizationUpdatedAt?: SortOrderInput | SortOrder
+    orderCompletedAt?: SortOrderInput | SortOrder
+    isDiabetic?: SortOrderInput | SortOrder
+    orderSide?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    orderId?: string
     AND?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     OR?: ViewFlattenedWorkbenchWhereInput[]
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
-    orderId?: StringFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
     workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    orderStatus?: EnumOrderStatusFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus
-    poNumber?: StringFilter<"ViewFlattenedWorkbench"> | string
-    clinicianName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    clinicianId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientFirstName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    patientLastName?: StringFilter<"ViewFlattenedWorkbench"> | string
-    orderPlacedAt?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    authorizationDate?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    orderCompletedAt?: DateTimeFilter<"ViewFlattenedWorkbench"> | Date | string
-    isDiabetic?: BoolFilter<"ViewFlattenedWorkbench"> | boolean
-    orderSide?: EnumSideFilter<"ViewFlattenedWorkbench"> | $Enums.Side
-  }, "id">
+    companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
+    orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientFirstName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    patientLastName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    authorizationUpdatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
+  }, "orderId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
-    id?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
     workbenchId?: SortOrder
-    orderStatus?: SortOrder
-    poNumber?: SortOrder
-    clinicianName?: SortOrder
-    clinicianId?: SortOrder
-    patientId?: SortOrder
-    patientFirstName?: SortOrder
-    patientLastName?: SortOrder
-    orderPlacedAt?: SortOrder
-    authorizationDate?: SortOrder
-    orderCompletedAt?: SortOrder
-    isDiabetic?: SortOrder
-    orderSide?: SortOrder
+    companyId?: SortOrder
+    orderStatus?: SortOrderInput | SortOrder
+    poNumber?: SortOrderInput | SortOrder
+    clinicianName?: SortOrderInput | SortOrder
+    clinicianId?: SortOrderInput | SortOrder
+    patientId?: SortOrderInput | SortOrder
+    patientFirstName?: SortOrderInput | SortOrder
+    patientLastName?: SortOrderInput | SortOrder
+    orderCreatedAt?: SortOrderInput | SortOrder
+    authorizationUpdatedAt?: SortOrderInput | SortOrder
+    orderCompletedAt?: SortOrderInput | SortOrder
+    isDiabetic?: SortOrderInput | SortOrder
+    orderSide?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
+    _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
     _min?: ViewFlattenedWorkbenchMinOrderByAggregateInput
+    _sum?: ViewFlattenedWorkbenchSumOrderByAggregateInput
   }
 
   export type ViewFlattenedWorkbenchScalarWhereWithAggregatesInput = {
     AND?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput | ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
     OR?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
     NOT?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput | ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     workbenchId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    orderStatus?: EnumOrderStatusWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus
-    poNumber?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    clinicianName?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    clinicianId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    patientId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    patientFirstName?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    patientLastName?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    orderPlacedAt?: DateTimeWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string
-    authorizationDate?: DateTimeWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string
-    orderCompletedAt?: DateTimeWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string
-    isDiabetic?: BoolWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean
-    orderSide?: EnumSideWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.Side
+    companyId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
+    orderStatus?: EnumOrderStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    poNumber?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    clinicianId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    patientId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    patientFirstName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    patientLastName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    orderCreatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    authorizationUpdatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    orderCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isDiabetic?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
   }
 
   export type CompanyCreateInput = {
@@ -46017,136 +46053,136 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCreateInput = {
-    id: string
     orderId: string
     evaluationId: string
     workbenchId: string
-    orderStatus: $Enums.OrderStatus
-    poNumber: string
-    clinicianName: string
-    clinicianId: string
-    patientId: string
-    patientFirstName: string
-    patientLastName: string
-    orderPlacedAt: Date | string
-    authorizationDate: Date | string
-    orderCompletedAt: Date | string
-    isDiabetic: boolean
-    orderSide: $Enums.Side
+    companyId: string
+    orderStatus?: $Enums.OrderStatus | null
+    poNumber?: string | null
+    clinicianName?: string | null
+    clinicianId?: string | null
+    patientId?: string | null
+    patientFirstName?: string | null
+    patientLastName?: string | null
+    orderCreatedAt?: Date | string | null
+    authorizationUpdatedAt?: Date | string | null
+    orderCompletedAt?: Date | string | null
+    isDiabetic?: boolean | null
+    orderSide?: number | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
-    id: string
     orderId: string
     evaluationId: string
     workbenchId: string
-    orderStatus: $Enums.OrderStatus
-    poNumber: string
-    clinicianName: string
-    clinicianId: string
-    patientId: string
-    patientFirstName: string
-    patientLastName: string
-    orderPlacedAt: Date | string
-    authorizationDate: Date | string
-    orderCompletedAt: Date | string
-    isDiabetic: boolean
-    orderSide: $Enums.Side
+    companyId: string
+    orderStatus?: $Enums.OrderStatus | null
+    poNumber?: string | null
+    clinicianName?: string | null
+    clinicianId?: string | null
+    patientId?: string | null
+    patientFirstName?: string | null
+    patientLastName?: string | null
+    orderCreatedAt?: Date | string | null
+    authorizationUpdatedAt?: Date | string | null
+    orderCompletedAt?: Date | string | null
+    isDiabetic?: boolean | null
+    orderSide?: number | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
-    orderStatus?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    poNumber?: StringFieldUpdateOperationsInput | string
-    clinicianName?: StringFieldUpdateOperationsInput | string
-    clinicianId?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    patientFirstName?: StringFieldUpdateOperationsInput | string
-    patientLastName?: StringFieldUpdateOperationsInput | string
-    orderPlacedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    authorizationDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    orderCompletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    orderSide?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    companyId?: StringFieldUpdateOperationsInput | string
+    orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    orderCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    orderSide?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
-    orderStatus?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    poNumber?: StringFieldUpdateOperationsInput | string
-    clinicianName?: StringFieldUpdateOperationsInput | string
-    clinicianId?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    patientFirstName?: StringFieldUpdateOperationsInput | string
-    patientLastName?: StringFieldUpdateOperationsInput | string
-    orderPlacedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    authorizationDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    orderCompletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    orderSide?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    companyId?: StringFieldUpdateOperationsInput | string
+    orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    orderCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    orderSide?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
-    id: string
     orderId: string
     evaluationId: string
     workbenchId: string
-    orderStatus: $Enums.OrderStatus
-    poNumber: string
-    clinicianName: string
-    clinicianId: string
-    patientId: string
-    patientFirstName: string
-    patientLastName: string
-    orderPlacedAt: Date | string
-    authorizationDate: Date | string
-    orderCompletedAt: Date | string
-    isDiabetic: boolean
-    orderSide: $Enums.Side
+    companyId: string
+    orderStatus?: $Enums.OrderStatus | null
+    poNumber?: string | null
+    clinicianName?: string | null
+    clinicianId?: string | null
+    patientId?: string | null
+    patientFirstName?: string | null
+    patientLastName?: string | null
+    orderCreatedAt?: Date | string | null
+    authorizationUpdatedAt?: Date | string | null
+    orderCompletedAt?: Date | string | null
+    isDiabetic?: boolean | null
+    orderSide?: number | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
-    orderStatus?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    poNumber?: StringFieldUpdateOperationsInput | string
-    clinicianName?: StringFieldUpdateOperationsInput | string
-    clinicianId?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    patientFirstName?: StringFieldUpdateOperationsInput | string
-    patientLastName?: StringFieldUpdateOperationsInput | string
-    orderPlacedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    authorizationDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    orderCompletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    orderSide?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    companyId?: StringFieldUpdateOperationsInput | string
+    orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    orderCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    orderSide?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
     workbenchId?: StringFieldUpdateOperationsInput | string
-    orderStatus?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
-    poNumber?: StringFieldUpdateOperationsInput | string
-    clinicianName?: StringFieldUpdateOperationsInput | string
-    clinicianId?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    patientFirstName?: StringFieldUpdateOperationsInput | string
-    patientLastName?: StringFieldUpdateOperationsInput | string
-    orderPlacedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    authorizationDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    orderCompletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
-    orderSide?: EnumSideFieldUpdateOperationsInput | $Enums.Side
+    companyId?: StringFieldUpdateOperationsInput | string
+    orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientFirstName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientLastName?: NullableStringFieldUpdateOperationsInput | string | null
+    orderCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    orderSide?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -48368,11 +48404,34 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumOrderStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ViewFlattenedWorkbenchCountOrderByAggregateInput = {
-    id?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
     workbenchId?: SortOrder
+    companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -48380,18 +48439,22 @@ export namespace Prisma {
     patientId?: SortOrder
     patientFirstName?: SortOrder
     patientLastName?: SortOrder
-    orderPlacedAt?: SortOrder
-    authorizationDate?: SortOrder
+    orderCreatedAt?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
   }
 
+  export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
+    orderSide?: SortOrder
+  }
+
   export type ViewFlattenedWorkbenchMaxOrderByAggregateInput = {
-    id?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
     workbenchId?: SortOrder
+    companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -48399,18 +48462,18 @@ export namespace Prisma {
     patientId?: SortOrder
     patientFirstName?: SortOrder
     patientLastName?: SortOrder
-    orderPlacedAt?: SortOrder
-    authorizationDate?: SortOrder
+    orderCreatedAt?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
-    id?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
     workbenchId?: SortOrder
+    companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -48418,11 +48481,49 @@ export namespace Prisma {
     patientId?: SortOrder
     patientFirstName?: SortOrder
     patientLastName?: SortOrder
-    orderPlacedAt?: SortOrder
-    authorizationDate?: SortOrder
+    orderCreatedAt?: SortOrder
+    authorizationUpdatedAt?: SortOrder
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+  }
+
+  export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
+    orderSide?: SortOrder
+  }
+
+  export type EnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type FacilityCreateNestedManyWithoutCompanyInput = {
@@ -50862,6 +50963,22 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutApiKeysInput, CompanyUpdateWithoutApiKeysInput>, CompanyUncheckedUpdateWithoutApiKeysInput>
   }
 
+  export type NullableEnumOrderStatusFieldUpdateOperationsInput = {
+    set?: $Enums.OrderStatus | null
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -51495,6 +51612,52 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCompanyRoleFilter<$PrismaModel>
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
+  }
+
+  export type NestedEnumOrderStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type FacilityCreateWithoutCompanyInput = {
