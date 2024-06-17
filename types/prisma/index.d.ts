@@ -38664,9 +38664,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMinAggregateOutputType = {
+    workbenchId: string | null
     orderId: string | null
     evaluationId: string | null
-    workbenchId: string | null
     companyId: string | null
     orderStatus: $Enums.OrderStatus | null
     poNumber: string | null
@@ -38683,9 +38683,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
+    workbenchId: string | null
     orderId: string | null
     evaluationId: string | null
-    workbenchId: string | null
     companyId: string | null
     orderStatus: $Enums.OrderStatus | null
     poNumber: string | null
@@ -38702,9 +38702,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
+    workbenchId: number
     orderId: number
     evaluationId: number
-    workbenchId: number
     companyId: number
     orderStatus: number
     poNumber: number
@@ -38731,9 +38731,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMinAggregateInputType = {
+    workbenchId?: true
     orderId?: true
     evaluationId?: true
-    workbenchId?: true
     companyId?: true
     orderStatus?: true
     poNumber?: true
@@ -38750,9 +38750,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
+    workbenchId?: true
     orderId?: true
     evaluationId?: true
-    workbenchId?: true
     companyId?: true
     orderStatus?: true
     poNumber?: true
@@ -38769,9 +38769,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
+    workbenchId?: true
     orderId?: true
     evaluationId?: true
-    workbenchId?: true
     companyId?: true
     orderStatus?: true
     poNumber?: true
@@ -38875,9 +38875,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchGroupByOutputType = {
+    workbenchId: string
     orderId: string
     evaluationId: string
-    workbenchId: string
     companyId: string
     orderStatus: $Enums.OrderStatus | null
     poNumber: string | null
@@ -38913,9 +38913,9 @@ export namespace Prisma {
 
 
   export type ViewFlattenedWorkbenchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    workbenchId?: boolean
     orderId?: boolean
     evaluationId?: boolean
-    workbenchId?: boolean
     companyId?: boolean
     orderStatus?: boolean
     poNumber?: boolean
@@ -38932,9 +38932,9 @@ export namespace Prisma {
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
+    workbenchId?: boolean
     orderId?: boolean
     evaluationId?: boolean
-    workbenchId?: boolean
     companyId?: boolean
     orderStatus?: boolean
     poNumber?: boolean
@@ -38956,9 +38956,9 @@ export namespace Prisma {
     name: "ViewFlattenedWorkbench"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
+      workbenchId: string
       orderId: string
       evaluationId: string
-      workbenchId: string
       companyId: string
       orderStatus: $Enums.OrderStatus | null
       poNumber: string | null
@@ -39064,8 +39064,8 @@ export namespace Prisma {
      * // Get first 10 ViewFlattenedWorkbenches
      * const viewFlattenedWorkbenches = await prisma.viewFlattenedWorkbench.findMany({ take: 10 })
      * 
-     * // Only select the `orderId`
-     * const viewFlattenedWorkbenchWithOrderIdOnly = await prisma.viewFlattenedWorkbench.findMany({ select: { orderId: true } })
+     * // Only select the `workbenchId`
+     * const viewFlattenedWorkbenchWithWorkbenchIdOnly = await prisma.viewFlattenedWorkbench.findMany({ select: { workbenchId: true } })
      * 
     **/
     findMany<T extends ViewFlattenedWorkbenchFindManyArgs<ExtArgs>>(
@@ -39115,9 +39115,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many ViewFlattenedWorkbenches and only return the `orderId`
-     * const viewFlattenedWorkbenchWithOrderIdOnly = await prisma.viewFlattenedWorkbench.createManyAndReturn({ 
-     *   select: { orderId: true },
+     * // Create many ViewFlattenedWorkbenches and only return the `workbenchId`
+     * const viewFlattenedWorkbenchWithWorkbenchIdOnly = await prisma.viewFlattenedWorkbench.createManyAndReturn({ 
+     *   select: { workbenchId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -39392,9 +39392,9 @@ export namespace Prisma {
    * Fields of the ViewFlattenedWorkbench model
    */ 
   interface ViewFlattenedWorkbenchFieldRefs {
+    readonly workbenchId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly evaluationId: FieldRef<"ViewFlattenedWorkbench", 'String'>
-    readonly workbenchId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly companyId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderStatus'>
     readonly poNumber: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -40187,9 +40187,9 @@ export namespace Prisma {
 
 
   export const ViewFlattenedWorkbenchScalarFieldEnum: {
+    workbenchId: 'workbenchId',
     orderId: 'orderId',
     evaluationId: 'evaluationId',
-    workbenchId: 'workbenchId',
     companyId: 'companyId',
     orderStatus: 'orderStatus',
     poNumber: 'poNumber',
@@ -43166,9 +43166,9 @@ export namespace Prisma {
     AND?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     OR?: ViewFlattenedWorkbenchWhereInput[]
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
+    workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
     companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43185,9 +43185,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
+    workbenchId?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
-    workbenchId?: SortOrder
     companyId?: SortOrder
     orderStatus?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
@@ -43204,12 +43204,12 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
-    orderId?: string
+    workbenchId?: string
     AND?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     OR?: ViewFlattenedWorkbenchWhereInput[]
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
+    orderId?: StringFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
-    workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
     companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43223,12 +43223,12 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
-  }, "orderId">
+  }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
+    workbenchId?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
-    workbenchId?: SortOrder
     companyId?: SortOrder
     orderStatus?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
@@ -43253,9 +43253,9 @@ export namespace Prisma {
     AND?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput | ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
     OR?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
     NOT?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput | ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
+    workbenchId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     evaluationId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
-    workbenchId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     companyId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     orderStatus?: EnumOrderStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     poNumber?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46053,9 +46053,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCreateInput = {
+    workbenchId: string
     orderId: string
     evaluationId: string
-    workbenchId: string
     companyId: string
     orderStatus?: $Enums.OrderStatus | null
     poNumber?: string | null
@@ -46072,9 +46072,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
+    workbenchId: string
     orderId: string
     evaluationId: string
-    workbenchId: string
     companyId: string
     orderStatus?: $Enums.OrderStatus | null
     poNumber?: string | null
@@ -46091,9 +46091,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
+    workbenchId?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46110,9 +46110,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
+    workbenchId?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46129,9 +46129,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
+    workbenchId: string
     orderId: string
     evaluationId: string
-    workbenchId: string
     companyId: string
     orderStatus?: $Enums.OrderStatus | null
     poNumber?: string | null
@@ -46148,9 +46148,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
+    workbenchId?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46167,9 +46167,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
+    workbenchId?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     evaluationId?: StringFieldUpdateOperationsInput | string
-    workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48428,9 +48428,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchCountOrderByAggregateInput = {
+    workbenchId?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
-    workbenchId?: SortOrder
     companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
@@ -48451,9 +48451,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMaxOrderByAggregateInput = {
+    workbenchId?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
-    workbenchId?: SortOrder
     companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
@@ -48470,9 +48470,9 @@ export namespace Prisma {
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
+    workbenchId?: SortOrder
     orderId?: SortOrder
     evaluationId?: SortOrder
-    workbenchId?: SortOrder
     companyId?: SortOrder
     orderStatus?: SortOrder
     poNumber?: SortOrder
