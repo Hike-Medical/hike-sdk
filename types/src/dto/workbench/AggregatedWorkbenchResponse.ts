@@ -29,4 +29,5 @@ export interface AggregatedWorkbenchResponse {
   shippingCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
   printingCompletedBy?: string | null;
+  validationStatus?: boolean | null;
 }
