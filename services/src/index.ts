@@ -90,5 +90,6 @@ export * from './hooks/useUpsertFormSubmission';
 export * from './hooks/useValidateShippingAddress';
 export * from './hooks/useVendors';
 export * from './hooks/useVoidLabel';
+export * from './hooks/useAggregatedWorkbenches';
 export * from './utils/backendApi';
 export * from './utils/configureBaseUrl';
