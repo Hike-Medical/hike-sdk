@@ -21894,18 +21894,21 @@ export namespace Prisma {
     id: string | null
     name: string | null
     diabetic: boolean | null
+    custom: boolean | null
   }
 
   export type DeviceTypeMaxAggregateOutputType = {
     id: string | null
     name: string | null
     diabetic: boolean | null
+    custom: boolean | null
   }
 
   export type DeviceTypeCountAggregateOutputType = {
     id: number
     name: number
     diabetic: number
+    custom: number
     _all: number
   }
 
@@ -21914,18 +21917,21 @@ export namespace Prisma {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
   }
 
   export type DeviceTypeMaxAggregateInputType = {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
   }
 
   export type DeviceTypeCountAggregateInputType = {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
     _all?: true
   }
 
@@ -22005,6 +22011,7 @@ export namespace Prisma {
     id: string
     name: string
     diabetic: boolean
+    custom: boolean | null
     _count: DeviceTypeCountAggregateOutputType | null
     _min: DeviceTypeMinAggregateOutputType | null
     _max: DeviceTypeMaxAggregateOutputType | null
@@ -22028,6 +22035,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     diabetic?: boolean
+    custom?: boolean
     evaluations?: boolean | DeviceType$evaluationsArgs<ExtArgs>
     _count?: boolean | DeviceTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["deviceType"]>
@@ -22036,6 +22044,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     diabetic?: boolean
+    custom?: boolean
   }
 
 
@@ -22054,6 +22063,7 @@ export namespace Prisma {
       id: string
       name: string
       diabetic: boolean
+      custom: boolean | null
     }, ExtArgs["result"]["deviceType"]>
     composites: {}
   }
@@ -22478,6 +22488,7 @@ export namespace Prisma {
     readonly id: FieldRef<"DeviceType", 'String'>
     readonly name: FieldRef<"DeviceType", 'String'>
     readonly diabetic: FieldRef<"DeviceType", 'Boolean'>
+    readonly custom: FieldRef<"DeviceType", 'Boolean'>
   }
     
 
@@ -38846,7 +38857,8 @@ export namespace Prisma {
   export const DeviceTypeScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    diabetic: 'diabetic'
+    diabetic: 'diabetic',
+    custom: 'custom'
   };
 
   export type DeviceTypeScalarFieldEnum = (typeof DeviceTypeScalarFieldEnum)[keyof typeof DeviceTypeScalarFieldEnum]
@@ -40942,6 +40954,7 @@ export namespace Prisma {
     id?: StringFilter<"DeviceType"> | string
     name?: StringFilter<"DeviceType"> | string
     diabetic?: BoolFilter<"DeviceType"> | boolean
+    custom?: BoolNullableFilter<"DeviceType"> | boolean | null
     evaluations?: EvaluationListRelationFilter
   }
 
@@ -40949,6 +40962,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrderInput | SortOrder
     evaluations?: EvaluationOrderByRelationAggregateInput
   }
 
@@ -40959,6 +40973,7 @@ export namespace Prisma {
     OR?: DeviceTypeWhereInput[]
     NOT?: DeviceTypeWhereInput | DeviceTypeWhereInput[]
     diabetic?: BoolFilter<"DeviceType"> | boolean
+    custom?: BoolNullableFilter<"DeviceType"> | boolean | null
     evaluations?: EvaluationListRelationFilter
   }, "id" | "name">
 
@@ -40966,6 +40981,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrderInput | SortOrder
     _count?: DeviceTypeCountOrderByAggregateInput
     _max?: DeviceTypeMaxOrderByAggregateInput
     _min?: DeviceTypeMinOrderByAggregateInput
@@ -40978,6 +40994,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"DeviceType"> | string
     name?: StringWithAggregatesFilter<"DeviceType"> | string
     diabetic?: BoolWithAggregatesFilter<"DeviceType"> | boolean
+    custom?: BoolNullableWithAggregatesFilter<"DeviceType"> | boolean | null
   }
 
   export type VisitTypeWhereInput = {
@@ -43669,6 +43686,7 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
     evaluations?: EvaluationCreateNestedManyWithoutDeviceTypeInput
   }
 
@@ -43676,6 +43694,7 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutDeviceTypeInput
   }
 
@@ -43683,6 +43702,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
     evaluations?: EvaluationUpdateManyWithoutDeviceTypeNestedInput
   }
 
@@ -43690,6 +43710,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
     evaluations?: EvaluationUncheckedUpdateManyWithoutDeviceTypeNestedInput
   }
 
@@ -43697,18 +43718,21 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type DeviceTypeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type VisitTypeCreateInput = {
@@ -46324,22 +46348,38 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type DeviceTypeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
   }
 
   export type DeviceTypeMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
   }
 
   export type DeviceTypeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type VisitTypeCountOrderByAggregateInput = {
@@ -48640,6 +48680,10 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type EvaluationUpdateManyWithoutDeviceTypeNestedInput = {
     create?: XOR<EvaluationCreateWithoutDeviceTypeInput, EvaluationUncheckedCreateWithoutDeviceTypeInput> | EvaluationCreateWithoutDeviceTypeInput[] | EvaluationUncheckedCreateWithoutDeviceTypeInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutDeviceTypeInput | EvaluationCreateOrConnectWithoutDeviceTypeInput[]
@@ -49998,6 +50042,19 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
     _max?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
@@ -51390,12 +51447,14 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeUncheckedCreateWithoutEvaluationsInput = {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeCreateOrConnectWithoutEvaluationsInput = {
@@ -51679,12 +51738,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type DeviceTypeUncheckedUpdateWithoutEvaluationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type VisitTypeUpsertWithoutEvaluationsInput = {
