@@ -7,6 +7,8 @@ export interface GetProductsParams extends PagedParams {
   vendorId?: string;
   deviceTypeId?: string;
   billingCode?: string;
+  minPrice?: number;
+  maxPrice?: number;
   sortBy?: 'name' | 'createdAt' | 'updatedAt';
   sortOrder?: Prisma.SortOrder;
 }
