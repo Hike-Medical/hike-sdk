@@ -29,5 +29,10 @@ export interface AggregatedWorkbenchResponse {
   shippingCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
   printingCompletedBy?: string | null;
+  addonCompletedAt?: Date | null;
+  addonCompletedBy?: string | null;
   validationStatus?: boolean | null;
+  deviceTypeName?: string | null;
+  taikaId?: string | null;
+  taikaDevId?: string | null;
 }

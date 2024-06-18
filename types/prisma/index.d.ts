@@ -336,6 +336,7 @@ export const OrderStatus: {
   NEEDS_GLUING: 'NEEDS_GLUING',
   NEEDS_FINISHING: 'NEEDS_FINISHING',
   NEEDS_SHIPPING: 'NEEDS_SHIPPING',
+  NEEDS_ADDON: 'NEEDS_ADDON',
   PACKAGED: 'PACKAGED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
@@ -21980,18 +21981,21 @@ export namespace Prisma {
     id: string | null
     name: string | null
     diabetic: boolean | null
+    custom: boolean | null
   }
 
   export type DeviceTypeMaxAggregateOutputType = {
     id: string | null
     name: string | null
     diabetic: boolean | null
+    custom: boolean | null
   }
 
   export type DeviceTypeCountAggregateOutputType = {
     id: number
     name: number
     diabetic: number
+    custom: number
     _all: number
   }
 
@@ -22000,18 +22004,21 @@ export namespace Prisma {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
   }
 
   export type DeviceTypeMaxAggregateInputType = {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
   }
 
   export type DeviceTypeCountAggregateInputType = {
     id?: true
     name?: true
     diabetic?: true
+    custom?: true
     _all?: true
   }
 
@@ -22091,6 +22098,7 @@ export namespace Prisma {
     id: string
     name: string
     diabetic: boolean
+    custom: boolean | null
     _count: DeviceTypeCountAggregateOutputType | null
     _min: DeviceTypeMinAggregateOutputType | null
     _max: DeviceTypeMaxAggregateOutputType | null
@@ -22114,6 +22122,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     diabetic?: boolean
+    custom?: boolean
     evaluations?: boolean | DeviceType$evaluationsArgs<ExtArgs>
     _count?: boolean | DeviceTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["deviceType"]>
@@ -22122,6 +22131,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     diabetic?: boolean
+    custom?: boolean
   }
 
 
@@ -22140,6 +22150,7 @@ export namespace Prisma {
       id: string
       name: string
       diabetic: boolean
+      custom: boolean | null
     }, ExtArgs["result"]["deviceType"]>
     composites: {}
   }
@@ -22564,6 +22575,7 @@ export namespace Prisma {
     readonly id: FieldRef<"DeviceType", 'String'>
     readonly name: FieldRef<"DeviceType", 'String'>
     readonly diabetic: FieldRef<"DeviceType", 'Boolean'>
+    readonly custom: FieldRef<"DeviceType", 'Boolean'>
   }
     
 
@@ -38692,8 +38704,12 @@ export namespace Prisma {
     shippingCompletedBy: string | null
     printingCompletedAt: Date | null
     printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
     validationStatus: boolean | null
     deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
@@ -38725,8 +38741,12 @@ export namespace Prisma {
     shippingCompletedBy: string | null
     printingCompletedAt: Date | null
     printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
     validationStatus: boolean | null
     deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
@@ -38758,8 +38778,12 @@ export namespace Prisma {
     shippingCompletedBy: number
     printingCompletedAt: number
     printingCompletedBy: number
+    addonCompletedAt: number
+    addonCompletedBy: number
     validationStatus: number
     deviceTypeName: number
+    taikaId: number
+    taikaDevId: number
     _all: number
   }
 
@@ -38801,8 +38825,12 @@ export namespace Prisma {
     shippingCompletedBy?: true
     printingCompletedAt?: true
     printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
     validationStatus?: true
     deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
@@ -38834,8 +38862,12 @@ export namespace Prisma {
     shippingCompletedBy?: true
     printingCompletedAt?: true
     printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
     validationStatus?: true
     deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
@@ -38867,8 +38899,12 @@ export namespace Prisma {
     shippingCompletedBy?: true
     printingCompletedAt?: true
     printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
     validationStatus?: true
     deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
     _all?: true
   }
 
@@ -38987,8 +39023,12 @@ export namespace Prisma {
     shippingCompletedBy: string | null
     printingCompletedAt: Date | null
     printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
     validationStatus: boolean | null
     deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -39039,8 +39079,12 @@ export namespace Prisma {
     shippingCompletedBy?: boolean
     printingCompletedAt?: boolean
     printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
     validationStatus?: boolean
     deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
@@ -39072,8 +39116,12 @@ export namespace Prisma {
     shippingCompletedBy?: boolean
     printingCompletedAt?: boolean
     printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
     validationStatus?: boolean
     deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }
 
 
@@ -39110,8 +39158,12 @@ export namespace Prisma {
       shippingCompletedBy: string | null
       printingCompletedAt: Date | null
       printingCompletedBy: string | null
+      addonCompletedAt: Date | null
+      addonCompletedBy: string | null
       validationStatus: boolean | null
       deviceTypeName: string | null
+      taikaId: string | null
+      taikaDevId: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -39560,8 +39612,12 @@ export namespace Prisma {
     readonly shippingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly printingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly addonCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly addonCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly validationStatus: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly deviceTypeName: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -40139,7 +40195,8 @@ export namespace Prisma {
   export const DeviceTypeScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    diabetic: 'diabetic'
+    diabetic: 'diabetic',
+    custom: 'custom'
   };
 
   export type DeviceTypeScalarFieldEnum = (typeof DeviceTypeScalarFieldEnum)[keyof typeof DeviceTypeScalarFieldEnum]
@@ -40369,8 +40426,12 @@ export namespace Prisma {
     shippingCompletedBy: 'shippingCompletedBy',
     printingCompletedAt: 'printingCompletedAt',
     printingCompletedBy: 'printingCompletedBy',
+    addonCompletedAt: 'addonCompletedAt',
+    addonCompletedBy: 'addonCompletedBy',
     validationStatus: 'validationStatus',
-    deviceTypeName: 'deviceTypeName'
+    deviceTypeName: 'deviceTypeName',
+    taikaId: 'taikaId',
+    taikaDevId: 'taikaDevId'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -42271,6 +42332,7 @@ export namespace Prisma {
     id?: StringFilter<"DeviceType"> | string
     name?: StringFilter<"DeviceType"> | string
     diabetic?: BoolFilter<"DeviceType"> | boolean
+    custom?: BoolNullableFilter<"DeviceType"> | boolean | null
     evaluations?: EvaluationListRelationFilter
   }
 
@@ -42278,6 +42340,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrderInput | SortOrder
     evaluations?: EvaluationOrderByRelationAggregateInput
   }
 
@@ -42288,6 +42351,7 @@ export namespace Prisma {
     OR?: DeviceTypeWhereInput[]
     NOT?: DeviceTypeWhereInput | DeviceTypeWhereInput[]
     diabetic?: BoolFilter<"DeviceType"> | boolean
+    custom?: BoolNullableFilter<"DeviceType"> | boolean | null
     evaluations?: EvaluationListRelationFilter
   }, "id" | "name">
 
@@ -42295,6 +42359,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrderInput | SortOrder
     _count?: DeviceTypeCountOrderByAggregateInput
     _max?: DeviceTypeMaxOrderByAggregateInput
     _min?: DeviceTypeMinOrderByAggregateInput
@@ -42307,6 +42372,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"DeviceType"> | string
     name?: StringWithAggregatesFilter<"DeviceType"> | string
     diabetic?: BoolWithAggregatesFilter<"DeviceType"> | boolean
+    custom?: BoolNullableWithAggregatesFilter<"DeviceType"> | boolean | null
   }
 
   export type VisitTypeWhereInput = {
@@ -43362,8 +43428,12 @@ export namespace Prisma {
     shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
@@ -43395,8 +43465,12 @@ export namespace Prisma {
     shippingCompletedBy?: SortOrderInput | SortOrder
     printingCompletedAt?: SortOrderInput | SortOrder
     printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
     validationStatus?: SortOrderInput | SortOrder
     deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -43431,8 +43505,12 @@ export namespace Prisma {
     shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
@@ -43464,8 +43542,12 @@ export namespace Prisma {
     shippingCompletedBy?: SortOrderInput | SortOrder
     printingCompletedAt?: SortOrderInput | SortOrder
     printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
     validationStatus?: SortOrderInput | SortOrder
     deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -43505,8 +43587,12 @@ export namespace Prisma {
     shippingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     printingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -45177,6 +45263,7 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
     evaluations?: EvaluationCreateNestedManyWithoutDeviceTypeInput
   }
 
@@ -45184,6 +45271,7 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutDeviceTypeInput
   }
 
@@ -45191,6 +45279,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
     evaluations?: EvaluationUpdateManyWithoutDeviceTypeNestedInput
   }
 
@@ -45198,6 +45287,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
     evaluations?: EvaluationUncheckedUpdateManyWithoutDeviceTypeNestedInput
   }
 
@@ -45205,18 +45295,21 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type DeviceTypeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type VisitTypeCreateInput = {
@@ -46319,8 +46412,12 @@ export namespace Prisma {
     shippingCompletedBy?: string | null
     printingCompletedAt?: Date | string | null
     printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
     validationStatus?: boolean | null
     deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
@@ -46352,8 +46449,12 @@ export namespace Prisma {
     shippingCompletedBy?: string | null
     printingCompletedAt?: Date | string | null
     printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
     validationStatus?: boolean | null
     deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
@@ -46385,8 +46486,12 @@ export namespace Prisma {
     shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
@@ -46418,8 +46523,12 @@ export namespace Prisma {
     shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
@@ -46451,8 +46560,12 @@ export namespace Prisma {
     shippingCompletedBy?: string | null
     printingCompletedAt?: Date | string | null
     printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
     validationStatus?: boolean | null
     deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
@@ -46484,8 +46597,12 @@ export namespace Prisma {
     shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
@@ -46517,8 +46634,12 @@ export namespace Prisma {
     shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -48063,22 +48184,38 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type DeviceTypeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
   }
 
   export type DeviceTypeMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
   }
 
   export type DeviceTypeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     diabetic?: SortOrder
+    custom?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type VisitTypeCountOrderByAggregateInput = {
@@ -48747,11 +48884,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -48792,8 +48924,12 @@ export namespace Prisma {
     shippingCompletedBy?: SortOrder
     printingCompletedAt?: SortOrder
     printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
     deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -48829,8 +48965,12 @@ export namespace Prisma {
     shippingCompletedBy?: SortOrder
     printingCompletedAt?: SortOrder
     printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
     deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
@@ -48862,8 +49002,12 @@ export namespace Prisma {
     shippingCompletedBy?: SortOrder
     printingCompletedAt?: SortOrder
     printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
     deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
@@ -48878,14 +49022,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -50543,6 +50679,10 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type EvaluationUpdateManyWithoutDeviceTypeNestedInput = {
     create?: XOR<EvaluationCreateWithoutDeviceTypeInput, EvaluationUncheckedCreateWithoutDeviceTypeInput> | EvaluationCreateWithoutDeviceTypeInput[] | EvaluationUncheckedCreateWithoutDeviceTypeInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutDeviceTypeInput | EvaluationCreateOrConnectWithoutDeviceTypeInput[]
@@ -51345,10 +51485,6 @@ export namespace Prisma {
     set?: $Enums.OrderStatus | null
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -51919,6 +52055,19 @@ export namespace Prisma {
     _max?: NestedEnumDiagnosisStandardFilter<$PrismaModel>
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
@@ -51999,11 +52148,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
@@ -52012,14 +52156,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -53355,12 +53491,14 @@ export namespace Prisma {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeUncheckedCreateWithoutEvaluationsInput = {
     id?: string
     name: string
     diabetic?: boolean
+    custom?: boolean | null
   }
 
   export type DeviceTypeCreateOrConnectWithoutEvaluationsInput = {
@@ -53644,12 +53782,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type DeviceTypeUncheckedUpdateWithoutEvaluationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     diabetic?: BoolFieldUpdateOperationsInput | boolean
+    custom?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type VisitTypeUpsertWithoutEvaluationsInput = {
