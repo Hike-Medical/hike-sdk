@@ -336,6 +336,7 @@ export const OrderStatus: {
   NEEDS_GLUING: 'NEEDS_GLUING',
   NEEDS_FINISHING: 'NEEDS_FINISHING',
   NEEDS_SHIPPING: 'NEEDS_SHIPPING',
+  NEEDS_ADDON: 'NEEDS_ADDON',
   PACKAGED: 'PACKAGED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
@@ -4157,6 +4158,7 @@ export namespace Prisma {
 
   export type PatientCountOutputType = {
     feet: number
+    primaryPhysician: number
     evaluations: number
     workbenches: number
     companies: number
@@ -4164,6 +4166,7 @@ export namespace Prisma {
 
   export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     feet?: boolean | PatientCountOutputTypeCountFeetArgs
+    primaryPhysician?: boolean | PatientCountOutputTypeCountPrimaryPhysicianArgs
     evaluations?: boolean | PatientCountOutputTypeCountEvaluationsArgs
     workbenches?: boolean | PatientCountOutputTypeCountWorkbenchesArgs
     companies?: boolean | PatientCountOutputTypeCountCompaniesArgs
@@ -4185,6 +4188,13 @@ export namespace Prisma {
    */
   export type PatientCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FootWhereInput
+  }
+
+  /**
+   * PatientCountOutputType without action
+   */
+  export type PatientCountOutputTypeCountPrimaryPhysicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhysicianWhereInput
   }
 
   /**
@@ -7043,6 +7053,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -7060,6 +7071,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -7077,6 +7089,7 @@ export namespace Prisma {
     weight: number
     maritalStatus: number
     photoUrl: number
+    primaryPhysicianId: number
     active: number
     deceasedAt: number
     createdAt: number
@@ -7106,6 +7119,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7123,6 +7137,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7140,6 +7155,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7244,6 +7260,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean
     deceasedAt: Date | null
     createdAt: Date
@@ -7280,11 +7297,13 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    primaryPhysicianId?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     feet?: boolean | Patient$feetArgs<ExtArgs>
+    primaryPhysician?: boolean | Patient$primaryPhysicianArgs<ExtArgs>
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
@@ -7302,6 +7321,7 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    primaryPhysicianId?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
@@ -7311,6 +7331,7 @@ export namespace Prisma {
 
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     feet?: boolean | Patient$feetArgs<ExtArgs>
+    primaryPhysician?: boolean | Patient$primaryPhysicianArgs<ExtArgs>
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
@@ -7322,6 +7343,7 @@ export namespace Prisma {
     name: "Patient"
     objects: {
       feet: Prisma.$FootPayload<ExtArgs>[]
+      primaryPhysician: Prisma.$PhysicianPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       companies: Prisma.$CompanyPatientPayload<ExtArgs>[]
@@ -7337,6 +7359,7 @@ export namespace Prisma {
       weight: number | null
       maritalStatus: $Enums.MaritalStatus | null
       photoUrl: string | null
+      primaryPhysicianId: string | null
       active: boolean
       deceasedAt: Date | null
       createdAt: Date
@@ -7734,6 +7757,8 @@ export namespace Prisma {
 
     feet<T extends Patient$feetArgs<ExtArgs> = {}>(args?: Subset<T, Patient$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    primaryPhysician<T extends Patient$primaryPhysicianArgs<ExtArgs> = {}>(args?: Subset<T, Patient$primaryPhysicianArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhysicianPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     evaluations<T extends Patient$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Patient$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -7778,6 +7803,7 @@ export namespace Prisma {
     readonly weight: FieldRef<"Patient", 'Float'>
     readonly maritalStatus: FieldRef<"Patient", 'MaritalStatus'>
     readonly photoUrl: FieldRef<"Patient", 'String'>
+    readonly primaryPhysicianId: FieldRef<"Patient", 'String'>
     readonly active: FieldRef<"Patient", 'Boolean'>
     readonly deceasedAt: FieldRef<"Patient", 'DateTime'>
     readonly createdAt: FieldRef<"Patient", 'DateTime'>
@@ -8117,6 +8143,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
+  }
+
+  /**
+   * Patient.primaryPhysician
+   */
+  export type Patient$primaryPhysicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Physician
+     */
+    select?: PhysicianSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhysicianInclude<ExtArgs> | null
+    where?: PhysicianWhereInput
+    orderBy?: PhysicianOrderByWithRelationInput | PhysicianOrderByWithRelationInput[]
+    cursor?: PhysicianWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhysicianScalarFieldEnum | PhysicianScalarFieldEnum[]
   }
 
   /**
@@ -19101,6 +19147,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    patientId: string | null
   }
 
   export type PhysicianMaxAggregateOutputType = {
@@ -19110,6 +19157,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    patientId: string | null
   }
 
   export type PhysicianCountAggregateOutputType = {
@@ -19119,6 +19167,7 @@ export namespace Prisma {
     active: number
     createdAt: number
     updatedAt: number
+    patientId: number
     _all: number
   }
 
@@ -19130,6 +19179,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
   }
 
   export type PhysicianMaxAggregateInputType = {
@@ -19139,6 +19189,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
   }
 
   export type PhysicianCountAggregateInputType = {
@@ -19148,6 +19199,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
     _all?: true
   }
 
@@ -19230,6 +19282,7 @@ export namespace Prisma {
     active: boolean
     createdAt: Date
     updatedAt: Date
+    patientId: string | null
     _count: PhysicianCountAggregateOutputType | null
     _min: PhysicianMinAggregateOutputType | null
     _max: PhysicianMaxAggregateOutputType | null
@@ -19256,7 +19309,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    patientId?: boolean
     evaluations?: boolean | Physician$evaluationsArgs<ExtArgs>
+    Patient?: boolean | Physician$PatientArgs<ExtArgs>
     _count?: boolean | PhysicianCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["physician"]>
 
@@ -19267,11 +19322,13 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    patientId?: boolean
   }
 
 
   export type PhysicianInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | Physician$evaluationsArgs<ExtArgs>
+    Patient?: boolean | Physician$PatientArgs<ExtArgs>
     _count?: boolean | PhysicianCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -19280,6 +19337,7 @@ export namespace Prisma {
     name: "Physician"
     objects: {
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
+      Patient: Prisma.$PatientPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -19288,6 +19346,7 @@ export namespace Prisma {
       active: boolean
       createdAt: Date
       updatedAt: Date
+      patientId: string | null
     }, ExtArgs["result"]["physician"]>
     composites: {}
   }
@@ -19681,6 +19740,8 @@ export namespace Prisma {
 
     evaluations<T extends Physician$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Physician$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    Patient<T extends Physician$PatientArgs<ExtArgs> = {}>(args?: Subset<T, Physician$PatientArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19715,6 +19776,7 @@ export namespace Prisma {
     readonly active: FieldRef<"Physician", 'Boolean'>
     readonly createdAt: FieldRef<"Physician", 'DateTime'>
     readonly updatedAt: FieldRef<"Physician", 'DateTime'>
+    readonly patientId: FieldRef<"Physician", 'String'>
   }
     
 
@@ -20050,6 +20112,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * Physician.Patient
+   */
+  export type Physician$PatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Patient
+     */
+    select?: PatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientInclude<ExtArgs> | null
+    where?: PatientWhereInput
   }
 
   /**
@@ -38691,6 +38768,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
@@ -38710,6 +38805,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
@@ -38729,6 +38842,24 @@ export namespace Prisma {
     orderCompletedAt: number
     isDiabetic: number
     orderSide: number
+    orderQuantity: number
+    orderShoeSize: number
+    grindingCompletedAt: number
+    grindingCompletedBy: number
+    gluingCompletedAt: number
+    gluingCompletedBy: number
+    finishingCompletedAt: number
+    finishingCompletedBy: number
+    shippingCompletedAt: number
+    shippingCompletedBy: number
+    printingCompletedAt: number
+    printingCompletedBy: number
+    addonCompletedAt: number
+    addonCompletedBy: number
+    validationStatus: number
+    deviceTypeName: number
+    taikaId: number
+    taikaDevId: number
     _all: number
   }
 
@@ -38758,6 +38889,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
@@ -38777,6 +38926,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
@@ -38796,6 +38963,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
     _all?: true
   }
 
@@ -38902,6 +39087,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -38940,6 +39143,24 @@ export namespace Prisma {
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
+    orderQuantity?: boolean
+    orderShoeSize?: boolean
+    grindingCompletedAt?: boolean
+    grindingCompletedBy?: boolean
+    gluingCompletedAt?: boolean
+    gluingCompletedBy?: boolean
+    finishingCompletedAt?: boolean
+    finishingCompletedBy?: boolean
+    shippingCompletedAt?: boolean
+    shippingCompletedBy?: boolean
+    printingCompletedAt?: boolean
+    printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
+    validationStatus?: boolean
+    deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
@@ -38959,6 +39180,24 @@ export namespace Prisma {
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
+    orderQuantity?: boolean
+    orderShoeSize?: boolean
+    grindingCompletedAt?: boolean
+    grindingCompletedBy?: boolean
+    gluingCompletedAt?: boolean
+    gluingCompletedBy?: boolean
+    finishingCompletedAt?: boolean
+    finishingCompletedBy?: boolean
+    shippingCompletedAt?: boolean
+    shippingCompletedBy?: boolean
+    printingCompletedAt?: boolean
+    printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
+    validationStatus?: boolean
+    deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }
 
 
@@ -38983,6 +39222,24 @@ export namespace Prisma {
       orderCompletedAt: Date | null
       isDiabetic: boolean | null
       orderSide: number | null
+      orderQuantity: string | null
+      orderShoeSize: string | null
+      grindingCompletedAt: Date | null
+      grindingCompletedBy: string | null
+      gluingCompletedAt: Date | null
+      gluingCompletedBy: string | null
+      finishingCompletedAt: Date | null
+      finishingCompletedBy: string | null
+      shippingCompletedAt: Date | null
+      shippingCompletedBy: string | null
+      printingCompletedAt: Date | null
+      printingCompletedBy: string | null
+      addonCompletedAt: Date | null
+      addonCompletedBy: string | null
+      validationStatus: boolean | null
+      deviceTypeName: string | null
+      taikaId: string | null
+      taikaDevId: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -39419,6 +39676,24 @@ export namespace Prisma {
     readonly orderCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly isDiabetic: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
+    readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly grindingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly grindingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly gluingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly gluingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly finishingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly finishingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly shippingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly shippingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly printingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly printingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly addonCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly addonCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly validationStatus: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
+    readonly deviceTypeName: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -39760,6 +40035,7 @@ export namespace Prisma {
     weight: 'weight',
     maritalStatus: 'maritalStatus',
     photoUrl: 'photoUrl',
+    primaryPhysicianId: 'primaryPhysicianId',
     active: 'active',
     deceasedAt: 'deceasedAt',
     createdAt: 'createdAt',
@@ -39962,7 +40238,8 @@ export namespace Prisma {
     npi: 'npi',
     active: 'active',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    patientId: 'patientId'
   };
 
   export type PhysicianScalarFieldEnum = (typeof PhysicianScalarFieldEnum)[keyof typeof PhysicianScalarFieldEnum]
@@ -40214,7 +40491,25 @@ export namespace Prisma {
     authorizationUpdatedAt: 'authorizationUpdatedAt',
     orderCompletedAt: 'orderCompletedAt',
     isDiabetic: 'isDiabetic',
-    orderSide: 'orderSide'
+    orderSide: 'orderSide',
+    orderQuantity: 'orderQuantity',
+    orderShoeSize: 'orderShoeSize',
+    grindingCompletedAt: 'grindingCompletedAt',
+    grindingCompletedBy: 'grindingCompletedBy',
+    gluingCompletedAt: 'gluingCompletedAt',
+    gluingCompletedBy: 'gluingCompletedBy',
+    finishingCompletedAt: 'finishingCompletedAt',
+    finishingCompletedBy: 'finishingCompletedBy',
+    shippingCompletedAt: 'shippingCompletedAt',
+    shippingCompletedBy: 'shippingCompletedBy',
+    printingCompletedAt: 'printingCompletedAt',
+    printingCompletedBy: 'printingCompletedBy',
+    addonCompletedAt: 'addonCompletedAt',
+    addonCompletedBy: 'addonCompletedBy',
+    validationStatus: 'validationStatus',
+    deviceTypeName: 'deviceTypeName',
+    taikaId: 'taikaId',
+    taikaDevId: 'taikaDevId'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -40821,11 +41116,13 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     feet?: FootListRelationFilter
+    primaryPhysician?: PhysicianListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
@@ -40842,11 +41139,13 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    primaryPhysicianId?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     feet?: FootOrderByRelationAggregateInput
+    primaryPhysician?: PhysicianOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     companies?: CompanyPatientOrderByRelationAggregateInput
@@ -40866,11 +41165,13 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     feet?: FootListRelationFilter
+    primaryPhysician?: PhysicianListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
@@ -40887,6 +41188,7 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    primaryPhysicianId?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -40912,6 +41214,7 @@ export namespace Prisma {
     weight?: FloatNullableWithAggregatesFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableWithAggregatesFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     active?: BoolWithAggregatesFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
@@ -41936,7 +42239,9 @@ export namespace Prisma {
     active?: BoolFilter<"Physician"> | boolean
     createdAt?: DateTimeFilter<"Physician"> | Date | string
     updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
     evaluations?: EvaluationListRelationFilter
+    Patient?: XOR<PatientNullableRelationFilter, PatientWhereInput> | null
   }
 
   export type PhysicianOrderByWithRelationInput = {
@@ -41946,7 +42251,9 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrderInput | SortOrder
     evaluations?: EvaluationOrderByRelationAggregateInput
+    Patient?: PatientOrderByWithRelationInput
   }
 
   export type PhysicianWhereUniqueInput = Prisma.AtLeast<{
@@ -41959,7 +42266,9 @@ export namespace Prisma {
     active?: BoolFilter<"Physician"> | boolean
     createdAt?: DateTimeFilter<"Physician"> | Date | string
     updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
     evaluations?: EvaluationListRelationFilter
+    Patient?: XOR<PatientNullableRelationFilter, PatientWhereInput> | null
   }, "id" | "npi">
 
   export type PhysicianOrderByWithAggregationInput = {
@@ -41969,6 +42278,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrderInput | SortOrder
     _count?: PhysicianCountOrderByAggregateInput
     _max?: PhysicianMaxOrderByAggregateInput
     _min?: PhysicianMinOrderByAggregateInput
@@ -41984,6 +42294,7 @@ export namespace Prisma {
     active?: BoolWithAggregatesFilter<"Physician"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Physician"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Physician"> | Date | string
+    patientId?: StringNullableWithAggregatesFilter<"Physician"> | string | null
   }
 
   export type DiagnosisWhereInput = {
@@ -43199,6 +43510,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
@@ -43218,6 +43547,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrderInput | SortOrder
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
+    orderQuantity?: SortOrderInput | SortOrder
+    orderShoeSize?: SortOrderInput | SortOrder
+    grindingCompletedAt?: SortOrderInput | SortOrder
+    grindingCompletedBy?: SortOrderInput | SortOrder
+    gluingCompletedAt?: SortOrderInput | SortOrder
+    gluingCompletedBy?: SortOrderInput | SortOrder
+    finishingCompletedAt?: SortOrderInput | SortOrder
+    finishingCompletedBy?: SortOrderInput | SortOrder
+    shippingCompletedAt?: SortOrderInput | SortOrder
+    shippingCompletedBy?: SortOrderInput | SortOrder
+    printingCompletedAt?: SortOrderInput | SortOrder
+    printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
+    validationStatus?: SortOrderInput | SortOrder
+    deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -43240,6 +43587,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
@@ -43259,6 +43624,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrderInput | SortOrder
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
+    orderQuantity?: SortOrderInput | SortOrder
+    orderShoeSize?: SortOrderInput | SortOrder
+    grindingCompletedAt?: SortOrderInput | SortOrder
+    grindingCompletedBy?: SortOrderInput | SortOrder
+    gluingCompletedAt?: SortOrderInput | SortOrder
+    gluingCompletedBy?: SortOrderInput | SortOrder
+    finishingCompletedAt?: SortOrderInput | SortOrder
+    finishingCompletedBy?: SortOrderInput | SortOrder
+    shippingCompletedAt?: SortOrderInput | SortOrder
+    shippingCompletedBy?: SortOrderInput | SortOrder
+    printingCompletedAt?: SortOrderInput | SortOrder
+    printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
+    validationStatus?: SortOrderInput | SortOrder
+    deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -43286,6 +43669,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -43492,11 +43893,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
@@ -43513,11 +43916,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
@@ -43534,11 +43939,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
@@ -43555,11 +43962,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
@@ -43576,6 +43985,7 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -43593,6 +44003,7 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43610,6 +44021,7 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44756,6 +45168,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     evaluations?: EvaluationCreateNestedManyWithoutReferringPhysicianInput
+    Patient?: PatientCreateNestedOneWithoutPrimaryPhysicianInput
   }
 
   export type PhysicianUncheckedCreateInput = {
@@ -44765,6 +45178,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput
   }
 
@@ -44776,6 +45190,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUpdateManyWithoutReferringPhysicianNestedInput
+    Patient?: PatientUpdateOneWithoutPrimaryPhysicianNestedInput
   }
 
   export type PhysicianUncheckedUpdateInput = {
@@ -44785,6 +45200,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
     evaluations?: EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput
   }
 
@@ -44795,6 +45211,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
   }
 
   export type PhysicianUpdateManyMutationInput = {
@@ -44813,6 +45230,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DiagnosisCreateInput = {
@@ -46093,6 +46511,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
@@ -46112,6 +46548,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
@@ -46131,6 +46585,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
@@ -46150,6 +46622,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
@@ -46169,6 +46659,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
@@ -46188,6 +46696,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
@@ -46207,6 +46733,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -46578,6 +47122,12 @@ export namespace Prisma {
     none?: FootWhereInput
   }
 
+  export type PhysicianListRelationFilter = {
+    every?: PhysicianWhereInput
+    some?: PhysicianWhereInput
+    none?: PhysicianWhereInput
+  }
+
   export type WorkbenchListRelationFilter = {
     every?: WorkbenchWhereInput
     some?: WorkbenchWhereInput
@@ -46585,6 +47135,10 @@ export namespace Prisma {
   }
 
   export type FootOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PhysicianOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -46603,6 +47157,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -46625,6 +47180,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -46642,6 +47198,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -47652,6 +48209,11 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type PatientNullableRelationFilter = {
+    is?: PatientWhereInput | null
+    isNot?: PatientWhereInput | null
+  }
+
   export type PhysicianCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -47659,6 +48221,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type PhysicianMaxOrderByAggregateInput = {
@@ -47668,6 +48231,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type PhysicianMinOrderByAggregateInput = {
@@ -47677,6 +48241,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type EnumDiagnosisStandardFilter<$PrismaModel = never> = {
@@ -48451,11 +49016,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -48484,6 +49044,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -48507,6 +49085,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
@@ -48526,6 +49122,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
@@ -48540,14 +49154,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -49017,6 +49623,13 @@ export namespace Prisma {
     connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
   }
 
+  export type PhysicianCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+  }
+
   export type EvaluationCreateNestedManyWithoutPatientInput = {
     create?: XOR<EvaluationCreateWithoutPatientInput, EvaluationUncheckedCreateWithoutPatientInput> | EvaluationCreateWithoutPatientInput[] | EvaluationUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutPatientInput | EvaluationCreateOrConnectWithoutPatientInput[]
@@ -49043,6 +49656,13 @@ export namespace Prisma {
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
     createMany?: FootCreateManyPatientInputEnvelope
     connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+  }
+
+  export type PhysicianUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
   }
 
   export type EvaluationUncheckedCreateNestedManyWithoutPatientInput = {
@@ -49100,6 +49720,20 @@ export namespace Prisma {
     deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
   }
 
+  export type PhysicianUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    upsert?: PhysicianUpsertWithWhereUniqueWithoutPatientInput | PhysicianUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    set?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    disconnect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    delete?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    update?: PhysicianUpdateWithWhereUniqueWithoutPatientInput | PhysicianUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PhysicianUpdateManyWithWhereWithoutPatientInput | PhysicianUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+  }
+
   export type EvaluationUpdateManyWithoutPatientNestedInput = {
     create?: XOR<EvaluationCreateWithoutPatientInput, EvaluationUncheckedCreateWithoutPatientInput> | EvaluationCreateWithoutPatientInput[] | EvaluationUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutPatientInput | EvaluationCreateOrConnectWithoutPatientInput[]
@@ -49154,6 +49788,20 @@ export namespace Prisma {
     update?: FootUpdateWithWhereUniqueWithoutPatientInput | FootUpdateWithWhereUniqueWithoutPatientInput[]
     updateMany?: FootUpdateManyWithWhereWithoutPatientInput | FootUpdateManyWithWhereWithoutPatientInput[]
     deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
+  }
+
+  export type PhysicianUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    upsert?: PhysicianUpsertWithWhereUniqueWithoutPatientInput | PhysicianUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    set?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    disconnect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    delete?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    update?: PhysicianUpdateWithWhereUniqueWithoutPatientInput | PhysicianUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PhysicianUpdateManyWithWhereWithoutPatientInput | PhysicianUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
   }
 
   export type EvaluationUncheckedUpdateManyWithoutPatientNestedInput = {
@@ -50110,6 +50758,12 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type PatientCreateNestedOneWithoutPrimaryPhysicianInput = {
+    create?: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPrimaryPhysicianInput
+    connect?: PatientWhereUniqueInput
+  }
+
   export type EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput = {
     create?: XOR<EvaluationCreateWithoutReferringPhysicianInput, EvaluationUncheckedCreateWithoutReferringPhysicianInput> | EvaluationCreateWithoutReferringPhysicianInput[] | EvaluationUncheckedCreateWithoutReferringPhysicianInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutReferringPhysicianInput | EvaluationCreateOrConnectWithoutReferringPhysicianInput[]
@@ -50129,6 +50783,16 @@ export namespace Prisma {
     update?: EvaluationUpdateWithWhereUniqueWithoutReferringPhysicianInput | EvaluationUpdateWithWhereUniqueWithoutReferringPhysicianInput[]
     updateMany?: EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput | EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput[]
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type PatientUpdateOneWithoutPrimaryPhysicianNestedInput = {
+    create?: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPrimaryPhysicianInput
+    upsert?: PatientUpsertWithoutPrimaryPhysicianInput
+    disconnect?: PatientWhereInput | boolean
+    delete?: PatientWhereInput | boolean
+    connect?: PatientWhereUniqueInput
+    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutPrimaryPhysicianInput, PatientUpdateWithoutPrimaryPhysicianInput>, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
   }
 
   export type EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput = {
@@ -51011,10 +51675,6 @@ export namespace Prisma {
     set?: $Enums.OrderStatus | null
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -51678,11 +52338,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
@@ -51691,14 +52346,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -52537,6 +53184,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PhysicianCreateWithoutPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationCreateNestedManyWithoutReferringPhysicianInput
+  }
+
+  export type PhysicianUncheckedCreateWithoutPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput
+  }
+
+  export type PhysicianCreateOrConnectWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    create: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PhysicianCreateManyPatientInputEnvelope = {
+    data: PhysicianCreateManyPatientInput | PhysicianCreateManyPatientInput[]
+    skipDuplicates?: boolean
+  }
+
   export type EvaluationCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
@@ -52717,6 +53394,35 @@ export namespace Prisma {
     active?: BoolFilter<"Foot"> | boolean
     createdAt?: DateTimeFilter<"Foot"> | Date | string
     updatedAt?: DateTimeFilter<"Foot"> | Date | string
+  }
+
+  export type PhysicianUpsertWithWhereUniqueWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    update: XOR<PhysicianUpdateWithoutPatientInput, PhysicianUncheckedUpdateWithoutPatientInput>
+    create: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PhysicianUpdateWithWhereUniqueWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    data: XOR<PhysicianUpdateWithoutPatientInput, PhysicianUncheckedUpdateWithoutPatientInput>
+  }
+
+  export type PhysicianUpdateManyWithWhereWithoutPatientInput = {
+    where: PhysicianScalarWhereInput
+    data: XOR<PhysicianUpdateManyMutationInput, PhysicianUncheckedUpdateManyWithoutPatientInput>
+  }
+
+  export type PhysicianScalarWhereInput = {
+    AND?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+    OR?: PhysicianScalarWhereInput[]
+    NOT?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+    id?: StringFilter<"Physician"> | string
+    name?: StringFilter<"Physician"> | string
+    npi?: StringNullableFilter<"Physician"> | string | null
+    active?: BoolFilter<"Physician"> | boolean
+    createdAt?: DateTimeFilter<"Physician"> | Date | string
+    updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutPatientInput = {
@@ -52955,11 +53661,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
@@ -52975,11 +53683,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -53071,6 +53781,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    Patient?: PatientCreateNestedOneWithoutPrimaryPhysicianInput
   }
 
   export type PhysicianUncheckedCreateWithoutEvaluationsInput = {
@@ -53080,6 +53791,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
   }
 
   export type PhysicianCreateOrConnectWithoutEvaluationsInput = {
@@ -53234,11 +53946,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
@@ -53254,11 +53968,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -53374,6 +54090,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Patient?: PatientUpdateOneWithoutPrimaryPhysicianNestedInput
   }
 
   export type PhysicianUncheckedUpdateWithoutEvaluationsInput = {
@@ -53383,6 +54100,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DiagnosisUpsertWithoutEvaluationsInput = {
@@ -53506,10 +54224,12 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
@@ -53526,10 +54246,12 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
@@ -53645,10 +54367,12 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
@@ -53665,10 +54389,12 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
@@ -54086,11 +54812,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
@@ -54106,11 +54834,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -54419,11 +55149,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
@@ -54439,11 +55171,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -55166,6 +55900,55 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PatientCreateWithoutPrimaryPhysicianInput = {
+    id?: string
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    primaryPhysicianId?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientUncheckedCreateWithoutPrimaryPhysicianInput = {
+    id?: string
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    primaryPhysicianId?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientCreateOrConnectWithoutPrimaryPhysicianInput = {
+    where: PatientWhereUniqueInput
+    create: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+  }
+
   export type EvaluationUpsertWithWhereUniqueWithoutReferringPhysicianInput = {
     where: EvaluationWhereUniqueInput
     update: XOR<EvaluationUpdateWithoutReferringPhysicianInput, EvaluationUncheckedUpdateWithoutReferringPhysicianInput>
@@ -55180,6 +55963,61 @@ export namespace Prisma {
   export type EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput = {
     where: EvaluationScalarWhereInput
     data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutReferringPhysicianInput>
+  }
+
+  export type PatientUpsertWithoutPrimaryPhysicianInput = {
+    update: XOR<PatientUpdateWithoutPrimaryPhysicianInput, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
+    create: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    where?: PatientWhereInput
+  }
+
+  export type PatientUpdateToOneWithWhereWithoutPrimaryPhysicianInput = {
+    where?: PatientWhereInput
+    data: XOR<PatientUpdateWithoutPrimaryPhysicianInput, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
+  }
+
+  export type PatientUpdateWithoutPrimaryPhysicianInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+  }
+
+  export type PatientUncheckedUpdateWithoutPrimaryPhysicianInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type EvaluationCreateWithoutDiagnosisInput = {
@@ -56496,11 +57334,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
   }
@@ -56516,11 +57356,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -56599,11 +57441,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
   }
@@ -56619,11 +57463,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -57719,6 +58565,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PhysicianCreateManyPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type EvaluationCreateManyPatientInput = {
     id?: string
     externalId?: string | null
@@ -57820,6 +58675,35 @@ export namespace Prisma {
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
     inactiveReason?: NullableEnumInactiveFootReasonFieldUpdateOperationsInput | $Enums.InactiveFootReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhysicianUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUpdateManyWithoutReferringPhysicianNestedInput
+  }
+
+  export type PhysicianUncheckedUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput
+  }
+
+  export type PhysicianUncheckedUpdateManyWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
