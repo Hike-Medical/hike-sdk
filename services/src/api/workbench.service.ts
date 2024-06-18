@@ -4,13 +4,22 @@ import {
   Foot,
   GetAggregatedParams,
   Order,
+  PagedResponse,
+  SearchWorkbenchParams,
   SubmitOrderParams,
   UpdateInactiveFeetBody,
-  Workbench
+  Workbench,
+  WorkbenchExtended
 } from '@hike/types';
+
 import { backendApi } from '../utils/backendApi';
 
 export type FootWithAssets = Foot & { assets: Asset[] };
+
+export const searchWorkbenches = async (params: SearchWorkbenchParams): Promise<PagedResponse<WorkbenchExtended[]>> => {
+  const response = await backendApi.get('workbench/search', { params });
+  return response.data;
+};
 
 export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets[]> => {
   const response = await backendApi.get(`workbench/${workbenchId}/feet`);
@@ -35,7 +44,9 @@ export const updateInactiveFeetInWorkbench = async (
   return response.data;
 };
 
-export const getAggregatedWorkbenches = async (params?: GetAggregatedParams): Promise<AggregatedWorkbenchResponse> => {
+export const getAggregatedWorkbenches = async (
+  params?: GetAggregatedParams
+): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
   const response = await backendApi.get('workbench/aggregated', { params });
   return response.data;
 };

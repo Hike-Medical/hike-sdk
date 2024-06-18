@@ -336,6 +336,7 @@ export const OrderStatus: {
   NEEDS_GLUING: 'NEEDS_GLUING',
   NEEDS_FINISHING: 'NEEDS_FINISHING',
   NEEDS_SHIPPING: 'NEEDS_SHIPPING',
+  NEEDS_ADDON: 'NEEDS_ADDON',
   PACKAGED: 'PACKAGED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
@@ -38767,6 +38768,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
@@ -38786,6 +38805,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
@@ -38805,6 +38842,24 @@ export namespace Prisma {
     orderCompletedAt: number
     isDiabetic: number
     orderSide: number
+    orderQuantity: number
+    orderShoeSize: number
+    grindingCompletedAt: number
+    grindingCompletedBy: number
+    gluingCompletedAt: number
+    gluingCompletedBy: number
+    finishingCompletedAt: number
+    finishingCompletedBy: number
+    shippingCompletedAt: number
+    shippingCompletedBy: number
+    printingCompletedAt: number
+    printingCompletedBy: number
+    addonCompletedAt: number
+    addonCompletedBy: number
+    validationStatus: number
+    deviceTypeName: number
+    taikaId: number
+    taikaDevId: number
     _all: number
   }
 
@@ -38834,6 +38889,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
@@ -38853,6 +38926,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
@@ -38872,6 +38963,24 @@ export namespace Prisma {
     orderCompletedAt?: true
     isDiabetic?: true
     orderSide?: true
+    orderQuantity?: true
+    orderShoeSize?: true
+    grindingCompletedAt?: true
+    grindingCompletedBy?: true
+    gluingCompletedAt?: true
+    gluingCompletedBy?: true
+    finishingCompletedAt?: true
+    finishingCompletedBy?: true
+    shippingCompletedAt?: true
+    shippingCompletedBy?: true
+    printingCompletedAt?: true
+    printingCompletedBy?: true
+    addonCompletedAt?: true
+    addonCompletedBy?: true
+    validationStatus?: true
+    deviceTypeName?: true
+    taikaId?: true
+    taikaDevId?: true
     _all?: true
   }
 
@@ -38978,6 +39087,24 @@ export namespace Prisma {
     orderCompletedAt: Date | null
     isDiabetic: boolean | null
     orderSide: number | null
+    orderQuantity: string | null
+    orderShoeSize: string | null
+    grindingCompletedAt: Date | null
+    grindingCompletedBy: string | null
+    gluingCompletedAt: Date | null
+    gluingCompletedBy: string | null
+    finishingCompletedAt: Date | null
+    finishingCompletedBy: string | null
+    shippingCompletedAt: Date | null
+    shippingCompletedBy: string | null
+    printingCompletedAt: Date | null
+    printingCompletedBy: string | null
+    addonCompletedAt: Date | null
+    addonCompletedBy: string | null
+    validationStatus: boolean | null
+    deviceTypeName: string | null
+    taikaId: string | null
+    taikaDevId: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -39016,6 +39143,24 @@ export namespace Prisma {
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
+    orderQuantity?: boolean
+    orderShoeSize?: boolean
+    grindingCompletedAt?: boolean
+    grindingCompletedBy?: boolean
+    gluingCompletedAt?: boolean
+    gluingCompletedBy?: boolean
+    finishingCompletedAt?: boolean
+    finishingCompletedBy?: boolean
+    shippingCompletedAt?: boolean
+    shippingCompletedBy?: boolean
+    printingCompletedAt?: boolean
+    printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
+    validationStatus?: boolean
+    deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
@@ -39035,6 +39180,24 @@ export namespace Prisma {
     orderCompletedAt?: boolean
     isDiabetic?: boolean
     orderSide?: boolean
+    orderQuantity?: boolean
+    orderShoeSize?: boolean
+    grindingCompletedAt?: boolean
+    grindingCompletedBy?: boolean
+    gluingCompletedAt?: boolean
+    gluingCompletedBy?: boolean
+    finishingCompletedAt?: boolean
+    finishingCompletedBy?: boolean
+    shippingCompletedAt?: boolean
+    shippingCompletedBy?: boolean
+    printingCompletedAt?: boolean
+    printingCompletedBy?: boolean
+    addonCompletedAt?: boolean
+    addonCompletedBy?: boolean
+    validationStatus?: boolean
+    deviceTypeName?: boolean
+    taikaId?: boolean
+    taikaDevId?: boolean
   }
 
 
@@ -39059,6 +39222,24 @@ export namespace Prisma {
       orderCompletedAt: Date | null
       isDiabetic: boolean | null
       orderSide: number | null
+      orderQuantity: string | null
+      orderShoeSize: string | null
+      grindingCompletedAt: Date | null
+      grindingCompletedBy: string | null
+      gluingCompletedAt: Date | null
+      gluingCompletedBy: string | null
+      finishingCompletedAt: Date | null
+      finishingCompletedBy: string | null
+      shippingCompletedAt: Date | null
+      shippingCompletedBy: string | null
+      printingCompletedAt: Date | null
+      printingCompletedBy: string | null
+      addonCompletedAt: Date | null
+      addonCompletedBy: string | null
+      validationStatus: boolean | null
+      deviceTypeName: string | null
+      taikaId: string | null
+      taikaDevId: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -39495,6 +39676,24 @@ export namespace Prisma {
     readonly orderCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly isDiabetic: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
+    readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly grindingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly grindingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly gluingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly gluingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly finishingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly finishingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly shippingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly shippingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly printingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly printingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly addonCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly addonCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly validationStatus: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
+    readonly deviceTypeName: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -40292,7 +40491,25 @@ export namespace Prisma {
     authorizationUpdatedAt: 'authorizationUpdatedAt',
     orderCompletedAt: 'orderCompletedAt',
     isDiabetic: 'isDiabetic',
-    orderSide: 'orderSide'
+    orderSide: 'orderSide',
+    orderQuantity: 'orderQuantity',
+    orderShoeSize: 'orderShoeSize',
+    grindingCompletedAt: 'grindingCompletedAt',
+    grindingCompletedBy: 'grindingCompletedBy',
+    gluingCompletedAt: 'gluingCompletedAt',
+    gluingCompletedBy: 'gluingCompletedBy',
+    finishingCompletedAt: 'finishingCompletedAt',
+    finishingCompletedBy: 'finishingCompletedBy',
+    shippingCompletedAt: 'shippingCompletedAt',
+    shippingCompletedBy: 'shippingCompletedBy',
+    printingCompletedAt: 'printingCompletedAt',
+    printingCompletedBy: 'printingCompletedBy',
+    addonCompletedAt: 'addonCompletedAt',
+    addonCompletedBy: 'addonCompletedBy',
+    validationStatus: 'validationStatus',
+    deviceTypeName: 'deviceTypeName',
+    taikaId: 'taikaId',
+    taikaDevId: 'taikaDevId'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -43293,6 +43510,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
@@ -43312,6 +43547,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrderInput | SortOrder
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
+    orderQuantity?: SortOrderInput | SortOrder
+    orderShoeSize?: SortOrderInput | SortOrder
+    grindingCompletedAt?: SortOrderInput | SortOrder
+    grindingCompletedBy?: SortOrderInput | SortOrder
+    gluingCompletedAt?: SortOrderInput | SortOrder
+    gluingCompletedBy?: SortOrderInput | SortOrder
+    finishingCompletedAt?: SortOrderInput | SortOrder
+    finishingCompletedBy?: SortOrderInput | SortOrder
+    shippingCompletedAt?: SortOrderInput | SortOrder
+    shippingCompletedBy?: SortOrderInput | SortOrder
+    printingCompletedAt?: SortOrderInput | SortOrder
+    printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
+    validationStatus?: SortOrderInput | SortOrder
+    deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -43334,6 +43587,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
@@ -43353,6 +43624,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrderInput | SortOrder
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
+    orderQuantity?: SortOrderInput | SortOrder
+    orderShoeSize?: SortOrderInput | SortOrder
+    grindingCompletedAt?: SortOrderInput | SortOrder
+    grindingCompletedBy?: SortOrderInput | SortOrder
+    gluingCompletedAt?: SortOrderInput | SortOrder
+    gluingCompletedBy?: SortOrderInput | SortOrder
+    finishingCompletedAt?: SortOrderInput | SortOrder
+    finishingCompletedBy?: SortOrderInput | SortOrder
+    shippingCompletedAt?: SortOrderInput | SortOrder
+    shippingCompletedBy?: SortOrderInput | SortOrder
+    printingCompletedAt?: SortOrderInput | SortOrder
+    printingCompletedBy?: SortOrderInput | SortOrder
+    addonCompletedAt?: SortOrderInput | SortOrder
+    addonCompletedBy?: SortOrderInput | SortOrder
+    validationStatus?: SortOrderInput | SortOrder
+    deviceTypeName?: SortOrderInput | SortOrder
+    taikaId?: SortOrderInput | SortOrder
+    taikaDevId?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -43380,6 +43669,24 @@ export namespace Prisma {
     orderCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isDiabetic?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
+    orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    grindingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    grindingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    gluingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    gluingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    finishingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    finishingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    shippingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    shippingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    printingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    addonCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    addonCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    validationStatus?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    deviceTypeName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -46204,6 +46511,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
@@ -46223,6 +46548,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
@@ -46242,6 +46585,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
@@ -46261,6 +46622,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
@@ -46280,6 +46659,24 @@ export namespace Prisma {
     orderCompletedAt?: Date | string | null
     isDiabetic?: boolean | null
     orderSide?: number | null
+    orderQuantity?: string | null
+    orderShoeSize?: string | null
+    grindingCompletedAt?: Date | string | null
+    grindingCompletedBy?: string | null
+    gluingCompletedAt?: Date | string | null
+    gluingCompletedBy?: string | null
+    finishingCompletedAt?: Date | string | null
+    finishingCompletedBy?: string | null
+    shippingCompletedAt?: Date | string | null
+    shippingCompletedBy?: string | null
+    printingCompletedAt?: Date | string | null
+    printingCompletedBy?: string | null
+    addonCompletedAt?: Date | string | null
+    addonCompletedBy?: string | null
+    validationStatus?: boolean | null
+    deviceTypeName?: string | null
+    taikaId?: string | null
+    taikaDevId?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
@@ -46299,6 +46696,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
@@ -46318,6 +46733,24 @@ export namespace Prisma {
     orderCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
+    orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gluingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    finishingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shippingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    printingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaId?: NullableStringFieldUpdateOperationsInput | string | null
+    taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -48611,6 +49044,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -48634,6 +49085,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
@@ -48653,6 +49122,24 @@ export namespace Prisma {
     orderCompletedAt?: SortOrder
     isDiabetic?: SortOrder
     orderSide?: SortOrder
+    orderQuantity?: SortOrder
+    orderShoeSize?: SortOrder
+    grindingCompletedAt?: SortOrder
+    grindingCompletedBy?: SortOrder
+    gluingCompletedAt?: SortOrder
+    gluingCompletedBy?: SortOrder
+    finishingCompletedAt?: SortOrder
+    finishingCompletedBy?: SortOrder
+    shippingCompletedAt?: SortOrder
+    shippingCompletedBy?: SortOrder
+    printingCompletedAt?: SortOrder
+    printingCompletedBy?: SortOrder
+    addonCompletedAt?: SortOrder
+    addonCompletedBy?: SortOrder
+    validationStatus?: SortOrder
+    deviceTypeName?: SortOrder
+    taikaId?: SortOrder
+    taikaDevId?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
