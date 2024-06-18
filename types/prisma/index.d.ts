@@ -4157,6 +4157,7 @@ export namespace Prisma {
 
   export type PatientCountOutputType = {
     feet: number
+    primaryPhysician: number
     evaluations: number
     workbenches: number
     companies: number
@@ -4164,6 +4165,7 @@ export namespace Prisma {
 
   export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     feet?: boolean | PatientCountOutputTypeCountFeetArgs
+    primaryPhysician?: boolean | PatientCountOutputTypeCountPrimaryPhysicianArgs
     evaluations?: boolean | PatientCountOutputTypeCountEvaluationsArgs
     workbenches?: boolean | PatientCountOutputTypeCountWorkbenchesArgs
     companies?: boolean | PatientCountOutputTypeCountCompaniesArgs
@@ -4185,6 +4187,13 @@ export namespace Prisma {
    */
   export type PatientCountOutputTypeCountFeetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FootWhereInput
+  }
+
+  /**
+   * PatientCountOutputType without action
+   */
+  export type PatientCountOutputTypeCountPrimaryPhysicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhysicianWhereInput
   }
 
   /**
@@ -7043,6 +7052,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -7060,6 +7070,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -7077,6 +7088,7 @@ export namespace Prisma {
     weight: number
     maritalStatus: number
     photoUrl: number
+    primaryPhysicianId: number
     active: number
     deceasedAt: number
     createdAt: number
@@ -7106,6 +7118,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7123,6 +7136,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7140,6 +7154,7 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    primaryPhysicianId?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -7244,6 +7259,7 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    primaryPhysicianId: string | null
     active: boolean
     deceasedAt: Date | null
     createdAt: Date
@@ -7280,11 +7296,13 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    primaryPhysicianId?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     feet?: boolean | Patient$feetArgs<ExtArgs>
+    primaryPhysician?: boolean | Patient$primaryPhysicianArgs<ExtArgs>
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
@@ -7302,6 +7320,7 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    primaryPhysicianId?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
@@ -7311,6 +7330,7 @@ export namespace Prisma {
 
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     feet?: boolean | Patient$feetArgs<ExtArgs>
+    primaryPhysician?: boolean | Patient$primaryPhysicianArgs<ExtArgs>
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
@@ -7322,6 +7342,7 @@ export namespace Prisma {
     name: "Patient"
     objects: {
       feet: Prisma.$FootPayload<ExtArgs>[]
+      primaryPhysician: Prisma.$PhysicianPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       companies: Prisma.$CompanyPatientPayload<ExtArgs>[]
@@ -7337,6 +7358,7 @@ export namespace Prisma {
       weight: number | null
       maritalStatus: $Enums.MaritalStatus | null
       photoUrl: string | null
+      primaryPhysicianId: string | null
       active: boolean
       deceasedAt: Date | null
       createdAt: Date
@@ -7734,6 +7756,8 @@ export namespace Prisma {
 
     feet<T extends Patient$feetArgs<ExtArgs> = {}>(args?: Subset<T, Patient$feetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FootPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    primaryPhysician<T extends Patient$primaryPhysicianArgs<ExtArgs> = {}>(args?: Subset<T, Patient$primaryPhysicianArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhysicianPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     evaluations<T extends Patient$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Patient$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -7778,6 +7802,7 @@ export namespace Prisma {
     readonly weight: FieldRef<"Patient", 'Float'>
     readonly maritalStatus: FieldRef<"Patient", 'MaritalStatus'>
     readonly photoUrl: FieldRef<"Patient", 'String'>
+    readonly primaryPhysicianId: FieldRef<"Patient", 'String'>
     readonly active: FieldRef<"Patient", 'Boolean'>
     readonly deceasedAt: FieldRef<"Patient", 'DateTime'>
     readonly createdAt: FieldRef<"Patient", 'DateTime'>
@@ -8117,6 +8142,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FootScalarFieldEnum | FootScalarFieldEnum[]
+  }
+
+  /**
+   * Patient.primaryPhysician
+   */
+  export type Patient$primaryPhysicianArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Physician
+     */
+    select?: PhysicianSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhysicianInclude<ExtArgs> | null
+    where?: PhysicianWhereInput
+    orderBy?: PhysicianOrderByWithRelationInput | PhysicianOrderByWithRelationInput[]
+    cursor?: PhysicianWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhysicianScalarFieldEnum | PhysicianScalarFieldEnum[]
   }
 
   /**
@@ -19101,6 +19146,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    patientId: string | null
   }
 
   export type PhysicianMaxAggregateOutputType = {
@@ -19110,6 +19156,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    patientId: string | null
   }
 
   export type PhysicianCountAggregateOutputType = {
@@ -19119,6 +19166,7 @@ export namespace Prisma {
     active: number
     createdAt: number
     updatedAt: number
+    patientId: number
     _all: number
   }
 
@@ -19130,6 +19178,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
   }
 
   export type PhysicianMaxAggregateInputType = {
@@ -19139,6 +19188,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
   }
 
   export type PhysicianCountAggregateInputType = {
@@ -19148,6 +19198,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    patientId?: true
     _all?: true
   }
 
@@ -19230,6 +19281,7 @@ export namespace Prisma {
     active: boolean
     createdAt: Date
     updatedAt: Date
+    patientId: string | null
     _count: PhysicianCountAggregateOutputType | null
     _min: PhysicianMinAggregateOutputType | null
     _max: PhysicianMaxAggregateOutputType | null
@@ -19256,7 +19308,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    patientId?: boolean
     evaluations?: boolean | Physician$evaluationsArgs<ExtArgs>
+    Patient?: boolean | Physician$PatientArgs<ExtArgs>
     _count?: boolean | PhysicianCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["physician"]>
 
@@ -19267,11 +19321,13 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    patientId?: boolean
   }
 
 
   export type PhysicianInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     evaluations?: boolean | Physician$evaluationsArgs<ExtArgs>
+    Patient?: boolean | Physician$PatientArgs<ExtArgs>
     _count?: boolean | PhysicianCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -19280,6 +19336,7 @@ export namespace Prisma {
     name: "Physician"
     objects: {
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
+      Patient: Prisma.$PatientPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -19288,6 +19345,7 @@ export namespace Prisma {
       active: boolean
       createdAt: Date
       updatedAt: Date
+      patientId: string | null
     }, ExtArgs["result"]["physician"]>
     composites: {}
   }
@@ -19681,6 +19739,8 @@ export namespace Prisma {
 
     evaluations<T extends Physician$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Physician$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    Patient<T extends Physician$PatientArgs<ExtArgs> = {}>(args?: Subset<T, Physician$PatientArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19715,6 +19775,7 @@ export namespace Prisma {
     readonly active: FieldRef<"Physician", 'Boolean'>
     readonly createdAt: FieldRef<"Physician", 'DateTime'>
     readonly updatedAt: FieldRef<"Physician", 'DateTime'>
+    readonly patientId: FieldRef<"Physician", 'String'>
   }
     
 
@@ -20050,6 +20111,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * Physician.Patient
+   */
+  export type Physician$PatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Patient
+     */
+    select?: PatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientInclude<ExtArgs> | null
+    where?: PatientWhereInput
   }
 
   /**
@@ -39760,6 +39836,7 @@ export namespace Prisma {
     weight: 'weight',
     maritalStatus: 'maritalStatus',
     photoUrl: 'photoUrl',
+    primaryPhysicianId: 'primaryPhysicianId',
     active: 'active',
     deceasedAt: 'deceasedAt',
     createdAt: 'createdAt',
@@ -39962,7 +40039,8 @@ export namespace Prisma {
     npi: 'npi',
     active: 'active',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    patientId: 'patientId'
   };
 
   export type PhysicianScalarFieldEnum = (typeof PhysicianScalarFieldEnum)[keyof typeof PhysicianScalarFieldEnum]
@@ -40821,11 +40899,13 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     feet?: FootListRelationFilter
+    primaryPhysician?: PhysicianListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
@@ -40842,11 +40922,13 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    primaryPhysicianId?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     feet?: FootOrderByRelationAggregateInput
+    primaryPhysician?: PhysicianOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     companies?: CompanyPatientOrderByRelationAggregateInput
@@ -40866,11 +40948,13 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     feet?: FootListRelationFilter
+    primaryPhysician?: PhysicianListRelationFilter
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
@@ -40887,6 +40971,7 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    primaryPhysicianId?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -40912,6 +40997,7 @@ export namespace Prisma {
     weight?: FloatNullableWithAggregatesFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableWithAggregatesFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    primaryPhysicianId?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     active?: BoolWithAggregatesFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
@@ -41936,7 +42022,9 @@ export namespace Prisma {
     active?: BoolFilter<"Physician"> | boolean
     createdAt?: DateTimeFilter<"Physician"> | Date | string
     updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
     evaluations?: EvaluationListRelationFilter
+    Patient?: XOR<PatientNullableRelationFilter, PatientWhereInput> | null
   }
 
   export type PhysicianOrderByWithRelationInput = {
@@ -41946,7 +42034,9 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrderInput | SortOrder
     evaluations?: EvaluationOrderByRelationAggregateInput
+    Patient?: PatientOrderByWithRelationInput
   }
 
   export type PhysicianWhereUniqueInput = Prisma.AtLeast<{
@@ -41959,7 +42049,9 @@ export namespace Prisma {
     active?: BoolFilter<"Physician"> | boolean
     createdAt?: DateTimeFilter<"Physician"> | Date | string
     updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
     evaluations?: EvaluationListRelationFilter
+    Patient?: XOR<PatientNullableRelationFilter, PatientWhereInput> | null
   }, "id" | "npi">
 
   export type PhysicianOrderByWithAggregationInput = {
@@ -41969,6 +42061,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrderInput | SortOrder
     _count?: PhysicianCountOrderByAggregateInput
     _max?: PhysicianMaxOrderByAggregateInput
     _min?: PhysicianMinOrderByAggregateInput
@@ -41984,6 +42077,7 @@ export namespace Prisma {
     active?: BoolWithAggregatesFilter<"Physician"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Physician"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Physician"> | Date | string
+    patientId?: StringNullableWithAggregatesFilter<"Physician"> | string | null
   }
 
   export type DiagnosisWhereInput = {
@@ -43492,11 +43586,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
@@ -43513,11 +43609,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
@@ -43534,11 +43632,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
@@ -43555,11 +43655,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
@@ -43576,6 +43678,7 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -43593,6 +43696,7 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43610,6 +43714,7 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44756,6 +44861,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     evaluations?: EvaluationCreateNestedManyWithoutReferringPhysicianInput
+    Patient?: PatientCreateNestedOneWithoutPrimaryPhysicianInput
   }
 
   export type PhysicianUncheckedCreateInput = {
@@ -44765,6 +44871,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput
   }
 
@@ -44776,6 +44883,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluations?: EvaluationUpdateManyWithoutReferringPhysicianNestedInput
+    Patient?: PatientUpdateOneWithoutPrimaryPhysicianNestedInput
   }
 
   export type PhysicianUncheckedUpdateInput = {
@@ -44785,6 +44893,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
     evaluations?: EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput
   }
 
@@ -44795,6 +44904,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
   }
 
   export type PhysicianUpdateManyMutationInput = {
@@ -44813,6 +44923,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DiagnosisCreateInput = {
@@ -46578,6 +46689,12 @@ export namespace Prisma {
     none?: FootWhereInput
   }
 
+  export type PhysicianListRelationFilter = {
+    every?: PhysicianWhereInput
+    some?: PhysicianWhereInput
+    none?: PhysicianWhereInput
+  }
+
   export type WorkbenchListRelationFilter = {
     every?: WorkbenchWhereInput
     some?: WorkbenchWhereInput
@@ -46585,6 +46702,10 @@ export namespace Prisma {
   }
 
   export type FootOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PhysicianOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -46603,6 +46724,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -46625,6 +46747,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -46642,6 +46765,7 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    primaryPhysicianId?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -47652,6 +47776,11 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type PatientNullableRelationFilter = {
+    is?: PatientWhereInput | null
+    isNot?: PatientWhereInput | null
+  }
+
   export type PhysicianCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -47659,6 +47788,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type PhysicianMaxOrderByAggregateInput = {
@@ -47668,6 +47798,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type PhysicianMinOrderByAggregateInput = {
@@ -47677,6 +47808,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    patientId?: SortOrder
   }
 
   export type EnumDiagnosisStandardFilter<$PrismaModel = never> = {
@@ -48451,11 +48583,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -48540,14 +48667,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -49017,6 +49136,13 @@ export namespace Prisma {
     connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
   }
 
+  export type PhysicianCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+  }
+
   export type EvaluationCreateNestedManyWithoutPatientInput = {
     create?: XOR<EvaluationCreateWithoutPatientInput, EvaluationUncheckedCreateWithoutPatientInput> | EvaluationCreateWithoutPatientInput[] | EvaluationUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutPatientInput | EvaluationCreateOrConnectWithoutPatientInput[]
@@ -49043,6 +49169,13 @@ export namespace Prisma {
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
     createMany?: FootCreateManyPatientInputEnvelope
     connect?: FootWhereUniqueInput | FootWhereUniqueInput[]
+  }
+
+  export type PhysicianUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
   }
 
   export type EvaluationUncheckedCreateNestedManyWithoutPatientInput = {
@@ -49100,6 +49233,20 @@ export namespace Prisma {
     deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
   }
 
+  export type PhysicianUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    upsert?: PhysicianUpsertWithWhereUniqueWithoutPatientInput | PhysicianUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    set?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    disconnect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    delete?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    update?: PhysicianUpdateWithWhereUniqueWithoutPatientInput | PhysicianUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PhysicianUpdateManyWithWhereWithoutPatientInput | PhysicianUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+  }
+
   export type EvaluationUpdateManyWithoutPatientNestedInput = {
     create?: XOR<EvaluationCreateWithoutPatientInput, EvaluationUncheckedCreateWithoutPatientInput> | EvaluationCreateWithoutPatientInput[] | EvaluationUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutPatientInput | EvaluationCreateOrConnectWithoutPatientInput[]
@@ -49154,6 +49301,20 @@ export namespace Prisma {
     update?: FootUpdateWithWhereUniqueWithoutPatientInput | FootUpdateWithWhereUniqueWithoutPatientInput[]
     updateMany?: FootUpdateManyWithWhereWithoutPatientInput | FootUpdateManyWithWhereWithoutPatientInput[]
     deleteMany?: FootScalarWhereInput | FootScalarWhereInput[]
+  }
+
+  export type PhysicianUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput> | PhysicianCreateWithoutPatientInput[] | PhysicianUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PhysicianCreateOrConnectWithoutPatientInput | PhysicianCreateOrConnectWithoutPatientInput[]
+    upsert?: PhysicianUpsertWithWhereUniqueWithoutPatientInput | PhysicianUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PhysicianCreateManyPatientInputEnvelope
+    set?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    disconnect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    delete?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    connect?: PhysicianWhereUniqueInput | PhysicianWhereUniqueInput[]
+    update?: PhysicianUpdateWithWhereUniqueWithoutPatientInput | PhysicianUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PhysicianUpdateManyWithWhereWithoutPatientInput | PhysicianUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
   }
 
   export type EvaluationUncheckedUpdateManyWithoutPatientNestedInput = {
@@ -50110,6 +50271,12 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type PatientCreateNestedOneWithoutPrimaryPhysicianInput = {
+    create?: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPrimaryPhysicianInput
+    connect?: PatientWhereUniqueInput
+  }
+
   export type EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput = {
     create?: XOR<EvaluationCreateWithoutReferringPhysicianInput, EvaluationUncheckedCreateWithoutReferringPhysicianInput> | EvaluationCreateWithoutReferringPhysicianInput[] | EvaluationUncheckedCreateWithoutReferringPhysicianInput[]
     connectOrCreate?: EvaluationCreateOrConnectWithoutReferringPhysicianInput | EvaluationCreateOrConnectWithoutReferringPhysicianInput[]
@@ -50129,6 +50296,16 @@ export namespace Prisma {
     update?: EvaluationUpdateWithWhereUniqueWithoutReferringPhysicianInput | EvaluationUpdateWithWhereUniqueWithoutReferringPhysicianInput[]
     updateMany?: EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput | EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput[]
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type PatientUpdateOneWithoutPrimaryPhysicianNestedInput = {
+    create?: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPrimaryPhysicianInput
+    upsert?: PatientUpsertWithoutPrimaryPhysicianInput
+    disconnect?: PatientWhereInput | boolean
+    delete?: PatientWhereInput | boolean
+    connect?: PatientWhereUniqueInput
+    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutPrimaryPhysicianInput, PatientUpdateWithoutPrimaryPhysicianInput>, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
   }
 
   export type EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput = {
@@ -51011,10 +51188,6 @@ export namespace Prisma {
     set?: $Enums.OrderStatus | null
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -51678,11 +51851,6 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
   export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
@@ -51691,14 +51859,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -52537,6 +52697,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PhysicianCreateWithoutPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationCreateNestedManyWithoutReferringPhysicianInput
+  }
+
+  export type PhysicianUncheckedCreateWithoutPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutReferringPhysicianInput
+  }
+
+  export type PhysicianCreateOrConnectWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    create: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PhysicianCreateManyPatientInputEnvelope = {
+    data: PhysicianCreateManyPatientInput | PhysicianCreateManyPatientInput[]
+    skipDuplicates?: boolean
+  }
+
   export type EvaluationCreateWithoutPatientInput = {
     id?: string
     externalId?: string | null
@@ -52717,6 +52907,35 @@ export namespace Prisma {
     active?: BoolFilter<"Foot"> | boolean
     createdAt?: DateTimeFilter<"Foot"> | Date | string
     updatedAt?: DateTimeFilter<"Foot"> | Date | string
+  }
+
+  export type PhysicianUpsertWithWhereUniqueWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    update: XOR<PhysicianUpdateWithoutPatientInput, PhysicianUncheckedUpdateWithoutPatientInput>
+    create: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PhysicianUpdateWithWhereUniqueWithoutPatientInput = {
+    where: PhysicianWhereUniqueInput
+    data: XOR<PhysicianUpdateWithoutPatientInput, PhysicianUncheckedUpdateWithoutPatientInput>
+  }
+
+  export type PhysicianUpdateManyWithWhereWithoutPatientInput = {
+    where: PhysicianScalarWhereInput
+    data: XOR<PhysicianUpdateManyMutationInput, PhysicianUncheckedUpdateManyWithoutPatientInput>
+  }
+
+  export type PhysicianScalarWhereInput = {
+    AND?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+    OR?: PhysicianScalarWhereInput[]
+    NOT?: PhysicianScalarWhereInput | PhysicianScalarWhereInput[]
+    id?: StringFilter<"Physician"> | string
+    name?: StringFilter<"Physician"> | string
+    npi?: StringNullableFilter<"Physician"> | string | null
+    active?: BoolFilter<"Physician"> | boolean
+    createdAt?: DateTimeFilter<"Physician"> | Date | string
+    updatedAt?: DateTimeFilter<"Physician"> | Date | string
+    patientId?: StringNullableFilter<"Physician"> | string | null
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutPatientInput = {
@@ -52955,11 +53174,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
@@ -52975,11 +53196,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -53071,6 +53294,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    Patient?: PatientCreateNestedOneWithoutPrimaryPhysicianInput
   }
 
   export type PhysicianUncheckedCreateWithoutEvaluationsInput = {
@@ -53080,6 +53304,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientId?: string | null
   }
 
   export type PhysicianCreateOrConnectWithoutEvaluationsInput = {
@@ -53234,11 +53459,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
@@ -53254,11 +53481,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -53374,6 +53603,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Patient?: PatientUpdateOneWithoutPrimaryPhysicianNestedInput
   }
 
   export type PhysicianUncheckedUpdateWithoutEvaluationsInput = {
@@ -53383,6 +53613,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DiagnosisUpsertWithoutEvaluationsInput = {
@@ -53506,10 +53737,12 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
@@ -53526,10 +53759,12 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
@@ -53645,10 +53880,12 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
@@ -53665,10 +53902,12 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
@@ -54086,11 +54325,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
@@ -54106,11 +54347,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -54419,11 +54662,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
@@ -54439,11 +54684,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -55166,6 +55413,55 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PatientCreateWithoutPrimaryPhysicianInput = {
+    id?: string
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    primaryPhysicianId?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientUncheckedCreateWithoutPrimaryPhysicianInput = {
+    id?: string
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
+    photoUrl?: string | null
+    primaryPhysicianId?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+  }
+
+  export type PatientCreateOrConnectWithoutPrimaryPhysicianInput = {
+    where: PatientWhereUniqueInput
+    create: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+  }
+
   export type EvaluationUpsertWithWhereUniqueWithoutReferringPhysicianInput = {
     where: EvaluationWhereUniqueInput
     update: XOR<EvaluationUpdateWithoutReferringPhysicianInput, EvaluationUncheckedUpdateWithoutReferringPhysicianInput>
@@ -55180,6 +55476,61 @@ export namespace Prisma {
   export type EvaluationUpdateManyWithWhereWithoutReferringPhysicianInput = {
     where: EvaluationScalarWhereInput
     data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutReferringPhysicianInput>
+  }
+
+  export type PatientUpsertWithoutPrimaryPhysicianInput = {
+    update: XOR<PatientUpdateWithoutPrimaryPhysicianInput, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
+    create: XOR<PatientCreateWithoutPrimaryPhysicianInput, PatientUncheckedCreateWithoutPrimaryPhysicianInput>
+    where?: PatientWhereInput
+  }
+
+  export type PatientUpdateToOneWithWhereWithoutPrimaryPhysicianInput = {
+    where?: PatientWhereInput
+    data: XOR<PatientUpdateWithoutPrimaryPhysicianInput, PatientUncheckedUpdateWithoutPrimaryPhysicianInput>
+  }
+
+  export type PatientUpdateWithoutPrimaryPhysicianInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+  }
+
+  export type PatientUncheckedUpdateWithoutPrimaryPhysicianInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type EvaluationCreateWithoutDiagnosisInput = {
@@ -56496,11 +56847,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
   }
@@ -56516,11 +56869,13 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    primaryPhysicianId?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    primaryPhysician?: PhysicianUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
   }
@@ -56599,11 +56954,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
   }
@@ -56619,11 +56976,13 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    primaryPhysician?: PhysicianUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
   }
@@ -57719,6 +58078,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PhysicianCreateManyPatientInput = {
+    id?: string
+    name: string
+    npi?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type EvaluationCreateManyPatientInput = {
     id?: string
     externalId?: string | null
@@ -57820,6 +58188,35 @@ export namespace Prisma {
     questionnaire?: NullableJsonNullValueInput | InputJsonValue
     inactiveReason?: NullableEnumInactiveFootReasonFieldUpdateOperationsInput | $Enums.InactiveFootReason | null
     isChild?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhysicianUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUpdateManyWithoutReferringPhysicianNestedInput
+  }
+
+  export type PhysicianUncheckedUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUncheckedUpdateManyWithoutReferringPhysicianNestedInput
+  }
+
+  export type PhysicianUncheckedUpdateManyWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    npi?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
