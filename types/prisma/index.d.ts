@@ -9271,6 +9271,8 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
+    primaryInsurance: string | null
+    secondaryInsurance: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -9301,6 +9303,8 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
+    primaryInsurance: string | null
+    secondaryInsurance: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -9331,6 +9335,8 @@ export namespace Prisma {
     location: number
     prescribedAt: number
     prescribedActive: number
+    primaryInsurance: number
+    secondaryInsurance: number
     submittedAt: number
     startedAt: number
     cancelledAt: number
@@ -9363,6 +9369,8 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    primaryInsurance?: true
+    secondaryInsurance?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -9393,6 +9401,8 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    primaryInsurance?: true
+    secondaryInsurance?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -9423,6 +9433,8 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    primaryInsurance?: true
+    secondaryInsurance?: true
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
@@ -9526,6 +9538,8 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean
+    primaryInsurance: string | null
+    secondaryInsurance: string | null
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
@@ -9573,6 +9587,8 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
+    primaryInsurance?: boolean
+    secondaryInsurance?: boolean
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
@@ -9613,6 +9629,8 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
+    primaryInsurance?: boolean
+    secondaryInsurance?: boolean
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
@@ -9671,6 +9689,8 @@ export namespace Prisma {
       location: string | null
       prescribedAt: Date | null
       prescribedActive: boolean
+      primaryInsurance: string | null
+      secondaryInsurance: string | null
       submittedAt: Date | null
       startedAt: Date | null
       cancelledAt: Date | null
@@ -10135,6 +10155,8 @@ export namespace Prisma {
     readonly location: FieldRef<"Evaluation", 'String'>
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
+    readonly primaryInsurance: FieldRef<"Evaluation", 'String'>
+    readonly secondaryInsurance: FieldRef<"Evaluation", 'String'>
     readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly startedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
@@ -40069,6 +40091,8 @@ export namespace Prisma {
     location: 'location',
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
+    primaryInsurance: 'primaryInsurance',
+    secondaryInsurance: 'secondaryInsurance',
     submittedAt: 'submittedAt',
     startedAt: 'startedAt',
     cancelledAt: 'cancelledAt',
@@ -41298,6 +41322,8 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
+    secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -41337,6 +41363,8 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
+    primaryInsurance?: SortOrderInput | SortOrder
+    secondaryInsurance?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
@@ -41382,6 +41410,8 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
+    secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -41421,6 +41451,8 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
+    primaryInsurance?: SortOrderInput | SortOrder
+    secondaryInsurance?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
@@ -41457,6 +41489,8 @@ export namespace Prisma {
     location?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
+    primaryInsurance?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
+    secondaryInsurance?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
@@ -44088,6 +44122,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -44127,6 +44163,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -44152,6 +44190,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44191,6 +44231,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44223,6 +44265,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -44246,6 +44290,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44276,6 +44322,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47357,6 +47405,8 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    primaryInsurance?: SortOrder
+    secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -47387,6 +47437,8 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    primaryInsurance?: SortOrder
+    secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -47417,6 +47469,8 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    primaryInsurance?: SortOrder
+    secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
@@ -52382,6 +52436,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52419,6 +52475,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52651,6 +52709,8 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
+    secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -52918,6 +52978,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -52955,6 +53017,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -53193,6 +53257,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -53230,6 +53296,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -53507,6 +53575,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -53545,6 +53615,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -54850,6 +54922,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -54888,6 +54962,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -55197,6 +55273,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -55235,6 +55313,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -55797,6 +55877,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -55834,6 +55916,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -55974,6 +56058,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -56011,6 +56097,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -56062,6 +56150,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -56099,6 +56189,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -56150,6 +56242,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -56187,6 +56281,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -58022,6 +58118,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -58124,6 +58222,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58161,6 +58261,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58192,6 +58294,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58365,6 +58469,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -58406,6 +58512,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58443,6 +58551,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58474,6 +58584,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58521,6 +58633,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -58621,6 +58735,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58658,6 +58774,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58689,6 +58807,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58785,6 +58905,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58823,6 +58945,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -58854,6 +58978,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59476,6 +59602,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -59516,6 +59644,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59553,6 +59683,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59584,6 +59716,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59672,6 +59806,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -59695,6 +59831,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59732,6 +59870,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59763,6 +59903,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59792,6 +59934,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -59815,6 +59959,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59852,6 +59998,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59883,6 +60031,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59912,6 +60062,8 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
@@ -59935,6 +60087,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -59972,6 +60126,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -60003,6 +60159,8 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
