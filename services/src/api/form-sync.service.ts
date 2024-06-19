@@ -122,12 +122,18 @@ export const formSchemaEvaluationDefaults = (
           case 'facilityId':
             acc[field.name] = evaluation.facilityId;
             acc[`${field.name}-label`] = evaluation.facility?.name;
+            acc[`${field.name}Address`] = `${evaluation.facility?.address?.addressLine1}`;
+            acc[`${field.name}City`] = `${evaluation.facility?.address?.city}`;
+            acc[`${field.name}State`] = `${evaluation.facility?.address?.stateOrProvince}`;
+            acc[`${field.name}Zipcode`] = `${evaluation.facility?.address?.postalCode}`;
             acc[`${field.name}-description`] ??=
               evaluation.facility?.address &&
               `${evaluation.facility.address.addressLine1}, ${evaluation.facility.address.city}, ${evaluation.facility.address.stateOrProvince}`;
             break;
           default:
-            acc[field.name] = undefined;
+            if (!(field.name in acc)) {
+              acc[field.name] = undefined;
+            }
             break;
         }
 
