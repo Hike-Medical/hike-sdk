@@ -11,7 +11,9 @@ export const formSubmissionToPatient = async (patientId: string, formState: Reco
     birthDate: formState.birthDate !== undefined ? parseDate(formState.birthDate as string) : undefined,
     gender: formState.gender !== undefined ? (formState.gender as Gender) : undefined,
     height: formState.height !== undefined ? Number(formState.height as string) || null : undefined,
-    weight: formState.weight !== undefined ? Number(formState.weight as string) || null : undefined
+    weight: formState.weight !== undefined ? Number(formState.weight as string) || null : undefined,
+    primaryPhysicianId:
+      formState.primaryPhysicianId !== undefined ? (formState.primaryPhysicianId as string) : undefined
   });
 
 /**
@@ -70,6 +72,10 @@ export const formSchemaEvaluationDefaults = (
           case 'referringPhysicianId':
             acc[field.name] = evaluation.referringPhysicianId;
             acc[`${field.name}-label`] = evaluation.referringPhysician?.name;
+            break;
+          case 'primaryPhysicianId':
+            acc[field.name] = evaluation.patient.primaryPhysicianId;
+            acc[`${field.name}-label`] = evaluation.patient.primaryPhysician?.name;
             break;
           case 'diagnosisId':
             acc[field.name] = evaluation.diagnosisId;
