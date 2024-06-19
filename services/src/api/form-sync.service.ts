@@ -2,7 +2,7 @@ import type { EvaluationExtended, FormFieldValue, FormSection, Gender, Side, Ver
 import { formatConstant, parseDate } from '@hike/utils';
 import { updateEvaluation } from './evaluation.service';
 import { updatePatient } from './patient.service';
-import { updateInactiveFeetInWorkbench } from './workbench.service';
+import { updateInactiveFootInWorkbench } from './workbench.service';
 /**
  * Updates patients with form submission.
  */
@@ -11,7 +11,9 @@ export const formSubmissionToPatient = async (patientId: string, formState: Reco
     birthDate: formState.birthDate !== undefined ? parseDate(formState.birthDate as string) : undefined,
     gender: formState.gender !== undefined ? (formState.gender as Gender) : undefined,
     height: formState.height !== undefined ? Number(formState.height as string) || null : undefined,
-    weight: formState.weight !== undefined ? Number(formState.weight as string) || null : undefined
+    weight: formState.weight !== undefined ? Number(formState.weight as string) || null : undefined,
+    primaryPhysicianId:
+      formState.primaryPhysicianId !== undefined ? (formState.primaryPhysicianId as string) : undefined
   });
 
 /**
@@ -37,7 +39,7 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
       ? (formState.patientAmputation as Side)
       : undefined;
 
-  return await updateInactiveFeetInWorkbench(workbenchId, {
+  return await updateInactiveFootInWorkbench(workbenchId, {
     isToeFiller,
     patientAmputation
   });
@@ -71,9 +73,19 @@ export const formSchemaEvaluationDefaults = (
             acc[field.name] = evaluation.referringPhysicianId;
             acc[`${field.name}-label`] = evaluation.referringPhysician?.name;
             break;
+          case 'primaryPhysicianId':
+            acc[field.name] = evaluation.patient.primaryPhysicianId;
+            acc[`${field.name}-label`] = evaluation.patient.primaryPhysician?.name;
+            break;
           case 'diagnosisId':
             acc[field.name] = evaluation.diagnosisId;
             acc[`${field.name}-label`] = evaluation.diagnosis ? evaluation.diagnosis.code : undefined;
+            break;
+          case 'diagnosisIds':
+            acc[field.name] = [`${evaluation.diagnosisId}`];
+            acc[`${field.name}-label`] = evaluation.diagnosis
+              ? [`${evaluation.diagnosis.code}-${evaluation.diagnosis.description}`]
+              : undefined;
             break;
           case 'diagnosisNotes':
             acc[field.name] = evaluation.diagnosis ? evaluation.diagnosis.description : undefined;

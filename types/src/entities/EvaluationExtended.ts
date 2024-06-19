@@ -14,7 +14,7 @@ import { EvaluationStatus } from '../dto/evaluation/EvaluationStatus';
 import { FacilityExtended } from './FacilityExtended';
 
 export type EvaluationExtended = Evaluation & {
-  patient: Patient & { companies?: CompanyPatient[] };
+  patient: Patient & { companies?: CompanyPatient[]; primaryPhysician?: Physician };
   workbenches?: (Workbench & { orders?: Order[] | null })[] | null;
   deviceType?: DeviceType | null;
   visitType?: VisitType | null;

@@ -7,7 +7,7 @@ import {
   PagedResponse,
   SearchWorkbenchParams,
   SubmitOrderParams,
-  UpdateInactiveFeetBody,
+  UpdateInactiveFootBody,
   Workbench,
   WorkbenchExtended
 } from '@hike/types';
@@ -36,11 +36,11 @@ export const processWorkbench = async (workbenchId: string): Promise<Workbench &
   return response.data;
 };
 
-export const updateInactiveFeetInWorkbench = async (
+export const updateInactiveFootInWorkbench = async (
   workbenchId: string,
-  body: UpdateInactiveFeetBody
+  body: UpdateInactiveFootBody
 ): Promise<Workbench> => {
-  const response = await backendApi.post(`workbench/${workbenchId}/setInactiveFeet`, body);
+  const response = await backendApi.post(`workbench/${workbenchId}/set-inactive-foot`, body);
   return response.data;
 };
 
