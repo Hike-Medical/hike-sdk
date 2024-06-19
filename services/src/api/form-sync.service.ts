@@ -81,6 +81,12 @@ export const formSchemaEvaluationDefaults = (
             acc[field.name] = evaluation.diagnosisId;
             acc[`${field.name}-label`] = evaluation.diagnosis ? evaluation.diagnosis.code : undefined;
             break;
+          case 'diagnosisIds':
+            acc[field.name] = [`${evaluation.diagnosisId}`];
+            acc[`${field.name}-label`] = evaluation.diagnosis
+              ? [`${evaluation.diagnosis.code}-${evaluation.diagnosis.description}`]
+              : undefined;
+            break;
           case 'diagnosisNotes':
             acc[field.name] = evaluation.diagnosis ? evaluation.diagnosis.description : undefined;
             break;
