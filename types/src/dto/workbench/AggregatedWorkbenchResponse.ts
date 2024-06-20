@@ -1,4 +1,4 @@
-import { OrderStatus } from '../../../prisma';
+import { OrderStatus, WorkbenchStatus } from '../../../prisma';
 
 export interface AggregatedWorkbenchResponse {
   workbenchId: string;
@@ -7,7 +7,10 @@ export interface AggregatedWorkbenchResponse {
   patientId: string;
   orderId?: string | null;
   orderStatus?: OrderStatus | null;
+  workbenchStatus?: WorkbenchStatus | null;
   poNumber?: string | null;
+  companyName?: string | null;
+  externalId?: string | null;
   clinicianName?: string | null;
   clinicianId?: string | null;
   patientFirstName?: string | null;
@@ -19,6 +22,8 @@ export interface AggregatedWorkbenchResponse {
   orderSide?: number | null;
   orderQuantity?: string | null;
   orderShoeSize?: string | null;
+  printingStartedAt?: Date | null;
+  printingStartedBy?: string | null;
   grindingCompletedAt?: Date | null;
   grindingCompletedBy?: string | null;
   gluingCompletedAt?: Date | null;

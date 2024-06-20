@@ -47,6 +47,6 @@ export const updateInactiveFootInWorkbench = async (
 export const getAggregatedWorkbenches = async (
   params?: GetAggregatedParams
 ): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
-  const response = await backendApi.get('workbench/aggregated', { params });
+  const response = await backendApi.get('workbench/aggregate', { params });
   return response.data;
 };
