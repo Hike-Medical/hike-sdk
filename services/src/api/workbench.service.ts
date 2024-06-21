@@ -2,6 +2,7 @@ import {
   AggregatedWorkbenchResponse,
   Asset,
   Foot,
+  GenerateWorkbenchPdfParams,
   GetAggregatedParams,
   MultipleWorkbenchIdsParams,
   Order,
@@ -57,5 +58,13 @@ export const getFilesFromWorkbenches = async (body: MultipleWorkbenchIdsParams):
     responseType: 'arraybuffer'
   });
 
+  return response.data;
+};
+
+export const generateWorkbenchPdf = async (
+  workbenchId: string,
+  body: GenerateWorkbenchPdfParams
+): Promise<Workbench> => {
+  const response = await backendApi.post(`/workbench/${workbenchId}/generate-pdf`, body);
   return response.data;
 };
