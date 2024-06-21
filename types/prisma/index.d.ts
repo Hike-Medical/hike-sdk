@@ -332,6 +332,7 @@ export const OrderStatus: {
   DRAFT: 'DRAFT',
   TOE_FILLER: 'TOE_FILLER',
   NEEDS_MANUFACTURING: 'NEEDS_MANUFACTURING',
+  PRINTING: 'PRINTING',
   NEEDS_GRINDING: 'NEEDS_GRINDING',
   NEEDS_GLUING: 'NEEDS_GLUING',
   NEEDS_FINISHING: 'NEEDS_FINISHING',
@@ -38832,6 +38833,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchMinAggregateOutputType = {
     workbenchId: string | null
     companyId: string | null
+    workbenchStatus: $Enums.WorkbenchStatus | null
     evaluationId: string | null
     patientId: string | null
     orderId: string | null
@@ -38848,6 +38850,8 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    printingStartedAt: Date | null
+    printingStartedBy: string | null
     grindingCompletedAt: Date | null
     grindingCompletedBy: string | null
     gluingCompletedAt: Date | null
@@ -38864,11 +38868,14 @@ export namespace Prisma {
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
+    externalId: string | null
+    companyName: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
     workbenchId: string | null
     companyId: string | null
+    workbenchStatus: $Enums.WorkbenchStatus | null
     evaluationId: string | null
     patientId: string | null
     orderId: string | null
@@ -38885,6 +38892,8 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    printingStartedAt: Date | null
+    printingStartedBy: string | null
     grindingCompletedAt: Date | null
     grindingCompletedBy: string | null
     gluingCompletedAt: Date | null
@@ -38901,11 +38910,14 @@ export namespace Prisma {
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
+    externalId: string | null
+    companyName: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
     workbenchId: number
     companyId: number
+    workbenchStatus: number
     evaluationId: number
     patientId: number
     orderId: number
@@ -38922,6 +38934,8 @@ export namespace Prisma {
     orderSide: number
     orderQuantity: number
     orderShoeSize: number
+    printingStartedAt: number
+    printingStartedBy: number
     grindingCompletedAt: number
     grindingCompletedBy: number
     gluingCompletedAt: number
@@ -38938,6 +38952,8 @@ export namespace Prisma {
     deviceTypeName: number
     taikaId: number
     taikaDevId: number
+    externalId: number
+    companyName: number
     _all: number
   }
 
@@ -38953,6 +38969,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchMinAggregateInputType = {
     workbenchId?: true
     companyId?: true
+    workbenchStatus?: true
     evaluationId?: true
     patientId?: true
     orderId?: true
@@ -38969,6 +38986,8 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    printingStartedAt?: true
+    printingStartedBy?: true
     grindingCompletedAt?: true
     grindingCompletedBy?: true
     gluingCompletedAt?: true
@@ -38985,11 +39004,14 @@ export namespace Prisma {
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
+    externalId?: true
+    companyName?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
     workbenchId?: true
     companyId?: true
+    workbenchStatus?: true
     evaluationId?: true
     patientId?: true
     orderId?: true
@@ -39006,6 +39028,8 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    printingStartedAt?: true
+    printingStartedBy?: true
     grindingCompletedAt?: true
     grindingCompletedBy?: true
     gluingCompletedAt?: true
@@ -39022,11 +39046,14 @@ export namespace Prisma {
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
+    externalId?: true
+    companyName?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
     workbenchId?: true
     companyId?: true
+    workbenchStatus?: true
     evaluationId?: true
     patientId?: true
     orderId?: true
@@ -39043,6 +39070,8 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    printingStartedAt?: true
+    printingStartedBy?: true
     grindingCompletedAt?: true
     grindingCompletedBy?: true
     gluingCompletedAt?: true
@@ -39059,6 +39088,8 @@ export namespace Prisma {
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
+    externalId?: true
+    companyName?: true
     _all?: true
   }
 
@@ -39151,6 +39182,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchGroupByOutputType = {
     workbenchId: string
     companyId: string
+    workbenchStatus: $Enums.WorkbenchStatus | null
     evaluationId: string
     patientId: string
     orderId: string | null
@@ -39167,6 +39199,8 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    printingStartedAt: Date | null
+    printingStartedBy: string | null
     grindingCompletedAt: Date | null
     grindingCompletedBy: string | null
     gluingCompletedAt: Date | null
@@ -39183,6 +39217,8 @@ export namespace Prisma {
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
+    externalId: string | null
+    companyName: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -39207,6 +39243,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     workbenchId?: boolean
     companyId?: boolean
+    workbenchStatus?: boolean
     evaluationId?: boolean
     patientId?: boolean
     orderId?: boolean
@@ -39223,6 +39260,8 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    printingStartedAt?: boolean
+    printingStartedBy?: boolean
     grindingCompletedAt?: boolean
     grindingCompletedBy?: boolean
     gluingCompletedAt?: boolean
@@ -39239,11 +39278,14 @@ export namespace Prisma {
     deviceTypeName?: boolean
     taikaId?: boolean
     taikaDevId?: boolean
+    externalId?: boolean
+    companyName?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
     workbenchId?: boolean
     companyId?: boolean
+    workbenchStatus?: boolean
     evaluationId?: boolean
     patientId?: boolean
     orderId?: boolean
@@ -39260,6 +39302,8 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    printingStartedAt?: boolean
+    printingStartedBy?: boolean
     grindingCompletedAt?: boolean
     grindingCompletedBy?: boolean
     gluingCompletedAt?: boolean
@@ -39276,6 +39320,8 @@ export namespace Prisma {
     deviceTypeName?: boolean
     taikaId?: boolean
     taikaDevId?: boolean
+    externalId?: boolean
+    companyName?: boolean
   }
 
 
@@ -39286,6 +39332,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       workbenchId: string
       companyId: string
+      workbenchStatus: $Enums.WorkbenchStatus | null
       evaluationId: string
       patientId: string
       orderId: string | null
@@ -39302,6 +39349,8 @@ export namespace Prisma {
       orderSide: number | null
       orderQuantity: string | null
       orderShoeSize: string | null
+      printingStartedAt: Date | null
+      printingStartedBy: string | null
       grindingCompletedAt: Date | null
       grindingCompletedBy: string | null
       gluingCompletedAt: Date | null
@@ -39318,6 +39367,8 @@ export namespace Prisma {
       deviceTypeName: string | null
       taikaId: string | null
       taikaDevId: string | null
+      externalId: string | null
+      companyName: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -39740,6 +39791,7 @@ export namespace Prisma {
   interface ViewFlattenedWorkbenchFieldRefs {
     readonly workbenchId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly companyId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly workbenchStatus: FieldRef<"ViewFlattenedWorkbench", 'WorkbenchStatus'>
     readonly evaluationId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly patientId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderId: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -39756,6 +39808,8 @@ export namespace Prisma {
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
     readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly printingStartedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly printingStartedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly grindingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly grindingCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly gluingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
@@ -39772,6 +39826,8 @@ export namespace Prisma {
     readonly deviceTypeName: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly taikaId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly externalId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly companyName: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -40560,6 +40616,7 @@ export namespace Prisma {
   export const ViewFlattenedWorkbenchScalarFieldEnum: {
     workbenchId: 'workbenchId',
     companyId: 'companyId',
+    workbenchStatus: 'workbenchStatus',
     evaluationId: 'evaluationId',
     patientId: 'patientId',
     orderId: 'orderId',
@@ -40576,6 +40633,8 @@ export namespace Prisma {
     orderSide: 'orderSide',
     orderQuantity: 'orderQuantity',
     orderShoeSize: 'orderShoeSize',
+    printingStartedAt: 'printingStartedAt',
+    printingStartedBy: 'printingStartedBy',
     grindingCompletedAt: 'grindingCompletedAt',
     grindingCompletedBy: 'grindingCompletedBy',
     gluingCompletedAt: 'gluingCompletedAt',
@@ -40591,7 +40650,9 @@ export namespace Prisma {
     validationStatus: 'validationStatus',
     deviceTypeName: 'deviceTypeName',
     taikaId: 'taikaId',
-    taikaDevId: 'taikaDevId'
+    taikaDevId: 'taikaDevId',
+    externalId: 'externalId',
+    companyName: 'companyName'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -43600,6 +43661,7 @@ export namespace Prisma {
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     workbenchId?: StringFilter<"ViewFlattenedWorkbench"> | string
     companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
+    workbenchStatus?: EnumWorkbenchStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchStatus | null
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
     patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43616,6 +43678,8 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -43632,11 +43696,14 @@ export namespace Prisma {
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
+    workbenchStatus?: SortOrderInput | SortOrder
     evaluationId?: SortOrder
     patientId?: SortOrder
     orderId?: SortOrderInput | SortOrder
@@ -43653,6 +43720,8 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    printingStartedAt?: SortOrderInput | SortOrder
+    printingStartedBy?: SortOrderInput | SortOrder
     grindingCompletedAt?: SortOrderInput | SortOrder
     grindingCompletedBy?: SortOrderInput | SortOrder
     gluingCompletedAt?: SortOrderInput | SortOrder
@@ -43669,6 +43738,8 @@ export namespace Prisma {
     deviceTypeName?: SortOrderInput | SortOrder
     taikaId?: SortOrderInput | SortOrder
     taikaDevId?: SortOrderInput | SortOrder
+    externalId?: SortOrderInput | SortOrder
+    companyName?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -43677,6 +43748,7 @@ export namespace Prisma {
     OR?: ViewFlattenedWorkbenchWhereInput[]
     NOT?: ViewFlattenedWorkbenchWhereInput | ViewFlattenedWorkbenchWhereInput[]
     companyId?: StringFilter<"ViewFlattenedWorkbench"> | string
+    workbenchStatus?: EnumWorkbenchStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchStatus | null
     evaluationId?: StringFilter<"ViewFlattenedWorkbench"> | string
     patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43693,6 +43765,8 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     grindingCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     gluingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -43709,11 +43783,14 @@ export namespace Prisma {
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
+    workbenchStatus?: SortOrderInput | SortOrder
     evaluationId?: SortOrder
     patientId?: SortOrder
     orderId?: SortOrderInput | SortOrder
@@ -43730,6 +43807,8 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    printingStartedAt?: SortOrderInput | SortOrder
+    printingStartedBy?: SortOrderInput | SortOrder
     grindingCompletedAt?: SortOrderInput | SortOrder
     grindingCompletedBy?: SortOrderInput | SortOrder
     gluingCompletedAt?: SortOrderInput | SortOrder
@@ -43746,6 +43825,8 @@ export namespace Prisma {
     deviceTypeName?: SortOrderInput | SortOrder
     taikaId?: SortOrderInput | SortOrder
     taikaDevId?: SortOrderInput | SortOrder
+    externalId?: SortOrderInput | SortOrder
+    companyName?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -43759,6 +43840,7 @@ export namespace Prisma {
     NOT?: ViewFlattenedWorkbenchScalarWhereWithAggregatesInput | ViewFlattenedWorkbenchScalarWhereWithAggregatesInput[]
     workbenchId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     companyId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
+    workbenchStatus?: EnumWorkbenchStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchStatus | null
     evaluationId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     patientId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43775,6 +43857,8 @@ export namespace Prisma {
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    printingStartedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    printingStartedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     grindingCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     gluingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -43791,6 +43875,8 @@ export namespace Prisma {
     deviceTypeName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    externalId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    companyName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -46629,6 +46715,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchCreateInput = {
     workbenchId: string
     companyId: string
+    workbenchStatus?: $Enums.WorkbenchStatus | null
     evaluationId: string
     patientId: string
     orderId?: string | null
@@ -46645,6 +46732,8 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    printingStartedAt?: Date | string | null
+    printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
     grindingCompletedBy?: string | null
     gluingCompletedAt?: Date | string | null
@@ -46661,11 +46750,14 @@ export namespace Prisma {
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
+    externalId?: string | null
+    companyName?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
     workbenchId: string
     companyId: string
+    workbenchStatus?: $Enums.WorkbenchStatus | null
     evaluationId: string
     patientId: string
     orderId?: string | null
@@ -46682,6 +46774,8 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    printingStartedAt?: Date | string | null
+    printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
     grindingCompletedBy?: string | null
     gluingCompletedAt?: Date | string | null
@@ -46698,11 +46792,14 @@ export namespace Prisma {
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
+    externalId?: string | null
+    companyName?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
     workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    workbenchStatus?: NullableEnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus | null
     evaluationId?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46719,6 +46816,8 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46735,11 +46834,14 @@ export namespace Prisma {
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
     workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    workbenchStatus?: NullableEnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus | null
     evaluationId?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46756,6 +46858,8 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46772,11 +46876,14 @@ export namespace Prisma {
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
     workbenchId: string
     companyId: string
+    workbenchStatus?: $Enums.WorkbenchStatus | null
     evaluationId: string
     patientId: string
     orderId?: string | null
@@ -46793,6 +46900,8 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    printingStartedAt?: Date | string | null
+    printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
     grindingCompletedBy?: string | null
     gluingCompletedAt?: Date | string | null
@@ -46809,11 +46918,14 @@ export namespace Prisma {
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
+    externalId?: string | null
+    companyName?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
     workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    workbenchStatus?: NullableEnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus | null
     evaluationId?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46830,6 +46942,8 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46846,11 +46960,14 @@ export namespace Prisma {
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
     workbenchId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    workbenchStatus?: NullableEnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus | null
     evaluationId?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46867,6 +46984,8 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     grindingCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     gluingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -46883,6 +47002,8 @@ export namespace Prisma {
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -49156,6 +49277,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel> | $Enums.WorkbenchStatus | null
+  }
+
   export type EnumOrderStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
@@ -49177,6 +49305,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchCountOrderByAggregateInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
+    workbenchStatus?: SortOrder
     evaluationId?: SortOrder
     patientId?: SortOrder
     orderId?: SortOrder
@@ -49193,6 +49322,8 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    printingStartedAt?: SortOrder
+    printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
     grindingCompletedBy?: SortOrder
     gluingCompletedAt?: SortOrder
@@ -49209,6 +49340,8 @@ export namespace Prisma {
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
+    externalId?: SortOrder
+    companyName?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -49218,6 +49351,7 @@ export namespace Prisma {
   export type ViewFlattenedWorkbenchMaxOrderByAggregateInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
+    workbenchStatus?: SortOrder
     evaluationId?: SortOrder
     patientId?: SortOrder
     orderId?: SortOrder
@@ -49234,6 +49368,8 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    printingStartedAt?: SortOrder
+    printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
     grindingCompletedBy?: SortOrder
     gluingCompletedAt?: SortOrder
@@ -49250,11 +49386,14 @@ export namespace Prisma {
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
+    externalId?: SortOrder
+    companyName?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
+    workbenchStatus?: SortOrder
     evaluationId?: SortOrder
     patientId?: SortOrder
     orderId?: SortOrder
@@ -49271,6 +49410,8 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    printingStartedAt?: SortOrder
+    printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
     grindingCompletedBy?: SortOrder
     gluingCompletedAt?: SortOrder
@@ -49287,10 +49428,22 @@ export namespace Prisma {
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
+    externalId?: SortOrder
+    companyName?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
     orderSide?: SortOrder
+  }
+
+  export type EnumWorkbenchStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWorkbenchStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.WorkbenchStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel>
   }
 
   export type EnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -51818,6 +51971,10 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutApiKeysInput, CompanyUpdateWithoutApiKeysInput>, CompanyUncheckedUpdateWithoutApiKeysInput>
   }
 
+  export type NullableEnumWorkbenchStatusFieldUpdateOperationsInput = {
+    set?: $Enums.WorkbenchStatus | null
+  }
+
   export type NullableEnumOrderStatusFieldUpdateOperationsInput = {
     set?: $Enums.OrderStatus | null
   }
@@ -52478,11 +52635,28 @@ export namespace Prisma {
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
+  export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel> | $Enums.WorkbenchStatus | null
+  }
+
   export type NestedEnumOrderStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
+  }
+
+  export type NestedEnumWorkbenchStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWorkbenchStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.WorkbenchStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumWorkbenchStatusNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
