@@ -58,6 +58,7 @@ export type * from './dto/shipping/ValidateAddressBody';
 export type * from './dto/workbench/AggregatedWorkbenchParams';
 export type * from './dto/workbench/AggregatedWorkbenchResponse';
 export type * from './dto/workbench/CustomizationResponse';
+export type * from './dto/workbench/MultipleWorkbenchIdsParams';
 export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';

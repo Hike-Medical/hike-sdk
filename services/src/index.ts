@@ -58,6 +58,7 @@ export * from './hooks/useFormTemplates';
 export * from './hooks/useGetActiveFeet';
 export * from './hooks/useGetFootStatus';
 export * from './hooks/useGetHealth';
+export * from './hooks/useGetMultipleWorkbenchFiles';
 export * from './hooks/useGetNote';
 export * from './hooks/useGetNotes';
 export * from './hooks/useGetPresignedURL';
