@@ -38838,6 +38838,8 @@ export namespace Prisma {
     patientId: string | null
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
+    companySlug: string | null
+    slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
     clinicianId: string | null
@@ -38880,6 +38882,8 @@ export namespace Prisma {
     patientId: string | null
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
+    companySlug: string | null
+    slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
     clinicianId: string | null
@@ -38922,6 +38926,8 @@ export namespace Prisma {
     patientId: number
     orderId: number
     orderStatus: number
+    companySlug: number
+    slicerProfile: number
     poNumber: number
     clinicianName: number
     clinicianId: number
@@ -38974,6 +38980,8 @@ export namespace Prisma {
     patientId?: true
     orderId?: true
     orderStatus?: true
+    companySlug?: true
+    slicerProfile?: true
     poNumber?: true
     clinicianName?: true
     clinicianId?: true
@@ -39016,6 +39024,8 @@ export namespace Prisma {
     patientId?: true
     orderId?: true
     orderStatus?: true
+    companySlug?: true
+    slicerProfile?: true
     poNumber?: true
     clinicianName?: true
     clinicianId?: true
@@ -39058,6 +39068,8 @@ export namespace Prisma {
     patientId?: true
     orderId?: true
     orderStatus?: true
+    companySlug?: true
+    slicerProfile?: true
     poNumber?: true
     clinicianName?: true
     clinicianId?: true
@@ -39187,6 +39199,8 @@ export namespace Prisma {
     patientId: string
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
+    companySlug: string | null
+    slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
     clinicianId: string | null
@@ -39248,6 +39262,8 @@ export namespace Prisma {
     patientId?: boolean
     orderId?: boolean
     orderStatus?: boolean
+    companySlug?: boolean
+    slicerProfile?: boolean
     poNumber?: boolean
     clinicianName?: boolean
     clinicianId?: boolean
@@ -39290,6 +39306,8 @@ export namespace Prisma {
     patientId?: boolean
     orderId?: boolean
     orderStatus?: boolean
+    companySlug?: boolean
+    slicerProfile?: boolean
     poNumber?: boolean
     clinicianName?: boolean
     clinicianId?: boolean
@@ -39337,6 +39355,8 @@ export namespace Prisma {
       patientId: string
       orderId: string | null
       orderStatus: $Enums.OrderStatus | null
+      companySlug: string | null
+      slicerProfile: string | null
       poNumber: string | null
       clinicianName: string | null
       clinicianId: string | null
@@ -39796,6 +39816,8 @@ export namespace Prisma {
     readonly patientId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderStatus'>
+    readonly companySlug: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly slicerProfile: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly poNumber: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly clinicianName: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly clinicianId: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -40621,6 +40643,8 @@ export namespace Prisma {
     patientId: 'patientId',
     orderId: 'orderId',
     orderStatus: 'orderStatus',
+    companySlug: 'companySlug',
+    slicerProfile: 'slicerProfile',
     poNumber: 'poNumber',
     clinicianName: 'clinicianName',
     clinicianId: 'clinicianId',
@@ -43666,6 +43690,8 @@ export namespace Prisma {
     patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43708,6 +43734,8 @@ export namespace Prisma {
     patientId?: SortOrder
     orderId?: SortOrderInput | SortOrder
     orderStatus?: SortOrderInput | SortOrder
+    companySlug?: SortOrderInput | SortOrder
+    slicerProfile?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
     clinicianName?: SortOrderInput | SortOrder
     clinicianId?: SortOrderInput | SortOrder
@@ -43753,6 +43781,8 @@ export namespace Prisma {
     patientId?: StringFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -43795,6 +43825,8 @@ export namespace Prisma {
     patientId?: SortOrder
     orderId?: SortOrderInput | SortOrder
     orderStatus?: SortOrderInput | SortOrder
+    companySlug?: SortOrderInput | SortOrder
+    slicerProfile?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
     clinicianName?: SortOrderInput | SortOrder
     clinicianId?: SortOrderInput | SortOrder
@@ -43845,6 +43877,8 @@ export namespace Prisma {
     patientId?: StringWithAggregatesFilter<"ViewFlattenedWorkbench"> | string
     orderId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
+    companySlug?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    slicerProfile?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46720,6 +46754,8 @@ export namespace Prisma {
     patientId: string
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
+    companySlug?: string | null
+    slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
     clinicianId?: string | null
@@ -46762,6 +46798,8 @@ export namespace Prisma {
     patientId: string
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
+    companySlug?: string | null
+    slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
     clinicianId?: string | null
@@ -46804,6 +46842,8 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46846,6 +46886,8 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46888,6 +46930,8 @@ export namespace Prisma {
     patientId: string
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
+    companySlug?: string | null
+    slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
     clinicianId?: string | null
@@ -46930,6 +46974,8 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46972,6 +47018,8 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
+    companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49310,6 +49358,8 @@ export namespace Prisma {
     patientId?: SortOrder
     orderId?: SortOrder
     orderStatus?: SortOrder
+    companySlug?: SortOrder
+    slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
     clinicianId?: SortOrder
@@ -49356,6 +49406,8 @@ export namespace Prisma {
     patientId?: SortOrder
     orderId?: SortOrder
     orderStatus?: SortOrder
+    companySlug?: SortOrder
+    slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
     clinicianId?: SortOrder
@@ -49398,6 +49450,8 @@ export namespace Prisma {
     patientId?: SortOrder
     orderId?: SortOrder
     orderStatus?: SortOrder
+    companySlug?: SortOrder
+    slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
     clinicianId?: SortOrder
