@@ -7,6 +7,7 @@ import type {
   EvaluationsUploadResult,
   GetEvaluationsParams,
   PagedResponse,
+  PrimaryPhysiciansUploadResult,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
   UpdateEvaluationParams
@@ -83,7 +84,9 @@ export const statsForEvaluations = async (assignedOnly?: boolean): Promise<Evalu
   return response.data;
 };
 
-export const uploadEvaluations = async (file: File): Promise<EvaluationsUploadResult> => {
+export const uploadEvaluations = async (
+  file: File
+): Promise<EvaluationsUploadResult | PrimaryPhysiciansUploadResult> => {
   const formData = new FormData();
   formData.append('file', file);
 
