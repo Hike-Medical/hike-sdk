@@ -5,6 +5,7 @@ import { modifyOrderAuthorization } from '../api/order.service';
 interface ModifyOrderAuthorizationParams {
   orderId: string;
   authorizationStatus: OrderAuthorizationStatus;
+  jwtToken?: string;
 }
 
 export const useModifyOrderAuthorization = (
@@ -13,7 +14,7 @@ export const useModifyOrderAuthorization = (
   return useMutation({
     mutationKey: ['modifyOrder'],
     mutationFn: async (params: ModifyOrderAuthorizationParams) => {
-      return await modifyOrderAuthorization(params.orderId, params.authorizationStatus);
+      return await modifyOrderAuthorization(params.orderId, params.authorizationStatus, params.jwtToken);
     },
     ...mutationOptions
   });

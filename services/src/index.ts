@@ -53,6 +53,7 @@ export * from './hooks/useFormSchemas';
 export * from './hooks/useFormSubmission';
 export * from './hooks/useFormSubmissions';
 export * from './hooks/useFormTemplateById';
+export * from './hooks/useSignInWithPin';
 export * from './hooks/useModifyOrderAuthorization';
 export * from './hooks/useFormTemplates';
 export * from './hooks/useGetActiveFeet';
