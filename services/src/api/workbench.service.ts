@@ -2,6 +2,7 @@ import {
   AggregatedWorkbenchResponse,
   Asset,
   Foot,
+  GenerateWorkbenchPdfParams,
   GetAggregatedParams,
   Order,
   PagedResponse,
@@ -48,5 +49,13 @@ export const getAggregatedWorkbenches = async (
   params?: GetAggregatedParams
 ): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
   const response = await backendApi.get('workbench/aggregated', { params });
+  return response.data;
+};
+
+export const generateWorkbenchPdf = async (
+  workbenchId: string,
+  body: GenerateWorkbenchPdfParams
+): Promise<Workbench> => {
+  const response = await backendApi.post(`/workbench/${workbenchId}/generate-pdf`, body);
   return response.data;
 };
