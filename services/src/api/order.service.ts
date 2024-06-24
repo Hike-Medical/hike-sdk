@@ -67,9 +67,11 @@ export const updateOrder = async (orderId: string, params: UpdateOrderParams): P
 
 export const modifyOrderAuthorization = async (
   orderId: string,
-  authorizationStatus: OrderAuthorizationStatus
+  authorizationStatus: OrderAuthorizationStatus,
+  jwtToken?: string
 ): Promise<OrderExtended> => {
-  const response = await backendApi.post(`order/${orderId}/modify-authorization`, { authorizationStatus });
+  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+  const response = await backendApi.post(`order/${orderId}/modify-authorization`, { authorizationStatus }, { headers });
   return response.data;
 };
 
