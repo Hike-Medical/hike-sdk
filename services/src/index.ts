@@ -25,6 +25,7 @@ export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
 export * from './auth/refreshToken';
 export * from './auth/signIn';
+export * from './auth/signUp';
 export * from './configure';
 export * from './errors/ResponseError';
 export * from './hooks/useAggregatedWorkbenches';
