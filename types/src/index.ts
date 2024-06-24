@@ -62,6 +62,7 @@ export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';
 export type * from './dto/auth/SignInWithPinBody';
+export type * from './dto/pin/CreatePinDto';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CompanyExtended';
 export type * from './entities/EvaluationExtended';
