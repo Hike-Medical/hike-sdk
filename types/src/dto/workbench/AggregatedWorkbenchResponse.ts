@@ -10,6 +10,7 @@ export interface AggregatedWorkbenchResponse {
   workbenchStatus?: WorkbenchStatus | null;
   poNumber?: string | null;
   companyName?: string | null;
+  createdReason?: string | null;
   companySlug?: string | null;
   slicerProfile?: string | null;
   externalId?: string | null;
