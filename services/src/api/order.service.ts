@@ -60,8 +60,13 @@ export const statsForOrders = async (): Promise<OrdersStats> => {
   return response.data;
 };
 
-export const updateOrder = async (orderId: string, params: UpdateOrderParams): Promise<OrderExtended> => {
-  const response = await backendApi.patch(`order/${orderId}`, params);
+export const updateOrder = async (
+  orderId: string,
+  params: UpdateOrderParams,
+  jwtToken?: string
+): Promise<OrderExtended> => {
+  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+  const response = await backendApi.patch(`order/${orderId}`, params, { headers });
   return response.data;
 };
 
