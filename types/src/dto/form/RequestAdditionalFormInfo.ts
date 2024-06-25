@@ -10,6 +10,7 @@ export interface AdditionalFormInfo {
   submittedAt: Date;
   signatureBuffer: Buffer;
   signatureSignedAt: string;
+  companyName: string;
   notes: {
     blocks: {
       image: Buffer;

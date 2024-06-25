@@ -4,6 +4,7 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  MultipleWorkbenchIdsParams,
   Order,
   PagedResponse,
   SearchWorkbenchParams,
@@ -48,7 +49,15 @@ export const updateInactiveFootInWorkbench = async (
 export const getAggregatedWorkbenches = async (
   params?: GetAggregatedParams
 ): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
-  const response = await backendApi.get('workbench/aggregated', { params });
+  const response = await backendApi.get('workbench/aggregate', { params });
+  return response.data;
+};
+
+export const getFilesFromWorkbenches = async (body: MultipleWorkbenchIdsParams): Promise<Blob> => {
+  const response = await backendApi.post('workbench/files', body, {
+    responseType: 'arraybuffer'
+  });
+
   return response.data;
 };
 
