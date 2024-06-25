@@ -11,6 +11,7 @@ export * from './guards/isAuthUser';
 export * from './guards/isDefined';
 export * from './guards/isFormFieldValue';
 export * from './guards/isFormSubmissionData';
+export * from './guards/isFulfilled';
 export * from './guards/isString';
 export * from './guards/isTruthy';
 export * from './helpers/colorMapper';
