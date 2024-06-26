@@ -5,7 +5,7 @@ import type { Company } from '@hike/types';
 import { ReactNode, createContext, useContext } from 'react';
 
 interface CompanyProviderClientProps {
-  company: Pick<Company, 'id' | 'name' | 'slug'>;
+  company: Pick<Company, 'id' | 'name' | 'slug' | 'logoUrl'>;
   children: ReactNode;
 }
 
