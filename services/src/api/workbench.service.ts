@@ -89,9 +89,10 @@ export const getAggregatedWorkbenches = async (
   }
 };
 
-export const getFilesFromWorkbenches = async (body: MultipleWorkbenchIdsParams): Promise<Blob> => {
+export const getFilesFromWorkbenches = async (body: MultipleWorkbenchIdsParams, companyIds): Promise<Blob> => {
   try {
     const response = await backendApi.post('workbench/files', body, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
       responseType: 'arraybuffer'
     });
 
