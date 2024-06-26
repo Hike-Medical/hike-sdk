@@ -1,6 +1,7 @@
 import { FormTemplateResponse, UpdateFormTemplateBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { updateFormTemplate } from '../../api/form.service';
+import { ResponseError } from '../../errors/ResponseError';
 
 interface UpdateFormTemplateParams {
   templateId: string;
@@ -9,7 +10,7 @@ interface UpdateFormTemplateParams {
 
 export const useUpdateFormTemplate = (
   mutationOptions?: Omit<
-    UseMutationOptions<FormTemplateResponse, Error, UpdateFormTemplateParams>,
+    UseMutationOptions<FormTemplateResponse, ResponseError<null>, UpdateFormTemplateParams>,
     'mutationKey' | 'mutationFn'
   >
 ) => {

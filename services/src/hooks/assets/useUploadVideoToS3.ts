@@ -1,4 +1,5 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
+import { ResponseError } from '../../errors/ResponseError';
 
 interface UploadVideoParams {
   video: File | Buffer | Blob;
@@ -8,7 +9,7 @@ interface UploadVideoParams {
 }
 
 export const useUploadVideoToS3 = (
-  mutationOptions?: Omit<UseMutationOptions<void, Error, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
+  mutationOptions?: Omit<UseMutationOptions<void, ResponseError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
 ) => {
   return useMutation({
     mutationKey: ['uploadVideoToS3'],
