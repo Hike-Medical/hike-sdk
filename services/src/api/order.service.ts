@@ -84,12 +84,16 @@ export const statsForOrders = async (): Promise<OrdersStats> => {
 export const updateOrder = async (
   orderId: string,
   params: UpdateOrderParams,
-  jwtToken?: string
+  jwtToken?: string,
+  companyIds?: string[]
 ): Promise<OrderExtended> => {
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
 
   try {
-    const response = await backendApi.patch(`order/${orderId}`, params, { headers });
+    const response = await backendApi.patch(`order/${orderId}`, params, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+      ...headers
+    });
     return response.data;
   } catch (error) {
     throw toResponseError(error);
