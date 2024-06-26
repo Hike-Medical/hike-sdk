@@ -8,7 +8,7 @@ export const useGetMultipleWorkbenchFiles = (
 ) => {
   return useMutation({
     mutationKey: ['workbenchFiles'],
-    mutationFn: (body: MultipleWorkbenchIdsParams) => getFilesFromWorkbenches(body),
+    mutationFn: (body: MultipleWorkbenchIdsParams, companyIds?: string[]) => getFilesFromWorkbenches(body, companyIds),
     ...mutationOptions
   });
 };
