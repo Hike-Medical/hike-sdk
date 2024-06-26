@@ -18,8 +18,15 @@ import { backendApi } from '../utils/backendApi';
 
 export type FootWithAssets = Foot & { assets: Asset[] };
 
-export const searchWorkbenches = async (params: SearchWorkbenchParams): Promise<PagedResponse<WorkbenchExtended[]>> => {
-  const response = await backendApi.get('workbench/search', { params });
+export const searchWorkbenches = async (
+  params: SearchWorkbenchParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchExtended[]>> => {
+  const response = await backendApi.get('workbench/search', {
+    headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+    params
+  });
+
   return response.data;
 };
 
@@ -47,9 +54,14 @@ export const updateInactiveFootInWorkbench = async (
 };
 
 export const getAggregatedWorkbenches = async (
-  params?: GetAggregatedParams
+  params?: GetAggregatedParams,
+  companyIds?: string[]
 ): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
-  const response = await backendApi.get('workbench/aggregate', { params });
+  const response = await backendApi.get('workbench/aggregate', {
+    headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+    params
+  });
+
   return response.data;
 };
 
