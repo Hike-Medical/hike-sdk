@@ -116,3 +116,18 @@ export const generateWorkbenchPdf = async (
     throw toResponseError(error);
   }
 };
+
+export const uploadPrescriptions = async (
+  workbenchId: string,
+  formData: FormData
+): Promise<{ key: string; url: string }[]> => {
+  try {
+    const response = await backendApi.post(`/workbench/${workbenchId}/prescription`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
+
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
