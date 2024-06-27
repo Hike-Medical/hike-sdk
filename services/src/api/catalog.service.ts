@@ -1,6 +1,7 @@
 import type {
   CatalogCategory,
   CatalogProductExtended,
+  CatalogProductVariantExtended,
   CatalogVendor,
   GetCategoriesParams,
   GetProductsParams,
@@ -21,7 +22,16 @@ export const findProductById = async (productId: string): Promise<CatalogProduct
 
 export const findProductBySku = async (sku: string): Promise<CatalogProductExtended> => {
   try {
-    const response = await backendApi.get(`catalog/product/sku/${sku}`);
+    const response = await backendApi.get(`catalog/product/sku/${encodeURIComponent(sku)}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const findProductByBarcode = async (barcode: string): Promise<CatalogProductVariantExtended> => {
+  try {
+    const response = await backendApi.get(`catalog/product/barcode/${encodeURIComponent(barcode)}`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);

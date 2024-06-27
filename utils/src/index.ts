@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './converters/formatConstant';
+export * from './converters/formatCurrency';
 export * from './converters/formatDate';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
@@ -23,6 +24,5 @@ export * from './helpers/extractDomain';
 export * from './helpers/findKeyInNested';
 export * from './helpers/formSchemaUtils';
 export * from './helpers/httpUtils';
-export * from './helpers/notEmpty';
 export * from './helpers/range';
 export * from './helpers/truncateMiddle';
