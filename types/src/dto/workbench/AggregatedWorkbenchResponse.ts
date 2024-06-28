@@ -25,6 +25,7 @@ export interface AggregatedWorkbenchResponse {
   orderSide?: number | null;
   orderQuantity?: string | null;
   orderShoeSize?: string | null;
+  validatedAt?: Date | null;
   printingStartedAt?: Date | null;
   printingStartedBy?: string | null;
   grindingCompletedAt?: Date | null;

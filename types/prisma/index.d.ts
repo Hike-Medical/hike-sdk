@@ -40022,6 +40022,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
     grindingCompletedAt: Date | null
@@ -40067,6 +40068,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
     grindingCompletedAt: Date | null
@@ -40112,6 +40114,7 @@ export namespace Prisma {
     orderSide: number
     orderQuantity: number
     orderShoeSize: number
+    validatedAt: number
     printingStartedAt: number
     printingStartedBy: number
     grindingCompletedAt: number
@@ -40167,6 +40170,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
     grindingCompletedAt?: true
@@ -40212,6 +40216,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
     grindingCompletedAt?: true
@@ -40257,6 +40262,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
     grindingCompletedAt?: true
@@ -40389,6 +40395,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
     grindingCompletedAt: Date | null
@@ -40453,6 +40460,7 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    validatedAt?: boolean
     printingStartedAt?: boolean
     printingStartedBy?: boolean
     grindingCompletedAt?: boolean
@@ -40498,6 +40506,7 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    validatedAt?: boolean
     printingStartedAt?: boolean
     printingStartedBy?: boolean
     grindingCompletedAt?: boolean
@@ -40548,6 +40557,7 @@ export namespace Prisma {
       orderSide: number | null
       orderQuantity: string | null
       orderShoeSize: string | null
+      validatedAt: Date | null
       printingStartedAt: Date | null
       printingStartedBy: string | null
       grindingCompletedAt: Date | null
@@ -41010,6 +41020,7 @@ export namespace Prisma {
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
     readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly validatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingStartedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingStartedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly grindingCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
@@ -41852,6 +41863,7 @@ export namespace Prisma {
     orderSide: 'orderSide',
     orderQuantity: 'orderQuantity',
     orderShoeSize: 'orderShoeSize',
+    validatedAt: 'validatedAt',
     printingStartedAt: 'printingStartedAt',
     printingStartedBy: 'printingStartedBy',
     grindingCompletedAt: 'grindingCompletedAt',
@@ -45008,6 +45020,7 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -45053,6 +45066,7 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
     printingStartedBy?: SortOrderInput | SortOrder
     grindingCompletedAt?: SortOrderInput | SortOrder
@@ -45101,6 +45115,7 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -45146,6 +45161,7 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
     printingStartedBy?: SortOrderInput | SortOrder
     grindingCompletedAt?: SortOrderInput | SortOrder
@@ -45199,6 +45215,7 @@ export namespace Prisma {
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    validatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     grindingCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -48160,6 +48177,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
@@ -48205,6 +48223,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
@@ -48250,6 +48269,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48295,6 +48315,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48340,6 +48361,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
     grindingCompletedAt?: Date | string | null
@@ -48385,6 +48407,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48430,6 +48453,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
     grindingCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50854,6 +50878,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
@@ -50903,6 +50928,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
@@ -50948,6 +50974,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
     grindingCompletedAt?: SortOrder
