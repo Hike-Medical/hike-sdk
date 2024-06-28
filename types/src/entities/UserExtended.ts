@@ -1,5 +1,8 @@
-import type { CompanyUser, User } from '../../prisma';
+import type { Company, CompanyUser, CompanyUserPermission, User } from '../../prisma';
 
 export type UserExtended = User & {
-  companies: CompanyUser[];
+  companies: (CompanyUser & {
+    company: Company;
+  })[];
+  permissions: CompanyUserPermission[];
 };
