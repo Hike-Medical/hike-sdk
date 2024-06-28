@@ -89,10 +89,14 @@ export const updateOrder = async (
 ): Promise<OrderExtended> => {
   let headers: {
     [key: string]: string;
-  } = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+  } = {};
 
   if (companyIds?.length) {
     headers = { ...headers, 'x-company-id': companyIds.join(',') };
+  }
+
+  if (jwtToken) {
+    headers = { ...headers, Authorization: `Bearer ${jwtToken}` };
   }
 
   try {
