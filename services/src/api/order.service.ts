@@ -87,13 +87,20 @@ export const updateOrder = async (
   jwtToken?: string,
   companyIds?: string[]
 ): Promise<OrderExtended> => {
-  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+  let headers: {
+    [key: string]: string;
+  } = {};
+
+  if (companyIds?.length) {
+    headers = { ...headers, 'x-company-id': companyIds.join(',') };
+  }
+
+  if (jwtToken) {
+    headers = { ...headers, Authorization: `Bearer ${jwtToken}` };
+  }
 
   try {
-    const response = await backendApi.patch(`order/${orderId}`, params, {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
-      ...headers
-    });
+    const response = await backendApi.patch(`order/${orderId}`, params, { headers });
     return response.data;
   } catch (error) {
     throw toResponseError(error);
