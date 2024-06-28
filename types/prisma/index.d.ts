@@ -431,10 +431,11 @@ export type CompanyRole = (typeof CompanyRole)[keyof typeof CompanyRole]
 
 
 export const CompanyPermission: {
+  GLOBAL: 'GLOBAL',
   MANUFACTURING: 'MANUFACTURING',
   PRINT_FARM: 'PRINT_FARM',
   SHIPPING: 'SHIPPING',
-  STATION: 'STATION'
+  STATIONS: 'STATIONS'
 };
 
 export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyPermission]
