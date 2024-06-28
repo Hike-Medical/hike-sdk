@@ -1,4 +1,5 @@
 export * from './constants';
+export * from './constants/autoSlicerProfiles';
 export * from './converters/formatConstant';
 export * from './converters/formatCurrency';
 export * from './converters/formatDate';

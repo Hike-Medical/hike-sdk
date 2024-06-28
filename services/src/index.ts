@@ -36,6 +36,7 @@ export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
 export * from './hooks/auth/useGetPinStatus';
 export * from './hooks/auth/useSignInWithPin';
+export * from './hooks/auto-slicer/useRunSlicerForSide';
 export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
 export * from './hooks/catalog/useCatalogCategories';
