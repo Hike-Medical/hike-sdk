@@ -58,6 +58,7 @@ export type * from './dto/shipping/GetShipengineShipmentParams';
 export type * from './dto/shipping/GetShipengineShippingResponse';
 export type * from './dto/shipping/GetShippingLabelLegacyResponse';
 export type * from './dto/shipping/ValidateAddressBody';
+export type * from './dto/user/GetUsersParams';
 export type * from './dto/workbench/AggregatedWorkbenchParams';
 export type * from './dto/workbench/AggregatedWorkbenchResponse';
 export type * from './dto/workbench/CustomizationResponse';
