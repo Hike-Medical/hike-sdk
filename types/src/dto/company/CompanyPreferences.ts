@@ -3,4 +3,7 @@ export interface CompanyPreferences {
   carrierPreferenceId?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preSubmissionAuth?: boolean;
+  pricing?: {
+    orthoFeetPricingMultiplierPercentage?: number;
+  };
 }
