@@ -117,6 +117,18 @@ export const generateWorkbenchPdf = async (
   }
 };
 
+export const generateWorkbenchDeliveryReceiptPdf = async (
+  workbenchId: string,
+  body: GenerateWorkbenchPdfParams
+): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`/workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
 export const uploadPrescriptions = async (
   workbenchId: string,
   formData: FormData
