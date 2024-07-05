@@ -1,4 +1,4 @@
-import { OrderStatus, WorkbenchStatus } from '../../../prisma';
+import { OrderStatus, WorkbenchCreatedReason, WorkbenchStatus } from '../../../prisma';
 
 export interface AggregatedWorkbenchResponse {
   workbenchId: string;
@@ -10,7 +10,7 @@ export interface AggregatedWorkbenchResponse {
   workbenchStatus?: WorkbenchStatus | null;
   poNumber?: string | null;
   companyName?: string | null;
-  createdReason?: string | null;
+  createdReason?: WorkbenchCreatedReason | null;
   companySlug?: string | null;
   slicerProfile?: string | null;
   externalId?: string | null;
