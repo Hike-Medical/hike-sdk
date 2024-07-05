@@ -87,6 +87,8 @@ export * from './hooks/orders/useSubmitOrder';
 export * from './hooks/patients/useCreatePatient';
 export * from './hooks/patients/usePatientById';
 export * from './hooks/patients/usePatients';
+export * from './hooks/printer/useGetPrinters';
+export * from './hooks/printer/usePrintGcode';
 export * from './hooks/settings/useCompanyPreferences';
 export * from './hooks/shipping/useCompanyPackages';
 export * from './hooks/shipping/useGetShippingRates';

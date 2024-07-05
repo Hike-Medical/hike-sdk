@@ -149,6 +149,11 @@ export type CatalogVendor = $Result.DefaultSelection<Prisma.$CatalogVendorPayloa
  */
 export type AuditLog = $Result.DefaultSelection<Prisma.$AuditLogPayload>
 /**
+ * Model Printer
+ * 
+ */
+export type Printer = $Result.DefaultSelection<Prisma.$PrinterPayload>
+/**
  * Model CompanyUser
  * 
  */
@@ -926,6 +931,16 @@ export class PrismaClient<
   get auditLog(): Prisma.AuditLogDelegate<ExtArgs>;
 
   /**
+   * `prisma.printer`: Exposes CRUD operations for the **Printer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Printers
+    * const printers = await prisma.printer.findMany()
+    * ```
+    */
+  get printer(): Prisma.PrinterDelegate<ExtArgs>;
+
+  /**
    * `prisma.companyUser`: Exposes CRUD operations for the **CompanyUser** model.
     * Example usage:
     * ```ts
@@ -1508,6 +1523,7 @@ export namespace Prisma {
     CatalogCategory: 'CatalogCategory',
     CatalogVendor: 'CatalogVendor',
     AuditLog: 'AuditLog',
+    Printer: 'Printer',
     CompanyUser: 'CompanyUser',
     CompanyUserPermission: 'CompanyUserPermission',
     CompanyPatient: 'CompanyPatient',
@@ -1532,7 +1548,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3423,6 +3439,76 @@ export namespace Prisma {
           count: {
             args: Prisma.AuditLogCountArgs<ExtArgs>,
             result: $Utils.Optional<AuditLogCountAggregateOutputType> | number
+          }
+        }
+      }
+      Printer: {
+        payload: Prisma.$PrinterPayload<ExtArgs>
+        fields: Prisma.PrinterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PrinterFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PrinterFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          findFirst: {
+            args: Prisma.PrinterFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PrinterFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          findMany: {
+            args: Prisma.PrinterFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>[]
+          }
+          create: {
+            args: Prisma.PrinterCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          createMany: {
+            args: Prisma.PrinterCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PrinterCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>[]
+          }
+          delete: {
+            args: Prisma.PrinterDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          update: {
+            args: Prisma.PrinterUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          deleteMany: {
+            args: Prisma.PrinterDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PrinterUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PrinterUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PrinterPayload>
+          }
+          aggregate: {
+            args: Prisma.PrinterAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePrinter>
+          }
+          groupBy: {
+            args: Prisma.PrinterGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PrinterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PrinterCountArgs<ExtArgs>,
+            result: $Utils.Optional<PrinterCountAggregateOutputType> | number
           }
         }
       }
@@ -33099,6 +33185,904 @@ export namespace Prisma {
 
 
   /**
+   * Model Printer
+   */
+
+  export type AggregatePrinter = {
+    _count: PrinterCountAggregateOutputType | null
+    _min: PrinterMinAggregateOutputType | null
+    _max: PrinterMaxAggregateOutputType | null
+  }
+
+  export type PrinterMinAggregateOutputType = {
+    id: string | null
+    printerIdentifier: string | null
+    tailScaleIP: string | null
+    portNumber: string | null
+    privateIPAddress: string | null
+  }
+
+  export type PrinterMaxAggregateOutputType = {
+    id: string | null
+    printerIdentifier: string | null
+    tailScaleIP: string | null
+    portNumber: string | null
+    privateIPAddress: string | null
+  }
+
+  export type PrinterCountAggregateOutputType = {
+    id: number
+    printerIdentifier: number
+    tailScaleIP: number
+    portNumber: number
+    privateIPAddress: number
+    _all: number
+  }
+
+
+  export type PrinterMinAggregateInputType = {
+    id?: true
+    printerIdentifier?: true
+    tailScaleIP?: true
+    portNumber?: true
+    privateIPAddress?: true
+  }
+
+  export type PrinterMaxAggregateInputType = {
+    id?: true
+    printerIdentifier?: true
+    tailScaleIP?: true
+    portNumber?: true
+    privateIPAddress?: true
+  }
+
+  export type PrinterCountAggregateInputType = {
+    id?: true
+    printerIdentifier?: true
+    tailScaleIP?: true
+    portNumber?: true
+    privateIPAddress?: true
+    _all?: true
+  }
+
+  export type PrinterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Printer to aggregate.
+     */
+    where?: PrinterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Printers to fetch.
+     */
+    orderBy?: PrinterOrderByWithRelationInput | PrinterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PrinterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Printers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Printers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Printers
+    **/
+    _count?: true | PrinterCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PrinterMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PrinterMaxAggregateInputType
+  }
+
+  export type GetPrinterAggregateType<T extends PrinterAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrinter]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrinter[P]>
+      : GetScalarType<T[P], AggregatePrinter[P]>
+  }
+
+
+
+
+  export type PrinterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PrinterWhereInput
+    orderBy?: PrinterOrderByWithAggregationInput | PrinterOrderByWithAggregationInput[]
+    by: PrinterScalarFieldEnum[] | PrinterScalarFieldEnum
+    having?: PrinterScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PrinterCountAggregateInputType | true
+    _min?: PrinterMinAggregateInputType
+    _max?: PrinterMaxAggregateInputType
+  }
+
+  export type PrinterGroupByOutputType = {
+    id: string
+    printerIdentifier: string
+    tailScaleIP: string
+    portNumber: string
+    privateIPAddress: string
+    _count: PrinterCountAggregateOutputType | null
+    _min: PrinterMinAggregateOutputType | null
+    _max: PrinterMaxAggregateOutputType | null
+  }
+
+  type GetPrinterGroupByPayload<T extends PrinterGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PrinterGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PrinterGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PrinterGroupByOutputType[P]>
+            : GetScalarType<T[P], PrinterGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PrinterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    printerIdentifier?: boolean
+    tailScaleIP?: boolean
+    portNumber?: boolean
+    privateIPAddress?: boolean
+  }, ExtArgs["result"]["printer"]>
+
+  export type PrinterSelectScalar = {
+    id?: boolean
+    printerIdentifier?: boolean
+    tailScaleIP?: boolean
+    portNumber?: boolean
+    privateIPAddress?: boolean
+  }
+
+
+
+  export type $PrinterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Printer"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      printerIdentifier: string
+      tailScaleIP: string
+      portNumber: string
+      privateIPAddress: string
+    }, ExtArgs["result"]["printer"]>
+    composites: {}
+  }
+
+
+  type PrinterGetPayload<S extends boolean | null | undefined | PrinterDefaultArgs> = $Result.GetResult<Prisma.$PrinterPayload, S>
+
+  type PrinterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PrinterFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PrinterCountAggregateInputType | true
+    }
+
+  export interface PrinterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Printer'], meta: { name: 'Printer' } }
+    /**
+     * Find zero or one Printer that matches the filter.
+     * @param {PrinterFindUniqueArgs} args - Arguments to find a Printer
+     * @example
+     * // Get one Printer
+     * const printer = await prisma.printer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PrinterFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterFindUniqueArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Printer that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PrinterFindUniqueOrThrowArgs} args - Arguments to find a Printer
+     * @example
+     * // Get one Printer
+     * const printer = await prisma.printer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PrinterFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Printer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterFindFirstArgs} args - Arguments to find a Printer
+     * @example
+     * // Get one Printer
+     * const printer = await prisma.printer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PrinterFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterFindFirstArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Printer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterFindFirstOrThrowArgs} args - Arguments to find a Printer
+     * @example
+     * // Get one Printer
+     * const printer = await prisma.printer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PrinterFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Printers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Printers
+     * const printers = await prisma.printer.findMany()
+     * 
+     * // Get first 10 Printers
+     * const printers = await prisma.printer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const printerWithIdOnly = await prisma.printer.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PrinterFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Printer.
+     * @param {PrinterCreateArgs} args - Arguments to create a Printer.
+     * @example
+     * // Create one Printer
+     * const Printer = await prisma.printer.create({
+     *   data: {
+     *     // ... data to create a Printer
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PrinterCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterCreateArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Printers.
+     * @param {PrinterCreateManyArgs} args - Arguments to create many Printers.
+     * @example
+     * // Create many Printers
+     * const printer = await prisma.printer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends PrinterCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Printers and returns the data saved in the database.
+     * @param {PrinterCreateManyAndReturnArgs} args - Arguments to create many Printers.
+     * @example
+     * // Create many Printers
+     * const printer = await prisma.printer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Printers and only return the `id`
+     * const printerWithIdOnly = await prisma.printer.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends PrinterCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a Printer.
+     * @param {PrinterDeleteArgs} args - Arguments to delete one Printer.
+     * @example
+     * // Delete one Printer
+     * const Printer = await prisma.printer.delete({
+     *   where: {
+     *     // ... filter to delete one Printer
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PrinterDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterDeleteArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Printer.
+     * @param {PrinterUpdateArgs} args - Arguments to update one Printer.
+     * @example
+     * // Update one Printer
+     * const printer = await prisma.printer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PrinterUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterUpdateArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Printers.
+     * @param {PrinterDeleteManyArgs} args - Arguments to filter Printers to delete.
+     * @example
+     * // Delete a few Printers
+     * const { count } = await prisma.printer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PrinterDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PrinterDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Printers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Printers
+     * const printer = await prisma.printer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PrinterUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Printer.
+     * @param {PrinterUpsertArgs} args - Arguments to update or create a Printer.
+     * @example
+     * // Update or create a Printer
+     * const printer = await prisma.printer.upsert({
+     *   create: {
+     *     // ... data to create a Printer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Printer we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PrinterUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PrinterUpsertArgs<ExtArgs>>
+    ): Prisma__PrinterClient<$Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Printers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterCountArgs} args - Arguments to filter Printers to count.
+     * @example
+     * // Count the number of Printers
+     * const count = await prisma.printer.count({
+     *   where: {
+     *     // ... the filter for the Printers we want to count
+     *   }
+     * })
+    **/
+    count<T extends PrinterCountArgs>(
+      args?: Subset<T, PrinterCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PrinterCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Printer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PrinterAggregateArgs>(args: Subset<T, PrinterAggregateArgs>): Prisma.PrismaPromise<GetPrinterAggregateType<T>>
+
+    /**
+     * Group by Printer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrinterGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PrinterGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PrinterGroupByArgs['orderBy'] }
+        : { orderBy?: PrinterGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PrinterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrinterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Printer model
+   */
+  readonly fields: PrinterFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Printer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PrinterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Printer model
+   */ 
+  interface PrinterFieldRefs {
+    readonly id: FieldRef<"Printer", 'String'>
+    readonly printerIdentifier: FieldRef<"Printer", 'String'>
+    readonly tailScaleIP: FieldRef<"Printer", 'String'>
+    readonly portNumber: FieldRef<"Printer", 'String'>
+    readonly privateIPAddress: FieldRef<"Printer", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Printer findUnique
+   */
+  export type PrinterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter, which Printer to fetch.
+     */
+    where: PrinterWhereUniqueInput
+  }
+
+  /**
+   * Printer findUniqueOrThrow
+   */
+  export type PrinterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter, which Printer to fetch.
+     */
+    where: PrinterWhereUniqueInput
+  }
+
+  /**
+   * Printer findFirst
+   */
+  export type PrinterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter, which Printer to fetch.
+     */
+    where?: PrinterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Printers to fetch.
+     */
+    orderBy?: PrinterOrderByWithRelationInput | PrinterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Printers.
+     */
+    cursor?: PrinterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Printers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Printers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Printers.
+     */
+    distinct?: PrinterScalarFieldEnum | PrinterScalarFieldEnum[]
+  }
+
+  /**
+   * Printer findFirstOrThrow
+   */
+  export type PrinterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter, which Printer to fetch.
+     */
+    where?: PrinterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Printers to fetch.
+     */
+    orderBy?: PrinterOrderByWithRelationInput | PrinterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Printers.
+     */
+    cursor?: PrinterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Printers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Printers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Printers.
+     */
+    distinct?: PrinterScalarFieldEnum | PrinterScalarFieldEnum[]
+  }
+
+  /**
+   * Printer findMany
+   */
+  export type PrinterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter, which Printers to fetch.
+     */
+    where?: PrinterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Printers to fetch.
+     */
+    orderBy?: PrinterOrderByWithRelationInput | PrinterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Printers.
+     */
+    cursor?: PrinterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Printers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Printers.
+     */
+    skip?: number
+    distinct?: PrinterScalarFieldEnum | PrinterScalarFieldEnum[]
+  }
+
+  /**
+   * Printer create
+   */
+  export type PrinterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Printer.
+     */
+    data: XOR<PrinterCreateInput, PrinterUncheckedCreateInput>
+  }
+
+  /**
+   * Printer createMany
+   */
+  export type PrinterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Printers.
+     */
+    data: PrinterCreateManyInput | PrinterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Printer createManyAndReturn
+   */
+  export type PrinterCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * The data used to create many Printers.
+     */
+    data: PrinterCreateManyInput | PrinterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Printer update
+   */
+  export type PrinterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Printer.
+     */
+    data: XOR<PrinterUpdateInput, PrinterUncheckedUpdateInput>
+    /**
+     * Choose, which Printer to update.
+     */
+    where: PrinterWhereUniqueInput
+  }
+
+  /**
+   * Printer updateMany
+   */
+  export type PrinterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Printers.
+     */
+    data: XOR<PrinterUpdateManyMutationInput, PrinterUncheckedUpdateManyInput>
+    /**
+     * Filter which Printers to update
+     */
+    where?: PrinterWhereInput
+  }
+
+  /**
+   * Printer upsert
+   */
+  export type PrinterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Printer to update in case it exists.
+     */
+    where: PrinterWhereUniqueInput
+    /**
+     * In case the Printer found by the `where` argument doesn't exist, create a new Printer with this data.
+     */
+    create: XOR<PrinterCreateInput, PrinterUncheckedCreateInput>
+    /**
+     * In case the Printer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PrinterUpdateInput, PrinterUncheckedUpdateInput>
+  }
+
+  /**
+   * Printer delete
+   */
+  export type PrinterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+    /**
+     * Filter which Printer to delete.
+     */
+    where: PrinterWhereUniqueInput
+  }
+
+  /**
+   * Printer deleteMany
+   */
+  export type PrinterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Printers to delete
+     */
+    where?: PrinterWhereInput
+  }
+
+  /**
+   * Printer without action
+   */
+  export type PrinterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Printer
+     */
+    select?: PrinterSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model CompanyUser
    */
 
@@ -40022,6 +41006,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
@@ -40068,6 +41053,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
@@ -40114,6 +41100,7 @@ export namespace Prisma {
     orderSide: number
     orderQuantity: number
     orderShoeSize: number
+    orderGender: number
     validatedAt: number
     printingStartedAt: number
     printingStartedBy: number
@@ -40170,6 +41157,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
@@ -40216,6 +41204,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
@@ -40262,6 +41251,7 @@ export namespace Prisma {
     orderSide?: true
     orderQuantity?: true
     orderShoeSize?: true
+    orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
     printingStartedBy?: true
@@ -40395,6 +41385,7 @@ export namespace Prisma {
     orderSide: number | null
     orderQuantity: string | null
     orderShoeSize: string | null
+    orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
     printingStartedBy: string | null
@@ -40460,6 +41451,7 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    orderGender?: boolean
     validatedAt?: boolean
     printingStartedAt?: boolean
     printingStartedBy?: boolean
@@ -40506,6 +41498,7 @@ export namespace Prisma {
     orderSide?: boolean
     orderQuantity?: boolean
     orderShoeSize?: boolean
+    orderGender?: boolean
     validatedAt?: boolean
     printingStartedAt?: boolean
     printingStartedBy?: boolean
@@ -40557,6 +41550,7 @@ export namespace Prisma {
       orderSide: number | null
       orderQuantity: string | null
       orderShoeSize: string | null
+      orderGender: string | null
       validatedAt: Date | null
       printingStartedAt: Date | null
       printingStartedBy: string | null
@@ -41020,6 +42014,7 @@ export namespace Prisma {
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
     readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly orderGender: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly validatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingStartedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingStartedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -41759,6 +42754,17 @@ export namespace Prisma {
   export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
+  export const PrinterScalarFieldEnum: {
+    id: 'id',
+    printerIdentifier: 'printerIdentifier',
+    tailScaleIP: 'tailScaleIP',
+    portNumber: 'portNumber',
+    privateIPAddress: 'privateIPAddress'
+  };
+
+  export type PrinterScalarFieldEnum = (typeof PrinterScalarFieldEnum)[keyof typeof PrinterScalarFieldEnum]
+
+
   export const CompanyUserScalarFieldEnum: {
     userId: 'userId',
     companyId: 'companyId',
@@ -41863,6 +42869,7 @@ export namespace Prisma {
     orderSide: 'orderSide',
     orderQuantity: 'orderQuantity',
     orderShoeSize: 'orderShoeSize',
+    orderGender: 'orderGender',
     validatedAt: 'validatedAt',
     printingStartedAt: 'printingStartedAt',
     printingStartedBy: 'printingStartedBy',
@@ -44551,6 +45558,58 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"AuditLog"> | Date | string
   }
 
+  export type PrinterWhereInput = {
+    AND?: PrinterWhereInput | PrinterWhereInput[]
+    OR?: PrinterWhereInput[]
+    NOT?: PrinterWhereInput | PrinterWhereInput[]
+    id?: StringFilter<"Printer"> | string
+    printerIdentifier?: StringFilter<"Printer"> | string
+    tailScaleIP?: StringFilter<"Printer"> | string
+    portNumber?: StringFilter<"Printer"> | string
+    privateIPAddress?: StringFilter<"Printer"> | string
+  }
+
+  export type PrinterOrderByWithRelationInput = {
+    id?: SortOrder
+    printerIdentifier?: SortOrder
+    tailScaleIP?: SortOrder
+    portNumber?: SortOrder
+    privateIPAddress?: SortOrder
+  }
+
+  export type PrinterWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    printerIdentifier?: string
+    tailScaleIP?: string
+    portNumber?: string
+    privateIPAddress?: string
+    AND?: PrinterWhereInput | PrinterWhereInput[]
+    OR?: PrinterWhereInput[]
+    NOT?: PrinterWhereInput | PrinterWhereInput[]
+  }, "id" | "printerIdentifier" | "tailScaleIP" | "portNumber" | "privateIPAddress">
+
+  export type PrinterOrderByWithAggregationInput = {
+    id?: SortOrder
+    printerIdentifier?: SortOrder
+    tailScaleIP?: SortOrder
+    portNumber?: SortOrder
+    privateIPAddress?: SortOrder
+    _count?: PrinterCountOrderByAggregateInput
+    _max?: PrinterMaxOrderByAggregateInput
+    _min?: PrinterMinOrderByAggregateInput
+  }
+
+  export type PrinterScalarWhereWithAggregatesInput = {
+    AND?: PrinterScalarWhereWithAggregatesInput | PrinterScalarWhereWithAggregatesInput[]
+    OR?: PrinterScalarWhereWithAggregatesInput[]
+    NOT?: PrinterScalarWhereWithAggregatesInput | PrinterScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Printer"> | string
+    printerIdentifier?: StringWithAggregatesFilter<"Printer"> | string
+    tailScaleIP?: StringWithAggregatesFilter<"Printer"> | string
+    portNumber?: StringWithAggregatesFilter<"Printer"> | string
+    privateIPAddress?: StringWithAggregatesFilter<"Printer"> | string
+  }
+
   export type CompanyUserWhereInput = {
     AND?: CompanyUserWhereInput | CompanyUserWhereInput[]
     OR?: CompanyUserWhereInput[]
@@ -45020,6 +46079,7 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -45066,6 +46126,7 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
     printingStartedBy?: SortOrderInput | SortOrder
@@ -45115,6 +46176,7 @@ export namespace Prisma {
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -45161,6 +46223,7 @@ export namespace Prisma {
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
     printingStartedBy?: SortOrderInput | SortOrder
@@ -45215,6 +46278,7 @@ export namespace Prisma {
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    orderGender?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -47716,6 +48780,62 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PrinterCreateInput = {
+    id?: string
+    printerIdentifier: string
+    tailScaleIP: string
+    portNumber: string
+    privateIPAddress: string
+  }
+
+  export type PrinterUncheckedCreateInput = {
+    id?: string
+    printerIdentifier: string
+    tailScaleIP: string
+    portNumber: string
+    privateIPAddress: string
+  }
+
+  export type PrinterUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    printerIdentifier?: StringFieldUpdateOperationsInput | string
+    tailScaleIP?: StringFieldUpdateOperationsInput | string
+    portNumber?: StringFieldUpdateOperationsInput | string
+    privateIPAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PrinterUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    printerIdentifier?: StringFieldUpdateOperationsInput | string
+    tailScaleIP?: StringFieldUpdateOperationsInput | string
+    portNumber?: StringFieldUpdateOperationsInput | string
+    privateIPAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PrinterCreateManyInput = {
+    id?: string
+    printerIdentifier: string
+    tailScaleIP: string
+    portNumber: string
+    privateIPAddress: string
+  }
+
+  export type PrinterUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    printerIdentifier?: StringFieldUpdateOperationsInput | string
+    tailScaleIP?: StringFieldUpdateOperationsInput | string
+    portNumber?: StringFieldUpdateOperationsInput | string
+    privateIPAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PrinterUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    printerIdentifier?: StringFieldUpdateOperationsInput | string
+    tailScaleIP?: StringFieldUpdateOperationsInput | string
+    portNumber?: StringFieldUpdateOperationsInput | string
+    privateIPAddress?: StringFieldUpdateOperationsInput | string
+  }
+
   export type CompanyUserCreateInput = {
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -48177,6 +49297,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
@@ -48223,6 +49344,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
@@ -48269,6 +49391,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48315,6 +49438,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48361,6 +49485,7 @@ export namespace Prisma {
     orderSide?: number | null
     orderQuantity?: string | null
     orderShoeSize?: string | null
+    orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
     printingStartedBy?: string | null
@@ -48407,6 +49532,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48453,6 +49579,7 @@ export namespace Prisma {
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50560,6 +51687,30 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type PrinterCountOrderByAggregateInput = {
+    id?: SortOrder
+    printerIdentifier?: SortOrder
+    tailScaleIP?: SortOrder
+    portNumber?: SortOrder
+    privateIPAddress?: SortOrder
+  }
+
+  export type PrinterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    printerIdentifier?: SortOrder
+    tailScaleIP?: SortOrder
+    portNumber?: SortOrder
+    privateIPAddress?: SortOrder
+  }
+
+  export type PrinterMinOrderByAggregateInput = {
+    id?: SortOrder
+    printerIdentifier?: SortOrder
+    tailScaleIP?: SortOrder
+    portNumber?: SortOrder
+    privateIPAddress?: SortOrder
+  }
+
   export type EnumCompanyRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.CompanyRole | EnumCompanyRoleFieldRefInput<$PrismaModel>
     in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel>
@@ -50878,6 +52029,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
@@ -50928,6 +52080,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
@@ -50974,6 +52127,7 @@ export namespace Prisma {
     orderSide?: SortOrder
     orderQuantity?: SortOrder
     orderShoeSize?: SortOrder
+    orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder
     printingStartedBy?: SortOrder
@@ -63273,6 +64427,10 @@ export namespace Prisma {
      * @deprecated Use AuditLogDefaultArgs instead
      */
     export type AuditLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AuditLogDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PrinterDefaultArgs instead
+     */
+    export type PrinterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PrinterDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CompanyUserDefaultArgs instead
      */
