@@ -49,6 +49,7 @@ export type * from './dto/patient/CreatePatientParams';
 export type * from './dto/patient/SearchPatientsParams';
 export type * from './dto/patient/UpdatePatientParams';
 export type * from './dto/pin/CreatePinDto';
+export type * from './dto/printer/SendGcodeToPrinterParams';
 export type * from './dto/search/GetSearchParams';
 export type * from './dto/search/SearchResponse';
 export type * from './dto/shipping/GetLabelTrackingInfo';
