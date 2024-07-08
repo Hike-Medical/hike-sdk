@@ -40992,7 +40992,7 @@ export namespace Prisma {
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
     companySlug: string | null
-    createdReason: string | null
+    createdReason: $Enums.WorkbenchCreatedReason | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -41005,6 +41005,8 @@ export namespace Prisma {
     isDiabetic: boolean | null
     orderSide: number | null
     orderQuantity: string | null
+    productType: $Enums.ProductType | null
+    submittedAt: Date | null
     orderShoeSize: string | null
     orderGender: string | null
     validatedAt: Date | null
@@ -41023,6 +41025,8 @@ export namespace Prisma {
     addonCompletedAt: Date | null
     addonCompletedBy: string | null
     validationStatus: boolean | null
+    needsDevValidation: boolean | null
+    isImpressionBox: boolean | null
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
@@ -41039,7 +41043,7 @@ export namespace Prisma {
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
     companySlug: string | null
-    createdReason: string | null
+    createdReason: $Enums.WorkbenchCreatedReason | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -41052,6 +41056,8 @@ export namespace Prisma {
     isDiabetic: boolean | null
     orderSide: number | null
     orderQuantity: string | null
+    productType: $Enums.ProductType | null
+    submittedAt: Date | null
     orderShoeSize: string | null
     orderGender: string | null
     validatedAt: Date | null
@@ -41070,6 +41076,8 @@ export namespace Prisma {
     addonCompletedAt: Date | null
     addonCompletedBy: string | null
     validationStatus: boolean | null
+    needsDevValidation: boolean | null
+    isImpressionBox: boolean | null
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
@@ -41099,6 +41107,8 @@ export namespace Prisma {
     isDiabetic: number
     orderSide: number
     orderQuantity: number
+    productType: number
+    submittedAt: number
     orderShoeSize: number
     orderGender: number
     validatedAt: number
@@ -41117,6 +41127,8 @@ export namespace Prisma {
     addonCompletedAt: number
     addonCompletedBy: number
     validationStatus: number
+    needsDevValidation: number
+    isImpressionBox: number
     deviceTypeName: number
     taikaId: number
     taikaDevId: number
@@ -41156,6 +41168,8 @@ export namespace Prisma {
     isDiabetic?: true
     orderSide?: true
     orderQuantity?: true
+    productType?: true
+    submittedAt?: true
     orderShoeSize?: true
     orderGender?: true
     validatedAt?: true
@@ -41174,6 +41188,8 @@ export namespace Prisma {
     addonCompletedAt?: true
     addonCompletedBy?: true
     validationStatus?: true
+    needsDevValidation?: true
+    isImpressionBox?: true
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
@@ -41203,6 +41219,8 @@ export namespace Prisma {
     isDiabetic?: true
     orderSide?: true
     orderQuantity?: true
+    productType?: true
+    submittedAt?: true
     orderShoeSize?: true
     orderGender?: true
     validatedAt?: true
@@ -41221,6 +41239,8 @@ export namespace Prisma {
     addonCompletedAt?: true
     addonCompletedBy?: true
     validationStatus?: true
+    needsDevValidation?: true
+    isImpressionBox?: true
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
@@ -41250,6 +41270,8 @@ export namespace Prisma {
     isDiabetic?: true
     orderSide?: true
     orderQuantity?: true
+    productType?: true
+    submittedAt?: true
     orderShoeSize?: true
     orderGender?: true
     validatedAt?: true
@@ -41268,6 +41290,8 @@ export namespace Prisma {
     addonCompletedAt?: true
     addonCompletedBy?: true
     validationStatus?: true
+    needsDevValidation?: true
+    isImpressionBox?: true
     deviceTypeName?: true
     taikaId?: true
     taikaDevId?: true
@@ -41371,7 +41395,7 @@ export namespace Prisma {
     orderId: string | null
     orderStatus: $Enums.OrderStatus | null
     companySlug: string | null
-    createdReason: string | null
+    createdReason: $Enums.WorkbenchCreatedReason | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -41384,6 +41408,8 @@ export namespace Prisma {
     isDiabetic: boolean | null
     orderSide: number | null
     orderQuantity: string | null
+    productType: $Enums.ProductType | null
+    submittedAt: Date | null
     orderShoeSize: string | null
     orderGender: string | null
     validatedAt: Date | null
@@ -41402,6 +41428,8 @@ export namespace Prisma {
     addonCompletedAt: Date | null
     addonCompletedBy: string | null
     validationStatus: boolean | null
+    needsDevValidation: boolean | null
+    isImpressionBox: boolean | null
     deviceTypeName: string | null
     taikaId: string | null
     taikaDevId: string | null
@@ -41450,6 +41478,8 @@ export namespace Prisma {
     isDiabetic?: boolean
     orderSide?: boolean
     orderQuantity?: boolean
+    productType?: boolean
+    submittedAt?: boolean
     orderShoeSize?: boolean
     orderGender?: boolean
     validatedAt?: boolean
@@ -41468,6 +41498,8 @@ export namespace Prisma {
     addonCompletedAt?: boolean
     addonCompletedBy?: boolean
     validationStatus?: boolean
+    needsDevValidation?: boolean
+    isImpressionBox?: boolean
     deviceTypeName?: boolean
     taikaId?: boolean
     taikaDevId?: boolean
@@ -41497,6 +41529,8 @@ export namespace Prisma {
     isDiabetic?: boolean
     orderSide?: boolean
     orderQuantity?: boolean
+    productType?: boolean
+    submittedAt?: boolean
     orderShoeSize?: boolean
     orderGender?: boolean
     validatedAt?: boolean
@@ -41515,6 +41549,8 @@ export namespace Prisma {
     addonCompletedAt?: boolean
     addonCompletedBy?: boolean
     validationStatus?: boolean
+    needsDevValidation?: boolean
+    isImpressionBox?: boolean
     deviceTypeName?: boolean
     taikaId?: boolean
     taikaDevId?: boolean
@@ -41536,7 +41572,7 @@ export namespace Prisma {
       orderId: string | null
       orderStatus: $Enums.OrderStatus | null
       companySlug: string | null
-      createdReason: string | null
+      createdReason: $Enums.WorkbenchCreatedReason | null
       slicerProfile: string | null
       poNumber: string | null
       clinicianName: string | null
@@ -41549,6 +41585,8 @@ export namespace Prisma {
       isDiabetic: boolean | null
       orderSide: number | null
       orderQuantity: string | null
+      productType: $Enums.ProductType | null
+      submittedAt: Date | null
       orderShoeSize: string | null
       orderGender: string | null
       validatedAt: Date | null
@@ -41567,6 +41605,8 @@ export namespace Prisma {
       addonCompletedAt: Date | null
       addonCompletedBy: string | null
       validationStatus: boolean | null
+      needsDevValidation: boolean | null
+      isImpressionBox: boolean | null
       deviceTypeName: string | null
       taikaId: string | null
       taikaDevId: string | null
@@ -42000,7 +42040,7 @@ export namespace Prisma {
     readonly orderId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderStatus'>
     readonly companySlug: FieldRef<"ViewFlattenedWorkbench", 'String'>
-    readonly createdReason: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly createdReason: FieldRef<"ViewFlattenedWorkbench", 'WorkbenchCreatedReason'>
     readonly slicerProfile: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly poNumber: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly clinicianName: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -42013,6 +42053,8 @@ export namespace Prisma {
     readonly isDiabetic: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly orderSide: FieldRef<"ViewFlattenedWorkbench", 'Int'>
     readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly productType: FieldRef<"ViewFlattenedWorkbench", 'ProductType'>
+    readonly submittedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderGender: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly validatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
@@ -42031,6 +42073,8 @@ export namespace Prisma {
     readonly addonCompletedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly addonCompletedBy: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly validationStatus: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
+    readonly needsDevValidation: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
+    readonly isImpressionBox: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly deviceTypeName: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly taikaId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -42868,6 +42912,8 @@ export namespace Prisma {
     isDiabetic: 'isDiabetic',
     orderSide: 'orderSide',
     orderQuantity: 'orderQuantity',
+    productType: 'productType',
+    submittedAt: 'submittedAt',
     orderShoeSize: 'orderShoeSize',
     orderGender: 'orderGender',
     validatedAt: 'validatedAt',
@@ -42886,6 +42932,8 @@ export namespace Prisma {
     addonCompletedAt: 'addonCompletedAt',
     addonCompletedBy: 'addonCompletedBy',
     validationStatus: 'validationStatus',
+    needsDevValidation: 'needsDevValidation',
+    isImpressionBox: 'isImpressionBox',
     deviceTypeName: 'deviceTypeName',
     taikaId: 'taikaId',
     taikaDevId: 'taikaDevId',
@@ -46065,7 +46113,7 @@ export namespace Prisma {
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
-    createdReason?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46078,6 +46126,8 @@ export namespace Prisma {
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
+    submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -46096,6 +46146,8 @@ export namespace Prisma {
     addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    needsDevValidation?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    isImpressionBox?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46125,6 +46177,8 @@ export namespace Prisma {
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
+    productType?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
@@ -46143,6 +46197,8 @@ export namespace Prisma {
     addonCompletedAt?: SortOrderInput | SortOrder
     addonCompletedBy?: SortOrderInput | SortOrder
     validationStatus?: SortOrderInput | SortOrder
+    needsDevValidation?: SortOrderInput | SortOrder
+    isImpressionBox?: SortOrderInput | SortOrder
     deviceTypeName?: SortOrderInput | SortOrder
     taikaId?: SortOrderInput | SortOrder
     taikaDevId?: SortOrderInput | SortOrder
@@ -46162,7 +46218,7 @@ export namespace Prisma {
     orderId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
-    createdReason?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46175,6 +46231,8 @@ export namespace Prisma {
     isDiabetic?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
+    submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -46193,6 +46251,8 @@ export namespace Prisma {
     addonCompletedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     addonCompletedBy?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    needsDevValidation?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    isImpressionBox?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46222,6 +46282,8 @@ export namespace Prisma {
     isDiabetic?: SortOrderInput | SortOrder
     orderSide?: SortOrderInput | SortOrder
     orderQuantity?: SortOrderInput | SortOrder
+    productType?: SortOrderInput | SortOrder
+    submittedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
@@ -46240,6 +46302,8 @@ export namespace Prisma {
     addonCompletedAt?: SortOrderInput | SortOrder
     addonCompletedBy?: SortOrderInput | SortOrder
     validationStatus?: SortOrderInput | SortOrder
+    needsDevValidation?: SortOrderInput | SortOrder
+    isImpressionBox?: SortOrderInput | SortOrder
     deviceTypeName?: SortOrderInput | SortOrder
     taikaId?: SortOrderInput | SortOrder
     taikaDevId?: SortOrderInput | SortOrder
@@ -46264,7 +46328,7 @@ export namespace Prisma {
     orderId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderStatus?: EnumOrderStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     companySlug?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
-    createdReason?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    createdReason?: EnumWorkbenchCreatedReasonNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -46277,6 +46341,8 @@ export namespace Prisma {
     isDiabetic?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderSide?: IntNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | number | null
     orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    productType?: EnumProductTypeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
+    submittedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -46295,6 +46361,8 @@ export namespace Prisma {
     addonCompletedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     addonCompletedBy?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     validationStatus?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    needsDevValidation?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    isImpressionBox?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     deviceTypeName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     taikaId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -49283,7 +49351,7 @@ export namespace Prisma {
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
     companySlug?: string | null
-    createdReason?: string | null
+    createdReason?: $Enums.WorkbenchCreatedReason | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -49296,6 +49364,8 @@ export namespace Prisma {
     isDiabetic?: boolean | null
     orderSide?: number | null
     orderQuantity?: string | null
+    productType?: $Enums.ProductType | null
+    submittedAt?: Date | string | null
     orderShoeSize?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
@@ -49314,6 +49384,8 @@ export namespace Prisma {
     addonCompletedAt?: Date | string | null
     addonCompletedBy?: string | null
     validationStatus?: boolean | null
+    needsDevValidation?: boolean | null
+    isImpressionBox?: boolean | null
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
@@ -49330,7 +49402,7 @@ export namespace Prisma {
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
     companySlug?: string | null
-    createdReason?: string | null
+    createdReason?: $Enums.WorkbenchCreatedReason | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -49343,6 +49415,8 @@ export namespace Prisma {
     isDiabetic?: boolean | null
     orderSide?: number | null
     orderQuantity?: string | null
+    productType?: $Enums.ProductType | null
+    submittedAt?: Date | string | null
     orderShoeSize?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
@@ -49361,6 +49435,8 @@ export namespace Prisma {
     addonCompletedAt?: Date | string | null
     addonCompletedBy?: string | null
     validationStatus?: boolean | null
+    needsDevValidation?: boolean | null
+    isImpressionBox?: boolean | null
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
@@ -49377,7 +49453,7 @@ export namespace Prisma {
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
-    createdReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49390,6 +49466,8 @@ export namespace Prisma {
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49408,6 +49486,8 @@ export namespace Prisma {
     addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    needsDevValidation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isImpressionBox?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49424,7 +49504,7 @@ export namespace Prisma {
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
-    createdReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49437,6 +49517,8 @@ export namespace Prisma {
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49455,6 +49537,8 @@ export namespace Prisma {
     addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    needsDevValidation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isImpressionBox?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49471,7 +49555,7 @@ export namespace Prisma {
     orderId?: string | null
     orderStatus?: $Enums.OrderStatus | null
     companySlug?: string | null
-    createdReason?: string | null
+    createdReason?: $Enums.WorkbenchCreatedReason | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -49484,6 +49568,8 @@ export namespace Prisma {
     isDiabetic?: boolean | null
     orderSide?: number | null
     orderQuantity?: string | null
+    productType?: $Enums.ProductType | null
+    submittedAt?: Date | string | null
     orderShoeSize?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
@@ -49502,6 +49588,8 @@ export namespace Prisma {
     addonCompletedAt?: Date | string | null
     addonCompletedBy?: string | null
     validationStatus?: boolean | null
+    needsDevValidation?: boolean | null
+    isImpressionBox?: boolean | null
     deviceTypeName?: string | null
     taikaId?: string | null
     taikaDevId?: string | null
@@ -49518,7 +49606,7 @@ export namespace Prisma {
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
-    createdReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49531,6 +49619,8 @@ export namespace Prisma {
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49549,6 +49639,8 @@ export namespace Prisma {
     addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    needsDevValidation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isImpressionBox?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49565,7 +49657,7 @@ export namespace Prisma {
     orderId?: NullableStringFieldUpdateOperationsInput | string | null
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
-    createdReason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49578,6 +49670,8 @@ export namespace Prisma {
     isDiabetic?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderSide?: NullableIntFieldUpdateOperationsInput | number | null
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49596,6 +49690,8 @@ export namespace Prisma {
     addonCompletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addonCompletedBy?: NullableStringFieldUpdateOperationsInput | string | null
     validationStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    needsDevValidation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isImpressionBox?: NullableBoolFieldUpdateOperationsInput | boolean | null
     deviceTypeName?: NullableStringFieldUpdateOperationsInput | string | null
     taikaId?: NullableStringFieldUpdateOperationsInput | string | null
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52006,6 +52102,13 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type EnumProductTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumProductTypeNullableFilter<$PrismaModel> | $Enums.ProductType | null
+  }
+
   export type ViewFlattenedWorkbenchCountOrderByAggregateInput = {
     workbenchId?: SortOrder
     companyId?: SortOrder
@@ -52028,6 +52131,8 @@ export namespace Prisma {
     isDiabetic?: SortOrder
     orderSide?: SortOrder
     orderQuantity?: SortOrder
+    productType?: SortOrder
+    submittedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
@@ -52046,6 +52151,8 @@ export namespace Prisma {
     addonCompletedAt?: SortOrder
     addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
+    needsDevValidation?: SortOrder
+    isImpressionBox?: SortOrder
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
@@ -52079,6 +52186,8 @@ export namespace Prisma {
     isDiabetic?: SortOrder
     orderSide?: SortOrder
     orderQuantity?: SortOrder
+    productType?: SortOrder
+    submittedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
@@ -52097,6 +52206,8 @@ export namespace Prisma {
     addonCompletedAt?: SortOrder
     addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
+    needsDevValidation?: SortOrder
+    isImpressionBox?: SortOrder
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
@@ -52126,6 +52237,8 @@ export namespace Prisma {
     isDiabetic?: SortOrder
     orderSide?: SortOrder
     orderQuantity?: SortOrder
+    productType?: SortOrder
+    submittedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
@@ -52144,6 +52257,8 @@ export namespace Prisma {
     addonCompletedAt?: SortOrder
     addonCompletedBy?: SortOrder
     validationStatus?: SortOrder
+    needsDevValidation?: SortOrder
+    isImpressionBox?: SortOrder
     deviceTypeName?: SortOrder
     taikaId?: SortOrder
     taikaDevId?: SortOrder
@@ -52189,6 +52304,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumProductTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumProductTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.ProductType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumProductTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumProductTypeNullableFilter<$PrismaModel>
   }
 
   export type FacilityCreateNestedManyWithoutCompanyInput = {
@@ -54826,6 +54951,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableEnumProductTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ProductType | null
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -55522,6 +55651,13 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
+  export type NestedEnumProductTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumProductTypeNullableFilter<$PrismaModel> | $Enums.ProductType | null
+  }
+
   export type NestedEnumWorkbenchStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
@@ -55556,6 +55692,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumProductTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumProductTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.ProductType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumProductTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumProductTypeNullableFilter<$PrismaModel>
   }
 
   export type FacilityCreateWithoutCompanyInput = {

@@ -1,4 +1,4 @@
-import { OrderStatus, WorkbenchCreatedReason, WorkbenchStatus } from '../../../prisma';
+import { OrderStatus, ProductType, WorkbenchCreatedReason, WorkbenchStatus } from '../../../prisma';
 
 export interface AggregatedWorkbenchResponse {
   workbenchId: string;
@@ -17,6 +17,8 @@ export interface AggregatedWorkbenchResponse {
   clinicianName?: string | null;
   clinicianId?: string | null;
   patientFirstName?: string | null;
+  productType?: ProductType | null;
+  submittedAt?: Date | null;
   patientLastName?: string | null;
   orderCreatedAt?: Date | null;
   authorizationUpdatedAt?: Date | null;
@@ -42,6 +44,8 @@ export interface AggregatedWorkbenchResponse {
   addonCompletedAt?: Date | null;
   addonCompletedBy?: string | null;
   validationStatus?: boolean | null;
+  needsDevValidation?: boolean | null;
+  isImpressionBox?: boolean | null;
   deviceTypeName?: string | null;
   taikaId?: string | null;
   taikaDevId?: string | null;
