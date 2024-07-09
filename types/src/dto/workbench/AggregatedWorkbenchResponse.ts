@@ -8,6 +8,7 @@ export interface AggregatedWorkbenchResponse {
   orderId?: string | null;
   orderStatus?: OrderStatus | null;
   workbenchStatus?: WorkbenchStatus | null;
+  workbenchCreatedAt?: Date | null;
   poNumber?: string | null;
   companyName?: string | null;
   createdReason?: WorkbenchCreatedReason | null;
