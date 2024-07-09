@@ -143,3 +143,18 @@ export const uploadPrescriptions = async (
     throw toResponseError(error);
   }
 };
+
+export const continueWorkbench = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/continue`,
+      {},
+      {
+        headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
