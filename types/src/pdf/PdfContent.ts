@@ -7,5 +7,6 @@ export interface PdfContent {
   position?: number;
   width?: number;
   height?: number;
+  border?: boolean;
   pageBreak?: boolean;
 }
