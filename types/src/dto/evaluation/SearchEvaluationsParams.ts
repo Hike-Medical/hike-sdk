@@ -1,4 +1,4 @@
-import type { CareType } from '../../../prisma';
+import type { CareType, ProductType } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
 import type { EvaluationStatus } from './EvaluationStatus';
 
@@ -13,5 +13,6 @@ export interface SearchEvaluationsParams extends PagedParams {
   clinicianId?: string;
   visitTypeId?: string;
   facilityId?: string;
+  productTypes?: ProductType[];
   assignedOnly?: boolean;
 }
