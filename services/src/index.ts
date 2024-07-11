@@ -108,5 +108,6 @@ export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useSearchWorkbenches';
+export * from './hooks/augments/useFindAugmentsByWorkbenchId';
 export * from './utils/backendApi';
 export * from './utils/configureBaseUrl';
