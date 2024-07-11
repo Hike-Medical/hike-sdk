@@ -13447,8 +13447,8 @@ export namespace Prisma {
     data?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    media?: boolean | Augment$mediaArgs<ExtArgs>
     asset?: boolean | AssetDefaultArgs<ExtArgs>
+    media?: boolean | Augment$mediaArgs<ExtArgs>
     _count?: boolean | AugmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["augment"]>
 
@@ -13463,8 +13463,8 @@ export namespace Prisma {
 
 
   export type AugmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    media?: boolean | Augment$mediaArgs<ExtArgs>
     asset?: boolean | AssetDefaultArgs<ExtArgs>
+    media?: boolean | Augment$mediaArgs<ExtArgs>
     _count?: boolean | AugmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -13472,8 +13472,8 @@ export namespace Prisma {
   export type $AugmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Augment"
     objects: {
-      media: Prisma.$AugmentMediaPayload<ExtArgs>[]
       asset: Prisma.$AssetPayload<ExtArgs>
+      media: Prisma.$AugmentMediaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13873,9 +13873,9 @@ export namespace Prisma {
   export interface Prisma__AugmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    media<T extends Augment$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Augment$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     asset<T extends AssetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssetDefaultArgs<ExtArgs>>): Prisma__AssetClient<$Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    media<T extends Augment$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Augment$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14281,6 +14281,7 @@ export namespace Prisma {
     key: string | null
     active: boolean | null
     inactiveReason: string | null
+    reviewedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14293,6 +14294,7 @@ export namespace Prisma {
     key: string | null
     active: boolean | null
     inactiveReason: string | null
+    reviewedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14306,6 +14308,7 @@ export namespace Prisma {
     key: number
     active: number
     inactiveReason: number
+    reviewedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -14320,6 +14323,7 @@ export namespace Prisma {
     key?: true
     active?: true
     inactiveReason?: true
+    reviewedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -14332,6 +14336,7 @@ export namespace Prisma {
     key?: true
     active?: true
     inactiveReason?: true
+    reviewedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -14345,6 +14350,7 @@ export namespace Prisma {
     key?: true
     active?: true
     inactiveReason?: true
+    reviewedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -14431,6 +14437,7 @@ export namespace Prisma {
     key: string | null
     active: boolean
     inactiveReason: string | null
+    reviewedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: AugmentMediaCountAggregateOutputType | null
@@ -14461,6 +14468,7 @@ export namespace Prisma {
     key?: boolean
     active?: boolean
     inactiveReason?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     augment?: boolean | AugmentDefaultArgs<ExtArgs>
@@ -14475,6 +14483,7 @@ export namespace Prisma {
     key?: boolean
     active?: boolean
     inactiveReason?: boolean
+    reviewedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -14499,6 +14508,7 @@ export namespace Prisma {
       key: string | null
       active: boolean
       inactiveReason: string | null
+      reviewedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["augmentMedia"]>
@@ -14930,6 +14940,7 @@ export namespace Prisma {
     readonly key: FieldRef<"AugmentMedia", 'String'>
     readonly active: FieldRef<"AugmentMedia", 'Boolean'>
     readonly inactiveReason: FieldRef<"AugmentMedia", 'String'>
+    readonly reviewedAt: FieldRef<"AugmentMedia", 'DateTime'>
     readonly createdAt: FieldRef<"AugmentMedia", 'DateTime'>
     readonly updatedAt: FieldRef<"AugmentMedia", 'DateTime'>
   }
@@ -44783,6 +44794,7 @@ export namespace Prisma {
     key: 'key',
     active: 'active',
     inactiveReason: 'inactiveReason',
+    reviewedAt: 'reviewedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -46457,8 +46469,8 @@ export namespace Prisma {
     data?: JsonNullableFilter<"Augment">
     createdAt?: DateTimeFilter<"Augment"> | Date | string
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
-    media?: AugmentMediaListRelationFilter
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
+    media?: AugmentMediaListRelationFilter
   }
 
   export type AugmentOrderByWithRelationInput = {
@@ -46468,8 +46480,8 @@ export namespace Prisma {
     data?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    media?: AugmentMediaOrderByRelationAggregateInput
     asset?: AssetOrderByWithRelationInput
+    media?: AugmentMediaOrderByRelationAggregateInput
   }
 
   export type AugmentWhereUniqueInput = Prisma.AtLeast<{
@@ -46482,8 +46494,8 @@ export namespace Prisma {
     data?: JsonNullableFilter<"Augment">
     createdAt?: DateTimeFilter<"Augment"> | Date | string
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
-    media?: AugmentMediaListRelationFilter
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
+    media?: AugmentMediaListRelationFilter
   }, "id">
 
   export type AugmentOrderByWithAggregationInput = {
@@ -46522,6 +46534,7 @@ export namespace Prisma {
     key?: StringNullableFilter<"AugmentMedia"> | string | null
     active?: BoolFilter<"AugmentMedia"> | boolean
     inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
     createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
     updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
     augment?: XOR<AugmentRelationFilter, AugmentWhereInput>
@@ -46536,6 +46549,7 @@ export namespace Prisma {
     key?: SortOrderInput | SortOrder
     active?: SortOrder
     inactiveReason?: SortOrderInput | SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     augment?: AugmentOrderByWithRelationInput
@@ -46553,6 +46567,7 @@ export namespace Prisma {
     key?: StringNullableFilter<"AugmentMedia"> | string | null
     active?: BoolFilter<"AugmentMedia"> | boolean
     inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
     createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
     updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
     augment?: XOR<AugmentRelationFilter, AugmentWhereInput>
@@ -46567,6 +46582,7 @@ export namespace Prisma {
     key?: SortOrderInput | SortOrder
     active?: SortOrder
     inactiveReason?: SortOrderInput | SortOrder
+    reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AugmentMediaCountOrderByAggregateInput
@@ -46586,6 +46602,7 @@ export namespace Prisma {
     key?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
     active?: BoolWithAggregatesFilter<"AugmentMedia"> | boolean
     inactiveReason?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableWithAggregatesFilter<"AugmentMedia"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AugmentMedia"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AugmentMedia"> | Date | string
   }
@@ -49690,8 +49707,8 @@ export namespace Prisma {
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    media?: AugmentMediaCreateNestedManyWithoutAugmentInput
     asset: AssetCreateNestedOneWithoutAugmentsInput
+    media?: AugmentMediaCreateNestedManyWithoutAugmentInput
   }
 
   export type AugmentUncheckedCreateInput = {
@@ -49710,8 +49727,8 @@ export namespace Prisma {
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    media?: AugmentMediaUpdateManyWithoutAugmentNestedInput
     asset?: AssetUpdateOneRequiredWithoutAugmentsNestedInput
+    media?: AugmentMediaUpdateManyWithoutAugmentNestedInput
   }
 
   export type AugmentUncheckedUpdateInput = {
@@ -49758,6 +49775,7 @@ export namespace Prisma {
     key?: string | null
     active?: boolean
     inactiveReason?: string | null
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     augment: AugmentCreateNestedOneWithoutMediaInput
@@ -49772,6 +49790,7 @@ export namespace Prisma {
     key?: string | null
     active?: boolean
     inactiveReason?: string | null
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -49784,6 +49803,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     augment?: AugmentUpdateOneRequiredWithoutMediaNestedInput
@@ -49798,6 +49818,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49811,6 +49832,7 @@ export namespace Prisma {
     key?: string | null
     active?: boolean
     inactiveReason?: string | null
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -49823,6 +49845,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49836,6 +49859,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -53296,15 +53320,15 @@ export namespace Prisma {
     not?: NestedEnumAugmentTypeFilter<$PrismaModel> | $Enums.AugmentType
   }
 
+  export type AssetRelationFilter = {
+    is?: AssetWhereInput
+    isNot?: AssetWhereInput
+  }
+
   export type AugmentMediaListRelationFilter = {
     every?: AugmentMediaWhereInput
     some?: AugmentMediaWhereInput
     none?: AugmentMediaWhereInput
-  }
-
-  export type AssetRelationFilter = {
-    is?: AssetWhereInput
-    isNot?: AssetWhereInput
   }
 
   export type AugmentMediaOrderByRelationAggregateInput = {
@@ -53360,6 +53384,7 @@ export namespace Prisma {
     key?: SortOrder
     active?: SortOrder
     inactiveReason?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -53372,6 +53397,7 @@ export namespace Prisma {
     key?: SortOrder
     active?: SortOrder
     inactiveReason?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -53384,6 +53410,7 @@ export namespace Prisma {
     key?: SortOrder
     active?: SortOrder
     inactiveReason?: SortOrder
+    reviewedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -56174,17 +56201,17 @@ export namespace Prisma {
     deleteMany?: AugmentScalarWhereInput | AugmentScalarWhereInput[]
   }
 
+  export type AssetCreateNestedOneWithoutAugmentsInput = {
+    create?: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
+    connectOrCreate?: AssetCreateOrConnectWithoutAugmentsInput
+    connect?: AssetWhereUniqueInput
+  }
+
   export type AugmentMediaCreateNestedManyWithoutAugmentInput = {
     create?: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput> | AugmentMediaCreateWithoutAugmentInput[] | AugmentMediaUncheckedCreateWithoutAugmentInput[]
     connectOrCreate?: AugmentMediaCreateOrConnectWithoutAugmentInput | AugmentMediaCreateOrConnectWithoutAugmentInput[]
     createMany?: AugmentMediaCreateManyAugmentInputEnvelope
     connect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-  }
-
-  export type AssetCreateNestedOneWithoutAugmentsInput = {
-    create?: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
-    connectOrCreate?: AssetCreateOrConnectWithoutAugmentsInput
-    connect?: AssetWhereUniqueInput
   }
 
   export type AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput = {
@@ -56196,6 +56223,14 @@ export namespace Prisma {
 
   export type EnumAugmentTypeFieldUpdateOperationsInput = {
     set?: $Enums.AugmentType
+  }
+
+  export type AssetUpdateOneRequiredWithoutAugmentsNestedInput = {
+    create?: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
+    connectOrCreate?: AssetCreateOrConnectWithoutAugmentsInput
+    upsert?: AssetUpsertWithoutAugmentsInput
+    connect?: AssetWhereUniqueInput
+    update?: XOR<XOR<AssetUpdateToOneWithWhereWithoutAugmentsInput, AssetUpdateWithoutAugmentsInput>, AssetUncheckedUpdateWithoutAugmentsInput>
   }
 
   export type AugmentMediaUpdateManyWithoutAugmentNestedInput = {
@@ -56210,14 +56245,6 @@ export namespace Prisma {
     update?: AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput | AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput[]
     updateMany?: AugmentMediaUpdateManyWithWhereWithoutAugmentInput | AugmentMediaUpdateManyWithWhereWithoutAugmentInput[]
     deleteMany?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
-  }
-
-  export type AssetUpdateOneRequiredWithoutAugmentsNestedInput = {
-    create?: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
-    connectOrCreate?: AssetCreateOrConnectWithoutAugmentsInput
-    upsert?: AssetUpsertWithoutAugmentsInput
-    connect?: AssetWhereUniqueInput
-    update?: XOR<XOR<AssetUpdateToOneWithWhereWithoutAugmentsInput, AssetUpdateWithoutAugmentsInput>, AssetUncheckedUpdateWithoutAugmentsInput>
   }
 
   export type AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput = {
@@ -60973,40 +61000,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
   }
 
-  export type AugmentMediaCreateWithoutAugmentInput = {
-    id?: string
-    data?: NullableJsonNullValueInput | InputJsonValue
-    region?: string | null
-    bucket?: string | null
-    key?: string | null
-    active?: boolean
-    inactiveReason?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AugmentMediaUncheckedCreateWithoutAugmentInput = {
-    id?: string
-    data?: NullableJsonNullValueInput | InputJsonValue
-    region?: string | null
-    bucket?: string | null
-    key?: string | null
-    active?: boolean
-    inactiveReason?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AugmentMediaCreateOrConnectWithoutAugmentInput = {
-    where: AugmentMediaWhereUniqueInput
-    create: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput>
-  }
-
-  export type AugmentMediaCreateManyAugmentInputEnvelope = {
-    data: AugmentMediaCreateManyAugmentInput | AugmentMediaCreateManyAugmentInput[]
-    skipDuplicates?: boolean
-  }
-
   export type AssetCreateWithoutAugmentsInput = {
     id?: string
     type: $Enums.ProductType
@@ -61044,36 +61037,40 @@ export namespace Prisma {
     create: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
   }
 
-  export type AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput = {
+  export type AugmentMediaCreateWithoutAugmentInput = {
+    id?: string
+    data?: NullableJsonNullValueInput | InputJsonValue
+    region?: string | null
+    bucket?: string | null
+    key?: string | null
+    active?: boolean
+    inactiveReason?: string | null
+    reviewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AugmentMediaUncheckedCreateWithoutAugmentInput = {
+    id?: string
+    data?: NullableJsonNullValueInput | InputJsonValue
+    region?: string | null
+    bucket?: string | null
+    key?: string | null
+    active?: boolean
+    inactiveReason?: string | null
+    reviewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AugmentMediaCreateOrConnectWithoutAugmentInput = {
     where: AugmentMediaWhereUniqueInput
-    update: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
     create: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput>
   }
 
-  export type AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput = {
-    where: AugmentMediaWhereUniqueInput
-    data: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
-  }
-
-  export type AugmentMediaUpdateManyWithWhereWithoutAugmentInput = {
-    where: AugmentMediaScalarWhereInput
-    data: XOR<AugmentMediaUpdateManyMutationInput, AugmentMediaUncheckedUpdateManyWithoutAugmentInput>
-  }
-
-  export type AugmentMediaScalarWhereInput = {
-    AND?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
-    OR?: AugmentMediaScalarWhereInput[]
-    NOT?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
-    id?: StringFilter<"AugmentMedia"> | string
-    augmentId?: StringFilter<"AugmentMedia"> | string
-    data?: JsonNullableFilter<"AugmentMedia">
-    region?: StringNullableFilter<"AugmentMedia"> | string | null
-    bucket?: StringNullableFilter<"AugmentMedia"> | string | null
-    key?: StringNullableFilter<"AugmentMedia"> | string | null
-    active?: BoolFilter<"AugmentMedia"> | boolean
-    inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
-    createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
+  export type AugmentMediaCreateManyAugmentInputEnvelope = {
+    data: AugmentMediaCreateManyAugmentInput | AugmentMediaCreateManyAugmentInput[]
+    skipDuplicates?: boolean
   }
 
   export type AssetUpsertWithoutAugmentsInput = {
@@ -61117,6 +61114,39 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbenches?: WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput
+  }
+
+  export type AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput = {
+    where: AugmentMediaWhereUniqueInput
+    update: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
+    create: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput>
+  }
+
+  export type AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput = {
+    where: AugmentMediaWhereUniqueInput
+    data: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
+  }
+
+  export type AugmentMediaUpdateManyWithWhereWithoutAugmentInput = {
+    where: AugmentMediaScalarWhereInput
+    data: XOR<AugmentMediaUpdateManyMutationInput, AugmentMediaUncheckedUpdateManyWithoutAugmentInput>
+  }
+
+  export type AugmentMediaScalarWhereInput = {
+    AND?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
+    OR?: AugmentMediaScalarWhereInput[]
+    NOT?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
+    id?: StringFilter<"AugmentMedia"> | string
+    augmentId?: StringFilter<"AugmentMedia"> | string
+    data?: JsonNullableFilter<"AugmentMedia">
+    region?: StringNullableFilter<"AugmentMedia"> | string | null
+    bucket?: StringNullableFilter<"AugmentMedia"> | string | null
+    key?: StringNullableFilter<"AugmentMedia"> | string | null
+    active?: BoolFilter<"AugmentMedia"> | boolean
+    inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
+    createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
   }
 
   export type AugmentCreateWithoutMediaInput = {
@@ -66092,6 +66122,7 @@ export namespace Prisma {
     key?: string | null
     active?: boolean
     inactiveReason?: string | null
+    reviewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -66104,6 +66135,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -66116,6 +66148,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -66128,6 +66161,7 @@ export namespace Prisma {
     key?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     inactiveReason?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

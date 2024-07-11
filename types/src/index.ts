@@ -68,6 +68,8 @@ export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';
 export type * from './dto/augment/AugmentResult';
+export type * from './dto/augment/UpdateAugmentMedia';
+export type * from './dto/augment/AugmentMediaData';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/CompanyExtended';
