@@ -1,38 +1,64 @@
 'use client';
 
-import { refreshToken } from '@hike/services';
+import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
 import type { AuthStatus, AuthUser } from '@hike/types';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+
+interface Tokens {
+  accessToken: string;
+  refreshToken: string;
+}
 
 export interface SessionState {
   user: AuthUser | null;
   status: AuthStatus;
-  update: () => Promise<void>;
+  update: (newTokens?: Tokens | null) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export const SessionContext = createContext<SessionState>(undefined as never);
 
-export const SessionProvider = ({ children }: { children: ReactNode }) => {
+export const SessionProvider = ({
+  disableAutoStart,
+  children
+}: {
+  disableAutoStart?: boolean;
+  children: ReactNode;
+}) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
+  const [tokens, setTokens] = useState<Tokens | null>(null);
 
-  const update = async () => {
+  const update = async (newTokens?: Tokens | null) => {
     try {
       setStatus('LOADING');
-      const value = await refreshToken();
+      const latest = newTokens ?? tokens ?? null;
+      const excludeCookie = !!latest;
+      const value = await refreshToken(latest?.refreshToken, excludeCookie);
+      configureAuthorization(excludeCookie ? value.accessToken : null);
       setUser(value.sessionUser);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
+      setTokens(value);
     } catch (error) {
-      setUser(null);
-      setStatus('UNAUTHENTICATED');
+      await logout();
     }
   };
 
+  const logout = async () => {
+    configureAuthorization(null);
+    setUser(null);
+    setStatus('UNAUTHENTICATED');
+    setTokens(null);
+    await backendLogout();
+  };
+
   useEffect(() => {
-    update();
+    if (disableAutoStart !== true) {
+      update();
+    }
   }, []);
 
-  return <SessionContext.Provider value={{ user, status, update }}>{children}</SessionContext.Provider>;
+  return <SessionContext.Provider value={{ user, status, update, logout }}>{children}</SessionContext.Provider>;
 };
 
 export const useSession = () => useContext(SessionContext);
