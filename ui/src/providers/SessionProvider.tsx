@@ -12,7 +12,7 @@ interface Tokens {
 export interface SessionState {
   user: AuthUser | null;
   status: AuthStatus;
-  update: (newTokens?: Tokens) => Promise<void>;
+  update: (newTokens?: Tokens | null) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -29,7 +29,7 @@ export const SessionProvider = ({
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
 
-  const update = async (newTokens?: Tokens) => {
+  const update = async (newTokens?: Tokens | null) => {
     try {
       setStatus('LOADING');
       const latest = newTokens ?? tokens ?? null;
