@@ -24,6 +24,7 @@ export * from './auth/findCompanyById';
 export * from './auth/findCompanyBySlug';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
+export * from './auth/logout';
 export * from './auth/refreshToken';
 export * from './auth/signIn';
 export * from './auth/signUp';

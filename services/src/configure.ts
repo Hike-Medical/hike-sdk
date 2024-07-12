@@ -15,7 +15,7 @@ export const configureServices = (config: HikeConfig) => {
   backendApi.defaults.headers.common['x-time-zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   // Set the base URL for backend API requests
-  if (config.appHost || config.apiHosts || config.apiKey) {
+  if (config.appHost || config.apiHosts || config.apiKey || !backendApi.defaults.baseURL) {
     const baseUrl = configureBaseUrl(config);
     backendApi.defaults.baseURL = `${baseUrl}/v2`;
   }
@@ -37,4 +37,11 @@ export const configureServices = (config: HikeConfig) => {
 
   // Return safe config to initialize client-side if needed
   return safeConfig;
+};
+
+/**
+ * Provisions the services with an auth bearer token.
+ */
+export const configureAuthorization = (token: string | null) => {
+  backendApi.defaults.headers.common.Authorization = token && `Bearer ${token}`;
 };
