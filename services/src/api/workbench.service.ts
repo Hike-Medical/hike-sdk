@@ -117,6 +117,18 @@ export const generateWorkbenchPdf = async (
   }
 };
 
+export const generateWorkbenchDeliveryReceiptPdf = async (
+  workbenchId: string,
+  body: GenerateWorkbenchPdfParams
+): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`/workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
 export const uploadPrescriptions = async (
   workbenchId: string,
   formData: FormData
@@ -126,6 +138,21 @@ export const uploadPrescriptions = async (
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const continueWorkbench = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/continue`,
+      {},
+      {
+        headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+      }
+    );
     return response.data;
   } catch (error) {
     throw toResponseError(error);

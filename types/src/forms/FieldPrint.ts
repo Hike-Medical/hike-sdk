@@ -1,7 +1,7 @@
 export interface FieldPrint {
-  label: string;
-  colspan: number;
   position: number;
+  label?: string;
+  colspan?: number;
   rowspan?: number;
   format?: string;
 }
