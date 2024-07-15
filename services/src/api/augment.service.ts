@@ -1,4 +1,4 @@
-import { AugmentMedia, AugmentResult, UpdateAugmentMedia } from '@hike/types';
+import { AugmentMedia, AugmentResult, AugmentStatus, AugmentType, UpdateAugmentMedia } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 import { toResponseError } from '../errors/ResponseError';
 
@@ -26,6 +26,18 @@ export const updateAugmentMedia = async (
 ): Promise<AugmentMedia> => {
   try {
     const response = await backendApi.patch(`augment/media/${mediaId}`, updateAugmentMediaDto);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const findAugmentStatusByWorkbenchId = async (
+  workbenchId: string,
+  type: AugmentType
+): Promise<AugmentStatus> => {
+  try {
+    const response = await backendApi.post(`augment/workbench/${workbenchId}/status`, { type });
     return response.data;
   } catch (error) {
     throw toResponseError(error);

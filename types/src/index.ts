@@ -70,6 +70,8 @@ export type * from './dto/workbench/UpdateInactiveFootBody';
 export type * from './dto/augment/AugmentResult';
 export type * from './dto/augment/UpdateAugmentMedia';
 export type * from './dto/augment/AugmentMediaData';
+export type * from './dto/augment/FindAugmentStatusData';
+export type * from './dto/augment/AugmentStatus';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/CompanyExtended';
