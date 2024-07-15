@@ -4,6 +4,7 @@ export interface CompanyPreferences {
   preferredSubmittedOrderEmailAddress?: string;
   preferredVeteranEmailAddress?: string;
   preSubmissionAuth?: boolean;
+  scanOrderOnly?: boolean;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
   };
