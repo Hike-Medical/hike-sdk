@@ -13293,6 +13293,7 @@ export namespace Prisma {
     id: string | null
     assetId: string | null
     type: $Enums.AugmentType | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13301,6 +13302,7 @@ export namespace Prisma {
     id: string | null
     assetId: string | null
     type: $Enums.AugmentType | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13310,6 +13312,7 @@ export namespace Prisma {
     assetId: number
     type: number
     data: number
+    active: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -13320,6 +13323,7 @@ export namespace Prisma {
     id?: true
     assetId?: true
     type?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13328,6 +13332,7 @@ export namespace Prisma {
     id?: true
     assetId?: true
     type?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13337,6 +13342,7 @@ export namespace Prisma {
     assetId?: true
     type?: true
     data?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -13419,6 +13425,7 @@ export namespace Prisma {
     assetId: string
     type: $Enums.AugmentType
     data: JsonValue | null
+    active: boolean
     createdAt: Date
     updatedAt: Date
     _count: AugmentCountAggregateOutputType | null
@@ -13445,6 +13452,7 @@ export namespace Prisma {
     assetId?: boolean
     type?: boolean
     data?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     asset?: boolean | AssetDefaultArgs<ExtArgs>
@@ -13457,6 +13465,7 @@ export namespace Prisma {
     assetId?: boolean
     type?: boolean
     data?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -13480,6 +13489,7 @@ export namespace Prisma {
       assetId: string
       type: $Enums.AugmentType
       data: Prisma.JsonValue | null
+      active: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["augment"]>
@@ -13909,6 +13919,7 @@ export namespace Prisma {
     readonly assetId: FieldRef<"Augment", 'String'>
     readonly type: FieldRef<"Augment", 'AugmentType'>
     readonly data: FieldRef<"Augment", 'Json'>
+    readonly active: FieldRef<"Augment", 'Boolean'>
     readonly createdAt: FieldRef<"Augment", 'DateTime'>
     readonly updatedAt: FieldRef<"Augment", 'DateTime'>
   }
@@ -44778,6 +44789,7 @@ export namespace Prisma {
     assetId: 'assetId',
     type: 'type',
     data: 'data',
+    active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -46467,6 +46479,7 @@ export namespace Prisma {
     assetId?: StringFilter<"Augment"> | string
     type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
     data?: JsonNullableFilter<"Augment">
+    active?: BoolFilter<"Augment"> | boolean
     createdAt?: DateTimeFilter<"Augment"> | Date | string
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
@@ -46478,6 +46491,7 @@ export namespace Prisma {
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrderInput | SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     asset?: AssetOrderByWithRelationInput
@@ -46492,6 +46506,7 @@ export namespace Prisma {
     assetId?: StringFilter<"Augment"> | string
     type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
     data?: JsonNullableFilter<"Augment">
+    active?: BoolFilter<"Augment"> | boolean
     createdAt?: DateTimeFilter<"Augment"> | Date | string
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
@@ -46503,6 +46518,7 @@ export namespace Prisma {
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrderInput | SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AugmentCountOrderByAggregateInput
@@ -46518,6 +46534,7 @@ export namespace Prisma {
     assetId?: StringWithAggregatesFilter<"Augment"> | string
     type?: EnumAugmentTypeWithAggregatesFilter<"Augment"> | $Enums.AugmentType
     data?: JsonNullableWithAggregatesFilter<"Augment">
+    active?: BoolWithAggregatesFilter<"Augment"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Augment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Augment"> | Date | string
   }
@@ -49705,6 +49722,7 @@ export namespace Prisma {
     id?: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     asset: AssetCreateNestedOneWithoutAugmentsInput
@@ -49716,6 +49734,7 @@ export namespace Prisma {
     assetId: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     media?: AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
@@ -49725,6 +49744,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     asset?: AssetUpdateOneRequiredWithoutAugmentsNestedInput
@@ -49736,6 +49756,7 @@ export namespace Prisma {
     assetId?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     media?: AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
@@ -49746,6 +49767,7 @@ export namespace Prisma {
     assetId: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -49754,6 +49776,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49763,6 +49786,7 @@ export namespace Prisma {
     assetId?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -53340,6 +53364,7 @@ export namespace Prisma {
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -53348,6 +53373,7 @@ export namespace Prisma {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -53356,6 +53382,7 @@ export namespace Prisma {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -60883,6 +60910,7 @@ export namespace Prisma {
     id?: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     media?: AugmentMediaCreateNestedManyWithoutAugmentInput
@@ -60892,6 +60920,7 @@ export namespace Prisma {
     id?: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     media?: AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
@@ -60996,6 +61025,7 @@ export namespace Prisma {
     assetId?: StringFilter<"Augment"> | string
     type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
     data?: JsonNullableFilter<"Augment">
+    active?: BoolFilter<"Augment"> | boolean
     createdAt?: DateTimeFilter<"Augment"> | Date | string
     updatedAt?: DateTimeFilter<"Augment"> | Date | string
   }
@@ -61153,6 +61183,7 @@ export namespace Prisma {
     id?: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     asset: AssetCreateNestedOneWithoutAugmentsInput
@@ -61163,6 +61194,7 @@ export namespace Prisma {
     assetId: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -61187,6 +61219,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     asset?: AssetUpdateOneRequiredWithoutAugmentsNestedInput
@@ -61197,6 +61230,7 @@ export namespace Prisma {
     assetId?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -66028,6 +66062,7 @@ export namespace Prisma {
     id?: string
     type: $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -66092,6 +66127,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     media?: AugmentMediaUpdateManyWithoutAugmentNestedInput
@@ -66101,6 +66137,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     media?: AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
@@ -66110,6 +66147,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
