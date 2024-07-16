@@ -1,8 +1,14 @@
-import { AugmentMedia, AugmentResult, AugmentStatus, AugmentType, UpdateAugmentMedia } from '@hike/types';
+import {
+  AssetAugmentMedia,
+  AssetAugmentResult,
+  AssetAugmentStatus,
+  AssetAugmentType,
+  UpdateAssetAugmentMedia
+} from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 import { toResponseError } from '../errors/ResponseError';
 
-export const findAugmentsByWorkbenchId = async (workbenchId: string): Promise<AugmentResult[]> => {
+export const findAssetAugmentsByWorkbenchId = async (workbenchId: string): Promise<AssetAugmentResult[]> => {
   try {
     const response = await backendApi.get(`augment/workbench/${workbenchId}`);
     return response.data;
@@ -11,7 +17,7 @@ export const findAugmentsByWorkbenchId = async (workbenchId: string): Promise<Au
   }
 };
 
-export const findAugmentById = async (augmentId: string): Promise<AugmentResult> => {
+export const findAssetAugmentById = async (augmentId: string): Promise<AssetAugmentResult> => {
   try {
     const response = await backendApi.get(`augment/${augmentId}`);
     return response.data;
@@ -20,22 +26,22 @@ export const findAugmentById = async (augmentId: string): Promise<AugmentResult>
   }
 };
 
-export const updateAugmentMedia = async (
+export const updateAssetAugmentMedia = async (
   mediaId: string,
-  updateAugmentMediaDto: UpdateAugmentMedia
-): Promise<AugmentMedia> => {
+  updateAssetAugmentMediaDto: UpdateAssetAugmentMedia
+): Promise<AssetAugmentMedia> => {
   try {
-    const response = await backendApi.patch(`augment/media/${mediaId}`, updateAugmentMediaDto);
+    const response = await backendApi.patch(`augment/media/${mediaId}`, updateAssetAugmentMediaDto);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
   }
 };
 
-export const findAugmentStatusByWorkbenchId = async (
+export const findAssetAugmentStatusByWorkbenchId = async (
   workbenchId: string,
-  type: AugmentType
-): Promise<AugmentStatus> => {
+  type: AssetAugmentType
+): Promise<AssetAugmentStatus> => {
   try {
     const response = await backendApi.post(`augment/workbench/${workbenchId}/status`, { type });
     return response.data;

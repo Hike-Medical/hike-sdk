@@ -49,15 +49,15 @@ export type Foot = $Result.DefaultSelection<Prisma.$FootPayload>
  */
 export type Asset = $Result.DefaultSelection<Prisma.$AssetPayload>
 /**
- * Model Augment
+ * Model AssetAugment
  * 
  */
-export type Augment = $Result.DefaultSelection<Prisma.$AugmentPayload>
+export type AssetAugment = $Result.DefaultSelection<Prisma.$AssetAugmentPayload>
 /**
- * Model AugmentMedia
+ * Model AssetAugmentMedia
  * 
  */
-export type AugmentMedia = $Result.DefaultSelection<Prisma.$AugmentMediaPayload>
+export type AssetAugmentMedia = $Result.DefaultSelection<Prisma.$AssetAugmentMediaPayload>
 /**
  * Model Product
  * 
@@ -337,11 +337,11 @@ export const AssetStatus: {
 export type AssetStatus = (typeof AssetStatus)[keyof typeof AssetStatus]
 
 
-export const AugmentType: {
+export const AssetAugmentType: {
   ANCHOR_FRAMES: 'ANCHOR_FRAMES'
 };
 
-export type AugmentType = (typeof AugmentType)[keyof typeof AugmentType]
+export type AssetAugmentType = (typeof AssetAugmentType)[keyof typeof AssetAugmentType]
 
 
 export const WorkbenchCreatedReason: {
@@ -507,9 +507,9 @@ export type AssetStatus = $Enums.AssetStatus
 
 export const AssetStatus: typeof $Enums.AssetStatus
 
-export type AugmentType = $Enums.AugmentType
+export type AssetAugmentType = $Enums.AssetAugmentType
 
-export const AugmentType: typeof $Enums.AugmentType
+export const AssetAugmentType: typeof $Enums.AssetAugmentType
 
 export type WorkbenchCreatedReason = $Enums.WorkbenchCreatedReason
 
@@ -752,24 +752,24 @@ export class PrismaClient<
   get asset(): Prisma.AssetDelegate<ExtArgs>;
 
   /**
-   * `prisma.augment`: Exposes CRUD operations for the **Augment** model.
+   * `prisma.assetAugment`: Exposes CRUD operations for the **AssetAugment** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Augments
-    * const augments = await prisma.augment.findMany()
+    * // Fetch zero or more AssetAugments
+    * const assetAugments = await prisma.assetAugment.findMany()
     * ```
     */
-  get augment(): Prisma.AugmentDelegate<ExtArgs>;
+  get assetAugment(): Prisma.AssetAugmentDelegate<ExtArgs>;
 
   /**
-   * `prisma.augmentMedia`: Exposes CRUD operations for the **AugmentMedia** model.
+   * `prisma.assetAugmentMedia`: Exposes CRUD operations for the **AssetAugmentMedia** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more AugmentMedias
-    * const augmentMedias = await prisma.augmentMedia.findMany()
+    * // Fetch zero or more AssetAugmentMedias
+    * const assetAugmentMedias = await prisma.assetAugmentMedia.findMany()
     * ```
     */
-  get augmentMedia(): Prisma.AugmentMediaDelegate<ExtArgs>;
+  get assetAugmentMedia(): Prisma.AssetAugmentMediaDelegate<ExtArgs>;
 
   /**
    * `prisma.product`: Exposes CRUD operations for the **Product** model.
@@ -1544,8 +1544,8 @@ export namespace Prisma {
     Evaluation: 'Evaluation',
     Foot: 'Foot',
     Asset: 'Asset',
-    Augment: 'Augment',
-    AugmentMedia: 'AugmentMedia',
+    AssetAugment: 'AssetAugment',
+    AssetAugmentMedia: 'AssetAugmentMedia',
     Product: 'Product',
     Workbench: 'Workbench',
     WorkbenchNotes: 'WorkbenchNotes',
@@ -1591,7 +1591,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'augment' | 'augmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2085,143 +2085,143 @@ export namespace Prisma {
           }
         }
       }
-      Augment: {
-        payload: Prisma.$AugmentPayload<ExtArgs>
-        fields: Prisma.AugmentFieldRefs
+      AssetAugment: {
+        payload: Prisma.$AssetAugmentPayload<ExtArgs>
+        fields: Prisma.AssetAugmentFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AugmentFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload> | null
+            args: Prisma.AssetAugmentFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AugmentFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           findFirst: {
-            args: Prisma.AugmentFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload> | null
+            args: Prisma.AssetAugmentFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AugmentFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           findMany: {
-            args: Prisma.AugmentFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>[]
+            args: Prisma.AssetAugmentFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>[]
           }
           create: {
-            args: Prisma.AugmentCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           createMany: {
-            args: Prisma.AugmentCreateManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AugmentCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>[]
+            args: Prisma.AssetAugmentCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>[]
           }
           delete: {
-            args: Prisma.AugmentDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           update: {
-            args: Prisma.AugmentUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           deleteMany: {
-            args: Prisma.AugmentDeleteManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.AugmentUpdateManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.AugmentUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentPayload>
+            args: Prisma.AssetAugmentUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentPayload>
           }
           aggregate: {
-            args: Prisma.AugmentAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateAugment>
+            args: Prisma.AssetAugmentAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAssetAugment>
           }
           groupBy: {
-            args: Prisma.AugmentGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<AugmentGroupByOutputType>[]
+            args: Prisma.AssetAugmentGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AssetAugmentGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AugmentCountArgs<ExtArgs>,
-            result: $Utils.Optional<AugmentCountAggregateOutputType> | number
+            args: Prisma.AssetAugmentCountArgs<ExtArgs>,
+            result: $Utils.Optional<AssetAugmentCountAggregateOutputType> | number
           }
         }
       }
-      AugmentMedia: {
-        payload: Prisma.$AugmentMediaPayload<ExtArgs>
-        fields: Prisma.AugmentMediaFieldRefs
+      AssetAugmentMedia: {
+        payload: Prisma.$AssetAugmentMediaPayload<ExtArgs>
+        fields: Prisma.AssetAugmentMediaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AugmentMediaFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload> | null
+            args: Prisma.AssetAugmentMediaFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AugmentMediaFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           findFirst: {
-            args: Prisma.AugmentMediaFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload> | null
+            args: Prisma.AssetAugmentMediaFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AugmentMediaFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           findMany: {
-            args: Prisma.AugmentMediaFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>[]
+            args: Prisma.AssetAugmentMediaFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>[]
           }
           create: {
-            args: Prisma.AugmentMediaCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           createMany: {
-            args: Prisma.AugmentMediaCreateManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentMediaCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AugmentMediaCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>[]
+            args: Prisma.AssetAugmentMediaCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>[]
           }
           delete: {
-            args: Prisma.AugmentMediaDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           update: {
-            args: Prisma.AugmentMediaUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           deleteMany: {
-            args: Prisma.AugmentMediaDeleteManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentMediaDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.AugmentMediaUpdateManyArgs<ExtArgs>,
+            args: Prisma.AssetAugmentMediaUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.AugmentMediaUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$AugmentMediaPayload>
+            args: Prisma.AssetAugmentMediaUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AssetAugmentMediaPayload>
           }
           aggregate: {
-            args: Prisma.AugmentMediaAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateAugmentMedia>
+            args: Prisma.AssetAugmentMediaAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAssetAugmentMedia>
           }
           groupBy: {
-            args: Prisma.AugmentMediaGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<AugmentMediaGroupByOutputType>[]
+            args: Prisma.AssetAugmentMediaGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AssetAugmentMediaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AugmentMediaCountArgs<ExtArgs>,
-            result: $Utils.Optional<AugmentMediaCountAggregateOutputType> | number
+            args: Prisma.AssetAugmentMediaCountArgs<ExtArgs>,
+            result: $Utils.Optional<AssetAugmentMediaCountAggregateOutputType> | number
           }
         }
       }
@@ -4740,38 +4740,38 @@ export namespace Prisma {
    * AssetCountOutputType without action
    */
   export type AssetCountOutputTypeCountAugmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
   }
 
 
   /**
-   * Count Type AugmentCountOutputType
+   * Count Type AssetAugmentCountOutputType
    */
 
-  export type AugmentCountOutputType = {
+  export type AssetAugmentCountOutputType = {
     media: number
   }
 
-  export type AugmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    media?: boolean | AugmentCountOutputTypeCountMediaArgs
+  export type AssetAugmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    media?: boolean | AssetAugmentCountOutputTypeCountMediaArgs
   }
 
   // Custom InputTypes
   /**
-   * AugmentCountOutputType without action
+   * AssetAugmentCountOutputType without action
    */
-  export type AugmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentCountOutputType
+     * Select specific fields to fetch from the AssetAugmentCountOutputType
      */
-    select?: AugmentCountOutputTypeSelect<ExtArgs> | null
+    select?: AssetAugmentCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * AugmentCountOutputType without action
+   * AssetAugmentCountOutputType without action
    */
-  export type AugmentCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AugmentMediaWhereInput
+  export type AssetAugmentCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssetAugmentMediaWhereInput
   }
 
 
@@ -12455,7 +12455,7 @@ export namespace Prisma {
     objects: {
       foot: Prisma.$FootPayload<ExtArgs>
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
-      augments: Prisma.$AugmentPayload<ExtArgs>[]
+      augments: Prisma.$AssetAugmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12865,7 +12865,7 @@ export namespace Prisma {
 
     workbenches<T extends Asset$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Asset$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    augments<T extends Asset$augmentsArgs<ExtArgs> = {}>(args?: Subset<T, Asset$augmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findMany'> | Null>;
+    augments<T extends Asset$augmentsArgs<ExtArgs> = {}>(args?: Subset<T, Asset$augmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -13249,19 +13249,19 @@ export namespace Prisma {
    */
   export type Asset$augmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
-    where?: AugmentWhereInput
-    orderBy?: AugmentOrderByWithRelationInput | AugmentOrderByWithRelationInput[]
-    cursor?: AugmentWhereUniqueInput
+    include?: AssetAugmentInclude<ExtArgs> | null
+    where?: AssetAugmentWhereInput
+    orderBy?: AssetAugmentOrderByWithRelationInput | AssetAugmentOrderByWithRelationInput[]
+    cursor?: AssetAugmentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AugmentScalarFieldEnum | AugmentScalarFieldEnum[]
+    distinct?: AssetAugmentScalarFieldEnum | AssetAugmentScalarFieldEnum[]
   }
 
   /**
@@ -13280,363 +13280,353 @@ export namespace Prisma {
 
 
   /**
-   * Model Augment
+   * Model AssetAugment
    */
 
-  export type AggregateAugment = {
-    _count: AugmentCountAggregateOutputType | null
-    _min: AugmentMinAggregateOutputType | null
-    _max: AugmentMaxAggregateOutputType | null
+  export type AggregateAssetAugment = {
+    _count: AssetAugmentCountAggregateOutputType | null
+    _min: AssetAugmentMinAggregateOutputType | null
+    _max: AssetAugmentMaxAggregateOutputType | null
   }
 
-  export type AugmentMinAggregateOutputType = {
+  export type AssetAugmentMinAggregateOutputType = {
     id: string | null
     assetId: string | null
-    type: $Enums.AugmentType | null
-    active: boolean | null
+    type: $Enums.AssetAugmentType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type AugmentMaxAggregateOutputType = {
+  export type AssetAugmentMaxAggregateOutputType = {
     id: string | null
     assetId: string | null
-    type: $Enums.AugmentType | null
-    active: boolean | null
+    type: $Enums.AssetAugmentType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type AugmentCountAggregateOutputType = {
+  export type AssetAugmentCountAggregateOutputType = {
     id: number
     assetId: number
     type: number
     data: number
-    active: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type AugmentMinAggregateInputType = {
+  export type AssetAugmentMinAggregateInputType = {
     id?: true
     assetId?: true
     type?: true
-    active?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type AugmentMaxAggregateInputType = {
+  export type AssetAugmentMaxAggregateInputType = {
     id?: true
     assetId?: true
     type?: true
-    active?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type AugmentCountAggregateInputType = {
+  export type AssetAugmentCountAggregateInputType = {
     id?: true
     assetId?: true
     type?: true
     data?: true
-    active?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type AugmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Augment to aggregate.
+     * Filter which AssetAugment to aggregate.
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Augments to fetch.
+     * Determine the order of AssetAugments to fetch.
      */
-    orderBy?: AugmentOrderByWithRelationInput | AugmentOrderByWithRelationInput[]
+    orderBy?: AssetAugmentOrderByWithRelationInput | AssetAugmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AugmentWhereUniqueInput
+    cursor?: AssetAugmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Augments from the position of the cursor.
+     * Take `±n` AssetAugments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Augments.
+     * Skip the first `n` AssetAugments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Augments
+     * Count returned AssetAugments
     **/
-    _count?: true | AugmentCountAggregateInputType
+    _count?: true | AssetAugmentCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AugmentMinAggregateInputType
+    _min?: AssetAugmentMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AugmentMaxAggregateInputType
+    _max?: AssetAugmentMaxAggregateInputType
   }
 
-  export type GetAugmentAggregateType<T extends AugmentAggregateArgs> = {
-        [P in keyof T & keyof AggregateAugment]: P extends '_count' | 'count'
+  export type GetAssetAugmentAggregateType<T extends AssetAugmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateAssetAugment]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAugment[P]>
-      : GetScalarType<T[P], AggregateAugment[P]>
+        : GetScalarType<T[P], AggregateAssetAugment[P]>
+      : GetScalarType<T[P], AggregateAssetAugment[P]>
   }
 
 
 
 
-  export type AugmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AugmentWhereInput
-    orderBy?: AugmentOrderByWithAggregationInput | AugmentOrderByWithAggregationInput[]
-    by: AugmentScalarFieldEnum[] | AugmentScalarFieldEnum
-    having?: AugmentScalarWhereWithAggregatesInput
+  export type AssetAugmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssetAugmentWhereInput
+    orderBy?: AssetAugmentOrderByWithAggregationInput | AssetAugmentOrderByWithAggregationInput[]
+    by: AssetAugmentScalarFieldEnum[] | AssetAugmentScalarFieldEnum
+    having?: AssetAugmentScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AugmentCountAggregateInputType | true
-    _min?: AugmentMinAggregateInputType
-    _max?: AugmentMaxAggregateInputType
+    _count?: AssetAugmentCountAggregateInputType | true
+    _min?: AssetAugmentMinAggregateInputType
+    _max?: AssetAugmentMaxAggregateInputType
   }
 
-  export type AugmentGroupByOutputType = {
+  export type AssetAugmentGroupByOutputType = {
     id: string
     assetId: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data: JsonValue | null
-    active: boolean
     createdAt: Date
     updatedAt: Date
-    _count: AugmentCountAggregateOutputType | null
-    _min: AugmentMinAggregateOutputType | null
-    _max: AugmentMaxAggregateOutputType | null
+    _count: AssetAugmentCountAggregateOutputType | null
+    _min: AssetAugmentMinAggregateOutputType | null
+    _max: AssetAugmentMaxAggregateOutputType | null
   }
 
-  type GetAugmentGroupByPayload<T extends AugmentGroupByArgs> = Prisma.PrismaPromise<
+  type GetAssetAugmentGroupByPayload<T extends AssetAugmentGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AugmentGroupByOutputType, T['by']> &
+      PickEnumerable<AssetAugmentGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AugmentGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AssetAugmentGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AugmentGroupByOutputType[P]>
-            : GetScalarType<T[P], AugmentGroupByOutputType[P]>
+              : GetScalarType<T[P], AssetAugmentGroupByOutputType[P]>
+            : GetScalarType<T[P], AssetAugmentGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AugmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AssetAugmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     assetId?: boolean
     type?: boolean
     data?: boolean
-    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     asset?: boolean | AssetDefaultArgs<ExtArgs>
-    media?: boolean | Augment$mediaArgs<ExtArgs>
-    _count?: boolean | AugmentCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["augment"]>
+    media?: boolean | AssetAugment$mediaArgs<ExtArgs>
+    _count?: boolean | AssetAugmentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["assetAugment"]>
 
-  export type AugmentSelectScalar = {
+  export type AssetAugmentSelectScalar = {
     id?: boolean
     assetId?: boolean
     type?: boolean
     data?: boolean
-    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
 
-  export type AugmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     asset?: boolean | AssetDefaultArgs<ExtArgs>
-    media?: boolean | Augment$mediaArgs<ExtArgs>
-    _count?: boolean | AugmentCountOutputTypeDefaultArgs<ExtArgs>
+    media?: boolean | AssetAugment$mediaArgs<ExtArgs>
+    _count?: boolean | AssetAugmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $AugmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Augment"
+  export type $AssetAugmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AssetAugment"
     objects: {
       asset: Prisma.$AssetPayload<ExtArgs>
-      media: Prisma.$AugmentMediaPayload<ExtArgs>[]
+      media: Prisma.$AssetAugmentMediaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       assetId: string
-      type: $Enums.AugmentType
+      type: $Enums.AssetAugmentType
       data: Prisma.JsonValue | null
-      active: boolean
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["augment"]>
+    }, ExtArgs["result"]["assetAugment"]>
     composites: {}
   }
 
 
-  type AugmentGetPayload<S extends boolean | null | undefined | AugmentDefaultArgs> = $Result.GetResult<Prisma.$AugmentPayload, S>
+  type AssetAugmentGetPayload<S extends boolean | null | undefined | AssetAugmentDefaultArgs> = $Result.GetResult<Prisma.$AssetAugmentPayload, S>
 
-  type AugmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<AugmentFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: AugmentCountAggregateInputType | true
+  type AssetAugmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AssetAugmentFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AssetAugmentCountAggregateInputType | true
     }
 
-  export interface AugmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Augment'], meta: { name: 'Augment' } }
+  export interface AssetAugmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AssetAugment'], meta: { name: 'AssetAugment' } }
     /**
-     * Find zero or one Augment that matches the filter.
-     * @param {AugmentFindUniqueArgs} args - Arguments to find a Augment
+     * Find zero or one AssetAugment that matches the filter.
+     * @param {AssetAugmentFindUniqueArgs} args - Arguments to find a AssetAugment
      * @example
-     * // Get one Augment
-     * const augment = await prisma.augment.findUnique({
+     * // Get one AssetAugment
+     * const assetAugment = await prisma.assetAugment.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends AugmentFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentFindUniqueArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends AssetAugmentFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentFindUniqueArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Augment that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one AssetAugment that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {AugmentFindUniqueOrThrowArgs} args - Arguments to find a Augment
+     * @param {AssetAugmentFindUniqueOrThrowArgs} args - Arguments to find a AssetAugment
      * @example
-     * // Get one Augment
-     * const augment = await prisma.augment.findUniqueOrThrow({
+     * // Get one AssetAugment
+     * const assetAugment = await prisma.assetAugment.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends AugmentFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends AssetAugmentFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Augment that matches the filter.
+     * Find the first AssetAugment that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentFindFirstArgs} args - Arguments to find a Augment
+     * @param {AssetAugmentFindFirstArgs} args - Arguments to find a AssetAugment
      * @example
-     * // Get one Augment
-     * const augment = await prisma.augment.findFirst({
+     * // Get one AssetAugment
+     * const assetAugment = await prisma.assetAugment.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends AugmentFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentFindFirstArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends AssetAugmentFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentFindFirstArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Augment that matches the filter or
+     * Find the first AssetAugment that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentFindFirstOrThrowArgs} args - Arguments to find a Augment
+     * @param {AssetAugmentFindFirstOrThrowArgs} args - Arguments to find a AssetAugment
      * @example
-     * // Get one Augment
-     * const augment = await prisma.augment.findFirstOrThrow({
+     * // Get one AssetAugment
+     * const assetAugment = await prisma.assetAugment.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends AugmentFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends AssetAugmentFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Augments that matches the filter.
+     * Find zero or more AssetAugments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AssetAugmentFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Augments
-     * const augments = await prisma.augment.findMany()
+     * // Get all AssetAugments
+     * const assetAugments = await prisma.assetAugment.findMany()
      * 
-     * // Get first 10 Augments
-     * const augments = await prisma.augment.findMany({ take: 10 })
+     * // Get first 10 AssetAugments
+     * const assetAugments = await prisma.assetAugment.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const augmentWithIdOnly = await prisma.augment.findMany({ select: { id: true } })
+     * const assetAugmentWithIdOnly = await prisma.assetAugment.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends AugmentFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends AssetAugmentFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Augment.
-     * @param {AugmentCreateArgs} args - Arguments to create a Augment.
+     * Create a AssetAugment.
+     * @param {AssetAugmentCreateArgs} args - Arguments to create a AssetAugment.
      * @example
-     * // Create one Augment
-     * const Augment = await prisma.augment.create({
+     * // Create one AssetAugment
+     * const AssetAugment = await prisma.assetAugment.create({
      *   data: {
-     *     // ... data to create a Augment
+     *     // ... data to create a AssetAugment
      *   }
      * })
      * 
     **/
-    create<T extends AugmentCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentCreateArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends AssetAugmentCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentCreateArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Augments.
-     * @param {AugmentCreateManyArgs} args - Arguments to create many Augments.
+     * Create many AssetAugments.
+     * @param {AssetAugmentCreateManyArgs} args - Arguments to create many AssetAugments.
      * @example
-     * // Create many Augments
-     * const augment = await prisma.augment.createMany({
+     * // Create many AssetAugments
+     * const assetAugment = await prisma.assetAugment.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends AugmentCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentCreateManyArgs<ExtArgs>>
+    createMany<T extends AssetAugmentCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Augments and returns the data saved in the database.
-     * @param {AugmentCreateManyAndReturnArgs} args - Arguments to create many Augments.
+     * Create many AssetAugments and returns the data saved in the database.
+     * @param {AssetAugmentCreateManyAndReturnArgs} args - Arguments to create many AssetAugments.
      * @example
-     * // Create many Augments
-     * const augment = await prisma.augment.createManyAndReturn({
+     * // Create many AssetAugments
+     * const assetAugment = await prisma.assetAugment.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Augments and only return the `id`
-     * const augmentWithIdOnly = await prisma.augment.createManyAndReturn({ 
+     * // Create many AssetAugments and only return the `id`
+     * const assetAugmentWithIdOnly = await prisma.assetAugment.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -13646,32 +13636,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends AugmentCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends AssetAugmentCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a Augment.
-     * @param {AugmentDeleteArgs} args - Arguments to delete one Augment.
+     * Delete a AssetAugment.
+     * @param {AssetAugmentDeleteArgs} args - Arguments to delete one AssetAugment.
      * @example
-     * // Delete one Augment
-     * const Augment = await prisma.augment.delete({
+     * // Delete one AssetAugment
+     * const AssetAugment = await prisma.assetAugment.delete({
      *   where: {
-     *     // ... filter to delete one Augment
+     *     // ... filter to delete one AssetAugment
      *   }
      * })
      * 
     **/
-    delete<T extends AugmentDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentDeleteArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends AssetAugmentDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentDeleteArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Augment.
-     * @param {AugmentUpdateArgs} args - Arguments to update one Augment.
+     * Update one AssetAugment.
+     * @param {AssetAugmentUpdateArgs} args - Arguments to update one AssetAugment.
      * @example
-     * // Update one Augment
-     * const augment = await prisma.augment.update({
+     * // Update one AssetAugment
+     * const assetAugment = await prisma.assetAugment.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13681,34 +13671,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends AugmentUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentUpdateArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends AssetAugmentUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentUpdateArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Augments.
-     * @param {AugmentDeleteManyArgs} args - Arguments to filter Augments to delete.
+     * Delete zero or more AssetAugments.
+     * @param {AssetAugmentDeleteManyArgs} args - Arguments to filter AssetAugments to delete.
      * @example
-     * // Delete a few Augments
-     * const { count } = await prisma.augment.deleteMany({
+     * // Delete a few AssetAugments
+     * const { count } = await prisma.assetAugment.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends AugmentDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends AssetAugmentDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Augments.
+     * Update zero or more AssetAugments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AssetAugmentUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Augments
-     * const augment = await prisma.augment.updateMany({
+     * // Update many AssetAugments
+     * const assetAugment = await prisma.assetAugment.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13718,59 +13708,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends AugmentUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentUpdateManyArgs<ExtArgs>>
+    updateMany<T extends AssetAugmentUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Augment.
-     * @param {AugmentUpsertArgs} args - Arguments to update or create a Augment.
+     * Create or update one AssetAugment.
+     * @param {AssetAugmentUpsertArgs} args - Arguments to update or create a AssetAugment.
      * @example
-     * // Update or create a Augment
-     * const augment = await prisma.augment.upsert({
+     * // Update or create a AssetAugment
+     * const assetAugment = await prisma.assetAugment.upsert({
      *   create: {
-     *     // ... data to create a Augment
+     *     // ... data to create a AssetAugment
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Augment we want to update
+     *     // ... the filter for the AssetAugment we want to update
      *   }
      * })
     **/
-    upsert<T extends AugmentUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentUpsertArgs<ExtArgs>>
-    ): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends AssetAugmentUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentUpsertArgs<ExtArgs>>
+    ): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Augments.
+     * Count the number of AssetAugments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentCountArgs} args - Arguments to filter Augments to count.
+     * @param {AssetAugmentCountArgs} args - Arguments to filter AssetAugments to count.
      * @example
-     * // Count the number of Augments
-     * const count = await prisma.augment.count({
+     * // Count the number of AssetAugments
+     * const count = await prisma.assetAugment.count({
      *   where: {
-     *     // ... the filter for the Augments we want to count
+     *     // ... the filter for the AssetAugments we want to count
      *   }
      * })
     **/
-    count<T extends AugmentCountArgs>(
-      args?: Subset<T, AugmentCountArgs>,
+    count<T extends AssetAugmentCountArgs>(
+      args?: Subset<T, AssetAugmentCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AugmentCountAggregateOutputType>
+          : GetScalarType<T['select'], AssetAugmentCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Augment.
+     * Allows you to perform aggregations operations on a AssetAugment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AssetAugmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -13790,13 +13780,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AugmentAggregateArgs>(args: Subset<T, AugmentAggregateArgs>): Prisma.PrismaPromise<GetAugmentAggregateType<T>>
+    aggregate<T extends AssetAugmentAggregateArgs>(args: Subset<T, AssetAugmentAggregateArgs>): Prisma.PrismaPromise<GetAssetAugmentAggregateType<T>>
 
     /**
-     * Group by Augment.
+     * Group by AssetAugment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentGroupByArgs} args - Group by arguments.
+     * @param {AssetAugmentGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -13811,14 +13801,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AugmentGroupByArgs,
+      T extends AssetAugmentGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AugmentGroupByArgs['orderBy'] }
-        : { orderBy?: AugmentGroupByArgs['orderBy'] },
+        ? { orderBy: AssetAugmentGroupByArgs['orderBy'] }
+        : { orderBy?: AssetAugmentGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -13867,25 +13857,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AugmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAugmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AssetAugmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssetAugmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Augment model
+   * Fields of the AssetAugment model
    */
-  readonly fields: AugmentFieldRefs;
+  readonly fields: AssetAugmentFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Augment.
+   * The delegate class that acts as a "Promise-like" for AssetAugment.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AugmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AssetAugmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     asset<T extends AssetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssetDefaultArgs<ExtArgs>>): Prisma__AssetClient<$Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    media<T extends Augment$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Augment$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findMany'> | Null>;
+    media<T extends AssetAugment$mediaArgs<ExtArgs> = {}>(args?: Subset<T, AssetAugment$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -13912,379 +13902,378 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Augment model
+   * Fields of the AssetAugment model
    */ 
-  interface AugmentFieldRefs {
-    readonly id: FieldRef<"Augment", 'String'>
-    readonly assetId: FieldRef<"Augment", 'String'>
-    readonly type: FieldRef<"Augment", 'AugmentType'>
-    readonly data: FieldRef<"Augment", 'Json'>
-    readonly active: FieldRef<"Augment", 'Boolean'>
-    readonly createdAt: FieldRef<"Augment", 'DateTime'>
-    readonly updatedAt: FieldRef<"Augment", 'DateTime'>
+  interface AssetAugmentFieldRefs {
+    readonly id: FieldRef<"AssetAugment", 'String'>
+    readonly assetId: FieldRef<"AssetAugment", 'String'>
+    readonly type: FieldRef<"AssetAugment", 'AssetAugmentType'>
+    readonly data: FieldRef<"AssetAugment", 'Json'>
+    readonly createdAt: FieldRef<"AssetAugment", 'DateTime'>
+    readonly updatedAt: FieldRef<"AssetAugment", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Augment findUnique
+   * AssetAugment findUnique
    */
-  export type AugmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter, which Augment to fetch.
+     * Filter, which AssetAugment to fetch.
      */
-    where: AugmentWhereUniqueInput
+    where: AssetAugmentWhereUniqueInput
   }
 
   /**
-   * Augment findUniqueOrThrow
+   * AssetAugment findUniqueOrThrow
    */
-  export type AugmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter, which Augment to fetch.
+     * Filter, which AssetAugment to fetch.
      */
-    where: AugmentWhereUniqueInput
+    where: AssetAugmentWhereUniqueInput
   }
 
   /**
-   * Augment findFirst
+   * AssetAugment findFirst
    */
-  export type AugmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter, which Augment to fetch.
+     * Filter, which AssetAugment to fetch.
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Augments to fetch.
+     * Determine the order of AssetAugments to fetch.
      */
-    orderBy?: AugmentOrderByWithRelationInput | AugmentOrderByWithRelationInput[]
+    orderBy?: AssetAugmentOrderByWithRelationInput | AssetAugmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Augments.
+     * Sets the position for searching for AssetAugments.
      */
-    cursor?: AugmentWhereUniqueInput
+    cursor?: AssetAugmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Augments from the position of the cursor.
+     * Take `±n` AssetAugments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Augments.
+     * Skip the first `n` AssetAugments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Augments.
+     * Filter by unique combinations of AssetAugments.
      */
-    distinct?: AugmentScalarFieldEnum | AugmentScalarFieldEnum[]
+    distinct?: AssetAugmentScalarFieldEnum | AssetAugmentScalarFieldEnum[]
   }
 
   /**
-   * Augment findFirstOrThrow
+   * AssetAugment findFirstOrThrow
    */
-  export type AugmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter, which Augment to fetch.
+     * Filter, which AssetAugment to fetch.
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Augments to fetch.
+     * Determine the order of AssetAugments to fetch.
      */
-    orderBy?: AugmentOrderByWithRelationInput | AugmentOrderByWithRelationInput[]
+    orderBy?: AssetAugmentOrderByWithRelationInput | AssetAugmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Augments.
+     * Sets the position for searching for AssetAugments.
      */
-    cursor?: AugmentWhereUniqueInput
+    cursor?: AssetAugmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Augments from the position of the cursor.
+     * Take `±n` AssetAugments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Augments.
+     * Skip the first `n` AssetAugments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Augments.
+     * Filter by unique combinations of AssetAugments.
      */
-    distinct?: AugmentScalarFieldEnum | AugmentScalarFieldEnum[]
+    distinct?: AssetAugmentScalarFieldEnum | AssetAugmentScalarFieldEnum[]
   }
 
   /**
-   * Augment findMany
+   * AssetAugment findMany
    */
-  export type AugmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter, which Augments to fetch.
+     * Filter, which AssetAugments to fetch.
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Augments to fetch.
+     * Determine the order of AssetAugments to fetch.
      */
-    orderBy?: AugmentOrderByWithRelationInput | AugmentOrderByWithRelationInput[]
+    orderBy?: AssetAugmentOrderByWithRelationInput | AssetAugmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Augments.
+     * Sets the position for listing AssetAugments.
      */
-    cursor?: AugmentWhereUniqueInput
+    cursor?: AssetAugmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Augments from the position of the cursor.
+     * Take `±n` AssetAugments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Augments.
+     * Skip the first `n` AssetAugments.
      */
     skip?: number
-    distinct?: AugmentScalarFieldEnum | AugmentScalarFieldEnum[]
+    distinct?: AssetAugmentScalarFieldEnum | AssetAugmentScalarFieldEnum[]
   }
 
   /**
-   * Augment create
+   * AssetAugment create
    */
-  export type AugmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * The data needed to create a Augment.
+     * The data needed to create a AssetAugment.
      */
-    data: XOR<AugmentCreateInput, AugmentUncheckedCreateInput>
+    data: XOR<AssetAugmentCreateInput, AssetAugmentUncheckedCreateInput>
   }
 
   /**
-   * Augment createMany
+   * AssetAugment createMany
    */
-  export type AugmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Augments.
+     * The data used to create many AssetAugments.
      */
-    data: AugmentCreateManyInput | AugmentCreateManyInput[]
+    data: AssetAugmentCreateManyInput | AssetAugmentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Augment createManyAndReturn
+   * AssetAugment createManyAndReturn
    */
-  export type AugmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * The data used to create many Augments.
+     * The data used to create many AssetAugments.
      */
-    data: AugmentCreateManyInput | AugmentCreateManyInput[]
+    data: AssetAugmentCreateManyInput | AssetAugmentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Augment update
+   * AssetAugment update
    */
-  export type AugmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * The data needed to update a Augment.
+     * The data needed to update a AssetAugment.
      */
-    data: XOR<AugmentUpdateInput, AugmentUncheckedUpdateInput>
+    data: XOR<AssetAugmentUpdateInput, AssetAugmentUncheckedUpdateInput>
     /**
-     * Choose, which Augment to update.
+     * Choose, which AssetAugment to update.
      */
-    where: AugmentWhereUniqueInput
+    where: AssetAugmentWhereUniqueInput
   }
 
   /**
-   * Augment updateMany
+   * AssetAugment updateMany
    */
-  export type AugmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Augments.
+     * The data used to update AssetAugments.
      */
-    data: XOR<AugmentUpdateManyMutationInput, AugmentUncheckedUpdateManyInput>
+    data: XOR<AssetAugmentUpdateManyMutationInput, AssetAugmentUncheckedUpdateManyInput>
     /**
-     * Filter which Augments to update
+     * Filter which AssetAugments to update
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
   }
 
   /**
-   * Augment upsert
+   * AssetAugment upsert
    */
-  export type AugmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * The filter to search for the Augment to update in case it exists.
+     * The filter to search for the AssetAugment to update in case it exists.
      */
-    where: AugmentWhereUniqueInput
+    where: AssetAugmentWhereUniqueInput
     /**
-     * In case the Augment found by the `where` argument doesn't exist, create a new Augment with this data.
+     * In case the AssetAugment found by the `where` argument doesn't exist, create a new AssetAugment with this data.
      */
-    create: XOR<AugmentCreateInput, AugmentUncheckedCreateInput>
+    create: XOR<AssetAugmentCreateInput, AssetAugmentUncheckedCreateInput>
     /**
-     * In case the Augment was found with the provided `where` argument, update it with this data.
+     * In case the AssetAugment was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AugmentUpdateInput, AugmentUncheckedUpdateInput>
+    update: XOR<AssetAugmentUpdateInput, AssetAugmentUncheckedUpdateInput>
   }
 
   /**
-   * Augment delete
+   * AssetAugment delete
    */
-  export type AugmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
     /**
-     * Filter which Augment to delete.
+     * Filter which AssetAugment to delete.
      */
-    where: AugmentWhereUniqueInput
+    where: AssetAugmentWhereUniqueInput
   }
 
   /**
-   * Augment deleteMany
+   * AssetAugment deleteMany
    */
-  export type AugmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Augments to delete
+     * Filter which AssetAugments to delete
      */
-    where?: AugmentWhereInput
+    where?: AssetAugmentWhereInput
   }
 
   /**
-   * Augment.media
+   * AssetAugment.media
    */
-  export type Augment$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugment$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
-    where?: AugmentMediaWhereInput
-    orderBy?: AugmentMediaOrderByWithRelationInput | AugmentMediaOrderByWithRelationInput[]
-    cursor?: AugmentMediaWhereUniqueInput
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
+    where?: AssetAugmentMediaWhereInput
+    orderBy?: AssetAugmentMediaOrderByWithRelationInput | AssetAugmentMediaOrderByWithRelationInput[]
+    cursor?: AssetAugmentMediaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AugmentMediaScalarFieldEnum | AugmentMediaScalarFieldEnum[]
+    distinct?: AssetAugmentMediaScalarFieldEnum | AssetAugmentMediaScalarFieldEnum[]
   }
 
   /**
-   * Augment without action
+   * AssetAugment without action
    */
-  export type AugmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Augment
+     * Select specific fields to fetch from the AssetAugment
      */
-    select?: AugmentSelect<ExtArgs> | null
+    select?: AssetAugmentSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentInclude<ExtArgs> | null
+    include?: AssetAugmentInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model AugmentMedia
+   * Model AssetAugmentMedia
    */
 
-  export type AggregateAugmentMedia = {
-    _count: AugmentMediaCountAggregateOutputType | null
-    _min: AugmentMediaMinAggregateOutputType | null
-    _max: AugmentMediaMaxAggregateOutputType | null
+  export type AggregateAssetAugmentMedia = {
+    _count: AssetAugmentMediaCountAggregateOutputType | null
+    _min: AssetAugmentMediaMinAggregateOutputType | null
+    _max: AssetAugmentMediaMaxAggregateOutputType | null
   }
 
-  export type AugmentMediaMinAggregateOutputType = {
+  export type AssetAugmentMediaMinAggregateOutputType = {
     id: string | null
     augmentId: string | null
     region: string | null
@@ -14297,7 +14286,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type AugmentMediaMaxAggregateOutputType = {
+  export type AssetAugmentMediaMaxAggregateOutputType = {
     id: string | null
     augmentId: string | null
     region: string | null
@@ -14310,7 +14299,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type AugmentMediaCountAggregateOutputType = {
+  export type AssetAugmentMediaCountAggregateOutputType = {
     id: number
     augmentId: number
     data: number
@@ -14326,7 +14315,7 @@ export namespace Prisma {
   }
 
 
-  export type AugmentMediaMinAggregateInputType = {
+  export type AssetAugmentMediaMinAggregateInputType = {
     id?: true
     augmentId?: true
     region?: true
@@ -14339,7 +14328,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type AugmentMediaMaxAggregateInputType = {
+  export type AssetAugmentMediaMaxAggregateInputType = {
     id?: true
     augmentId?: true
     region?: true
@@ -14352,7 +14341,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type AugmentMediaCountAggregateInputType = {
+  export type AssetAugmentMediaCountAggregateInputType = {
     id?: true
     augmentId?: true
     data?: true
@@ -14367,79 +14356,79 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AugmentMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AugmentMedia to aggregate.
+     * Filter which AssetAugmentMedia to aggregate.
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AugmentMedias to fetch.
+     * Determine the order of AssetAugmentMedias to fetch.
      */
-    orderBy?: AugmentMediaOrderByWithRelationInput | AugmentMediaOrderByWithRelationInput[]
+    orderBy?: AssetAugmentMediaOrderByWithRelationInput | AssetAugmentMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AugmentMediaWhereUniqueInput
+    cursor?: AssetAugmentMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AugmentMedias from the position of the cursor.
+     * Take `±n` AssetAugmentMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AugmentMedias.
+     * Skip the first `n` AssetAugmentMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned AugmentMedias
+     * Count returned AssetAugmentMedias
     **/
-    _count?: true | AugmentMediaCountAggregateInputType
+    _count?: true | AssetAugmentMediaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AugmentMediaMinAggregateInputType
+    _min?: AssetAugmentMediaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AugmentMediaMaxAggregateInputType
+    _max?: AssetAugmentMediaMaxAggregateInputType
   }
 
-  export type GetAugmentMediaAggregateType<T extends AugmentMediaAggregateArgs> = {
-        [P in keyof T & keyof AggregateAugmentMedia]: P extends '_count' | 'count'
+  export type GetAssetAugmentMediaAggregateType<T extends AssetAugmentMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateAssetAugmentMedia]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAugmentMedia[P]>
-      : GetScalarType<T[P], AggregateAugmentMedia[P]>
+        : GetScalarType<T[P], AggregateAssetAugmentMedia[P]>
+      : GetScalarType<T[P], AggregateAssetAugmentMedia[P]>
   }
 
 
 
 
-  export type AugmentMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AugmentMediaWhereInput
-    orderBy?: AugmentMediaOrderByWithAggregationInput | AugmentMediaOrderByWithAggregationInput[]
-    by: AugmentMediaScalarFieldEnum[] | AugmentMediaScalarFieldEnum
-    having?: AugmentMediaScalarWhereWithAggregatesInput
+  export type AssetAugmentMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssetAugmentMediaWhereInput
+    orderBy?: AssetAugmentMediaOrderByWithAggregationInput | AssetAugmentMediaOrderByWithAggregationInput[]
+    by: AssetAugmentMediaScalarFieldEnum[] | AssetAugmentMediaScalarFieldEnum
+    having?: AssetAugmentMediaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AugmentMediaCountAggregateInputType | true
-    _min?: AugmentMediaMinAggregateInputType
-    _max?: AugmentMediaMaxAggregateInputType
+    _count?: AssetAugmentMediaCountAggregateInputType | true
+    _min?: AssetAugmentMediaMinAggregateInputType
+    _max?: AssetAugmentMediaMaxAggregateInputType
   }
 
-  export type AugmentMediaGroupByOutputType = {
+  export type AssetAugmentMediaGroupByOutputType = {
     id: string
     augmentId: string
     data: JsonValue | null
@@ -14451,26 +14440,26 @@ export namespace Prisma {
     reviewedAt: Date | null
     createdAt: Date
     updatedAt: Date
-    _count: AugmentMediaCountAggregateOutputType | null
-    _min: AugmentMediaMinAggregateOutputType | null
-    _max: AugmentMediaMaxAggregateOutputType | null
+    _count: AssetAugmentMediaCountAggregateOutputType | null
+    _min: AssetAugmentMediaMinAggregateOutputType | null
+    _max: AssetAugmentMediaMaxAggregateOutputType | null
   }
 
-  type GetAugmentMediaGroupByPayload<T extends AugmentMediaGroupByArgs> = Prisma.PrismaPromise<
+  type GetAssetAugmentMediaGroupByPayload<T extends AssetAugmentMediaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AugmentMediaGroupByOutputType, T['by']> &
+      PickEnumerable<AssetAugmentMediaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AugmentMediaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AssetAugmentMediaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AugmentMediaGroupByOutputType[P]>
-            : GetScalarType<T[P], AugmentMediaGroupByOutputType[P]>
+              : GetScalarType<T[P], AssetAugmentMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], AssetAugmentMediaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AugmentMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AssetAugmentMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     augmentId?: boolean
     data?: boolean
@@ -14482,10 +14471,10 @@ export namespace Prisma {
     reviewedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    augment?: boolean | AugmentDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["augmentMedia"]>
+    augment?: boolean | AssetAugmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["assetAugmentMedia"]>
 
-  export type AugmentMediaSelectScalar = {
+  export type AssetAugmentMediaSelectScalar = {
     id?: boolean
     augmentId?: boolean
     data?: boolean
@@ -14500,15 +14489,15 @@ export namespace Prisma {
   }
 
 
-  export type AugmentMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    augment?: boolean | AugmentDefaultArgs<ExtArgs>
+  export type AssetAugmentMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    augment?: boolean | AssetAugmentDefaultArgs<ExtArgs>
   }
 
 
-  export type $AugmentMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AugmentMedia"
+  export type $AssetAugmentMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AssetAugmentMedia"
     objects: {
-      augment: Prisma.$AugmentPayload<ExtArgs>
+      augment: Prisma.$AssetAugmentPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14522,151 +14511,151 @@ export namespace Prisma {
       reviewedAt: Date | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["augmentMedia"]>
+    }, ExtArgs["result"]["assetAugmentMedia"]>
     composites: {}
   }
 
 
-  type AugmentMediaGetPayload<S extends boolean | null | undefined | AugmentMediaDefaultArgs> = $Result.GetResult<Prisma.$AugmentMediaPayload, S>
+  type AssetAugmentMediaGetPayload<S extends boolean | null | undefined | AssetAugmentMediaDefaultArgs> = $Result.GetResult<Prisma.$AssetAugmentMediaPayload, S>
 
-  type AugmentMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<AugmentMediaFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: AugmentMediaCountAggregateInputType | true
+  type AssetAugmentMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AssetAugmentMediaFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AssetAugmentMediaCountAggregateInputType | true
     }
 
-  export interface AugmentMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AugmentMedia'], meta: { name: 'AugmentMedia' } }
+  export interface AssetAugmentMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AssetAugmentMedia'], meta: { name: 'AssetAugmentMedia' } }
     /**
-     * Find zero or one AugmentMedia that matches the filter.
-     * @param {AugmentMediaFindUniqueArgs} args - Arguments to find a AugmentMedia
+     * Find zero or one AssetAugmentMedia that matches the filter.
+     * @param {AssetAugmentMediaFindUniqueArgs} args - Arguments to find a AssetAugmentMedia
      * @example
-     * // Get one AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.findUnique({
+     * // Get one AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends AugmentMediaFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaFindUniqueArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends AssetAugmentMediaFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaFindUniqueArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one AugmentMedia that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one AssetAugmentMedia that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {AugmentMediaFindUniqueOrThrowArgs} args - Arguments to find a AugmentMedia
+     * @param {AssetAugmentMediaFindUniqueOrThrowArgs} args - Arguments to find a AssetAugmentMedia
      * @example
-     * // Get one AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.findUniqueOrThrow({
+     * // Get one AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends AugmentMediaFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends AssetAugmentMediaFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first AugmentMedia that matches the filter.
+     * Find the first AssetAugmentMedia that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaFindFirstArgs} args - Arguments to find a AugmentMedia
+     * @param {AssetAugmentMediaFindFirstArgs} args - Arguments to find a AssetAugmentMedia
      * @example
-     * // Get one AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.findFirst({
+     * // Get one AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends AugmentMediaFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaFindFirstArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends AssetAugmentMediaFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaFindFirstArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first AugmentMedia that matches the filter or
+     * Find the first AssetAugmentMedia that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaFindFirstOrThrowArgs} args - Arguments to find a AugmentMedia
+     * @param {AssetAugmentMediaFindFirstOrThrowArgs} args - Arguments to find a AssetAugmentMedia
      * @example
-     * // Get one AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.findFirstOrThrow({
+     * // Get one AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends AugmentMediaFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends AssetAugmentMediaFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more AugmentMedias that matches the filter.
+     * Find zero or more AssetAugmentMedias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AssetAugmentMediaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all AugmentMedias
-     * const augmentMedias = await prisma.augmentMedia.findMany()
+     * // Get all AssetAugmentMedias
+     * const assetAugmentMedias = await prisma.assetAugmentMedia.findMany()
      * 
-     * // Get first 10 AugmentMedias
-     * const augmentMedias = await prisma.augmentMedia.findMany({ take: 10 })
+     * // Get first 10 AssetAugmentMedias
+     * const assetAugmentMedias = await prisma.assetAugmentMedia.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const augmentMediaWithIdOnly = await prisma.augmentMedia.findMany({ select: { id: true } })
+     * const assetAugmentMediaWithIdOnly = await prisma.assetAugmentMedia.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends AugmentMediaFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends AssetAugmentMediaFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a AugmentMedia.
-     * @param {AugmentMediaCreateArgs} args - Arguments to create a AugmentMedia.
+     * Create a AssetAugmentMedia.
+     * @param {AssetAugmentMediaCreateArgs} args - Arguments to create a AssetAugmentMedia.
      * @example
-     * // Create one AugmentMedia
-     * const AugmentMedia = await prisma.augmentMedia.create({
+     * // Create one AssetAugmentMedia
+     * const AssetAugmentMedia = await prisma.assetAugmentMedia.create({
      *   data: {
-     *     // ... data to create a AugmentMedia
+     *     // ... data to create a AssetAugmentMedia
      *   }
      * })
      * 
     **/
-    create<T extends AugmentMediaCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaCreateArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends AssetAugmentMediaCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaCreateArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many AugmentMedias.
-     * @param {AugmentMediaCreateManyArgs} args - Arguments to create many AugmentMedias.
+     * Create many AssetAugmentMedias.
+     * @param {AssetAugmentMediaCreateManyArgs} args - Arguments to create many AssetAugmentMedias.
      * @example
-     * // Create many AugmentMedias
-     * const augmentMedia = await prisma.augmentMedia.createMany({
+     * // Create many AssetAugmentMedias
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends AugmentMediaCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaCreateManyArgs<ExtArgs>>
+    createMany<T extends AssetAugmentMediaCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many AugmentMedias and returns the data saved in the database.
-     * @param {AugmentMediaCreateManyAndReturnArgs} args - Arguments to create many AugmentMedias.
+     * Create many AssetAugmentMedias and returns the data saved in the database.
+     * @param {AssetAugmentMediaCreateManyAndReturnArgs} args - Arguments to create many AssetAugmentMedias.
      * @example
-     * // Create many AugmentMedias
-     * const augmentMedia = await prisma.augmentMedia.createManyAndReturn({
+     * // Create many AssetAugmentMedias
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many AugmentMedias and only return the `id`
-     * const augmentMediaWithIdOnly = await prisma.augmentMedia.createManyAndReturn({ 
+     * // Create many AssetAugmentMedias and only return the `id`
+     * const assetAugmentMediaWithIdOnly = await prisma.assetAugmentMedia.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -14676,32 +14665,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends AugmentMediaCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends AssetAugmentMediaCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a AugmentMedia.
-     * @param {AugmentMediaDeleteArgs} args - Arguments to delete one AugmentMedia.
+     * Delete a AssetAugmentMedia.
+     * @param {AssetAugmentMediaDeleteArgs} args - Arguments to delete one AssetAugmentMedia.
      * @example
-     * // Delete one AugmentMedia
-     * const AugmentMedia = await prisma.augmentMedia.delete({
+     * // Delete one AssetAugmentMedia
+     * const AssetAugmentMedia = await prisma.assetAugmentMedia.delete({
      *   where: {
-     *     // ... filter to delete one AugmentMedia
+     *     // ... filter to delete one AssetAugmentMedia
      *   }
      * })
      * 
     **/
-    delete<T extends AugmentMediaDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaDeleteArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends AssetAugmentMediaDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaDeleteArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one AugmentMedia.
-     * @param {AugmentMediaUpdateArgs} args - Arguments to update one AugmentMedia.
+     * Update one AssetAugmentMedia.
+     * @param {AssetAugmentMediaUpdateArgs} args - Arguments to update one AssetAugmentMedia.
      * @example
-     * // Update one AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.update({
+     * // Update one AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14711,34 +14700,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends AugmentMediaUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaUpdateArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends AssetAugmentMediaUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaUpdateArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more AugmentMedias.
-     * @param {AugmentMediaDeleteManyArgs} args - Arguments to filter AugmentMedias to delete.
+     * Delete zero or more AssetAugmentMedias.
+     * @param {AssetAugmentMediaDeleteManyArgs} args - Arguments to filter AssetAugmentMedias to delete.
      * @example
-     * // Delete a few AugmentMedias
-     * const { count } = await prisma.augmentMedia.deleteMany({
+     * // Delete a few AssetAugmentMedias
+     * const { count } = await prisma.assetAugmentMedia.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends AugmentMediaDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AugmentMediaDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends AssetAugmentMediaDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AssetAugmentMediaDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more AugmentMedias.
+     * Update zero or more AssetAugmentMedias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AssetAugmentMediaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many AugmentMedias
-     * const augmentMedia = await prisma.augmentMedia.updateMany({
+     * // Update many AssetAugmentMedias
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14748,59 +14737,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends AugmentMediaUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaUpdateManyArgs<ExtArgs>>
+    updateMany<T extends AssetAugmentMediaUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one AugmentMedia.
-     * @param {AugmentMediaUpsertArgs} args - Arguments to update or create a AugmentMedia.
+     * Create or update one AssetAugmentMedia.
+     * @param {AssetAugmentMediaUpsertArgs} args - Arguments to update or create a AssetAugmentMedia.
      * @example
-     * // Update or create a AugmentMedia
-     * const augmentMedia = await prisma.augmentMedia.upsert({
+     * // Update or create a AssetAugmentMedia
+     * const assetAugmentMedia = await prisma.assetAugmentMedia.upsert({
      *   create: {
-     *     // ... data to create a AugmentMedia
+     *     // ... data to create a AssetAugmentMedia
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the AugmentMedia we want to update
+     *     // ... the filter for the AssetAugmentMedia we want to update
      *   }
      * })
     **/
-    upsert<T extends AugmentMediaUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, AugmentMediaUpsertArgs<ExtArgs>>
-    ): Prisma__AugmentMediaClient<$Result.GetResult<Prisma.$AugmentMediaPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends AssetAugmentMediaUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AssetAugmentMediaUpsertArgs<ExtArgs>>
+    ): Prisma__AssetAugmentMediaClient<$Result.GetResult<Prisma.$AssetAugmentMediaPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of AugmentMedias.
+     * Count the number of AssetAugmentMedias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaCountArgs} args - Arguments to filter AugmentMedias to count.
+     * @param {AssetAugmentMediaCountArgs} args - Arguments to filter AssetAugmentMedias to count.
      * @example
-     * // Count the number of AugmentMedias
-     * const count = await prisma.augmentMedia.count({
+     * // Count the number of AssetAugmentMedias
+     * const count = await prisma.assetAugmentMedia.count({
      *   where: {
-     *     // ... the filter for the AugmentMedias we want to count
+     *     // ... the filter for the AssetAugmentMedias we want to count
      *   }
      * })
     **/
-    count<T extends AugmentMediaCountArgs>(
-      args?: Subset<T, AugmentMediaCountArgs>,
+    count<T extends AssetAugmentMediaCountArgs>(
+      args?: Subset<T, AssetAugmentMediaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AugmentMediaCountAggregateOutputType>
+          : GetScalarType<T['select'], AssetAugmentMediaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a AugmentMedia.
+     * Allows you to perform aggregations operations on a AssetAugmentMedia.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AssetAugmentMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -14820,13 +14809,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AugmentMediaAggregateArgs>(args: Subset<T, AugmentMediaAggregateArgs>): Prisma.PrismaPromise<GetAugmentMediaAggregateType<T>>
+    aggregate<T extends AssetAugmentMediaAggregateArgs>(args: Subset<T, AssetAugmentMediaAggregateArgs>): Prisma.PrismaPromise<GetAssetAugmentMediaAggregateType<T>>
 
     /**
-     * Group by AugmentMedia.
+     * Group by AssetAugmentMedia.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AugmentMediaGroupByArgs} args - Group by arguments.
+     * @param {AssetAugmentMediaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -14841,14 +14830,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AugmentMediaGroupByArgs,
+      T extends AssetAugmentMediaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AugmentMediaGroupByArgs['orderBy'] }
-        : { orderBy?: AugmentMediaGroupByArgs['orderBy'] },
+        ? { orderBy: AssetAugmentMediaGroupByArgs['orderBy'] }
+        : { orderBy?: AssetAugmentMediaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -14897,23 +14886,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AugmentMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAugmentMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AssetAugmentMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssetAugmentMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the AugmentMedia model
+   * Fields of the AssetAugmentMedia model
    */
-  readonly fields: AugmentMediaFieldRefs;
+  readonly fields: AssetAugmentMediaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for AugmentMedia.
+   * The delegate class that acts as a "Promise-like" for AssetAugmentMedia.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AugmentMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AssetAugmentMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    augment<T extends AugmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AugmentDefaultArgs<ExtArgs>>): Prisma__AugmentClient<$Result.GetResult<Prisma.$AugmentPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    augment<T extends AssetAugmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssetAugmentDefaultArgs<ExtArgs>>): Prisma__AssetAugmentClient<$Result.GetResult<Prisma.$AssetAugmentPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14940,349 +14929,349 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the AugmentMedia model
+   * Fields of the AssetAugmentMedia model
    */ 
-  interface AugmentMediaFieldRefs {
-    readonly id: FieldRef<"AugmentMedia", 'String'>
-    readonly augmentId: FieldRef<"AugmentMedia", 'String'>
-    readonly data: FieldRef<"AugmentMedia", 'Json'>
-    readonly region: FieldRef<"AugmentMedia", 'String'>
-    readonly bucket: FieldRef<"AugmentMedia", 'String'>
-    readonly key: FieldRef<"AugmentMedia", 'String'>
-    readonly active: FieldRef<"AugmentMedia", 'Boolean'>
-    readonly inactiveReason: FieldRef<"AugmentMedia", 'String'>
-    readonly reviewedAt: FieldRef<"AugmentMedia", 'DateTime'>
-    readonly createdAt: FieldRef<"AugmentMedia", 'DateTime'>
-    readonly updatedAt: FieldRef<"AugmentMedia", 'DateTime'>
+  interface AssetAugmentMediaFieldRefs {
+    readonly id: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly augmentId: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly data: FieldRef<"AssetAugmentMedia", 'Json'>
+    readonly region: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly bucket: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly key: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly active: FieldRef<"AssetAugmentMedia", 'Boolean'>
+    readonly inactiveReason: FieldRef<"AssetAugmentMedia", 'String'>
+    readonly reviewedAt: FieldRef<"AssetAugmentMedia", 'DateTime'>
+    readonly createdAt: FieldRef<"AssetAugmentMedia", 'DateTime'>
+    readonly updatedAt: FieldRef<"AssetAugmentMedia", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * AugmentMedia findUnique
+   * AssetAugmentMedia findUnique
    */
-  export type AugmentMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter, which AugmentMedia to fetch.
+     * Filter, which AssetAugmentMedia to fetch.
      */
-    where: AugmentMediaWhereUniqueInput
+    where: AssetAugmentMediaWhereUniqueInput
   }
 
   /**
-   * AugmentMedia findUniqueOrThrow
+   * AssetAugmentMedia findUniqueOrThrow
    */
-  export type AugmentMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter, which AugmentMedia to fetch.
+     * Filter, which AssetAugmentMedia to fetch.
      */
-    where: AugmentMediaWhereUniqueInput
+    where: AssetAugmentMediaWhereUniqueInput
   }
 
   /**
-   * AugmentMedia findFirst
+   * AssetAugmentMedia findFirst
    */
-  export type AugmentMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter, which AugmentMedia to fetch.
+     * Filter, which AssetAugmentMedia to fetch.
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AugmentMedias to fetch.
+     * Determine the order of AssetAugmentMedias to fetch.
      */
-    orderBy?: AugmentMediaOrderByWithRelationInput | AugmentMediaOrderByWithRelationInput[]
+    orderBy?: AssetAugmentMediaOrderByWithRelationInput | AssetAugmentMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AugmentMedias.
+     * Sets the position for searching for AssetAugmentMedias.
      */
-    cursor?: AugmentMediaWhereUniqueInput
+    cursor?: AssetAugmentMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AugmentMedias from the position of the cursor.
+     * Take `±n` AssetAugmentMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AugmentMedias.
+     * Skip the first `n` AssetAugmentMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AugmentMedias.
+     * Filter by unique combinations of AssetAugmentMedias.
      */
-    distinct?: AugmentMediaScalarFieldEnum | AugmentMediaScalarFieldEnum[]
+    distinct?: AssetAugmentMediaScalarFieldEnum | AssetAugmentMediaScalarFieldEnum[]
   }
 
   /**
-   * AugmentMedia findFirstOrThrow
+   * AssetAugmentMedia findFirstOrThrow
    */
-  export type AugmentMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter, which AugmentMedia to fetch.
+     * Filter, which AssetAugmentMedia to fetch.
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AugmentMedias to fetch.
+     * Determine the order of AssetAugmentMedias to fetch.
      */
-    orderBy?: AugmentMediaOrderByWithRelationInput | AugmentMediaOrderByWithRelationInput[]
+    orderBy?: AssetAugmentMediaOrderByWithRelationInput | AssetAugmentMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AugmentMedias.
+     * Sets the position for searching for AssetAugmentMedias.
      */
-    cursor?: AugmentMediaWhereUniqueInput
+    cursor?: AssetAugmentMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AugmentMedias from the position of the cursor.
+     * Take `±n` AssetAugmentMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AugmentMedias.
+     * Skip the first `n` AssetAugmentMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AugmentMedias.
+     * Filter by unique combinations of AssetAugmentMedias.
      */
-    distinct?: AugmentMediaScalarFieldEnum | AugmentMediaScalarFieldEnum[]
+    distinct?: AssetAugmentMediaScalarFieldEnum | AssetAugmentMediaScalarFieldEnum[]
   }
 
   /**
-   * AugmentMedia findMany
+   * AssetAugmentMedia findMany
    */
-  export type AugmentMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter, which AugmentMedias to fetch.
+     * Filter, which AssetAugmentMedias to fetch.
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AugmentMedias to fetch.
+     * Determine the order of AssetAugmentMedias to fetch.
      */
-    orderBy?: AugmentMediaOrderByWithRelationInput | AugmentMediaOrderByWithRelationInput[]
+    orderBy?: AssetAugmentMediaOrderByWithRelationInput | AssetAugmentMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing AugmentMedias.
+     * Sets the position for listing AssetAugmentMedias.
      */
-    cursor?: AugmentMediaWhereUniqueInput
+    cursor?: AssetAugmentMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AugmentMedias from the position of the cursor.
+     * Take `±n` AssetAugmentMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AugmentMedias.
+     * Skip the first `n` AssetAugmentMedias.
      */
     skip?: number
-    distinct?: AugmentMediaScalarFieldEnum | AugmentMediaScalarFieldEnum[]
+    distinct?: AssetAugmentMediaScalarFieldEnum | AssetAugmentMediaScalarFieldEnum[]
   }
 
   /**
-   * AugmentMedia create
+   * AssetAugmentMedia create
    */
-  export type AugmentMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * The data needed to create a AugmentMedia.
+     * The data needed to create a AssetAugmentMedia.
      */
-    data: XOR<AugmentMediaCreateInput, AugmentMediaUncheckedCreateInput>
+    data: XOR<AssetAugmentMediaCreateInput, AssetAugmentMediaUncheckedCreateInput>
   }
 
   /**
-   * AugmentMedia createMany
+   * AssetAugmentMedia createMany
    */
-  export type AugmentMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many AugmentMedias.
+     * The data used to create many AssetAugmentMedias.
      */
-    data: AugmentMediaCreateManyInput | AugmentMediaCreateManyInput[]
+    data: AssetAugmentMediaCreateManyInput | AssetAugmentMediaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * AugmentMedia createManyAndReturn
+   * AssetAugmentMedia createManyAndReturn
    */
-  export type AugmentMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * The data used to create many AugmentMedias.
+     * The data used to create many AssetAugmentMedias.
      */
-    data: AugmentMediaCreateManyInput | AugmentMediaCreateManyInput[]
+    data: AssetAugmentMediaCreateManyInput | AssetAugmentMediaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * AugmentMedia update
+   * AssetAugmentMedia update
    */
-  export type AugmentMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * The data needed to update a AugmentMedia.
+     * The data needed to update a AssetAugmentMedia.
      */
-    data: XOR<AugmentMediaUpdateInput, AugmentMediaUncheckedUpdateInput>
+    data: XOR<AssetAugmentMediaUpdateInput, AssetAugmentMediaUncheckedUpdateInput>
     /**
-     * Choose, which AugmentMedia to update.
+     * Choose, which AssetAugmentMedia to update.
      */
-    where: AugmentMediaWhereUniqueInput
+    where: AssetAugmentMediaWhereUniqueInput
   }
 
   /**
-   * AugmentMedia updateMany
+   * AssetAugmentMedia updateMany
    */
-  export type AugmentMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update AugmentMedias.
+     * The data used to update AssetAugmentMedias.
      */
-    data: XOR<AugmentMediaUpdateManyMutationInput, AugmentMediaUncheckedUpdateManyInput>
+    data: XOR<AssetAugmentMediaUpdateManyMutationInput, AssetAugmentMediaUncheckedUpdateManyInput>
     /**
-     * Filter which AugmentMedias to update
+     * Filter which AssetAugmentMedias to update
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
   }
 
   /**
-   * AugmentMedia upsert
+   * AssetAugmentMedia upsert
    */
-  export type AugmentMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * The filter to search for the AugmentMedia to update in case it exists.
+     * The filter to search for the AssetAugmentMedia to update in case it exists.
      */
-    where: AugmentMediaWhereUniqueInput
+    where: AssetAugmentMediaWhereUniqueInput
     /**
-     * In case the AugmentMedia found by the `where` argument doesn't exist, create a new AugmentMedia with this data.
+     * In case the AssetAugmentMedia found by the `where` argument doesn't exist, create a new AssetAugmentMedia with this data.
      */
-    create: XOR<AugmentMediaCreateInput, AugmentMediaUncheckedCreateInput>
+    create: XOR<AssetAugmentMediaCreateInput, AssetAugmentMediaUncheckedCreateInput>
     /**
-     * In case the AugmentMedia was found with the provided `where` argument, update it with this data.
+     * In case the AssetAugmentMedia was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AugmentMediaUpdateInput, AugmentMediaUncheckedUpdateInput>
+    update: XOR<AssetAugmentMediaUpdateInput, AssetAugmentMediaUncheckedUpdateInput>
   }
 
   /**
-   * AugmentMedia delete
+   * AssetAugmentMedia delete
    */
-  export type AugmentMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
     /**
-     * Filter which AugmentMedia to delete.
+     * Filter which AssetAugmentMedia to delete.
      */
-    where: AugmentMediaWhereUniqueInput
+    where: AssetAugmentMediaWhereUniqueInput
   }
 
   /**
-   * AugmentMedia deleteMany
+   * AssetAugmentMedia deleteMany
    */
-  export type AugmentMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AugmentMedias to delete
+     * Filter which AssetAugmentMedias to delete
      */
-    where?: AugmentMediaWhereInput
+    where?: AssetAugmentMediaWhereInput
   }
 
   /**
-   * AugmentMedia without action
+   * AssetAugmentMedia without action
    */
-  export type AugmentMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssetAugmentMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AugmentMedia
+     * Select specific fields to fetch from the AssetAugmentMedia
      */
-    select?: AugmentMediaSelect<ExtArgs> | null
+    select?: AssetAugmentMediaSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AugmentMediaInclude<ExtArgs> | null
+    include?: AssetAugmentMediaInclude<ExtArgs> | null
   }
 
 
@@ -44784,20 +44773,19 @@ export namespace Prisma {
   export type AssetScalarFieldEnum = (typeof AssetScalarFieldEnum)[keyof typeof AssetScalarFieldEnum]
 
 
-  export const AugmentScalarFieldEnum: {
+  export const AssetAugmentScalarFieldEnum: {
     id: 'id',
     assetId: 'assetId',
     type: 'type',
     data: 'data',
-    active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type AugmentScalarFieldEnum = (typeof AugmentScalarFieldEnum)[keyof typeof AugmentScalarFieldEnum]
+  export type AssetAugmentScalarFieldEnum = (typeof AssetAugmentScalarFieldEnum)[keyof typeof AssetAugmentScalarFieldEnum]
 
 
-  export const AugmentMediaScalarFieldEnum: {
+  export const AssetAugmentMediaScalarFieldEnum: {
     id: 'id',
     augmentId: 'augmentId',
     data: 'data',
@@ -44811,7 +44799,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type AugmentMediaScalarFieldEnum = (typeof AugmentMediaScalarFieldEnum)[keyof typeof AugmentMediaScalarFieldEnum]
+  export type AssetAugmentMediaScalarFieldEnum = (typeof AssetAugmentMediaScalarFieldEnum)[keyof typeof AssetAugmentMediaScalarFieldEnum]
 
 
   export const ProductScalarFieldEnum: {
@@ -45505,16 +45493,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'AugmentType'
+   * Reference to a field of type 'AssetAugmentType'
    */
-  export type EnumAugmentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AugmentType'>
+  export type EnumAssetAugmentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetAugmentType'>
     
 
 
   /**
-   * Reference to a field of type 'AugmentType[]'
+   * Reference to a field of type 'AssetAugmentType[]'
    */
-  export type ListEnumAugmentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AugmentType[]'>
+  export type ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetAugmentType[]'>
     
 
 
@@ -46393,7 +46381,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     foot?: XOR<FootRelationFilter, FootWhereInput>
     workbenches?: WorkbenchListRelationFilter
-    augments?: AugmentListRelationFilter
+    augments?: AssetAugmentListRelationFilter
   }
 
   export type AssetOrderByWithRelationInput = {
@@ -46411,7 +46399,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     foot?: FootOrderByWithRelationInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
-    augments?: AugmentOrderByRelationAggregateInput
+    augments?: AssetAugmentOrderByRelationAggregateInput
   }
 
   export type AssetWhereUniqueInput = Prisma.AtLeast<{
@@ -46432,7 +46420,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     foot?: XOR<FootRelationFilter, FootWhereInput>
     workbenches?: WorkbenchListRelationFilter
-    augments?: AugmentListRelationFilter
+    augments?: AssetAugmentListRelationFilter
   }, "id">
 
   export type AssetOrderByWithAggregationInput = {
@@ -46471,93 +46459,88 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Asset"> | Date | string
   }
 
-  export type AugmentWhereInput = {
-    AND?: AugmentWhereInput | AugmentWhereInput[]
-    OR?: AugmentWhereInput[]
-    NOT?: AugmentWhereInput | AugmentWhereInput[]
-    id?: StringFilter<"Augment"> | string
-    assetId?: StringFilter<"Augment"> | string
-    type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
-    data?: JsonNullableFilter<"Augment">
-    active?: BoolFilter<"Augment"> | boolean
-    createdAt?: DateTimeFilter<"Augment"> | Date | string
-    updatedAt?: DateTimeFilter<"Augment"> | Date | string
+  export type AssetAugmentWhereInput = {
+    AND?: AssetAugmentWhereInput | AssetAugmentWhereInput[]
+    OR?: AssetAugmentWhereInput[]
+    NOT?: AssetAugmentWhereInput | AssetAugmentWhereInput[]
+    id?: StringFilter<"AssetAugment"> | string
+    assetId?: StringFilter<"AssetAugment"> | string
+    type?: EnumAssetAugmentTypeFilter<"AssetAugment"> | $Enums.AssetAugmentType
+    data?: JsonNullableFilter<"AssetAugment">
+    createdAt?: DateTimeFilter<"AssetAugment"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugment"> | Date | string
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
-    media?: AugmentMediaListRelationFilter
+    media?: AssetAugmentMediaListRelationFilter
   }
 
-  export type AugmentOrderByWithRelationInput = {
+  export type AssetAugmentOrderByWithRelationInput = {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrderInput | SortOrder
-    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     asset?: AssetOrderByWithRelationInput
-    media?: AugmentMediaOrderByRelationAggregateInput
+    media?: AssetAugmentMediaOrderByRelationAggregateInput
   }
 
-  export type AugmentWhereUniqueInput = Prisma.AtLeast<{
+  export type AssetAugmentWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: AugmentWhereInput | AugmentWhereInput[]
-    OR?: AugmentWhereInput[]
-    NOT?: AugmentWhereInput | AugmentWhereInput[]
-    assetId?: StringFilter<"Augment"> | string
-    type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
-    data?: JsonNullableFilter<"Augment">
-    active?: BoolFilter<"Augment"> | boolean
-    createdAt?: DateTimeFilter<"Augment"> | Date | string
-    updatedAt?: DateTimeFilter<"Augment"> | Date | string
+    AND?: AssetAugmentWhereInput | AssetAugmentWhereInput[]
+    OR?: AssetAugmentWhereInput[]
+    NOT?: AssetAugmentWhereInput | AssetAugmentWhereInput[]
+    assetId?: StringFilter<"AssetAugment"> | string
+    type?: EnumAssetAugmentTypeFilter<"AssetAugment"> | $Enums.AssetAugmentType
+    data?: JsonNullableFilter<"AssetAugment">
+    createdAt?: DateTimeFilter<"AssetAugment"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugment"> | Date | string
     asset?: XOR<AssetRelationFilter, AssetWhereInput>
-    media?: AugmentMediaListRelationFilter
+    media?: AssetAugmentMediaListRelationFilter
   }, "id">
 
-  export type AugmentOrderByWithAggregationInput = {
+  export type AssetAugmentOrderByWithAggregationInput = {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrderInput | SortOrder
-    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: AugmentCountOrderByAggregateInput
-    _max?: AugmentMaxOrderByAggregateInput
-    _min?: AugmentMinOrderByAggregateInput
+    _count?: AssetAugmentCountOrderByAggregateInput
+    _max?: AssetAugmentMaxOrderByAggregateInput
+    _min?: AssetAugmentMinOrderByAggregateInput
   }
 
-  export type AugmentScalarWhereWithAggregatesInput = {
-    AND?: AugmentScalarWhereWithAggregatesInput | AugmentScalarWhereWithAggregatesInput[]
-    OR?: AugmentScalarWhereWithAggregatesInput[]
-    NOT?: AugmentScalarWhereWithAggregatesInput | AugmentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Augment"> | string
-    assetId?: StringWithAggregatesFilter<"Augment"> | string
-    type?: EnumAugmentTypeWithAggregatesFilter<"Augment"> | $Enums.AugmentType
-    data?: JsonNullableWithAggregatesFilter<"Augment">
-    active?: BoolWithAggregatesFilter<"Augment"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"Augment"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Augment"> | Date | string
+  export type AssetAugmentScalarWhereWithAggregatesInput = {
+    AND?: AssetAugmentScalarWhereWithAggregatesInput | AssetAugmentScalarWhereWithAggregatesInput[]
+    OR?: AssetAugmentScalarWhereWithAggregatesInput[]
+    NOT?: AssetAugmentScalarWhereWithAggregatesInput | AssetAugmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AssetAugment"> | string
+    assetId?: StringWithAggregatesFilter<"AssetAugment"> | string
+    type?: EnumAssetAugmentTypeWithAggregatesFilter<"AssetAugment"> | $Enums.AssetAugmentType
+    data?: JsonNullableWithAggregatesFilter<"AssetAugment">
+    createdAt?: DateTimeWithAggregatesFilter<"AssetAugment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AssetAugment"> | Date | string
   }
 
-  export type AugmentMediaWhereInput = {
-    AND?: AugmentMediaWhereInput | AugmentMediaWhereInput[]
-    OR?: AugmentMediaWhereInput[]
-    NOT?: AugmentMediaWhereInput | AugmentMediaWhereInput[]
-    id?: StringFilter<"AugmentMedia"> | string
-    augmentId?: StringFilter<"AugmentMedia"> | string
-    data?: JsonNullableFilter<"AugmentMedia">
-    region?: StringNullableFilter<"AugmentMedia"> | string | null
-    bucket?: StringNullableFilter<"AugmentMedia"> | string | null
-    key?: StringNullableFilter<"AugmentMedia"> | string | null
-    active?: BoolFilter<"AugmentMedia"> | boolean
-    inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
-    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
-    createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    augment?: XOR<AugmentRelationFilter, AugmentWhereInput>
+  export type AssetAugmentMediaWhereInput = {
+    AND?: AssetAugmentMediaWhereInput | AssetAugmentMediaWhereInput[]
+    OR?: AssetAugmentMediaWhereInput[]
+    NOT?: AssetAugmentMediaWhereInput | AssetAugmentMediaWhereInput[]
+    id?: StringFilter<"AssetAugmentMedia"> | string
+    augmentId?: StringFilter<"AssetAugmentMedia"> | string
+    data?: JsonNullableFilter<"AssetAugmentMedia">
+    region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    active?: BoolFilter<"AssetAugmentMedia"> | boolean
+    inactiveReason?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AssetAugmentMedia"> | Date | string | null
+    createdAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
+    augment?: XOR<AssetAugmentRelationFilter, AssetAugmentWhereInput>
   }
 
-  export type AugmentMediaOrderByWithRelationInput = {
+  export type AssetAugmentMediaOrderByWithRelationInput = {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrderInput | SortOrder
@@ -46569,28 +46552,28 @@ export namespace Prisma {
     reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    augment?: AugmentOrderByWithRelationInput
+    augment?: AssetAugmentOrderByWithRelationInput
   }
 
-  export type AugmentMediaWhereUniqueInput = Prisma.AtLeast<{
+  export type AssetAugmentMediaWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: AugmentMediaWhereInput | AugmentMediaWhereInput[]
-    OR?: AugmentMediaWhereInput[]
-    NOT?: AugmentMediaWhereInput | AugmentMediaWhereInput[]
-    augmentId?: StringFilter<"AugmentMedia"> | string
-    data?: JsonNullableFilter<"AugmentMedia">
-    region?: StringNullableFilter<"AugmentMedia"> | string | null
-    bucket?: StringNullableFilter<"AugmentMedia"> | string | null
-    key?: StringNullableFilter<"AugmentMedia"> | string | null
-    active?: BoolFilter<"AugmentMedia"> | boolean
-    inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
-    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
-    createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    augment?: XOR<AugmentRelationFilter, AugmentWhereInput>
+    AND?: AssetAugmentMediaWhereInput | AssetAugmentMediaWhereInput[]
+    OR?: AssetAugmentMediaWhereInput[]
+    NOT?: AssetAugmentMediaWhereInput | AssetAugmentMediaWhereInput[]
+    augmentId?: StringFilter<"AssetAugmentMedia"> | string
+    data?: JsonNullableFilter<"AssetAugmentMedia">
+    region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    active?: BoolFilter<"AssetAugmentMedia"> | boolean
+    inactiveReason?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AssetAugmentMedia"> | Date | string | null
+    createdAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
+    augment?: XOR<AssetAugmentRelationFilter, AssetAugmentWhereInput>
   }, "id">
 
-  export type AugmentMediaOrderByWithAggregationInput = {
+  export type AssetAugmentMediaOrderByWithAggregationInput = {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrderInput | SortOrder
@@ -46602,26 +46585,26 @@ export namespace Prisma {
     reviewedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: AugmentMediaCountOrderByAggregateInput
-    _max?: AugmentMediaMaxOrderByAggregateInput
-    _min?: AugmentMediaMinOrderByAggregateInput
+    _count?: AssetAugmentMediaCountOrderByAggregateInput
+    _max?: AssetAugmentMediaMaxOrderByAggregateInput
+    _min?: AssetAugmentMediaMinOrderByAggregateInput
   }
 
-  export type AugmentMediaScalarWhereWithAggregatesInput = {
-    AND?: AugmentMediaScalarWhereWithAggregatesInput | AugmentMediaScalarWhereWithAggregatesInput[]
-    OR?: AugmentMediaScalarWhereWithAggregatesInput[]
-    NOT?: AugmentMediaScalarWhereWithAggregatesInput | AugmentMediaScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"AugmentMedia"> | string
-    augmentId?: StringWithAggregatesFilter<"AugmentMedia"> | string
-    data?: JsonNullableWithAggregatesFilter<"AugmentMedia">
-    region?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
-    bucket?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
-    key?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
-    active?: BoolWithAggregatesFilter<"AugmentMedia"> | boolean
-    inactiveReason?: StringNullableWithAggregatesFilter<"AugmentMedia"> | string | null
-    reviewedAt?: DateTimeNullableWithAggregatesFilter<"AugmentMedia"> | Date | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"AugmentMedia"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"AugmentMedia"> | Date | string
+  export type AssetAugmentMediaScalarWhereWithAggregatesInput = {
+    AND?: AssetAugmentMediaScalarWhereWithAggregatesInput | AssetAugmentMediaScalarWhereWithAggregatesInput[]
+    OR?: AssetAugmentMediaScalarWhereWithAggregatesInput[]
+    NOT?: AssetAugmentMediaScalarWhereWithAggregatesInput | AssetAugmentMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AssetAugmentMedia"> | string
+    augmentId?: StringWithAggregatesFilter<"AssetAugmentMedia"> | string
+    data?: JsonNullableWithAggregatesFilter<"AssetAugmentMedia">
+    region?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
+    bucket?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
+    key?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
+    active?: BoolWithAggregatesFilter<"AssetAugmentMedia"> | boolean
+    inactiveReason?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableWithAggregatesFilter<"AssetAugmentMedia"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"AssetAugmentMedia"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AssetAugmentMedia"> | Date | string
   }
 
   export type ProductWhereInput = {
@@ -49620,7 +49603,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     foot: FootCreateNestedOneWithoutAssetsInput
     workbenches?: WorkbenchCreateNestedManyWithoutAssetsInput
-    augments?: AugmentCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentCreateNestedManyWithoutAssetInput
   }
 
   export type AssetUncheckedCreateInput = {
@@ -49637,7 +49620,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutAssetsInput
-    augments?: AugmentUncheckedCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type AssetUpdateInput = {
@@ -49654,7 +49637,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foot?: FootUpdateOneRequiredWithoutAssetsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutAssetsNestedInput
-    augments?: AugmentUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetUncheckedUpdateInput = {
@@ -49671,7 +49654,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbenches?: WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput
-    augments?: AugmentUncheckedUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetCreateManyInput = {
@@ -49718,80 +49701,73 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentCreateInput = {
+  export type AssetAugmentCreateInput = {
     id?: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     asset: AssetCreateNestedOneWithoutAugmentsInput
-    media?: AugmentMediaCreateNestedManyWithoutAugmentInput
+    media?: AssetAugmentMediaCreateNestedManyWithoutAugmentInput
   }
 
-  export type AugmentUncheckedCreateInput = {
+  export type AssetAugmentUncheckedCreateInput = {
     id?: string
     assetId: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    media?: AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
+    media?: AssetAugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
   }
 
-  export type AugmentUpdateInput = {
+  export type AssetAugmentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     asset?: AssetUpdateOneRequiredWithoutAugmentsNestedInput
-    media?: AugmentMediaUpdateManyWithoutAugmentNestedInput
+    media?: AssetAugmentMediaUpdateManyWithoutAugmentNestedInput
   }
 
-  export type AugmentUncheckedUpdateInput = {
+  export type AssetAugmentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     assetId?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    media?: AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
+    media?: AssetAugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
   }
 
-  export type AugmentCreateManyInput = {
+  export type AssetAugmentCreateManyInput = {
     id?: string
     assetId: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type AugmentUpdateManyMutationInput = {
+  export type AssetAugmentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentUncheckedUpdateManyInput = {
+  export type AssetAugmentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     assetId?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaCreateInput = {
+  export type AssetAugmentMediaCreateInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
@@ -49802,10 +49778,10 @@ export namespace Prisma {
     reviewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    augment: AugmentCreateNestedOneWithoutMediaInput
+    augment: AssetAugmentCreateNestedOneWithoutMediaInput
   }
 
-  export type AugmentMediaUncheckedCreateInput = {
+  export type AssetAugmentMediaUncheckedCreateInput = {
     id?: string
     augmentId: string
     data?: NullableJsonNullValueInput | InputJsonValue
@@ -49819,7 +49795,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AugmentMediaUpdateInput = {
+  export type AssetAugmentMediaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49830,10 +49806,10 @@ export namespace Prisma {
     reviewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    augment?: AugmentUpdateOneRequiredWithoutMediaNestedInput
+    augment?: AssetAugmentUpdateOneRequiredWithoutMediaNestedInput
   }
 
-  export type AugmentMediaUncheckedUpdateInput = {
+  export type AssetAugmentMediaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     augmentId?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
@@ -49847,7 +49823,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaCreateManyInput = {
+  export type AssetAugmentMediaCreateManyInput = {
     id?: string
     augmentId: string
     data?: NullableJsonNullValueInput | InputJsonValue
@@ -49861,7 +49837,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AugmentMediaUpdateManyMutationInput = {
+  export type AssetAugmentMediaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49874,7 +49850,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaUncheckedUpdateManyInput = {
+  export type AssetAugmentMediaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     augmentId?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
@@ -53266,13 +53242,13 @@ export namespace Prisma {
     isNot?: FootWhereInput
   }
 
-  export type AugmentListRelationFilter = {
-    every?: AugmentWhereInput
-    some?: AugmentWhereInput
-    none?: AugmentWhereInput
+  export type AssetAugmentListRelationFilter = {
+    every?: AssetAugmentWhereInput
+    some?: AssetAugmentWhereInput
+    none?: AssetAugmentWhereInput
   }
 
-  export type AugmentOrderByRelationAggregateInput = {
+  export type AssetAugmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -53337,11 +53313,11 @@ export namespace Prisma {
     _max?: NestedEnumAssetStatusFilter<$PrismaModel>
   }
 
-  export type EnumAugmentTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.AugmentType | EnumAugmentTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAugmentTypeFilter<$PrismaModel> | $Enums.AugmentType
+  export type EnumAssetAugmentTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetAugmentType | EnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetAugmentTypeFilter<$PrismaModel> | $Enums.AssetAugmentType
   }
 
   export type AssetRelationFilter = {
@@ -53349,60 +53325,57 @@ export namespace Prisma {
     isNot?: AssetWhereInput
   }
 
-  export type AugmentMediaListRelationFilter = {
-    every?: AugmentMediaWhereInput
-    some?: AugmentMediaWhereInput
-    none?: AugmentMediaWhereInput
+  export type AssetAugmentMediaListRelationFilter = {
+    every?: AssetAugmentMediaWhereInput
+    some?: AssetAugmentMediaWhereInput
+    none?: AssetAugmentMediaWhereInput
   }
 
-  export type AugmentMediaOrderByRelationAggregateInput = {
+  export type AssetAugmentMediaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type AugmentCountOrderByAggregateInput = {
+  export type AssetAugmentCountOrderByAggregateInput = {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
     data?: SortOrder
-    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type AugmentMaxOrderByAggregateInput = {
+  export type AssetAugmentMaxOrderByAggregateInput = {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
-    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type AugmentMinOrderByAggregateInput = {
+  export type AssetAugmentMinOrderByAggregateInput = {
     id?: SortOrder
     assetId?: SortOrder
     type?: SortOrder
-    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type EnumAugmentTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AugmentType | EnumAugmentTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAugmentTypeWithAggregatesFilter<$PrismaModel> | $Enums.AugmentType
+  export type EnumAssetAugmentTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetAugmentType | EnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetAugmentTypeWithAggregatesFilter<$PrismaModel> | $Enums.AssetAugmentType
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAugmentTypeFilter<$PrismaModel>
-    _max?: NestedEnumAugmentTypeFilter<$PrismaModel>
+    _min?: NestedEnumAssetAugmentTypeFilter<$PrismaModel>
+    _max?: NestedEnumAssetAugmentTypeFilter<$PrismaModel>
   }
 
-  export type AugmentRelationFilter = {
-    is?: AugmentWhereInput
-    isNot?: AugmentWhereInput
+  export type AssetAugmentRelationFilter = {
+    is?: AssetAugmentWhereInput
+    isNot?: AssetAugmentWhereInput
   }
 
-  export type AugmentMediaCountOrderByAggregateInput = {
+  export type AssetAugmentMediaCountOrderByAggregateInput = {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrder
@@ -53416,7 +53389,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type AugmentMediaMaxOrderByAggregateInput = {
+  export type AssetAugmentMediaMaxOrderByAggregateInput = {
     id?: SortOrder
     augmentId?: SortOrder
     region?: SortOrder
@@ -53429,7 +53402,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type AugmentMediaMinOrderByAggregateInput = {
+  export type AssetAugmentMediaMinOrderByAggregateInput = {
     id?: SortOrder
     augmentId?: SortOrder
     region?: SortOrder
@@ -56133,11 +56106,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type AugmentCreateNestedManyWithoutAssetInput = {
-    create?: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput> | AugmentCreateWithoutAssetInput[] | AugmentUncheckedCreateWithoutAssetInput[]
-    connectOrCreate?: AugmentCreateOrConnectWithoutAssetInput | AugmentCreateOrConnectWithoutAssetInput[]
-    createMany?: AugmentCreateManyAssetInputEnvelope
-    connect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
+  export type AssetAugmentCreateNestedManyWithoutAssetInput = {
+    create?: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput> | AssetAugmentCreateWithoutAssetInput[] | AssetAugmentUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutAssetInput | AssetAugmentCreateOrConnectWithoutAssetInput[]
+    createMany?: AssetAugmentCreateManyAssetInputEnvelope
+    connect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
   }
 
   export type WorkbenchUncheckedCreateNestedManyWithoutAssetsInput = {
@@ -56146,11 +56119,11 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput | WorkbenchWhereUniqueInput[]
   }
 
-  export type AugmentUncheckedCreateNestedManyWithoutAssetInput = {
-    create?: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput> | AugmentCreateWithoutAssetInput[] | AugmentUncheckedCreateWithoutAssetInput[]
-    connectOrCreate?: AugmentCreateOrConnectWithoutAssetInput | AugmentCreateOrConnectWithoutAssetInput[]
-    createMany?: AugmentCreateManyAssetInputEnvelope
-    connect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
+  export type AssetAugmentUncheckedCreateNestedManyWithoutAssetInput = {
+    create?: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput> | AssetAugmentCreateWithoutAssetInput[] | AssetAugmentUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutAssetInput | AssetAugmentCreateOrConnectWithoutAssetInput[]
+    createMany?: AssetAugmentCreateManyAssetInputEnvelope
+    connect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
   }
 
   export type EnumProductTypeFieldUpdateOperationsInput = {
@@ -56187,18 +56160,18 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type AugmentUpdateManyWithoutAssetNestedInput = {
-    create?: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput> | AugmentCreateWithoutAssetInput[] | AugmentUncheckedCreateWithoutAssetInput[]
-    connectOrCreate?: AugmentCreateOrConnectWithoutAssetInput | AugmentCreateOrConnectWithoutAssetInput[]
-    upsert?: AugmentUpsertWithWhereUniqueWithoutAssetInput | AugmentUpsertWithWhereUniqueWithoutAssetInput[]
-    createMany?: AugmentCreateManyAssetInputEnvelope
-    set?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    disconnect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    delete?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    connect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    update?: AugmentUpdateWithWhereUniqueWithoutAssetInput | AugmentUpdateWithWhereUniqueWithoutAssetInput[]
-    updateMany?: AugmentUpdateManyWithWhereWithoutAssetInput | AugmentUpdateManyWithWhereWithoutAssetInput[]
-    deleteMany?: AugmentScalarWhereInput | AugmentScalarWhereInput[]
+  export type AssetAugmentUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput> | AssetAugmentCreateWithoutAssetInput[] | AssetAugmentUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutAssetInput | AssetAugmentCreateOrConnectWithoutAssetInput[]
+    upsert?: AssetAugmentUpsertWithWhereUniqueWithoutAssetInput | AssetAugmentUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: AssetAugmentCreateManyAssetInputEnvelope
+    set?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    disconnect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    delete?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    connect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    update?: AssetAugmentUpdateWithWhereUniqueWithoutAssetInput | AssetAugmentUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: AssetAugmentUpdateManyWithWhereWithoutAssetInput | AssetAugmentUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: AssetAugmentScalarWhereInput | AssetAugmentScalarWhereInput[]
   }
 
   export type WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput = {
@@ -56214,18 +56187,18 @@ export namespace Prisma {
     deleteMany?: WorkbenchScalarWhereInput | WorkbenchScalarWhereInput[]
   }
 
-  export type AugmentUncheckedUpdateManyWithoutAssetNestedInput = {
-    create?: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput> | AugmentCreateWithoutAssetInput[] | AugmentUncheckedCreateWithoutAssetInput[]
-    connectOrCreate?: AugmentCreateOrConnectWithoutAssetInput | AugmentCreateOrConnectWithoutAssetInput[]
-    upsert?: AugmentUpsertWithWhereUniqueWithoutAssetInput | AugmentUpsertWithWhereUniqueWithoutAssetInput[]
-    createMany?: AugmentCreateManyAssetInputEnvelope
-    set?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    disconnect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    delete?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    connect?: AugmentWhereUniqueInput | AugmentWhereUniqueInput[]
-    update?: AugmentUpdateWithWhereUniqueWithoutAssetInput | AugmentUpdateWithWhereUniqueWithoutAssetInput[]
-    updateMany?: AugmentUpdateManyWithWhereWithoutAssetInput | AugmentUpdateManyWithWhereWithoutAssetInput[]
-    deleteMany?: AugmentScalarWhereInput | AugmentScalarWhereInput[]
+  export type AssetAugmentUncheckedUpdateManyWithoutAssetNestedInput = {
+    create?: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput> | AssetAugmentCreateWithoutAssetInput[] | AssetAugmentUncheckedCreateWithoutAssetInput[]
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutAssetInput | AssetAugmentCreateOrConnectWithoutAssetInput[]
+    upsert?: AssetAugmentUpsertWithWhereUniqueWithoutAssetInput | AssetAugmentUpsertWithWhereUniqueWithoutAssetInput[]
+    createMany?: AssetAugmentCreateManyAssetInputEnvelope
+    set?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    disconnect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    delete?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    connect?: AssetAugmentWhereUniqueInput | AssetAugmentWhereUniqueInput[]
+    update?: AssetAugmentUpdateWithWhereUniqueWithoutAssetInput | AssetAugmentUpdateWithWhereUniqueWithoutAssetInput[]
+    updateMany?: AssetAugmentUpdateManyWithWhereWithoutAssetInput | AssetAugmentUpdateManyWithWhereWithoutAssetInput[]
+    deleteMany?: AssetAugmentScalarWhereInput | AssetAugmentScalarWhereInput[]
   }
 
   export type AssetCreateNestedOneWithoutAugmentsInput = {
@@ -56234,22 +56207,22 @@ export namespace Prisma {
     connect?: AssetWhereUniqueInput
   }
 
-  export type AugmentMediaCreateNestedManyWithoutAugmentInput = {
-    create?: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput> | AugmentMediaCreateWithoutAugmentInput[] | AugmentMediaUncheckedCreateWithoutAugmentInput[]
-    connectOrCreate?: AugmentMediaCreateOrConnectWithoutAugmentInput | AugmentMediaCreateOrConnectWithoutAugmentInput[]
-    createMany?: AugmentMediaCreateManyAugmentInputEnvelope
-    connect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
+  export type AssetAugmentMediaCreateNestedManyWithoutAugmentInput = {
+    create?: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput> | AssetAugmentMediaCreateWithoutAugmentInput[] | AssetAugmentMediaUncheckedCreateWithoutAugmentInput[]
+    connectOrCreate?: AssetAugmentMediaCreateOrConnectWithoutAugmentInput | AssetAugmentMediaCreateOrConnectWithoutAugmentInput[]
+    createMany?: AssetAugmentMediaCreateManyAugmentInputEnvelope
+    connect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
   }
 
-  export type AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput = {
-    create?: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput> | AugmentMediaCreateWithoutAugmentInput[] | AugmentMediaUncheckedCreateWithoutAugmentInput[]
-    connectOrCreate?: AugmentMediaCreateOrConnectWithoutAugmentInput | AugmentMediaCreateOrConnectWithoutAugmentInput[]
-    createMany?: AugmentMediaCreateManyAugmentInputEnvelope
-    connect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
+  export type AssetAugmentMediaUncheckedCreateNestedManyWithoutAugmentInput = {
+    create?: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput> | AssetAugmentMediaCreateWithoutAugmentInput[] | AssetAugmentMediaUncheckedCreateWithoutAugmentInput[]
+    connectOrCreate?: AssetAugmentMediaCreateOrConnectWithoutAugmentInput | AssetAugmentMediaCreateOrConnectWithoutAugmentInput[]
+    createMany?: AssetAugmentMediaCreateManyAugmentInputEnvelope
+    connect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
   }
 
-  export type EnumAugmentTypeFieldUpdateOperationsInput = {
-    set?: $Enums.AugmentType
+  export type EnumAssetAugmentTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AssetAugmentType
   }
 
   export type AssetUpdateOneRequiredWithoutAugmentsNestedInput = {
@@ -56260,46 +56233,46 @@ export namespace Prisma {
     update?: XOR<XOR<AssetUpdateToOneWithWhereWithoutAugmentsInput, AssetUpdateWithoutAugmentsInput>, AssetUncheckedUpdateWithoutAugmentsInput>
   }
 
-  export type AugmentMediaUpdateManyWithoutAugmentNestedInput = {
-    create?: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput> | AugmentMediaCreateWithoutAugmentInput[] | AugmentMediaUncheckedCreateWithoutAugmentInput[]
-    connectOrCreate?: AugmentMediaCreateOrConnectWithoutAugmentInput | AugmentMediaCreateOrConnectWithoutAugmentInput[]
-    upsert?: AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput | AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput[]
-    createMany?: AugmentMediaCreateManyAugmentInputEnvelope
-    set?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    disconnect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    delete?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    connect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    update?: AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput | AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput[]
-    updateMany?: AugmentMediaUpdateManyWithWhereWithoutAugmentInput | AugmentMediaUpdateManyWithWhereWithoutAugmentInput[]
-    deleteMany?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
+  export type AssetAugmentMediaUpdateManyWithoutAugmentNestedInput = {
+    create?: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput> | AssetAugmentMediaCreateWithoutAugmentInput[] | AssetAugmentMediaUncheckedCreateWithoutAugmentInput[]
+    connectOrCreate?: AssetAugmentMediaCreateOrConnectWithoutAugmentInput | AssetAugmentMediaCreateOrConnectWithoutAugmentInput[]
+    upsert?: AssetAugmentMediaUpsertWithWhereUniqueWithoutAugmentInput | AssetAugmentMediaUpsertWithWhereUniqueWithoutAugmentInput[]
+    createMany?: AssetAugmentMediaCreateManyAugmentInputEnvelope
+    set?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    disconnect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    delete?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    connect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    update?: AssetAugmentMediaUpdateWithWhereUniqueWithoutAugmentInput | AssetAugmentMediaUpdateWithWhereUniqueWithoutAugmentInput[]
+    updateMany?: AssetAugmentMediaUpdateManyWithWhereWithoutAugmentInput | AssetAugmentMediaUpdateManyWithWhereWithoutAugmentInput[]
+    deleteMany?: AssetAugmentMediaScalarWhereInput | AssetAugmentMediaScalarWhereInput[]
   }
 
-  export type AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput = {
-    create?: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput> | AugmentMediaCreateWithoutAugmentInput[] | AugmentMediaUncheckedCreateWithoutAugmentInput[]
-    connectOrCreate?: AugmentMediaCreateOrConnectWithoutAugmentInput | AugmentMediaCreateOrConnectWithoutAugmentInput[]
-    upsert?: AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput | AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput[]
-    createMany?: AugmentMediaCreateManyAugmentInputEnvelope
-    set?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    disconnect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    delete?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    connect?: AugmentMediaWhereUniqueInput | AugmentMediaWhereUniqueInput[]
-    update?: AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput | AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput[]
-    updateMany?: AugmentMediaUpdateManyWithWhereWithoutAugmentInput | AugmentMediaUpdateManyWithWhereWithoutAugmentInput[]
-    deleteMany?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
+  export type AssetAugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput = {
+    create?: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput> | AssetAugmentMediaCreateWithoutAugmentInput[] | AssetAugmentMediaUncheckedCreateWithoutAugmentInput[]
+    connectOrCreate?: AssetAugmentMediaCreateOrConnectWithoutAugmentInput | AssetAugmentMediaCreateOrConnectWithoutAugmentInput[]
+    upsert?: AssetAugmentMediaUpsertWithWhereUniqueWithoutAugmentInput | AssetAugmentMediaUpsertWithWhereUniqueWithoutAugmentInput[]
+    createMany?: AssetAugmentMediaCreateManyAugmentInputEnvelope
+    set?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    disconnect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    delete?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    connect?: AssetAugmentMediaWhereUniqueInput | AssetAugmentMediaWhereUniqueInput[]
+    update?: AssetAugmentMediaUpdateWithWhereUniqueWithoutAugmentInput | AssetAugmentMediaUpdateWithWhereUniqueWithoutAugmentInput[]
+    updateMany?: AssetAugmentMediaUpdateManyWithWhereWithoutAugmentInput | AssetAugmentMediaUpdateManyWithWhereWithoutAugmentInput[]
+    deleteMany?: AssetAugmentMediaScalarWhereInput | AssetAugmentMediaScalarWhereInput[]
   }
 
-  export type AugmentCreateNestedOneWithoutMediaInput = {
-    create?: XOR<AugmentCreateWithoutMediaInput, AugmentUncheckedCreateWithoutMediaInput>
-    connectOrCreate?: AugmentCreateOrConnectWithoutMediaInput
-    connect?: AugmentWhereUniqueInput
+  export type AssetAugmentCreateNestedOneWithoutMediaInput = {
+    create?: XOR<AssetAugmentCreateWithoutMediaInput, AssetAugmentUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutMediaInput
+    connect?: AssetAugmentWhereUniqueInput
   }
 
-  export type AugmentUpdateOneRequiredWithoutMediaNestedInput = {
-    create?: XOR<AugmentCreateWithoutMediaInput, AugmentUncheckedCreateWithoutMediaInput>
-    connectOrCreate?: AugmentCreateOrConnectWithoutMediaInput
-    upsert?: AugmentUpsertWithoutMediaInput
-    connect?: AugmentWhereUniqueInput
-    update?: XOR<XOR<AugmentUpdateToOneWithWhereWithoutMediaInput, AugmentUpdateWithoutMediaInput>, AugmentUncheckedUpdateWithoutMediaInput>
+  export type AssetAugmentUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<AssetAugmentCreateWithoutMediaInput, AssetAugmentUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: AssetAugmentCreateOrConnectWithoutMediaInput
+    upsert?: AssetAugmentUpsertWithoutMediaInput
+    connect?: AssetAugmentWhereUniqueInput
+    update?: XOR<XOR<AssetAugmentUpdateToOneWithWhereWithoutMediaInput, AssetAugmentUpdateWithoutMediaInput>, AssetAugmentUncheckedUpdateWithoutMediaInput>
   }
 
   export type ProductCreatesidesInput = {
@@ -58242,21 +58215,21 @@ export namespace Prisma {
     _max?: NestedEnumAssetStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumAugmentTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.AugmentType | EnumAugmentTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAugmentTypeFilter<$PrismaModel> | $Enums.AugmentType
+  export type NestedEnumAssetAugmentTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetAugmentType | EnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetAugmentTypeFilter<$PrismaModel> | $Enums.AssetAugmentType
   }
 
-  export type NestedEnumAugmentTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AugmentType | EnumAugmentTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AugmentType[] | ListEnumAugmentTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAugmentTypeWithAggregatesFilter<$PrismaModel> | $Enums.AugmentType
+  export type NestedEnumAssetAugmentTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetAugmentType | EnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetAugmentType[] | ListEnumAssetAugmentTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetAugmentTypeWithAggregatesFilter<$PrismaModel> | $Enums.AssetAugmentType
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAugmentTypeFilter<$PrismaModel>
-    _max?: NestedEnumAugmentTypeFilter<$PrismaModel>
+    _min?: NestedEnumAssetAugmentTypeFilter<$PrismaModel>
+    _max?: NestedEnumAssetAugmentTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumWorkbenchCreatedReasonNullableFilter<$PrismaModel = never> = {
@@ -60651,7 +60624,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     workbenches?: WorkbenchCreateNestedManyWithoutAssetsInput
-    augments?: AugmentCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentCreateNestedManyWithoutAssetInput
   }
 
   export type AssetUncheckedCreateWithoutFootInput = {
@@ -60667,7 +60640,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutAssetsInput
-    augments?: AugmentUncheckedCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type AssetCreateOrConnectWithoutFootInput = {
@@ -60906,33 +60879,31 @@ export namespace Prisma {
     create: XOR<WorkbenchCreateWithoutAssetsInput, WorkbenchUncheckedCreateWithoutAssetsInput>
   }
 
-  export type AugmentCreateWithoutAssetInput = {
+  export type AssetAugmentCreateWithoutAssetInput = {
     id?: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    media?: AugmentMediaCreateNestedManyWithoutAugmentInput
+    media?: AssetAugmentMediaCreateNestedManyWithoutAugmentInput
   }
 
-  export type AugmentUncheckedCreateWithoutAssetInput = {
+  export type AssetAugmentUncheckedCreateWithoutAssetInput = {
     id?: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    media?: AugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
+    media?: AssetAugmentMediaUncheckedCreateNestedManyWithoutAugmentInput
   }
 
-  export type AugmentCreateOrConnectWithoutAssetInput = {
-    where: AugmentWhereUniqueInput
-    create: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput>
+  export type AssetAugmentCreateOrConnectWithoutAssetInput = {
+    where: AssetAugmentWhereUniqueInput
+    create: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput>
   }
 
-  export type AugmentCreateManyAssetInputEnvelope = {
-    data: AugmentCreateManyAssetInput | AugmentCreateManyAssetInput[]
+  export type AssetAugmentCreateManyAssetInputEnvelope = {
+    data: AssetAugmentCreateManyAssetInput | AssetAugmentCreateManyAssetInput[]
     skipDuplicates?: boolean
   }
 
@@ -61001,33 +60972,32 @@ export namespace Prisma {
     data: XOR<WorkbenchUpdateManyMutationInput, WorkbenchUncheckedUpdateManyWithoutAssetsInput>
   }
 
-  export type AugmentUpsertWithWhereUniqueWithoutAssetInput = {
-    where: AugmentWhereUniqueInput
-    update: XOR<AugmentUpdateWithoutAssetInput, AugmentUncheckedUpdateWithoutAssetInput>
-    create: XOR<AugmentCreateWithoutAssetInput, AugmentUncheckedCreateWithoutAssetInput>
+  export type AssetAugmentUpsertWithWhereUniqueWithoutAssetInput = {
+    where: AssetAugmentWhereUniqueInput
+    update: XOR<AssetAugmentUpdateWithoutAssetInput, AssetAugmentUncheckedUpdateWithoutAssetInput>
+    create: XOR<AssetAugmentCreateWithoutAssetInput, AssetAugmentUncheckedCreateWithoutAssetInput>
   }
 
-  export type AugmentUpdateWithWhereUniqueWithoutAssetInput = {
-    where: AugmentWhereUniqueInput
-    data: XOR<AugmentUpdateWithoutAssetInput, AugmentUncheckedUpdateWithoutAssetInput>
+  export type AssetAugmentUpdateWithWhereUniqueWithoutAssetInput = {
+    where: AssetAugmentWhereUniqueInput
+    data: XOR<AssetAugmentUpdateWithoutAssetInput, AssetAugmentUncheckedUpdateWithoutAssetInput>
   }
 
-  export type AugmentUpdateManyWithWhereWithoutAssetInput = {
-    where: AugmentScalarWhereInput
-    data: XOR<AugmentUpdateManyMutationInput, AugmentUncheckedUpdateManyWithoutAssetInput>
+  export type AssetAugmentUpdateManyWithWhereWithoutAssetInput = {
+    where: AssetAugmentScalarWhereInput
+    data: XOR<AssetAugmentUpdateManyMutationInput, AssetAugmentUncheckedUpdateManyWithoutAssetInput>
   }
 
-  export type AugmentScalarWhereInput = {
-    AND?: AugmentScalarWhereInput | AugmentScalarWhereInput[]
-    OR?: AugmentScalarWhereInput[]
-    NOT?: AugmentScalarWhereInput | AugmentScalarWhereInput[]
-    id?: StringFilter<"Augment"> | string
-    assetId?: StringFilter<"Augment"> | string
-    type?: EnumAugmentTypeFilter<"Augment"> | $Enums.AugmentType
-    data?: JsonNullableFilter<"Augment">
-    active?: BoolFilter<"Augment"> | boolean
-    createdAt?: DateTimeFilter<"Augment"> | Date | string
-    updatedAt?: DateTimeFilter<"Augment"> | Date | string
+  export type AssetAugmentScalarWhereInput = {
+    AND?: AssetAugmentScalarWhereInput | AssetAugmentScalarWhereInput[]
+    OR?: AssetAugmentScalarWhereInput[]
+    NOT?: AssetAugmentScalarWhereInput | AssetAugmentScalarWhereInput[]
+    id?: StringFilter<"AssetAugment"> | string
+    assetId?: StringFilter<"AssetAugment"> | string
+    type?: EnumAssetAugmentTypeFilter<"AssetAugment"> | $Enums.AssetAugmentType
+    data?: JsonNullableFilter<"AssetAugment">
+    createdAt?: DateTimeFilter<"AssetAugment"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugment"> | Date | string
   }
 
   export type AssetCreateWithoutAugmentsInput = {
@@ -61067,7 +61037,7 @@ export namespace Prisma {
     create: XOR<AssetCreateWithoutAugmentsInput, AssetUncheckedCreateWithoutAugmentsInput>
   }
 
-  export type AugmentMediaCreateWithoutAugmentInput = {
+  export type AssetAugmentMediaCreateWithoutAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
@@ -61080,7 +61050,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AugmentMediaUncheckedCreateWithoutAugmentInput = {
+  export type AssetAugmentMediaUncheckedCreateWithoutAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
@@ -61093,13 +61063,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AugmentMediaCreateOrConnectWithoutAugmentInput = {
-    where: AugmentMediaWhereUniqueInput
-    create: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput>
+  export type AssetAugmentMediaCreateOrConnectWithoutAugmentInput = {
+    where: AssetAugmentMediaWhereUniqueInput
+    create: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput>
   }
 
-  export type AugmentMediaCreateManyAugmentInputEnvelope = {
-    data: AugmentMediaCreateManyAugmentInput | AugmentMediaCreateManyAugmentInput[]
+  export type AssetAugmentMediaCreateManyAugmentInputEnvelope = {
+    data: AssetAugmentMediaCreateManyAugmentInput | AssetAugmentMediaCreateManyAugmentInput[]
     skipDuplicates?: boolean
   }
 
@@ -61146,91 +61116,87 @@ export namespace Prisma {
     workbenches?: WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput
   }
 
-  export type AugmentMediaUpsertWithWhereUniqueWithoutAugmentInput = {
-    where: AugmentMediaWhereUniqueInput
-    update: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
-    create: XOR<AugmentMediaCreateWithoutAugmentInput, AugmentMediaUncheckedCreateWithoutAugmentInput>
+  export type AssetAugmentMediaUpsertWithWhereUniqueWithoutAugmentInput = {
+    where: AssetAugmentMediaWhereUniqueInput
+    update: XOR<AssetAugmentMediaUpdateWithoutAugmentInput, AssetAugmentMediaUncheckedUpdateWithoutAugmentInput>
+    create: XOR<AssetAugmentMediaCreateWithoutAugmentInput, AssetAugmentMediaUncheckedCreateWithoutAugmentInput>
   }
 
-  export type AugmentMediaUpdateWithWhereUniqueWithoutAugmentInput = {
-    where: AugmentMediaWhereUniqueInput
-    data: XOR<AugmentMediaUpdateWithoutAugmentInput, AugmentMediaUncheckedUpdateWithoutAugmentInput>
+  export type AssetAugmentMediaUpdateWithWhereUniqueWithoutAugmentInput = {
+    where: AssetAugmentMediaWhereUniqueInput
+    data: XOR<AssetAugmentMediaUpdateWithoutAugmentInput, AssetAugmentMediaUncheckedUpdateWithoutAugmentInput>
   }
 
-  export type AugmentMediaUpdateManyWithWhereWithoutAugmentInput = {
-    where: AugmentMediaScalarWhereInput
-    data: XOR<AugmentMediaUpdateManyMutationInput, AugmentMediaUncheckedUpdateManyWithoutAugmentInput>
+  export type AssetAugmentMediaUpdateManyWithWhereWithoutAugmentInput = {
+    where: AssetAugmentMediaScalarWhereInput
+    data: XOR<AssetAugmentMediaUpdateManyMutationInput, AssetAugmentMediaUncheckedUpdateManyWithoutAugmentInput>
   }
 
-  export type AugmentMediaScalarWhereInput = {
-    AND?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
-    OR?: AugmentMediaScalarWhereInput[]
-    NOT?: AugmentMediaScalarWhereInput | AugmentMediaScalarWhereInput[]
-    id?: StringFilter<"AugmentMedia"> | string
-    augmentId?: StringFilter<"AugmentMedia"> | string
-    data?: JsonNullableFilter<"AugmentMedia">
-    region?: StringNullableFilter<"AugmentMedia"> | string | null
-    bucket?: StringNullableFilter<"AugmentMedia"> | string | null
-    key?: StringNullableFilter<"AugmentMedia"> | string | null
-    active?: BoolFilter<"AugmentMedia"> | boolean
-    inactiveReason?: StringNullableFilter<"AugmentMedia"> | string | null
-    reviewedAt?: DateTimeNullableFilter<"AugmentMedia"> | Date | string | null
-    createdAt?: DateTimeFilter<"AugmentMedia"> | Date | string
-    updatedAt?: DateTimeFilter<"AugmentMedia"> | Date | string
+  export type AssetAugmentMediaScalarWhereInput = {
+    AND?: AssetAugmentMediaScalarWhereInput | AssetAugmentMediaScalarWhereInput[]
+    OR?: AssetAugmentMediaScalarWhereInput[]
+    NOT?: AssetAugmentMediaScalarWhereInput | AssetAugmentMediaScalarWhereInput[]
+    id?: StringFilter<"AssetAugmentMedia"> | string
+    augmentId?: StringFilter<"AssetAugmentMedia"> | string
+    data?: JsonNullableFilter<"AssetAugmentMedia">
+    region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    active?: BoolFilter<"AssetAugmentMedia"> | boolean
+    inactiveReason?: StringNullableFilter<"AssetAugmentMedia"> | string | null
+    reviewedAt?: DateTimeNullableFilter<"AssetAugmentMedia"> | Date | string | null
+    createdAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"AssetAugmentMedia"> | Date | string
   }
 
-  export type AugmentCreateWithoutMediaInput = {
+  export type AssetAugmentCreateWithoutMediaInput = {
     id?: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     asset: AssetCreateNestedOneWithoutAugmentsInput
   }
 
-  export type AugmentUncheckedCreateWithoutMediaInput = {
+  export type AssetAugmentUncheckedCreateWithoutMediaInput = {
     id?: string
     assetId: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type AugmentCreateOrConnectWithoutMediaInput = {
-    where: AugmentWhereUniqueInput
-    create: XOR<AugmentCreateWithoutMediaInput, AugmentUncheckedCreateWithoutMediaInput>
+  export type AssetAugmentCreateOrConnectWithoutMediaInput = {
+    where: AssetAugmentWhereUniqueInput
+    create: XOR<AssetAugmentCreateWithoutMediaInput, AssetAugmentUncheckedCreateWithoutMediaInput>
   }
 
-  export type AugmentUpsertWithoutMediaInput = {
-    update: XOR<AugmentUpdateWithoutMediaInput, AugmentUncheckedUpdateWithoutMediaInput>
-    create: XOR<AugmentCreateWithoutMediaInput, AugmentUncheckedCreateWithoutMediaInput>
-    where?: AugmentWhereInput
+  export type AssetAugmentUpsertWithoutMediaInput = {
+    update: XOR<AssetAugmentUpdateWithoutMediaInput, AssetAugmentUncheckedUpdateWithoutMediaInput>
+    create: XOR<AssetAugmentCreateWithoutMediaInput, AssetAugmentUncheckedCreateWithoutMediaInput>
+    where?: AssetAugmentWhereInput
   }
 
-  export type AugmentUpdateToOneWithWhereWithoutMediaInput = {
-    where?: AugmentWhereInput
-    data: XOR<AugmentUpdateWithoutMediaInput, AugmentUncheckedUpdateWithoutMediaInput>
+  export type AssetAugmentUpdateToOneWithWhereWithoutMediaInput = {
+    where?: AssetAugmentWhereInput
+    data: XOR<AssetAugmentUpdateWithoutMediaInput, AssetAugmentUncheckedUpdateWithoutMediaInput>
   }
 
-  export type AugmentUpdateWithoutMediaInput = {
+  export type AssetAugmentUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     asset?: AssetUpdateOneRequiredWithoutAugmentsNestedInput
   }
 
-  export type AugmentUncheckedUpdateWithoutMediaInput = {
+  export type AssetAugmentUncheckedUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
     assetId?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -61564,7 +61530,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     foot: FootCreateNestedOneWithoutAssetsInput
-    augments?: AugmentCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentCreateNestedManyWithoutAssetInput
   }
 
   export type AssetUncheckedCreateWithoutWorkbenchesInput = {
@@ -61580,7 +61546,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    augments?: AugmentUncheckedCreateNestedManyWithoutAssetInput
+    augments?: AssetAugmentUncheckedCreateNestedManyWithoutAssetInput
   }
 
   export type AssetCreateOrConnectWithoutWorkbenchesInput = {
@@ -66025,7 +65991,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbenches?: WorkbenchUpdateManyWithoutAssetsNestedInput
-    augments?: AugmentUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetUncheckedUpdateWithoutFootInput = {
@@ -66041,7 +66007,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbenches?: WorkbenchUncheckedUpdateManyWithoutAssetsNestedInput
-    augments?: AugmentUncheckedUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetUncheckedUpdateManyWithoutFootInput = {
@@ -66058,11 +66024,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentCreateManyAssetInput = {
+  export type AssetAugmentCreateManyAssetInput = {
     id?: string
-    type: $Enums.AugmentType
+    type: $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -66123,36 +66088,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentUpdateWithoutAssetInput = {
+  export type AssetAugmentUpdateWithoutAssetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    media?: AugmentMediaUpdateManyWithoutAugmentNestedInput
+    media?: AssetAugmentMediaUpdateManyWithoutAugmentNestedInput
   }
 
-  export type AugmentUncheckedUpdateWithoutAssetInput = {
+  export type AssetAugmentUncheckedUpdateWithoutAssetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    media?: AugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
+    media?: AssetAugmentMediaUncheckedUpdateManyWithoutAugmentNestedInput
   }
 
-  export type AugmentUncheckedUpdateManyWithoutAssetInput = {
+  export type AssetAugmentUncheckedUpdateManyWithoutAssetInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumAugmentTypeFieldUpdateOperationsInput | $Enums.AugmentType
+    type?: EnumAssetAugmentTypeFieldUpdateOperationsInput | $Enums.AssetAugmentType
     data?: NullableJsonNullValueInput | InputJsonValue
-    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaCreateManyAugmentInput = {
+  export type AssetAugmentMediaCreateManyAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
@@ -66165,7 +66127,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AugmentMediaUpdateWithoutAugmentInput = {
+  export type AssetAugmentMediaUpdateWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66178,7 +66140,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaUncheckedUpdateWithoutAugmentInput = {
+  export type AssetAugmentMediaUncheckedUpdateWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66191,7 +66153,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AugmentMediaUncheckedUpdateManyWithoutAugmentInput = {
+  export type AssetAugmentMediaUncheckedUpdateManyWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66407,7 +66369,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foot?: FootUpdateOneRequiredWithoutAssetsNestedInput
-    augments?: AugmentUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetUncheckedUpdateWithoutWorkbenchesInput = {
@@ -66423,7 +66385,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    augments?: AugmentUncheckedUpdateManyWithoutAssetNestedInput
+    augments?: AssetAugmentUncheckedUpdateManyWithoutAssetNestedInput
   }
 
   export type AssetUncheckedUpdateManyWithoutWorkbenchesInput = {
@@ -67688,9 +67650,9 @@ export namespace Prisma {
      */
     export type AssetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssetCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use AugmentCountOutputTypeDefaultArgs instead
+     * @deprecated Use AssetAugmentCountOutputTypeDefaultArgs instead
      */
-    export type AugmentCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AugmentCountOutputTypeDefaultArgs<ExtArgs>
+    export type AssetAugmentCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssetAugmentCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ProductCountOutputTypeDefaultArgs instead
      */
@@ -67764,13 +67726,13 @@ export namespace Prisma {
      */
     export type AssetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssetDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use AugmentDefaultArgs instead
+     * @deprecated Use AssetAugmentDefaultArgs instead
      */
-    export type AugmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AugmentDefaultArgs<ExtArgs>
+    export type AssetAugmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssetAugmentDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use AugmentMediaDefaultArgs instead
+     * @deprecated Use AssetAugmentMediaDefaultArgs instead
      */
-    export type AugmentMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AugmentMediaDefaultArgs<ExtArgs>
+    export type AssetAugmentMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssetAugmentMediaDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ProductDefaultArgs instead
      */

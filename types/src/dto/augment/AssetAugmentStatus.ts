@@ -1,4 +1,4 @@
-export interface AugmentStatus {
+export interface AssetAugmentStatus {
   id: string;
   leftFootAugment: boolean;
   rightFootAugment: boolean;
