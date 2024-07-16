@@ -1,6 +1,8 @@
 export interface AssetAugmentStatus {
-  id: string;
+  leftAssetAugmentId: string | null;
+  rightAssetAugmentId: string | null;
   leftFootAssetAugment: boolean;
   rightFootAssetAugment: boolean;
-  hasReviewedAll: boolean;
+  hasReviewedLeftFoot: boolean;
+  hasReviewedRightFoot: boolean;
 }

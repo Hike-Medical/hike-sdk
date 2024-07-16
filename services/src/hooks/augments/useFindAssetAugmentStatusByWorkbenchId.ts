@@ -5,7 +5,7 @@ import { AssetAugmentStatus, AssetAugmentType } from '@hike/types';
 export const useFindAssetAugmentStatusByWorkbenchId = (
   workbenchId: string,
   type: AssetAugmentType,
-  queryOptions?: Omit<UseQueryOptions<AssetAugmentStatus, Error>, 'queryFn' | 'queryFn'>
+  queryOptions?: Omit<UseQueryOptions<AssetAugmentStatus, Error>, 'queryFn' | 'queryKey'>
 ) => {
   return useQuery({
     queryKey: ['augment', 'status', type],
