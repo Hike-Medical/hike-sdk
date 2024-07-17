@@ -9,7 +9,7 @@ class StripeService {
     });
   }
 
-  async createInvoice(customerId: string, priceId: string, quantity: number) {
+  async createInvoice(customerId: string, priceId: string, quantity: number, coupon_id?: string) {
     try {
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
@@ -23,7 +23,8 @@ class StripeService {
         price: priceId,
         invoice: invoice.id,
         discountable: true,
-        quantity: quantity
+        quantity: quantity,
+        discounts: coupon_id ? [{ coupon: coupon_id }] : []
       });
 
       const finalizedInvoice = await this.stripe.invoices.finalizeInvoice(invoice.id);
