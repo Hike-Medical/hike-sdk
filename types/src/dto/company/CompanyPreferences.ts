@@ -5,6 +5,7 @@ export interface CompanyPreferences {
   preferredVeteranEmailAddress?: string;
   preSubmissionAuth?: boolean;
   scanOrderOnly?: boolean;
+  modifyTaikaHeelStyle?: boolean;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
   };
