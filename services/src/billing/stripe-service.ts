@@ -1,6 +1,12 @@
 import Stripe from 'stripe';
 
-class StripeService {
+export interface StripeLineItem {
+  priceId: string;
+  quantity: number;
+  couponId?: string;
+}
+
+export class StripeService {
   private stripe: Stripe;
 
   constructor(apiKey: string) {
@@ -9,7 +15,7 @@ class StripeService {
     });
   }
 
-  async createInvoice(customerId: string, priceId: string, quantity: number, coupon_id?: string) {
+  async createInvoice(customerId: string, lineItems: StripeLineItem[]) {
     try {
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
@@ -18,14 +24,16 @@ class StripeService {
       });
 
       //TODO: Add coupons
-      await this.stripe.invoiceItems.create({
-        customer: customerId,
-        price: priceId,
-        invoice: invoice.id,
-        discountable: true,
-        quantity: quantity,
-        discounts: coupon_id ? [{ coupon: coupon_id }] : []
-      });
+      for (const item of lineItems) {
+        await this.stripe.invoiceItems.create({
+          customer: customerId,
+          price: item.priceId,
+          invoice: invoice.id,
+          discountable: true,
+          quantity: item.quantity,
+          discounts: item.couponId ? [{ coupon: item.couponId }] : []
+        });
+      }
 
       const finalizedInvoice = await this.stripe.invoices.finalizeInvoice(invoice.id);
 
@@ -84,5 +92,3 @@ class StripeService {
     return new Error('An error occurred while processing your request');
   }
 }
-
-export default StripeService;
