@@ -1,10 +1,5 @@
+import { StripeLineItem } from '@hike/types';
 import Stripe from 'stripe';
-
-export interface StripeLineItem {
-  priceId: string;
-  quantity: number;
-  couponId?: string;
-}
 
 export class StripeService {
   private stripe: Stripe;
@@ -228,37 +223,10 @@ export class StripeService {
     }
   }
 
-  async searchSubscriptionsForCompany(companyId: string, startDate?: Date, endDate?: Date) {
+  async getSubscriptionById(subscriptionId: string) {
     try {
-      const startTimestamp = startDate ? Math.floor(startDate.getTime() / 1000) : 0;
-      const endTimestamp = endDate ? Math.floor(endDate.getTime() / 1000) : Math.floor(Date.now() / 1000);
-
-      let allSubscriptions: Stripe.Subscription[] = [];
-      let hasMore = true;
-      let page: string | null = null;
-
-      while (hasMore) {
-        const queryParts = [`metadata['companyId']:'${companyId}'`];
-        if (startDate) {
-          queryParts.push(`created>=${startTimestamp}`);
-        }
-        if (endDate) {
-          queryParts.push(`created<=${endTimestamp}`);
-        }
-        const query = queryParts.join(' AND ');
-
-        const subscriptions = await this.stripe.subscriptions.search({
-          query: query,
-          limit: 100,
-          page: page ?? undefined
-        });
-
-        allSubscriptions = allSubscriptions.concat(subscriptions.data);
-        hasMore = subscriptions.has_more;
-        page = subscriptions.next_page;
-      }
-
-      return allSubscriptions;
+      const subscription = await this.stripe.subscriptions.retrieve(subscriptionId);
+      return subscription;
     } catch (error) {
       throw this.handleStripeError(error);
     }

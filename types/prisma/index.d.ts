@@ -184,6 +184,11 @@ export type CompanyPatient = $Result.DefaultSelection<Prisma.$CompanyPatientPayl
  */
 export type FacilityUser = $Result.DefaultSelection<Prisma.$FacilityUserPayload>
 /**
+ * Model StripeProduct
+ * 
+ */
+export type StripeProduct = $Result.DefaultSelection<Prisma.$StripeProductPayload>
+/**
  * Model User
  * 
  */
@@ -461,6 +466,19 @@ export const CompanyPermission: {
 
 export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyPermission]
 
+
+export const StripeProductType: {
+  TOE_FILLER: 'TOE_FILLER',
+  DIABETIC_1: 'DIABETIC_1',
+  DIABETIC_2: 'DIABETIC_2',
+  DIABETIC_3: 'DIABETIC_3',
+  FUNCTIONAL: 'FUNCTIONAL',
+  BASE_FEE: 'BASE_FEE',
+  CLINIC_SUBSCRIPTION: 'CLINIC_SUBSCRIPTION'
+};
+
+export type StripeProductType = (typeof StripeProductType)[keyof typeof StripeProductType]
+
 }
 
 export type FacilityType = $Enums.FacilityType
@@ -558,6 +576,10 @@ export const CompanyRole: typeof $Enums.CompanyRole
 export type CompanyPermission = $Enums.CompanyPermission
 
 export const CompanyPermission: typeof $Enums.CompanyPermission
+
+export type StripeProductType = $Enums.StripeProductType
+
+export const StripeProductType: typeof $Enums.StripeProductType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1020,6 +1042,16 @@ export class PrismaClient<
     * ```
     */
   get facilityUser(): Prisma.FacilityUserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stripeProduct`: Exposes CRUD operations for the **StripeProduct** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StripeProducts
+    * const stripeProducts = await prisma.stripeProduct.findMany()
+    * ```
+    */
+  get stripeProduct(): Prisma.StripeProductDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -1571,6 +1603,7 @@ export namespace Prisma {
     CompanyUserPermission: 'CompanyUserPermission',
     CompanyPatient: 'CompanyPatient',
     FacilityUser: 'FacilityUser',
+    StripeProduct: 'StripeProduct',
     User: 'User',
     Account: 'Account',
     ApiKey: 'ApiKey',
@@ -1591,7 +1624,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3972,6 +4005,76 @@ export namespace Prisma {
           count: {
             args: Prisma.FacilityUserCountArgs<ExtArgs>,
             result: $Utils.Optional<FacilityUserCountAggregateOutputType> | number
+          }
+        }
+      }
+      StripeProduct: {
+        payload: Prisma.$StripeProductPayload<ExtArgs>
+        fields: Prisma.StripeProductFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StripeProductFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StripeProductFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          findFirst: {
+            args: Prisma.StripeProductFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StripeProductFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          findMany: {
+            args: Prisma.StripeProductFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>[]
+          }
+          create: {
+            args: Prisma.StripeProductCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          createMany: {
+            args: Prisma.StripeProductCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StripeProductCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>[]
+          }
+          delete: {
+            args: Prisma.StripeProductDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          update: {
+            args: Prisma.StripeProductUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          deleteMany: {
+            args: Prisma.StripeProductDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StripeProductUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StripeProductUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          aggregate: {
+            args: Prisma.StripeProductAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStripeProduct>
+          }
+          groupBy: {
+            args: Prisma.StripeProductGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StripeProductGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StripeProductCountArgs<ExtArgs>,
+            result: $Utils.Optional<StripeProductCountAggregateOutputType> | number
           }
         }
       }
@@ -40158,6 +40261,915 @@ export namespace Prisma {
 
 
   /**
+   * Model StripeProduct
+   */
+
+  export type AggregateStripeProduct = {
+    _count: StripeProductCountAggregateOutputType | null
+    _min: StripeProductMinAggregateOutputType | null
+    _max: StripeProductMaxAggregateOutputType | null
+  }
+
+  export type StripeProductMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.StripeProductType | null
+    stripeProductId: string | null
+    defaultPriceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeProductMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.StripeProductType | null
+    stripeProductId: string | null
+    defaultPriceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeProductCountAggregateOutputType = {
+    id: number
+    type: number
+    stripeProductId: number
+    defaultPriceId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StripeProductMinAggregateInputType = {
+    id?: true
+    type?: true
+    stripeProductId?: true
+    defaultPriceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeProductMaxAggregateInputType = {
+    id?: true
+    type?: true
+    stripeProductId?: true
+    defaultPriceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeProductCountAggregateInputType = {
+    id?: true
+    type?: true
+    stripeProductId?: true
+    defaultPriceId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StripeProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeProduct to aggregate.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StripeProducts
+    **/
+    _count?: true | StripeProductCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StripeProductMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StripeProductMaxAggregateInputType
+  }
+
+  export type GetStripeProductAggregateType<T extends StripeProductAggregateArgs> = {
+        [P in keyof T & keyof AggregateStripeProduct]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStripeProduct[P]>
+      : GetScalarType<T[P], AggregateStripeProduct[P]>
+  }
+
+
+
+
+  export type StripeProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeProductWhereInput
+    orderBy?: StripeProductOrderByWithAggregationInput | StripeProductOrderByWithAggregationInput[]
+    by: StripeProductScalarFieldEnum[] | StripeProductScalarFieldEnum
+    having?: StripeProductScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StripeProductCountAggregateInputType | true
+    _min?: StripeProductMinAggregateInputType
+    _max?: StripeProductMaxAggregateInputType
+  }
+
+  export type StripeProductGroupByOutputType = {
+    id: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    defaultPriceId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: StripeProductCountAggregateOutputType | null
+    _min: StripeProductMinAggregateOutputType | null
+    _max: StripeProductMaxAggregateOutputType | null
+  }
+
+  type GetStripeProductGroupByPayload<T extends StripeProductGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StripeProductGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StripeProductGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StripeProductGroupByOutputType[P]>
+            : GetScalarType<T[P], StripeProductGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StripeProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    stripeProductId?: boolean
+    defaultPriceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["stripeProduct"]>
+
+  export type StripeProductSelectScalar = {
+    id?: boolean
+    type?: boolean
+    stripeProductId?: boolean
+    defaultPriceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $StripeProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StripeProduct"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.StripeProductType
+      stripeProductId: string
+      defaultPriceId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["stripeProduct"]>
+    composites: {}
+  }
+
+
+  type StripeProductGetPayload<S extends boolean | null | undefined | StripeProductDefaultArgs> = $Result.GetResult<Prisma.$StripeProductPayload, S>
+
+  type StripeProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StripeProductFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StripeProductCountAggregateInputType | true
+    }
+
+  export interface StripeProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StripeProduct'], meta: { name: 'StripeProduct' } }
+    /**
+     * Find zero or one StripeProduct that matches the filter.
+     * @param {StripeProductFindUniqueArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StripeProductFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductFindUniqueArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StripeProduct that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {StripeProductFindUniqueOrThrowArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StripeProductFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StripeProduct that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindFirstArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StripeProductFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindFirstArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StripeProduct that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindFirstOrThrowArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StripeProductFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StripeProducts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StripeProducts
+     * const stripeProducts = await prisma.stripeProduct.findMany()
+     * 
+     * // Get first 10 StripeProducts
+     * const stripeProducts = await prisma.stripeProduct.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stripeProductWithIdOnly = await prisma.stripeProduct.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StripeProductFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StripeProduct.
+     * @param {StripeProductCreateArgs} args - Arguments to create a StripeProduct.
+     * @example
+     * // Create one StripeProduct
+     * const StripeProduct = await prisma.stripeProduct.create({
+     *   data: {
+     *     // ... data to create a StripeProduct
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StripeProductCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductCreateArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StripeProducts.
+     * @param {StripeProductCreateManyArgs} args - Arguments to create many StripeProducts.
+     * @example
+     * // Create many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends StripeProductCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StripeProducts and returns the data saved in the database.
+     * @param {StripeProductCreateManyAndReturnArgs} args - Arguments to create many StripeProducts.
+     * @example
+     * // Create many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StripeProducts and only return the `id`
+     * const stripeProductWithIdOnly = await prisma.stripeProduct.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends StripeProductCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a StripeProduct.
+     * @param {StripeProductDeleteArgs} args - Arguments to delete one StripeProduct.
+     * @example
+     * // Delete one StripeProduct
+     * const StripeProduct = await prisma.stripeProduct.delete({
+     *   where: {
+     *     // ... filter to delete one StripeProduct
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StripeProductDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductDeleteArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StripeProduct.
+     * @param {StripeProductUpdateArgs} args - Arguments to update one StripeProduct.
+     * @example
+     * // Update one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StripeProductUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpdateArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StripeProducts.
+     * @param {StripeProductDeleteManyArgs} args - Arguments to filter StripeProducts to delete.
+     * @example
+     * // Delete a few StripeProducts
+     * const { count } = await prisma.stripeProduct.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StripeProductDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StripeProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StripeProductUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StripeProduct.
+     * @param {StripeProductUpsertArgs} args - Arguments to update or create a StripeProduct.
+     * @example
+     * // Update or create a StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.upsert({
+     *   create: {
+     *     // ... data to create a StripeProduct
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StripeProduct we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StripeProductUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpsertArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StripeProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductCountArgs} args - Arguments to filter StripeProducts to count.
+     * @example
+     * // Count the number of StripeProducts
+     * const count = await prisma.stripeProduct.count({
+     *   where: {
+     *     // ... the filter for the StripeProducts we want to count
+     *   }
+     * })
+    **/
+    count<T extends StripeProductCountArgs>(
+      args?: Subset<T, StripeProductCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StripeProductCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StripeProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StripeProductAggregateArgs>(args: Subset<T, StripeProductAggregateArgs>): Prisma.PrismaPromise<GetStripeProductAggregateType<T>>
+
+    /**
+     * Group by StripeProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StripeProductGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StripeProductGroupByArgs['orderBy'] }
+        : { orderBy?: StripeProductGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StripeProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStripeProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StripeProduct model
+   */
+  readonly fields: StripeProductFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StripeProduct.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StripeProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StripeProduct model
+   */ 
+  interface StripeProductFieldRefs {
+    readonly id: FieldRef<"StripeProduct", 'String'>
+    readonly type: FieldRef<"StripeProduct", 'StripeProductType'>
+    readonly stripeProductId: FieldRef<"StripeProduct", 'String'>
+    readonly defaultPriceId: FieldRef<"StripeProduct", 'String'>
+    readonly createdAt: FieldRef<"StripeProduct", 'DateTime'>
+    readonly updatedAt: FieldRef<"StripeProduct", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StripeProduct findUnique
+   */
+  export type StripeProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct findUniqueOrThrow
+   */
+  export type StripeProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct findFirst
+   */
+  export type StripeProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeProducts.
+     */
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct findFirstOrThrow
+   */
+  export type StripeProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeProducts.
+     */
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct findMany
+   */
+  export type StripeProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter, which StripeProducts to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct create
+   */
+  export type StripeProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * The data needed to create a StripeProduct.
+     */
+    data: XOR<StripeProductCreateInput, StripeProductUncheckedCreateInput>
+  }
+
+  /**
+   * StripeProduct createMany
+   */
+  export type StripeProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StripeProducts.
+     */
+    data: StripeProductCreateManyInput | StripeProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeProduct createManyAndReturn
+   */
+  export type StripeProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * The data used to create many StripeProducts.
+     */
+    data: StripeProductCreateManyInput | StripeProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeProduct update
+   */
+  export type StripeProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StripeProduct.
+     */
+    data: XOR<StripeProductUpdateInput, StripeProductUncheckedUpdateInput>
+    /**
+     * Choose, which StripeProduct to update.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct updateMany
+   */
+  export type StripeProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StripeProducts.
+     */
+    data: XOR<StripeProductUpdateManyMutationInput, StripeProductUncheckedUpdateManyInput>
+    /**
+     * Filter which StripeProducts to update
+     */
+    where?: StripeProductWhereInput
+  }
+
+  /**
+   * StripeProduct upsert
+   */
+  export type StripeProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StripeProduct to update in case it exists.
+     */
+    where: StripeProductWhereUniqueInput
+    /**
+     * In case the StripeProduct found by the `where` argument doesn't exist, create a new StripeProduct with this data.
+     */
+    create: XOR<StripeProductCreateInput, StripeProductUncheckedCreateInput>
+    /**
+     * In case the StripeProduct was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StripeProductUpdateInput, StripeProductUncheckedUpdateInput>
+  }
+
+  /**
+   * StripeProduct delete
+   */
+  export type StripeProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Filter which StripeProduct to delete.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct deleteMany
+   */
+  export type StripeProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeProducts to delete
+     */
+    where?: StripeProductWhereInput
+  }
+
+  /**
+   * StripeProduct without action
+   */
+  export type StripeProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -40196,6 +41208,7 @@ export namespace Prisma {
     password: number
     pin: number
     photoUrl: number
+    flags: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -40231,6 +41244,7 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    flags?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -40315,6 +41329,7 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    flags: JsonValue | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -40343,6 +41358,7 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    flags?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -40362,6 +41378,7 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    flags?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -40397,6 +41414,7 @@ export namespace Prisma {
       password: string | null
       pin: string | null
       photoUrl: string | null
+      flags: Prisma.JsonValue | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -40838,6 +41856,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly pin: FieldRef<"User", 'String'>
     readonly photoUrl: FieldRef<"User", 'String'>
+    readonly flags: FieldRef<"User", 'Json'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -45138,6 +46157,18 @@ export namespace Prisma {
   export type FacilityUserScalarFieldEnum = (typeof FacilityUserScalarFieldEnum)[keyof typeof FacilityUserScalarFieldEnum]
 
 
+  export const StripeProductScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    stripeProductId: 'stripeProductId',
+    defaultPriceId: 'defaultPriceId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StripeProductScalarFieldEnum = (typeof StripeProductScalarFieldEnum)[keyof typeof StripeProductScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
@@ -45145,6 +46176,7 @@ export namespace Prisma {
     password: 'password',
     pin: 'pin',
     photoUrl: 'photoUrl',
+    flags: 'flags',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -45685,6 +46717,20 @@ export namespace Prisma {
    * Reference to a field of type 'CompanyPermission[]'
    */
   export type ListEnumCompanyPermissionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyPermission[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeProductType'
+   */
+  export type EnumStripeProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeProductType'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeProductType[]'
+   */
+  export type ListEnumStripeProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeProductType[]'>
     
   /**
    * Deep Input Types
@@ -48350,6 +49396,63 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
   }
 
+  export type StripeProductWhereInput = {
+    AND?: StripeProductWhereInput | StripeProductWhereInput[]
+    OR?: StripeProductWhereInput[]
+    NOT?: StripeProductWhereInput | StripeProductWhereInput[]
+    id?: StringFilter<"StripeProduct"> | string
+    type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
+    stripeProductId?: StringFilter<"StripeProduct"> | string
+    defaultPriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
+  }
+
+  export type StripeProductOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    stripeProductId?: SortOrder
+    defaultPriceId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StripeProductWhereInput | StripeProductWhereInput[]
+    OR?: StripeProductWhereInput[]
+    NOT?: StripeProductWhereInput | StripeProductWhereInput[]
+    type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
+    stripeProductId?: StringFilter<"StripeProduct"> | string
+    defaultPriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
+  }, "id">
+
+  export type StripeProductOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    stripeProductId?: SortOrder
+    defaultPriceId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StripeProductCountOrderByAggregateInput
+    _max?: StripeProductMaxOrderByAggregateInput
+    _min?: StripeProductMinOrderByAggregateInput
+  }
+
+  export type StripeProductScalarWhereWithAggregatesInput = {
+    AND?: StripeProductScalarWhereWithAggregatesInput | StripeProductScalarWhereWithAggregatesInput[]
+    OR?: StripeProductScalarWhereWithAggregatesInput[]
+    NOT?: StripeProductScalarWhereWithAggregatesInput | StripeProductScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StripeProduct"> | string
+    type?: EnumStripeProductTypeWithAggregatesFilter<"StripeProduct"> | $Enums.StripeProductType
+    stripeProductId?: StringWithAggregatesFilter<"StripeProduct"> | string
+    defaultPriceId?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -48360,6 +49463,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    flags?: JsonNullableFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -48378,6 +49482,7 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    flags?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
@@ -48399,6 +49504,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    flags?: JsonNullableFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -48417,6 +49523,7 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    flags?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -48434,6 +49541,7 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     pin?: StringNullableWithAggregatesFilter<"User"> | string | null
     photoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    flags?: JsonNullableWithAggregatesFilter<"User">
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -51749,6 +52857,69 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type StripeProductCreateInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    defaultPriceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeProductUncheckedCreateInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    defaultPriceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeProductUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductCreateManyInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    defaultPriceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeProductUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email?: string | null
@@ -51756,6 +52927,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -51774,6 +52946,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -51792,6 +52965,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -51810,6 +52984,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -51828,6 +53003,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -51839,6 +53015,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -51850,6 +53027,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -54707,6 +55885,50 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumStripeProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeFilter<$PrismaModel> | $Enums.StripeProductType
+  }
+
+  export type StripeProductCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    stripeProductId?: SortOrder
+    defaultPriceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    stripeProductId?: SortOrder
+    defaultPriceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    stripeProductId?: SortOrder
+    defaultPriceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumStripeProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+  }
+
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
@@ -54729,6 +55951,7 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    flags?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -57483,6 +58706,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFacilitiesInput, UserUpdateWithoutFacilitiesInput>, UserUncheckedUpdateWithoutFacilitiesInput>
   }
 
+  export type EnumStripeProductTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StripeProductType
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -58512,6 +59739,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCompanyPermissionFilter<$PrismaModel>
     _max?: NestedEnumCompanyPermissionFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStripeProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeFilter<$PrismaModel> | $Enums.StripeProductType
+  }
+
+  export type NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeProductTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
@@ -59790,6 +61034,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -59807,6 +61052,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -59911,6 +61157,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -59928,6 +61175,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -62043,6 +63291,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -62060,6 +63309,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -62144,6 +63394,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -62161,6 +63412,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -63567,6 +64819,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -63584,6 +64837,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -63660,6 +64914,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -63677,6 +64932,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -63786,6 +65042,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -63803,6 +65060,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -63885,6 +65143,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -63902,6 +65161,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -63919,6 +65179,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -63936,6 +65197,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -64012,6 +65274,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -64029,6 +65292,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -64316,6 +65580,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -64333,6 +65598,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -64401,6 +65667,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -64418,6 +65685,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -64758,6 +66026,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
@@ -64775,6 +66044,7 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
@@ -64808,6 +66078,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
@@ -64825,6 +66096,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
@@ -67833,6 +69105,10 @@ export namespace Prisma {
      * @deprecated Use FacilityUserDefaultArgs instead
      */
     export type FacilityUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityUserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StripeProductDefaultArgs instead
+     */
+    export type StripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeProductDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
