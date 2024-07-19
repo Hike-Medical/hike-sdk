@@ -34,7 +34,7 @@ export class StripeService {
     return Math.floor(nextBillingDate.getTime() / 1000);
   }
 
-  async createSubscription(customerId: string, priceId: string, companyId: string, facilityIds: string[]) {
+  async createSubscription(customerId: string, priceId: string, quantity: number, companyId: string) {
     try {
       const price = await this.stripe.prices.retrieve(priceId);
       const interval = price.recurring?.interval;
@@ -48,12 +48,12 @@ export class StripeService {
 
       const subscription = await this.stripe.subscriptions.create({
         customer: customerId,
-        items: facilityIds.map((facilityId) => ({
-          price: priceId,
-          metadata: {
-            facilityId: facilityId
+        items: [
+          {
+            price: priceId,
+            quantity
           }
-        })),
+        ],
         metadata: {
           companyId: companyId
         },
@@ -66,62 +66,7 @@ export class StripeService {
 
       return subscription;
     } catch (error) {
-      console.error('Error creating subscription', { error, customerId, priceId, companyId, facilityIds });
-      throw this.handleStripeError(error);
-    }
-  }
-
-  async addFacilitiesToSubscription(subscriptionId: string, priceId: string, newFacilityIds: string[]) {
-    try {
-      const subscription = await this.stripe.subscriptions.retrieve(subscriptionId);
-
-      const newItems = newFacilityIds.map((facilityId) => ({
-        price: priceId,
-        metadata: {
-          facilityId: facilityId
-        }
-      }));
-
-      const updatedSubscription = await this.stripe.subscriptions.update(subscriptionId, {
-        items: [
-          ...subscription.items.data.map((item) => ({
-            id: item.id,
-            price: item.price.id,
-            quantity: item.quantity
-          })),
-          ...newItems
-        ]
-      });
-
-      return updatedSubscription;
-    } catch (error) {
-      console.error('Error updating subscription', { error, subscriptionId, priceId, newFacilityIds });
-      throw this.handleStripeError(error);
-    }
-  }
-
-  async deleteFacilitiesFromSubscription(subscriptionId: string, facilityIdsToDelete: string[]) {
-    try {
-      const subscription = await this.stripe.subscriptions.retrieve(subscriptionId);
-
-      const remainingItems = subscription.items.data
-        .filter((item) => {
-          const facilityId = item.metadata.facilityId;
-          return !facilityIdsToDelete.includes(facilityId ?? '');
-        })
-        .map((item) => ({
-          id: item.id,
-          price: item.price.id,
-          quantity: item.quantity
-        }));
-
-      const updatedSubscription = await this.stripe.subscriptions.update(subscriptionId, {
-        items: remainingItems
-      });
-
-      return updatedSubscription;
-    } catch (error) {
-      console.error('Error deleting facilities from subscription', { error, subscriptionId, facilityIdsToDelete });
+      console.error('Error creating subscription', { error, customerId, priceId, companyId });
       throw this.handleStripeError(error);
     }
   }
