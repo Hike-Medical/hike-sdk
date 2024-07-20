@@ -27,8 +27,6 @@
   ],
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
     "dev": "tsc --watch",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../../.gitignore",

@@ -32,6 +32,8 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
@@ -42,6 +44,9 @@
     "@hike/types": "workspace:*",
     "@hike/ui": "workspace:*",
     "@hike/utils": "workspace:*",
+    "@mantine/core": "^7.8.0",
+    "@mantine/hooks": "^7.8.0",
+    "@tabler/icons-react": "^3.6.0",
     "jose": "^5.2.4"
   },
   "devDependencies": {
