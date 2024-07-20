@@ -4,10 +4,7 @@ import { findNotesByWorkbenchId } from '../../api/notes.service';
 import { ResponseError } from '../../errors/ResponseError';
 
 export interface UseGetNotesOptions
-  extends Omit<
-    UseQueryOptions<Pick<Notes, 'id' | 'title' | 'content' | 'tags' | 'createdAt'>[] | null, ResponseError<null>>,
-    'queryKey' | 'queryFn'
-  > {
+  extends Omit<UseQueryOptions<Notes[] | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
   tags?: string[];
   deleted?: boolean;
