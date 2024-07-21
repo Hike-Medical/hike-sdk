@@ -22,7 +22,6 @@ export * from './helpers/colorMapper';
 export * from './helpers/convertRenderTypeToValue';
 export * from './helpers/currentPaginatedPage';
 export * from './helpers/currentUrl';
-export * from './helpers/dateUtils';
 export * from './helpers/extractDomain';
 export * from './helpers/findKeyInNested';
 export * from './helpers/formSchemaUtils';
