@@ -44,7 +44,13 @@ export function PatientCard({
         </Text>
         {birthDate && (
           <Text fw={500} size="md">
-            DOB: {birthDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
+            DOB:{' '}
+            {birthDate.toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: 'numeric',
+              timeZone: 'UTC'
+            })}
           </Text>
         )}
       </Stack>
