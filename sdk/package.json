@@ -44,10 +44,12 @@
     "@hike/types": "workspace:*",
     "@hike/ui": "workspace:*",
     "@hike/utils": "workspace:*",
+    "jose": "^5.2.4"
+  },
+  "peerDependencies": {
     "@mantine/core": "^7.8.0",
     "@mantine/hooks": "^7.8.0",
-    "@tabler/icons-react": "^3.6.0",
-    "jose": "^5.2.4"
+    "@tabler/icons-react": "^3.6.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
