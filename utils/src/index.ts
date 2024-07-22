@@ -8,6 +8,7 @@ export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
 export * from './converters/toTitleCase';
 export * from './converters/toURL';
+export * from './converters/toUTC';
 export * from './geography';
 export * from './guards/isAuthUser';
 export * from './guards/isDefined';
