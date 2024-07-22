@@ -474,7 +474,7 @@ export const StripeProductType: {
   DIABETIC_3: 'DIABETIC_3',
   FUNCTIONAL: 'FUNCTIONAL',
   BASE_FEE: 'BASE_FEE',
-  CLINIC_SUBSCRIPTION: 'CLINIC_SUBSCRIPTION'
+  FACILITY_SUBSCRIPTION: 'FACILITY_SUBSCRIPTION'
 };
 
 export type StripeProductType = (typeof StripeProductType)[keyof typeof StripeProductType]

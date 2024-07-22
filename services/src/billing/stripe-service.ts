@@ -196,6 +196,7 @@ export class StripeService {
         limit: 1
       });
 
+      //TODO: eventually allow for removal of other prices
       if (existingPrices.data.length > 0) {
         const existingPrice = existingPrices.data[0];
         throw new Error(
