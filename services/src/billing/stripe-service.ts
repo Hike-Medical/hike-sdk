@@ -34,7 +34,13 @@ export class StripeService {
     return Math.floor(nextBillingDate.getTime() / 1000);
   }
 
-  async createSubscription(customerId: string, priceId: string, quantity: number, companyId: string) {
+  async createSubscription(
+    customerId: string,
+    priceId: string,
+    quantity: number,
+    companyId: string,
+    description?: string
+  ) {
     try {
       const price = await this.stripe.prices.retrieve(priceId);
       const interval = price.recurring?.interval;
@@ -60,6 +66,7 @@ export class StripeService {
         payment_behavior: 'allow_incomplete',
         proration_behavior: 'none',
         expand: ['latest_invoice'],
+        description,
         collection_method: 'charge_automatically',
         billing_cycle_anchor: nextBillingDate
       });
@@ -71,19 +78,52 @@ export class StripeService {
     }
   }
 
-  async createInvoice(customerId: string, lineItems: StripeLineItem[], companyId: string, invoiceCouponId?: string) {
+  async updateSubscriptionQuantity(subscriptionId: string, priceId: string, newQuantity: number) {
+    try {
+      const subscription = await this.stripe.subscriptions.retrieve(subscriptionId);
+
+      const item = subscription.items.data.find((item: any) => item.price.id === priceId);
+
+      if (!item) {
+        throw new Error('Price ID not found in the subscription');
+      }
+
+      const updatedSubscription = await this.stripe.subscriptions.update(subscriptionId, {
+        items: [
+          {
+            id: item.id,
+            quantity: newQuantity
+          }
+        ],
+        proration_behavior: 'none'
+      });
+
+      return updatedSubscription;
+    } catch (error) {
+      console.error('Error updating subscription quantity', { error, subscriptionId, priceId, newQuantity });
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async createInvoice(
+    customerId: string,
+    lineItems: StripeLineItem[],
+    companyId: string,
+    shouldAutoAdvance: boolean = true,
+    invoiceCouponId?: string,
+    description?: string
+  ) {
     try {
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
-        collection_method: 'charge_automatically',
-        auto_advance: true,
+        auto_advance: shouldAutoAdvance,
         metadata: {
           companyId: companyId
         },
-        discounts: invoiceCouponId ? [{ coupon: invoiceCouponId }] : []
+        discounts: invoiceCouponId ? [{ coupon: invoiceCouponId }] : [],
+        description
       });
 
-      //TODO: Add coupons
       for (const item of lineItems) {
         await this.stripe.invoiceItems.create({
           customer: customerId,
@@ -91,14 +131,65 @@ export class StripeService {
           invoice: invoice.id,
           discountable: true,
           quantity: item.quantity,
-          discounts: item.couponId ? [{ coupon: item.couponId }] : []
+          discounts: item.couponId ? [{ coupon: item.couponId }] : [],
+          description: item.description
         });
       }
 
-      const finalizedInvoice = await this.stripe.invoices.finalizeInvoice(invoice.id);
-
-      return finalizedInvoice;
+      return invoice;
     } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async createCompleteInvoice(
+    customerId: string,
+    companyId: string,
+    shouldAutoAdvance: boolean = true,
+    startDate?: Date,
+    endDate?: Date
+  ) {
+    try {
+      const previousInvoices = await this.searchInvoicesForCompany(companyId, true, startDate, endDate);
+      const invoiceDetails = previousInvoices.map((invoice) => {
+        return {
+          amount: invoice.amount_due,
+          description: `Summary of Invoice ${invoice.number || invoice.id}`
+        };
+      });
+      const startDateStr = startDate ? startDate.toISOString().split('T')[0] : 'beginning';
+      const endDateStr = endDate ? endDate.toISOString().split('T')[0] : 'now';
+      const invoiceDescription = `Complete invoice from ${startDateStr} to ${endDateStr}`;
+
+      const newInvoice = await this.stripe.invoices.create({
+        customer: customerId,
+        auto_advance: shouldAutoAdvance,
+        metadata: {
+          companyId: companyId
+        },
+        description: invoiceDescription
+      });
+
+      for (const detail of invoiceDetails) {
+        await this.stripe.invoiceItems.create({
+          customer: customerId,
+          amount: detail.amount,
+          invoice: newInvoice.id,
+          currency: 'usd',
+          description: detail.description
+        });
+      }
+
+      for (const invoice of previousInvoices) {
+        if (invoice.status === 'draft') {
+          await this.stripe.invoices.finalizeInvoice(invoice.id);
+        }
+        await this.stripe.invoices.voidInvoice(invoice.id);
+      }
+
+      return newInvoice;
+    } catch (error) {
+      console.error('Error creating complete invoice', { error, customerId, companyId });
       throw this.handleStripeError(error);
     }
   }
@@ -132,7 +223,7 @@ export class StripeService {
     }
   }
 
-  async searchInvoicesForCompany(companyId: string, startDate?: Date, endDate?: Date) {
+  async searchInvoicesForCompany(companyId: string, isUnpaid: boolean = false, startDate?: Date, endDate?: Date) {
     try {
       const startTimestamp = startDate ? Math.floor(startDate.getTime() / 1000) : 0;
       const endTimestamp = endDate ? Math.floor(endDate.getTime() / 1000) : Math.floor(Date.now() / 1000);
@@ -143,6 +234,12 @@ export class StripeService {
 
       while (hasMore) {
         const queryParts = [`metadata['companyId']:'${companyId}'`];
+        if (isUnpaid) {
+          queryParts.push(`-status:'void'`);
+          queryParts.push(`-status:'paid'`);
+          queryParts.push(`-status:'deleted'`);
+        }
+
         if (startDate) {
           queryParts.push(`created>=${startTimestamp}`);
         }

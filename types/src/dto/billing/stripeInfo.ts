@@ -10,6 +10,7 @@ export interface StripeLineItem {
   priceId: string;
   quantity: number;
   couponId?: string;
+  description?: string;
 }
 
 export interface StripeFlaggedCoupon {
