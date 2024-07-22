@@ -78,7 +78,7 @@ export class StripeService {
     }
   }
 
-  async updateSubscriptionQuantity(subscriptionId: string, priceId: string, newQuantity: number) {
+  async updateSubscriptionQuantity(subscriptionId: string, priceId: string, newQuantity: number, description?: string) {
     try {
       const subscription = await this.stripe.subscriptions.retrieve(subscriptionId);
 
@@ -95,6 +95,7 @@ export class StripeService {
             quantity: newQuantity
           }
         ],
+        description,
         proration_behavior: 'none'
       });
 
@@ -142,13 +143,7 @@ export class StripeService {
     }
   }
 
-  async createCompleteInvoice(
-    customerId: string,
-    companyId: string,
-    shouldAutoAdvance: boolean = true,
-    startDate?: Date,
-    endDate?: Date
-  ) {
+  async createCompleteInvoice(customerId: string, companyId: string, startDate?: Date, endDate?: Date) {
     try {
       const previousInvoices = await this.searchInvoicesForCompany(companyId, true, startDate, endDate);
       const invoiceDetails = previousInvoices.map((invoice) => {
@@ -163,9 +158,9 @@ export class StripeService {
 
       const newInvoice = await this.stripe.invoices.create({
         customer: customerId,
-        auto_advance: shouldAutoAdvance,
         metadata: {
-          companyId: companyId
+          companyId: companyId,
+          combined: 'true'
         },
         description: invoiceDescription
       });
@@ -238,6 +233,7 @@ export class StripeService {
           queryParts.push(`-status:'void'`);
           queryParts.push(`-status:'paid'`);
           queryParts.push(`-status:'deleted'`);
+          queryParts.push(`-metadata['combined']:'true'`);
         }
 
         if (startDate) {

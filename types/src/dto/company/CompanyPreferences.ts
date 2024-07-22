@@ -13,6 +13,7 @@ export interface CompanyPreferences {
     stripe?: {
       customerId: string;
       clinicSubscriptionId?: string;
+      shouldAutoAdvance?: boolean;
       flaggedCoupons?: StripeFlaggedCoupon[];
       productPrices: StripeProductPrices[];
     };
