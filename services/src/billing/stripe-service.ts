@@ -145,7 +145,7 @@ export class StripeService {
 
   async createCompleteInvoice(customerId: string, companyId: string, startDate?: Date, endDate?: Date) {
     try {
-      const previousInvoices = await this.searchInvoicesForCompany(companyId, true, startDate, endDate);
+      const previousInvoices = await this.searchInvoicesForCompany(companyId, true, true, startDate, endDate);
       const invoiceDetails = previousInvoices.map((invoice) => {
         return {
           amount: invoice.amount_due,
@@ -218,7 +218,13 @@ export class StripeService {
     }
   }
 
-  async searchInvoicesForCompany(companyId: string, isUnpaid: boolean = false, startDate?: Date, endDate?: Date) {
+  async searchInvoicesForCompany(
+    companyId: string,
+    isUnpaid: boolean = false,
+    removeCombined: boolean = false,
+    startDate?: Date,
+    endDate?: Date
+  ) {
     try {
       const startTimestamp = startDate ? Math.floor(startDate.getTime() / 1000) : 0;
       const endTimestamp = endDate ? Math.floor(endDate.getTime() / 1000) : Math.floor(Date.now() / 1000);
@@ -233,6 +239,8 @@ export class StripeService {
           queryParts.push(`-status:'void'`);
           queryParts.push(`-status:'paid'`);
           queryParts.push(`-status:'deleted'`);
+        }
+        if (removeCombined) {
           queryParts.push(`-metadata['combined']:'true'`);
         }
 
