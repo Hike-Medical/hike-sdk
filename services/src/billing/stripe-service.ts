@@ -191,19 +191,6 @@ export class StripeService {
 
   async createPriceForCompany(productId: string, companyId: string, amount: number, currency: string = 'usd') {
     try {
-      const existingPrices = await this.stripe.prices.search({
-        query: `product:'${productId}' AND metadata['companyId']:'${companyId}' AND active:'true'`,
-        limit: 1
-      });
-
-      //TODO: eventually allow for removal of other prices
-      if (existingPrices.data.length > 0) {
-        const existingPrice = existingPrices.data[0];
-        throw new Error(
-          `A price of ${existingPrice?.unit_amount ?? 0 / 100} ${existingPrice?.currency.toUpperCase()} already exists for this product and company.`
-        );
-      }
-
       const newPrice = await this.stripe.prices.create({
         product: productId,
         unit_amount: amount,
