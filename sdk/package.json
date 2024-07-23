@@ -32,6 +32,8 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
@@ -44,6 +46,11 @@
     "@hike/utils": "workspace:*",
     "jose": "^5.2.4",
     "stripe": "^16.2.0"
+  },
+  "peerDependencies": {
+    "@mantine/core": "^7.8.0",
+    "@mantine/hooks": "^7.8.0",
+    "@tabler/icons-react": "^3.6.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

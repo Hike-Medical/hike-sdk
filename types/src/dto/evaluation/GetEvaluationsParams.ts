@@ -1,4 +1,4 @@
-import { CareType, Evaluation, ProductType } from '../../../prisma';
+import { CareType, ProductType } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
 import type { EvaluationStatus } from './EvaluationStatus';
 
@@ -20,5 +20,4 @@ export interface GetEvaluationsParams extends PagedParams {
   appointmentStatuses?: string[];
   excludedAppointmentStatuses?: string[];
   assignedOnly?: boolean;
-  sortBy?: keyof Evaluation;
 }
