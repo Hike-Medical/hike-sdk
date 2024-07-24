@@ -7,8 +7,9 @@ export interface StripeProductPrices {
 }
 
 export interface StripeLineItem {
-  priceId: string;
   quantity: number;
+  priceId?: string;
+  amount?: number;
   couponId?: string;
   description?: string;
 }

@@ -14,6 +14,7 @@ export interface CompanyPreferences {
       customerId: string;
       clinicSubscriptionId?: string;
       shouldAutoAdvance?: boolean;
+      shouldAutoAdvanceCombined?: boolean;
       flaggedCoupons?: StripeFlaggedCoupon[];
       productPrices: StripeProductPrices[];
     };

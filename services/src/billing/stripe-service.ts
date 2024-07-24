@@ -110,7 +110,7 @@ export class StripeService {
     customerId: string,
     lineItems: StripeLineItem[],
     companyId: string,
-    shouldAutoAdvance: boolean = true,
+    shouldAutoAdvance: boolean = false,
     invoiceCouponId?: string,
     description?: string
   ) {
@@ -126,30 +126,48 @@ export class StripeService {
       });
 
       for (const item of lineItems) {
-        await this.stripe.invoiceItems.create({
+        const invoiceItemData: any = {
           customer: customerId,
-          price: item.priceId,
           invoice: invoice.id,
           discountable: true,
           quantity: item.quantity,
-          discounts: item.couponId ? [{ coupon: item.couponId }] : [],
-          description: item.description
-        });
+          description: item.description,
+          discounts: item.couponId ? [{ coupon: item.couponId }] : []
+        };
+
+        if (item.amount) {
+          invoiceItemData.amount = item.amount;
+          invoiceItemData.currency = 'usd';
+        } else if (item.priceId) {
+          invoiceItemData.price = item.priceId;
+        }
+
+        await this.stripe.invoiceItems.create(invoiceItemData);
       }
 
       return invoice;
     } catch (error) {
+      console.log(error);
       throw this.handleStripeError(error);
     }
   }
 
-  async createCompleteInvoice(customerId: string, companyId: string, startDate?: Date, endDate?: Date) {
+  async createCompleteInvoice(
+    customerId: string,
+    companyId: string,
+    shouldAutoAdvance: boolean = false,
+    startDate?: Date,
+    endDate?: Date
+  ) {
     try {
       const previousInvoices = await this.searchInvoicesForCompany(companyId, true, true, startDate, endDate);
+      if (previousInvoices.length === 0) {
+        throw new Error('There are no invoices to combine together.');
+      }
       const invoiceDetails = previousInvoices.map((invoice) => {
         return {
           amount: invoice.amount_due,
-          description: `Summary of Invoice ${invoice.number || invoice.id}`
+          description: `Summary of Invoice ${invoice.id}`
         };
       });
       const startDateStr = startDate ? startDate.toISOString().split('T')[0] : 'beginning';
@@ -162,7 +180,8 @@ export class StripeService {
           companyId: companyId,
           combined: 'true'
         },
-        description: invoiceDescription
+        description: invoiceDescription,
+        auto_advance: shouldAutoAdvance
       });
 
       for (const detail of invoiceDetails) {
@@ -176,6 +195,9 @@ export class StripeService {
       }
 
       for (const invoice of previousInvoices) {
+        if (invoice.amount_due === 0) {
+          continue;
+        }
         if (invoice.status === 'draft') {
           await this.stripe.invoices.finalizeInvoice(invoice.id);
         }
@@ -191,6 +213,19 @@ export class StripeService {
 
   async createPriceForCompany(productId: string, companyId: string, amount: number, currency: string = 'usd') {
     try {
+      const prices = await this.stripe.prices.search({
+        query: `metadata['companyId']:'${companyId}' AND active:'true' AND product:'${productId}'`
+      });
+
+      for (const price of prices.data) {
+        await this.stripe.prices.update(price.id, {
+          active: false,
+          metadata: {
+            ...price.metadata
+          }
+        });
+      }
+
       const newPrice = await this.stripe.prices.create({
         product: productId,
         unit_amount: amount,
