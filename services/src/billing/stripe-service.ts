@@ -126,7 +126,7 @@ export class StripeService {
       });
 
       for (const item of lineItems) {
-        const invoiceItemData: any = {
+        const invoiceItemData: Stripe.InvoiceItemCreateParams = {
           customer: customerId,
           invoice: invoice.id,
           discountable: true,
@@ -136,8 +136,7 @@ export class StripeService {
         };
 
         if (item.amount) {
-          invoiceItemData.amount = item.amount;
-          invoiceItemData.currency = 'usd';
+          invoiceItemData.price_data = { product: item.productId, unit_amount: item.amount, currency: 'usd' };
         } else if (item.priceId) {
           invoiceItemData.price = item.priceId;
         }

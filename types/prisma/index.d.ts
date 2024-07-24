@@ -469,10 +469,10 @@ export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyP
 
 export const StripeProductType: {
   TOE_FILLER: 'TOE_FILLER',
-  DIABETIC_1: 'DIABETIC_1',
-  DIABETIC_2: 'DIABETIC_2',
-  DIABETIC_3: 'DIABETIC_3',
-  FUNCTIONAL: 'FUNCTIONAL',
+  DIABETIC_1_PAIR: 'DIABETIC_1_PAIR',
+  DIABETIC_2_PAIR: 'DIABETIC_2_PAIR',
+  DIABETIC_3_PAIR: 'DIABETIC_3_PAIR',
+  FUNCTIONAL_PAIR: 'FUNCTIONAL_PAIR',
   BASE_FEE: 'BASE_FEE',
   FACILITY_SUBSCRIPTION: 'FACILITY_SUBSCRIPTION',
   ORTHOFEET_SHOES: 'ORTHOFEET_SHOES'
@@ -40267,8 +40267,18 @@ export namespace Prisma {
 
   export type AggregateStripeProduct = {
     _count: StripeProductCountAggregateOutputType | null
+    _avg: StripeProductAvgAggregateOutputType | null
+    _sum: StripeProductSumAggregateOutputType | null
     _min: StripeProductMinAggregateOutputType | null
     _max: StripeProductMaxAggregateOutputType | null
+  }
+
+  export type StripeProductAvgAggregateOutputType = {
+    defaultAmount: number | null
+  }
+
+  export type StripeProductSumAggregateOutputType = {
+    defaultAmount: number | null
   }
 
   export type StripeProductMinAggregateOutputType = {
@@ -40276,6 +40286,8 @@ export namespace Prisma {
     type: $Enums.StripeProductType | null
     stripeProductId: string | null
     defaultPriceId: string | null
+    defaultAmount: number | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -40285,6 +40297,8 @@ export namespace Prisma {
     type: $Enums.StripeProductType | null
     stripeProductId: string | null
     defaultPriceId: string | null
+    defaultAmount: number | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -40294,17 +40308,29 @@ export namespace Prisma {
     type: number
     stripeProductId: number
     defaultPriceId: number
+    defaultAmount: number
+    description: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type StripeProductAvgAggregateInputType = {
+    defaultAmount?: true
+  }
+
+  export type StripeProductSumAggregateInputType = {
+    defaultAmount?: true
+  }
+
   export type StripeProductMinAggregateInputType = {
     id?: true
     type?: true
     stripeProductId?: true
     defaultPriceId?: true
+    defaultAmount?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -40314,6 +40340,8 @@ export namespace Prisma {
     type?: true
     stripeProductId?: true
     defaultPriceId?: true
+    defaultAmount?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -40323,6 +40351,8 @@ export namespace Prisma {
     type?: true
     stripeProductId?: true
     defaultPriceId?: true
+    defaultAmount?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -40366,6 +40396,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: StripeProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StripeProductSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: StripeProductMinAggregateInputType
@@ -40396,6 +40438,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: StripeProductCountAggregateInputType | true
+    _avg?: StripeProductAvgAggregateInputType
+    _sum?: StripeProductSumAggregateInputType
     _min?: StripeProductMinAggregateInputType
     _max?: StripeProductMaxAggregateInputType
   }
@@ -40405,9 +40449,13 @@ export namespace Prisma {
     type: $Enums.StripeProductType
     stripeProductId: string
     defaultPriceId: string | null
+    defaultAmount: number | null
+    description: string | null
     createdAt: Date
     updatedAt: Date
     _count: StripeProductCountAggregateOutputType | null
+    _avg: StripeProductAvgAggregateOutputType | null
+    _sum: StripeProductSumAggregateOutputType | null
     _min: StripeProductMinAggregateOutputType | null
     _max: StripeProductMaxAggregateOutputType | null
   }
@@ -40431,6 +40479,8 @@ export namespace Prisma {
     type?: boolean
     stripeProductId?: boolean
     defaultPriceId?: boolean
+    defaultAmount?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["stripeProduct"]>
@@ -40440,6 +40490,8 @@ export namespace Prisma {
     type?: boolean
     stripeProductId?: boolean
     defaultPriceId?: boolean
+    defaultAmount?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -40454,6 +40506,8 @@ export namespace Prisma {
       type: $Enums.StripeProductType
       stripeProductId: string
       defaultPriceId: string | null
+      defaultAmount: number | null
+      description: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["stripeProduct"]>
@@ -40880,6 +40934,8 @@ export namespace Prisma {
     readonly type: FieldRef<"StripeProduct", 'StripeProductType'>
     readonly stripeProductId: FieldRef<"StripeProduct", 'String'>
     readonly defaultPriceId: FieldRef<"StripeProduct", 'String'>
+    readonly defaultAmount: FieldRef<"StripeProduct", 'Float'>
+    readonly description: FieldRef<"StripeProduct", 'String'>
     readonly createdAt: FieldRef<"StripeProduct", 'DateTime'>
     readonly updatedAt: FieldRef<"StripeProduct", 'DateTime'>
   }
@@ -46163,6 +46219,8 @@ export namespace Prisma {
     type: 'type',
     stripeProductId: 'stripeProductId',
     defaultPriceId: 'defaultPriceId',
+    defaultAmount: 'defaultAmount',
+    description: 'description',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -49405,6 +49463,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
     stripeProductId?: StringFilter<"StripeProduct"> | string
     defaultPriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    defaultAmount?: FloatNullableFilter<"StripeProduct"> | number | null
+    description?: StringNullableFilter<"StripeProduct"> | string | null
     createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
     updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
   }
@@ -49414,6 +49474,8 @@ export namespace Prisma {
     type?: SortOrder
     stripeProductId?: SortOrder
     defaultPriceId?: SortOrderInput | SortOrder
+    defaultAmount?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -49426,6 +49488,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
     stripeProductId?: StringFilter<"StripeProduct"> | string
     defaultPriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    defaultAmount?: FloatNullableFilter<"StripeProduct"> | number | null
+    description?: StringNullableFilter<"StripeProduct"> | string | null
     createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
     updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
   }, "id">
@@ -49435,11 +49499,15 @@ export namespace Prisma {
     type?: SortOrder
     stripeProductId?: SortOrder
     defaultPriceId?: SortOrderInput | SortOrder
+    defaultAmount?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: StripeProductCountOrderByAggregateInput
+    _avg?: StripeProductAvgOrderByAggregateInput
     _max?: StripeProductMaxOrderByAggregateInput
     _min?: StripeProductMinOrderByAggregateInput
+    _sum?: StripeProductSumOrderByAggregateInput
   }
 
   export type StripeProductScalarWhereWithAggregatesInput = {
@@ -49450,6 +49518,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeWithAggregatesFilter<"StripeProduct"> | $Enums.StripeProductType
     stripeProductId?: StringWithAggregatesFilter<"StripeProduct"> | string
     defaultPriceId?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    defaultAmount?: FloatNullableWithAggregatesFilter<"StripeProduct"> | number | null
+    description?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
   }
@@ -52863,6 +52933,8 @@ export namespace Prisma {
     type: $Enums.StripeProductType
     stripeProductId: string
     defaultPriceId?: string | null
+    defaultAmount?: number | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -52872,6 +52944,8 @@ export namespace Prisma {
     type: $Enums.StripeProductType
     stripeProductId: string
     defaultPriceId?: string | null
+    defaultAmount?: number | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -52881,6 +52955,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
     stripeProductId?: StringFieldUpdateOperationsInput | string
     defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52890,6 +52966,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
     stripeProductId?: StringFieldUpdateOperationsInput | string
     defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52899,6 +52977,8 @@ export namespace Prisma {
     type: $Enums.StripeProductType
     stripeProductId: string
     defaultPriceId?: string | null
+    defaultAmount?: number | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -52908,6 +52988,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
     stripeProductId?: StringFieldUpdateOperationsInput | string
     defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52917,6 +52999,8 @@ export namespace Prisma {
     type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
     stripeProductId?: StringFieldUpdateOperationsInput | string
     defaultPriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    defaultAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -55898,8 +55982,14 @@ export namespace Prisma {
     type?: SortOrder
     stripeProductId?: SortOrder
     defaultPriceId?: SortOrder
+    defaultAmount?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type StripeProductAvgOrderByAggregateInput = {
+    defaultAmount?: SortOrder
   }
 
   export type StripeProductMaxOrderByAggregateInput = {
@@ -55907,6 +55997,8 @@ export namespace Prisma {
     type?: SortOrder
     stripeProductId?: SortOrder
     defaultPriceId?: SortOrder
+    defaultAmount?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -55916,8 +56008,14 @@ export namespace Prisma {
     type?: SortOrder
     stripeProductId?: SortOrder
     defaultPriceId?: SortOrder
+    defaultAmount?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type StripeProductSumOrderByAggregateInput = {
+    defaultAmount?: SortOrder
   }
 
   export type EnumStripeProductTypeWithAggregatesFilter<$PrismaModel = never> = {
