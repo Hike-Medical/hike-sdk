@@ -68,6 +68,7 @@ export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';
 export type * from './dto/augment/AssetAugmentResult';
+export type * from './dto/augment/AssetAugmentStatusForAugmentId';
 export type * from './dto/augment/UpdateAssetAugmentMedia';
 export type * from './dto/augment/AssetAugmentMediaData';
 export type * from './dto/augment/FindAssetAugmentStatusData';

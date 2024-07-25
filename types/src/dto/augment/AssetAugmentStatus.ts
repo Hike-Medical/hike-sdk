@@ -7,4 +7,6 @@ export interface AssetAugmentStatus {
   rightFootAssetMediaLength: number;
   hasReviewedLeftFoot: boolean;
   hasReviewedRightFoot: boolean;
+  hasLeftFootDetections?: boolean;
+  hasRightFootDetections?: boolean;
 }

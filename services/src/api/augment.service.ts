@@ -3,6 +3,7 @@ import {
   AssetAugmentMedia,
   AssetAugmentResult,
   AssetAugmentStatus,
+  AssetAugmentStatusForAugmentId,
   AssetAugmentType,
   UpdateAssetAugmentMedia
 } from '@hike/types';
@@ -54,6 +55,15 @@ export const findAssetAugmentStatusByWorkbenchId = async (
 ): Promise<AssetAugmentStatus> => {
   try {
     const response = await backendApi.post(`augment/workbench/${workbenchId}/status`, { type });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const findAssetAugmentStatusByAugmentId = async (augmentId: string): Promise<AssetAugmentStatusForAugmentId> => {
+  try {
+    const response = await backendApi.get(`augment/${augmentId}/status`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
