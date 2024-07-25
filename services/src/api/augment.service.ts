@@ -1,4 +1,5 @@
 import {
+  AssetAugment,
   AssetAugmentMedia,
   AssetAugmentResult,
   AssetAugmentStatus,
@@ -7,6 +8,15 @@ import {
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 import { toResponseError } from '../errors/ResponseError';
+
+export const findAssetAugmentsByFootId = async (footId: string): Promise<AssetAugment[]> => {
+  try {
+    const response = await backendApi.get(`augment/foot/${footId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
 
 export const findAssetAugmentsByWorkbenchId = async (workbenchId: string): Promise<AssetAugmentResult[]> => {
   try {

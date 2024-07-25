@@ -1,8 +1,11 @@
 import { AssetAugmentResult } from '@hike/types';
-import { QueryOptions, useQuery } from '@tanstack/react-query';
+import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findAssetAugmentById } from '../../api/augment.service';
 
-export const useFindAssetAugmentById = (augmentId: string, queryOptions?: QueryOptions<AssetAugmentResult, Error>) => {
+export const useFindAssetAugmentById = (
+  augmentId: string,
+  queryOptions?: Omit<UseQueryOptions<AssetAugmentResult, Error>, 'queryKey' | 'queryFn'>
+) => {
   return useQuery({
     queryKey: ['augment', augmentId],
     queryFn: async () => {

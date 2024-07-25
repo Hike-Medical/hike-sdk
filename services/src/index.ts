@@ -37,6 +37,8 @@ export * from './hooks/assets/useUploadVideoToS3';
 export * from './hooks/augments/useFindAssetAugmentById';
 export * from './hooks/augments/useFindAssetAugmentStatusByWorkbenchId';
 export * from './hooks/augments/useFindAssetAugmentsByWorkbenchId';
+export * from './hooks/augments/useFindAssetAugmentsByFootId';
+export * from './hooks/augments/useFindAssetAugmentsByAssetId';
 export * from './hooks/augments/useUpdateAssetAugmentMedia';
 export * from './hooks/auth/useCompaniesBySession';
 export * from './hooks/auth/useCreatePin';
