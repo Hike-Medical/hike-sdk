@@ -159,7 +159,7 @@ export class StripeService {
     endDate?: Date
   ) {
     try {
-      const previousInvoices = await this.searchInvoicesForCompany(companyId, true, true, startDate, endDate);
+      const previousInvoices = await this.searchInvoicesForCompany(customerId, true, true, startDate, endDate);
       if (previousInvoices.length === 0) {
         throw new Error('There are no invoices to combine together.');
       }
@@ -241,7 +241,7 @@ export class StripeService {
   }
 
   async searchInvoicesForCompany(
-    companyId: string,
+    customerId: string,
     isUnpaid: boolean = false,
     removeCombined: boolean = false,
     startDate?: Date,
@@ -256,7 +256,7 @@ export class StripeService {
       let page: string | null = null;
 
       while (hasMore) {
-        const queryParts = [`metadata['companyId']:'${companyId}'`];
+        const queryParts = [`customer:'${customerId}'`];
         if (isUnpaid) {
           queryParts.push(`-status:'void'`);
           queryParts.push(`-status:'paid'`);
