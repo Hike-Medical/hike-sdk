@@ -468,7 +468,6 @@ export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyP
 
 
 export const StripeProductType: {
-  TOE_FILLER: 'TOE_FILLER',
   DIABETIC_1_PAIR: 'DIABETIC_1_PAIR',
   DIABETIC_2_PAIR: 'DIABETIC_2_PAIR',
   DIABETIC_3_PAIR: 'DIABETIC_3_PAIR',

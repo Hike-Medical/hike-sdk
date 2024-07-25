@@ -300,6 +300,28 @@ export class StripeService {
     }
   }
 
+  async createBankAccountSetupSession(customerId: string, successUrl: string, cancelUrl: string) {
+    try {
+      const checkoutSession = await this.stripe.checkout.sessions.create({
+        mode: 'setup',
+        customer: customerId,
+        payment_method_types: ['card', 'us_bank_account'],
+        payment_method_options: {
+          us_bank_account: {
+            financial_connections: { permissions: ['payment_method'] }
+          }
+        },
+        success_url: successUrl,
+        cancel_url: cancelUrl
+      });
+
+      return checkoutSession;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Failed to create bank account setup session');
+    }
+  }
+
   private handleStripeError(error: any) {
     return new Error(`An error occurred while processing your request. ${error}`);
   }
