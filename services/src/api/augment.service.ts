@@ -1,6 +1,6 @@
 import {
   AssetAugment,
-  AssetAugmentMedia,
+  AssetAugmentMediaResult,
   AssetAugmentResult,
   AssetAugmentStatus,
   AssetAugmentStatusForAugmentId,
@@ -40,7 +40,7 @@ export const findAssetAugmentById = async (augmentId: string): Promise<AssetAugm
 export const updateAssetAugmentMedia = async (
   mediaId: string,
   updateAssetAugmentMediaDto: UpdateAssetAugmentMedia
-): Promise<AssetAugmentMedia> => {
+): Promise<AssetAugmentMediaResult> => {
   try {
     const response = await backendApi.patch(`augment/media/${mediaId}`, updateAssetAugmentMediaDto);
     return response.data;

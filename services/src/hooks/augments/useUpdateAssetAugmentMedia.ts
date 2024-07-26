@@ -1,4 +1,4 @@
-import { AssetAugmentMedia, UpdateAssetAugmentMedia } from '@hike/types';
+import { AssetAugmentMediaResult, UpdateAssetAugmentMedia } from '@hike/types';
 import { MutationOptions, useMutation } from '@tanstack/react-query';
 import { updateAssetAugmentMedia } from '../../api/augment.service';
 
@@ -8,7 +8,7 @@ interface UpdateAssetAugmentMediaDto {
 }
 
 export const useUpdateAssetAugmentMedia = (
-  mutationOptions?: MutationOptions<AssetAugmentMedia, Error, UpdateAssetAugmentMediaDto, unknown>
+  mutationOptions?: MutationOptions<AssetAugmentMediaResult, Error, UpdateAssetAugmentMediaDto, unknown>
 ) => {
   return useMutation({
     mutationKey: ['updateAssetAugmentMedia'],

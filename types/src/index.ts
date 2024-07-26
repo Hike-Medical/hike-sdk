@@ -73,6 +73,7 @@ export type * from './dto/augment/UpdateAssetAugmentMedia';
 export type * from './dto/augment/AssetAugmentMediaData';
 export type * from './dto/augment/FindAssetAugmentStatusData';
 export type * from './dto/augment/AssetAugmentStatus';
+export type * from './dto/augment/AssetAugmentMediaResult';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/CompanyExtended';
