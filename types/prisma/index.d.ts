@@ -338,7 +338,8 @@ export type AssetStatus = (typeof AssetStatus)[keyof typeof AssetStatus]
 
 
 export const AssetAugmentType: {
-  ANCHOR_FRAMES: 'ANCHOR_FRAMES'
+  ANCHOR_FRAMES: 'ANCHOR_FRAMES',
+  PATHOLOGY_DETECTION: 'PATHOLOGY_DETECTION'
 };
 
 export type AssetAugmentType = (typeof AssetAugmentType)[keyof typeof AssetAugmentType]

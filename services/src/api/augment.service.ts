@@ -1,12 +1,23 @@
 import {
-  AssetAugmentMedia,
+  AssetAugment,
+  AssetAugmentMediaResult,
   AssetAugmentResult,
   AssetAugmentStatus,
+  AssetAugmentStatusForAugmentId,
   AssetAugmentType,
   UpdateAssetAugmentMedia
 } from '@hike/types';
 import { backendApi } from '../utils/backendApi';
 import { toResponseError } from '../errors/ResponseError';
+
+export const findAssetAugmentsByFootId = async (footId: string): Promise<AssetAugment[]> => {
+  try {
+    const response = await backendApi.get(`augment/foot/${footId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
 
 export const findAssetAugmentsByWorkbenchId = async (workbenchId: string): Promise<AssetAugmentResult[]> => {
   try {
@@ -29,7 +40,7 @@ export const findAssetAugmentById = async (augmentId: string): Promise<AssetAugm
 export const updateAssetAugmentMedia = async (
   mediaId: string,
   updateAssetAugmentMediaDto: UpdateAssetAugmentMedia
-): Promise<AssetAugmentMedia> => {
+): Promise<AssetAugmentMediaResult> => {
   try {
     const response = await backendApi.patch(`augment/media/${mediaId}`, updateAssetAugmentMediaDto);
     return response.data;
@@ -44,6 +55,15 @@ export const findAssetAugmentStatusByWorkbenchId = async (
 ): Promise<AssetAugmentStatus> => {
   try {
     const response = await backendApi.post(`augment/workbench/${workbenchId}/status`, { type });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const findAssetAugmentStatusByAugmentId = async (augmentId: string): Promise<AssetAugmentStatusForAugmentId> => {
+  try {
+    const response = await backendApi.get(`augment/${augmentId}/status`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
