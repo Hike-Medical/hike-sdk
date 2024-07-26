@@ -9,4 +9,5 @@ export interface CompanyPreferences {
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
   };
+  noAuthNeeded?: boolean;
 }
