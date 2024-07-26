@@ -194,11 +194,11 @@ export class StripeService {
       }
 
       for (const invoice of previousInvoices) {
-        if (invoice.status === 'draft') {
-          await this.stripe.invoices.finalizeInvoice(invoice.id);
-        }
         if (invoice.amount_due === 0) {
           continue;
+        }
+        if (invoice.status === 'draft') {
+          await this.stripe.invoices.finalizeInvoice(invoice.id);
         }
         await this.stripe.invoices.voidInvoice(invoice.id);
       }
