@@ -343,7 +343,8 @@ export type AssetStatus = (typeof AssetStatus)[keyof typeof AssetStatus]
 
 
 export const AssetAugmentType: {
-  ANCHOR_FRAMES: 'ANCHOR_FRAMES'
+  ANCHOR_FRAMES: 'ANCHOR_FRAMES',
+  PATHOLOGY_DETECTION: 'PATHOLOGY_DETECTION'
 };
 
 export type AssetAugmentType = (typeof AssetAugmentType)[keyof typeof AssetAugmentType]
@@ -14406,6 +14407,7 @@ export namespace Prisma {
     id: number
     augmentId: number
     data: number
+    originalData: number
     region: number
     bucket: number
     key: number
@@ -14448,6 +14450,7 @@ export namespace Prisma {
     id?: true
     augmentId?: true
     data?: true
+    originalData?: true
     region?: true
     bucket?: true
     key?: true
@@ -14535,6 +14538,7 @@ export namespace Prisma {
     id: string
     augmentId: string
     data: JsonValue | null
+    originalData: JsonValue | null
     region: string | null
     bucket: string | null
     key: string | null
@@ -14566,6 +14570,7 @@ export namespace Prisma {
     id?: boolean
     augmentId?: boolean
     data?: boolean
+    originalData?: boolean
     region?: boolean
     bucket?: boolean
     key?: boolean
@@ -14581,6 +14586,7 @@ export namespace Prisma {
     id?: boolean
     augmentId?: boolean
     data?: boolean
+    originalData?: boolean
     region?: boolean
     bucket?: boolean
     key?: boolean
@@ -14606,6 +14612,7 @@ export namespace Prisma {
       id: string
       augmentId: string
       data: Prisma.JsonValue | null
+      originalData: Prisma.JsonValue | null
       region: string | null
       bucket: string | null
       key: string | null
@@ -15038,6 +15045,7 @@ export namespace Prisma {
     readonly id: FieldRef<"AssetAugmentMedia", 'String'>
     readonly augmentId: FieldRef<"AssetAugmentMedia", 'String'>
     readonly data: FieldRef<"AssetAugmentMedia", 'Json'>
+    readonly originalData: FieldRef<"AssetAugmentMedia", 'Json'>
     readonly region: FieldRef<"AssetAugmentMedia", 'String'>
     readonly bucket: FieldRef<"AssetAugmentMedia", 'String'>
     readonly key: FieldRef<"AssetAugmentMedia", 'String'>
@@ -45864,6 +45872,7 @@ export namespace Prisma {
     id: 'id',
     augmentId: 'augmentId',
     data: 'data',
+    originalData: 'originalData',
     region: 'region',
     bucket: 'bucket',
     key: 'key',
@@ -47633,6 +47642,7 @@ export namespace Prisma {
     id?: StringFilter<"AssetAugmentMedia"> | string
     augmentId?: StringFilter<"AssetAugmentMedia"> | string
     data?: JsonNullableFilter<"AssetAugmentMedia">
+    originalData?: JsonNullableFilter<"AssetAugmentMedia">
     region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
@@ -47648,6 +47658,7 @@ export namespace Prisma {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrderInput | SortOrder
+    originalData?: SortOrderInput | SortOrder
     region?: SortOrderInput | SortOrder
     bucket?: SortOrderInput | SortOrder
     key?: SortOrderInput | SortOrder
@@ -47666,6 +47677,7 @@ export namespace Prisma {
     NOT?: AssetAugmentMediaWhereInput | AssetAugmentMediaWhereInput[]
     augmentId?: StringFilter<"AssetAugmentMedia"> | string
     data?: JsonNullableFilter<"AssetAugmentMedia">
+    originalData?: JsonNullableFilter<"AssetAugmentMedia">
     region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
@@ -47681,6 +47693,7 @@ export namespace Prisma {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrderInput | SortOrder
+    originalData?: SortOrderInput | SortOrder
     region?: SortOrderInput | SortOrder
     bucket?: SortOrderInput | SortOrder
     key?: SortOrderInput | SortOrder
@@ -47701,6 +47714,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"AssetAugmentMedia"> | string
     augmentId?: StringWithAggregatesFilter<"AssetAugmentMedia"> | string
     data?: JsonNullableWithAggregatesFilter<"AssetAugmentMedia">
+    originalData?: JsonNullableWithAggregatesFilter<"AssetAugmentMedia">
     region?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
     bucket?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
     key?: StringNullableWithAggregatesFilter<"AssetAugmentMedia"> | string | null
@@ -50948,6 +50962,7 @@ export namespace Prisma {
   export type AssetAugmentMediaCreateInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -50963,6 +50978,7 @@ export namespace Prisma {
     id?: string
     augmentId: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -50976,6 +50992,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50991,6 +51008,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     augmentId?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51005,6 +51023,7 @@ export namespace Prisma {
     id?: string
     augmentId: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -51018,6 +51037,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51032,6 +51052,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     augmentId?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54641,6 +54662,7 @@ export namespace Prisma {
     id?: SortOrder
     augmentId?: SortOrder
     data?: SortOrder
+    originalData?: SortOrder
     region?: SortOrder
     bucket?: SortOrder
     key?: SortOrder
@@ -62386,6 +62408,7 @@ export namespace Prisma {
   export type AssetAugmentMediaCreateWithoutAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -62399,6 +62422,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUncheckedCreateWithoutAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -62485,6 +62509,7 @@ export namespace Prisma {
     id?: StringFilter<"AssetAugmentMedia"> | string
     augmentId?: StringFilter<"AssetAugmentMedia"> | string
     data?: JsonNullableFilter<"AssetAugmentMedia">
+    originalData?: JsonNullableFilter<"AssetAugmentMedia">
     region?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     bucket?: StringNullableFilter<"AssetAugmentMedia"> | string | null
     key?: StringNullableFilter<"AssetAugmentMedia"> | string | null
@@ -67487,6 +67512,7 @@ export namespace Prisma {
   export type AssetAugmentMediaCreateManyAugmentInput = {
     id?: string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: string | null
     bucket?: string | null
     key?: string | null
@@ -67500,6 +67526,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUpdateWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67513,6 +67540,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUncheckedUpdateWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67526,6 +67554,7 @@ export namespace Prisma {
   export type AssetAugmentMediaUncheckedUpdateManyWithoutAugmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: NullableJsonNullValueInput | InputJsonValue
+    originalData?: NullableJsonNullValueInput | InputJsonValue
     region?: NullableStringFieldUpdateOperationsInput | string | null
     bucket?: NullableStringFieldUpdateOperationsInput | string | null
     key?: NullableStringFieldUpdateOperationsInput | string | null

@@ -7,6 +7,7 @@ export interface CompanyPreferences {
   preferredVeteranEmailAddress?: string;
   preSubmissionAuth?: boolean;
   scanOrderOnly?: boolean;
+  requiredSnapshotReview?: boolean;
   modifyTaikaHeelStyle?: boolean;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
@@ -19,4 +20,5 @@ export interface CompanyPreferences {
       productPrices: StripeProductPrices[];
     };
   };
+  noAuthNeeded?: boolean;
 }
