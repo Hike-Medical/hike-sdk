@@ -44,6 +44,8 @@ export const isFormRuleDisplayed = (
           const hasIntersection = (array1: string[], array2: string[]) =>
             array2.some((item) => new Set(array1).has(item));
           return selectedValue.length > 0 && hasIntersection(conditionValue.map(String), selectedValue.map(String));
+        } else {
+          return conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
         }
       }
       break;
@@ -60,6 +62,8 @@ export const isFormRuleDisplayed = (
           const hasIntersection = (array1: string[], array2: string[]) =>
             array2.some((item) => new Set(array1).has(item));
           return !(selectedValue.length > 0 && hasIntersection(conditionValue.map(String), selectedValue.map(String)));
+        } else {
+          return !conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
         }
       }
       break;

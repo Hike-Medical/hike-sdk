@@ -24,10 +24,12 @@ export type FormField =
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
+  | (BaseFormField<undefined> & { type: 'content'; image?: string })
   | (BaseFormField<string> & {
       type: 'select';
       options: { label: string; value: string; description?: string }[];
       ui?: 'dropdown' | 'radio' | 'segmented';
+      accordion?: boolean;
     })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
