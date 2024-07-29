@@ -1,4 +1,4 @@
-import { StripeLineItem } from '@hike/types';
+import { StripeLineItem, StripeProductType } from '@hike/types';
 import Stripe from 'stripe';
 
 export class StripeService {
@@ -340,6 +340,40 @@ export class StripeService {
       throw new Error('Failed to create bank account setup session');
     }
   }
+
+  async createCoupon(
+    companyId: string,
+    productType?: StripeProductType,
+    flag?: string,
+    amountOff?: number,
+    percentOff?: number,
+    maxRedemptions?: number,
+    redeemBy?: Date,
+    name?: string,
+  ): Promise<Stripe.Coupon> {
+    try {
+      const coupon = await this.stripe.coupons.create( {
+        amount_off: amountOff,
+        percent_off: percentOff,
+        max_redemptions: maxRedemptions,
+        redeem_by: redeemBy ? Math.floor(redeemBy.getTime() / 1000) : undefined,
+        name,
+        currency: 'usd',
+        duration: "forever",
+        metadata: {
+          productType : String(productType),
+          companyId: companyId,
+          flag: String(flag)
+        }
+      });
+
+      return coupon;
+    } catch (error) {
+      console.error('Error creating coupon', { error, amountOff, percentOff });
+      throw this.handleStripeError(error);
+    }
+  }
+
 
   private handleStripeError(error: any) {
     return new Error(`An error occurred while processing your request. ${error}`);
