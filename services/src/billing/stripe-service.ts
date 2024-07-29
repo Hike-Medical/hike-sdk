@@ -115,16 +115,26 @@ export class StripeService {
     description?: string
   ) {
     try {
+      let discounts: {coupon: string}[] = [];
+      if (invoiceCouponId) {
+        const coupon = await this.stripe.coupons.retrieve(invoiceCouponId);
+        if (coupon.valid && (!coupon.redeem_by || coupon.redeem_by >= Math.floor(Date.now() / 1000))) {
+          discounts = [{ coupon: invoiceCouponId }] 
+        } else {
+          console.warn(`Coupon ${invoiceCouponId} is invalid or expired.`);
+        }
+      }
+  
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
         auto_advance: shouldAutoAdvance,
         metadata: {
           companyId: companyId
         },
-        discounts: invoiceCouponId ? [{ coupon: invoiceCouponId }] : [],
+        discounts,
         description
       });
-
+  
       for (const item of lineItems) {
         const invoiceItemData: Stripe.InvoiceItemCreateParams = {
           customer: customerId,
@@ -132,18 +142,27 @@ export class StripeService {
           discountable: true,
           quantity: item.quantity,
           description: item.description,
-          discounts: item.couponId ? [{ coupon: item.couponId }] : []
+          discounts: []
         };
-
+  
+        if (item.couponId) {
+          const itemCoupon = await this.stripe.coupons.retrieve(item.couponId);
+          if (itemCoupon.valid && (!itemCoupon.redeem_by || itemCoupon.redeem_by >= Math.floor(Date.now() / 1000))) {
+            invoiceItemData.discounts =  [{ coupon: item.couponId }] 
+          } else {
+            console.warn(`Coupon ${item.couponId} for item is invalid or expired.`);
+          }
+        }
+  
         if (item.amount) {
           invoiceItemData.price_data = { product: item.productId, unit_amount: item.amount, currency: 'usd' };
         } else if (item.priceId) {
           invoiceItemData.price = item.priceId;
         }
-
+  
         await this.stripe.invoiceItems.create(invoiceItemData);
       }
-
+  
       return invoice;
     } catch (error) {
       console.log(error);
