@@ -7,7 +7,7 @@ export interface FormSection {
   badge?: string;
   fields: FormField[];
   meta?: Record<string, string>;
-  rule?: FormRule;
+  rule?: FormRule[];
   disabled?: boolean;
   ui?: 'accordion' | 'accordion:toggle';
 }
