@@ -1,4 +1,4 @@
-import { FormField } from './FormField';
+import { FormField, FormFieldValue } from './FormField';
 import { FormRule } from './FormRule';
 
 export interface FormSection {
@@ -6,7 +6,7 @@ export interface FormSection {
   description?: string;
   badge?: string;
   fields: FormField[];
-  meta?: Record<string, string>;
+  meta?: Record<string, FormFieldValue>;
   rule?: FormRule;
   disabled?: boolean;
   ui?: 'accordion' | 'accordion:toggle';
