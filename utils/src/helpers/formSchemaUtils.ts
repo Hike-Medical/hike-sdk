@@ -98,12 +98,11 @@ export const isFieldComplete = (
  * Determines if all the required fields in the form are answered.
  */
 export const isFormValid = (
-  schema: FormSchemaTyped['data'] | null | undefined,
+  sections: FormSection[],
   state: Record<string, FormFieldValue>,
   activeFoot?: string
 ): boolean =>
-  !!schema?.sections
-    .filter((section) => isFormSectionDisplayed(section, state))
+    sections.filter((section) => isFormSectionDisplayed(section, state))
     .flatMap((section) => section.fields)
     .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot));
 
@@ -145,7 +144,7 @@ export const completedSections = (validSections: FormSection[], state: Record<st
   );
 
 export const schemaStats = (
-  schema: FormSchemaTyped['data'],
+  sections: FormSection[],
   state: Record<string, FormFieldValue>,
   activeFoot?: string
 ): {
@@ -153,7 +152,7 @@ export const schemaStats = (
   sectionsTotal: number;
   sectionNext: FormSection | null;
 } => {
-  const validSections = schema.sections.filter((section) => isFormSectionDisplayed(section, state));
+  const validSections = sections.filter((section) => isFormSectionDisplayed(section, state));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
