@@ -6,7 +6,6 @@ export interface CompanyPreferences {
   preferredSubmittedOrderEmailAddress?: string;
   preferredVeteranEmailAddress?: string;
   preSubmissionAuth?: boolean;
-  scanOrderOnly?: boolean;
   requiredSnapshotReview?: boolean;
   modifyTaikaHeelStyle?: boolean;
   pricing?: {
