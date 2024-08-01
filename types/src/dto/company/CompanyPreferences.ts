@@ -4,8 +4,8 @@ export interface CompanyPreferences {
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredVeteranEmailAddress?: string;
-  simplrHospitalDeliveryReceiptEmailAddress?: string;
-  simplrWalkInDeliveryReceiptEmailAddress?: string;
+  preferredHospitalDeliveryReceiptEmailAddress?: string;
+  preferredWalkInDeliveryReceiptEmailAddress?: string;
   preSubmissionAuth?: boolean;
   requiredSnapshotReview?: boolean;
   modifyTaikaHeelStyle?: boolean;
