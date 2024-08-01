@@ -213,16 +213,16 @@ export class StripeService {
       }
 
       for (const invoice of previousInvoices) {
-        if (invoice.amount_due === 0) {
-          continue;
-        }
         if (invoice.status === 'draft') {
           await this.stripe.invoices.finalizeInvoice(invoice.id);
+        }
+        if (invoice.amount_due === 0) {
+          continue;
         }
         await this.stripe.invoices.voidInvoice(invoice.id);
       }
 
-      return newInvoice;
+      return {newInvoice, previousInvoices};
     } catch (error) {
       console.error('Error creating complete invoice', { error, customerId, companyId });
       throw this.handleStripeError(error);
