@@ -25,7 +25,8 @@ export const useUploadVideoToS3 = (
         }
 
         const xhr = new XMLHttpRequest();
-        xhr.timeout = 60000; // 60 seconds timeout
+        // 10 minutes timeout
+        xhr.timeout = 10 * 60 * 1000;
         console.log('XHR timeout set to', xhr.timeout, 'ms');
 
         let lastLoaded = 0;
