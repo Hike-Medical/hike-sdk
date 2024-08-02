@@ -28,8 +28,7 @@ export type FormField =
   | (BaseFormField<string> & {
       type: 'select';
       options: { label: string; value: string; description?: string }[];
-      ui?: 'dropdown' | 'radio' | 'segmented';
-      accordion?: boolean;
+      ui?: 'dropdown' | 'radio' | 'accordion' | 'segmented';
     })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
@@ -48,5 +47,5 @@ export type FormField =
       type: 'multiselect';
       options: { label: string; value: string }[];
       title?: string;
-      accordion?: boolean;
+      ui?: 'accordion';
     });
