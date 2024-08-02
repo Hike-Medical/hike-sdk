@@ -52287,10 +52287,10 @@ export namespace Prisma {
 
   export type StripeInvoiceWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    stripeInvoiceId?: string
     AND?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
     OR?: StripeInvoiceWhereInput[]
     NOT?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
-    stripeInvoiceId?: StringFilter<"StripeInvoice"> | string
     price?: FloatFilter<"StripeInvoice"> | number
     type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
@@ -52302,7 +52302,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductListRelationFilter
     combinedInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
     combinedInvoices?: StripeInvoiceListRelationFilter
-  }, "id">
+  }, "id" | "stripeInvoiceId">
 
   export type StripeInvoiceOrderByWithAggregationInput = {
     id?: SortOrder
