@@ -162,8 +162,7 @@ export class StripeService {
   
         await this.stripe.invoiceItems.create(invoiceItemData);
       }
-  
-      return invoice;
+      return await this.stripe.invoices.retrieve(invoice.id);
     } catch (error) {
       console.log(error);
       throw this.handleStripeError(error);
@@ -192,7 +191,7 @@ export class StripeService {
       const endDateStr = endDate ? endDate.toISOString().split('T')[0] : 'now';
       const invoiceDescription = `Complete invoice from ${startDateStr} to ${endDateStr}`;
 
-      const newInvoice = await this.stripe.invoices.create({
+      const combinedInvoice = await this.stripe.invoices.create({
         customer: customerId,
         metadata: {
           companyId: companyId,
@@ -206,7 +205,7 @@ export class StripeService {
         await this.stripe.invoiceItems.create({
           customer: customerId,
           amount: detail.amount,
-          invoice: newInvoice.id,
+          invoice: combinedInvoice.id,
           currency: 'usd',
           description: detail.description
         });
@@ -221,6 +220,7 @@ export class StripeService {
         }
         await this.stripe.invoices.voidInvoice(invoice.id);
       }
+      const newInvoice = await this.stripe.invoices.retrieve(combinedInvoice.id);
 
       return {newInvoice, previousInvoices};
     } catch (error) {
