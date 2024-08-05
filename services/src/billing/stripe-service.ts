@@ -1,4 +1,5 @@
 import { StripeLineItem, StripeProductType } from '@hike/types';
+import dayjs from 'dayjs';
 import Stripe from 'stripe';
 
 export class StripeService {
@@ -154,6 +155,7 @@ export class StripeService {
           }
         }
 
+        //If an amount is given, then use that amount with the productId, if not then use the given Price (used for orthofeet)
         if (item.amount) {
           invoiceItemData.price_data = { product: item.productId, unit_amount: item.amount, currency: 'usd' };
         } else if (item.priceId) {
@@ -164,7 +166,6 @@ export class StripeService {
       }
       return await this.stripe.invoices.retrieve(invoice.id);
     } catch (error) {
-      console.log(error);
       throw this.handleStripeError(error);
     }
   }
@@ -183,6 +184,8 @@ export class StripeService {
       }
       const invoiceDetails = previousInvoices.map((invoice) => {
         return {
+          id: invoice.id,
+          status: invoice.status,
           amount: invoice.amount_due,
           description: `Summary of Invoice ${invoice.id}`
         };
@@ -201,24 +204,31 @@ export class StripeService {
         auto_advance: shouldAutoAdvance
       });
 
-      for (const detail of invoiceDetails) {
-        await this.stripe.invoiceItems.create({
-          customer: customerId,
-          amount: detail.amount,
-          invoice: combinedInvoice.id,
-          currency: 'usd',
-          description: detail.description
-        });
-      }
+      for (const invoice of invoiceDetails) {
+        let item: Stripe.InvoiceItem | null = null;
+        try {
+          item = await this.stripe.invoiceItems.create({
+            customer: customerId,
+            amount: invoice.amount,
+            invoice: combinedInvoice.id,
+            currency: 'usd',
+            description: invoice.description
+          });
 
-      for (const invoice of previousInvoices) {
-        if (invoice.status === 'draft') {
-          await this.stripe.invoices.finalizeInvoice(invoice.id);
+          if (invoice.status === 'draft') {
+            await this.stripe.invoices.finalizeInvoice(invoice.id);
+          }
+          if (invoice.amount === 0) {
+            continue;
+          }
+          await this.stripe.invoices.voidInvoice(invoice.id);
+        } catch (error) {
+          if (item) {
+            await this.stripe.invoiceItems.del(item.id);
+          }
+
+          throw this.handleStripeError(error);
         }
-        if (invoice.amount_due === 0) {
-          continue;
-        }
-        await this.stripe.invoices.voidInvoice(invoice.id);
       }
       const newInvoice = await this.stripe.invoices.retrieve(combinedInvoice.id);
 
@@ -231,16 +241,14 @@ export class StripeService {
 
   async createPriceForCompany(productId: string, companyId: string, amount: number, currency: string = 'usd') {
     try {
-      const prices = await this.stripe.prices.search({
-        query: `metadata['companyId']:'${companyId}' AND active:'true' AND product:'${productId}'`
-      });
+      const query = [`metadata['companyId']:'${companyId}'`, `product:'${productId}'`, `active:'true'`].join(' AND ');
+
+      const prices = await this.stripe.prices.search({ query });
 
       for (const price of prices.data) {
         await this.stripe.prices.update(price.id, {
           active: false,
-          metadata: {
-            ...price.metadata
-          }
+          metadata: price.metadata
         });
       }
 
@@ -267,12 +275,15 @@ export class StripeService {
     endDate?: Date
   ) {
     try {
-      const startTimestamp = startDate ? Math.floor(startDate.getTime() / 1000) : 0;
-      const endTimestamp = endDate ? Math.floor(endDate.getTime() / 1000) : Math.floor(Date.now() / 1000);
-
       let allInvoices: Stripe.Invoice[] = [];
       let hasMore = true;
       let page: string | null = null;
+
+      const threeMonthsAgo = dayjs().subtract(3, 'months').startOf('day');
+
+      const startTimestamp = startDate ? dayjs(startDate).startOf('day').unix() : threeMonthsAgo.unix();
+
+      const endTimestamp = endDate ? dayjs(endDate).endOf('day').unix() : dayjs().endOf('day').unix();
 
       while (hasMore) {
         const queryParts = [`customer:'${customerId}'`];
@@ -345,8 +356,7 @@ export class StripeService {
 
       return checkoutSession;
     } catch (error) {
-      console.log(error);
-      throw new Error('Failed to create bank account setup session');
+      throw this.handleStripeError(error);
     }
   }
 
