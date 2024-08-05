@@ -4728,7 +4728,6 @@ export namespace Prisma {
     patients: number
     auditLogs: number
     StripeProduct: number
-    StripeCompany: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4741,7 +4740,6 @@ export namespace Prisma {
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
     StripeProduct?: boolean | CompanyCountOutputTypeCountStripeProductArgs
-    StripeCompany?: boolean | CompanyCountOutputTypeCountStripeCompanyArgs
   }
 
   // Custom InputTypes
@@ -4816,13 +4814,6 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountStripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: StripeProductWhereInput
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
-  export type CompanyCountOutputTypeCountStripeCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StripeCompanyWhereInput
   }
 
 
@@ -5902,7 +5893,7 @@ export namespace Prisma {
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       StripeProduct: Prisma.$StripeProductPayload<ExtArgs>[]
-      StripeCompany: Prisma.$StripeCompanyPayload<ExtArgs>[]
+      StripeCompany: Prisma.$StripeCompanyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6323,7 +6314,7 @@ export namespace Prisma {
 
     StripeProduct<T extends Company$StripeProductArgs<ExtArgs> = {}>(args?: Subset<T, Company$StripeProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    StripeCompany<T extends Company$StripeCompanyArgs<ExtArgs> = {}>(args?: Subset<T, Company$StripeCompanyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findMany'> | Null>;
+    StripeCompany<T extends Company$StripeCompanyArgs<ExtArgs> = {}>(args?: Subset<T, Company$StripeCompanyArgs<ExtArgs>>): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6872,11 +6863,6 @@ export namespace Prisma {
      */
     include?: StripeCompanyInclude<ExtArgs> | null
     where?: StripeCompanyWhereInput
-    orderBy?: StripeCompanyOrderByWithRelationInput | StripeCompanyOrderByWithRelationInput[]
-    cursor?: StripeCompanyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StripeCompanyScalarFieldEnum | StripeCompanyScalarFieldEnum[]
   }
 
   /**
@@ -43888,7 +43874,6 @@ export namespace Prisma {
     password: number
     pin: number
     photoUrl: number
-    flags: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -43924,7 +43909,6 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
-    flags?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -44009,7 +43993,6 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
-    flags: JsonValue | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -44038,7 +44021,6 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
-    flags?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -44058,7 +44040,6 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
-    flags?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -44094,7 +44075,6 @@ export namespace Prisma {
       password: string | null
       pin: string | null
       photoUrl: string | null
-      flags: Prisma.JsonValue | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -44536,7 +44516,6 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly pin: FieldRef<"User", 'String'>
     readonly photoUrl: FieldRef<"User", 'String'>
-    readonly flags: FieldRef<"User", 'Json'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -48893,7 +48872,6 @@ export namespace Prisma {
     password: 'password',
     pin: 'pin',
     photoUrl: 'photoUrl',
-    flags: 'flags',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -49504,7 +49482,7 @@ export namespace Prisma {
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     StripeProduct?: StripeProductListRelationFilter
-    StripeCompany?: StripeCompanyListRelationFilter
+    StripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -49526,7 +49504,7 @@ export namespace Prisma {
     patients?: CompanyPatientOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     StripeProduct?: StripeProductOrderByRelationAggregateInput
-    StripeCompany?: StripeCompanyOrderByRelationAggregateInput
+    StripeCompany?: StripeCompanyOrderByWithRelationInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -49551,7 +49529,7 @@ export namespace Prisma {
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     StripeProduct?: StripeProductListRelationFilter
-    StripeCompany?: StripeCompanyListRelationFilter
+    StripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -52421,7 +52399,6 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
-    flags?: JsonNullableFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -52440,7 +52417,6 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
-    flags?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
@@ -52462,7 +52438,6 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
-    flags?: JsonNullableFilter<"User">
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -52481,7 +52456,6 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
-    flags?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -52499,7 +52473,6 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     pin?: StringNullableWithAggregatesFilter<"User"> | string | null
     photoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
-    flags?: JsonNullableWithAggregatesFilter<"User">
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -52910,7 +52883,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -52932,7 +52905,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -52954,7 +52927,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -52976,7 +52949,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -56122,7 +56095,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -56141,7 +56113,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -56160,7 +56131,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -56179,7 +56149,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -56198,7 +56167,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -56210,7 +56178,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -56222,7 +56189,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -56823,10 +56789,9 @@ export namespace Prisma {
     none?: StripeProductWhereInput
   }
 
-  export type StripeCompanyListRelationFilter = {
-    every?: StripeCompanyWhereInput
-    some?: StripeCompanyWhereInput
-    none?: StripeCompanyWhereInput
+  export type StripeCompanyNullableRelationFilter = {
+    is?: StripeCompanyWhereInput | null
+    isNot?: StripeCompanyWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -56867,10 +56832,6 @@ export namespace Prisma {
   }
 
   export type StripeProductOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type StripeCompanyOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -59325,7 +59286,6 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
-    flags?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -59720,11 +59680,10 @@ export namespace Prisma {
     connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
   }
 
-  export type StripeCompanyCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput> | StripeCompanyCreateWithoutCompanyInput[] | StripeCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput | StripeCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: StripeCompanyCreateManyCompanyInputEnvelope
-    connect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
+  export type StripeCompanyCreateNestedOneWithoutCompanyInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    connect?: StripeCompanyWhereUniqueInput
   }
 
   export type FacilityUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -59790,11 +59749,10 @@ export namespace Prisma {
     connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
   }
 
-  export type StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput> | StripeCompanyCreateWithoutCompanyInput[] | StripeCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput | StripeCompanyCreateOrConnectWithoutCompanyInput[]
-    createMany?: StripeCompanyCreateManyCompanyInputEnvelope
-    connect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
+  export type StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    connect?: StripeCompanyWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -59939,18 +59897,14 @@ export namespace Prisma {
     deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
   }
 
-  export type StripeCompanyUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput> | StripeCompanyCreateWithoutCompanyInput[] | StripeCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput | StripeCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: StripeCompanyUpsertWithWhereUniqueWithoutCompanyInput | StripeCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: StripeCompanyCreateManyCompanyInputEnvelope
-    set?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    disconnect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    delete?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    connect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    update?: StripeCompanyUpdateWithWhereUniqueWithoutCompanyInput | StripeCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: StripeCompanyUpdateManyWithWhereWithoutCompanyInput | StripeCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: StripeCompanyScalarWhereInput | StripeCompanyScalarWhereInput[]
+  export type StripeCompanyUpdateOneWithoutCompanyNestedInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    upsert?: StripeCompanyUpsertWithoutCompanyInput
+    disconnect?: StripeCompanyWhereInput | boolean
+    delete?: StripeCompanyWhereInput | boolean
+    connect?: StripeCompanyWhereUniqueInput
+    update?: XOR<XOR<StripeCompanyUpdateToOneWithWhereWithoutCompanyInput, StripeCompanyUpdateWithoutCompanyInput>, StripeCompanyUncheckedUpdateWithoutCompanyInput>
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -60079,18 +60033,14 @@ export namespace Prisma {
     deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
   }
 
-  export type StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput> | StripeCompanyCreateWithoutCompanyInput[] | StripeCompanyUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput | StripeCompanyCreateOrConnectWithoutCompanyInput[]
-    upsert?: StripeCompanyUpsertWithWhereUniqueWithoutCompanyInput | StripeCompanyUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: StripeCompanyCreateManyCompanyInputEnvelope
-    set?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    disconnect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    delete?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    connect?: StripeCompanyWhereUniqueInput | StripeCompanyWhereUniqueInput[]
-    update?: StripeCompanyUpdateWithWhereUniqueWithoutCompanyInput | StripeCompanyUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: StripeCompanyUpdateManyWithWhereWithoutCompanyInput | StripeCompanyUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: StripeCompanyScalarWhereInput | StripeCompanyScalarWhereInput[]
+  export type StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    upsert?: StripeCompanyUpsertWithoutCompanyInput
+    disconnect?: StripeCompanyWhereInput | boolean
+    delete?: StripeCompanyWhereInput | boolean
+    connect?: StripeCompanyWhereUniqueInput
+    update?: XOR<XOR<StripeCompanyUpdateToOneWithWhereWithoutCompanyInput, StripeCompanyUpdateWithoutCompanyInput>, StripeCompanyUncheckedUpdateWithoutCompanyInput>
   }
 
   export type CompanyCreateNestedOneWithoutFacilitiesInput = {
@@ -63894,11 +63844,6 @@ export namespace Prisma {
     create: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
   }
 
-  export type StripeCompanyCreateManyCompanyInputEnvelope = {
-    data: StripeCompanyCreateManyCompanyInput | StripeCompanyCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
   export type FacilityUpsertWithWhereUniqueWithoutCompanyInput = {
     where: FacilityWhereUniqueInput
     update: XOR<FacilityUpdateWithoutCompanyInput, FacilityUncheckedUpdateWithoutCompanyInput>
@@ -64188,35 +64133,37 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
   }
 
-  export type StripeCompanyUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: StripeCompanyWhereUniqueInput
+  export type StripeCompanyUpsertWithoutCompanyInput = {
     update: XOR<StripeCompanyUpdateWithoutCompanyInput, StripeCompanyUncheckedUpdateWithoutCompanyInput>
     create: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    where?: StripeCompanyWhereInput
   }
 
-  export type StripeCompanyUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: StripeCompanyWhereUniqueInput
+  export type StripeCompanyUpdateToOneWithWhereWithoutCompanyInput = {
+    where?: StripeCompanyWhereInput
     data: XOR<StripeCompanyUpdateWithoutCompanyInput, StripeCompanyUncheckedUpdateWithoutCompanyInput>
   }
 
-  export type StripeCompanyUpdateManyWithWhereWithoutCompanyInput = {
-    where: StripeCompanyScalarWhereInput
-    data: XOR<StripeCompanyUpdateManyMutationInput, StripeCompanyUncheckedUpdateManyWithoutCompanyInput>
+  export type StripeCompanyUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type StripeCompanyScalarWhereInput = {
-    AND?: StripeCompanyScalarWhereInput | StripeCompanyScalarWhereInput[]
-    OR?: StripeCompanyScalarWhereInput[]
-    NOT?: StripeCompanyScalarWhereInput | StripeCompanyScalarWhereInput[]
-    id?: StringFilter<"StripeCompany"> | string
-    companyId?: StringFilter<"StripeCompany"> | string
-    stripeCustomerId?: StringFilter<"StripeCompany"> | string
-    stripeSubscriptionId?: StringNullableFilter<"StripeCompany"> | string | null
-    userPreferences?: JsonNullableFilter<"StripeCompany">
-    autoAdvance?: BoolFilter<"StripeCompany"> | boolean
-    autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
-    createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
-    updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
+  export type StripeCompanyUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CompanyCreateWithoutFacilitiesInput = {
@@ -64237,7 +64184,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -64258,7 +64205,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -64430,7 +64377,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -64451,7 +64398,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityAddressUpsertWithoutFacilityInput = {
@@ -64905,7 +64852,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -64923,7 +64869,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -65030,7 +64975,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -65048,7 +64992,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -65140,7 +65083,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -65161,7 +65104,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -65470,7 +65413,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -65491,7 +65434,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -67251,7 +67194,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -67269,7 +67211,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -67354,7 +67295,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -67372,7 +67312,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -67561,7 +67500,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -67582,7 +67521,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -67619,7 +67558,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -67640,7 +67579,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type EvaluationCreateWithoutReferringPhysicianInput = {
@@ -68795,7 +68734,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -68813,7 +68751,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -68847,7 +68784,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -68868,7 +68805,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -68894,7 +68831,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -68912,7 +68848,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -68952,7 +68887,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -68973,7 +68908,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -68994,7 +68929,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -69015,7 +68950,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -69030,7 +68965,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -69048,7 +68982,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -69093,7 +69026,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -69114,7 +69047,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -69135,7 +69068,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -69153,7 +69085,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -69171,7 +69102,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -69189,7 +69119,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -69223,7 +69152,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPermissionsInput = {
@@ -69244,7 +69173,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPermissionsInput = {
@@ -69270,7 +69199,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -69288,7 +69216,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -69328,7 +69255,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPermissionsInput = {
@@ -69349,7 +69276,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -69370,7 +69297,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -69391,7 +69318,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -69475,7 +69402,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -69496,7 +69423,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithoutCompaniesInput = {
@@ -69588,7 +69515,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -69606,7 +69532,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -69675,7 +69600,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -69693,7 +69617,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -69722,7 +69645,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeProductInput = {
@@ -69743,7 +69666,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeProductInput = {
@@ -69813,7 +69736,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeProductInput = {
@@ -69834,7 +69757,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput = {
@@ -70567,7 +70490,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
@@ -70585,7 +70507,6 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
@@ -70619,7 +70540,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
@@ -70637,7 +70557,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    flags?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
@@ -70666,7 +70585,7 @@ export namespace Prisma {
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -70687,7 +70606,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedManyWithoutCompanyInput
+    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -70724,7 +70643,7 @@ export namespace Prisma {
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -70745,7 +70664,7 @@ export namespace Prisma {
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateManyWithoutCompanyNestedInput
+    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityCreateManyCompanyInput = {
@@ -70853,17 +70772,6 @@ export namespace Prisma {
     amount?: number | null
     description?: string | null
     active?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type StripeCompanyCreateManyCompanyInput = {
-    id?: string
-    stripeCustomerId: string
-    stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
-    autoAdvance?: boolean
-    autoAdvanceCombined?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71203,39 +71111,6 @@ export namespace Prisma {
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StripeCompanyUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stripeCustomerId?: StringFieldUpdateOperationsInput | string
-    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
-    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
-    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StripeCompanyUncheckedUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stripeCustomerId?: StringFieldUpdateOperationsInput | string
-    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
-    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
-    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StripeCompanyUncheckedUpdateManyWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    stripeCustomerId?: StringFieldUpdateOperationsInput | string
-    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
-    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
-    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
