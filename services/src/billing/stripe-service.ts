@@ -115,16 +115,16 @@ export class StripeService {
     description?: string
   ) {
     try {
-      let discounts: {coupon: string}[] = [];
+      let discounts: { coupon: string }[] = [];
       if (invoiceCouponId) {
         const coupon = await this.stripe.coupons.retrieve(invoiceCouponId);
         if (coupon.valid && (!coupon.redeem_by || coupon.redeem_by >= Math.floor(Date.now() / 1000))) {
-          discounts = [{ coupon: invoiceCouponId }] 
+          discounts = [{ coupon: invoiceCouponId }];
         } else {
           console.warn(`Coupon ${invoiceCouponId} is invalid or expired.`);
         }
       }
-  
+
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
         auto_advance: shouldAutoAdvance,
@@ -134,7 +134,7 @@ export class StripeService {
         discounts,
         description
       });
-  
+
       for (const item of lineItems) {
         const invoiceItemData: Stripe.InvoiceItemCreateParams = {
           customer: customerId,
@@ -144,22 +144,22 @@ export class StripeService {
           description: item.description,
           discounts: []
         };
-  
+
         if (item.couponId) {
           const itemCoupon = await this.stripe.coupons.retrieve(item.couponId);
           if (itemCoupon.valid && (!itemCoupon.redeem_by || itemCoupon.redeem_by >= Math.floor(Date.now() / 1000))) {
-            invoiceItemData.discounts =  [{ coupon: item.couponId }] 
+            invoiceItemData.discounts = [{ coupon: item.couponId }];
           } else {
             console.warn(`Coupon ${item.couponId} for item is invalid or expired.`);
           }
         }
-  
+
         if (item.amount) {
           invoiceItemData.price_data = { product: item.productId, unit_amount: item.amount, currency: 'usd' };
         } else if (item.priceId) {
           invoiceItemData.price = item.priceId;
         }
-  
+
         await this.stripe.invoiceItems.create(invoiceItemData);
       }
       return await this.stripe.invoices.retrieve(invoice.id);
@@ -222,7 +222,7 @@ export class StripeService {
       }
       const newInvoice = await this.stripe.invoices.retrieve(combinedInvoice.id);
 
-      return {newInvoice, previousInvoices};
+      return { newInvoice, previousInvoices };
     } catch (error) {
       console.error('Error creating complete invoice', { error, customerId, companyId });
       throw this.handleStripeError(error);
@@ -319,6 +319,15 @@ export class StripeService {
     }
   }
 
+  async getInvoiceById(invoiceId: string) {
+    try {
+      const invoice = await this.stripe.invoices.retrieve(invoiceId);
+      return invoice;
+    } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
   async createBankAccountSetupSession(customerId: string, successUrl: string, cancelUrl: string) {
     try {
       const checkoutSession = await this.stripe.checkout.sessions.create({
@@ -349,19 +358,19 @@ export class StripeService {
     percentOff?: number,
     maxRedemptions?: number,
     redeemBy?: Date,
-    name?: string,
+    name?: string
   ): Promise<Stripe.Coupon> {
     try {
-      const coupon = await this.stripe.coupons.create( {
+      const coupon = await this.stripe.coupons.create({
         amount_off: amountOff,
         percent_off: percentOff,
         max_redemptions: maxRedemptions,
         redeem_by: redeemBy ? Math.floor(redeemBy.getTime() / 1000) : undefined,
         name,
         currency: 'usd',
-        duration: "forever",
+        duration: 'forever',
         metadata: {
-          productType : String(productType),
+          productType: String(productType),
           companyId: companyId,
           flag: String(flag)
         }
@@ -373,7 +382,6 @@ export class StripeService {
       throw this.handleStripeError(error);
     }
   }
-
 
   private handleStripeError(error: any) {
     return new Error(`An error occurred while processing your request. ${error}`);
