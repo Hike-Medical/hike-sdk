@@ -1,5 +1,6 @@
 import { Readable } from 'stream';
 
+/** Converts a readable stream into a Buffer.  */
 export const streamToString = async (stream: Readable): Promise<Buffer> => {
   return await new Promise((resolve, reject) => {
     const chunks: Uint8Array[] = [];
