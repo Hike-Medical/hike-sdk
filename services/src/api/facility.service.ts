@@ -21,3 +21,13 @@ export const searchCompanyFacilityAndAddresses = async (
     throw toResponseError(error);
   }
 };
+
+// New function to fetch facilities for a specific user
+export const fetchUserFacilities = async (userId: string): Promise<FacilityExtended[]> => {
+  try {
+    const response = await backendApi.get(`facility/user/${userId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
