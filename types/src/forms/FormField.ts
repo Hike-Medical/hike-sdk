@@ -15,7 +15,6 @@ interface BaseFormField<T extends FormFieldValue> {
   dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;
   templateable?: boolean;
-  meta?: Record<string, FormFieldValue>;
 }
 
 export type FormField =
@@ -29,7 +28,8 @@ export type FormField =
   | (BaseFormField<string> & {
       type: 'select';
       options: { label: string; value: string; description?: string }[];
-      ui?: 'dropdown' | 'radio' | 'accordion' | 'segmented';
+      ui?: 'dropdown' | 'radio' | 'segmented';
+      accordion?: boolean;
     })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })
@@ -48,5 +48,5 @@ export type FormField =
       type: 'multiselect';
       options: { label: string; value: string }[];
       title?: string;
-      ui?: 'accordion';
+      accordion?: boolean;
     });

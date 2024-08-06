@@ -29,5 +29,4 @@ export * from './helpers/formSchemaUtils';
 export * from './helpers/httpUtils';
 export * from './helpers/isEmpty';
 export * from './helpers/range';
-export * from './helpers/streamToString';
 export * from './helpers/truncateMiddle';
