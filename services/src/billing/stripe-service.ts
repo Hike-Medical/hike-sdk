@@ -12,27 +12,27 @@ export class StripeService {
   }
 
   getNextBillingDate(interval: Stripe.Price.Recurring.Interval, increment: number = 1): number {
-    const currentDate = new Date();
-    let nextBillingDate: Date;
+    const currentDate = dayjs();
+    let nextBillingDate: dayjs.Dayjs;
 
     switch (interval) {
       case 'day':
-        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + increment));
+        nextBillingDate = currentDate.add(increment, 'day');
         break;
       case 'week':
-        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + increment * 7));
+        nextBillingDate = currentDate.add(increment, 'week');
         break;
       case 'month':
-        nextBillingDate = new Date(currentDate.setMonth(currentDate.getMonth() + increment));
+        nextBillingDate = currentDate.add(increment, 'month');
         break;
       case 'year':
-        nextBillingDate = new Date(currentDate.setFullYear(currentDate.getFullYear() + increment));
+        nextBillingDate = currentDate.add(increment, 'year');
         break;
       default:
         throw new Error('Invalid interval');
     }
 
-    return Math.floor(nextBillingDate.getTime() / 1000);
+    return nextBillingDate.unix();
   }
 
   async createSubscription(
