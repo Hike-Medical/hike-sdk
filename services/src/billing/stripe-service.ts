@@ -11,22 +11,22 @@ export class StripeService {
     });
   }
 
-  getNextBillingDate(interval: string, interval_count: number): number {
+  getNextBillingDate(interval: Stripe.Price.Recurring.Interval, increment: number = 1): number {
     const currentDate = new Date();
     let nextBillingDate: Date;
 
     switch (interval) {
       case 'day':
-        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + interval_count));
+        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + increment));
         break;
       case 'week':
-        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + interval_count * 7));
+        nextBillingDate = new Date(currentDate.setDate(currentDate.getDate() + increment * 7));
         break;
       case 'month':
-        nextBillingDate = new Date(currentDate.setMonth(currentDate.getMonth() + interval_count));
+        nextBillingDate = new Date(currentDate.setMonth(currentDate.getMonth() + increment));
         break;
       case 'year':
-        nextBillingDate = new Date(currentDate.setFullYear(currentDate.getFullYear() + interval_count));
+        nextBillingDate = new Date(currentDate.setFullYear(currentDate.getFullYear() + increment));
         break;
       default:
         throw new Error('Invalid interval');
@@ -43,15 +43,15 @@ export class StripeService {
     description?: string
   ) {
     try {
-      const price = await this.stripe.prices.retrieve(priceId);
+      const price: Stripe.Price = await this.stripe.prices.retrieve(priceId);
       const interval = price.recurring?.interval;
-      const interval_count = price.recurring?.interval_count || 1;
+      const increment = price.recurring?.interval_count;
 
       if (!interval) {
         throw new Error('Invalid price interval');
       }
 
-      const nextBillingDate = this.getNextBillingDate(interval, interval_count);
+      const nextBillingDate = this.getNextBillingDate(interval, increment);
 
       const subscription = await this.stripe.subscriptions.create({
         customer: customerId,
@@ -107,6 +107,17 @@ export class StripeService {
     }
   }
 
+  async getCouponValidation(couponId: string) {
+    let discounts: { coupon: string }[] = [];
+    const coupon = await this.stripe.coupons.retrieve(couponId);
+    if (coupon.valid && (!coupon.redeem_by || dayjs.unix(coupon.redeem_by).isAfter(dayjs()))) {
+      discounts = [{ coupon: couponId }];
+    } else {
+      console.warn(`Coupon ${couponId} is invalid or expired.`);
+    }
+    return discounts;
+  }
+
   async createInvoice(
     customerId: string,
     lineItems: StripeLineItem[],
@@ -116,15 +127,7 @@ export class StripeService {
     description?: string
   ) {
     try {
-      let discounts: { coupon: string }[] = [];
-      if (invoiceCouponId) {
-        const coupon = await this.stripe.coupons.retrieve(invoiceCouponId);
-        if (coupon.valid && (!coupon.redeem_by || coupon.redeem_by >= Math.floor(Date.now() / 1000))) {
-          discounts = [{ coupon: invoiceCouponId }];
-        } else {
-          console.warn(`Coupon ${invoiceCouponId} is invalid or expired.`);
-        }
-      }
+      let discounts: { coupon: string }[] = invoiceCouponId ? await this.getCouponValidation(invoiceCouponId) : [];
 
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
@@ -146,14 +149,7 @@ export class StripeService {
           discounts: []
         };
 
-        if (item.couponId) {
-          const itemCoupon = await this.stripe.coupons.retrieve(item.couponId);
-          if (itemCoupon.valid && (!itemCoupon.redeem_by || itemCoupon.redeem_by >= Math.floor(Date.now() / 1000))) {
-            invoiceItemData.discounts = [{ coupon: item.couponId }];
-          } else {
-            console.warn(`Coupon ${item.couponId} for item is invalid or expired.`);
-          }
-        }
+        invoiceItemData.discounts = item.couponId ? await this.getCouponValidation(item.couponId) : [];
 
         //If an amount is given, then use that amount with the productId, if not then use the given Price (used for orthofeet)
         if (item.amount) {
@@ -190,8 +186,9 @@ export class StripeService {
           description: `Summary of Invoice ${invoice.id}`
         };
       });
-      const startDateStr = startDate ? startDate.toISOString().split('T')[0] : 'beginning';
-      const endDateStr = endDate ? endDate.toISOString().split('T')[0] : 'now';
+
+      const startDateStr = startDate ? dayjs(startDate).format('YYYY-MM-DD') : 'beginning';
+      const endDateStr = endDate ? dayjs(endDate).format('YYYY-MM-DD') : 'now';
       const invoiceDescription = `Complete invoice from ${startDateStr} to ${endDateStr}`;
 
       const combinedInvoice = await this.stripe.invoices.create({
