@@ -10,3 +10,11 @@ export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse
     throw toResponseError(error);
   }
 };
+export const fetchUserById = async (userId: string): Promise<UserExtended> => {
+  try {
+    const response = await backendApi.get<UserExtended>(`v2/user/${userId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
