@@ -28,6 +28,7 @@ export * from './auth/logout';
 export * from './auth/refreshToken';
 export * from './auth/signIn';
 export * from './auth/signUp';
+export * from './billing/stripe-service';
 export * from './configure';
 export * from './errors/ResponseError';
 export * from './errors/toErrorMessage';
