@@ -1,4 +1,4 @@
-import { AuthUser } from '@hike/types';
+import { AuthUser, FacilityUser } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
 import { isAuthUser } from '../src/guards/isAuthUser';
 
@@ -10,6 +10,14 @@ describe('isAuthUser tests', () => {
         company1: 'ADMIN',
         company2: 'PATIENT'
       },
+      slugs: {
+        company1: 'slug1',
+        company2: 'slug2'
+      },
+      facilities: {
+        facility1: 'USER' as FacilityUser // Ensure this matches the expected type
+      },
+
       expiresAt: new Date()
     };
 
