@@ -1,6 +1,7 @@
 export interface CompanyPreferences {
   carrierServiceCode?: string;
   carrierPreferenceId?: string;
+  emailToUser?: boolean;
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredVeteranEmailAddress?: string;
