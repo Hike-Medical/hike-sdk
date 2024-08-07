@@ -4727,7 +4727,7 @@ export namespace Prisma {
     permissions: number
     patients: number
     auditLogs: number
-    StripeProduct: number
+    stripeProduct: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4739,7 +4739,7 @@ export namespace Prisma {
     permissions?: boolean | CompanyCountOutputTypeCountPermissionsArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
-    StripeProduct?: boolean | CompanyCountOutputTypeCountStripeProductArgs
+    stripeProduct?: boolean | CompanyCountOutputTypeCountStripeProductArgs
   }
 
   // Custom InputTypes
@@ -5493,11 +5493,11 @@ export namespace Prisma {
    */
 
   export type StripeProductCountOutputType = {
-    StripeInvoices: number
+    stripeInvoices: number
   }
 
   export type StripeProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    StripeInvoices?: boolean | StripeProductCountOutputTypeCountStripeInvoicesArgs
+    stripeInvoices?: boolean | StripeProductCountOutputTypeCountStripeInvoicesArgs
   }
 
   // Custom InputTypes
@@ -5848,8 +5848,8 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
-    StripeProduct?: boolean | Company$StripeProductArgs<ExtArgs>
-    StripeCompany?: boolean | Company$StripeCompanyArgs<ExtArgs>
+    stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
+    stripeCompany?: boolean | Company$stripeCompanyArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -5875,8 +5875,8 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
-    StripeProduct?: boolean | Company$StripeProductArgs<ExtArgs>
-    StripeCompany?: boolean | Company$StripeCompanyArgs<ExtArgs>
+    stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
+    stripeCompany?: boolean | Company$stripeCompanyArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5892,8 +5892,8 @@ export namespace Prisma {
       permissions: Prisma.$CompanyUserPermissionPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
-      StripeProduct: Prisma.$StripeProductPayload<ExtArgs>[]
-      StripeCompany: Prisma.$StripeCompanyPayload<ExtArgs> | null
+      stripeProduct: Prisma.$StripeProductPayload<ExtArgs>[]
+      stripeCompany: Prisma.$StripeCompanyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6312,9 +6312,9 @@ export namespace Prisma {
 
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    StripeProduct<T extends Company$StripeProductArgs<ExtArgs> = {}>(args?: Subset<T, Company$StripeProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'> | Null>;
+    stripeProduct<T extends Company$stripeProductArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    StripeCompany<T extends Company$StripeCompanyArgs<ExtArgs> = {}>(args?: Subset<T, Company$StripeCompanyArgs<ExtArgs>>): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    stripeCompany<T extends Company$stripeCompanyArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeCompanyArgs<ExtArgs>>): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6831,9 +6831,9 @@ export namespace Prisma {
   }
 
   /**
-   * Company.StripeProduct
+   * Company.stripeProduct
    */
-  export type Company$StripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Company$stripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the StripeProduct
      */
@@ -6851,9 +6851,9 @@ export namespace Prisma {
   }
 
   /**
-   * Company.StripeCompany
+   * Company.stripeCompany
    */
-  export type Company$StripeCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Company$stripeCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the StripeCompany
      */
@@ -40880,7 +40880,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | StripeProduct$companyArgs<ExtArgs>
-    StripeInvoices?: boolean | StripeProduct$StripeInvoicesArgs<ExtArgs>
+    stripeInvoices?: boolean | StripeProduct$stripeInvoicesArgs<ExtArgs>
     _count?: boolean | StripeProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stripeProduct"]>
 
@@ -40901,7 +40901,7 @@ export namespace Prisma {
 
   export type StripeProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | StripeProduct$companyArgs<ExtArgs>
-    StripeInvoices?: boolean | StripeProduct$StripeInvoicesArgs<ExtArgs>
+    stripeInvoices?: boolean | StripeProduct$stripeInvoicesArgs<ExtArgs>
     _count?: boolean | StripeProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -40910,7 +40910,7 @@ export namespace Prisma {
     name: "StripeProduct"
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs> | null
-      StripeInvoices: Prisma.$StripeInvoicePayload<ExtArgs>[]
+      stripeInvoices: Prisma.$StripeInvoicePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -41317,7 +41317,7 @@ export namespace Prisma {
 
     company<T extends StripeProduct$companyArgs<ExtArgs> = {}>(args?: Subset<T, StripeProduct$companyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    StripeInvoices<T extends StripeProduct$StripeInvoicesArgs<ExtArgs> = {}>(args?: Subset<T, StripeProduct$StripeInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findMany'> | Null>;
+    stripeInvoices<T extends StripeProduct$stripeInvoicesArgs<ExtArgs> = {}>(args?: Subset<T, StripeProduct$stripeInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -41691,9 +41691,9 @@ export namespace Prisma {
   }
 
   /**
-   * StripeProduct.StripeInvoices
+   * StripeProduct.stripeInvoices
    */
-  export type StripeProduct$StripeInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StripeProduct$stripeInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the StripeInvoice
      */
@@ -49481,8 +49481,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
-    StripeProduct?: StripeProductListRelationFilter
-    StripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
+    stripeProduct?: StripeProductListRelationFilter
+    stripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -49503,8 +49503,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
-    StripeProduct?: StripeProductOrderByRelationAggregateInput
-    StripeCompany?: StripeCompanyOrderByWithRelationInput
+    stripeProduct?: StripeProductOrderByRelationAggregateInput
+    stripeCompany?: StripeCompanyOrderByWithRelationInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -49528,8 +49528,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
-    StripeProduct?: StripeProductListRelationFilter
-    StripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
+    stripeProduct?: StripeProductListRelationFilter
+    stripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -52154,7 +52154,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
     updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
     company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
-    StripeInvoices?: StripeInvoiceListRelationFilter
+    stripeInvoices?: StripeInvoiceListRelationFilter
   }
 
   export type StripeProductOrderByWithRelationInput = {
@@ -52170,7 +52170,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
-    StripeInvoices?: StripeInvoiceOrderByRelationAggregateInput
+    stripeInvoices?: StripeInvoiceOrderByRelationAggregateInput
   }
 
   export type StripeProductWhereUniqueInput = Prisma.AtLeast<{
@@ -52189,7 +52189,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
     updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
     company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
-    StripeInvoices?: StripeInvoiceListRelationFilter
+    stripeInvoices?: StripeInvoiceListRelationFilter
   }, "id">
 
   export type StripeProductOrderByWithAggregationInput = {
@@ -52882,8 +52882,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -52904,8 +52904,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -52926,8 +52926,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -52948,8 +52948,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -55821,7 +55821,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company?: CompanyCreateNestedOneWithoutStripeProductInput
-    StripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
+    stripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
   }
 
   export type StripeProductUncheckedCreateInput = {
@@ -55836,7 +55836,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    StripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
+    stripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
   }
 
   export type StripeProductUpdateInput = {
@@ -55851,7 +55851,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneWithoutStripeProductNestedInput
-    StripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
+    stripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
   }
 
   export type StripeProductUncheckedUpdateInput = {
@@ -55866,7 +55866,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    StripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
+    stripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
   }
 
   export type StripeProductCreateManyInput = {
@@ -63790,7 +63790,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    StripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
+    stripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
   }
 
   export type StripeProductUncheckedCreateWithoutCompanyInput = {
@@ -63804,7 +63804,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    StripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
+    stripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
   }
 
   export type StripeProductCreateOrConnectWithoutCompanyInput = {
@@ -64183,8 +64183,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -64204,8 +64204,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -64376,8 +64376,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -64397,8 +64397,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityAddressUpsertWithoutFacilityInput = {
@@ -65082,8 +65082,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -65103,8 +65103,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -65412,8 +65412,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -65433,8 +65433,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -67499,8 +67499,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -67520,8 +67520,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -67557,8 +67557,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -67578,8 +67578,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type EvaluationCreateWithoutReferringPhysicianInput = {
@@ -68783,8 +68783,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -68804,8 +68804,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -68886,8 +68886,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -68907,8 +68907,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -68928,8 +68928,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -68949,8 +68949,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -69025,8 +69025,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -69046,8 +69046,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -69151,8 +69151,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPermissionsInput = {
@@ -69172,8 +69172,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPermissionsInput = {
@@ -69254,8 +69254,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPermissionsInput = {
@@ -69275,8 +69275,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -69296,8 +69296,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -69317,8 +69317,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -69401,8 +69401,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -69422,8 +69422,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithoutCompaniesInput = {
@@ -69645,7 +69645,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeProductInput = {
@@ -69666,7 +69666,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeProductInput = {
@@ -69736,7 +69736,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeProductInput = {
@@ -69757,7 +69757,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput = {
@@ -70078,7 +70078,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeCompanyInput = {
@@ -70099,7 +70099,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeCompanyInput = {
@@ -70136,7 +70136,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeCompanyInput = {
@@ -70157,7 +70157,7 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -70584,8 +70584,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -70605,8 +70605,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
-    StripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
-    StripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -70642,8 +70642,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -70663,8 +70663,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
-    StripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityCreateManyCompanyInput = {
@@ -71085,7 +71085,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    StripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
+    stripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
   }
 
   export type StripeProductUncheckedUpdateWithoutCompanyInput = {
@@ -71099,7 +71099,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    StripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
+    stripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
   }
 
   export type StripeProductUncheckedUpdateManyWithoutCompanyInput = {
