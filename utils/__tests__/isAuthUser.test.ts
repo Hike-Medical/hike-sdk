@@ -10,10 +10,6 @@ describe('isAuthUser tests', () => {
         company1: 'ADMIN',
         company2: 'PATIENT'
       },
-      slugs: {
-        company1: 'slug1',
-        company2: 'slug2'
-      },
       expiresAt: new Date()
     };
 
