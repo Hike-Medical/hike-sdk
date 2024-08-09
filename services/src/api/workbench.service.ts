@@ -50,6 +50,20 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
     throw toResponseError(error);
   }
 };
+export const updateRenderType = async (
+  workbenchId: string,
+  body: { renderType: number },
+  companyIds: string[]
+): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/update-render-type`, body, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+    });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
 
 export const processWorkbench = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
   try {
