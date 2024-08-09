@@ -19558,6 +19558,7 @@ export namespace Prisma {
     postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19574,6 +19575,7 @@ export namespace Prisma {
     postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19590,6 +19592,7 @@ export namespace Prisma {
     postalCode: number
     countryCode: number
     shippingAccountId: number
+    phoneNumber: number
     shippingAccountCarrier: number
     createdAt: number
     updatedAt: number
@@ -19608,6 +19611,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19624,6 +19628,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19640,6 +19645,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19729,6 +19735,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date
     updatedAt: Date
@@ -19762,6 +19769,7 @@ export namespace Prisma {
     postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
+    phoneNumber?: boolean
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19779,6 +19787,7 @@ export namespace Prisma {
     postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
+    phoneNumber?: boolean
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19806,6 +19815,7 @@ export namespace Prisma {
       postalCode: string
       countryCode: string
       shippingAccountId: string | null
+      phoneNumber: string | null
       shippingAccountCarrier: $Enums.Carrier | null
       createdAt: Date
       updatedAt: Date
@@ -20240,6 +20250,7 @@ export namespace Prisma {
     readonly postalCode: FieldRef<"FacilityAddress", 'String'>
     readonly countryCode: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
+    readonly phoneNumber: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
     readonly createdAt: FieldRef<"FacilityAddress", 'DateTime'>
     readonly updatedAt: FieldRef<"FacilityAddress", 'DateTime'>
@@ -44887,6 +44898,7 @@ export namespace Prisma {
     postalCode: 'postalCode',
     countryCode: 'countryCode',
     shippingAccountId: 'shippingAccountId',
+    phoneNumber: 'phoneNumber',
     shippingAccountCarrier: 'shippingAccountCarrier',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -46994,6 +47006,7 @@ export namespace Prisma {
     postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
@@ -47011,6 +47024,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47032,6 +47046,7 @@ export namespace Prisma {
     postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
@@ -47048,6 +47063,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47070,6 +47086,7 @@ export namespace Prisma {
     postalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
@@ -50299,6 +50316,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50315,6 +50333,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50331,6 +50350,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50347,6 +50367,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50363,6 +50384,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50379,6 +50401,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50394,6 +50417,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53747,6 +53771,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53763,6 +53788,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53779,6 +53805,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -59191,6 +59218,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59206,6 +59234,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59384,6 +59413,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59399,6 +59429,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
