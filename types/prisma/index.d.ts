@@ -184,6 +184,21 @@ export type CompanyPatient = $Result.DefaultSelection<Prisma.$CompanyPatientPayl
  */
 export type FacilityUser = $Result.DefaultSelection<Prisma.$FacilityUserPayload>
 /**
+ * Model StripeProduct
+ * 
+ */
+export type StripeProduct = $Result.DefaultSelection<Prisma.$StripeProductPayload>
+/**
+ * Model StripeInvoice
+ * 
+ */
+export type StripeInvoice = $Result.DefaultSelection<Prisma.$StripeInvoicePayload>
+/**
+ * Model StripeCompany
+ * 
+ */
+export type StripeCompany = $Result.DefaultSelection<Prisma.$StripeCompanyPayload>
+/**
  * Model User
  * 
  */
@@ -462,6 +477,39 @@ export const CompanyPermission: {
 
 export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyPermission]
 
+
+export const StripeProductType: {
+  DIABETIC_1: 'DIABETIC_1',
+  DIABETIC_2: 'DIABETIC_2',
+  DIABETIC_3: 'DIABETIC_3',
+  FUNCTIONAL: 'FUNCTIONAL',
+  BASE_FEE: 'BASE_FEE',
+  FACILITY_SUBSCRIPTION: 'FACILITY_SUBSCRIPTION',
+  ORTHOFEET_SHOES: 'ORTHOFEET_SHOES'
+};
+
+export type StripeProductType = (typeof StripeProductType)[keyof typeof StripeProductType]
+
+
+export const StripeInvoiceType: {
+  COMBINED: 'COMBINED',
+  COMPANY_PAYS: 'COMPANY_PAYS',
+  EMPLOYEE_PAYS: 'EMPLOYEE_PAYS'
+};
+
+export type StripeInvoiceType = (typeof StripeInvoiceType)[keyof typeof StripeInvoiceType]
+
+
+export const StripeInvoiceStatus: {
+  DRAFT: 'DRAFT',
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  CANCELLED: 'CANCELLED',
+  COMBINED: 'COMBINED'
+};
+
+export type StripeInvoiceStatus = (typeof StripeInvoiceStatus)[keyof typeof StripeInvoiceStatus]
+
 }
 
 export type FacilityType = $Enums.FacilityType
@@ -559,6 +607,18 @@ export const CompanyRole: typeof $Enums.CompanyRole
 export type CompanyPermission = $Enums.CompanyPermission
 
 export const CompanyPermission: typeof $Enums.CompanyPermission
+
+export type StripeProductType = $Enums.StripeProductType
+
+export const StripeProductType: typeof $Enums.StripeProductType
+
+export type StripeInvoiceType = $Enums.StripeInvoiceType
+
+export const StripeInvoiceType: typeof $Enums.StripeInvoiceType
+
+export type StripeInvoiceStatus = $Enums.StripeInvoiceStatus
+
+export const StripeInvoiceStatus: typeof $Enums.StripeInvoiceStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1021,6 +1081,36 @@ export class PrismaClient<
     * ```
     */
   get facilityUser(): Prisma.FacilityUserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stripeProduct`: Exposes CRUD operations for the **StripeProduct** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StripeProducts
+    * const stripeProducts = await prisma.stripeProduct.findMany()
+    * ```
+    */
+  get stripeProduct(): Prisma.StripeProductDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stripeInvoice`: Exposes CRUD operations for the **StripeInvoice** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StripeInvoices
+    * const stripeInvoices = await prisma.stripeInvoice.findMany()
+    * ```
+    */
+  get stripeInvoice(): Prisma.StripeInvoiceDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stripeCompany`: Exposes CRUD operations for the **StripeCompany** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StripeCompanies
+    * const stripeCompanies = await prisma.stripeCompany.findMany()
+    * ```
+    */
+  get stripeCompany(): Prisma.StripeCompanyDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -1572,6 +1662,9 @@ export namespace Prisma {
     CompanyUserPermission: 'CompanyUserPermission',
     CompanyPatient: 'CompanyPatient',
     FacilityUser: 'FacilityUser',
+    StripeProduct: 'StripeProduct',
+    StripeInvoice: 'StripeInvoice',
+    StripeCompany: 'StripeCompany',
     User: 'User',
     Account: 'Account',
     ApiKey: 'ApiKey',
@@ -1592,7 +1685,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3976,6 +4069,216 @@ export namespace Prisma {
           }
         }
       }
+      StripeProduct: {
+        payload: Prisma.$StripeProductPayload<ExtArgs>
+        fields: Prisma.StripeProductFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StripeProductFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StripeProductFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          findFirst: {
+            args: Prisma.StripeProductFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StripeProductFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          findMany: {
+            args: Prisma.StripeProductFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>[]
+          }
+          create: {
+            args: Prisma.StripeProductCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          createMany: {
+            args: Prisma.StripeProductCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StripeProductCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>[]
+          }
+          delete: {
+            args: Prisma.StripeProductDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          update: {
+            args: Prisma.StripeProductUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          deleteMany: {
+            args: Prisma.StripeProductDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StripeProductUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StripeProductUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeProductPayload>
+          }
+          aggregate: {
+            args: Prisma.StripeProductAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStripeProduct>
+          }
+          groupBy: {
+            args: Prisma.StripeProductGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StripeProductGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StripeProductCountArgs<ExtArgs>,
+            result: $Utils.Optional<StripeProductCountAggregateOutputType> | number
+          }
+        }
+      }
+      StripeInvoice: {
+        payload: Prisma.$StripeInvoicePayload<ExtArgs>
+        fields: Prisma.StripeInvoiceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StripeInvoiceFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StripeInvoiceFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          findFirst: {
+            args: Prisma.StripeInvoiceFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StripeInvoiceFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          findMany: {
+            args: Prisma.StripeInvoiceFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>[]
+          }
+          create: {
+            args: Prisma.StripeInvoiceCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          createMany: {
+            args: Prisma.StripeInvoiceCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StripeInvoiceCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>[]
+          }
+          delete: {
+            args: Prisma.StripeInvoiceDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          update: {
+            args: Prisma.StripeInvoiceUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          deleteMany: {
+            args: Prisma.StripeInvoiceDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StripeInvoiceUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StripeInvoiceUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeInvoicePayload>
+          }
+          aggregate: {
+            args: Prisma.StripeInvoiceAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStripeInvoice>
+          }
+          groupBy: {
+            args: Prisma.StripeInvoiceGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StripeInvoiceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StripeInvoiceCountArgs<ExtArgs>,
+            result: $Utils.Optional<StripeInvoiceCountAggregateOutputType> | number
+          }
+        }
+      }
+      StripeCompany: {
+        payload: Prisma.$StripeCompanyPayload<ExtArgs>
+        fields: Prisma.StripeCompanyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StripeCompanyFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StripeCompanyFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          findFirst: {
+            args: Prisma.StripeCompanyFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StripeCompanyFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          findMany: {
+            args: Prisma.StripeCompanyFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>[]
+          }
+          create: {
+            args: Prisma.StripeCompanyCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          createMany: {
+            args: Prisma.StripeCompanyCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StripeCompanyCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>[]
+          }
+          delete: {
+            args: Prisma.StripeCompanyDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          update: {
+            args: Prisma.StripeCompanyUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          deleteMany: {
+            args: Prisma.StripeCompanyDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StripeCompanyUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StripeCompanyUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StripeCompanyPayload>
+          }
+          aggregate: {
+            args: Prisma.StripeCompanyAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStripeCompany>
+          }
+          groupBy: {
+            args: Prisma.StripeCompanyGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StripeCompanyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StripeCompanyCountArgs<ExtArgs>,
+            result: $Utils.Optional<StripeCompanyCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -4424,6 +4727,7 @@ export namespace Prisma {
     permissions: number
     patients: number
     auditLogs: number
+    stripeProduct: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4435,6 +4739,7 @@ export namespace Prisma {
     permissions?: boolean | CompanyCountOutputTypeCountPermissionsArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
+    stripeProduct?: boolean | CompanyCountOutputTypeCountStripeProductArgs
   }
 
   // Custom InputTypes
@@ -4502,6 +4807,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountAuditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AuditLogWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountStripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeProductWhereInput
   }
 
 
@@ -5177,6 +5489,86 @@ export namespace Prisma {
 
 
   /**
+   * Count Type StripeProductCountOutputType
+   */
+
+  export type StripeProductCountOutputType = {
+    stripeInvoices: number
+  }
+
+  export type StripeProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stripeInvoices?: boolean | StripeProductCountOutputTypeCountStripeInvoicesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StripeProductCountOutputType without action
+   */
+  export type StripeProductCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProductCountOutputType
+     */
+    select?: StripeProductCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StripeProductCountOutputType without action
+   */
+  export type StripeProductCountOutputTypeCountStripeInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeInvoiceWhereInput
+  }
+
+
+  /**
+   * Count Type StripeInvoiceCountOutputType
+   */
+
+  export type StripeInvoiceCountOutputType = {
+    evaluation: number
+    stripeProducts: number
+    combinedInvoices: number
+  }
+
+  export type StripeInvoiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    evaluation?: boolean | StripeInvoiceCountOutputTypeCountEvaluationArgs
+    stripeProducts?: boolean | StripeInvoiceCountOutputTypeCountStripeProductsArgs
+    combinedInvoices?: boolean | StripeInvoiceCountOutputTypeCountCombinedInvoicesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StripeInvoiceCountOutputType without action
+   */
+  export type StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoiceCountOutputType
+     */
+    select?: StripeInvoiceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StripeInvoiceCountOutputType without action
+   */
+  export type StripeInvoiceCountOutputTypeCountEvaluationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EvaluationWhereInput
+  }
+
+  /**
+   * StripeInvoiceCountOutputType without action
+   */
+  export type StripeInvoiceCountOutputTypeCountStripeProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeProductWhereInput
+  }
+
+  /**
+   * StripeInvoiceCountOutputType without action
+   */
+  export type StripeInvoiceCountOutputTypeCountCombinedInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeInvoiceWhereInput
+  }
+
+
+  /**
    * Count Type UserCountOutputType
    */
 
@@ -5456,6 +5848,8 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
+    stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
+    stripeCompany?: boolean | Company$stripeCompanyArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -5481,6 +5875,8 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
+    stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
+    stripeCompany?: boolean | Company$stripeCompanyArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5496,6 +5892,8 @@ export namespace Prisma {
       permissions: Prisma.$CompanyUserPermissionPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+      stripeProduct: Prisma.$StripeProductPayload<ExtArgs>[]
+      stripeCompany: Prisma.$StripeCompanyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5913,6 +6311,10 @@ export namespace Prisma {
     patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    stripeProduct<T extends Company$stripeProductArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    stripeCompany<T extends Company$stripeCompanyArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeCompanyArgs<ExtArgs>>): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6426,6 +6828,41 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * Company.stripeProduct
+   */
+  export type Company$stripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    where?: StripeProductWhereInput
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    cursor?: StripeProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * Company.stripeCompany
+   */
+  export type Company$stripeCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    where?: StripeCompanyWhereInput
   }
 
   /**
@@ -9738,6 +10175,7 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
+    stripeInvoiceId: string | null
     primaryInsurance: string | null
     secondaryInsurance: string | null
     submittedAt: Date | null
@@ -9770,6 +10208,7 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean | null
+    stripeInvoiceId: string | null
     primaryInsurance: string | null
     secondaryInsurance: string | null
     submittedAt: Date | null
@@ -9802,6 +10241,7 @@ export namespace Prisma {
     location: number
     prescribedAt: number
     prescribedActive: number
+    stripeInvoiceId: number
     primaryInsurance: number
     secondaryInsurance: number
     submittedAt: number
@@ -9836,6 +10276,7 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    stripeInvoiceId?: true
     primaryInsurance?: true
     secondaryInsurance?: true
     submittedAt?: true
@@ -9868,6 +10309,7 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    stripeInvoiceId?: true
     primaryInsurance?: true
     secondaryInsurance?: true
     submittedAt?: true
@@ -9900,6 +10342,7 @@ export namespace Prisma {
     location?: true
     prescribedAt?: true
     prescribedActive?: true
+    stripeInvoiceId?: true
     primaryInsurance?: true
     secondaryInsurance?: true
     submittedAt?: true
@@ -10005,6 +10448,7 @@ export namespace Prisma {
     location: string | null
     prescribedAt: Date | null
     prescribedActive: boolean
+    stripeInvoiceId: string | null
     primaryInsurance: string | null
     secondaryInsurance: string | null
     submittedAt: Date | null
@@ -10054,6 +10498,7 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
+    stripeInvoiceId?: boolean
     primaryInsurance?: boolean
     secondaryInsurance?: boolean
     submittedAt?: boolean
@@ -10068,6 +10513,7 @@ export namespace Prisma {
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
     facility?: boolean | Evaluation$facilityArgs<ExtArgs>
+    stripeInvoice?: boolean | Evaluation$stripeInvoiceArgs<ExtArgs>
     clinicians?: boolean | Evaluation$cliniciansArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
@@ -10096,6 +10542,7 @@ export namespace Prisma {
     location?: boolean
     prescribedAt?: boolean
     prescribedActive?: boolean
+    stripeInvoiceId?: boolean
     primaryInsurance?: boolean
     secondaryInsurance?: boolean
     submittedAt?: boolean
@@ -10114,6 +10561,7 @@ export namespace Prisma {
     referringPhysician?: boolean | Evaluation$referringPhysicianArgs<ExtArgs>
     diagnosis?: boolean | Evaluation$diagnosisArgs<ExtArgs>
     facility?: boolean | Evaluation$facilityArgs<ExtArgs>
+    stripeInvoice?: boolean | Evaluation$stripeInvoiceArgs<ExtArgs>
     clinicians?: boolean | Evaluation$cliniciansArgs<ExtArgs>
     workbenches?: boolean | Evaluation$workbenchesArgs<ExtArgs>
     _count?: boolean | EvaluationCountOutputTypeDefaultArgs<ExtArgs>
@@ -10130,6 +10578,7 @@ export namespace Prisma {
       referringPhysician: Prisma.$PhysicianPayload<ExtArgs> | null
       diagnosis: Prisma.$DiagnosisPayload<ExtArgs> | null
       facility: Prisma.$FacilityPayload<ExtArgs> | null
+      stripeInvoice: Prisma.$StripeInvoicePayload<ExtArgs> | null
       clinicians: Prisma.$ClinicianPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
     }
@@ -10156,6 +10605,7 @@ export namespace Prisma {
       location: string | null
       prescribedAt: Date | null
       prescribedActive: boolean
+      stripeInvoiceId: string | null
       primaryInsurance: string | null
       secondaryInsurance: string | null
       submittedAt: Date | null
@@ -10568,6 +11018,8 @@ export namespace Prisma {
 
     facility<T extends Evaluation$facilityArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$facilityArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
+    stripeInvoice<T extends Evaluation$stripeInvoiceArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$stripeInvoiceArgs<ExtArgs>>): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     clinicians<T extends Evaluation$cliniciansArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$cliniciansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     workbenches<T extends Evaluation$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Evaluation$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -10622,6 +11074,7 @@ export namespace Prisma {
     readonly location: FieldRef<"Evaluation", 'String'>
     readonly prescribedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly prescribedActive: FieldRef<"Evaluation", 'Boolean'>
+    readonly stripeInvoiceId: FieldRef<"Evaluation", 'String'>
     readonly primaryInsurance: FieldRef<"Evaluation", 'String'>
     readonly secondaryInsurance: FieldRef<"Evaluation", 'String'>
     readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
@@ -11019,6 +11472,21 @@ export namespace Prisma {
      */
     include?: FacilityInclude<ExtArgs> | null
     where?: FacilityWhereInput
+  }
+
+  /**
+   * Evaluation.stripeInvoice
+   */
+  export type Evaluation$stripeInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    where?: StripeInvoiceWhereInput
   }
 
   /**
@@ -19558,6 +20026,7 @@ export namespace Prisma {
     postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19574,6 +20043,7 @@ export namespace Prisma {
     postalCode: string | null
     countryCode: string | null
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19590,6 +20060,7 @@ export namespace Prisma {
     postalCode: number
     countryCode: number
     shippingAccountId: number
+    phoneNumber: number
     shippingAccountCarrier: number
     createdAt: number
     updatedAt: number
@@ -19608,6 +20079,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19624,6 +20096,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19640,6 +20113,7 @@ export namespace Prisma {
     postalCode?: true
     countryCode?: true
     shippingAccountId?: true
+    phoneNumber?: true
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
@@ -19729,6 +20203,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId: string | null
+    phoneNumber: string | null
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date
     updatedAt: Date
@@ -19762,6 +20237,7 @@ export namespace Prisma {
     postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
+    phoneNumber?: boolean
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19779,6 +20255,7 @@ export namespace Prisma {
     postalCode?: boolean
     countryCode?: boolean
     shippingAccountId?: boolean
+    phoneNumber?: boolean
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19806,6 +20283,7 @@ export namespace Prisma {
       postalCode: string
       countryCode: string
       shippingAccountId: string | null
+      phoneNumber: string | null
       shippingAccountCarrier: $Enums.Carrier | null
       createdAt: Date
       updatedAt: Date
@@ -20240,6 +20718,7 @@ export namespace Prisma {
     readonly postalCode: FieldRef<"FacilityAddress", 'String'>
     readonly countryCode: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
+    readonly phoneNumber: FieldRef<"FacilityAddress", 'String'>
     readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
     readonly createdAt: FieldRef<"FacilityAddress", 'DateTime'>
     readonly updatedAt: FieldRef<"FacilityAddress", 'DateTime'>
@@ -40166,6 +40645,3208 @@ export namespace Prisma {
 
 
   /**
+   * Model StripeProduct
+   */
+
+  export type AggregateStripeProduct = {
+    _count: StripeProductCountAggregateOutputType | null
+    _avg: StripeProductAvgAggregateOutputType | null
+    _sum: StripeProductSumAggregateOutputType | null
+    _min: StripeProductMinAggregateOutputType | null
+    _max: StripeProductMaxAggregateOutputType | null
+  }
+
+  export type StripeProductAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type StripeProductSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type StripeProductMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.StripeProductType | null
+    companyId: string | null
+    stripeProductId: string | null
+    stripePriceId: string | null
+    stripeCouponId: string | null
+    amount: number | null
+    description: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeProductMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.StripeProductType | null
+    companyId: string | null
+    stripeProductId: string | null
+    stripePriceId: string | null
+    stripeCouponId: string | null
+    amount: number | null
+    description: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeProductCountAggregateOutputType = {
+    id: number
+    type: number
+    companyId: number
+    stripeProductId: number
+    stripePriceId: number
+    stripeCouponId: number
+    amount: number
+    description: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StripeProductAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type StripeProductSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type StripeProductMinAggregateInputType = {
+    id?: true
+    type?: true
+    companyId?: true
+    stripeProductId?: true
+    stripePriceId?: true
+    stripeCouponId?: true
+    amount?: true
+    description?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeProductMaxAggregateInputType = {
+    id?: true
+    type?: true
+    companyId?: true
+    stripeProductId?: true
+    stripePriceId?: true
+    stripeCouponId?: true
+    amount?: true
+    description?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeProductCountAggregateInputType = {
+    id?: true
+    type?: true
+    companyId?: true
+    stripeProductId?: true
+    stripePriceId?: true
+    stripeCouponId?: true
+    amount?: true
+    description?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StripeProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeProduct to aggregate.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StripeProducts
+    **/
+    _count?: true | StripeProductCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StripeProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StripeProductSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StripeProductMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StripeProductMaxAggregateInputType
+  }
+
+  export type GetStripeProductAggregateType<T extends StripeProductAggregateArgs> = {
+        [P in keyof T & keyof AggregateStripeProduct]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStripeProduct[P]>
+      : GetScalarType<T[P], AggregateStripeProduct[P]>
+  }
+
+
+
+
+  export type StripeProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeProductWhereInput
+    orderBy?: StripeProductOrderByWithAggregationInput | StripeProductOrderByWithAggregationInput[]
+    by: StripeProductScalarFieldEnum[] | StripeProductScalarFieldEnum
+    having?: StripeProductScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StripeProductCountAggregateInputType | true
+    _avg?: StripeProductAvgAggregateInputType
+    _sum?: StripeProductSumAggregateInputType
+    _min?: StripeProductMinAggregateInputType
+    _max?: StripeProductMaxAggregateInputType
+  }
+
+  export type StripeProductGroupByOutputType = {
+    id: string
+    type: $Enums.StripeProductType
+    companyId: string | null
+    stripeProductId: string
+    stripePriceId: string | null
+    stripeCouponId: string | null
+    amount: number | null
+    description: string | null
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: StripeProductCountAggregateOutputType | null
+    _avg: StripeProductAvgAggregateOutputType | null
+    _sum: StripeProductSumAggregateOutputType | null
+    _min: StripeProductMinAggregateOutputType | null
+    _max: StripeProductMaxAggregateOutputType | null
+  }
+
+  type GetStripeProductGroupByPayload<T extends StripeProductGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StripeProductGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StripeProductGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StripeProductGroupByOutputType[P]>
+            : GetScalarType<T[P], StripeProductGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StripeProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    companyId?: boolean
+    stripeProductId?: boolean
+    stripePriceId?: boolean
+    stripeCouponId?: boolean
+    amount?: boolean
+    description?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | StripeProduct$companyArgs<ExtArgs>
+    stripeInvoices?: boolean | StripeProduct$stripeInvoicesArgs<ExtArgs>
+    _count?: boolean | StripeProductCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stripeProduct"]>
+
+  export type StripeProductSelectScalar = {
+    id?: boolean
+    type?: boolean
+    companyId?: boolean
+    stripeProductId?: boolean
+    stripePriceId?: boolean
+    stripeCouponId?: boolean
+    amount?: boolean
+    description?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type StripeProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | StripeProduct$companyArgs<ExtArgs>
+    stripeInvoices?: boolean | StripeProduct$stripeInvoicesArgs<ExtArgs>
+    _count?: boolean | StripeProductCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $StripeProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StripeProduct"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs> | null
+      stripeInvoices: Prisma.$StripeInvoicePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.StripeProductType
+      companyId: string | null
+      stripeProductId: string
+      stripePriceId: string | null
+      stripeCouponId: string | null
+      amount: number | null
+      description: string | null
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["stripeProduct"]>
+    composites: {}
+  }
+
+
+  type StripeProductGetPayload<S extends boolean | null | undefined | StripeProductDefaultArgs> = $Result.GetResult<Prisma.$StripeProductPayload, S>
+
+  type StripeProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StripeProductFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StripeProductCountAggregateInputType | true
+    }
+
+  export interface StripeProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StripeProduct'], meta: { name: 'StripeProduct' } }
+    /**
+     * Find zero or one StripeProduct that matches the filter.
+     * @param {StripeProductFindUniqueArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StripeProductFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductFindUniqueArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StripeProduct that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {StripeProductFindUniqueOrThrowArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StripeProductFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StripeProduct that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindFirstArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StripeProductFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindFirstArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StripeProduct that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindFirstOrThrowArgs} args - Arguments to find a StripeProduct
+     * @example
+     * // Get one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StripeProductFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StripeProducts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StripeProducts
+     * const stripeProducts = await prisma.stripeProduct.findMany()
+     * 
+     * // Get first 10 StripeProducts
+     * const stripeProducts = await prisma.stripeProduct.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stripeProductWithIdOnly = await prisma.stripeProduct.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StripeProductFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StripeProduct.
+     * @param {StripeProductCreateArgs} args - Arguments to create a StripeProduct.
+     * @example
+     * // Create one StripeProduct
+     * const StripeProduct = await prisma.stripeProduct.create({
+     *   data: {
+     *     // ... data to create a StripeProduct
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StripeProductCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductCreateArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StripeProducts.
+     * @param {StripeProductCreateManyArgs} args - Arguments to create many StripeProducts.
+     * @example
+     * // Create many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends StripeProductCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StripeProducts and returns the data saved in the database.
+     * @param {StripeProductCreateManyAndReturnArgs} args - Arguments to create many StripeProducts.
+     * @example
+     * // Create many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StripeProducts and only return the `id`
+     * const stripeProductWithIdOnly = await prisma.stripeProduct.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends StripeProductCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a StripeProduct.
+     * @param {StripeProductDeleteArgs} args - Arguments to delete one StripeProduct.
+     * @example
+     * // Delete one StripeProduct
+     * const StripeProduct = await prisma.stripeProduct.delete({
+     *   where: {
+     *     // ... filter to delete one StripeProduct
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StripeProductDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductDeleteArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StripeProduct.
+     * @param {StripeProductUpdateArgs} args - Arguments to update one StripeProduct.
+     * @example
+     * // Update one StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StripeProductUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpdateArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StripeProducts.
+     * @param {StripeProductDeleteManyArgs} args - Arguments to filter StripeProducts to delete.
+     * @example
+     * // Delete a few StripeProducts
+     * const { count } = await prisma.stripeProduct.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StripeProductDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeProductDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StripeProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StripeProducts
+     * const stripeProduct = await prisma.stripeProduct.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StripeProductUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StripeProduct.
+     * @param {StripeProductUpsertArgs} args - Arguments to update or create a StripeProduct.
+     * @example
+     * // Update or create a StripeProduct
+     * const stripeProduct = await prisma.stripeProduct.upsert({
+     *   create: {
+     *     // ... data to create a StripeProduct
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StripeProduct we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StripeProductUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeProductUpsertArgs<ExtArgs>>
+    ): Prisma__StripeProductClient<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StripeProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductCountArgs} args - Arguments to filter StripeProducts to count.
+     * @example
+     * // Count the number of StripeProducts
+     * const count = await prisma.stripeProduct.count({
+     *   where: {
+     *     // ... the filter for the StripeProducts we want to count
+     *   }
+     * })
+    **/
+    count<T extends StripeProductCountArgs>(
+      args?: Subset<T, StripeProductCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StripeProductCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StripeProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StripeProductAggregateArgs>(args: Subset<T, StripeProductAggregateArgs>): Prisma.PrismaPromise<GetStripeProductAggregateType<T>>
+
+    /**
+     * Group by StripeProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeProductGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StripeProductGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StripeProductGroupByArgs['orderBy'] }
+        : { orderBy?: StripeProductGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StripeProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStripeProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StripeProduct model
+   */
+  readonly fields: StripeProductFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StripeProduct.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StripeProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    company<T extends StripeProduct$companyArgs<ExtArgs> = {}>(args?: Subset<T, StripeProduct$companyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    stripeInvoices<T extends StripeProduct$stripeInvoicesArgs<ExtArgs> = {}>(args?: Subset<T, StripeProduct$stripeInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StripeProduct model
+   */ 
+  interface StripeProductFieldRefs {
+    readonly id: FieldRef<"StripeProduct", 'String'>
+    readonly type: FieldRef<"StripeProduct", 'StripeProductType'>
+    readonly companyId: FieldRef<"StripeProduct", 'String'>
+    readonly stripeProductId: FieldRef<"StripeProduct", 'String'>
+    readonly stripePriceId: FieldRef<"StripeProduct", 'String'>
+    readonly stripeCouponId: FieldRef<"StripeProduct", 'String'>
+    readonly amount: FieldRef<"StripeProduct", 'Float'>
+    readonly description: FieldRef<"StripeProduct", 'String'>
+    readonly active: FieldRef<"StripeProduct", 'Boolean'>
+    readonly createdAt: FieldRef<"StripeProduct", 'DateTime'>
+    readonly updatedAt: FieldRef<"StripeProduct", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StripeProduct findUnique
+   */
+  export type StripeProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct findUniqueOrThrow
+   */
+  export type StripeProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct findFirst
+   */
+  export type StripeProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeProducts.
+     */
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct findFirstOrThrow
+   */
+  export type StripeProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeProduct to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeProducts.
+     */
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct findMany
+   */
+  export type StripeProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeProducts to fetch.
+     */
+    where?: StripeProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeProducts to fetch.
+     */
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StripeProducts.
+     */
+    cursor?: StripeProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeProducts.
+     */
+    skip?: number
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct create
+   */
+  export type StripeProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StripeProduct.
+     */
+    data: XOR<StripeProductCreateInput, StripeProductUncheckedCreateInput>
+  }
+
+  /**
+   * StripeProduct createMany
+   */
+  export type StripeProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StripeProducts.
+     */
+    data: StripeProductCreateManyInput | StripeProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeProduct createManyAndReturn
+   */
+  export type StripeProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * The data used to create many StripeProducts.
+     */
+    data: StripeProductCreateManyInput | StripeProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeProduct update
+   */
+  export type StripeProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StripeProduct.
+     */
+    data: XOR<StripeProductUpdateInput, StripeProductUncheckedUpdateInput>
+    /**
+     * Choose, which StripeProduct to update.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct updateMany
+   */
+  export type StripeProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StripeProducts.
+     */
+    data: XOR<StripeProductUpdateManyMutationInput, StripeProductUncheckedUpdateManyInput>
+    /**
+     * Filter which StripeProducts to update
+     */
+    where?: StripeProductWhereInput
+  }
+
+  /**
+   * StripeProduct upsert
+   */
+  export type StripeProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StripeProduct to update in case it exists.
+     */
+    where: StripeProductWhereUniqueInput
+    /**
+     * In case the StripeProduct found by the `where` argument doesn't exist, create a new StripeProduct with this data.
+     */
+    create: XOR<StripeProductCreateInput, StripeProductUncheckedCreateInput>
+    /**
+     * In case the StripeProduct was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StripeProductUpdateInput, StripeProductUncheckedUpdateInput>
+  }
+
+  /**
+   * StripeProduct delete
+   */
+  export type StripeProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    /**
+     * Filter which StripeProduct to delete.
+     */
+    where: StripeProductWhereUniqueInput
+  }
+
+  /**
+   * StripeProduct deleteMany
+   */
+  export type StripeProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeProducts to delete
+     */
+    where?: StripeProductWhereInput
+  }
+
+  /**
+   * StripeProduct.company
+   */
+  export type StripeProduct$companyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    where?: CompanyWhereInput
+  }
+
+  /**
+   * StripeProduct.stripeInvoices
+   */
+  export type StripeProduct$stripeInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    where?: StripeInvoiceWhereInput
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    cursor?: StripeInvoiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StripeInvoiceScalarFieldEnum | StripeInvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * StripeProduct without action
+   */
+  export type StripeProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StripeInvoice
+   */
+
+  export type AggregateStripeInvoice = {
+    _count: StripeInvoiceCountAggregateOutputType | null
+    _avg: StripeInvoiceAvgAggregateOutputType | null
+    _sum: StripeInvoiceSumAggregateOutputType | null
+    _min: StripeInvoiceMinAggregateOutputType | null
+    _max: StripeInvoiceMaxAggregateOutputType | null
+  }
+
+  export type StripeInvoiceAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type StripeInvoiceSumAggregateOutputType = {
+    price: number | null
+  }
+
+  export type StripeInvoiceMinAggregateOutputType = {
+    id: string | null
+    stripeInvoiceId: string | null
+    price: number | null
+    type: $Enums.StripeInvoiceType | null
+    status: $Enums.StripeInvoiceStatus | null
+    lastWebhookId: string | null
+    combinedInvoiceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeInvoiceMaxAggregateOutputType = {
+    id: string | null
+    stripeInvoiceId: string | null
+    price: number | null
+    type: $Enums.StripeInvoiceType | null
+    status: $Enums.StripeInvoiceStatus | null
+    lastWebhookId: string | null
+    combinedInvoiceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeInvoiceCountAggregateOutputType = {
+    id: number
+    stripeInvoiceId: number
+    price: number
+    type: number
+    status: number
+    lastWebhookId: number
+    combinedInvoiceId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StripeInvoiceAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type StripeInvoiceSumAggregateInputType = {
+    price?: true
+  }
+
+  export type StripeInvoiceMinAggregateInputType = {
+    id?: true
+    stripeInvoiceId?: true
+    price?: true
+    type?: true
+    status?: true
+    lastWebhookId?: true
+    combinedInvoiceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeInvoiceMaxAggregateInputType = {
+    id?: true
+    stripeInvoiceId?: true
+    price?: true
+    type?: true
+    status?: true
+    lastWebhookId?: true
+    combinedInvoiceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeInvoiceCountAggregateInputType = {
+    id?: true
+    stripeInvoiceId?: true
+    price?: true
+    type?: true
+    status?: true
+    lastWebhookId?: true
+    combinedInvoiceId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StripeInvoiceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeInvoice to aggregate.
+     */
+    where?: StripeInvoiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeInvoices to fetch.
+     */
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StripeInvoiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeInvoices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeInvoices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StripeInvoices
+    **/
+    _count?: true | StripeInvoiceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StripeInvoiceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StripeInvoiceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StripeInvoiceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StripeInvoiceMaxAggregateInputType
+  }
+
+  export type GetStripeInvoiceAggregateType<T extends StripeInvoiceAggregateArgs> = {
+        [P in keyof T & keyof AggregateStripeInvoice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStripeInvoice[P]>
+      : GetScalarType<T[P], AggregateStripeInvoice[P]>
+  }
+
+
+
+
+  export type StripeInvoiceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeInvoiceWhereInput
+    orderBy?: StripeInvoiceOrderByWithAggregationInput | StripeInvoiceOrderByWithAggregationInput[]
+    by: StripeInvoiceScalarFieldEnum[] | StripeInvoiceScalarFieldEnum
+    having?: StripeInvoiceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StripeInvoiceCountAggregateInputType | true
+    _avg?: StripeInvoiceAvgAggregateInputType
+    _sum?: StripeInvoiceSumAggregateInputType
+    _min?: StripeInvoiceMinAggregateInputType
+    _max?: StripeInvoiceMaxAggregateInputType
+  }
+
+  export type StripeInvoiceGroupByOutputType = {
+    id: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId: string | null
+    combinedInvoiceId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: StripeInvoiceCountAggregateOutputType | null
+    _avg: StripeInvoiceAvgAggregateOutputType | null
+    _sum: StripeInvoiceSumAggregateOutputType | null
+    _min: StripeInvoiceMinAggregateOutputType | null
+    _max: StripeInvoiceMaxAggregateOutputType | null
+  }
+
+  type GetStripeInvoiceGroupByPayload<T extends StripeInvoiceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StripeInvoiceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StripeInvoiceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StripeInvoiceGroupByOutputType[P]>
+            : GetScalarType<T[P], StripeInvoiceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StripeInvoiceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    stripeInvoiceId?: boolean
+    price?: boolean
+    type?: boolean
+    status?: boolean
+    lastWebhookId?: boolean
+    combinedInvoiceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    evaluation?: boolean | StripeInvoice$evaluationArgs<ExtArgs>
+    stripeProducts?: boolean | StripeInvoice$stripeProductsArgs<ExtArgs>
+    combinedInvoice?: boolean | StripeInvoice$combinedInvoiceArgs<ExtArgs>
+    combinedInvoices?: boolean | StripeInvoice$combinedInvoicesArgs<ExtArgs>
+    _count?: boolean | StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stripeInvoice"]>
+
+  export type StripeInvoiceSelectScalar = {
+    id?: boolean
+    stripeInvoiceId?: boolean
+    price?: boolean
+    type?: boolean
+    status?: boolean
+    lastWebhookId?: boolean
+    combinedInvoiceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type StripeInvoiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    evaluation?: boolean | StripeInvoice$evaluationArgs<ExtArgs>
+    stripeProducts?: boolean | StripeInvoice$stripeProductsArgs<ExtArgs>
+    combinedInvoice?: boolean | StripeInvoice$combinedInvoiceArgs<ExtArgs>
+    combinedInvoices?: boolean | StripeInvoice$combinedInvoicesArgs<ExtArgs>
+    _count?: boolean | StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $StripeInvoicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StripeInvoice"
+    objects: {
+      evaluation: Prisma.$EvaluationPayload<ExtArgs>[]
+      stripeProducts: Prisma.$StripeProductPayload<ExtArgs>[]
+      combinedInvoice: Prisma.$StripeInvoicePayload<ExtArgs> | null
+      combinedInvoices: Prisma.$StripeInvoicePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      stripeInvoiceId: string
+      price: number
+      type: $Enums.StripeInvoiceType
+      status: $Enums.StripeInvoiceStatus
+      lastWebhookId: string | null
+      combinedInvoiceId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["stripeInvoice"]>
+    composites: {}
+  }
+
+
+  type StripeInvoiceGetPayload<S extends boolean | null | undefined | StripeInvoiceDefaultArgs> = $Result.GetResult<Prisma.$StripeInvoicePayload, S>
+
+  type StripeInvoiceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StripeInvoiceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StripeInvoiceCountAggregateInputType | true
+    }
+
+  export interface StripeInvoiceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StripeInvoice'], meta: { name: 'StripeInvoice' } }
+    /**
+     * Find zero or one StripeInvoice that matches the filter.
+     * @param {StripeInvoiceFindUniqueArgs} args - Arguments to find a StripeInvoice
+     * @example
+     * // Get one StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StripeInvoiceFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceFindUniqueArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StripeInvoice that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {StripeInvoiceFindUniqueOrThrowArgs} args - Arguments to find a StripeInvoice
+     * @example
+     * // Get one StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StripeInvoiceFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StripeInvoice that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceFindFirstArgs} args - Arguments to find a StripeInvoice
+     * @example
+     * // Get one StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StripeInvoiceFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceFindFirstArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StripeInvoice that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceFindFirstOrThrowArgs} args - Arguments to find a StripeInvoice
+     * @example
+     * // Get one StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StripeInvoiceFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StripeInvoices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StripeInvoices
+     * const stripeInvoices = await prisma.stripeInvoice.findMany()
+     * 
+     * // Get first 10 StripeInvoices
+     * const stripeInvoices = await prisma.stripeInvoice.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stripeInvoiceWithIdOnly = await prisma.stripeInvoice.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StripeInvoiceFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StripeInvoice.
+     * @param {StripeInvoiceCreateArgs} args - Arguments to create a StripeInvoice.
+     * @example
+     * // Create one StripeInvoice
+     * const StripeInvoice = await prisma.stripeInvoice.create({
+     *   data: {
+     *     // ... data to create a StripeInvoice
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StripeInvoiceCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceCreateArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StripeInvoices.
+     * @param {StripeInvoiceCreateManyArgs} args - Arguments to create many StripeInvoices.
+     * @example
+     * // Create many StripeInvoices
+     * const stripeInvoice = await prisma.stripeInvoice.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends StripeInvoiceCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StripeInvoices and returns the data saved in the database.
+     * @param {StripeInvoiceCreateManyAndReturnArgs} args - Arguments to create many StripeInvoices.
+     * @example
+     * // Create many StripeInvoices
+     * const stripeInvoice = await prisma.stripeInvoice.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StripeInvoices and only return the `id`
+     * const stripeInvoiceWithIdOnly = await prisma.stripeInvoice.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends StripeInvoiceCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a StripeInvoice.
+     * @param {StripeInvoiceDeleteArgs} args - Arguments to delete one StripeInvoice.
+     * @example
+     * // Delete one StripeInvoice
+     * const StripeInvoice = await prisma.stripeInvoice.delete({
+     *   where: {
+     *     // ... filter to delete one StripeInvoice
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StripeInvoiceDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceDeleteArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StripeInvoice.
+     * @param {StripeInvoiceUpdateArgs} args - Arguments to update one StripeInvoice.
+     * @example
+     * // Update one StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StripeInvoiceUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceUpdateArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StripeInvoices.
+     * @param {StripeInvoiceDeleteManyArgs} args - Arguments to filter StripeInvoices to delete.
+     * @example
+     * // Delete a few StripeInvoices
+     * const { count } = await prisma.stripeInvoice.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StripeInvoiceDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeInvoiceDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StripeInvoices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StripeInvoices
+     * const stripeInvoice = await prisma.stripeInvoice.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StripeInvoiceUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StripeInvoice.
+     * @param {StripeInvoiceUpsertArgs} args - Arguments to update or create a StripeInvoice.
+     * @example
+     * // Update or create a StripeInvoice
+     * const stripeInvoice = await prisma.stripeInvoice.upsert({
+     *   create: {
+     *     // ... data to create a StripeInvoice
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StripeInvoice we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StripeInvoiceUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeInvoiceUpsertArgs<ExtArgs>>
+    ): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StripeInvoices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceCountArgs} args - Arguments to filter StripeInvoices to count.
+     * @example
+     * // Count the number of StripeInvoices
+     * const count = await prisma.stripeInvoice.count({
+     *   where: {
+     *     // ... the filter for the StripeInvoices we want to count
+     *   }
+     * })
+    **/
+    count<T extends StripeInvoiceCountArgs>(
+      args?: Subset<T, StripeInvoiceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StripeInvoiceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StripeInvoice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StripeInvoiceAggregateArgs>(args: Subset<T, StripeInvoiceAggregateArgs>): Prisma.PrismaPromise<GetStripeInvoiceAggregateType<T>>
+
+    /**
+     * Group by StripeInvoice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeInvoiceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StripeInvoiceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StripeInvoiceGroupByArgs['orderBy'] }
+        : { orderBy?: StripeInvoiceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StripeInvoiceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStripeInvoiceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StripeInvoice model
+   */
+  readonly fields: StripeInvoiceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StripeInvoice.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StripeInvoiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    evaluation<T extends StripeInvoice$evaluationArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$evaluationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    stripeProducts<T extends StripeInvoice$stripeProductsArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$stripeProductsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeProductPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    combinedInvoice<T extends StripeInvoice$combinedInvoiceArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$combinedInvoiceArgs<ExtArgs>>): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    combinedInvoices<T extends StripeInvoice$combinedInvoicesArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$combinedInvoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StripeInvoice model
+   */ 
+  interface StripeInvoiceFieldRefs {
+    readonly id: FieldRef<"StripeInvoice", 'String'>
+    readonly stripeInvoiceId: FieldRef<"StripeInvoice", 'String'>
+    readonly price: FieldRef<"StripeInvoice", 'Float'>
+    readonly type: FieldRef<"StripeInvoice", 'StripeInvoiceType'>
+    readonly status: FieldRef<"StripeInvoice", 'StripeInvoiceStatus'>
+    readonly lastWebhookId: FieldRef<"StripeInvoice", 'String'>
+    readonly combinedInvoiceId: FieldRef<"StripeInvoice", 'String'>
+    readonly createdAt: FieldRef<"StripeInvoice", 'DateTime'>
+    readonly updatedAt: FieldRef<"StripeInvoice", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StripeInvoice findUnique
+   */
+  export type StripeInvoiceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeInvoice to fetch.
+     */
+    where: StripeInvoiceWhereUniqueInput
+  }
+
+  /**
+   * StripeInvoice findUniqueOrThrow
+   */
+  export type StripeInvoiceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeInvoice to fetch.
+     */
+    where: StripeInvoiceWhereUniqueInput
+  }
+
+  /**
+   * StripeInvoice findFirst
+   */
+  export type StripeInvoiceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeInvoice to fetch.
+     */
+    where?: StripeInvoiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeInvoices to fetch.
+     */
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeInvoices.
+     */
+    cursor?: StripeInvoiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeInvoices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeInvoices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeInvoices.
+     */
+    distinct?: StripeInvoiceScalarFieldEnum | StripeInvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice findFirstOrThrow
+   */
+  export type StripeInvoiceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeInvoice to fetch.
+     */
+    where?: StripeInvoiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeInvoices to fetch.
+     */
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeInvoices.
+     */
+    cursor?: StripeInvoiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeInvoices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeInvoices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeInvoices.
+     */
+    distinct?: StripeInvoiceScalarFieldEnum | StripeInvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice findMany
+   */
+  export type StripeInvoiceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeInvoices to fetch.
+     */
+    where?: StripeInvoiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeInvoices to fetch.
+     */
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StripeInvoices.
+     */
+    cursor?: StripeInvoiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeInvoices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeInvoices.
+     */
+    skip?: number
+    distinct?: StripeInvoiceScalarFieldEnum | StripeInvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice create
+   */
+  export type StripeInvoiceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StripeInvoice.
+     */
+    data: XOR<StripeInvoiceCreateInput, StripeInvoiceUncheckedCreateInput>
+  }
+
+  /**
+   * StripeInvoice createMany
+   */
+  export type StripeInvoiceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StripeInvoices.
+     */
+    data: StripeInvoiceCreateManyInput | StripeInvoiceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeInvoice createManyAndReturn
+   */
+  export type StripeInvoiceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * The data used to create many StripeInvoices.
+     */
+    data: StripeInvoiceCreateManyInput | StripeInvoiceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeInvoice update
+   */
+  export type StripeInvoiceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StripeInvoice.
+     */
+    data: XOR<StripeInvoiceUpdateInput, StripeInvoiceUncheckedUpdateInput>
+    /**
+     * Choose, which StripeInvoice to update.
+     */
+    where: StripeInvoiceWhereUniqueInput
+  }
+
+  /**
+   * StripeInvoice updateMany
+   */
+  export type StripeInvoiceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StripeInvoices.
+     */
+    data: XOR<StripeInvoiceUpdateManyMutationInput, StripeInvoiceUncheckedUpdateManyInput>
+    /**
+     * Filter which StripeInvoices to update
+     */
+    where?: StripeInvoiceWhereInput
+  }
+
+  /**
+   * StripeInvoice upsert
+   */
+  export type StripeInvoiceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StripeInvoice to update in case it exists.
+     */
+    where: StripeInvoiceWhereUniqueInput
+    /**
+     * In case the StripeInvoice found by the `where` argument doesn't exist, create a new StripeInvoice with this data.
+     */
+    create: XOR<StripeInvoiceCreateInput, StripeInvoiceUncheckedCreateInput>
+    /**
+     * In case the StripeInvoice was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StripeInvoiceUpdateInput, StripeInvoiceUncheckedUpdateInput>
+  }
+
+  /**
+   * StripeInvoice delete
+   */
+  export type StripeInvoiceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    /**
+     * Filter which StripeInvoice to delete.
+     */
+    where: StripeInvoiceWhereUniqueInput
+  }
+
+  /**
+   * StripeInvoice deleteMany
+   */
+  export type StripeInvoiceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeInvoices to delete
+     */
+    where?: StripeInvoiceWhereInput
+  }
+
+  /**
+   * StripeInvoice.evaluation
+   */
+  export type StripeInvoice$evaluationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Evaluation
+     */
+    select?: EvaluationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EvaluationInclude<ExtArgs> | null
+    where?: EvaluationWhereInput
+    orderBy?: EvaluationOrderByWithRelationInput | EvaluationOrderByWithRelationInput[]
+    cursor?: EvaluationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice.stripeProducts
+   */
+  export type StripeInvoice$stripeProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeProduct
+     */
+    select?: StripeProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeProductInclude<ExtArgs> | null
+    where?: StripeProductWhereInput
+    orderBy?: StripeProductOrderByWithRelationInput | StripeProductOrderByWithRelationInput[]
+    cursor?: StripeProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StripeProductScalarFieldEnum | StripeProductScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice.combinedInvoice
+   */
+  export type StripeInvoice$combinedInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    where?: StripeInvoiceWhereInput
+  }
+
+  /**
+   * StripeInvoice.combinedInvoices
+   */
+  export type StripeInvoice$combinedInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    where?: StripeInvoiceWhereInput
+    orderBy?: StripeInvoiceOrderByWithRelationInput | StripeInvoiceOrderByWithRelationInput[]
+    cursor?: StripeInvoiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StripeInvoiceScalarFieldEnum | StripeInvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice without action
+   */
+  export type StripeInvoiceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StripeCompany
+   */
+
+  export type AggregateStripeCompany = {
+    _count: StripeCompanyCountAggregateOutputType | null
+    _min: StripeCompanyMinAggregateOutputType | null
+    _max: StripeCompanyMaxAggregateOutputType | null
+  }
+
+  export type StripeCompanyMinAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    autoAdvance: boolean | null
+    autoAdvanceCombined: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeCompanyMaxAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    autoAdvance: boolean | null
+    autoAdvanceCombined: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StripeCompanyCountAggregateOutputType = {
+    id: number
+    companyId: number
+    stripeCustomerId: number
+    stripeSubscriptionId: number
+    userPreferences: number
+    autoAdvance: number
+    autoAdvanceCombined: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StripeCompanyMinAggregateInputType = {
+    id?: true
+    companyId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    autoAdvance?: true
+    autoAdvanceCombined?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeCompanyMaxAggregateInputType = {
+    id?: true
+    companyId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    autoAdvance?: true
+    autoAdvanceCombined?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StripeCompanyCountAggregateInputType = {
+    id?: true
+    companyId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    userPreferences?: true
+    autoAdvance?: true
+    autoAdvanceCombined?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StripeCompanyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeCompany to aggregate.
+     */
+    where?: StripeCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeCompanies to fetch.
+     */
+    orderBy?: StripeCompanyOrderByWithRelationInput | StripeCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StripeCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StripeCompanies
+    **/
+    _count?: true | StripeCompanyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StripeCompanyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StripeCompanyMaxAggregateInputType
+  }
+
+  export type GetStripeCompanyAggregateType<T extends StripeCompanyAggregateArgs> = {
+        [P in keyof T & keyof AggregateStripeCompany]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStripeCompany[P]>
+      : GetScalarType<T[P], AggregateStripeCompany[P]>
+  }
+
+
+
+
+  export type StripeCompanyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StripeCompanyWhereInput
+    orderBy?: StripeCompanyOrderByWithAggregationInput | StripeCompanyOrderByWithAggregationInput[]
+    by: StripeCompanyScalarFieldEnum[] | StripeCompanyScalarFieldEnum
+    having?: StripeCompanyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StripeCompanyCountAggregateInputType | true
+    _min?: StripeCompanyMinAggregateInputType
+    _max?: StripeCompanyMaxAggregateInputType
+  }
+
+  export type StripeCompanyGroupByOutputType = {
+    id: string
+    companyId: string
+    stripeCustomerId: string
+    stripeSubscriptionId: string | null
+    userPreferences: JsonValue | null
+    autoAdvance: boolean
+    autoAdvanceCombined: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: StripeCompanyCountAggregateOutputType | null
+    _min: StripeCompanyMinAggregateOutputType | null
+    _max: StripeCompanyMaxAggregateOutputType | null
+  }
+
+  type GetStripeCompanyGroupByPayload<T extends StripeCompanyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StripeCompanyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StripeCompanyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StripeCompanyGroupByOutputType[P]>
+            : GetScalarType<T[P], StripeCompanyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StripeCompanySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    userPreferences?: boolean
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stripeCompany"]>
+
+  export type StripeCompanySelectScalar = {
+    id?: boolean
+    companyId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    userPreferences?: boolean
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type StripeCompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }
+
+
+  export type $StripeCompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StripeCompany"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      companyId: string
+      stripeCustomerId: string
+      stripeSubscriptionId: string | null
+      userPreferences: Prisma.JsonValue | null
+      autoAdvance: boolean
+      autoAdvanceCombined: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["stripeCompany"]>
+    composites: {}
+  }
+
+
+  type StripeCompanyGetPayload<S extends boolean | null | undefined | StripeCompanyDefaultArgs> = $Result.GetResult<Prisma.$StripeCompanyPayload, S>
+
+  type StripeCompanyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StripeCompanyFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StripeCompanyCountAggregateInputType | true
+    }
+
+  export interface StripeCompanyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StripeCompany'], meta: { name: 'StripeCompany' } }
+    /**
+     * Find zero or one StripeCompany that matches the filter.
+     * @param {StripeCompanyFindUniqueArgs} args - Arguments to find a StripeCompany
+     * @example
+     * // Get one StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StripeCompanyFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyFindUniqueArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StripeCompany that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {StripeCompanyFindUniqueOrThrowArgs} args - Arguments to find a StripeCompany
+     * @example
+     * // Get one StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StripeCompanyFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StripeCompany that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyFindFirstArgs} args - Arguments to find a StripeCompany
+     * @example
+     * // Get one StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StripeCompanyFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyFindFirstArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StripeCompany that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyFindFirstOrThrowArgs} args - Arguments to find a StripeCompany
+     * @example
+     * // Get one StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StripeCompanyFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StripeCompanies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StripeCompanies
+     * const stripeCompanies = await prisma.stripeCompany.findMany()
+     * 
+     * // Get first 10 StripeCompanies
+     * const stripeCompanies = await prisma.stripeCompany.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stripeCompanyWithIdOnly = await prisma.stripeCompany.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StripeCompanyFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StripeCompany.
+     * @param {StripeCompanyCreateArgs} args - Arguments to create a StripeCompany.
+     * @example
+     * // Create one StripeCompany
+     * const StripeCompany = await prisma.stripeCompany.create({
+     *   data: {
+     *     // ... data to create a StripeCompany
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StripeCompanyCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyCreateArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StripeCompanies.
+     * @param {StripeCompanyCreateManyArgs} args - Arguments to create many StripeCompanies.
+     * @example
+     * // Create many StripeCompanies
+     * const stripeCompany = await prisma.stripeCompany.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends StripeCompanyCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StripeCompanies and returns the data saved in the database.
+     * @param {StripeCompanyCreateManyAndReturnArgs} args - Arguments to create many StripeCompanies.
+     * @example
+     * // Create many StripeCompanies
+     * const stripeCompany = await prisma.stripeCompany.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StripeCompanies and only return the `id`
+     * const stripeCompanyWithIdOnly = await prisma.stripeCompany.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends StripeCompanyCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a StripeCompany.
+     * @param {StripeCompanyDeleteArgs} args - Arguments to delete one StripeCompany.
+     * @example
+     * // Delete one StripeCompany
+     * const StripeCompany = await prisma.stripeCompany.delete({
+     *   where: {
+     *     // ... filter to delete one StripeCompany
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StripeCompanyDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyDeleteArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StripeCompany.
+     * @param {StripeCompanyUpdateArgs} args - Arguments to update one StripeCompany.
+     * @example
+     * // Update one StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StripeCompanyUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyUpdateArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StripeCompanies.
+     * @param {StripeCompanyDeleteManyArgs} args - Arguments to filter StripeCompanies to delete.
+     * @example
+     * // Delete a few StripeCompanies
+     * const { count } = await prisma.stripeCompany.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StripeCompanyDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StripeCompanyDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StripeCompanies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StripeCompanies
+     * const stripeCompany = await prisma.stripeCompany.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StripeCompanyUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StripeCompany.
+     * @param {StripeCompanyUpsertArgs} args - Arguments to update or create a StripeCompany.
+     * @example
+     * // Update or create a StripeCompany
+     * const stripeCompany = await prisma.stripeCompany.upsert({
+     *   create: {
+     *     // ... data to create a StripeCompany
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StripeCompany we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StripeCompanyUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StripeCompanyUpsertArgs<ExtArgs>>
+    ): Prisma__StripeCompanyClient<$Result.GetResult<Prisma.$StripeCompanyPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StripeCompanies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyCountArgs} args - Arguments to filter StripeCompanies to count.
+     * @example
+     * // Count the number of StripeCompanies
+     * const count = await prisma.stripeCompany.count({
+     *   where: {
+     *     // ... the filter for the StripeCompanies we want to count
+     *   }
+     * })
+    **/
+    count<T extends StripeCompanyCountArgs>(
+      args?: Subset<T, StripeCompanyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StripeCompanyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StripeCompany.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StripeCompanyAggregateArgs>(args: Subset<T, StripeCompanyAggregateArgs>): Prisma.PrismaPromise<GetStripeCompanyAggregateType<T>>
+
+    /**
+     * Group by StripeCompany.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StripeCompanyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StripeCompanyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StripeCompanyGroupByArgs['orderBy'] }
+        : { orderBy?: StripeCompanyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StripeCompanyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStripeCompanyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StripeCompany model
+   */
+  readonly fields: StripeCompanyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StripeCompany.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StripeCompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StripeCompany model
+   */ 
+  interface StripeCompanyFieldRefs {
+    readonly id: FieldRef<"StripeCompany", 'String'>
+    readonly companyId: FieldRef<"StripeCompany", 'String'>
+    readonly stripeCustomerId: FieldRef<"StripeCompany", 'String'>
+    readonly stripeSubscriptionId: FieldRef<"StripeCompany", 'String'>
+    readonly userPreferences: FieldRef<"StripeCompany", 'Json'>
+    readonly autoAdvance: FieldRef<"StripeCompany", 'Boolean'>
+    readonly autoAdvanceCombined: FieldRef<"StripeCompany", 'Boolean'>
+    readonly createdAt: FieldRef<"StripeCompany", 'DateTime'>
+    readonly updatedAt: FieldRef<"StripeCompany", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StripeCompany findUnique
+   */
+  export type StripeCompanyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeCompany to fetch.
+     */
+    where: StripeCompanyWhereUniqueInput
+  }
+
+  /**
+   * StripeCompany findUniqueOrThrow
+   */
+  export type StripeCompanyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeCompany to fetch.
+     */
+    where: StripeCompanyWhereUniqueInput
+  }
+
+  /**
+   * StripeCompany findFirst
+   */
+  export type StripeCompanyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeCompany to fetch.
+     */
+    where?: StripeCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeCompanies to fetch.
+     */
+    orderBy?: StripeCompanyOrderByWithRelationInput | StripeCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeCompanies.
+     */
+    cursor?: StripeCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeCompanies.
+     */
+    distinct?: StripeCompanyScalarFieldEnum | StripeCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * StripeCompany findFirstOrThrow
+   */
+  export type StripeCompanyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeCompany to fetch.
+     */
+    where?: StripeCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeCompanies to fetch.
+     */
+    orderBy?: StripeCompanyOrderByWithRelationInput | StripeCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StripeCompanies.
+     */
+    cursor?: StripeCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeCompanies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StripeCompanies.
+     */
+    distinct?: StripeCompanyScalarFieldEnum | StripeCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * StripeCompany findMany
+   */
+  export type StripeCompanyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which StripeCompanies to fetch.
+     */
+    where?: StripeCompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StripeCompanies to fetch.
+     */
+    orderBy?: StripeCompanyOrderByWithRelationInput | StripeCompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StripeCompanies.
+     */
+    cursor?: StripeCompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StripeCompanies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StripeCompanies.
+     */
+    skip?: number
+    distinct?: StripeCompanyScalarFieldEnum | StripeCompanyScalarFieldEnum[]
+  }
+
+  /**
+   * StripeCompany create
+   */
+  export type StripeCompanyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StripeCompany.
+     */
+    data: XOR<StripeCompanyCreateInput, StripeCompanyUncheckedCreateInput>
+  }
+
+  /**
+   * StripeCompany createMany
+   */
+  export type StripeCompanyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StripeCompanies.
+     */
+    data: StripeCompanyCreateManyInput | StripeCompanyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeCompany createManyAndReturn
+   */
+  export type StripeCompanyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * The data used to create many StripeCompanies.
+     */
+    data: StripeCompanyCreateManyInput | StripeCompanyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StripeCompany update
+   */
+  export type StripeCompanyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StripeCompany.
+     */
+    data: XOR<StripeCompanyUpdateInput, StripeCompanyUncheckedUpdateInput>
+    /**
+     * Choose, which StripeCompany to update.
+     */
+    where: StripeCompanyWhereUniqueInput
+  }
+
+  /**
+   * StripeCompany updateMany
+   */
+  export type StripeCompanyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StripeCompanies.
+     */
+    data: XOR<StripeCompanyUpdateManyMutationInput, StripeCompanyUncheckedUpdateManyInput>
+    /**
+     * Filter which StripeCompanies to update
+     */
+    where?: StripeCompanyWhereInput
+  }
+
+  /**
+   * StripeCompany upsert
+   */
+  export type StripeCompanyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StripeCompany to update in case it exists.
+     */
+    where: StripeCompanyWhereUniqueInput
+    /**
+     * In case the StripeCompany found by the `where` argument doesn't exist, create a new StripeCompany with this data.
+     */
+    create: XOR<StripeCompanyCreateInput, StripeCompanyUncheckedCreateInput>
+    /**
+     * In case the StripeCompany was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StripeCompanyUpdateInput, StripeCompanyUncheckedUpdateInput>
+  }
+
+  /**
+   * StripeCompany delete
+   */
+  export type StripeCompanyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+    /**
+     * Filter which StripeCompany to delete.
+     */
+    where: StripeCompanyWhereUniqueInput
+  }
+
+  /**
+   * StripeCompany deleteMany
+   */
+  export type StripeCompanyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StripeCompanies to delete
+     */
+    where?: StripeCompanyWhereInput
+  }
+
+  /**
+   * StripeCompany without action
+   */
+  export type StripeCompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeCompany
+     */
+    select?: StripeCompanySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeCompanyInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -44729,6 +48410,7 @@ export namespace Prisma {
     location: 'location',
     prescribedAt: 'prescribedAt',
     prescribedActive: 'prescribedActive',
+    stripeInvoiceId: 'stripeInvoiceId',
     primaryInsurance: 'primaryInsurance',
     secondaryInsurance: 'secondaryInsurance',
     submittedAt: 'submittedAt',
@@ -44887,6 +48569,7 @@ export namespace Prisma {
     postalCode: 'postalCode',
     countryCode: 'countryCode',
     shippingAccountId: 'shippingAccountId',
+    phoneNumber: 'phoneNumber',
     shippingAccountCarrier: 'shippingAccountCarrier',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -45145,6 +48828,53 @@ export namespace Prisma {
   };
 
   export type FacilityUserScalarFieldEnum = (typeof FacilityUserScalarFieldEnum)[keyof typeof FacilityUserScalarFieldEnum]
+
+
+  export const StripeProductScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    companyId: 'companyId',
+    stripeProductId: 'stripeProductId',
+    stripePriceId: 'stripePriceId',
+    stripeCouponId: 'stripeCouponId',
+    amount: 'amount',
+    description: 'description',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StripeProductScalarFieldEnum = (typeof StripeProductScalarFieldEnum)[keyof typeof StripeProductScalarFieldEnum]
+
+
+  export const StripeInvoiceScalarFieldEnum: {
+    id: 'id',
+    stripeInvoiceId: 'stripeInvoiceId',
+    price: 'price',
+    type: 'type',
+    status: 'status',
+    lastWebhookId: 'lastWebhookId',
+    combinedInvoiceId: 'combinedInvoiceId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StripeInvoiceScalarFieldEnum = (typeof StripeInvoiceScalarFieldEnum)[keyof typeof StripeInvoiceScalarFieldEnum]
+
+
+  export const StripeCompanyScalarFieldEnum: {
+    id: 'id',
+    companyId: 'companyId',
+    stripeCustomerId: 'stripeCustomerId',
+    stripeSubscriptionId: 'stripeSubscriptionId',
+    userPreferences: 'userPreferences',
+    autoAdvance: 'autoAdvance',
+    autoAdvanceCombined: 'autoAdvanceCombined',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StripeCompanyScalarFieldEnum = (typeof StripeCompanyScalarFieldEnum)[keyof typeof StripeCompanyScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -45695,6 +49425,48 @@ export namespace Prisma {
    */
   export type ListEnumCompanyPermissionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyPermission[]'>
     
+
+
+  /**
+   * Reference to a field of type 'StripeProductType'
+   */
+  export type EnumStripeProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeProductType'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeProductType[]'
+   */
+  export type ListEnumStripeProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeProductType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeInvoiceType'
+   */
+  export type EnumStripeInvoiceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeInvoiceType'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeInvoiceType[]'
+   */
+  export type ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeInvoiceType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeInvoiceStatus'
+   */
+  export type EnumStripeInvoiceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeInvoiceStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeInvoiceStatus[]'
+   */
+  export type ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeInvoiceStatus[]'>
+    
   /**
    * Deep Input Types
    */
@@ -45721,6 +49493,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
+    stripeProduct?: StripeProductListRelationFilter
+    stripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -45741,6 +49515,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
+    stripeProduct?: StripeProductOrderByRelationAggregateInput
+    stripeCompany?: StripeCompanyOrderByWithRelationInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -45764,6 +49540,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
+    stripeProduct?: StripeProductListRelationFilter
+    stripeCompany?: XOR<StripeCompanyNullableRelationFilter, StripeCompanyWhereInput> | null
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -46078,6 +49856,7 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    stripeInvoiceId?: StringNullableFilter<"Evaluation"> | string | null
     primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -46092,6 +49871,7 @@ export namespace Prisma {
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
     facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    stripeInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
     clinicians?: ClinicianListRelationFilter
     workbenches?: WorkbenchListRelationFilter
   }
@@ -46119,6 +49899,7 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
+    stripeInvoiceId?: SortOrderInput | SortOrder
     primaryInsurance?: SortOrderInput | SortOrder
     secondaryInsurance?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
@@ -46133,6 +49914,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianOrderByWithRelationInput
     diagnosis?: DiagnosisOrderByWithRelationInput
     facility?: FacilityOrderByWithRelationInput
+    stripeInvoice?: StripeInvoiceOrderByWithRelationInput
     clinicians?: ClinicianOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
   }
@@ -46166,6 +49948,7 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    stripeInvoiceId?: StringNullableFilter<"Evaluation"> | string | null
     primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -46180,6 +49963,7 @@ export namespace Prisma {
     referringPhysician?: XOR<PhysicianNullableRelationFilter, PhysicianWhereInput> | null
     diagnosis?: XOR<DiagnosisNullableRelationFilter, DiagnosisWhereInput> | null
     facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    stripeInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
     clinicians?: ClinicianListRelationFilter
     workbenches?: WorkbenchListRelationFilter
   }, "id" | "id_companyId" | "externalId_companyId" | "poNumber_companyId">
@@ -46207,6 +49991,7 @@ export namespace Prisma {
     location?: SortOrderInput | SortOrder
     prescribedAt?: SortOrderInput | SortOrder
     prescribedActive?: SortOrder
+    stripeInvoiceId?: SortOrderInput | SortOrder
     primaryInsurance?: SortOrderInput | SortOrder
     secondaryInsurance?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
@@ -46245,6 +50030,7 @@ export namespace Prisma {
     location?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolWithAggregatesFilter<"Evaluation"> | boolean
+    stripeInvoiceId?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     primaryInsurance?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     secondaryInsurance?: StringNullableWithAggregatesFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
@@ -46994,6 +50780,7 @@ export namespace Prisma {
     postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
@@ -47011,6 +50798,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47032,6 +50820,7 @@ export namespace Prisma {
     postalCode?: StringFilter<"FacilityAddress"> | string
     countryCode?: StringFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
@@ -47048,6 +50837,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47070,6 +50860,7 @@ export namespace Prisma {
     postalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
     shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
     shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
     createdAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
@@ -48364,6 +52155,257 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
   }
 
+  export type StripeProductWhereInput = {
+    AND?: StripeProductWhereInput | StripeProductWhereInput[]
+    OR?: StripeProductWhereInput[]
+    NOT?: StripeProductWhereInput | StripeProductWhereInput[]
+    id?: StringFilter<"StripeProduct"> | string
+    type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
+    companyId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeProductId?: StringFilter<"StripeProduct"> | string
+    stripePriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeCouponId?: StringNullableFilter<"StripeProduct"> | string | null
+    amount?: FloatNullableFilter<"StripeProduct"> | number | null
+    description?: StringNullableFilter<"StripeProduct"> | string | null
+    active?: BoolFilter<"StripeProduct"> | boolean
+    createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
+    stripeInvoices?: StripeInvoiceListRelationFilter
+  }
+
+  export type StripeProductOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    companyId?: SortOrderInput | SortOrder
+    stripeProductId?: SortOrder
+    stripePriceId?: SortOrderInput | SortOrder
+    stripeCouponId?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+    stripeInvoices?: StripeInvoiceOrderByRelationAggregateInput
+  }
+
+  export type StripeProductWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StripeProductWhereInput | StripeProductWhereInput[]
+    OR?: StripeProductWhereInput[]
+    NOT?: StripeProductWhereInput | StripeProductWhereInput[]
+    type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
+    companyId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeProductId?: StringFilter<"StripeProduct"> | string
+    stripePriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeCouponId?: StringNullableFilter<"StripeProduct"> | string | null
+    amount?: FloatNullableFilter<"StripeProduct"> | number | null
+    description?: StringNullableFilter<"StripeProduct"> | string | null
+    active?: BoolFilter<"StripeProduct"> | boolean
+    createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
+    stripeInvoices?: StripeInvoiceListRelationFilter
+  }, "id">
+
+  export type StripeProductOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    companyId?: SortOrderInput | SortOrder
+    stripeProductId?: SortOrder
+    stripePriceId?: SortOrderInput | SortOrder
+    stripeCouponId?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StripeProductCountOrderByAggregateInput
+    _avg?: StripeProductAvgOrderByAggregateInput
+    _max?: StripeProductMaxOrderByAggregateInput
+    _min?: StripeProductMinOrderByAggregateInput
+    _sum?: StripeProductSumOrderByAggregateInput
+  }
+
+  export type StripeProductScalarWhereWithAggregatesInput = {
+    AND?: StripeProductScalarWhereWithAggregatesInput | StripeProductScalarWhereWithAggregatesInput[]
+    OR?: StripeProductScalarWhereWithAggregatesInput[]
+    NOT?: StripeProductScalarWhereWithAggregatesInput | StripeProductScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StripeProduct"> | string
+    type?: EnumStripeProductTypeWithAggregatesFilter<"StripeProduct"> | $Enums.StripeProductType
+    companyId?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    stripeProductId?: StringWithAggregatesFilter<"StripeProduct"> | string
+    stripePriceId?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    stripeCouponId?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    amount?: FloatNullableWithAggregatesFilter<"StripeProduct"> | number | null
+    description?: StringNullableWithAggregatesFilter<"StripeProduct"> | string | null
+    active?: BoolWithAggregatesFilter<"StripeProduct"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StripeProduct"> | Date | string
+  }
+
+  export type StripeInvoiceWhereInput = {
+    AND?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
+    OR?: StripeInvoiceWhereInput[]
+    NOT?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
+    id?: StringFilter<"StripeInvoice"> | string
+    stripeInvoiceId?: StringFilter<"StripeInvoice"> | string
+    price?: FloatFilter<"StripeInvoice"> | number
+    type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
+    lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
+    createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+    evaluation?: EvaluationListRelationFilter
+    stripeProducts?: StripeProductListRelationFilter
+    combinedInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
+    combinedInvoices?: StripeInvoiceListRelationFilter
+  }
+
+  export type StripeInvoiceOrderByWithRelationInput = {
+    id?: SortOrder
+    stripeInvoiceId?: SortOrder
+    price?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    lastWebhookId?: SortOrderInput | SortOrder
+    combinedInvoiceId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    evaluation?: EvaluationOrderByRelationAggregateInput
+    stripeProducts?: StripeProductOrderByRelationAggregateInput
+    combinedInvoice?: StripeInvoiceOrderByWithRelationInput
+    combinedInvoices?: StripeInvoiceOrderByRelationAggregateInput
+  }
+
+  export type StripeInvoiceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    stripeInvoiceId?: string
+    AND?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
+    OR?: StripeInvoiceWhereInput[]
+    NOT?: StripeInvoiceWhereInput | StripeInvoiceWhereInput[]
+    price?: FloatFilter<"StripeInvoice"> | number
+    type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
+    lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
+    createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+    evaluation?: EvaluationListRelationFilter
+    stripeProducts?: StripeProductListRelationFilter
+    combinedInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
+    combinedInvoices?: StripeInvoiceListRelationFilter
+  }, "id" | "stripeInvoiceId">
+
+  export type StripeInvoiceOrderByWithAggregationInput = {
+    id?: SortOrder
+    stripeInvoiceId?: SortOrder
+    price?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    lastWebhookId?: SortOrderInput | SortOrder
+    combinedInvoiceId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StripeInvoiceCountOrderByAggregateInput
+    _avg?: StripeInvoiceAvgOrderByAggregateInput
+    _max?: StripeInvoiceMaxOrderByAggregateInput
+    _min?: StripeInvoiceMinOrderByAggregateInput
+    _sum?: StripeInvoiceSumOrderByAggregateInput
+  }
+
+  export type StripeInvoiceScalarWhereWithAggregatesInput = {
+    AND?: StripeInvoiceScalarWhereWithAggregatesInput | StripeInvoiceScalarWhereWithAggregatesInput[]
+    OR?: StripeInvoiceScalarWhereWithAggregatesInput[]
+    NOT?: StripeInvoiceScalarWhereWithAggregatesInput | StripeInvoiceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StripeInvoice"> | string
+    stripeInvoiceId?: StringWithAggregatesFilter<"StripeInvoice"> | string
+    price?: FloatWithAggregatesFilter<"StripeInvoice"> | number
+    type?: EnumStripeInvoiceTypeWithAggregatesFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusWithAggregatesFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
+    lastWebhookId?: StringNullableWithAggregatesFilter<"StripeInvoice"> | string | null
+    combinedInvoiceId?: StringNullableWithAggregatesFilter<"StripeInvoice"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"StripeInvoice"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StripeInvoice"> | Date | string
+  }
+
+  export type StripeCompanyWhereInput = {
+    AND?: StripeCompanyWhereInput | StripeCompanyWhereInput[]
+    OR?: StripeCompanyWhereInput[]
+    NOT?: StripeCompanyWhereInput | StripeCompanyWhereInput[]
+    id?: StringFilter<"StripeCompany"> | string
+    companyId?: StringFilter<"StripeCompany"> | string
+    stripeCustomerId?: StringFilter<"StripeCompany"> | string
+    stripeSubscriptionId?: StringNullableFilter<"StripeCompany"> | string | null
+    userPreferences?: JsonNullableFilter<"StripeCompany">
+    autoAdvance?: BoolFilter<"StripeCompany"> | boolean
+    autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
+    createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }
+
+  export type StripeCompanyOrderByWithRelationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrderInput | SortOrder
+    userPreferences?: SortOrderInput | SortOrder
+    autoAdvance?: SortOrder
+    autoAdvanceCombined?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+  }
+
+  export type StripeCompanyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    companyId?: string
+    AND?: StripeCompanyWhereInput | StripeCompanyWhereInput[]
+    OR?: StripeCompanyWhereInput[]
+    NOT?: StripeCompanyWhereInput | StripeCompanyWhereInput[]
+    stripeCustomerId?: StringFilter<"StripeCompany"> | string
+    stripeSubscriptionId?: StringNullableFilter<"StripeCompany"> | string | null
+    userPreferences?: JsonNullableFilter<"StripeCompany">
+    autoAdvance?: BoolFilter<"StripeCompany"> | boolean
+    autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
+    createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }, "id" | "companyId">
+
+  export type StripeCompanyOrderByWithAggregationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrderInput | SortOrder
+    userPreferences?: SortOrderInput | SortOrder
+    autoAdvance?: SortOrder
+    autoAdvanceCombined?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StripeCompanyCountOrderByAggregateInput
+    _max?: StripeCompanyMaxOrderByAggregateInput
+    _min?: StripeCompanyMinOrderByAggregateInput
+  }
+
+  export type StripeCompanyScalarWhereWithAggregatesInput = {
+    AND?: StripeCompanyScalarWhereWithAggregatesInput | StripeCompanyScalarWhereWithAggregatesInput[]
+    OR?: StripeCompanyScalarWhereWithAggregatesInput[]
+    NOT?: StripeCompanyScalarWhereWithAggregatesInput | StripeCompanyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StripeCompany"> | string
+    companyId?: StringWithAggregatesFilter<"StripeCompany"> | string
+    stripeCustomerId?: StringWithAggregatesFilter<"StripeCompany"> | string
+    stripeSubscriptionId?: StringNullableWithAggregatesFilter<"StripeCompany"> | string | null
+    userPreferences?: JsonNullableWithAggregatesFilter<"StripeCompany">
+    autoAdvance?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
+    autoAdvanceCombined?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -48857,6 +52899,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -48877,6 +52921,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -48897,6 +52943,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -48917,6 +52965,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -49273,6 +53323,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -49300,6 +53351,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -49341,6 +53393,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -49368,6 +53421,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49402,6 +53456,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -49459,6 +53514,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50299,6 +54355,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50315,6 +54372,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50331,6 +54389,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50347,6 +54406,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50363,6 +54423,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50379,6 +54440,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50394,6 +54456,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -51770,6 +55833,285 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type StripeProductCreateInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company?: CompanyCreateNestedOneWithoutStripeProductInput
+    stripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
+  }
+
+  export type StripeProductUncheckedCreateInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    companyId?: string | null
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
+  }
+
+  export type StripeProductUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneWithoutStripeProductNestedInput
+    stripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
+  }
+
+  export type StripeProductUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
+  }
+
+  export type StripeProductCreateManyInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    companyId?: string | null
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeProductUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeInvoiceCreateInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
+    combinedInvoices?: StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceUncheckedCreateInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    combinedInvoiceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceCreateManyInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    combinedInvoiceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeInvoiceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeInvoiceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeCompanyCreateInput = {
+    id?: string
+    stripeCustomerId: string
+    stripeSubscriptionId?: string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutStripeCompanyInput
+  }
+
+  export type StripeCompanyUncheckedCreateInput = {
+    id?: string
+    companyId: string
+    stripeCustomerId: string
+    stripeSubscriptionId?: string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeCompanyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutStripeCompanyNestedInput
+  }
+
+  export type StripeCompanyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeCompanyCreateManyInput = {
+    id?: string
+    companyId: string
+    stripeCustomerId: string
+    stripeSubscriptionId?: string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeCompanyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeCompanyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email?: string | null
@@ -52465,6 +56807,17 @@ export namespace Prisma {
     none?: AuditLogWhereInput
   }
 
+  export type StripeProductListRelationFilter = {
+    every?: StripeProductWhereInput
+    some?: StripeProductWhereInput
+    none?: StripeProductWhereInput
+  }
+
+  export type StripeCompanyNullableRelationFilter = {
+    is?: StripeCompanyWhereInput | null
+    isNot?: StripeCompanyWhereInput | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -52499,6 +56852,10 @@ export namespace Prisma {
   }
 
   export type AuditLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StripeProductOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -52939,6 +57296,11 @@ export namespace Prisma {
     isNot?: FacilityWhereInput | null
   }
 
+  export type StripeInvoiceNullableRelationFilter = {
+    is?: StripeInvoiceWhereInput | null
+    isNot?: StripeInvoiceWhereInput | null
+  }
+
   export type ClinicianListRelationFilter = {
     every?: ClinicianWhereInput
     some?: ClinicianWhereInput
@@ -52987,6 +57349,7 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    stripeInvoiceId?: SortOrder
     primaryInsurance?: SortOrder
     secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
@@ -53019,6 +57382,7 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    stripeInvoiceId?: SortOrder
     primaryInsurance?: SortOrder
     secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
@@ -53051,6 +57415,7 @@ export namespace Prisma {
     location?: SortOrder
     prescribedAt?: SortOrder
     prescribedActive?: SortOrder
+    stripeInvoiceId?: SortOrder
     primaryInsurance?: SortOrder
     secondaryInsurance?: SortOrder
     submittedAt?: SortOrder
@@ -53747,6 +58112,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53763,6 +58129,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53779,6 +58146,7 @@ export namespace Prisma {
     postalCode?: SortOrder
     countryCode?: SortOrder
     shippingAccountId?: SortOrder
+    phoneNumber?: SortOrder
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -54729,6 +59097,200 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumStripeProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeFilter<$PrismaModel> | $Enums.StripeProductType
+  }
+
+  export type CompanyNullableRelationFilter = {
+    is?: CompanyWhereInput | null
+    isNot?: CompanyWhereInput | null
+  }
+
+  export type StripeInvoiceListRelationFilter = {
+    every?: StripeInvoiceWhereInput
+    some?: StripeInvoiceWhereInput
+    none?: StripeInvoiceWhereInput
+  }
+
+  export type StripeInvoiceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StripeProductCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    companyId?: SortOrder
+    stripeProductId?: SortOrder
+    stripePriceId?: SortOrder
+    stripeCouponId?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type StripeProductMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    companyId?: SortOrder
+    stripeProductId?: SortOrder
+    stripePriceId?: SortOrder
+    stripeCouponId?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    companyId?: SortOrder
+    stripeProductId?: SortOrder
+    stripePriceId?: SortOrder
+    stripeCouponId?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeProductSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumStripeProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+  }
+
+  export type EnumStripeInvoiceTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceType | EnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel> | $Enums.StripeInvoiceType
+  }
+
+  export type EnumStripeInvoiceStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceStatus | EnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel> | $Enums.StripeInvoiceStatus
+  }
+
+  export type StripeInvoiceCountOrderByAggregateInput = {
+    id?: SortOrder
+    stripeInvoiceId?: SortOrder
+    price?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    lastWebhookId?: SortOrder
+    combinedInvoiceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeInvoiceAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type StripeInvoiceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    stripeInvoiceId?: SortOrder
+    price?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    lastWebhookId?: SortOrder
+    combinedInvoiceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeInvoiceMinOrderByAggregateInput = {
+    id?: SortOrder
+    stripeInvoiceId?: SortOrder
+    price?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    lastWebhookId?: SortOrder
+    combinedInvoiceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeInvoiceSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type EnumStripeInvoiceTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceType | EnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeInvoiceType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel>
+  }
+
+  export type EnumStripeInvoiceStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceStatus | EnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceStatusWithAggregatesFilter<$PrismaModel> | $Enums.StripeInvoiceStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel>
+    _max?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel>
+  }
+
+  export type StripeCompanyCountOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    userPreferences?: SortOrder
+    autoAdvance?: SortOrder
+    autoAdvanceCombined?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeCompanyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    autoAdvance?: SortOrder
+    autoAdvanceCombined?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StripeCompanyMinOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    autoAdvance?: SortOrder
+    autoAdvanceCombined?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
@@ -55138,6 +59700,19 @@ export namespace Prisma {
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
   }
 
+  export type StripeProductCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput> | StripeProductCreateWithoutCompanyInput[] | StripeProductUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutCompanyInput | StripeProductCreateOrConnectWithoutCompanyInput[]
+    createMany?: StripeProductCreateManyCompanyInputEnvelope
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+  }
+
+  export type StripeCompanyCreateNestedOneWithoutCompanyInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    connect?: StripeCompanyWhereUniqueInput
+  }
+
   export type FacilityUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<FacilityCreateWithoutCompanyInput, FacilityUncheckedCreateWithoutCompanyInput> | FacilityCreateWithoutCompanyInput[] | FacilityUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: FacilityCreateOrConnectWithoutCompanyInput | FacilityCreateOrConnectWithoutCompanyInput[]
@@ -55192,6 +59767,19 @@ export namespace Prisma {
     connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
     createMany?: AuditLogCreateManyCompanyInputEnvelope
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
+  export type StripeProductUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput> | StripeProductCreateWithoutCompanyInput[] | StripeProductUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutCompanyInput | StripeProductCreateOrConnectWithoutCompanyInput[]
+    createMany?: StripeProductCreateManyCompanyInputEnvelope
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+  }
+
+  export type StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    connect?: StripeCompanyWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -55322,6 +59910,30 @@ export namespace Prisma {
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
   }
 
+  export type StripeProductUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput> | StripeProductCreateWithoutCompanyInput[] | StripeProductUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutCompanyInput | StripeProductCreateOrConnectWithoutCompanyInput[]
+    upsert?: StripeProductUpsertWithWhereUniqueWithoutCompanyInput | StripeProductUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: StripeProductCreateManyCompanyInputEnvelope
+    set?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    disconnect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    delete?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    update?: StripeProductUpdateWithWhereUniqueWithoutCompanyInput | StripeProductUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: StripeProductUpdateManyWithWhereWithoutCompanyInput | StripeProductUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+  }
+
+  export type StripeCompanyUpdateOneWithoutCompanyNestedInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    upsert?: StripeCompanyUpsertWithoutCompanyInput
+    disconnect?: StripeCompanyWhereInput | boolean
+    delete?: StripeCompanyWhereInput | boolean
+    connect?: StripeCompanyWhereUniqueInput
+    update?: XOR<XOR<StripeCompanyUpdateToOneWithWhereWithoutCompanyInput, StripeCompanyUpdateWithoutCompanyInput>, StripeCompanyUncheckedUpdateWithoutCompanyInput>
+  }
+
   export type FacilityUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<FacilityCreateWithoutCompanyInput, FacilityUncheckedCreateWithoutCompanyInput> | FacilityCreateWithoutCompanyInput[] | FacilityUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: FacilityCreateOrConnectWithoutCompanyInput | FacilityCreateOrConnectWithoutCompanyInput[]
@@ -55432,6 +60044,30 @@ export namespace Prisma {
     update?: AuditLogUpdateWithWhereUniqueWithoutCompanyInput | AuditLogUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: AuditLogUpdateManyWithWhereWithoutCompanyInput | AuditLogUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
+  export type StripeProductUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput> | StripeProductCreateWithoutCompanyInput[] | StripeProductUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutCompanyInput | StripeProductCreateOrConnectWithoutCompanyInput[]
+    upsert?: StripeProductUpsertWithWhereUniqueWithoutCompanyInput | StripeProductUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: StripeProductCreateManyCompanyInputEnvelope
+    set?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    disconnect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    delete?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    update?: StripeProductUpdateWithWhereUniqueWithoutCompanyInput | StripeProductUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: StripeProductUpdateManyWithWhereWithoutCompanyInput | StripeProductUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+  }
+
+  export type StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput = {
+    create?: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: StripeCompanyCreateOrConnectWithoutCompanyInput
+    upsert?: StripeCompanyUpsertWithoutCompanyInput
+    disconnect?: StripeCompanyWhereInput | boolean
+    delete?: StripeCompanyWhereInput | boolean
+    connect?: StripeCompanyWhereUniqueInput
+    update?: XOR<XOR<StripeCompanyUpdateToOneWithWhereWithoutCompanyInput, StripeCompanyUpdateWithoutCompanyInput>, StripeCompanyUncheckedUpdateWithoutCompanyInput>
   }
 
   export type CompanyCreateNestedOneWithoutFacilitiesInput = {
@@ -55868,6 +60504,12 @@ export namespace Prisma {
     connect?: FacilityWhereUniqueInput
   }
 
+  export type StripeInvoiceCreateNestedOneWithoutEvaluationInput = {
+    create?: XOR<StripeInvoiceCreateWithoutEvaluationInput, StripeInvoiceUncheckedCreateWithoutEvaluationInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutEvaluationInput
+    connect?: StripeInvoiceWhereUniqueInput
+  }
+
   export type ClinicianCreateNestedManyWithoutEvaluationsInput = {
     create?: XOR<ClinicianCreateWithoutEvaluationsInput, ClinicianUncheckedCreateWithoutEvaluationsInput> | ClinicianCreateWithoutEvaluationsInput[] | ClinicianUncheckedCreateWithoutEvaluationsInput[]
     connectOrCreate?: ClinicianCreateOrConnectWithoutEvaluationsInput | ClinicianCreateOrConnectWithoutEvaluationsInput[]
@@ -55970,6 +60612,16 @@ export namespace Prisma {
     delete?: FacilityWhereInput | boolean
     connect?: FacilityWhereUniqueInput
     update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutEvaluationsInput, FacilityUpdateWithoutEvaluationsInput>, FacilityUncheckedUpdateWithoutEvaluationsInput>
+  }
+
+  export type StripeInvoiceUpdateOneWithoutEvaluationNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutEvaluationInput, StripeInvoiceUncheckedCreateWithoutEvaluationInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutEvaluationInput
+    upsert?: StripeInvoiceUpsertWithoutEvaluationInput
+    disconnect?: StripeInvoiceWhereInput | boolean
+    delete?: StripeInvoiceWhereInput | boolean
+    connect?: StripeInvoiceWhereUniqueInput
+    update?: XOR<XOR<StripeInvoiceUpdateToOneWithWhereWithoutEvaluationInput, StripeInvoiceUpdateWithoutEvaluationInput>, StripeInvoiceUncheckedUpdateWithoutEvaluationInput>
   }
 
   export type ClinicianUpdateManyWithoutEvaluationsNestedInput = {
@@ -57505,6 +62157,224 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFacilitiesInput, UserUpdateWithoutFacilitiesInput>, UserUncheckedUpdateWithoutFacilitiesInput>
   }
 
+  export type CompanyCreateNestedOneWithoutStripeProductInput = {
+    create?: XOR<CompanyCreateWithoutStripeProductInput, CompanyUncheckedCreateWithoutStripeProductInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutStripeProductInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type StripeInvoiceCreateNestedManyWithoutStripeProductsInput = {
+    create?: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput> | StripeInvoiceCreateWithoutStripeProductsInput[] | StripeInvoiceUncheckedCreateWithoutStripeProductsInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutStripeProductsInput | StripeInvoiceCreateOrConnectWithoutStripeProductsInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+  }
+
+  export type StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput = {
+    create?: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput> | StripeInvoiceCreateWithoutStripeProductsInput[] | StripeInvoiceUncheckedCreateWithoutStripeProductsInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutStripeProductsInput | StripeInvoiceCreateOrConnectWithoutStripeProductsInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+  }
+
+  export type EnumStripeProductTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StripeProductType
+  }
+
+  export type CompanyUpdateOneWithoutStripeProductNestedInput = {
+    create?: XOR<CompanyCreateWithoutStripeProductInput, CompanyUncheckedCreateWithoutStripeProductInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutStripeProductInput
+    upsert?: CompanyUpsertWithoutStripeProductInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutStripeProductInput, CompanyUpdateWithoutStripeProductInput>, CompanyUncheckedUpdateWithoutStripeProductInput>
+  }
+
+  export type StripeInvoiceUpdateManyWithoutStripeProductsNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput> | StripeInvoiceCreateWithoutStripeProductsInput[] | StripeInvoiceUncheckedCreateWithoutStripeProductsInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutStripeProductsInput | StripeInvoiceCreateOrConnectWithoutStripeProductsInput[]
+    upsert?: StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput | StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput[]
+    set?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    disconnect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    delete?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    update?: StripeInvoiceUpdateWithWhereUniqueWithoutStripeProductsInput | StripeInvoiceUpdateWithWhereUniqueWithoutStripeProductsInput[]
+    updateMany?: StripeInvoiceUpdateManyWithWhereWithoutStripeProductsInput | StripeInvoiceUpdateManyWithWhereWithoutStripeProductsInput[]
+    deleteMany?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+  }
+
+  export type StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput> | StripeInvoiceCreateWithoutStripeProductsInput[] | StripeInvoiceUncheckedCreateWithoutStripeProductsInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutStripeProductsInput | StripeInvoiceCreateOrConnectWithoutStripeProductsInput[]
+    upsert?: StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput | StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput[]
+    set?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    disconnect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    delete?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    update?: StripeInvoiceUpdateWithWhereUniqueWithoutStripeProductsInput | StripeInvoiceUpdateWithWhereUniqueWithoutStripeProductsInput[]
+    updateMany?: StripeInvoiceUpdateManyWithWhereWithoutStripeProductsInput | StripeInvoiceUpdateManyWithWhereWithoutStripeProductsInput[]
+    deleteMany?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+  }
+
+  export type EvaluationCreateNestedManyWithoutStripeInvoiceInput = {
+    create?: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput> | EvaluationCreateWithoutStripeInvoiceInput[] | EvaluationUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutStripeInvoiceInput | EvaluationCreateOrConnectWithoutStripeInvoiceInput[]
+    createMany?: EvaluationCreateManyStripeInvoiceInputEnvelope
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+  }
+
+  export type StripeProductCreateNestedManyWithoutStripeInvoicesInput = {
+    create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+  }
+
+  export type StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoicesInput
+    connect?: StripeInvoiceWhereUniqueInput
+  }
+
+  export type StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput> | StripeInvoiceCreateWithoutCombinedInvoiceInput[] | StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput | StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput[]
+    createMany?: StripeInvoiceCreateManyCombinedInvoiceInputEnvelope
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+  }
+
+  export type EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput = {
+    create?: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput> | EvaluationCreateWithoutStripeInvoiceInput[] | EvaluationUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutStripeInvoiceInput | EvaluationCreateOrConnectWithoutStripeInvoiceInput[]
+    createMany?: EvaluationCreateManyStripeInvoiceInputEnvelope
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+  }
+
+  export type StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput = {
+    create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+  }
+
+  export type StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput> | StripeInvoiceCreateWithoutCombinedInvoiceInput[] | StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput | StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput[]
+    createMany?: StripeInvoiceCreateManyCombinedInvoiceInputEnvelope
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+  }
+
+  export type EnumStripeInvoiceTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StripeInvoiceType
+  }
+
+  export type EnumStripeInvoiceStatusFieldUpdateOperationsInput = {
+    set?: $Enums.StripeInvoiceStatus
+  }
+
+  export type EvaluationUpdateManyWithoutStripeInvoiceNestedInput = {
+    create?: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput> | EvaluationCreateWithoutStripeInvoiceInput[] | EvaluationUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutStripeInvoiceInput | EvaluationCreateOrConnectWithoutStripeInvoiceInput[]
+    upsert?: EvaluationUpsertWithWhereUniqueWithoutStripeInvoiceInput | EvaluationUpsertWithWhereUniqueWithoutStripeInvoiceInput[]
+    createMany?: EvaluationCreateManyStripeInvoiceInputEnvelope
+    set?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    disconnect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    delete?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    update?: EvaluationUpdateWithWhereUniqueWithoutStripeInvoiceInput | EvaluationUpdateWithWhereUniqueWithoutStripeInvoiceInput[]
+    updateMany?: EvaluationUpdateManyWithWhereWithoutStripeInvoiceInput | EvaluationUpdateManyWithWhereWithoutStripeInvoiceInput[]
+    deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type StripeProductUpdateManyWithoutStripeInvoicesNestedInput = {
+    create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
+    upsert?: StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput | StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput[]
+    set?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    disconnect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    delete?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    update?: StripeProductUpdateWithWhereUniqueWithoutStripeInvoicesInput | StripeProductUpdateWithWhereUniqueWithoutStripeInvoicesInput[]
+    updateMany?: StripeProductUpdateManyWithWhereWithoutStripeInvoicesInput | StripeProductUpdateManyWithWhereWithoutStripeInvoicesInput[]
+    deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+  }
+
+  export type StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoicesInput
+    upsert?: StripeInvoiceUpsertWithoutCombinedInvoicesInput
+    disconnect?: StripeInvoiceWhereInput | boolean
+    delete?: StripeInvoiceWhereInput | boolean
+    connect?: StripeInvoiceWhereUniqueInput
+    update?: XOR<XOR<StripeInvoiceUpdateToOneWithWhereWithoutCombinedInvoicesInput, StripeInvoiceUpdateWithoutCombinedInvoicesInput>, StripeInvoiceUncheckedUpdateWithoutCombinedInvoicesInput>
+  }
+
+  export type StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput> | StripeInvoiceCreateWithoutCombinedInvoiceInput[] | StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput | StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput[]
+    upsert?: StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput | StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput[]
+    createMany?: StripeInvoiceCreateManyCombinedInvoiceInputEnvelope
+    set?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    disconnect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    delete?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    update?: StripeInvoiceUpdateWithWhereUniqueWithoutCombinedInvoiceInput | StripeInvoiceUpdateWithWhereUniqueWithoutCombinedInvoiceInput[]
+    updateMany?: StripeInvoiceUpdateManyWithWhereWithoutCombinedInvoiceInput | StripeInvoiceUpdateManyWithWhereWithoutCombinedInvoiceInput[]
+    deleteMany?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+  }
+
+  export type EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput = {
+    create?: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput> | EvaluationCreateWithoutStripeInvoiceInput[] | EvaluationUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: EvaluationCreateOrConnectWithoutStripeInvoiceInput | EvaluationCreateOrConnectWithoutStripeInvoiceInput[]
+    upsert?: EvaluationUpsertWithWhereUniqueWithoutStripeInvoiceInput | EvaluationUpsertWithWhereUniqueWithoutStripeInvoiceInput[]
+    createMany?: EvaluationCreateManyStripeInvoiceInputEnvelope
+    set?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    disconnect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    delete?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+    update?: EvaluationUpdateWithWhereUniqueWithoutStripeInvoiceInput | EvaluationUpdateWithWhereUniqueWithoutStripeInvoiceInput[]
+    updateMany?: EvaluationUpdateManyWithWhereWithoutStripeInvoiceInput | EvaluationUpdateManyWithWhereWithoutStripeInvoiceInput[]
+    deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput = {
+    create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
+    connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
+    upsert?: StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput | StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput[]
+    set?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    disconnect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    delete?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    connect?: StripeProductWhereUniqueInput | StripeProductWhereUniqueInput[]
+    update?: StripeProductUpdateWithWhereUniqueWithoutStripeInvoicesInput | StripeProductUpdateWithWhereUniqueWithoutStripeInvoicesInput[]
+    updateMany?: StripeProductUpdateManyWithWhereWithoutStripeInvoicesInput | StripeProductUpdateManyWithWhereWithoutStripeInvoicesInput[]
+    deleteMany?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+  }
+
+  export type StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput> | StripeInvoiceCreateWithoutCombinedInvoiceInput[] | StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput[]
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput | StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput[]
+    upsert?: StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput | StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput[]
+    createMany?: StripeInvoiceCreateManyCombinedInvoiceInputEnvelope
+    set?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    disconnect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    delete?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
+    update?: StripeInvoiceUpdateWithWhereUniqueWithoutCombinedInvoiceInput | StripeInvoiceUpdateWithWhereUniqueWithoutCombinedInvoiceInput[]
+    updateMany?: StripeInvoiceUpdateManyWithWhereWithoutCombinedInvoiceInput | StripeInvoiceUpdateManyWithWhereWithoutCombinedInvoiceInput[]
+    deleteMany?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+  }
+
+  export type CompanyCreateNestedOneWithoutStripeCompanyInput = {
+    create?: XOR<CompanyCreateWithoutStripeCompanyInput, CompanyUncheckedCreateWithoutStripeCompanyInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutStripeCompanyInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type CompanyUpdateOneRequiredWithoutStripeCompanyNestedInput = {
+    create?: XOR<CompanyCreateWithoutStripeCompanyInput, CompanyUncheckedCreateWithoutStripeCompanyInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutStripeCompanyInput
+    upsert?: CompanyUpsertWithoutStripeCompanyInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutStripeCompanyInput, CompanyUpdateWithoutStripeCompanyInput>, CompanyUncheckedUpdateWithoutStripeCompanyInput>
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -58536,6 +63406,57 @@ export namespace Prisma {
     _max?: NestedEnumCompanyPermissionFilter<$PrismaModel>
   }
 
+  export type NestedEnumStripeProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeFilter<$PrismaModel> | $Enums.StripeProductType
+  }
+
+  export type NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeProductType | EnumStripeProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeProductType[] | ListEnumStripeProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeProductTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStripeInvoiceTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceType | EnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel> | $Enums.StripeInvoiceType
+  }
+
+  export type NestedEnumStripeInvoiceStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceStatus | EnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel> | $Enums.StripeInvoiceStatus
+  }
+
+  export type NestedEnumStripeInvoiceTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceType | EnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceType[] | ListEnumStripeInvoiceTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeInvoiceType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeInvoiceTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStripeInvoiceStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeInvoiceStatus | EnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeInvoiceStatus[] | ListEnumStripeInvoiceStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeInvoiceStatusWithAggregatesFilter<$PrismaModel> | $Enums.StripeInvoiceStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel>
+    _max?: NestedEnumStripeInvoiceStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
@@ -58666,6 +63587,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -58692,6 +63614,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -58883,6 +63806,71 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type StripeProductCreateWithoutCompanyInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeInvoices?: StripeInvoiceCreateNestedManyWithoutStripeProductsInput
+  }
+
+  export type StripeProductUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutStripeProductsInput
+  }
+
+  export type StripeProductCreateOrConnectWithoutCompanyInput = {
+    where: StripeProductWhereUniqueInput
+    create: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type StripeProductCreateManyCompanyInputEnvelope = {
+    data: StripeProductCreateManyCompanyInput | StripeProductCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StripeCompanyCreateWithoutCompanyInput = {
+    id?: string
+    stripeCustomerId: string
+    stripeSubscriptionId?: string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeCompanyUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    stripeCustomerId: string
+    stripeSubscriptionId?: string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: boolean
+    autoAdvanceCombined?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeCompanyCreateOrConnectWithoutCompanyInput = {
+    where: StripeCompanyWhereUniqueInput
+    create: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+  }
+
   export type FacilityUpsertWithWhereUniqueWithoutCompanyInput = {
     where: FacilityWhereUniqueInput
     update: XOR<FacilityUpdateWithoutCompanyInput, FacilityUncheckedUpdateWithoutCompanyInput>
@@ -58954,6 +63942,7 @@ export namespace Prisma {
     location?: StringNullableFilter<"Evaluation"> | string | null
     prescribedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     prescribedActive?: BoolFilter<"Evaluation"> | boolean
+    stripeInvoiceId?: StringNullableFilter<"Evaluation"> | string | null
     primaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     secondaryInsurance?: StringNullableFilter<"Evaluation"> | string | null
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
@@ -59138,6 +64127,72 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
   }
 
+  export type StripeProductUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: StripeProductWhereUniqueInput
+    update: XOR<StripeProductUpdateWithoutCompanyInput, StripeProductUncheckedUpdateWithoutCompanyInput>
+    create: XOR<StripeProductCreateWithoutCompanyInput, StripeProductUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type StripeProductUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: StripeProductWhereUniqueInput
+    data: XOR<StripeProductUpdateWithoutCompanyInput, StripeProductUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type StripeProductUpdateManyWithWhereWithoutCompanyInput = {
+    where: StripeProductScalarWhereInput
+    data: XOR<StripeProductUpdateManyMutationInput, StripeProductUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type StripeProductScalarWhereInput = {
+    AND?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+    OR?: StripeProductScalarWhereInput[]
+    NOT?: StripeProductScalarWhereInput | StripeProductScalarWhereInput[]
+    id?: StringFilter<"StripeProduct"> | string
+    type?: EnumStripeProductTypeFilter<"StripeProduct"> | $Enums.StripeProductType
+    companyId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeProductId?: StringFilter<"StripeProduct"> | string
+    stripePriceId?: StringNullableFilter<"StripeProduct"> | string | null
+    stripeCouponId?: StringNullableFilter<"StripeProduct"> | string | null
+    amount?: FloatNullableFilter<"StripeProduct"> | number | null
+    description?: StringNullableFilter<"StripeProduct"> | string | null
+    active?: BoolFilter<"StripeProduct"> | boolean
+    createdAt?: DateTimeFilter<"StripeProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeProduct"> | Date | string
+  }
+
+  export type StripeCompanyUpsertWithoutCompanyInput = {
+    update: XOR<StripeCompanyUpdateWithoutCompanyInput, StripeCompanyUncheckedUpdateWithoutCompanyInput>
+    create: XOR<StripeCompanyCreateWithoutCompanyInput, StripeCompanyUncheckedCreateWithoutCompanyInput>
+    where?: StripeCompanyWhereInput
+  }
+
+  export type StripeCompanyUpdateToOneWithWhereWithoutCompanyInput = {
+    where?: StripeCompanyWhereInput
+    data: XOR<StripeCompanyUpdateWithoutCompanyInput, StripeCompanyUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type StripeCompanyUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeCompanyUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: StringFieldUpdateOperationsInput | string
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    autoAdvance?: BoolFieldUpdateOperationsInput | boolean
+    autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CompanyCreateWithoutFacilitiesInput = {
     id?: string
     name: string
@@ -59155,6 +64210,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -59174,6 +64231,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -59191,6 +64250,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59206,6 +64266,7 @@ export namespace Prisma {
     postalCode: string
     countryCode: string
     shippingAccountId?: string | null
+    phoneNumber?: string | null
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59267,6 +64328,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -59293,6 +64355,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -59342,6 +64405,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -59361,6 +64426,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityAddressUpsertWithoutFacilityInput = {
@@ -59384,6 +64451,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59399,6 +64467,7 @@ export namespace Prisma {
     postalCode?: StringFieldUpdateOperationsInput | string
     countryCode?: StringFieldUpdateOperationsInput | string
     shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59548,6 +64617,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -59574,6 +64644,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -59874,6 +64945,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
 
@@ -59900,6 +64972,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -60040,6 +65113,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -60059,6 +65134,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -60177,6 +65254,39 @@ export namespace Prisma {
   export type FacilityCreateOrConnectWithoutEvaluationsInput = {
     where: FacilityWhereUniqueInput
     create: XOR<FacilityCreateWithoutEvaluationsInput, FacilityUncheckedCreateWithoutEvaluationsInput>
+  }
+
+  export type StripeInvoiceCreateWithoutEvaluationInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
+    combinedInvoices?: StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceUncheckedCreateWithoutEvaluationInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    combinedInvoiceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceCreateOrConnectWithoutEvaluationInput = {
+    where: StripeInvoiceWhereUniqueInput
+    create: XOR<StripeInvoiceCreateWithoutEvaluationInput, StripeInvoiceUncheckedCreateWithoutEvaluationInput>
   }
 
   export type ClinicianCreateWithoutEvaluationsInput = {
@@ -60333,6 +65443,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -60352,6 +65464,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -60495,6 +65609,45 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type StripeInvoiceUpsertWithoutEvaluationInput = {
+    update: XOR<StripeInvoiceUpdateWithoutEvaluationInput, StripeInvoiceUncheckedUpdateWithoutEvaluationInput>
+    create: XOR<StripeInvoiceCreateWithoutEvaluationInput, StripeInvoiceUncheckedCreateWithoutEvaluationInput>
+    where?: StripeInvoiceWhereInput
+  }
+
+  export type StripeInvoiceUpdateToOneWithWhereWithoutEvaluationInput = {
+    where?: StripeInvoiceWhereInput
+    data: XOR<StripeInvoiceUpdateWithoutEvaluationInput, StripeInvoiceUncheckedUpdateWithoutEvaluationInput>
+  }
+
+  export type StripeInvoiceUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateWithoutEvaluationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
   }
 
   export type ClinicianUpsertWithWhereUniqueWithoutEvaluationsInput = {
@@ -61501,6 +66654,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
   }
 
@@ -61527,6 +66681,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -61854,6 +67009,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
   }
 
@@ -61880,6 +67036,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62373,6 +67530,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -62392,6 +67551,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -62427,6 +67588,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -62446,6 +67609,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type EvaluationCreateWithoutReferringPhysicianInput = {
@@ -62477,6 +67642,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -62503,6 +67669,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -62658,6 +67825,7 @@ export namespace Prisma {
     visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -62684,6 +67852,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -62750,6 +67919,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -62776,6 +67946,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -62842,6 +68013,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
     diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
     facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutEvaluationInput
     clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
     workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
   }
@@ -62868,6 +68040,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -63641,6 +68814,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -63660,6 +68835,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -63740,6 +68917,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -63759,6 +68938,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -63778,6 +68959,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -63797,6 +68980,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -63871,6 +69056,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -63890,6 +69077,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -63993,6 +69182,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPermissionsInput = {
@@ -64012,6 +69203,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPermissionsInput = {
@@ -64092,6 +69285,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPermissionsInput = {
@@ -64111,6 +69306,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutPatientsInput = {
@@ -64130,6 +69327,8 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -64149,6 +69348,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -64231,6 +69432,8 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -64250,6 +69453,8 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithoutCompaniesInput = {
@@ -64451,6 +69656,539 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CompanyCreateWithoutStripeProductInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutStripeProductInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutStripeProductInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutStripeProductInput, CompanyUncheckedCreateWithoutStripeProductInput>
+  }
+
+  export type StripeInvoiceCreateWithoutStripeProductsInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
+    combinedInvoices?: StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceUncheckedCreateWithoutStripeProductsInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    combinedInvoiceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceCreateOrConnectWithoutStripeProductsInput = {
+    where: StripeInvoiceWhereUniqueInput
+    create: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput>
+  }
+
+  export type CompanyUpsertWithoutStripeProductInput = {
+    update: XOR<CompanyUpdateWithoutStripeProductInput, CompanyUncheckedUpdateWithoutStripeProductInput>
+    create: XOR<CompanyCreateWithoutStripeProductInput, CompanyUncheckedCreateWithoutStripeProductInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutStripeProductInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutStripeProductInput, CompanyUncheckedUpdateWithoutStripeProductInput>
+  }
+
+  export type CompanyUpdateWithoutStripeProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutStripeProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+  }
+
+  export type StripeInvoiceUpsertWithWhereUniqueWithoutStripeProductsInput = {
+    where: StripeInvoiceWhereUniqueInput
+    update: XOR<StripeInvoiceUpdateWithoutStripeProductsInput, StripeInvoiceUncheckedUpdateWithoutStripeProductsInput>
+    create: XOR<StripeInvoiceCreateWithoutStripeProductsInput, StripeInvoiceUncheckedCreateWithoutStripeProductsInput>
+  }
+
+  export type StripeInvoiceUpdateWithWhereUniqueWithoutStripeProductsInput = {
+    where: StripeInvoiceWhereUniqueInput
+    data: XOR<StripeInvoiceUpdateWithoutStripeProductsInput, StripeInvoiceUncheckedUpdateWithoutStripeProductsInput>
+  }
+
+  export type StripeInvoiceUpdateManyWithWhereWithoutStripeProductsInput = {
+    where: StripeInvoiceScalarWhereInput
+    data: XOR<StripeInvoiceUpdateManyMutationInput, StripeInvoiceUncheckedUpdateManyWithoutStripeProductsInput>
+  }
+
+  export type StripeInvoiceScalarWhereInput = {
+    AND?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+    OR?: StripeInvoiceScalarWhereInput[]
+    NOT?: StripeInvoiceScalarWhereInput | StripeInvoiceScalarWhereInput[]
+    id?: StringFilter<"StripeInvoice"> | string
+    stripeInvoiceId?: StringFilter<"StripeInvoice"> | string
+    price?: FloatFilter<"StripeInvoice"> | number
+    type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
+    lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
+    createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+    updatedAt?: DateTimeFilter<"StripeInvoice"> | Date | string
+  }
+
+  export type EvaluationCreateWithoutStripeInvoiceInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    isDiabetic?: boolean
+    isVeteran?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    diagnosisedAt?: Date | string | null
+    visitedAt?: Date | string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
+    submittedAt?: Date | string | null
+    startedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutEvaluationsInput
+    company: CompanyCreateNestedOneWithoutEvaluationsInput
+    deviceType?: DeviceTypeCreateNestedOneWithoutEvaluationsInput
+    visitType?: VisitTypeCreateNestedOneWithoutEvaluationsInput
+    referringPhysician?: PhysicianCreateNestedOneWithoutEvaluationsInput
+    diagnosis?: DiagnosisCreateNestedOneWithoutEvaluationsInput
+    facility?: FacilityCreateNestedOneWithoutEvaluationsInput
+    clinicians?: ClinicianCreateNestedManyWithoutEvaluationsInput
+    workbenches?: WorkbenchCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationUncheckedCreateWithoutStripeInvoiceInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    patientId: string
+    companyId: string
+    deviceTypeId?: string | null
+    isDiabetic?: boolean
+    isVeteran?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    referringPhysicianId?: string | null
+    diagnosisId?: string | null
+    diagnosisedAt?: Date | string | null
+    visitTypeId?: string | null
+    visitedAt?: Date | string | null
+    facilityId?: string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
+    submittedAt?: Date | string | null
+    startedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
+  }
+
+  export type EvaluationCreateOrConnectWithoutStripeInvoiceInput = {
+    where: EvaluationWhereUniqueInput
+    create: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput>
+  }
+
+  export type EvaluationCreateManyStripeInvoiceInputEnvelope = {
+    data: EvaluationCreateManyStripeInvoiceInput | EvaluationCreateManyStripeInvoiceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StripeProductCreateWithoutStripeInvoicesInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company?: CompanyCreateNestedOneWithoutStripeProductInput
+  }
+
+  export type StripeProductUncheckedCreateWithoutStripeInvoicesInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    companyId?: string | null
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeProductCreateOrConnectWithoutStripeInvoicesInput = {
+    where: StripeProductWhereUniqueInput
+    create: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput>
+  }
+
+  export type StripeInvoiceCreateWithoutCombinedInvoicesInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
+  }
+
+  export type StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    combinedInvoiceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
+  }
+
+  export type StripeInvoiceCreateOrConnectWithoutCombinedInvoicesInput = {
+    where: StripeInvoiceWhereUniqueInput
+    create: XOR<StripeInvoiceCreateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput>
+  }
+
+  export type StripeInvoiceCreateWithoutCombinedInvoiceInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoices?: StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluation?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
+  }
+
+  export type StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput = {
+    where: StripeInvoiceWhereUniqueInput
+    create: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput>
+  }
+
+  export type StripeInvoiceCreateManyCombinedInvoiceInputEnvelope = {
+    data: StripeInvoiceCreateManyCombinedInvoiceInput | StripeInvoiceCreateManyCombinedInvoiceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EvaluationUpsertWithWhereUniqueWithoutStripeInvoiceInput = {
+    where: EvaluationWhereUniqueInput
+    update: XOR<EvaluationUpdateWithoutStripeInvoiceInput, EvaluationUncheckedUpdateWithoutStripeInvoiceInput>
+    create: XOR<EvaluationCreateWithoutStripeInvoiceInput, EvaluationUncheckedCreateWithoutStripeInvoiceInput>
+  }
+
+  export type EvaluationUpdateWithWhereUniqueWithoutStripeInvoiceInput = {
+    where: EvaluationWhereUniqueInput
+    data: XOR<EvaluationUpdateWithoutStripeInvoiceInput, EvaluationUncheckedUpdateWithoutStripeInvoiceInput>
+  }
+
+  export type EvaluationUpdateManyWithWhereWithoutStripeInvoiceInput = {
+    where: EvaluationScalarWhereInput
+    data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutStripeInvoiceInput>
+  }
+
+  export type StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput = {
+    where: StripeProductWhereUniqueInput
+    update: XOR<StripeProductUpdateWithoutStripeInvoicesInput, StripeProductUncheckedUpdateWithoutStripeInvoicesInput>
+    create: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput>
+  }
+
+  export type StripeProductUpdateWithWhereUniqueWithoutStripeInvoicesInput = {
+    where: StripeProductWhereUniqueInput
+    data: XOR<StripeProductUpdateWithoutStripeInvoicesInput, StripeProductUncheckedUpdateWithoutStripeInvoicesInput>
+  }
+
+  export type StripeProductUpdateManyWithWhereWithoutStripeInvoicesInput = {
+    where: StripeProductScalarWhereInput
+    data: XOR<StripeProductUpdateManyMutationInput, StripeProductUncheckedUpdateManyWithoutStripeInvoicesInput>
+  }
+
+  export type StripeInvoiceUpsertWithoutCombinedInvoicesInput = {
+    update: XOR<StripeInvoiceUpdateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedUpdateWithoutCombinedInvoicesInput>
+    create: XOR<StripeInvoiceCreateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput>
+    where?: StripeInvoiceWhereInput
+  }
+
+  export type StripeInvoiceUpdateToOneWithWhereWithoutCombinedInvoicesInput = {
+    where?: StripeInvoiceWhereInput
+    data: XOR<StripeInvoiceUpdateWithoutCombinedInvoicesInput, StripeInvoiceUncheckedUpdateWithoutCombinedInvoicesInput>
+  }
+
+  export type StripeInvoiceUpdateWithoutCombinedInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateWithoutCombinedInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
+  }
+
+  export type StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput = {
+    where: StripeInvoiceWhereUniqueInput
+    update: XOR<StripeInvoiceUpdateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedUpdateWithoutCombinedInvoiceInput>
+    create: XOR<StripeInvoiceCreateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput>
+  }
+
+  export type StripeInvoiceUpdateWithWhereUniqueWithoutCombinedInvoiceInput = {
+    where: StripeInvoiceWhereUniqueInput
+    data: XOR<StripeInvoiceUpdateWithoutCombinedInvoiceInput, StripeInvoiceUncheckedUpdateWithoutCombinedInvoiceInput>
+  }
+
+  export type StripeInvoiceUpdateManyWithWhereWithoutCombinedInvoiceInput = {
+    where: StripeInvoiceScalarWhereInput
+    data: XOR<StripeInvoiceUpdateManyMutationInput, StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceInput>
+  }
+
+  export type CompanyCreateWithoutStripeCompanyInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutStripeCompanyInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutStripeCompanyInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutStripeCompanyInput, CompanyUncheckedCreateWithoutStripeCompanyInput>
+  }
+
+  export type CompanyUpsertWithoutStripeCompanyInput = {
+    update: XOR<CompanyUpdateWithoutStripeCompanyInput, CompanyUncheckedUpdateWithoutStripeCompanyInput>
+    create: XOR<CompanyCreateWithoutStripeCompanyInput, CompanyUncheckedCreateWithoutStripeCompanyInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutStripeCompanyInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutStripeCompanyInput, CompanyUncheckedUpdateWithoutStripeCompanyInput>
+  }
+
+  export type CompanyUpdateWithoutStripeCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutStripeCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -64877,6 +70615,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -64896,6 +70636,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
+    stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -64931,6 +70673,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -64950,6 +70694,8 @@ export namespace Prisma {
     permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
   }
 
   export type FacilityCreateManyCompanyInput = {
@@ -64983,6 +70729,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -65047,6 +70794,19 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type StripeProductCreateManyCompanyInput = {
+    id?: string
+    type: $Enums.StripeProductType
+    stripeProductId: string
+    stripePriceId?: string | null
+    stripeCouponId?: string | null
+    amount?: number | null
+    description?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FacilityUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -65109,6 +70869,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -65135,6 +70896,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65168,6 +70930,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65342,6 +71105,47 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type StripeProductUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoices?: StripeInvoiceUpdateManyWithoutStripeProductsNestedInput
+  }
+
+  export type StripeProductUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoices?: StripeInvoiceUncheckedUpdateManyWithoutStripeProductsNestedInput
+  }
+
+  export type StripeProductUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type FacilityUserCreateManyFacilityInput = {
     userId: string
     createdAt?: Date | string
@@ -65370,6 +71174,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -65426,6 +71231,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -65452,6 +71258,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65485,6 +71292,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65534,6 +71342,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -65650,6 +71459,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -65676,6 +71486,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65709,6 +71520,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65824,6 +71636,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
 
@@ -65850,6 +71663,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65883,6 +71697,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66612,6 +72427,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -66667,6 +72483,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -66693,6 +72510,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66726,6 +72544,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66816,6 +72635,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -66854,6 +72674,7 @@ export namespace Prisma {
     visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -66880,6 +72701,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66913,6 +72735,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66944,6 +72767,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -66982,6 +72806,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -67008,6 +72833,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67041,6 +72867,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67072,6 +72899,7 @@ export namespace Prisma {
     location?: string | null
     prescribedAt?: Date | string | null
     prescribedActive?: boolean
+    stripeInvoiceId?: string | null
     primaryInsurance?: string | null
     secondaryInsurance?: string | null
     submittedAt?: Date | string | null
@@ -67110,6 +72938,7 @@ export namespace Prisma {
     referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
     diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
     facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutEvaluationNestedInput
     clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
     workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
   }
@@ -67136,6 +72965,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67169,6 +72999,7 @@ export namespace Prisma {
     location?: NullableStringFieldUpdateOperationsInput | string | null
     prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67433,6 +73264,270 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeInvoiceUpdateWithoutStripeProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateWithoutStripeProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateManyWithoutStripeProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EvaluationCreateManyStripeInvoiceInput = {
+    id?: string
+    externalId?: string | null
+    poNumber?: string | null
+    type: $Enums.CareType
+    patientId: string
+    companyId: string
+    deviceTypeId?: string | null
+    isDiabetic?: boolean
+    isVeteran?: boolean
+    deviceSide?: $Enums.Side | null
+    devicePosition?: $Enums.VerticalPosition | null
+    appointmentAt?: Date | string | null
+    appointmentStatus?: string | null
+    referringPhysicianId?: string | null
+    diagnosisId?: string | null
+    diagnosisedAt?: Date | string | null
+    visitTypeId?: string | null
+    visitedAt?: Date | string | null
+    facilityId?: string | null
+    location?: string | null
+    prescribedAt?: Date | string | null
+    prescribedActive?: boolean
+    primaryInsurance?: string | null
+    secondaryInsurance?: string | null
+    submittedAt?: Date | string | null
+    startedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StripeInvoiceCreateManyCombinedInvoiceInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EvaluationUpdateWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
+    deviceType?: DeviceTypeUpdateOneWithoutEvaluationsNestedInput
+    visitType?: VisitTypeUpdateOneWithoutEvaluationsNestedInput
+    referringPhysician?: PhysicianUpdateOneWithoutEvaluationsNestedInput
+    diagnosis?: DiagnosisUpdateOneWithoutEvaluationsNestedInput
+    facility?: FacilityUpdateOneWithoutEvaluationsNestedInput
+    clinicians?: ClinicianUpdateManyWithoutEvaluationsNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutEvaluationNestedInput
+  }
+
+  export type EvaluationUncheckedUpdateWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
+  }
+
+  export type EvaluationUncheckedUpdateManyWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    poNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumCareTypeFieldUpdateOperationsInput | $Enums.CareType
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    deviceTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    isDiabetic?: BoolFieldUpdateOperationsInput | boolean
+    isVeteran?: BoolFieldUpdateOperationsInput | boolean
+    deviceSide?: NullableEnumSideFieldUpdateOperationsInput | $Enums.Side | null
+    devicePosition?: NullableEnumVerticalPositionFieldUpdateOperationsInput | $Enums.VerticalPosition | null
+    appointmentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    appointmentStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    referringPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisId?: NullableStringFieldUpdateOperationsInput | string | null
+    diagnosisedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    visitTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    visitedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    prescribedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    prescribedActive?: BoolFieldUpdateOperationsInput | boolean
+    primaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryInsurance?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductUpdateWithoutStripeInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneWithoutStripeProductNestedInput
+  }
+
+  export type StripeProductUncheckedUpdateWithoutStripeInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeProductUncheckedUpdateManyWithoutStripeInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeProductId?: StringFieldUpdateOperationsInput | string
+    stripePriceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCouponId?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StripeInvoiceUpdateWithoutCombinedInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateWithoutCombinedInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluation?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -67723,6 +73818,14 @@ export namespace Prisma {
      */
     export type CatalogVendorCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CatalogVendorCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use StripeProductCountOutputTypeDefaultArgs instead
+     */
+    export type StripeProductCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeProductCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StripeInvoiceCountOutputTypeDefaultArgs instead
+     */
+    export type StripeInvoiceCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -67862,6 +73965,18 @@ export namespace Prisma {
      * @deprecated Use FacilityUserDefaultArgs instead
      */
     export type FacilityUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityUserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StripeProductDefaultArgs instead
+     */
+    export type StripeProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeProductDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StripeInvoiceDefaultArgs instead
+     */
+    export type StripeInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeInvoiceDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StripeCompanyDefaultArgs instead
+     */
+    export type StripeCompanyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StripeCompanyDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
