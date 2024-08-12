@@ -1,16 +1,17 @@
 import type { PagedResponse, PatientExtended, SearchPatientsParams } from '@hike/types';
-import { useQuery } from '@tanstack/react-query';
+import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchPatients, searchPatients } from '../../api/patient.service';
 import { ResponseError } from '../../errors/ResponseError';
 
-export interface UsePatientsOptions extends SearchPatientsParams {
-  key?: string[];
-  enabled?: boolean;
+export interface UsePatientsOptions
+  extends Omit<UseQueryOptions<PagedResponse<PatientExtended[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  params?: SearchPatientsParams;
+  queryKey?: QueryKey;
 }
 
-export const usePatients = ({ key = [], enabled = true, ...params }: UsePatientsOptions = { term: '' }) =>
-  useQuery<PagedResponse<PatientExtended[]>, ResponseError<null>>({
-    queryKey: ['patients', ...key, params],
-    queryFn: async () => (params.term !== '' ? await searchPatients(params) : await fetchPatients(params)),
-    enabled
+export const usePatients = ({ params, queryKey = [], ...options }: UsePatientsOptions = {}) =>
+  useQuery({
+    queryKey: ['patients', params, queryKey],
+    queryFn: async () => (params?.term ? await searchPatients(params) : await fetchPatients(params)),
+    ...options
   });
