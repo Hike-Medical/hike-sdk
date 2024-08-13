@@ -6,6 +6,7 @@ export interface GenerateSignedURLParams {
   footId: string;
   productType: ProductType;
   mimeTypeOrExtension: string;
+  suggestedFootSide?: string;
 }
 
 export interface GenerateSignedURLResponse {
