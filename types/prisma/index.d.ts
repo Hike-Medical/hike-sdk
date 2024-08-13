@@ -42873,6 +42873,7 @@ export namespace Prisma {
     stripeSubscriptionId: string | null
     autoAdvance: boolean | null
     autoAdvanceCombined: boolean | null
+    collectionSendInvoice: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42884,6 +42885,7 @@ export namespace Prisma {
     stripeSubscriptionId: string | null
     autoAdvance: boolean | null
     autoAdvanceCombined: boolean | null
+    collectionSendInvoice: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42896,6 +42898,7 @@ export namespace Prisma {
     userPreferences: number
     autoAdvance: number
     autoAdvanceCombined: number
+    collectionSendInvoice: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -42909,6 +42912,7 @@ export namespace Prisma {
     stripeSubscriptionId?: true
     autoAdvance?: true
     autoAdvanceCombined?: true
+    collectionSendInvoice?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -42920,6 +42924,7 @@ export namespace Prisma {
     stripeSubscriptionId?: true
     autoAdvance?: true
     autoAdvanceCombined?: true
+    collectionSendInvoice?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -42932,6 +42937,7 @@ export namespace Prisma {
     userPreferences?: true
     autoAdvance?: true
     autoAdvanceCombined?: true
+    collectionSendInvoice?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -43017,6 +43023,7 @@ export namespace Prisma {
     userPreferences: JsonValue | null
     autoAdvance: boolean
     autoAdvanceCombined: boolean
+    collectionSendInvoice: boolean
     createdAt: Date
     updatedAt: Date
     _count: StripeCompanyCountAggregateOutputType | null
@@ -43046,6 +43053,7 @@ export namespace Prisma {
     userPreferences?: boolean
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -43059,6 +43067,7 @@ export namespace Prisma {
     userPreferences?: boolean
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -43082,6 +43091,7 @@ export namespace Prisma {
       userPreferences: Prisma.JsonValue | null
       autoAdvance: boolean
       autoAdvanceCombined: boolean
+      collectionSendInvoice: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["stripeCompany"]>
@@ -43512,6 +43522,7 @@ export namespace Prisma {
     readonly userPreferences: FieldRef<"StripeCompany", 'Json'>
     readonly autoAdvance: FieldRef<"StripeCompany", 'Boolean'>
     readonly autoAdvanceCombined: FieldRef<"StripeCompany", 'Boolean'>
+    readonly collectionSendInvoice: FieldRef<"StripeCompany", 'Boolean'>
     readonly createdAt: FieldRef<"StripeCompany", 'DateTime'>
     readonly updatedAt: FieldRef<"StripeCompany", 'DateTime'>
   }
@@ -48870,6 +48881,7 @@ export namespace Prisma {
     userPreferences: 'userPreferences',
     autoAdvance: 'autoAdvance',
     autoAdvanceCombined: 'autoAdvanceCombined',
+    collectionSendInvoice: 'collectionSendInvoice',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -52342,6 +52354,7 @@ export namespace Prisma {
     userPreferences?: JsonNullableFilter<"StripeCompany">
     autoAdvance?: BoolFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
+    collectionSendInvoice?: BoolFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -52355,6 +52368,7 @@ export namespace Prisma {
     userPreferences?: SortOrderInput | SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
+    collectionSendInvoice?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
@@ -52371,6 +52385,7 @@ export namespace Prisma {
     userPreferences?: JsonNullableFilter<"StripeCompany">
     autoAdvance?: BoolFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
+    collectionSendInvoice?: BoolFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -52384,6 +52399,7 @@ export namespace Prisma {
     userPreferences?: SortOrderInput | SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
+    collectionSendInvoice?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: StripeCompanyCountOrderByAggregateInput
@@ -52402,6 +52418,7 @@ export namespace Prisma {
     userPreferences?: JsonNullableWithAggregatesFilter<"StripeCompany">
     autoAdvance?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
+    collectionSendInvoice?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
   }
@@ -56036,6 +56053,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutStripeCompanyInput
@@ -56049,6 +56067,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -56060,6 +56079,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutStripeCompanyNestedInput
@@ -56073,6 +56093,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -56085,6 +56106,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -56096,6 +56118,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -56108,6 +56131,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -59265,6 +59289,7 @@ export namespace Prisma {
     userPreferences?: SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
+    collectionSendInvoice?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -59276,6 +59301,7 @@ export namespace Prisma {
     stripeSubscriptionId?: SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
+    collectionSendInvoice?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -59287,6 +59313,7 @@ export namespace Prisma {
     stripeSubscriptionId?: SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
+    collectionSendInvoice?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -63851,6 +63878,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -63862,6 +63890,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
+    collectionSendInvoice?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -64178,6 +64207,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -64189,6 +64219,7 @@ export namespace Prisma {
     userPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
+    collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

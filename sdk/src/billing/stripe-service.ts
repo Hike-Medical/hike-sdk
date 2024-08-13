@@ -123,6 +123,7 @@ export class StripeService {
     lineItems: StripeLineItem[],
     companyId: string,
     shouldAutoAdvance: boolean = false,
+    sendInvoice: boolean = false,
     invoiceCouponId?: string,
     description?: string
   ) {
@@ -136,7 +137,9 @@ export class StripeService {
           companyId: companyId
         },
         discounts,
-        description
+        description,
+        collection_method: sendInvoice ? 'send_invoice' : 'charge_automatically',
+        days_until_due: sendInvoice ? 30 : undefined
       });
 
       for (const item of lineItems) {
