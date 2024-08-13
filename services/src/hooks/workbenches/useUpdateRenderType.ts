@@ -11,11 +11,10 @@ interface UpdateRenderTypeContext {
 
 export const useUpdateRenderType = (
   options?: UseMutationOptions<Workbench, ResponseError<null>, UpdateRenderTypeContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateRenderType'],
     mutationFn: async ({ workbenchId, renderType, companyIds }: UpdateRenderTypeContext) =>
       await updateRenderType(workbenchId, { renderType }, companyIds),
     ...options
   });
-};
