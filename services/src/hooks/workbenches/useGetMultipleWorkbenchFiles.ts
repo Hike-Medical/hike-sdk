@@ -4,6 +4,7 @@ import { ResponseError } from '../../errors/ResponseError';
 
 interface GetMultipleWorkbenchFilesContext {
   workbenchIds: string[];
+  withLabel: boolean;
   companyIds?: string[];
 }
 
@@ -12,8 +13,8 @@ export const useGetMultipleWorkbenchFiles = (
 ) => {
   return useMutation({
     mutationKey: ['workbenchFiles'],
-    mutationFn: ({ workbenchIds, companyIds }: GetMultipleWorkbenchFilesContext) =>
-      getFilesFromWorkbenches(workbenchIds, companyIds),
+    mutationFn: ({ workbenchIds, withLabel, companyIds }: GetMultipleWorkbenchFilesContext) =>
+      getFilesFromWorkbenches(workbenchIds, withLabel, companyIds),
     ...mutationOptions
   });
 };

@@ -88,11 +88,15 @@ export const getAggregatedWorkbenches = async (
   }
 };
 
-export const getFilesFromWorkbenches = async (workbenchIds: string[], companyIds): Promise<Blob> => {
+export const getFilesFromWorkbenches = async (
+  workbenchIds: string[],
+  withLabel: boolean,
+  companyIds
+): Promise<Blob> => {
   try {
     const response = await backendApi.post(
       'workbench/files',
-      { workbenchIds },
+      { workbenchIds, withLabel },
       {
         headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
         responseType: 'arraybuffer'
