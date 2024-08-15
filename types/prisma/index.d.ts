@@ -307,7 +307,8 @@ export type ShoeSystem = (typeof ShoeSystem)[keyof typeof ShoeSystem]
 export const InactiveFootReason: {
   AMPUTATION: 'AMPUTATION',
   SKIPPED: 'SKIPPED',
-  TOE_FILLER: 'TOE_FILLER'
+  TOE_FILLER: 'TOE_FILLER',
+  PRE_FAB_HEAT_MOLDABLE: 'PRE_FAB_HEAT_MOLDABLE'
 };
 
 export type InactiveFootReason = (typeof InactiveFootReason)[keyof typeof InactiveFootReason]
