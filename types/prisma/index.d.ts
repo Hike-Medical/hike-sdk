@@ -389,6 +389,7 @@ export type WorkbenchStatus = (typeof WorkbenchStatus)[keyof typeof WorkbenchSta
 export const OrderStatus: {
   DRAFT: 'DRAFT',
   TOE_FILLER: 'TOE_FILLER',
+  HEAT_MOLDABLE: 'HEAT_MOLDABLE',
   NEEDS_MANUFACTURING: 'NEEDS_MANUFACTURING',
   PRINTING: 'PRINTING',
   NEEDS_GRINDING: 'NEEDS_GRINDING',
