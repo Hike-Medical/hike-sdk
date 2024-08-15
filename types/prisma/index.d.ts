@@ -209,6 +209,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
 /**
+ * Model AccountVerification
+ * 
+ */
+export type AccountVerification = $Result.DefaultSelection<Prisma.$AccountVerificationPayload>
+/**
  * Model ApiKey
  * 
  */
@@ -1133,6 +1138,16 @@ export class PrismaClient<
   get account(): Prisma.AccountDelegate<ExtArgs>;
 
   /**
+   * `prisma.accountVerification`: Exposes CRUD operations for the **AccountVerification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AccountVerifications
+    * const accountVerifications = await prisma.accountVerification.findMany()
+    * ```
+    */
+  get accountVerification(): Prisma.AccountVerificationDelegate<ExtArgs>;
+
+  /**
    * `prisma.apiKey`: Exposes CRUD operations for the **ApiKey** model.
     * Example usage:
     * ```ts
@@ -1667,6 +1682,7 @@ export namespace Prisma {
     StripeCompany: 'StripeCompany',
     User: 'User',
     Account: 'Account',
+    AccountVerification: 'AccountVerification',
     ApiKey: 'ApiKey',
     ViewFlattenedWorkbench: 'ViewFlattenedWorkbench'
   };
@@ -1685,7 +1701,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4416,6 +4432,76 @@ export namespace Prisma {
           count: {
             args: Prisma.AccountCountArgs<ExtArgs>,
             result: $Utils.Optional<AccountCountAggregateOutputType> | number
+          }
+        }
+      }
+      AccountVerification: {
+        payload: Prisma.$AccountVerificationPayload<ExtArgs>
+        fields: Prisma.AccountVerificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AccountVerificationFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AccountVerificationFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          findFirst: {
+            args: Prisma.AccountVerificationFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AccountVerificationFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          findMany: {
+            args: Prisma.AccountVerificationFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>[]
+          }
+          create: {
+            args: Prisma.AccountVerificationCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          createMany: {
+            args: Prisma.AccountVerificationCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AccountVerificationCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>[]
+          }
+          delete: {
+            args: Prisma.AccountVerificationDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          update: {
+            args: Prisma.AccountVerificationUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.AccountVerificationDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AccountVerificationUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.AccountVerificationUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AccountVerificationPayload>
+          }
+          aggregate: {
+            args: Prisma.AccountVerificationAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAccountVerification>
+          }
+          groupBy: {
+            args: Prisma.AccountVerificationGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AccountVerificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AccountVerificationCountArgs<ExtArgs>,
+            result: $Utils.Optional<AccountVerificationCountAggregateOutputType> | number
           }
         }
       }
@@ -45958,6 +46044,904 @@ export namespace Prisma {
 
 
   /**
+   * Model AccountVerification
+   */
+
+  export type AggregateAccountVerification = {
+    _count: AccountVerificationCountAggregateOutputType | null
+    _min: AccountVerificationMinAggregateOutputType | null
+    _max: AccountVerificationMaxAggregateOutputType | null
+  }
+
+  export type AccountVerificationMinAggregateOutputType = {
+    token: string | null
+    email: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AccountVerificationMaxAggregateOutputType = {
+    token: string | null
+    email: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AccountVerificationCountAggregateOutputType = {
+    token: number
+    email: number
+    expiresAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AccountVerificationMinAggregateInputType = {
+    token?: true
+    email?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AccountVerificationMaxAggregateInputType = {
+    token?: true
+    email?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AccountVerificationCountAggregateInputType = {
+    token?: true
+    email?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AccountVerificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AccountVerification to aggregate.
+     */
+    where?: AccountVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccountVerifications to fetch.
+     */
+    orderBy?: AccountVerificationOrderByWithRelationInput | AccountVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AccountVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccountVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccountVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AccountVerifications
+    **/
+    _count?: true | AccountVerificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AccountVerificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AccountVerificationMaxAggregateInputType
+  }
+
+  export type GetAccountVerificationAggregateType<T extends AccountVerificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateAccountVerification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAccountVerification[P]>
+      : GetScalarType<T[P], AggregateAccountVerification[P]>
+  }
+
+
+
+
+  export type AccountVerificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccountVerificationWhereInput
+    orderBy?: AccountVerificationOrderByWithAggregationInput | AccountVerificationOrderByWithAggregationInput[]
+    by: AccountVerificationScalarFieldEnum[] | AccountVerificationScalarFieldEnum
+    having?: AccountVerificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AccountVerificationCountAggregateInputType | true
+    _min?: AccountVerificationMinAggregateInputType
+    _max?: AccountVerificationMaxAggregateInputType
+  }
+
+  export type AccountVerificationGroupByOutputType = {
+    token: string
+    email: string
+    expiresAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: AccountVerificationCountAggregateOutputType | null
+    _min: AccountVerificationMinAggregateOutputType | null
+    _max: AccountVerificationMaxAggregateOutputType | null
+  }
+
+  type GetAccountVerificationGroupByPayload<T extends AccountVerificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AccountVerificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AccountVerificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AccountVerificationGroupByOutputType[P]>
+            : GetScalarType<T[P], AccountVerificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AccountVerificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    token?: boolean
+    email?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["accountVerification"]>
+
+  export type AccountVerificationSelectScalar = {
+    token?: boolean
+    email?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $AccountVerificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AccountVerification"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      token: string
+      email: string
+      expiresAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["accountVerification"]>
+    composites: {}
+  }
+
+
+  type AccountVerificationGetPayload<S extends boolean | null | undefined | AccountVerificationDefaultArgs> = $Result.GetResult<Prisma.$AccountVerificationPayload, S>
+
+  type AccountVerificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AccountVerificationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AccountVerificationCountAggregateInputType | true
+    }
+
+  export interface AccountVerificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AccountVerification'], meta: { name: 'AccountVerification' } }
+    /**
+     * Find zero or one AccountVerification that matches the filter.
+     * @param {AccountVerificationFindUniqueArgs} args - Arguments to find a AccountVerification
+     * @example
+     * // Get one AccountVerification
+     * const accountVerification = await prisma.accountVerification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends AccountVerificationFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationFindUniqueArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one AccountVerification that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AccountVerificationFindUniqueOrThrowArgs} args - Arguments to find a AccountVerification
+     * @example
+     * // Get one AccountVerification
+     * const accountVerification = await prisma.accountVerification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends AccountVerificationFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first AccountVerification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationFindFirstArgs} args - Arguments to find a AccountVerification
+     * @example
+     * // Get one AccountVerification
+     * const accountVerification = await prisma.accountVerification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends AccountVerificationFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationFindFirstArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first AccountVerification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationFindFirstOrThrowArgs} args - Arguments to find a AccountVerification
+     * @example
+     * // Get one AccountVerification
+     * const accountVerification = await prisma.accountVerification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends AccountVerificationFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more AccountVerifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AccountVerifications
+     * const accountVerifications = await prisma.accountVerification.findMany()
+     * 
+     * // Get first 10 AccountVerifications
+     * const accountVerifications = await prisma.accountVerification.findMany({ take: 10 })
+     * 
+     * // Only select the `token`
+     * const accountVerificationWithTokenOnly = await prisma.accountVerification.findMany({ select: { token: true } })
+     * 
+    **/
+    findMany<T extends AccountVerificationFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a AccountVerification.
+     * @param {AccountVerificationCreateArgs} args - Arguments to create a AccountVerification.
+     * @example
+     * // Create one AccountVerification
+     * const AccountVerification = await prisma.accountVerification.create({
+     *   data: {
+     *     // ... data to create a AccountVerification
+     *   }
+     * })
+     * 
+    **/
+    create<T extends AccountVerificationCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationCreateArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many AccountVerifications.
+     * @param {AccountVerificationCreateManyArgs} args - Arguments to create many AccountVerifications.
+     * @example
+     * // Create many AccountVerifications
+     * const accountVerification = await prisma.accountVerification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends AccountVerificationCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AccountVerifications and returns the data saved in the database.
+     * @param {AccountVerificationCreateManyAndReturnArgs} args - Arguments to create many AccountVerifications.
+     * @example
+     * // Create many AccountVerifications
+     * const accountVerification = await prisma.accountVerification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AccountVerifications and only return the `token`
+     * const accountVerificationWithTokenOnly = await prisma.accountVerification.createManyAndReturn({ 
+     *   select: { token: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends AccountVerificationCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a AccountVerification.
+     * @param {AccountVerificationDeleteArgs} args - Arguments to delete one AccountVerification.
+     * @example
+     * // Delete one AccountVerification
+     * const AccountVerification = await prisma.accountVerification.delete({
+     *   where: {
+     *     // ... filter to delete one AccountVerification
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends AccountVerificationDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationDeleteArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one AccountVerification.
+     * @param {AccountVerificationUpdateArgs} args - Arguments to update one AccountVerification.
+     * @example
+     * // Update one AccountVerification
+     * const accountVerification = await prisma.accountVerification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends AccountVerificationUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationUpdateArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more AccountVerifications.
+     * @param {AccountVerificationDeleteManyArgs} args - Arguments to filter AccountVerifications to delete.
+     * @example
+     * // Delete a few AccountVerifications
+     * const { count } = await prisma.accountVerification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends AccountVerificationDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AccountVerificationDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AccountVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AccountVerifications
+     * const accountVerification = await prisma.accountVerification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends AccountVerificationUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AccountVerification.
+     * @param {AccountVerificationUpsertArgs} args - Arguments to update or create a AccountVerification.
+     * @example
+     * // Update or create a AccountVerification
+     * const accountVerification = await prisma.accountVerification.upsert({
+     *   create: {
+     *     // ... data to create a AccountVerification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AccountVerification we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends AccountVerificationUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AccountVerificationUpsertArgs<ExtArgs>>
+    ): Prisma__AccountVerificationClient<$Result.GetResult<Prisma.$AccountVerificationPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of AccountVerifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationCountArgs} args - Arguments to filter AccountVerifications to count.
+     * @example
+     * // Count the number of AccountVerifications
+     * const count = await prisma.accountVerification.count({
+     *   where: {
+     *     // ... the filter for the AccountVerifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends AccountVerificationCountArgs>(
+      args?: Subset<T, AccountVerificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AccountVerificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AccountVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AccountVerificationAggregateArgs>(args: Subset<T, AccountVerificationAggregateArgs>): Prisma.PrismaPromise<GetAccountVerificationAggregateType<T>>
+
+    /**
+     * Group by AccountVerification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountVerificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AccountVerificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AccountVerificationGroupByArgs['orderBy'] }
+        : { orderBy?: AccountVerificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AccountVerificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccountVerificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AccountVerification model
+   */
+  readonly fields: AccountVerificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AccountVerification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AccountVerificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the AccountVerification model
+   */ 
+  interface AccountVerificationFieldRefs {
+    readonly token: FieldRef<"AccountVerification", 'String'>
+    readonly email: FieldRef<"AccountVerification", 'String'>
+    readonly expiresAt: FieldRef<"AccountVerification", 'DateTime'>
+    readonly createdAt: FieldRef<"AccountVerification", 'DateTime'>
+    readonly updatedAt: FieldRef<"AccountVerification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AccountVerification findUnique
+   */
+  export type AccountVerificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter, which AccountVerification to fetch.
+     */
+    where: AccountVerificationWhereUniqueInput
+  }
+
+  /**
+   * AccountVerification findUniqueOrThrow
+   */
+  export type AccountVerificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter, which AccountVerification to fetch.
+     */
+    where: AccountVerificationWhereUniqueInput
+  }
+
+  /**
+   * AccountVerification findFirst
+   */
+  export type AccountVerificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter, which AccountVerification to fetch.
+     */
+    where?: AccountVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccountVerifications to fetch.
+     */
+    orderBy?: AccountVerificationOrderByWithRelationInput | AccountVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AccountVerifications.
+     */
+    cursor?: AccountVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccountVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccountVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AccountVerifications.
+     */
+    distinct?: AccountVerificationScalarFieldEnum | AccountVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * AccountVerification findFirstOrThrow
+   */
+  export type AccountVerificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter, which AccountVerification to fetch.
+     */
+    where?: AccountVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccountVerifications to fetch.
+     */
+    orderBy?: AccountVerificationOrderByWithRelationInput | AccountVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AccountVerifications.
+     */
+    cursor?: AccountVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccountVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccountVerifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AccountVerifications.
+     */
+    distinct?: AccountVerificationScalarFieldEnum | AccountVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * AccountVerification findMany
+   */
+  export type AccountVerificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter, which AccountVerifications to fetch.
+     */
+    where?: AccountVerificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AccountVerifications to fetch.
+     */
+    orderBy?: AccountVerificationOrderByWithRelationInput | AccountVerificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AccountVerifications.
+     */
+    cursor?: AccountVerificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AccountVerifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AccountVerifications.
+     */
+    skip?: number
+    distinct?: AccountVerificationScalarFieldEnum | AccountVerificationScalarFieldEnum[]
+  }
+
+  /**
+   * AccountVerification create
+   */
+  export type AccountVerificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * The data needed to create a AccountVerification.
+     */
+    data: XOR<AccountVerificationCreateInput, AccountVerificationUncheckedCreateInput>
+  }
+
+  /**
+   * AccountVerification createMany
+   */
+  export type AccountVerificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AccountVerifications.
+     */
+    data: AccountVerificationCreateManyInput | AccountVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AccountVerification createManyAndReturn
+   */
+  export type AccountVerificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * The data used to create many AccountVerifications.
+     */
+    data: AccountVerificationCreateManyInput | AccountVerificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AccountVerification update
+   */
+  export type AccountVerificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * The data needed to update a AccountVerification.
+     */
+    data: XOR<AccountVerificationUpdateInput, AccountVerificationUncheckedUpdateInput>
+    /**
+     * Choose, which AccountVerification to update.
+     */
+    where: AccountVerificationWhereUniqueInput
+  }
+
+  /**
+   * AccountVerification updateMany
+   */
+  export type AccountVerificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AccountVerifications.
+     */
+    data: XOR<AccountVerificationUpdateManyMutationInput, AccountVerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which AccountVerifications to update
+     */
+    where?: AccountVerificationWhereInput
+  }
+
+  /**
+   * AccountVerification upsert
+   */
+  export type AccountVerificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * The filter to search for the AccountVerification to update in case it exists.
+     */
+    where: AccountVerificationWhereUniqueInput
+    /**
+     * In case the AccountVerification found by the `where` argument doesn't exist, create a new AccountVerification with this data.
+     */
+    create: XOR<AccountVerificationCreateInput, AccountVerificationUncheckedCreateInput>
+    /**
+     * In case the AccountVerification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AccountVerificationUpdateInput, AccountVerificationUncheckedUpdateInput>
+  }
+
+  /**
+   * AccountVerification delete
+   */
+  export type AccountVerificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+    /**
+     * Filter which AccountVerification to delete.
+     */
+    where: AccountVerificationWhereUniqueInput
+  }
+
+  /**
+   * AccountVerification deleteMany
+   */
+  export type AccountVerificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AccountVerifications to delete
+     */
+    where?: AccountVerificationWhereInput
+  }
+
+  /**
+   * AccountVerification without action
+   */
+  export type AccountVerificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountVerification
+     */
+    select?: AccountVerificationSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model ApiKey
    */
 
@@ -46938,6 +47922,7 @@ export namespace Prisma {
     workbenchCreatedAt: Date | null
     companySlug: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -46990,6 +47975,7 @@ export namespace Prisma {
     workbenchCreatedAt: Date | null
     companySlug: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -47042,6 +48028,7 @@ export namespace Prisma {
     workbenchCreatedAt: number
     companySlug: number
     createdReason: number
+    orderAuthorizationStatus: number
     slicerProfile: number
     poNumber: number
     clinicianName: number
@@ -47104,6 +48091,7 @@ export namespace Prisma {
     workbenchCreatedAt?: true
     companySlug?: true
     createdReason?: true
+    orderAuthorizationStatus?: true
     slicerProfile?: true
     poNumber?: true
     clinicianName?: true
@@ -47156,6 +48144,7 @@ export namespace Prisma {
     workbenchCreatedAt?: true
     companySlug?: true
     createdReason?: true
+    orderAuthorizationStatus?: true
     slicerProfile?: true
     poNumber?: true
     clinicianName?: true
@@ -47208,6 +48197,7 @@ export namespace Prisma {
     workbenchCreatedAt?: true
     companySlug?: true
     createdReason?: true
+    orderAuthorizationStatus?: true
     slicerProfile?: true
     poNumber?: true
     clinicianName?: true
@@ -47347,6 +48337,7 @@ export namespace Prisma {
     workbenchCreatedAt: Date | null
     companySlug: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
     poNumber: string | null
     clinicianName: string | null
@@ -47418,6 +48409,7 @@ export namespace Prisma {
     workbenchCreatedAt?: boolean
     companySlug?: boolean
     createdReason?: boolean
+    orderAuthorizationStatus?: boolean
     slicerProfile?: boolean
     poNumber?: boolean
     clinicianName?: boolean
@@ -47470,6 +48462,7 @@ export namespace Prisma {
     workbenchCreatedAt?: boolean
     companySlug?: boolean
     createdReason?: boolean
+    orderAuthorizationStatus?: boolean
     slicerProfile?: boolean
     poNumber?: boolean
     clinicianName?: boolean
@@ -47527,6 +48520,7 @@ export namespace Prisma {
       workbenchCreatedAt: Date | null
       companySlug: string | null
       createdReason: $Enums.WorkbenchCreatedReason | null
+      orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
       slicerProfile: string | null
       poNumber: string | null
       clinicianName: string | null
@@ -47996,6 +48990,7 @@ export namespace Prisma {
     readonly workbenchCreatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly companySlug: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly createdReason: FieldRef<"ViewFlattenedWorkbench", 'WorkbenchCreatedReason'>
+    readonly orderAuthorizationStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderAuthorizationStatus'>
     readonly slicerProfile: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly poNumber: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly clinicianName: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -48914,6 +49909,17 @@ export namespace Prisma {
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
+  export const AccountVerificationScalarFieldEnum: {
+    token: 'token',
+    email: 'email',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AccountVerificationScalarFieldEnum = (typeof AccountVerificationScalarFieldEnum)[keyof typeof AccountVerificationScalarFieldEnum]
+
+
   export const ApiKeyScalarFieldEnum: {
     id: 'id',
     key: 'key',
@@ -48936,6 +49942,7 @@ export namespace Prisma {
     workbenchCreatedAt: 'workbenchCreatedAt',
     companySlug: 'companySlug',
     createdReason: 'createdReason',
+    orderAuthorizationStatus: 'orderAuthorizationStatus',
     slicerProfile: 'slicerProfile',
     poNumber: 'poNumber',
     clinicianName: 'clinicianName',
@@ -52567,6 +53574,58 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
   }
 
+  export type AccountVerificationWhereInput = {
+    AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
+    OR?: AccountVerificationWhereInput[]
+    NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
+    token?: StringFilter<"AccountVerification"> | string
+    email?: StringFilter<"AccountVerification"> | string
+    expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
+    createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
+  }
+
+  export type AccountVerificationOrderByWithRelationInput = {
+    token?: SortOrder
+    email?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AccountVerificationWhereUniqueInput = Prisma.AtLeast<{
+    token?: string
+    AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
+    OR?: AccountVerificationWhereInput[]
+    NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
+    email?: StringFilter<"AccountVerification"> | string
+    expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
+    createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
+    updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
+  }, "token">
+
+  export type AccountVerificationOrderByWithAggregationInput = {
+    token?: SortOrder
+    email?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AccountVerificationCountOrderByAggregateInput
+    _max?: AccountVerificationMaxOrderByAggregateInput
+    _min?: AccountVerificationMinOrderByAggregateInput
+  }
+
+  export type AccountVerificationScalarWhereWithAggregatesInput = {
+    AND?: AccountVerificationScalarWhereWithAggregatesInput | AccountVerificationScalarWhereWithAggregatesInput[]
+    OR?: AccountVerificationScalarWhereWithAggregatesInput[]
+    NOT?: AccountVerificationScalarWhereWithAggregatesInput | AccountVerificationScalarWhereWithAggregatesInput[]
+    token?: StringWithAggregatesFilter<"AccountVerification"> | string
+    email?: StringWithAggregatesFilter<"AccountVerification"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
+  }
+
   export type ApiKeyWhereInput = {
     AND?: ApiKeyWhereInput | ApiKeyWhereInput[]
     OR?: ApiKeyWhereInput[]
@@ -52638,6 +53697,7 @@ export namespace Prisma {
     workbenchCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -52690,6 +53750,7 @@ export namespace Prisma {
     workbenchCreatedAt?: SortOrderInput | SortOrder
     companySlug?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
+    orderAuthorizationStatus?: SortOrderInput | SortOrder
     slicerProfile?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
     clinicianName?: SortOrderInput | SortOrder
@@ -52745,6 +53806,7 @@ export namespace Prisma {
     workbenchCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -52797,6 +53859,7 @@ export namespace Prisma {
     workbenchCreatedAt?: SortOrderInput | SortOrder
     companySlug?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
+    orderAuthorizationStatus?: SortOrderInput | SortOrder
     slicerProfile?: SortOrderInput | SortOrder
     poNumber?: SortOrderInput | SortOrder
     clinicianName?: SortOrderInput | SortOrder
@@ -52857,6 +53920,7 @@ export namespace Prisma {
     workbenchCreatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     poNumber?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     clinicianName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -56296,6 +57360,62 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AccountVerificationCreateInput = {
+    token: string
+    email: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccountVerificationUncheckedCreateInput = {
+    token: string
+    email: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccountVerificationUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccountVerificationUncheckedUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccountVerificationCreateManyInput = {
+    token: string
+    email: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AccountVerificationUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AccountVerificationUncheckedUpdateManyInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ApiKeyCreateInput = {
     id?: string
     key: string
@@ -56362,6 +57482,7 @@ export namespace Prisma {
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -56414,6 +57535,7 @@ export namespace Prisma {
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -56466,6 +57588,7 @@ export namespace Prisma {
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56518,6 +57641,7 @@ export namespace Prisma {
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56570,6 +57694,7 @@ export namespace Prisma {
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
     poNumber?: string | null
     clinicianName?: string | null
@@ -56622,6 +57747,7 @@ export namespace Prisma {
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56674,6 +57800,7 @@ export namespace Prisma {
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
+    orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
     poNumber?: NullableStringFieldUpdateOperationsInput | string | null
     clinicianName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59395,6 +60522,30 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type AccountVerificationCountOrderByAggregateInput = {
+    token?: SortOrder
+    email?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AccountVerificationMaxOrderByAggregateInput = {
+    token?: SortOrder
+    email?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AccountVerificationMinOrderByAggregateInput = {
+    token?: SortOrder
+    email?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type ApiKeyIdCompanyIdCompoundUniqueInput = {
     id: string
     companyId: string
@@ -59443,6 +60594,13 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
+  export type EnumOrderAuthorizationStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus | null
+  }
+
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -59472,6 +60630,7 @@ export namespace Prisma {
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
     createdReason?: SortOrder
+    orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -59528,6 +60687,7 @@ export namespace Prisma {
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
     createdReason?: SortOrder
+    orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -59580,6 +60740,7 @@ export namespace Prisma {
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
     createdReason?: SortOrder
+    orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
     poNumber?: SortOrder
     clinicianName?: SortOrder
@@ -59643,6 +60804,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type EnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -62722,6 +63893,10 @@ export namespace Prisma {
     set?: $Enums.OrderStatus | null
   }
 
+  export type NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.OrderAuthorizationStatus | null
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -63498,6 +64673,13 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
+  export type NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus | null
+  }
+
   export type NestedEnumProductTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
@@ -63523,6 +64705,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -74016,6 +75208,10 @@ export namespace Prisma {
      * @deprecated Use AccountDefaultArgs instead
      */
     export type AccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AccountDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AccountVerificationDefaultArgs instead
+     */
+    export type AccountVerificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AccountVerificationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ApiKeyDefaultArgs instead
      */
