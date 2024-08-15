@@ -34,6 +34,10 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
 
 export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) => {
   const isToeFiller = formState.isToeFiller ? (formState.isToeFiller as string) === 'Yes' : undefined;
+  const isPreFabOrHeatMoldable = formState.isPreFabOrHeatMoldable
+    ? (formState.isPreFabOrHeatMoldable as string) === 'Yes'
+    : undefined;
+
   const patientAmputation =
     formState.patientAmputation !== undefined && formState.patientAmputation !== ''
       ? (formState.patientAmputation as Side)
@@ -41,6 +45,7 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
 
   return await updateInactiveFootInWorkbench(workbenchId, {
     isToeFiller,
+    isPreFabOrHeatMoldable,
     patientAmputation
   });
 };
