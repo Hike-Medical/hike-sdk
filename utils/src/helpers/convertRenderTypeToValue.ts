@@ -1,6 +1,6 @@
 import { RenderType } from '@hike/types';
 
-const RenderTypeDescriptions: Record<number, string> = {
+export const RenderTypeDescriptions: Record<number, string> = {
   1: 'Left Only',
   3: 'Left Mirror',
   2: 'Right Only',

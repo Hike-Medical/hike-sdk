@@ -36,6 +36,17 @@ export const fetchPatients = async (params?: PagedParams): Promise<PagedResponse
   }
 };
 
+export const fetchPatientsByMissingExternalId = async (
+  params?: PagedParams
+): Promise<PagedResponse<PatientExtended[]>> => {
+  try {
+    const response = await backendApi.get('patient/external-id', { params });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
 export const searchPatients = async (params: SearchPatientsParams): Promise<PagedResponse<PatientExtended[]>> => {
   try {
     const response = await backendApi.get('patient/search', { params });

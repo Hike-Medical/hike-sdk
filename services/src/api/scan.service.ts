@@ -1,4 +1,4 @@
-import { ProductType } from '@hike/types';
+import { ProductType, SubmitRenderParams } from '@hike/types';
 import { toResponseError } from '../errors/ResponseError';
 import { backendApi } from '../utils/backendApi';
 
@@ -6,6 +6,7 @@ export interface GenerateSignedURLParams {
   footId: string;
   productType: ProductType;
   mimeTypeOrExtension: string;
+  suggestedFootSide?: string;
 }
 
 export interface GenerateSignedURLResponse {
@@ -19,6 +20,33 @@ export const getPreSignedURL = async (
 ): Promise<GenerateSignedURLResponse> => {
   try {
     const response = await backendApi.post(`scan/${footId}/pre-signed-url`, body);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const uploadFootRender = async (file: File, body: SubmitRenderParams, companyIds: string[]) => {
+  const formData = new FormData();
+  formData.append('foot', file);
+
+  Object.entries(body).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+
+  let headers: {
+    [key: string]: string;
+  } = { 'Content-Type': 'multipart/form-data' };
+
+  if (companyIds?.length) {
+    headers = { ...headers, 'x-company-id': companyIds.join(',') };
+  }
+
+  try {
+    const response = await backendApi.post('scan/manual-render-upload', formData, {
+      headers
+    });
+
     return response.data;
   } catch (error) {
     throw toResponseError(error);
