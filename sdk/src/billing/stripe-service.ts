@@ -339,6 +339,20 @@ export class StripeService {
     }
   }
 
+  async cancelInvoiceById(invoiceId: string) {
+    try {
+      const invoice = await this.getInvoiceById(invoiceId);
+      if (invoice.status === 'draft') {
+        await this.stripe.invoices.del(invoice.id);
+      } else if (invoice.status === 'open' || invoice.status === 'uncollectible') {
+        await this.stripe.invoices.voidInvoice(invoice.id);
+      }
+      return invoice;
+    } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
   async createBankAccountSetupSession(customerId: string, successUrl: string, cancelUrl: string) {
     try {
       const checkoutSession = await this.stripe.checkout.sessions.create({

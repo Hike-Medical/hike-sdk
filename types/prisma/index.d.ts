@@ -491,7 +491,10 @@ export const StripeProductType: {
   FUNCTIONAL: 'FUNCTIONAL',
   BASE_FEE: 'BASE_FEE',
   FACILITY_SUBSCRIPTION: 'FACILITY_SUBSCRIPTION',
-  ORTHOFEET_SHOES: 'ORTHOFEET_SHOES'
+  ORTHOFEET_SHOES: 'ORTHOFEET_SHOES',
+  ACCOMODATION_FEE: 'ACCOMODATION_FEE',
+  UCBL_FEE: 'UCBL_FEE',
+  PRE_FAB_HEAT_FEE: 'PRE_FAB_HEAT_FEE'
 };
 
 export type StripeProductType = (typeof StripeProductType)[keyof typeof StripeProductType]
@@ -42961,6 +42964,7 @@ export namespace Prisma {
     autoAdvance: boolean | null
     autoAdvanceCombined: boolean | null
     collectionSendInvoice: boolean | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42973,6 +42977,7 @@ export namespace Prisma {
     autoAdvance: boolean | null
     autoAdvanceCombined: boolean | null
     collectionSendInvoice: boolean | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42982,10 +42987,11 @@ export namespace Prisma {
     companyId: number
     stripeCustomerId: number
     stripeSubscriptionId: number
-    userPreferences: number
+    billingPreferences: number
     autoAdvance: number
     autoAdvanceCombined: number
     collectionSendInvoice: number
+    active: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -43000,6 +43006,7 @@ export namespace Prisma {
     autoAdvance?: true
     autoAdvanceCombined?: true
     collectionSendInvoice?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -43012,6 +43019,7 @@ export namespace Prisma {
     autoAdvance?: true
     autoAdvanceCombined?: true
     collectionSendInvoice?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -43021,10 +43029,11 @@ export namespace Prisma {
     companyId?: true
     stripeCustomerId?: true
     stripeSubscriptionId?: true
-    userPreferences?: true
+    billingPreferences?: true
     autoAdvance?: true
     autoAdvanceCombined?: true
     collectionSendInvoice?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -43107,10 +43116,11 @@ export namespace Prisma {
     companyId: string
     stripeCustomerId: string
     stripeSubscriptionId: string | null
-    userPreferences: JsonValue | null
+    billingPreferences: JsonValue | null
     autoAdvance: boolean
     autoAdvanceCombined: boolean
     collectionSendInvoice: boolean
+    active: boolean
     createdAt: Date
     updatedAt: Date
     _count: StripeCompanyCountAggregateOutputType | null
@@ -43137,10 +43147,11 @@ export namespace Prisma {
     companyId?: boolean
     stripeCustomerId?: boolean
     stripeSubscriptionId?: boolean
-    userPreferences?: boolean
+    billingPreferences?: boolean
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -43151,10 +43162,11 @@ export namespace Prisma {
     companyId?: boolean
     stripeCustomerId?: boolean
     stripeSubscriptionId?: boolean
-    userPreferences?: boolean
+    billingPreferences?: boolean
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -43175,10 +43187,11 @@ export namespace Prisma {
       companyId: string
       stripeCustomerId: string
       stripeSubscriptionId: string | null
-      userPreferences: Prisma.JsonValue | null
+      billingPreferences: Prisma.JsonValue | null
       autoAdvance: boolean
       autoAdvanceCombined: boolean
       collectionSendInvoice: boolean
+      active: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["stripeCompany"]>
@@ -43606,10 +43619,11 @@ export namespace Prisma {
     readonly companyId: FieldRef<"StripeCompany", 'String'>
     readonly stripeCustomerId: FieldRef<"StripeCompany", 'String'>
     readonly stripeSubscriptionId: FieldRef<"StripeCompany", 'String'>
-    readonly userPreferences: FieldRef<"StripeCompany", 'Json'>
+    readonly billingPreferences: FieldRef<"StripeCompany", 'Json'>
     readonly autoAdvance: FieldRef<"StripeCompany", 'Boolean'>
     readonly autoAdvanceCombined: FieldRef<"StripeCompany", 'Boolean'>
     readonly collectionSendInvoice: FieldRef<"StripeCompany", 'Boolean'>
+    readonly active: FieldRef<"StripeCompany", 'Boolean'>
     readonly createdAt: FieldRef<"StripeCompany", 'DateTime'>
     readonly updatedAt: FieldRef<"StripeCompany", 'DateTime'>
   }
@@ -49874,10 +49888,11 @@ export namespace Prisma {
     companyId: 'companyId',
     stripeCustomerId: 'stripeCustomerId',
     stripeSubscriptionId: 'stripeSubscriptionId',
-    userPreferences: 'userPreferences',
+    billingPreferences: 'billingPreferences',
     autoAdvance: 'autoAdvance',
     autoAdvanceCombined: 'autoAdvanceCombined',
     collectionSendInvoice: 'collectionSendInvoice',
+    active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -53359,10 +53374,11 @@ export namespace Prisma {
     companyId?: StringFilter<"StripeCompany"> | string
     stripeCustomerId?: StringFilter<"StripeCompany"> | string
     stripeSubscriptionId?: StringNullableFilter<"StripeCompany"> | string | null
-    userPreferences?: JsonNullableFilter<"StripeCompany">
+    billingPreferences?: JsonNullableFilter<"StripeCompany">
     autoAdvance?: BoolFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
     collectionSendInvoice?: BoolFilter<"StripeCompany"> | boolean
+    active?: BoolFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -53373,10 +53389,11 @@ export namespace Prisma {
     companyId?: SortOrder
     stripeCustomerId?: SortOrder
     stripeSubscriptionId?: SortOrderInput | SortOrder
-    userPreferences?: SortOrderInput | SortOrder
+    billingPreferences?: SortOrderInput | SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
     collectionSendInvoice?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
@@ -53390,10 +53407,11 @@ export namespace Prisma {
     NOT?: StripeCompanyWhereInput | StripeCompanyWhereInput[]
     stripeCustomerId?: StringFilter<"StripeCompany"> | string
     stripeSubscriptionId?: StringNullableFilter<"StripeCompany"> | string | null
-    userPreferences?: JsonNullableFilter<"StripeCompany">
+    billingPreferences?: JsonNullableFilter<"StripeCompany">
     autoAdvance?: BoolFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolFilter<"StripeCompany"> | boolean
     collectionSendInvoice?: BoolFilter<"StripeCompany"> | boolean
+    active?: BoolFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeFilter<"StripeCompany"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -53404,10 +53422,11 @@ export namespace Prisma {
     companyId?: SortOrder
     stripeCustomerId?: SortOrder
     stripeSubscriptionId?: SortOrderInput | SortOrder
-    userPreferences?: SortOrderInput | SortOrder
+    billingPreferences?: SortOrderInput | SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
     collectionSendInvoice?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: StripeCompanyCountOrderByAggregateInput
@@ -53423,10 +53442,11 @@ export namespace Prisma {
     companyId?: StringWithAggregatesFilter<"StripeCompany"> | string
     stripeCustomerId?: StringWithAggregatesFilter<"StripeCompany"> | string
     stripeSubscriptionId?: StringNullableWithAggregatesFilter<"StripeCompany"> | string | null
-    userPreferences?: JsonNullableWithAggregatesFilter<"StripeCompany">
+    billingPreferences?: JsonNullableWithAggregatesFilter<"StripeCompany">
     autoAdvance?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
     autoAdvanceCombined?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
     collectionSendInvoice?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
+    active?: BoolWithAggregatesFilter<"StripeCompany"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"StripeCompany"> | Date | string
   }
@@ -57115,10 +57135,11 @@ export namespace Prisma {
     id?: string
     stripeCustomerId: string
     stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutStripeCompanyInput
@@ -57129,10 +57150,11 @@ export namespace Prisma {
     companyId: string
     stripeCustomerId: string
     stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -57141,10 +57163,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutStripeCompanyNestedInput
@@ -57155,10 +57178,11 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -57168,10 +57192,11 @@ export namespace Prisma {
     companyId: string
     stripeCustomerId: string
     stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -57180,10 +57205,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -57193,10 +57219,11 @@ export namespace Prisma {
     companyId?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -60414,10 +60441,11 @@ export namespace Prisma {
     companyId?: SortOrder
     stripeCustomerId?: SortOrder
     stripeSubscriptionId?: SortOrder
-    userPreferences?: SortOrder
+    billingPreferences?: SortOrder
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
     collectionSendInvoice?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -60430,6 +60458,7 @@ export namespace Prisma {
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
     collectionSendInvoice?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -60442,6 +60471,7 @@ export namespace Prisma {
     autoAdvance?: SortOrder
     autoAdvanceCombined?: SortOrder
     collectionSendInvoice?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -65068,10 +65098,11 @@ export namespace Prisma {
     id?: string
     stripeCustomerId: string
     stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -65080,10 +65111,11 @@ export namespace Prisma {
     id?: string
     stripeCustomerId: string
     stripeSubscriptionId?: string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: boolean
     autoAdvanceCombined?: boolean
     collectionSendInvoice?: boolean
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -65397,10 +65429,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -65409,10 +65442,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeCustomerId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
-    userPreferences?: NullableJsonNullValueInput | InputJsonValue
+    billingPreferences?: NullableJsonNullValueInput | InputJsonValue
     autoAdvance?: BoolFieldUpdateOperationsInput | boolean
     autoAdvanceCombined?: BoolFieldUpdateOperationsInput | boolean
     collectionSendInvoice?: BoolFieldUpdateOperationsInput | boolean
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
