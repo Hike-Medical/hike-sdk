@@ -11,3 +11,7 @@ export interface StripeFlaggedCoupon {
   flag?: string;
   couponId: string;
 }
+
+export interface BillingPreferences {
+  flaggedCoupons?: StripeFlaggedCoupon[];
+}
