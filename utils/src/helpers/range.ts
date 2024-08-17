@@ -3,7 +3,7 @@
  *
  * @example
  * // Generate a range from 1 to 5
- * [...range(30, 275)].forEach((value) => {
+ * [...range(1, 5)].forEach((value) => {
  *   console.log(value);
  * });
  * // Output: 1, 2, 3, 4, 5
