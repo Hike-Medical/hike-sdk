@@ -25,6 +25,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
+  | (BaseFormField<string[]> & { type: 'file'; multiple?: boolean })
   | (BaseFormField<undefined> & { type: 'content'; image?: string })
   | (BaseFormField<string> & {
       type: 'select';
