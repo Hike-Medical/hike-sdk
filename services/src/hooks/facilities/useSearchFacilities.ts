@@ -6,12 +6,13 @@ import { ResponseError } from '../../errors/ResponseError';
 
 export interface UseFacilitySearchOptions extends SearchFacilityParams {
   key?: string[];
+  companyIds?: string[];
   enabled?: boolean;
 }
 
-export const useSearchFacilities = ({ key = [], enabled = true, ...params }: UseFacilitySearchOptions) =>
+export const useSearchFacilities = ({ key = [], enabled = true, companyIds, ...params }: UseFacilitySearchOptions) =>
   useQuery<PagedResponse<FacilityExtended[]>, ResponseError<null>>({
     queryKey: ['useFacilitySearch', ...key, params],
-    queryFn: async () => await searchCompanyFacilityAndAddresses(params),
+    queryFn: async () => await searchCompanyFacilityAndAddresses(params, companyIds),
     enabled
   });
