@@ -89,6 +89,11 @@ export type FacilityAddress = $Result.DefaultSelection<Prisma.$FacilityAddressPa
  */
 export type ShippingPackage = $Result.DefaultSelection<Prisma.$ShippingPackagePayload>
 /**
+ * Model ShippingLabel
+ * 
+ */
+export type ShippingLabel = $Result.DefaultSelection<Prisma.$ShippingLabelPayload>
+/**
  * Model Physician
  * 
  */
@@ -437,6 +442,18 @@ export const DimensionUnit: {
 export type DimensionUnit = (typeof DimensionUnit)[keyof typeof DimensionUnit]
 
 
+export const ShippingTrackingStatus: {
+  ACCEPTED: 'ACCEPTED',
+  IN_TRANSIT: 'IN_TRANSIT',
+  DELIVERED: 'DELIVERED',
+  EXCEPTION: 'EXCEPTION',
+  UNKNOWN: 'UNKNOWN',
+  DELIVERY: 'DELIVERY'
+};
+
+export type ShippingTrackingStatus = (typeof ShippingTrackingStatus)[keyof typeof ShippingTrackingStatus]
+
+
 export const DiagnosisStandard: {
   ICD10: 'ICD10'
 };
@@ -596,6 +613,10 @@ export const WeightUnit: typeof $Enums.WeightUnit
 export type DimensionUnit = $Enums.DimensionUnit
 
 export const DimensionUnit: typeof $Enums.DimensionUnit
+
+export type ShippingTrackingStatus = $Enums.ShippingTrackingStatus
+
+export const ShippingTrackingStatus: typeof $Enums.ShippingTrackingStatus
 
 export type DiagnosisStandard = $Enums.DiagnosisStandard
 
@@ -900,6 +921,16 @@ export class PrismaClient<
     * ```
     */
   get shippingPackage(): Prisma.ShippingPackageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.shippingLabel`: Exposes CRUD operations for the **ShippingLabel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ShippingLabels
+    * const shippingLabels = await prisma.shippingLabel.findMany()
+    * ```
+    */
+  get shippingLabel(): Prisma.ShippingLabelDelegate<ExtArgs>;
 
   /**
    * `prisma.physician`: Exposes CRUD operations for the **Physician** model.
@@ -1662,6 +1693,7 @@ export namespace Prisma {
     Order: 'Order',
     FacilityAddress: 'FacilityAddress',
     ShippingPackage: 'ShippingPackage',
+    ShippingLabel: 'ShippingLabel',
     Physician: 'Physician',
     Diagnosis: 'Diagnosis',
     BillingCode: 'BillingCode',
@@ -1705,7 +1737,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2756,6 +2788,76 @@ export namespace Prisma {
           count: {
             args: Prisma.ShippingPackageCountArgs<ExtArgs>,
             result: $Utils.Optional<ShippingPackageCountAggregateOutputType> | number
+          }
+        }
+      }
+      ShippingLabel: {
+        payload: Prisma.$ShippingLabelPayload<ExtArgs>
+        fields: Prisma.ShippingLabelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ShippingLabelFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ShippingLabelFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          findFirst: {
+            args: Prisma.ShippingLabelFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ShippingLabelFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          findMany: {
+            args: Prisma.ShippingLabelFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>[]
+          }
+          create: {
+            args: Prisma.ShippingLabelCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          createMany: {
+            args: Prisma.ShippingLabelCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ShippingLabelCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>[]
+          }
+          delete: {
+            args: Prisma.ShippingLabelDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          update: {
+            args: Prisma.ShippingLabelUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          deleteMany: {
+            args: Prisma.ShippingLabelDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ShippingLabelUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ShippingLabelUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ShippingLabelPayload>
+          }
+          aggregate: {
+            args: Prisma.ShippingLabelAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateShippingLabel>
+          }
+          groupBy: {
+            args: Prisma.ShippingLabelGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ShippingLabelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ShippingLabelCountArgs<ExtArgs>,
+            result: $Utils.Optional<ShippingLabelCountAggregateOutputType> | number
           }
         }
       }
@@ -4914,11 +5016,13 @@ export namespace Prisma {
   export type FacilityCountOutputType = {
     users: number
     evaluations: number
+    shippingLabels: number
   }
 
   export type FacilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | FacilityCountOutputTypeCountUsersArgs
     evaluations?: boolean | FacilityCountOutputTypeCountEvaluationsArgs
+    shippingLabels?: boolean | FacilityCountOutputTypeCountShippingLabelsArgs
   }
 
   // Custom InputTypes
@@ -4944,6 +5048,13 @@ export namespace Prisma {
    */
   export type FacilityCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
+  }
+
+  /**
+   * FacilityCountOutputType without action
+   */
+  export type FacilityCountOutputTypeCountShippingLabelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShippingLabelWhereInput
   }
 
 
@@ -5291,6 +5402,37 @@ export namespace Prisma {
    */
   export type WorkbenchCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchNotesWhereInput
+  }
+
+
+  /**
+   * Count Type ShippingLabelCountOutputType
+   */
+
+  export type ShippingLabelCountOutputType = {
+    orders: number
+  }
+
+  export type ShippingLabelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    orders?: boolean | ShippingLabelCountOutputTypeCountOrdersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ShippingLabelCountOutputType without action
+   */
+  export type ShippingLabelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabelCountOutputType
+     */
+    select?: ShippingLabelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ShippingLabelCountOutputType without action
+   */
+  export type ShippingLabelCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrderWhereInput
   }
 
 
@@ -7154,6 +7296,7 @@ export namespace Prisma {
     address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
+    shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facility"]>
 
@@ -7173,6 +7316,7 @@ export namespace Prisma {
     address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
+    shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7184,6 +7328,7 @@ export namespace Prisma {
       address: Prisma.$FacilityAddressPayload<ExtArgs> | null
       users: Prisma.$FacilityUserPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
+      shippingLabels: Prisma.$ShippingLabelPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7592,6 +7737,8 @@ export namespace Prisma {
 
     evaluations<T extends Facility$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Facility$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    shippingLabels<T extends Facility$shippingLabelsArgs<ExtArgs> = {}>(args?: Subset<T, Facility$shippingLabelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7997,6 +8144,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * Facility.shippingLabels
+   */
+  export type Facility$shippingLabelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    where?: ShippingLabelWhereInput
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    cursor?: ShippingLabelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
   }
 
   /**
@@ -19088,6 +19255,7 @@ export namespace Prisma {
     parcelId: string | null
     active: boolean | null
     authorizationStatus: $Enums.OrderAuthorizationStatus | null
+    shippingLabelId: string | null
     authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date | null
@@ -19103,6 +19271,7 @@ export namespace Prisma {
     parcelId: string | null
     active: boolean | null
     authorizationStatus: $Enums.OrderAuthorizationStatus | null
+    shippingLabelId: string | null
     authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date | null
@@ -19118,6 +19287,7 @@ export namespace Prisma {
     parcelId: number
     active: number
     authorizationStatus: number
+    shippingLabelId: number
     authorizationUpdatedAt: number
     completedAt: number
     createdAt: number
@@ -19135,6 +19305,7 @@ export namespace Prisma {
     parcelId?: true
     active?: true
     authorizationStatus?: true
+    shippingLabelId?: true
     authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
@@ -19150,6 +19321,7 @@ export namespace Prisma {
     parcelId?: true
     active?: true
     authorizationStatus?: true
+    shippingLabelId?: true
     authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
@@ -19165,6 +19337,7 @@ export namespace Prisma {
     parcelId?: true
     active?: true
     authorizationStatus?: true
+    shippingLabelId?: true
     authorizationUpdatedAt?: true
     completedAt?: true
     createdAt?: true
@@ -19253,6 +19426,7 @@ export namespace Prisma {
     parcelId: string | null
     active: boolean
     authorizationStatus: $Enums.OrderAuthorizationStatus
+    shippingLabelId: string | null
     authorizationUpdatedAt: Date | null
     completedAt: Date | null
     createdAt: Date
@@ -19285,11 +19459,13 @@ export namespace Prisma {
     parcelId?: boolean
     active?: boolean
     authorizationStatus?: boolean
+    shippingLabelId?: boolean
     authorizationUpdatedAt?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
+    shippingLabel?: boolean | Order$shippingLabelArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
@@ -19301,6 +19477,7 @@ export namespace Prisma {
     parcelId?: boolean
     active?: boolean
     authorizationStatus?: boolean
+    shippingLabelId?: boolean
     authorizationUpdatedAt?: boolean
     completedAt?: boolean
     createdAt?: boolean
@@ -19310,6 +19487,7 @@ export namespace Prisma {
 
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workbench?: boolean | WorkbenchDefaultArgs<ExtArgs>
+    shippingLabel?: boolean | Order$shippingLabelArgs<ExtArgs>
   }
 
 
@@ -19317,6 +19495,7 @@ export namespace Prisma {
     name: "Order"
     objects: {
       workbench: Prisma.$WorkbenchPayload<ExtArgs>
+      shippingLabel: Prisma.$ShippingLabelPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -19327,6 +19506,7 @@ export namespace Prisma {
       parcelId: string | null
       active: boolean
       authorizationStatus: $Enums.OrderAuthorizationStatus
+      shippingLabelId: string | null
       authorizationUpdatedAt: Date | null
       completedAt: Date | null
       createdAt: Date
@@ -19724,6 +19904,8 @@ export namespace Prisma {
 
     workbench<T extends WorkbenchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkbenchDefaultArgs<ExtArgs>>): Prisma__WorkbenchClient<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    shippingLabel<T extends Order$shippingLabelArgs<ExtArgs> = {}>(args?: Subset<T, Order$shippingLabelArgs<ExtArgs>>): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19760,6 +19942,7 @@ export namespace Prisma {
     readonly parcelId: FieldRef<"Order", 'String'>
     readonly active: FieldRef<"Order", 'Boolean'>
     readonly authorizationStatus: FieldRef<"Order", 'OrderAuthorizationStatus'>
+    readonly shippingLabelId: FieldRef<"Order", 'String'>
     readonly authorizationUpdatedAt: FieldRef<"Order", 'DateTime'>
     readonly completedAt: FieldRef<"Order", 'DateTime'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
@@ -20079,6 +20262,21 @@ export namespace Prisma {
      * Filter which Orders to delete
      */
     where?: OrderWhereInput
+  }
+
+  /**
+   * Order.shippingLabel
+   */
+  export type Order$shippingLabelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    where?: ShippingLabelWhereInput
   }
 
   /**
@@ -22219,6 +22417,1031 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ShippingPackageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ShippingLabel
+   */
+
+  export type AggregateShippingLabel = {
+    _count: ShippingLabelCountAggregateOutputType | null
+    _min: ShippingLabelMinAggregateOutputType | null
+    _max: ShippingLabelMaxAggregateOutputType | null
+  }
+
+  export type ShippingLabelMinAggregateOutputType = {
+    id: string | null
+    addressName: string | null
+    facilityId: string | null
+    labelId: string | null
+    trackingNumber: string | null
+    trackingStatus: $Enums.ShippingTrackingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShippingLabelMaxAggregateOutputType = {
+    id: string | null
+    addressName: string | null
+    facilityId: string | null
+    labelId: string | null
+    trackingNumber: string | null
+    trackingStatus: $Enums.ShippingTrackingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShippingLabelCountAggregateOutputType = {
+    id: number
+    addressName: number
+    facilityId: number
+    labelId: number
+    trackingNumber: number
+    trackingStatus: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ShippingLabelMinAggregateInputType = {
+    id?: true
+    addressName?: true
+    facilityId?: true
+    labelId?: true
+    trackingNumber?: true
+    trackingStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShippingLabelMaxAggregateInputType = {
+    id?: true
+    addressName?: true
+    facilityId?: true
+    labelId?: true
+    trackingNumber?: true
+    trackingStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShippingLabelCountAggregateInputType = {
+    id?: true
+    addressName?: true
+    facilityId?: true
+    labelId?: true
+    trackingNumber?: true
+    trackingStatus?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ShippingLabelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShippingLabel to aggregate.
+     */
+    where?: ShippingLabelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingLabels to fetch.
+     */
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ShippingLabelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingLabels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingLabels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ShippingLabels
+    **/
+    _count?: true | ShippingLabelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ShippingLabelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ShippingLabelMaxAggregateInputType
+  }
+
+  export type GetShippingLabelAggregateType<T extends ShippingLabelAggregateArgs> = {
+        [P in keyof T & keyof AggregateShippingLabel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShippingLabel[P]>
+      : GetScalarType<T[P], AggregateShippingLabel[P]>
+  }
+
+
+
+
+  export type ShippingLabelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShippingLabelWhereInput
+    orderBy?: ShippingLabelOrderByWithAggregationInput | ShippingLabelOrderByWithAggregationInput[]
+    by: ShippingLabelScalarFieldEnum[] | ShippingLabelScalarFieldEnum
+    having?: ShippingLabelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ShippingLabelCountAggregateInputType | true
+    _min?: ShippingLabelMinAggregateInputType
+    _max?: ShippingLabelMaxAggregateInputType
+  }
+
+  export type ShippingLabelGroupByOutputType = {
+    id: string
+    addressName: string
+    facilityId: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: ShippingLabelCountAggregateOutputType | null
+    _min: ShippingLabelMinAggregateOutputType | null
+    _max: ShippingLabelMaxAggregateOutputType | null
+  }
+
+  type GetShippingLabelGroupByPayload<T extends ShippingLabelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ShippingLabelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ShippingLabelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ShippingLabelGroupByOutputType[P]>
+            : GetScalarType<T[P], ShippingLabelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ShippingLabelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    addressName?: boolean
+    facilityId?: boolean
+    labelId?: boolean
+    trackingNumber?: boolean
+    trackingStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    facility?: boolean | ShippingLabel$facilityArgs<ExtArgs>
+    orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
+    _count?: boolean | ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["shippingLabel"]>
+
+  export type ShippingLabelSelectScalar = {
+    id?: boolean
+    addressName?: boolean
+    facilityId?: boolean
+    labelId?: boolean
+    trackingNumber?: boolean
+    trackingStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type ShippingLabelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facility?: boolean | ShippingLabel$facilityArgs<ExtArgs>
+    orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
+    _count?: boolean | ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $ShippingLabelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ShippingLabel"
+    objects: {
+      facility: Prisma.$FacilityPayload<ExtArgs> | null
+      orders: Prisma.$OrderPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      addressName: string
+      facilityId: string | null
+      labelId: string
+      trackingNumber: string
+      trackingStatus: $Enums.ShippingTrackingStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["shippingLabel"]>
+    composites: {}
+  }
+
+
+  type ShippingLabelGetPayload<S extends boolean | null | undefined | ShippingLabelDefaultArgs> = $Result.GetResult<Prisma.$ShippingLabelPayload, S>
+
+  type ShippingLabelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ShippingLabelFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ShippingLabelCountAggregateInputType | true
+    }
+
+  export interface ShippingLabelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ShippingLabel'], meta: { name: 'ShippingLabel' } }
+    /**
+     * Find zero or one ShippingLabel that matches the filter.
+     * @param {ShippingLabelFindUniqueArgs} args - Arguments to find a ShippingLabel
+     * @example
+     * // Get one ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ShippingLabelFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelFindUniqueArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one ShippingLabel that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ShippingLabelFindUniqueOrThrowArgs} args - Arguments to find a ShippingLabel
+     * @example
+     * // Get one ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ShippingLabelFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first ShippingLabel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelFindFirstArgs} args - Arguments to find a ShippingLabel
+     * @example
+     * // Get one ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ShippingLabelFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelFindFirstArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first ShippingLabel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelFindFirstOrThrowArgs} args - Arguments to find a ShippingLabel
+     * @example
+     * // Get one ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ShippingLabelFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more ShippingLabels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ShippingLabels
+     * const shippingLabels = await prisma.shippingLabel.findMany()
+     * 
+     * // Get first 10 ShippingLabels
+     * const shippingLabels = await prisma.shippingLabel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const shippingLabelWithIdOnly = await prisma.shippingLabel.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ShippingLabelFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a ShippingLabel.
+     * @param {ShippingLabelCreateArgs} args - Arguments to create a ShippingLabel.
+     * @example
+     * // Create one ShippingLabel
+     * const ShippingLabel = await prisma.shippingLabel.create({
+     *   data: {
+     *     // ... data to create a ShippingLabel
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ShippingLabelCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelCreateArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many ShippingLabels.
+     * @param {ShippingLabelCreateManyArgs} args - Arguments to create many ShippingLabels.
+     * @example
+     * // Create many ShippingLabels
+     * const shippingLabel = await prisma.shippingLabel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends ShippingLabelCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ShippingLabels and returns the data saved in the database.
+     * @param {ShippingLabelCreateManyAndReturnArgs} args - Arguments to create many ShippingLabels.
+     * @example
+     * // Create many ShippingLabels
+     * const shippingLabel = await prisma.shippingLabel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ShippingLabels and only return the `id`
+     * const shippingLabelWithIdOnly = await prisma.shippingLabel.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends ShippingLabelCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a ShippingLabel.
+     * @param {ShippingLabelDeleteArgs} args - Arguments to delete one ShippingLabel.
+     * @example
+     * // Delete one ShippingLabel
+     * const ShippingLabel = await prisma.shippingLabel.delete({
+     *   where: {
+     *     // ... filter to delete one ShippingLabel
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ShippingLabelDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelDeleteArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one ShippingLabel.
+     * @param {ShippingLabelUpdateArgs} args - Arguments to update one ShippingLabel.
+     * @example
+     * // Update one ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ShippingLabelUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelUpdateArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ShippingLabels.
+     * @param {ShippingLabelDeleteManyArgs} args - Arguments to filter ShippingLabels to delete.
+     * @example
+     * // Delete a few ShippingLabels
+     * const { count } = await prisma.shippingLabel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ShippingLabelDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShippingLabelDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ShippingLabels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ShippingLabels
+     * const shippingLabel = await prisma.shippingLabel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ShippingLabelUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ShippingLabel.
+     * @param {ShippingLabelUpsertArgs} args - Arguments to update or create a ShippingLabel.
+     * @example
+     * // Update or create a ShippingLabel
+     * const shippingLabel = await prisma.shippingLabel.upsert({
+     *   create: {
+     *     // ... data to create a ShippingLabel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ShippingLabel we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ShippingLabelUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ShippingLabelUpsertArgs<ExtArgs>>
+    ): Prisma__ShippingLabelClient<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of ShippingLabels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelCountArgs} args - Arguments to filter ShippingLabels to count.
+     * @example
+     * // Count the number of ShippingLabels
+     * const count = await prisma.shippingLabel.count({
+     *   where: {
+     *     // ... the filter for the ShippingLabels we want to count
+     *   }
+     * })
+    **/
+    count<T extends ShippingLabelCountArgs>(
+      args?: Subset<T, ShippingLabelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ShippingLabelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ShippingLabel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ShippingLabelAggregateArgs>(args: Subset<T, ShippingLabelAggregateArgs>): Prisma.PrismaPromise<GetShippingLabelAggregateType<T>>
+
+    /**
+     * Group by ShippingLabel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShippingLabelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ShippingLabelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ShippingLabelGroupByArgs['orderBy'] }
+        : { orderBy?: ShippingLabelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ShippingLabelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShippingLabelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ShippingLabel model
+   */
+  readonly fields: ShippingLabelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ShippingLabel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ShippingLabelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    facility<T extends ShippingLabel$facilityArgs<ExtArgs> = {}>(args?: Subset<T, ShippingLabel$facilityArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    orders<T extends ShippingLabel$ordersArgs<ExtArgs> = {}>(args?: Subset<T, ShippingLabel$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the ShippingLabel model
+   */ 
+  interface ShippingLabelFieldRefs {
+    readonly id: FieldRef<"ShippingLabel", 'String'>
+    readonly addressName: FieldRef<"ShippingLabel", 'String'>
+    readonly facilityId: FieldRef<"ShippingLabel", 'String'>
+    readonly labelId: FieldRef<"ShippingLabel", 'String'>
+    readonly trackingNumber: FieldRef<"ShippingLabel", 'String'>
+    readonly trackingStatus: FieldRef<"ShippingLabel", 'ShippingTrackingStatus'>
+    readonly createdAt: FieldRef<"ShippingLabel", 'DateTime'>
+    readonly updatedAt: FieldRef<"ShippingLabel", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ShippingLabel findUnique
+   */
+  export type ShippingLabelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingLabel to fetch.
+     */
+    where: ShippingLabelWhereUniqueInput
+  }
+
+  /**
+   * ShippingLabel findUniqueOrThrow
+   */
+  export type ShippingLabelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingLabel to fetch.
+     */
+    where: ShippingLabelWhereUniqueInput
+  }
+
+  /**
+   * ShippingLabel findFirst
+   */
+  export type ShippingLabelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingLabel to fetch.
+     */
+    where?: ShippingLabelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingLabels to fetch.
+     */
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShippingLabels.
+     */
+    cursor?: ShippingLabelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingLabels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingLabels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShippingLabels.
+     */
+    distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingLabel findFirstOrThrow
+   */
+  export type ShippingLabelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingLabel to fetch.
+     */
+    where?: ShippingLabelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingLabels to fetch.
+     */
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShippingLabels.
+     */
+    cursor?: ShippingLabelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingLabels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingLabels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShippingLabels.
+     */
+    distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingLabel findMany
+   */
+  export type ShippingLabelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter, which ShippingLabels to fetch.
+     */
+    where?: ShippingLabelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShippingLabels to fetch.
+     */
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ShippingLabels.
+     */
+    cursor?: ShippingLabelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShippingLabels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShippingLabels.
+     */
+    skip?: number
+    distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingLabel create
+   */
+  export type ShippingLabelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ShippingLabel.
+     */
+    data: XOR<ShippingLabelCreateInput, ShippingLabelUncheckedCreateInput>
+  }
+
+  /**
+   * ShippingLabel createMany
+   */
+  export type ShippingLabelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ShippingLabels.
+     */
+    data: ShippingLabelCreateManyInput | ShippingLabelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ShippingLabel createManyAndReturn
+   */
+  export type ShippingLabelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * The data used to create many ShippingLabels.
+     */
+    data: ShippingLabelCreateManyInput | ShippingLabelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ShippingLabel update
+   */
+  export type ShippingLabelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ShippingLabel.
+     */
+    data: XOR<ShippingLabelUpdateInput, ShippingLabelUncheckedUpdateInput>
+    /**
+     * Choose, which ShippingLabel to update.
+     */
+    where: ShippingLabelWhereUniqueInput
+  }
+
+  /**
+   * ShippingLabel updateMany
+   */
+  export type ShippingLabelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ShippingLabels.
+     */
+    data: XOR<ShippingLabelUpdateManyMutationInput, ShippingLabelUncheckedUpdateManyInput>
+    /**
+     * Filter which ShippingLabels to update
+     */
+    where?: ShippingLabelWhereInput
+  }
+
+  /**
+   * ShippingLabel upsert
+   */
+  export type ShippingLabelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ShippingLabel to update in case it exists.
+     */
+    where: ShippingLabelWhereUniqueInput
+    /**
+     * In case the ShippingLabel found by the `where` argument doesn't exist, create a new ShippingLabel with this data.
+     */
+    create: XOR<ShippingLabelCreateInput, ShippingLabelUncheckedCreateInput>
+    /**
+     * In case the ShippingLabel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ShippingLabelUpdateInput, ShippingLabelUncheckedUpdateInput>
+  }
+
+  /**
+   * ShippingLabel delete
+   */
+  export type ShippingLabelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    /**
+     * Filter which ShippingLabel to delete.
+     */
+    where: ShippingLabelWhereUniqueInput
+  }
+
+  /**
+   * ShippingLabel deleteMany
+   */
+  export type ShippingLabelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShippingLabels to delete
+     */
+    where?: ShippingLabelWhereInput
+  }
+
+  /**
+   * ShippingLabel.facility
+   */
+  export type ShippingLabel$facilityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facility
+     */
+    select?: FacilitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+  }
+
+  /**
+   * ShippingLabel.orders
+   */
+  export type ShippingLabel$ordersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Order
+     */
+    select?: OrderSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrderInclude<ExtArgs> | null
+    where?: OrderWhereInput
+    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
+    cursor?: OrderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
+  }
+
+  /**
+   * ShippingLabel without action
+   */
+  export type ShippingLabelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
   }
 
 
@@ -49571,6 +50794,7 @@ export namespace Prisma {
     parcelId: 'parcelId',
     active: 'active',
     authorizationStatus: 'authorizationStatus',
+    shippingLabelId: 'shippingLabelId',
     authorizationUpdatedAt: 'authorizationUpdatedAt',
     completedAt: 'completedAt',
     createdAt: 'createdAt',
@@ -49616,6 +50840,20 @@ export namespace Prisma {
   };
 
   export type ShippingPackageScalarFieldEnum = (typeof ShippingPackageScalarFieldEnum)[keyof typeof ShippingPackageScalarFieldEnum]
+
+
+  export const ShippingLabelScalarFieldEnum: {
+    id: 'id',
+    addressName: 'addressName',
+    facilityId: 'facilityId',
+    labelId: 'labelId',
+    trackingNumber: 'trackingNumber',
+    trackingStatus: 'trackingStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ShippingLabelScalarFieldEnum = (typeof ShippingLabelScalarFieldEnum)[keyof typeof ShippingLabelScalarFieldEnum]
 
 
   export const PhysicianScalarFieldEnum: {
@@ -50393,6 +51631,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ShippingTrackingStatus'
+   */
+  export type EnumShippingTrackingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShippingTrackingStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ShippingTrackingStatus[]'
+   */
+  export type ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShippingTrackingStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DiagnosisStandard'
    */
   export type EnumDiagnosisStandardFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiagnosisStandard'>
@@ -50624,6 +51876,7 @@ export namespace Prisma {
     address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
     evaluations?: EvaluationListRelationFilter
+    shippingLabels?: ShippingLabelListRelationFilter
   }
 
   export type FacilityOrderByWithRelationInput = {
@@ -50638,6 +51891,7 @@ export namespace Prisma {
     address?: FacilityAddressOrderByWithRelationInput
     users?: FacilityUserOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
+    shippingLabels?: ShippingLabelOrderByRelationAggregateInput
   }
 
   export type FacilityWhereUniqueInput = Prisma.AtLeast<{
@@ -50655,6 +51909,7 @@ export namespace Prisma {
     address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
     evaluations?: EvaluationListRelationFilter
+    shippingLabels?: ShippingLabelListRelationFilter
   }, "id">
 
   export type FacilityOrderByWithAggregationInput = {
@@ -51724,11 +52979,13 @@ export namespace Prisma {
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: StringNullableFilter<"Order"> | string | null
     authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
     workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
+    shippingLabel?: XOR<ShippingLabelNullableRelationFilter, ShippingLabelWhereInput> | null
   }
 
   export type OrderOrderByWithRelationInput = {
@@ -51740,11 +52997,13 @@ export namespace Prisma {
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
     authorizationStatus?: SortOrder
+    shippingLabelId?: SortOrderInput | SortOrder
     authorizationUpdatedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     workbench?: WorkbenchOrderByWithRelationInput
+    shippingLabel?: ShippingLabelOrderByWithRelationInput
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
@@ -51759,11 +53018,13 @@ export namespace Prisma {
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: StringNullableFilter<"Order"> | string | null
     authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
     workbench?: XOR<WorkbenchRelationFilter, WorkbenchWhereInput>
+    shippingLabel?: XOR<ShippingLabelNullableRelationFilter, ShippingLabelWhereInput> | null
   }, "id">
 
   export type OrderOrderByWithAggregationInput = {
@@ -51775,6 +53036,7 @@ export namespace Prisma {
     parcelId?: SortOrderInput | SortOrder
     active?: SortOrder
     authorizationStatus?: SortOrder
+    shippingLabelId?: SortOrderInput | SortOrder
     authorizationUpdatedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -51796,6 +53058,7 @@ export namespace Prisma {
     parcelId?: StringNullableWithAggregatesFilter<"Order"> | string | null
     active?: BoolWithAggregatesFilter<"Order"> | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusWithAggregatesFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: StringNullableWithAggregatesFilter<"Order"> | string | null
     authorizationUpdatedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
@@ -51992,6 +53255,79 @@ export namespace Prisma {
     companyId?: StringWithAggregatesFilter<"ShippingPackage"> | string
     createdAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ShippingPackage"> | Date | string
+  }
+
+  export type ShippingLabelWhereInput = {
+    AND?: ShippingLabelWhereInput | ShippingLabelWhereInput[]
+    OR?: ShippingLabelWhereInput[]
+    NOT?: ShippingLabelWhereInput | ShippingLabelWhereInput[]
+    id?: StringFilter<"ShippingLabel"> | string
+    addressName?: StringFilter<"ShippingLabel"> | string
+    facilityId?: StringNullableFilter<"ShippingLabel"> | string | null
+    labelId?: StringFilter<"ShippingLabel"> | string
+    trackingNumber?: StringFilter<"ShippingLabel"> | string
+    trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    orders?: OrderListRelationFilter
+  }
+
+  export type ShippingLabelOrderByWithRelationInput = {
+    id?: SortOrder
+    addressName?: SortOrder
+    facilityId?: SortOrderInput | SortOrder
+    labelId?: SortOrder
+    trackingNumber?: SortOrder
+    trackingStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    facility?: FacilityOrderByWithRelationInput
+    orders?: OrderOrderByRelationAggregateInput
+  }
+
+  export type ShippingLabelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    trackingNumber?: string
+    AND?: ShippingLabelWhereInput | ShippingLabelWhereInput[]
+    OR?: ShippingLabelWhereInput[]
+    NOT?: ShippingLabelWhereInput | ShippingLabelWhereInput[]
+    addressName?: StringFilter<"ShippingLabel"> | string
+    facilityId?: StringNullableFilter<"ShippingLabel"> | string | null
+    labelId?: StringFilter<"ShippingLabel"> | string
+    trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    facility?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    orders?: OrderListRelationFilter
+  }, "id" | "trackingNumber">
+
+  export type ShippingLabelOrderByWithAggregationInput = {
+    id?: SortOrder
+    addressName?: SortOrder
+    facilityId?: SortOrderInput | SortOrder
+    labelId?: SortOrder
+    trackingNumber?: SortOrder
+    trackingStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ShippingLabelCountOrderByAggregateInput
+    _max?: ShippingLabelMaxOrderByAggregateInput
+    _min?: ShippingLabelMinOrderByAggregateInput
+  }
+
+  export type ShippingLabelScalarWhereWithAggregatesInput = {
+    AND?: ShippingLabelScalarWhereWithAggregatesInput | ShippingLabelScalarWhereWithAggregatesInput[]
+    OR?: ShippingLabelScalarWhereWithAggregatesInput[]
+    NOT?: ShippingLabelScalarWhereWithAggregatesInput | ShippingLabelScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ShippingLabel"> | string
+    addressName?: StringWithAggregatesFilter<"ShippingLabel"> | string
+    facilityId?: StringNullableWithAggregatesFilter<"ShippingLabel"> | string | null
+    labelId?: StringWithAggregatesFilter<"ShippingLabel"> | string
+    trackingNumber?: StringWithAggregatesFilter<"ShippingLabel"> | string
+    trackingStatus?: EnumShippingTrackingStatusWithAggregatesFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
   }
 
   export type PhysicianWhereInput = {
@@ -54118,6 +55454,7 @@ export namespace Prisma {
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateInput = {
@@ -54131,6 +55468,7 @@ export namespace Prisma {
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUpdateInput = {
@@ -54144,6 +55482,7 @@ export namespace Prisma {
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateInput = {
@@ -54157,6 +55496,7 @@ export namespace Prisma {
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityCreateManyInput = {
@@ -55356,6 +56696,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     workbench: WorkbenchCreateNestedOneWithoutOrdersInput
+    shippingLabel?: ShippingLabelCreateNestedOneWithoutOrdersInput
   }
 
   export type OrderUncheckedCreateInput = {
@@ -55367,6 +56708,7 @@ export namespace Prisma {
     parcelId?: string | null
     active?: boolean
     authorizationStatus: $Enums.OrderAuthorizationStatus
+    shippingLabelId?: string | null
     authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
@@ -55386,6 +56728,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbench?: WorkbenchUpdateOneRequiredWithoutOrdersNestedInput
+    shippingLabel?: ShippingLabelUpdateOneWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateInput = {
@@ -55397,6 +56740,7 @@ export namespace Prisma {
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: NullableStringFieldUpdateOperationsInput | string | null
     authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55412,6 +56756,7 @@ export namespace Prisma {
     parcelId?: string | null
     active?: boolean
     authorizationStatus: $Enums.OrderAuthorizationStatus
+    shippingLabelId?: string | null
     authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
@@ -55441,6 +56786,7 @@ export namespace Prisma {
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: NullableStringFieldUpdateOperationsInput | string | null
     authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55665,6 +57011,86 @@ export namespace Prisma {
     dimensionUnit?: EnumDimensionUnitFieldUpdateOperationsInput | $Enums.DimensionUnit
     insoleCapacity?: IntFieldUpdateOperationsInput | number
     companyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingLabelCreateInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facility?: FacilityCreateNestedOneWithoutShippingLabelsInput
+    orders?: OrderCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelUncheckedCreateInput = {
+    id?: string
+    addressName: string
+    facilityId?: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facility?: FacilityUpdateOneWithoutShippingLabelsNestedInput
+    orders?: OrderUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelCreateManyInput = {
+    id?: string
+    addressName: string
+    facilityId?: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShippingLabelUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingLabelUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -58178,7 +59604,17 @@ export namespace Prisma {
     none?: FacilityUserWhereInput
   }
 
+  export type ShippingLabelListRelationFilter = {
+    every?: ShippingLabelWhereInput
+    some?: ShippingLabelWhereInput
+    none?: ShippingLabelWhereInput
+  }
+
   export type FacilityUserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ShippingLabelOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -59204,6 +60640,11 @@ export namespace Prisma {
     not?: NestedEnumOrderAuthorizationStatusFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus
   }
 
+  export type ShippingLabelNullableRelationFilter = {
+    is?: ShippingLabelWhereInput | null
+    isNot?: ShippingLabelWhereInput | null
+  }
+
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
     workbenchId?: SortOrder
@@ -59213,6 +60654,7 @@ export namespace Prisma {
     parcelId?: SortOrder
     active?: SortOrder
     authorizationStatus?: SortOrder
+    shippingLabelId?: SortOrder
     authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
@@ -59228,6 +60670,7 @@ export namespace Prisma {
     parcelId?: SortOrder
     active?: SortOrder
     authorizationStatus?: SortOrder
+    shippingLabelId?: SortOrder
     authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
@@ -59243,6 +60686,7 @@ export namespace Prisma {
     parcelId?: SortOrder
     active?: SortOrder
     authorizationStatus?: SortOrder
+    shippingLabelId?: SortOrder
     authorizationUpdatedAt?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
@@ -59489,6 +60933,56 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumShippingTrackingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShippingTrackingStatusFilter<$PrismaModel> | $Enums.ShippingTrackingStatus
+  }
+
+  export type ShippingLabelCountOrderByAggregateInput = {
+    id?: SortOrder
+    addressName?: SortOrder
+    facilityId?: SortOrder
+    labelId?: SortOrder
+    trackingNumber?: SortOrder
+    trackingStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShippingLabelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    addressName?: SortOrder
+    facilityId?: SortOrder
+    labelId?: SortOrder
+    trackingNumber?: SortOrder
+    trackingStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShippingLabelMinOrderByAggregateInput = {
+    id?: SortOrder
+    addressName?: SortOrder
+    facilityId?: SortOrder
+    labelId?: SortOrder
+    trackingNumber?: SortOrder
+    trackingStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumShippingTrackingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShippingTrackingStatusWithAggregatesFilter<$PrismaModel> | $Enums.ShippingTrackingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShippingTrackingStatusFilter<$PrismaModel>
+    _max?: NestedEnumShippingTrackingStatusFilter<$PrismaModel>
   }
 
   export type PatientListRelationFilter = {
@@ -61325,6 +62819,13 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type ShippingLabelCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput> | ShippingLabelCreateWithoutFacilityInput[] | ShippingLabelUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutFacilityInput | ShippingLabelCreateOrConnectWithoutFacilityInput[]
+    createMany?: ShippingLabelCreateManyFacilityInputEnvelope
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+  }
+
   export type FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput = {
     create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
     connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
@@ -61343,6 +62844,13 @@ export namespace Prisma {
     connectOrCreate?: EvaluationCreateOrConnectWithoutFacilityInput | EvaluationCreateOrConnectWithoutFacilityInput[]
     createMany?: EvaluationCreateManyFacilityInputEnvelope
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+  }
+
+  export type ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput> | ShippingLabelCreateWithoutFacilityInput[] | ShippingLabelUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutFacilityInput | ShippingLabelCreateOrConnectWithoutFacilityInput[]
+    createMany?: ShippingLabelCreateManyFacilityInputEnvelope
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
   }
 
   export type EnumFacilityTypeFieldUpdateOperationsInput = {
@@ -61395,6 +62903,20 @@ export namespace Prisma {
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
   }
 
+  export type ShippingLabelUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput> | ShippingLabelCreateWithoutFacilityInput[] | ShippingLabelUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutFacilityInput | ShippingLabelCreateOrConnectWithoutFacilityInput[]
+    upsert?: ShippingLabelUpsertWithWhereUniqueWithoutFacilityInput | ShippingLabelUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: ShippingLabelCreateManyFacilityInputEnvelope
+    set?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    disconnect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    delete?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    update?: ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput | ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: ShippingLabelUpdateManyWithWhereWithoutFacilityInput | ShippingLabelUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+  }
+
   export type FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput = {
     create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
     connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
@@ -61431,6 +62953,20 @@ export namespace Prisma {
     update?: EvaluationUpdateWithWhereUniqueWithoutFacilityInput | EvaluationUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: EvaluationUpdateManyWithWhereWithoutFacilityInput | EvaluationUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput> | ShippingLabelCreateWithoutFacilityInput[] | ShippingLabelUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutFacilityInput | ShippingLabelCreateOrConnectWithoutFacilityInput[]
+    upsert?: ShippingLabelUpsertWithWhereUniqueWithoutFacilityInput | ShippingLabelUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: ShippingLabelCreateManyFacilityInputEnvelope
+    set?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    disconnect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    delete?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    update?: ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput | ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: ShippingLabelUpdateManyWithWhereWithoutFacilityInput | ShippingLabelUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
   }
 
   export type PhysicianCreateNestedOneWithoutPatientInput = {
@@ -62606,6 +64142,12 @@ export namespace Prisma {
     connect?: WorkbenchWhereUniqueInput
   }
 
+  export type ShippingLabelCreateNestedOneWithoutOrdersInput = {
+    create?: XOR<ShippingLabelCreateWithoutOrdersInput, ShippingLabelUncheckedCreateWithoutOrdersInput>
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutOrdersInput
+    connect?: ShippingLabelWhereUniqueInput
+  }
+
   export type EnumOrderStatusFieldUpdateOperationsInput = {
     set?: $Enums.OrderStatus
   }
@@ -62620,6 +64162,16 @@ export namespace Prisma {
     upsert?: WorkbenchUpsertWithoutOrdersInput
     connect?: WorkbenchWhereUniqueInput
     update?: XOR<XOR<WorkbenchUpdateToOneWithWhereWithoutOrdersInput, WorkbenchUpdateWithoutOrdersInput>, WorkbenchUncheckedUpdateWithoutOrdersInput>
+  }
+
+  export type ShippingLabelUpdateOneWithoutOrdersNestedInput = {
+    create?: XOR<ShippingLabelCreateWithoutOrdersInput, ShippingLabelUncheckedCreateWithoutOrdersInput>
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutOrdersInput
+    upsert?: ShippingLabelUpsertWithoutOrdersInput
+    disconnect?: ShippingLabelWhereInput | boolean
+    delete?: ShippingLabelWhereInput | boolean
+    connect?: ShippingLabelWhereUniqueInput
+    update?: XOR<XOR<ShippingLabelUpdateToOneWithWhereWithoutOrdersInput, ShippingLabelUpdateWithoutOrdersInput>, ShippingLabelUncheckedUpdateWithoutOrdersInput>
   }
 
   export type FacilityCreateNestedOneWithoutAddressInput = {
@@ -62676,6 +64228,68 @@ export namespace Prisma {
     upsert?: CompanyUpsertWithoutPackagesInput
     connect?: CompanyWhereUniqueInput
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPackagesInput, CompanyUpdateWithoutPackagesInput>, CompanyUncheckedUpdateWithoutPackagesInput>
+  }
+
+  export type FacilityCreateNestedOneWithoutShippingLabelsInput = {
+    create?: XOR<FacilityCreateWithoutShippingLabelsInput, FacilityUncheckedCreateWithoutShippingLabelsInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutShippingLabelsInput
+    connect?: FacilityWhereUniqueInput
+  }
+
+  export type OrderCreateNestedManyWithoutShippingLabelInput = {
+    create?: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput> | OrderCreateWithoutShippingLabelInput[] | OrderUncheckedCreateWithoutShippingLabelInput[]
+    connectOrCreate?: OrderCreateOrConnectWithoutShippingLabelInput | OrderCreateOrConnectWithoutShippingLabelInput[]
+    createMany?: OrderCreateManyShippingLabelInputEnvelope
+    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type OrderUncheckedCreateNestedManyWithoutShippingLabelInput = {
+    create?: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput> | OrderCreateWithoutShippingLabelInput[] | OrderUncheckedCreateWithoutShippingLabelInput[]
+    connectOrCreate?: OrderCreateOrConnectWithoutShippingLabelInput | OrderCreateOrConnectWithoutShippingLabelInput[]
+    createMany?: OrderCreateManyShippingLabelInputEnvelope
+    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type EnumShippingTrackingStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ShippingTrackingStatus
+  }
+
+  export type FacilityUpdateOneWithoutShippingLabelsNestedInput = {
+    create?: XOR<FacilityCreateWithoutShippingLabelsInput, FacilityUncheckedCreateWithoutShippingLabelsInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutShippingLabelsInput
+    upsert?: FacilityUpsertWithoutShippingLabelsInput
+    disconnect?: FacilityWhereInput | boolean
+    delete?: FacilityWhereInput | boolean
+    connect?: FacilityWhereUniqueInput
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutShippingLabelsInput, FacilityUpdateWithoutShippingLabelsInput>, FacilityUncheckedUpdateWithoutShippingLabelsInput>
+  }
+
+  export type OrderUpdateManyWithoutShippingLabelNestedInput = {
+    create?: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput> | OrderCreateWithoutShippingLabelInput[] | OrderUncheckedCreateWithoutShippingLabelInput[]
+    connectOrCreate?: OrderCreateOrConnectWithoutShippingLabelInput | OrderCreateOrConnectWithoutShippingLabelInput[]
+    upsert?: OrderUpsertWithWhereUniqueWithoutShippingLabelInput | OrderUpsertWithWhereUniqueWithoutShippingLabelInput[]
+    createMany?: OrderCreateManyShippingLabelInputEnvelope
+    set?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    disconnect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    delete?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    update?: OrderUpdateWithWhereUniqueWithoutShippingLabelInput | OrderUpdateWithWhereUniqueWithoutShippingLabelInput[]
+    updateMany?: OrderUpdateManyWithWhereWithoutShippingLabelInput | OrderUpdateManyWithWhereWithoutShippingLabelInput[]
+    deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
+  }
+
+  export type OrderUncheckedUpdateManyWithoutShippingLabelNestedInput = {
+    create?: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput> | OrderCreateWithoutShippingLabelInput[] | OrderUncheckedCreateWithoutShippingLabelInput[]
+    connectOrCreate?: OrderCreateOrConnectWithoutShippingLabelInput | OrderCreateOrConnectWithoutShippingLabelInput[]
+    upsert?: OrderUpsertWithWhereUniqueWithoutShippingLabelInput | OrderUpsertWithWhereUniqueWithoutShippingLabelInput[]
+    createMany?: OrderCreateManyShippingLabelInputEnvelope
+    set?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    disconnect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    delete?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+    update?: OrderUpdateWithWhereUniqueWithoutShippingLabelInput | OrderUpdateWithWhereUniqueWithoutShippingLabelInput[]
+    updateMany?: OrderUpdateManyWithWhereWithoutShippingLabelInput | OrderUpdateManyWithWhereWithoutShippingLabelInput[]
+    deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
   export type EvaluationCreateNestedManyWithoutReferringPhysicianInput = {
@@ -64519,6 +66133,23 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type NestedEnumShippingTrackingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShippingTrackingStatusFilter<$PrismaModel> | $Enums.ShippingTrackingStatus
+  }
+
+  export type NestedEnumShippingTrackingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShippingTrackingStatusWithAggregatesFilter<$PrismaModel> | $Enums.ShippingTrackingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShippingTrackingStatusFilter<$PrismaModel>
+    _max?: NestedEnumShippingTrackingStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumDiagnosisStandardFilter<$PrismaModel = never> = {
     equals?: $Enums.DiagnosisStandard | EnumDiagnosisStandardFieldRefInput<$PrismaModel>
     in?: $Enums.DiagnosisStandard[] | ListEnumDiagnosisStandardFieldRefInput<$PrismaModel>
@@ -64784,6 +66415,7 @@ export namespace Prisma {
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutCompanyInput = {
@@ -64796,6 +66428,7 @@ export namespace Prisma {
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutCompanyInput = {
@@ -65635,6 +67268,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ShippingLabelCreateWithoutFacilityInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    orders?: OrderCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelUncheckedCreateWithoutFacilityInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelCreateOrConnectWithoutFacilityInput = {
+    where: ShippingLabelWhereUniqueInput
+    create: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type ShippingLabelCreateManyFacilityInputEnvelope = {
+    data: ShippingLabelCreateManyFacilityInput | ShippingLabelCreateManyFacilityInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CompanyUpsertWithoutFacilitiesInput = {
     update: XOR<CompanyUpdateWithoutFacilitiesInput, CompanyUncheckedUpdateWithoutFacilitiesInput>
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
@@ -65771,6 +67436,36 @@ export namespace Prisma {
   export type EvaluationUpdateManyWithWhereWithoutFacilityInput = {
     where: EvaluationScalarWhereInput
     data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutFacilityInput>
+  }
+
+  export type ShippingLabelUpsertWithWhereUniqueWithoutFacilityInput = {
+    where: ShippingLabelWhereUniqueInput
+    update: XOR<ShippingLabelUpdateWithoutFacilityInput, ShippingLabelUncheckedUpdateWithoutFacilityInput>
+    create: XOR<ShippingLabelCreateWithoutFacilityInput, ShippingLabelUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput = {
+    where: ShippingLabelWhereUniqueInput
+    data: XOR<ShippingLabelUpdateWithoutFacilityInput, ShippingLabelUncheckedUpdateWithoutFacilityInput>
+  }
+
+  export type ShippingLabelUpdateManyWithWhereWithoutFacilityInput = {
+    where: ShippingLabelScalarWhereInput
+    data: XOR<ShippingLabelUpdateManyMutationInput, ShippingLabelUncheckedUpdateManyWithoutFacilityInput>
+  }
+
+  export type ShippingLabelScalarWhereInput = {
+    AND?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+    OR?: ShippingLabelScalarWhereInput[]
+    NOT?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+    id?: StringFilter<"ShippingLabel"> | string
+    addressName?: StringFilter<"ShippingLabel"> | string
+    facilityId?: StringNullableFilter<"ShippingLabel"> | string | null
+    labelId?: StringFilter<"ShippingLabel"> | string
+    trackingNumber?: StringFilter<"ShippingLabel"> | string
+    trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
   }
 
   export type PhysicianCreateWithoutPatientInput = {
@@ -66495,6 +68190,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutEvaluationsInput = {
@@ -66507,6 +68203,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutEvaluationsInput = {
@@ -66855,6 +68552,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutEvaluationsInput = {
@@ -66867,6 +68565,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type StripeInvoiceUpsertWithoutEvaluationInput = {
@@ -68004,6 +69703,7 @@ export namespace Prisma {
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    shippingLabel?: ShippingLabelCreateNestedOneWithoutOrdersInput
   }
 
   export type OrderUncheckedCreateWithoutWorkbenchInput = {
@@ -68014,6 +69714,7 @@ export namespace Prisma {
     parcelId?: string | null
     active?: boolean
     authorizationStatus: $Enums.OrderAuthorizationStatus
+    shippingLabelId?: string | null
     authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
@@ -68349,6 +70050,7 @@ export namespace Prisma {
     parcelId?: StringNullableFilter<"Order"> | string | null
     active?: BoolFilter<"Order"> | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFilter<"Order"> | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: StringNullableFilter<"Order"> | string | null
     authorizationUpdatedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
@@ -68656,6 +70358,33 @@ export namespace Prisma {
     create: XOR<WorkbenchCreateWithoutOrdersInput, WorkbenchUncheckedCreateWithoutOrdersInput>
   }
 
+  export type ShippingLabelCreateWithoutOrdersInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facility?: FacilityCreateNestedOneWithoutShippingLabelsInput
+  }
+
+  export type ShippingLabelUncheckedCreateWithoutOrdersInput = {
+    id?: string
+    addressName: string
+    facilityId?: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShippingLabelCreateOrConnectWithoutOrdersInput = {
+    where: ShippingLabelWhereUniqueInput
+    create: XOR<ShippingLabelCreateWithoutOrdersInput, ShippingLabelUncheckedCreateWithoutOrdersInput>
+  }
+
   export type WorkbenchUpsertWithoutOrdersInput = {
     update: XOR<WorkbenchUpdateWithoutOrdersInput, WorkbenchUncheckedUpdateWithoutOrdersInput>
     create: XOR<WorkbenchCreateWithoutOrdersInput, WorkbenchUncheckedCreateWithoutOrdersInput>
@@ -68707,6 +70436,39 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutWorkbenchNestedInput
   }
 
+  export type ShippingLabelUpsertWithoutOrdersInput = {
+    update: XOR<ShippingLabelUpdateWithoutOrdersInput, ShippingLabelUncheckedUpdateWithoutOrdersInput>
+    create: XOR<ShippingLabelCreateWithoutOrdersInput, ShippingLabelUncheckedCreateWithoutOrdersInput>
+    where?: ShippingLabelWhereInput
+  }
+
+  export type ShippingLabelUpdateToOneWithWhereWithoutOrdersInput = {
+    where?: ShippingLabelWhereInput
+    data: XOR<ShippingLabelUpdateWithoutOrdersInput, ShippingLabelUncheckedUpdateWithoutOrdersInput>
+  }
+
+  export type ShippingLabelUpdateWithoutOrdersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facility?: FacilityUpdateOneWithoutShippingLabelsNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateWithoutOrdersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    facilityId?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type FacilityCreateWithoutAddressInput = {
     id?: string
     name: string
@@ -68717,6 +70479,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutAddressInput = {
@@ -68729,6 +70492,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutAddressInput = {
@@ -68757,6 +70521,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutAddressInput = {
@@ -68769,6 +70534,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type CompanyCreateWithoutPackagesInput = {
@@ -68869,6 +70635,130 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
+  }
+
+  export type FacilityCreateWithoutShippingLabelsInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityUncheckedCreateWithoutShippingLabelsInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityCreateOrConnectWithoutShippingLabelsInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutShippingLabelsInput, FacilityUncheckedCreateWithoutShippingLabelsInput>
+  }
+
+  export type OrderCreateWithoutShippingLabelInput = {
+    id?: string
+    status?: $Enums.OrderStatus
+    statusUpdatedAt?: Date | string | null
+    committedDeliveryAt?: Date | string | null
+    parcelId?: string | null
+    active?: boolean
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    workbench: WorkbenchCreateNestedOneWithoutOrdersInput
+  }
+
+  export type OrderUncheckedCreateWithoutShippingLabelInput = {
+    id?: string
+    workbenchId: string
+    status?: $Enums.OrderStatus
+    statusUpdatedAt?: Date | string | null
+    committedDeliveryAt?: Date | string | null
+    parcelId?: string | null
+    active?: boolean
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OrderCreateOrConnectWithoutShippingLabelInput = {
+    where: OrderWhereUniqueInput
+    create: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput>
+  }
+
+  export type OrderCreateManyShippingLabelInputEnvelope = {
+    data: OrderCreateManyShippingLabelInput | OrderCreateManyShippingLabelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityUpsertWithoutShippingLabelsInput = {
+    update: XOR<FacilityUpdateWithoutShippingLabelsInput, FacilityUncheckedUpdateWithoutShippingLabelsInput>
+    create: XOR<FacilityCreateWithoutShippingLabelsInput, FacilityUncheckedCreateWithoutShippingLabelsInput>
+    where?: FacilityWhereInput
+  }
+
+  export type FacilityUpdateToOneWithWhereWithoutShippingLabelsInput = {
+    where?: FacilityWhereInput
+    data: XOR<FacilityUpdateWithoutShippingLabelsInput, FacilityUncheckedUpdateWithoutShippingLabelsInput>
+  }
+
+  export type FacilityUpdateWithoutShippingLabelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutShippingLabelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type OrderUpsertWithWhereUniqueWithoutShippingLabelInput = {
+    where: OrderWhereUniqueInput
+    update: XOR<OrderUpdateWithoutShippingLabelInput, OrderUncheckedUpdateWithoutShippingLabelInput>
+    create: XOR<OrderCreateWithoutShippingLabelInput, OrderUncheckedCreateWithoutShippingLabelInput>
+  }
+
+  export type OrderUpdateWithWhereUniqueWithoutShippingLabelInput = {
+    where: OrderWhereUniqueInput
+    data: XOR<OrderUpdateWithoutShippingLabelInput, OrderUncheckedUpdateWithoutShippingLabelInput>
+  }
+
+  export type OrderUpdateManyWithWhereWithoutShippingLabelInput = {
+    where: OrderScalarWhereInput
+    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutShippingLabelInput>
   }
 
   export type EvaluationCreateWithoutReferringPhysicianInput = {
@@ -70778,6 +72668,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityUncheckedCreateWithoutUsersInput = {
@@ -70790,6 +72681,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
   export type FacilityCreateOrConnectWithoutUsersInput = {
@@ -70857,6 +72749,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutUsersInput = {
@@ -70869,6 +72762,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type UserUpsertWithoutFacilitiesInput = {
@@ -72075,6 +73969,7 @@ export namespace Prisma {
     address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutCompanyInput = {
@@ -72087,6 +73982,7 @@ export namespace Prisma {
     address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyInput = {
@@ -72442,6 +74338,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ShippingLabelCreateManyFacilityInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FacilityUserUpdateWithoutFacilityInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72556,6 +74462,38 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShippingLabelUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    orders?: OrderUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateManyWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -73414,6 +75352,7 @@ export namespace Prisma {
     parcelId?: string | null
     active?: boolean
     authorizationStatus: $Enums.OrderAuthorizationStatus
+    shippingLabelId?: string | null
     authorizationUpdatedAt?: Date | string | null
     completedAt?: Date | string | null
     createdAt?: Date | string
@@ -73517,6 +75456,7 @@ export namespace Prisma {
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shippingLabel?: ShippingLabelUpdateOneWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutWorkbenchInput = {
@@ -73527,6 +75467,7 @@ export namespace Prisma {
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: NullableStringFieldUpdateOperationsInput | string | null
     authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -73541,6 +75482,7 @@ export namespace Prisma {
     parcelId?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    shippingLabelId?: NullableStringFieldUpdateOperationsInput | string | null
     authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -73661,6 +75603,66 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type OrderCreateManyShippingLabelInput = {
+    id?: string
+    workbenchId: string
+    status?: $Enums.OrderStatus
+    statusUpdatedAt?: Date | string | null
+    committedDeliveryAt?: Date | string | null
+    parcelId?: string | null
+    active?: boolean
+    authorizationStatus: $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OrderUpdateWithoutShippingLabelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    workbench?: WorkbenchUpdateOneRequiredWithoutOrdersNestedInput
+  }
+
+  export type OrderUncheckedUpdateWithoutShippingLabelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
+    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrderUncheckedUpdateManyWithoutShippingLabelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workbenchId?: StringFieldUpdateOperationsInput | string
+    status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+    statusUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    committedDeliveryAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    authorizationStatus?: EnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus
+    authorizationUpdatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EvaluationCreateManyReferringPhysicianInput = {
@@ -75044,6 +77046,10 @@ export namespace Prisma {
      */
     export type WorkbenchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ShippingLabelCountOutputTypeDefaultArgs instead
+     */
+    export type ShippingLabelCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use PhysicianCountOutputTypeDefaultArgs instead
      */
     export type PhysicianCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PhysicianCountOutputTypeDefaultArgs<ExtArgs>
@@ -75147,6 +77153,10 @@ export namespace Prisma {
      * @deprecated Use ShippingPackageDefaultArgs instead
      */
     export type ShippingPackageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingPackageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ShippingLabelDefaultArgs instead
+     */
+    export type ShippingLabelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingLabelDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PhysicianDefaultArgs instead
      */

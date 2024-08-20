@@ -1,6 +1,7 @@
 import {
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
+  SaveTrackingInfoParams,
   ShippingLabelResponseByShipmentId,
   ShippingPackage,
   ValidateAddressBody
@@ -22,11 +23,6 @@ export interface GetRatesOrLabels {
   address?: ValidateAddressBody;
   addressId?: string;
   billRecipient?: boolean;
-}
-
-interface SaveTrackingInfo {
-  labelId: string;
-  items: string[];
 }
 
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
@@ -86,9 +82,9 @@ export const voidLabel = async (labelId: string) => {
   }
 };
 
-export const updateTrackingInfo = async ({ labelId, items }: SaveTrackingInfo) => {
+export const updateTrackingInfo = async (labelId: string, params: SaveTrackingInfoParams) => {
   try {
-    await backendApi.post(`shipping/labels/${labelId}/tracking`, { items });
+    await backendApi.post(`shipping/labels/${labelId}/tracking`, params);
   } catch (error) {
     throw toResponseError(error);
   }
