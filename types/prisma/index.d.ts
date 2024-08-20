@@ -263,6 +263,12 @@ export const CareType: {
 
 export type CareType = (typeof CareType)[keyof typeof CareType]
 
+export const PatientType: {
+  NEW_PATIENT: 'NEW_PATIENT',
+  EXISTING_PATIENT: 'EXISTING_PATIENT'
+};
+
+export type PatientType = (typeof PatientType)[keyof typeof PatientType]
 
 export const Side: {
   LEFT: 'LEFT',
@@ -537,6 +543,11 @@ export type CareType = $Enums.CareType
 
 export const CareType: typeof $Enums.CareType
 
+export type PatientType =$Enums.PatientType
+
+export const PatientType: typeof $Enums.PatientType
+
+export type PatientType = (typeof PatientType)[keyof typeof PatientType]
 export type Side = $Enums.Side
 
 export const Side: typeof $Enums.Side
