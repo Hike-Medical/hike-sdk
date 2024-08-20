@@ -1,6 +1,5 @@
-import type { PagedParams } from '../PagedParams';
+import { GetPatientsParams } from './GetPatientsParams';
 
-export interface SearchPatientsParams extends PagedParams {
+export interface SearchPatientsParams extends GetPatientsParams {
   term: string;
-  sortBy?: 'firstName' | 'lastName' | 'birthDate';
 }
