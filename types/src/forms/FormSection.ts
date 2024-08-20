@@ -8,6 +8,7 @@ export interface FormSection {
   fields: FormField[];
   meta?: Record<string, FormFieldValue>;
   rule?: FormRule;
+  required?: boolean;
   disabled?: boolean;
   ui?: 'accordion' | 'accordion:toggle';
 }
