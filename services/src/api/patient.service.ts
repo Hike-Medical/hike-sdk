@@ -1,5 +1,6 @@
 import type {
   CreatePatientParams,
+  GetPatientsParams,
   PagedParams,
   PagedResponse,
   SearchPatientsParams,
@@ -27,7 +28,7 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const fetchPatients = async (params?: PagedParams): Promise<PagedResponse<PatientExtended[]>> => {
+export const fetchPatients = async (params?: GetPatientsParams): Promise<PagedResponse<PatientExtended[]>> => {
   try {
     const response = await backendApi.get('patient', { params });
     return response.data;
