@@ -103,6 +103,7 @@ export * from './hooks/printer/usePrintGcode';
 export * from './hooks/scan/useUploadFootRender';
 export * from './hooks/settings/useCompanyPreferences';
 export * from './hooks/shipping/useCompanyPackages';
+export * from './hooks/shipping/useGetPendingLabels';
 export * from './hooks/shipping/useGetShippingRates';
 export * from './hooks/shipping/usePurchaseLabel';
 export * from './hooks/shipping/useShipments';

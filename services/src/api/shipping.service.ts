@@ -2,6 +2,7 @@ import {
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
   SaveTrackingInfoParams,
+  ShippingLabel,
   ShippingLabelResponseByShipmentId,
   ShippingPackage,
   ValidateAddressBody
@@ -93,6 +94,15 @@ export const updateTrackingInfo = async (labelId: string, params: SaveTrackingIn
 export const fetchShipments = async (params: GetShipengineShipmentsParams): Promise<GetShipengineShipmentsResponse> => {
   try {
     const response = await backendApi.get(`shipping/shipments`, { params });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => {
+  try {
+    const response = await backendApi.get(`shipping/labels/pending`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);

@@ -6,4 +6,5 @@ export interface UpdateOrderParams {
   committedDeliveryAt?: Date;
   shippingAddressId?: string;
   parcelId?: string;
+  shippingLabelId?: string;
 }
