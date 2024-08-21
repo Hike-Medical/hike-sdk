@@ -63,6 +63,8 @@ export type * from './dto/search/SearchResponse';
 export type * from './dto/shipping/GetLabelTrackingInfo';
 export type * from './dto/shipping/GetLabelsResponse';
 export type * from './dto/shipping/GetRatesResponse';
+export type * from './dto/shipping/GetShipengineLabelsParams';
+export type * from './dto/shipping/GetShipengineLabelsResponse';
 export type * from './dto/shipping/GetShipengineShipmentParams';
 export type * from './dto/shipping/GetShipengineShippingResponse';
 export type * from './dto/shipping/GetShippingLabelLegacyResponse';

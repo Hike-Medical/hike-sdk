@@ -36,7 +36,7 @@ export interface Shipment {
   comparison_rate_type: string;
 }
 
-interface ShipmentLinks {
+export interface ShipmentLinks {
   first: Link;
   last: Link;
   prev: Link;

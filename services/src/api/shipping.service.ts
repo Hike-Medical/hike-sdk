@@ -1,6 +1,9 @@
 import {
+  GetShipengineLabelsParams,
+  GetShipengineLabelsResponse,
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
+  LabelsResponse,
   SaveTrackingInfoParams,
   ShippingLabel,
   ShippingLabelResponseByShipmentId,
@@ -100,6 +103,24 @@ export const fetchShipments = async (params: GetShipengineShipmentsParams): Prom
   }
 };
 
+export const fetchLabels = async (params: GetShipengineLabelsParams): Promise<GetShipengineLabelsResponse> => {
+  try {
+    const response = await backendApi.get(`shipping/labels`, { params });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const fetchLabelByShippingId = async (shippingId: string): Promise<LabelsResponse> => {
+  try {
+    const response = await backendApi.post(`shipping/label/${shippingId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
 export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => {
   try {
     const response = await backendApi.get(`shipping/labels/pending`);
@@ -109,9 +130,9 @@ export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => 
   }
 };
 
-export const fetchOrdersByShipmentId = async (shipmentId: string): Promise<ShippingLabelResponseByShipmentId> => {
+export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLabelResponseByShipmentId> => {
   try {
-    const response = await backendApi.get(`shipping/orders/${shipmentId}`);
+    const response = await backendApi.get(`shipping/orders/${labelId}`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);

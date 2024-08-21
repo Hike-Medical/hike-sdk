@@ -49159,6 +49159,8 @@ export namespace Prisma {
     orderStatus: $Enums.OrderStatus | null
     workbenchCreatedAt: Date | null
     companySlug: string | null
+    labelId: string | null
+    trackingStatus: $Enums.ShippingTrackingStatus | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
@@ -49212,6 +49214,8 @@ export namespace Prisma {
     orderStatus: $Enums.OrderStatus | null
     workbenchCreatedAt: Date | null
     companySlug: string | null
+    labelId: string | null
+    trackingStatus: $Enums.ShippingTrackingStatus | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
@@ -49265,6 +49269,8 @@ export namespace Prisma {
     orderStatus: number
     workbenchCreatedAt: number
     companySlug: number
+    labelId: number
+    trackingStatus: number
     createdReason: number
     orderAuthorizationStatus: number
     slicerProfile: number
@@ -49328,6 +49334,8 @@ export namespace Prisma {
     orderStatus?: true
     workbenchCreatedAt?: true
     companySlug?: true
+    labelId?: true
+    trackingStatus?: true
     createdReason?: true
     orderAuthorizationStatus?: true
     slicerProfile?: true
@@ -49381,6 +49389,8 @@ export namespace Prisma {
     orderStatus?: true
     workbenchCreatedAt?: true
     companySlug?: true
+    labelId?: true
+    trackingStatus?: true
     createdReason?: true
     orderAuthorizationStatus?: true
     slicerProfile?: true
@@ -49434,6 +49444,8 @@ export namespace Prisma {
     orderStatus?: true
     workbenchCreatedAt?: true
     companySlug?: true
+    labelId?: true
+    trackingStatus?: true
     createdReason?: true
     orderAuthorizationStatus?: true
     slicerProfile?: true
@@ -49574,6 +49586,8 @@ export namespace Prisma {
     orderStatus: $Enums.OrderStatus | null
     workbenchCreatedAt: Date | null
     companySlug: string | null
+    labelId: string | null
+    trackingStatus: $Enums.ShippingTrackingStatus | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
     slicerProfile: string | null
@@ -49646,6 +49660,8 @@ export namespace Prisma {
     orderStatus?: boolean
     workbenchCreatedAt?: boolean
     companySlug?: boolean
+    labelId?: boolean
+    trackingStatus?: boolean
     createdReason?: boolean
     orderAuthorizationStatus?: boolean
     slicerProfile?: boolean
@@ -49699,6 +49715,8 @@ export namespace Prisma {
     orderStatus?: boolean
     workbenchCreatedAt?: boolean
     companySlug?: boolean
+    labelId?: boolean
+    trackingStatus?: boolean
     createdReason?: boolean
     orderAuthorizationStatus?: boolean
     slicerProfile?: boolean
@@ -49757,6 +49775,8 @@ export namespace Prisma {
       orderStatus: $Enums.OrderStatus | null
       workbenchCreatedAt: Date | null
       companySlug: string | null
+      labelId: string | null
+      trackingStatus: $Enums.ShippingTrackingStatus | null
       createdReason: $Enums.WorkbenchCreatedReason | null
       orderAuthorizationStatus: $Enums.OrderAuthorizationStatus | null
       slicerProfile: string | null
@@ -50227,6 +50247,8 @@ export namespace Prisma {
     readonly orderStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderStatus'>
     readonly workbenchCreatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly companySlug: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly labelId: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly trackingStatus: FieldRef<"ViewFlattenedWorkbench", 'ShippingTrackingStatus'>
     readonly createdReason: FieldRef<"ViewFlattenedWorkbench", 'WorkbenchCreatedReason'>
     readonly orderAuthorizationStatus: FieldRef<"ViewFlattenedWorkbench", 'OrderAuthorizationStatus'>
     readonly slicerProfile: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -51195,6 +51217,8 @@ export namespace Prisma {
     orderStatus: 'orderStatus',
     workbenchCreatedAt: 'workbenchCreatedAt',
     companySlug: 'companySlug',
+    labelId: 'labelId',
+    trackingStatus: 'trackingStatus',
     createdReason: 'createdReason',
     orderAuthorizationStatus: 'orderAuthorizationStatus',
     slicerProfile: 'slicerProfile',
@@ -55053,6 +55077,8 @@ export namespace Prisma {
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     workbenchCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    labelId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    trackingStatus?: EnumShippingTrackingStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ShippingTrackingStatus | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -55106,6 +55132,8 @@ export namespace Prisma {
     orderStatus?: SortOrderInput | SortOrder
     workbenchCreatedAt?: SortOrderInput | SortOrder
     companySlug?: SortOrderInput | SortOrder
+    labelId?: SortOrderInput | SortOrder
+    trackingStatus?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
     orderAuthorizationStatus?: SortOrderInput | SortOrder
     slicerProfile?: SortOrderInput | SortOrder
@@ -55162,6 +55190,8 @@ export namespace Prisma {
     orderStatus?: EnumOrderStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     workbenchCreatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    labelId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    trackingStatus?: EnumShippingTrackingStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ShippingTrackingStatus | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -55215,6 +55245,8 @@ export namespace Prisma {
     orderStatus?: SortOrderInput | SortOrder
     workbenchCreatedAt?: SortOrderInput | SortOrder
     companySlug?: SortOrderInput | SortOrder
+    labelId?: SortOrderInput | SortOrder
+    trackingStatus?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
     orderAuthorizationStatus?: SortOrderInput | SortOrder
     slicerProfile?: SortOrderInput | SortOrder
@@ -55276,6 +55308,8 @@ export namespace Prisma {
     orderStatus?: EnumOrderStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderStatus | null
     workbenchCreatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     companySlug?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    labelId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    trackingStatus?: EnumShippingTrackingStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.ShippingTrackingStatus | null
     createdReason?: EnumWorkbenchCreatedReasonNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: EnumOrderAuthorizationStatusNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -58935,6 +58969,8 @@ export namespace Prisma {
     orderStatus?: $Enums.OrderStatus | null
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
+    labelId?: string | null
+    trackingStatus?: $Enums.ShippingTrackingStatus | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
@@ -58988,6 +59024,8 @@ export namespace Prisma {
     orderStatus?: $Enums.OrderStatus | null
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
+    labelId?: string | null
+    trackingStatus?: $Enums.ShippingTrackingStatus | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
@@ -59041,6 +59079,8 @@ export namespace Prisma {
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: NullableStringFieldUpdateOperationsInput | string | null
+    trackingStatus?: NullableEnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59094,6 +59134,8 @@ export namespace Prisma {
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: NullableStringFieldUpdateOperationsInput | string | null
+    trackingStatus?: NullableEnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59147,6 +59189,8 @@ export namespace Prisma {
     orderStatus?: $Enums.OrderStatus | null
     workbenchCreatedAt?: Date | string | null
     companySlug?: string | null
+    labelId?: string | null
+    trackingStatus?: $Enums.ShippingTrackingStatus | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: $Enums.OrderAuthorizationStatus | null
     slicerProfile?: string | null
@@ -59200,6 +59244,8 @@ export namespace Prisma {
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: NullableStringFieldUpdateOperationsInput | string | null
+    trackingStatus?: NullableEnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59253,6 +59299,8 @@ export namespace Prisma {
     orderStatus?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     workbenchCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     companySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: NullableStringFieldUpdateOperationsInput | string | null
+    trackingStatus?: NullableEnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     orderAuthorizationStatus?: NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput | $Enums.OrderAuthorizationStatus | null
     slicerProfile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62119,6 +62167,13 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
+  export type EnumShippingTrackingStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel> | $Enums.ShippingTrackingStatus | null
+  }
+
   export type EnumOrderAuthorizationStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
@@ -62154,6 +62209,8 @@ export namespace Prisma {
     orderStatus?: SortOrder
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
+    labelId?: SortOrder
+    trackingStatus?: SortOrder
     createdReason?: SortOrder
     orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
@@ -62211,6 +62268,8 @@ export namespace Prisma {
     orderStatus?: SortOrder
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
+    labelId?: SortOrder
+    trackingStatus?: SortOrder
     createdReason?: SortOrder
     orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
@@ -62264,6 +62323,8 @@ export namespace Prisma {
     orderStatus?: SortOrder
     workbenchCreatedAt?: SortOrder
     companySlug?: SortOrder
+    labelId?: SortOrder
+    trackingStatus?: SortOrder
     createdReason?: SortOrder
     orderAuthorizationStatus?: SortOrder
     slicerProfile?: SortOrder
@@ -62329,6 +62390,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type EnumShippingTrackingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumShippingTrackingStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.ShippingTrackingStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel>
   }
 
   export type EnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -65538,6 +65609,10 @@ export namespace Prisma {
     set?: $Enums.OrderStatus | null
   }
 
+  export type NullableEnumShippingTrackingStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ShippingTrackingStatus | null
+  }
+
   export type NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput = {
     set?: $Enums.OrderAuthorizationStatus | null
   }
@@ -66335,6 +66410,13 @@ export namespace Prisma {
     not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
   }
 
+  export type NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel> | $Enums.ShippingTrackingStatus | null
+  }
+
   export type NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.OrderAuthorizationStatus | EnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.OrderAuthorizationStatus[] | ListEnumOrderAuthorizationStatusFieldRefInput<$PrismaModel> | null
@@ -66367,6 +66449,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumShippingTrackingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShippingTrackingStatus | EnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ShippingTrackingStatus[] | ListEnumShippingTrackingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumShippingTrackingStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.ShippingTrackingStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumShippingTrackingStatusNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumOrderAuthorizationStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
