@@ -121,6 +121,15 @@ export const fetchLabelByShippingId = async (shippingId: string): Promise<Labels
   }
 };
 
+export const getPackingSlip = async (shipmentId: string): Promise<string> => {
+  try {
+    const response = await backendApi.post(`shipping/label/packing-slip/${shipmentId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
 export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => {
   try {
     const response = await backendApi.get(`shipping/labels/pending`);
