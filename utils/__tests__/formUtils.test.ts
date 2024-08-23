@@ -2,7 +2,7 @@ import type { FormField, FormSchemaTyped } from '@hike/types';
 import { describe, expect } from '@jest/globals';
 import {
   initialFormValues,
-  isFieldComplete,
+  isFieldValid,
   isFormFieldDisplayed,
   isFormValid,
   schemaStats
@@ -274,23 +274,23 @@ describe('Form Schema Utils', () => {
     });
   });
 
-  describe('isFieldComplete', () => {
+  describe('isFieldValid', () => {
     it('should return true for non-required fields', () => {
       const field: FormField = { name: 'field1', label: 'Field 1', type: 'text' };
       const state = {};
-      expect(isFieldComplete(field, state)).toBe(true);
+      expect(isFieldValid(field, state)).toBe(true);
     });
 
     it('should return true for required fields with value', () => {
       const field: FormField = { name: 'field1', label: 'Field 1', type: 'text', required: true };
       const state = { field1: 'value' };
-      expect(isFieldComplete(field, state)).toBe(true);
+      expect(isFieldValid(field, state)).toBe(true);
     });
 
     it('should return false for required fields without value', () => {
       const field: FormField = { name: 'field1', label: 'Field 1', type: 'text', required: true };
       const state = {};
-      expect(isFieldComplete(field, state)).toBe(false);
+      expect(isFieldValid(field, state)).toBe(false);
     });
 
     it('should return true for hidden required fields', () => {
@@ -316,8 +316,8 @@ describe('Form Schema Utils', () => {
       const isDisplayed = isFormFieldDisplayed(field, state);
       expect(isDisplayed).toBe(false);
 
-      // Ensure isFieldComplete returns true for the hidden required field
-      const isComplete = isFieldComplete(field, state);
+      // Ensure isFieldValid returns true for the hidden required field
+      const isComplete = isFieldValid(field, state);
       expect(isComplete).toBe(true);
     });
   });

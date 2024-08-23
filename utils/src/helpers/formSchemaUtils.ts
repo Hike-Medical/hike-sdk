@@ -77,7 +77,7 @@ export const isFormRuleDisplayed = (
 /**
  * Determines if a given form field is complete based on its requirements and visibility.
  */
-export const isFieldComplete = (
+export const isFieldValid = (
   field: FormField,
   state: Record<string, FormFieldValue>,
   isOnlyField?: boolean,
@@ -102,9 +102,10 @@ export const isFormValid = (
   state: Record<string, FormFieldValue>,
   activeFoot?: string
 ): boolean =>
-    sections.filter((section) => isFormSectionDisplayed(section, state))
+  sections
+    .filter((section) => isFormSectionDisplayed(section, state))
     .flatMap((section) => section.fields)
-    .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot));
+    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot));
 
 /**
  * The initial values for the form fields based on the schema and submission.
@@ -140,7 +141,7 @@ export const completedSections = (validSections: FormSection[], state: Record<st
   validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state))
-      .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1))
+      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1))
   );
 
 export const schemaStats = (
@@ -156,13 +157,13 @@ export const schemaStats = (
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
-      .every((field, _, fields) => isFieldComplete(field, state, fields.length === 1, activeFoot))
+      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot))
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
-      .some((field, _, fields) => !isFieldComplete(field, state, fields.length === 1, activeFoot))
+      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, activeFoot))
   );
 
   return {
