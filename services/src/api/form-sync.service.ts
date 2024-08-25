@@ -28,7 +28,8 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
       formState.referringPhysicianId !== undefined ? (formState.referringPhysicianId as string) : undefined,
     diagnosisedAt: parseDate(formState.diagnosisedAt as string) ?? undefined,
     prescribedAt: parseDate(formState.prescribedAt as string) ?? undefined,
-    facilityId: formState.facilityId !== undefined ? (formState.facilityId as string) : undefined,
+    facilityId:
+      formState.facilityId !== undefined && formState.facilityId != '' ? (formState.facilityId as string) : undefined,
     location: formState.location !== undefined ? (formState.location as string) : undefined
   });
 
