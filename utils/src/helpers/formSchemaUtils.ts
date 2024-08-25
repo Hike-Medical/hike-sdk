@@ -25,9 +25,7 @@ export const isFormRuleDisplayed = (
   }
 
   const { effect, condition } = formItem.rule;
-
   const conditionValue = condition.value;
-
   const selectedValue = state[condition.name + (activeFoot ?? '')];
 
   switch (effect) {

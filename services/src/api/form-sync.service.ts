@@ -30,7 +30,8 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     prescribedAt: parseDate(formState.prescribedAt as string) ?? undefined,
     facilityId:
       formState.facilityId !== undefined && formState.facilityId != '' ? (formState.facilityId as string) : undefined,
-    location: formState.location !== undefined ? (formState.location as string) : undefined
+    location: formState.location !== undefined ? (formState.location as string) : undefined,
+    poNumber: formState.poNumber !== undefined ? (formState.poNumber as string) : undefined
   });
 
 export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) => {
