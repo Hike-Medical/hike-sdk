@@ -4,7 +4,7 @@ import { fetchClinician } from '../../api/user.service';
 import { ResponseError } from '../../errors/ResponseError';
 
 export interface UseClinicianOptions
-  extends Omit<UseQueryOptions<Clinician, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<Clinician | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 
