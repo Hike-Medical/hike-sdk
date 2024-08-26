@@ -3,5 +3,6 @@ export type EvaluationStatus =
   | 'CANCELLED'
   | 'INCOMPLETE'
   | 'AWAITING_AUTH'
+  | 'AWAITING_ORDER'
   | 'PROCESSING'
   | 'COMPLETED';
