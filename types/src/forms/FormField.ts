@@ -27,6 +27,7 @@ export type FormField =
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'file'; multiple?: boolean })
   | (BaseFormField<undefined> & { type: 'content'; image?: string })
+  | (BaseFormField<string> & { type: 'clinician' })
   | (BaseFormField<string> & {
       type: 'select';
       options: { label: string; value: string; description?: string }[];

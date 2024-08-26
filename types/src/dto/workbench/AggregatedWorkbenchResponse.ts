@@ -2,6 +2,7 @@ import {
   OrderAuthorizationStatus,
   OrderStatus,
   ProductType,
+  ShippingTrackingStatus,
   WorkbenchCreatedReason,
   WorkbenchStatus
 } from '../../../prisma';
@@ -17,7 +18,9 @@ export interface AggregatedWorkbenchResponse {
   workbenchCreatedAt?: Date | null;
   poNumber?: string | null;
   companyName?: string | null;
+  labelId?: string | null;
   createdReason?: WorkbenchCreatedReason | null;
+  trackingStatus?: ShippingTrackingStatus | null;
   orderAuthorizationStatus?: OrderAuthorizationStatus | null;
   companySlug?: string | null;
   slicerProfile?: string | null;

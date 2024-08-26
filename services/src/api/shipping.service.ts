@@ -1,6 +1,11 @@
 import {
+  GetShipengineLabelsParams,
+  GetShipengineLabelsResponse,
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
+  LabelsResponse,
+  SaveTrackingInfoParams,
+  ShippingLabel,
   ShippingLabelResponseByShipmentId,
   ShippingPackage,
   ValidateAddressBody
@@ -22,11 +27,6 @@ export interface GetRatesOrLabels {
   address?: ValidateAddressBody;
   addressId?: string;
   billRecipient?: boolean;
-}
-
-interface SaveTrackingInfo {
-  labelId: string;
-  items: string[];
 }
 
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
@@ -86,9 +86,9 @@ export const voidLabel = async (labelId: string) => {
   }
 };
 
-export const updateTrackingInfo = async ({ labelId, items }: SaveTrackingInfo) => {
+export const updateTrackingInfo = async (labelId: string, params: SaveTrackingInfoParams) => {
   try {
-    await backendApi.post(`shipping/labels/${labelId}/tracking`, { items });
+    await backendApi.post(`shipping/labels/${labelId}/tracking`, params);
   } catch (error) {
     throw toResponseError(error);
   }
@@ -103,9 +103,45 @@ export const fetchShipments = async (params: GetShipengineShipmentsParams): Prom
   }
 };
 
-export const fetchOrdersByShipmentId = async (shipmentId: string): Promise<ShippingLabelResponseByShipmentId> => {
+export const fetchLabels = async (params: GetShipengineLabelsParams): Promise<GetShipengineLabelsResponse> => {
   try {
-    const response = await backendApi.get(`shipping/orders/${shipmentId}`);
+    const response = await backendApi.get(`shipping/labels`, { params });
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const fetchLabelByShippingId = async (shippingId: string): Promise<LabelsResponse> => {
+  try {
+    const response = await backendApi.post(`shipping/label/${shippingId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const getPackingSlip = async (shipmentId: string): Promise<string> => {
+  try {
+    const response = await backendApi.post(`shipping/label/packing-slip/${shipmentId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => {
+  try {
+    const response = await backendApi.get(`shipping/labels/pending`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLabelResponseByShipmentId> => {
+  try {
+    const response = await backendApi.get(`shipping/orders/${labelId}`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);

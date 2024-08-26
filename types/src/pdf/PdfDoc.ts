@@ -6,4 +6,7 @@ export interface PdfDoc {
   header?: string[];
   content: PdfContent[];
   footer?: string[];
+  spacing?: {
+    row?: number;
+  };
 }

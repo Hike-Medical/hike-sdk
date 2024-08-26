@@ -14,4 +14,5 @@ export interface CompanyPreferences {
     orthoFeetPricingMultiplierPercentage?: number;
   };
   noAuthNeeded?: boolean;
+  engraveInsoleWithExternalId?: boolean;
 }

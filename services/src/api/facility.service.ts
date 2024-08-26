@@ -12,10 +12,18 @@ export const fetchCompanyFacilitiesAndAddresses = async (): Promise<FacilityExte
 };
 
 export const searchCompanyFacilityAndAddresses = async (
-  params: SearchFacilityParams
+  params: SearchFacilityParams,
+  companyIds?: string[]
 ): Promise<PagedResponse<FacilityExtended[]>> => {
   try {
-    const response = await backendApi.get('facility/search', { params });
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+    const response = await backendApi.get('facility/search', { params, headers });
     return response.data;
   } catch (error) {
     throw toResponseError(error);
