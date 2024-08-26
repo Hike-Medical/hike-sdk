@@ -126,12 +126,6 @@ export const formSchemaEvaluationDefaults = (
           case 'clinician':
             acc[field.name] = evaluation.clinicians?.[0]?.name;
             break;
-          case 'clinicianId': {
-            const clinician = evaluation.clinicians?.[0];
-            acc[field.name] = clinician?.id;
-            acc[`${field.name}-label`] = clinician?.name;
-            break;
-          }
           case 'facilityId':
             acc[field.name] = evaluation.facilityId;
             acc[`${field.name}-label`] = evaluation.facility?.name;
