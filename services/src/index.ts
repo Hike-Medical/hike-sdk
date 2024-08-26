@@ -117,6 +117,7 @@ export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
 export * from './hooks/useGetHealth';
 export * from './hooks/usePhysicians';
+export * from './hooks/users/useClinician';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
