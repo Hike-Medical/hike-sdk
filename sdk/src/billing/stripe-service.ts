@@ -45,13 +45,12 @@ export class StripeService {
     try {
       const price: Stripe.Price = await this.stripe.prices.retrieve(priceId);
       const interval = price.recurring?.interval;
-      const increment = price.recurring?.interval_count;
 
       if (!interval) {
         throw new Error('Invalid price interval');
       }
 
-      const nextBillingDate = this.getNextBillingDate(interval, increment);
+      const nextBillingDate = this.getNextBillingDate(interval, 0);
 
       const subscription = await this.stripe.subscriptions.create({
         customer: customerId,
@@ -135,12 +134,12 @@ export class StripeService {
         customer: customerId,
         auto_advance: shouldAutoAdvance,
         metadata: {
-          companyId: companyId
+          companyId: companyId,
+          ...(subscriptionId && { subscriptionId })
         },
         discounts,
         description,
         collection_method: sendInvoice ? 'send_invoice' : 'charge_automatically',
-        subscription: subscriptionId,
         days_until_due: sendInvoice ? 30 : undefined
       });
 
@@ -165,7 +164,43 @@ export class StripeService {
 
         await this.stripe.invoiceItems.create(invoiceItemData);
       }
-      return await this.stripe.invoices.retrieve(invoice.id);
+      const totalInvoice = await this.stripe.invoices.retrieve(invoice.id);
+
+      if (subscriptionId) {
+        const upcomingInvoice = await this.stripe.invoices.retrieveUpcoming({
+          customer: customerId,
+          subscription: subscriptionId
+        });
+
+        let itemExists = false;
+
+        for (const lineItem of upcomingInvoice.lines.data) {
+          if (Number(lineItem.unit_amount_excluding_tax) === totalInvoice.amount_due) {
+            const itemId = lineItem.invoice_item?.toString();
+            if (itemId && lineItem.quantity) {
+              await this.stripe.invoiceItems.update(itemId, {
+                quantity: lineItem.quantity + 1
+              });
+
+              itemExists = true;
+            }
+            break;
+          }
+        }
+
+        if (!itemExists) {
+          await this.stripe.invoiceItems.create({
+            customer: customerId,
+            subscription: subscriptionId,
+            unit_amount: totalInvoice.amount_due,
+            quantity: 1,
+            currency: 'usd',
+            description: 'Custom Hike Insole'
+          });
+        }
+      }
+
+      return totalInvoice;
     } catch (error) {
       throw this.handleStripeError(error);
     }
