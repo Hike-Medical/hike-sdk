@@ -41,7 +41,7 @@ export class StripeService {
     quantity: number,
     companyId: string,
     description?: string
-  ) {
+  ): Promise<Stripe.Subscription> {
     try {
       const price: Stripe.Price = await this.stripe.prices.retrieve(priceId);
       const interval = price.recurring?.interval;
@@ -125,10 +125,11 @@ export class StripeService {
     shouldAutoAdvance: boolean = false,
     sendInvoice: boolean = false,
     invoiceCouponId?: string,
-    description?: string
+    description?: string,
+    subscriptionId?: string
   ) {
     try {
-      let discounts: { coupon: string }[] = invoiceCouponId ? await this.getCouponValidation(invoiceCouponId) : [];
+      const discounts: { coupon: string }[] = invoiceCouponId ? await this.getCouponValidation(invoiceCouponId) : [];
 
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
@@ -139,6 +140,7 @@ export class StripeService {
         discounts,
         description,
         collection_method: sendInvoice ? 'send_invoice' : 'charge_automatically',
+        subscription: subscriptionId,
         days_until_due: sendInvoice ? 30 : undefined
       });
 
