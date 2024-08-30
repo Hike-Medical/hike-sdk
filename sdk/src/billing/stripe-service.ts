@@ -35,6 +35,15 @@ export class StripeService {
     return nextBillingDate.unix();
   }
 
+  async is100PercentOffCoupon(couponIds: string[]) {
+    const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
+    if (bestCoupon[0]?.coupon) {
+      const coupon = await this.stripe.coupons.retrieve(bestCoupon[0]?.coupon);
+      return coupon.amount_off === 100;
+    }
+    return false;
+  }
+
   async createSubscription(
     customerId: string,
     priceId: string,
@@ -50,7 +59,7 @@ export class StripeService {
         throw new Error('Invalid price interval');
       }
 
-      const nextBillingDate = this.getNextBillingDate(interval, 0);
+      const nextBillingDate = this.getNextBillingDate(interval);
 
       const subscription = await this.stripe.subscriptions.create({
         customer: customerId,
@@ -106,15 +115,54 @@ export class StripeService {
     }
   }
 
-  async getCouponValidation(couponId: string) {
-    let discounts: { coupon: string }[] = [];
-    const coupon = await this.stripe.coupons.retrieve(couponId);
-    if (coupon.valid && (!coupon.redeem_by || dayjs.unix(coupon.redeem_by).isAfter(dayjs()))) {
-      discounts = [{ coupon: couponId }];
-    } else {
-      console.warn(`Coupon ${couponId} is invalid or expired.`);
+  async getValidCoupons(couponIds: string[]): Promise<Stripe.Coupon[]> {
+    const validDiscounts: Stripe.Coupon[] = [];
+
+    for (const couponId of couponIds) {
+      try {
+        const coupon = await this.stripe.coupons.retrieve(couponId);
+        if (this.isCouponValid(coupon)) {
+          validDiscounts.push(coupon);
+        } else {
+          console.warn(`Coupon ${couponId} is invalid or expired.`);
+        }
+      } catch (error) {
+        console.error(`Error retrieving coupon ${couponId}:`, error);
+      }
     }
-    return discounts;
+
+    return validDiscounts;
+  }
+
+  private isCouponValid(coupon: Stripe.Coupon): boolean {
+    return coupon.valid && (!coupon.redeem_by || dayjs.unix(coupon.redeem_by).isAfter(dayjs()));
+  }
+
+  findBestCoupon(discounts: Stripe.Coupon[]): string | null {
+    let bestPercentOff: Stripe.Coupon | null = null;
+    let bestAmountOff: Stripe.Coupon | null = null;
+
+    for (const discount of discounts) {
+      if (discount.percent_off) {
+        if (!bestPercentOff || discount.percent_off > bestPercentOff.percent_off!) {
+          bestPercentOff = discount;
+        }
+      } else if (discount.amount_off) {
+        if (!bestAmountOff || discount.amount_off > bestAmountOff.amount_off!) {
+          bestAmountOff = discount;
+        }
+      }
+    }
+
+    // If we have both types, we can't definitively say which is better without an amount,
+    // so we'll prioritize percentage discounts. Adjust this logic if you prefer a different approach.
+    return (bestPercentOff?.id || bestAmountOff?.id) ?? null;
+  }
+
+  async validateAndFindBestCoupon(couponIds: string[]) {
+    const validDiscounts = await this.getValidCoupons(couponIds);
+    const bestCoupon = this.findBestCoupon(validDiscounts);
+    return bestCoupon ? [{ coupon: bestCoupon }] : [];
   }
 
   async createInvoice(
@@ -123,12 +171,14 @@ export class StripeService {
     companyId: string,
     shouldAutoAdvance: boolean = false,
     sendInvoice: boolean = false,
-    invoiceCouponId?: string,
+    invoiceCouponIds?: string[],
     description?: string,
     subscriptionId?: string
   ) {
     try {
-      const discounts: { coupon: string }[] = invoiceCouponId ? await this.getCouponValidation(invoiceCouponId) : [];
+      const discounts: { coupon: string }[] = invoiceCouponIds
+        ? await this.validateAndFindBestCoupon(invoiceCouponIds)
+        : [];
 
       const invoice = await this.stripe.invoices.create({
         customer: customerId,
@@ -153,7 +203,7 @@ export class StripeService {
           discounts: []
         };
 
-        invoiceItemData.discounts = item.couponId ? await this.getCouponValidation(item.couponId) : [];
+        invoiceItemData.discounts = item.couponIds ? await this.validateAndFindBestCoupon(item.couponIds) : [];
 
         //If an amount is given, then use that amount with the productId, if not then use the given Price (used for orthofeet)
         if (item.amount) {
@@ -181,7 +231,6 @@ export class StripeService {
               await this.stripe.invoiceItems.update(itemId, {
                 quantity: lineItem.quantity + 1
               });
-
               itemExists = true;
             }
             break;
@@ -446,5 +495,106 @@ export class StripeService {
 
   private handleStripeError(error: any) {
     return new Error(`An error occurred while processing your request. ${error}`);
+  }
+
+  async updateInvoice(invoiceId: string, updateParams: Stripe.InvoiceUpdateParams): Promise<Stripe.Invoice> {
+    try {
+      const updatedInvoice = await this.stripe.invoices.update(invoiceId, updateParams);
+      return updatedInvoice;
+    } catch (error) {
+      console.error('Error updating invoice', { error, invoiceId, updateParams });
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async updateSubscription(
+    subscriptionId: string,
+    updateParams: Stripe.SubscriptionUpdateParams
+  ): Promise<Stripe.Subscription> {
+    try {
+      const updatedSubscription = await this.stripe.subscriptions.update(subscriptionId, updateParams);
+      return updatedSubscription;
+    } catch (error) {
+      console.error('Error updating subscription', { error, subscriptionId, updateParams });
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async cancelSubscription(subscriptionId: string): Promise<Stripe.Subscription> {
+    try {
+      const cancelledSubscription = await this.stripe.subscriptions.cancel(subscriptionId);
+      console.log(cancelledSubscription);
+      return cancelledSubscription;
+    } catch (error) {
+      console.error('Error cancelleding subscription', { error, subscriptionId });
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async createCheckoutSession(
+    lineItems: StripeLineItem[],
+    companyId: string,
+    successUrl: string,
+    cancelUrl: string,
+    couponIds: string[],
+    externalId?: string
+  ): Promise<Stripe.Checkout.Session> {
+    try {
+      const sessionParams: Stripe.Checkout.SessionCreateParams = {
+        payment_method_types: ['card', 'us_bank_account'],
+        mode: 'payment',
+        client_reference_id: externalId,
+        success_url: successUrl,
+        cancel_url: cancelUrl,
+        line_items: lineItems.map((item) => {
+          const lineItem: Stripe.Checkout.SessionCreateParams.LineItem = {
+            quantity: item.quantity,
+            adjustable_quantity: { enabled: false }
+          };
+
+          if (item.priceId) {
+            lineItem.price = item.priceId;
+          } else {
+            lineItem.price_data = {
+              currency: 'usd',
+              product_data: {
+                name: item.description || 'Product',
+                description: item.description,
+                metadata: {
+                  productId: item.productId
+                }
+              },
+              unit_amount: item.amount || 0
+            };
+          }
+
+          return lineItem;
+        }),
+        metadata: {
+          companyId,
+          ...(externalId && { externalId })
+        },
+        invoice_creation: {
+          enabled: true,
+          invoice_data: {
+            description: `Checkout session invoice: ${externalId}`,
+            metadata: {
+              companyId,
+              ...(externalId && { externalId })
+            }
+          }
+        }
+      };
+
+      if (couponIds) {
+        sessionParams.discounts = await this.validateAndFindBestCoupon(couponIds);
+      }
+
+      const session = await this.stripe.checkout.sessions.create(sessionParams);
+      return session;
+    } catch (error) {
+      console.error('Error creating checkout session', { error, lineItems, companyId });
+      throw this.handleStripeError(error);
+    }
   }
 }

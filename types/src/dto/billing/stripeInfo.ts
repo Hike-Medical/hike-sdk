@@ -3,7 +3,7 @@ export interface StripeLineItem {
   priceId?: string;
   productId: string;
   amount?: number;
-  couponId?: string;
+  couponIds?: string[];
   description?: string;
 }
 
@@ -14,4 +14,5 @@ export interface StripeFlaggedCoupon {
 
 export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
+  allowPayrollDeduction?: boolean;
 }
