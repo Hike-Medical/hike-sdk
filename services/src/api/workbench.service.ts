@@ -128,7 +128,7 @@ export const generateWorkbenchPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
@@ -140,7 +140,7 @@ export const generateWorkbenchOrderPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-order-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-order-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
@@ -152,19 +152,16 @@ export const generateWorkbenchDeliveryReceiptPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
   }
 };
 
-export const uploadPrescriptions = async (
-  workbenchId: string,
-  formData: FormData
-): Promise<{ key: string; url: string }[]> => {
+export const uploadFiles = async (workbenchId: string, formData: FormData): Promise<{ key: string; url: string }[]> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/prescription`, formData, {
+    const response = await backendApi.post(`workbench/${workbenchId}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 

@@ -142,6 +142,13 @@ export const completedSections = (validSections: FormSection[], state: Record<st
       .every((field, _, fields) => isFieldValid(field, state, fields.length === 1))
   );
 
+export const getInvalidSections = (sections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
+  sections.filter((section) =>
+    section.fields
+      .filter((field) => isFormFieldDisplayed(field, state))
+      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1))
+  );
+
 export const schemaStats = (
   sections: FormSection[],
   state: Record<string, FormFieldValue>,
