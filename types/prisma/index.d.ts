@@ -551,7 +551,8 @@ export const StripeInvoiceStatus: {
   PAID: 'PAID',
   CANCELLED: 'CANCELLED',
   COMBINED: 'COMBINED',
-  SUBSCRIPTION: 'SUBSCRIPTION'
+  SUBSCRIPTION: 'SUBSCRIPTION',
+  ERROR: 'ERROR'
 };
 
 export type StripeInvoiceStatus = (typeof StripeInvoiceStatus)[keyof typeof StripeInvoiceStatus]
@@ -43352,6 +43353,7 @@ export namespace Prisma {
     type: number
     status: number
     lastWebhookId: number
+    metadata: number
     subscriptionId: number
     combinedInvoiceId: number
     createdAt: number
@@ -43401,6 +43403,7 @@ export namespace Prisma {
     type?: true
     status?: true
     lastWebhookId?: true
+    metadata?: true
     subscriptionId?: true
     combinedInvoiceId?: true
     createdAt?: true
@@ -43501,6 +43504,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId: string | null
+    metadata: JsonValue | null
     subscriptionId: string | null
     combinedInvoiceId: string | null
     createdAt: Date
@@ -43533,6 +43537,7 @@ export namespace Prisma {
     type?: boolean
     status?: boolean
     lastWebhookId?: boolean
+    metadata?: boolean
     subscriptionId?: boolean
     combinedInvoiceId?: boolean
     createdAt?: boolean
@@ -43553,6 +43558,7 @@ export namespace Prisma {
     type?: boolean
     status?: boolean
     lastWebhookId?: boolean
+    metadata?: boolean
     subscriptionId?: boolean
     combinedInvoiceId?: boolean
     createdAt?: boolean
@@ -43588,6 +43594,7 @@ export namespace Prisma {
       type: $Enums.StripeInvoiceType
       status: $Enums.StripeInvoiceStatus
       lastWebhookId: string | null
+      metadata: Prisma.JsonValue | null
       subscriptionId: string | null
       combinedInvoiceId: string | null
       createdAt: Date
@@ -44029,6 +44036,7 @@ export namespace Prisma {
     readonly type: FieldRef<"StripeInvoice", 'StripeInvoiceType'>
     readonly status: FieldRef<"StripeInvoice", 'StripeInvoiceStatus'>
     readonly lastWebhookId: FieldRef<"StripeInvoice", 'String'>
+    readonly metadata: FieldRef<"StripeInvoice", 'Json'>
     readonly subscriptionId: FieldRef<"StripeInvoice", 'String'>
     readonly combinedInvoiceId: FieldRef<"StripeInvoice", 'String'>
     readonly createdAt: FieldRef<"StripeInvoice", 'DateTime'>
@@ -52555,6 +52563,7 @@ export namespace Prisma {
     type: 'type',
     status: 'status',
     lastWebhookId: 'lastWebhookId',
+    metadata: 'metadata',
     subscriptionId: 'subscriptionId',
     combinedInvoiceId: 'combinedInvoiceId',
     createdAt: 'createdAt',
@@ -56112,6 +56121,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
     lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    metadata?: JsonNullableFilter<"StripeInvoice">
     subscriptionId?: StringNullableFilter<"StripeInvoice"> | string | null
     combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
     createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
@@ -56131,6 +56141,7 @@ export namespace Prisma {
     type?: SortOrder
     status?: SortOrder
     lastWebhookId?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     subscriptionId?: SortOrderInput | SortOrder
     combinedInvoiceId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -56153,6 +56164,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
     lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    metadata?: JsonNullableFilter<"StripeInvoice">
     subscriptionId?: StringNullableFilter<"StripeInvoice"> | string | null
     combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
     createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
@@ -56172,6 +56184,7 @@ export namespace Prisma {
     type?: SortOrder
     status?: SortOrder
     lastWebhookId?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     subscriptionId?: SortOrderInput | SortOrder
     combinedInvoiceId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -56193,6 +56206,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeWithAggregatesFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusWithAggregatesFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
     lastWebhookId?: StringNullableWithAggregatesFilter<"StripeInvoice"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"StripeInvoice">
     subscriptionId?: StringNullableWithAggregatesFilter<"StripeInvoice"> | string | null
     combinedInvoiceId?: StringNullableWithAggregatesFilter<"StripeInvoice"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"StripeInvoice"> | Date | string
@@ -60077,6 +60091,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -60094,6 +60109,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -60111,6 +60127,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -60128,6 +60145,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60145,6 +60163,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -60158,6 +60177,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -60169,6 +60189,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63638,6 +63659,7 @@ export namespace Prisma {
     type?: SortOrder
     status?: SortOrder
     lastWebhookId?: SortOrder
+    metadata?: SortOrder
     subscriptionId?: SortOrder
     combinedInvoiceId?: SortOrder
     createdAt?: SortOrder
@@ -70332,6 +70354,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -70348,6 +70371,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -70369,6 +70393,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -70385,6 +70410,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -70739,6 +70765,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -70755,6 +70782,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -70782,6 +70810,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -70798,6 +70827,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -75048,6 +75078,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
@@ -75064,6 +75095,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -75179,6 +75211,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFilter<"StripeInvoice"> | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFilter<"StripeInvoice"> | $Enums.StripeInvoiceStatus
     lastWebhookId?: StringNullableFilter<"StripeInvoice"> | string | null
+    metadata?: JsonNullableFilter<"StripeInvoice">
     subscriptionId?: StringNullableFilter<"StripeInvoice"> | string | null
     combinedInvoiceId?: StringNullableFilter<"StripeInvoice"> | string | null
     createdAt?: DateTimeFilter<"StripeInvoice"> | Date | string
@@ -75258,6 +75291,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -75274,6 +75308,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     combinedInvoiceId?: string | null
     createdAt?: Date | string
@@ -75295,6 +75330,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -75311,6 +75347,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -75567,6 +75604,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -75583,6 +75621,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -76061,6 +76100,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
@@ -76077,6 +76117,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     combinedInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -79473,6 +79514,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
@@ -79489,6 +79531,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -79505,6 +79548,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -79547,6 +79591,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -79672,6 +79717,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -79688,6 +79734,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -79704,6 +79751,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -80082,6 +80130,7 @@ export namespace Prisma {
     type: $Enums.StripeInvoiceType
     status: $Enums.StripeInvoiceStatus
     lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     combinedInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -80094,6 +80143,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
@@ -80110,6 +80160,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -80126,6 +80177,7 @@ export namespace Prisma {
     type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
     status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
     lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

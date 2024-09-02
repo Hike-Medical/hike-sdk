@@ -146,16 +146,32 @@ export class StripeService {
       if (discount.percent_off) {
         if (!bestPercentOff || discount.percent_off > bestPercentOff.percent_off!) {
           bestPercentOff = discount;
+        } else if (discount.percent_off === bestPercentOff.percent_off) {
+          if (
+            bestPercentOff.max_redemptions &&
+            discount.max_redemptions &&
+            (discount.max_redemptions > bestPercentOff.max_redemptions ||
+              discount.times_redeemed! > bestPercentOff.times_redeemed!)
+          ) {
+            bestPercentOff = discount;
+          }
         }
       } else if (discount.amount_off) {
         if (!bestAmountOff || discount.amount_off > bestAmountOff.amount_off!) {
           bestAmountOff = discount;
+        } else if (discount.amount_off === bestAmountOff.amount_off) {
+          if (
+            bestAmountOff.max_redemptions &&
+            discount.max_redemptions &&
+            (discount.max_redemptions > bestAmountOff.max_redemptions ||
+              discount.times_redeemed! > bestAmountOff.times_redeemed!)
+          ) {
+            bestAmountOff = discount;
+          }
         }
       }
     }
 
-    // If we have both types, we can't definitively say which is better without an amount,
-    // so we'll prioritize percentage discounts. Adjust this logic if you prefer a different approach.
     return (bestPercentOff?.id || bestAmountOff?.id) ?? null;
   }
 
@@ -214,7 +230,9 @@ export class StripeService {
 
         await this.stripe.invoiceItems.create(invoiceItemData);
       }
-      const totalInvoice = await this.stripe.invoices.retrieve(invoice.id);
+      const totalInvoice = await this.stripe.invoices.retrieve(invoice.id, {
+        expand: ['discounts', 'lines.data.discounts']
+      });
 
       if (subscriptionId) {
         const upcomingInvoice = await this.stripe.invoices.retrieveUpcoming({
