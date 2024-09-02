@@ -43,6 +43,7 @@ export type * from './dto/manufacturing/RenderType';
 export type * from './dto/notes/CreateNotes';
 export type * from './dto/notes/Notes';
 export type * from './dto/notes/UpdateNotes';
+export type * from './dto/notify/SlackMessage';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/DeliverOrderParams';
 export type * from './dto/order/GetOrdersByTypeParams';
