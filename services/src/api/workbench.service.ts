@@ -1,6 +1,6 @@
 import {
-  AggregatedWorkbenchResponse,
   Asset,
+  FlattenedWorkbench,
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
@@ -89,7 +89,7 @@ export const updateInactiveFootInWorkbench = async (
 export const getAggregatedWorkbenches = async (
   params?: GetAggregatedParams,
   companyIds?: string[]
-): Promise<PagedResponse<AggregatedWorkbenchResponse[]>> => {
+): Promise<PagedResponse<FlattenedWorkbench[]>> => {
   try {
     const response = await backendApi.get('workbench/aggregate', {
       headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
@@ -128,7 +128,19 @@ export const generateWorkbenchPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const generateWorkbenchEvaluationPdf = async (
+  workbenchId: string,
+  body: GenerateWorkbenchPdfParams
+): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-evaluation-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
@@ -140,7 +152,7 @@ export const generateWorkbenchOrderPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-order-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-order-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
@@ -152,19 +164,16 @@ export const generateWorkbenchDeliveryReceiptPdf = async (
   body: GenerateWorkbenchPdfParams
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
   }
 };
 
-export const uploadPrescriptions = async (
-  workbenchId: string,
-  formData: FormData
-): Promise<{ key: string; url: string }[]> => {
+export const uploadFiles = async (workbenchId: string, formData: FormData): Promise<{ key: string; url: string }[]> => {
   try {
-    const response = await backendApi.post(`/workbench/${workbenchId}/prescription`, formData, {
+    const response = await backendApi.post(`workbench/${workbenchId}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 
