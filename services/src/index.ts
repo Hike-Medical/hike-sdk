@@ -20,6 +20,7 @@ export * from './api/scan.service';
 export * from './api/shipping.service';
 export * from './api/user.service';
 export * from './api/workbench.service';
+export * from './api/roster.service';
 export * from './auth/defaultCompany';
 export * from './auth/findCompaniesBySession';
 export * from './auth/findCompanyById';
