@@ -128,5 +128,6 @@ export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useUpdateRenderType';
+export * from './hooks/roster/useGenerateUploadLink';
 export * from './utils/backendApi';
 export * from './utils/configureBaseUrl';
