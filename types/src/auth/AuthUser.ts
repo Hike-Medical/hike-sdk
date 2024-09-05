@@ -1,10 +1,10 @@
-import type { CompanyPermission, CompanyRole } from '../../prisma';
+import type { CompanyDepartment, CompanyRole } from '../../prisma';
 
 export interface AuthUser {
   id: string;
   companies: Record<string, CompanyRole>;
   facilities: string[];
-  permissions: Record<string, Record<CompanyPermission, CompanyRole>>;
+  departments: Record<string, Record<CompanyDepartment, CompanyRole>>;
   slugs: Record<string, string>;
   expiresAt: Date;
 }

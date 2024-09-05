@@ -7,7 +7,7 @@ export const toAuthUser = (decoded: JWTPayload): AuthUser | null => {
     id: decoded.id,
     companies: decoded.companies,
     facilities: decoded.facilities,
-    department: decoded.department,
+    departments: decoded.departments,
     slugs: decoded.slugs,
     expiresAt: decoded.exp ? new Date(decoded.exp * 1000) : undefined
   };
