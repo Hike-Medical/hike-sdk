@@ -16,3 +16,11 @@ export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
   allowPayrollDeduction?: boolean;
 }
+
+export interface BillingSubscriptionStats {
+  totalPrice: number;
+  periodStart: number;
+  periodEnd: number;
+  totalOrders: number;
+  currentCycle?: boolean;
+}

@@ -443,6 +443,20 @@ export class StripeService {
     }
   }
 
+  async getSubscriptionInvoices(subscriptionId: string): Promise<Stripe.Invoice[]> {
+    try {
+      const invoices = await this.stripe.invoices.list({
+        subscription: subscriptionId,
+        limit: 100
+      });
+
+      return invoices.data;
+    } catch (error) {
+      console.error('Error fetching subscription invoices', { error, subscriptionId });
+      throw this.handleStripeError(error);
+    }
+  }
+
   async cancelInvoiceById(invoiceId: string) {
     try {
       const invoice = await this.getInvoiceById(invoiceId);

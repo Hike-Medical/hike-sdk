@@ -51,6 +51,8 @@ export * from './hooks/auth/useSignInWithPin';
 export * from './hooks/auto-slicer/useRunSlicerForSide';
 export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
+export * from './hooks/billing/useGetStripeEntities';
+export * from './hooks/billing/useGetSubscriptionInvoiceStats';
 export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogProducts';
 export * from './hooks/catalog/useProductById';
