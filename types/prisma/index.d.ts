@@ -174,10 +174,10 @@ export type Printer = $Result.DefaultSelection<Prisma.$PrinterPayload>
  */
 export type CompanyUser = $Result.DefaultSelection<Prisma.$CompanyUserPayload>
 /**
- * Model CompanyUserPermission
+ * Model DepartmentUser
  * 
  */
-export type CompanyUserPermission = $Result.DefaultSelection<Prisma.$CompanyUserPermissionPayload>
+export type DepartmentUser = $Result.DefaultSelection<Prisma.$DepartmentUserPayload>
 /**
  * Model CompanyPatient
  * 
@@ -491,14 +491,14 @@ export const CompanyRole: {
 export type CompanyRole = (typeof CompanyRole)[keyof typeof CompanyRole]
 
 
-export const CompanyPermission: {
+export const CompanyDepartment: {
   MANUFACTURING: 'MANUFACTURING',
   PRINT_FARM: 'PRINT_FARM',
   SHIPPING: 'SHIPPING',
   STATIONS: 'STATIONS'
 };
 
-export type CompanyPermission = (typeof CompanyPermission)[keyof typeof CompanyPermission]
+export type CompanyDepartment = (typeof CompanyDepartment)[keyof typeof CompanyDepartment]
 
 
 export const StripeProductType: {
@@ -634,9 +634,9 @@ export type CompanyRole = $Enums.CompanyRole
 
 export const CompanyRole: typeof $Enums.CompanyRole
 
-export type CompanyPermission = $Enums.CompanyPermission
+export type CompanyDepartment = $Enums.CompanyDepartment
 
-export const CompanyPermission: typeof $Enums.CompanyPermission
+export const CompanyDepartment: typeof $Enums.CompanyDepartment
 
 export type StripeProductType = $Enums.StripeProductType
 
@@ -1093,14 +1093,14 @@ export class PrismaClient<
   get companyUser(): Prisma.CompanyUserDelegate<ExtArgs>;
 
   /**
-   * `prisma.companyUserPermission`: Exposes CRUD operations for the **CompanyUserPermission** model.
+   * `prisma.departmentUser`: Exposes CRUD operations for the **DepartmentUser** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CompanyUserPermissions
-    * const companyUserPermissions = await prisma.companyUserPermission.findMany()
+    * // Fetch zero or more DepartmentUsers
+    * const departmentUsers = await prisma.departmentUser.findMany()
     * ```
     */
-  get companyUserPermission(): Prisma.CompanyUserPermissionDelegate<ExtArgs>;
+  get departmentUser(): Prisma.DepartmentUserDelegate<ExtArgs>;
 
   /**
    * `prisma.companyPatient`: Exposes CRUD operations for the **CompanyPatient** model.
@@ -1710,7 +1710,7 @@ export namespace Prisma {
     AuditLog: 'AuditLog',
     Printer: 'Printer',
     CompanyUser: 'CompanyUser',
-    CompanyUserPermission: 'CompanyUserPermission',
+    DepartmentUser: 'DepartmentUser',
     CompanyPatient: 'CompanyPatient',
     FacilityUser: 'FacilityUser',
     StripeProduct: 'StripeProduct',
@@ -1737,7 +1737,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'companyUserPermission' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeCompany' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3981,73 +3981,73 @@ export namespace Prisma {
           }
         }
       }
-      CompanyUserPermission: {
-        payload: Prisma.$CompanyUserPermissionPayload<ExtArgs>
-        fields: Prisma.CompanyUserPermissionFieldRefs
+      DepartmentUser: {
+        payload: Prisma.$DepartmentUserPayload<ExtArgs>
+        fields: Prisma.DepartmentUserFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CompanyUserPermissionFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload> | null
+            args: Prisma.DepartmentUserFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CompanyUserPermissionFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           findFirst: {
-            args: Prisma.CompanyUserPermissionFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload> | null
+            args: Prisma.DepartmentUserFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CompanyUserPermissionFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           findMany: {
-            args: Prisma.CompanyUserPermissionFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>[]
+            args: Prisma.DepartmentUserFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>[]
           }
           create: {
-            args: Prisma.CompanyUserPermissionCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           createMany: {
-            args: Prisma.CompanyUserPermissionCreateManyArgs<ExtArgs>,
+            args: Prisma.DepartmentUserCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CompanyUserPermissionCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>[]
+            args: Prisma.DepartmentUserCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>[]
           }
           delete: {
-            args: Prisma.CompanyUserPermissionDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           update: {
-            args: Prisma.CompanyUserPermissionUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           deleteMany: {
-            args: Prisma.CompanyUserPermissionDeleteManyArgs<ExtArgs>,
+            args: Prisma.DepartmentUserDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.CompanyUserPermissionUpdateManyArgs<ExtArgs>,
+            args: Prisma.DepartmentUserUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.CompanyUserPermissionUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$CompanyUserPermissionPayload>
+            args: Prisma.DepartmentUserUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentUserPayload>
           }
           aggregate: {
-            args: Prisma.CompanyUserPermissionAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateCompanyUserPermission>
+            args: Prisma.DepartmentUserAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateDepartmentUser>
           }
           groupBy: {
-            args: Prisma.CompanyUserPermissionGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<CompanyUserPermissionGroupByOutputType>[]
+            args: Prisma.DepartmentUserGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<DepartmentUserGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CompanyUserPermissionCountArgs<ExtArgs>,
-            result: $Utils.Optional<CompanyUserPermissionCountAggregateOutputType> | number
+            args: Prisma.DepartmentUserCountArgs<ExtArgs>,
+            result: $Utils.Optional<DepartmentUserCountAggregateOutputType> | number
           }
         }
       }
@@ -4916,7 +4916,7 @@ export namespace Prisma {
     apiKeys: number
     packages: number
     users: number
-    permissions: number
+    departments: number
     patients: number
     auditLogs: number
     stripeProduct: number
@@ -4928,7 +4928,7 @@ export namespace Prisma {
     apiKeys?: boolean | CompanyCountOutputTypeCountApiKeysArgs
     packages?: boolean | CompanyCountOutputTypeCountPackagesArgs
     users?: boolean | CompanyCountOutputTypeCountUsersArgs
-    permissions?: boolean | CompanyCountOutputTypeCountPermissionsArgs
+    departments?: boolean | CompanyCountOutputTypeCountDepartmentsArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
     stripeProduct?: boolean | CompanyCountOutputTypeCountStripeProductArgs
@@ -4983,8 +4983,8 @@ export namespace Prisma {
   /**
    * CompanyCountOutputType without action
    */
-  export type CompanyCountOutputTypeCountPermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CompanyUserPermissionWhereInput
+  export type CompanyCountOutputTypeCountDepartmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentUserWhereInput
   }
 
   /**
@@ -5807,7 +5807,7 @@ export namespace Prisma {
   export type UserCountOutputType = {
     accounts: number
     companies: number
-    permissions: number
+    departments: number
     facilities: number
     notes: number
     auditsLogs: number
@@ -5816,7 +5816,7 @@ export namespace Prisma {
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     companies?: boolean | UserCountOutputTypeCountCompaniesArgs
-    permissions?: boolean | UserCountOutputTypeCountPermissionsArgs
+    departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
     facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
     auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
@@ -5850,8 +5850,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CompanyUserPermissionWhereInput
+  export type UserCountOutputTypeCountDepartmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentUserWhereInput
   }
 
   /**
@@ -6077,7 +6077,7 @@ export namespace Prisma {
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
-    permissions?: boolean | Company$permissionsArgs<ExtArgs>
+    departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
@@ -6104,7 +6104,7 @@ export namespace Prisma {
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
-    permissions?: boolean | Company$permissionsArgs<ExtArgs>
+    departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeProduct?: boolean | Company$stripeProductArgs<ExtArgs>
@@ -6121,7 +6121,7 @@ export namespace Prisma {
       apiKeys: Prisma.$ApiKeyPayload<ExtArgs>[]
       packages: Prisma.$ShippingPackagePayload<ExtArgs>[]
       users: Prisma.$CompanyUserPayload<ExtArgs>[]
-      permissions: Prisma.$CompanyUserPermissionPayload<ExtArgs>[]
+      departments: Prisma.$DepartmentUserPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       stripeProduct: Prisma.$StripeProductPayload<ExtArgs>[]
@@ -6538,7 +6538,7 @@ export namespace Prisma {
 
     users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    permissions<T extends Company$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, Company$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findMany'> | Null>;
+    departments<T extends Company$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -7003,23 +7003,23 @@ export namespace Prisma {
   }
 
   /**
-   * Company.permissions
+   * Company.departments
    */
-  export type Company$permissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Company$departmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
-    where?: CompanyUserPermissionWhereInput
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    include?: DepartmentUserInclude<ExtArgs> | null
+    where?: DepartmentUserWhereInput
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
+    cursor?: DepartmentUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CompanyUserPermissionScalarFieldEnum | CompanyUserPermissionScalarFieldEnum[]
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
   }
 
   /**
@@ -39082,40 +39082,40 @@ export namespace Prisma {
 
 
   /**
-   * Model CompanyUserPermission
+   * Model DepartmentUser
    */
 
-  export type AggregateCompanyUserPermission = {
-    _count: CompanyUserPermissionCountAggregateOutputType | null
-    _min: CompanyUserPermissionMinAggregateOutputType | null
-    _max: CompanyUserPermissionMaxAggregateOutputType | null
+  export type AggregateDepartmentUser = {
+    _count: DepartmentUserCountAggregateOutputType | null
+    _min: DepartmentUserMinAggregateOutputType | null
+    _max: DepartmentUserMaxAggregateOutputType | null
   }
 
-  export type CompanyUserPermissionMinAggregateOutputType = {
+  export type DepartmentUserMinAggregateOutputType = {
     id: string | null
     userId: string | null
     companyId: string | null
-    permission: $Enums.CompanyPermission | null
+    department: $Enums.CompanyDepartment | null
     role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CompanyUserPermissionMaxAggregateOutputType = {
+  export type DepartmentUserMaxAggregateOutputType = {
     id: string | null
     userId: string | null
     companyId: string | null
-    permission: $Enums.CompanyPermission | null
+    department: $Enums.CompanyDepartment | null
     role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CompanyUserPermissionCountAggregateOutputType = {
+  export type DepartmentUserCountAggregateOutputType = {
     id: number
     userId: number
     companyId: number
-    permission: number
+    department: number
     role: number
     createdAt: number
     updatedAt: number
@@ -39123,167 +39123,167 @@ export namespace Prisma {
   }
 
 
-  export type CompanyUserPermissionMinAggregateInputType = {
+  export type DepartmentUserMinAggregateInputType = {
     id?: true
     userId?: true
     companyId?: true
-    permission?: true
+    department?: true
     role?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CompanyUserPermissionMaxAggregateInputType = {
+  export type DepartmentUserMaxAggregateInputType = {
     id?: true
     userId?: true
     companyId?: true
-    permission?: true
+    department?: true
     role?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CompanyUserPermissionCountAggregateInputType = {
+  export type DepartmentUserCountAggregateInputType = {
     id?: true
     userId?: true
     companyId?: true
-    permission?: true
+    department?: true
     role?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type CompanyUserPermissionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CompanyUserPermission to aggregate.
+     * Filter which DepartmentUser to aggregate.
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CompanyUserPermissions to fetch.
+     * Determine the order of DepartmentUsers to fetch.
      */
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    cursor?: DepartmentUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CompanyUserPermissions from the position of the cursor.
+     * Take `±n` DepartmentUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CompanyUserPermissions.
+     * Skip the first `n` DepartmentUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned CompanyUserPermissions
+     * Count returned DepartmentUsers
     **/
-    _count?: true | CompanyUserPermissionCountAggregateInputType
+    _count?: true | DepartmentUserCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CompanyUserPermissionMinAggregateInputType
+    _min?: DepartmentUserMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CompanyUserPermissionMaxAggregateInputType
+    _max?: DepartmentUserMaxAggregateInputType
   }
 
-  export type GetCompanyUserPermissionAggregateType<T extends CompanyUserPermissionAggregateArgs> = {
-        [P in keyof T & keyof AggregateCompanyUserPermission]: P extends '_count' | 'count'
+  export type GetDepartmentUserAggregateType<T extends DepartmentUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateDepartmentUser]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCompanyUserPermission[P]>
-      : GetScalarType<T[P], AggregateCompanyUserPermission[P]>
+        : GetScalarType<T[P], AggregateDepartmentUser[P]>
+      : GetScalarType<T[P], AggregateDepartmentUser[P]>
   }
 
 
 
 
-  export type CompanyUserPermissionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CompanyUserPermissionWhereInput
-    orderBy?: CompanyUserPermissionOrderByWithAggregationInput | CompanyUserPermissionOrderByWithAggregationInput[]
-    by: CompanyUserPermissionScalarFieldEnum[] | CompanyUserPermissionScalarFieldEnum
-    having?: CompanyUserPermissionScalarWhereWithAggregatesInput
+  export type DepartmentUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentUserWhereInput
+    orderBy?: DepartmentUserOrderByWithAggregationInput | DepartmentUserOrderByWithAggregationInput[]
+    by: DepartmentUserScalarFieldEnum[] | DepartmentUserScalarFieldEnum
+    having?: DepartmentUserScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CompanyUserPermissionCountAggregateInputType | true
-    _min?: CompanyUserPermissionMinAggregateInputType
-    _max?: CompanyUserPermissionMaxAggregateInputType
+    _count?: DepartmentUserCountAggregateInputType | true
+    _min?: DepartmentUserMinAggregateInputType
+    _max?: DepartmentUserMaxAggregateInputType
   }
 
-  export type CompanyUserPermissionGroupByOutputType = {
+  export type DepartmentUserGroupByOutputType = {
     id: string
     userId: string
     companyId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role: $Enums.CompanyRole
     createdAt: Date
     updatedAt: Date
-    _count: CompanyUserPermissionCountAggregateOutputType | null
-    _min: CompanyUserPermissionMinAggregateOutputType | null
-    _max: CompanyUserPermissionMaxAggregateOutputType | null
+    _count: DepartmentUserCountAggregateOutputType | null
+    _min: DepartmentUserMinAggregateOutputType | null
+    _max: DepartmentUserMaxAggregateOutputType | null
   }
 
-  type GetCompanyUserPermissionGroupByPayload<T extends CompanyUserPermissionGroupByArgs> = Prisma.PrismaPromise<
+  type GetDepartmentUserGroupByPayload<T extends DepartmentUserGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CompanyUserPermissionGroupByOutputType, T['by']> &
+      PickEnumerable<DepartmentUserGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CompanyUserPermissionGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof DepartmentUserGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CompanyUserPermissionGroupByOutputType[P]>
-            : GetScalarType<T[P], CompanyUserPermissionGroupByOutputType[P]>
+              : GetScalarType<T[P], DepartmentUserGroupByOutputType[P]>
+            : GetScalarType<T[P], DepartmentUserGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CompanyUserPermissionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type DepartmentUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     companyId?: boolean
-    permission?: boolean
+    department?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["companyUserPermission"]>
+  }, ExtArgs["result"]["departmentUser"]>
 
-  export type CompanyUserPermissionSelectScalar = {
+  export type DepartmentUserSelectScalar = {
     id?: boolean
     userId?: boolean
     companyId?: boolean
-    permission?: boolean
+    department?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
 
-  export type CompanyUserPermissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
 
 
-  export type $CompanyUserPermissionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CompanyUserPermission"
+  export type $DepartmentUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DepartmentUser"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       company: Prisma.$CompanyPayload<ExtArgs>
@@ -39292,155 +39292,155 @@ export namespace Prisma {
       id: string
       userId: string
       companyId: string
-      permission: $Enums.CompanyPermission
+      department: $Enums.CompanyDepartment
       role: $Enums.CompanyRole
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["companyUserPermission"]>
+    }, ExtArgs["result"]["departmentUser"]>
     composites: {}
   }
 
 
-  type CompanyUserPermissionGetPayload<S extends boolean | null | undefined | CompanyUserPermissionDefaultArgs> = $Result.GetResult<Prisma.$CompanyUserPermissionPayload, S>
+  type DepartmentUserGetPayload<S extends boolean | null | undefined | DepartmentUserDefaultArgs> = $Result.GetResult<Prisma.$DepartmentUserPayload, S>
 
-  type CompanyUserPermissionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<CompanyUserPermissionFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: CompanyUserPermissionCountAggregateInputType | true
+  type DepartmentUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<DepartmentUserFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: DepartmentUserCountAggregateInputType | true
     }
 
-  export interface CompanyUserPermissionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyUserPermission'], meta: { name: 'CompanyUserPermission' } }
+  export interface DepartmentUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DepartmentUser'], meta: { name: 'DepartmentUser' } }
     /**
-     * Find zero or one CompanyUserPermission that matches the filter.
-     * @param {CompanyUserPermissionFindUniqueArgs} args - Arguments to find a CompanyUserPermission
+     * Find zero or one DepartmentUser that matches the filter.
+     * @param {DepartmentUserFindUniqueArgs} args - Arguments to find a DepartmentUser
      * @example
-     * // Get one CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.findUnique({
+     * // Get one DepartmentUser
+     * const departmentUser = await prisma.departmentUser.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends CompanyUserPermissionFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionFindUniqueArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends DepartmentUserFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserFindUniqueArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one CompanyUserPermission that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one DepartmentUser that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {CompanyUserPermissionFindUniqueOrThrowArgs} args - Arguments to find a CompanyUserPermission
+     * @param {DepartmentUserFindUniqueOrThrowArgs} args - Arguments to find a DepartmentUser
      * @example
-     * // Get one CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.findUniqueOrThrow({
+     * // Get one DepartmentUser
+     * const departmentUser = await prisma.departmentUser.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends CompanyUserPermissionFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends DepartmentUserFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first CompanyUserPermission that matches the filter.
+     * Find the first DepartmentUser that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionFindFirstArgs} args - Arguments to find a CompanyUserPermission
+     * @param {DepartmentUserFindFirstArgs} args - Arguments to find a DepartmentUser
      * @example
-     * // Get one CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.findFirst({
+     * // Get one DepartmentUser
+     * const departmentUser = await prisma.departmentUser.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends CompanyUserPermissionFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionFindFirstArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends DepartmentUserFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserFindFirstArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first CompanyUserPermission that matches the filter or
+     * Find the first DepartmentUser that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionFindFirstOrThrowArgs} args - Arguments to find a CompanyUserPermission
+     * @param {DepartmentUserFindFirstOrThrowArgs} args - Arguments to find a DepartmentUser
      * @example
-     * // Get one CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.findFirstOrThrow({
+     * // Get one DepartmentUser
+     * const departmentUser = await prisma.departmentUser.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends CompanyUserPermissionFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends DepartmentUserFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more CompanyUserPermissions that matches the filter.
+     * Find zero or more DepartmentUsers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {DepartmentUserFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CompanyUserPermissions
-     * const companyUserPermissions = await prisma.companyUserPermission.findMany()
+     * // Get all DepartmentUsers
+     * const departmentUsers = await prisma.departmentUser.findMany()
      * 
-     * // Get first 10 CompanyUserPermissions
-     * const companyUserPermissions = await prisma.companyUserPermission.findMany({ take: 10 })
+     * // Get first 10 DepartmentUsers
+     * const departmentUsers = await prisma.departmentUser.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const companyUserPermissionWithIdOnly = await prisma.companyUserPermission.findMany({ select: { id: true } })
+     * const departmentUserWithIdOnly = await prisma.departmentUser.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends CompanyUserPermissionFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends DepartmentUserFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a CompanyUserPermission.
-     * @param {CompanyUserPermissionCreateArgs} args - Arguments to create a CompanyUserPermission.
+     * Create a DepartmentUser.
+     * @param {DepartmentUserCreateArgs} args - Arguments to create a DepartmentUser.
      * @example
-     * // Create one CompanyUserPermission
-     * const CompanyUserPermission = await prisma.companyUserPermission.create({
+     * // Create one DepartmentUser
+     * const DepartmentUser = await prisma.departmentUser.create({
      *   data: {
-     *     // ... data to create a CompanyUserPermission
+     *     // ... data to create a DepartmentUser
      *   }
      * })
      * 
     **/
-    create<T extends CompanyUserPermissionCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionCreateArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends DepartmentUserCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserCreateArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many CompanyUserPermissions.
-     * @param {CompanyUserPermissionCreateManyArgs} args - Arguments to create many CompanyUserPermissions.
+     * Create many DepartmentUsers.
+     * @param {DepartmentUserCreateManyArgs} args - Arguments to create many DepartmentUsers.
      * @example
-     * // Create many CompanyUserPermissions
-     * const companyUserPermission = await prisma.companyUserPermission.createMany({
+     * // Create many DepartmentUsers
+     * const departmentUser = await prisma.departmentUser.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends CompanyUserPermissionCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionCreateManyArgs<ExtArgs>>
+    createMany<T extends DepartmentUserCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many CompanyUserPermissions and returns the data saved in the database.
-     * @param {CompanyUserPermissionCreateManyAndReturnArgs} args - Arguments to create many CompanyUserPermissions.
+     * Create many DepartmentUsers and returns the data saved in the database.
+     * @param {DepartmentUserCreateManyAndReturnArgs} args - Arguments to create many DepartmentUsers.
      * @example
-     * // Create many CompanyUserPermissions
-     * const companyUserPermission = await prisma.companyUserPermission.createManyAndReturn({
+     * // Create many DepartmentUsers
+     * const departmentUser = await prisma.departmentUser.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many CompanyUserPermissions and only return the `id`
-     * const companyUserPermissionWithIdOnly = await prisma.companyUserPermission.createManyAndReturn({ 
+     * // Create many DepartmentUsers and only return the `id`
+     * const departmentUserWithIdOnly = await prisma.departmentUser.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -39450,32 +39450,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends CompanyUserPermissionCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends DepartmentUserCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a CompanyUserPermission.
-     * @param {CompanyUserPermissionDeleteArgs} args - Arguments to delete one CompanyUserPermission.
+     * Delete a DepartmentUser.
+     * @param {DepartmentUserDeleteArgs} args - Arguments to delete one DepartmentUser.
      * @example
-     * // Delete one CompanyUserPermission
-     * const CompanyUserPermission = await prisma.companyUserPermission.delete({
+     * // Delete one DepartmentUser
+     * const DepartmentUser = await prisma.departmentUser.delete({
      *   where: {
-     *     // ... filter to delete one CompanyUserPermission
+     *     // ... filter to delete one DepartmentUser
      *   }
      * })
      * 
     **/
-    delete<T extends CompanyUserPermissionDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionDeleteArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends DepartmentUserDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserDeleteArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one CompanyUserPermission.
-     * @param {CompanyUserPermissionUpdateArgs} args - Arguments to update one CompanyUserPermission.
+     * Update one DepartmentUser.
+     * @param {DepartmentUserUpdateArgs} args - Arguments to update one DepartmentUser.
      * @example
-     * // Update one CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.update({
+     * // Update one DepartmentUser
+     * const departmentUser = await prisma.departmentUser.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39485,34 +39485,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends CompanyUserPermissionUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionUpdateArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends DepartmentUserUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserUpdateArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more CompanyUserPermissions.
-     * @param {CompanyUserPermissionDeleteManyArgs} args - Arguments to filter CompanyUserPermissions to delete.
+     * Delete zero or more DepartmentUsers.
+     * @param {DepartmentUserDeleteManyArgs} args - Arguments to filter DepartmentUsers to delete.
      * @example
-     * // Delete a few CompanyUserPermissions
-     * const { count } = await prisma.companyUserPermission.deleteMany({
+     * // Delete a few DepartmentUsers
+     * const { count } = await prisma.departmentUser.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends CompanyUserPermissionDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, CompanyUserPermissionDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends DepartmentUserDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentUserDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CompanyUserPermissions.
+     * Update zero or more DepartmentUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {DepartmentUserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CompanyUserPermissions
-     * const companyUserPermission = await prisma.companyUserPermission.updateMany({
+     * // Update many DepartmentUsers
+     * const departmentUser = await prisma.departmentUser.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39522,59 +39522,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends CompanyUserPermissionUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionUpdateManyArgs<ExtArgs>>
+    updateMany<T extends DepartmentUserUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one CompanyUserPermission.
-     * @param {CompanyUserPermissionUpsertArgs} args - Arguments to update or create a CompanyUserPermission.
+     * Create or update one DepartmentUser.
+     * @param {DepartmentUserUpsertArgs} args - Arguments to update or create a DepartmentUser.
      * @example
-     * // Update or create a CompanyUserPermission
-     * const companyUserPermission = await prisma.companyUserPermission.upsert({
+     * // Update or create a DepartmentUser
+     * const departmentUser = await prisma.departmentUser.upsert({
      *   create: {
-     *     // ... data to create a CompanyUserPermission
+     *     // ... data to create a DepartmentUser
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CompanyUserPermission we want to update
+     *     // ... the filter for the DepartmentUser we want to update
      *   }
      * })
     **/
-    upsert<T extends CompanyUserPermissionUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, CompanyUserPermissionUpsertArgs<ExtArgs>>
-    ): Prisma__CompanyUserPermissionClient<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends DepartmentUserUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUserUpsertArgs<ExtArgs>>
+    ): Prisma__DepartmentUserClient<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of CompanyUserPermissions.
+     * Count the number of DepartmentUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionCountArgs} args - Arguments to filter CompanyUserPermissions to count.
+     * @param {DepartmentUserCountArgs} args - Arguments to filter DepartmentUsers to count.
      * @example
-     * // Count the number of CompanyUserPermissions
-     * const count = await prisma.companyUserPermission.count({
+     * // Count the number of DepartmentUsers
+     * const count = await prisma.departmentUser.count({
      *   where: {
-     *     // ... the filter for the CompanyUserPermissions we want to count
+     *     // ... the filter for the DepartmentUsers we want to count
      *   }
      * })
     **/
-    count<T extends CompanyUserPermissionCountArgs>(
-      args?: Subset<T, CompanyUserPermissionCountArgs>,
+    count<T extends DepartmentUserCountArgs>(
+      args?: Subset<T, DepartmentUserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CompanyUserPermissionCountAggregateOutputType>
+          : GetScalarType<T['select'], DepartmentUserCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a CompanyUserPermission.
+     * Allows you to perform aggregations operations on a DepartmentUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {DepartmentUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -39594,13 +39594,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CompanyUserPermissionAggregateArgs>(args: Subset<T, CompanyUserPermissionAggregateArgs>): Prisma.PrismaPromise<GetCompanyUserPermissionAggregateType<T>>
+    aggregate<T extends DepartmentUserAggregateArgs>(args: Subset<T, DepartmentUserAggregateArgs>): Prisma.PrismaPromise<GetDepartmentUserAggregateType<T>>
 
     /**
-     * Group by CompanyUserPermission.
+     * Group by DepartmentUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanyUserPermissionGroupByArgs} args - Group by arguments.
+     * @param {DepartmentUserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -39615,14 +39615,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CompanyUserPermissionGroupByArgs,
+      T extends DepartmentUserGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CompanyUserPermissionGroupByArgs['orderBy'] }
-        : { orderBy?: CompanyUserPermissionGroupByArgs['orderBy'] },
+        ? { orderBy: DepartmentUserGroupByArgs['orderBy'] }
+        : { orderBy?: DepartmentUserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -39671,20 +39671,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CompanyUserPermissionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyUserPermissionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, DepartmentUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepartmentUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the CompanyUserPermission model
+   * Fields of the DepartmentUser model
    */
-  readonly fields: CompanyUserPermissionFieldRefs;
+  readonly fields: DepartmentUserFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CompanyUserPermission.
+   * The delegate class that acts as a "Promise-like" for DepartmentUser.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CompanyUserPermissionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__DepartmentUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -39716,345 +39716,345 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the CompanyUserPermission model
+   * Fields of the DepartmentUser model
    */ 
-  interface CompanyUserPermissionFieldRefs {
-    readonly id: FieldRef<"CompanyUserPermission", 'String'>
-    readonly userId: FieldRef<"CompanyUserPermission", 'String'>
-    readonly companyId: FieldRef<"CompanyUserPermission", 'String'>
-    readonly permission: FieldRef<"CompanyUserPermission", 'CompanyPermission'>
-    readonly role: FieldRef<"CompanyUserPermission", 'CompanyRole'>
-    readonly createdAt: FieldRef<"CompanyUserPermission", 'DateTime'>
-    readonly updatedAt: FieldRef<"CompanyUserPermission", 'DateTime'>
+  interface DepartmentUserFieldRefs {
+    readonly id: FieldRef<"DepartmentUser", 'String'>
+    readonly userId: FieldRef<"DepartmentUser", 'String'>
+    readonly companyId: FieldRef<"DepartmentUser", 'String'>
+    readonly department: FieldRef<"DepartmentUser", 'CompanyDepartment'>
+    readonly role: FieldRef<"DepartmentUser", 'CompanyRole'>
+    readonly createdAt: FieldRef<"DepartmentUser", 'DateTime'>
+    readonly updatedAt: FieldRef<"DepartmentUser", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * CompanyUserPermission findUnique
+   * DepartmentUser findUnique
    */
-  export type CompanyUserPermissionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter, which CompanyUserPermission to fetch.
+     * Filter, which DepartmentUser to fetch.
      */
-    where: CompanyUserPermissionWhereUniqueInput
+    where: DepartmentUserWhereUniqueInput
   }
 
   /**
-   * CompanyUserPermission findUniqueOrThrow
+   * DepartmentUser findUniqueOrThrow
    */
-  export type CompanyUserPermissionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter, which CompanyUserPermission to fetch.
+     * Filter, which DepartmentUser to fetch.
      */
-    where: CompanyUserPermissionWhereUniqueInput
+    where: DepartmentUserWhereUniqueInput
   }
 
   /**
-   * CompanyUserPermission findFirst
+   * DepartmentUser findFirst
    */
-  export type CompanyUserPermissionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter, which CompanyUserPermission to fetch.
+     * Filter, which DepartmentUser to fetch.
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CompanyUserPermissions to fetch.
+     * Determine the order of DepartmentUsers to fetch.
      */
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CompanyUserPermissions.
+     * Sets the position for searching for DepartmentUsers.
      */
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    cursor?: DepartmentUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CompanyUserPermissions from the position of the cursor.
+     * Take `±n` DepartmentUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CompanyUserPermissions.
+     * Skip the first `n` DepartmentUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CompanyUserPermissions.
+     * Filter by unique combinations of DepartmentUsers.
      */
-    distinct?: CompanyUserPermissionScalarFieldEnum | CompanyUserPermissionScalarFieldEnum[]
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
   }
 
   /**
-   * CompanyUserPermission findFirstOrThrow
+   * DepartmentUser findFirstOrThrow
    */
-  export type CompanyUserPermissionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter, which CompanyUserPermission to fetch.
+     * Filter, which DepartmentUser to fetch.
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CompanyUserPermissions to fetch.
+     * Determine the order of DepartmentUsers to fetch.
      */
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CompanyUserPermissions.
+     * Sets the position for searching for DepartmentUsers.
      */
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    cursor?: DepartmentUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CompanyUserPermissions from the position of the cursor.
+     * Take `±n` DepartmentUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CompanyUserPermissions.
+     * Skip the first `n` DepartmentUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CompanyUserPermissions.
+     * Filter by unique combinations of DepartmentUsers.
      */
-    distinct?: CompanyUserPermissionScalarFieldEnum | CompanyUserPermissionScalarFieldEnum[]
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
   }
 
   /**
-   * CompanyUserPermission findMany
+   * DepartmentUser findMany
    */
-  export type CompanyUserPermissionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter, which CompanyUserPermissions to fetch.
+     * Filter, which DepartmentUsers to fetch.
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CompanyUserPermissions to fetch.
+     * Determine the order of DepartmentUsers to fetch.
      */
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing CompanyUserPermissions.
+     * Sets the position for listing DepartmentUsers.
      */
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    cursor?: DepartmentUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CompanyUserPermissions from the position of the cursor.
+     * Take `±n` DepartmentUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CompanyUserPermissions.
+     * Skip the first `n` DepartmentUsers.
      */
     skip?: number
-    distinct?: CompanyUserPermissionScalarFieldEnum | CompanyUserPermissionScalarFieldEnum[]
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
   }
 
   /**
-   * CompanyUserPermission create
+   * DepartmentUser create
    */
-  export type CompanyUserPermissionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * The data needed to create a CompanyUserPermission.
+     * The data needed to create a DepartmentUser.
      */
-    data: XOR<CompanyUserPermissionCreateInput, CompanyUserPermissionUncheckedCreateInput>
+    data: XOR<DepartmentUserCreateInput, DepartmentUserUncheckedCreateInput>
   }
 
   /**
-   * CompanyUserPermission createMany
+   * DepartmentUser createMany
    */
-  export type CompanyUserPermissionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many CompanyUserPermissions.
+     * The data used to create many DepartmentUsers.
      */
-    data: CompanyUserPermissionCreateManyInput | CompanyUserPermissionCreateManyInput[]
+    data: DepartmentUserCreateManyInput | DepartmentUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CompanyUserPermission createManyAndReturn
+   * DepartmentUser createManyAndReturn
    */
-  export type CompanyUserPermissionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * The data used to create many CompanyUserPermissions.
+     * The data used to create many DepartmentUsers.
      */
-    data: CompanyUserPermissionCreateManyInput | CompanyUserPermissionCreateManyInput[]
+    data: DepartmentUserCreateManyInput | DepartmentUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CompanyUserPermission update
+   * DepartmentUser update
    */
-  export type CompanyUserPermissionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * The data needed to update a CompanyUserPermission.
+     * The data needed to update a DepartmentUser.
      */
-    data: XOR<CompanyUserPermissionUpdateInput, CompanyUserPermissionUncheckedUpdateInput>
+    data: XOR<DepartmentUserUpdateInput, DepartmentUserUncheckedUpdateInput>
     /**
-     * Choose, which CompanyUserPermission to update.
+     * Choose, which DepartmentUser to update.
      */
-    where: CompanyUserPermissionWhereUniqueInput
+    where: DepartmentUserWhereUniqueInput
   }
 
   /**
-   * CompanyUserPermission updateMany
+   * DepartmentUser updateMany
    */
-  export type CompanyUserPermissionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CompanyUserPermissions.
+     * The data used to update DepartmentUsers.
      */
-    data: XOR<CompanyUserPermissionUpdateManyMutationInput, CompanyUserPermissionUncheckedUpdateManyInput>
+    data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyInput>
     /**
-     * Filter which CompanyUserPermissions to update
+     * Filter which DepartmentUsers to update
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
   }
 
   /**
-   * CompanyUserPermission upsert
+   * DepartmentUser upsert
    */
-  export type CompanyUserPermissionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * The filter to search for the CompanyUserPermission to update in case it exists.
+     * The filter to search for the DepartmentUser to update in case it exists.
      */
-    where: CompanyUserPermissionWhereUniqueInput
+    where: DepartmentUserWhereUniqueInput
     /**
-     * In case the CompanyUserPermission found by the `where` argument doesn't exist, create a new CompanyUserPermission with this data.
+     * In case the DepartmentUser found by the `where` argument doesn't exist, create a new DepartmentUser with this data.
      */
-    create: XOR<CompanyUserPermissionCreateInput, CompanyUserPermissionUncheckedCreateInput>
+    create: XOR<DepartmentUserCreateInput, DepartmentUserUncheckedCreateInput>
     /**
-     * In case the CompanyUserPermission was found with the provided `where` argument, update it with this data.
+     * In case the DepartmentUser was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CompanyUserPermissionUpdateInput, CompanyUserPermissionUncheckedUpdateInput>
+    update: XOR<DepartmentUserUpdateInput, DepartmentUserUncheckedUpdateInput>
   }
 
   /**
-   * CompanyUserPermission delete
+   * DepartmentUser delete
    */
-  export type CompanyUserPermissionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
     /**
-     * Filter which CompanyUserPermission to delete.
+     * Filter which DepartmentUser to delete.
      */
-    where: CompanyUserPermissionWhereUniqueInput
+    where: DepartmentUserWhereUniqueInput
   }
 
   /**
-   * CompanyUserPermission deleteMany
+   * DepartmentUser deleteMany
    */
-  export type CompanyUserPermissionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CompanyUserPermissions to delete
+     * Filter which DepartmentUsers to delete
      */
-    where?: CompanyUserPermissionWhereInput
+    where?: DepartmentUserWhereInput
   }
 
   /**
-   * CompanyUserPermission without action
+   * DepartmentUser without action
    */
-  export type CompanyUserPermissionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DepartmentUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
+    include?: DepartmentUserInclude<ExtArgs> | null
   }
 
 
@@ -45371,7 +45371,7 @@ export namespace Prisma {
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
-    permissions?: boolean | User$permissionsArgs<ExtArgs>
+    departments?: boolean | User$departmentsArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
@@ -45394,7 +45394,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
-    permissions?: boolean | User$permissionsArgs<ExtArgs>
+    departments?: boolean | User$departmentsArgs<ExtArgs>
     facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
@@ -45408,7 +45408,7 @@ export namespace Prisma {
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       companies: Prisma.$CompanyUserPayload<ExtArgs>[]
-      permissions: Prisma.$CompanyUserPermissionPayload<ExtArgs>[]
+      departments: Prisma.$DepartmentUserPayload<ExtArgs>[]
       facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
@@ -45818,7 +45818,7 @@ export namespace Prisma {
 
     companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    permissions<T extends User$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPermissionPayload<ExtArgs>, T, 'findMany'> | Null>;
+    departments<T extends User$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -46222,23 +46222,23 @@ export namespace Prisma {
   }
 
   /**
-   * User.permissions
+   * User.departments
    */
-  export type User$permissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$departmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanyUserPermission
+     * Select specific fields to fetch from the DepartmentUser
      */
-    select?: CompanyUserPermissionSelect<ExtArgs> | null
+    select?: DepartmentUserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CompanyUserPermissionInclude<ExtArgs> | null
-    where?: CompanyUserPermissionWhereInput
-    orderBy?: CompanyUserPermissionOrderByWithRelationInput | CompanyUserPermissionOrderByWithRelationInput[]
-    cursor?: CompanyUserPermissionWhereUniqueInput
+    include?: DepartmentUserInclude<ExtArgs> | null
+    where?: DepartmentUserWhereInput
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
+    cursor?: DepartmentUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CompanyUserPermissionScalarFieldEnum | CompanyUserPermissionScalarFieldEnum[]
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
   }
 
   /**
@@ -51077,17 +51077,17 @@ export namespace Prisma {
   export type CompanyUserScalarFieldEnum = (typeof CompanyUserScalarFieldEnum)[keyof typeof CompanyUserScalarFieldEnum]
 
 
-  export const CompanyUserPermissionScalarFieldEnum: {
+  export const DepartmentUserScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
     companyId: 'companyId',
-    permission: 'permission',
+    department: 'department',
     role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type CompanyUserPermissionScalarFieldEnum = (typeof CompanyUserPermissionScalarFieldEnum)[keyof typeof CompanyUserPermissionScalarFieldEnum]
+  export type DepartmentUserScalarFieldEnum = (typeof DepartmentUserScalarFieldEnum)[keyof typeof DepartmentUserScalarFieldEnum]
 
 
   export const CompanyPatientScalarFieldEnum: {
@@ -51725,16 +51725,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'CompanyPermission'
+   * Reference to a field of type 'CompanyDepartment'
    */
-  export type EnumCompanyPermissionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyPermission'>
+  export type EnumCompanyDepartmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyDepartment'>
     
 
 
   /**
-   * Reference to a field of type 'CompanyPermission[]'
+   * Reference to a field of type 'CompanyDepartment[]'
    */
-  export type ListEnumCompanyPermissionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyPermission[]'>
+  export type ListEnumCompanyDepartmentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyDepartment[]'>
     
 
 
@@ -51801,7 +51801,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyListRelationFilter
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
-    permissions?: CompanyUserPermissionListRelationFilter
+    departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeProduct?: StripeProductListRelationFilter
@@ -51823,7 +51823,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyOrderByRelationAggregateInput
     packages?: ShippingPackageOrderByRelationAggregateInput
     users?: CompanyUserOrderByRelationAggregateInput
-    permissions?: CompanyUserPermissionOrderByRelationAggregateInput
+    departments?: DepartmentUserOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     stripeProduct?: StripeProductOrderByRelationAggregateInput
@@ -51848,7 +51848,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyListRelationFilter
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
-    permissions?: CompanyUserPermissionListRelationFilter
+    departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeProduct?: StripeProductListRelationFilter
@@ -54367,26 +54367,26 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyUser"> | Date | string
   }
 
-  export type CompanyUserPermissionWhereInput = {
-    AND?: CompanyUserPermissionWhereInput | CompanyUserPermissionWhereInput[]
-    OR?: CompanyUserPermissionWhereInput[]
-    NOT?: CompanyUserPermissionWhereInput | CompanyUserPermissionWhereInput[]
-    id?: StringFilter<"CompanyUserPermission"> | string
-    userId?: StringFilter<"CompanyUserPermission"> | string
-    companyId?: StringFilter<"CompanyUserPermission"> | string
-    permission?: EnumCompanyPermissionFilter<"CompanyUserPermission"> | $Enums.CompanyPermission
-    role?: EnumCompanyRoleFilter<"CompanyUserPermission"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
-    updatedAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
+  export type DepartmentUserWhereInput = {
+    AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
+    OR?: DepartmentUserWhereInput[]
+    NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
+    id?: StringFilter<"DepartmentUser"> | string
+    userId?: StringFilter<"DepartmentUser"> | string
+    companyId?: StringFilter<"DepartmentUser"> | string
+    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
+    updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }
 
-  export type CompanyUserPermissionOrderByWithRelationInput = {
+  export type DepartmentUserOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
     companyId?: SortOrder
-    permission?: SortOrder
+    department?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -54394,46 +54394,46 @@ export namespace Prisma {
     company?: CompanyOrderByWithRelationInput
   }
 
-  export type CompanyUserPermissionWhereUniqueInput = Prisma.AtLeast<{
+  export type DepartmentUserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId_companyId_permission?: CompanyUserPermissionUserIdCompanyIdPermissionCompoundUniqueInput
-    AND?: CompanyUserPermissionWhereInput | CompanyUserPermissionWhereInput[]
-    OR?: CompanyUserPermissionWhereInput[]
-    NOT?: CompanyUserPermissionWhereInput | CompanyUserPermissionWhereInput[]
-    userId?: StringFilter<"CompanyUserPermission"> | string
-    companyId?: StringFilter<"CompanyUserPermission"> | string
-    permission?: EnumCompanyPermissionFilter<"CompanyUserPermission"> | $Enums.CompanyPermission
-    role?: EnumCompanyRoleFilter<"CompanyUserPermission"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
-    updatedAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
+    userId_companyId_department?: DepartmentUserUserIdCompanyIdDepartmentCompoundUniqueInput
+    AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
+    OR?: DepartmentUserWhereInput[]
+    NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
+    userId?: StringFilter<"DepartmentUser"> | string
+    companyId?: StringFilter<"DepartmentUser"> | string
+    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
+    updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-  }, "id" | "userId_companyId_permission">
+  }, "id" | "userId_companyId_department">
 
-  export type CompanyUserPermissionOrderByWithAggregationInput = {
+  export type DepartmentUserOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
     companyId?: SortOrder
-    permission?: SortOrder
+    department?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CompanyUserPermissionCountOrderByAggregateInput
-    _max?: CompanyUserPermissionMaxOrderByAggregateInput
-    _min?: CompanyUserPermissionMinOrderByAggregateInput
+    _count?: DepartmentUserCountOrderByAggregateInput
+    _max?: DepartmentUserMaxOrderByAggregateInput
+    _min?: DepartmentUserMinOrderByAggregateInput
   }
 
-  export type CompanyUserPermissionScalarWhereWithAggregatesInput = {
-    AND?: CompanyUserPermissionScalarWhereWithAggregatesInput | CompanyUserPermissionScalarWhereWithAggregatesInput[]
-    OR?: CompanyUserPermissionScalarWhereWithAggregatesInput[]
-    NOT?: CompanyUserPermissionScalarWhereWithAggregatesInput | CompanyUserPermissionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CompanyUserPermission"> | string
-    userId?: StringWithAggregatesFilter<"CompanyUserPermission"> | string
-    companyId?: StringWithAggregatesFilter<"CompanyUserPermission"> | string
-    permission?: EnumCompanyPermissionWithAggregatesFilter<"CompanyUserPermission"> | $Enums.CompanyPermission
-    role?: EnumCompanyRoleWithAggregatesFilter<"CompanyUserPermission"> | $Enums.CompanyRole
-    createdAt?: DateTimeWithAggregatesFilter<"CompanyUserPermission"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CompanyUserPermission"> | Date | string
+  export type DepartmentUserScalarWhereWithAggregatesInput = {
+    AND?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
+    OR?: DepartmentUserScalarWhereWithAggregatesInput[]
+    NOT?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DepartmentUser"> | string
+    userId?: StringWithAggregatesFilter<"DepartmentUser"> | string
+    companyId?: StringWithAggregatesFilter<"DepartmentUser"> | string
+    department?: EnumCompanyDepartmentWithAggregatesFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleWithAggregatesFilter<"DepartmentUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeWithAggregatesFilter<"DepartmentUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DepartmentUser"> | Date | string
   }
 
   export type CompanyPatientWhereInput = {
@@ -54825,7 +54825,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
-    permissions?: CompanyUserPermissionListRelationFilter
+    departments?: DepartmentUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
@@ -54843,7 +54843,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     companies?: CompanyUserOrderByRelationAggregateInput
-    permissions?: CompanyUserPermissionOrderByRelationAggregateInput
+    departments?: DepartmentUserOrderByRelationAggregateInput
     facilities?: FacilityUserOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
     notes?: WorkbenchNotesOrderByRelationAggregateInput
@@ -54864,7 +54864,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
-    permissions?: CompanyUserPermissionListRelationFilter
+    departments?: DepartmentUserListRelationFilter
     facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
@@ -55368,7 +55368,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -55390,7 +55390,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -55412,7 +55412,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -55434,7 +55434,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -58226,69 +58226,69 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionCreateInput = {
+  export type DepartmentUserCreateInput = {
     id?: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutPermissionsInput
-    company: CompanyCreateNestedOneWithoutPermissionsInput
+    user: UserCreateNestedOneWithoutDepartmentsInput
+    company: CompanyCreateNestedOneWithoutDepartmentsInput
   }
 
-  export type CompanyUserPermissionUncheckedCreateInput = {
-    id?: string
-    userId: string
-    companyId: string
-    permission: $Enums.CompanyPermission
-    role?: $Enums.CompanyRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CompanyUserPermissionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
-    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
-    company?: CompanyUpdateOneRequiredWithoutPermissionsNestedInput
-  }
-
-  export type CompanyUserPermissionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
-    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CompanyUserPermissionCreateManyInput = {
+  export type DepartmentUserUncheckedCreateInput = {
     id?: string
     userId: string
     companyId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CompanyUserPermissionUpdateManyMutationInput = {
+  export type DepartmentUserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutDepartmentsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+  }
+
+  export type DepartmentUserUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionUncheckedUpdateManyInput = {
+  export type DepartmentUserCreateManyInput = {
+    id?: string
+    userId: string
+    companyId: string
+    department: $Enums.CompanyDepartment
+    role?: $Enums.CompanyRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepartmentUserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentUserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58699,7 +58699,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
@@ -58717,7 +58717,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -58735,7 +58735,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
@@ -58753,7 +58753,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -59442,10 +59442,10 @@ export namespace Prisma {
     none?: CompanyUserWhereInput
   }
 
-  export type CompanyUserPermissionListRelationFilter = {
-    every?: CompanyUserPermissionWhereInput
-    some?: CompanyUserPermissionWhereInput
-    none?: CompanyUserPermissionWhereInput
+  export type DepartmentUserListRelationFilter = {
+    every?: DepartmentUserWhereInput
+    some?: DepartmentUserWhereInput
+    none?: DepartmentUserWhereInput
   }
 
   export type CompanyPatientListRelationFilter = {
@@ -59496,7 +59496,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CompanyUserPermissionOrderByRelationAggregateInput = {
+  export type DepartmentUserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -61705,57 +61705,57 @@ export namespace Prisma {
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
-  export type EnumCompanyPermissionFilter<$PrismaModel = never> = {
-    equals?: $Enums.CompanyPermission | EnumCompanyPermissionFieldRefInput<$PrismaModel>
-    in?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    not?: NestedEnumCompanyPermissionFilter<$PrismaModel> | $Enums.CompanyPermission
+  export type EnumCompanyDepartmentFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyDepartment | EnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyDepartmentFilter<$PrismaModel> | $Enums.CompanyDepartment
   }
 
-  export type CompanyUserPermissionUserIdCompanyIdPermissionCompoundUniqueInput = {
+  export type DepartmentUserUserIdCompanyIdDepartmentCompoundUniqueInput = {
     userId: string
     companyId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
   }
 
-  export type CompanyUserPermissionCountOrderByAggregateInput = {
+  export type DepartmentUserCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     companyId?: SortOrder
-    permission?: SortOrder
+    department?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CompanyUserPermissionMaxOrderByAggregateInput = {
+  export type DepartmentUserMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     companyId?: SortOrder
-    permission?: SortOrder
+    department?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CompanyUserPermissionMinOrderByAggregateInput = {
+  export type DepartmentUserMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     companyId?: SortOrder
-    permission?: SortOrder
+    department?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type EnumCompanyPermissionWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.CompanyPermission | EnumCompanyPermissionFieldRefInput<$PrismaModel>
-    in?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    not?: NestedEnumCompanyPermissionWithAggregatesFilter<$PrismaModel> | $Enums.CompanyPermission
+  export type EnumCompanyDepartmentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyDepartment | EnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyDepartmentWithAggregatesFilter<$PrismaModel> | $Enums.CompanyDepartment
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumCompanyPermissionFilter<$PrismaModel>
-    _max?: NestedEnumCompanyPermissionFilter<$PrismaModel>
+    _min?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
+    _max?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
   }
 
   export type CompanyPatientExternalIdCompanyIdCompoundUniqueInput = {
@@ -62473,11 +62473,11 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type CompanyUserPermissionCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput> | CompanyUserPermissionCreateWithoutCompanyInput[] | CompanyUserPermissionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutCompanyInput | CompanyUserPermissionCreateOrConnectWithoutCompanyInput[]
-    createMany?: CompanyUserPermissionCreateManyCompanyInputEnvelope
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
+  export type DepartmentUserCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
+    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
   }
 
   export type CompanyPatientCreateNestedManyWithoutCompanyInput = {
@@ -62542,11 +62542,11 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput> | CompanyUserPermissionCreateWithoutCompanyInput[] | CompanyUserPermissionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutCompanyInput | CompanyUserPermissionCreateOrConnectWithoutCompanyInput[]
-    createMany?: CompanyUserPermissionCreateManyCompanyInputEnvelope
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
+  export type DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
+    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
   }
 
   export type CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -62662,18 +62662,18 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type CompanyUserPermissionUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput> | CompanyUserPermissionCreateWithoutCompanyInput[] | CompanyUserPermissionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutCompanyInput | CompanyUserPermissionCreateOrConnectWithoutCompanyInput[]
-    upsert?: CompanyUserPermissionUpsertWithWhereUniqueWithoutCompanyInput | CompanyUserPermissionUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: CompanyUserPermissionCreateManyCompanyInputEnvelope
-    set?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    disconnect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    delete?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    update?: CompanyUserPermissionUpdateWithWhereUniqueWithoutCompanyInput | CompanyUserPermissionUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: CompanyUserPermissionUpdateManyWithWhereWithoutCompanyInput | CompanyUserPermissionUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
+  export type DepartmentUserUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutCompanyInput | DepartmentUserUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
   }
 
   export type CompanyPatientUpdateManyWithoutCompanyNestedInput = {
@@ -62798,18 +62798,18 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput> | CompanyUserPermissionCreateWithoutCompanyInput[] | CompanyUserPermissionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutCompanyInput | CompanyUserPermissionCreateOrConnectWithoutCompanyInput[]
-    upsert?: CompanyUserPermissionUpsertWithWhereUniqueWithoutCompanyInput | CompanyUserPermissionUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: CompanyUserPermissionCreateManyCompanyInputEnvelope
-    set?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    disconnect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    delete?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    update?: CompanyUserPermissionUpdateWithWhereUniqueWithoutCompanyInput | CompanyUserPermissionUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: CompanyUserPermissionUpdateManyWithWhereWithoutCompanyInput | CompanyUserPermissionUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
+  export type DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutCompanyInput | DepartmentUserUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -64983,36 +64983,36 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompaniesInput, UserUpdateWithoutCompaniesInput>, UserUncheckedUpdateWithoutCompaniesInput>
   }
 
-  export type UserCreateNestedOneWithoutPermissionsInput = {
-    create?: XOR<UserCreateWithoutPermissionsInput, UserUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPermissionsInput
+  export type UserCreateNestedOneWithoutDepartmentsInput = {
+    create?: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDepartmentsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CompanyCreateNestedOneWithoutPermissionsInput = {
-    create?: XOR<CompanyCreateWithoutPermissionsInput, CompanyUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutPermissionsInput
+  export type CompanyCreateNestedOneWithoutDepartmentsInput = {
+    create?: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutDepartmentsInput
     connect?: CompanyWhereUniqueInput
   }
 
-  export type EnumCompanyPermissionFieldUpdateOperationsInput = {
-    set?: $Enums.CompanyPermission
+  export type EnumCompanyDepartmentFieldUpdateOperationsInput = {
+    set?: $Enums.CompanyDepartment
   }
 
-  export type UserUpdateOneRequiredWithoutPermissionsNestedInput = {
-    create?: XOR<UserCreateWithoutPermissionsInput, UserUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPermissionsInput
-    upsert?: UserUpsertWithoutPermissionsInput
+  export type UserUpdateOneRequiredWithoutDepartmentsNestedInput = {
+    create?: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDepartmentsInput
+    upsert?: UserUpsertWithoutDepartmentsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPermissionsInput, UserUpdateWithoutPermissionsInput>, UserUncheckedUpdateWithoutPermissionsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDepartmentsInput, UserUpdateWithoutDepartmentsInput>, UserUncheckedUpdateWithoutDepartmentsInput>
   }
 
-  export type CompanyUpdateOneRequiredWithoutPermissionsNestedInput = {
-    create?: XOR<CompanyCreateWithoutPermissionsInput, CompanyUncheckedCreateWithoutPermissionsInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutPermissionsInput
-    upsert?: CompanyUpsertWithoutPermissionsInput
+  export type CompanyUpdateOneRequiredWithoutDepartmentsNestedInput = {
+    create?: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutDepartmentsInput
+    upsert?: CompanyUpsertWithoutDepartmentsInput
     connect?: CompanyWhereUniqueInput
-    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPermissionsInput, CompanyUpdateWithoutPermissionsInput>, CompanyUncheckedUpdateWithoutPermissionsInput>
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutDepartmentsInput, CompanyUpdateWithoutDepartmentsInput>, CompanyUncheckedUpdateWithoutDepartmentsInput>
   }
 
   export type CompanyCreateNestedOneWithoutPatientsInput = {
@@ -65303,11 +65303,11 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type CompanyUserPermissionCreateNestedManyWithoutUserInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput> | CompanyUserPermissionCreateWithoutUserInput[] | CompanyUserPermissionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutUserInput | CompanyUserPermissionCreateOrConnectWithoutUserInput[]
-    createMany?: CompanyUserPermissionCreateManyUserInputEnvelope
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
+  export type DepartmentUserCreateNestedManyWithoutUserInput = {
+    create?: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput> | DepartmentUserCreateWithoutUserInput[] | DepartmentUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutUserInput | DepartmentUserCreateOrConnectWithoutUserInput[]
+    createMany?: DepartmentUserCreateManyUserInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
   }
 
   export type FacilityUserCreateNestedManyWithoutUserInput = {
@@ -65351,11 +65351,11 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput> | CompanyUserPermissionCreateWithoutUserInput[] | CompanyUserPermissionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutUserInput | CompanyUserPermissionCreateOrConnectWithoutUserInput[]
-    createMany?: CompanyUserPermissionCreateManyUserInputEnvelope
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
+  export type DepartmentUserUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput> | DepartmentUserCreateWithoutUserInput[] | DepartmentUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutUserInput | DepartmentUserCreateOrConnectWithoutUserInput[]
+    createMany?: DepartmentUserCreateManyUserInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
   }
 
   export type FacilityUserUncheckedCreateNestedManyWithoutUserInput = {
@@ -65413,18 +65413,18 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type CompanyUserPermissionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput> | CompanyUserPermissionCreateWithoutUserInput[] | CompanyUserPermissionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutUserInput | CompanyUserPermissionCreateOrConnectWithoutUserInput[]
-    upsert?: CompanyUserPermissionUpsertWithWhereUniqueWithoutUserInput | CompanyUserPermissionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CompanyUserPermissionCreateManyUserInputEnvelope
-    set?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    disconnect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    delete?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    update?: CompanyUserPermissionUpdateWithWhereUniqueWithoutUserInput | CompanyUserPermissionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CompanyUserPermissionUpdateManyWithWhereWithoutUserInput | CompanyUserPermissionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
+  export type DepartmentUserUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput> | DepartmentUserCreateWithoutUserInput[] | DepartmentUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutUserInput | DepartmentUserCreateOrConnectWithoutUserInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutUserInput | DepartmentUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DepartmentUserCreateManyUserInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutUserInput | DepartmentUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutUserInput | DepartmentUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
   }
 
   export type FacilityUserUpdateManyWithoutUserNestedInput = {
@@ -65507,18 +65507,18 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput> | CompanyUserPermissionCreateWithoutUserInput[] | CompanyUserPermissionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CompanyUserPermissionCreateOrConnectWithoutUserInput | CompanyUserPermissionCreateOrConnectWithoutUserInput[]
-    upsert?: CompanyUserPermissionUpsertWithWhereUniqueWithoutUserInput | CompanyUserPermissionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CompanyUserPermissionCreateManyUserInputEnvelope
-    set?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    disconnect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    delete?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    connect?: CompanyUserPermissionWhereUniqueInput | CompanyUserPermissionWhereUniqueInput[]
-    update?: CompanyUserPermissionUpdateWithWhereUniqueWithoutUserInput | CompanyUserPermissionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CompanyUserPermissionUpdateManyWithWhereWithoutUserInput | CompanyUserPermissionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
+  export type DepartmentUserUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput> | DepartmentUserCreateWithoutUserInput[] | DepartmentUserUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutUserInput | DepartmentUserCreateOrConnectWithoutUserInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutUserInput | DepartmentUserUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DepartmentUserCreateManyUserInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutUserInput | DepartmentUserUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutUserInput | DepartmentUserUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
   }
 
   export type FacilityUserUncheckedUpdateManyWithoutUserNestedInput = {
@@ -66328,21 +66328,21 @@ export namespace Prisma {
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
-  export type NestedEnumCompanyPermissionFilter<$PrismaModel = never> = {
-    equals?: $Enums.CompanyPermission | EnumCompanyPermissionFieldRefInput<$PrismaModel>
-    in?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    not?: NestedEnumCompanyPermissionFilter<$PrismaModel> | $Enums.CompanyPermission
+  export type NestedEnumCompanyDepartmentFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyDepartment | EnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyDepartmentFilter<$PrismaModel> | $Enums.CompanyDepartment
   }
 
-  export type NestedEnumCompanyPermissionWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.CompanyPermission | EnumCompanyPermissionFieldRefInput<$PrismaModel>
-    in?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CompanyPermission[] | ListEnumCompanyPermissionFieldRefInput<$PrismaModel>
-    not?: NestedEnumCompanyPermissionWithAggregatesFilter<$PrismaModel> | $Enums.CompanyPermission
+  export type NestedEnumCompanyDepartmentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CompanyDepartment | EnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    in?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
+    not?: NestedEnumCompanyDepartmentWithAggregatesFilter<$PrismaModel> | $Enums.CompanyDepartment
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumCompanyPermissionFilter<$PrismaModel>
-    _max?: NestedEnumCompanyPermissionFilter<$PrismaModel>
+    _min?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
+    _max?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
   }
 
   export type NestedEnumStripeProductTypeFilter<$PrismaModel = never> = {
@@ -66697,31 +66697,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CompanyUserPermissionCreateWithoutCompanyInput = {
+  export type DepartmentUserCreateWithoutCompanyInput = {
     id?: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutPermissionsInput
+    user: UserCreateNestedOneWithoutDepartmentsInput
   }
 
-  export type CompanyUserPermissionUncheckedCreateWithoutCompanyInput = {
+  export type DepartmentUserUncheckedCreateWithoutCompanyInput = {
     id?: string
     userId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CompanyUserPermissionCreateOrConnectWithoutCompanyInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    create: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput>
+  export type DepartmentUserCreateOrConnectWithoutCompanyInput = {
+    where: DepartmentUserWhereUniqueInput
+    create: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput>
   }
 
-  export type CompanyUserPermissionCreateManyCompanyInputEnvelope = {
-    data: CompanyUserPermissionCreateManyCompanyInput | CompanyUserPermissionCreateManyCompanyInput[]
+  export type DepartmentUserCreateManyCompanyInputEnvelope = {
+    data: DepartmentUserCreateManyCompanyInput | DepartmentUserCreateManyCompanyInput[]
     skipDuplicates?: boolean
   }
 
@@ -67019,33 +67019,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
   }
 
-  export type CompanyUserPermissionUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    update: XOR<CompanyUserPermissionUpdateWithoutCompanyInput, CompanyUserPermissionUncheckedUpdateWithoutCompanyInput>
-    create: XOR<CompanyUserPermissionCreateWithoutCompanyInput, CompanyUserPermissionUncheckedCreateWithoutCompanyInput>
+  export type DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: DepartmentUserWhereUniqueInput
+    update: XOR<DepartmentUserUpdateWithoutCompanyInput, DepartmentUserUncheckedUpdateWithoutCompanyInput>
+    create: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput>
   }
 
-  export type CompanyUserPermissionUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    data: XOR<CompanyUserPermissionUpdateWithoutCompanyInput, CompanyUserPermissionUncheckedUpdateWithoutCompanyInput>
+  export type DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: DepartmentUserWhereUniqueInput
+    data: XOR<DepartmentUserUpdateWithoutCompanyInput, DepartmentUserUncheckedUpdateWithoutCompanyInput>
   }
 
-  export type CompanyUserPermissionUpdateManyWithWhereWithoutCompanyInput = {
-    where: CompanyUserPermissionScalarWhereInput
-    data: XOR<CompanyUserPermissionUpdateManyMutationInput, CompanyUserPermissionUncheckedUpdateManyWithoutCompanyInput>
+  export type DepartmentUserUpdateManyWithWhereWithoutCompanyInput = {
+    where: DepartmentUserScalarWhereInput
+    data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyWithoutCompanyInput>
   }
 
-  export type CompanyUserPermissionScalarWhereInput = {
-    AND?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
-    OR?: CompanyUserPermissionScalarWhereInput[]
-    NOT?: CompanyUserPermissionScalarWhereInput | CompanyUserPermissionScalarWhereInput[]
-    id?: StringFilter<"CompanyUserPermission"> | string
-    userId?: StringFilter<"CompanyUserPermission"> | string
-    companyId?: StringFilter<"CompanyUserPermission"> | string
-    permission?: EnumCompanyPermissionFilter<"CompanyUserPermission"> | $Enums.CompanyPermission
-    role?: EnumCompanyRoleFilter<"CompanyUserPermission"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
-    updatedAt?: DateTimeFilter<"CompanyUserPermission"> | Date | string
+  export type DepartmentUserScalarWhereInput = {
+    AND?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+    OR?: DepartmentUserScalarWhereInput[]
+    NOT?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+    id?: StringFilter<"DepartmentUser"> | string
+    userId?: StringFilter<"DepartmentUser"> | string
+    companyId?: StringFilter<"DepartmentUser"> | string
+    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
+    updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
   }
 
   export type CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -67190,7 +67190,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -67211,7 +67211,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -67417,7 +67417,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -67438,7 +67438,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -67932,7 +67932,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -67949,7 +67949,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -68055,7 +68055,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -68072,7 +68072,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -68155,7 +68155,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -68176,7 +68176,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -68487,7 +68487,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -68508,7 +68508,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -70281,7 +70281,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -70298,7 +70298,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -70382,7 +70382,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -70399,7 +70399,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -70643,7 +70643,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -70664,7 +70664,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -70701,7 +70701,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -70722,7 +70722,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -72009,7 +72009,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
@@ -72026,7 +72026,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -72052,7 +72052,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
@@ -72073,7 +72073,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
@@ -72106,7 +72106,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
@@ -72123,7 +72123,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -72155,7 +72155,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
@@ -72176,7 +72176,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
@@ -72196,7 +72196,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -72217,7 +72217,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -72239,7 +72239,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
@@ -72256,7 +72256,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -72293,7 +72293,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -72314,7 +72314,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -72342,7 +72342,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
@@ -72359,14 +72359,14 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserCreateWithoutPermissionsInput = {
+  export type UserCreateWithoutDepartmentsInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -72383,7 +72383,7 @@ export namespace Prisma {
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutPermissionsInput = {
+  export type UserUncheckedCreateWithoutDepartmentsInput = {
     id?: string
     email?: string | null
     phone?: string | null
@@ -72400,12 +72400,12 @@ export namespace Prisma {
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutPermissionsInput = {
+  export type UserCreateOrConnectWithoutDepartmentsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPermissionsInput, UserUncheckedCreateWithoutPermissionsInput>
+    create: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
   }
 
-  export type CompanyCreateWithoutPermissionsInput = {
+  export type CompanyCreateWithoutDepartmentsInput = {
     id?: string
     name: string
     url?: string | null
@@ -72426,7 +72426,7 @@ export namespace Prisma {
     stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
   }
 
-  export type CompanyUncheckedCreateWithoutPermissionsInput = {
+  export type CompanyUncheckedCreateWithoutDepartmentsInput = {
     id?: string
     name: string
     url?: string | null
@@ -72447,23 +72447,23 @@ export namespace Prisma {
     stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
   }
 
-  export type CompanyCreateOrConnectWithoutPermissionsInput = {
+  export type CompanyCreateOrConnectWithoutDepartmentsInput = {
     where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutPermissionsInput, CompanyUncheckedCreateWithoutPermissionsInput>
+    create: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
   }
 
-  export type UserUpsertWithoutPermissionsInput = {
-    update: XOR<UserUpdateWithoutPermissionsInput, UserUncheckedUpdateWithoutPermissionsInput>
-    create: XOR<UserCreateWithoutPermissionsInput, UserUncheckedCreateWithoutPermissionsInput>
+  export type UserUpsertWithoutDepartmentsInput = {
+    update: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
+    create: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutPermissionsInput = {
+  export type UserUpdateToOneWithWhereWithoutDepartmentsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutPermissionsInput, UserUncheckedUpdateWithoutPermissionsInput>
+    data: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
   }
 
-  export type UserUpdateWithoutPermissionsInput = {
+  export type UserUpdateWithoutDepartmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72480,7 +72480,7 @@ export namespace Prisma {
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutPermissionsInput = {
+  export type UserUncheckedUpdateWithoutDepartmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72497,18 +72497,18 @@ export namespace Prisma {
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type CompanyUpsertWithoutPermissionsInput = {
-    update: XOR<CompanyUpdateWithoutPermissionsInput, CompanyUncheckedUpdateWithoutPermissionsInput>
-    create: XOR<CompanyCreateWithoutPermissionsInput, CompanyUncheckedCreateWithoutPermissionsInput>
+  export type CompanyUpsertWithoutDepartmentsInput = {
+    update: XOR<CompanyUpdateWithoutDepartmentsInput, CompanyUncheckedUpdateWithoutDepartmentsInput>
+    create: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
     where?: CompanyWhereInput
   }
 
-  export type CompanyUpdateToOneWithWhereWithoutPermissionsInput = {
+  export type CompanyUpdateToOneWithWhereWithoutDepartmentsInput = {
     where?: CompanyWhereInput
-    data: XOR<CompanyUpdateWithoutPermissionsInput, CompanyUncheckedUpdateWithoutPermissionsInput>
+    data: XOR<CompanyUpdateWithoutDepartmentsInput, CompanyUncheckedUpdateWithoutDepartmentsInput>
   }
 
-  export type CompanyUpdateWithoutPermissionsInput = {
+  export type CompanyUpdateWithoutDepartmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72529,7 +72529,7 @@ export namespace Prisma {
     stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
   }
 
-  export type CompanyUncheckedUpdateWithoutPermissionsInput = {
+  export type CompanyUncheckedUpdateWithoutDepartmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72565,7 +72565,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
@@ -72586,7 +72586,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
@@ -72670,7 +72670,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
@@ -72691,7 +72691,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
@@ -72792,7 +72792,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -72809,7 +72809,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -72879,7 +72879,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -72896,7 +72896,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -72917,7 +72917,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyCreateNestedOneWithoutCompanyInput
@@ -72938,7 +72938,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeCompany?: StripeCompanyUncheckedCreateNestedOneWithoutCompanyInput
@@ -73008,7 +73008,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUpdateOneWithoutCompanyNestedInput
@@ -73029,7 +73029,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeCompany?: StripeCompanyUncheckedUpdateOneWithoutCompanyNestedInput
@@ -73350,7 +73350,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -73371,7 +73371,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -73408,7 +73408,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -73429,7 +73429,7 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -73483,31 +73483,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CompanyUserPermissionCreateWithoutUserInput = {
+  export type DepartmentUserCreateWithoutUserInput = {
     id?: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutPermissionsInput
+    company: CompanyCreateNestedOneWithoutDepartmentsInput
   }
 
-  export type CompanyUserPermissionUncheckedCreateWithoutUserInput = {
+  export type DepartmentUserUncheckedCreateWithoutUserInput = {
     id?: string
     companyId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CompanyUserPermissionCreateOrConnectWithoutUserInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    create: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput>
+  export type DepartmentUserCreateOrConnectWithoutUserInput = {
+    where: DepartmentUserWhereUniqueInput
+    create: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput>
   }
 
-  export type CompanyUserPermissionCreateManyUserInputEnvelope = {
-    data: CompanyUserPermissionCreateManyUserInput | CompanyUserPermissionCreateManyUserInput[]
+  export type DepartmentUserCreateManyUserInputEnvelope = {
+    data: DepartmentUserCreateManyUserInput | DepartmentUserCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -73665,20 +73665,20 @@ export namespace Prisma {
     data: XOR<CompanyUserUpdateManyMutationInput, CompanyUserUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type CompanyUserPermissionUpsertWithWhereUniqueWithoutUserInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    update: XOR<CompanyUserPermissionUpdateWithoutUserInput, CompanyUserPermissionUncheckedUpdateWithoutUserInput>
-    create: XOR<CompanyUserPermissionCreateWithoutUserInput, CompanyUserPermissionUncheckedCreateWithoutUserInput>
+  export type DepartmentUserUpsertWithWhereUniqueWithoutUserInput = {
+    where: DepartmentUserWhereUniqueInput
+    update: XOR<DepartmentUserUpdateWithoutUserInput, DepartmentUserUncheckedUpdateWithoutUserInput>
+    create: XOR<DepartmentUserCreateWithoutUserInput, DepartmentUserUncheckedCreateWithoutUserInput>
   }
 
-  export type CompanyUserPermissionUpdateWithWhereUniqueWithoutUserInput = {
-    where: CompanyUserPermissionWhereUniqueInput
-    data: XOR<CompanyUserPermissionUpdateWithoutUserInput, CompanyUserPermissionUncheckedUpdateWithoutUserInput>
+  export type DepartmentUserUpdateWithWhereUniqueWithoutUserInput = {
+    where: DepartmentUserWhereUniqueInput
+    data: XOR<DepartmentUserUpdateWithoutUserInput, DepartmentUserUncheckedUpdateWithoutUserInput>
   }
 
-  export type CompanyUserPermissionUpdateManyWithWhereWithoutUserInput = {
-    where: CompanyUserPermissionScalarWhereInput
-    data: XOR<CompanyUserPermissionUpdateManyMutationInput, CompanyUserPermissionUncheckedUpdateManyWithoutUserInput>
+  export type DepartmentUserUpdateManyWithWhereWithoutUserInput = {
+    where: DepartmentUserScalarWhereInput
+    data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyWithoutUserInput>
   }
 
   export type FacilityUserUpsertWithWhereUniqueWithoutUserInput = {
@@ -73768,7 +73768,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
@@ -73785,7 +73785,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
@@ -73818,7 +73818,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
@@ -73835,7 +73835,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
@@ -73856,7 +73856,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductCreateNestedManyWithoutCompanyInput
@@ -73877,7 +73877,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    permissions?: CompanyUserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeProduct?: StripeProductUncheckedCreateNestedManyWithoutCompanyInput
@@ -73914,7 +73914,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUpdateManyWithoutCompanyNestedInput
@@ -73935,7 +73935,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    permissions?: CompanyUserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeProduct?: StripeProductUncheckedUpdateManyWithoutCompanyNestedInput
@@ -74011,10 +74011,10 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CompanyUserPermissionCreateManyCompanyInput = {
+  export type DepartmentUserCreateManyCompanyInput = {
     id?: string
     userId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -74270,28 +74270,28 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionUpdateWithoutCompanyInput = {
+  export type DepartmentUserUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPermissionsNestedInput
+    user?: UserUpdateOneRequiredWithoutDepartmentsNestedInput
   }
 
-  export type CompanyUserPermissionUncheckedUpdateWithoutCompanyInput = {
+  export type DepartmentUserUncheckedUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionUncheckedUpdateManyWithoutCompanyInput = {
+  export type DepartmentUserUncheckedUpdateManyWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -76898,10 +76898,10 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CompanyUserPermissionCreateManyUserInput = {
+  export type DepartmentUserCreateManyUserInput = {
     id?: string
     companyId: string
-    permission: $Enums.CompanyPermission
+    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -76978,28 +76978,28 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionUpdateWithoutUserInput = {
+  export type DepartmentUserUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutPermissionsNestedInput
+    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
   }
 
-  export type CompanyUserPermissionUncheckedUpdateWithoutUserInput = {
+  export type DepartmentUserUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CompanyUserPermissionUncheckedUpdateManyWithoutUserInput = {
+  export type DepartmentUserUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
-    permission?: EnumCompanyPermissionFieldUpdateOperationsInput | $Enums.CompanyPermission
+    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -77314,9 +77314,9 @@ export namespace Prisma {
      */
     export type CompanyUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyUserDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use CompanyUserPermissionDefaultArgs instead
+     * @deprecated Use DepartmentUserDefaultArgs instead
      */
-    export type CompanyUserPermissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyUserPermissionDefaultArgs<ExtArgs>
+    export type DepartmentUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DepartmentUserDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CompanyPatientDefaultArgs instead
      */

@@ -1,5 +1,5 @@
 import { OrderAuthorizationStatus, OrderStatus } from '../../../prisma';
-import { PagedParams } from '../../dto/PagedParams';
+import { PagedParams } from '../PagedParams';
 
 export interface GetAggregatedParams extends PagedParams {
   orderStatus?: OrderStatus[];
@@ -7,6 +7,7 @@ export interface GetAggregatedParams extends PagedParams {
   validationStatus?: boolean | null;
   diabeticOnly?: boolean;
   submittedOnly?: boolean;
+  includeSubmissions?: boolean;
   authorizationStartDate?: string;
   authorizationEndDate?: string;
   searchQuery?: string;
