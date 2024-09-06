@@ -23,4 +23,12 @@ export interface BillingSubscriptionStats {
   periodEnd: number;
   totalOrders: number;
   currentCycle?: boolean;
+  stripeSubscriptionId: string;
+  stripeInvoiceId?: string;
+}
+
+export interface StripeInvoiceTable {
+  name: string;
+  invoiceCreatedAt: Date;
+  price: number;
 }

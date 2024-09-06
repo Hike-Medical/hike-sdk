@@ -265,6 +265,11 @@ export class StripeService {
             description: 'Custom Hike Insole'
           });
         }
+
+        await this.stripe.invoices.finalizeInvoice(totalInvoice.id);
+        if (totalInvoice.amount_due !== 0) {
+          await this.stripe.invoices.markUncollectible(invoice.id);
+        }
       }
 
       return totalInvoice;

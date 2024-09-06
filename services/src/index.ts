@@ -53,6 +53,8 @@ export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
 export * from './hooks/billing/useGetStripeEntities';
 export * from './hooks/billing/useGetSubscriptionInvoiceStats';
+export * from './hooks/billing/useInvoices';
+export * from './hooks/billing/useGetStripeInvoice';
 export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogProducts';
 export * from './hooks/catalog/useProductById';
