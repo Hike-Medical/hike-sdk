@@ -1,4 +1,5 @@
 import { StripeLineItem, StripeProductType } from '@hike/types';
+import { isDefined } from '@hike/utils';
 import dayjs from 'dayjs';
 import Stripe from 'stripe';
 
@@ -116,22 +117,19 @@ export class StripeService {
   }
 
   async getValidCoupons(couponIds: string[]): Promise<Stripe.Coupon[]> {
-    const validDiscounts: Stripe.Coupon[] = [];
-
-    for (const couponId of couponIds) {
-      try {
-        const coupon = await this.stripe.coupons.retrieve(couponId);
-        if (this.isCouponValid(coupon)) {
-          validDiscounts.push(coupon);
-        } else {
-          console.warn(`Coupon ${couponId} is invalid or expired.`);
+    const coupons = await Promise.all(
+      couponIds.map(async (couponId) => {
+        try {
+          const coupon = await this.stripe.coupons.retrieve(couponId);
+          return this.isCouponValid(coupon) ? coupon : null;
+        } catch (error) {
+          console.error(`Error retrieving coupon ${couponId}:`, error);
+          return null;
         }
-      } catch (error) {
-        console.error(`Error retrieving coupon ${couponId}:`, error);
-      }
-    }
+      })
+    );
 
-    return validDiscounts;
+    return coupons.filter(isDefined);
   }
 
   private isCouponValid(coupon: Stripe.Coupon): boolean {
