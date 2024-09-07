@@ -3,7 +3,7 @@ export interface StripeLineItem {
   priceId?: string;
   productId: string;
   amount?: number;
-  couponId?: string;
+  couponIds?: string[];
   description?: string;
 }
 
@@ -14,4 +14,21 @@ export interface StripeFlaggedCoupon {
 
 export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
+  allowPayrollDeduction?: boolean;
+}
+
+export interface BillingSubscriptionStats {
+  totalPrice: number;
+  periodStart: number;
+  periodEnd: number;
+  totalOrders: number;
+  currentCycle?: boolean;
+  stripeSubscriptionId: string;
+  stripeInvoiceId?: string;
+}
+
+export interface StripeInvoiceTable {
+  name: string;
+  invoiceCreatedAt: Date;
+  price: number;
 }
