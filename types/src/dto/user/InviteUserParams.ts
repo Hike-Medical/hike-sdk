@@ -1,5 +1,6 @@
 export interface InviteUserParams {
-  inviteType: string;
-  email: string;
+  emails: string[];
   companyId: string;
+  emailHTML: string;
+  subject: string;
 }

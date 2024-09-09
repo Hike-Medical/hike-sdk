@@ -20,7 +20,7 @@ export const fetchClinician = async (): Promise<Clinician | null> => {
   }
 };
 
-export const inviteUsers = async (params: InviteUserParams): Promise<boolean> => {
+export const inviteUser = async (params: InviteUserParams): Promise<boolean> => {
   try {
     const response = await backendApi.post('user/invite', params);
     return response.data;
