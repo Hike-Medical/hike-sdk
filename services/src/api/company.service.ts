@@ -20,9 +20,9 @@ export const isDemoCompany = async (): Promise<boolean> => {
   }
 };
 
-export const addDemoCompany = async (params: AddCompanyParams): Promise<CompanyExtended> => {
+export const addCompany = async (params: AddCompanyParams): Promise<CompanyExtended> => {
   try {
-    const response = await backendApi.post(`company/demo`, params);
+    const response = await backendApi.post(`company`, params);
     return response.data;
   } catch (error) {
     throw toResponseError(error);

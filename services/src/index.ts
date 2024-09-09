@@ -60,7 +60,7 @@ export * from './hooks/catalog/useCatalogProducts';
 export * from './hooks/catalog/useProductById';
 export * from './hooks/catalog/useProductBySku';
 export * from './hooks/catalog/useVendors';
-export * from './hooks/company/useAddDemoCompany';
+export * from './hooks/company/useAddCompany';
 export * from './hooks/company/useIsDemoCompany';
 export * from './hooks/evaluations/useCancelEvaluation';
 export * from './hooks/evaluations/useCreateEvaluationByProduct';
