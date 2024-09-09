@@ -1,75 +1,102 @@
 import { Body, Button, Container, Head, Html, Preview, Section, Text } from '@react-email/components';
 import { render } from '@react-email/render';
 
-interface CompanyRegistrationProps {
-  registrationLink: string;
+interface ClinicianRegistrationProps {
+  firstName: string;
+  wikiUrl: string;
+  loginLink: string;
 }
 
-export const CompanyRegistrationEmail = ({ registrationLink }: CompanyRegistrationProps) => (
+export const ClinicianRegistrationEmail = ({ firstName, wikiUrl, loginLink }: ClinicianRegistrationProps) => (
   <Html>
     <Head />
-    <Preview>Try Insoles.AI - Your All-in-One Foot Orthotic Solution</Preview>
+    <Preview>Getting Started with Insoles.ai | Pro Tips & Tricks</Preview>
     <Body style={main}>
       <Container style={container}>
+        {/* Logo Section */}
         <Section style={headerSection}>
-          <Text style={headerText}>Insoles.AI</Text>
+          {/* Add your logo */}
+          <Text style={headerText}>Insoles.ai</Text>
         </Section>
 
+        {/* Welcome Section */}
         <Section style={contentSection}>
-          <Text style={title}>You're Invited to Try Insoles.AI</Text>
+          <Text style={title}>Welcome aboard, {firstName}!</Text>
           <Text style={paragraph}>
-            Hey there,
-            <br />
-            We're excited to invite you to try <strong>Insoles.AI</strong> - your all-in-one solution for foot orthotic
-            evaluations and orders.
+            We're thrilled you've chosen to explore <strong>Insoles.ai</strong>. Your journey to streamlined, compliant
+            evaluation, ordering, and effortless scanning starts now.
           </Text>
         </Section>
 
+        {/* Trial Overview Section */}
         <Section style={featureSection}>
-          <Text style={subTitle}>Your Free Trial Includes:</Text>
+          <Text style={subTitle}>Your Trial at a Glance:</Text>
           <ul style={featureList}>
-            <li style={listItem}>3 FREE foot orthotic orders</li>
-            <li style={listItem}>10-minute patient evaluations</li>
-            <li style={listItem}>Instant compliant progress notes</li>
+            <li style={listItem}>3 Free Orders: Experience our platform's full capabilities</li>
+            <li style={listItem}>Automated Certified Compliant Notes: Ensure accuracy and save time</li>
+            <li style={listItem}>Cutting-Edge Scanning Solution: Simplify your workflow</li>
           </ul>
         </Section>
 
+        {/* Getting Started Section */}
         <Section style={actionSection}>
-          <Text style={subTitle}>Get Started in 3 Easy Steps:</Text>
-          <ol style={stepsList}>
-            <li style={listItem}>Click the button below to register.</li>
-            <li style={listItem}>Set up your account.</li>
-            <li style={listItem}>Start your first evaluation!</li>
-          </ol>
-          <Button style={ctaButton} href={registrationLink}>
-            Register Now
-          </Button>
+          <Text style={subTitle}>Getting Started:</Text>
+          <ul style={featureList}>
+            <li style={listItem}>
+              Access Our Comprehensive Wiki:{' '}
+              <a href={wikiUrl} style={link}>
+                Click Here{' '}
+              </a>
+              to dive into our user-friendly guide to make the most of your trial.
+            </li>
+            <li style={listItem}>
+              Bookmark for Easy Access:{' '}
+              <a href={loginLink} style={link}>
+                {loginLink}
+              </a>{' '}
+              - Return to the platform anytime with this simple URL.
+            </li>
+          </ul>
         </Section>
 
+        {/* Support Section */}
         <Section style={helpSection}>
-          <Text style={subTitle}>Need Help?</Text>
-          <Text style={paragraph}>Feel free to reach out to us for any assistance:</Text>
+          <Text style={subTitle}>Need Support?</Text>
+          <Text style={paragraph}>We're here to ensure your trial is a success:</Text>
           <ul style={contactList}>
-            <li>
-              Call/Text: <strong>309-306-3696</strong>
-            </li>
             <li>
               Email: <strong>harsh@hikemedical.com</strong>
             </li>
+            <li>
+              Call/Text: <strong>309-306-3696</strong> for VIP trial support
+            </li>
           </ul>
         </Section>
 
+        {/* Call-to-Action Section */}
+        <Section style={ctaSection}>
+          <Text style={paragraph}>Ready to revolutionize your workflow?</Text>
+          <Button style={ctaButton} href={loginLink}>
+            Log in Now
+          </Button>
+          <Text style={paragraph}>Explore what Insoles.ai can do for you!</Text>
+        </Section>
+
+        {/* Closing Section */}
         <Section style={closingSection}>
-          <Text style={paragraph}>Don't miss out on revolutionizing your practice!</Text>
           <Text style={paragraph}>
-            Best,
+            Best regards,
             <br />
             The Insoles.ai Team
+          </Text>
+          <Text style={paragraph}>
+            P.S. Have questions or feedback? We're all ears! Your input helps us enhance your experience.
           </Text>
         </Section>
 
         <hr style={divider} />
 
+        {/* Footer Section */}
         <Section style={footerSection}>
           <Text style={footerText}>© {new Date().getFullYear()} Insoles.AI - All rights reserved.</Text>
         </Section>
@@ -78,13 +105,15 @@ export const CompanyRegistrationEmail = ({ registrationLink }: CompanyRegistrati
   </Html>
 );
 
-export default CompanyRegistrationEmail;
+export default ClinicianRegistrationEmail;
 
-export const companyRegistrationEmailHTML = async (registrationLink: string) => {
-  return await render(<CompanyRegistrationEmail registrationLink={registrationLink} />);
+export const clinicianRegistrationEmailHTML = async (params: ClinicianRegistrationProps) => {
+  return await render(
+    <ClinicianRegistrationEmail firstName={params.firstName} wikiUrl={params.wikiUrl} loginLink={params.loginLink} />
+  );
 };
 
-export // Styling
+// Styling
 const main = {
   backgroundColor: '#f4f6f8',
   fontFamily:
@@ -105,6 +134,11 @@ const headerSection = {
   backgroundColor: '#004dcf',
   padding: '20px',
   textAlign: 'center' as const
+};
+
+const logoStyle = {
+  maxWidth: '150px',
+  marginBottom: '10px'
 };
 
 const headerText = {
@@ -161,11 +195,6 @@ const actionSection = {
   padding: '30px 40px'
 };
 
-const stepsList = {
-  paddingLeft: '20px',
-  marginBottom: '20px'
-};
-
 const ctaButton = {
   backgroundColor: '#004dcf',
   color: '#ffffff',
@@ -178,6 +207,11 @@ const ctaButton = {
   display: 'inline-block'
 };
 
+const link = {
+  color: '#004dcf',
+  textDecoration: 'none'
+};
+
 const helpSection = {
   padding: '20px 40px',
   backgroundColor: '#f9fafc',
@@ -187,6 +221,11 @@ const helpSection = {
 
 const contactList = {
   paddingLeft: '20px'
+};
+
+const ctaSection = {
+  padding: '30px 40px',
+  backgroundColor: '#f9fafc'
 };
 
 const closingSection = {
