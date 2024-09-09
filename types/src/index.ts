@@ -77,6 +77,7 @@ export type * from './dto/shipping/GetShippingLabelLegacyResponse';
 export type * from './dto/shipping/SaveTrackingInfoParams';
 export type * from './dto/shipping/ValidateAddressBody';
 export type * from './dto/user/GetUsersParams';
+export type * from './dto/user/InviteUserParams';
 export type * from './dto/workbench/CustomizationResponse';
 export type * from './dto/workbench/FlattenedWorkbench';
 export type * from './dto/workbench/GenerateWorkbenchPdfParams';
