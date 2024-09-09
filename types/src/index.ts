@@ -21,6 +21,7 @@ export type * from './dto/billingCode/SearchBillingCodesParams';
 export type * from './dto/catalog/GetCategoriesParams';
 export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/GetVendorsParams';
+export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/CompanyPreferences';
 export type * from './dto/evaluation/ActionEvaluationParams';
 export type * from './dto/evaluation/CreateEvaluationByProductParams';
