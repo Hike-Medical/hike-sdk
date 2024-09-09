@@ -557,8 +557,10 @@ export class StripeService {
 
   async cancelSubscription(subscriptionId: string): Promise<Stripe.Subscription> {
     try {
-      const cancelledSubscription = await this.stripe.subscriptions.cancel(subscriptionId);
-      console.log(cancelledSubscription);
+      const cancelledSubscription = await this.stripe.subscriptions.cancel(subscriptionId, {
+        invoice_now: true
+      });
+
       return cancelledSubscription;
     } catch (error) {
       console.error('Error cancelleding subscription', { error, subscriptionId });
