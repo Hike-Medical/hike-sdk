@@ -11,17 +11,9 @@ export const findCompanyPreferences = async (): Promise<CompanyExtended['prefere
   }
 };
 
-export const isDemoCompany = async (companyId?: string): Promise<boolean> => {
+export const isFreeTrial = async (): Promise<boolean> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyId) {
-      headers = { ...headers, 'x-company-id': companyId };
-    }
-
-    const response = await backendApi.get(`auth/isDemo`);
+    const response = await backendApi.get(`auth/isFreeTrial`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
