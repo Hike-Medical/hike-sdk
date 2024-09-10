@@ -53,8 +53,11 @@ export const CompanyRegistrationEmail = ({ registrationLink }: CompanyRegistrati
             <li>
               Call/Text: <strong>309-306-3696</strong>
             </li>
+
             <li>
-              Email: <strong>harsh@hikemedical.com</strong>
+              <a href="mailto:harsh@hikemedical.com" style={link}>
+                Email: harsh@hikemedical.com
+              </a>
             </li>
           </ul>
         </Section>
@@ -143,6 +146,11 @@ const subTitle = {
   fontWeight: '600',
   marginBottom: '10px',
   color: '#004dcf'
+};
+
+const link = {
+  color: '#004dcf',
+  textDecoration: 'none'
 };
 
 const featureList = {

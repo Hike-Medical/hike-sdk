@@ -65,7 +65,9 @@ export const ClinicianRegistrationEmail = ({ name, wikiUrl, loginLink }: Clinici
           <Text style={paragraph}>We're here to ensure your trial is a success:</Text>
           <ul style={contactList}>
             <li>
-              Email: <strong>harsh@hikemedical.com</strong>
+              <a href="mailto:harsh@hikemedical.com" style={link}>
+                Email: harsh@hikemedical.com
+              </a>
             </li>
             <li>
               Call/Text: <strong>309-306-3696</strong> for VIP trial support
