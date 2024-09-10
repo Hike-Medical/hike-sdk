@@ -118,13 +118,6 @@ const contentSection = {
   padding: '30px 40px'
 };
 
-const title = {
-  fontSize: '20px',
-  fontWeight: '600',
-  marginBottom: '10px',
-  color: '#333'
-};
-
 const paragraph = {
   fontSize: '16px',
   lineHeight: '1.6',
