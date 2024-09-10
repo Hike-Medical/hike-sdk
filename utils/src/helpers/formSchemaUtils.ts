@@ -1,4 +1,12 @@
-import type { FormField, FormFieldValue, FormRule, FormSchemaTyped, FormSection } from '@hike/types';
+import type {
+  FormField,
+  FormFieldValue,
+  FormRule,
+  FormSchemaTyped,
+  FormSection,
+  FormValidationResult,
+  InvalidFieldInfo
+} from '@hike/types';
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -175,5 +183,34 @@ export const schemaStats = (
     sectionsCompleted,
     sectionsTotal: validSections.length,
     sectionNext: sectionNext ?? validSections[0] ?? null
+  };
+};
+
+export const formValidator = (sections: FormSection[], state: Record<string, FormFieldValue>): FormValidationResult => {
+  const invalidFieldsData: InvalidFieldInfo[] = [];
+  const invalidSectionIndices: number[] = [];
+
+  sections.forEach((section, sectionIndex) => {
+    const sectionInvalidFields = section.fields
+      .filter((field) => isFormFieldDisplayed(field, state))
+      .filter((field) => !isFieldValid(field, state, section.fields.length === 1));
+
+    if (sectionInvalidFields.length > 0) {
+      invalidSectionIndices.push(sectionIndex);
+      sectionInvalidFields.forEach((field) => {
+        invalidFieldsData.push({
+          fieldName: field.name,
+          fieldLabel: field.label,
+          sectionIndex,
+          sectionTitle: section.title
+        });
+      });
+    }
+  });
+
+  return {
+    isValid: invalidFieldsData.length === 0,
+    invalidFieldsData,
+    invalidSectionIndices
   };
 };
