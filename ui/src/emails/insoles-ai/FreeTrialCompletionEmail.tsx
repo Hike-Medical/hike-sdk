@@ -8,16 +8,17 @@ interface FreeTrialCompletionEmailProps {
 export const FreeTrialCompletionEmail = ({ schedulingLink }: FreeTrialCompletionEmailProps) => (
   <Html>
     <Head />
+
     <Preview>Congrats on completing your trial with Insoles.ai! Next steps...</Preview>
 
     <Body style={main}>
       <Container style={container}>
-        {/* Logo Section */}
-        <Section style={headerSection}></Section>
+        <Section style={headerSection}>
+          <Text style={headerText}>Insoles.AI</Text>
+        </Section>
 
         {/* Welcome Section */}
         <Section style={contentSection}>
-          <Text style={title}>Hey,</Text>
           <Text style={paragraph}>
             Congratulations on utilizing all your free trial orders with <strong>Insoles.ai</strong>! We hope you've
             experienced the power of our platform in streamlining your foot orthotic evaluations and orders.
@@ -108,8 +109,9 @@ const container = {
 };
 
 const headerSection = {
-  textAlign: 'center' as const,
-  padding: '20px'
+  backgroundColor: '#004dcf',
+  padding: '20px',
+  textAlign: 'center' as const
 };
 
 const contentSection = {
@@ -165,6 +167,13 @@ const featureSection = {
   backgroundColor: '#f0f4ff',
   borderRadius: '8px',
   margin: '20px 40px'
+};
+
+const headerText = {
+  fontSize: '24px',
+  fontWeight: 'bold',
+  color: '#ffffff',
+  margin: 0
 };
 
 const closingSection = {

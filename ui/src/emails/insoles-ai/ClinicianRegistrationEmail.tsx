@@ -16,7 +16,7 @@ export const ClinicianRegistrationEmail = ({ name, wikiUrl, loginLink }: Clinici
         {/* Logo Section */}
         <Section style={headerSection}>
           {/* Add your logo */}
-          <Text style={headerText}>Insoles.ai</Text>
+          <Text style={headerText}>Insoles.AI</Text>
         </Section>
 
         {/* Welcome Section */}
