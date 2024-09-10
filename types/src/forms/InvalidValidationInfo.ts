@@ -8,5 +8,5 @@ export interface InvalidFieldInfo {
 export interface FormValidationResult {
   isValid: boolean;
   invalidFieldsData: InvalidFieldInfo[];
-  invalidSectionIndices: number[];
+  invalidSectionIndices?: number[];
 }
