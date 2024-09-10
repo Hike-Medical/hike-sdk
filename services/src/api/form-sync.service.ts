@@ -25,11 +25,13 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     devicePosition: formState.devicePosition !== undefined ? (formState.devicePosition as VerticalPosition) : undefined,
     deviceSide: formState.deviceSide !== undefined ? (formState.deviceSide as Side) : undefined,
     referringPhysicianId:
-      formState.referringPhysicianId !== undefined ? (formState.referringPhysicianId as string) : undefined,
+      formState.referringPhysicianId !== undefined && formState.referringPhysicianId !== ''
+        ? (formState.referringPhysicianId as string)
+        : undefined,
     diagnosisedAt: parseDate(formState.diagnosisedAt as string) ?? undefined,
     prescribedAt: parseDate(formState.prescribedAt as string) ?? undefined,
     facilityId:
-      formState.facilityId !== undefined && formState.facilityId != '' ? (formState.facilityId as string) : undefined,
+      formState.facilityId !== undefined && formState.facilityId !== '' ? (formState.facilityId as string) : undefined,
     location: formState.location !== undefined ? (formState.location as string) : undefined,
     poNumber: formState.poNumber !== undefined ? (formState.poNumber as string) : undefined
   });
@@ -131,7 +133,7 @@ export const formSchemaEvaluationDefaults = (
             acc[`${field.name}-label`] = evaluation.facility?.name;
             acc[`${field.name}Address`] = evaluation.facility?.address?.addressLine2
               ? `${evaluation.facility?.address?.addressLine1}, ${evaluation.facility?.address?.addressLine2}`
-              : (evaluation.facility?.address?.addressLine1 ?? undefined);
+              : evaluation.facility?.address?.addressLine1 ?? undefined;
             acc[`${field.name}City`] = evaluation.facility?.address?.city ?? undefined;
             acc[`${field.name}State`] = evaluation.facility?.address?.stateOrProvince ?? undefined;
             acc[`${field.name}Zipcode`] = evaluation.facility?.address?.postalCode ?? undefined;
