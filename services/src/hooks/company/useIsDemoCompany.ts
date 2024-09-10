@@ -4,12 +4,13 @@ import { ResponseError } from '../../errors/ResponseError';
 
 export interface useIsDemoCompanyOptions
   extends Omit<UseQueryOptions<boolean, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  companyId?: string;
   queryKey?: QueryKey;
 }
 
-export const useIsDemoCompany = ({ queryKey = [], ...options }: useIsDemoCompanyOptions = {}) =>
+export const useIsDemoCompany = ({ queryKey = [], companyId, ...options }: useIsDemoCompanyOptions) =>
   useQuery({
     queryKey: ['isDemoCompany', queryKey],
-    queryFn: async () => await isDemoCompany(),
+    queryFn: async () => await isDemoCompany(companyId),
     ...options
   });

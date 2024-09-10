@@ -136,11 +136,6 @@ const headerSection = {
   textAlign: 'center' as const
 };
 
-const logoStyle = {
-  maxWidth: '150px',
-  marginBottom: '10px'
-};
-
 const headerText = {
   fontSize: '24px',
   fontWeight: 'bold',
