@@ -191,24 +191,24 @@ export const formValidator = (
   state: Record<string, FormFieldValue>,
   exemptFields: string[] = []
 ): FormValidationResult => {
+  const invalidSections = getInvalidSections(sections, state);
   const invalidFieldsData: InvalidFieldInfo[] = [];
   const invalidSectionIndices: number[] = [];
 
-  sections.forEach((section, sectionIndex) => {
-    if (isFormSectionDisplayed(section, state)) {
-      const sectionInvalidFields = section.fields
-        .filter(
-          (field) => isFormFieldDisplayed(field, state) && !exemptFields.includes(field.name) && field.required // Only check required fields
-        )
-        .filter((field) => {
-          const value = state[field.name];
-          // Check if the field is empty or undefined
-          return value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0);
-        });
+  invalidSections.forEach((section) => {
+    const sectionIndex = sections.indexOf(section);
+    if (sectionIndex !== -1) {
+      invalidSectionIndices.push(sectionIndex);
 
-      if (sectionInvalidFields.length > 0) {
-        invalidSectionIndices.push(sectionIndex);
-        sectionInvalidFields.forEach((field) => {
+      section.fields
+        .filter(
+          (field) =>
+            isFormFieldDisplayed(field, state) &&
+            !exemptFields.includes(field.name) &&
+            field.required &&
+            !isFieldValid(field, state, section.fields.length === 1)
+        )
+        .forEach((field) => {
           invalidFieldsData.push({
             fieldName: field.name,
             fieldLabel: field.label,
@@ -216,7 +216,6 @@ export const formValidator = (
             sectionTitle: section.title
           });
         });
-      }
     }
   });
 
