@@ -2,12 +2,12 @@ import { Body, Button, Container, Head, Html, Preview, Section, Text } from '@re
 import { render } from '@react-email/render';
 
 interface ClinicianRegistrationProps {
-  firstName: string;
+  name: string;
   wikiUrl: string;
   loginLink: string;
 }
 
-export const ClinicianRegistrationEmail = ({ firstName, wikiUrl, loginLink }: ClinicianRegistrationProps) => (
+export const ClinicianRegistrationEmail = ({ name, wikiUrl, loginLink }: ClinicianRegistrationProps) => (
   <Html>
     <Head />
     <Preview>Getting Started with Insoles.ai | Pro Tips & Tricks</Preview>
@@ -21,7 +21,7 @@ export const ClinicianRegistrationEmail = ({ firstName, wikiUrl, loginLink }: Cl
 
         {/* Welcome Section */}
         <Section style={contentSection}>
-          <Text style={title}>Welcome aboard, {firstName}!</Text>
+          <Text style={title}>Welcome aboard, {name}!</Text>
           <Text style={paragraph}>
             We're thrilled you've chosen to explore <strong>Insoles.ai</strong>. Your journey to streamlined, compliant
             evaluation, ordering, and effortless scanning starts now.
@@ -109,7 +109,7 @@ export default ClinicianRegistrationEmail;
 
 export const clinicianRegistrationEmailHTML = async (params: ClinicianRegistrationProps) => {
   return await render(
-    <ClinicianRegistrationEmail firstName={params.firstName} wikiUrl={params.wikiUrl} loginLink={params.loginLink} />
+    <ClinicianRegistrationEmail name={params.name} wikiUrl={params.wikiUrl} loginLink={params.loginLink} />
   );
 };
 

@@ -1,6 +1,6 @@
 import { InviteUserParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { inviteUser } from '../../api/user.service';
+import { inviteUserEmail } from '../../auth/inviteUserEmail';
 import { ResponseError } from '../../errors/ResponseError';
 
 interface InviteUserContext {
@@ -10,7 +10,7 @@ interface InviteUserContext {
 export const useInviteUsers = (options?: UseMutationOptions<boolean, ResponseError<null>, InviteUserContext>) => {
   return useMutation({
     mutationKey: ['inviteUsers'],
-    mutationFn: async ({ body }: InviteUserContext) => await inviteUser(body),
+    mutationFn: async ({ body }: InviteUserContext) => await inviteUserEmail(body),
     ...options
   });
 };
