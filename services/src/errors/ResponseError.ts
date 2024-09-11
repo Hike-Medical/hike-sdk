@@ -19,6 +19,18 @@ export class ResponseError<T> extends Error {
  * Converts an unknown error to a `ResponseError` instance.
  */
 export const toResponseError = (error: unknown) => {
+  if (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    typeof error.message === 'string' &&
+    'statusCode' in error &&
+    typeof error.statusCode === 'number' &&
+    'error' in error
+  ) {
+    return new ResponseError(error.message, error.statusCode, error.error);
+  }
+
   const message = toErrorMessage(error);
 
   if (isAxiosError(error) && error.response) {
