@@ -173,7 +173,7 @@ describe('Form Schema Utils', () => {
         ]
       };
       const state = { field1: 'value1', field2: 123 };
-      expect(isFormValid(schema, state)).toBe(true);
+      expect(isFormValid(schema.sections, state)).toBe(true);
     });
 
     it('should not be valid when required fields are not answered', () => {
@@ -189,7 +189,7 @@ describe('Form Schema Utils', () => {
         ]
       };
       const state = { field1: 'value1' };
-      expect(isFormValid(schema, state)).toBe(false);
+      expect(isFormValid(schema.sections, state)).toBe(false);
     });
 
     it('should be valid when required fields are hidden', () => {
@@ -211,7 +211,7 @@ describe('Form Schema Utils', () => {
         ]
       };
       const state = { field1: 'value1' };
-      expect(isFormValid(schema, state)).toBe(true);
+      expect(isFormValid(schema.sections, state)).toBe(true);
     });
   });
 
@@ -337,7 +337,7 @@ describe('Form Schema Utils', () => {
         ]
       };
       const state = { field1: 'value1', field2: 'value2' };
-      const result = schemaStats(schema, state);
+      const result = schemaStats(schema.sections, state);
 
       expect(result).toEqual({
         sectionsCompleted: 2,
@@ -360,7 +360,7 @@ describe('Form Schema Utils', () => {
         ]
       };
       const state = { field1: 'value1' };
-      const result = schemaStats(schema, state);
+      const result = schemaStats(schema.sections, state);
 
       expect(result).toEqual({
         sectionsCompleted: 1,
@@ -398,7 +398,7 @@ describe('Form Schema Utils', () => {
       expect(field1 ? isFormFieldDisplayed(field1, state) : false).toBe(false);
 
       // Calculate schema stats
-      const result = schemaStats(schema, state);
+      const result = schemaStats(schema.sections, state);
       expect(result).toEqual({
         sectionsCompleted: 2,
         sectionsTotal: 2,
