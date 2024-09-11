@@ -1,4 +1,4 @@
-import { GetStripeInvoiceParams, PagedResponse, StripeInvoiceExtended } from '@hike/types';
+import { GetStripeInvoiceParams, PagedResponse, StripeInvoiceExtended, UpFrontPaymentInfo } from '@hike/types';
 import { Stripe } from 'stripe';
 import { toResponseError } from '../errors/ResponseError';
 import { backendApi } from '../utils/backendApi';
@@ -35,6 +35,15 @@ export const fetchInvoices = async (
 export const fetchStripeInvoice = async (stripeInvoiceId: string): Promise<Stripe.Invoice> => {
   try {
     const response = await backendApi.post(`billing/invoice/stripe/${stripeInvoiceId}`);
+    return response.data;
+  } catch (error) {
+    throw toResponseError(error);
+  }
+};
+
+export const getUpFrontPaymentInfo = async (stripeInvoiceId: string): Promise<UpFrontPaymentInfo | null> => {
+  try {
+    const response = await backendApi.get(`billing/up-front-payment/${stripeInvoiceId}`);
     return response.data;
   } catch (error) {
     throw toResponseError(error);
