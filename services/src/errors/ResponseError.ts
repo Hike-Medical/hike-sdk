@@ -1,17 +1,18 @@
 import { isAxiosError } from 'axios';
+import { ResponseErrorCode, toErrorCode } from './ResponseErrorCode';
 import { toErrorMessage } from './toErrorMessage';
 
 /**
  * Class representing a response error with status and data.
  */
 export class ResponseError<T> extends Error {
-  statusCode: number;
-  data: T;
-
-  constructor(message: string, statusCode: number, data: T) {
+  constructor(
+    message: string,
+    public statusCode: number,
+    public data: T,
+    public errorCode?: ResponseErrorCode
+  ) {
     super(message);
-    this.statusCode = statusCode;
-    this.data = data;
   }
 }
 
@@ -19,22 +20,11 @@ export class ResponseError<T> extends Error {
  * Converts an unknown error to a `ResponseError` instance.
  */
 export const toResponseError = (error: unknown) => {
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string' &&
-    'statusCode' in error &&
-    typeof error.statusCode === 'number' &&
-    'error' in error
-  ) {
-    return new ResponseError(error.message, error.statusCode, error.error);
-  }
-
   const message = toErrorMessage(error);
+  const errorCode = toErrorCode(error);
 
   if (isAxiosError(error) && error.response) {
-    return new ResponseError(message, error.response.status, error.response.data);
+    return new ResponseError(message, error.response.status, error.response.data, errorCode);
   }
 
   // Check if the error is an instance of HttpException
@@ -46,8 +36,8 @@ export const toResponseError = (error: unknown) => {
     'getResponse' in error &&
     typeof error.getResponse === 'function'
   ) {
-    return new ResponseError(message, error.getStatus(), error.getResponse());
+    return new ResponseError(message, error.getStatus(), error.getResponse(), errorCode);
   }
 
-  return new ResponseError(message, 500, null);
+  return new ResponseError(message, 500, null, errorCode);
 };
