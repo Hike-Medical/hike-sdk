@@ -1,23 +1,30 @@
+import { isString } from '@hike/utils';
 import { isAxiosError } from 'axios';
 
 export enum ResponseErrorCode {
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  INCOMPLETE_EVALUATION = 'INCOMPLETE_EVALUATION'
+  INCOMPLETE_EVALUATION = 'INCOMPLETE_EVALUATION',
+  NOT_FOUND = 'NOT_FOUND',
+  DATA_CONFLICT = 'DATA_CONFLICT',
+  DATA_INVALID = 'DATA_INVALID'
 }
+
+/**
+ * Checks if an error code is valid.
+ */
+export const isValidErrorCode = (errorCode: unknown): errorCode is ResponseErrorCode =>
+  isString(errorCode) && Object.values(ResponseErrorCode).includes(errorCode as ResponseErrorCode);
 
 /**
  * Extracts an error code from an unknown error object.
  */
 export const toErrorCode = (error: unknown): ResponseErrorCode => {
-  const isValid = (errorCode: string): errorCode is ResponseErrorCode =>
-    Object.values(ResponseErrorCode).includes(errorCode as ResponseErrorCode);
-
   if (
     typeof error === 'object' &&
     error !== null &&
     'errorCode' in error &&
     typeof error.errorCode === 'string' &&
-    isValid(error.errorCode)
+    isValidErrorCode(error.errorCode)
   ) {
     return error.errorCode;
   }
@@ -28,7 +35,7 @@ export const toErrorCode = (error: unknown): ResponseErrorCode => {
     'data' in error.response &&
     'errorCode' in error.response.data &&
     typeof error.response.data.errorCode === 'string' &&
-    isValid(error.response.data.errorCode)
+    isValidErrorCode(error.response.data.errorCode)
   ) {
     return error.response.data.errorCode;
   }

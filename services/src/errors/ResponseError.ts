@@ -8,11 +8,19 @@ import { toErrorMessage } from './toErrorMessage';
 export class ResponseError<T> extends Error {
   constructor(
     message: string,
-    public statusCode: number,
-    public data: T,
-    public errorCode?: ResponseErrorCode
+    public readonly statusCode: number,
+    public readonly data: T,
+    public readonly errorCode?: ResponseErrorCode
   ) {
     super(message);
+  }
+
+  toJSON() {
+    return {
+      ...this,
+      // TODO: Must be explicit since `JSON.stringify` only serializes own direct properties?
+      message: this.message
+    };
   }
 }
 
