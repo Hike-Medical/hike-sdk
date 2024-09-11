@@ -3,6 +3,7 @@ export * from './constants/autoSlicerProfiles';
 export * from './converters/formatConstant';
 export * from './converters/formatCurrency';
 export * from './converters/formatDate';
+export * from './converters/parseClinicianName';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
