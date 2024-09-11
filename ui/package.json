@@ -30,12 +30,15 @@
     "dev": "tsc --watch",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
-    "clean": "rm -rf node_modules dist"
+    "clean": "rm -rf node_modules dist",
+    "dev:email": "email dev"
   },
   "dependencies": {
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
-    "@hike/utils": "workspace:*"
+    "@hike/utils": "workspace:*",
+    "@react-email/components": "0.0.25",
+    "@react-email/render": "1.0.1"
   },
   "peerDependencies": {
     "react": "^18",
@@ -45,6 +48,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-email": "^3.0.1"
   }
 }
