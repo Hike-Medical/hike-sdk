@@ -27,6 +27,10 @@ export interface BillingSubscriptionStats {
   stripeInvoiceId?: string;
 }
 
+export interface BillingOverview {
+  totalPaid: number;
+}
+
 export interface UpFrontPaymentInfo {
   currentRedemptions: number;
   maxRedemptions: number;

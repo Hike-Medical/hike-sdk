@@ -53,6 +53,7 @@ export * from './hooks/auth/useSignInWithPin';
 export * from './hooks/auto-slicer/useRunSlicerForSide';
 export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
+export * from './hooks/billing/useGetBillingOverview';
 export * from './hooks/billing/useGetStripeEntities';
 export * from './hooks/billing/useGetStripeInvoice';
 export * from './hooks/billing/useGetSubscriptionInvoiceStats';
