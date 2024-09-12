@@ -19,7 +19,12 @@ interface BaseFormField<T extends FormFieldValue> {
 }
 
 export type FormField =
-  | (BaseFormField<string> & { type: 'text'; suffix?: string; keyboard?: 'email' | 'url' | 'phone'; hidden?: boolean })
+  | (BaseFormField<string> & {
+      type: 'text';
+      suffix?: string;
+      keyboard?: 'email' | 'url' | 'phone' | 'punctuation';
+      hidden?: boolean;
+    })
   | (BaseFormField<number> & { type: 'number'; suffix?: string; keyboard?: 'numeric' | 'decimal' })
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
