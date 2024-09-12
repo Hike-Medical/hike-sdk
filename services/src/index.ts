@@ -32,6 +32,7 @@ export * from './auth/signIn';
 export * from './auth/signUp';
 export * from './configure';
 export * from './errors/ResponseError';
+export * from './errors/ResponseErrorCode';
 export * from './errors/toErrorMessage';
 export * from './hooks/assets/useGetPresignedURL';
 export * from './hooks/assets/useUploadComplete';
