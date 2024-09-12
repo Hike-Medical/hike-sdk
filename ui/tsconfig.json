@@ -10,5 +10,5 @@
     "removeComments": false,
     "jsx": "preserve"
   },
-  "include": ["./src"]
+  "include": ["./src", "emails"]
 }

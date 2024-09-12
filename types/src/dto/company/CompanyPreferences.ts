@@ -15,4 +15,5 @@ export interface CompanyPreferences {
   };
   noAuthNeeded?: boolean;
   engraveInsoleWithExternalId?: boolean;
+  freeTrialOrders?: number;
 }
