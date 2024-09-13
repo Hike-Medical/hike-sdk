@@ -15,6 +15,23 @@ export class ResponseError<T> extends Error {
     super(message);
   }
 
+  /**
+   * Initializes a new instance.
+   */
+  static init<T>({
+    message,
+    statusCode,
+    data,
+    errorCode
+  }: {
+    message: string;
+    statusCode: number;
+    data?: T;
+    errorCode?: ResponseErrorCode;
+  }): ResponseError<T> {
+    return new ResponseError<T>(message, statusCode, data as T, errorCode);
+  }
+
   toJSON() {
     return {
       ...this,
@@ -32,7 +49,7 @@ export const toResponseError = (error: unknown) => {
   const errorCode = toErrorCode(error);
 
   if (isAxiosError(error) && error.response) {
-    return new ResponseError(message, error.response.status, error.response.data, errorCode);
+    return ResponseError.init({ message, statusCode: error.response.status, data: error.response.data, errorCode });
   }
 
   // Check if the error is an instance of HttpException
@@ -44,8 +61,8 @@ export const toResponseError = (error: unknown) => {
     'getResponse' in error &&
     typeof error.getResponse === 'function'
   ) {
-    return new ResponseError(message, error.getStatus(), error.getResponse(), errorCode);
+    return ResponseError.init({ message, statusCode: error.getStatus(), data: error.getResponse(), errorCode });
   }
 
-  return new ResponseError(message, 500, null, errorCode);
+  return ResponseError.init({ message, statusCode: 500, errorCode });
 };
