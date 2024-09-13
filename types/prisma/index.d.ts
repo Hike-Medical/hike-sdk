@@ -56672,14 +56672,14 @@ export namespace Prisma {
 
   export type AccountVerificationWhereUniqueInput = Prisma.AtLeast<{
     token?: string
+    email?: string
     AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
-    email?: StringFilter<"AccountVerification"> | string
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
-  }, "token">
+  }, "token" | "email">
 
   export type AccountVerificationOrderByWithAggregationInput = {
     token?: SortOrder
