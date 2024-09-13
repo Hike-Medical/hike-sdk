@@ -2,12 +2,20 @@ import { isString } from '@hike/utils';
 import { isAxiosError } from 'axios';
 
 export enum ResponseErrorCode {
-  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-  INCOMPLETE_EVALUATION = 'INCOMPLETE_EVALUATION',
-  ORDER_ALREADY_PROCESSING = 'ORDER_ALREADY_PROCESSING',
-  NOT_FOUND = 'NOT_FOUND',
-  DATA_CONFLICT = 'DATA_CONFLICT',
-  DATA_INVALID = 'DATA_INVALID'
+  // Generic errors
+  ERR_UNKNOWN = 'ERR_UNKNOWN',
+
+  // Data errors
+  ERR_DATA_NOT_FOUND = 'ERR_DATA_NOT_FOUND',
+  ERR_DATA_CONFLICT = 'ERR_DATA_CONFLICT',
+  ERR_DATA_INVALID = 'ERR_DATA_INVALID',
+
+  // Evaluation errors
+  ERR_EVALUATION_INCOMPLETE = 'ERR_EVALUATION_INCOMPLETE',
+  ERR_ORDER_ALREADY_PROCESSING = 'ERR_ORDER_ALREADY_PROCESSING',
+
+  // Token errors
+  ERR_TOKEN_INVALID = 'ERR_TOKEN_INVALID'
 }
 
 /**
@@ -41,5 +49,5 @@ export const toErrorCode = (error: unknown): ResponseErrorCode => {
     return error.response.data.errorCode;
   }
 
-  return ResponseErrorCode.UNKNOWN_ERROR;
+  return ResponseErrorCode.ERR_UNKNOWN;
 };
