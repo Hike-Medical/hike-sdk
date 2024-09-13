@@ -116,11 +116,15 @@ export class StripeService {
     }
   }
 
+  async getCouponById(couponId): Promise<Stripe.Coupon> {
+    return await this.stripe.coupons.retrieve(couponId);
+  }
+
   async getValidCoupons(couponIds: string[]): Promise<Stripe.Coupon[]> {
     const coupons = await Promise.all(
       couponIds.map(async (couponId) => {
         try {
-          const coupon = await this.stripe.coupons.retrieve(couponId);
+          const coupon = await this.getCouponById(couponId);
           return this.isCouponValid(coupon) ? coupon : null;
         } catch (error) {
           console.error(`Error retrieving coupon ${couponId}:`, error);
