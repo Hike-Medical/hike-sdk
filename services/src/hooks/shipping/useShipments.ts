@@ -1,7 +1,7 @@
 import type { GetShipengineShipmentsParams, GetShipengineShipmentsResponse } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { fetchShipments } from '../../api/shipping.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseGetShipengineShipmentsOptions extends GetShipengineShipmentsParams {
   key?: string[];
@@ -9,7 +9,7 @@ export interface UseGetShipengineShipmentsOptions extends GetShipengineShipments
 }
 
 export const useShipments = ({ key = [], enabled = true, ...params }: UseGetShipengineShipmentsOptions = {}) =>
-  useQuery<GetShipengineShipmentsResponse, ResponseError<null>>({
+  useQuery<GetShipengineShipmentsResponse, HikeError<null>>({
     queryKey: ['shipments', ...key, params],
     queryFn: async () => await fetchShipments(params),
     enabled

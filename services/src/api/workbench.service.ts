@@ -12,7 +12,7 @@ import {
   Workbench,
   WorkbenchExtended
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export type FootWithAssets = Foot & { assets: Asset[] };
@@ -29,7 +29,7 @@ export const searchWorkbenches = async (
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -38,7 +38,7 @@ export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets
     const response = await backendApi.get(`workbench/${workbenchId}/feet`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -47,7 +47,7 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
     const response = await backendApi.post(`workbench/${workbenchId}/submit`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 export const updateRenderType = async (
@@ -61,7 +61,7 @@ export const updateRenderType = async (
     });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -70,7 +70,7 @@ export const processWorkbench = async (workbenchId: string): Promise<Workbench &
     const response = await backendApi.post(`workbench/${workbenchId}/process`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -82,7 +82,7 @@ export const updateInactiveFootInWorkbench = async (
     const response = await backendApi.post(`workbench/${workbenchId}/set-inactive-foot`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -98,7 +98,7 @@ export const getAggregatedWorkbenches = async (
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -119,7 +119,7 @@ export const getFilesFromWorkbenches = async (
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -131,7 +131,7 @@ export const generateWorkbenchPdf = async (
     const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -143,7 +143,7 @@ export const generateWorkbenchEvaluationPdf = async (
     const response = await backendApi.post(`workbench/${workbenchId}/generate-evaluation-pdf`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -155,7 +155,7 @@ export const generateWorkbenchOrderPdf = async (
     const response = await backendApi.post(`workbench/${workbenchId}/generate-order-pdf`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -167,7 +167,7 @@ export const generateWorkbenchDeliveryReceiptPdf = async (
     const response = await backendApi.post(`workbench/${workbenchId}/generate-delivery-receipt-pdf`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -179,7 +179,7 @@ export const uploadFiles = async (workbenchId: string, formData: FormData): Prom
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -194,6 +194,6 @@ export const continueWorkbench = async (workbenchId: string, companyIds: string[
     );
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

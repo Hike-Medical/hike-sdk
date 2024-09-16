@@ -1,10 +1,10 @@
 import { BillingCode, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchBillingCodes } from '../../api/billing-code.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseBillingCodesOptions
-  extends Omit<UseQueryOptions<PagedResponse<BillingCode[]> | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<BillingCode[]> | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   codes: string[];
   queryKey?: QueryKey;
 }

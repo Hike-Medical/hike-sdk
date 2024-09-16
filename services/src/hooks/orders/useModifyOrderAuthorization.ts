@@ -1,7 +1,7 @@
 import { OrderAuthorizationStatus, OrderExtended } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { modifyOrderAuthorization } from '../../api/order.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 interface ModifyOrderAuthorizationParams {
   orderId: string;
@@ -10,7 +10,7 @@ interface ModifyOrderAuthorizationParams {
 }
 
 export const useModifyOrderAuthorization = (
-  mutationOptions?: UseMutationOptions<OrderExtended, ResponseError<null>, ModifyOrderAuthorizationParams>
+  mutationOptions?: UseMutationOptions<OrderExtended, HikeError<null>, ModifyOrderAuthorizationParams>
 ) => {
   return useMutation({
     mutationKey: ['modifyOrder'],

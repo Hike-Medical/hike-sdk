@@ -1,10 +1,10 @@
 import { Notes } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findNotesByWorkbenchId } from '../../api/notes.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseGetNotesOptions
-  extends Omit<UseQueryOptions<Notes[] | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<Notes[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
   tags?: string[];
   deleted?: boolean;

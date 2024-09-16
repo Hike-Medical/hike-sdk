@@ -1,5 +1,5 @@
 import { ProductType, SubmitRenderParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export interface GenerateSignedURLParams {
@@ -22,7 +22,7 @@ export const getPreSignedURL = async (
     const response = await backendApi.post(`scan/${footId}/pre-signed-url`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -49,6 +49,6 @@ export const uploadFootRender = async (file: File, body: SubmitRenderParams, com
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

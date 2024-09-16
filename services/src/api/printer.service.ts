@@ -1,5 +1,5 @@
 import { SendGcodeToPrinterParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const printGcode = async (body: SendGcodeToPrinterParams, companyIds: string[]) => {
@@ -9,7 +9,7 @@ export const printGcode = async (body: SendGcodeToPrinterParams, companyIds: str
     });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -18,6 +18,6 @@ export const getPrinters = async () => {
     const response = await backendApi.get(`printer`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

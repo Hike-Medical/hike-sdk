@@ -1,10 +1,10 @@
 import type { Clinician } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchClinician } from '../../api/user.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseClinicianOptions
-  extends Omit<UseQueryOptions<Clinician | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<Clinician | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 

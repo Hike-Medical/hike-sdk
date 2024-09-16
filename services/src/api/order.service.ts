@@ -11,7 +11,7 @@ import type {
   PagedResponse,
   UpdateOrderParams
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createOrder = async (params: CreateOrderParams): Promise<Order> => {
@@ -19,7 +19,7 @@ export const createOrder = async (params: CreateOrderParams): Promise<Order> => 
     const response = await backendApi.post('order', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -28,7 +28,7 @@ export const findOrderById = async (orderId: string): Promise<OrderExtended> => 
     const response = await backendApi.get(`order/${orderId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -37,7 +37,7 @@ export const fetchOrders = async (params?: GetOrdersParams): Promise<PagedRespon
     const response = await backendApi.get('order', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -65,7 +65,7 @@ export const fetchOrdersByType = async (
     const response = await backendApi.get(`order/${route}`, { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -77,7 +77,7 @@ export const statsForOrders = async (): Promise<OrdersStats> => {
     const response = await backendApi.get('order/stats');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -103,7 +103,7 @@ export const updateOrder = async (
     const response = await backendApi.patch(`order/${orderId}`, params, { headers });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -122,7 +122,7 @@ export const modifyOrderAuthorization = async (
     );
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -131,6 +131,6 @@ export const deliverOrder = async (params: DeliverOrderParams): Promise<Order> =
     const response = await backendApi.post('order/deliver', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

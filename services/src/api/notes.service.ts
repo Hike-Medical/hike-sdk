@@ -1,5 +1,5 @@
 import { CreateNotesBody, Notes, UpdateNotesBody } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createNotes = async (workbenchId: string, body: CreateNotesBody): Promise<Notes> => {
@@ -7,7 +7,7 @@ export const createNotes = async (workbenchId: string, body: CreateNotesBody): P
     const response = await backendApi.post(`notes/workbench/${workbenchId}`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -20,7 +20,7 @@ export const findNotesByWorkbenchId = async (
     const response = await backendApi.get(`notes/workbench/${workbenchId}`, { params: { tags, deleted } });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -29,7 +29,7 @@ export const findNoteById = async (noteId: string): Promise<Notes> => {
     const response = await backendApi.get(`notes/${noteId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -38,7 +38,7 @@ export const updateNotesByIdForWorkbench = async (noteId: string, body: UpdateNo
     const response = await backendApi.put(`notes/${noteId}/workbench`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -46,7 +46,7 @@ export const deleteNotesByIdForWorkbench = async (noteId: string): Promise<void>
   try {
     await backendApi.delete(`notes/${noteId}/workbench`);
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -55,6 +55,6 @@ export const recoverNoteByIdForWorkbench = async (noteId: string): Promise<Notes
     const response = await backendApi.post(`notes/${noteId}/workbench/recover`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

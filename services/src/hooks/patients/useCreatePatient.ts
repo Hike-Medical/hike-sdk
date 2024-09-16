@@ -1,10 +1,10 @@
 import { CreatePatientParams, PatientExtended } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { createPatient } from '../../api/patient.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export const useCreatePatient = (
-  mutationOptions?: UseMutationOptions<PatientExtended, ResponseError<null>, CreatePatientParams>
+  mutationOptions?: UseMutationOptions<PatientExtended, HikeError<null>, CreatePatientParams>
 ) => {
   return useMutation({
     mutationKey: ['createPatient'],
