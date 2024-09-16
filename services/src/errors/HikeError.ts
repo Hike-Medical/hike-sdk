@@ -2,6 +2,9 @@ import { isAxiosError } from 'axios';
 import { HikeErrorCode, toErrorCode } from './HikeErrorCode';
 import { toErrorMessage } from './toErrorMessage';
 
+/**
+ * Options for creating a `HikeError` instance.
+ */
 interface HikeErrorOptions<T> {
   message: string;
   statusCode: number;
@@ -17,7 +20,7 @@ export class HikeError<T> extends Error {
   readonly errorCode?: HikeErrorCode;
   readonly data?: T;
 
-  constructor({ message, statusCode, data, errorCode }: HikeErrorOptions<T>) {
+  constructor({ message, statusCode, errorCode, data }: HikeErrorOptions<T>) {
     super(message);
     this.statusCode = statusCode;
     this.errorCode = errorCode;
