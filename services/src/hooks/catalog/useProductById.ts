@@ -1,10 +1,10 @@
 import { CatalogProductExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findProductById } from '../../api/catalog.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseProductByIdOptions
-  extends Omit<UseQueryOptions<CatalogProductExtended, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<CatalogProductExtended, HikeError<null>>, 'queryKey' | 'queryFn'> {
   productId: string;
   queryKey?: QueryKey;
 }

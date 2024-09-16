@@ -1,7 +1,7 @@
 import { isString } from '@hike/utils';
 import { isAxiosError } from 'axios';
 
-export enum ResponseErrorCode {
+export enum HikeErrorCode {
   // Generic errors
   ERR_UNKNOWN = 'ERR_UNKNOWN',
 
@@ -10,9 +10,12 @@ export enum ResponseErrorCode {
   ERR_DATA_CONFLICT = 'ERR_DATA_CONFLICT',
   ERR_DATA_INVALID = 'ERR_DATA_INVALID',
 
-  // Evaluation errors
-  ERR_EVALUATION_INCOMPLETE = 'ERR_EVALUATION_INCOMPLETE',
-  ERR_ORDER_ALREADY_PROCESSING = 'ERR_ORDER_ALREADY_PROCESSING',
+  // Workbench errors
+  ERR_WORKBENCH_ALREADY_PROCESSING = 'ERR_WORKBENCH_ALREADY_PROCESSING',
+
+  // User errors
+  ERR_USER_CLINICIAN_NOT_FOUND = 'ERR_USER_CLINICIAN_NOT_FOUND',
+  ERR_USER_CLINICIAN_ALREADY_EXISTS = 'ERR_USER_CLINICIAN_ALREADY_EXISTS',
 
   // Token errors
   ERR_TOKEN_INVALID = 'ERR_TOKEN_INVALID'
@@ -21,13 +24,13 @@ export enum ResponseErrorCode {
 /**
  * Checks if an error code is valid.
  */
-export const isValidErrorCode = (errorCode: unknown): errorCode is ResponseErrorCode =>
-  isString(errorCode) && Object.values(ResponseErrorCode).includes(errorCode as ResponseErrorCode);
+export const isValidErrorCode = (errorCode: unknown): errorCode is HikeErrorCode =>
+  isString(errorCode) && Object.values(HikeErrorCode).includes(errorCode as HikeErrorCode);
 
 /**
  * Extracts an error code from an unknown error object.
  */
-export const toErrorCode = (error: unknown): ResponseErrorCode => {
+export const toErrorCode = (error: unknown): HikeErrorCode => {
   if (
     typeof error === 'object' &&
     error !== null &&
@@ -49,5 +52,5 @@ export const toErrorCode = (error: unknown): ResponseErrorCode => {
     return error.response.data.errorCode;
   }
 
-  return ResponseErrorCode.ERR_UNKNOWN;
+  return HikeErrorCode.ERR_UNKNOWN;
 };

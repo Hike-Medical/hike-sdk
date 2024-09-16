@@ -1,7 +1,7 @@
 import { Workbench } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { updateRenderType } from '../../api/workbench.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 interface UpdateRenderTypeContext {
   workbenchId: string;
@@ -10,7 +10,7 @@ interface UpdateRenderTypeContext {
 }
 
 export const useUpdateRenderType = (
-  options?: UseMutationOptions<Workbench, ResponseError<null>, UpdateRenderTypeContext>
+  options?: UseMutationOptions<Workbench, HikeError<null>, UpdateRenderTypeContext>
 ) =>
   useMutation({
     mutationKey: ['updateRenderType'],

@@ -1,9 +1,9 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { GenerateSignedURLParams, GenerateSignedURLResponse, getPreSignedURL } from '../../api/scan.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export const useCreatePresignedUrl = (
-  mutationOptions?: UseMutationOptions<GenerateSignedURLResponse, ResponseError<null>, GenerateSignedURLParams>
+  mutationOptions?: UseMutationOptions<GenerateSignedURLResponse, HikeError<null>, GenerateSignedURLParams>
 ) => {
   return useMutation({
     mutationKey: ['createPresignedUrl'],

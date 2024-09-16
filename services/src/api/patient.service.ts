@@ -7,7 +7,7 @@ import type {
   UpdatePatientParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createPatient = async (params: CreatePatientParams): Promise<PatientExtended> => {
@@ -15,7 +15,7 @@ export const createPatient = async (params: CreatePatientParams): Promise<Patien
     const response = await backendApi.post('patient', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -24,7 +24,7 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
     const response = await backendApi.get(`patient/${patientId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -33,7 +33,7 @@ export const fetchPatients = async (params?: GetPatientsParams): Promise<PagedRe
     const response = await backendApi.get('patient', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -44,7 +44,7 @@ export const fetchPatientsByMissingExternalId = async (
     const response = await backendApi.get('patient/external-id', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -53,7 +53,7 @@ export const searchPatients = async (params: SearchPatientsParams): Promise<Page
     const response = await backendApi.get('patient/search', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -62,6 +62,6 @@ export const updatePatient = async (patientId: string, params: UpdatePatientPara
     const response = await backendApi.patch(`patient/${patientId}`, params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

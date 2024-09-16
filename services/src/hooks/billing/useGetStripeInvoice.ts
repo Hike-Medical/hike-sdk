@@ -1,14 +1,14 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { Stripe } from 'stripe';
 import { fetchStripeInvoice } from '../../api/billing.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 interface StripeInvoiceContext {
   stripeInvoiceId: string;
 }
 
 export const useStripeInvoice = (
-  options?: UseMutationOptions<Stripe.Invoice, ResponseError<null>, StripeInvoiceContext>
+  options?: UseMutationOptions<Stripe.Invoice, HikeError<null>, StripeInvoiceContext>
 ) => {
   return useMutation({
     mutationKey: ['stripeInvoice'],

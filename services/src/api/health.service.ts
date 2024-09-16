@@ -1,4 +1,4 @@
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const healthCheck = async () => {
@@ -6,6 +6,6 @@ export const healthCheck = async () => {
     const response = await backendApi.get('health');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

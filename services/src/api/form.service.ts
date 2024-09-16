@@ -7,7 +7,7 @@ import type {
   UpdateFormTemplateBody,
   UpsertFormSubmissionParams
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findFormSchemaById = async (schemaId: string, templateable = false): Promise<FormSchemaTyped> => {
@@ -15,7 +15,7 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
     const response = await backendApi.get(`form/schema/${schemaId}`, { params: { templateable } });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -24,7 +24,7 @@ export const findFormSchemasByIds = async (schemaIds: string[]): Promise<FormSch
     const response = await backendApi.get(`form/schema?schemaIds=${schemaIds.join(',')}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -36,7 +36,7 @@ export const findFormSubmission = async (
     const response = await backendApi.get(`form/schema/${schemaId}/workbench/${workbenchId}/submission`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -45,7 +45,7 @@ export const findFormSubmissionsByWorkbenchId = async (workbenchId: string): Pro
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -57,7 +57,7 @@ export const findFormSubmissionsBySchemaType = async (
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission/${schemaType}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -66,7 +66,7 @@ export const upsertFormSubmission = async (params: UpsertFormSubmissionParams): 
     const response = await backendApi.post('form/submission', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -75,7 +75,7 @@ export const createFormTemplate = async (body: CreateFormTemplateBody): Promise<
     const response = await backendApi.post(`form/template`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -84,7 +84,7 @@ export const findFormTemplateById = async (templateId: string): Promise<FormTemp
     const response = await backendApi.get(`form/template/${templateId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -93,7 +93,7 @@ export const findFormTemplates = async (): Promise<Partial<FormTemplateResponse>
     const response = await backendApi.get(`form/template`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -105,7 +105,7 @@ export const updateFormTemplate = async (
     const response = await backendApi.put(`form/template/${templateId}`, body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -114,6 +114,6 @@ export const deleteTemplate = async (templateId: string): Promise<void> => {
     const response = await backendApi.delete(`form/template/${templateId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

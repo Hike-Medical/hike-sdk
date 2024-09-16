@@ -1,10 +1,10 @@
 import type { GetOrdersParams, OrderExtended, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchOrders } from '../../api/order.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseOrdersOptions
-  extends Omit<UseQueryOptions<PagedResponse<OrderExtended[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<OrderExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetOrdersParams;
   queryKey?: QueryKey;
 }

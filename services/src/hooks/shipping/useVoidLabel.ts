@@ -1,8 +1,8 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { voidLabel } from '../../api/shipping.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
-export const useVoidLabel = (mutationOptions?: UseMutationOptions<void, ResponseError<null>, string>) =>
+export const useVoidLabel = (mutationOptions?: UseMutationOptions<void, HikeError<null>, string>) =>
   useMutation({
     mutationKey: ['voidLabel'],
     mutationFn: async (labelId: string) => await voidLabel(labelId),

@@ -1,7 +1,7 @@
 import type { EvaluationExtended, PagedResponse, SearchEvaluationsParams } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { searchEvaluations } from '../../api/evaluation.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {
   key?: string[];
@@ -9,7 +9,7 @@ export interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {
 }
 
 export const useEvaluationSearch = ({ key = [], enabled = true, ...params }: UseEvaluationsSearchOptions) =>
-  useQuery<PagedResponse<EvaluationExtended[]>, ResponseError<null>>({
+  useQuery<PagedResponse<EvaluationExtended[]>, HikeError<null>>({
     queryKey: ['evaluationSearch', ...key, params],
     queryFn: async () => await searchEvaluations(params),
     enabled

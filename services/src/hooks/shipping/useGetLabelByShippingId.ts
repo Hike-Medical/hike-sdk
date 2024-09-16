@@ -1,10 +1,10 @@
 import { LabelsResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { fetchLabelByShippingId } from '../../api/shipping.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export const useGetLabelByShippingId = (
-  mutationOptions?: UseMutationOptions<LabelsResponse, ResponseError<null>, string>
+  mutationOptions?: UseMutationOptions<LabelsResponse, HikeError<null>, string>
 ) => {
   return useMutation({
     mutationKey: ['getLabelByShippingId'],

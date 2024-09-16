@@ -12,7 +12,7 @@ import type {
   StartEvaluationByProductParams,
   UpdateEvaluationParams
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
@@ -20,7 +20,7 @@ export const createEvaluation = async (params: CreateEvaluationParams): Promise<
     const response = await backendApi.post('evaluation', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -32,7 +32,7 @@ export const updateEvaluation = async (
     const response = await backendApi.patch(`evaluation/${evaluationId}`, params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -43,7 +43,7 @@ export const createEvaluationByProduct = async (
     const response = await backendApi.post('evaluation/create/product', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -52,7 +52,7 @@ export const startEvaluationByProduct = async (params: StartEvaluationByProductP
     const response = await backendApi.post('evaluation/start/product', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -61,7 +61,7 @@ export const cancelEvaluation = async (params: ActionEvaluationParams): Promise<
     const response = await backendApi.post(`evaluation/${params.evaluationId}/cancel`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -70,7 +70,7 @@ export const editEvaluation = async (params: ActionEvaluationParams): Promise<Ev
     const response = await backendApi.post(`evaluation/${params.evaluationId}/edit`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -79,7 +79,7 @@ export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<
     const response = await backendApi.post(`evaluation/${params.evaluationId}/remake`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -88,7 +88,7 @@ export const reorderEvaluation = async (params: ActionEvaluationParams): Promise
     const response = await backendApi.post(`evaluation/${params.evaluationId}/reorder`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -97,7 +97,7 @@ export const findEvaluationById = async (evaluationId: string): Promise<Evaluati
     const response = await backendApi.get(`evaluation/${evaluationId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -106,7 +106,7 @@ export const findEvaluationByWorkbenchId = async (workbenchId: string): Promise<
     const response = await backendApi.get(`evaluation/${workbenchId}/workbench`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -115,7 +115,7 @@ export const findEvaluations = async (params: GetEvaluationsParams): Promise<Pag
     const response = await backendApi.get('evaluation', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -126,7 +126,7 @@ export const searchEvaluations = async (
     const response = await backendApi.get('evaluation/search', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -138,7 +138,7 @@ export const statsForEvaluations = async (assignedOnly?: boolean): Promise<Evalu
     const response = await backendApi.get('evaluation/stats', { params: { assignedOnly } });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -155,6 +155,6 @@ export const uploadEvaluations = async (
 
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

@@ -1,7 +1,7 @@
 import type { Company } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { findCompaniesBySession } from '../../auth/findCompaniesBySession';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseCompaniesBySessionOptions {
   key?: string[];
@@ -9,7 +9,7 @@ export interface UseCompaniesBySessionOptions {
 }
 
 export const useCompaniesBySession = ({ key = [], enabled = true }: UseCompaniesBySessionOptions) =>
-  useQuery<Company[], ResponseError<null>>({
+  useQuery<Company[], HikeError<null>>({
     queryKey: ['session', 'companies', ...key],
     queryFn: async () => await findCompaniesBySession(),
     enabled
