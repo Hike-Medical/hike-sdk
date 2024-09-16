@@ -6,7 +6,7 @@ import {
   UpFrontPaymentInfo
 } from '@hike/types';
 import { Stripe } from 'stripe';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const getStripeEntities = async () => {
@@ -14,7 +14,7 @@ export const getStripeEntities = async () => {
     const response = await backendApi.get(`billing/entities`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -23,7 +23,7 @@ export const getStripeSubscriptionStats = async (stripeEntityId: string) => {
     const response = await backendApi.get(`billing/subscription/stats/${stripeEntityId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -34,7 +34,7 @@ export const fetchInvoices = async (
     const response = await backendApi.get('billing/invoices', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -43,7 +43,7 @@ export const fetchStripeInvoice = async (stripeInvoiceId: string): Promise<Strip
     const response = await backendApi.post(`billing/invoice/stripe/${stripeInvoiceId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -52,7 +52,7 @@ export const getUpFrontPaymentInfo = async (stripeInvoiceId: string): Promise<Up
     const response = await backendApi.get(`billing/up-front-payment/${stripeInvoiceId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -61,6 +61,6 @@ export const getBillingOverview = async (stripeInvoiceId: string): Promise<Billi
     const response = await backendApi.get(`billing/overview/${stripeInvoiceId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

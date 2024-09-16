@@ -1,4 +1,4 @@
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const logout = async (): Promise<void> => {
@@ -6,6 +6,6 @@ export const logout = async (): Promise<void> => {
     const response = await backendApi.post('auth/logout');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

@@ -1,5 +1,5 @@
 import { RunAutoSlicerParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const runSlicerForSide = async (body: RunAutoSlicerParams, companyIds?: string[]) => {
@@ -9,6 +9,6 @@ export const runSlicerForSide = async (body: RunAutoSlicerParams, companyIds?: s
     });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

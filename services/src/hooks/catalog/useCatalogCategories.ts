@@ -1,10 +1,10 @@
 import type { CatalogCategory, GetCategoriesParams, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchCategories } from '../../api/catalog.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseCatalogCategoriesOptions
-  extends Omit<UseQueryOptions<PagedResponse<CatalogCategory[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<CatalogCategory[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetCategoriesParams;
   queryKey?: QueryKey;
 }

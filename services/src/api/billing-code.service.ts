@@ -1,5 +1,5 @@
 import type { BillingCode, GetBillingCodesParams, PagedResponse, SearchBillingCodesParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findBillingCodeById = async (billingCodeId: string): Promise<BillingCode> => {
@@ -7,7 +7,7 @@ export const findBillingCodeById = async (billingCodeId: string): Promise<Billin
     const response = await backendApi.get(`billing-code/${billingCodeId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -19,7 +19,7 @@ export const fetchBillingCodes = async (params?: GetBillingCodesParams): Promise
     const response = await backendApi.get('billing-code', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -28,6 +28,6 @@ export const searchBillingCodes = async (params: SearchBillingCodesParams): Prom
     const response = await backendApi.get('billing-code/search', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

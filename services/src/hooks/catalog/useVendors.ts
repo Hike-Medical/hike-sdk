@@ -1,10 +1,10 @@
 import type { CatalogVendor, GetVendorsParams, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchVendors } from '../../api/catalog.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseVendorsOptions
-  extends Omit<UseQueryOptions<PagedResponse<CatalogVendor[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<CatalogVendor[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetVendorsParams;
   queryKey?: QueryKey;
 }
