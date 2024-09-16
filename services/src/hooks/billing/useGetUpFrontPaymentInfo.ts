@@ -1,10 +1,10 @@
 import type { UpFrontPaymentInfo } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getUpFrontPaymentInfo } from '../../api/billing.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface useGetUpFrontPaymentInfoContext
-  extends Omit<UseQueryOptions<UpFrontPaymentInfo | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<UpFrontPaymentInfo | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   stripeEntityId: string;
   enabled: boolean;
   queryKey?: QueryKey;

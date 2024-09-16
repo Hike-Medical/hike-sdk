@@ -1,5 +1,5 @@
 import { CreatePinDto } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const getPinStatus = async (): Promise<boolean> => {
@@ -7,7 +7,7 @@ export const getPinStatus = async (): Promise<boolean> => {
     const response = await backendApi.get('pin');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -15,7 +15,7 @@ export const deletePin = async (): Promise<void> => {
   try {
     await backendApi.delete('pin');
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -24,6 +24,6 @@ export const createPin = async (body: CreatePinDto): Promise<void> => {
     const response = await backendApi.post('pin', body);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

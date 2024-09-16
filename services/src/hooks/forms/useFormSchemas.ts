@@ -1,10 +1,10 @@
 import type { FormSchemaTyped } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findFormSchemasByIds } from '../../api/form.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseFormSchemasOptions
-  extends Omit<UseQueryOptions<FormSchemaTyped[] | null, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<FormSchemaTyped[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   schemaIds: string[];
   queryKey?: QueryKey;
 }

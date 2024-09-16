@@ -7,7 +7,7 @@ import {
   PagedResponse,
   UserExtended
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse<UserExtended[]>> => {
@@ -15,7 +15,7 @@ export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse
     const response = await backendApi.get('user', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -24,7 +24,7 @@ export const fetchClinicians = async (params?: GetCliniciansParams): Promise<Pag
     const response = await backendApi.get('user/clinicians', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -33,7 +33,7 @@ export const fetchClinician = async (): Promise<Clinician | null> => {
     const response = await backendApi.get('user/clinician');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -42,6 +42,6 @@ export const assignClinician = async (params: AssignClinicianParams): Promise<Cl
     const response = await backendApi.post('user/clinician', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

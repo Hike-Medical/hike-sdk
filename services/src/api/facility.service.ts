@@ -1,5 +1,5 @@
 import { FacilityExtended, PagedResponse, SearchFacilityParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const fetchCompanyFacilitiesAndAddresses = async (): Promise<FacilityExtended[]> => {
@@ -7,7 +7,7 @@ export const fetchCompanyFacilitiesAndAddresses = async (): Promise<FacilityExte
     const response = await backendApi.get('facility');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -26,6 +26,6 @@ export const searchCompanyFacilityAndAddresses = async (
     const response = await backendApi.get('facility/search', { params, headers });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

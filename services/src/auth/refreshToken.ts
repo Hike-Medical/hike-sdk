@@ -1,5 +1,5 @@
 import type { AuthSession } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const refreshToken = async (token?: string, excludeCookie?: boolean): Promise<AuthSession> => {
@@ -8,6 +8,6 @@ export const refreshToken = async (token?: string, excludeCookie?: boolean): Pro
     const response = await backendApi.post(`auth/refresh${queryString}`, { token });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

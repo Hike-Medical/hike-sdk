@@ -1,10 +1,10 @@
 import type { EvaluationsStats } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { statsForEvaluations } from '../../api/evaluation.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseEvaluationStatsOptions
-  extends Omit<UseQueryOptions<EvaluationsStats, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<EvaluationsStats, HikeError<null>>, 'queryKey' | 'queryFn'> {
   assignedOnly?: boolean;
   queryKey?: QueryKey;
 }

@@ -1,10 +1,10 @@
 import { ActionEvaluationParams, EvaluationExtended } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { remakeEvaluation } from '../../api/evaluation.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export const useRemakeEvaluation = (
-  mutationOptions?: UseMutationOptions<EvaluationExtended, ResponseError<null>, ActionEvaluationParams>
+  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
 ) => {
   return useMutation({
     mutationKey: ['remakeEvaluation'],

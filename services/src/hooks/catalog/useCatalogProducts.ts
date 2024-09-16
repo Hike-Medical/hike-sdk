@@ -1,10 +1,10 @@
 import type { CatalogProductExtended, GetProductsParams, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../api/catalog.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseCatalogProductsOptions
-  extends Omit<UseQueryOptions<PagedResponse<CatalogProductExtended[]>, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<CatalogProductExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetProductsParams;
   queryKey?: QueryKey;
 }

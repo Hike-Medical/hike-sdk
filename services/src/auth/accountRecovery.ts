@@ -1,5 +1,5 @@
 import { AccountRecoveryParams, PasswordResetParams } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const accountRecovery = async (params: AccountRecoveryParams): Promise<void> => {
@@ -7,7 +7,7 @@ export const accountRecovery = async (params: AccountRecoveryParams): Promise<vo
     const response = await backendApi.post('auth/account/recovery', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -16,6 +16,6 @@ export const resetPassword = async (params: PasswordResetParams): Promise<void> 
     const response = await backendApi.post('auth/password/reset', params);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

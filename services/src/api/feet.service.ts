@@ -1,5 +1,5 @@
 import { FootStatus } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const getClinicalFootStatus = async (footId: string): Promise<FootStatus> => {
@@ -7,6 +7,6 @@ export const getClinicalFootStatus = async (footId: string): Promise<FootStatus>
     const response = await backendApi.get(`foot/${footId}/clinicalStatus`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

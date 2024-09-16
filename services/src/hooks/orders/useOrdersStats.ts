@@ -1,10 +1,10 @@
 import type { OrdersStats } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { statsForOrders } from '../../api/order.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseOrdersStatsOptions
-  extends Omit<UseQueryOptions<OrdersStats, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<OrdersStats, HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 
