@@ -1,7 +1,7 @@
 import type { GetSearchParams, SearchResponse } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { searchEvaluations } from '../api/search.service';
-import { ResponseError } from '../errors/ResponseError';
+import { HikeError } from '../errors/HikeError';
 
 export interface UseGlobalSearchOptions extends GetSearchParams {
   key?: string[];
@@ -9,7 +9,7 @@ export interface UseGlobalSearchOptions extends GetSearchParams {
 }
 
 export const useGlobalSearch = ({ key = [], enabled = true, ...params }: UseGlobalSearchOptions) =>
-  useQuery<SearchResponse, ResponseError<null>>({
+  useQuery<SearchResponse, HikeError<null>>({
     queryKey: ['useGlobalSearch', ...key, params],
     queryFn: async () => await searchEvaluations(params),
     enabled

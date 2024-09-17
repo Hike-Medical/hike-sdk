@@ -1,7 +1,7 @@
 import type { CompanyExtended } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { findCompanyPreferences } from '../../api/company.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface useCompanyPreferencesOptions {
   key?: string[];
@@ -9,7 +9,7 @@ export interface useCompanyPreferencesOptions {
 }
 
 export const useCompanyPreferences = ({ key = [], enabled = true }: useCompanyPreferencesOptions) =>
-  useQuery<CompanyExtended['preferences'], ResponseError<null>>({
+  useQuery<CompanyExtended['preferences'], HikeError<null>>({
     queryKey: ['session', 'companies', ...key],
     queryFn: async () => await findCompanyPreferences(),
     enabled

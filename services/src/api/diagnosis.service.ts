@@ -1,5 +1,5 @@
 import type { Diagnosis, PagedParams, PagedResponse } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findDiagnosisByCode = async (code: string): Promise<Diagnosis> => {
@@ -7,7 +7,7 @@ export const findDiagnosisByCode = async (code: string): Promise<Diagnosis> => {
     const response = await backendApi.get(`diagnosis/${code}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -16,7 +16,7 @@ export const fetchDiagnoses = async (params?: PagedParams): Promise<PagedRespons
     const response = await backendApi.get('diagnosis', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -25,6 +25,6 @@ export const searchDiagnoses = async (term: string, params?: PagedParams): Promi
     const response = await backendApi.get('diagnosis/search', { params: { ...params, term } });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

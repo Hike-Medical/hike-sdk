@@ -1,13 +1,10 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { recoverNoteByIdForWorkbench } from '../../api/notes.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export const useRecoverNote = (
   noteId: string,
-  mutationOptions?: Omit<
-    UseMutationOptions<unknown, ResponseError<null>, { noteId: string }>,
-    'mutationKey' | 'mutationFn'
-  >
+  mutationOptions?: Omit<UseMutationOptions<unknown, HikeError<null>, { noteId: string }>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['recoverNote', noteId],

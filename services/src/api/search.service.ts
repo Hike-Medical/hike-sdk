@@ -1,5 +1,5 @@
 import type { EvaluationExtended, GetSearchParams, PagedResponse, PatientExtended } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const searchEvaluations = async (
@@ -9,6 +9,6 @@ export const searchEvaluations = async (
     const response = await backendApi.get('search', { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

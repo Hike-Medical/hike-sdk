@@ -1,7 +1,7 @@
 import type { GetShipengineLabelsParams, GetShipengineLabelsResponse } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { fetchLabels } from '../../api/shipping.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseGetShipengineLabelsOptions extends GetShipengineLabelsParams {
   key?: string[];
@@ -9,7 +9,7 @@ export interface UseGetShipengineLabelsOptions extends GetShipengineLabelsParams
 }
 
 export const useLabels = ({ key = [], enabled = true, ...params }: UseGetShipengineLabelsOptions = {}) =>
-  useQuery<GetShipengineLabelsResponse, ResponseError<null>>({
+  useQuery<GetShipengineLabelsResponse, HikeError<null>>({
     queryKey: ['labels', ...key, params],
     queryFn: async () => await fetchLabels(params),
     enabled

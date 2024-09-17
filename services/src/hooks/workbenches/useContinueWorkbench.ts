@@ -1,7 +1,7 @@
 import { Workbench } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { continueWorkbench } from '../../api/workbench.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 interface ContinueWorkbenchContext {
   workbenchId: string;
@@ -9,7 +9,7 @@ interface ContinueWorkbenchContext {
 }
 
 export const useContinueWorkbench = (
-  options?: UseMutationOptions<Workbench, ResponseError<null>, ContinueWorkbenchContext>
+  options?: UseMutationOptions<Workbench, HikeError<null>, ContinueWorkbenchContext>
 ) => {
   return useMutation({
     mutationKey: ['continueWorkbench'],
