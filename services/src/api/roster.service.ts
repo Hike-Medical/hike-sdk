@@ -1,5 +1,5 @@
 import { GenerateUploadLinkOptions } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const generateRosterUploadlink = async (data: GenerateUploadLinkOptions) => {
@@ -7,6 +7,6 @@ export const generateRosterUploadlink = async (data: GenerateUploadLinkOptions) 
     const response = await backendApi.post('roster/upload-link', data);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

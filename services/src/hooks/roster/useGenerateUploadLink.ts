@@ -1,7 +1,7 @@
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { generateRosterUploadlink } from '../../api/roster.service';
-import { ResponseError } from 'errors/ResponseError';
 import { GenerateUploadLinkOptions } from '@hike/types';
+import { HikeError } from '../../errors/HikeError';
 
 interface GenerateUploadLinkResponse {
   filePath: string;
@@ -9,7 +9,7 @@ interface GenerateUploadLinkResponse {
 }
 
 export const useGenerateUploadLink = (
-  mutationOptions?: UseMutationOptions<GenerateUploadLinkResponse, ResponseError<null>, GenerateUploadLinkOptions>
+  mutationOptions?: UseMutationOptions<GenerateUploadLinkResponse, HikeError<null>, GenerateUploadLinkOptions>
 ) => {
   return useMutation({
     mutationKey: ['generateUploadLink'],
