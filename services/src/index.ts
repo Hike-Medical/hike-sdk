@@ -84,6 +84,7 @@ export * from './hooks/feet/useGetActiveFeet';
 export * from './hooks/feet/useGetFootStatus';
 export * from './hooks/feet/useSetFootActive';
 export * from './hooks/feet/useSetFootInactive';
+export * from './hooks/feet/useUpdateFootFromWorkbench';
 export * from './hooks/forms/useCreateFormTemplate';
 export * from './hooks/forms/useDeleteFormTemplate';
 export * from './hooks/forms/useFormSchema';
