@@ -28627,7 +28627,7 @@ export namespace Prisma {
   export type FormSchemaGroupByOutputType = {
     id: string
     title: string
-    type: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonValue
     createdAt: Date
     updatedAt: Date
@@ -28685,7 +28685,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      type: $Enums.FormSchemaType | null
+      type: $Enums.FormSchemaType
       data: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
@@ -55203,7 +55203,7 @@ export namespace Prisma {
     NOT?: FormSchemaWhereInput | FormSchemaWhereInput[]
     id?: StringFilter<"FormSchema"> | string
     title?: StringFilter<"FormSchema"> | string
-    type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFilter<"FormSchema"> | $Enums.FormSchemaType
     data?: JsonFilter<"FormSchema">
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
@@ -55213,7 +55213,7 @@ export namespace Prisma {
   export type FormSchemaOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    type?: SortOrderInput | SortOrder
+    type?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -55226,7 +55226,7 @@ export namespace Prisma {
     OR?: FormSchemaWhereInput[]
     NOT?: FormSchemaWhereInput | FormSchemaWhereInput[]
     title?: StringFilter<"FormSchema"> | string
-    type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFilter<"FormSchema"> | $Enums.FormSchemaType
     data?: JsonFilter<"FormSchema">
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
@@ -55236,7 +55236,7 @@ export namespace Prisma {
   export type FormSchemaOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    type?: SortOrderInput | SortOrder
+    type?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -55251,7 +55251,7 @@ export namespace Prisma {
     NOT?: FormSchemaScalarWhereWithAggregatesInput | FormSchemaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"FormSchema"> | string
     title?: StringWithAggregatesFilter<"FormSchema"> | string
-    type?: EnumFormSchemaTypeNullableWithAggregatesFilter<"FormSchema"> | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeWithAggregatesFilter<"FormSchema"> | $Enums.FormSchemaType
     data?: JsonWithAggregatesFilter<"FormSchema">
     createdAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
@@ -59130,7 +59130,7 @@ export namespace Prisma {
   export type FormSchemaCreateInput = {
     id?: string
     title: string
-    type?: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59140,7 +59140,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedCreateInput = {
     id?: string
     title: string
-    type?: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59150,7 +59150,7 @@ export namespace Prisma {
   export type FormSchemaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59160,7 +59160,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59170,7 +59170,7 @@ export namespace Prisma {
   export type FormSchemaCreateManyInput = {
     id?: string
     title: string
-    type?: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59179,7 +59179,7 @@ export namespace Prisma {
   export type FormSchemaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59188,7 +59188,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63022,11 +63022,11 @@ export namespace Prisma {
     name?: SortOrder
   }
 
-  export type EnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel> | $Enums.FormSchemaType | null
+  export type EnumFormSchemaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumFormSchemaTypeFilter<$PrismaModel> | $Enums.FormSchemaType
   }
   export type JsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -63076,14 +63076,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
-    _max?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
+  export type EnumFormSchemaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumFormSchemaTypeWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumFormSchemaTypeFilter<$PrismaModel>
+    _max?: NestedEnumFormSchemaTypeFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -66525,8 +66525,8 @@ export namespace Prisma {
     connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
   }
 
-  export type NullableEnumFormSchemaTypeFieldUpdateOperationsInput = {
-    set?: $Enums.FormSchemaType | null
+  export type EnumFormSchemaTypeFieldUpdateOperationsInput = {
+    set?: $Enums.FormSchemaType
   }
 
   export type FormSubmissionUpdateManyWithoutSchemaNestedInput = {
@@ -68563,21 +68563,21 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumFormSchemaTypeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel> | $Enums.FormSchemaType | null
+  export type NestedEnumFormSchemaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumFormSchemaTypeFilter<$PrismaModel> | $Enums.FormSchemaType
   }
 
-  export type NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumFormSchemaTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
-    _max?: NestedEnumFormSchemaTypeNullableFilter<$PrismaModel>
+  export type NestedEnumFormSchemaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FormSchemaType | EnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FormSchemaType[] | ListEnumFormSchemaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumFormSchemaTypeWithAggregatesFilter<$PrismaModel> | $Enums.FormSchemaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumFormSchemaTypeFilter<$PrismaModel>
+    _max?: NestedEnumFormSchemaTypeFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -73762,7 +73762,7 @@ export namespace Prisma {
   export type FormSchemaCreateWithoutSubmissionsInput = {
     id?: string
     title: string
-    type?: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -73771,7 +73771,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedCreateWithoutSubmissionsInput = {
     id?: string
     title: string
-    type?: $Enums.FormSchemaType | null
+    type: $Enums.FormSchemaType
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -73841,7 +73841,7 @@ export namespace Prisma {
   export type FormSchemaUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -73850,7 +73850,7 @@ export namespace Prisma {
   export type FormSchemaUncheckedUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    type?: EnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
