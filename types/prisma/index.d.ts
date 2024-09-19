@@ -57331,6 +57331,7 @@ export namespace Prisma {
 
   export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    companyId_name?: DepartmentCompanyIdNameCompoundUniqueInput
     AND?: DepartmentWhereInput | DepartmentWhereInput[]
     OR?: DepartmentWhereInput[]
     NOT?: DepartmentWhereInput | DepartmentWhereInput[]
@@ -57342,7 +57343,7 @@ export namespace Prisma {
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     departmentUsers?: DepartmentUserListRelationFilter
     companyPatients?: CompanyPatientListRelationFilter
-  }, "id">
+  }, "id" | "companyId_name">
 
   export type DepartmentOrderByWithAggregationInput = {
     id?: SortOrder
@@ -65052,6 +65053,11 @@ export namespace Prisma {
 
   export type DepartmentUserOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type DepartmentCompanyIdNameCompoundUniqueInput = {
+    companyId: string
+    name: string
   }
 
   export type DepartmentCountOrderByAggregateInput = {
