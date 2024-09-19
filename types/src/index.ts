@@ -40,6 +40,7 @@ export type * from './dto/evaluation/UpdateEvaluationParams';
 export type * from './dto/facility/SearchFacilityParams';
 export type * from './dto/foot/FootStatus';
 export type * from './dto/foot/SetFootInactive';
+export type * from './dto/foot/UpdateFootFromWorkbenchId';
 export type * from './dto/form/CreateFormTemplateBody';
 export type * from './dto/form/FormTemplateResponse';
 export type * from './dto/form/UpdateFormTemplateBody';
