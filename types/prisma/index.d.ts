@@ -39567,7 +39567,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMinAggregateOutputType = {
-    id: string | null
     userId: string | null
     departmentId: string | null
     role: $Enums.CompanyRole | null
@@ -39576,7 +39575,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMaxAggregateOutputType = {
-    id: string | null
     userId: string | null
     departmentId: string | null
     role: $Enums.CompanyRole | null
@@ -39585,7 +39583,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCountAggregateOutputType = {
-    id: number
     userId: number
     departmentId: number
     role: number
@@ -39596,7 +39593,6 @@ export namespace Prisma {
 
 
   export type DepartmentUserMinAggregateInputType = {
-    id?: true
     userId?: true
     departmentId?: true
     role?: true
@@ -39605,7 +39601,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMaxAggregateInputType = {
-    id?: true
     userId?: true
     departmentId?: true
     role?: true
@@ -39614,7 +39609,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCountAggregateInputType = {
-    id?: true
     userId?: true
     departmentId?: true
     role?: true
@@ -39696,7 +39690,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserGroupByOutputType = {
-    id: string
     userId: string
     departmentId: string
     role: $Enums.CompanyRole
@@ -39722,7 +39715,6 @@ export namespace Prisma {
 
 
   export type DepartmentUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     userId?: boolean
     departmentId?: boolean
     role?: boolean
@@ -39733,7 +39725,6 @@ export namespace Prisma {
   }, ExtArgs["result"]["departmentUser"]>
 
   export type DepartmentUserSelectScalar = {
-    id?: boolean
     userId?: boolean
     departmentId?: boolean
     role?: boolean
@@ -39755,7 +39746,6 @@ export namespace Prisma {
       department: Prisma.$DepartmentPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
       userId: string
       departmentId: string
       role: $Enums.CompanyRole
@@ -39853,8 +39843,8 @@ export namespace Prisma {
      * // Get first 10 DepartmentUsers
      * const departmentUsers = await prisma.departmentUser.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const departmentUserWithIdOnly = await prisma.departmentUser.findMany({ select: { id: true } })
+     * // Only select the `userId`
+     * const departmentUserWithUserIdOnly = await prisma.departmentUser.findMany({ select: { userId: true } })
      * 
     **/
     findMany<T extends DepartmentUserFindManyArgs<ExtArgs>>(
@@ -39904,9 +39894,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many DepartmentUsers and only return the `id`
-     * const departmentUserWithIdOnly = await prisma.departmentUser.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many DepartmentUsers and only return the `userId`
+     * const departmentUserWithUserIdOnly = await prisma.departmentUser.createManyAndReturn({ 
+     *   select: { userId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -40184,7 +40174,6 @@ export namespace Prisma {
    * Fields of the DepartmentUser model
    */ 
   interface DepartmentUserFieldRefs {
-    readonly id: FieldRef<"DepartmentUser", 'String'>
     readonly userId: FieldRef<"DepartmentUser", 'String'>
     readonly departmentId: FieldRef<"DepartmentUser", 'String'>
     readonly role: FieldRef<"DepartmentUser", 'CompanyRole'>
@@ -53882,7 +53871,6 @@ export namespace Prisma {
 
 
   export const DepartmentUserScalarFieldEnum: {
-    id: 'id',
     userId: 'userId',
     departmentId: 'departmentId',
     role: 'role',
@@ -57247,7 +57235,6 @@ export namespace Prisma {
     AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
     OR?: DepartmentUserWhereInput[]
     NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
-    id?: StringFilter<"DepartmentUser"> | string
     userId?: StringFilter<"DepartmentUser"> | string
     departmentId?: StringFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
@@ -57258,7 +57245,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserOrderByWithRelationInput = {
-    id?: SortOrder
     userId?: SortOrder
     departmentId?: SortOrder
     role?: SortOrder
@@ -57269,7 +57255,7 @@ export namespace Prisma {
   }
 
   export type DepartmentUserWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    userId_departmentId?: DepartmentUserUserIdDepartmentIdCompoundUniqueInput
     AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
     OR?: DepartmentUserWhereInput[]
     NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
@@ -57280,10 +57266,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     department?: XOR<DepartmentRelationFilter, DepartmentWhereInput>
-  }, "id">
+  }, "userId_departmentId">
 
   export type DepartmentUserOrderByWithAggregationInput = {
-    id?: SortOrder
     userId?: SortOrder
     departmentId?: SortOrder
     role?: SortOrder
@@ -57298,7 +57283,6 @@ export namespace Prisma {
     AND?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
     OR?: DepartmentUserScalarWhereWithAggregatesInput[]
     NOT?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DepartmentUser"> | string
     userId?: StringWithAggregatesFilter<"DepartmentUser"> | string
     departmentId?: StringWithAggregatesFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleWithAggregatesFilter<"DepartmentUser"> | $Enums.CompanyRole
@@ -61318,7 +61302,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateInput = {
-    id?: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61327,7 +61310,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedCreateInput = {
-    id?: string
     userId: string
     departmentId: string
     role?: $Enums.CompanyRole
@@ -61336,7 +61318,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61345,7 +61326,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
@@ -61354,7 +61334,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateManyInput = {
-    id?: string
     userId: string
     departmentId: string
     role?: $Enums.CompanyRole
@@ -61363,14 +61342,12 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DepartmentUserUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
@@ -65007,8 +64984,12 @@ export namespace Prisma {
     isNot?: DepartmentWhereInput
   }
 
+  export type DepartmentUserUserIdDepartmentIdCompoundUniqueInput = {
+    userId: string
+    departmentId: string
+  }
+
   export type DepartmentUserCountOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     departmentId?: SortOrder
     role?: SortOrder
@@ -65017,7 +64998,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMaxOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     departmentId?: SortOrder
     role?: SortOrder
@@ -65026,7 +65006,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMinOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     departmentId?: SortOrder
     role?: SortOrder
@@ -76721,7 +76700,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateWithoutDepartmentInput = {
-    id?: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -76729,7 +76707,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedCreateWithoutDepartmentInput = {
-    id?: string
     userId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -76845,7 +76822,6 @@ export namespace Prisma {
     AND?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
     OR?: DepartmentUserScalarWhereInput[]
     NOT?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-    id?: StringFilter<"DepartmentUser"> | string
     userId?: StringFilter<"DepartmentUser"> | string
     departmentId?: StringFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
@@ -78869,7 +78845,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateWithoutUserInput = {
-    id?: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -78877,7 +78852,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedCreateWithoutUserInput = {
-    id?: string
     departmentId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -82137,7 +82111,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateManyDepartmentInput = {
-    id?: string
     userId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -82154,7 +82127,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -82162,7 +82134,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedUpdateWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -82170,7 +82141,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedUpdateManyWithoutDepartmentInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -82985,7 +82955,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateManyUserInput = {
-    id?: string
     departmentId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
@@ -83058,7 +83027,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83066,7 +83034,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
     departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83074,7 +83041,6 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
     departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
