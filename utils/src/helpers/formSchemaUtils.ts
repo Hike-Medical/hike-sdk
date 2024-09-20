@@ -4,8 +4,7 @@ import type {
   FormRule,
   FormSchemaTyped,
   FormSection,
-  FormValidationResult,
-  InvalidFieldInfo
+  InvalidFormSection
 } from '@hike/types';
 
 /**
@@ -188,42 +187,16 @@ export const schemaStats = (
   };
 };
 
-export const formValidator = (
-  sections: FormSection[],
-  state: Record<string, FormFieldValue>,
-  exemptFields: string[] = []
-): FormValidationResult => {
-  const invalidSections = getInvalidSections(sections, state);
-  const invalidFieldsData: InvalidFieldInfo[] = [];
-  const invalidSectionIndices: number[] = [];
-
-  invalidSections.forEach((section) => {
-    const sectionIndex = sections.indexOf(section);
-    if (sectionIndex !== -1) {
-      invalidSectionIndices.push(sectionIndex);
-
-      section.fields
-        .filter(
-          (field) =>
-            isFormFieldDisplayed(field, state) &&
-            !exemptFields.includes(field.name) &&
-            field.required &&
-            !isFieldValid(field, state, section.fields.length === 1)
-        )
-        .forEach((field) => {
-          invalidFieldsData.push({
-            fieldName: field.name,
-            fieldLabel: field.label,
-            sectionIndex,
-            sectionTitle: section.title
-          });
-        });
-    }
-  });
-  const isValid = isFormValid(sections, state);
-  return {
-    isValid: isValid,
-    invalidFieldsData,
-    invalidSectionIndices
-  };
-};
+export const formValidator = (sections: FormSection[], state: Record<string, FormFieldValue>): InvalidFormSection[] =>
+  getInvalidSections(sections, state).map((section) => ({
+    index: sections.indexOf(section),
+    title: section.title,
+    fields: section.fields
+      .filter((field) => !isFieldValid(field, state, section.fields.length === 1))
+      .map((field) => {
+        return {
+          name: field.name,
+          label: field.label
+        };
+      })
+  }));

@@ -107,6 +107,7 @@ export type * from './forms/FormSchemaTyped';
 export type * from './forms/FormSection';
 export type * from './forms/FormSubmissionExtended';
 export type * from './forms/FormSubmissionTyped';
-export type * from './forms/InvalidValidationInfo';
+export type * from './forms/InvalidFormField';
+export type * from './forms/InvalidFormSection';
 export type * from './pdf/PdfContent';
 export type * from './pdf/PdfDoc';
