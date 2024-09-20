@@ -1,6 +1,6 @@
 export interface PdfContent {
   label: string;
-  value: string | Buffer | null;
+  value: string | Buffer | (string | Buffer | null)[] | null;
   type?: string;
   colspan?: number;
   rowspan?: number;
