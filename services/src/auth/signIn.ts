@@ -1,5 +1,5 @@
 import { AuthSession } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const signIn = async (
@@ -11,6 +11,6 @@ export const signIn = async (
     const response = await backendApi.post(`auth/login${queryString}`, credentials);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };

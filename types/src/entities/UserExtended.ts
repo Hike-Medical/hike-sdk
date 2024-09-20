@@ -1,4 +1,4 @@
-import type { Company, CompanyUser, DepartmentUser, FacilityUser, User } from '../../prisma';
+import type { Clinician, Company, CompanyUser, DepartmentUser, FacilityUser, User } from '../../prisma';
 
 export type UserExtended = User & {
   companies: (CompanyUser & {
@@ -6,4 +6,5 @@ export type UserExtended = User & {
   })[];
   facilities: FacilityUser[];
   departments: DepartmentUser[];
+  clinician: Clinician | null;
 };

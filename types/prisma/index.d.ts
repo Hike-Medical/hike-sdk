@@ -50693,6 +50693,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     orderShoeSize: string | null
+    orderShoeWidth: string | null
     orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
@@ -50748,6 +50749,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     orderShoeSize: string | null
+    orderShoeWidth: string | null
     orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
@@ -50803,6 +50805,7 @@ export namespace Prisma {
     productType: number
     submittedAt: number
     orderShoeSize: number
+    orderShoeWidth: number
     orderGender: number
     validatedAt: number
     printingStartedAt: number
@@ -50868,6 +50871,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     orderShoeSize?: true
+    orderShoeWidth?: true
     orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
@@ -50923,6 +50927,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     orderShoeSize?: true
+    orderShoeWidth?: true
     orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
@@ -50978,6 +50983,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     orderShoeSize?: true
+    orderShoeWidth?: true
     orderGender?: true
     validatedAt?: true
     printingStartedAt?: true
@@ -51120,6 +51126,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     orderShoeSize: string | null
+    orderShoeWidth: string | null
     orderGender: string | null
     validatedAt: Date | null
     printingStartedAt: Date | null
@@ -51194,6 +51201,7 @@ export namespace Prisma {
     productType?: boolean
     submittedAt?: boolean
     orderShoeSize?: boolean
+    orderShoeWidth?: boolean
     orderGender?: boolean
     validatedAt?: boolean
     printingStartedAt?: boolean
@@ -51249,6 +51257,7 @@ export namespace Prisma {
     productType?: boolean
     submittedAt?: boolean
     orderShoeSize?: boolean
+    orderShoeWidth?: boolean
     orderGender?: boolean
     validatedAt?: boolean
     printingStartedAt?: boolean
@@ -51309,6 +51318,7 @@ export namespace Prisma {
       productType: $Enums.ProductType | null
       submittedAt: Date | null
       orderShoeSize: string | null
+      orderShoeWidth: string | null
       orderGender: string | null
       validatedAt: Date | null
       printingStartedAt: Date | null
@@ -51781,6 +51791,7 @@ export namespace Prisma {
     readonly productType: FieldRef<"ViewFlattenedWorkbench", 'ProductType'>
     readonly submittedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly orderShoeWidth: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderGender: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly validatedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly printingStartedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
@@ -52771,6 +52782,7 @@ export namespace Prisma {
     productType: 'productType',
     submittedAt: 'submittedAt',
     orderShoeSize: 'orderShoeSize',
+    orderShoeWidth: 'orderShoeWidth',
     orderGender: 'orderGender',
     validatedAt: 'validatedAt',
     printingStartedAt: 'printingStartedAt',
@@ -56672,14 +56684,14 @@ export namespace Prisma {
 
   export type AccountVerificationWhereUniqueInput = Prisma.AtLeast<{
     token?: string
+    email?: string
     AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
-    email?: StringFilter<"AccountVerification"> | string
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
-  }, "token">
+  }, "token" | "email">
 
   export type AccountVerificationOrderByWithAggregationInput = {
     token?: SortOrder
@@ -56792,6 +56804,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -56847,6 +56860,7 @@ export namespace Prisma {
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
@@ -56905,6 +56919,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -56960,6 +56975,7 @@ export namespace Prisma {
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
+    orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
     validatedAt?: SortOrderInput | SortOrder
     printingStartedAt?: SortOrderInput | SortOrder
@@ -57023,6 +57039,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    orderShoeWidth?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     validatedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     printingStartedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
@@ -60821,6 +60838,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     orderShoeSize?: string | null
+    orderShoeWidth?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
@@ -60876,6 +60894,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     orderShoeSize?: string | null
+    orderShoeWidth?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
@@ -60931,6 +60950,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -60986,6 +61006,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61041,6 +61062,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     orderShoeSize?: string | null
+    orderShoeWidth?: string | null
     orderGender?: string | null
     validatedAt?: Date | string | null
     printingStartedAt?: Date | string | null
@@ -61096,6 +61118,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61151,6 +61174,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
+    orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
     validatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     printingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64174,6 +64198,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     orderShoeSize?: SortOrder
+    orderShoeWidth?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder
@@ -64233,6 +64258,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     orderShoeSize?: SortOrder
+    orderShoeWidth?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder
@@ -64288,6 +64314,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     orderShoeSize?: SortOrder
+    orderShoeWidth?: SortOrder
     orderGender?: SortOrder
     validatedAt?: SortOrder
     printingStartedAt?: SortOrder

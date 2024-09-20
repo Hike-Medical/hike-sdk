@@ -1,9 +1,8 @@
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { isFreeTrial } from '../../api/company.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
-export interface useIsFreeTrialOptions
-  extends Omit<UseQueryOptions<boolean, ResponseError<null>>, 'queryKey' | 'queryFn'> {
+export interface useIsFreeTrialOptions extends Omit<UseQueryOptions<boolean, HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 

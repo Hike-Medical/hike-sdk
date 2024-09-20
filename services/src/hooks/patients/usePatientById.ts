@@ -1,7 +1,7 @@
 import { PatientExtended } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { findPatientById } from '../../api/patient.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseFindPatientByIdOptions {
   key?: string[];
@@ -10,7 +10,7 @@ export interface UseFindPatientByIdOptions {
 }
 
 export const usePatientById = ({ key = [], enabled = true, ...params }: UseFindPatientByIdOptions) =>
-  useQuery<PatientExtended, ResponseError<null>>({
+  useQuery<PatientExtended, HikeError<null>>({
     queryKey: ['patientsById', ...key, params],
     queryFn: async () => await findPatientById(params.patientId),
     enabled

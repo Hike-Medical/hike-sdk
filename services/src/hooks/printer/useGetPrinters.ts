@@ -1,16 +1,16 @@
 import { Printer } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getPrinters } from '../../api/printer.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface useGetPrintersOptions
-  extends Omit<UseQueryOptions<Printer[], ResponseError<null>>, 'queryFn' | 'queryKey'> {
+  extends Omit<UseQueryOptions<Printer[], HikeError<null>>, 'queryFn' | 'queryKey'> {
   companyIds?: string[];
   queryKey?: QueryKey;
 }
 
 export const useGetPrinters = ({ queryKey = [], ...options }: useGetPrintersOptions) =>
-  useQuery<Printer[], ResponseError<null>>({
+  useQuery<Printer[], HikeError<null>>({
     queryKey: ['getPrinters', queryKey],
     queryFn: async () => await getPrinters(),
     ...options

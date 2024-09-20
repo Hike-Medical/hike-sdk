@@ -1,10 +1,10 @@
 import { PagedResponse, SearchWorkbenchParams, WorkbenchExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { searchWorkbenches } from '../../api/workbench.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseSearchWorkbenchesOptions
-  extends Omit<UseQueryOptions<PagedResponse<WorkbenchExtended[]>, ResponseError<null>>, 'queryFn' | 'queryKey'> {
+  extends Omit<UseQueryOptions<PagedResponse<WorkbenchExtended[]>, HikeError<null>>, 'queryFn' | 'queryKey'> {
   params: SearchWorkbenchParams;
   companyIds?: string[];
   queryKey?: QueryKey;

@@ -1,7 +1,7 @@
 import type { ShippingLabelResponseByShipmentId } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 import { fetchOrdersByLabelId } from '../../api/shipping.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 export interface UseOrdersByLabelId {
   key?: string[];
@@ -10,7 +10,7 @@ export interface UseOrdersByLabelId {
 }
 
 export const useOrdersByLabelId = ({ key = [], enabled = true, ...params }: UseOrdersByLabelId) =>
-  useQuery<ShippingLabelResponseByShipmentId, ResponseError<null>>({
+  useQuery<ShippingLabelResponseByShipmentId, HikeError<null>>({
     queryKey: ['orderByLabelId', ...key, params],
     queryFn: async () => await fetchOrdersByLabelId(params.labelId),
     enabled

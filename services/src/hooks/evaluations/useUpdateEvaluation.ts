@@ -1,7 +1,7 @@
 import { EvaluationExtended, UpdateEvaluationParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { updateEvaluation } from '../../api/evaluation.service';
-import { ResponseError } from '../../errors/ResponseError';
+import { HikeError } from '../../errors/HikeError';
 
 interface UseUpdateEvaluationParams {
   evaluationId: string;
@@ -9,7 +9,7 @@ interface UseUpdateEvaluationParams {
 }
 
 export const useUpdateEvaluation = (
-  mutationOptions?: UseMutationOptions<EvaluationExtended, ResponseError<null>, UseUpdateEvaluationParams>
+  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, UseUpdateEvaluationParams>
 ) => {
   return useMutation({
     mutationKey: ['updateEvaluation'],

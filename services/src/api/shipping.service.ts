@@ -10,7 +10,7 @@ import {
   ShippingPackage,
   ValidateAddressBody
 } from '@hike/types';
-import { toResponseError } from '../errors/ResponseError';
+import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 interface Package {
@@ -34,7 +34,7 @@ export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
     const response = await backendApi.get('shipping/packageTypes');
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -50,7 +50,7 @@ export const validateAddress = async (address: ValidateAddressBody): Promise<boo
     });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -65,7 +65,7 @@ export const getRateEstimates = async ({ packages, shipDate, address, addressId,
     });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -74,7 +74,7 @@ export const purchaseLabelByRateId = async (rateId: string) => {
     const response = await backendApi.post(`shipping/labels/${rateId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -82,7 +82,7 @@ export const voidLabel = async (labelId: string) => {
   try {
     await backendApi.put(`shipping/labels/${labelId}/void`);
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -90,7 +90,7 @@ export const updateTrackingInfo = async (labelId: string, params: SaveTrackingIn
   try {
     await backendApi.post(`shipping/labels/${labelId}/tracking`, params);
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -99,7 +99,7 @@ export const fetchShipments = async (params: GetShipengineShipmentsParams): Prom
     const response = await backendApi.get(`shipping/shipments`, { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -108,7 +108,7 @@ export const fetchLabels = async (params: GetShipengineLabelsParams): Promise<Ge
     const response = await backendApi.get(`shipping/labels`, { params });
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -117,7 +117,7 @@ export const fetchLabelByShippingId = async (shippingId: string): Promise<Labels
     const response = await backendApi.post(`shipping/label/${shippingId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -126,7 +126,7 @@ export const getPackingSlip = async (shipmentId: string): Promise<string> => {
     const response = await backendApi.post(`shipping/label/packing-slip/${shipmentId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -135,7 +135,7 @@ export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => 
     const response = await backendApi.get(`shipping/labels/pending`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
 
@@ -144,6 +144,6 @@ export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLab
     const response = await backendApi.get(`shipping/orders/${labelId}`);
     return response.data;
   } catch (error) {
-    throw toResponseError(error);
+    throw toHikeError(error);
   }
 };
