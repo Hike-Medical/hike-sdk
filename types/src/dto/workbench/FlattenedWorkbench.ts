@@ -1,5 +1,7 @@
-import { FormSchema, FormSubmission, ViewFlattenedWorkbench } from '../../../prisma';
+import { FormSchemaTyped } from 'forms/FormSchemaTyped';
+import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
+import { ViewFlattenedWorkbench } from '../../../prisma';
 
 export type FlattenedWorkbench = ViewFlattenedWorkbench & {
-  formSubmissions?: (FormSubmission & { schema?: FormSchema })[];
+  formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 };

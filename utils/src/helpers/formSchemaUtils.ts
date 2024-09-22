@@ -1,4 +1,11 @@
-import type { FormField, FormFieldValue, FormRule, FormSchemaTyped, FormSection } from '@hike/types';
+import type {
+  FormField,
+  FormFieldValue,
+  FormRule,
+  FormSchemaTyped,
+  FormSection,
+  InvalidFormSection
+} from '@hike/types';
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -143,11 +150,13 @@ export const completedSections = (validSections: FormSection[], state: Record<st
   );
 
 export const getInvalidSections = (sections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
-  sections.filter((section) =>
-    section.fields
-      .filter((field) => isFormFieldDisplayed(field, state))
-      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1))
-  );
+  sections
+    .filter((section) => isFormSectionDisplayed(section, state))
+    .filter((section) =>
+      section.fields
+        .filter((field) => isFormFieldDisplayed(field, state) && field.required)
+        .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1))
+    );
 
 export const schemaStats = (
   sections: FormSection[],
@@ -177,3 +186,17 @@ export const schemaStats = (
     sectionNext: sectionNext ?? validSections[0] ?? null
   };
 };
+
+export const formValidator = (sections: FormSection[], state: Record<string, FormFieldValue>): InvalidFormSection[] =>
+  getInvalidSections(sections, state).map((section) => ({
+    index: sections.indexOf(section),
+    title: section.title,
+    fields: section.fields
+      .filter((field) => !isFieldValid(field, state, section.fields.length === 1))
+      .map((field) => {
+        return {
+          name: field.name,
+          label: field.label
+        };
+      })
+  }));
