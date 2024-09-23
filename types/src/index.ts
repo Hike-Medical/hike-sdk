@@ -90,6 +90,7 @@ export type * from './dto/workbench/GetAggregatedParams';
 export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';
+export type * from './dto/roster/GenerateUploadLinkOptions';
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/ClinicianExtended';
