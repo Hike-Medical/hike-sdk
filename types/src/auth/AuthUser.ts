@@ -1,4 +1,4 @@
-import type { CompanyDepartment, CompanyRole } from '../../prisma';
+import type { AgreementType, CompanyDepartment, CompanyRole } from '../../prisma';
 
 export interface AuthUser {
   id: string;
@@ -6,5 +6,6 @@ export interface AuthUser {
   facilities: string[];
   departments: Record<string, Record<CompanyDepartment, CompanyRole>>;
   slugs: Record<string, string>;
+  agreements: Record<AgreementType, Date>;
   expiresAt: Date;
 }
