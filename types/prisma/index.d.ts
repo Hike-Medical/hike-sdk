@@ -577,10 +577,19 @@ export const StripeEntityType: {
 export type StripeEntityType = (typeof StripeEntityType)[keyof typeof StripeEntityType]
 
 
+export const AgreementStatus: {
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
+export type AgreementStatus = (typeof AgreementStatus)[keyof typeof AgreementStatus]
+
+
 export const AgreementType: {
   CLINICAL_TC: 'CLINICAL_TC',
   CONSUMER_TC: 'CONSUMER_TC',
-  SIMPLR_TC: 'SIMPLR_TC'
+  SIMPLR_TC: 'SIMPLR_TC',
+  ENABLE_SMS: 'ENABLE_SMS'
 };
 
 export type AgreementType = (typeof AgreementType)[keyof typeof AgreementType]
@@ -706,6 +715,10 @@ export const StripeInvoiceStatus: typeof $Enums.StripeInvoiceStatus
 export type StripeEntityType = $Enums.StripeEntityType
 
 export const StripeEntityType: typeof $Enums.StripeEntityType
+
+export type AgreementStatus = $Enums.AgreementStatus
+
+export const AgreementStatus: typeof $Enums.AgreementStatus
 
 export type AgreementType = $Enums.AgreementType
 
@@ -48109,6 +48122,7 @@ export namespace Prisma {
   export type UserAgreementMinAggregateOutputType = {
     userId: string | null
     agreementId: string | null
+    status: $Enums.AgreementStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -48116,6 +48130,7 @@ export namespace Prisma {
   export type UserAgreementMaxAggregateOutputType = {
     userId: string | null
     agreementId: string | null
+    status: $Enums.AgreementStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -48123,6 +48138,7 @@ export namespace Prisma {
   export type UserAgreementCountAggregateOutputType = {
     userId: number
     agreementId: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -48132,6 +48148,7 @@ export namespace Prisma {
   export type UserAgreementMinAggregateInputType = {
     userId?: true
     agreementId?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -48139,6 +48156,7 @@ export namespace Prisma {
   export type UserAgreementMaxAggregateInputType = {
     userId?: true
     agreementId?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -48146,6 +48164,7 @@ export namespace Prisma {
   export type UserAgreementCountAggregateInputType = {
     userId?: true
     agreementId?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -48226,6 +48245,7 @@ export namespace Prisma {
   export type UserAgreementGroupByOutputType = {
     userId: string
     agreementId: string
+    status: $Enums.AgreementStatus
     createdAt: Date
     updatedAt: Date
     _count: UserAgreementCountAggregateOutputType | null
@@ -48250,6 +48270,7 @@ export namespace Prisma {
   export type UserAgreementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     agreementId?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -48259,6 +48280,7 @@ export namespace Prisma {
   export type UserAgreementSelectScalar = {
     userId?: boolean
     agreementId?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -48279,6 +48301,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       userId: string
       agreementId: string
+      status: $Enums.AgreementStatus
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["userAgreement"]>
@@ -48706,6 +48729,7 @@ export namespace Prisma {
   interface UserAgreementFieldRefs {
     readonly userId: FieldRef<"UserAgreement", 'String'>
     readonly agreementId: FieldRef<"UserAgreement", 'String'>
+    readonly status: FieldRef<"UserAgreement", 'AgreementStatus'>
     readonly createdAt: FieldRef<"UserAgreement", 'DateTime'>
     readonly updatedAt: FieldRef<"UserAgreement", 'DateTime'>
   }
@@ -54889,6 +54913,7 @@ export namespace Prisma {
   export const UserAgreementScalarFieldEnum: {
     userId: 'userId',
     agreementId: 'agreementId',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -55539,6 +55564,20 @@ export namespace Prisma {
    * Reference to a field of type 'StripeEntityType[]'
    */
   export type ListEnumStripeEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeEntityType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementStatus'
+   */
+  export type EnumAgreementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementStatus[]'
+   */
+  export type ListEnumAgreementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementStatus[]'>
     
 
 
@@ -58817,6 +58856,7 @@ export namespace Prisma {
     NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
     userId?: StringFilter<"UserAgreement"> | string
     agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
     createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
     updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -58826,6 +58866,7 @@ export namespace Prisma {
   export type UserAgreementOrderByWithRelationInput = {
     userId?: SortOrder
     agreementId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -58839,6 +58880,7 @@ export namespace Prisma {
     NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
     userId?: StringFilter<"UserAgreement"> | string
     agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
     createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
     updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -58848,6 +58890,7 @@ export namespace Prisma {
   export type UserAgreementOrderByWithAggregationInput = {
     userId?: SortOrder
     agreementId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserAgreementCountOrderByAggregateInput
@@ -58861,6 +58904,7 @@ export namespace Prisma {
     NOT?: UserAgreementScalarWhereWithAggregatesInput | UserAgreementScalarWhereWithAggregatesInput[]
     userId?: StringWithAggregatesFilter<"UserAgreement"> | string
     agreementId?: StringWithAggregatesFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusWithAggregatesFilter<"UserAgreement"> | $Enums.AgreementStatus
     createdAt?: DateTimeWithAggregatesFilter<"UserAgreement"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UserAgreement"> | Date | string
   }
@@ -62961,6 +63005,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateInput = {
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutAgreementsInput
@@ -62970,11 +63015,13 @@ export namespace Prisma {
   export type UserAgreementUncheckedCreateInput = {
     userId: string
     agreementId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserAgreementUpdateInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAgreementsNestedInput
@@ -62984,6 +63031,7 @@ export namespace Prisma {
   export type UserAgreementUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -62991,11 +63039,13 @@ export namespace Prisma {
   export type UserAgreementCreateManyInput = {
     userId: string
     agreementId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserAgreementUpdateManyMutationInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -63003,6 +63053,7 @@ export namespace Prisma {
   export type UserAgreementUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -66470,6 +66521,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumAgreementStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusFilter<$PrismaModel> | $Enums.AgreementStatus
+  }
+
   export type AgreementRelationFilter = {
     is?: AgreementWhereInput
     isNot?: AgreementWhereInput
@@ -66483,6 +66541,7 @@ export namespace Prisma {
   export type UserAgreementCountOrderByAggregateInput = {
     userId?: SortOrder
     agreementId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -66490,6 +66549,7 @@ export namespace Prisma {
   export type UserAgreementMaxOrderByAggregateInput = {
     userId?: SortOrder
     agreementId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -66497,8 +66557,19 @@ export namespace Prisma {
   export type UserAgreementMinOrderByAggregateInput = {
     userId?: SortOrder
     agreementId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumAgreementStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AgreementStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementStatusFilter<$PrismaModel>
+    _max?: NestedEnumAgreementStatusFilter<$PrismaModel>
   }
 
   export type EnumAgreementTypeFilter<$PrismaModel = never> = {
@@ -70468,6 +70539,10 @@ export namespace Prisma {
     connect?: AgreementWhereUniqueInput
   }
 
+  export type EnumAgreementStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AgreementStatus
+  }
+
   export type UserUpdateOneRequiredWithoutAgreementsNestedInput = {
     create?: XOR<UserCreateWithoutAgreementsInput, UserUncheckedCreateWithoutAgreementsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAgreementsInput
@@ -71385,6 +71460,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAgreementStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusFilter<$PrismaModel> | $Enums.AgreementStatus
+  }
+
+  export type NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AgreementStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementStatusFilter<$PrismaModel>
+    _max?: NestedEnumAgreementStatusFilter<$PrismaModel>
   }
 
   export type NestedEnumAgreementTypeFilter<$PrismaModel = never> = {
@@ -79602,6 +79694,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateWithoutUserInput = {
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     agreement: AgreementCreateNestedOneWithoutUserAgreementsInput
@@ -79609,6 +79702,7 @@ export namespace Prisma {
 
   export type UserAgreementUncheckedCreateWithoutUserInput = {
     agreementId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -79781,6 +79875,7 @@ export namespace Prisma {
     NOT?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
     userId?: StringFilter<"UserAgreement"> | string
     agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
     createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
     updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
   }
@@ -79922,6 +80017,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateWithoutAgreementInput = {
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutAgreementsInput
@@ -79929,6 +80025,7 @@ export namespace Prisma {
 
   export type UserAgreementUncheckedCreateWithoutAgreementInput = {
     userId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -83686,6 +83783,7 @@ export namespace Prisma {
 
   export type UserAgreementCreateManyUserInput = {
     agreementId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -83847,6 +83945,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUpdateWithoutUserInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     agreement?: AgreementUpdateOneRequiredWithoutUserAgreementsNestedInput
@@ -83854,23 +83953,27 @@ export namespace Prisma {
 
   export type UserAgreementUncheckedUpdateWithoutUserInput = {
     agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserAgreementUncheckedUpdateManyWithoutUserInput = {
     agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserAgreementCreateManyAgreementInput = {
     userId: string
+    status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserAgreementUpdateWithoutAgreementInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAgreementsNestedInput
@@ -83878,12 +83981,14 @@ export namespace Prisma {
 
   export type UserAgreementUncheckedUpdateWithoutAgreementInput = {
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserAgreementUncheckedUpdateManyWithoutAgreementInput = {
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
