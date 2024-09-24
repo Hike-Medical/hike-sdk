@@ -5,7 +5,7 @@ import { HikeError } from '../../errors/HikeError';
 
 interface AcceptTermsContext {
   type: AgreementType;
-  status: AgreementStatus;
+  status?: AgreementStatus;
 }
 
 export const useAcceptTerms = (options?: UseMutationOptions<UserAgreement, HikeError<null>, AcceptTermsContext>) => {
