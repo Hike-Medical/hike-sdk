@@ -48120,6 +48120,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementMinAggregateOutputType = {
+    id: string | null
     userId: string | null
     agreementId: string | null
     status: $Enums.AgreementStatus | null
@@ -48128,6 +48129,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementMaxAggregateOutputType = {
+    id: string | null
     userId: string | null
     agreementId: string | null
     status: $Enums.AgreementStatus | null
@@ -48136,6 +48138,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCountAggregateOutputType = {
+    id: number
     userId: number
     agreementId: number
     status: number
@@ -48146,6 +48149,7 @@ export namespace Prisma {
 
 
   export type UserAgreementMinAggregateInputType = {
+    id?: true
     userId?: true
     agreementId?: true
     status?: true
@@ -48154,6 +48158,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementMaxAggregateInputType = {
+    id?: true
     userId?: true
     agreementId?: true
     status?: true
@@ -48162,6 +48167,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCountAggregateInputType = {
+    id?: true
     userId?: true
     agreementId?: true
     status?: true
@@ -48243,6 +48249,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementGroupByOutputType = {
+    id: string
     userId: string
     agreementId: string
     status: $Enums.AgreementStatus
@@ -48268,6 +48275,7 @@ export namespace Prisma {
 
 
   export type UserAgreementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     userId?: boolean
     agreementId?: boolean
     status?: boolean
@@ -48278,6 +48286,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["userAgreement"]>
 
   export type UserAgreementSelectScalar = {
+    id?: boolean
     userId?: boolean
     agreementId?: boolean
     status?: boolean
@@ -48299,6 +48308,7 @@ export namespace Prisma {
       agreement: Prisma.$AgreementPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: string
       userId: string
       agreementId: string
       status: $Enums.AgreementStatus
@@ -48396,8 +48406,8 @@ export namespace Prisma {
      * // Get first 10 UserAgreements
      * const userAgreements = await prisma.userAgreement.findMany({ take: 10 })
      * 
-     * // Only select the `userId`
-     * const userAgreementWithUserIdOnly = await prisma.userAgreement.findMany({ select: { userId: true } })
+     * // Only select the `id`
+     * const userAgreementWithIdOnly = await prisma.userAgreement.findMany({ select: { id: true } })
      * 
     **/
     findMany<T extends UserAgreementFindManyArgs<ExtArgs>>(
@@ -48447,9 +48457,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many UserAgreements and only return the `userId`
-     * const userAgreementWithUserIdOnly = await prisma.userAgreement.createManyAndReturn({ 
-     *   select: { userId: true },
+     * // Create many UserAgreements and only return the `id`
+     * const userAgreementWithIdOnly = await prisma.userAgreement.createManyAndReturn({ 
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -48727,6 +48737,7 @@ export namespace Prisma {
    * Fields of the UserAgreement model
    */ 
   interface UserAgreementFieldRefs {
+    readonly id: FieldRef<"UserAgreement", 'String'>
     readonly userId: FieldRef<"UserAgreement", 'String'>
     readonly agreementId: FieldRef<"UserAgreement", 'String'>
     readonly status: FieldRef<"UserAgreement", 'AgreementStatus'>
@@ -54911,6 +54922,7 @@ export namespace Prisma {
 
 
   export const UserAgreementScalarFieldEnum: {
+    id: 'id',
     userId: 'userId',
     agreementId: 'agreementId',
     status: 'status',
@@ -58854,6 +58866,7 @@ export namespace Prisma {
     AND?: UserAgreementWhereInput | UserAgreementWhereInput[]
     OR?: UserAgreementWhereInput[]
     NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
+    id?: StringFilter<"UserAgreement"> | string
     userId?: StringFilter<"UserAgreement"> | string
     agreementId?: StringFilter<"UserAgreement"> | string
     status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
@@ -58864,6 +58877,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementOrderByWithRelationInput = {
+    id?: SortOrder
     userId?: SortOrder
     agreementId?: SortOrder
     status?: SortOrder
@@ -58874,7 +58888,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementWhereUniqueInput = Prisma.AtLeast<{
-    userId_agreementId?: UserAgreementUserIdAgreementIdCompoundUniqueInput
+    id?: string
     AND?: UserAgreementWhereInput | UserAgreementWhereInput[]
     OR?: UserAgreementWhereInput[]
     NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
@@ -58885,9 +58899,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     agreement?: XOR<AgreementRelationFilter, AgreementWhereInput>
-  }, "userId_agreementId">
+  }, "id">
 
   export type UserAgreementOrderByWithAggregationInput = {
+    id?: SortOrder
     userId?: SortOrder
     agreementId?: SortOrder
     status?: SortOrder
@@ -58902,6 +58917,7 @@ export namespace Prisma {
     AND?: UserAgreementScalarWhereWithAggregatesInput | UserAgreementScalarWhereWithAggregatesInput[]
     OR?: UserAgreementScalarWhereWithAggregatesInput[]
     NOT?: UserAgreementScalarWhereWithAggregatesInput | UserAgreementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserAgreement"> | string
     userId?: StringWithAggregatesFilter<"UserAgreement"> | string
     agreementId?: StringWithAggregatesFilter<"UserAgreement"> | string
     status?: EnumAgreementStatusWithAggregatesFilter<"UserAgreement"> | $Enums.AgreementStatus
@@ -63005,6 +63021,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateInput = {
+    id?: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63013,6 +63030,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedCreateInput = {
+    id?: string
     userId: string
     agreementId: string
     status?: $Enums.AgreementStatus
@@ -63021,6 +63039,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63029,6 +63048,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
@@ -63037,6 +63057,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateManyInput = {
+    id?: string
     userId: string
     agreementId: string
     status?: $Enums.AgreementStatus
@@ -63045,12 +63066,14 @@ export namespace Prisma {
   }
 
   export type UserAgreementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserAgreementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
@@ -66533,12 +66556,8 @@ export namespace Prisma {
     isNot?: AgreementWhereInput
   }
 
-  export type UserAgreementUserIdAgreementIdCompoundUniqueInput = {
-    userId: string
-    agreementId: string
-  }
-
   export type UserAgreementCountOrderByAggregateInput = {
+    id?: SortOrder
     userId?: SortOrder
     agreementId?: SortOrder
     status?: SortOrder
@@ -66547,6 +66566,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementMaxOrderByAggregateInput = {
+    id?: SortOrder
     userId?: SortOrder
     agreementId?: SortOrder
     status?: SortOrder
@@ -66555,6 +66575,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementMinOrderByAggregateInput = {
+    id?: SortOrder
     userId?: SortOrder
     agreementId?: SortOrder
     status?: SortOrder
@@ -79694,6 +79715,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateWithoutUserInput = {
+    id?: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -79701,6 +79723,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedCreateWithoutUserInput = {
+    id?: string
     agreementId: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
@@ -79873,6 +79896,7 @@ export namespace Prisma {
     AND?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
     OR?: UserAgreementScalarWhereInput[]
     NOT?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+    id?: StringFilter<"UserAgreement"> | string
     userId?: StringFilter<"UserAgreement"> | string
     agreementId?: StringFilter<"UserAgreement"> | string
     status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
@@ -80017,6 +80041,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateWithoutAgreementInput = {
+    id?: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -80024,6 +80049,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedCreateWithoutAgreementInput = {
+    id?: string
     userId: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
@@ -83782,6 +83808,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateManyUserInput = {
+    id?: string
     agreementId: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
@@ -83945,6 +83972,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83952,6 +83980,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83959,6 +83988,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
     agreementId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83966,6 +83996,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementCreateManyAgreementInput = {
+    id?: string
     userId: string
     status?: $Enums.AgreementStatus
     createdAt?: Date | string
@@ -83973,6 +84004,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83980,6 +84012,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedUpdateWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83987,6 +84020,7 @@ export namespace Prisma {
   }
 
   export type UserAgreementUncheckedUpdateManyWithoutAgreementInput = {
+    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
