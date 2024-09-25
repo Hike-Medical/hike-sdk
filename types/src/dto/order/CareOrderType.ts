@@ -1,1 +1,0 @@
-export type CareOrderType = 'SHOE_MODIFICATION' | 'REMAKE_OR_ADJUSTMENTS';
