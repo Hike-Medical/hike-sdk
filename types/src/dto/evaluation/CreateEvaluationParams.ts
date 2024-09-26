@@ -1,4 +1,5 @@
 import { CareType, Side, VerticalPosition } from '../../../prisma';
+import { CareOrderType } from './../order/CareOrderType';
 
 /**
  * Data transfer object for creating an evaluation.
@@ -7,6 +8,7 @@ export interface CreateEvaluationParams {
   externalId?: string;
   poNumber?: string;
   type: CareType;
+  careOrderType?: CareOrderType;
   patientId: string;
   deviceTypeId?: string;
   isDiabetic?: boolean;
