@@ -31373,6 +31373,7 @@ export namespace Prisma {
     image: string | null
     price: number | null
     active: boolean | null
+    favorite: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -31384,6 +31385,7 @@ export namespace Prisma {
     image: string | null
     price: number | null
     active: boolean | null
+    favorite: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -31395,6 +31397,7 @@ export namespace Prisma {
     image: number
     price: number
     active: number
+    favorite: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -31416,6 +31419,7 @@ export namespace Prisma {
     image?: true
     price?: true
     active?: true
+    favorite?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -31427,6 +31431,7 @@ export namespace Prisma {
     image?: true
     price?: true
     active?: true
+    favorite?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -31438,6 +31443,7 @@ export namespace Prisma {
     image?: true
     price?: true
     active?: true
+    favorite?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -31536,6 +31542,7 @@ export namespace Prisma {
     image: string | null
     price: number | null
     active: boolean
+    favorite: boolean
     createdAt: Date
     updatedAt: Date
     _count: CatalogProductCountAggregateOutputType | null
@@ -31566,6 +31573,7 @@ export namespace Prisma {
     image?: boolean
     price?: boolean
     active?: boolean
+    favorite?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     attributes?: boolean | CatalogProduct$attributesArgs<ExtArgs>
@@ -31582,6 +31590,7 @@ export namespace Prisma {
     image?: boolean
     price?: boolean
     active?: boolean
+    favorite?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -31611,6 +31620,7 @@ export namespace Prisma {
       image: string | null
       price: number | null
       active: boolean
+      favorite: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["catalogProduct"]>
@@ -32046,6 +32056,7 @@ export namespace Prisma {
     readonly image: FieldRef<"CatalogProduct", 'String'>
     readonly price: FieldRef<"CatalogProduct", 'Float'>
     readonly active: FieldRef<"CatalogProduct", 'Boolean'>
+    readonly favorite: FieldRef<"CatalogProduct", 'Boolean'>
     readonly createdAt: FieldRef<"CatalogProduct", 'DateTime'>
     readonly updatedAt: FieldRef<"CatalogProduct", 'DateTime'>
   }
@@ -52504,6 +52515,7 @@ export namespace Prisma {
     image: 'image',
     price: 'price',
     active: 'active',
+    favorite: 'favorite',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -55405,6 +55417,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"CatalogProduct"> | string | null
     price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
+    favorite?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     attributes?: CatalogProductAttributeListRelationFilter
@@ -55420,6 +55433,7 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     active?: SortOrder
+    favorite?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     attributes?: CatalogProductAttributeOrderByRelationAggregateInput
@@ -55438,6 +55452,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"CatalogProduct"> | string | null
     price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
+    favorite?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     attributes?: CatalogProductAttributeListRelationFilter
@@ -55453,6 +55468,7 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     active?: SortOrder
+    favorite?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CatalogProductCountOrderByAggregateInput
@@ -55472,6 +55488,7 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"CatalogProduct"> | string | null
     price?: FloatNullableWithAggregatesFilter<"CatalogProduct"> | number | null
     active?: BoolWithAggregatesFilter<"CatalogProduct"> | boolean
+    favorite?: BoolWithAggregatesFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CatalogProduct"> | Date | string
   }
@@ -59349,6 +59366,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeCreateNestedManyWithoutProductInput
@@ -59364,6 +59382,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeUncheckedCreateNestedManyWithoutProductInput
@@ -59379,6 +59398,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUpdateManyWithoutProductNestedInput
@@ -59394,6 +59414,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUncheckedUpdateManyWithoutProductNestedInput
@@ -59409,6 +59430,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -59420,6 +59442,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -59431,6 +59454,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -63245,6 +63269,7 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     active?: SortOrder
+    favorite?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -63260,6 +63285,7 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     active?: SortOrder
+    favorite?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -63271,6 +63297,7 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     active?: SortOrder
+    favorite?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -74175,6 +74202,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: CatalogProductVariantCreateNestedManyWithoutProductInput
@@ -74189,6 +74217,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: CatalogProductVariantUncheckedCreateNestedManyWithoutProductInput
@@ -74219,6 +74248,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: CatalogProductVariantUpdateManyWithoutProductNestedInput
@@ -74233,6 +74263,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: CatalogProductVariantUncheckedUpdateManyWithoutProductNestedInput
@@ -74247,6 +74278,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeCreateNestedManyWithoutProductInput
@@ -74261,6 +74293,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeUncheckedCreateNestedManyWithoutProductInput
@@ -74291,6 +74324,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUpdateManyWithoutProductNestedInput
@@ -74305,6 +74339,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUncheckedUpdateManyWithoutProductNestedInput
@@ -74319,6 +74354,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeCreateNestedManyWithoutProductInput
@@ -74333,6 +74369,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeUncheckedCreateNestedManyWithoutProductInput
@@ -74371,6 +74408,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"CatalogProduct"> | string | null
     price?: FloatNullableFilter<"CatalogProduct"> | number | null
     active?: BoolFilter<"CatalogProduct"> | boolean
+    favorite?: BoolFilter<"CatalogProduct"> | boolean
     createdAt?: DateTimeFilter<"CatalogProduct"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogProduct"> | Date | string
   }
@@ -74382,6 +74420,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeCreateNestedManyWithoutProductInput
@@ -74396,6 +74435,7 @@ export namespace Prisma {
     image?: string | null
     price?: number | null
     active?: boolean
+    favorite?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: CatalogProductAttributeUncheckedCreateNestedManyWithoutProductInput
@@ -79906,6 +79946,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUpdateManyWithoutProductNestedInput
@@ -79920,6 +79961,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUncheckedUpdateManyWithoutProductNestedInput
@@ -79934,6 +79976,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -79945,6 +79988,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUpdateManyWithoutProductNestedInput
@@ -79959,6 +80003,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: CatalogProductAttributeUncheckedUpdateManyWithoutProductNestedInput
@@ -79973,6 +80018,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
+    favorite?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
