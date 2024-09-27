@@ -1,0 +1,40 @@
+{
+  "name": "@hike/sdk-next",
+  "version": "1.0.0",
+  "description": "Hike SDK for Next.js enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
+  "keywords": [
+    "insoles",
+    "medical",
+    "foot",
+    "health",
+    "orthotics",
+    "prosthetics",
+    "healthcare"
+  ],
+  "author": "support@hikemedical.com",
+  "license": "Apache-2.0",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "format": "prettier --check . --ignore-path ../../../.gitignore",
+    "clean": "rm -rf node_modules dist"
+  },
+  "dependencies": {
+    "@hike/sdk": "workspace:*",
+    "next": "^14",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}
