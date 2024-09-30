@@ -131,16 +131,16 @@ export const formSchemaEvaluationDefaults = (
           case 'facilityId':
             acc[field.name] = evaluation.facilityId;
             acc[`${field.name}-label`] = evaluation.facility?.name;
-            acc[`${field.name}Address`] = evaluation.facility?.address?.addressLine2
-              ? `${evaluation.facility?.address?.addressLine1}, ${evaluation.facility?.address?.addressLine2}`
-              : evaluation.facility?.address?.addressLine1 ?? undefined;
-            acc[`${field.name}City`] = evaluation.facility?.address?.city ?? undefined;
-            acc[`${field.name}State`] = evaluation.facility?.address?.stateOrProvince ?? undefined;
-            acc[`${field.name}Zipcode`] = evaluation.facility?.address?.postalCode ?? undefined;
-            acc[`${field.name}Number`] = evaluation.facility?.address?.phoneNumber ?? undefined;
+            acc[`${field.name}Address`] = evaluation.facility?.contact?.addressLine2
+              ? `${evaluation.facility?.contact?.addressLine1}, ${evaluation.facility?.contact?.addressLine2}`
+              : evaluation.facility?.contact?.addressLine1 ?? undefined;
+            acc[`${field.name}City`] = evaluation.facility?.contact?.city ?? undefined;
+            acc[`${field.name}State`] = evaluation.facility?.contact?.stateOrProvince ?? undefined;
+            acc[`${field.name}Zipcode`] = evaluation.facility?.contact?.postalCode ?? undefined;
+            acc[`${field.name}Number`] = evaluation.facility?.contact?.phoneNumber ?? undefined;
             acc[`${field.name}-description`] ??=
-              evaluation.facility?.address &&
-              `${evaluation.facility.address.addressLine1}, ${evaluation.facility.address.city}, ${evaluation.facility.address.stateOrProvince}`;
+              evaluation.facility?.contact &&
+              `${evaluation.facility.contact.addressLine1}, ${evaluation.facility.contact.city}, ${evaluation.facility.contact.stateOrProvince}`;
             break;
           default:
             if (!(field.name in acc)) {

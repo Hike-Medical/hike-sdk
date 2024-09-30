@@ -79,10 +79,10 @@ export type WorkbenchNotes = $Result.DefaultSelection<Prisma.$WorkbenchNotesPayl
  */
 export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
 /**
- * Model FacilityAddress
+ * Model Contact
  * 
  */
-export type FacilityAddress = $Result.DefaultSelection<Prisma.$FacilityAddressPayload>
+export type Contact = $Result.DefaultSelection<Prisma.$ContactPayload>
 /**
  * Model ShippingPackage
  * 
@@ -179,15 +179,20 @@ export type CompanyUser = $Result.DefaultSelection<Prisma.$CompanyUserPayload>
  */
 export type DepartmentUser = $Result.DefaultSelection<Prisma.$DepartmentUserPayload>
 /**
+ * Model Department
+ * 
+ */
+export type Department = $Result.DefaultSelection<Prisma.$DepartmentPayload>
+/**
  * Model CompanyPatient
  * 
  */
 export type CompanyPatient = $Result.DefaultSelection<Prisma.$CompanyPatientPayload>
 /**
- * Model FacilityUser
+ * Model FacilityPatient
  * 
  */
-export type FacilityUser = $Result.DefaultSelection<Prisma.$FacilityUserPayload>
+export type FacilityPatient = $Result.DefaultSelection<Prisma.$FacilityPatientPayload>
 /**
  * Model StripeProduct
  * 
@@ -251,7 +256,8 @@ export namespace $Enums {
   export const FacilityType: {
   CLINIC: 'CLINIC',
   EMPLOYER: 'EMPLOYER',
-  PARTNER: 'PARTNER'
+  PARTNER: 'PARTNER',
+  SITE: 'SITE'
 };
 
 export type FacilityType = (typeof FacilityType)[keyof typeof FacilityType]
@@ -977,14 +983,14 @@ export class PrismaClient<
   get order(): Prisma.OrderDelegate<ExtArgs>;
 
   /**
-   * `prisma.facilityAddress`: Exposes CRUD operations for the **FacilityAddress** model.
+   * `prisma.contact`: Exposes CRUD operations for the **Contact** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more FacilityAddresses
-    * const facilityAddresses = await prisma.facilityAddress.findMany()
+    * // Fetch zero or more Contacts
+    * const contacts = await prisma.contact.findMany()
     * ```
     */
-  get facilityAddress(): Prisma.FacilityAddressDelegate<ExtArgs>;
+  get contact(): Prisma.ContactDelegate<ExtArgs>;
 
   /**
    * `prisma.shippingPackage`: Exposes CRUD operations for the **ShippingPackage** model.
@@ -1177,6 +1183,16 @@ export class PrismaClient<
   get departmentUser(): Prisma.DepartmentUserDelegate<ExtArgs>;
 
   /**
+   * `prisma.department`: Exposes CRUD operations for the **Department** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Departments
+    * const departments = await prisma.department.findMany()
+    * ```
+    */
+  get department(): Prisma.DepartmentDelegate<ExtArgs>;
+
+  /**
    * `prisma.companyPatient`: Exposes CRUD operations for the **CompanyPatient** model.
     * Example usage:
     * ```ts
@@ -1187,14 +1203,14 @@ export class PrismaClient<
   get companyPatient(): Prisma.CompanyPatientDelegate<ExtArgs>;
 
   /**
-   * `prisma.facilityUser`: Exposes CRUD operations for the **FacilityUser** model.
+   * `prisma.facilityPatient`: Exposes CRUD operations for the **FacilityPatient** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more FacilityUsers
-    * const facilityUsers = await prisma.facilityUser.findMany()
+    * // Fetch zero or more FacilityPatients
+    * const facilityPatients = await prisma.facilityPatient.findMany()
     * ```
     */
-  get facilityUser(): Prisma.FacilityUserDelegate<ExtArgs>;
+  get facilityPatient(): Prisma.FacilityPatientDelegate<ExtArgs>;
 
   /**
    * `prisma.stripeProduct`: Exposes CRUD operations for the **StripeProduct** model.
@@ -1795,7 +1811,7 @@ export namespace Prisma {
     Workbench: 'Workbench',
     WorkbenchNotes: 'WorkbenchNotes',
     Order: 'Order',
-    FacilityAddress: 'FacilityAddress',
+    Contact: 'Contact',
     ShippingPackage: 'ShippingPackage',
     ShippingLabel: 'ShippingLabel',
     Physician: 'Physician',
@@ -1815,8 +1831,9 @@ export namespace Prisma {
     Printer: 'Printer',
     CompanyUser: 'CompanyUser',
     DepartmentUser: 'DepartmentUser',
+    Department: 'Department',
     CompanyPatient: 'CompanyPatient',
-    FacilityUser: 'FacilityUser',
+    FacilityPatient: 'FacilityPatient',
     StripeProduct: 'StripeProduct',
     StripeInvoice: 'StripeInvoice',
     StripeEntity: 'StripeEntity',
@@ -1844,7 +1861,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'contact' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'department' | 'companyPatient' | 'facilityPatient' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2758,73 +2775,73 @@ export namespace Prisma {
           }
         }
       }
-      FacilityAddress: {
-        payload: Prisma.$FacilityAddressPayload<ExtArgs>
-        fields: Prisma.FacilityAddressFieldRefs
+      Contact: {
+        payload: Prisma.$ContactPayload<ExtArgs>
+        fields: Prisma.ContactFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.FacilityAddressFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
+            args: Prisma.ContactFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.FacilityAddressFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           findFirst: {
-            args: Prisma.FacilityAddressFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
+            args: Prisma.ContactFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.FacilityAddressFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           findMany: {
-            args: Prisma.FacilityAddressFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>[]
+            args: Prisma.ContactFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
           }
           create: {
-            args: Prisma.FacilityAddressCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           createMany: {
-            args: Prisma.FacilityAddressCreateManyArgs<ExtArgs>,
+            args: Prisma.ContactCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.FacilityAddressCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>[]
+            args: Prisma.ContactCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
           }
           delete: {
-            args: Prisma.FacilityAddressDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           update: {
-            args: Prisma.FacilityAddressUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           deleteMany: {
-            args: Prisma.FacilityAddressDeleteManyArgs<ExtArgs>,
+            args: Prisma.ContactDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.FacilityAddressUpdateManyArgs<ExtArgs>,
+            args: Prisma.ContactUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.FacilityAddressUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           aggregate: {
-            args: Prisma.FacilityAddressAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateFacilityAddress>
+            args: Prisma.ContactAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateContact>
           }
           groupBy: {
-            args: Prisma.FacilityAddressGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityAddressGroupByOutputType>[]
+            args: Prisma.ContactGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ContactGroupByOutputType>[]
           }
           count: {
-            args: Prisma.FacilityAddressCountArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityAddressCountAggregateOutputType> | number
+            args: Prisma.ContactCountArgs<ExtArgs>,
+            result: $Utils.Optional<ContactCountAggregateOutputType> | number
           }
         }
       }
@@ -4158,6 +4175,76 @@ export namespace Prisma {
           }
         }
       }
+      Department: {
+        payload: Prisma.$DepartmentPayload<ExtArgs>
+        fields: Prisma.DepartmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DepartmentFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DepartmentFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          findFirst: {
+            args: Prisma.DepartmentFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DepartmentFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          findMany: {
+            args: Prisma.DepartmentFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
+          }
+          create: {
+            args: Prisma.DepartmentCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          createMany: {
+            args: Prisma.DepartmentCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DepartmentCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
+          }
+          delete: {
+            args: Prisma.DepartmentDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          update: {
+            args: Prisma.DepartmentUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.DepartmentDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DepartmentUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.DepartmentUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          aggregate: {
+            args: Prisma.DepartmentAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateDepartment>
+          }
+          groupBy: {
+            args: Prisma.DepartmentGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<DepartmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DepartmentCountArgs<ExtArgs>,
+            result: $Utils.Optional<DepartmentCountAggregateOutputType> | number
+          }
+        }
+      }
       CompanyPatient: {
         payload: Prisma.$CompanyPatientPayload<ExtArgs>
         fields: Prisma.CompanyPatientFieldRefs
@@ -4228,73 +4315,73 @@ export namespace Prisma {
           }
         }
       }
-      FacilityUser: {
-        payload: Prisma.$FacilityUserPayload<ExtArgs>
-        fields: Prisma.FacilityUserFieldRefs
+      FacilityPatient: {
+        payload: Prisma.$FacilityPatientPayload<ExtArgs>
+        fields: Prisma.FacilityPatientFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.FacilityUserFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload> | null
+            args: Prisma.FacilityPatientFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.FacilityUserFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           findFirst: {
-            args: Prisma.FacilityUserFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload> | null
+            args: Prisma.FacilityPatientFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.FacilityUserFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           findMany: {
-            args: Prisma.FacilityUserFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>[]
+            args: Prisma.FacilityPatientFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>[]
           }
           create: {
-            args: Prisma.FacilityUserCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           createMany: {
-            args: Prisma.FacilityUserCreateManyArgs<ExtArgs>,
+            args: Prisma.FacilityPatientCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.FacilityUserCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>[]
+            args: Prisma.FacilityPatientCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>[]
           }
           delete: {
-            args: Prisma.FacilityUserDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           update: {
-            args: Prisma.FacilityUserUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           deleteMany: {
-            args: Prisma.FacilityUserDeleteManyArgs<ExtArgs>,
+            args: Prisma.FacilityPatientDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.FacilityUserUpdateManyArgs<ExtArgs>,
+            args: Prisma.FacilityPatientUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.FacilityUserUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityUserPayload>
+            args: Prisma.FacilityPatientUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FacilityPatientPayload>
           }
           aggregate: {
-            args: Prisma.FacilityUserAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateFacilityUser>
+            args: Prisma.FacilityPatientAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFacilityPatient>
           }
           groupBy: {
-            args: Prisma.FacilityUserGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityUserGroupByOutputType>[]
+            args: Prisma.FacilityPatientGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityPatientGroupByOutputType>[]
           }
           count: {
-            args: Prisma.FacilityUserCountArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityUserCountAggregateOutputType> | number
+            args: Prisma.FacilityPatientCountArgs<ExtArgs>,
+            result: $Utils.Optional<FacilityPatientCountAggregateOutputType> | number
           }
         }
       }
@@ -5233,10 +5320,10 @@ export namespace Prisma {
     apiKeys: number
     packages: number
     users: number
-    departments: number
     patients: number
     auditLogs: number
     stripeEntities: number
+    departments: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5245,10 +5332,10 @@ export namespace Prisma {
     apiKeys?: boolean | CompanyCountOutputTypeCountApiKeysArgs
     packages?: boolean | CompanyCountOutputTypeCountPackagesArgs
     users?: boolean | CompanyCountOutputTypeCountUsersArgs
-    departments?: boolean | CompanyCountOutputTypeCountDepartmentsArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
     stripeEntities?: boolean | CompanyCountOutputTypeCountStripeEntitiesArgs
+    departments?: boolean | CompanyCountOutputTypeCountDepartmentsArgs
   }
 
   // Custom InputTypes
@@ -5300,13 +5387,6 @@ export namespace Prisma {
   /**
    * CompanyCountOutputType without action
    */
-  export type CompanyCountOutputTypeCountDepartmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DepartmentUserWhereInput
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
   export type CompanyCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyPatientWhereInput
   }
@@ -5325,21 +5405,30 @@ export namespace Prisma {
     where?: StripeEntityWhereInput
   }
 
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountDepartmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentWhereInput
+  }
+
 
   /**
    * Count Type FacilityCountOutputType
    */
 
   export type FacilityCountOutputType = {
-    users: number
     evaluations: number
     shippingLabels: number
+    facilityPatients: number
+    siteChildFacilities: number
   }
 
   export type FacilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | FacilityCountOutputTypeCountUsersArgs
     evaluations?: boolean | FacilityCountOutputTypeCountEvaluationsArgs
     shippingLabels?: boolean | FacilityCountOutputTypeCountShippingLabelsArgs
+    facilityPatients?: boolean | FacilityCountOutputTypeCountFacilityPatientsArgs
+    siteChildFacilities?: boolean | FacilityCountOutputTypeCountSiteChildFacilitiesArgs
   }
 
   // Custom InputTypes
@@ -5356,13 +5445,6 @@ export namespace Prisma {
   /**
    * FacilityCountOutputType without action
    */
-  export type FacilityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FacilityUserWhereInput
-  }
-
-  /**
-   * FacilityCountOutputType without action
-   */
   export type FacilityCountOutputTypeCountEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
   }
@@ -5372,6 +5454,20 @@ export namespace Prisma {
    */
   export type FacilityCountOutputTypeCountShippingLabelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ShippingLabelWhereInput
+  }
+
+  /**
+   * FacilityCountOutputType without action
+   */
+  export type FacilityCountOutputTypeCountFacilityPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityPatientWhereInput
+  }
+
+  /**
+   * FacilityCountOutputType without action
+   */
+  export type FacilityCountOutputTypeCountSiteChildFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityWhereInput
   }
 
 
@@ -5384,6 +5480,7 @@ export namespace Prisma {
     evaluations: number
     workbenches: number
     companies: number
+    facilityPatients: number
   }
 
   export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5391,6 +5488,7 @@ export namespace Prisma {
     evaluations?: boolean | PatientCountOutputTypeCountEvaluationsArgs
     workbenches?: boolean | PatientCountOutputTypeCountWorkbenchesArgs
     companies?: boolean | PatientCountOutputTypeCountCompaniesArgs
+    facilityPatients?: boolean | PatientCountOutputTypeCountFacilityPatientsArgs
   }
 
   // Custom InputTypes
@@ -5430,6 +5528,13 @@ export namespace Prisma {
    */
   export type PatientCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyPatientWhereInput
+  }
+
+  /**
+   * PatientCountOutputType without action
+   */
+  export type PatientCountOutputTypeCountFacilityPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityPatientWhereInput
   }
 
 
@@ -5719,6 +5824,46 @@ export namespace Prisma {
    */
   export type WorkbenchCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkbenchNotesWhereInput
+  }
+
+
+  /**
+   * Count Type ContactCountOutputType
+   */
+
+  export type ContactCountOutputType = {
+    facilities: number
+    companyPatients: number
+  }
+
+  export type ContactCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facilities?: boolean | ContactCountOutputTypeCountFacilitiesArgs
+    companyPatients?: boolean | ContactCountOutputTypeCountCompanyPatientsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactCountOutputType
+     */
+    select?: ContactCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityWhereInput
+  }
+
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeCountCompanyPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyPatientWhereInput
   }
 
 
@@ -6038,6 +6183,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type DepartmentCountOutputType
+   */
+
+  export type DepartmentCountOutputType = {
+    departmentUsers: number
+    companyPatients: number
+  }
+
+  export type DepartmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    departmentUsers?: boolean | DepartmentCountOutputTypeCountDepartmentUsersArgs
+    companyPatients?: boolean | DepartmentCountOutputTypeCountCompanyPatientsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DepartmentCountOutputType
+     */
+    select?: DepartmentCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeCountDepartmentUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentUserWhereInput
+  }
+
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeCountCompanyPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyPatientWhereInput
+  }
+
+
+  /**
    * Count Type StripeProductCountOutputType
    */
 
@@ -6232,7 +6417,6 @@ export namespace Prisma {
     accounts: number
     companies: number
     departments: number
-    facilities: number
     notes: number
     auditsLogs: number
     agreements: number
@@ -6242,7 +6426,6 @@ export namespace Prisma {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     companies?: boolean | UserCountOutputTypeCountCompaniesArgs
     departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
-    facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
     auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
     agreements?: boolean | UserCountOutputTypeCountAgreementsArgs
@@ -6278,13 +6461,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountDepartmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DepartmentUserWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FacilityUserWhereInput
   }
 
   /**
@@ -6541,10 +6717,10 @@ export namespace Prisma {
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
-    departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
+    departments?: boolean | Company$departmentsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -6567,10 +6743,10 @@ export namespace Prisma {
     apiKeys?: boolean | Company$apiKeysArgs<ExtArgs>
     packages?: boolean | Company$packagesArgs<ExtArgs>
     users?: boolean | Company$usersArgs<ExtArgs>
-    departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
+    departments?: boolean | Company$departmentsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6583,10 +6759,10 @@ export namespace Prisma {
       apiKeys: Prisma.$ApiKeyPayload<ExtArgs>[]
       packages: Prisma.$ShippingPackagePayload<ExtArgs>[]
       users: Prisma.$CompanyUserPayload<ExtArgs>[]
-      departments: Prisma.$DepartmentUserPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       stripeEntities: Prisma.$StripeEntityPayload<ExtArgs>[]
+      departments: Prisma.$DepartmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6999,13 +7175,13 @@ export namespace Prisma {
 
     users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    departments<T extends Company$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     stripeEntities<T extends Company$stripeEntitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeEntitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeEntityPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    departments<T extends Company$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7462,26 +7638,6 @@ export namespace Prisma {
   }
 
   /**
-   * Company.departments
-   */
-  export type Company$departmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DepartmentUser
-     */
-    select?: DepartmentUserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DepartmentUserInclude<ExtArgs> | null
-    where?: DepartmentUserWhereInput
-    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
-    cursor?: DepartmentUserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
-  }
-
-  /**
    * Company.patients
    */
   export type Company$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7542,6 +7698,26 @@ export namespace Prisma {
   }
 
   /**
+   * Company.departments
+   */
+  export type Company$departmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    where?: DepartmentWhereInput
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    cursor?: DepartmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
    * Company without action
    */
   export type CompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7570,6 +7746,8 @@ export namespace Prisma {
     id: string | null
     name: string | null
     companyId: string | null
+    contactId: string | null
+    siteId: string | null
     type: $Enums.FacilityType | null
     active: boolean | null
     createdAt: Date | null
@@ -7580,6 +7758,8 @@ export namespace Prisma {
     id: string | null
     name: string | null
     companyId: string | null
+    contactId: string | null
+    siteId: string | null
     type: $Enums.FacilityType | null
     active: boolean | null
     createdAt: Date | null
@@ -7590,6 +7770,8 @@ export namespace Prisma {
     id: number
     name: number
     companyId: number
+    contactId: number
+    siteId: number
     type: number
     active: number
     createdAt: number
@@ -7602,6 +7784,8 @@ export namespace Prisma {
     id?: true
     name?: true
     companyId?: true
+    contactId?: true
+    siteId?: true
     type?: true
     active?: true
     createdAt?: true
@@ -7612,6 +7796,8 @@ export namespace Prisma {
     id?: true
     name?: true
     companyId?: true
+    contactId?: true
+    siteId?: true
     type?: true
     active?: true
     createdAt?: true
@@ -7622,6 +7808,8 @@ export namespace Prisma {
     id?: true
     name?: true
     companyId?: true
+    contactId?: true
+    siteId?: true
     type?: true
     active?: true
     createdAt?: true
@@ -7705,6 +7893,8 @@ export namespace Prisma {
     id: string
     name: string
     companyId: string
+    contactId: string | null
+    siteId: string | null
     type: $Enums.FacilityType
     active: boolean
     createdAt: Date
@@ -7732,15 +7922,19 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     companyId?: boolean
+    contactId?: boolean
+    siteId?: boolean
     type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    parentSite?: boolean | Facility$parentSiteArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    address?: boolean | Facility$addressArgs<ExtArgs>
-    users?: boolean | Facility$usersArgs<ExtArgs>
+    contact?: boolean | Facility$contactArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
     shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
+    facilityPatients?: boolean | Facility$facilityPatientsArgs<ExtArgs>
+    siteChildFacilities?: boolean | Facility$siteChildFacilitiesArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facility"]>
 
@@ -7748,6 +7942,8 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     companyId?: boolean
+    contactId?: boolean
+    siteId?: boolean
     type?: boolean
     active?: boolean
     createdAt?: boolean
@@ -7756,11 +7952,13 @@ export namespace Prisma {
 
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parentSite?: boolean | Facility$parentSiteArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    address?: boolean | Facility$addressArgs<ExtArgs>
-    users?: boolean | Facility$usersArgs<ExtArgs>
+    contact?: boolean | Facility$contactArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
     shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
+    facilityPatients?: boolean | Facility$facilityPatientsArgs<ExtArgs>
+    siteChildFacilities?: boolean | Facility$siteChildFacilitiesArgs<ExtArgs>
     _count?: boolean | FacilityCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7768,16 +7966,20 @@ export namespace Prisma {
   export type $FacilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Facility"
     objects: {
+      parentSite: Prisma.$FacilityPayload<ExtArgs> | null
       company: Prisma.$CompanyPayload<ExtArgs>
-      address: Prisma.$FacilityAddressPayload<ExtArgs> | null
-      users: Prisma.$FacilityUserPayload<ExtArgs>[]
+      contact: Prisma.$ContactPayload<ExtArgs> | null
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       shippingLabels: Prisma.$ShippingLabelPayload<ExtArgs>[]
+      facilityPatients: Prisma.$FacilityPatientPayload<ExtArgs>[]
+      siteChildFacilities: Prisma.$FacilityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       companyId: string
+      contactId: string | null
+      siteId: string | null
       type: $Enums.FacilityType
       active: boolean
       createdAt: Date
@@ -8173,15 +8375,19 @@ export namespace Prisma {
   export interface Prisma__FacilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    parentSite<T extends Facility$parentSiteArgs<ExtArgs> = {}>(args?: Subset<T, Facility$parentSiteArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    address<T extends Facility$addressArgs<ExtArgs> = {}>(args?: Subset<T, Facility$addressArgs<ExtArgs>>): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
-    users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
+    contact<T extends Facility$contactArgs<ExtArgs> = {}>(args?: Subset<T, Facility$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     evaluations<T extends Facility$evaluationsArgs<ExtArgs> = {}>(args?: Subset<T, Facility$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     shippingLabels<T extends Facility$shippingLabelsArgs<ExtArgs> = {}>(args?: Subset<T, Facility$shippingLabelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    facilityPatients<T extends Facility$facilityPatientsArgs<ExtArgs> = {}>(args?: Subset<T, Facility$facilityPatientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    siteChildFacilities<T extends Facility$siteChildFacilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Facility$siteChildFacilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8214,6 +8420,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Facility", 'String'>
     readonly name: FieldRef<"Facility", 'String'>
     readonly companyId: FieldRef<"Facility", 'String'>
+    readonly contactId: FieldRef<"Facility", 'String'>
+    readonly siteId: FieldRef<"Facility", 'String'>
     readonly type: FieldRef<"Facility", 'FacilityType'>
     readonly active: FieldRef<"Facility", 'Boolean'>
     readonly createdAt: FieldRef<"Facility", 'DateTime'>
@@ -8536,38 +8744,33 @@ export namespace Prisma {
   }
 
   /**
-   * Facility.address
+   * Facility.parentSite
    */
-  export type Facility$addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Facility$parentSiteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Facility
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: FacilitySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
-    where?: FacilityAddressWhereInput
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
   }
 
   /**
-   * Facility.users
+   * Facility.contact
    */
-  export type Facility$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Facility$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
-    where?: FacilityUserWhereInput
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
-    cursor?: FacilityUserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
   }
 
   /**
@@ -8608,6 +8811,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
+  }
+
+  /**
+   * Facility.facilityPatients
+   */
+  export type Facility$facilityPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilityPatient
+     */
+    select?: FacilityPatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityPatientInclude<ExtArgs> | null
+    where?: FacilityPatientWhereInput
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
+    cursor?: FacilityPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityPatientScalarFieldEnum | FacilityPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Facility.siteChildFacilities
+   */
+  export type Facility$siteChildFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facility
+     */
+    select?: FacilitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+    orderBy?: FacilityOrderByWithRelationInput | FacilityOrderByWithRelationInput[]
+    cursor?: FacilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
 
   /**
@@ -8912,6 +9155,7 @@ export namespace Prisma {
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
+    facilityPatients?: boolean | Patient$facilityPatientsArgs<ExtArgs>
     _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["patient"]>
 
@@ -8940,6 +9184,7 @@ export namespace Prisma {
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
+    facilityPatients?: boolean | Patient$facilityPatientsArgs<ExtArgs>
     _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8952,6 +9197,7 @@ export namespace Prisma {
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       companies: Prisma.$CompanyPatientPayload<ExtArgs>[]
+      facilityPatients: Prisma.$FacilityPatientPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9369,6 +9615,8 @@ export namespace Prisma {
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    facilityPatients<T extends Patient$facilityPatientsArgs<ExtArgs> = {}>(args?: Subset<T, Patient$facilityPatientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9823,6 +10071,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Patient.facilityPatients
+   */
+  export type Patient$facilityPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilityPatient
+     */
+    select?: FacilityPatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityPatientInclude<ExtArgs> | null
+    where?: FacilityPatientWhereInput
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
+    cursor?: FacilityPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityPatientScalarFieldEnum | FacilityPatientScalarFieldEnum[]
   }
 
   /**
@@ -20770,16 +21038,16 @@ export namespace Prisma {
 
 
   /**
-   * Model FacilityAddress
+   * Model Contact
    */
 
-  export type AggregateFacilityAddress = {
-    _count: FacilityAddressCountAggregateOutputType | null
-    _min: FacilityAddressMinAggregateOutputType | null
-    _max: FacilityAddressMaxAggregateOutputType | null
+  export type AggregateContact = {
+    _count: ContactCountAggregateOutputType | null
+    _min: ContactMinAggregateOutputType | null
+    _max: ContactMaxAggregateOutputType | null
   }
 
-  export type FacilityAddressMinAggregateOutputType = {
+  export type ContactMinAggregateOutputType = {
     id: string | null
     name: string | null
     addressLine1: string | null
@@ -20793,10 +21061,9 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
-    facilityId: string | null
   }
 
-  export type FacilityAddressMaxAggregateOutputType = {
+  export type ContactMaxAggregateOutputType = {
     id: string | null
     name: string | null
     addressLine1: string | null
@@ -20810,10 +21077,9 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
-    facilityId: string | null
   }
 
-  export type FacilityAddressCountAggregateOutputType = {
+  export type ContactCountAggregateOutputType = {
     id: number
     name: number
     addressLine1: number
@@ -20827,12 +21093,11 @@ export namespace Prisma {
     shippingAccountCarrier: number
     createdAt: number
     updatedAt: number
-    facilityId: number
     _all: number
   }
 
 
-  export type FacilityAddressMinAggregateInputType = {
+  export type ContactMinAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -20846,10 +21111,9 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
   }
 
-  export type FacilityAddressMaxAggregateInputType = {
+  export type ContactMaxAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -20863,10 +21127,9 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
   }
 
-  export type FacilityAddressCountAggregateInputType = {
+  export type ContactCountAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -20880,83 +21143,82 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
     _all?: true
   }
 
-  export type FacilityAddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityAddress to aggregate.
+     * Filter which Contact to aggregate.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned FacilityAddresses
+     * Count returned Contacts
     **/
-    _count?: true | FacilityAddressCountAggregateInputType
+    _count?: true | ContactCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: FacilityAddressMinAggregateInputType
+    _min?: ContactMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: FacilityAddressMaxAggregateInputType
+    _max?: ContactMaxAggregateInputType
   }
 
-  export type GetFacilityAddressAggregateType<T extends FacilityAddressAggregateArgs> = {
-        [P in keyof T & keyof AggregateFacilityAddress]: P extends '_count' | 'count'
+  export type GetContactAggregateType<T extends ContactAggregateArgs> = {
+        [P in keyof T & keyof AggregateContact]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateFacilityAddress[P]>
-      : GetScalarType<T[P], AggregateFacilityAddress[P]>
+        : GetScalarType<T[P], AggregateContact[P]>
+      : GetScalarType<T[P], AggregateContact[P]>
   }
 
 
 
 
-  export type FacilityAddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FacilityAddressWhereInput
-    orderBy?: FacilityAddressOrderByWithAggregationInput | FacilityAddressOrderByWithAggregationInput[]
-    by: FacilityAddressScalarFieldEnum[] | FacilityAddressScalarFieldEnum
-    having?: FacilityAddressScalarWhereWithAggregatesInput
+  export type ContactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContactWhereInput
+    orderBy?: ContactOrderByWithAggregationInput | ContactOrderByWithAggregationInput[]
+    by: ContactScalarFieldEnum[] | ContactScalarFieldEnum
+    having?: ContactScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: FacilityAddressCountAggregateInputType | true
-    _min?: FacilityAddressMinAggregateInputType
-    _max?: FacilityAddressMaxAggregateInputType
+    _count?: ContactCountAggregateInputType | true
+    _min?: ContactMinAggregateInputType
+    _max?: ContactMaxAggregateInputType
   }
 
-  export type FacilityAddressGroupByOutputType = {
+  export type ContactGroupByOutputType = {
     id: string
     name: string | null
     addressLine1: string
@@ -20970,27 +21232,26 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date
     updatedAt: Date
-    facilityId: string
-    _count: FacilityAddressCountAggregateOutputType | null
-    _min: FacilityAddressMinAggregateOutputType | null
-    _max: FacilityAddressMaxAggregateOutputType | null
+    _count: ContactCountAggregateOutputType | null
+    _min: ContactMinAggregateOutputType | null
+    _max: ContactMaxAggregateOutputType | null
   }
 
-  type GetFacilityAddressGroupByPayload<T extends FacilityAddressGroupByArgs> = Prisma.PrismaPromise<
+  type GetContactGroupByPayload<T extends ContactGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<FacilityAddressGroupByOutputType, T['by']> &
+      PickEnumerable<ContactGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof FacilityAddressGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ContactGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
-            : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
+              : GetScalarType<T[P], ContactGroupByOutputType[P]>
+            : GetScalarType<T[P], ContactGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type FacilityAddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     addressLine1?: boolean
@@ -21004,11 +21265,12 @@ export namespace Prisma {
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    facilityId?: boolean
-    facility?: boolean | FacilityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["facilityAddress"]>
+    facilities?: boolean | Contact$facilitiesArgs<ExtArgs>
+    companyPatients?: boolean | Contact$companyPatientsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contact"]>
 
-  export type FacilityAddressSelectScalar = {
+  export type ContactSelectScalar = {
     id?: boolean
     name?: boolean
     addressLine1?: boolean
@@ -21022,19 +21284,21 @@ export namespace Prisma {
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    facilityId?: boolean
   }
 
 
-  export type FacilityAddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    facility?: boolean | FacilityDefaultArgs<ExtArgs>
+  export type ContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facilities?: boolean | Contact$facilitiesArgs<ExtArgs>
+    companyPatients?: boolean | Contact$companyPatientsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $FacilityAddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "FacilityAddress"
+  export type $ContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Contact"
     objects: {
-      facility: Prisma.$FacilityPayload<ExtArgs>
+      facilities: Prisma.$FacilityPayload<ExtArgs>[]
+      companyPatients: Prisma.$CompanyPatientPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -21050,152 +21314,151 @@ export namespace Prisma {
       shippingAccountCarrier: $Enums.Carrier | null
       createdAt: Date
       updatedAt: Date
-      facilityId: string
-    }, ExtArgs["result"]["facilityAddress"]>
+    }, ExtArgs["result"]["contact"]>
     composites: {}
   }
 
 
-  type FacilityAddressGetPayload<S extends boolean | null | undefined | FacilityAddressDefaultArgs> = $Result.GetResult<Prisma.$FacilityAddressPayload, S>
+  type ContactGetPayload<S extends boolean | null | undefined | ContactDefaultArgs> = $Result.GetResult<Prisma.$ContactPayload, S>
 
-  type FacilityAddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<FacilityAddressFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: FacilityAddressCountAggregateInputType | true
+  type ContactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ContactFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ContactCountAggregateInputType | true
     }
 
-  export interface FacilityAddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityAddress'], meta: { name: 'FacilityAddress' } }
+  export interface ContactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Contact'], meta: { name: 'Contact' } }
     /**
-     * Find zero or one FacilityAddress that matches the filter.
-     * @param {FacilityAddressFindUniqueArgs} args - Arguments to find a FacilityAddress
+     * Find zero or one Contact that matches the filter.
+     * @param {ContactFindUniqueArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findUnique({
+     * // Get one Contact
+     * const contact = await prisma.contact.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends FacilityAddressFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressFindUniqueArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends ContactFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactFindUniqueArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one FacilityAddress that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Contact that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {FacilityAddressFindUniqueOrThrowArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindUniqueOrThrowArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findUniqueOrThrow({
+     * // Get one Contact
+     * const contact = await prisma.contact.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends ContactFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first FacilityAddress that matches the filter.
+     * Find the first Contact that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindFirstArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindFirstArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findFirst({
+     * // Get one Contact
+     * const contact = await prisma.contact.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends FacilityAddressFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindFirstArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends ContactFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindFirstArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first FacilityAddress that matches the filter or
+     * Find the first Contact that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindFirstOrThrowArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindFirstOrThrowArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findFirstOrThrow({
+     * // Get one Contact
+     * const contact = await prisma.contact.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends FacilityAddressFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends ContactFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more FacilityAddresses that matches the filter.
+     * Find zero or more Contacts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ContactFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all FacilityAddresses
-     * const facilityAddresses = await prisma.facilityAddress.findMany()
+     * // Get all Contacts
+     * const contacts = await prisma.contact.findMany()
      * 
-     * // Get first 10 FacilityAddresses
-     * const facilityAddresses = await prisma.facilityAddress.findMany({ take: 10 })
+     * // Get first 10 Contacts
+     * const contacts = await prisma.contact.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const facilityAddressWithIdOnly = await prisma.facilityAddress.findMany({ select: { id: true } })
+     * const contactWithIdOnly = await prisma.contact.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends FacilityAddressFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends ContactFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a FacilityAddress.
-     * @param {FacilityAddressCreateArgs} args - Arguments to create a FacilityAddress.
+     * Create a Contact.
+     * @param {ContactCreateArgs} args - Arguments to create a Contact.
      * @example
-     * // Create one FacilityAddress
-     * const FacilityAddress = await prisma.facilityAddress.create({
+     * // Create one Contact
+     * const Contact = await prisma.contact.create({
      *   data: {
-     *     // ... data to create a FacilityAddress
+     *     // ... data to create a Contact
      *   }
      * })
      * 
     **/
-    create<T extends FacilityAddressCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressCreateArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends ContactCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactCreateArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many FacilityAddresses.
-     * @param {FacilityAddressCreateManyArgs} args - Arguments to create many FacilityAddresses.
+     * Create many Contacts.
+     * @param {ContactCreateManyArgs} args - Arguments to create many Contacts.
      * @example
-     * // Create many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.createMany({
+     * // Create many Contacts
+     * const contact = await prisma.contact.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends FacilityAddressCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressCreateManyArgs<ExtArgs>>
+    createMany<T extends ContactCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many FacilityAddresses and returns the data saved in the database.
-     * @param {FacilityAddressCreateManyAndReturnArgs} args - Arguments to create many FacilityAddresses.
+     * Create many Contacts and returns the data saved in the database.
+     * @param {ContactCreateManyAndReturnArgs} args - Arguments to create many Contacts.
      * @example
-     * // Create many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.createManyAndReturn({
+     * // Create many Contacts
+     * const contact = await prisma.contact.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many FacilityAddresses and only return the `id`
-     * const facilityAddressWithIdOnly = await prisma.facilityAddress.createManyAndReturn({ 
+     * // Create many Contacts and only return the `id`
+     * const contactWithIdOnly = await prisma.contact.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -21205,32 +21468,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends FacilityAddressCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends ContactCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a FacilityAddress.
-     * @param {FacilityAddressDeleteArgs} args - Arguments to delete one FacilityAddress.
+     * Delete a Contact.
+     * @param {ContactDeleteArgs} args - Arguments to delete one Contact.
      * @example
-     * // Delete one FacilityAddress
-     * const FacilityAddress = await prisma.facilityAddress.delete({
+     * // Delete one Contact
+     * const Contact = await prisma.contact.delete({
      *   where: {
-     *     // ... filter to delete one FacilityAddress
+     *     // ... filter to delete one Contact
      *   }
      * })
      * 
     **/
-    delete<T extends FacilityAddressDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressDeleteArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends ContactDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactDeleteArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one FacilityAddress.
-     * @param {FacilityAddressUpdateArgs} args - Arguments to update one FacilityAddress.
+     * Update one Contact.
+     * @param {ContactUpdateArgs} args - Arguments to update one Contact.
      * @example
-     * // Update one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.update({
+     * // Update one Contact
+     * const contact = await prisma.contact.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -21240,34 +21503,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends FacilityAddressUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpdateArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends ContactUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpdateArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more FacilityAddresses.
-     * @param {FacilityAddressDeleteManyArgs} args - Arguments to filter FacilityAddresses to delete.
+     * Delete zero or more Contacts.
+     * @param {ContactDeleteManyArgs} args - Arguments to filter Contacts to delete.
      * @example
-     * // Delete a few FacilityAddresses
-     * const { count } = await prisma.facilityAddress.deleteMany({
+     * // Delete a few Contacts
+     * const { count } = await prisma.contact.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends FacilityAddressDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends ContactDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more FacilityAddresses.
+     * Update zero or more Contacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ContactUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.updateMany({
+     * // Update many Contacts
+     * const contact = await prisma.contact.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -21277,59 +21540,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends FacilityAddressUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpdateManyArgs<ExtArgs>>
+    updateMany<T extends ContactUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one FacilityAddress.
-     * @param {FacilityAddressUpsertArgs} args - Arguments to update or create a FacilityAddress.
+     * Create or update one Contact.
+     * @param {ContactUpsertArgs} args - Arguments to update or create a Contact.
      * @example
-     * // Update or create a FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.upsert({
+     * // Update or create a Contact
+     * const contact = await prisma.contact.upsert({
      *   create: {
-     *     // ... data to create a FacilityAddress
+     *     // ... data to create a Contact
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the FacilityAddress we want to update
+     *     // ... the filter for the Contact we want to update
      *   }
      * })
     **/
-    upsert<T extends FacilityAddressUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpsertArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends ContactUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpsertArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of FacilityAddresses.
+     * Count the number of Contacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressCountArgs} args - Arguments to filter FacilityAddresses to count.
+     * @param {ContactCountArgs} args - Arguments to filter Contacts to count.
      * @example
-     * // Count the number of FacilityAddresses
-     * const count = await prisma.facilityAddress.count({
+     * // Count the number of Contacts
+     * const count = await prisma.contact.count({
      *   where: {
-     *     // ... the filter for the FacilityAddresses we want to count
+     *     // ... the filter for the Contacts we want to count
      *   }
      * })
     **/
-    count<T extends FacilityAddressCountArgs>(
-      args?: Subset<T, FacilityAddressCountArgs>,
+    count<T extends ContactCountArgs>(
+      args?: Subset<T, ContactCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], FacilityAddressCountAggregateOutputType>
+          : GetScalarType<T['select'], ContactCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a FacilityAddress.
+     * Allows you to perform aggregations operations on a Contact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ContactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -21349,13 +21612,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends FacilityAddressAggregateArgs>(args: Subset<T, FacilityAddressAggregateArgs>): Prisma.PrismaPromise<GetFacilityAddressAggregateType<T>>
+    aggregate<T extends ContactAggregateArgs>(args: Subset<T, ContactAggregateArgs>): Prisma.PrismaPromise<GetContactAggregateType<T>>
 
     /**
-     * Group by FacilityAddress.
+     * Group by Contact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressGroupByArgs} args - Group by arguments.
+     * @param {ContactGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -21370,14 +21633,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends FacilityAddressGroupByArgs,
+      T extends ContactGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FacilityAddressGroupByArgs['orderBy'] }
-        : { orderBy?: FacilityAddressGroupByArgs['orderBy'] },
+        ? { orderBy: ContactGroupByArgs['orderBy'] }
+        : { orderBy?: ContactGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -21426,23 +21689,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, FacilityAddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ContactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the FacilityAddress model
+   * Fields of the Contact model
    */
-  readonly fields: FacilityAddressFieldRefs;
+  readonly fields: ContactFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for FacilityAddress.
+   * The delegate class that acts as a "Promise-like" for Contact.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__FacilityAddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    facility<T extends FacilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FacilityDefaultArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    facilities<T extends Contact$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Contact$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    companyPatients<T extends Contact$companyPatientsArgs<ExtArgs> = {}>(args?: Subset<T, Contact$companyPatientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -21469,352 +21734,391 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the FacilityAddress model
+   * Fields of the Contact model
    */ 
-  interface FacilityAddressFieldRefs {
-    readonly id: FieldRef<"FacilityAddress", 'String'>
-    readonly name: FieldRef<"FacilityAddress", 'String'>
-    readonly addressLine1: FieldRef<"FacilityAddress", 'String'>
-    readonly addressLine2: FieldRef<"FacilityAddress", 'String'>
-    readonly city: FieldRef<"FacilityAddress", 'String'>
-    readonly stateOrProvince: FieldRef<"FacilityAddress", 'String'>
-    readonly postalCode: FieldRef<"FacilityAddress", 'String'>
-    readonly countryCode: FieldRef<"FacilityAddress", 'String'>
-    readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
-    readonly phoneNumber: FieldRef<"FacilityAddress", 'String'>
-    readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
-    readonly createdAt: FieldRef<"FacilityAddress", 'DateTime'>
-    readonly updatedAt: FieldRef<"FacilityAddress", 'DateTime'>
-    readonly facilityId: FieldRef<"FacilityAddress", 'String'>
+  interface ContactFieldRefs {
+    readonly id: FieldRef<"Contact", 'String'>
+    readonly name: FieldRef<"Contact", 'String'>
+    readonly addressLine1: FieldRef<"Contact", 'String'>
+    readonly addressLine2: FieldRef<"Contact", 'String'>
+    readonly city: FieldRef<"Contact", 'String'>
+    readonly stateOrProvince: FieldRef<"Contact", 'String'>
+    readonly postalCode: FieldRef<"Contact", 'String'>
+    readonly countryCode: FieldRef<"Contact", 'String'>
+    readonly shippingAccountId: FieldRef<"Contact", 'String'>
+    readonly phoneNumber: FieldRef<"Contact", 'String'>
+    readonly shippingAccountCarrier: FieldRef<"Contact", 'Carrier'>
+    readonly createdAt: FieldRef<"Contact", 'DateTime'>
+    readonly updatedAt: FieldRef<"Contact", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * FacilityAddress findUnique
+   * Contact findUnique
    */
-  export type FacilityAddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress findUniqueOrThrow
+   * Contact findUniqueOrThrow
    */
-  export type FacilityAddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress findFirst
+   * Contact findFirst
    */
-  export type FacilityAddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityAddresses.
+     * Sets the position for searching for Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityAddresses.
+     * Filter by unique combinations of Contacts.
      */
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress findFirstOrThrow
+   * Contact findFirstOrThrow
    */
-  export type FacilityAddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityAddresses.
+     * Sets the position for searching for Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityAddresses.
+     * Filter by unique combinations of Contacts.
      */
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress findMany
+   * Contact findMany
    */
-  export type FacilityAddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddresses to fetch.
+     * Filter, which Contacts to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing FacilityAddresses.
+     * Sets the position for listing Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress create
+   * Contact create
    */
-  export type FacilityAddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data needed to create a FacilityAddress.
+     * The data needed to create a Contact.
      */
-    data: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
+    data: XOR<ContactCreateInput, ContactUncheckedCreateInput>
   }
 
   /**
-   * FacilityAddress createMany
+   * Contact createMany
    */
-  export type FacilityAddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many FacilityAddresses.
+     * The data used to create many Contacts.
      */
-    data: FacilityAddressCreateManyInput | FacilityAddressCreateManyInput[]
+    data: ContactCreateManyInput | ContactCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityAddress createManyAndReturn
+   * Contact createManyAndReturn
    */
-  export type FacilityAddressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data used to create many FacilityAddresses.
+     * The data used to create many Contacts.
      */
-    data: FacilityAddressCreateManyInput | FacilityAddressCreateManyInput[]
+    data: ContactCreateManyInput | ContactCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityAddress update
+   * Contact update
    */
-  export type FacilityAddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data needed to update a FacilityAddress.
+     * The data needed to update a Contact.
      */
-    data: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
+    data: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
     /**
-     * Choose, which FacilityAddress to update.
+     * Choose, which Contact to update.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress updateMany
+   * Contact updateMany
    */
-  export type FacilityAddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update FacilityAddresses.
+     * The data used to update Contacts.
      */
-    data: XOR<FacilityAddressUpdateManyMutationInput, FacilityAddressUncheckedUpdateManyInput>
+    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyInput>
     /**
-     * Filter which FacilityAddresses to update
+     * Filter which Contacts to update
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
   }
 
   /**
-   * FacilityAddress upsert
+   * Contact upsert
    */
-  export type FacilityAddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The filter to search for the FacilityAddress to update in case it exists.
+     * The filter to search for the Contact to update in case it exists.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
     /**
-     * In case the FacilityAddress found by the `where` argument doesn't exist, create a new FacilityAddress with this data.
+     * In case the Contact found by the `where` argument doesn't exist, create a new Contact with this data.
      */
-    create: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
+    create: XOR<ContactCreateInput, ContactUncheckedCreateInput>
     /**
-     * In case the FacilityAddress was found with the provided `where` argument, update it with this data.
+     * In case the Contact was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
+    update: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
   }
 
   /**
-   * FacilityAddress delete
+   * Contact delete
    */
-  export type FacilityAddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter which FacilityAddress to delete.
+     * Filter which Contact to delete.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress deleteMany
+   * Contact deleteMany
    */
-  export type FacilityAddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityAddresses to delete
+     * Filter which Contacts to delete
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
   }
 
   /**
-   * FacilityAddress without action
+   * Contact.facilities
    */
-  export type FacilityAddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Contact$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Facility
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: FacilitySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+    orderBy?: FacilityOrderByWithRelationInput | FacilityOrderByWithRelationInput[]
+    cursor?: FacilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
+  }
+
+  /**
+   * Contact.companyPatients
+   */
+  export type Contact$companyPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyPatient
+     */
+    select?: CompanyPatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Contact without action
+   */
+  export type ContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
   }
 
 
@@ -39578,30 +39882,24 @@ export namespace Prisma {
   }
 
   export type DepartmentUserMinAggregateOutputType = {
-    id: string | null
     userId: string | null
-    companyId: string | null
-    department: $Enums.CompanyDepartment | null
+    departmentId: string | null
     role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type DepartmentUserMaxAggregateOutputType = {
-    id: string | null
     userId: string | null
-    companyId: string | null
-    department: $Enums.CompanyDepartment | null
+    departmentId: string | null
     role: $Enums.CompanyRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type DepartmentUserCountAggregateOutputType = {
-    id: number
     userId: number
-    companyId: number
-    department: number
+    departmentId: number
     role: number
     createdAt: number
     updatedAt: number
@@ -39610,30 +39908,24 @@ export namespace Prisma {
 
 
   export type DepartmentUserMinAggregateInputType = {
-    id?: true
     userId?: true
-    companyId?: true
-    department?: true
+    departmentId?: true
     role?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type DepartmentUserMaxAggregateInputType = {
-    id?: true
     userId?: true
-    companyId?: true
-    department?: true
+    departmentId?: true
     role?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type DepartmentUserCountAggregateInputType = {
-    id?: true
     userId?: true
-    companyId?: true
-    department?: true
+    departmentId?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -39713,10 +40005,8 @@ export namespace Prisma {
   }
 
   export type DepartmentUserGroupByOutputType = {
-    id: string
     userId: string
-    companyId: string
-    department: $Enums.CompanyDepartment
+    departmentId: string
     role: $Enums.CompanyRole
     createdAt: Date
     updatedAt: Date
@@ -39740,22 +40030,18 @@ export namespace Prisma {
 
 
   export type DepartmentUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     userId?: boolean
-    companyId?: boolean
-    department?: boolean
+    departmentId?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["departmentUser"]>
 
   export type DepartmentUserSelectScalar = {
-    id?: boolean
     userId?: boolean
-    companyId?: boolean
-    department?: boolean
+    departmentId?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -39764,7 +40050,7 @@ export namespace Prisma {
 
   export type DepartmentUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
   }
 
 
@@ -39772,13 +40058,11 @@ export namespace Prisma {
     name: "DepartmentUser"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      company: Prisma.$CompanyPayload<ExtArgs>
+      department: Prisma.$DepartmentPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
       userId: string
-      companyId: string
-      department: $Enums.CompanyDepartment
+      departmentId: string
       role: $Enums.CompanyRole
       createdAt: Date
       updatedAt: Date
@@ -39874,8 +40158,8 @@ export namespace Prisma {
      * // Get first 10 DepartmentUsers
      * const departmentUsers = await prisma.departmentUser.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const departmentUserWithIdOnly = await prisma.departmentUser.findMany({ select: { id: true } })
+     * // Only select the `userId`
+     * const departmentUserWithUserIdOnly = await prisma.departmentUser.findMany({ select: { userId: true } })
      * 
     **/
     findMany<T extends DepartmentUserFindManyArgs<ExtArgs>>(
@@ -39925,9 +40209,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many DepartmentUsers and only return the `id`
-     * const departmentUserWithIdOnly = await prisma.departmentUser.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many DepartmentUsers and only return the `userId`
+     * const departmentUserWithUserIdOnly = await prisma.departmentUser.createManyAndReturn({ 
+     *   select: { userId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -40175,7 +40459,7 @@ export namespace Prisma {
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    department<T extends DepartmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentDefaultArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -40205,10 +40489,8 @@ export namespace Prisma {
    * Fields of the DepartmentUser model
    */ 
   interface DepartmentUserFieldRefs {
-    readonly id: FieldRef<"DepartmentUser", 'String'>
     readonly userId: FieldRef<"DepartmentUser", 'String'>
-    readonly companyId: FieldRef<"DepartmentUser", 'String'>
-    readonly department: FieldRef<"DepartmentUser", 'CompanyDepartment'>
+    readonly departmentId: FieldRef<"DepartmentUser", 'String'>
     readonly role: FieldRef<"DepartmentUser", 'CompanyRole'>
     readonly createdAt: FieldRef<"DepartmentUser", 'DateTime'>
     readonly updatedAt: FieldRef<"DepartmentUser", 'DateTime'>
@@ -40545,6 +40827,1019 @@ export namespace Prisma {
 
 
   /**
+   * Model Department
+   */
+
+  export type AggregateDepartment = {
+    _count: DepartmentCountAggregateOutputType | null
+    _min: DepartmentMinAggregateOutputType | null
+    _max: DepartmentMaxAggregateOutputType | null
+  }
+
+  export type DepartmentMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    companyId: string | null
+    type: $Enums.CompanyDepartment | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepartmentMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    companyId: string | null
+    type: $Enums.CompanyDepartment | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepartmentCountAggregateOutputType = {
+    id: number
+    name: number
+    companyId: number
+    type: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DepartmentMinAggregateInputType = {
+    id?: true
+    name?: true
+    companyId?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepartmentMaxAggregateInputType = {
+    id?: true
+    name?: true
+    companyId?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepartmentCountAggregateInputType = {
+    id?: true
+    name?: true
+    companyId?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DepartmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Department to aggregate.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Departments
+    **/
+    _count?: true | DepartmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DepartmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DepartmentMaxAggregateInputType
+  }
+
+  export type GetDepartmentAggregateType<T extends DepartmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateDepartment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDepartment[P]>
+      : GetScalarType<T[P], AggregateDepartment[P]>
+  }
+
+
+
+
+  export type DepartmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentWhereInput
+    orderBy?: DepartmentOrderByWithAggregationInput | DepartmentOrderByWithAggregationInput[]
+    by: DepartmentScalarFieldEnum[] | DepartmentScalarFieldEnum
+    having?: DepartmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DepartmentCountAggregateInputType | true
+    _min?: DepartmentMinAggregateInputType
+    _max?: DepartmentMaxAggregateInputType
+  }
+
+  export type DepartmentGroupByOutputType = {
+    id: string
+    name: string
+    companyId: string
+    type: $Enums.CompanyDepartment
+    createdAt: Date
+    updatedAt: Date
+    _count: DepartmentCountAggregateOutputType | null
+    _min: DepartmentMinAggregateOutputType | null
+    _max: DepartmentMaxAggregateOutputType | null
+  }
+
+  type GetDepartmentGroupByPayload<T extends DepartmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DepartmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DepartmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
+            : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DepartmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    companyId?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    departmentUsers?: boolean | Department$departmentUsersArgs<ExtArgs>
+    companyPatients?: boolean | Department$companyPatientsArgs<ExtArgs>
+    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["department"]>
+
+  export type DepartmentSelectScalar = {
+    id?: boolean
+    name?: boolean
+    companyId?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type DepartmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    departmentUsers?: boolean | Department$departmentUsersArgs<ExtArgs>
+    companyPatients?: boolean | Department$companyPatientsArgs<ExtArgs>
+    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $DepartmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Department"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+      departmentUsers: Prisma.$DepartmentUserPayload<ExtArgs>[]
+      companyPatients: Prisma.$CompanyPatientPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      companyId: string
+      type: $Enums.CompanyDepartment
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["department"]>
+    composites: {}
+  }
+
+
+  type DepartmentGetPayload<S extends boolean | null | undefined | DepartmentDefaultArgs> = $Result.GetResult<Prisma.$DepartmentPayload, S>
+
+  type DepartmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<DepartmentFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: DepartmentCountAggregateInputType | true
+    }
+
+  export interface DepartmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Department'], meta: { name: 'Department' } }
+    /**
+     * Find zero or one Department that matches the filter.
+     * @param {DepartmentFindUniqueArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends DepartmentFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentFindUniqueArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Department that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {DepartmentFindUniqueOrThrowArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends DepartmentFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Department that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindFirstArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends DepartmentFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentFindFirstArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Department that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindFirstOrThrowArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends DepartmentFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Departments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Departments
+     * const departments = await prisma.department.findMany()
+     * 
+     * // Get first 10 Departments
+     * const departments = await prisma.department.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const departmentWithIdOnly = await prisma.department.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends DepartmentFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Department.
+     * @param {DepartmentCreateArgs} args - Arguments to create a Department.
+     * @example
+     * // Create one Department
+     * const Department = await prisma.department.create({
+     *   data: {
+     *     // ... data to create a Department
+     *   }
+     * })
+     * 
+    **/
+    create<T extends DepartmentCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentCreateArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Departments.
+     * @param {DepartmentCreateManyArgs} args - Arguments to create many Departments.
+     * @example
+     * // Create many Departments
+     * const department = await prisma.department.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends DepartmentCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Departments and returns the data saved in the database.
+     * @param {DepartmentCreateManyAndReturnArgs} args - Arguments to create many Departments.
+     * @example
+     * // Create many Departments
+     * const department = await prisma.department.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Departments and only return the `id`
+     * const departmentWithIdOnly = await prisma.department.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends DepartmentCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a Department.
+     * @param {DepartmentDeleteArgs} args - Arguments to delete one Department.
+     * @example
+     * // Delete one Department
+     * const Department = await prisma.department.delete({
+     *   where: {
+     *     // ... filter to delete one Department
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends DepartmentDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentDeleteArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Department.
+     * @param {DepartmentUpdateArgs} args - Arguments to update one Department.
+     * @example
+     * // Update one Department
+     * const department = await prisma.department.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends DepartmentUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUpdateArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Departments.
+     * @param {DepartmentDeleteManyArgs} args - Arguments to filter Departments to delete.
+     * @example
+     * // Delete a few Departments
+     * const { count } = await prisma.department.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends DepartmentDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DepartmentDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Departments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Departments
+     * const department = await prisma.department.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends DepartmentUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Department.
+     * @param {DepartmentUpsertArgs} args - Arguments to update or create a Department.
+     * @example
+     * // Update or create a Department
+     * const department = await prisma.department.upsert({
+     *   create: {
+     *     // ... data to create a Department
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Department we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends DepartmentUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, DepartmentUpsertArgs<ExtArgs>>
+    ): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Departments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentCountArgs} args - Arguments to filter Departments to count.
+     * @example
+     * // Count the number of Departments
+     * const count = await prisma.department.count({
+     *   where: {
+     *     // ... the filter for the Departments we want to count
+     *   }
+     * })
+    **/
+    count<T extends DepartmentCountArgs>(
+      args?: Subset<T, DepartmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DepartmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Department.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DepartmentAggregateArgs>(args: Subset<T, DepartmentAggregateArgs>): Prisma.PrismaPromise<GetDepartmentAggregateType<T>>
+
+    /**
+     * Group by Department.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DepartmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DepartmentGroupByArgs['orderBy'] }
+        : { orderBy?: DepartmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DepartmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepartmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Department model
+   */
+  readonly fields: DepartmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Department.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    departmentUsers<T extends Department$departmentUsersArgs<ExtArgs> = {}>(args?: Subset<T, Department$departmentUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    companyPatients<T extends Department$companyPatientsArgs<ExtArgs> = {}>(args?: Subset<T, Department$companyPatientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Department model
+   */ 
+  interface DepartmentFieldRefs {
+    readonly id: FieldRef<"Department", 'String'>
+    readonly name: FieldRef<"Department", 'String'>
+    readonly companyId: FieldRef<"Department", 'String'>
+    readonly type: FieldRef<"Department", 'CompanyDepartment'>
+    readonly createdAt: FieldRef<"Department", 'DateTime'>
+    readonly updatedAt: FieldRef<"Department", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Department findUnique
+   */
+  export type DepartmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department findUniqueOrThrow
+   */
+  export type DepartmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department findFirst
+   */
+  export type DepartmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Departments.
+     */
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department findFirstOrThrow
+   */
+  export type DepartmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Departments.
+     */
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department findMany
+   */
+  export type DepartmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Departments to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department create
+   */
+  export type DepartmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Department.
+     */
+    data: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
+  }
+
+  /**
+   * Department createMany
+   */
+  export type DepartmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Departments.
+     */
+    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Department createManyAndReturn
+   */
+  export type DepartmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The data used to create many Departments.
+     */
+    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Department update
+   */
+  export type DepartmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Department.
+     */
+    data: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
+    /**
+     * Choose, which Department to update.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department updateMany
+   */
+  export type DepartmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Departments.
+     */
+    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Departments to update
+     */
+    where?: DepartmentWhereInput
+  }
+
+  /**
+   * Department upsert
+   */
+  export type DepartmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Department to update in case it exists.
+     */
+    where: DepartmentWhereUniqueInput
+    /**
+     * In case the Department found by the `where` argument doesn't exist, create a new Department with this data.
+     */
+    create: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
+    /**
+     * In case the Department was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
+  }
+
+  /**
+   * Department delete
+   */
+  export type DepartmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter which Department to delete.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department deleteMany
+   */
+  export type DepartmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Departments to delete
+     */
+    where?: DepartmentWhereInput
+  }
+
+  /**
+   * Department.departmentUsers
+   */
+  export type Department$departmentUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DepartmentUser
+     */
+    select?: DepartmentUserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentUserInclude<ExtArgs> | null
+    where?: DepartmentUserWhereInput
+    orderBy?: DepartmentUserOrderByWithRelationInput | DepartmentUserOrderByWithRelationInput[]
+    cursor?: DepartmentUserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
+  }
+
+  /**
+   * Department.companyPatients
+   */
+  export type Department$companyPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyPatient
+     */
+    select?: CompanyPatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Department without action
+   */
+  export type DepartmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CompanyPatient
    */
 
@@ -40558,6 +41853,8 @@ export namespace Prisma {
     patientId: string | null
     companyId: string | null
     externalId: string | null
+    departmentId: string | null
+    contactId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -40566,6 +41863,8 @@ export namespace Prisma {
     patientId: string | null
     companyId: string | null
     externalId: string | null
+    departmentId: string | null
+    contactId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -40574,6 +41873,8 @@ export namespace Prisma {
     patientId: number
     companyId: number
     externalId: number
+    departmentId: number
+    contactId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -40584,6 +41885,8 @@ export namespace Prisma {
     patientId?: true
     companyId?: true
     externalId?: true
+    departmentId?: true
+    contactId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -40592,6 +41895,8 @@ export namespace Prisma {
     patientId?: true
     companyId?: true
     externalId?: true
+    departmentId?: true
+    contactId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -40600,6 +41905,8 @@ export namespace Prisma {
     patientId?: true
     companyId?: true
     externalId?: true
+    departmentId?: true
+    contactId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -40681,6 +41988,8 @@ export namespace Prisma {
     patientId: string
     companyId: string
     externalId: string | null
+    departmentId: string | null
+    contactId: string | null
     createdAt: Date
     updatedAt: Date
     _count: CompanyPatientCountAggregateOutputType | null
@@ -40706,9 +42015,13 @@ export namespace Prisma {
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
+    departmentId?: boolean
+    contactId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    department?: boolean | CompanyPatient$departmentArgs<ExtArgs>
+    contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["companyPatient"]>
 
@@ -40716,6 +42029,8 @@ export namespace Prisma {
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
+    departmentId?: boolean
+    contactId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -40723,6 +42038,8 @@ export namespace Prisma {
 
   export type CompanyPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    department?: boolean | CompanyPatient$departmentArgs<ExtArgs>
+    contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
   }
 
@@ -40731,12 +42048,16 @@ export namespace Prisma {
     name: "CompanyPatient"
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs>
+      department: Prisma.$DepartmentPayload<ExtArgs> | null
+      contact: Prisma.$ContactPayload<ExtArgs> | null
       patient: Prisma.$PatientPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       patientId: string
       companyId: string
       externalId: string | null
+      departmentId: string | null
+      contactId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["companyPatient"]>
@@ -41132,6 +42453,10 @@ export namespace Prisma {
 
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    department<T extends CompanyPatient$departmentArgs<ExtArgs> = {}>(args?: Subset<T, CompanyPatient$departmentArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    contact<T extends CompanyPatient$contactArgs<ExtArgs> = {}>(args?: Subset<T, CompanyPatient$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
@@ -41165,6 +42490,8 @@ export namespace Prisma {
     readonly patientId: FieldRef<"CompanyPatient", 'String'>
     readonly companyId: FieldRef<"CompanyPatient", 'String'>
     readonly externalId: FieldRef<"CompanyPatient", 'String'>
+    readonly departmentId: FieldRef<"CompanyPatient", 'String'>
+    readonly contactId: FieldRef<"CompanyPatient", 'String'>
     readonly createdAt: FieldRef<"CompanyPatient", 'DateTime'>
     readonly updatedAt: FieldRef<"CompanyPatient", 'DateTime'>
   }
@@ -41485,6 +42812,36 @@ export namespace Prisma {
   }
 
   /**
+   * CompanyPatient.department
+   */
+  export type CompanyPatient$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    where?: DepartmentWhereInput
+  }
+
+  /**
+   * CompanyPatient.contact
+   */
+  export type CompanyPatient$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
+  }
+
+  /**
    * CompanyPatient without action
    */
   export type CompanyPatientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -41500,31 +42857,34 @@ export namespace Prisma {
 
 
   /**
-   * Model FacilityUser
+   * Model FacilityPatient
    */
 
-  export type AggregateFacilityUser = {
-    _count: FacilityUserCountAggregateOutputType | null
-    _min: FacilityUserMinAggregateOutputType | null
-    _max: FacilityUserMaxAggregateOutputType | null
+  export type AggregateFacilityPatient = {
+    _count: FacilityPatientCountAggregateOutputType | null
+    _min: FacilityPatientMinAggregateOutputType | null
+    _max: FacilityPatientMaxAggregateOutputType | null
   }
 
-  export type FacilityUserMinAggregateOutputType = {
-    userId: string | null
+  export type FacilityPatientMinAggregateOutputType = {
+    id: string | null
+    patientId: string | null
     facilityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type FacilityUserMaxAggregateOutputType = {
-    userId: string | null
+  export type FacilityPatientMaxAggregateOutputType = {
+    id: string | null
+    patientId: string | null
     facilityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type FacilityUserCountAggregateOutputType = {
-    userId: number
+  export type FacilityPatientCountAggregateOutputType = {
+    id: number
+    patientId: number
     facilityId: number
     createdAt: number
     updatedAt: number
@@ -41532,304 +42892,311 @@ export namespace Prisma {
   }
 
 
-  export type FacilityUserMinAggregateInputType = {
-    userId?: true
+  export type FacilityPatientMinAggregateInputType = {
+    id?: true
+    patientId?: true
     facilityId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type FacilityUserMaxAggregateInputType = {
-    userId?: true
+  export type FacilityPatientMaxAggregateInputType = {
+    id?: true
+    patientId?: true
     facilityId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type FacilityUserCountAggregateInputType = {
-    userId?: true
+  export type FacilityPatientCountAggregateInputType = {
+    id?: true
+    patientId?: true
     facilityId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type FacilityUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityUser to aggregate.
+     * Filter which FacilityPatient to aggregate.
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityUsers to fetch.
+     * Determine the order of FacilityPatients to fetch.
      */
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: FacilityUserWhereUniqueInput
+    cursor?: FacilityPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityUsers from the position of the cursor.
+     * Take `±n` FacilityPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityUsers.
+     * Skip the first `n` FacilityPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned FacilityUsers
+     * Count returned FacilityPatients
     **/
-    _count?: true | FacilityUserCountAggregateInputType
+    _count?: true | FacilityPatientCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: FacilityUserMinAggregateInputType
+    _min?: FacilityPatientMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: FacilityUserMaxAggregateInputType
+    _max?: FacilityPatientMaxAggregateInputType
   }
 
-  export type GetFacilityUserAggregateType<T extends FacilityUserAggregateArgs> = {
-        [P in keyof T & keyof AggregateFacilityUser]: P extends '_count' | 'count'
+  export type GetFacilityPatientAggregateType<T extends FacilityPatientAggregateArgs> = {
+        [P in keyof T & keyof AggregateFacilityPatient]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateFacilityUser[P]>
-      : GetScalarType<T[P], AggregateFacilityUser[P]>
+        : GetScalarType<T[P], AggregateFacilityPatient[P]>
+      : GetScalarType<T[P], AggregateFacilityPatient[P]>
   }
 
 
 
 
-  export type FacilityUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FacilityUserWhereInput
-    orderBy?: FacilityUserOrderByWithAggregationInput | FacilityUserOrderByWithAggregationInput[]
-    by: FacilityUserScalarFieldEnum[] | FacilityUserScalarFieldEnum
-    having?: FacilityUserScalarWhereWithAggregatesInput
+  export type FacilityPatientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityPatientWhereInput
+    orderBy?: FacilityPatientOrderByWithAggregationInput | FacilityPatientOrderByWithAggregationInput[]
+    by: FacilityPatientScalarFieldEnum[] | FacilityPatientScalarFieldEnum
+    having?: FacilityPatientScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: FacilityUserCountAggregateInputType | true
-    _min?: FacilityUserMinAggregateInputType
-    _max?: FacilityUserMaxAggregateInputType
+    _count?: FacilityPatientCountAggregateInputType | true
+    _min?: FacilityPatientMinAggregateInputType
+    _max?: FacilityPatientMaxAggregateInputType
   }
 
-  export type FacilityUserGroupByOutputType = {
-    userId: string
+  export type FacilityPatientGroupByOutputType = {
+    id: string
+    patientId: string
     facilityId: string
     createdAt: Date
     updatedAt: Date
-    _count: FacilityUserCountAggregateOutputType | null
-    _min: FacilityUserMinAggregateOutputType | null
-    _max: FacilityUserMaxAggregateOutputType | null
+    _count: FacilityPatientCountAggregateOutputType | null
+    _min: FacilityPatientMinAggregateOutputType | null
+    _max: FacilityPatientMaxAggregateOutputType | null
   }
 
-  type GetFacilityUserGroupByPayload<T extends FacilityUserGroupByArgs> = Prisma.PrismaPromise<
+  type GetFacilityPatientGroupByPayload<T extends FacilityPatientGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<FacilityUserGroupByOutputType, T['by']> &
+      PickEnumerable<FacilityPatientGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof FacilityUserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof FacilityPatientGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], FacilityUserGroupByOutputType[P]>
-            : GetScalarType<T[P], FacilityUserGroupByOutputType[P]>
+              : GetScalarType<T[P], FacilityPatientGroupByOutputType[P]>
+            : GetScalarType<T[P], FacilityPatientGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type FacilityUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userId?: boolean
+  export type FacilityPatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    patientId?: boolean
     facilityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     facility?: boolean | FacilityDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["facilityUser"]>
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["facilityPatient"]>
 
-  export type FacilityUserSelectScalar = {
-    userId?: boolean
+  export type FacilityPatientSelectScalar = {
+    id?: boolean
+    patientId?: boolean
     facilityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
 
-  export type FacilityUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facility?: boolean | FacilityDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
   }
 
 
-  export type $FacilityUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "FacilityUser"
+  export type $FacilityPatientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FacilityPatient"
     objects: {
       facility: Prisma.$FacilityPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
+      patient: Prisma.$PatientPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      userId: string
+      id: string
+      patientId: string
       facilityId: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["facilityUser"]>
+    }, ExtArgs["result"]["facilityPatient"]>
     composites: {}
   }
 
 
-  type FacilityUserGetPayload<S extends boolean | null | undefined | FacilityUserDefaultArgs> = $Result.GetResult<Prisma.$FacilityUserPayload, S>
+  type FacilityPatientGetPayload<S extends boolean | null | undefined | FacilityPatientDefaultArgs> = $Result.GetResult<Prisma.$FacilityPatientPayload, S>
 
-  type FacilityUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<FacilityUserFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: FacilityUserCountAggregateInputType | true
+  type FacilityPatientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FacilityPatientFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FacilityPatientCountAggregateInputType | true
     }
 
-  export interface FacilityUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityUser'], meta: { name: 'FacilityUser' } }
+  export interface FacilityPatientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityPatient'], meta: { name: 'FacilityPatient' } }
     /**
-     * Find zero or one FacilityUser that matches the filter.
-     * @param {FacilityUserFindUniqueArgs} args - Arguments to find a FacilityUser
+     * Find zero or one FacilityPatient that matches the filter.
+     * @param {FacilityPatientFindUniqueArgs} args - Arguments to find a FacilityPatient
      * @example
-     * // Get one FacilityUser
-     * const facilityUser = await prisma.facilityUser.findUnique({
+     * // Get one FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends FacilityUserFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserFindUniqueArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends FacilityPatientFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientFindUniqueArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one FacilityUser that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one FacilityPatient that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {FacilityUserFindUniqueOrThrowArgs} args - Arguments to find a FacilityUser
+     * @param {FacilityPatientFindUniqueOrThrowArgs} args - Arguments to find a FacilityPatient
      * @example
-     * // Get one FacilityUser
-     * const facilityUser = await prisma.facilityUser.findUniqueOrThrow({
+     * // Get one FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends FacilityUserFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends FacilityPatientFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first FacilityUser that matches the filter.
+     * Find the first FacilityPatient that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserFindFirstArgs} args - Arguments to find a FacilityUser
+     * @param {FacilityPatientFindFirstArgs} args - Arguments to find a FacilityPatient
      * @example
-     * // Get one FacilityUser
-     * const facilityUser = await prisma.facilityUser.findFirst({
+     * // Get one FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends FacilityUserFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserFindFirstArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends FacilityPatientFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientFindFirstArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first FacilityUser that matches the filter or
+     * Find the first FacilityPatient that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserFindFirstOrThrowArgs} args - Arguments to find a FacilityUser
+     * @param {FacilityPatientFindFirstOrThrowArgs} args - Arguments to find a FacilityPatient
      * @example
-     * // Get one FacilityUser
-     * const facilityUser = await prisma.facilityUser.findFirstOrThrow({
+     * // Get one FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends FacilityUserFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends FacilityPatientFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more FacilityUsers that matches the filter.
+     * Find zero or more FacilityPatients that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FacilityPatientFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all FacilityUsers
-     * const facilityUsers = await prisma.facilityUser.findMany()
+     * // Get all FacilityPatients
+     * const facilityPatients = await prisma.facilityPatient.findMany()
      * 
-     * // Get first 10 FacilityUsers
-     * const facilityUsers = await prisma.facilityUser.findMany({ take: 10 })
+     * // Get first 10 FacilityPatients
+     * const facilityPatients = await prisma.facilityPatient.findMany({ take: 10 })
      * 
-     * // Only select the `userId`
-     * const facilityUserWithUserIdOnly = await prisma.facilityUser.findMany({ select: { userId: true } })
+     * // Only select the `id`
+     * const facilityPatientWithIdOnly = await prisma.facilityPatient.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends FacilityUserFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends FacilityPatientFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a FacilityUser.
-     * @param {FacilityUserCreateArgs} args - Arguments to create a FacilityUser.
+     * Create a FacilityPatient.
+     * @param {FacilityPatientCreateArgs} args - Arguments to create a FacilityPatient.
      * @example
-     * // Create one FacilityUser
-     * const FacilityUser = await prisma.facilityUser.create({
+     * // Create one FacilityPatient
+     * const FacilityPatient = await prisma.facilityPatient.create({
      *   data: {
-     *     // ... data to create a FacilityUser
+     *     // ... data to create a FacilityPatient
      *   }
      * })
      * 
     **/
-    create<T extends FacilityUserCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserCreateArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends FacilityPatientCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientCreateArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many FacilityUsers.
-     * @param {FacilityUserCreateManyArgs} args - Arguments to create many FacilityUsers.
+     * Create many FacilityPatients.
+     * @param {FacilityPatientCreateManyArgs} args - Arguments to create many FacilityPatients.
      * @example
-     * // Create many FacilityUsers
-     * const facilityUser = await prisma.facilityUser.createMany({
+     * // Create many FacilityPatients
+     * const facilityPatient = await prisma.facilityPatient.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends FacilityUserCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserCreateManyArgs<ExtArgs>>
+    createMany<T extends FacilityPatientCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many FacilityUsers and returns the data saved in the database.
-     * @param {FacilityUserCreateManyAndReturnArgs} args - Arguments to create many FacilityUsers.
+     * Create many FacilityPatients and returns the data saved in the database.
+     * @param {FacilityPatientCreateManyAndReturnArgs} args - Arguments to create many FacilityPatients.
      * @example
-     * // Create many FacilityUsers
-     * const facilityUser = await prisma.facilityUser.createManyAndReturn({
+     * // Create many FacilityPatients
+     * const facilityPatient = await prisma.facilityPatient.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many FacilityUsers and only return the `userId`
-     * const facilityUserWithUserIdOnly = await prisma.facilityUser.createManyAndReturn({ 
-     *   select: { userId: true },
+     * // Create many FacilityPatients and only return the `id`
+     * const facilityPatientWithIdOnly = await prisma.facilityPatient.createManyAndReturn({ 
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -41838,32 +43205,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends FacilityUserCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends FacilityPatientCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a FacilityUser.
-     * @param {FacilityUserDeleteArgs} args - Arguments to delete one FacilityUser.
+     * Delete a FacilityPatient.
+     * @param {FacilityPatientDeleteArgs} args - Arguments to delete one FacilityPatient.
      * @example
-     * // Delete one FacilityUser
-     * const FacilityUser = await prisma.facilityUser.delete({
+     * // Delete one FacilityPatient
+     * const FacilityPatient = await prisma.facilityPatient.delete({
      *   where: {
-     *     // ... filter to delete one FacilityUser
+     *     // ... filter to delete one FacilityPatient
      *   }
      * })
      * 
     **/
-    delete<T extends FacilityUserDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserDeleteArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends FacilityPatientDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientDeleteArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one FacilityUser.
-     * @param {FacilityUserUpdateArgs} args - Arguments to update one FacilityUser.
+     * Update one FacilityPatient.
+     * @param {FacilityPatientUpdateArgs} args - Arguments to update one FacilityPatient.
      * @example
-     * // Update one FacilityUser
-     * const facilityUser = await prisma.facilityUser.update({
+     * // Update one FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -41873,34 +43240,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends FacilityUserUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserUpdateArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends FacilityPatientUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientUpdateArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more FacilityUsers.
-     * @param {FacilityUserDeleteManyArgs} args - Arguments to filter FacilityUsers to delete.
+     * Delete zero or more FacilityPatients.
+     * @param {FacilityPatientDeleteManyArgs} args - Arguments to filter FacilityPatients to delete.
      * @example
-     * // Delete a few FacilityUsers
-     * const { count } = await prisma.facilityUser.deleteMany({
+     * // Delete a few FacilityPatients
+     * const { count } = await prisma.facilityPatient.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends FacilityUserDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityUserDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends FacilityPatientDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FacilityPatientDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more FacilityUsers.
+     * Update zero or more FacilityPatients.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FacilityPatientUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many FacilityUsers
-     * const facilityUser = await prisma.facilityUser.updateMany({
+     * // Update many FacilityPatients
+     * const facilityPatient = await prisma.facilityPatient.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -41910,59 +43277,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends FacilityUserUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserUpdateManyArgs<ExtArgs>>
+    updateMany<T extends FacilityPatientUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one FacilityUser.
-     * @param {FacilityUserUpsertArgs} args - Arguments to update or create a FacilityUser.
+     * Create or update one FacilityPatient.
+     * @param {FacilityPatientUpsertArgs} args - Arguments to update or create a FacilityPatient.
      * @example
-     * // Update or create a FacilityUser
-     * const facilityUser = await prisma.facilityUser.upsert({
+     * // Update or create a FacilityPatient
+     * const facilityPatient = await prisma.facilityPatient.upsert({
      *   create: {
-     *     // ... data to create a FacilityUser
+     *     // ... data to create a FacilityPatient
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the FacilityUser we want to update
+     *     // ... the filter for the FacilityPatient we want to update
      *   }
      * })
     **/
-    upsert<T extends FacilityUserUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityUserUpsertArgs<ExtArgs>>
-    ): Prisma__FacilityUserClient<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends FacilityPatientUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FacilityPatientUpsertArgs<ExtArgs>>
+    ): Prisma__FacilityPatientClient<$Result.GetResult<Prisma.$FacilityPatientPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of FacilityUsers.
+     * Count the number of FacilityPatients.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserCountArgs} args - Arguments to filter FacilityUsers to count.
+     * @param {FacilityPatientCountArgs} args - Arguments to filter FacilityPatients to count.
      * @example
-     * // Count the number of FacilityUsers
-     * const count = await prisma.facilityUser.count({
+     * // Count the number of FacilityPatients
+     * const count = await prisma.facilityPatient.count({
      *   where: {
-     *     // ... the filter for the FacilityUsers we want to count
+     *     // ... the filter for the FacilityPatients we want to count
      *   }
      * })
     **/
-    count<T extends FacilityUserCountArgs>(
-      args?: Subset<T, FacilityUserCountArgs>,
+    count<T extends FacilityPatientCountArgs>(
+      args?: Subset<T, FacilityPatientCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], FacilityUserCountAggregateOutputType>
+          : GetScalarType<T['select'], FacilityPatientCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a FacilityUser.
+     * Allows you to perform aggregations operations on a FacilityPatient.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FacilityPatientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -41982,13 +43349,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends FacilityUserAggregateArgs>(args: Subset<T, FacilityUserAggregateArgs>): Prisma.PrismaPromise<GetFacilityUserAggregateType<T>>
+    aggregate<T extends FacilityPatientAggregateArgs>(args: Subset<T, FacilityPatientAggregateArgs>): Prisma.PrismaPromise<GetFacilityPatientAggregateType<T>>
 
     /**
-     * Group by FacilityUser.
+     * Group by FacilityPatient.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityUserGroupByArgs} args - Group by arguments.
+     * @param {FacilityPatientGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -42003,14 +43370,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends FacilityUserGroupByArgs,
+      T extends FacilityPatientGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FacilityUserGroupByArgs['orderBy'] }
-        : { orderBy?: FacilityUserGroupByArgs['orderBy'] },
+        ? { orderBy: FacilityPatientGroupByArgs['orderBy'] }
+        : { orderBy?: FacilityPatientGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -42059,25 +43426,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, FacilityUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, FacilityPatientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityPatientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the FacilityUser model
+   * Fields of the FacilityPatient model
    */
-  readonly fields: FacilityUserFieldRefs;
+  readonly fields: FacilityPatientFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for FacilityUser.
+   * The delegate class that acts as a "Promise-like" for FacilityPatient.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__FacilityUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FacilityPatientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     facility<T extends FacilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FacilityDefaultArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -42104,342 +43471,343 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the FacilityUser model
+   * Fields of the FacilityPatient model
    */ 
-  interface FacilityUserFieldRefs {
-    readonly userId: FieldRef<"FacilityUser", 'String'>
-    readonly facilityId: FieldRef<"FacilityUser", 'String'>
-    readonly createdAt: FieldRef<"FacilityUser", 'DateTime'>
-    readonly updatedAt: FieldRef<"FacilityUser", 'DateTime'>
+  interface FacilityPatientFieldRefs {
+    readonly id: FieldRef<"FacilityPatient", 'String'>
+    readonly patientId: FieldRef<"FacilityPatient", 'String'>
+    readonly facilityId: FieldRef<"FacilityPatient", 'String'>
+    readonly createdAt: FieldRef<"FacilityPatient", 'DateTime'>
+    readonly updatedAt: FieldRef<"FacilityPatient", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * FacilityUser findUnique
+   * FacilityPatient findUnique
    */
-  export type FacilityUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityUser to fetch.
+     * Filter, which FacilityPatient to fetch.
      */
-    where: FacilityUserWhereUniqueInput
+    where: FacilityPatientWhereUniqueInput
   }
 
   /**
-   * FacilityUser findUniqueOrThrow
+   * FacilityPatient findUniqueOrThrow
    */
-  export type FacilityUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityUser to fetch.
+     * Filter, which FacilityPatient to fetch.
      */
-    where: FacilityUserWhereUniqueInput
+    where: FacilityPatientWhereUniqueInput
   }
 
   /**
-   * FacilityUser findFirst
+   * FacilityPatient findFirst
    */
-  export type FacilityUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityUser to fetch.
+     * Filter, which FacilityPatient to fetch.
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityUsers to fetch.
+     * Determine the order of FacilityPatients to fetch.
      */
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityUsers.
+     * Sets the position for searching for FacilityPatients.
      */
-    cursor?: FacilityUserWhereUniqueInput
+    cursor?: FacilityPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityUsers from the position of the cursor.
+     * Take `±n` FacilityPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityUsers.
+     * Skip the first `n` FacilityPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityUsers.
+     * Filter by unique combinations of FacilityPatients.
      */
-    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
+    distinct?: FacilityPatientScalarFieldEnum | FacilityPatientScalarFieldEnum[]
   }
 
   /**
-   * FacilityUser findFirstOrThrow
+   * FacilityPatient findFirstOrThrow
    */
-  export type FacilityUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityUser to fetch.
+     * Filter, which FacilityPatient to fetch.
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityUsers to fetch.
+     * Determine the order of FacilityPatients to fetch.
      */
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityUsers.
+     * Sets the position for searching for FacilityPatients.
      */
-    cursor?: FacilityUserWhereUniqueInput
+    cursor?: FacilityPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityUsers from the position of the cursor.
+     * Take `±n` FacilityPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityUsers.
+     * Skip the first `n` FacilityPatients.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityUsers.
+     * Filter by unique combinations of FacilityPatients.
      */
-    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
+    distinct?: FacilityPatientScalarFieldEnum | FacilityPatientScalarFieldEnum[]
   }
 
   /**
-   * FacilityUser findMany
+   * FacilityPatient findMany
    */
-  export type FacilityUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityUsers to fetch.
+     * Filter, which FacilityPatients to fetch.
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityUsers to fetch.
+     * Determine the order of FacilityPatients to fetch.
      */
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
+    orderBy?: FacilityPatientOrderByWithRelationInput | FacilityPatientOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing FacilityUsers.
+     * Sets the position for listing FacilityPatients.
      */
-    cursor?: FacilityUserWhereUniqueInput
+    cursor?: FacilityPatientWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityUsers from the position of the cursor.
+     * Take `±n` FacilityPatients from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityUsers.
+     * Skip the first `n` FacilityPatients.
      */
     skip?: number
-    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
+    distinct?: FacilityPatientScalarFieldEnum | FacilityPatientScalarFieldEnum[]
   }
 
   /**
-   * FacilityUser create
+   * FacilityPatient create
    */
-  export type FacilityUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * The data needed to create a FacilityUser.
+     * The data needed to create a FacilityPatient.
      */
-    data: XOR<FacilityUserCreateInput, FacilityUserUncheckedCreateInput>
+    data: XOR<FacilityPatientCreateInput, FacilityPatientUncheckedCreateInput>
   }
 
   /**
-   * FacilityUser createMany
+   * FacilityPatient createMany
    */
-  export type FacilityUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many FacilityUsers.
+     * The data used to create many FacilityPatients.
      */
-    data: FacilityUserCreateManyInput | FacilityUserCreateManyInput[]
+    data: FacilityPatientCreateManyInput | FacilityPatientCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityUser createManyAndReturn
+   * FacilityPatient createManyAndReturn
    */
-  export type FacilityUserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * The data used to create many FacilityUsers.
+     * The data used to create many FacilityPatients.
      */
-    data: FacilityUserCreateManyInput | FacilityUserCreateManyInput[]
+    data: FacilityPatientCreateManyInput | FacilityPatientCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityUser update
+   * FacilityPatient update
    */
-  export type FacilityUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * The data needed to update a FacilityUser.
+     * The data needed to update a FacilityPatient.
      */
-    data: XOR<FacilityUserUpdateInput, FacilityUserUncheckedUpdateInput>
+    data: XOR<FacilityPatientUpdateInput, FacilityPatientUncheckedUpdateInput>
     /**
-     * Choose, which FacilityUser to update.
+     * Choose, which FacilityPatient to update.
      */
-    where: FacilityUserWhereUniqueInput
+    where: FacilityPatientWhereUniqueInput
   }
 
   /**
-   * FacilityUser updateMany
+   * FacilityPatient updateMany
    */
-  export type FacilityUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update FacilityUsers.
+     * The data used to update FacilityPatients.
      */
-    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyInput>
+    data: XOR<FacilityPatientUpdateManyMutationInput, FacilityPatientUncheckedUpdateManyInput>
     /**
-     * Filter which FacilityUsers to update
+     * Filter which FacilityPatients to update
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
   }
 
   /**
-   * FacilityUser upsert
+   * FacilityPatient upsert
    */
-  export type FacilityUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * The filter to search for the FacilityUser to update in case it exists.
+     * The filter to search for the FacilityPatient to update in case it exists.
      */
-    where: FacilityUserWhereUniqueInput
+    where: FacilityPatientWhereUniqueInput
     /**
-     * In case the FacilityUser found by the `where` argument doesn't exist, create a new FacilityUser with this data.
+     * In case the FacilityPatient found by the `where` argument doesn't exist, create a new FacilityPatient with this data.
      */
-    create: XOR<FacilityUserCreateInput, FacilityUserUncheckedCreateInput>
+    create: XOR<FacilityPatientCreateInput, FacilityPatientUncheckedCreateInput>
     /**
-     * In case the FacilityUser was found with the provided `where` argument, update it with this data.
+     * In case the FacilityPatient was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<FacilityUserUpdateInput, FacilityUserUncheckedUpdateInput>
+    update: XOR<FacilityPatientUpdateInput, FacilityPatientUncheckedUpdateInput>
   }
 
   /**
-   * FacilityUser delete
+   * FacilityPatient delete
    */
-  export type FacilityUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
     /**
-     * Filter which FacilityUser to delete.
+     * Filter which FacilityPatient to delete.
      */
-    where: FacilityUserWhereUniqueInput
+    where: FacilityPatientWhereUniqueInput
   }
 
   /**
-   * FacilityUser deleteMany
+   * FacilityPatient deleteMany
    */
-  export type FacilityUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityUsers to delete
+     * Filter which FacilityPatients to delete
      */
-    where?: FacilityUserWhereInput
+    where?: FacilityPatientWhereInput
   }
 
   /**
-   * FacilityUser without action
+   * FacilityPatient without action
    */
-  export type FacilityUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FacilityPatientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityUser
+     * Select specific fields to fetch from the FacilityPatient
      */
-    select?: FacilityUserSelect<ExtArgs> | null
+    select?: FacilityPatientSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityUserInclude<ExtArgs> | null
+    include?: FacilityPatientInclude<ExtArgs> | null
   }
 
 
@@ -47136,7 +48504,6 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
     departments?: boolean | User$departmentsArgs<ExtArgs>
-    facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
@@ -47160,7 +48527,6 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
     departments?: boolean | User$departmentsArgs<ExtArgs>
-    facilities?: boolean | User$facilitiesArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
@@ -47175,7 +48541,6 @@ export namespace Prisma {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       companies: Prisma.$CompanyUserPayload<ExtArgs>[]
       departments: Prisma.$DepartmentUserPayload<ExtArgs>[]
-      facilities: Prisma.$FacilityUserPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
       auditsLogs: Prisma.$AuditLogPayload<ExtArgs>[]
@@ -47586,8 +48951,6 @@ export namespace Prisma {
     companies<T extends User$companiesArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     departments<T extends User$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    facilities<T extends User$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
@@ -48008,26 +49371,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DepartmentUserScalarFieldEnum | DepartmentUserScalarFieldEnum[]
-  }
-
-  /**
-   * User.facilities
-   */
-  export type User$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FacilityUser
-     */
-    select?: FacilityUserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FacilityUserInclude<ExtArgs> | null
-    where?: FacilityUserWhereInput
-    orderBy?: FacilityUserOrderByWithRelationInput | FacilityUserOrderByWithRelationInput[]
-    cursor?: FacilityUserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FacilityUserScalarFieldEnum | FacilityUserScalarFieldEnum[]
   }
 
   /**
@@ -54338,6 +55681,8 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     companyId: 'companyId',
+    contactId: 'contactId',
+    siteId: 'siteId',
     type: 'type',
     active: 'active',
     createdAt: 'createdAt',
@@ -54554,7 +55899,7 @@ export namespace Prisma {
   export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
-  export const FacilityAddressScalarFieldEnum: {
+  export const ContactScalarFieldEnum: {
     id: 'id',
     name: 'name',
     addressLine1: 'addressLine1',
@@ -54567,11 +55912,10 @@ export namespace Prisma {
     phoneNumber: 'phoneNumber',
     shippingAccountCarrier: 'shippingAccountCarrier',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    facilityId: 'facilityId'
+    updatedAt: 'updatedAt'
   };
 
-  export type FacilityAddressScalarFieldEnum = (typeof FacilityAddressScalarFieldEnum)[keyof typeof FacilityAddressScalarFieldEnum]
+  export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
 
 
   export const ShippingPackageScalarFieldEnum: {
@@ -54807,10 +56151,8 @@ export namespace Prisma {
 
 
   export const DepartmentUserScalarFieldEnum: {
-    id: 'id',
     userId: 'userId',
-    companyId: 'companyId',
-    department: 'department',
+    departmentId: 'departmentId',
     role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -54819,10 +56161,24 @@ export namespace Prisma {
   export type DepartmentUserScalarFieldEnum = (typeof DepartmentUserScalarFieldEnum)[keyof typeof DepartmentUserScalarFieldEnum]
 
 
+  export const DepartmentScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    companyId: 'companyId',
+    type: 'type',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
+
+
   export const CompanyPatientScalarFieldEnum: {
     patientId: 'patientId',
     companyId: 'companyId',
     externalId: 'externalId',
+    departmentId: 'departmentId',
+    contactId: 'contactId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -54830,14 +56186,15 @@ export namespace Prisma {
   export type CompanyPatientScalarFieldEnum = (typeof CompanyPatientScalarFieldEnum)[keyof typeof CompanyPatientScalarFieldEnum]
 
 
-  export const FacilityUserScalarFieldEnum: {
-    userId: 'userId',
+  export const FacilityPatientScalarFieldEnum: {
+    id: 'id',
+    patientId: 'patientId',
     facilityId: 'facilityId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type FacilityUserScalarFieldEnum = (typeof FacilityUserScalarFieldEnum)[keyof typeof FacilityUserScalarFieldEnum]
+  export type FacilityPatientScalarFieldEnum = (typeof FacilityPatientScalarFieldEnum)[keyof typeof FacilityPatientScalarFieldEnum]
 
 
   export const StripeProductScalarFieldEnum: {
@@ -55628,10 +56985,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyListRelationFilter
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
-    departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
+    departments?: DepartmentListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -55649,10 +57006,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyOrderByRelationAggregateInput
     packages?: ShippingPackageOrderByRelationAggregateInput
     users?: CompanyUserOrderByRelationAggregateInput
-    departments?: DepartmentUserOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     stripeEntities?: StripeEntityOrderByRelationAggregateInput
+    departments?: DepartmentOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -55673,10 +57030,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyListRelationFilter
     packages?: ShippingPackageListRelationFilter
     users?: CompanyUserListRelationFilter
-    departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
+    departments?: DepartmentListRelationFilter
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -55716,30 +57073,38 @@ export namespace Prisma {
     id?: StringFilter<"Facility"> | string
     name?: StringFilter<"Facility"> | string
     companyId?: StringFilter<"Facility"> | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
+    siteId?: StringNullableFilter<"Facility"> | string | null
     type?: EnumFacilityTypeFilter<"Facility"> | $Enums.FacilityType
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    parentSite?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
-    users?: FacilityUserListRelationFilter
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     evaluations?: EvaluationListRelationFilter
     shippingLabels?: ShippingLabelListRelationFilter
+    facilityPatients?: FacilityPatientListRelationFilter
+    siteChildFacilities?: FacilityListRelationFilter
   }
 
   export type FacilityOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     companyId?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    siteId?: SortOrderInput | SortOrder
     type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentSite?: FacilityOrderByWithRelationInput
     company?: CompanyOrderByWithRelationInput
-    address?: FacilityAddressOrderByWithRelationInput
-    users?: FacilityUserOrderByRelationAggregateInput
+    contact?: ContactOrderByWithRelationInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     shippingLabels?: ShippingLabelOrderByRelationAggregateInput
+    facilityPatients?: FacilityPatientOrderByRelationAggregateInput
+    siteChildFacilities?: FacilityOrderByRelationAggregateInput
   }
 
   export type FacilityWhereUniqueInput = Prisma.AtLeast<{
@@ -55749,21 +57114,27 @@ export namespace Prisma {
     NOT?: FacilityWhereInput | FacilityWhereInput[]
     name?: StringFilter<"Facility"> | string
     companyId?: StringFilter<"Facility"> | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
+    siteId?: StringNullableFilter<"Facility"> | string | null
     type?: EnumFacilityTypeFilter<"Facility"> | $Enums.FacilityType
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    parentSite?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
-    users?: FacilityUserListRelationFilter
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     evaluations?: EvaluationListRelationFilter
     shippingLabels?: ShippingLabelListRelationFilter
+    facilityPatients?: FacilityPatientListRelationFilter
+    siteChildFacilities?: FacilityListRelationFilter
   }, "id">
 
   export type FacilityOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     companyId?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    siteId?: SortOrderInput | SortOrder
     type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -55780,6 +57151,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Facility"> | string
     name?: StringWithAggregatesFilter<"Facility"> | string
     companyId?: StringWithAggregatesFilter<"Facility"> | string
+    contactId?: StringNullableWithAggregatesFilter<"Facility"> | string | null
+    siteId?: StringNullableWithAggregatesFilter<"Facility"> | string | null
     type?: EnumFacilityTypeWithAggregatesFilter<"Facility"> | $Enums.FacilityType
     active?: BoolWithAggregatesFilter<"Facility"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Facility"> | Date | string
@@ -55810,6 +57183,7 @@ export namespace Prisma {
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
+    facilityPatients?: FacilityPatientListRelationFilter
   }
 
   export type PatientOrderByWithRelationInput = {
@@ -55833,6 +57207,7 @@ export namespace Prisma {
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     companies?: CompanyPatientOrderByRelationAggregateInput
+    facilityPatients?: FacilityPatientOrderByRelationAggregateInput
   }
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
@@ -55859,6 +57234,7 @@ export namespace Prisma {
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
+    facilityPatients?: FacilityPatientListRelationFilter
   }, "id">
 
   export type PatientOrderByWithAggregationInput = {
@@ -56921,28 +58297,28 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
-  export type FacilityAddressWhereInput = {
-    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    OR?: FacilityAddressWhereInput[]
-    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    id?: StringFilter<"FacilityAddress"> | string
-    name?: StringNullableFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
-    city?: StringFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    postalCode?: StringFilter<"FacilityAddress"> | string
-    countryCode?: StringFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    facilityId?: StringFilter<"FacilityAddress"> | string
-    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
+  export type ContactWhereInput = {
+    AND?: ContactWhereInput | ContactWhereInput[]
+    OR?: ContactWhereInput[]
+    NOT?: ContactWhereInput | ContactWhereInput[]
+    id?: StringFilter<"Contact"> | string
+    name?: StringNullableFilter<"Contact"> | string | null
+    addressLine1?: StringFilter<"Contact"> | string
+    addressLine2?: StringNullableFilter<"Contact"> | string | null
+    city?: StringFilter<"Contact"> | string
+    stateOrProvince?: StringFilter<"Contact"> | string
+    postalCode?: StringFilter<"Contact"> | string
+    countryCode?: StringFilter<"Contact"> | string
+    shippingAccountId?: StringNullableFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    facilities?: FacilityListRelationFilter
+    companyPatients?: CompanyPatientListRelationFilter
   }
 
-  export type FacilityAddressOrderByWithRelationInput = {
+  export type ContactOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
@@ -56956,32 +58332,32 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
-    facility?: FacilityOrderByWithRelationInput
+    facilities?: FacilityOrderByRelationAggregateInput
+    companyPatients?: CompanyPatientOrderByRelationAggregateInput
   }
 
-  export type FacilityAddressWhereUniqueInput = Prisma.AtLeast<{
+  export type ContactWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    facilityId?: string
-    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    OR?: FacilityAddressWhereInput[]
-    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    name?: StringNullableFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
-    city?: StringFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    postalCode?: StringFilter<"FacilityAddress"> | string
-    countryCode?: StringFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
-  }, "id" | "facilityId">
+    AND?: ContactWhereInput | ContactWhereInput[]
+    OR?: ContactWhereInput[]
+    NOT?: ContactWhereInput | ContactWhereInput[]
+    name?: StringNullableFilter<"Contact"> | string | null
+    addressLine1?: StringFilter<"Contact"> | string
+    addressLine2?: StringNullableFilter<"Contact"> | string | null
+    city?: StringFilter<"Contact"> | string
+    stateOrProvince?: StringFilter<"Contact"> | string
+    postalCode?: StringFilter<"Contact"> | string
+    countryCode?: StringFilter<"Contact"> | string
+    shippingAccountId?: StringNullableFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    facilities?: FacilityListRelationFilter
+    companyPatients?: CompanyPatientListRelationFilter
+  }, "id">
 
-  export type FacilityAddressOrderByWithAggregationInput = {
+  export type ContactOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
@@ -56995,30 +58371,28 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
-    _count?: FacilityAddressCountOrderByAggregateInput
-    _max?: FacilityAddressMaxOrderByAggregateInput
-    _min?: FacilityAddressMinOrderByAggregateInput
+    _count?: ContactCountOrderByAggregateInput
+    _max?: ContactMaxOrderByAggregateInput
+    _min?: ContactMinOrderByAggregateInput
   }
 
-  export type FacilityAddressScalarWhereWithAggregatesInput = {
-    AND?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
-    OR?: FacilityAddressScalarWhereWithAggregatesInput[]
-    NOT?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    name?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    city?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    postalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
-    facilityId?: StringWithAggregatesFilter<"FacilityAddress"> | string
+  export type ContactScalarWhereWithAggregatesInput = {
+    AND?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
+    OR?: ContactScalarWhereWithAggregatesInput[]
+    NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Contact"> | string
+    name?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    addressLine1?: StringWithAggregatesFilter<"Contact"> | string
+    addressLine2?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    city?: StringWithAggregatesFilter<"Contact"> | string
+    stateOrProvince?: StringWithAggregatesFilter<"Contact"> | string
+    postalCode?: StringWithAggregatesFilter<"Contact"> | string
+    countryCode?: StringWithAggregatesFilter<"Contact"> | string
+    shippingAccountId?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
   }
 
   export type ShippingPackageWhereInput = {
@@ -58208,50 +59582,42 @@ export namespace Prisma {
     AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
     OR?: DepartmentUserWhereInput[]
     NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
-    id?: StringFilter<"DepartmentUser"> | string
     userId?: StringFilter<"DepartmentUser"> | string
-    companyId?: StringFilter<"DepartmentUser"> | string
-    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    departmentId?: StringFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
     createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    department?: XOR<DepartmentRelationFilter, DepartmentWhereInput>
   }
 
   export type DepartmentUserOrderByWithRelationInput = {
-    id?: SortOrder
     userId?: SortOrder
-    companyId?: SortOrder
-    department?: SortOrder
+    departmentId?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    company?: CompanyOrderByWithRelationInput
+    department?: DepartmentOrderByWithRelationInput
   }
 
   export type DepartmentUserWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    userId_companyId_department?: DepartmentUserUserIdCompanyIdDepartmentCompoundUniqueInput
+    userId_departmentId?: DepartmentUserUserIdDepartmentIdCompoundUniqueInput
     AND?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
     OR?: DepartmentUserWhereInput[]
     NOT?: DepartmentUserWhereInput | DepartmentUserWhereInput[]
     userId?: StringFilter<"DepartmentUser"> | string
-    companyId?: StringFilter<"DepartmentUser"> | string
-    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    departmentId?: StringFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
     createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-  }, "id" | "userId_companyId_department">
+    department?: XOR<DepartmentRelationFilter, DepartmentWhereInput>
+  }, "userId_departmentId">
 
   export type DepartmentUserOrderByWithAggregationInput = {
-    id?: SortOrder
     userId?: SortOrder
-    companyId?: SortOrder
-    department?: SortOrder
+    departmentId?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -58264,13 +59630,78 @@ export namespace Prisma {
     AND?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
     OR?: DepartmentUserScalarWhereWithAggregatesInput[]
     NOT?: DepartmentUserScalarWhereWithAggregatesInput | DepartmentUserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DepartmentUser"> | string
     userId?: StringWithAggregatesFilter<"DepartmentUser"> | string
-    companyId?: StringWithAggregatesFilter<"DepartmentUser"> | string
-    department?: EnumCompanyDepartmentWithAggregatesFilter<"DepartmentUser"> | $Enums.CompanyDepartment
+    departmentId?: StringWithAggregatesFilter<"DepartmentUser"> | string
     role?: EnumCompanyRoleWithAggregatesFilter<"DepartmentUser"> | $Enums.CompanyRole
     createdAt?: DateTimeWithAggregatesFilter<"DepartmentUser"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"DepartmentUser"> | Date | string
+  }
+
+  export type DepartmentWhereInput = {
+    AND?: DepartmentWhereInput | DepartmentWhereInput[]
+    OR?: DepartmentWhereInput[]
+    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
+    id?: StringFilter<"Department"> | string
+    name?: StringFilter<"Department"> | string
+    companyId?: StringFilter<"Department"> | string
+    type?: EnumCompanyDepartmentFilter<"Department"> | $Enums.CompanyDepartment
+    createdAt?: DateTimeFilter<"Department"> | Date | string
+    updatedAt?: DateTimeFilter<"Department"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    departmentUsers?: DepartmentUserListRelationFilter
+    companyPatients?: CompanyPatientListRelationFilter
+  }
+
+  export type DepartmentOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    companyId?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+    departmentUsers?: DepartmentUserOrderByRelationAggregateInput
+    companyPatients?: CompanyPatientOrderByRelationAggregateInput
+  }
+
+  export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    companyId_name?: DepartmentCompanyIdNameCompoundUniqueInput
+    AND?: DepartmentWhereInput | DepartmentWhereInput[]
+    OR?: DepartmentWhereInput[]
+    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
+    name?: StringFilter<"Department"> | string
+    companyId?: StringFilter<"Department"> | string
+    type?: EnumCompanyDepartmentFilter<"Department"> | $Enums.CompanyDepartment
+    createdAt?: DateTimeFilter<"Department"> | Date | string
+    updatedAt?: DateTimeFilter<"Department"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    departmentUsers?: DepartmentUserListRelationFilter
+    companyPatients?: CompanyPatientListRelationFilter
+  }, "id" | "companyId_name">
+
+  export type DepartmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    companyId?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DepartmentCountOrderByAggregateInput
+    _max?: DepartmentMaxOrderByAggregateInput
+    _min?: DepartmentMinOrderByAggregateInput
+  }
+
+  export type DepartmentScalarWhereWithAggregatesInput = {
+    AND?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
+    OR?: DepartmentScalarWhereWithAggregatesInput[]
+    NOT?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Department"> | string
+    name?: StringWithAggregatesFilter<"Department"> | string
+    companyId?: StringWithAggregatesFilter<"Department"> | string
+    type?: EnumCompanyDepartmentWithAggregatesFilter<"Department"> | $Enums.CompanyDepartment
+    createdAt?: DateTimeWithAggregatesFilter<"Department"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Department"> | Date | string
   }
 
   export type CompanyPatientWhereInput = {
@@ -58280,9 +59711,13 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    departmentId?: StringNullableFilter<"CompanyPatient"> | string | null
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    department?: XOR<DepartmentNullableRelationFilter, DepartmentWhereInput> | null
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
   }
 
@@ -58290,9 +59725,13 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    departmentId?: SortOrderInput | SortOrder
+    contactId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
+    department?: DepartmentOrderByWithRelationInput
+    contact?: ContactOrderByWithRelationInput
     patient?: PatientOrderByWithRelationInput
   }
 
@@ -58305,9 +59744,13 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    departmentId?: StringNullableFilter<"CompanyPatient"> | string | null
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    department?: XOR<DepartmentNullableRelationFilter, DepartmentWhereInput> | null
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
   }, "patientId_companyId" | "externalId_companyId">
 
@@ -58315,6 +59758,8 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    departmentId?: SortOrderInput | SortOrder
+    contactId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CompanyPatientCountOrderByAggregateInput
@@ -58329,62 +59774,68 @@ export namespace Prisma {
     patientId?: StringWithAggregatesFilter<"CompanyPatient"> | string
     companyId?: StringWithAggregatesFilter<"CompanyPatient"> | string
     externalId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    departmentId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    contactId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
   }
 
-  export type FacilityUserWhereInput = {
-    AND?: FacilityUserWhereInput | FacilityUserWhereInput[]
-    OR?: FacilityUserWhereInput[]
-    NOT?: FacilityUserWhereInput | FacilityUserWhereInput[]
-    userId?: StringFilter<"FacilityUser"> | string
-    facilityId?: StringFilter<"FacilityUser"> | string
-    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
+  export type FacilityPatientWhereInput = {
+    AND?: FacilityPatientWhereInput | FacilityPatientWhereInput[]
+    OR?: FacilityPatientWhereInput[]
+    NOT?: FacilityPatientWhereInput | FacilityPatientWhereInput[]
+    id?: StringFilter<"FacilityPatient"> | string
+    patientId?: StringFilter<"FacilityPatient"> | string
+    facilityId?: StringFilter<"FacilityPatient"> | string
+    createdAt?: DateTimeFilter<"FacilityPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityPatient"> | Date | string
     facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
   }
 
-  export type FacilityUserOrderByWithRelationInput = {
-    userId?: SortOrder
+  export type FacilityPatientOrderByWithRelationInput = {
+    id?: SortOrder
+    patientId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     facility?: FacilityOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
+    patient?: PatientOrderByWithRelationInput
   }
 
-  export type FacilityUserWhereUniqueInput = Prisma.AtLeast<{
-    userId_facilityId?: FacilityUserUserIdFacilityIdCompoundUniqueInput
-    AND?: FacilityUserWhereInput | FacilityUserWhereInput[]
-    OR?: FacilityUserWhereInput[]
-    NOT?: FacilityUserWhereInput | FacilityUserWhereInput[]
-    userId?: StringFilter<"FacilityUser"> | string
-    facilityId?: StringFilter<"FacilityUser"> | string
-    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
+  export type FacilityPatientWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FacilityPatientWhereInput | FacilityPatientWhereInput[]
+    OR?: FacilityPatientWhereInput[]
+    NOT?: FacilityPatientWhereInput | FacilityPatientWhereInput[]
+    patientId?: StringFilter<"FacilityPatient"> | string
+    facilityId?: StringFilter<"FacilityPatient"> | string
+    createdAt?: DateTimeFilter<"FacilityPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityPatient"> | Date | string
     facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "userId_facilityId">
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
+  }, "id">
 
-  export type FacilityUserOrderByWithAggregationInput = {
-    userId?: SortOrder
+  export type FacilityPatientOrderByWithAggregationInput = {
+    id?: SortOrder
+    patientId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: FacilityUserCountOrderByAggregateInput
-    _max?: FacilityUserMaxOrderByAggregateInput
-    _min?: FacilityUserMinOrderByAggregateInput
+    _count?: FacilityPatientCountOrderByAggregateInput
+    _max?: FacilityPatientMaxOrderByAggregateInput
+    _min?: FacilityPatientMinOrderByAggregateInput
   }
 
-  export type FacilityUserScalarWhereWithAggregatesInput = {
-    AND?: FacilityUserScalarWhereWithAggregatesInput | FacilityUserScalarWhereWithAggregatesInput[]
-    OR?: FacilityUserScalarWhereWithAggregatesInput[]
-    NOT?: FacilityUserScalarWhereWithAggregatesInput | FacilityUserScalarWhereWithAggregatesInput[]
-    userId?: StringWithAggregatesFilter<"FacilityUser"> | string
-    facilityId?: StringWithAggregatesFilter<"FacilityUser"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"FacilityUser"> | Date | string
+  export type FacilityPatientScalarWhereWithAggregatesInput = {
+    AND?: FacilityPatientScalarWhereWithAggregatesInput | FacilityPatientScalarWhereWithAggregatesInput[]
+    OR?: FacilityPatientScalarWhereWithAggregatesInput[]
+    NOT?: FacilityPatientScalarWhereWithAggregatesInput | FacilityPatientScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FacilityPatient"> | string
+    patientId?: StringWithAggregatesFilter<"FacilityPatient"> | string
+    facilityId?: StringWithAggregatesFilter<"FacilityPatient"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FacilityPatient"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FacilityPatient"> | Date | string
   }
 
   export type StripeProductWhereInput = {
@@ -58791,7 +60242,6 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
     departments?: DepartmentUserListRelationFilter
-    facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
@@ -58810,7 +60260,6 @@ export namespace Prisma {
     accounts?: AccountOrderByRelationAggregateInput
     companies?: CompanyUserOrderByRelationAggregateInput
     departments?: DepartmentUserOrderByRelationAggregateInput
-    facilities?: FacilityUserOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
     notes?: WorkbenchNotesOrderByRelationAggregateInput
     auditsLogs?: AuditLogOrderByRelationAggregateInput
@@ -58832,7 +60281,6 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     companies?: CompanyUserListRelationFilter
     departments?: DepartmentUserListRelationFilter
-    facilities?: FacilityUserListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
@@ -59455,10 +60903,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -59476,10 +60924,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -59497,10 +60945,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -59518,10 +60966,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -59567,25 +61015,29 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityUncheckedCreateInput = {
     id?: string
     name: string
     companyId: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityUpdateInput = {
@@ -59595,31 +61047,37 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityCreateManyInput = {
     id?: string
     name: string
     companyId: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
@@ -59639,6 +61097,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59665,6 +61125,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateInput = {
@@ -59687,6 +61148,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUpdateInput = {
@@ -59709,6 +61171,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
@@ -59731,6 +61194,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientCreateManyInput = {
@@ -60916,7 +62380,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityAddressCreateInput = {
+  export type ContactCreateInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -60930,10 +62394,11 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facility: FacilityCreateNestedOneWithoutAddressInput
+    facilities?: FacilityCreateNestedManyWithoutContactInput
+    companyPatients?: CompanyPatientCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressUncheckedCreateInput = {
+  export type ContactUncheckedCreateInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -60947,10 +62412,11 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilityId: string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutContactInput
+    companyPatients?: CompanyPatientUncheckedCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressUpdateInput = {
+  export type ContactUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -60964,10 +62430,11 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facility?: FacilityUpdateOneRequiredWithoutAddressNestedInput
+    facilities?: FacilityUpdateManyWithoutContactNestedInput
+    companyPatients?: CompanyPatientUpdateManyWithoutContactNestedInput
   }
 
-  export type FacilityAddressUncheckedUpdateInput = {
+  export type ContactUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -60981,10 +62448,11 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilityId?: StringFieldUpdateOperationsInput | string
+    facilities?: FacilityUncheckedUpdateManyWithoutContactNestedInput
+    companyPatients?: CompanyPatientUncheckedUpdateManyWithoutContactNestedInput
   }
 
-  export type FacilityAddressCreateManyInput = {
+  export type ContactCreateManyInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -60998,10 +62466,9 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilityId: string
   }
 
-  export type FacilityAddressUpdateManyMutationInput = {
+  export type ContactUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -61017,7 +62484,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityAddressUncheckedUpdateManyInput = {
+  export type ContactUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -61031,7 +62498,6 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilityId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ShippingPackageCreateInput = {
@@ -62323,69 +63789,125 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateInput = {
-    id?: string
-    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDepartmentsInput
-    company: CompanyCreateNestedOneWithoutDepartmentsInput
+    department: DepartmentCreateNestedOneWithoutDepartmentUsersInput
   }
 
   export type DepartmentUserUncheckedCreateInput = {
-    id?: string
     userId: string
-    companyId: string
-    department: $Enums.CompanyDepartment
+    departmentId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type DepartmentUserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDepartmentsNestedInput
-    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+    department?: DepartmentUpdateOneRequiredWithoutDepartmentUsersNestedInput
   }
 
   export type DepartmentUserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DepartmentUserCreateManyInput = {
-    id?: string
     userId: string
-    companyId: string
-    department: $Enums.CompanyDepartment
+    departmentId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type DepartmentUserUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DepartmentUserUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentCreateInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutDepartmentsInput
+    departmentUsers?: DepartmentUserCreateNestedManyWithoutDepartmentInput
+    companyPatients?: CompanyPatientCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentUsers?: DepartmentUserUncheckedCreateNestedManyWithoutDepartmentInput
+    companyPatients?: CompanyPatientUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+    departmentUsers?: DepartmentUserUpdateManyWithoutDepartmentNestedInput
+    companyPatients?: CompanyPatientUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentUsers?: DepartmentUserUncheckedUpdateManyWithoutDepartmentNestedInput
+    companyPatients?: CompanyPatientUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentCreateManyInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepartmentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -62395,6 +63917,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
+    department?: DepartmentCreateNestedOneWithoutCompanyPatientsInput
+    contact?: ContactCreateNestedOneWithoutCompanyPatientsInput
     patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
@@ -62402,6 +63926,8 @@ export namespace Prisma {
     patientId: string
     companyId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -62411,6 +63937,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    department?: DepartmentUpdateOneWithoutCompanyPatientsNestedInput
+    contact?: ContactUpdateOneWithoutCompanyPatientsNestedInput
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
@@ -62418,6 +63946,8 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -62426,6 +63956,8 @@ export namespace Prisma {
     patientId: string
     companyId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -62440,52 +63972,61 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityUserCreateInput = {
+  export type FacilityPatientCreateInput = {
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    facility: FacilityCreateNestedOneWithoutUsersInput
-    user: UserCreateNestedOneWithoutFacilitiesInput
+    facility: FacilityCreateNestedOneWithoutFacilityPatientsInput
+    patient: PatientCreateNestedOneWithoutFacilityPatientsInput
   }
 
-  export type FacilityUserUncheckedCreateInput = {
-    userId: string
+  export type FacilityPatientUncheckedCreateInput = {
+    id?: string
+    patientId: string
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type FacilityUserUpdateInput = {
+  export type FacilityPatientUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
-    user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
+    facility?: FacilityUpdateOneRequiredWithoutFacilityPatientsNestedInput
+    patient?: PatientUpdateOneRequiredWithoutFacilityPatientsNestedInput
   }
 
-  export type FacilityUserUncheckedUpdateInput = {
-    userId?: StringFieldUpdateOperationsInput | string
+  export type FacilityPatientUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityUserCreateManyInput = {
-    userId: string
+  export type FacilityPatientCreateManyInput = {
+    id?: string
+    patientId: string
     facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type FacilityUserUpdateManyMutationInput = {
+  export type FacilityPatientUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityUserUncheckedUpdateManyInput = {
-    userId?: StringFieldUpdateOperationsInput | string
+  export type FacilityPatientUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62931,7 +64472,6 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -62950,7 +64490,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -62969,7 +64508,6 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -62988,7 +64526,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -63798,12 +65335,6 @@ export namespace Prisma {
     none?: CompanyUserWhereInput
   }
 
-  export type DepartmentUserListRelationFilter = {
-    every?: DepartmentUserWhereInput
-    some?: DepartmentUserWhereInput
-    none?: DepartmentUserWhereInput
-  }
-
   export type CompanyPatientListRelationFilter = {
     every?: CompanyPatientWhereInput
     some?: CompanyPatientWhereInput
@@ -63820,6 +65351,12 @@ export namespace Prisma {
     every?: StripeEntityWhereInput
     some?: StripeEntityWhereInput
     none?: StripeEntityWhereInput
+  }
+
+  export type DepartmentListRelationFilter = {
+    every?: DepartmentWhereInput
+    some?: DepartmentWhereInput
+    none?: DepartmentWhereInput
   }
 
   export type SortOrderInput = {
@@ -63847,10 +65384,6 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type DepartmentUserOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CompanyPatientOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -63860,6 +65393,10 @@ export namespace Prisma {
   }
 
   export type StripeEntityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DepartmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -63987,20 +65524,19 @@ export namespace Prisma {
     not?: NestedEnumFacilityTypeFilter<$PrismaModel> | $Enums.FacilityType
   }
 
+  export type FacilityNullableRelationFilter = {
+    is?: FacilityWhereInput | null
+    isNot?: FacilityWhereInput | null
+  }
+
   export type CompanyRelationFilter = {
     is?: CompanyWhereInput
     isNot?: CompanyWhereInput
   }
 
-  export type FacilityAddressNullableRelationFilter = {
-    is?: FacilityAddressWhereInput | null
-    isNot?: FacilityAddressWhereInput | null
-  }
-
-  export type FacilityUserListRelationFilter = {
-    every?: FacilityUserWhereInput
-    some?: FacilityUserWhereInput
-    none?: FacilityUserWhereInput
+  export type ContactNullableRelationFilter = {
+    is?: ContactWhereInput | null
+    isNot?: ContactWhereInput | null
   }
 
   export type ShippingLabelListRelationFilter = {
@@ -64009,11 +65545,17 @@ export namespace Prisma {
     none?: ShippingLabelWhereInput
   }
 
-  export type FacilityUserOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type FacilityPatientListRelationFilter = {
+    every?: FacilityPatientWhereInput
+    some?: FacilityPatientWhereInput
+    none?: FacilityPatientWhereInput
   }
 
   export type ShippingLabelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FacilityPatientOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -64021,6 +65563,8 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     companyId?: SortOrder
+    contactId?: SortOrder
+    siteId?: SortOrder
     type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -64031,6 +65575,8 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     companyId?: SortOrder
+    contactId?: SortOrder
+    siteId?: SortOrder
     type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -64041,6 +65587,8 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     companyId?: SortOrder
+    contactId?: SortOrder
+    siteId?: SortOrder
     type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
@@ -64303,11 +65851,6 @@ export namespace Prisma {
   export type DiagnosisNullableRelationFilter = {
     is?: DiagnosisWhereInput | null
     isNot?: DiagnosisWhereInput | null
-  }
-
-  export type FacilityNullableRelationFilter = {
-    is?: FacilityWhereInput | null
-    isNot?: FacilityWhereInput | null
   }
 
   export type StripeInvoiceNullableRelationFilter = {
@@ -65122,12 +66665,7 @@ export namespace Prisma {
     not?: NestedEnumCarrierNullableFilter<$PrismaModel> | $Enums.Carrier | null
   }
 
-  export type FacilityRelationFilter = {
-    is?: FacilityWhereInput
-    isNot?: FacilityWhereInput
-  }
-
-  export type FacilityAddressCountOrderByAggregateInput = {
+  export type ContactCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -65141,10 +66679,9 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
-  export type FacilityAddressMaxOrderByAggregateInput = {
+  export type ContactMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -65158,10 +66695,9 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
-  export type FacilityAddressMinOrderByAggregateInput = {
+  export type ContactMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -65175,7 +66711,6 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
   export type EnumCarrierNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -66062,6 +67597,40 @@ export namespace Prisma {
     _max?: NestedEnumCompanyRoleFilter<$PrismaModel>
   }
 
+  export type DepartmentRelationFilter = {
+    is?: DepartmentWhereInput
+    isNot?: DepartmentWhereInput
+  }
+
+  export type DepartmentUserUserIdDepartmentIdCompoundUniqueInput = {
+    userId: string
+    departmentId: string
+  }
+
+  export type DepartmentUserCountOrderByAggregateInput = {
+    userId?: SortOrder
+    departmentId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepartmentUserMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    departmentId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepartmentUserMinOrderByAggregateInput = {
+    userId?: SortOrder
+    departmentId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type EnumCompanyDepartmentFilter<$PrismaModel = never> = {
     equals?: $Enums.CompanyDepartment | EnumCompanyDepartmentFieldRefInput<$PrismaModel>
     in?: $Enums.CompanyDepartment[] | ListEnumCompanyDepartmentFieldRefInput<$PrismaModel>
@@ -66069,38 +67638,44 @@ export namespace Prisma {
     not?: NestedEnumCompanyDepartmentFilter<$PrismaModel> | $Enums.CompanyDepartment
   }
 
-  export type DepartmentUserUserIdCompanyIdDepartmentCompoundUniqueInput = {
-    userId: string
+  export type DepartmentUserListRelationFilter = {
+    every?: DepartmentUserWhereInput
+    some?: DepartmentUserWhereInput
+    none?: DepartmentUserWhereInput
+  }
+
+  export type DepartmentUserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DepartmentCompanyIdNameCompoundUniqueInput = {
     companyId: string
-    department: $Enums.CompanyDepartment
+    name: string
   }
 
-  export type DepartmentUserCountOrderByAggregateInput = {
+  export type DepartmentCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    name?: SortOrder
     companyId?: SortOrder
-    department?: SortOrder
-    role?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type DepartmentUserMaxOrderByAggregateInput = {
+  export type DepartmentMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    name?: SortOrder
     companyId?: SortOrder
-    department?: SortOrder
-    role?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type DepartmentUserMinOrderByAggregateInput = {
+  export type DepartmentMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    name?: SortOrder
     companyId?: SortOrder
-    department?: SortOrder
-    role?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -66113,6 +67688,11 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
     _max?: NestedEnumCompanyDepartmentFilter<$PrismaModel>
+  }
+
+  export type DepartmentNullableRelationFilter = {
+    is?: DepartmentWhereInput | null
+    isNot?: DepartmentWhereInput | null
   }
 
   export type CompanyPatientExternalIdCompanyIdCompoundUniqueInput = {
@@ -66129,6 +67709,8 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    departmentId?: SortOrder
+    contactId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -66137,6 +67719,8 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    departmentId?: SortOrder
+    contactId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -66145,31 +67729,36 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    departmentId?: SortOrder
+    contactId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type FacilityUserUserIdFacilityIdCompoundUniqueInput = {
-    userId: string
-    facilityId: string
+  export type FacilityRelationFilter = {
+    is?: FacilityWhereInput
+    isNot?: FacilityWhereInput
   }
 
-  export type FacilityUserCountOrderByAggregateInput = {
-    userId?: SortOrder
+  export type FacilityPatientCountOrderByAggregateInput = {
+    id?: SortOrder
+    patientId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type FacilityUserMaxOrderByAggregateInput = {
-    userId?: SortOrder
+  export type FacilityPatientMaxOrderByAggregateInput = {
+    id?: SortOrder
+    patientId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type FacilityUserMinOrderByAggregateInput = {
-    userId?: SortOrder
+  export type FacilityPatientMinOrderByAggregateInput = {
+    id?: SortOrder
+    patientId?: SortOrder
     facilityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -67050,13 +68639,6 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type DepartmentUserCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
-    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
-    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-  }
-
   export type CompanyPatientCreateNestedManyWithoutCompanyInput = {
     create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
@@ -67076,6 +68658,13 @@ export namespace Prisma {
     connectOrCreate?: StripeEntityCreateOrConnectWithoutCompanyInput | StripeEntityCreateOrConnectWithoutCompanyInput[]
     createMany?: StripeEntityCreateManyCompanyInputEnvelope
     connect?: StripeEntityWhereUniqueInput | StripeEntityWhereUniqueInput[]
+  }
+
+  export type DepartmentCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
+    createMany?: DepartmentCreateManyCompanyInputEnvelope
+    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
   }
 
   export type FacilityUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -67113,13 +68702,6 @@ export namespace Prisma {
     connect?: CompanyUserWhereUniqueInput | CompanyUserWhereUniqueInput[]
   }
 
-  export type DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
-    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
-    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-  }
-
   export type CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
@@ -67139,6 +68721,13 @@ export namespace Prisma {
     connectOrCreate?: StripeEntityCreateOrConnectWithoutCompanyInput | StripeEntityCreateOrConnectWithoutCompanyInput[]
     createMany?: StripeEntityCreateManyCompanyInputEnvelope
     connect?: StripeEntityWhereUniqueInput | StripeEntityWhereUniqueInput[]
+  }
+
+  export type DepartmentUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
+    createMany?: DepartmentCreateManyCompanyInputEnvelope
+    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -67227,20 +68816,6 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type DepartmentUserUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
-    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
-    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    update?: DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: DepartmentUserUpdateManyWithWhereWithoutCompanyInput | DepartmentUserUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-  }
-
   export type CompanyPatientUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
@@ -67281,6 +68856,20 @@ export namespace Prisma {
     update?: StripeEntityUpdateWithWhereUniqueWithoutCompanyInput | StripeEntityUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: StripeEntityUpdateManyWithWhereWithoutCompanyInput | StripeEntityUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
+  }
+
+  export type DepartmentUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
+    upsert?: DepartmentUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: DepartmentCreateManyCompanyInputEnvelope
+    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    update?: DepartmentUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: DepartmentUpdateManyWithWhereWithoutCompanyInput | DepartmentUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -67353,20 +68942,6 @@ export namespace Prisma {
     deleteMany?: CompanyUserScalarWhereInput | CompanyUserScalarWhereInput[]
   }
 
-  export type DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput> | DepartmentUserCreateWithoutCompanyInput[] | DepartmentUserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: DepartmentUserCreateOrConnectWithoutCompanyInput | DepartmentUserCreateOrConnectWithoutCompanyInput[]
-    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: DepartmentUserCreateManyCompanyInputEnvelope
-    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-    update?: DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: DepartmentUserUpdateManyWithWhereWithoutCompanyInput | DepartmentUserUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-  }
-
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<CompanyPatientCreateWithoutCompanyInput, CompanyPatientUncheckedCreateWithoutCompanyInput> | CompanyPatientCreateWithoutCompanyInput[] | CompanyPatientUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
@@ -67409,23 +68984,36 @@ export namespace Prisma {
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
   }
 
+  export type DepartmentUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
+    upsert?: DepartmentUpsertWithWhereUniqueWithoutCompanyInput | DepartmentUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: DepartmentCreateManyCompanyInputEnvelope
+    set?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    disconnect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    delete?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    connect?: DepartmentWhereUniqueInput | DepartmentWhereUniqueInput[]
+    update?: DepartmentUpdateWithWhereUniqueWithoutCompanyInput | DepartmentUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: DepartmentUpdateManyWithWhereWithoutCompanyInput | DepartmentUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
+  }
+
+  export type FacilityCreateNestedOneWithoutSiteChildFacilitiesInput = {
+    create?: XOR<FacilityCreateWithoutSiteChildFacilitiesInput, FacilityUncheckedCreateWithoutSiteChildFacilitiesInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutSiteChildFacilitiesInput
+    connect?: FacilityWhereUniqueInput
+  }
+
   export type CompanyCreateNestedOneWithoutFacilitiesInput = {
     create?: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutFacilitiesInput
     connect?: CompanyWhereUniqueInput
   }
 
-  export type FacilityAddressCreateNestedOneWithoutFacilityInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    connect?: FacilityAddressWhereUniqueInput
-  }
-
-  export type FacilityUserCreateNestedManyWithoutFacilityInput = {
-    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
-    createMany?: FacilityUserCreateManyFacilityInputEnvelope
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+  export type ContactCreateNestedOneWithoutFacilitiesInput = {
+    create?: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutFacilitiesInput
+    connect?: ContactWhereUniqueInput
   }
 
   export type EvaluationCreateNestedManyWithoutFacilityInput = {
@@ -67442,17 +69030,18 @@ export namespace Prisma {
     connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
   }
 
-  export type FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    connect?: FacilityAddressWhereUniqueInput
+  export type FacilityPatientCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput> | FacilityPatientCreateWithoutFacilityInput[] | FacilityPatientUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutFacilityInput | FacilityPatientCreateOrConnectWithoutFacilityInput[]
+    createMany?: FacilityPatientCreateManyFacilityInputEnvelope
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
   }
 
-  export type FacilityUserUncheckedCreateNestedManyWithoutFacilityInput = {
-    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
-    createMany?: FacilityUserCreateManyFacilityInputEnvelope
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
+  export type FacilityCreateNestedManyWithoutParentSiteInput = {
+    create?: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput> | FacilityCreateWithoutParentSiteInput[] | FacilityUncheckedCreateWithoutParentSiteInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentSiteInput | FacilityCreateOrConnectWithoutParentSiteInput[]
+    createMany?: FacilityCreateManyParentSiteInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
   }
 
   export type EvaluationUncheckedCreateNestedManyWithoutFacilityInput = {
@@ -67469,8 +69058,32 @@ export namespace Prisma {
     connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
   }
 
+  export type FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput = {
+    create?: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput> | FacilityPatientCreateWithoutFacilityInput[] | FacilityPatientUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutFacilityInput | FacilityPatientCreateOrConnectWithoutFacilityInput[]
+    createMany?: FacilityPatientCreateManyFacilityInputEnvelope
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+  }
+
+  export type FacilityUncheckedCreateNestedManyWithoutParentSiteInput = {
+    create?: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput> | FacilityCreateWithoutParentSiteInput[] | FacilityUncheckedCreateWithoutParentSiteInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentSiteInput | FacilityCreateOrConnectWithoutParentSiteInput[]
+    createMany?: FacilityCreateManyParentSiteInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
   export type EnumFacilityTypeFieldUpdateOperationsInput = {
     set?: $Enums.FacilityType
+  }
+
+  export type FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput = {
+    create?: XOR<FacilityCreateWithoutSiteChildFacilitiesInput, FacilityUncheckedCreateWithoutSiteChildFacilitiesInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutSiteChildFacilitiesInput
+    upsert?: FacilityUpsertWithoutSiteChildFacilitiesInput
+    disconnect?: FacilityWhereInput | boolean
+    delete?: FacilityWhereInput | boolean
+    connect?: FacilityWhereUniqueInput
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutSiteChildFacilitiesInput, FacilityUpdateWithoutSiteChildFacilitiesInput>, FacilityUncheckedUpdateWithoutSiteChildFacilitiesInput>
   }
 
   export type CompanyUpdateOneRequiredWithoutFacilitiesNestedInput = {
@@ -67481,28 +69094,14 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutFacilitiesInput, CompanyUpdateWithoutFacilitiesInput>, CompanyUncheckedUpdateWithoutFacilitiesInput>
   }
 
-  export type FacilityAddressUpdateOneWithoutFacilityNestedInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    upsert?: FacilityAddressUpsertWithoutFacilityInput
-    disconnect?: FacilityAddressWhereInput | boolean
-    delete?: FacilityAddressWhereInput | boolean
-    connect?: FacilityAddressWhereUniqueInput
-    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
-  }
-
-  export type FacilityUserUpdateManyWithoutFacilityNestedInput = {
-    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
-    upsert?: FacilityUserUpsertWithWhereUniqueWithoutFacilityInput | FacilityUserUpsertWithWhereUniqueWithoutFacilityInput[]
-    createMany?: FacilityUserCreateManyFacilityInputEnvelope
-    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
-    updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
-    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+  export type ContactUpdateOneWithoutFacilitiesNestedInput = {
+    create?: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutFacilitiesInput
+    upsert?: ContactUpsertWithoutFacilitiesInput
+    disconnect?: ContactWhereInput | boolean
+    delete?: ContactWhereInput | boolean
+    connect?: ContactWhereUniqueInput
+    update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutFacilitiesInput, ContactUpdateWithoutFacilitiesInput>, ContactUncheckedUpdateWithoutFacilitiesInput>
   }
 
   export type EvaluationUpdateManyWithoutFacilityNestedInput = {
@@ -67533,28 +69132,32 @@ export namespace Prisma {
     deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
   }
 
-  export type FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    upsert?: FacilityAddressUpsertWithoutFacilityInput
-    disconnect?: FacilityAddressWhereInput | boolean
-    delete?: FacilityAddressWhereInput | boolean
-    connect?: FacilityAddressWhereUniqueInput
-    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
+  export type FacilityPatientUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput> | FacilityPatientCreateWithoutFacilityInput[] | FacilityPatientUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutFacilityInput | FacilityPatientCreateOrConnectWithoutFacilityInput[]
+    upsert?: FacilityPatientUpsertWithWhereUniqueWithoutFacilityInput | FacilityPatientUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: FacilityPatientCreateManyFacilityInputEnvelope
+    set?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    disconnect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    delete?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    update?: FacilityPatientUpdateWithWhereUniqueWithoutFacilityInput | FacilityPatientUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: FacilityPatientUpdateManyWithWhereWithoutFacilityInput | FacilityPatientUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
   }
 
-  export type FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput = {
-    create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
-    upsert?: FacilityUserUpsertWithWhereUniqueWithoutFacilityInput | FacilityUserUpsertWithWhereUniqueWithoutFacilityInput[]
-    createMany?: FacilityUserCreateManyFacilityInputEnvelope
-    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    update?: FacilityUserUpdateWithWhereUniqueWithoutFacilityInput | FacilityUserUpdateWithWhereUniqueWithoutFacilityInput[]
-    updateMany?: FacilityUserUpdateManyWithWhereWithoutFacilityInput | FacilityUserUpdateManyWithWhereWithoutFacilityInput[]
-    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
+  export type FacilityUpdateManyWithoutParentSiteNestedInput = {
+    create?: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput> | FacilityCreateWithoutParentSiteInput[] | FacilityUncheckedCreateWithoutParentSiteInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentSiteInput | FacilityCreateOrConnectWithoutParentSiteInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutParentSiteInput | FacilityUpsertWithWhereUniqueWithoutParentSiteInput[]
+    createMany?: FacilityCreateManyParentSiteInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutParentSiteInput | FacilityUpdateWithWhereUniqueWithoutParentSiteInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutParentSiteInput | FacilityUpdateManyWithWhereWithoutParentSiteInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
   export type EvaluationUncheckedUpdateManyWithoutFacilityNestedInput = {
@@ -67583,6 +69186,34 @@ export namespace Prisma {
     update?: ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput | ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: ShippingLabelUpdateManyWithWhereWithoutFacilityInput | ShippingLabelUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+  }
+
+  export type FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput = {
+    create?: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput> | FacilityPatientCreateWithoutFacilityInput[] | FacilityPatientUncheckedCreateWithoutFacilityInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutFacilityInput | FacilityPatientCreateOrConnectWithoutFacilityInput[]
+    upsert?: FacilityPatientUpsertWithWhereUniqueWithoutFacilityInput | FacilityPatientUpsertWithWhereUniqueWithoutFacilityInput[]
+    createMany?: FacilityPatientCreateManyFacilityInputEnvelope
+    set?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    disconnect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    delete?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    update?: FacilityPatientUpdateWithWhereUniqueWithoutFacilityInput | FacilityPatientUpdateWithWhereUniqueWithoutFacilityInput[]
+    updateMany?: FacilityPatientUpdateManyWithWhereWithoutFacilityInput | FacilityPatientUpdateManyWithWhereWithoutFacilityInput[]
+    deleteMany?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutParentSiteNestedInput = {
+    create?: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput> | FacilityCreateWithoutParentSiteInput[] | FacilityUncheckedCreateWithoutParentSiteInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentSiteInput | FacilityCreateOrConnectWithoutParentSiteInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutParentSiteInput | FacilityUpsertWithWhereUniqueWithoutParentSiteInput[]
+    createMany?: FacilityCreateManyParentSiteInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutParentSiteInput | FacilityUpdateWithWhereUniqueWithoutParentSiteInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutParentSiteInput | FacilityUpdateManyWithWhereWithoutParentSiteInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
   export type PhysicianCreateNestedOneWithoutPatientInput = {
@@ -67619,6 +69250,13 @@ export namespace Prisma {
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
+  export type FacilityPatientCreateNestedManyWithoutPatientInput = {
+    create?: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput> | FacilityPatientCreateWithoutPatientInput[] | FacilityPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutPatientInput | FacilityPatientCreateOrConnectWithoutPatientInput[]
+    createMany?: FacilityPatientCreateManyPatientInputEnvelope
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+  }
+
   export type FootUncheckedCreateNestedManyWithoutPatientInput = {
     create?: XOR<FootCreateWithoutPatientInput, FootUncheckedCreateWithoutPatientInput> | FootCreateWithoutPatientInput[] | FootUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
@@ -67645,6 +69283,13 @@ export namespace Prisma {
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
     createMany?: CompanyPatientCreateManyPatientInputEnvelope
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type FacilityPatientUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput> | FacilityPatientCreateWithoutPatientInput[] | FacilityPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutPatientInput | FacilityPatientCreateOrConnectWithoutPatientInput[]
+    createMany?: FacilityPatientCreateManyPatientInputEnvelope
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
   }
 
   export type NullableEnumGenderFieldUpdateOperationsInput = {
@@ -67733,6 +69378,20 @@ export namespace Prisma {
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
+  export type FacilityPatientUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput> | FacilityPatientCreateWithoutPatientInput[] | FacilityPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutPatientInput | FacilityPatientCreateOrConnectWithoutPatientInput[]
+    upsert?: FacilityPatientUpsertWithWhereUniqueWithoutPatientInput | FacilityPatientUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: FacilityPatientCreateManyPatientInputEnvelope
+    set?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    disconnect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    delete?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    update?: FacilityPatientUpdateWithWhereUniqueWithoutPatientInput | FacilityPatientUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: FacilityPatientUpdateManyWithWhereWithoutPatientInput | FacilityPatientUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
+  }
+
   export type FootUncheckedUpdateManyWithoutPatientNestedInput = {
     create?: XOR<FootCreateWithoutPatientInput, FootUncheckedCreateWithoutPatientInput> | FootCreateWithoutPatientInput[] | FootUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
@@ -67787,6 +69446,20 @@ export namespace Prisma {
     update?: CompanyPatientUpdateWithWhereUniqueWithoutPatientInput | CompanyPatientUpdateWithWhereUniqueWithoutPatientInput[]
     updateMany?: CompanyPatientUpdateManyWithWhereWithoutPatientInput | CompanyPatientUpdateManyWithWhereWithoutPatientInput[]
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput> | FacilityPatientCreateWithoutPatientInput[] | FacilityPatientUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: FacilityPatientCreateOrConnectWithoutPatientInput | FacilityPatientCreateOrConnectWithoutPatientInput[]
+    upsert?: FacilityPatientUpsertWithWhereUniqueWithoutPatientInput | FacilityPatientUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: FacilityPatientCreateManyPatientInputEnvelope
+    set?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    disconnect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    delete?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    connect?: FacilityPatientWhereUniqueInput | FacilityPatientWhereUniqueInput[]
+    update?: FacilityPatientUpdateWithWhereUniqueWithoutPatientInput | FacilityPatientUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: FacilityPatientUpdateManyWithWhereWithoutPatientInput | FacilityPatientUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutClinicianInput = {
@@ -68806,22 +70479,92 @@ export namespace Prisma {
     update?: XOR<XOR<ShippingLabelUpdateToOneWithWhereWithoutOrdersInput, ShippingLabelUpdateWithoutOrdersInput>, ShippingLabelUncheckedUpdateWithoutOrdersInput>
   }
 
-  export type FacilityCreateNestedOneWithoutAddressInput = {
-    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
-    connect?: FacilityWhereUniqueInput
+  export type FacilityCreateNestedManyWithoutContactInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
+  export type CompanyPatientCreateNestedManyWithoutContactInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type FacilityUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
+  export type CompanyPatientUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type NullableEnumCarrierFieldUpdateOperationsInput = {
     set?: $Enums.Carrier | null
   }
 
-  export type FacilityUpdateOneRequiredWithoutAddressNestedInput = {
-    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
-    upsert?: FacilityUpsertWithoutAddressInput
-    connect?: FacilityWhereUniqueInput
-    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutAddressInput, FacilityUpdateWithoutAddressInput>, FacilityUncheckedUpdateWithoutAddressInput>
+  export type FacilityUpdateManyWithoutContactNestedInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutContactInput | FacilityUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutContactInput | FacilityUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutContactInput | FacilityUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
+  }
+
+  export type CompanyPatientUpdateManyWithoutContactNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutContactInput | CompanyPatientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutContactInput | CompanyPatientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutContactInput | CompanyPatientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutContactInput | FacilityUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutContactInput | FacilityUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutContactInput | FacilityUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutContactInput | CompanyPatientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutContactInput | CompanyPatientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutContactInput | CompanyPatientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutPackagesInput = {
@@ -69550,14 +71293,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type CompanyCreateNestedOneWithoutDepartmentsInput = {
-    create?: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutDepartmentsInput
-    connect?: CompanyWhereUniqueInput
-  }
-
-  export type EnumCompanyDepartmentFieldUpdateOperationsInput = {
-    set?: $Enums.CompanyDepartment
+  export type DepartmentCreateNestedOneWithoutDepartmentUsersInput = {
+    create?: XOR<DepartmentCreateWithoutDepartmentUsersInput, DepartmentUncheckedCreateWithoutDepartmentUsersInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutDepartmentUsersInput
+    connect?: DepartmentWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutDepartmentsNestedInput = {
@@ -69568,6 +71307,52 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDepartmentsInput, UserUpdateWithoutDepartmentsInput>, UserUncheckedUpdateWithoutDepartmentsInput>
   }
 
+  export type DepartmentUpdateOneRequiredWithoutDepartmentUsersNestedInput = {
+    create?: XOR<DepartmentCreateWithoutDepartmentUsersInput, DepartmentUncheckedCreateWithoutDepartmentUsersInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutDepartmentUsersInput
+    upsert?: DepartmentUpsertWithoutDepartmentUsersInput
+    connect?: DepartmentWhereUniqueInput
+    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutDepartmentUsersInput, DepartmentUpdateWithoutDepartmentUsersInput>, DepartmentUncheckedUpdateWithoutDepartmentUsersInput>
+  }
+
+  export type CompanyCreateNestedOneWithoutDepartmentsInput = {
+    create?: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutDepartmentsInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type DepartmentUserCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput> | DepartmentUserCreateWithoutDepartmentInput[] | DepartmentUserUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutDepartmentInput | DepartmentUserCreateOrConnectWithoutDepartmentInput[]
+    createMany?: DepartmentUserCreateManyDepartmentInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+  }
+
+  export type CompanyPatientCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput> | CompanyPatientCreateWithoutDepartmentInput[] | CompanyPatientUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutDepartmentInput | CompanyPatientCreateOrConnectWithoutDepartmentInput[]
+    createMany?: CompanyPatientCreateManyDepartmentInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type DepartmentUserUncheckedCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput> | DepartmentUserCreateWithoutDepartmentInput[] | DepartmentUserUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutDepartmentInput | DepartmentUserCreateOrConnectWithoutDepartmentInput[]
+    createMany?: DepartmentUserCreateManyDepartmentInputEnvelope
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+  }
+
+  export type CompanyPatientUncheckedCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput> | CompanyPatientCreateWithoutDepartmentInput[] | CompanyPatientUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutDepartmentInput | CompanyPatientCreateOrConnectWithoutDepartmentInput[]
+    createMany?: CompanyPatientCreateManyDepartmentInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type EnumCompanyDepartmentFieldUpdateOperationsInput = {
+    set?: $Enums.CompanyDepartment
+  }
+
   export type CompanyUpdateOneRequiredWithoutDepartmentsNestedInput = {
     create?: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutDepartmentsInput
@@ -69576,10 +71361,78 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutDepartmentsInput, CompanyUpdateWithoutDepartmentsInput>, CompanyUncheckedUpdateWithoutDepartmentsInput>
   }
 
+  export type DepartmentUserUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput> | DepartmentUserCreateWithoutDepartmentInput[] | DepartmentUserUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutDepartmentInput | DepartmentUserCreateOrConnectWithoutDepartmentInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutDepartmentInput | DepartmentUserUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: DepartmentUserCreateManyDepartmentInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutDepartmentInput | DepartmentUserUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutDepartmentInput | DepartmentUserUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+  }
+
+  export type CompanyPatientUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput> | CompanyPatientCreateWithoutDepartmentInput[] | CompanyPatientUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutDepartmentInput | CompanyPatientCreateOrConnectWithoutDepartmentInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutDepartmentInput | CompanyPatientUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: CompanyPatientCreateManyDepartmentInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutDepartmentInput | CompanyPatientUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutDepartmentInput | CompanyPatientUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type DepartmentUserUncheckedUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput> | DepartmentUserCreateWithoutDepartmentInput[] | DepartmentUserUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: DepartmentUserCreateOrConnectWithoutDepartmentInput | DepartmentUserCreateOrConnectWithoutDepartmentInput[]
+    upsert?: DepartmentUserUpsertWithWhereUniqueWithoutDepartmentInput | DepartmentUserUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: DepartmentUserCreateManyDepartmentInputEnvelope
+    set?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    disconnect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    delete?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
+    update?: DepartmentUserUpdateWithWhereUniqueWithoutDepartmentInput | DepartmentUserUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: DepartmentUserUpdateManyWithWhereWithoutDepartmentInput | DepartmentUserUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput> | CompanyPatientCreateWithoutDepartmentInput[] | CompanyPatientUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutDepartmentInput | CompanyPatientCreateOrConnectWithoutDepartmentInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutDepartmentInput | CompanyPatientUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: CompanyPatientCreateManyDepartmentInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutDepartmentInput | CompanyPatientUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutDepartmentInput | CompanyPatientUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
   export type CompanyCreateNestedOneWithoutPatientsInput = {
     create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput
     connect?: CompanyWhereUniqueInput
+  }
+
+  export type DepartmentCreateNestedOneWithoutCompanyPatientsInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyPatientsInput, DepartmentUncheckedCreateWithoutCompanyPatientsInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyPatientsInput
+    connect?: DepartmentWhereUniqueInput
+  }
+
+  export type ContactCreateNestedOneWithoutCompanyPatientsInput = {
+    create?: XOR<ContactCreateWithoutCompanyPatientsInput, ContactUncheckedCreateWithoutCompanyPatientsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutCompanyPatientsInput
+    connect?: ContactWhereUniqueInput
   }
 
   export type PatientCreateNestedOneWithoutCompaniesInput = {
@@ -69596,6 +71449,26 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPatientsInput, CompanyUpdateWithoutPatientsInput>, CompanyUncheckedUpdateWithoutPatientsInput>
   }
 
+  export type DepartmentUpdateOneWithoutCompanyPatientsNestedInput = {
+    create?: XOR<DepartmentCreateWithoutCompanyPatientsInput, DepartmentUncheckedCreateWithoutCompanyPatientsInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyPatientsInput
+    upsert?: DepartmentUpsertWithoutCompanyPatientsInput
+    disconnect?: DepartmentWhereInput | boolean
+    delete?: DepartmentWhereInput | boolean
+    connect?: DepartmentWhereUniqueInput
+    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutCompanyPatientsInput, DepartmentUpdateWithoutCompanyPatientsInput>, DepartmentUncheckedUpdateWithoutCompanyPatientsInput>
+  }
+
+  export type ContactUpdateOneWithoutCompanyPatientsNestedInput = {
+    create?: XOR<ContactCreateWithoutCompanyPatientsInput, ContactUncheckedCreateWithoutCompanyPatientsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutCompanyPatientsInput
+    upsert?: ContactUpsertWithoutCompanyPatientsInput
+    disconnect?: ContactWhereInput | boolean
+    delete?: ContactWhereInput | boolean
+    connect?: ContactWhereUniqueInput
+    update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutCompanyPatientsInput, ContactUpdateWithoutCompanyPatientsInput>, ContactUncheckedUpdateWithoutCompanyPatientsInput>
+  }
+
   export type PatientUpdateOneRequiredWithoutCompaniesNestedInput = {
     create?: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
     connectOrCreate?: PatientCreateOrConnectWithoutCompaniesInput
@@ -69604,32 +71477,32 @@ export namespace Prisma {
     update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutCompaniesInput, PatientUpdateWithoutCompaniesInput>, PatientUncheckedUpdateWithoutCompaniesInput>
   }
 
-  export type FacilityCreateNestedOneWithoutUsersInput = {
-    create?: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutUsersInput
+  export type FacilityCreateNestedOneWithoutFacilityPatientsInput = {
+    create?: XOR<FacilityCreateWithoutFacilityPatientsInput, FacilityUncheckedCreateWithoutFacilityPatientsInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutFacilityPatientsInput
     connect?: FacilityWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutFacilitiesInput = {
-    create?: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutFacilitiesInput
-    connect?: UserWhereUniqueInput
+  export type PatientCreateNestedOneWithoutFacilityPatientsInput = {
+    create?: XOR<PatientCreateWithoutFacilityPatientsInput, PatientUncheckedCreateWithoutFacilityPatientsInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutFacilityPatientsInput
+    connect?: PatientWhereUniqueInput
   }
 
-  export type FacilityUpdateOneRequiredWithoutUsersNestedInput = {
-    create?: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutUsersInput
-    upsert?: FacilityUpsertWithoutUsersInput
+  export type FacilityUpdateOneRequiredWithoutFacilityPatientsNestedInput = {
+    create?: XOR<FacilityCreateWithoutFacilityPatientsInput, FacilityUncheckedCreateWithoutFacilityPatientsInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutFacilityPatientsInput
+    upsert?: FacilityUpsertWithoutFacilityPatientsInput
     connect?: FacilityWhereUniqueInput
-    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutUsersInput, FacilityUpdateWithoutUsersInput>, FacilityUncheckedUpdateWithoutUsersInput>
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutFacilityPatientsInput, FacilityUpdateWithoutFacilityPatientsInput>, FacilityUncheckedUpdateWithoutFacilityPatientsInput>
   }
 
-  export type UserUpdateOneRequiredWithoutFacilitiesNestedInput = {
-    create?: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutFacilitiesInput
-    upsert?: UserUpsertWithoutFacilitiesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFacilitiesInput, UserUpdateWithoutFacilitiesInput>, UserUncheckedUpdateWithoutFacilitiesInput>
+  export type PatientUpdateOneRequiredWithoutFacilityPatientsNestedInput = {
+    create?: XOR<PatientCreateWithoutFacilityPatientsInput, PatientUncheckedCreateWithoutFacilityPatientsInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutFacilityPatientsInput
+    upsert?: PatientUpsertWithoutFacilityPatientsInput
+    connect?: PatientWhereUniqueInput
+    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutFacilityPatientsInput, PatientUpdateWithoutFacilityPatientsInput>, PatientUncheckedUpdateWithoutFacilityPatientsInput>
   }
 
   export type StripeEntityCreateNestedOneWithoutStripeProductsInput = {
@@ -70249,13 +72122,6 @@ export namespace Prisma {
     connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
   }
 
-  export type FacilityUserCreateNestedManyWithoutUserInput = {
-    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
-    createMany?: FacilityUserCreateManyUserInputEnvelope
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-  }
-
   export type ClinicianCreateNestedOneWithoutUserInput = {
     create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
     connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
@@ -70302,13 +72168,6 @@ export namespace Prisma {
     connectOrCreate?: DepartmentUserCreateOrConnectWithoutUserInput | DepartmentUserCreateOrConnectWithoutUserInput[]
     createMany?: DepartmentUserCreateManyUserInputEnvelope
     connect?: DepartmentUserWhereUniqueInput | DepartmentUserWhereUniqueInput[]
-  }
-
-  export type FacilityUserUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
-    createMany?: FacilityUserCreateManyUserInputEnvelope
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
   }
 
   export type ClinicianUncheckedCreateNestedOneWithoutUserInput = {
@@ -70378,20 +72237,6 @@ export namespace Prisma {
     update?: DepartmentUserUpdateWithWhereUniqueWithoutUserInput | DepartmentUserUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: DepartmentUserUpdateManyWithWhereWithoutUserInput | DepartmentUserUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-  }
-
-  export type FacilityUserUpdateManyWithoutUserNestedInput = {
-    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
-    upsert?: FacilityUserUpsertWithWhereUniqueWithoutUserInput | FacilityUserUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: FacilityUserCreateManyUserInputEnvelope
-    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    update?: FacilityUserUpdateWithWhereUniqueWithoutUserInput | FacilityUserUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: FacilityUserUpdateManyWithWhereWithoutUserInput | FacilityUserUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
   export type ClinicianUpdateOneWithoutUserNestedInput = {
@@ -70486,20 +72331,6 @@ export namespace Prisma {
     update?: DepartmentUserUpdateWithWhereUniqueWithoutUserInput | DepartmentUserUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: DepartmentUserUpdateManyWithWhereWithoutUserInput | DepartmentUserUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-  }
-
-  export type FacilityUserUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput> | FacilityUserCreateWithoutUserInput[] | FacilityUserUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: FacilityUserCreateOrConnectWithoutUserInput | FacilityUserCreateOrConnectWithoutUserInput[]
-    upsert?: FacilityUserUpsertWithWhereUniqueWithoutUserInput | FacilityUserUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: FacilityUserCreateManyUserInputEnvelope
-    set?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    disconnect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    delete?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    connect?: FacilityUserWhereUniqueInput | FacilityUserWhereUniqueInput[]
-    update?: FacilityUserUpdateWithWhereUniqueWithoutUserInput | FacilityUserUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: FacilityUserUpdateManyWithWhereWithoutUserInput | FacilityUserUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
   }
 
   export type ClinicianUncheckedUpdateOneWithoutUserNestedInput = {
@@ -71631,23 +73462,27 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityUncheckedCreateWithoutCompanyInput = {
     id?: string
     name: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityCreateOrConnectWithoutCompanyInput = {
@@ -71826,44 +73661,20 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DepartmentUserCreateWithoutCompanyInput = {
-    id?: string
-    department: $Enums.CompanyDepartment
-    role?: $Enums.CompanyRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutDepartmentsInput
-  }
-
-  export type DepartmentUserUncheckedCreateWithoutCompanyInput = {
-    id?: string
-    userId: string
-    department: $Enums.CompanyDepartment
-    role?: $Enums.CompanyRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DepartmentUserCreateOrConnectWithoutCompanyInput = {
-    where: DepartmentUserWhereUniqueInput
-    create: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type DepartmentUserCreateManyCompanyInputEnvelope = {
-    data: DepartmentUserCreateManyCompanyInput | DepartmentUserCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CompanyPatientCreateWithoutCompanyInput = {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    department?: DepartmentCreateNestedOneWithoutCompanyPatientsInput
+    contact?: ContactCreateNestedOneWithoutCompanyPatientsInput
     patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutCompanyInput = {
     patientId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71958,6 +73769,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DepartmentCreateWithoutCompanyInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentUsers?: DepartmentUserCreateNestedManyWithoutDepartmentInput
+    companyPatients?: CompanyPatientCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentUsers?: DepartmentUserUncheckedCreateNestedManyWithoutDepartmentInput
+    companyPatients?: CompanyPatientUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutCompanyInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type DepartmentCreateManyCompanyInputEnvelope = {
+    data: DepartmentCreateManyCompanyInput | DepartmentCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FacilityUpsertWithWhereUniqueWithoutCompanyInput = {
     where: FacilityWhereUniqueInput
     update: XOR<FacilityUpdateWithoutCompanyInput, FacilityUncheckedUpdateWithoutCompanyInput>
@@ -71981,6 +73822,8 @@ export namespace Prisma {
     id?: StringFilter<"Facility"> | string
     name?: StringFilter<"Facility"> | string
     companyId?: StringFilter<"Facility"> | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
+    siteId?: StringNullableFilter<"Facility"> | string | null
     type?: EnumFacilityTypeFilter<"Facility"> | $Enums.FacilityType
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
@@ -72128,35 +73971,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
   }
 
-  export type DepartmentUserUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: DepartmentUserWhereUniqueInput
-    update: XOR<DepartmentUserUpdateWithoutCompanyInput, DepartmentUserUncheckedUpdateWithoutCompanyInput>
-    create: XOR<DepartmentUserCreateWithoutCompanyInput, DepartmentUserUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type DepartmentUserUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: DepartmentUserWhereUniqueInput
-    data: XOR<DepartmentUserUpdateWithoutCompanyInput, DepartmentUserUncheckedUpdateWithoutCompanyInput>
-  }
-
-  export type DepartmentUserUpdateManyWithWhereWithoutCompanyInput = {
-    where: DepartmentUserScalarWhereInput
-    data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyWithoutCompanyInput>
-  }
-
-  export type DepartmentUserScalarWhereInput = {
-    AND?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-    OR?: DepartmentUserScalarWhereInput[]
-    NOT?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
-    id?: StringFilter<"DepartmentUser"> | string
-    userId?: StringFilter<"DepartmentUser"> | string
-    companyId?: StringFilter<"DepartmentUser"> | string
-    department?: EnumCompanyDepartmentFilter<"DepartmentUser"> | $Enums.CompanyDepartment
-    role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
-    createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
-    updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
-  }
-
   export type CompanyPatientUpsertWithWhereUniqueWithoutCompanyInput = {
     where: CompanyPatientWhereUniqueInput
     update: XOR<CompanyPatientUpdateWithoutCompanyInput, CompanyPatientUncheckedUpdateWithoutCompanyInput>
@@ -72180,6 +73994,8 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    departmentId?: StringNullableFilter<"CompanyPatient"> | string | null
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
   }
@@ -72250,6 +74066,69 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"StripeEntity"> | Date | string
   }
 
+  export type DepartmentUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: DepartmentWhereUniqueInput
+    update: XOR<DepartmentUpdateWithoutCompanyInput, DepartmentUncheckedUpdateWithoutCompanyInput>
+    create: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type DepartmentUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: DepartmentWhereUniqueInput
+    data: XOR<DepartmentUpdateWithoutCompanyInput, DepartmentUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type DepartmentUpdateManyWithWhereWithoutCompanyInput = {
+    where: DepartmentScalarWhereInput
+    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type DepartmentScalarWhereInput = {
+    AND?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
+    OR?: DepartmentScalarWhereInput[]
+    NOT?: DepartmentScalarWhereInput | DepartmentScalarWhereInput[]
+    id?: StringFilter<"Department"> | string
+    name?: StringFilter<"Department"> | string
+    companyId?: StringFilter<"Department"> | string
+    type?: EnumCompanyDepartmentFilter<"Department"> | $Enums.CompanyDepartment
+    createdAt?: DateTimeFilter<"Department"> | Date | string
+    updatedAt?: DateTimeFilter<"Department"> | Date | string
+  }
+
+  export type FacilityCreateWithoutSiteChildFacilitiesInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
+    evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityUncheckedCreateWithoutSiteChildFacilitiesInput = {
+    id?: string
+    name: string
+    companyId: string
+    contactId?: string | null
+    siteId?: string | null
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityCreateOrConnectWithoutSiteChildFacilitiesInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutSiteChildFacilitiesInput, FacilityUncheckedCreateWithoutSiteChildFacilitiesInput>
+  }
+
   export type CompanyCreateWithoutFacilitiesInput = {
     id?: string
     name: string
@@ -72264,10 +74143,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -72284,10 +74163,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -72295,7 +74174,7 @@ export namespace Prisma {
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
   }
 
-  export type FacilityAddressCreateWithoutFacilityInput = {
+  export type ContactCreateWithoutFacilitiesInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -72309,9 +74188,10 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    companyPatients?: CompanyPatientCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressUncheckedCreateWithoutFacilityInput = {
+  export type ContactUncheckedCreateWithoutFacilitiesInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -72325,33 +74205,12 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    companyPatients?: CompanyPatientUncheckedCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressCreateOrConnectWithoutFacilityInput = {
-    where: FacilityAddressWhereUniqueInput
-    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-  }
-
-  export type FacilityUserCreateWithoutFacilityInput = {
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutFacilitiesInput
-  }
-
-  export type FacilityUserUncheckedCreateWithoutFacilityInput = {
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FacilityUserCreateOrConnectWithoutFacilityInput = {
-    where: FacilityUserWhereUniqueInput
-    create: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput>
-  }
-
-  export type FacilityUserCreateManyFacilityInputEnvelope = {
-    data: FacilityUserCreateManyFacilityInput | FacilityUserCreateManyFacilityInput[]
-    skipDuplicates?: boolean
+  export type ContactCreateOrConnectWithoutFacilitiesInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
   }
 
   export type EvaluationCreateWithoutFacilityInput = {
@@ -72466,6 +74325,111 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FacilityPatientCreateWithoutFacilityInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutFacilityPatientsInput
+  }
+
+  export type FacilityPatientUncheckedCreateWithoutFacilityInput = {
+    id?: string
+    patientId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityPatientCreateOrConnectWithoutFacilityInput = {
+    where: FacilityPatientWhereUniqueInput
+    create: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type FacilityPatientCreateManyFacilityInputEnvelope = {
+    data: FacilityPatientCreateManyFacilityInput | FacilityPatientCreateManyFacilityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityCreateWithoutParentSiteInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
+    evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
+  }
+
+  export type FacilityUncheckedCreateWithoutParentSiteInput = {
+    id?: string
+    name: string
+    companyId: string
+    contactId?: string | null
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
+  }
+
+  export type FacilityCreateOrConnectWithoutParentSiteInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput>
+  }
+
+  export type FacilityCreateManyParentSiteInputEnvelope = {
+    data: FacilityCreateManyParentSiteInput | FacilityCreateManyParentSiteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityUpsertWithoutSiteChildFacilitiesInput = {
+    update: XOR<FacilityUpdateWithoutSiteChildFacilitiesInput, FacilityUncheckedUpdateWithoutSiteChildFacilitiesInput>
+    create: XOR<FacilityCreateWithoutSiteChildFacilitiesInput, FacilityUncheckedCreateWithoutSiteChildFacilitiesInput>
+    where?: FacilityWhereInput
+  }
+
+  export type FacilityUpdateToOneWithWhereWithoutSiteChildFacilitiesInput = {
+    where?: FacilityWhereInput
+    data: XOR<FacilityUpdateWithoutSiteChildFacilitiesInput, FacilityUncheckedUpdateWithoutSiteChildFacilitiesInput>
+  }
+
+  export type FacilityUpdateWithoutSiteChildFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutSiteChildFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
   export type CompanyUpsertWithoutFacilitiesInput = {
     update: XOR<CompanyUpdateWithoutFacilitiesInput, CompanyUncheckedUpdateWithoutFacilitiesInput>
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
@@ -72491,10 +74455,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -72511,24 +74475,24 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type FacilityAddressUpsertWithoutFacilityInput = {
-    update: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
-    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    where?: FacilityAddressWhereInput
+  export type ContactUpsertWithoutFacilitiesInput = {
+    update: XOR<ContactUpdateWithoutFacilitiesInput, ContactUncheckedUpdateWithoutFacilitiesInput>
+    create: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    where?: ContactWhereInput
   }
 
-  export type FacilityAddressUpdateToOneWithWhereWithoutFacilityInput = {
-    where?: FacilityAddressWhereInput
-    data: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
+  export type ContactUpdateToOneWithWhereWithoutFacilitiesInput = {
+    where?: ContactWhereInput
+    data: XOR<ContactUpdateWithoutFacilitiesInput, ContactUncheckedUpdateWithoutFacilitiesInput>
   }
 
-  export type FacilityAddressUpdateWithoutFacilityInput = {
+  export type ContactUpdateWithoutFacilitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -72542,9 +74506,10 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyPatients?: CompanyPatientUpdateManyWithoutContactNestedInput
   }
 
-  export type FacilityAddressUncheckedUpdateWithoutFacilityInput = {
+  export type ContactUncheckedUpdateWithoutFacilitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -72558,32 +74523,7 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FacilityUserUpsertWithWhereUniqueWithoutFacilityInput = {
-    where: FacilityUserWhereUniqueInput
-    update: XOR<FacilityUserUpdateWithoutFacilityInput, FacilityUserUncheckedUpdateWithoutFacilityInput>
-    create: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput>
-  }
-
-  export type FacilityUserUpdateWithWhereUniqueWithoutFacilityInput = {
-    where: FacilityUserWhereUniqueInput
-    data: XOR<FacilityUserUpdateWithoutFacilityInput, FacilityUserUncheckedUpdateWithoutFacilityInput>
-  }
-
-  export type FacilityUserUpdateManyWithWhereWithoutFacilityInput = {
-    where: FacilityUserScalarWhereInput
-    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutFacilityInput>
-  }
-
-  export type FacilityUserScalarWhereInput = {
-    AND?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
-    OR?: FacilityUserScalarWhereInput[]
-    NOT?: FacilityUserScalarWhereInput | FacilityUserScalarWhereInput[]
-    userId?: StringFilter<"FacilityUser"> | string
-    facilityId?: StringFilter<"FacilityUser"> | string
-    createdAt?: DateTimeFilter<"FacilityUser"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityUser"> | Date | string
+    companyPatients?: CompanyPatientUncheckedUpdateManyWithoutContactNestedInput
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutFacilityInput = {
@@ -72630,6 +74570,49 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+  }
+
+  export type FacilityPatientUpsertWithWhereUniqueWithoutFacilityInput = {
+    where: FacilityPatientWhereUniqueInput
+    update: XOR<FacilityPatientUpdateWithoutFacilityInput, FacilityPatientUncheckedUpdateWithoutFacilityInput>
+    create: XOR<FacilityPatientCreateWithoutFacilityInput, FacilityPatientUncheckedCreateWithoutFacilityInput>
+  }
+
+  export type FacilityPatientUpdateWithWhereUniqueWithoutFacilityInput = {
+    where: FacilityPatientWhereUniqueInput
+    data: XOR<FacilityPatientUpdateWithoutFacilityInput, FacilityPatientUncheckedUpdateWithoutFacilityInput>
+  }
+
+  export type FacilityPatientUpdateManyWithWhereWithoutFacilityInput = {
+    where: FacilityPatientScalarWhereInput
+    data: XOR<FacilityPatientUpdateManyMutationInput, FacilityPatientUncheckedUpdateManyWithoutFacilityInput>
+  }
+
+  export type FacilityPatientScalarWhereInput = {
+    AND?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
+    OR?: FacilityPatientScalarWhereInput[]
+    NOT?: FacilityPatientScalarWhereInput | FacilityPatientScalarWhereInput[]
+    id?: StringFilter<"FacilityPatient"> | string
+    patientId?: StringFilter<"FacilityPatient"> | string
+    facilityId?: StringFilter<"FacilityPatient"> | string
+    createdAt?: DateTimeFilter<"FacilityPatient"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilityPatient"> | Date | string
+  }
+
+  export type FacilityUpsertWithWhereUniqueWithoutParentSiteInput = {
+    where: FacilityWhereUniqueInput
+    update: XOR<FacilityUpdateWithoutParentSiteInput, FacilityUncheckedUpdateWithoutParentSiteInput>
+    create: XOR<FacilityCreateWithoutParentSiteInput, FacilityUncheckedCreateWithoutParentSiteInput>
+  }
+
+  export type FacilityUpdateWithWhereUniqueWithoutParentSiteInput = {
+    where: FacilityWhereUniqueInput
+    data: XOR<FacilityUpdateWithoutParentSiteInput, FacilityUncheckedUpdateWithoutParentSiteInput>
+  }
+
+  export type FacilityUpdateManyWithWhereWithoutParentSiteInput = {
+    where: FacilityScalarWhereInput
+    data: XOR<FacilityUpdateManyMutationInput, FacilityUncheckedUpdateManyWithoutParentSiteInput>
   }
 
   export type PhysicianCreateWithoutPatientInput = {
@@ -72840,11 +74823,15 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
+    department?: DepartmentCreateNestedOneWithoutCompanyPatientsInput
+    contact?: ContactCreateNestedOneWithoutCompanyPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutPatientInput = {
     companyId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -72856,6 +74843,30 @@ export namespace Prisma {
 
   export type CompanyPatientCreateManyPatientInputEnvelope = {
     data: CompanyPatientCreateManyPatientInput | CompanyPatientCreateManyPatientInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityPatientCreateWithoutPatientInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facility: FacilityCreateNestedOneWithoutFacilityPatientsInput
+  }
+
+  export type FacilityPatientUncheckedCreateWithoutPatientInput = {
+    id?: string
+    facilityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityPatientCreateOrConnectWithoutPatientInput = {
+    where: FacilityPatientWhereUniqueInput
+    create: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput>
+  }
+
+  export type FacilityPatientCreateManyPatientInputEnvelope = {
+    data: FacilityPatientCreateManyPatientInput | FacilityPatientCreateManyPatientInput[]
     skipDuplicates?: boolean
   }
 
@@ -72995,6 +75006,22 @@ export namespace Prisma {
     data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutPatientInput>
   }
 
+  export type FacilityPatientUpsertWithWhereUniqueWithoutPatientInput = {
+    where: FacilityPatientWhereUniqueInput
+    update: XOR<FacilityPatientUpdateWithoutPatientInput, FacilityPatientUncheckedUpdateWithoutPatientInput>
+    create: XOR<FacilityPatientCreateWithoutPatientInput, FacilityPatientUncheckedCreateWithoutPatientInput>
+  }
+
+  export type FacilityPatientUpdateWithWhereUniqueWithoutPatientInput = {
+    where: FacilityPatientWhereUniqueInput
+    data: XOR<FacilityPatientUpdateWithoutPatientInput, FacilityPatientUncheckedUpdateWithoutPatientInput>
+  }
+
+  export type FacilityPatientUpdateManyWithWhereWithoutPatientInput = {
+    where: FacilityPatientScalarWhereInput
+    data: XOR<FacilityPatientUpdateManyMutationInput, FacilityPatientUncheckedUpdateManyWithoutPatientInput>
+  }
+
   export type UserCreateWithoutClinicianInput = {
     id?: string
     email?: string | null
@@ -73007,7 +75034,6 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -73025,7 +75051,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -73134,7 +75159,6 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -73152,7 +75176,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -73193,6 +75216,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutEvaluationsInput = {
@@ -73214,6 +75238,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutEvaluationsInput = {
@@ -73235,10 +75260,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -73255,10 +75280,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -73357,23 +75382,27 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityUncheckedCreateWithoutEvaluationsInput = {
     id?: string
     name: string
     companyId: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityCreateOrConnectWithoutEvaluationsInput = {
@@ -73566,6 +75595,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutEvaluationsInput = {
@@ -73587,6 +75617,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type CompanyUpsertWithoutEvaluationsInput = {
@@ -73614,10 +75645,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -73634,10 +75665,10 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -73766,23 +75797,27 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutEvaluationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
   }
 
   export type StripeInvoiceUpsertWithoutEmployerEvaluationsInput = {
@@ -73942,6 +75977,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutFeetInput = {
@@ -73963,6 +75999,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutFeetInput = {
@@ -74087,6 +76124,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutFeetInput = {
@@ -74108,6 +76146,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type WorkbenchUpsertWithoutFeetInput = {
@@ -74796,6 +76835,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutWorkbenchesInput = {
@@ -74817,6 +76857,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutWorkbenchesInput = {
@@ -75143,6 +77184,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutWorkbenchesInput = {
@@ -75164,6 +77206,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type ProductUpsertWithoutWorkbenchesInput = {
@@ -75466,7 +77509,6 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -75484,7 +77526,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -75569,7 +77610,6 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -75587,7 +77627,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -75749,72 +77788,104 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityCreateWithoutAddressInput = {
+  export type FacilityCreateWithoutContactInput = {
     id?: string
     name: string
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
-  export type FacilityUncheckedCreateWithoutAddressInput = {
+  export type FacilityUncheckedCreateWithoutContactInput = {
     id?: string
     name: string
     companyId: string
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
-  export type FacilityCreateOrConnectWithoutAddressInput = {
+  export type FacilityCreateOrConnectWithoutContactInput = {
     where: FacilityWhereUniqueInput
-    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
+    create: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput>
   }
 
-  export type FacilityUpsertWithoutAddressInput = {
-    update: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
-    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    where?: FacilityWhereInput
+  export type FacilityCreateManyContactInputEnvelope = {
+    data: FacilityCreateManyContactInput | FacilityCreateManyContactInput[]
+    skipDuplicates?: boolean
   }
 
-  export type FacilityUpdateToOneWithWhereWithoutAddressInput = {
-    where?: FacilityWhereInput
-    data: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
+  export type CompanyPatientCreateWithoutContactInput = {
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutPatientsInput
+    department?: DepartmentCreateNestedOneWithoutCompanyPatientsInput
+    patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
-  export type FacilityUpdateWithoutAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
-    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
-    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+  export type CompanyPatientUncheckedCreateWithoutContactInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    departmentId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type FacilityUncheckedUpdateWithoutAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
-    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
-    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+  export type CompanyPatientCreateOrConnectWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput>
+  }
+
+  export type CompanyPatientCreateManyContactInputEnvelope = {
+    data: CompanyPatientCreateManyContactInput | CompanyPatientCreateManyContactInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityUpsertWithWhereUniqueWithoutContactInput = {
+    where: FacilityWhereUniqueInput
+    update: XOR<FacilityUpdateWithoutContactInput, FacilityUncheckedUpdateWithoutContactInput>
+    create: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput>
+  }
+
+  export type FacilityUpdateWithWhereUniqueWithoutContactInput = {
+    where: FacilityWhereUniqueInput
+    data: XOR<FacilityUpdateWithoutContactInput, FacilityUncheckedUpdateWithoutContactInput>
+  }
+
+  export type FacilityUpdateManyWithWhereWithoutContactInput = {
+    where: FacilityScalarWhereInput
+    data: XOR<FacilityUpdateManyMutationInput, FacilityUncheckedUpdateManyWithoutContactInput>
+  }
+
+  export type CompanyPatientUpsertWithWhereUniqueWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutContactInput, CompanyPatientUncheckedUpdateWithoutContactInput>
+    create: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput>
+  }
+
+  export type CompanyPatientUpdateWithWhereUniqueWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutContactInput, CompanyPatientUncheckedUpdateWithoutContactInput>
+  }
+
+  export type CompanyPatientUpdateManyWithWhereWithoutContactInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutContactInput>
   }
 
   export type CompanyCreateWithoutPackagesInput = {
@@ -75831,10 +77902,10 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -75851,10 +77922,10 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -75887,10 +77958,10 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -75907,10 +77978,10 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type FacilityCreateWithoutShippingLabelsInput = {
@@ -75920,23 +77991,27 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityUncheckedCreateWithoutShippingLabelsInput = {
     id?: string
     name: string
     companyId: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
-    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
   export type FacilityCreateOrConnectWithoutShippingLabelsInput = {
@@ -76002,23 +78077,27 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutShippingLabelsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
   }
 
   export type OrderUpsertWithWhereUniqueWithoutShippingLabelInput = {
@@ -76136,6 +78215,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutPrimaryPhysicianInput = {
@@ -76157,6 +78237,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutPrimaryPhysicianInput = {
@@ -77215,7 +79296,6 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -77233,7 +79313,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -77259,9 +79338,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -77279,9 +79358,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -77312,7 +79391,6 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -77330,7 +79408,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -77362,9 +79439,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -77382,9 +79459,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -77401,10 +79478,10 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -77421,10 +79498,10 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -77443,7 +79520,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -77461,7 +79537,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -77498,10 +79573,10 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -77518,10 +79593,10 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -77546,7 +79621,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -77564,7 +79638,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -77582,7 +79655,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -77600,7 +79672,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -77610,6 +79681,107 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutDepartmentsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
+  }
+
+  export type DepartmentCreateWithoutDepartmentUsersInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutDepartmentsInput
+    companyPatients?: CompanyPatientCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutDepartmentUsersInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companyPatients?: CompanyPatientUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutDepartmentUsersInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutDepartmentUsersInput, DepartmentUncheckedCreateWithoutDepartmentUsersInput>
+  }
+
+  export type UserUpsertWithoutDepartmentsInput = {
+    update: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
+    create: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDepartmentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
+  }
+
+  export type UserUpdateWithoutDepartmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDepartmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type DepartmentUpsertWithoutDepartmentUsersInput = {
+    update: XOR<DepartmentUpdateWithoutDepartmentUsersInput, DepartmentUncheckedUpdateWithoutDepartmentUsersInput>
+    create: XOR<DepartmentCreateWithoutDepartmentUsersInput, DepartmentUncheckedCreateWithoutDepartmentUsersInput>
+    where?: DepartmentWhereInput
+  }
+
+  export type DepartmentUpdateToOneWithWhereWithoutDepartmentUsersInput = {
+    where?: DepartmentWhereInput
+    data: XOR<DepartmentUpdateWithoutDepartmentUsersInput, DepartmentUncheckedUpdateWithoutDepartmentUsersInput>
+  }
+
+  export type DepartmentUpdateWithoutDepartmentUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+    companyPatients?: CompanyPatientUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutDepartmentUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyPatients?: CompanyPatientUncheckedUpdateManyWithoutDepartmentNestedInput
   }
 
   export type CompanyCreateWithoutDepartmentsInput = {
@@ -77657,51 +79829,56 @@ export namespace Prisma {
     create: XOR<CompanyCreateWithoutDepartmentsInput, CompanyUncheckedCreateWithoutDepartmentsInput>
   }
 
-  export type UserUpsertWithoutDepartmentsInput = {
-    update: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
-    create: XOR<UserCreateWithoutDepartmentsInput, UserUncheckedCreateWithoutDepartmentsInput>
-    where?: UserWhereInput
+  export type DepartmentUserCreateWithoutDepartmentInput = {
+    role?: $Enums.CompanyRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutDepartmentsInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutDepartmentsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutDepartmentsInput, UserUncheckedUpdateWithoutDepartmentsInput>
+  export type DepartmentUserUncheckedCreateWithoutDepartmentInput = {
+    userId: string
+    role?: $Enums.CompanyRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type UserUpdateWithoutDepartmentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
-    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
+  export type DepartmentUserCreateOrConnectWithoutDepartmentInput = {
+    where: DepartmentUserWhereUniqueInput
+    create: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput>
   }
 
-  export type UserUncheckedUpdateWithoutDepartmentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
-    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
+  export type DepartmentUserCreateManyDepartmentInputEnvelope = {
+    data: DepartmentUserCreateManyDepartmentInput | DepartmentUserCreateManyDepartmentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanyPatientCreateWithoutDepartmentInput = {
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutPatientsInput
+    contact?: ContactCreateNestedOneWithoutCompanyPatientsInput
+    patient: PatientCreateNestedOneWithoutCompaniesInput
+  }
+
+  export type CompanyPatientUncheckedCreateWithoutDepartmentInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    contactId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyPatientCreateOrConnectWithoutDepartmentInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type CompanyPatientCreateManyDepartmentInputEnvelope = {
+    data: CompanyPatientCreateManyDepartmentInput | CompanyPatientCreateManyDepartmentInput[]
+    skipDuplicates?: boolean
   }
 
   export type CompanyUpsertWithoutDepartmentsInput = {
@@ -77755,6 +79932,49 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
+  export type DepartmentUserUpsertWithWhereUniqueWithoutDepartmentInput = {
+    where: DepartmentUserWhereUniqueInput
+    update: XOR<DepartmentUserUpdateWithoutDepartmentInput, DepartmentUserUncheckedUpdateWithoutDepartmentInput>
+    create: XOR<DepartmentUserCreateWithoutDepartmentInput, DepartmentUserUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type DepartmentUserUpdateWithWhereUniqueWithoutDepartmentInput = {
+    where: DepartmentUserWhereUniqueInput
+    data: XOR<DepartmentUserUpdateWithoutDepartmentInput, DepartmentUserUncheckedUpdateWithoutDepartmentInput>
+  }
+
+  export type DepartmentUserUpdateManyWithWhereWithoutDepartmentInput = {
+    where: DepartmentUserScalarWhereInput
+    data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyWithoutDepartmentInput>
+  }
+
+  export type DepartmentUserScalarWhereInput = {
+    AND?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+    OR?: DepartmentUserScalarWhereInput[]
+    NOT?: DepartmentUserScalarWhereInput | DepartmentUserScalarWhereInput[]
+    userId?: StringFilter<"DepartmentUser"> | string
+    departmentId?: StringFilter<"DepartmentUser"> | string
+    role?: EnumCompanyRoleFilter<"DepartmentUser"> | $Enums.CompanyRole
+    createdAt?: DateTimeFilter<"DepartmentUser"> | Date | string
+    updatedAt?: DateTimeFilter<"DepartmentUser"> | Date | string
+  }
+
+  export type CompanyPatientUpsertWithWhereUniqueWithoutDepartmentInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutDepartmentInput, CompanyPatientUncheckedUpdateWithoutDepartmentInput>
+    create: XOR<CompanyPatientCreateWithoutDepartmentInput, CompanyPatientUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type CompanyPatientUpdateWithWhereUniqueWithoutDepartmentInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutDepartmentInput, CompanyPatientUncheckedUpdateWithoutDepartmentInput>
+  }
+
+  export type CompanyPatientUpdateManyWithWhereWithoutDepartmentInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutDepartmentInput>
+  }
+
   export type CompanyCreateWithoutPatientsInput = {
     id?: string
     name: string
@@ -77770,9 +79990,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -77790,14 +80010,78 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
     where: CompanyWhereUniqueInput
     create: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
+  }
+
+  export type DepartmentCreateWithoutCompanyPatientsInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutDepartmentsInput
+    departmentUsers?: DepartmentUserCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutCompanyPatientsInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentUsers?: DepartmentUserUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutCompanyPatientsInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutCompanyPatientsInput, DepartmentUncheckedCreateWithoutCompanyPatientsInput>
+  }
+
+  export type ContactCreateWithoutCompanyPatientsInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactUncheckedCreateWithoutCompanyPatientsInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactCreateOrConnectWithoutCompanyPatientsInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutCompanyPatientsInput, ContactUncheckedCreateWithoutCompanyPatientsInput>
   }
 
   export type PatientCreateWithoutCompaniesInput = {
@@ -77819,6 +80103,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutCompaniesInput = {
@@ -77840,6 +80125,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    facilityPatients?: FacilityPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutCompaniesInput = {
@@ -77873,9 +80159,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -77893,9 +80179,85 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type DepartmentUpsertWithoutCompanyPatientsInput = {
+    update: XOR<DepartmentUpdateWithoutCompanyPatientsInput, DepartmentUncheckedUpdateWithoutCompanyPatientsInput>
+    create: XOR<DepartmentCreateWithoutCompanyPatientsInput, DepartmentUncheckedCreateWithoutCompanyPatientsInput>
+    where?: DepartmentWhereInput
+  }
+
+  export type DepartmentUpdateToOneWithWhereWithoutCompanyPatientsInput = {
+    where?: DepartmentWhereInput
+    data: XOR<DepartmentUpdateWithoutCompanyPatientsInput, DepartmentUncheckedUpdateWithoutCompanyPatientsInput>
+  }
+
+  export type DepartmentUpdateWithoutCompanyPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+    departmentUsers?: DepartmentUserUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutCompanyPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentUsers?: DepartmentUserUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type ContactUpsertWithoutCompanyPatientsInput = {
+    update: XOR<ContactUpdateWithoutCompanyPatientsInput, ContactUncheckedUpdateWithoutCompanyPatientsInput>
+    create: XOR<ContactCreateWithoutCompanyPatientsInput, ContactUncheckedCreateWithoutCompanyPatientsInput>
+    where?: ContactWhereInput
+  }
+
+  export type ContactUpdateToOneWithWhereWithoutCompanyPatientsInput = {
+    where?: ContactWhereInput
+    data: XOR<ContactUpdateWithoutCompanyPatientsInput, ContactUncheckedUpdateWithoutCompanyPatientsInput>
+  }
+
+  export type ContactUpdateWithoutCompanyPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutContactNestedInput
+  }
+
+  export type ContactUncheckedUpdateWithoutCompanyPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutContactNestedInput
   }
 
   export type PatientUpsertWithoutCompaniesInput = {
@@ -77928,6 +80290,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutCompaniesInput = {
@@ -77949,162 +80312,187 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
-  export type FacilityCreateWithoutUsersInput = {
+  export type FacilityCreateWithoutFacilityPatientsInput = {
     id?: string
     name: string
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentSite?: FacilityCreateNestedOneWithoutSiteChildFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityCreateNestedManyWithoutParentSiteInput
   }
 
-  export type FacilityUncheckedCreateWithoutUsersInput = {
+  export type FacilityUncheckedCreateWithoutFacilityPatientsInput = {
     id?: string
     name: string
     companyId: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+    siteChildFacilities?: FacilityUncheckedCreateNestedManyWithoutParentSiteInput
   }
 
-  export type FacilityCreateOrConnectWithoutUsersInput = {
+  export type FacilityCreateOrConnectWithoutFacilityPatientsInput = {
     where: FacilityWhereUniqueInput
-    create: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
+    create: XOR<FacilityCreateWithoutFacilityPatientsInput, FacilityUncheckedCreateWithoutFacilityPatientsInput>
   }
 
-  export type UserCreateWithoutFacilitiesInput = {
+  export type PatientCreateWithoutFacilityPatientsInput = {
     id?: string
-    email?: string | null
-    phone?: string | null
-    password?: string | null
-    pin?: string | null
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    companies?: CompanyUserCreateNestedManyWithoutUserInput
-    departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    clinician?: ClinicianCreateNestedOneWithoutUserInput
-    notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
-    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
-    agreements?: UserAgreementCreateNestedManyWithoutUserInput
+    primaryPhysician?: PhysicianCreateNestedOneWithoutPatientInput
+    feet?: FootCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
-  export type UserUncheckedCreateWithoutFacilitiesInput = {
+  export type PatientUncheckedCreateWithoutFacilityPatientsInput = {
     id?: string
-    email?: string | null
-    phone?: string | null
-    password?: string | null
-    pin?: string | null
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
-    notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
-    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
-    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
+    primaryPhysicianId?: string | null
+    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
-  export type UserCreateOrConnectWithoutFacilitiesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
+  export type PatientCreateOrConnectWithoutFacilityPatientsInput = {
+    where: PatientWhereUniqueInput
+    create: XOR<PatientCreateWithoutFacilityPatientsInput, PatientUncheckedCreateWithoutFacilityPatientsInput>
   }
 
-  export type FacilityUpsertWithoutUsersInput = {
-    update: XOR<FacilityUpdateWithoutUsersInput, FacilityUncheckedUpdateWithoutUsersInput>
-    create: XOR<FacilityCreateWithoutUsersInput, FacilityUncheckedCreateWithoutUsersInput>
+  export type FacilityUpsertWithoutFacilityPatientsInput = {
+    update: XOR<FacilityUpdateWithoutFacilityPatientsInput, FacilityUncheckedUpdateWithoutFacilityPatientsInput>
+    create: XOR<FacilityCreateWithoutFacilityPatientsInput, FacilityUncheckedCreateWithoutFacilityPatientsInput>
     where?: FacilityWhereInput
   }
 
-  export type FacilityUpdateToOneWithWhereWithoutUsersInput = {
+  export type FacilityUpdateToOneWithWhereWithoutFacilityPatientsInput = {
     where?: FacilityWhereInput
-    data: XOR<FacilityUpdateWithoutUsersInput, FacilityUncheckedUpdateWithoutUsersInput>
+    data: XOR<FacilityUpdateWithoutFacilityPatientsInput, FacilityUncheckedUpdateWithoutFacilityPatientsInput>
   }
 
-  export type FacilityUpdateWithoutUsersInput = {
+  export type FacilityUpdateWithoutFacilityPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
   }
 
-  export type FacilityUncheckedUpdateWithoutUsersInput = {
+  export type FacilityUncheckedUpdateWithoutFacilityPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
   }
 
-  export type UserUpsertWithoutFacilitiesInput = {
-    update: XOR<UserUpdateWithoutFacilitiesInput, UserUncheckedUpdateWithoutFacilitiesInput>
-    create: XOR<UserCreateWithoutFacilitiesInput, UserUncheckedCreateWithoutFacilitiesInput>
-    where?: UserWhereInput
+  export type PatientUpsertWithoutFacilityPatientsInput = {
+    update: XOR<PatientUpdateWithoutFacilityPatientsInput, PatientUncheckedUpdateWithoutFacilityPatientsInput>
+    create: XOR<PatientCreateWithoutFacilityPatientsInput, PatientUncheckedCreateWithoutFacilityPatientsInput>
+    where?: PatientWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutFacilitiesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutFacilitiesInput, UserUncheckedUpdateWithoutFacilitiesInput>
+  export type PatientUpdateToOneWithWhereWithoutFacilityPatientsInput = {
+    where?: PatientWhereInput
+    data: XOR<PatientUpdateWithoutFacilityPatientsInput, PatientUncheckedUpdateWithoutFacilityPatientsInput>
   }
 
-  export type UserUpdateWithoutFacilitiesInput = {
+  export type PatientUpdateWithoutFacilityPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
+    primaryPhysician?: PhysicianUpdateOneWithoutPatientNestedInput
+    feet?: FootUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutFacilitiesInput = {
+  export type PatientUncheckedUpdateWithoutFacilityPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type StripeEntityCreateWithoutStripeProductsInput = {
@@ -78909,9 +81297,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeEntitiesInput = {
@@ -78929,9 +81317,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeEntitiesInput = {
@@ -79174,9 +81562,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeEntitiesInput = {
@@ -79194,9 +81582,9 @@ export namespace Prisma {
     apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type StripeEntityUpsertWithoutChildEntitiesInput = {
@@ -79595,18 +81983,14 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateWithoutUserInput = {
-    id?: string
-    department: $Enums.CompanyDepartment
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutDepartmentsInput
+    department: DepartmentCreateNestedOneWithoutDepartmentUsersInput
   }
 
   export type DepartmentUserUncheckedCreateWithoutUserInput = {
-    id?: string
-    companyId: string
-    department: $Enums.CompanyDepartment
+    departmentId: string
     role?: $Enums.CompanyRole
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -79619,28 +82003,6 @@ export namespace Prisma {
 
   export type DepartmentUserCreateManyUserInputEnvelope = {
     data: DepartmentUserCreateManyUserInput | DepartmentUserCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FacilityUserCreateWithoutUserInput = {
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    facility: FacilityCreateNestedOneWithoutUsersInput
-  }
-
-  export type FacilityUserUncheckedCreateWithoutUserInput = {
-    facilityId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FacilityUserCreateOrConnectWithoutUserInput = {
-    where: FacilityUserWhereUniqueInput
-    create: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput>
-  }
-
-  export type FacilityUserCreateManyUserInputEnvelope = {
-    data: FacilityUserCreateManyUserInput | FacilityUserCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -79816,22 +82178,6 @@ export namespace Prisma {
     data: XOR<DepartmentUserUpdateManyMutationInput, DepartmentUserUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type FacilityUserUpsertWithWhereUniqueWithoutUserInput = {
-    where: FacilityUserWhereUniqueInput
-    update: XOR<FacilityUserUpdateWithoutUserInput, FacilityUserUncheckedUpdateWithoutUserInput>
-    create: XOR<FacilityUserCreateWithoutUserInput, FacilityUserUncheckedCreateWithoutUserInput>
-  }
-
-  export type FacilityUserUpdateWithWhereUniqueWithoutUserInput = {
-    where: FacilityUserWhereUniqueInput
-    data: XOR<FacilityUserUpdateWithoutUserInput, FacilityUserUncheckedUpdateWithoutUserInput>
-  }
-
-  export type FacilityUserUpdateManyWithWhereWithoutUserInput = {
-    where: FacilityUserScalarWhereInput
-    data: XOR<FacilityUserUpdateManyMutationInput, FacilityUserUncheckedUpdateManyWithoutUserInput>
-  }
-
   export type ClinicianUpsertWithoutUserInput = {
     update: XOR<ClinicianUpdateWithoutUserInput, ClinicianUncheckedUpdateWithoutUserInput>
     create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
@@ -79932,7 +82278,6 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -79950,7 +82295,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -80005,7 +82349,6 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -80023,7 +82366,6 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -80107,7 +82449,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
@@ -80125,7 +82466,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
@@ -80159,7 +82499,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
@@ -80177,7 +82516,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
@@ -80198,10 +82536,10 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -80218,10 +82556,10 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -80254,10 +82592,10 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -80274,15 +82612,17 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type FacilityCreateManyCompanyInput = {
     id?: string
     name: string
+    contactId?: string | null
+    siteId?: string | null
     type: $Enums.FacilityType
     active?: boolean
     createdAt?: Date | string
@@ -80350,18 +82690,11 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DepartmentUserCreateManyCompanyInput = {
-    id?: string
-    userId: string
-    department: $Enums.CompanyDepartment
-    role?: $Enums.CompanyRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type CompanyPatientCreateManyCompanyInput = {
     patientId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -80392,6 +82725,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type DepartmentCreateManyCompanyInput = {
+    id?: string
+    name: string
+    type: $Enums.CompanyDepartment
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FacilityUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -80399,28 +82740,34 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityUncheckedUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
   }
 
   export type FacilityUncheckedUpdateManyWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -80614,43 +82961,20 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DepartmentUserUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
-    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutDepartmentsNestedInput
-  }
-
-  export type DepartmentUserUncheckedUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
-    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DepartmentUserUncheckedUpdateManyWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
-    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type CompanyPatientUpdateWithoutCompanyInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneWithoutCompanyPatientsNestedInput
+    contact?: ContactUpdateOneWithoutCompanyPatientsNestedInput
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -80658,6 +82982,8 @@ export namespace Prisma {
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -80748,10 +83074,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityUserCreateManyFacilityInput = {
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type DepartmentUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentUsers?: DepartmentUserUpdateManyWithoutDepartmentNestedInput
+    companyPatients?: CompanyPatientUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentUsers?: DepartmentUserUncheckedUpdateManyWithoutDepartmentNestedInput
+    companyPatients?: CompanyPatientUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EvaluationCreateManyFacilityInput = {
@@ -80797,22 +83145,22 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type FacilityUserUpdateWithoutFacilityInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutFacilitiesNestedInput
+  export type FacilityPatientCreateManyFacilityInput = {
+    id?: string
+    patientId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type FacilityUserUncheckedUpdateWithoutFacilityInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FacilityUserUncheckedUpdateManyWithoutFacilityInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type FacilityCreateManyParentSiteInput = {
+    id?: string
+    name: string
+    companyId: string
+    contactId?: string | null
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EvaluationUpdateWithoutFacilityInput = {
@@ -80950,6 +83298,68 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FacilityPatientUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutFacilityPatientsNestedInput
+  }
+
+  export type FacilityPatientUncheckedUpdateWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilityPatientUncheckedUpdateManyWithoutFacilityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilityUpdateWithoutParentSiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutParentSiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutParentSiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type FootCreateManyPatientInput = {
     id?: string
     workbenchId: string
@@ -81019,6 +83429,15 @@ export namespace Prisma {
   export type CompanyPatientCreateManyPatientInput = {
     companyId: string
     externalId?: string | null
+    departmentId?: string | null
+    contactId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityPatientCreateManyPatientInput = {
+    id?: string
+    facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -81242,11 +83661,15 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    department?: DepartmentUpdateOneWithoutCompanyPatientsNestedInput
+    contact?: ContactUpdateOneWithoutCompanyPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -81254,6 +83677,29 @@ export namespace Prisma {
   export type CompanyPatientUncheckedUpdateManyWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilityPatientUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facility?: FacilityUpdateOneRequiredWithoutFacilityPatientsNestedInput
+  }
+
+  export type FacilityPatientUncheckedUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facilityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilityPatientUncheckedUpdateManyWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -82064,6 +84510,94 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type FacilityCreateManyContactInput = {
+    id?: string
+    name: string
+    companyId: string
+    siteId?: string | null
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyPatientCreateManyContactInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    departmentId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentSite?: FacilityUpdateOneWithoutSiteChildFacilitiesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUpdateManyWithoutParentSiteNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutFacilityNestedInput
+    siteChildFacilities?: FacilityUncheckedUpdateManyWithoutParentSiteNestedInput
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    siteId?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUpdateWithoutContactInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    department?: DepartmentUpdateOneWithoutCompanyPatientsNestedInput
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+  }
+
+  export type CompanyPatientUncheckedUpdateWithoutContactInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutContactInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type OrderCreateManyShippingLabelInput = {
     id?: string
     workbenchId: string
@@ -82296,6 +84830,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutPrimaryPhysicianInput = {
@@ -82317,6 +84852,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    facilityPatients?: FacilityPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateManyWithoutPrimaryPhysicianInput = {
@@ -83005,6 +85541,70 @@ export namespace Prisma {
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     active?: BoolFieldUpdateOperationsInput | boolean
     favorite?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentUserCreateManyDepartmentInput = {
+    userId: string
+    role?: $Enums.CompanyRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyPatientCreateManyDepartmentInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    contactId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepartmentUserUpdateWithoutDepartmentInput = {
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutDepartmentsNestedInput
+  }
+
+  export type DepartmentUserUncheckedUpdateWithoutDepartmentInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentUserUncheckedUpdateManyWithoutDepartmentInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUpdateWithoutDepartmentInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    contact?: ContactUpdateOneWithoutCompanyPatientsNestedInput
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+  }
+
+  export type CompanyPatientUncheckedUpdateWithoutDepartmentInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutDepartmentInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -83790,16 +86390,8 @@ export namespace Prisma {
   }
 
   export type DepartmentUserCreateManyUserInput = {
-    id?: string
-    companyId: string
-    department: $Enums.CompanyDepartment
+    departmentId: string
     role?: $Enums.CompanyRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FacilityUserCreateManyUserInput = {
-    facilityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -83877,46 +86469,22 @@ export namespace Prisma {
   }
 
   export type DepartmentUserUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutDepartmentsNestedInput
+    department?: DepartmentUpdateOneRequiredWithoutDepartmentUsersNestedInput
   }
 
   export type DepartmentUserUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DepartmentUserUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    department?: EnumCompanyDepartmentFieldUpdateOperationsInput | $Enums.CompanyDepartment
+    departmentId?: StringFieldUpdateOperationsInput | string
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FacilityUserUpdateWithoutUserInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facility?: FacilityUpdateOneRequiredWithoutUsersNestedInput
-  }
-
-  export type FacilityUserUncheckedUpdateWithoutUserInput = {
-    facilityId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FacilityUserUncheckedUpdateManyWithoutUserInput = {
-    facilityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -84085,6 +86653,10 @@ export namespace Prisma {
      */
     export type WorkbenchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ContactCountOutputTypeDefaultArgs instead
+     */
+    export type ContactCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContactCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use ShippingLabelCountOutputTypeDefaultArgs instead
      */
     export type ShippingLabelCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
@@ -84120,6 +86692,10 @@ export namespace Prisma {
      * @deprecated Use CatalogVendorCountOutputTypeDefaultArgs instead
      */
     export type CatalogVendorCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CatalogVendorCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use DepartmentCountOutputTypeDefaultArgs instead
+     */
+    export type DepartmentCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DepartmentCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use StripeProductCountOutputTypeDefaultArgs instead
      */
@@ -84197,9 +86773,9 @@ export namespace Prisma {
      */
     export type OrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrderDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use FacilityAddressDefaultArgs instead
+     * @deprecated Use ContactDefaultArgs instead
      */
-    export type FacilityAddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityAddressDefaultArgs<ExtArgs>
+    export type ContactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContactDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ShippingPackageDefaultArgs instead
      */
@@ -84277,13 +86853,17 @@ export namespace Prisma {
      */
     export type DepartmentUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DepartmentUserDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use DepartmentDefaultArgs instead
+     */
+    export type DepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DepartmentDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use CompanyPatientDefaultArgs instead
      */
     export type CompanyPatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyPatientDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use FacilityUserDefaultArgs instead
+     * @deprecated Use FacilityPatientDefaultArgs instead
      */
-    export type FacilityUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityUserDefaultArgs<ExtArgs>
+    export type FacilityPatientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityPatientDefaultArgs<ExtArgs>
     /**
      * @deprecated Use StripeProductDefaultArgs instead
      */
