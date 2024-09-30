@@ -214,6 +214,16 @@ export type StripeSubscription = $Result.DefaultSelection<Prisma.$StripeSubscrip
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model UserAgreement
+ * 
+ */
+export type UserAgreement = $Result.DefaultSelection<Prisma.$UserAgreementPayload>
+/**
+ * Model Agreement
+ * 
+ */
+export type Agreement = $Result.DefaultSelection<Prisma.$AgreementPayload>
+/**
  * Model Account
  * 
  */
@@ -566,6 +576,24 @@ export const StripeEntityType: {
 
 export type StripeEntityType = (typeof StripeEntityType)[keyof typeof StripeEntityType]
 
+
+export const AgreementStatus: {
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
+export type AgreementStatus = (typeof AgreementStatus)[keyof typeof AgreementStatus]
+
+
+export const AgreementType: {
+  CLINICAL_TC: 'CLINICAL_TC',
+  CONSUMER_TC: 'CONSUMER_TC',
+  SIMPLR_TC: 'SIMPLR_TC',
+  ENABLE_SMS: 'ENABLE_SMS'
+};
+
+export type AgreementType = (typeof AgreementType)[keyof typeof AgreementType]
+
 }
 
 export type FacilityType = $Enums.FacilityType
@@ -687,6 +715,14 @@ export const StripeInvoiceStatus: typeof $Enums.StripeInvoiceStatus
 export type StripeEntityType = $Enums.StripeEntityType
 
 export const StripeEntityType: typeof $Enums.StripeEntityType
+
+export type AgreementStatus = $Enums.AgreementStatus
+
+export const AgreementStatus: typeof $Enums.AgreementStatus
+
+export type AgreementType = $Enums.AgreementType
+
+export const AgreementType: typeof $Enums.AgreementType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1209,6 +1245,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.userAgreement`: Exposes CRUD operations for the **UserAgreement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserAgreements
+    * const userAgreements = await prisma.userAgreement.findMany()
+    * ```
+    */
+  get userAgreement(): Prisma.UserAgreementDelegate<ExtArgs>;
+
+  /**
+   * `prisma.agreement`: Exposes CRUD operations for the **Agreement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Agreements
+    * const agreements = await prisma.agreement.findMany()
+    * ```
+    */
+  get agreement(): Prisma.AgreementDelegate<ExtArgs>;
 
   /**
    * `prisma.account`: Exposes CRUD operations for the **Account** model.
@@ -1766,6 +1822,8 @@ export namespace Prisma {
     StripeEntity: 'StripeEntity',
     StripeSubscription: 'StripeSubscription',
     User: 'User',
+    UserAgreement: 'UserAgreement',
+    Agreement: 'Agreement',
     Account: 'Account',
     AccountVerification: 'AccountVerification',
     ApiKey: 'ApiKey',
@@ -1786,7 +1844,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4590,6 +4648,146 @@ export namespace Prisma {
           }
         }
       }
+      UserAgreement: {
+        payload: Prisma.$UserAgreementPayload<ExtArgs>
+        fields: Prisma.UserAgreementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserAgreementFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserAgreementFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          findFirst: {
+            args: Prisma.UserAgreementFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserAgreementFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          findMany: {
+            args: Prisma.UserAgreementFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>[]
+          }
+          create: {
+            args: Prisma.UserAgreementCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          createMany: {
+            args: Prisma.UserAgreementCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserAgreementCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>[]
+          }
+          delete: {
+            args: Prisma.UserAgreementDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          update: {
+            args: Prisma.UserAgreementUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserAgreementDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserAgreementUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserAgreementUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UserAgreementPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAgreementAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateUserAgreement>
+          }
+          groupBy: {
+            args: Prisma.UserAgreementGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<UserAgreementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserAgreementCountArgs<ExtArgs>,
+            result: $Utils.Optional<UserAgreementCountAggregateOutputType> | number
+          }
+        }
+      }
+      Agreement: {
+        payload: Prisma.$AgreementPayload<ExtArgs>
+        fields: Prisma.AgreementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AgreementFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AgreementFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          findFirst: {
+            args: Prisma.AgreementFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AgreementFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          findMany: {
+            args: Prisma.AgreementFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>[]
+          }
+          create: {
+            args: Prisma.AgreementCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          createMany: {
+            args: Prisma.AgreementCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AgreementCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>[]
+          }
+          delete: {
+            args: Prisma.AgreementDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          update: {
+            args: Prisma.AgreementUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          deleteMany: {
+            args: Prisma.AgreementDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AgreementUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.AgreementUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$AgreementPayload>
+          }
+          aggregate: {
+            args: Prisma.AgreementAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAgreement>
+          }
+          groupBy: {
+            args: Prisma.AgreementGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AgreementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AgreementCountArgs<ExtArgs>,
+            result: $Utils.Optional<AgreementCountAggregateOutputType> | number
+          }
+        }
+      }
       Account: {
         payload: Prisma.$AccountPayload<ExtArgs>
         fields: Prisma.AccountFieldRefs
@@ -6037,6 +6235,7 @@ export namespace Prisma {
     facilities: number
     notes: number
     auditsLogs: number
+    agreements: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6046,6 +6245,7 @@ export namespace Prisma {
     facilities?: boolean | UserCountOutputTypeCountFacilitiesArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
     auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
+    agreements?: boolean | UserCountOutputTypeCountAgreementsArgs
   }
 
   // Custom InputTypes
@@ -6099,6 +6299,44 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAuditsLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AuditLogWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAgreementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserAgreementWhereInput
+  }
+
+
+  /**
+   * Count Type AgreementCountOutputType
+   */
+
+  export type AgreementCountOutputType = {
+    userAgreements: number
+  }
+
+  export type AgreementCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userAgreements?: boolean | AgreementCountOutputTypeCountUserAgreementsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AgreementCountOutputType without action
+   */
+  export type AgreementCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AgreementCountOutputType
+     */
+    select?: AgreementCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AgreementCountOutputType without action
+   */
+  export type AgreementCountOutputTypeCountUserAgreementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserAgreementWhereInput
   }
 
 
@@ -46902,6 +47140,7 @@ export namespace Prisma {
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
+    agreements?: boolean | User$agreementsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -46925,6 +47164,7 @@ export namespace Prisma {
     clinician?: boolean | User$clinicianArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
+    agreements?: boolean | User$agreementsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -46939,6 +47179,7 @@ export namespace Prisma {
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
       auditsLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+      agreements: Prisma.$UserAgreementPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -47353,6 +47594,8 @@ export namespace Prisma {
     notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchNotesPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     auditsLogs<T extends User$auditsLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    agreements<T extends User$agreementsArgs<ExtArgs> = {}>(args?: Subset<T, User$agreementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -47843,6 +48086,26 @@ export namespace Prisma {
   }
 
   /**
+   * User.agreements
+   */
+  export type User$agreementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    where?: UserAgreementWhereInput
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    cursor?: UserAgreementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -47854,6 +48117,1933 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserAgreement
+   */
+
+  export type AggregateUserAgreement = {
+    _count: UserAgreementCountAggregateOutputType | null
+    _min: UserAgreementMinAggregateOutputType | null
+    _max: UserAgreementMaxAggregateOutputType | null
+  }
+
+  export type UserAgreementMinAggregateOutputType = {
+    userId: string | null
+    agreementId: string | null
+    status: $Enums.AgreementStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserAgreementMaxAggregateOutputType = {
+    userId: string | null
+    agreementId: string | null
+    status: $Enums.AgreementStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserAgreementCountAggregateOutputType = {
+    userId: number
+    agreementId: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserAgreementMinAggregateInputType = {
+    userId?: true
+    agreementId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserAgreementMaxAggregateInputType = {
+    userId?: true
+    agreementId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserAgreementCountAggregateInputType = {
+    userId?: true
+    agreementId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserAgreementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserAgreement to aggregate.
+     */
+    where?: UserAgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAgreements to fetch.
+     */
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserAgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAgreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAgreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserAgreements
+    **/
+    _count?: true | UserAgreementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserAgreementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserAgreementMaxAggregateInputType
+  }
+
+  export type GetUserAgreementAggregateType<T extends UserAgreementAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserAgreement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserAgreement[P]>
+      : GetScalarType<T[P], AggregateUserAgreement[P]>
+  }
+
+
+
+
+  export type UserAgreementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserAgreementWhereInput
+    orderBy?: UserAgreementOrderByWithAggregationInput | UserAgreementOrderByWithAggregationInput[]
+    by: UserAgreementScalarFieldEnum[] | UserAgreementScalarFieldEnum
+    having?: UserAgreementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserAgreementCountAggregateInputType | true
+    _min?: UserAgreementMinAggregateInputType
+    _max?: UserAgreementMaxAggregateInputType
+  }
+
+  export type UserAgreementGroupByOutputType = {
+    userId: string
+    agreementId: string
+    status: $Enums.AgreementStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: UserAgreementCountAggregateOutputType | null
+    _min: UserAgreementMinAggregateOutputType | null
+    _max: UserAgreementMaxAggregateOutputType | null
+  }
+
+  type GetUserAgreementGroupByPayload<T extends UserAgreementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserAgreementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserAgreementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserAgreementGroupByOutputType[P]>
+            : GetScalarType<T[P], UserAgreementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserAgreementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    agreementId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    agreement?: boolean | AgreementDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAgreement"]>
+
+  export type UserAgreementSelectScalar = {
+    userId?: boolean
+    agreementId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type UserAgreementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    agreement?: boolean | AgreementDefaultArgs<ExtArgs>
+  }
+
+
+  export type $UserAgreementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserAgreement"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      agreement: Prisma.$AgreementPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      agreementId: string
+      status: $Enums.AgreementStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userAgreement"]>
+    composites: {}
+  }
+
+
+  type UserAgreementGetPayload<S extends boolean | null | undefined | UserAgreementDefaultArgs> = $Result.GetResult<Prisma.$UserAgreementPayload, S>
+
+  type UserAgreementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserAgreementFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UserAgreementCountAggregateInputType | true
+    }
+
+  export interface UserAgreementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserAgreement'], meta: { name: 'UserAgreement' } }
+    /**
+     * Find zero or one UserAgreement that matches the filter.
+     * @param {UserAgreementFindUniqueArgs} args - Arguments to find a UserAgreement
+     * @example
+     * // Get one UserAgreement
+     * const userAgreement = await prisma.userAgreement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends UserAgreementFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementFindUniqueArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one UserAgreement that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UserAgreementFindUniqueOrThrowArgs} args - Arguments to find a UserAgreement
+     * @example
+     * // Get one UserAgreement
+     * const userAgreement = await prisma.userAgreement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends UserAgreementFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first UserAgreement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementFindFirstArgs} args - Arguments to find a UserAgreement
+     * @example
+     * // Get one UserAgreement
+     * const userAgreement = await prisma.userAgreement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends UserAgreementFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementFindFirstArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first UserAgreement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementFindFirstOrThrowArgs} args - Arguments to find a UserAgreement
+     * @example
+     * // Get one UserAgreement
+     * const userAgreement = await prisma.userAgreement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends UserAgreementFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more UserAgreements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserAgreements
+     * const userAgreements = await prisma.userAgreement.findMany()
+     * 
+     * // Get first 10 UserAgreements
+     * const userAgreements = await prisma.userAgreement.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const userAgreementWithUserIdOnly = await prisma.userAgreement.findMany({ select: { userId: true } })
+     * 
+    **/
+    findMany<T extends UserAgreementFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a UserAgreement.
+     * @param {UserAgreementCreateArgs} args - Arguments to create a UserAgreement.
+     * @example
+     * // Create one UserAgreement
+     * const UserAgreement = await prisma.userAgreement.create({
+     *   data: {
+     *     // ... data to create a UserAgreement
+     *   }
+     * })
+     * 
+    **/
+    create<T extends UserAgreementCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementCreateArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many UserAgreements.
+     * @param {UserAgreementCreateManyArgs} args - Arguments to create many UserAgreements.
+     * @example
+     * // Create many UserAgreements
+     * const userAgreement = await prisma.userAgreement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends UserAgreementCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserAgreements and returns the data saved in the database.
+     * @param {UserAgreementCreateManyAndReturnArgs} args - Arguments to create many UserAgreements.
+     * @example
+     * // Create many UserAgreements
+     * const userAgreement = await prisma.userAgreement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserAgreements and only return the `userId`
+     * const userAgreementWithUserIdOnly = await prisma.userAgreement.createManyAndReturn({ 
+     *   select: { userId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends UserAgreementCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a UserAgreement.
+     * @param {UserAgreementDeleteArgs} args - Arguments to delete one UserAgreement.
+     * @example
+     * // Delete one UserAgreement
+     * const UserAgreement = await prisma.userAgreement.delete({
+     *   where: {
+     *     // ... filter to delete one UserAgreement
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends UserAgreementDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementDeleteArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one UserAgreement.
+     * @param {UserAgreementUpdateArgs} args - Arguments to update one UserAgreement.
+     * @example
+     * // Update one UserAgreement
+     * const userAgreement = await prisma.userAgreement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends UserAgreementUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementUpdateArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more UserAgreements.
+     * @param {UserAgreementDeleteManyArgs} args - Arguments to filter UserAgreements to delete.
+     * @example
+     * // Delete a few UserAgreements
+     * const { count } = await prisma.userAgreement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends UserAgreementDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserAgreementDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserAgreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserAgreements
+     * const userAgreement = await prisma.userAgreement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends UserAgreementUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserAgreement.
+     * @param {UserAgreementUpsertArgs} args - Arguments to update or create a UserAgreement.
+     * @example
+     * // Update or create a UserAgreement
+     * const userAgreement = await prisma.userAgreement.upsert({
+     *   create: {
+     *     // ... data to create a UserAgreement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserAgreement we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends UserAgreementUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, UserAgreementUpsertArgs<ExtArgs>>
+    ): Prisma__UserAgreementClient<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of UserAgreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementCountArgs} args - Arguments to filter UserAgreements to count.
+     * @example
+     * // Count the number of UserAgreements
+     * const count = await prisma.userAgreement.count({
+     *   where: {
+     *     // ... the filter for the UserAgreements we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserAgreementCountArgs>(
+      args?: Subset<T, UserAgreementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserAgreementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserAgreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAgreementAggregateArgs>(args: Subset<T, UserAgreementAggregateArgs>): Prisma.PrismaPromise<GetUserAgreementAggregateType<T>>
+
+    /**
+     * Group by UserAgreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAgreementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserAgreementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserAgreementGroupByArgs['orderBy'] }
+        : { orderBy?: UserAgreementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserAgreementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserAgreementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserAgreement model
+   */
+  readonly fields: UserAgreementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserAgreement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserAgreementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    agreement<T extends AgreementDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgreementDefaultArgs<ExtArgs>>): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the UserAgreement model
+   */ 
+  interface UserAgreementFieldRefs {
+    readonly userId: FieldRef<"UserAgreement", 'String'>
+    readonly agreementId: FieldRef<"UserAgreement", 'String'>
+    readonly status: FieldRef<"UserAgreement", 'AgreementStatus'>
+    readonly createdAt: FieldRef<"UserAgreement", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserAgreement", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserAgreement findUnique
+   */
+  export type UserAgreementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAgreement to fetch.
+     */
+    where: UserAgreementWhereUniqueInput
+  }
+
+  /**
+   * UserAgreement findUniqueOrThrow
+   */
+  export type UserAgreementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAgreement to fetch.
+     */
+    where: UserAgreementWhereUniqueInput
+  }
+
+  /**
+   * UserAgreement findFirst
+   */
+  export type UserAgreementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAgreement to fetch.
+     */
+    where?: UserAgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAgreements to fetch.
+     */
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserAgreements.
+     */
+    cursor?: UserAgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAgreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAgreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserAgreements.
+     */
+    distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAgreement findFirstOrThrow
+   */
+  export type UserAgreementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAgreement to fetch.
+     */
+    where?: UserAgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAgreements to fetch.
+     */
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserAgreements.
+     */
+    cursor?: UserAgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAgreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAgreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserAgreements.
+     */
+    distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAgreement findMany
+   */
+  export type UserAgreementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAgreements to fetch.
+     */
+    where?: UserAgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAgreements to fetch.
+     */
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserAgreements.
+     */
+    cursor?: UserAgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAgreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAgreements.
+     */
+    skip?: number
+    distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAgreement create
+   */
+  export type UserAgreementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserAgreement.
+     */
+    data: XOR<UserAgreementCreateInput, UserAgreementUncheckedCreateInput>
+  }
+
+  /**
+   * UserAgreement createMany
+   */
+  export type UserAgreementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserAgreements.
+     */
+    data: UserAgreementCreateManyInput | UserAgreementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserAgreement createManyAndReturn
+   */
+  export type UserAgreementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * The data used to create many UserAgreements.
+     */
+    data: UserAgreementCreateManyInput | UserAgreementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserAgreement update
+   */
+  export type UserAgreementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserAgreement.
+     */
+    data: XOR<UserAgreementUpdateInput, UserAgreementUncheckedUpdateInput>
+    /**
+     * Choose, which UserAgreement to update.
+     */
+    where: UserAgreementWhereUniqueInput
+  }
+
+  /**
+   * UserAgreement updateMany
+   */
+  export type UserAgreementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserAgreements.
+     */
+    data: XOR<UserAgreementUpdateManyMutationInput, UserAgreementUncheckedUpdateManyInput>
+    /**
+     * Filter which UserAgreements to update
+     */
+    where?: UserAgreementWhereInput
+  }
+
+  /**
+   * UserAgreement upsert
+   */
+  export type UserAgreementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserAgreement to update in case it exists.
+     */
+    where: UserAgreementWhereUniqueInput
+    /**
+     * In case the UserAgreement found by the `where` argument doesn't exist, create a new UserAgreement with this data.
+     */
+    create: XOR<UserAgreementCreateInput, UserAgreementUncheckedCreateInput>
+    /**
+     * In case the UserAgreement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserAgreementUpdateInput, UserAgreementUncheckedUpdateInput>
+  }
+
+  /**
+   * UserAgreement delete
+   */
+  export type UserAgreementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    /**
+     * Filter which UserAgreement to delete.
+     */
+    where: UserAgreementWhereUniqueInput
+  }
+
+  /**
+   * UserAgreement deleteMany
+   */
+  export type UserAgreementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserAgreements to delete
+     */
+    where?: UserAgreementWhereInput
+  }
+
+  /**
+   * UserAgreement without action
+   */
+  export type UserAgreementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Agreement
+   */
+
+  export type AggregateAgreement = {
+    _count: AgreementCountAggregateOutputType | null
+    _min: AgreementMinAggregateOutputType | null
+    _max: AgreementMaxAggregateOutputType | null
+  }
+
+  export type AgreementMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.AgreementType | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AgreementMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.AgreementType | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AgreementCountAggregateOutputType = {
+    id: number
+    type: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AgreementMinAggregateInputType = {
+    id?: true
+    type?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AgreementMaxAggregateInputType = {
+    id?: true
+    type?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AgreementCountAggregateInputType = {
+    id?: true
+    type?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AgreementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agreement to aggregate.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Agreements
+    **/
+    _count?: true | AgreementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AgreementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AgreementMaxAggregateInputType
+  }
+
+  export type GetAgreementAggregateType<T extends AgreementAggregateArgs> = {
+        [P in keyof T & keyof AggregateAgreement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAgreement[P]>
+      : GetScalarType<T[P], AggregateAgreement[P]>
+  }
+
+
+
+
+  export type AgreementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgreementWhereInput
+    orderBy?: AgreementOrderByWithAggregationInput | AgreementOrderByWithAggregationInput[]
+    by: AgreementScalarFieldEnum[] | AgreementScalarFieldEnum
+    having?: AgreementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AgreementCountAggregateInputType | true
+    _min?: AgreementMinAggregateInputType
+    _max?: AgreementMaxAggregateInputType
+  }
+
+  export type AgreementGroupByOutputType = {
+    id: string
+    type: $Enums.AgreementType
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: AgreementCountAggregateOutputType | null
+    _min: AgreementMinAggregateOutputType | null
+    _max: AgreementMaxAggregateOutputType | null
+  }
+
+  type GetAgreementGroupByPayload<T extends AgreementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AgreementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AgreementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AgreementGroupByOutputType[P]>
+            : GetScalarType<T[P], AgreementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AgreementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userAgreements?: boolean | Agreement$userAgreementsArgs<ExtArgs>
+    _count?: boolean | AgreementCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["agreement"]>
+
+  export type AgreementSelectScalar = {
+    id?: boolean
+    type?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type AgreementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userAgreements?: boolean | Agreement$userAgreementsArgs<ExtArgs>
+    _count?: boolean | AgreementCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $AgreementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Agreement"
+    objects: {
+      userAgreements: Prisma.$UserAgreementPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.AgreementType
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["agreement"]>
+    composites: {}
+  }
+
+
+  type AgreementGetPayload<S extends boolean | null | undefined | AgreementDefaultArgs> = $Result.GetResult<Prisma.$AgreementPayload, S>
+
+  type AgreementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AgreementFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AgreementCountAggregateInputType | true
+    }
+
+  export interface AgreementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Agreement'], meta: { name: 'Agreement' } }
+    /**
+     * Find zero or one Agreement that matches the filter.
+     * @param {AgreementFindUniqueArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends AgreementFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementFindUniqueArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Agreement that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AgreementFindUniqueOrThrowArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends AgreementFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Agreement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindFirstArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends AgreementFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementFindFirstArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Agreement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindFirstOrThrowArgs} args - Arguments to find a Agreement
+     * @example
+     * // Get one Agreement
+     * const agreement = await prisma.agreement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends AgreementFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Agreements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agreements
+     * const agreements = await prisma.agreement.findMany()
+     * 
+     * // Get first 10 Agreements
+     * const agreements = await prisma.agreement.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const agreementWithIdOnly = await prisma.agreement.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends AgreementFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Agreement.
+     * @param {AgreementCreateArgs} args - Arguments to create a Agreement.
+     * @example
+     * // Create one Agreement
+     * const Agreement = await prisma.agreement.create({
+     *   data: {
+     *     // ... data to create a Agreement
+     *   }
+     * })
+     * 
+    **/
+    create<T extends AgreementCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementCreateArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Agreements.
+     * @param {AgreementCreateManyArgs} args - Arguments to create many Agreements.
+     * @example
+     * // Create many Agreements
+     * const agreement = await prisma.agreement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends AgreementCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Agreements and returns the data saved in the database.
+     * @param {AgreementCreateManyAndReturnArgs} args - Arguments to create many Agreements.
+     * @example
+     * // Create many Agreements
+     * const agreement = await prisma.agreement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Agreements and only return the `id`
+     * const agreementWithIdOnly = await prisma.agreement.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends AgreementCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a Agreement.
+     * @param {AgreementDeleteArgs} args - Arguments to delete one Agreement.
+     * @example
+     * // Delete one Agreement
+     * const Agreement = await prisma.agreement.delete({
+     *   where: {
+     *     // ... filter to delete one Agreement
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends AgreementDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementDeleteArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Agreement.
+     * @param {AgreementUpdateArgs} args - Arguments to update one Agreement.
+     * @example
+     * // Update one Agreement
+     * const agreement = await prisma.agreement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends AgreementUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementUpdateArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Agreements.
+     * @param {AgreementDeleteManyArgs} args - Arguments to filter Agreements to delete.
+     * @example
+     * // Delete a few Agreements
+     * const { count } = await prisma.agreement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends AgreementDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AgreementDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agreements
+     * const agreement = await prisma.agreement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends AgreementUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Agreement.
+     * @param {AgreementUpsertArgs} args - Arguments to update or create a Agreement.
+     * @example
+     * // Update or create a Agreement
+     * const agreement = await prisma.agreement.upsert({
+     *   create: {
+     *     // ... data to create a Agreement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agreement we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends AgreementUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AgreementUpsertArgs<ExtArgs>>
+    ): Prisma__AgreementClient<$Result.GetResult<Prisma.$AgreementPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Agreements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementCountArgs} args - Arguments to filter Agreements to count.
+     * @example
+     * // Count the number of Agreements
+     * const count = await prisma.agreement.count({
+     *   where: {
+     *     // ... the filter for the Agreements we want to count
+     *   }
+     * })
+    **/
+    count<T extends AgreementCountArgs>(
+      args?: Subset<T, AgreementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AgreementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Agreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AgreementAggregateArgs>(args: Subset<T, AgreementAggregateArgs>): Prisma.PrismaPromise<GetAgreementAggregateType<T>>
+
+    /**
+     * Group by Agreement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgreementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AgreementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AgreementGroupByArgs['orderBy'] }
+        : { orderBy?: AgreementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AgreementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAgreementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Agreement model
+   */
+  readonly fields: AgreementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Agreement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AgreementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    userAgreements<T extends Agreement$userAgreementsArgs<ExtArgs> = {}>(args?: Subset<T, Agreement$userAgreementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Agreement model
+   */ 
+  interface AgreementFieldRefs {
+    readonly id: FieldRef<"Agreement", 'String'>
+    readonly type: FieldRef<"Agreement", 'AgreementType'>
+    readonly active: FieldRef<"Agreement", 'Boolean'>
+    readonly createdAt: FieldRef<"Agreement", 'DateTime'>
+    readonly updatedAt: FieldRef<"Agreement", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Agreement findUnique
+   */
+  export type AgreementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement findUniqueOrThrow
+   */
+  export type AgreementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement findFirst
+   */
+  export type AgreementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agreements.
+     */
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement findFirstOrThrow
+   */
+  export type AgreementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreement to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agreements.
+     */
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement findMany
+   */
+  export type AgreementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter, which Agreements to fetch.
+     */
+    where?: AgreementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agreements to fetch.
+     */
+    orderBy?: AgreementOrderByWithRelationInput | AgreementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Agreements.
+     */
+    cursor?: AgreementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agreements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agreements.
+     */
+    skip?: number
+    distinct?: AgreementScalarFieldEnum | AgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement create
+   */
+  export type AgreementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Agreement.
+     */
+    data: XOR<AgreementCreateInput, AgreementUncheckedCreateInput>
+  }
+
+  /**
+   * Agreement createMany
+   */
+  export type AgreementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Agreements.
+     */
+    data: AgreementCreateManyInput | AgreementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Agreement createManyAndReturn
+   */
+  export type AgreementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The data used to create many Agreements.
+     */
+    data: AgreementCreateManyInput | AgreementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Agreement update
+   */
+  export type AgreementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Agreement.
+     */
+    data: XOR<AgreementUpdateInput, AgreementUncheckedUpdateInput>
+    /**
+     * Choose, which Agreement to update.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement updateMany
+   */
+  export type AgreementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Agreements.
+     */
+    data: XOR<AgreementUpdateManyMutationInput, AgreementUncheckedUpdateManyInput>
+    /**
+     * Filter which Agreements to update
+     */
+    where?: AgreementWhereInput
+  }
+
+  /**
+   * Agreement upsert
+   */
+  export type AgreementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Agreement to update in case it exists.
+     */
+    where: AgreementWhereUniqueInput
+    /**
+     * In case the Agreement found by the `where` argument doesn't exist, create a new Agreement with this data.
+     */
+    create: XOR<AgreementCreateInput, AgreementUncheckedCreateInput>
+    /**
+     * In case the Agreement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AgreementUpdateInput, AgreementUncheckedUpdateInput>
+  }
+
+  /**
+   * Agreement delete
+   */
+  export type AgreementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
+    /**
+     * Filter which Agreement to delete.
+     */
+    where: AgreementWhereUniqueInput
+  }
+
+  /**
+   * Agreement deleteMany
+   */
+  export type AgreementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agreements to delete
+     */
+    where?: AgreementWhereInput
+  }
+
+  /**
+   * Agreement.userAgreements
+   */
+  export type Agreement$userAgreementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAgreement
+     */
+    select?: UserAgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAgreementInclude<ExtArgs> | null
+    where?: UserAgreementWhereInput
+    orderBy?: UserAgreementOrderByWithRelationInput | UserAgreementOrderByWithRelationInput[]
+    cursor?: UserAgreementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
+  }
+
+  /**
+   * Agreement without action
+   */
+  export type AgreementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agreement
+     */
+    select?: AgreementSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgreementInclude<ExtArgs> | null
   }
 
 
@@ -52732,6 +54922,28 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const UserAgreementScalarFieldEnum: {
+    userId: 'userId',
+    agreementId: 'agreementId',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserAgreementScalarFieldEnum = (typeof UserAgreementScalarFieldEnum)[keyof typeof UserAgreementScalarFieldEnum]
+
+
+  export const AgreementScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AgreementScalarFieldEnum = (typeof AgreementScalarFieldEnum)[keyof typeof AgreementScalarFieldEnum]
+
+
   export const AccountScalarFieldEnum: {
     userId: 'userId',
     profileId: 'profileId',
@@ -53364,6 +55576,34 @@ export namespace Prisma {
    * Reference to a field of type 'StripeEntityType[]'
    */
   export type ListEnumStripeEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeEntityType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementStatus'
+   */
+  export type EnumAgreementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementStatus[]'
+   */
+  export type ListEnumAgreementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementType'
+   */
+  export type EnumAgreementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AgreementType[]'
+   */
+  export type ListEnumAgreementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementType[]'>
     
   /**
    * Deep Input Types
@@ -56555,6 +58795,7 @@ export namespace Prisma {
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
+    agreements?: UserAgreementListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -56573,6 +58814,7 @@ export namespace Prisma {
     clinician?: ClinicianOrderByWithRelationInput
     notes?: WorkbenchNotesOrderByRelationAggregateInput
     auditsLogs?: AuditLogOrderByRelationAggregateInput
+    agreements?: UserAgreementOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -56594,6 +58836,7 @@ export namespace Prisma {
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
+    agreements?: UserAgreementListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -56622,6 +58865,120 @@ export namespace Prisma {
     photoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type UserAgreementWhereInput = {
+    AND?: UserAgreementWhereInput | UserAgreementWhereInput[]
+    OR?: UserAgreementWhereInput[]
+    NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
+    userId?: StringFilter<"UserAgreement"> | string
+    agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
+    createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
+    updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    agreement?: XOR<AgreementRelationFilter, AgreementWhereInput>
+  }
+
+  export type UserAgreementOrderByWithRelationInput = {
+    userId?: SortOrder
+    agreementId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    agreement?: AgreementOrderByWithRelationInput
+  }
+
+  export type UserAgreementWhereUniqueInput = Prisma.AtLeast<{
+    userId_agreementId?: UserAgreementUserIdAgreementIdCompoundUniqueInput
+    AND?: UserAgreementWhereInput | UserAgreementWhereInput[]
+    OR?: UserAgreementWhereInput[]
+    NOT?: UserAgreementWhereInput | UserAgreementWhereInput[]
+    userId?: StringFilter<"UserAgreement"> | string
+    agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
+    createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
+    updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    agreement?: XOR<AgreementRelationFilter, AgreementWhereInput>
+  }, "userId_agreementId">
+
+  export type UserAgreementOrderByWithAggregationInput = {
+    userId?: SortOrder
+    agreementId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserAgreementCountOrderByAggregateInput
+    _max?: UserAgreementMaxOrderByAggregateInput
+    _min?: UserAgreementMinOrderByAggregateInput
+  }
+
+  export type UserAgreementScalarWhereWithAggregatesInput = {
+    AND?: UserAgreementScalarWhereWithAggregatesInput | UserAgreementScalarWhereWithAggregatesInput[]
+    OR?: UserAgreementScalarWhereWithAggregatesInput[]
+    NOT?: UserAgreementScalarWhereWithAggregatesInput | UserAgreementScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"UserAgreement"> | string
+    agreementId?: StringWithAggregatesFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusWithAggregatesFilter<"UserAgreement"> | $Enums.AgreementStatus
+    createdAt?: DateTimeWithAggregatesFilter<"UserAgreement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserAgreement"> | Date | string
+  }
+
+  export type AgreementWhereInput = {
+    AND?: AgreementWhereInput | AgreementWhereInput[]
+    OR?: AgreementWhereInput[]
+    NOT?: AgreementWhereInput | AgreementWhereInput[]
+    id?: StringFilter<"Agreement"> | string
+    type?: EnumAgreementTypeFilter<"Agreement"> | $Enums.AgreementType
+    active?: BoolFilter<"Agreement"> | boolean
+    createdAt?: DateTimeFilter<"Agreement"> | Date | string
+    updatedAt?: DateTimeFilter<"Agreement"> | Date | string
+    userAgreements?: UserAgreementListRelationFilter
+  }
+
+  export type AgreementOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userAgreements?: UserAgreementOrderByRelationAggregateInput
+  }
+
+  export type AgreementWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AgreementWhereInput | AgreementWhereInput[]
+    OR?: AgreementWhereInput[]
+    NOT?: AgreementWhereInput | AgreementWhereInput[]
+    type?: EnumAgreementTypeFilter<"Agreement"> | $Enums.AgreementType
+    active?: BoolFilter<"Agreement"> | boolean
+    createdAt?: DateTimeFilter<"Agreement"> | Date | string
+    updatedAt?: DateTimeFilter<"Agreement"> | Date | string
+    userAgreements?: UserAgreementListRelationFilter
+  }, "id">
+
+  export type AgreementOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AgreementCountOrderByAggregateInput
+    _max?: AgreementMaxOrderByAggregateInput
+    _min?: AgreementMinOrderByAggregateInput
+  }
+
+  export type AgreementScalarWhereWithAggregatesInput = {
+    AND?: AgreementScalarWhereWithAggregatesInput | AgreementScalarWhereWithAggregatesInput[]
+    OR?: AgreementScalarWhereWithAggregatesInput[]
+    NOT?: AgreementScalarWhereWithAggregatesInput | AgreementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Agreement"> | string
+    type?: EnumAgreementTypeWithAggregatesFilter<"Agreement"> | $Enums.AgreementType
+    active?: BoolWithAggregatesFilter<"Agreement"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Agreement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Agreement"> | Date | string
   }
 
   export type AccountWhereInput = {
@@ -60578,6 +62935,7 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -60596,6 +62954,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -60614,6 +62973,7 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -60632,6 +62992,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -60663,6 +63024,120 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementCreateInput = {
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutAgreementsInput
+    agreement: AgreementCreateNestedOneWithoutUserAgreementsInput
+  }
+
+  export type UserAgreementUncheckedCreateInput = {
+    userId: string
+    agreementId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserAgreementUpdateInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAgreementsNestedInput
+    agreement?: AgreementUpdateOneRequiredWithoutUserAgreementsNestedInput
+  }
+
+  export type UserAgreementUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementCreateManyInput = {
+    userId: string
+    agreementId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserAgreementUpdateManyMutationInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementCreateInput = {
+    id?: string
+    type: $Enums.AgreementType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAgreements?: UserAgreementCreateNestedManyWithoutAgreementInput
+  }
+
+  export type AgreementUncheckedCreateInput = {
+    id?: string
+    type: $Enums.AgreementType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAgreements?: UserAgreementUncheckedCreateNestedManyWithoutAgreementInput
+  }
+
+  export type AgreementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAgreements?: UserAgreementUpdateManyWithoutAgreementNestedInput
+  }
+
+  export type AgreementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAgreements?: UserAgreementUncheckedUpdateManyWithoutAgreementNestedInput
+  }
+
+  export type AgreementCreateManyInput = {
+    id?: string
+    type: $Enums.AgreementType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AgreementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -64026,7 +66501,17 @@ export namespace Prisma {
     isNot?: ClinicianWhereInput | null
   }
 
+  export type UserAgreementListRelationFilter = {
+    every?: UserAgreementWhereInput
+    some?: UserAgreementWhereInput
+    none?: UserAgreementWhereInput
+  }
+
   export type AccountOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserAgreementOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -64061,6 +66546,98 @@ export namespace Prisma {
     photoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumAgreementStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusFilter<$PrismaModel> | $Enums.AgreementStatus
+  }
+
+  export type AgreementRelationFilter = {
+    is?: AgreementWhereInput
+    isNot?: AgreementWhereInput
+  }
+
+  export type UserAgreementUserIdAgreementIdCompoundUniqueInput = {
+    userId: string
+    agreementId: string
+  }
+
+  export type UserAgreementCountOrderByAggregateInput = {
+    userId?: SortOrder
+    agreementId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserAgreementMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    agreementId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserAgreementMinOrderByAggregateInput = {
+    userId?: SortOrder
+    agreementId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAgreementStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AgreementStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementStatusFilter<$PrismaModel>
+    _max?: NestedEnumAgreementStatusFilter<$PrismaModel>
+  }
+
+  export type EnumAgreementTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementType | EnumAgreementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementTypeFilter<$PrismaModel> | $Enums.AgreementType
+  }
+
+  export type AgreementCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AgreementMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AgreementMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAgreementTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementType | EnumAgreementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementTypeWithAggregatesFilter<$PrismaModel> | $Enums.AgreementType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementTypeFilter<$PrismaModel>
+    _max?: NestedEnumAgreementTypeFilter<$PrismaModel>
   }
 
   export type AccountProfileIdProviderCompoundUniqueInput = {
@@ -67699,6 +70276,13 @@ export namespace Prisma {
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
   }
 
+  export type UserAgreementCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput> | UserAgreementCreateWithoutUserInput[] | UserAgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutUserInput | UserAgreementCreateOrConnectWithoutUserInput[]
+    createMany?: UserAgreementCreateManyUserInputEnvelope
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -67745,6 +70329,13 @@ export namespace Prisma {
     connectOrCreate?: AuditLogCreateOrConnectWithoutUserInput | AuditLogCreateOrConnectWithoutUserInput[]
     createMany?: AuditLogCreateManyUserInputEnvelope
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
+  export type UserAgreementUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput> | UserAgreementCreateWithoutUserInput[] | UserAgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutUserInput | UserAgreementCreateOrConnectWithoutUserInput[]
+    createMany?: UserAgreementCreateManyUserInputEnvelope
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -67841,6 +70432,20 @@ export namespace Prisma {
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
   }
 
+  export type UserAgreementUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput> | UserAgreementCreateWithoutUserInput[] | UserAgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutUserInput | UserAgreementCreateOrConnectWithoutUserInput[]
+    upsert?: UserAgreementUpsertWithWhereUniqueWithoutUserInput | UserAgreementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserAgreementCreateManyUserInputEnvelope
+    set?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    disconnect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    delete?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    update?: UserAgreementUpdateWithWhereUniqueWithoutUserInput | UserAgreementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserAgreementUpdateManyWithWhereWithoutUserInput | UserAgreementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -67933,6 +70538,98 @@ export namespace Prisma {
     update?: AuditLogUpdateWithWhereUniqueWithoutUserInput | AuditLogUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AuditLogUpdateManyWithWhereWithoutUserInput | AuditLogUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
+  export type UserAgreementUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput> | UserAgreementCreateWithoutUserInput[] | UserAgreementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutUserInput | UserAgreementCreateOrConnectWithoutUserInput[]
+    upsert?: UserAgreementUpsertWithWhereUniqueWithoutUserInput | UserAgreementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserAgreementCreateManyUserInputEnvelope
+    set?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    disconnect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    delete?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    update?: UserAgreementUpdateWithWhereUniqueWithoutUserInput | UserAgreementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserAgreementUpdateManyWithWhereWithoutUserInput | UserAgreementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutAgreementsInput = {
+    create?: XOR<UserCreateWithoutAgreementsInput, UserUncheckedCreateWithoutAgreementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAgreementsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AgreementCreateNestedOneWithoutUserAgreementsInput = {
+    create?: XOR<AgreementCreateWithoutUserAgreementsInput, AgreementUncheckedCreateWithoutUserAgreementsInput>
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserAgreementsInput
+    connect?: AgreementWhereUniqueInput
+  }
+
+  export type EnumAgreementStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AgreementStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutAgreementsNestedInput = {
+    create?: XOR<UserCreateWithoutAgreementsInput, UserUncheckedCreateWithoutAgreementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAgreementsInput
+    upsert?: UserUpsertWithoutAgreementsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAgreementsInput, UserUpdateWithoutAgreementsInput>, UserUncheckedUpdateWithoutAgreementsInput>
+  }
+
+  export type AgreementUpdateOneRequiredWithoutUserAgreementsNestedInput = {
+    create?: XOR<AgreementCreateWithoutUserAgreementsInput, AgreementUncheckedCreateWithoutUserAgreementsInput>
+    connectOrCreate?: AgreementCreateOrConnectWithoutUserAgreementsInput
+    upsert?: AgreementUpsertWithoutUserAgreementsInput
+    connect?: AgreementWhereUniqueInput
+    update?: XOR<XOR<AgreementUpdateToOneWithWhereWithoutUserAgreementsInput, AgreementUpdateWithoutUserAgreementsInput>, AgreementUncheckedUpdateWithoutUserAgreementsInput>
+  }
+
+  export type UserAgreementCreateNestedManyWithoutAgreementInput = {
+    create?: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput> | UserAgreementCreateWithoutAgreementInput[] | UserAgreementUncheckedCreateWithoutAgreementInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutAgreementInput | UserAgreementCreateOrConnectWithoutAgreementInput[]
+    createMany?: UserAgreementCreateManyAgreementInputEnvelope
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+  }
+
+  export type UserAgreementUncheckedCreateNestedManyWithoutAgreementInput = {
+    create?: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput> | UserAgreementCreateWithoutAgreementInput[] | UserAgreementUncheckedCreateWithoutAgreementInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutAgreementInput | UserAgreementCreateOrConnectWithoutAgreementInput[]
+    createMany?: UserAgreementCreateManyAgreementInputEnvelope
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+  }
+
+  export type EnumAgreementTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AgreementType
+  }
+
+  export type UserAgreementUpdateManyWithoutAgreementNestedInput = {
+    create?: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput> | UserAgreementCreateWithoutAgreementInput[] | UserAgreementUncheckedCreateWithoutAgreementInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutAgreementInput | UserAgreementCreateOrConnectWithoutAgreementInput[]
+    upsert?: UserAgreementUpsertWithWhereUniqueWithoutAgreementInput | UserAgreementUpsertWithWhereUniqueWithoutAgreementInput[]
+    createMany?: UserAgreementCreateManyAgreementInputEnvelope
+    set?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    disconnect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    delete?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    update?: UserAgreementUpdateWithWhereUniqueWithoutAgreementInput | UserAgreementUpdateWithWhereUniqueWithoutAgreementInput[]
+    updateMany?: UserAgreementUpdateManyWithWhereWithoutAgreementInput | UserAgreementUpdateManyWithWhereWithoutAgreementInput[]
+    deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+  }
+
+  export type UserAgreementUncheckedUpdateManyWithoutAgreementNestedInput = {
+    create?: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput> | UserAgreementCreateWithoutAgreementInput[] | UserAgreementUncheckedCreateWithoutAgreementInput[]
+    connectOrCreate?: UserAgreementCreateOrConnectWithoutAgreementInput | UserAgreementCreateOrConnectWithoutAgreementInput[]
+    upsert?: UserAgreementUpsertWithWhereUniqueWithoutAgreementInput | UserAgreementUpsertWithWhereUniqueWithoutAgreementInput[]
+    createMany?: UserAgreementCreateManyAgreementInputEnvelope
+    set?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    disconnect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    delete?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
+    update?: UserAgreementUpdateWithWhereUniqueWithoutAgreementInput | UserAgreementUpdateWithWhereUniqueWithoutAgreementInput[]
+    updateMany?: UserAgreementUpdateManyWithWhereWithoutAgreementInput | UserAgreementUpdateManyWithWhereWithoutAgreementInput[]
+    deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -68790,6 +71487,40 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAgreementStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusFilter<$PrismaModel> | $Enums.AgreementStatus
+  }
+
+  export type NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementStatus | EnumAgreementStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementStatus[] | ListEnumAgreementStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AgreementStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementStatusFilter<$PrismaModel>
+    _max?: NestedEnumAgreementStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAgreementTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementType | EnumAgreementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementTypeFilter<$PrismaModel> | $Enums.AgreementType
+  }
+
+  export type NestedEnumAgreementTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AgreementType | EnumAgreementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AgreementType[] | ListEnumAgreementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAgreementTypeWithAggregatesFilter<$PrismaModel> | $Enums.AgreementType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAgreementTypeFilter<$PrismaModel>
+    _max?: NestedEnumAgreementTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
@@ -70279,6 +73010,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutClinicianInput = {
@@ -70296,6 +73028,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClinicianInput = {
@@ -70404,6 +73137,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClinicianInput = {
@@ -70421,6 +73155,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCliniciansInput = {
@@ -72734,6 +75469,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutNotesInput = {
@@ -72751,6 +75487,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutNotesInput = {
@@ -72835,6 +75572,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotesInput = {
@@ -72852,6 +75590,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WorkbenchCreateWithoutOrdersInput = {
@@ -74479,6 +77218,7 @@ export namespace Prisma {
     facilities?: FacilityUserCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAuditsLogsInput = {
@@ -74496,6 +77236,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAuditsLogsInput = {
@@ -74574,6 +77315,7 @@ export namespace Prisma {
     facilities?: FacilityUserUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAuditsLogsInput = {
@@ -74591,6 +77333,7 @@ export namespace Prisma {
     facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyUpsertWithoutAuditLogsInput = {
@@ -74704,6 +77447,7 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -74721,6 +77465,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -74805,6 +77550,7 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -74822,6 +77568,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutDepartmentsInput = {
@@ -74839,6 +77586,7 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDepartmentsInput = {
@@ -74856,6 +77604,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDepartmentsInput = {
@@ -74934,6 +77683,7 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDepartmentsInput = {
@@ -74951,6 +77701,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyUpsertWithoutDepartmentsInput = {
@@ -75246,6 +77997,7 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFacilitiesInput = {
@@ -75263,6 +78015,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFacilitiesInput = {
@@ -75333,6 +78086,7 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFacilitiesInput = {
@@ -75350,6 +78104,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type StripeEntityCreateWithoutStripeProductsInput = {
@@ -76978,6 +79733,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserAgreementCreateWithoutUserInput = {
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    agreement: AgreementCreateNestedOneWithoutUserAgreementsInput
+  }
+
+  export type UserAgreementUncheckedCreateWithoutUserInput = {
+    agreementId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserAgreementCreateOrConnectWithoutUserInput = {
+    where: UserAgreementWhereUniqueInput
+    create: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserAgreementCreateManyUserInputEnvelope = {
+    data: UserAgreementCreateManyUserInput | UserAgreementCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -77114,6 +79893,209 @@ export namespace Prisma {
     data: XOR<AuditLogUpdateManyMutationInput, AuditLogUncheckedUpdateManyWithoutUserInput>
   }
 
+  export type UserAgreementUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserAgreementWhereUniqueInput
+    update: XOR<UserAgreementUpdateWithoutUserInput, UserAgreementUncheckedUpdateWithoutUserInput>
+    create: XOR<UserAgreementCreateWithoutUserInput, UserAgreementUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserAgreementUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserAgreementWhereUniqueInput
+    data: XOR<UserAgreementUpdateWithoutUserInput, UserAgreementUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserAgreementUpdateManyWithWhereWithoutUserInput = {
+    where: UserAgreementScalarWhereInput
+    data: XOR<UserAgreementUpdateManyMutationInput, UserAgreementUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserAgreementScalarWhereInput = {
+    AND?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+    OR?: UserAgreementScalarWhereInput[]
+    NOT?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
+    userId?: StringFilter<"UserAgreement"> | string
+    agreementId?: StringFilter<"UserAgreement"> | string
+    status?: EnumAgreementStatusFilter<"UserAgreement"> | $Enums.AgreementStatus
+    createdAt?: DateTimeFilter<"UserAgreement"> | Date | string
+    updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
+  }
+
+  export type UserCreateWithoutAgreementsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    pin?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserCreateNestedManyWithoutUserInput
+    clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAgreementsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    pin?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
+    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
+    clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAgreementsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAgreementsInput, UserUncheckedCreateWithoutAgreementsInput>
+  }
+
+  export type AgreementCreateWithoutUserAgreementsInput = {
+    id?: string
+    type: $Enums.AgreementType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AgreementUncheckedCreateWithoutUserAgreementsInput = {
+    id?: string
+    type: $Enums.AgreementType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AgreementCreateOrConnectWithoutUserAgreementsInput = {
+    where: AgreementWhereUniqueInput
+    create: XOR<AgreementCreateWithoutUserAgreementsInput, AgreementUncheckedCreateWithoutUserAgreementsInput>
+  }
+
+  export type UserUpsertWithoutAgreementsInput = {
+    update: XOR<UserUpdateWithoutAgreementsInput, UserUncheckedUpdateWithoutAgreementsInput>
+    create: XOR<UserCreateWithoutAgreementsInput, UserUncheckedCreateWithoutAgreementsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAgreementsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAgreementsInput, UserUncheckedUpdateWithoutAgreementsInput>
+  }
+
+  export type UserUpdateWithoutAgreementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAgreementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
+    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type AgreementUpsertWithoutUserAgreementsInput = {
+    update: XOR<AgreementUpdateWithoutUserAgreementsInput, AgreementUncheckedUpdateWithoutUserAgreementsInput>
+    create: XOR<AgreementCreateWithoutUserAgreementsInput, AgreementUncheckedCreateWithoutUserAgreementsInput>
+    where?: AgreementWhereInput
+  }
+
+  export type AgreementUpdateToOneWithWhereWithoutUserAgreementsInput = {
+    where?: AgreementWhereInput
+    data: XOR<AgreementUpdateWithoutUserAgreementsInput, AgreementUncheckedUpdateWithoutUserAgreementsInput>
+  }
+
+  export type AgreementUpdateWithoutUserAgreementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgreementUncheckedUpdateWithoutUserAgreementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAgreementTypeFieldUpdateOperationsInput | $Enums.AgreementType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementCreateWithoutAgreementInput = {
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutAgreementsInput
+  }
+
+  export type UserAgreementUncheckedCreateWithoutAgreementInput = {
+    userId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserAgreementCreateOrConnectWithoutAgreementInput = {
+    where: UserAgreementWhereUniqueInput
+    create: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput>
+  }
+
+  export type UserAgreementCreateManyAgreementInputEnvelope = {
+    data: UserAgreementCreateManyAgreementInput | UserAgreementCreateManyAgreementInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserAgreementUpsertWithWhereUniqueWithoutAgreementInput = {
+    where: UserAgreementWhereUniqueInput
+    update: XOR<UserAgreementUpdateWithoutAgreementInput, UserAgreementUncheckedUpdateWithoutAgreementInput>
+    create: XOR<UserAgreementCreateWithoutAgreementInput, UserAgreementUncheckedCreateWithoutAgreementInput>
+  }
+
+  export type UserAgreementUpdateWithWhereUniqueWithoutAgreementInput = {
+    where: UserAgreementWhereUniqueInput
+    data: XOR<UserAgreementUpdateWithoutAgreementInput, UserAgreementUncheckedUpdateWithoutAgreementInput>
+  }
+
+  export type UserAgreementUpdateManyWithWhereWithoutAgreementInput = {
+    where: UserAgreementScalarWhereInput
+    data: XOR<UserAgreementUpdateManyMutationInput, UserAgreementUncheckedUpdateManyWithoutAgreementInput>
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     email?: string | null
@@ -77129,6 +80111,7 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -77146,6 +80129,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -77179,6 +80163,7 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -77196,6 +80181,7 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -80841,6 +83827,13 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type UserAgreementCreateManyUserInput = {
+    agreementId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AccountUpdateWithoutUserInput = {
     profileId?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
@@ -80997,6 +83990,55 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserAgreementUpdateWithoutUserInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreement?: AgreementUpdateOneRequiredWithoutUserAgreementsNestedInput
+  }
+
+  export type UserAgreementUncheckedUpdateWithoutUserInput = {
+    agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementUncheckedUpdateManyWithoutUserInput = {
+    agreementId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementCreateManyAgreementInput = {
+    userId: string
+    status?: $Enums.AgreementStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserAgreementUpdateWithoutAgreementInput = {
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAgreementsNestedInput
+  }
+
+  export type UserAgreementUncheckedUpdateWithoutAgreementInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserAgreementUncheckedUpdateManyWithoutAgreementInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
@@ -81098,6 +84140,10 @@ export namespace Prisma {
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AgreementCountOutputTypeDefaultArgs instead
+     */
+    export type AgreementCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AgreementCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CompanyDefaultArgs instead
      */
@@ -81258,6 +84304,14 @@ export namespace Prisma {
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserAgreementDefaultArgs instead
+     */
+    export type UserAgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserAgreementDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AgreementDefaultArgs instead
+     */
+    export type AgreementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AgreementDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
