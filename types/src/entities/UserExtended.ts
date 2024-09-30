@@ -1,4 +1,13 @@
-import type { Clinician, Company, CompanyUser, Department, DepartmentUser, User } from '../../prisma';
+import type {
+  Agreement,
+  Clinician,
+  Company,
+  CompanyUser,
+  Department,
+  DepartmentUser,
+  User,
+  UserAgreement
+} from '../../prisma';
 
 export type UserExtended = User & {
   companies: (CompanyUser & {
@@ -8,4 +17,7 @@ export type UserExtended = User & {
     department: Department;
   })[];
   clinician: Clinician | null;
+  agreements: (UserAgreement & {
+    agreement: Agreement;
+  })[];
 };

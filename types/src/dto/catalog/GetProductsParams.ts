@@ -9,6 +9,6 @@ export interface GetProductsParams extends PagedParams {
   billingCode?: string;
   minPrice?: number;
   maxPrice?: number;
-  sortBy?: 'name' | 'createdAt' | 'updatedAt';
+  sortBy?: 'name' | 'createdAt' | 'updatedAt' | 'favorite';
   sortOrder?: Prisma.SortOrder;
 }
