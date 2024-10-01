@@ -48330,11 +48330,13 @@ export namespace Prisma {
   export type NotifyMessageAvgAggregateOutputType = {
     sequence: number | null
     delayMinutes: number | null
+    limit: number | null
   }
 
   export type NotifyMessageSumAggregateOutputType = {
     sequence: number | null
     delayMinutes: number | null
+    limit: number | null
   }
 
   export type NotifyMessageMinAggregateOutputType = {
@@ -48343,6 +48345,7 @@ export namespace Prisma {
     sequence: number | null
     delayMinutes: number | null
     recurrencePattern: string | null
+    limit: number | null
     message: string | null
     channel: $Enums.CommunicationChannel | null
     createdAt: Date | null
@@ -48355,6 +48358,7 @@ export namespace Prisma {
     sequence: number | null
     delayMinutes: number | null
     recurrencePattern: string | null
+    limit: number | null
     message: string | null
     channel: $Enums.CommunicationChannel | null
     createdAt: Date | null
@@ -48367,6 +48371,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes: number
     recurrencePattern: number
+    limit: number
     message: number
     channel: number
     createdAt: number
@@ -48378,11 +48383,13 @@ export namespace Prisma {
   export type NotifyMessageAvgAggregateInputType = {
     sequence?: true
     delayMinutes?: true
+    limit?: true
   }
 
   export type NotifyMessageSumAggregateInputType = {
     sequence?: true
     delayMinutes?: true
+    limit?: true
   }
 
   export type NotifyMessageMinAggregateInputType = {
@@ -48391,6 +48398,7 @@ export namespace Prisma {
     sequence?: true
     delayMinutes?: true
     recurrencePattern?: true
+    limit?: true
     message?: true
     channel?: true
     createdAt?: true
@@ -48403,6 +48411,7 @@ export namespace Prisma {
     sequence?: true
     delayMinutes?: true
     recurrencePattern?: true
+    limit?: true
     message?: true
     channel?: true
     createdAt?: true
@@ -48415,6 +48424,7 @@ export namespace Prisma {
     sequence?: true
     delayMinutes?: true
     recurrencePattern?: true
+    limit?: true
     message?: true
     channel?: true
     createdAt?: true
@@ -48514,6 +48524,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes: number | null
     recurrencePattern: string | null
+    limit: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt: Date
@@ -48545,6 +48556,7 @@ export namespace Prisma {
     sequence?: boolean
     delayMinutes?: boolean
     recurrencePattern?: boolean
+    limit?: boolean
     message?: boolean
     channel?: boolean
     createdAt?: boolean
@@ -48560,6 +48572,7 @@ export namespace Prisma {
     sequence?: boolean
     delayMinutes?: boolean
     recurrencePattern?: boolean
+    limit?: boolean
     message?: boolean
     channel?: boolean
     createdAt?: boolean
@@ -48586,6 +48599,7 @@ export namespace Prisma {
       sequence: number
       delayMinutes: number | null
       recurrencePattern: string | null
+      limit: number | null
       message: string
       channel: $Enums.CommunicationChannel
       createdAt: Date
@@ -49015,9 +49029,10 @@ export namespace Prisma {
   interface NotifyMessageFieldRefs {
     readonly id: FieldRef<"NotifyMessage", 'String'>
     readonly notifyId: FieldRef<"NotifyMessage", 'String'>
-    readonly sequence: FieldRef<"NotifyMessage", 'Int'>
-    readonly delayMinutes: FieldRef<"NotifyMessage", 'Int'>
+    readonly sequence: FieldRef<"NotifyMessage", 'Float'>
+    readonly delayMinutes: FieldRef<"NotifyMessage", 'Float'>
     readonly recurrencePattern: FieldRef<"NotifyMessage", 'String'>
+    readonly limit: FieldRef<"NotifyMessage", 'Float'>
     readonly message: FieldRef<"NotifyMessage", 'String'>
     readonly channel: FieldRef<"NotifyMessage", 'CommunicationChannel'>
     readonly createdAt: FieldRef<"NotifyMessage", 'DateTime'>
@@ -58393,6 +58408,7 @@ export namespace Prisma {
     sequence: 'sequence',
     delayMinutes: 'delayMinutes',
     recurrencePattern: 'recurrencePattern',
+    limit: 'limit',
     message: 'message',
     channel: 'channel',
     createdAt: 'createdAt',
@@ -62395,9 +62411,10 @@ export namespace Prisma {
     NOT?: NotifyMessageWhereInput | NotifyMessageWhereInput[]
     id?: StringFilter<"NotifyMessage"> | string
     notifyId?: StringFilter<"NotifyMessage"> | string
-    sequence?: IntFilter<"NotifyMessage"> | number
-    delayMinutes?: IntNullableFilter<"NotifyMessage"> | number | null
+    sequence?: FloatFilter<"NotifyMessage"> | number
+    delayMinutes?: FloatNullableFilter<"NotifyMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotifyMessage"> | string | null
+    limit?: FloatNullableFilter<"NotifyMessage"> | number | null
     message?: StringFilter<"NotifyMessage"> | string
     channel?: EnumCommunicationChannelFilter<"NotifyMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotifyMessage"> | Date | string
@@ -62412,6 +62429,7 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
+    limit?: SortOrderInput | SortOrder
     message?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
@@ -62427,9 +62445,10 @@ export namespace Prisma {
     OR?: NotifyMessageWhereInput[]
     NOT?: NotifyMessageWhereInput | NotifyMessageWhereInput[]
     notifyId?: StringFilter<"NotifyMessage"> | string
-    sequence?: IntFilter<"NotifyMessage"> | number
-    delayMinutes?: IntNullableFilter<"NotifyMessage"> | number | null
+    sequence?: FloatFilter<"NotifyMessage"> | number
+    delayMinutes?: FloatNullableFilter<"NotifyMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotifyMessage"> | string | null
+    limit?: FloatNullableFilter<"NotifyMessage"> | number | null
     message?: StringFilter<"NotifyMessage"> | string
     channel?: EnumCommunicationChannelFilter<"NotifyMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotifyMessage"> | Date | string
@@ -62444,6 +62463,7 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
+    limit?: SortOrderInput | SortOrder
     message?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
@@ -62461,9 +62481,10 @@ export namespace Prisma {
     NOT?: NotifyMessageScalarWhereWithAggregatesInput | NotifyMessageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"NotifyMessage"> | string
     notifyId?: StringWithAggregatesFilter<"NotifyMessage"> | string
-    sequence?: IntWithAggregatesFilter<"NotifyMessage"> | number
-    delayMinutes?: IntNullableWithAggregatesFilter<"NotifyMessage"> | number | null
+    sequence?: FloatWithAggregatesFilter<"NotifyMessage"> | number
+    delayMinutes?: FloatNullableWithAggregatesFilter<"NotifyMessage"> | number | null
     recurrencePattern?: StringNullableWithAggregatesFilter<"NotifyMessage"> | string | null
+    limit?: FloatNullableWithAggregatesFilter<"NotifyMessage"> | number | null
     message?: StringWithAggregatesFilter<"NotifyMessage"> | string
     channel?: EnumCommunicationChannelWithAggregatesFilter<"NotifyMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeWithAggregatesFilter<"NotifyMessage"> | Date | string
@@ -66792,6 +66813,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -66806,6 +66828,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -66815,9 +66838,10 @@ export namespace Prisma {
 
   export type NotifyMessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66829,9 +66853,10 @@ export namespace Prisma {
   export type NotifyMessageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     notifyId?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66845,6 +66870,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -66853,9 +66879,10 @@ export namespace Prisma {
 
   export type NotifyMessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66865,9 +66892,10 @@ export namespace Prisma {
   export type NotifyMessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     notifyId?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -70601,17 +70629,6 @@ export namespace Prisma {
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type EnumCommunicationChannelFilter<$PrismaModel = never> = {
     equals?: $Enums.CommunicationChannel | EnumCommunicationChannelFieldRefInput<$PrismaModel>
     in?: $Enums.CommunicationChannel[] | ListEnumCommunicationChannelFieldRefInput<$PrismaModel>
@@ -70645,6 +70662,7 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
+    limit?: SortOrder
     message?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
@@ -70654,6 +70672,7 @@ export namespace Prisma {
   export type NotifyMessageAvgOrderByAggregateInput = {
     sequence?: SortOrder
     delayMinutes?: SortOrder
+    limit?: SortOrder
   }
 
   export type NotifyMessageMaxOrderByAggregateInput = {
@@ -70662,6 +70681,7 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
+    limit?: SortOrder
     message?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
@@ -70674,6 +70694,7 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
+    limit?: SortOrder
     message?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
@@ -70683,22 +70704,7 @@ export namespace Prisma {
   export type NotifyMessageSumOrderByAggregateInput = {
     sequence?: SortOrder
     delayMinutes?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    limit?: SortOrder
   }
 
   export type EnumCommunicationChannelWithAggregatesFilter<$PrismaModel = never> = {
@@ -71020,6 +71026,17 @@ export namespace Prisma {
     not?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel> | $Enums.OrderAuthorizationStatus | null
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type EnumProductTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel> | null
@@ -71241,6 +71258,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumProductTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -74532,14 +74565,6 @@ export namespace Prisma {
     connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type EnumCommunicationChannelFieldUpdateOperationsInput = {
     set?: $Enums.CommunicationChannel
   }
@@ -75096,6 +75121,14 @@ export namespace Prisma {
 
   export type NullableEnumOrderAuthorizationStatusFieldUpdateOperationsInput = {
     set?: $Enums.OrderAuthorizationStatus | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableEnumProductTypeFieldUpdateOperationsInput = {
@@ -75927,22 +75960,6 @@ export namespace Prisma {
     not?: NestedEnumCommunicationChannelFilter<$PrismaModel> | $Enums.CommunicationChannel
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type NestedEnumCommunicationChannelWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CommunicationChannel | EnumCommunicationChannelFieldRefInput<$PrismaModel>
     in?: $Enums.CommunicationChannel[] | ListEnumCommunicationChannelFieldRefInput<$PrismaModel>
@@ -76060,6 +76077,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumOrderAuthorizationStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumProductTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -84023,6 +84056,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -84035,6 +84069,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -84074,9 +84109,10 @@ export namespace Prisma {
     NOT?: NotifyMessageScalarWhereInput | NotifyMessageScalarWhereInput[]
     id?: StringFilter<"NotifyMessage"> | string
     notifyId?: StringFilter<"NotifyMessage"> | string
-    sequence?: IntFilter<"NotifyMessage"> | number
-    delayMinutes?: IntNullableFilter<"NotifyMessage"> | number | null
+    sequence?: FloatFilter<"NotifyMessage"> | number
+    delayMinutes?: FloatNullableFilter<"NotifyMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotifyMessage"> | string | null
+    limit?: FloatNullableFilter<"NotifyMessage"> | number | null
     message?: StringFilter<"NotifyMessage"> | string
     channel?: EnumCommunicationChannelFilter<"NotifyMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotifyMessage"> | Date | string
@@ -84261,6 +84297,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -84274,6 +84311,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -84347,9 +84385,10 @@ export namespace Prisma {
 
   export type NotifyMessageUpdateWithoutUserNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -84360,9 +84399,10 @@ export namespace Prisma {
   export type NotifyMessageUncheckedUpdateWithoutUserNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     notifyId?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88661,6 +88701,7 @@ export namespace Prisma {
     sequence: number
     delayMinutes?: number | null
     recurrencePattern?: string | null
+    limit?: number | null
     message: string
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
@@ -88669,9 +88710,10 @@ export namespace Prisma {
 
   export type NotifyMessageUpdateWithoutNotificationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88681,9 +88723,10 @@ export namespace Prisma {
 
   export type NotifyMessageUncheckedUpdateWithoutNotificationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88693,9 +88736,10 @@ export namespace Prisma {
 
   export type NotifyMessageUncheckedUpdateManyWithoutNotificationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sequence?: IntFieldUpdateOperationsInput | number
-    delayMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    limit?: NullableFloatFieldUpdateOperationsInput | number | null
     message?: StringFieldUpdateOperationsInput | string
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
