@@ -219,10 +219,10 @@ export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
  */
 export type NotifyMessage = $Result.DefaultSelection<Prisma.$NotifyMessagePayload>
 /**
- * Model UserNotifyMessage
+ * Model PatientNotifyMessage
  * 
  */
-export type UserNotifyMessage = $Result.DefaultSelection<Prisma.$UserNotifyMessagePayload>
+export type PatientNotifyMessage = $Result.DefaultSelection<Prisma.$PatientNotifyMessagePayload>
 /**
  * Model User
  * 
@@ -1297,14 +1297,14 @@ export class PrismaClient<
   get notifyMessage(): Prisma.NotifyMessageDelegate<ExtArgs>;
 
   /**
-   * `prisma.userNotifyMessage`: Exposes CRUD operations for the **UserNotifyMessage** model.
+   * `prisma.patientNotifyMessage`: Exposes CRUD operations for the **PatientNotifyMessage** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserNotifyMessages
-    * const userNotifyMessages = await prisma.userNotifyMessage.findMany()
+    * // Fetch zero or more PatientNotifyMessages
+    * const patientNotifyMessages = await prisma.patientNotifyMessage.findMany()
     * ```
     */
-  get userNotifyMessage(): Prisma.UserNotifyMessageDelegate<ExtArgs>;
+  get patientNotifyMessage(): Prisma.PatientNotifyMessageDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -1893,7 +1893,7 @@ export namespace Prisma {
     StripeSubscription: 'StripeSubscription',
     Notification: 'Notification',
     NotifyMessage: 'NotifyMessage',
-    UserNotifyMessage: 'UserNotifyMessage',
+    PatientNotifyMessage: 'PatientNotifyMessage',
     User: 'User',
     UserAgreement: 'UserAgreement',
     Agreement: 'Agreement',
@@ -1917,7 +1917,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'notification' | 'notifyMessage' | 'userNotifyMessage' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'notification' | 'notifyMessage' | 'patientNotifyMessage' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4791,73 +4791,73 @@ export namespace Prisma {
           }
         }
       }
-      UserNotifyMessage: {
-        payload: Prisma.$UserNotifyMessagePayload<ExtArgs>
-        fields: Prisma.UserNotifyMessageFieldRefs
+      PatientNotifyMessage: {
+        payload: Prisma.$PatientNotifyMessagePayload<ExtArgs>
+        fields: Prisma.PatientNotifyMessageFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserNotifyMessageFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload> | null
+            args: Prisma.PatientNotifyMessageFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserNotifyMessageFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           findFirst: {
-            args: Prisma.UserNotifyMessageFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload> | null
+            args: Prisma.PatientNotifyMessageFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserNotifyMessageFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           findMany: {
-            args: Prisma.UserNotifyMessageFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>[]
+            args: Prisma.PatientNotifyMessageFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>[]
           }
           create: {
-            args: Prisma.UserNotifyMessageCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           createMany: {
-            args: Prisma.UserNotifyMessageCreateManyArgs<ExtArgs>,
+            args: Prisma.PatientNotifyMessageCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserNotifyMessageCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>[]
+            args: Prisma.PatientNotifyMessageCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>[]
           }
           delete: {
-            args: Prisma.UserNotifyMessageDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           update: {
-            args: Prisma.UserNotifyMessageUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           deleteMany: {
-            args: Prisma.UserNotifyMessageDeleteManyArgs<ExtArgs>,
+            args: Prisma.PatientNotifyMessageDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserNotifyMessageUpdateManyArgs<ExtArgs>,
+            args: Prisma.PatientNotifyMessageUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserNotifyMessageUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserNotifyMessagePayload>
+            args: Prisma.PatientNotifyMessageUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PatientNotifyMessagePayload>
           }
           aggregate: {
-            args: Prisma.UserNotifyMessageAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUserNotifyMessage>
+            args: Prisma.PatientNotifyMessageAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePatientNotifyMessage>
           }
           groupBy: {
-            args: Prisma.UserNotifyMessageGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserNotifyMessageGroupByOutputType>[]
+            args: Prisma.PatientNotifyMessageGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PatientNotifyMessageGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserNotifyMessageCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserNotifyMessageCountAggregateOutputType> | number
+            args: Prisma.PatientNotifyMessageCountArgs<ExtArgs>,
+            result: $Utils.Optional<PatientNotifyMessageCountAggregateOutputType> | number
           }
         }
       }
@@ -5667,6 +5667,7 @@ export namespace Prisma {
     evaluations: number
     workbenches: number
     companies: number
+    patientNotifyMessages: number
   }
 
   export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5674,6 +5675,7 @@ export namespace Prisma {
     evaluations?: boolean | PatientCountOutputTypeCountEvaluationsArgs
     workbenches?: boolean | PatientCountOutputTypeCountWorkbenchesArgs
     companies?: boolean | PatientCountOutputTypeCountCompaniesArgs
+    patientNotifyMessages?: boolean | PatientCountOutputTypeCountPatientNotifyMessagesArgs
   }
 
   // Custom InputTypes
@@ -5713,6 +5715,13 @@ export namespace Prisma {
    */
   export type PatientCountOutputTypeCountCompaniesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyPatientWhereInput
+  }
+
+  /**
+   * PatientCountOutputType without action
+   */
+  export type PatientCountOutputTypeCountPatientNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PatientNotifyMessageWhereInput
   }
 
 
@@ -6543,11 +6552,11 @@ export namespace Prisma {
    */
 
   export type NotifyMessageCountOutputType = {
-    userNotifyMessages: number
+    patientNotifyMessages: number
   }
 
   export type NotifyMessageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userNotifyMessages?: boolean | NotifyMessageCountOutputTypeCountUserNotifyMessagesArgs
+    patientNotifyMessages?: boolean | NotifyMessageCountOutputTypeCountPatientNotifyMessagesArgs
   }
 
   // Custom InputTypes
@@ -6564,8 +6573,8 @@ export namespace Prisma {
   /**
    * NotifyMessageCountOutputType without action
    */
-  export type NotifyMessageCountOutputTypeCountUserNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserNotifyMessageWhereInput
+  export type NotifyMessageCountOutputTypeCountPatientNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PatientNotifyMessageWhereInput
   }
 
 
@@ -6581,7 +6590,6 @@ export namespace Prisma {
     notes: number
     auditsLogs: number
     agreements: number
-    userNotifyMessages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6592,7 +6600,6 @@ export namespace Prisma {
     notes?: boolean | UserCountOutputTypeCountNotesArgs
     auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
     agreements?: boolean | UserCountOutputTypeCountAgreementsArgs
-    userNotifyMessages?: boolean | UserCountOutputTypeCountUserNotifyMessagesArgs
   }
 
   // Custom InputTypes
@@ -6653,13 +6660,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAgreementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserAgreementWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUserNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserNotifyMessageWhereInput
   }
 
 
@@ -9266,6 +9266,7 @@ export namespace Prisma {
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
+    patientNotifyMessages?: boolean | Patient$patientNotifyMessagesArgs<ExtArgs>
     _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["patient"]>
 
@@ -9294,6 +9295,7 @@ export namespace Prisma {
     evaluations?: boolean | Patient$evaluationsArgs<ExtArgs>
     workbenches?: boolean | Patient$workbenchesArgs<ExtArgs>
     companies?: boolean | Patient$companiesArgs<ExtArgs>
+    patientNotifyMessages?: boolean | Patient$patientNotifyMessagesArgs<ExtArgs>
     _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9306,6 +9308,7 @@ export namespace Prisma {
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       workbenches: Prisma.$WorkbenchPayload<ExtArgs>[]
       companies: Prisma.$CompanyPatientPayload<ExtArgs>[]
+      patientNotifyMessages: Prisma.$PatientNotifyMessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9723,6 +9726,8 @@ export namespace Prisma {
     workbenches<T extends Patient$workbenchesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$workbenchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     companies<T extends Patient$companiesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    patientNotifyMessages<T extends Patient$patientNotifyMessagesArgs<ExtArgs> = {}>(args?: Subset<T, Patient$patientNotifyMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10177,6 +10182,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Patient.patientNotifyMessages
+   */
+  export type Patient$patientNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatientNotifyMessage
+     */
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
+    where?: PatientNotifyMessageWhereInput
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
+    cursor?: PatientNotifyMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PatientNotifyMessageScalarFieldEnum | PatientNotifyMessageScalarFieldEnum[]
   }
 
   /**
@@ -48562,7 +48587,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     notification?: boolean | NotificationDefaultArgs<ExtArgs>
-    userNotifyMessages?: boolean | NotifyMessage$userNotifyMessagesArgs<ExtArgs>
+    patientNotifyMessages?: boolean | NotifyMessage$patientNotifyMessagesArgs<ExtArgs>
     _count?: boolean | NotifyMessageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notifyMessage"]>
 
@@ -48582,7 +48607,7 @@ export namespace Prisma {
 
   export type NotifyMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notification?: boolean | NotificationDefaultArgs<ExtArgs>
-    userNotifyMessages?: boolean | NotifyMessage$userNotifyMessagesArgs<ExtArgs>
+    patientNotifyMessages?: boolean | NotifyMessage$patientNotifyMessagesArgs<ExtArgs>
     _count?: boolean | NotifyMessageCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -48591,7 +48616,7 @@ export namespace Prisma {
     name: "NotifyMessage"
     objects: {
       notification: Prisma.$NotificationPayload<ExtArgs>
-      userNotifyMessages: Prisma.$UserNotifyMessagePayload<ExtArgs>[]
+      patientNotifyMessages: Prisma.$PatientNotifyMessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -48997,7 +49022,7 @@ export namespace Prisma {
 
     notification<T extends NotificationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NotificationDefaultArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    userNotifyMessages<T extends NotifyMessage$userNotifyMessagesArgs<ExtArgs> = {}>(args?: Subset<T, NotifyMessage$userNotifyMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findMany'> | Null>;
+    patientNotifyMessages<T extends NotifyMessage$patientNotifyMessagesArgs<ExtArgs> = {}>(args?: Subset<T, NotifyMessage$patientNotifyMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -49355,23 +49380,23 @@ export namespace Prisma {
   }
 
   /**
-   * NotifyMessage.userNotifyMessages
+   * NotifyMessage.patientNotifyMessages
    */
-  export type NotifyMessage$userNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type NotifyMessage$patientNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
-    where?: UserNotifyMessageWhereInput
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
-    cursor?: UserNotifyMessageWhereUniqueInput
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
+    where?: PatientNotifyMessageWhereInput
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
+    cursor?: PatientNotifyMessageWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserNotifyMessageScalarFieldEnum | UserNotifyMessageScalarFieldEnum[]
+    distinct?: PatientNotifyMessageScalarFieldEnum | PatientNotifyMessageScalarFieldEnum[]
   }
 
   /**
@@ -49390,18 +49415,18 @@ export namespace Prisma {
 
 
   /**
-   * Model UserNotifyMessage
+   * Model PatientNotifyMessage
    */
 
-  export type AggregateUserNotifyMessage = {
-    _count: UserNotifyMessageCountAggregateOutputType | null
-    _min: UserNotifyMessageMinAggregateOutputType | null
-    _max: UserNotifyMessageMaxAggregateOutputType | null
+  export type AggregatePatientNotifyMessage = {
+    _count: PatientNotifyMessageCountAggregateOutputType | null
+    _min: PatientNotifyMessageMinAggregateOutputType | null
+    _max: PatientNotifyMessageMaxAggregateOutputType | null
   }
 
-  export type UserNotifyMessageMinAggregateOutputType = {
+  export type PatientNotifyMessageMinAggregateOutputType = {
     id: string | null
-    userId: string | null
+    patientId: string | null
     notifyMessageId: string | null
     timeSent: Date | null
     response: string | null
@@ -49412,9 +49437,9 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type UserNotifyMessageMaxAggregateOutputType = {
+  export type PatientNotifyMessageMaxAggregateOutputType = {
     id: string | null
-    userId: string | null
+    patientId: string | null
     notifyMessageId: string | null
     timeSent: Date | null
     response: string | null
@@ -49425,9 +49450,9 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type UserNotifyMessageCountAggregateOutputType = {
+  export type PatientNotifyMessageCountAggregateOutputType = {
     id: number
-    userId: number
+    patientId: number
     notifyMessageId: number
     timeSent: number
     response: number
@@ -49440,9 +49465,9 @@ export namespace Prisma {
   }
 
 
-  export type UserNotifyMessageMinAggregateInputType = {
+  export type PatientNotifyMessageMinAggregateInputType = {
     id?: true
-    userId?: true
+    patientId?: true
     notifyMessageId?: true
     timeSent?: true
     response?: true
@@ -49453,9 +49478,9 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type UserNotifyMessageMaxAggregateInputType = {
+  export type PatientNotifyMessageMaxAggregateInputType = {
     id?: true
-    userId?: true
+    patientId?: true
     notifyMessageId?: true
     timeSent?: true
     response?: true
@@ -49466,9 +49491,9 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type UserNotifyMessageCountAggregateInputType = {
+  export type PatientNotifyMessageCountAggregateInputType = {
     id?: true
-    userId?: true
+    patientId?: true
     notifyMessageId?: true
     timeSent?: true
     response?: true
@@ -49480,81 +49505,81 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserNotifyMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserNotifyMessage to aggregate.
+     * Filter which PatientNotifyMessage to aggregate.
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserNotifyMessages to fetch.
+     * Determine the order of PatientNotifyMessages to fetch.
      */
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserNotifyMessageWhereUniqueInput
+    cursor?: PatientNotifyMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserNotifyMessages from the position of the cursor.
+     * Take `±n` PatientNotifyMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserNotifyMessages.
+     * Skip the first `n` PatientNotifyMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserNotifyMessages
+     * Count returned PatientNotifyMessages
     **/
-    _count?: true | UserNotifyMessageCountAggregateInputType
+    _count?: true | PatientNotifyMessageCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserNotifyMessageMinAggregateInputType
+    _min?: PatientNotifyMessageMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserNotifyMessageMaxAggregateInputType
+    _max?: PatientNotifyMessageMaxAggregateInputType
   }
 
-  export type GetUserNotifyMessageAggregateType<T extends UserNotifyMessageAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserNotifyMessage]: P extends '_count' | 'count'
+  export type GetPatientNotifyMessageAggregateType<T extends PatientNotifyMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregatePatientNotifyMessage]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserNotifyMessage[P]>
-      : GetScalarType<T[P], AggregateUserNotifyMessage[P]>
+        : GetScalarType<T[P], AggregatePatientNotifyMessage[P]>
+      : GetScalarType<T[P], AggregatePatientNotifyMessage[P]>
   }
 
 
 
 
-  export type UserNotifyMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserNotifyMessageWhereInput
-    orderBy?: UserNotifyMessageOrderByWithAggregationInput | UserNotifyMessageOrderByWithAggregationInput[]
-    by: UserNotifyMessageScalarFieldEnum[] | UserNotifyMessageScalarFieldEnum
-    having?: UserNotifyMessageScalarWhereWithAggregatesInput
+  export type PatientNotifyMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PatientNotifyMessageWhereInput
+    orderBy?: PatientNotifyMessageOrderByWithAggregationInput | PatientNotifyMessageOrderByWithAggregationInput[]
+    by: PatientNotifyMessageScalarFieldEnum[] | PatientNotifyMessageScalarFieldEnum
+    having?: PatientNotifyMessageScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserNotifyMessageCountAggregateInputType | true
-    _min?: UserNotifyMessageMinAggregateInputType
-    _max?: UserNotifyMessageMaxAggregateInputType
+    _count?: PatientNotifyMessageCountAggregateInputType | true
+    _min?: PatientNotifyMessageMinAggregateInputType
+    _max?: PatientNotifyMessageMaxAggregateInputType
   }
 
-  export type UserNotifyMessageGroupByOutputType = {
+  export type PatientNotifyMessageGroupByOutputType = {
     id: string
-    userId: string
+    patientId: string
     notifyMessageId: string
     timeSent: Date | null
     response: string | null
@@ -49563,28 +49588,28 @@ export namespace Prisma {
     jobId: string | null
     createdAt: Date
     updatedAt: Date
-    _count: UserNotifyMessageCountAggregateOutputType | null
-    _min: UserNotifyMessageMinAggregateOutputType | null
-    _max: UserNotifyMessageMaxAggregateOutputType | null
+    _count: PatientNotifyMessageCountAggregateOutputType | null
+    _min: PatientNotifyMessageMinAggregateOutputType | null
+    _max: PatientNotifyMessageMaxAggregateOutputType | null
   }
 
-  type GetUserNotifyMessageGroupByPayload<T extends UserNotifyMessageGroupByArgs> = Prisma.PrismaPromise<
+  type GetPatientNotifyMessageGroupByPayload<T extends PatientNotifyMessageGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserNotifyMessageGroupByOutputType, T['by']> &
+      PickEnumerable<PatientNotifyMessageGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserNotifyMessageGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PatientNotifyMessageGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserNotifyMessageGroupByOutputType[P]>
-            : GetScalarType<T[P], UserNotifyMessageGroupByOutputType[P]>
+              : GetScalarType<T[P], PatientNotifyMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], PatientNotifyMessageGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserNotifyMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PatientNotifyMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
+    patientId?: boolean
     notifyMessageId?: boolean
     timeSent?: boolean
     response?: boolean
@@ -49593,13 +49618,13 @@ export namespace Prisma {
     jobId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
     notifyMessage?: boolean | NotifyMessageDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userNotifyMessage"]>
+  }, ExtArgs["result"]["patientNotifyMessage"]>
 
-  export type UserNotifyMessageSelectScalar = {
+  export type PatientNotifyMessageSelectScalar = {
     id?: boolean
-    userId?: boolean
+    patientId?: boolean
     notifyMessageId?: boolean
     timeSent?: boolean
     response?: boolean
@@ -49611,21 +49636,21 @@ export namespace Prisma {
   }
 
 
-  export type UserNotifyMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type PatientNotifyMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    patient?: boolean | PatientDefaultArgs<ExtArgs>
     notifyMessage?: boolean | NotifyMessageDefaultArgs<ExtArgs>
   }
 
 
-  export type $UserNotifyMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserNotifyMessage"
+  export type $PatientNotifyMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PatientNotifyMessage"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      patient: Prisma.$PatientPayload<ExtArgs>
       notifyMessage: Prisma.$NotifyMessagePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
+      patientId: string
       notifyMessageId: string
       timeSent: Date | null
       response: string | null
@@ -49634,151 +49659,151 @@ export namespace Prisma {
       jobId: string | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["userNotifyMessage"]>
+    }, ExtArgs["result"]["patientNotifyMessage"]>
     composites: {}
   }
 
 
-  type UserNotifyMessageGetPayload<S extends boolean | null | undefined | UserNotifyMessageDefaultArgs> = $Result.GetResult<Prisma.$UserNotifyMessagePayload, S>
+  type PatientNotifyMessageGetPayload<S extends boolean | null | undefined | PatientNotifyMessageDefaultArgs> = $Result.GetResult<Prisma.$PatientNotifyMessagePayload, S>
 
-  type UserNotifyMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserNotifyMessageFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: UserNotifyMessageCountAggregateInputType | true
+  type PatientNotifyMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PatientNotifyMessageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PatientNotifyMessageCountAggregateInputType | true
     }
 
-  export interface UserNotifyMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserNotifyMessage'], meta: { name: 'UserNotifyMessage' } }
+  export interface PatientNotifyMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PatientNotifyMessage'], meta: { name: 'PatientNotifyMessage' } }
     /**
-     * Find zero or one UserNotifyMessage that matches the filter.
-     * @param {UserNotifyMessageFindUniqueArgs} args - Arguments to find a UserNotifyMessage
+     * Find zero or one PatientNotifyMessage that matches the filter.
+     * @param {PatientNotifyMessageFindUniqueArgs} args - Arguments to find a PatientNotifyMessage
      * @example
-     * // Get one UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.findUnique({
+     * // Get one PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserNotifyMessageFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends PatientNotifyMessageFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageFindUniqueArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one UserNotifyMessage that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one PatientNotifyMessage that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {UserNotifyMessageFindUniqueOrThrowArgs} args - Arguments to find a UserNotifyMessage
+     * @param {PatientNotifyMessageFindUniqueOrThrowArgs} args - Arguments to find a PatientNotifyMessage
      * @example
-     * // Get one UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.findUniqueOrThrow({
+     * // Get one PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserNotifyMessageFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends PatientNotifyMessageFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first UserNotifyMessage that matches the filter.
+     * Find the first PatientNotifyMessage that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageFindFirstArgs} args - Arguments to find a UserNotifyMessage
+     * @param {PatientNotifyMessageFindFirstArgs} args - Arguments to find a PatientNotifyMessage
      * @example
-     * // Get one UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.findFirst({
+     * // Get one PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserNotifyMessageFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageFindFirstArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends PatientNotifyMessageFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageFindFirstArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first UserNotifyMessage that matches the filter or
+     * Find the first PatientNotifyMessage that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageFindFirstOrThrowArgs} args - Arguments to find a UserNotifyMessage
+     * @param {PatientNotifyMessageFindFirstOrThrowArgs} args - Arguments to find a PatientNotifyMessage
      * @example
-     * // Get one UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.findFirstOrThrow({
+     * // Get one PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserNotifyMessageFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends PatientNotifyMessageFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more UserNotifyMessages that matches the filter.
+     * Find zero or more PatientNotifyMessages that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PatientNotifyMessageFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserNotifyMessages
-     * const userNotifyMessages = await prisma.userNotifyMessage.findMany()
+     * // Get all PatientNotifyMessages
+     * const patientNotifyMessages = await prisma.patientNotifyMessage.findMany()
      * 
-     * // Get first 10 UserNotifyMessages
-     * const userNotifyMessages = await prisma.userNotifyMessage.findMany({ take: 10 })
+     * // Get first 10 PatientNotifyMessages
+     * const patientNotifyMessages = await prisma.patientNotifyMessage.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userNotifyMessageWithIdOnly = await prisma.userNotifyMessage.findMany({ select: { id: true } })
+     * const patientNotifyMessageWithIdOnly = await prisma.patientNotifyMessage.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends UserNotifyMessageFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends PatientNotifyMessageFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a UserNotifyMessage.
-     * @param {UserNotifyMessageCreateArgs} args - Arguments to create a UserNotifyMessage.
+     * Create a PatientNotifyMessage.
+     * @param {PatientNotifyMessageCreateArgs} args - Arguments to create a PatientNotifyMessage.
      * @example
-     * // Create one UserNotifyMessage
-     * const UserNotifyMessage = await prisma.userNotifyMessage.create({
+     * // Create one PatientNotifyMessage
+     * const PatientNotifyMessage = await prisma.patientNotifyMessage.create({
      *   data: {
-     *     // ... data to create a UserNotifyMessage
+     *     // ... data to create a PatientNotifyMessage
      *   }
      * })
      * 
     **/
-    create<T extends UserNotifyMessageCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageCreateArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends PatientNotifyMessageCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageCreateArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many UserNotifyMessages.
-     * @param {UserNotifyMessageCreateManyArgs} args - Arguments to create many UserNotifyMessages.
+     * Create many PatientNotifyMessages.
+     * @param {PatientNotifyMessageCreateManyArgs} args - Arguments to create many PatientNotifyMessages.
      * @example
-     * // Create many UserNotifyMessages
-     * const userNotifyMessage = await prisma.userNotifyMessage.createMany({
+     * // Create many PatientNotifyMessages
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends UserNotifyMessageCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageCreateManyArgs<ExtArgs>>
+    createMany<T extends PatientNotifyMessageCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserNotifyMessages and returns the data saved in the database.
-     * @param {UserNotifyMessageCreateManyAndReturnArgs} args - Arguments to create many UserNotifyMessages.
+     * Create many PatientNotifyMessages and returns the data saved in the database.
+     * @param {PatientNotifyMessageCreateManyAndReturnArgs} args - Arguments to create many PatientNotifyMessages.
      * @example
-     * // Create many UserNotifyMessages
-     * const userNotifyMessage = await prisma.userNotifyMessage.createManyAndReturn({
+     * // Create many PatientNotifyMessages
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserNotifyMessages and only return the `id`
-     * const userNotifyMessageWithIdOnly = await prisma.userNotifyMessage.createManyAndReturn({ 
+     * // Create many PatientNotifyMessages and only return the `id`
+     * const patientNotifyMessageWithIdOnly = await prisma.patientNotifyMessage.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -49788,32 +49813,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends UserNotifyMessageCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends PatientNotifyMessageCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a UserNotifyMessage.
-     * @param {UserNotifyMessageDeleteArgs} args - Arguments to delete one UserNotifyMessage.
+     * Delete a PatientNotifyMessage.
+     * @param {PatientNotifyMessageDeleteArgs} args - Arguments to delete one PatientNotifyMessage.
      * @example
-     * // Delete one UserNotifyMessage
-     * const UserNotifyMessage = await prisma.userNotifyMessage.delete({
+     * // Delete one PatientNotifyMessage
+     * const PatientNotifyMessage = await prisma.patientNotifyMessage.delete({
      *   where: {
-     *     // ... filter to delete one UserNotifyMessage
+     *     // ... filter to delete one PatientNotifyMessage
      *   }
      * })
      * 
     **/
-    delete<T extends UserNotifyMessageDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageDeleteArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends PatientNotifyMessageDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageDeleteArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one UserNotifyMessage.
-     * @param {UserNotifyMessageUpdateArgs} args - Arguments to update one UserNotifyMessage.
+     * Update one PatientNotifyMessage.
+     * @param {PatientNotifyMessageUpdateArgs} args - Arguments to update one PatientNotifyMessage.
      * @example
-     * // Update one UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.update({
+     * // Update one PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -49823,34 +49848,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserNotifyMessageUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageUpdateArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends PatientNotifyMessageUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageUpdateArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more UserNotifyMessages.
-     * @param {UserNotifyMessageDeleteManyArgs} args - Arguments to filter UserNotifyMessages to delete.
+     * Delete zero or more PatientNotifyMessages.
+     * @param {PatientNotifyMessageDeleteManyArgs} args - Arguments to filter PatientNotifyMessages to delete.
      * @example
-     * // Delete a few UserNotifyMessages
-     * const { count } = await prisma.userNotifyMessage.deleteMany({
+     * // Delete a few PatientNotifyMessages
+     * const { count } = await prisma.patientNotifyMessage.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserNotifyMessageDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserNotifyMessageDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends PatientNotifyMessageDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PatientNotifyMessageDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserNotifyMessages.
+     * Update zero or more PatientNotifyMessages.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PatientNotifyMessageUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserNotifyMessages
-     * const userNotifyMessage = await prisma.userNotifyMessage.updateMany({
+     * // Update many PatientNotifyMessages
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -49860,59 +49885,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserNotifyMessageUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageUpdateManyArgs<ExtArgs>>
+    updateMany<T extends PatientNotifyMessageUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one UserNotifyMessage.
-     * @param {UserNotifyMessageUpsertArgs} args - Arguments to update or create a UserNotifyMessage.
+     * Create or update one PatientNotifyMessage.
+     * @param {PatientNotifyMessageUpsertArgs} args - Arguments to update or create a PatientNotifyMessage.
      * @example
-     * // Update or create a UserNotifyMessage
-     * const userNotifyMessage = await prisma.userNotifyMessage.upsert({
+     * // Update or create a PatientNotifyMessage
+     * const patientNotifyMessage = await prisma.patientNotifyMessage.upsert({
      *   create: {
-     *     // ... data to create a UserNotifyMessage
+     *     // ... data to create a PatientNotifyMessage
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserNotifyMessage we want to update
+     *     // ... the filter for the PatientNotifyMessage we want to update
      *   }
      * })
     **/
-    upsert<T extends UserNotifyMessageUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserNotifyMessageUpsertArgs<ExtArgs>>
-    ): Prisma__UserNotifyMessageClient<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends PatientNotifyMessageUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PatientNotifyMessageUpsertArgs<ExtArgs>>
+    ): Prisma__PatientNotifyMessageClient<$Result.GetResult<Prisma.$PatientNotifyMessagePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of UserNotifyMessages.
+     * Count the number of PatientNotifyMessages.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageCountArgs} args - Arguments to filter UserNotifyMessages to count.
+     * @param {PatientNotifyMessageCountArgs} args - Arguments to filter PatientNotifyMessages to count.
      * @example
-     * // Count the number of UserNotifyMessages
-     * const count = await prisma.userNotifyMessage.count({
+     * // Count the number of PatientNotifyMessages
+     * const count = await prisma.patientNotifyMessage.count({
      *   where: {
-     *     // ... the filter for the UserNotifyMessages we want to count
+     *     // ... the filter for the PatientNotifyMessages we want to count
      *   }
      * })
     **/
-    count<T extends UserNotifyMessageCountArgs>(
-      args?: Subset<T, UserNotifyMessageCountArgs>,
+    count<T extends PatientNotifyMessageCountArgs>(
+      args?: Subset<T, PatientNotifyMessageCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserNotifyMessageCountAggregateOutputType>
+          : GetScalarType<T['select'], PatientNotifyMessageCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserNotifyMessage.
+     * Allows you to perform aggregations operations on a PatientNotifyMessage.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PatientNotifyMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -49932,13 +49957,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserNotifyMessageAggregateArgs>(args: Subset<T, UserNotifyMessageAggregateArgs>): Prisma.PrismaPromise<GetUserNotifyMessageAggregateType<T>>
+    aggregate<T extends PatientNotifyMessageAggregateArgs>(args: Subset<T, PatientNotifyMessageAggregateArgs>): Prisma.PrismaPromise<GetPatientNotifyMessageAggregateType<T>>
 
     /**
-     * Group by UserNotifyMessage.
+     * Group by PatientNotifyMessage.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserNotifyMessageGroupByArgs} args - Group by arguments.
+     * @param {PatientNotifyMessageGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -49953,14 +49978,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserNotifyMessageGroupByArgs,
+      T extends PatientNotifyMessageGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserNotifyMessageGroupByArgs['orderBy'] }
-        : { orderBy?: UserNotifyMessageGroupByArgs['orderBy'] },
+        ? { orderBy: PatientNotifyMessageGroupByArgs['orderBy'] }
+        : { orderBy?: PatientNotifyMessageGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -50009,23 +50034,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserNotifyMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserNotifyMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PatientNotifyMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatientNotifyMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserNotifyMessage model
+   * Fields of the PatientNotifyMessage model
    */
-  readonly fields: UserNotifyMessageFieldRefs;
+  readonly fields: PatientNotifyMessageFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserNotifyMessage.
+   * The delegate class that acts as a "Promise-like" for PatientNotifyMessage.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserNotifyMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PatientNotifyMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     notifyMessage<T extends NotifyMessageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NotifyMessageDefaultArgs<ExtArgs>>): Prisma__NotifyMessageClient<$Result.GetResult<Prisma.$NotifyMessagePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
@@ -50054,348 +50079,348 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserNotifyMessage model
+   * Fields of the PatientNotifyMessage model
    */ 
-  interface UserNotifyMessageFieldRefs {
-    readonly id: FieldRef<"UserNotifyMessage", 'String'>
-    readonly userId: FieldRef<"UserNotifyMessage", 'String'>
-    readonly notifyMessageId: FieldRef<"UserNotifyMessage", 'String'>
-    readonly timeSent: FieldRef<"UserNotifyMessage", 'DateTime'>
-    readonly response: FieldRef<"UserNotifyMessage", 'String'>
-    readonly responseReceivedAt: FieldRef<"UserNotifyMessage", 'DateTime'>
-    readonly removedAt: FieldRef<"UserNotifyMessage", 'DateTime'>
-    readonly jobId: FieldRef<"UserNotifyMessage", 'String'>
-    readonly createdAt: FieldRef<"UserNotifyMessage", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserNotifyMessage", 'DateTime'>
+  interface PatientNotifyMessageFieldRefs {
+    readonly id: FieldRef<"PatientNotifyMessage", 'String'>
+    readonly patientId: FieldRef<"PatientNotifyMessage", 'String'>
+    readonly notifyMessageId: FieldRef<"PatientNotifyMessage", 'String'>
+    readonly timeSent: FieldRef<"PatientNotifyMessage", 'DateTime'>
+    readonly response: FieldRef<"PatientNotifyMessage", 'String'>
+    readonly responseReceivedAt: FieldRef<"PatientNotifyMessage", 'DateTime'>
+    readonly removedAt: FieldRef<"PatientNotifyMessage", 'DateTime'>
+    readonly jobId: FieldRef<"PatientNotifyMessage", 'String'>
+    readonly createdAt: FieldRef<"PatientNotifyMessage", 'DateTime'>
+    readonly updatedAt: FieldRef<"PatientNotifyMessage", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserNotifyMessage findUnique
+   * PatientNotifyMessage findUnique
    */
-  export type UserNotifyMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter, which UserNotifyMessage to fetch.
+     * Filter, which PatientNotifyMessage to fetch.
      */
-    where: UserNotifyMessageWhereUniqueInput
+    where: PatientNotifyMessageWhereUniqueInput
   }
 
   /**
-   * UserNotifyMessage findUniqueOrThrow
+   * PatientNotifyMessage findUniqueOrThrow
    */
-  export type UserNotifyMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter, which UserNotifyMessage to fetch.
+     * Filter, which PatientNotifyMessage to fetch.
      */
-    where: UserNotifyMessageWhereUniqueInput
+    where: PatientNotifyMessageWhereUniqueInput
   }
 
   /**
-   * UserNotifyMessage findFirst
+   * PatientNotifyMessage findFirst
    */
-  export type UserNotifyMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter, which UserNotifyMessage to fetch.
+     * Filter, which PatientNotifyMessage to fetch.
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserNotifyMessages to fetch.
+     * Determine the order of PatientNotifyMessages to fetch.
      */
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserNotifyMessages.
+     * Sets the position for searching for PatientNotifyMessages.
      */
-    cursor?: UserNotifyMessageWhereUniqueInput
+    cursor?: PatientNotifyMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserNotifyMessages from the position of the cursor.
+     * Take `±n` PatientNotifyMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserNotifyMessages.
+     * Skip the first `n` PatientNotifyMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserNotifyMessages.
+     * Filter by unique combinations of PatientNotifyMessages.
      */
-    distinct?: UserNotifyMessageScalarFieldEnum | UserNotifyMessageScalarFieldEnum[]
+    distinct?: PatientNotifyMessageScalarFieldEnum | PatientNotifyMessageScalarFieldEnum[]
   }
 
   /**
-   * UserNotifyMessage findFirstOrThrow
+   * PatientNotifyMessage findFirstOrThrow
    */
-  export type UserNotifyMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter, which UserNotifyMessage to fetch.
+     * Filter, which PatientNotifyMessage to fetch.
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserNotifyMessages to fetch.
+     * Determine the order of PatientNotifyMessages to fetch.
      */
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserNotifyMessages.
+     * Sets the position for searching for PatientNotifyMessages.
      */
-    cursor?: UserNotifyMessageWhereUniqueInput
+    cursor?: PatientNotifyMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserNotifyMessages from the position of the cursor.
+     * Take `±n` PatientNotifyMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserNotifyMessages.
+     * Skip the first `n` PatientNotifyMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserNotifyMessages.
+     * Filter by unique combinations of PatientNotifyMessages.
      */
-    distinct?: UserNotifyMessageScalarFieldEnum | UserNotifyMessageScalarFieldEnum[]
+    distinct?: PatientNotifyMessageScalarFieldEnum | PatientNotifyMessageScalarFieldEnum[]
   }
 
   /**
-   * UserNotifyMessage findMany
+   * PatientNotifyMessage findMany
    */
-  export type UserNotifyMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter, which UserNotifyMessages to fetch.
+     * Filter, which PatientNotifyMessages to fetch.
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserNotifyMessages to fetch.
+     * Determine the order of PatientNotifyMessages to fetch.
      */
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
+    orderBy?: PatientNotifyMessageOrderByWithRelationInput | PatientNotifyMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserNotifyMessages.
+     * Sets the position for listing PatientNotifyMessages.
      */
-    cursor?: UserNotifyMessageWhereUniqueInput
+    cursor?: PatientNotifyMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserNotifyMessages from the position of the cursor.
+     * Take `±n` PatientNotifyMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserNotifyMessages.
+     * Skip the first `n` PatientNotifyMessages.
      */
     skip?: number
-    distinct?: UserNotifyMessageScalarFieldEnum | UserNotifyMessageScalarFieldEnum[]
+    distinct?: PatientNotifyMessageScalarFieldEnum | PatientNotifyMessageScalarFieldEnum[]
   }
 
   /**
-   * UserNotifyMessage create
+   * PatientNotifyMessage create
    */
-  export type UserNotifyMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserNotifyMessage.
+     * The data needed to create a PatientNotifyMessage.
      */
-    data: XOR<UserNotifyMessageCreateInput, UserNotifyMessageUncheckedCreateInput>
+    data: XOR<PatientNotifyMessageCreateInput, PatientNotifyMessageUncheckedCreateInput>
   }
 
   /**
-   * UserNotifyMessage createMany
+   * PatientNotifyMessage createMany
    */
-  export type UserNotifyMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserNotifyMessages.
+     * The data used to create many PatientNotifyMessages.
      */
-    data: UserNotifyMessageCreateManyInput | UserNotifyMessageCreateManyInput[]
+    data: PatientNotifyMessageCreateManyInput | PatientNotifyMessageCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserNotifyMessage createManyAndReturn
+   * PatientNotifyMessage createManyAndReturn
    */
-  export type UserNotifyMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * The data used to create many UserNotifyMessages.
+     * The data used to create many PatientNotifyMessages.
      */
-    data: UserNotifyMessageCreateManyInput | UserNotifyMessageCreateManyInput[]
+    data: PatientNotifyMessageCreateManyInput | PatientNotifyMessageCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserNotifyMessage update
+   * PatientNotifyMessage update
    */
-  export type UserNotifyMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserNotifyMessage.
+     * The data needed to update a PatientNotifyMessage.
      */
-    data: XOR<UserNotifyMessageUpdateInput, UserNotifyMessageUncheckedUpdateInput>
+    data: XOR<PatientNotifyMessageUpdateInput, PatientNotifyMessageUncheckedUpdateInput>
     /**
-     * Choose, which UserNotifyMessage to update.
+     * Choose, which PatientNotifyMessage to update.
      */
-    where: UserNotifyMessageWhereUniqueInput
+    where: PatientNotifyMessageWhereUniqueInput
   }
 
   /**
-   * UserNotifyMessage updateMany
+   * PatientNotifyMessage updateMany
    */
-  export type UserNotifyMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserNotifyMessages.
+     * The data used to update PatientNotifyMessages.
      */
-    data: XOR<UserNotifyMessageUpdateManyMutationInput, UserNotifyMessageUncheckedUpdateManyInput>
+    data: XOR<PatientNotifyMessageUpdateManyMutationInput, PatientNotifyMessageUncheckedUpdateManyInput>
     /**
-     * Filter which UserNotifyMessages to update
+     * Filter which PatientNotifyMessages to update
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
   }
 
   /**
-   * UserNotifyMessage upsert
+   * PatientNotifyMessage upsert
    */
-  export type UserNotifyMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserNotifyMessage to update in case it exists.
+     * The filter to search for the PatientNotifyMessage to update in case it exists.
      */
-    where: UserNotifyMessageWhereUniqueInput
+    where: PatientNotifyMessageWhereUniqueInput
     /**
-     * In case the UserNotifyMessage found by the `where` argument doesn't exist, create a new UserNotifyMessage with this data.
+     * In case the PatientNotifyMessage found by the `where` argument doesn't exist, create a new PatientNotifyMessage with this data.
      */
-    create: XOR<UserNotifyMessageCreateInput, UserNotifyMessageUncheckedCreateInput>
+    create: XOR<PatientNotifyMessageCreateInput, PatientNotifyMessageUncheckedCreateInput>
     /**
-     * In case the UserNotifyMessage was found with the provided `where` argument, update it with this data.
+     * In case the PatientNotifyMessage was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserNotifyMessageUpdateInput, UserNotifyMessageUncheckedUpdateInput>
+    update: XOR<PatientNotifyMessageUpdateInput, PatientNotifyMessageUncheckedUpdateInput>
   }
 
   /**
-   * UserNotifyMessage delete
+   * PatientNotifyMessage delete
    */
-  export type UserNotifyMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
     /**
-     * Filter which UserNotifyMessage to delete.
+     * Filter which PatientNotifyMessage to delete.
      */
-    where: UserNotifyMessageWhereUniqueInput
+    where: PatientNotifyMessageWhereUniqueInput
   }
 
   /**
-   * UserNotifyMessage deleteMany
+   * PatientNotifyMessage deleteMany
    */
-  export type UserNotifyMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserNotifyMessages to delete
+     * Filter which PatientNotifyMessages to delete
      */
-    where?: UserNotifyMessageWhereInput
+    where?: PatientNotifyMessageWhereInput
   }
 
   /**
-   * UserNotifyMessage without action
+   * PatientNotifyMessage without action
    */
-  export type UserNotifyMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatientNotifyMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserNotifyMessage
+     * Select specific fields to fetch from the PatientNotifyMessage
      */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
+    select?: PatientNotifyMessageSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
+    include?: PatientNotifyMessageInclude<ExtArgs> | null
   }
 
 
@@ -50595,7 +50620,6 @@ export namespace Prisma {
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     agreements?: boolean | User$agreementsArgs<ExtArgs>
-    userNotifyMessages?: boolean | User$userNotifyMessagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -50620,7 +50644,6 @@ export namespace Prisma {
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     agreements?: boolean | User$agreementsArgs<ExtArgs>
-    userNotifyMessages?: boolean | User$userNotifyMessagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -50636,7 +50659,6 @@ export namespace Prisma {
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
       auditsLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       agreements: Prisma.$UserAgreementPayload<ExtArgs>[]
-      userNotifyMessages: Prisma.$UserNotifyMessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -51053,8 +51075,6 @@ export namespace Prisma {
     auditsLogs<T extends User$auditsLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     agreements<T extends User$agreementsArgs<ExtArgs> = {}>(args?: Subset<T, User$agreementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    userNotifyMessages<T extends User$userNotifyMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$userNotifyMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNotifyMessagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -51562,26 +51582,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserAgreementScalarFieldEnum | UserAgreementScalarFieldEnum[]
-  }
-
-  /**
-   * User.userNotifyMessages
-   */
-  export type User$userNotifyMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserNotifyMessage
-     */
-    select?: UserNotifyMessageSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserNotifyMessageInclude<ExtArgs> | null
-    where?: UserNotifyMessageWhereInput
-    orderBy?: UserNotifyMessageOrderByWithRelationInput | UserNotifyMessageOrderByWithRelationInput[]
-    cursor?: UserNotifyMessageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserNotifyMessageScalarFieldEnum | UserNotifyMessageScalarFieldEnum[]
   }
 
   /**
@@ -58418,9 +58418,9 @@ export namespace Prisma {
   export type NotifyMessageScalarFieldEnum = (typeof NotifyMessageScalarFieldEnum)[keyof typeof NotifyMessageScalarFieldEnum]
 
 
-  export const UserNotifyMessageScalarFieldEnum: {
+  export const PatientNotifyMessageScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
+    patientId: 'patientId',
     notifyMessageId: 'notifyMessageId',
     timeSent: 'timeSent',
     response: 'response',
@@ -58431,7 +58431,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type UserNotifyMessageScalarFieldEnum = (typeof UserNotifyMessageScalarFieldEnum)[keyof typeof UserNotifyMessageScalarFieldEnum]
+  export type PatientNotifyMessageScalarFieldEnum = (typeof PatientNotifyMessageScalarFieldEnum)[keyof typeof PatientNotifyMessageScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -59364,6 +59364,7 @@ export namespace Prisma {
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
+    patientNotifyMessages?: PatientNotifyMessageListRelationFilter
   }
 
   export type PatientOrderByWithRelationInput = {
@@ -59387,6 +59388,7 @@ export namespace Prisma {
     evaluations?: EvaluationOrderByRelationAggregateInput
     workbenches?: WorkbenchOrderByRelationAggregateInput
     companies?: CompanyPatientOrderByRelationAggregateInput
+    patientNotifyMessages?: PatientNotifyMessageOrderByRelationAggregateInput
   }
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
@@ -59413,6 +59415,7 @@ export namespace Prisma {
     evaluations?: EvaluationListRelationFilter
     workbenches?: WorkbenchListRelationFilter
     companies?: CompanyPatientListRelationFilter
+    patientNotifyMessages?: PatientNotifyMessageListRelationFilter
   }, "id">
 
   export type PatientOrderByWithAggregationInput = {
@@ -62420,7 +62423,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"NotifyMessage"> | Date | string
     updatedAt?: DateTimeFilter<"NotifyMessage"> | Date | string
     notification?: XOR<NotificationRelationFilter, NotificationWhereInput>
-    userNotifyMessages?: UserNotifyMessageListRelationFilter
+    patientNotifyMessages?: PatientNotifyMessageListRelationFilter
   }
 
   export type NotifyMessageOrderByWithRelationInput = {
@@ -62435,7 +62438,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     notification?: NotificationOrderByWithRelationInput
-    userNotifyMessages?: UserNotifyMessageOrderByRelationAggregateInput
+    patientNotifyMessages?: PatientNotifyMessageOrderByRelationAggregateInput
   }
 
   export type NotifyMessageWhereUniqueInput = Prisma.AtLeast<{
@@ -62454,7 +62457,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"NotifyMessage"> | Date | string
     updatedAt?: DateTimeFilter<"NotifyMessage"> | Date | string
     notification?: XOR<NotificationRelationFilter, NotificationWhereInput>
-    userNotifyMessages?: UserNotifyMessageListRelationFilter
+    patientNotifyMessages?: PatientNotifyMessageListRelationFilter
   }, "id" | "notifyId_sequence">
 
   export type NotifyMessageOrderByWithAggregationInput = {
@@ -62491,27 +62494,27 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"NotifyMessage"> | Date | string
   }
 
-  export type UserNotifyMessageWhereInput = {
-    AND?: UserNotifyMessageWhereInput | UserNotifyMessageWhereInput[]
-    OR?: UserNotifyMessageWhereInput[]
-    NOT?: UserNotifyMessageWhereInput | UserNotifyMessageWhereInput[]
-    id?: StringFilter<"UserNotifyMessage"> | string
-    userId?: StringFilter<"UserNotifyMessage"> | string
-    notifyMessageId?: StringFilter<"UserNotifyMessage"> | string
-    timeSent?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    response?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    responseReceivedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    removedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    jobId?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    createdAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-    updatedAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+  export type PatientNotifyMessageWhereInput = {
+    AND?: PatientNotifyMessageWhereInput | PatientNotifyMessageWhereInput[]
+    OR?: PatientNotifyMessageWhereInput[]
+    NOT?: PatientNotifyMessageWhereInput | PatientNotifyMessageWhereInput[]
+    id?: StringFilter<"PatientNotifyMessage"> | string
+    patientId?: StringFilter<"PatientNotifyMessage"> | string
+    notifyMessageId?: StringFilter<"PatientNotifyMessage"> | string
+    timeSent?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    response?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    responseReceivedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    removedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    jobId?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    createdAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
     notifyMessage?: XOR<NotifyMessageRelationFilter, NotifyMessageWhereInput>
   }
 
-  export type UserNotifyMessageOrderByWithRelationInput = {
+  export type PatientNotifyMessageOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    patientId?: SortOrder
     notifyMessageId?: SortOrder
     timeSent?: SortOrderInput | SortOrder
     response?: SortOrderInput | SortOrder
@@ -62520,31 +62523,31 @@ export namespace Prisma {
     jobId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
+    patient?: PatientOrderByWithRelationInput
     notifyMessage?: NotifyMessageOrderByWithRelationInput
   }
 
-  export type UserNotifyMessageWhereUniqueInput = Prisma.AtLeast<{
+  export type PatientNotifyMessageWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: UserNotifyMessageWhereInput | UserNotifyMessageWhereInput[]
-    OR?: UserNotifyMessageWhereInput[]
-    NOT?: UserNotifyMessageWhereInput | UserNotifyMessageWhereInput[]
-    userId?: StringFilter<"UserNotifyMessage"> | string
-    notifyMessageId?: StringFilter<"UserNotifyMessage"> | string
-    timeSent?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    response?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    responseReceivedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    removedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    jobId?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    createdAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-    updatedAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    AND?: PatientNotifyMessageWhereInput | PatientNotifyMessageWhereInput[]
+    OR?: PatientNotifyMessageWhereInput[]
+    NOT?: PatientNotifyMessageWhereInput | PatientNotifyMessageWhereInput[]
+    patientId?: StringFilter<"PatientNotifyMessage"> | string
+    notifyMessageId?: StringFilter<"PatientNotifyMessage"> | string
+    timeSent?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    response?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    responseReceivedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    removedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    jobId?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    createdAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+    patient?: XOR<PatientRelationFilter, PatientWhereInput>
     notifyMessage?: XOR<NotifyMessageRelationFilter, NotifyMessageWhereInput>
   }, "id">
 
-  export type UserNotifyMessageOrderByWithAggregationInput = {
+  export type PatientNotifyMessageOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    patientId?: SortOrder
     notifyMessageId?: SortOrder
     timeSent?: SortOrderInput | SortOrder
     response?: SortOrderInput | SortOrder
@@ -62553,25 +62556,25 @@ export namespace Prisma {
     jobId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: UserNotifyMessageCountOrderByAggregateInput
-    _max?: UserNotifyMessageMaxOrderByAggregateInput
-    _min?: UserNotifyMessageMinOrderByAggregateInput
+    _count?: PatientNotifyMessageCountOrderByAggregateInput
+    _max?: PatientNotifyMessageMaxOrderByAggregateInput
+    _min?: PatientNotifyMessageMinOrderByAggregateInput
   }
 
-  export type UserNotifyMessageScalarWhereWithAggregatesInput = {
-    AND?: UserNotifyMessageScalarWhereWithAggregatesInput | UserNotifyMessageScalarWhereWithAggregatesInput[]
-    OR?: UserNotifyMessageScalarWhereWithAggregatesInput[]
-    NOT?: UserNotifyMessageScalarWhereWithAggregatesInput | UserNotifyMessageScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"UserNotifyMessage"> | string
-    userId?: StringWithAggregatesFilter<"UserNotifyMessage"> | string
-    notifyMessageId?: StringWithAggregatesFilter<"UserNotifyMessage"> | string
-    timeSent?: DateTimeNullableWithAggregatesFilter<"UserNotifyMessage"> | Date | string | null
-    response?: StringNullableWithAggregatesFilter<"UserNotifyMessage"> | string | null
-    responseReceivedAt?: DateTimeNullableWithAggregatesFilter<"UserNotifyMessage"> | Date | string | null
-    removedAt?: DateTimeNullableWithAggregatesFilter<"UserNotifyMessage"> | Date | string | null
-    jobId?: StringNullableWithAggregatesFilter<"UserNotifyMessage"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"UserNotifyMessage"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserNotifyMessage"> | Date | string
+  export type PatientNotifyMessageScalarWhereWithAggregatesInput = {
+    AND?: PatientNotifyMessageScalarWhereWithAggregatesInput | PatientNotifyMessageScalarWhereWithAggregatesInput[]
+    OR?: PatientNotifyMessageScalarWhereWithAggregatesInput[]
+    NOT?: PatientNotifyMessageScalarWhereWithAggregatesInput | PatientNotifyMessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PatientNotifyMessage"> | string
+    patientId?: StringWithAggregatesFilter<"PatientNotifyMessage"> | string
+    notifyMessageId?: StringWithAggregatesFilter<"PatientNotifyMessage"> | string
+    timeSent?: DateTimeNullableWithAggregatesFilter<"PatientNotifyMessage"> | Date | string | null
+    response?: StringNullableWithAggregatesFilter<"PatientNotifyMessage"> | string | null
+    responseReceivedAt?: DateTimeNullableWithAggregatesFilter<"PatientNotifyMessage"> | Date | string | null
+    removedAt?: DateTimeNullableWithAggregatesFilter<"PatientNotifyMessage"> | Date | string | null
+    jobId?: StringNullableWithAggregatesFilter<"PatientNotifyMessage"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PatientNotifyMessage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PatientNotifyMessage"> | Date | string
   }
 
   export type UserWhereInput = {
@@ -62594,7 +62597,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
     agreements?: UserAgreementListRelationFilter
-    userNotifyMessages?: UserNotifyMessageListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -62614,7 +62616,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesOrderByRelationAggregateInput
     auditsLogs?: AuditLogOrderByRelationAggregateInput
     agreements?: UserAgreementOrderByRelationAggregateInput
-    userNotifyMessages?: UserNotifyMessageOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -62637,7 +62638,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
     agreements?: UserAgreementListRelationFilter
-    userNotifyMessages?: UserNotifyMessageListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -63466,6 +63466,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateInput = {
@@ -63488,6 +63489,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUpdateInput = {
@@ -63510,6 +63512,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
@@ -63532,6 +63535,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientCreateManyInput = {
@@ -66819,7 +66823,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notification: NotificationCreateNestedOneWithoutMessagesInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutNotifyMessageInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutNotifyMessageInput
   }
 
   export type NotifyMessageUncheckedCreateInput = {
@@ -66833,7 +66837,7 @@ export namespace Prisma {
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput
   }
 
   export type NotifyMessageUpdateInput = {
@@ -66847,7 +66851,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notification?: NotificationUpdateOneRequiredWithoutMessagesNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutNotifyMessageNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutNotifyMessageNestedInput
   }
 
   export type NotifyMessageUncheckedUpdateInput = {
@@ -66861,7 +66865,7 @@ export namespace Prisma {
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput
   }
 
   export type NotifyMessageCreateManyInput = {
@@ -66902,7 +66906,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageCreateInput = {
+  export type PatientNotifyMessageCreateInput = {
     id?: string
     timeSent?: Date | string | null
     response?: string | null
@@ -66911,13 +66915,13 @@ export namespace Prisma {
     jobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserNotifyMessagesInput
-    notifyMessage: NotifyMessageCreateNestedOneWithoutUserNotifyMessagesInput
+    patient: PatientCreateNestedOneWithoutPatientNotifyMessagesInput
+    notifyMessage: NotifyMessageCreateNestedOneWithoutPatientNotifyMessagesInput
   }
 
-  export type UserNotifyMessageUncheckedCreateInput = {
+  export type PatientNotifyMessageUncheckedCreateInput = {
     id?: string
-    userId: string
+    patientId: string
     notifyMessageId: string
     timeSent?: Date | string | null
     response?: string | null
@@ -66928,7 +66932,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserNotifyMessageUpdateInput = {
+  export type PatientNotifyMessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66937,13 +66941,13 @@ export namespace Prisma {
     jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserNotifyMessagesNestedInput
-    notifyMessage?: NotifyMessageUpdateOneRequiredWithoutUserNotifyMessagesNestedInput
+    patient?: PatientUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput
+    notifyMessage?: NotifyMessageUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput
   }
 
-  export type UserNotifyMessageUncheckedUpdateInput = {
+  export type PatientNotifyMessageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     notifyMessageId?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66954,9 +66958,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageCreateManyInput = {
+  export type PatientNotifyMessageCreateManyInput = {
     id?: string
-    userId: string
+    patientId: string
     notifyMessageId: string
     timeSent?: Date | string | null
     response?: string | null
@@ -66967,7 +66971,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserNotifyMessageUpdateManyMutationInput = {
+  export type PatientNotifyMessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66978,9 +66982,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageUncheckedUpdateManyInput = {
+  export type PatientNotifyMessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     notifyMessageId?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67008,7 +67012,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -67028,7 +67031,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -67048,7 +67050,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -67068,7 +67069,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -68186,11 +68186,21 @@ export namespace Prisma {
     none?: WorkbenchWhereInput
   }
 
+  export type PatientNotifyMessageListRelationFilter = {
+    every?: PatientNotifyMessageWhereInput
+    some?: PatientNotifyMessageWhereInput
+    none?: PatientNotifyMessageWhereInput
+  }
+
   export type FootOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type WorkbenchOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PatientNotifyMessageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -70641,16 +70651,6 @@ export namespace Prisma {
     isNot?: NotificationWhereInput
   }
 
-  export type UserNotifyMessageListRelationFilter = {
-    every?: UserNotifyMessageWhereInput
-    some?: UserNotifyMessageWhereInput
-    none?: UserNotifyMessageWhereInput
-  }
-
-  export type UserNotifyMessageOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type NotifyMessageNotifyIdSequenceCompoundUniqueInput = {
     notifyId: string
     sequence: number
@@ -70722,9 +70722,9 @@ export namespace Prisma {
     isNot?: NotifyMessageWhereInput
   }
 
-  export type UserNotifyMessageCountOrderByAggregateInput = {
+  export type PatientNotifyMessageCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    patientId?: SortOrder
     notifyMessageId?: SortOrder
     timeSent?: SortOrder
     response?: SortOrder
@@ -70735,9 +70735,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserNotifyMessageMaxOrderByAggregateInput = {
+  export type PatientNotifyMessageMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    patientId?: SortOrder
     notifyMessageId?: SortOrder
     timeSent?: SortOrder
     response?: SortOrder
@@ -70748,9 +70748,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserNotifyMessageMinOrderByAggregateInput = {
+  export type PatientNotifyMessageMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    patientId?: SortOrder
     notifyMessageId?: SortOrder
     timeSent?: SortOrder
     response?: SortOrder
@@ -71890,6 +71890,13 @@ export namespace Prisma {
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
+  export type PatientNotifyMessageCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput> | PatientNotifyMessageCreateWithoutPatientInput[] | PatientNotifyMessageUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutPatientInput | PatientNotifyMessageCreateOrConnectWithoutPatientInput[]
+    createMany?: PatientNotifyMessageCreateManyPatientInputEnvelope
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+  }
+
   export type FootUncheckedCreateNestedManyWithoutPatientInput = {
     create?: XOR<FootCreateWithoutPatientInput, FootUncheckedCreateWithoutPatientInput> | FootCreateWithoutPatientInput[] | FootUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
@@ -71916,6 +71923,13 @@ export namespace Prisma {
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutPatientInput | CompanyPatientCreateOrConnectWithoutPatientInput[]
     createMany?: CompanyPatientCreateManyPatientInputEnvelope
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput> | PatientNotifyMessageCreateWithoutPatientInput[] | PatientNotifyMessageUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutPatientInput | PatientNotifyMessageCreateOrConnectWithoutPatientInput[]
+    createMany?: PatientNotifyMessageCreateManyPatientInputEnvelope
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
   }
 
   export type NullableEnumGenderFieldUpdateOperationsInput = {
@@ -72004,6 +72018,20 @@ export namespace Prisma {
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
+  export type PatientNotifyMessageUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput> | PatientNotifyMessageCreateWithoutPatientInput[] | PatientNotifyMessageUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutPatientInput | PatientNotifyMessageCreateOrConnectWithoutPatientInput[]
+    upsert?: PatientNotifyMessageUpsertWithWhereUniqueWithoutPatientInput | PatientNotifyMessageUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PatientNotifyMessageCreateManyPatientInputEnvelope
+    set?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    disconnect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    delete?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    update?: PatientNotifyMessageUpdateWithWhereUniqueWithoutPatientInput | PatientNotifyMessageUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PatientNotifyMessageUpdateManyWithWhereWithoutPatientInput | PatientNotifyMessageUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
+  }
+
   export type FootUncheckedUpdateManyWithoutPatientNestedInput = {
     create?: XOR<FootCreateWithoutPatientInput, FootUncheckedCreateWithoutPatientInput> | FootCreateWithoutPatientInput[] | FootUncheckedCreateWithoutPatientInput[]
     connectOrCreate?: FootCreateOrConnectWithoutPatientInput | FootCreateOrConnectWithoutPatientInput[]
@@ -72058,6 +72086,20 @@ export namespace Prisma {
     update?: CompanyPatientUpdateWithWhereUniqueWithoutPatientInput | CompanyPatientUpdateWithWhereUniqueWithoutPatientInput[]
     updateMany?: CompanyPatientUpdateManyWithWhereWithoutPatientInput | CompanyPatientUpdateManyWithWhereWithoutPatientInput[]
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput> | PatientNotifyMessageCreateWithoutPatientInput[] | PatientNotifyMessageUncheckedCreateWithoutPatientInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutPatientInput | PatientNotifyMessageCreateOrConnectWithoutPatientInput[]
+    upsert?: PatientNotifyMessageUpsertWithWhereUniqueWithoutPatientInput | PatientNotifyMessageUpsertWithWhereUniqueWithoutPatientInput[]
+    createMany?: PatientNotifyMessageCreateManyPatientInputEnvelope
+    set?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    disconnect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    delete?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    update?: PatientNotifyMessageUpdateWithWhereUniqueWithoutPatientInput | PatientNotifyMessageUpdateWithWhereUniqueWithoutPatientInput[]
+    updateMany?: PatientNotifyMessageUpdateManyWithWhereWithoutPatientInput | PatientNotifyMessageUpdateManyWithWhereWithoutPatientInput[]
+    deleteMany?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutClinicianInput = {
@@ -74551,18 +74593,18 @@ export namespace Prisma {
     connect?: NotificationWhereUniqueInput
   }
 
-  export type UserNotifyMessageCreateNestedManyWithoutNotifyMessageInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | UserNotifyMessageCreateWithoutNotifyMessageInput[] | UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput | UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
-    createMany?: UserNotifyMessageCreateManyNotifyMessageInputEnvelope
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
+  export type PatientNotifyMessageCreateNestedManyWithoutNotifyMessageInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | PatientNotifyMessageCreateWithoutNotifyMessageInput[] | PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput | PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
+    createMany?: PatientNotifyMessageCreateManyNotifyMessageInputEnvelope
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
   }
 
-  export type UserNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | UserNotifyMessageCreateWithoutNotifyMessageInput[] | UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput | UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
-    createMany?: UserNotifyMessageCreateManyNotifyMessageInputEnvelope
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
+  export type PatientNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | PatientNotifyMessageCreateWithoutNotifyMessageInput[] | PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput | PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
+    createMany?: PatientNotifyMessageCreateManyNotifyMessageInputEnvelope
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
   }
 
   export type EnumCommunicationChannelFieldUpdateOperationsInput = {
@@ -74577,60 +74619,60 @@ export namespace Prisma {
     update?: XOR<XOR<NotificationUpdateToOneWithWhereWithoutMessagesInput, NotificationUpdateWithoutMessagesInput>, NotificationUncheckedUpdateWithoutMessagesInput>
   }
 
-  export type UserNotifyMessageUpdateManyWithoutNotifyMessageNestedInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | UserNotifyMessageCreateWithoutNotifyMessageInput[] | UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput | UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
-    upsert?: UserNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput | UserNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput[]
-    createMany?: UserNotifyMessageCreateManyNotifyMessageInputEnvelope
-    set?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    disconnect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    delete?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    update?: UserNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput | UserNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput[]
-    updateMany?: UserNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput | UserNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput[]
-    deleteMany?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
+  export type PatientNotifyMessageUpdateManyWithoutNotifyMessageNestedInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | PatientNotifyMessageCreateWithoutNotifyMessageInput[] | PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput | PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
+    upsert?: PatientNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput | PatientNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput[]
+    createMany?: PatientNotifyMessageCreateManyNotifyMessageInputEnvelope
+    set?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    disconnect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    delete?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    update?: PatientNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput | PatientNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput[]
+    updateMany?: PatientNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput | PatientNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput[]
+    deleteMany?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
   }
 
-  export type UserNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | UserNotifyMessageCreateWithoutNotifyMessageInput[] | UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput | UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
-    upsert?: UserNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput | UserNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput[]
-    createMany?: UserNotifyMessageCreateManyNotifyMessageInputEnvelope
-    set?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    disconnect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    delete?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    update?: UserNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput | UserNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput[]
-    updateMany?: UserNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput | UserNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput[]
-    deleteMany?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
+  export type PatientNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput = {
+    create?: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput> | PatientNotifyMessageCreateWithoutNotifyMessageInput[] | PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput[]
+    connectOrCreate?: PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput | PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput[]
+    upsert?: PatientNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput | PatientNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput[]
+    createMany?: PatientNotifyMessageCreateManyNotifyMessageInputEnvelope
+    set?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    disconnect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    delete?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    connect?: PatientNotifyMessageWhereUniqueInput | PatientNotifyMessageWhereUniqueInput[]
+    update?: PatientNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput | PatientNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput[]
+    updateMany?: PatientNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput | PatientNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput[]
+    deleteMany?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutUserNotifyMessagesInput = {
-    create?: XOR<UserCreateWithoutUserNotifyMessagesInput, UserUncheckedCreateWithoutUserNotifyMessagesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserNotifyMessagesInput
-    connect?: UserWhereUniqueInput
+  export type PatientCreateNestedOneWithoutPatientNotifyMessagesInput = {
+    create?: XOR<PatientCreateWithoutPatientNotifyMessagesInput, PatientUncheckedCreateWithoutPatientNotifyMessagesInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPatientNotifyMessagesInput
+    connect?: PatientWhereUniqueInput
   }
 
-  export type NotifyMessageCreateNestedOneWithoutUserNotifyMessagesInput = {
-    create?: XOR<NotifyMessageCreateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutUserNotifyMessagesInput>
-    connectOrCreate?: NotifyMessageCreateOrConnectWithoutUserNotifyMessagesInput
+  export type NotifyMessageCreateNestedOneWithoutPatientNotifyMessagesInput = {
+    create?: XOR<NotifyMessageCreateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutPatientNotifyMessagesInput>
+    connectOrCreate?: NotifyMessageCreateOrConnectWithoutPatientNotifyMessagesInput
     connect?: NotifyMessageWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutUserNotifyMessagesNestedInput = {
-    create?: XOR<UserCreateWithoutUserNotifyMessagesInput, UserUncheckedCreateWithoutUserNotifyMessagesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserNotifyMessagesInput
-    upsert?: UserUpsertWithoutUserNotifyMessagesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserNotifyMessagesInput, UserUpdateWithoutUserNotifyMessagesInput>, UserUncheckedUpdateWithoutUserNotifyMessagesInput>
+  export type PatientUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput = {
+    create?: XOR<PatientCreateWithoutPatientNotifyMessagesInput, PatientUncheckedCreateWithoutPatientNotifyMessagesInput>
+    connectOrCreate?: PatientCreateOrConnectWithoutPatientNotifyMessagesInput
+    upsert?: PatientUpsertWithoutPatientNotifyMessagesInput
+    connect?: PatientWhereUniqueInput
+    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutPatientNotifyMessagesInput, PatientUpdateWithoutPatientNotifyMessagesInput>, PatientUncheckedUpdateWithoutPatientNotifyMessagesInput>
   }
 
-  export type NotifyMessageUpdateOneRequiredWithoutUserNotifyMessagesNestedInput = {
-    create?: XOR<NotifyMessageCreateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutUserNotifyMessagesInput>
-    connectOrCreate?: NotifyMessageCreateOrConnectWithoutUserNotifyMessagesInput
-    upsert?: NotifyMessageUpsertWithoutUserNotifyMessagesInput
+  export type NotifyMessageUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput = {
+    create?: XOR<NotifyMessageCreateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutPatientNotifyMessagesInput>
+    connectOrCreate?: NotifyMessageCreateOrConnectWithoutPatientNotifyMessagesInput
+    upsert?: NotifyMessageUpsertWithoutPatientNotifyMessagesInput
     connect?: NotifyMessageWhereUniqueInput
-    update?: XOR<XOR<NotifyMessageUpdateToOneWithWhereWithoutUserNotifyMessagesInput, NotifyMessageUpdateWithoutUserNotifyMessagesInput>, NotifyMessageUncheckedUpdateWithoutUserNotifyMessagesInput>
+    update?: XOR<XOR<NotifyMessageUpdateToOneWithWhereWithoutPatientNotifyMessagesInput, NotifyMessageUpdateWithoutPatientNotifyMessagesInput>, NotifyMessageUncheckedUpdateWithoutPatientNotifyMessagesInput>
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -74688,13 +74730,6 @@ export namespace Prisma {
     connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
   }
 
-  export type UserNotifyMessageCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput> | UserNotifyMessageCreateWithoutUserInput[] | UserNotifyMessageUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutUserInput | UserNotifyMessageCreateOrConnectWithoutUserInput[]
-    createMany?: UserNotifyMessageCreateManyUserInputEnvelope
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-  }
-
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -74748,13 +74783,6 @@ export namespace Prisma {
     connectOrCreate?: UserAgreementCreateOrConnectWithoutUserInput | UserAgreementCreateOrConnectWithoutUserInput[]
     createMany?: UserAgreementCreateManyUserInputEnvelope
     connect?: UserAgreementWhereUniqueInput | UserAgreementWhereUniqueInput[]
-  }
-
-  export type UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput> | UserNotifyMessageCreateWithoutUserInput[] | UserNotifyMessageUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutUserInput | UserNotifyMessageCreateOrConnectWithoutUserInput[]
-    createMany?: UserNotifyMessageCreateManyUserInputEnvelope
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -74865,20 +74893,6 @@ export namespace Prisma {
     deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
   }
 
-  export type UserNotifyMessageUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput> | UserNotifyMessageCreateWithoutUserInput[] | UserNotifyMessageUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutUserInput | UserNotifyMessageCreateOrConnectWithoutUserInput[]
-    upsert?: UserNotifyMessageUpsertWithWhereUniqueWithoutUserInput | UserNotifyMessageUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserNotifyMessageCreateManyUserInputEnvelope
-    set?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    disconnect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    delete?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    update?: UserNotifyMessageUpdateWithWhereUniqueWithoutUserInput | UserNotifyMessageUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserNotifyMessageUpdateManyWithWhereWithoutUserInput | UserNotifyMessageUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
-  }
-
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -74985,20 +74999,6 @@ export namespace Prisma {
     update?: UserAgreementUpdateWithWhereUniqueWithoutUserInput | UserAgreementUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: UserAgreementUpdateManyWithWhereWithoutUserInput | UserAgreementUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: UserAgreementScalarWhereInput | UserAgreementScalarWhereInput[]
-  }
-
-  export type UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput> | UserNotifyMessageCreateWithoutUserInput[] | UserNotifyMessageUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserNotifyMessageCreateOrConnectWithoutUserInput | UserNotifyMessageCreateOrConnectWithoutUserInput[]
-    upsert?: UserNotifyMessageUpsertWithWhereUniqueWithoutUserInput | UserNotifyMessageUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserNotifyMessageCreateManyUserInputEnvelope
-    set?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    disconnect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    delete?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    connect?: UserNotifyMessageWhereUniqueInput | UserNotifyMessageWhereUniqueInput[]
-    update?: UserNotifyMessageUpdateWithWhereUniqueWithoutUserInput | UserNotifyMessageUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserNotifyMessageUpdateManyWithWhereWithoutUserInput | UserNotifyMessageUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAgreementsInput = {
@@ -77340,6 +77340,40 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PatientNotifyMessageCreateWithoutPatientInput = {
+    id?: string
+    timeSent?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    notifyMessage: NotifyMessageCreateNestedOneWithoutPatientNotifyMessagesInput
+  }
+
+  export type PatientNotifyMessageUncheckedCreateWithoutPatientInput = {
+    id?: string
+    notifyMessageId: string
+    timeSent?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatientNotifyMessageCreateOrConnectWithoutPatientInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    create: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PatientNotifyMessageCreateManyPatientInputEnvelope = {
+    data: PatientNotifyMessageCreateManyPatientInput | PatientNotifyMessageCreateManyPatientInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PhysicianUpsertWithoutPatientInput = {
     update: XOR<PhysicianUpdateWithoutPatientInput, PhysicianUncheckedUpdateWithoutPatientInput>
     create: XOR<PhysicianCreateWithoutPatientInput, PhysicianUncheckedCreateWithoutPatientInput>
@@ -77476,6 +77510,38 @@ export namespace Prisma {
     data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutPatientInput>
   }
 
+  export type PatientNotifyMessageUpsertWithWhereUniqueWithoutPatientInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    update: XOR<PatientNotifyMessageUpdateWithoutPatientInput, PatientNotifyMessageUncheckedUpdateWithoutPatientInput>
+    create: XOR<PatientNotifyMessageCreateWithoutPatientInput, PatientNotifyMessageUncheckedCreateWithoutPatientInput>
+  }
+
+  export type PatientNotifyMessageUpdateWithWhereUniqueWithoutPatientInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    data: XOR<PatientNotifyMessageUpdateWithoutPatientInput, PatientNotifyMessageUncheckedUpdateWithoutPatientInput>
+  }
+
+  export type PatientNotifyMessageUpdateManyWithWhereWithoutPatientInput = {
+    where: PatientNotifyMessageScalarWhereInput
+    data: XOR<PatientNotifyMessageUpdateManyMutationInput, PatientNotifyMessageUncheckedUpdateManyWithoutPatientInput>
+  }
+
+  export type PatientNotifyMessageScalarWhereInput = {
+    AND?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
+    OR?: PatientNotifyMessageScalarWhereInput[]
+    NOT?: PatientNotifyMessageScalarWhereInput | PatientNotifyMessageScalarWhereInput[]
+    id?: StringFilter<"PatientNotifyMessage"> | string
+    patientId?: StringFilter<"PatientNotifyMessage"> | string
+    notifyMessageId?: StringFilter<"PatientNotifyMessage"> | string
+    timeSent?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    response?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    responseReceivedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    removedAt?: DateTimeNullableFilter<"PatientNotifyMessage"> | Date | string | null
+    jobId?: StringNullableFilter<"PatientNotifyMessage"> | string | null
+    createdAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"PatientNotifyMessage"> | Date | string
+  }
+
   export type UserCreateWithoutClinicianInput = {
     id?: string
     email?: string | null
@@ -77492,7 +77558,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutClinicianInput = {
@@ -77511,7 +77576,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClinicianInput = {
@@ -77621,7 +77685,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClinicianInput = {
@@ -77640,7 +77703,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCliniciansInput = {
@@ -77678,6 +77740,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutEvaluationsInput = {
@@ -77699,6 +77762,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutEvaluationsInput = {
@@ -78051,6 +78115,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutEvaluationsInput = {
@@ -78072,6 +78137,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type CompanyUpsertWithoutEvaluationsInput = {
@@ -78427,6 +78493,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutFeetInput = {
@@ -78448,6 +78515,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutFeetInput = {
@@ -78572,6 +78640,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutFeetInput = {
@@ -78593,6 +78662,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type WorkbenchUpsertWithoutFeetInput = {
@@ -79281,6 +79351,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutWorkbenchesInput = {
@@ -79302,6 +79373,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutWorkbenchesInput = {
@@ -79628,6 +79700,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutWorkbenchesInput = {
@@ -79649,6 +79722,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type ProductUpsertWithoutWorkbenchesInput = {
@@ -79955,7 +80029,6 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutNotesInput = {
@@ -79974,7 +80047,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutNotesInput = {
@@ -80060,7 +80132,6 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotesInput = {
@@ -80079,7 +80150,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WorkbenchCreateWithoutOrdersInput = {
@@ -80625,6 +80695,7 @@ export namespace Prisma {
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutPrimaryPhysicianInput = {
@@ -80646,6 +80717,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
     companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutPrimaryPhysicianInput = {
@@ -81708,7 +81780,6 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAuditsLogsInput = {
@@ -81727,7 +81798,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAuditsLogsInput = {
@@ -81807,7 +81877,6 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAuditsLogsInput = {
@@ -81826,7 +81895,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyUpsertWithoutAuditLogsInput = {
@@ -81941,7 +82009,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -81960,7 +82027,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -82046,7 +82112,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -82065,7 +82130,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutDepartmentsInput = {
@@ -82084,7 +82148,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDepartmentsInput = {
@@ -82103,7 +82166,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDepartmentsInput = {
@@ -82183,7 +82245,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDepartmentsInput = {
@@ -82202,7 +82263,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyUpsertWithoutDepartmentsInput = {
@@ -82320,6 +82380,7 @@ export namespace Prisma {
     feet?: FootCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutCompaniesInput = {
@@ -82341,6 +82402,7 @@ export namespace Prisma {
     feet?: FootUncheckedCreateNestedManyWithoutPatientInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutCompaniesInput = {
@@ -82429,6 +82491,7 @@ export namespace Prisma {
     feet?: FootUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutCompaniesInput = {
@@ -82450,6 +82513,7 @@ export namespace Prisma {
     feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type FacilityCreateWithoutUsersInput = {
@@ -82499,7 +82563,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFacilitiesInput = {
@@ -82518,7 +82581,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFacilitiesInput = {
@@ -82590,7 +82652,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFacilitiesInput = {
@@ -82609,7 +82670,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type StripeEntityCreateWithoutStripeProductsInput = {
@@ -84061,7 +84121,7 @@ export namespace Prisma {
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutNotifyMessageInput
+    patientNotifyMessages?: PatientNotifyMessageCreateNestedManyWithoutNotifyMessageInput
   }
 
   export type NotifyMessageUncheckedCreateWithoutNotificationInput = {
@@ -84074,7 +84134,7 @@ export namespace Prisma {
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedCreateNestedManyWithoutNotifyMessageInput
   }
 
   export type NotifyMessageCreateOrConnectWithoutNotificationInput = {
@@ -84148,7 +84208,7 @@ export namespace Prisma {
     create: XOR<NotificationCreateWithoutMessagesInput, NotificationUncheckedCreateWithoutMessagesInput>
   }
 
-  export type UserNotifyMessageCreateWithoutNotifyMessageInput = {
+  export type PatientNotifyMessageCreateWithoutNotifyMessageInput = {
     id?: string
     timeSent?: Date | string | null
     response?: string | null
@@ -84157,12 +84217,12 @@ export namespace Prisma {
     jobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserNotifyMessagesInput
+    patient: PatientCreateNestedOneWithoutPatientNotifyMessagesInput
   }
 
-  export type UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput = {
+  export type PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput = {
     id?: string
-    userId: string
+    patientId: string
     timeSent?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -84172,13 +84232,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserNotifyMessageCreateOrConnectWithoutNotifyMessageInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    create: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput>
+  export type PatientNotifyMessageCreateOrConnectWithoutNotifyMessageInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    create: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput>
   }
 
-  export type UserNotifyMessageCreateManyNotifyMessageInputEnvelope = {
-    data: UserNotifyMessageCreateManyNotifyMessageInput | UserNotifyMessageCreateManyNotifyMessageInput[]
+  export type PatientNotifyMessageCreateManyNotifyMessageInputEnvelope = {
+    data: PatientNotifyMessageCreateManyNotifyMessageInput | PatientNotifyMessageCreateManyNotifyMessageInput[]
     skipDuplicates?: boolean
   }
 
@@ -84217,82 +84277,72 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    update: XOR<UserNotifyMessageUpdateWithoutNotifyMessageInput, UserNotifyMessageUncheckedUpdateWithoutNotifyMessageInput>
-    create: XOR<UserNotifyMessageCreateWithoutNotifyMessageInput, UserNotifyMessageUncheckedCreateWithoutNotifyMessageInput>
+  export type PatientNotifyMessageUpsertWithWhereUniqueWithoutNotifyMessageInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    update: XOR<PatientNotifyMessageUpdateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedUpdateWithoutNotifyMessageInput>
+    create: XOR<PatientNotifyMessageCreateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedCreateWithoutNotifyMessageInput>
   }
 
-  export type UserNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    data: XOR<UserNotifyMessageUpdateWithoutNotifyMessageInput, UserNotifyMessageUncheckedUpdateWithoutNotifyMessageInput>
+  export type PatientNotifyMessageUpdateWithWhereUniqueWithoutNotifyMessageInput = {
+    where: PatientNotifyMessageWhereUniqueInput
+    data: XOR<PatientNotifyMessageUpdateWithoutNotifyMessageInput, PatientNotifyMessageUncheckedUpdateWithoutNotifyMessageInput>
   }
 
-  export type UserNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput = {
-    where: UserNotifyMessageScalarWhereInput
-    data: XOR<UserNotifyMessageUpdateManyMutationInput, UserNotifyMessageUncheckedUpdateManyWithoutNotifyMessageInput>
+  export type PatientNotifyMessageUpdateManyWithWhereWithoutNotifyMessageInput = {
+    where: PatientNotifyMessageScalarWhereInput
+    data: XOR<PatientNotifyMessageUpdateManyMutationInput, PatientNotifyMessageUncheckedUpdateManyWithoutNotifyMessageInput>
   }
 
-  export type UserNotifyMessageScalarWhereInput = {
-    AND?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
-    OR?: UserNotifyMessageScalarWhereInput[]
-    NOT?: UserNotifyMessageScalarWhereInput | UserNotifyMessageScalarWhereInput[]
-    id?: StringFilter<"UserNotifyMessage"> | string
-    userId?: StringFilter<"UserNotifyMessage"> | string
-    notifyMessageId?: StringFilter<"UserNotifyMessage"> | string
-    timeSent?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    response?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    responseReceivedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    removedAt?: DateTimeNullableFilter<"UserNotifyMessage"> | Date | string | null
-    jobId?: StringNullableFilter<"UserNotifyMessage"> | string | null
-    createdAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-    updatedAt?: DateTimeFilter<"UserNotifyMessage"> | Date | string
-  }
-
-  export type UserCreateWithoutUserNotifyMessagesInput = {
+  export type PatientCreateWithoutPatientNotifyMessagesInput = {
     id?: string
-    email?: string | null
-    phone?: string | null
-    password?: string | null
-    pin?: string | null
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    companies?: CompanyUserCreateNestedManyWithoutUserInput
-    departments?: DepartmentUserCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserCreateNestedManyWithoutUserInput
-    clinician?: ClinicianCreateNestedOneWithoutUserInput
-    notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
-    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
-    agreements?: UserAgreementCreateNestedManyWithoutUserInput
+    primaryPhysician?: PhysicianCreateNestedOneWithoutPatientInput
+    feet?: FootCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientCreateNestedManyWithoutPatientInput
   }
 
-  export type UserUncheckedCreateWithoutUserNotifyMessagesInput = {
+  export type PatientUncheckedCreateWithoutPatientNotifyMessagesInput = {
     id?: string
-    email?: string | null
-    phone?: string | null
-    password?: string | null
-    pin?: string | null
+    firstName?: string | null
+    middleName?: string | null
+    lastName?: string | null
+    gender?: $Enums.Gender | null
+    birthDate?: Date | string | null
+    height?: number | null
+    weight?: number | null
+    maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    active?: boolean
+    deceasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
-    departments?: DepartmentUserUncheckedCreateNestedManyWithoutUserInput
-    facilities?: FacilityUserUncheckedCreateNestedManyWithoutUserInput
-    clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
-    notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
-    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
-    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
+    primaryPhysicianId?: string | null
+    feet?: FootUncheckedCreateNestedManyWithoutPatientInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutPatientInput
+    workbenches?: WorkbenchUncheckedCreateNestedManyWithoutPatientInput
+    companies?: CompanyPatientUncheckedCreateNestedManyWithoutPatientInput
   }
 
-  export type UserCreateOrConnectWithoutUserNotifyMessagesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserNotifyMessagesInput, UserUncheckedCreateWithoutUserNotifyMessagesInput>
+  export type PatientCreateOrConnectWithoutPatientNotifyMessagesInput = {
+    where: PatientWhereUniqueInput
+    create: XOR<PatientCreateWithoutPatientNotifyMessagesInput, PatientUncheckedCreateWithoutPatientNotifyMessagesInput>
   }
 
-  export type NotifyMessageCreateWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageCreateWithoutPatientNotifyMessagesInput = {
     id?: string
     sequence: number
     delayMinutes?: number | null
@@ -84305,7 +84355,7 @@ export namespace Prisma {
     notification: NotificationCreateNestedOneWithoutMessagesInput
   }
 
-  export type NotifyMessageUncheckedCreateWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageUncheckedCreateWithoutPatientNotifyMessagesInput = {
     id?: string
     notifyId: string
     sequence: number
@@ -84318,72 +84368,78 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type NotifyMessageCreateOrConnectWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageCreateOrConnectWithoutPatientNotifyMessagesInput = {
     where: NotifyMessageWhereUniqueInput
-    create: XOR<NotifyMessageCreateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutUserNotifyMessagesInput>
+    create: XOR<NotifyMessageCreateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutPatientNotifyMessagesInput>
   }
 
-  export type UserUpsertWithoutUserNotifyMessagesInput = {
-    update: XOR<UserUpdateWithoutUserNotifyMessagesInput, UserUncheckedUpdateWithoutUserNotifyMessagesInput>
-    create: XOR<UserCreateWithoutUserNotifyMessagesInput, UserUncheckedCreateWithoutUserNotifyMessagesInput>
-    where?: UserWhereInput
+  export type PatientUpsertWithoutPatientNotifyMessagesInput = {
+    update: XOR<PatientUpdateWithoutPatientNotifyMessagesInput, PatientUncheckedUpdateWithoutPatientNotifyMessagesInput>
+    create: XOR<PatientCreateWithoutPatientNotifyMessagesInput, PatientUncheckedCreateWithoutPatientNotifyMessagesInput>
+    where?: PatientWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUserNotifyMessagesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserNotifyMessagesInput, UserUncheckedUpdateWithoutUserNotifyMessagesInput>
+  export type PatientUpdateToOneWithWhereWithoutPatientNotifyMessagesInput = {
+    where?: PatientWhereInput
+    data: XOR<PatientUpdateWithoutPatientNotifyMessagesInput, PatientUncheckedUpdateWithoutPatientNotifyMessagesInput>
   }
 
-  export type UserUpdateWithoutUserNotifyMessagesInput = {
+  export type PatientUpdateWithoutPatientNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUpdateManyWithoutUserNestedInput
-    departments?: DepartmentUserUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
+    primaryPhysician?: PhysicianUpdateOneWithoutPatientNestedInput
+    feet?: FootUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserNotifyMessagesInput = {
+  export type PatientUncheckedUpdateWithoutPatientNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    middleName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    height?: NullableFloatFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
-    departments?: DepartmentUserUncheckedUpdateManyWithoutUserNestedInput
-    facilities?: FacilityUserUncheckedUpdateManyWithoutUserNestedInput
-    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
-    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
-    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
-    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
+    primaryPhysicianId?: NullableStringFieldUpdateOperationsInput | string | null
+    feet?: FootUncheckedUpdateManyWithoutPatientNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
+    workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
+    companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
   }
 
-  export type NotifyMessageUpsertWithoutUserNotifyMessagesInput = {
-    update: XOR<NotifyMessageUpdateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedUpdateWithoutUserNotifyMessagesInput>
-    create: XOR<NotifyMessageCreateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutUserNotifyMessagesInput>
+  export type NotifyMessageUpsertWithoutPatientNotifyMessagesInput = {
+    update: XOR<NotifyMessageUpdateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedUpdateWithoutPatientNotifyMessagesInput>
+    create: XOR<NotifyMessageCreateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedCreateWithoutPatientNotifyMessagesInput>
     where?: NotifyMessageWhereInput
   }
 
-  export type NotifyMessageUpdateToOneWithWhereWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageUpdateToOneWithWhereWithoutPatientNotifyMessagesInput = {
     where?: NotifyMessageWhereInput
-    data: XOR<NotifyMessageUpdateWithoutUserNotifyMessagesInput, NotifyMessageUncheckedUpdateWithoutUserNotifyMessagesInput>
+    data: XOR<NotifyMessageUpdateWithoutPatientNotifyMessagesInput, NotifyMessageUncheckedUpdateWithoutPatientNotifyMessagesInput>
   }
 
-  export type NotifyMessageUpdateWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageUpdateWithoutPatientNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     sequence?: FloatFieldUpdateOperationsInput | number
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -84396,7 +84452,7 @@ export namespace Prisma {
     notification?: NotificationUpdateOneRequiredWithoutMessagesNestedInput
   }
 
-  export type NotifyMessageUncheckedUpdateWithoutUserNotifyMessagesInput = {
+  export type NotifyMessageUncheckedUpdateWithoutPatientNotifyMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     notifyId?: StringFieldUpdateOperationsInput | string
     sequence?: FloatFieldUpdateOperationsInput | number
@@ -84620,40 +84676,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserNotifyMessageCreateWithoutUserInput = {
-    id?: string
-    timeSent?: Date | string | null
-    response?: string | null
-    responseReceivedAt?: Date | string | null
-    removedAt?: Date | string | null
-    jobId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    notifyMessage: NotifyMessageCreateNestedOneWithoutUserNotifyMessagesInput
-  }
-
-  export type UserNotifyMessageUncheckedCreateWithoutUserInput = {
-    id?: string
-    notifyMessageId: string
-    timeSent?: Date | string | null
-    response?: string | null
-    responseReceivedAt?: Date | string | null
-    removedAt?: Date | string | null
-    jobId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserNotifyMessageCreateOrConnectWithoutUserInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    create: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserNotifyMessageCreateManyUserInputEnvelope = {
-    data: UserNotifyMessageCreateManyUserInput | UserNotifyMessageCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -84817,22 +84839,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserAgreement"> | Date | string
   }
 
-  export type UserNotifyMessageUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    update: XOR<UserNotifyMessageUpdateWithoutUserInput, UserNotifyMessageUncheckedUpdateWithoutUserInput>
-    create: XOR<UserNotifyMessageCreateWithoutUserInput, UserNotifyMessageUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserNotifyMessageUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserNotifyMessageWhereUniqueInput
-    data: XOR<UserNotifyMessageUpdateWithoutUserInput, UserNotifyMessageUncheckedUpdateWithoutUserInput>
-  }
-
-  export type UserNotifyMessageUpdateManyWithWhereWithoutUserInput = {
-    where: UserNotifyMessageScalarWhereInput
-    data: XOR<UserNotifyMessageUpdateManyMutationInput, UserNotifyMessageUncheckedUpdateManyWithoutUserInput>
-  }
-
   export type UserCreateWithoutAgreementsInput = {
     id?: string
     email?: string | null
@@ -84849,7 +84855,6 @@ export namespace Prisma {
     clinician?: ClinicianCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAgreementsInput = {
@@ -84868,7 +84873,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAgreementsInput = {
@@ -84924,7 +84928,6 @@ export namespace Prisma {
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAgreementsInput = {
@@ -84943,7 +84946,6 @@ export namespace Prisma {
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AgreementUpsertWithoutUserAgreementsInput = {
@@ -85029,7 +85031,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -85048,7 +85049,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
-    userNotifyMessages?: UserNotifyMessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -85083,7 +85083,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -85102,7 +85101,6 @@ export namespace Prisma {
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -85944,6 +85942,18 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PatientNotifyMessageCreateManyPatientInput = {
+    id?: string
+    notifyMessageId: string
+    timeSent?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FootUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     side?: EnumSideFieldUpdateOperationsInput | $Enums.Side
@@ -86175,6 +86185,42 @@ export namespace Prisma {
   export type CompanyPatientUncheckedUpdateManyWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatientNotifyMessageUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notifyMessage?: NotifyMessageUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput
+  }
+
+  export type PatientNotifyMessageUncheckedUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notifyMessageId?: StringFieldUpdateOperationsInput | string
+    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatientNotifyMessageUncheckedUpdateManyWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notifyMessageId?: StringFieldUpdateOperationsInput | string
+    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -87217,6 +87263,7 @@ export namespace Prisma {
     evaluations?: EvaluationUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutPrimaryPhysicianInput = {
@@ -87238,6 +87285,7 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutPatientNestedInput
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateManyWithoutPrimaryPhysicianInput = {
@@ -88718,7 +88766,7 @@ export namespace Prisma {
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userNotifyMessages?: UserNotifyMessageUpdateManyWithoutNotifyMessageNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUpdateManyWithoutNotifyMessageNestedInput
   }
 
   export type NotifyMessageUncheckedUpdateWithoutNotificationInput = {
@@ -88731,7 +88779,7 @@ export namespace Prisma {
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userNotifyMessages?: UserNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput
+    patientNotifyMessages?: PatientNotifyMessageUncheckedUpdateManyWithoutNotifyMessageNestedInput
   }
 
   export type NotifyMessageUncheckedUpdateManyWithoutNotificationInput = {
@@ -88746,9 +88794,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageCreateManyNotifyMessageInput = {
+  export type PatientNotifyMessageCreateManyNotifyMessageInput = {
     id?: string
-    userId: string
+    patientId: string
     timeSent?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -88758,7 +88806,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserNotifyMessageUpdateWithoutNotifyMessageInput = {
+  export type PatientNotifyMessageUpdateWithoutNotifyMessageInput = {
     id?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
@@ -88767,12 +88815,12 @@ export namespace Prisma {
     jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserNotifyMessagesNestedInput
+    patient?: PatientUpdateOneRequiredWithoutPatientNotifyMessagesNestedInput
   }
 
-  export type UserNotifyMessageUncheckedUpdateWithoutNotifyMessageInput = {
+  export type PatientNotifyMessageUncheckedUpdateWithoutNotifyMessageInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88782,9 +88830,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserNotifyMessageUncheckedUpdateManyWithoutNotifyMessageInput = {
+  export type PatientNotifyMessageUncheckedUpdateManyWithoutNotifyMessageInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
     timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88849,18 +88897,6 @@ export namespace Prisma {
   export type UserAgreementCreateManyUserInput = {
     agreementId: string
     status?: $Enums.AgreementStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserNotifyMessageCreateManyUserInput = {
-    id?: string
-    notifyMessageId: string
-    timeSent?: Date | string | null
-    response?: string | null
-    responseReceivedAt?: Date | string | null
-    removedAt?: Date | string | null
-    jobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -89038,42 +89074,6 @@ export namespace Prisma {
   export type UserAgreementUncheckedUpdateManyWithoutUserInput = {
     agreementId?: StringFieldUpdateOperationsInput | string
     status?: EnumAgreementStatusFieldUpdateOperationsInput | $Enums.AgreementStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserNotifyMessageUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    response?: NullableStringFieldUpdateOperationsInput | string | null
-    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jobId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    notifyMessage?: NotifyMessageUpdateOneRequiredWithoutUserNotifyMessagesNestedInput
-  }
-
-  export type UserNotifyMessageUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    notifyMessageId?: StringFieldUpdateOperationsInput | string
-    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    response?: NullableStringFieldUpdateOperationsInput | string | null
-    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jobId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserNotifyMessageUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    notifyMessageId?: StringFieldUpdateOperationsInput | string
-    timeSent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    response?: NullableStringFieldUpdateOperationsInput | string | null
-    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -89384,9 +89384,9 @@ export namespace Prisma {
      */
     export type NotifyMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NotifyMessageDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserNotifyMessageDefaultArgs instead
+     * @deprecated Use PatientNotifyMessageDefaultArgs instead
      */
-    export type UserNotifyMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserNotifyMessageDefaultArgs<ExtArgs>
+    export type PatientNotifyMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PatientNotifyMessageDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */

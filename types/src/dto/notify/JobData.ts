@@ -1,4 +1,4 @@
 export interface JobData {
-  userId: string;
+  patientId: string;
   notifyMessageId: string;
 }
