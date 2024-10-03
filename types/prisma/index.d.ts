@@ -595,7 +595,8 @@ export type StripeEntityType = (typeof StripeEntityType)[keyof typeof StripeEnti
 export const NotificationType: {
   ABANDONED_CART: 'ABANDONED_CART',
   ORDER_CONFIRMATION: 'ORDER_CONFIRMATION',
-  CAMPAIGN: 'CAMPAIGN'
+  CAMPAIGN: 'CAMPAIGN',
+  SURVEY: 'SURVEY'
 };
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]

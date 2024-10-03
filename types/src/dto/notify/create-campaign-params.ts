@@ -6,5 +6,6 @@ export interface CreateCampaignParams {
   recurrencePattern?: string;
   active?: boolean;
   message: string;
+  isSurvey?: boolean;
   limit?: number;
 }
