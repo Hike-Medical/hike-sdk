@@ -103,6 +103,7 @@ export * from './hooks/notes/useGetNote';
 export * from './hooks/notes/useGetNotes';
 export * from './hooks/notes/useRecoverNote';
 export * from './hooks/notes/useUpdateNote';
+export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';
 export * from './hooks/orders/useOrdersByLabelId';
