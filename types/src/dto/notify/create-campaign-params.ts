@@ -1,3 +1,5 @@
+import { NotificationResponseType } from '../../../prisma/index';
+
 export interface CreateCampaignParams {
   name: string;
   description?: string;
@@ -7,5 +9,6 @@ export interface CreateCampaignParams {
   active?: boolean;
   message: string;
   isSurvey?: boolean;
+  responseType?: NotificationResponseType;
   limit?: number;
 }

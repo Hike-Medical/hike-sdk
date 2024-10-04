@@ -602,6 +602,15 @@ export const NotificationType: {
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
 
 
+export const NotificationResponseType: {
+  YES_NO: 'YES_NO',
+  NUMERICAL: 'NUMERICAL',
+  SUBJECTIVE: 'SUBJECTIVE'
+};
+
+export type NotificationResponseType = (typeof NotificationResponseType)[keyof typeof NotificationResponseType]
+
+
 export const CommunicationChannel: {
   SMS: 'SMS',
   EMAIL: 'EMAIL'
@@ -752,6 +761,10 @@ export const StripeEntityType: typeof $Enums.StripeEntityType
 export type NotificationType = $Enums.NotificationType
 
 export const NotificationType: typeof $Enums.NotificationType
+
+export type NotificationResponseType = $Enums.NotificationResponseType
+
+export const NotificationResponseType: typeof $Enums.NotificationResponseType
 
 export type CommunicationChannel = $Enums.CommunicationChannel
 
@@ -47340,6 +47353,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     type: $Enums.NotificationType | null
+    responseType: $Enums.NotificationResponseType | null
     startTime: Date | null
     endTime: Date | null
     active: boolean | null
@@ -47352,6 +47366,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     type: $Enums.NotificationType | null
+    responseType: $Enums.NotificationResponseType | null
     startTime: Date | null
     endTime: Date | null
     active: boolean | null
@@ -47364,6 +47379,7 @@ export namespace Prisma {
     name: number
     description: number
     type: number
+    responseType: number
     startTime: number
     endTime: number
     active: number
@@ -47378,6 +47394,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    responseType?: true
     startTime?: true
     endTime?: true
     active?: true
@@ -47390,6 +47407,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    responseType?: true
     startTime?: true
     endTime?: true
     active?: true
@@ -47402,6 +47420,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    responseType?: true
     startTime?: true
     endTime?: true
     active?: true
@@ -47487,6 +47506,7 @@ export namespace Prisma {
     name: string
     description: string | null
     type: $Enums.NotificationType
+    responseType: $Enums.NotificationResponseType | null
     startTime: Date | null
     endTime: Date | null
     active: boolean
@@ -47516,6 +47536,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    responseType?: boolean
     startTime?: boolean
     endTime?: boolean
     active?: boolean
@@ -47530,6 +47551,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    responseType?: boolean
     startTime?: boolean
     endTime?: boolean
     active?: boolean
@@ -47554,6 +47576,7 @@ export namespace Prisma {
       name: string
       description: string | null
       type: $Enums.NotificationType
+      responseType: $Enums.NotificationResponseType | null
       startTime: Date | null
       endTime: Date | null
       active: boolean
@@ -47984,6 +48007,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Notification", 'String'>
     readonly description: FieldRef<"Notification", 'String'>
     readonly type: FieldRef<"Notification", 'NotificationType'>
+    readonly responseType: FieldRef<"Notification", 'NotificationResponseType'>
     readonly startTime: FieldRef<"Notification", 'DateTime'>
     readonly endTime: FieldRef<"Notification", 'DateTime'>
     readonly active: FieldRef<"Notification", 'Boolean'>
@@ -58393,6 +58417,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     type: 'type',
+    responseType: 'responseType',
     startTime: 'startTime',
     endTime: 'endTime',
     active: 'active',
@@ -59117,6 +59142,20 @@ export namespace Prisma {
    * Reference to a field of type 'NotificationType[]'
    */
   export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationResponseType'
+   */
+  export type EnumNotificationResponseTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationResponseType'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationResponseType[]'
+   */
+  export type ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationResponseType[]'>
     
 
 
@@ -62342,6 +62381,7 @@ export namespace Prisma {
     name?: StringFilter<"Notification"> | string
     description?: StringNullableFilter<"Notification"> | string | null
     type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
+    responseType?: EnumNotificationResponseTypeNullableFilter<"Notification"> | $Enums.NotificationResponseType | null
     startTime?: DateTimeNullableFilter<"Notification"> | Date | string | null
     endTime?: DateTimeNullableFilter<"Notification"> | Date | string | null
     active?: BoolFilter<"Notification"> | boolean
@@ -62355,6 +62395,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     type?: SortOrder
+    responseType?: SortOrderInput | SortOrder
     startTime?: SortOrderInput | SortOrder
     endTime?: SortOrderInput | SortOrder
     active?: SortOrder
@@ -62371,6 +62412,7 @@ export namespace Prisma {
     name?: StringFilter<"Notification"> | string
     description?: StringNullableFilter<"Notification"> | string | null
     type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
+    responseType?: EnumNotificationResponseTypeNullableFilter<"Notification"> | $Enums.NotificationResponseType | null
     startTime?: DateTimeNullableFilter<"Notification"> | Date | string | null
     endTime?: DateTimeNullableFilter<"Notification"> | Date | string | null
     active?: BoolFilter<"Notification"> | boolean
@@ -62384,6 +62426,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     type?: SortOrder
+    responseType?: SortOrderInput | SortOrder
     startTime?: SortOrderInput | SortOrder
     endTime?: SortOrderInput | SortOrder
     active?: SortOrder
@@ -62402,6 +62445,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Notification"> | string
     description?: StringNullableWithAggregatesFilter<"Notification"> | string | null
     type?: EnumNotificationTypeWithAggregatesFilter<"Notification"> | $Enums.NotificationType
+    responseType?: EnumNotificationResponseTypeNullableWithAggregatesFilter<"Notification"> | $Enums.NotificationResponseType | null
     startTime?: DateTimeNullableWithAggregatesFilter<"Notification"> | Date | string | null
     endTime?: DateTimeNullableWithAggregatesFilter<"Notification"> | Date | string | null
     active?: BoolWithAggregatesFilter<"Notification"> | boolean
@@ -66730,6 +66774,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.NotificationType
+    responseType?: $Enums.NotificationResponseType | null
     startTime?: Date | string | null
     endTime?: Date | string | null
     active?: boolean
@@ -66743,6 +66788,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.NotificationType
+    responseType?: $Enums.NotificationResponseType | null
     startTime?: Date | string | null
     endTime?: Date | string | null
     active?: boolean
@@ -66756,6 +66802,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -66769,6 +66816,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -66782,6 +66830,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.NotificationType
+    responseType?: $Enums.NotificationResponseType | null
     startTime?: Date | string | null
     endTime?: Date | string | null
     active?: boolean
@@ -66794,6 +66843,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -66806,6 +66856,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -70584,6 +70635,13 @@ export namespace Prisma {
     not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
   }
 
+  export type EnumNotificationResponseTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationResponseType | EnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel> | $Enums.NotificationResponseType | null
+  }
+
   export type NotifyMessageListRelationFilter = {
     every?: NotifyMessageWhereInput
     some?: NotifyMessageWhereInput
@@ -70599,6 +70657,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    responseType?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
     active?: SortOrder
@@ -70611,6 +70670,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    responseType?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
     active?: SortOrder
@@ -70623,6 +70683,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    responseType?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
     active?: SortOrder
@@ -70638,6 +70699,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
+  }
+
+  export type EnumNotificationResponseTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationResponseType | EnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumNotificationResponseTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.NotificationResponseType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
   }
 
   export type EnumCommunicationChannelFilter<$PrismaModel = never> = {
@@ -74560,6 +74631,10 @@ export namespace Prisma {
     set?: $Enums.NotificationType
   }
 
+  export type NullableEnumNotificationResponseTypeFieldUpdateOperationsInput = {
+    set?: $Enums.NotificationResponseType | null
+  }
+
   export type NotifyMessageUpdateManyWithoutNotificationNestedInput = {
     create?: XOR<NotifyMessageCreateWithoutNotificationInput, NotifyMessageUncheckedCreateWithoutNotificationInput> | NotifyMessageCreateWithoutNotificationInput[] | NotifyMessageUncheckedCreateWithoutNotificationInput[]
     connectOrCreate?: NotifyMessageCreateOrConnectWithoutNotificationInput | NotifyMessageCreateOrConnectWithoutNotificationInput[]
@@ -75944,6 +76019,13 @@ export namespace Prisma {
     not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
   }
 
+  export type NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationResponseType | EnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel> | $Enums.NotificationResponseType | null
+  }
+
   export type NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
@@ -75952,6 +76034,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumNotificationResponseTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationResponseType | EnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.NotificationResponseType[] | ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumNotificationResponseTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.NotificationResponseType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumCommunicationChannelFilter<$PrismaModel = never> = {
@@ -84185,6 +84277,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.NotificationType
+    responseType?: $Enums.NotificationResponseType | null
     startTime?: Date | string | null
     endTime?: Date | string | null
     active?: boolean
@@ -84197,6 +84290,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.NotificationType
+    responseType?: $Enums.NotificationResponseType | null
     startTime?: Date | string | null
     endTime?: Date | string | null
     active?: boolean
@@ -84259,6 +84353,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -84271,6 +84366,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
