@@ -21,7 +21,7 @@ interface HikeMiddlewareOptions {
       isAdmin: boolean,
       request: NextRequest
     ) => Promise<void> | void;
-    onResponse?: (request: NextRequest) => NextResponse<unknown>;
+    onResponse?: (request: NextRequest, session: AuthUser | null) => NextResponse<unknown>;
   };
   restrictedRoles?: CompanyRole[];
 }
@@ -68,7 +68,7 @@ export const withHikeMiddleware = ({ keyOrSecret, config, callback, restrictedRo
         // Execute post-authentication hook; may throw error to prevent access
         await callback?.afterAuth?.(session, companyId, isAdmin, request);
 
-        return callback?.onResponse?.(request) ?? NextResponse.next();
+        return callback?.onResponse?.(request, session) ?? NextResponse.next();
       }
     } catch (error) {
       console.error(error);
@@ -81,5 +81,5 @@ export const withHikeMiddleware = ({ keyOrSecret, config, callback, restrictedRo
       return NextResponse.redirect(loginUrl);
     }
 
-    return callback?.onResponse?.(request) ?? NextResponse.next();
+    return callback?.onResponse?.(request, null) ?? NextResponse.next();
   };
