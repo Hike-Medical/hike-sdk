@@ -4,8 +4,16 @@ import { backendApi } from '../utils/backendApi';
 
 export const createCampaign = async (params: CreateCampaignParams): Promise<Notification> => {
   try {
-    console.log(params);
     const response = await backendApi.post('notify/campaign', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCampaigns = async (): Promise<Notification[]> => {
+  try {
+    const response = await backendApi.get('notify/campaigns');
     return response.data;
   } catch (error) {
     throw toHikeError(error);

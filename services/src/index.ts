@@ -105,6 +105,7 @@ export * from './hooks/notes/useGetNotes';
 export * from './hooks/notes/useRecoverNote';
 export * from './hooks/notes/useUpdateNote';
 export * from './hooks/notify/useCreateCampaign';
+export * from './hooks/notify/useGetCampaigns';
 export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';
