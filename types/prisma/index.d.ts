@@ -595,6 +595,14 @@ export const AgreementType: {
 
 export type AgreementType = (typeof AgreementType)[keyof typeof AgreementType]
 
+
+export const AccountRecoveryType: {
+  RESET_PASSWORD: 'RESET_PASSWORD',
+  EMAIL_LOGIN: 'EMAIL_LOGIN'
+};
+
+export type AccountRecoveryType = (typeof AccountRecoveryType)[keyof typeof AccountRecoveryType]
+
 }
 
 export type FacilityType = $Enums.FacilityType
@@ -724,6 +732,10 @@ export const AgreementStatus: typeof $Enums.AgreementStatus
 export type AgreementType = $Enums.AgreementType
 
 export const AgreementType: typeof $Enums.AgreementType
+
+export type AccountRecoveryType = $Enums.AccountRecoveryType
+
+export const AccountRecoveryType: typeof $Enums.AccountRecoveryType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -51011,6 +51023,7 @@ export namespace Prisma {
   export type AccountVerificationMinAggregateOutputType = {
     token: string | null
     email: string | null
+    type: $Enums.AccountRecoveryType | null
     expiresAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -51019,6 +51032,7 @@ export namespace Prisma {
   export type AccountVerificationMaxAggregateOutputType = {
     token: string | null
     email: string | null
+    type: $Enums.AccountRecoveryType | null
     expiresAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -51027,6 +51041,7 @@ export namespace Prisma {
   export type AccountVerificationCountAggregateOutputType = {
     token: number
     email: number
+    type: number
     expiresAt: number
     createdAt: number
     updatedAt: number
@@ -51037,6 +51052,7 @@ export namespace Prisma {
   export type AccountVerificationMinAggregateInputType = {
     token?: true
     email?: true
+    type?: true
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
@@ -51045,6 +51061,7 @@ export namespace Prisma {
   export type AccountVerificationMaxAggregateInputType = {
     token?: true
     email?: true
+    type?: true
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
@@ -51053,6 +51070,7 @@ export namespace Prisma {
   export type AccountVerificationCountAggregateInputType = {
     token?: true
     email?: true
+    type?: true
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
@@ -51134,6 +51152,7 @@ export namespace Prisma {
   export type AccountVerificationGroupByOutputType = {
     token: string
     email: string
+    type: $Enums.AccountRecoveryType
     expiresAt: Date
     createdAt: Date
     updatedAt: Date
@@ -51159,6 +51178,7 @@ export namespace Prisma {
   export type AccountVerificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     token?: boolean
     email?: boolean
+    type?: boolean
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -51167,6 +51187,7 @@ export namespace Prisma {
   export type AccountVerificationSelectScalar = {
     token?: boolean
     email?: boolean
+    type?: boolean
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -51180,6 +51201,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       token: string
       email: string
+      type: $Enums.AccountRecoveryType
       expiresAt: Date
       createdAt: Date
       updatedAt: Date
@@ -51605,6 +51627,7 @@ export namespace Prisma {
   interface AccountVerificationFieldRefs {
     readonly token: FieldRef<"AccountVerification", 'String'>
     readonly email: FieldRef<"AccountVerification", 'String'>
+    readonly type: FieldRef<"AccountVerification", 'AccountRecoveryType'>
     readonly expiresAt: FieldRef<"AccountVerification", 'DateTime'>
     readonly createdAt: FieldRef<"AccountVerification", 'DateTime'>
     readonly updatedAt: FieldRef<"AccountVerification", 'DateTime'>
@@ -54959,6 +54982,7 @@ export namespace Prisma {
   export const AccountVerificationScalarFieldEnum: {
     token: 'token',
     email: 'email',
+    type: 'type',
     expiresAt: 'expiresAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -55605,6 +55629,20 @@ export namespace Prisma {
    * Reference to a field of type 'AgreementType[]'
    */
   export type ListEnumAgreementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgreementType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AccountRecoveryType'
+   */
+  export type EnumAccountRecoveryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountRecoveryType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AccountRecoveryType[]'
+   */
+  export type ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountRecoveryType[]'>
     
   /**
    * Deep Input Types
@@ -59044,6 +59082,7 @@ export namespace Prisma {
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     token?: StringFilter<"AccountVerification"> | string
     email?: StringFilter<"AccountVerification"> | string
+    type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
@@ -59052,6 +59091,7 @@ export namespace Prisma {
   export type AccountVerificationOrderByWithRelationInput = {
     token?: SortOrder
     email?: SortOrder
+    type?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -59063,6 +59103,7 @@ export namespace Prisma {
     AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
+    type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
@@ -59071,6 +59112,7 @@ export namespace Prisma {
   export type AccountVerificationOrderByWithAggregationInput = {
     token?: SortOrder
     email?: SortOrder
+    type?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -59085,6 +59127,7 @@ export namespace Prisma {
     NOT?: AccountVerificationScalarWhereWithAggregatesInput | AccountVerificationScalarWhereWithAggregatesInput[]
     token?: StringWithAggregatesFilter<"AccountVerification"> | string
     email?: StringWithAggregatesFilter<"AccountVerification"> | string
+    type?: EnumAccountRecoveryTypeWithAggregatesFilter<"AccountVerification"> | $Enums.AccountRecoveryType
     expiresAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
@@ -63201,6 +63244,7 @@ export namespace Prisma {
   export type AccountVerificationCreateInput = {
     token: string
     email: string
+    type: $Enums.AccountRecoveryType
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63209,6 +63253,7 @@ export namespace Prisma {
   export type AccountVerificationUncheckedCreateInput = {
     token: string
     email: string
+    type: $Enums.AccountRecoveryType
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63217,6 +63262,7 @@ export namespace Prisma {
   export type AccountVerificationUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63225,6 +63271,7 @@ export namespace Prisma {
   export type AccountVerificationUncheckedUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63233,6 +63280,7 @@ export namespace Prisma {
   export type AccountVerificationCreateManyInput = {
     token: string
     email: string
+    type: $Enums.AccountRecoveryType
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63241,6 +63289,7 @@ export namespace Prisma {
   export type AccountVerificationUpdateManyMutationInput = {
     token?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63249,6 +63298,7 @@ export namespace Prisma {
   export type AccountVerificationUncheckedUpdateManyInput = {
     token?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66670,9 +66720,17 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumAccountRecoveryTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  }
+
   export type AccountVerificationCountOrderByAggregateInput = {
     token?: SortOrder
     email?: SortOrder
+    type?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -66681,6 +66739,7 @@ export namespace Prisma {
   export type AccountVerificationMaxOrderByAggregateInput = {
     token?: SortOrder
     email?: SortOrder
+    type?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -66689,9 +66748,20 @@ export namespace Prisma {
   export type AccountVerificationMinOrderByAggregateInput = {
     token?: SortOrder
     email?: SortOrder
+    type?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountRecoveryType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
+    _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
   }
 
   export type ApiKeyIdCompanyIdCompoundUniqueInput = {
@@ -70647,6 +70717,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
+  export type EnumAccountRecoveryTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AccountRecoveryType
+  }
+
   export type CompanyCreateNestedOneWithoutApiKeysInput = {
     create?: XOR<CompanyCreateWithoutApiKeysInput, CompanyUncheckedCreateWithoutApiKeysInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutApiKeysInput
@@ -71522,6 +71596,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAgreementTypeFilter<$PrismaModel>
     _max?: NestedEnumAgreementTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAccountRecoveryTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  }
+
+  export type NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountRecoveryType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
+    _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
