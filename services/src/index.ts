@@ -32,6 +32,7 @@ export * from './auth/isMinimumRole';
 export * from './auth/logout';
 export * from './auth/refreshToken';
 export * from './auth/signIn';
+export * from './auth/signInWithEmail';
 export * from './auth/signUp';
 export * from './configure';
 export * from './errors/HikeError';
