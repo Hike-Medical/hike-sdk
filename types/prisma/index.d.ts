@@ -52916,6 +52916,7 @@ export namespace Prisma {
     orderQuantity: string | null
     productType: $Enums.ProductType | null
     submittedAt: Date | null
+    isReprint: boolean | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -52972,6 +52973,7 @@ export namespace Prisma {
     orderQuantity: string | null
     productType: $Enums.ProductType | null
     submittedAt: Date | null
+    isReprint: boolean | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -53028,6 +53030,7 @@ export namespace Prisma {
     orderQuantity: number
     productType: number
     submittedAt: number
+    isReprint: number
     orderShoeSize: number
     orderShoeWidth: number
     orderGender: number
@@ -53094,6 +53097,7 @@ export namespace Prisma {
     orderQuantity?: true
     productType?: true
     submittedAt?: true
+    isReprint?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -53150,6 +53154,7 @@ export namespace Prisma {
     orderQuantity?: true
     productType?: true
     submittedAt?: true
+    isReprint?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -53206,6 +53211,7 @@ export namespace Prisma {
     orderQuantity?: true
     productType?: true
     submittedAt?: true
+    isReprint?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -53349,6 +53355,7 @@ export namespace Prisma {
     orderQuantity: string | null
     productType: $Enums.ProductType | null
     submittedAt: Date | null
+    isReprint: boolean | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -53424,6 +53431,7 @@ export namespace Prisma {
     orderQuantity?: boolean
     productType?: boolean
     submittedAt?: boolean
+    isReprint?: boolean
     orderShoeSize?: boolean
     orderShoeWidth?: boolean
     orderGender?: boolean
@@ -53480,6 +53488,7 @@ export namespace Prisma {
     orderQuantity?: boolean
     productType?: boolean
     submittedAt?: boolean
+    isReprint?: boolean
     orderShoeSize?: boolean
     orderShoeWidth?: boolean
     orderGender?: boolean
@@ -53541,6 +53550,7 @@ export namespace Prisma {
       orderQuantity: string | null
       productType: $Enums.ProductType | null
       submittedAt: Date | null
+      isReprint: boolean | null
       orderShoeSize: string | null
       orderShoeWidth: string | null
       orderGender: string | null
@@ -54014,6 +54024,7 @@ export namespace Prisma {
     readonly orderQuantity: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly productType: FieldRef<"ViewFlattenedWorkbench", 'ProductType'>
     readonly submittedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
+    readonly isReprint: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderShoeWidth: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderGender: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -55029,6 +55040,7 @@ export namespace Prisma {
     orderQuantity: 'orderQuantity',
     productType: 'productType',
     submittedAt: 'submittedAt',
+    isReprint: 'isReprint',
     orderShoeSize: 'orderShoeSize',
     orderShoeWidth: 'orderShoeWidth',
     orderGender: 'orderGender',
@@ -59220,6 +59232,7 @@ export namespace Prisma {
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isReprint?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -59276,6 +59289,7 @@ export namespace Prisma {
     orderQuantity?: SortOrderInput | SortOrder
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
+    isReprint?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
@@ -59335,6 +59349,7 @@ export namespace Prisma {
     orderQuantity?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isReprint?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -59391,6 +59406,7 @@ export namespace Prisma {
     orderQuantity?: SortOrderInput | SortOrder
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
+    isReprint?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
@@ -59455,6 +59471,7 @@ export namespace Prisma {
     orderQuantity?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     productType?: EnumProductTypeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
+    isReprint?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -63386,6 +63403,7 @@ export namespace Prisma {
     orderQuantity?: string | null
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
+    isReprint?: boolean | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -63442,6 +63460,7 @@ export namespace Prisma {
     orderQuantity?: string | null
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
+    isReprint?: boolean | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -63498,6 +63517,7 @@ export namespace Prisma {
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63554,6 +63574,7 @@ export namespace Prisma {
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63610,6 +63631,7 @@ export namespace Prisma {
     orderQuantity?: string | null
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
+    isReprint?: boolean | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -63666,6 +63688,7 @@ export namespace Prisma {
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63722,6 +63745,7 @@ export namespace Prisma {
     orderQuantity?: NullableStringFieldUpdateOperationsInput | string | null
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66871,6 +66895,7 @@ export namespace Prisma {
     orderQuantity?: SortOrder
     productType?: SortOrder
     submittedAt?: SortOrder
+    isReprint?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
@@ -66931,6 +66956,7 @@ export namespace Prisma {
     orderQuantity?: SortOrder
     productType?: SortOrder
     submittedAt?: SortOrder
+    isReprint?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
@@ -66987,6 +67013,7 @@ export namespace Prisma {
     orderQuantity?: SortOrder
     productType?: SortOrder
     submittedAt?: SortOrder
+    isReprint?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
