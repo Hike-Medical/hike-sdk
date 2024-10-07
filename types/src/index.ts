@@ -13,6 +13,7 @@ export type * from './dto/augment/UpdateAssetAugmentMedia';
 export type * from './dto/auth/AccountRecoveryParams';
 export type * from './dto/auth/InviteUserParams';
 export type * from './dto/auth/PasswordResetParams';
+export type * from './dto/auth/SignInWithEmailParams';
 export type * from './dto/auth/SignInWithPinBody';
 export type * from './dto/auto-slicer/RunScriptParams';
 export type * from './dto/billing/GetStripeInvoiceParams';
