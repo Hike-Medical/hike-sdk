@@ -1,10 +1,10 @@
-import { Notification } from '@hike/types';
+import { NotificationExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getCampaigns } from '../../api/notify.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface useGetCampaignsOptions
-  extends Omit<UseQueryOptions<Notification[], HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<NotificationExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 

@@ -1,4 +1,11 @@
-import type { CreateCampaignParams, Notification } from '@hike/types';
+import type {
+  CampaignWithStats,
+  CreateCampaignParams,
+  EnrollPatientsParams,
+  Notification,
+  NotificationExtended,
+  NotificationHistory
+} from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -11,9 +18,36 @@ export const createCampaign = async (params: CreateCampaignParams): Promise<Noti
   }
 };
 
-export const getCampaigns = async (): Promise<Notification[]> => {
+export const getCampaigns = async (): Promise<NotificationExtended[]> => {
   try {
     const response = await backendApi.get('notify/campaigns');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCampaignStats = async (notificationId: string): Promise<CampaignWithStats> => {
+  try {
+    const response = await backendApi.get(`notify/${notificationId}/stats`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const enrollPatients = async (params: EnrollPatientsParams): Promise<(NotificationHistory | null)[]> => {
+  try {
+    const response = await backendApi.post('notify/enroll-patients', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const removeQueuedMessages = async (notificationId: string): Promise<NotificationHistory[]> => {
+  try {
+    const response = await backendApi.post(`notify/${notificationId}/remove-queued-messages`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
