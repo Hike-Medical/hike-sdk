@@ -27,6 +27,7 @@ export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/GetVendorsParams';
 export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/CompanyPreferences';
+export type * from './dto/company/CreateCompanyInvitationParams';
 export type * from './dto/evaluation/ActionEvaluationParams';
 export type * from './dto/evaluation/CreateEvaluationByProductParams';
 export type * from './dto/evaluation/CreateEvaluationParams';
@@ -114,3 +115,4 @@ export type * from './forms/InvalidFormField';
 export type * from './forms/InvalidFormSection';
 export type * from './pdf/PdfContent';
 export type * from './pdf/PdfDoc';
+
