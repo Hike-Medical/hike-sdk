@@ -1,4 +1,4 @@
-import { NotificationResponseType } from '../../../prisma/index';
+import { CommunicationChannel, NotificationResponseType } from '../../../prisma/index';
 
 export interface CreateCampaignParams {
   name: string;
@@ -11,4 +11,6 @@ export interface CreateCampaignParams {
   isSurvey?: boolean;
   responseType?: NotificationResponseType;
   limit?: number;
+  channel: CommunicationChannel;
+  emailTemplateId?: string;
 }
