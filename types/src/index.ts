@@ -56,6 +56,7 @@ export type * from './dto/notify/enroll-patients-params';
 export type * from './dto/notify/JobData';
 export type * from './dto/notify/SlackMessage';
 export type * from './dto/notify/SurveyResponse';
+export type * from './dto/notify/upsert-email-template-params';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/DeliverOrderParams';
 export type * from './dto/order/GetOrdersByTypeParams';

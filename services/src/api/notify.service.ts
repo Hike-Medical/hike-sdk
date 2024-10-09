@@ -1,10 +1,12 @@
 import type {
   CampaignWithStats,
   CreateCampaignParams,
+  EmailTemplate,
   EnrollPatientsParams,
   Notification,
   NotificationExtended,
-  NotificationHistory
+  NotificationHistory,
+  UpsertEmailTemplateParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -21,6 +23,24 @@ export const createCampaign = async (params: CreateCampaignParams): Promise<Noti
 export const getCampaigns = async (): Promise<NotificationExtended[]> => {
   try {
     const response = await backendApi.get('notify/campaigns');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getEmailTemplates = async (): Promise<EmailTemplate[]> => {
+  try {
+    const response = await backendApi.get('notify/email-templates');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Promise<EmailTemplate> => {
+  try {
+    const response = await backendApi.post('notify/upsert-email-template', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

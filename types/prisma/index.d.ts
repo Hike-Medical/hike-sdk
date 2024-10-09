@@ -224,6 +224,11 @@ export type NotificationMessage = $Result.DefaultSelection<Prisma.$NotificationM
  */
 export type NotificationHistory = $Result.DefaultSelection<Prisma.$NotificationHistoryPayload>
 /**
+ * Model EmailTemplate
+ * 
+ */
+export type EmailTemplate = $Result.DefaultSelection<Prisma.$EmailTemplatePayload>
+/**
  * Model User
  * 
  */
@@ -1334,6 +1339,16 @@ export class PrismaClient<
   get notificationHistory(): Prisma.NotificationHistoryDelegate<ExtArgs>;
 
   /**
+   * `prisma.emailTemplate`: Exposes CRUD operations for the **EmailTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmailTemplates
+    * const emailTemplates = await prisma.emailTemplate.findMany()
+    * ```
+    */
+  get emailTemplate(): Prisma.EmailTemplateDelegate<ExtArgs>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -1921,6 +1936,7 @@ export namespace Prisma {
     Notification: 'Notification',
     NotificationMessage: 'NotificationMessage',
     NotificationHistory: 'NotificationHistory',
+    EmailTemplate: 'EmailTemplate',
     User: 'User',
     UserAgreement: 'UserAgreement',
     Agreement: 'Agreement',
@@ -1944,7 +1960,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'notification' | 'notificationMessage' | 'notificationHistory' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'notification' | 'notificationMessage' | 'notificationHistory' | 'emailTemplate' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4888,6 +4904,76 @@ export namespace Prisma {
           }
         }
       }
+      EmailTemplate: {
+        payload: Prisma.$EmailTemplatePayload<ExtArgs>
+        fields: Prisma.EmailTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmailTemplateFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmailTemplateFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.EmailTemplateFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmailTemplateFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.EmailTemplateFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.EmailTemplateCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.EmailTemplateCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmailTemplateCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.EmailTemplateDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          update: {
+            args: Prisma.EmailTemplateUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.EmailTemplateDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmailTemplateUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.EmailTemplateUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$EmailTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.EmailTemplateAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateEmailTemplate>
+          }
+          groupBy: {
+            args: Prisma.EmailTemplateGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<EmailTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmailTemplateCountArgs<ExtArgs>,
+            result: $Utils.Optional<EmailTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -6602,6 +6688,37 @@ export namespace Prisma {
    */
   export type NotificationMessageCountOutputTypeCountNotificationHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NotificationHistoryWhereInput
+  }
+
+
+  /**
+   * Count Type EmailTemplateCountOutputType
+   */
+
+  export type EmailTemplateCountOutputType = {
+    NotificationMessages: number
+  }
+
+  export type EmailTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    NotificationMessages?: boolean | EmailTemplateCountOutputTypeCountNotificationMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EmailTemplateCountOutputType without action
+   */
+  export type EmailTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplateCountOutputType
+     */
+    select?: EmailTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EmailTemplateCountOutputType without action
+   */
+  export type EmailTemplateCountOutputTypeCountNotificationMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationMessageWhereInput
   }
 
 
@@ -48410,6 +48527,7 @@ export namespace Prisma {
     recurrencePattern: string | null
     sequenceLimit: number | null
     content: string | null
+    emailTemplateId: string | null
     channel: $Enums.CommunicationChannel | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -48423,6 +48541,7 @@ export namespace Prisma {
     recurrencePattern: string | null
     sequenceLimit: number | null
     content: string | null
+    emailTemplateId: string | null
     channel: $Enums.CommunicationChannel | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -48436,6 +48555,7 @@ export namespace Prisma {
     recurrencePattern: number
     sequenceLimit: number
     content: number
+    emailTemplateId: number
     channel: number
     createdAt: number
     updatedAt: number
@@ -48463,6 +48583,7 @@ export namespace Prisma {
     recurrencePattern?: true
     sequenceLimit?: true
     content?: true
+    emailTemplateId?: true
     channel?: true
     createdAt?: true
     updatedAt?: true
@@ -48476,6 +48597,7 @@ export namespace Prisma {
     recurrencePattern?: true
     sequenceLimit?: true
     content?: true
+    emailTemplateId?: true
     channel?: true
     createdAt?: true
     updatedAt?: true
@@ -48489,6 +48611,7 @@ export namespace Prisma {
     recurrencePattern?: true
     sequenceLimit?: true
     content?: true
+    emailTemplateId?: true
     channel?: true
     createdAt?: true
     updatedAt?: true
@@ -48588,7 +48711,8 @@ export namespace Prisma {
     delayMinutes: number | null
     recurrencePattern: string | null
     sequenceLimit: number | null
-    content: string
+    content: string | null
+    emailTemplateId: string | null
     channel: $Enums.CommunicationChannel
     createdAt: Date
     updatedAt: Date
@@ -48621,10 +48745,12 @@ export namespace Prisma {
     recurrencePattern?: boolean
     sequenceLimit?: boolean
     content?: boolean
+    emailTemplateId?: boolean
     channel?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     notification?: boolean | NotificationDefaultArgs<ExtArgs>
+    emailTemplate?: boolean | NotificationMessage$emailTemplateArgs<ExtArgs>
     notificationHistory?: boolean | NotificationMessage$notificationHistoryArgs<ExtArgs>
     _count?: boolean | NotificationMessageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificationMessage"]>
@@ -48637,6 +48763,7 @@ export namespace Prisma {
     recurrencePattern?: boolean
     sequenceLimit?: boolean
     content?: boolean
+    emailTemplateId?: boolean
     channel?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -48645,6 +48772,7 @@ export namespace Prisma {
 
   export type NotificationMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notification?: boolean | NotificationDefaultArgs<ExtArgs>
+    emailTemplate?: boolean | NotificationMessage$emailTemplateArgs<ExtArgs>
     notificationHistory?: boolean | NotificationMessage$notificationHistoryArgs<ExtArgs>
     _count?: boolean | NotificationMessageCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -48654,6 +48782,7 @@ export namespace Prisma {
     name: "NotificationMessage"
     objects: {
       notification: Prisma.$NotificationPayload<ExtArgs>
+      emailTemplate: Prisma.$EmailTemplatePayload<ExtArgs> | null
       notificationHistory: Prisma.$NotificationHistoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -48663,7 +48792,8 @@ export namespace Prisma {
       delayMinutes: number | null
       recurrencePattern: string | null
       sequenceLimit: number | null
-      content: string
+      content: string | null
+      emailTemplateId: string | null
       channel: $Enums.CommunicationChannel
       createdAt: Date
       updatedAt: Date
@@ -49060,6 +49190,8 @@ export namespace Prisma {
 
     notification<T extends NotificationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NotificationDefaultArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    emailTemplate<T extends NotificationMessage$emailTemplateArgs<ExtArgs> = {}>(args?: Subset<T, NotificationMessage$emailTemplateArgs<ExtArgs>>): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     notificationHistory<T extends NotificationMessage$notificationHistoryArgs<ExtArgs> = {}>(args?: Subset<T, NotificationMessage$notificationHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationHistoryPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
@@ -49097,6 +49229,7 @@ export namespace Prisma {
     readonly recurrencePattern: FieldRef<"NotificationMessage", 'String'>
     readonly sequenceLimit: FieldRef<"NotificationMessage", 'Float'>
     readonly content: FieldRef<"NotificationMessage", 'String'>
+    readonly emailTemplateId: FieldRef<"NotificationMessage", 'String'>
     readonly channel: FieldRef<"NotificationMessage", 'CommunicationChannel'>
     readonly createdAt: FieldRef<"NotificationMessage", 'DateTime'>
     readonly updatedAt: FieldRef<"NotificationMessage", 'DateTime'>
@@ -49415,6 +49548,21 @@ export namespace Prisma {
      * Filter which NotificationMessages to delete
      */
     where?: NotificationMessageWhereInput
+  }
+
+  /**
+   * NotificationMessage.emailTemplate
+   */
+  export type NotificationMessage$emailTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    where?: EmailTemplateWhereInput
   }
 
   /**
@@ -50459,6 +50607,996 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: NotificationHistoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmailTemplate
+   */
+
+  export type AggregateEmailTemplate = {
+    _count: EmailTemplateCountAggregateOutputType | null
+    _min: EmailTemplateMinAggregateOutputType | null
+    _max: EmailTemplateMaxAggregateOutputType | null
+  }
+
+  export type EmailTemplateMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    htmlContent: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmailTemplateMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    htmlContent: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmailTemplateCountAggregateOutputType = {
+    id: number
+    title: number
+    design: number
+    htmlContent: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EmailTemplateMinAggregateInputType = {
+    id?: true
+    title?: true
+    htmlContent?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmailTemplateMaxAggregateInputType = {
+    id?: true
+    title?: true
+    htmlContent?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmailTemplateCountAggregateInputType = {
+    id?: true
+    title?: true
+    design?: true
+    htmlContent?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EmailTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailTemplate to aggregate.
+     */
+    where?: EmailTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailTemplates to fetch.
+     */
+    orderBy?: EmailTemplateOrderByWithRelationInput | EmailTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmailTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmailTemplates
+    **/
+    _count?: true | EmailTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmailTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmailTemplateMaxAggregateInputType
+  }
+
+  export type GetEmailTemplateAggregateType<T extends EmailTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmailTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmailTemplate[P]>
+      : GetScalarType<T[P], AggregateEmailTemplate[P]>
+  }
+
+
+
+
+  export type EmailTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmailTemplateWhereInput
+    orderBy?: EmailTemplateOrderByWithAggregationInput | EmailTemplateOrderByWithAggregationInput[]
+    by: EmailTemplateScalarFieldEnum[] | EmailTemplateScalarFieldEnum
+    having?: EmailTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmailTemplateCountAggregateInputType | true
+    _min?: EmailTemplateMinAggregateInputType
+    _max?: EmailTemplateMaxAggregateInputType
+  }
+
+  export type EmailTemplateGroupByOutputType = {
+    id: string
+    title: string
+    design: JsonValue
+    htmlContent: string
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: EmailTemplateCountAggregateOutputType | null
+    _min: EmailTemplateMinAggregateOutputType | null
+    _max: EmailTemplateMaxAggregateOutputType | null
+  }
+
+  type GetEmailTemplateGroupByPayload<T extends EmailTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmailTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmailTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmailTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], EmailTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmailTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    design?: boolean
+    htmlContent?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    NotificationMessages?: boolean | EmailTemplate$NotificationMessagesArgs<ExtArgs>
+    _count?: boolean | EmailTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["emailTemplate"]>
+
+  export type EmailTemplateSelectScalar = {
+    id?: boolean
+    title?: boolean
+    design?: boolean
+    htmlContent?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type EmailTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    NotificationMessages?: boolean | EmailTemplate$NotificationMessagesArgs<ExtArgs>
+    _count?: boolean | EmailTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $EmailTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmailTemplate"
+    objects: {
+      NotificationMessages: Prisma.$NotificationMessagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      design: Prisma.JsonValue
+      htmlContent: string
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["emailTemplate"]>
+    composites: {}
+  }
+
+
+  type EmailTemplateGetPayload<S extends boolean | null | undefined | EmailTemplateDefaultArgs> = $Result.GetResult<Prisma.$EmailTemplatePayload, S>
+
+  type EmailTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<EmailTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: EmailTemplateCountAggregateInputType | true
+    }
+
+  export interface EmailTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmailTemplate'], meta: { name: 'EmailTemplate' } }
+    /**
+     * Find zero or one EmailTemplate that matches the filter.
+     * @param {EmailTemplateFindUniqueArgs} args - Arguments to find a EmailTemplate
+     * @example
+     * // Get one EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends EmailTemplateFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateFindUniqueArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one EmailTemplate that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {EmailTemplateFindUniqueOrThrowArgs} args - Arguments to find a EmailTemplate
+     * @example
+     * // Get one EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends EmailTemplateFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first EmailTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateFindFirstArgs} args - Arguments to find a EmailTemplate
+     * @example
+     * // Get one EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends EmailTemplateFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateFindFirstArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first EmailTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateFindFirstOrThrowArgs} args - Arguments to find a EmailTemplate
+     * @example
+     * // Get one EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends EmailTemplateFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more EmailTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmailTemplates
+     * const emailTemplates = await prisma.emailTemplate.findMany()
+     * 
+     * // Get first 10 EmailTemplates
+     * const emailTemplates = await prisma.emailTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const emailTemplateWithIdOnly = await prisma.emailTemplate.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends EmailTemplateFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a EmailTemplate.
+     * @param {EmailTemplateCreateArgs} args - Arguments to create a EmailTemplate.
+     * @example
+     * // Create one EmailTemplate
+     * const EmailTemplate = await prisma.emailTemplate.create({
+     *   data: {
+     *     // ... data to create a EmailTemplate
+     *   }
+     * })
+     * 
+    **/
+    create<T extends EmailTemplateCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateCreateArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many EmailTemplates.
+     * @param {EmailTemplateCreateManyArgs} args - Arguments to create many EmailTemplates.
+     * @example
+     * // Create many EmailTemplates
+     * const emailTemplate = await prisma.emailTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends EmailTemplateCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmailTemplates and returns the data saved in the database.
+     * @param {EmailTemplateCreateManyAndReturnArgs} args - Arguments to create many EmailTemplates.
+     * @example
+     * // Create many EmailTemplates
+     * const emailTemplate = await prisma.emailTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmailTemplates and only return the `id`
+     * const emailTemplateWithIdOnly = await prisma.emailTemplate.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends EmailTemplateCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a EmailTemplate.
+     * @param {EmailTemplateDeleteArgs} args - Arguments to delete one EmailTemplate.
+     * @example
+     * // Delete one EmailTemplate
+     * const EmailTemplate = await prisma.emailTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one EmailTemplate
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends EmailTemplateDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateDeleteArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one EmailTemplate.
+     * @param {EmailTemplateUpdateArgs} args - Arguments to update one EmailTemplate.
+     * @example
+     * // Update one EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends EmailTemplateUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateUpdateArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more EmailTemplates.
+     * @param {EmailTemplateDeleteManyArgs} args - Arguments to filter EmailTemplates to delete.
+     * @example
+     * // Delete a few EmailTemplates
+     * const { count } = await prisma.emailTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends EmailTemplateDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, EmailTemplateDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmailTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmailTemplates
+     * const emailTemplate = await prisma.emailTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends EmailTemplateUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one EmailTemplate.
+     * @param {EmailTemplateUpsertArgs} args - Arguments to update or create a EmailTemplate.
+     * @example
+     * // Update or create a EmailTemplate
+     * const emailTemplate = await prisma.emailTemplate.upsert({
+     *   create: {
+     *     // ... data to create a EmailTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmailTemplate we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends EmailTemplateUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, EmailTemplateUpsertArgs<ExtArgs>>
+    ): Prisma__EmailTemplateClient<$Result.GetResult<Prisma.$EmailTemplatePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of EmailTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateCountArgs} args - Arguments to filter EmailTemplates to count.
+     * @example
+     * // Count the number of EmailTemplates
+     * const count = await prisma.emailTemplate.count({
+     *   where: {
+     *     // ... the filter for the EmailTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmailTemplateCountArgs>(
+      args?: Subset<T, EmailTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmailTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmailTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmailTemplateAggregateArgs>(args: Subset<T, EmailTemplateAggregateArgs>): Prisma.PrismaPromise<GetEmailTemplateAggregateType<T>>
+
+    /**
+     * Group by EmailTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmailTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmailTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: EmailTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmailTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmailTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmailTemplate model
+   */
+  readonly fields: EmailTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmailTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmailTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    NotificationMessages<T extends EmailTemplate$NotificationMessagesArgs<ExtArgs> = {}>(args?: Subset<T, EmailTemplate$NotificationMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationMessagePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the EmailTemplate model
+   */ 
+  interface EmailTemplateFieldRefs {
+    readonly id: FieldRef<"EmailTemplate", 'String'>
+    readonly title: FieldRef<"EmailTemplate", 'String'>
+    readonly design: FieldRef<"EmailTemplate", 'Json'>
+    readonly htmlContent: FieldRef<"EmailTemplate", 'String'>
+    readonly active: FieldRef<"EmailTemplate", 'Boolean'>
+    readonly createdAt: FieldRef<"EmailTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"EmailTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmailTemplate findUnique
+   */
+  export type EmailTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailTemplate to fetch.
+     */
+    where: EmailTemplateWhereUniqueInput
+  }
+
+  /**
+   * EmailTemplate findUniqueOrThrow
+   */
+  export type EmailTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailTemplate to fetch.
+     */
+    where: EmailTemplateWhereUniqueInput
+  }
+
+  /**
+   * EmailTemplate findFirst
+   */
+  export type EmailTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailTemplate to fetch.
+     */
+    where?: EmailTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailTemplates to fetch.
+     */
+    orderBy?: EmailTemplateOrderByWithRelationInput | EmailTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailTemplates.
+     */
+    cursor?: EmailTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailTemplates.
+     */
+    distinct?: EmailTemplateScalarFieldEnum | EmailTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * EmailTemplate findFirstOrThrow
+   */
+  export type EmailTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailTemplate to fetch.
+     */
+    where?: EmailTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailTemplates to fetch.
+     */
+    orderBy?: EmailTemplateOrderByWithRelationInput | EmailTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailTemplates.
+     */
+    cursor?: EmailTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailTemplates.
+     */
+    distinct?: EmailTemplateScalarFieldEnum | EmailTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * EmailTemplate findMany
+   */
+  export type EmailTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailTemplates to fetch.
+     */
+    where?: EmailTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailTemplates to fetch.
+     */
+    orderBy?: EmailTemplateOrderByWithRelationInput | EmailTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmailTemplates.
+     */
+    cursor?: EmailTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailTemplates.
+     */
+    skip?: number
+    distinct?: EmailTemplateScalarFieldEnum | EmailTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * EmailTemplate create
+   */
+  export type EmailTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EmailTemplate.
+     */
+    data: XOR<EmailTemplateCreateInput, EmailTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * EmailTemplate createMany
+   */
+  export type EmailTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmailTemplates.
+     */
+    data: EmailTemplateCreateManyInput | EmailTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EmailTemplate createManyAndReturn
+   */
+  export type EmailTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * The data used to create many EmailTemplates.
+     */
+    data: EmailTemplateCreateManyInput | EmailTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EmailTemplate update
+   */
+  export type EmailTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EmailTemplate.
+     */
+    data: XOR<EmailTemplateUpdateInput, EmailTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which EmailTemplate to update.
+     */
+    where: EmailTemplateWhereUniqueInput
+  }
+
+  /**
+   * EmailTemplate updateMany
+   */
+  export type EmailTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmailTemplates.
+     */
+    data: XOR<EmailTemplateUpdateManyMutationInput, EmailTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which EmailTemplates to update
+     */
+    where?: EmailTemplateWhereInput
+  }
+
+  /**
+   * EmailTemplate upsert
+   */
+  export type EmailTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EmailTemplate to update in case it exists.
+     */
+    where: EmailTemplateWhereUniqueInput
+    /**
+     * In case the EmailTemplate found by the `where` argument doesn't exist, create a new EmailTemplate with this data.
+     */
+    create: XOR<EmailTemplateCreateInput, EmailTemplateUncheckedCreateInput>
+    /**
+     * In case the EmailTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmailTemplateUpdateInput, EmailTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * EmailTemplate delete
+   */
+  export type EmailTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which EmailTemplate to delete.
+     */
+    where: EmailTemplateWhereUniqueInput
+  }
+
+  /**
+   * EmailTemplate deleteMany
+   */
+  export type EmailTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailTemplates to delete
+     */
+    where?: EmailTemplateWhereInput
+  }
+
+  /**
+   * EmailTemplate.NotificationMessages
+   */
+  export type EmailTemplate$NotificationMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NotificationMessage
+     */
+    select?: NotificationMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationMessageInclude<ExtArgs> | null
+    where?: NotificationMessageWhereInput
+    orderBy?: NotificationMessageOrderByWithRelationInput | NotificationMessageOrderByWithRelationInput[]
+    cursor?: NotificationMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationMessageScalarFieldEnum | NotificationMessageScalarFieldEnum[]
+  }
+
+  /**
+   * EmailTemplate without action
+   */
+  export type EmailTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailTemplate
+     */
+    select?: EmailTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailTemplateInclude<ExtArgs> | null
   }
 
 
@@ -58471,6 +59609,7 @@ export namespace Prisma {
     recurrencePattern: 'recurrencePattern',
     sequenceLimit: 'sequenceLimit',
     content: 'content',
+    emailTemplateId: 'emailTemplateId',
     channel: 'channel',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -58493,6 +59632,19 @@ export namespace Prisma {
   };
 
   export type NotificationHistoryScalarFieldEnum = (typeof NotificationHistoryScalarFieldEnum)[keyof typeof NotificationHistoryScalarFieldEnum]
+
+
+  export const EmailTemplateScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    design: 'design',
+    htmlContent: 'htmlContent',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EmailTemplateScalarFieldEnum = (typeof EmailTemplateScalarFieldEnum)[keyof typeof EmailTemplateScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -62514,11 +63666,13 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
-    content?: StringFilter<"NotificationMessage"> | string
+    content?: StringNullableFilter<"NotificationMessage"> | string | null
+    emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     channel?: EnumCommunicationChannelFilter<"NotificationMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotificationMessage"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationMessage"> | Date | string
     notification?: XOR<NotificationRelationFilter, NotificationWhereInput>
+    emailTemplate?: XOR<EmailTemplateNullableRelationFilter, EmailTemplateWhereInput> | null
     notificationHistory?: NotificationHistoryListRelationFilter
   }
 
@@ -62529,11 +63683,13 @@ export namespace Prisma {
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
     sequenceLimit?: SortOrderInput | SortOrder
-    content?: SortOrder
+    content?: SortOrderInput | SortOrder
+    emailTemplateId?: SortOrderInput | SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     notification?: NotificationOrderByWithRelationInput
+    emailTemplate?: EmailTemplateOrderByWithRelationInput
     notificationHistory?: NotificationHistoryOrderByRelationAggregateInput
   }
 
@@ -62548,11 +63704,13 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
-    content?: StringFilter<"NotificationMessage"> | string
+    content?: StringNullableFilter<"NotificationMessage"> | string | null
+    emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     channel?: EnumCommunicationChannelFilter<"NotificationMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotificationMessage"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationMessage"> | Date | string
     notification?: XOR<NotificationRelationFilter, NotificationWhereInput>
+    emailTemplate?: XOR<EmailTemplateNullableRelationFilter, EmailTemplateWhereInput> | null
     notificationHistory?: NotificationHistoryListRelationFilter
   }, "id" | "notificationId_sequence">
 
@@ -62563,7 +63721,8 @@ export namespace Prisma {
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
     sequenceLimit?: SortOrderInput | SortOrder
-    content?: SortOrder
+    content?: SortOrderInput | SortOrder
+    emailTemplateId?: SortOrderInput | SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -62584,7 +63743,8 @@ export namespace Prisma {
     delayMinutes?: FloatNullableWithAggregatesFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableWithAggregatesFilter<"NotificationMessage"> | number | null
-    content?: StringWithAggregatesFilter<"NotificationMessage"> | string
+    content?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
+    emailTemplateId?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
     channel?: EnumCommunicationChannelWithAggregatesFilter<"NotificationMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeWithAggregatesFilter<"NotificationMessage"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NotificationMessage"> | Date | string
@@ -62671,6 +63831,71 @@ export namespace Prisma {
     jobId?: StringNullableWithAggregatesFilter<"NotificationHistory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NotificationHistory"> | Date | string
+  }
+
+  export type EmailTemplateWhereInput = {
+    AND?: EmailTemplateWhereInput | EmailTemplateWhereInput[]
+    OR?: EmailTemplateWhereInput[]
+    NOT?: EmailTemplateWhereInput | EmailTemplateWhereInput[]
+    id?: StringFilter<"EmailTemplate"> | string
+    title?: StringFilter<"EmailTemplate"> | string
+    design?: JsonFilter<"EmailTemplate">
+    htmlContent?: StringFilter<"EmailTemplate"> | string
+    active?: BoolFilter<"EmailTemplate"> | boolean
+    createdAt?: DateTimeFilter<"EmailTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"EmailTemplate"> | Date | string
+    NotificationMessages?: NotificationMessageListRelationFilter
+  }
+
+  export type EmailTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    design?: SortOrder
+    htmlContent?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    NotificationMessages?: NotificationMessageOrderByRelationAggregateInput
+  }
+
+  export type EmailTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EmailTemplateWhereInput | EmailTemplateWhereInput[]
+    OR?: EmailTemplateWhereInput[]
+    NOT?: EmailTemplateWhereInput | EmailTemplateWhereInput[]
+    title?: StringFilter<"EmailTemplate"> | string
+    design?: JsonFilter<"EmailTemplate">
+    htmlContent?: StringFilter<"EmailTemplate"> | string
+    active?: BoolFilter<"EmailTemplate"> | boolean
+    createdAt?: DateTimeFilter<"EmailTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"EmailTemplate"> | Date | string
+    NotificationMessages?: NotificationMessageListRelationFilter
+  }, "id">
+
+  export type EmailTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    design?: SortOrder
+    htmlContent?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EmailTemplateCountOrderByAggregateInput
+    _max?: EmailTemplateMaxOrderByAggregateInput
+    _min?: EmailTemplateMinOrderByAggregateInput
+  }
+
+  export type EmailTemplateScalarWhereWithAggregatesInput = {
+    AND?: EmailTemplateScalarWhereWithAggregatesInput | EmailTemplateScalarWhereWithAggregatesInput[]
+    OR?: EmailTemplateScalarWhereWithAggregatesInput[]
+    NOT?: EmailTemplateScalarWhereWithAggregatesInput | EmailTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmailTemplate"> | string
+    title?: StringWithAggregatesFilter<"EmailTemplate"> | string
+    design?: JsonWithAggregatesFilter<"EmailTemplate">
+    htmlContent?: StringWithAggregatesFilter<"EmailTemplate"> | string
+    active?: BoolWithAggregatesFilter<"EmailTemplate"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"EmailTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EmailTemplate"> | Date | string
   }
 
   export type UserWhereInput = {
@@ -66931,11 +68156,12 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
     notification: NotificationCreateNestedOneWithoutMessagesInput
+    emailTemplate?: EmailTemplateCreateNestedOneWithoutNotificationMessagesInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutMessageInput
   }
 
@@ -66946,7 +68172,8 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
+    emailTemplateId?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -66959,11 +68186,12 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notification?: NotificationUpdateOneRequiredWithoutMessagesNestedInput
+    emailTemplate?: EmailTemplateUpdateOneWithoutNotificationMessagesNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutMessageNestedInput
   }
 
@@ -66974,7 +68202,8 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66988,7 +68217,8 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
+    emailTemplateId?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -67000,7 +68230,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67013,7 +68243,8 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67104,6 +68335,80 @@ export namespace Prisma {
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailTemplateCreateInput = {
+    id?: string
+    title: string
+    design: JsonNullValueInput | InputJsonValue
+    htmlContent: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    NotificationMessages?: NotificationMessageCreateNestedManyWithoutEmailTemplateInput
+  }
+
+  export type EmailTemplateUncheckedCreateInput = {
+    id?: string
+    title: string
+    design: JsonNullValueInput | InputJsonValue
+    htmlContent: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    NotificationMessages?: NotificationMessageUncheckedCreateNestedManyWithoutEmailTemplateInput
+  }
+
+  export type EmailTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    NotificationMessages?: NotificationMessageUpdateManyWithoutEmailTemplateNestedInput
+  }
+
+  export type EmailTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    NotificationMessages?: NotificationMessageUncheckedUpdateManyWithoutEmailTemplateNestedInput
+  }
+
+  export type EmailTemplateCreateManyInput = {
+    id?: string
+    title: string
+    design: JsonNullValueInput | InputJsonValue
+    htmlContent: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmailTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -70798,6 +72103,11 @@ export namespace Prisma {
     isNot?: NotificationWhereInput
   }
 
+  export type EmailTemplateNullableRelationFilter = {
+    is?: EmailTemplateWhereInput | null
+    isNot?: EmailTemplateWhereInput | null
+  }
+
   export type NotificationMessageNotificationIdSequenceCompoundUniqueInput = {
     notificationId: string
     sequence: number
@@ -70811,6 +72121,7 @@ export namespace Prisma {
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
     content?: SortOrder
+    emailTemplateId?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -70830,6 +72141,7 @@ export namespace Prisma {
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
     content?: SortOrder
+    emailTemplateId?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -70843,6 +72155,7 @@ export namespace Prisma {
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
     content?: SortOrder
+    emailTemplateId?: SortOrder
     channel?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -70904,6 +72217,34 @@ export namespace Prisma {
     responseReceivedAt?: SortOrder
     removedAt?: SortOrder
     jobId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmailTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    design?: SortOrder
+    htmlContent?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmailTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    htmlContent?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmailTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    htmlContent?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -74767,6 +76108,12 @@ export namespace Prisma {
     connect?: NotificationWhereUniqueInput
   }
 
+  export type EmailTemplateCreateNestedOneWithoutNotificationMessagesInput = {
+    create?: XOR<EmailTemplateCreateWithoutNotificationMessagesInput, EmailTemplateUncheckedCreateWithoutNotificationMessagesInput>
+    connectOrCreate?: EmailTemplateCreateOrConnectWithoutNotificationMessagesInput
+    connect?: EmailTemplateWhereUniqueInput
+  }
+
   export type NotificationHistoryCreateNestedManyWithoutMessageInput = {
     create?: XOR<NotificationHistoryCreateWithoutMessageInput, NotificationHistoryUncheckedCreateWithoutMessageInput> | NotificationHistoryCreateWithoutMessageInput[] | NotificationHistoryUncheckedCreateWithoutMessageInput[]
     connectOrCreate?: NotificationHistoryCreateOrConnectWithoutMessageInput | NotificationHistoryCreateOrConnectWithoutMessageInput[]
@@ -74791,6 +76138,16 @@ export namespace Prisma {
     upsert?: NotificationUpsertWithoutMessagesInput
     connect?: NotificationWhereUniqueInput
     update?: XOR<XOR<NotificationUpdateToOneWithWhereWithoutMessagesInput, NotificationUpdateWithoutMessagesInput>, NotificationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type EmailTemplateUpdateOneWithoutNotificationMessagesNestedInput = {
+    create?: XOR<EmailTemplateCreateWithoutNotificationMessagesInput, EmailTemplateUncheckedCreateWithoutNotificationMessagesInput>
+    connectOrCreate?: EmailTemplateCreateOrConnectWithoutNotificationMessagesInput
+    upsert?: EmailTemplateUpsertWithoutNotificationMessagesInput
+    disconnect?: EmailTemplateWhereInput | boolean
+    delete?: EmailTemplateWhereInput | boolean
+    connect?: EmailTemplateWhereUniqueInput
+    update?: XOR<XOR<EmailTemplateUpdateToOneWithWhereWithoutNotificationMessagesInput, EmailTemplateUpdateWithoutNotificationMessagesInput>, EmailTemplateUncheckedUpdateWithoutNotificationMessagesInput>
   }
 
   export type NotificationHistoryUpdateManyWithoutMessageNestedInput = {
@@ -74847,6 +76204,48 @@ export namespace Prisma {
     upsert?: NotificationMessageUpsertWithoutNotificationHistoryInput
     connect?: NotificationMessageWhereUniqueInput
     update?: XOR<XOR<NotificationMessageUpdateToOneWithWhereWithoutNotificationHistoryInput, NotificationMessageUpdateWithoutNotificationHistoryInput>, NotificationMessageUncheckedUpdateWithoutNotificationHistoryInput>
+  }
+
+  export type NotificationMessageCreateNestedManyWithoutEmailTemplateInput = {
+    create?: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput> | NotificationMessageCreateWithoutEmailTemplateInput[] | NotificationMessageUncheckedCreateWithoutEmailTemplateInput[]
+    connectOrCreate?: NotificationMessageCreateOrConnectWithoutEmailTemplateInput | NotificationMessageCreateOrConnectWithoutEmailTemplateInput[]
+    createMany?: NotificationMessageCreateManyEmailTemplateInputEnvelope
+    connect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+  }
+
+  export type NotificationMessageUncheckedCreateNestedManyWithoutEmailTemplateInput = {
+    create?: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput> | NotificationMessageCreateWithoutEmailTemplateInput[] | NotificationMessageUncheckedCreateWithoutEmailTemplateInput[]
+    connectOrCreate?: NotificationMessageCreateOrConnectWithoutEmailTemplateInput | NotificationMessageCreateOrConnectWithoutEmailTemplateInput[]
+    createMany?: NotificationMessageCreateManyEmailTemplateInputEnvelope
+    connect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+  }
+
+  export type NotificationMessageUpdateManyWithoutEmailTemplateNestedInput = {
+    create?: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput> | NotificationMessageCreateWithoutEmailTemplateInput[] | NotificationMessageUncheckedCreateWithoutEmailTemplateInput[]
+    connectOrCreate?: NotificationMessageCreateOrConnectWithoutEmailTemplateInput | NotificationMessageCreateOrConnectWithoutEmailTemplateInput[]
+    upsert?: NotificationMessageUpsertWithWhereUniqueWithoutEmailTemplateInput | NotificationMessageUpsertWithWhereUniqueWithoutEmailTemplateInput[]
+    createMany?: NotificationMessageCreateManyEmailTemplateInputEnvelope
+    set?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    disconnect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    delete?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    connect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    update?: NotificationMessageUpdateWithWhereUniqueWithoutEmailTemplateInput | NotificationMessageUpdateWithWhereUniqueWithoutEmailTemplateInput[]
+    updateMany?: NotificationMessageUpdateManyWithWhereWithoutEmailTemplateInput | NotificationMessageUpdateManyWithWhereWithoutEmailTemplateInput[]
+    deleteMany?: NotificationMessageScalarWhereInput | NotificationMessageScalarWhereInput[]
+  }
+
+  export type NotificationMessageUncheckedUpdateManyWithoutEmailTemplateNestedInput = {
+    create?: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput> | NotificationMessageCreateWithoutEmailTemplateInput[] | NotificationMessageUncheckedCreateWithoutEmailTemplateInput[]
+    connectOrCreate?: NotificationMessageCreateOrConnectWithoutEmailTemplateInput | NotificationMessageCreateOrConnectWithoutEmailTemplateInput[]
+    upsert?: NotificationMessageUpsertWithWhereUniqueWithoutEmailTemplateInput | NotificationMessageUpsertWithWhereUniqueWithoutEmailTemplateInput[]
+    createMany?: NotificationMessageCreateManyEmailTemplateInputEnvelope
+    set?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    disconnect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    delete?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    connect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
+    update?: NotificationMessageUpdateWithWhereUniqueWithoutEmailTemplateInput | NotificationMessageUpdateWithWhereUniqueWithoutEmailTemplateInput[]
+    updateMany?: NotificationMessageUpdateManyWithWhereWithoutEmailTemplateInput | NotificationMessageUpdateManyWithWhereWithoutEmailTemplateInput[]
+    deleteMany?: NotificationMessageScalarWhereInput | NotificationMessageScalarWhereInput[]
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -84329,10 +85728,11 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailTemplate?: EmailTemplateCreateNestedOneWithoutNotificationMessagesInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutMessageInput
   }
 
@@ -84342,7 +85742,8 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
+    emailTemplateId?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -84385,7 +85786,8 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
-    content?: StringFilter<"NotificationMessage"> | string
+    content?: StringNullableFilter<"NotificationMessage"> | string | null
+    emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     channel?: EnumCommunicationChannelFilter<"NotificationMessage"> | $Enums.CommunicationChannel
     createdAt?: DateTimeFilter<"NotificationMessage"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationMessage"> | Date | string
@@ -84420,6 +85822,31 @@ export namespace Prisma {
   export type NotificationCreateOrConnectWithoutMessagesInput = {
     where: NotificationWhereUniqueInput
     create: XOR<NotificationCreateWithoutMessagesInput, NotificationUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type EmailTemplateCreateWithoutNotificationMessagesInput = {
+    id?: string
+    title: string
+    design: JsonNullValueInput | InputJsonValue
+    htmlContent: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmailTemplateUncheckedCreateWithoutNotificationMessagesInput = {
+    id?: string
+    title: string
+    design: JsonNullValueInput | InputJsonValue
+    htmlContent: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmailTemplateCreateOrConnectWithoutNotificationMessagesInput = {
+    where: EmailTemplateWhereUniqueInput
+    create: XOR<EmailTemplateCreateWithoutNotificationMessagesInput, EmailTemplateUncheckedCreateWithoutNotificationMessagesInput>
   }
 
   export type NotificationHistoryCreateWithoutMessageInput = {
@@ -84488,6 +85915,37 @@ export namespace Prisma {
     responseType?: NullableEnumNotificationResponseTypeFieldUpdateOperationsInput | $Enums.NotificationResponseType | null
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailTemplateUpsertWithoutNotificationMessagesInput = {
+    update: XOR<EmailTemplateUpdateWithoutNotificationMessagesInput, EmailTemplateUncheckedUpdateWithoutNotificationMessagesInput>
+    create: XOR<EmailTemplateCreateWithoutNotificationMessagesInput, EmailTemplateUncheckedCreateWithoutNotificationMessagesInput>
+    where?: EmailTemplateWhereInput
+  }
+
+  export type EmailTemplateUpdateToOneWithWhereWithoutNotificationMessagesInput = {
+    where?: EmailTemplateWhereInput
+    data: XOR<EmailTemplateUpdateWithoutNotificationMessagesInput, EmailTemplateUncheckedUpdateWithoutNotificationMessagesInput>
+  }
+
+  export type EmailTemplateUpdateWithoutNotificationMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailTemplateUncheckedUpdateWithoutNotificationMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    design?: JsonNullValueInput | InputJsonValue
+    htmlContent?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -84564,11 +86022,12 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
     notification: NotificationCreateNestedOneWithoutMessagesInput
+    emailTemplate?: EmailTemplateCreateNestedOneWithoutNotificationMessagesInput
   }
 
   export type NotificationMessageUncheckedCreateWithoutNotificationHistoryInput = {
@@ -84578,7 +86037,8 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
+    emailTemplateId?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -84661,11 +86121,12 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notification?: NotificationUpdateOneRequiredWithoutMessagesNestedInput
+    emailTemplate?: EmailTemplateUpdateOneWithoutNotificationMessagesNestedInput
   }
 
   export type NotificationMessageUncheckedUpdateWithoutNotificationHistoryInput = {
@@ -84675,10 +86136,65 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationMessageCreateWithoutEmailTemplateInput = {
+    id?: string
+    sequence: number
+    delayMinutes?: number | null
+    recurrencePattern?: string | null
+    sequenceLimit?: number | null
+    content?: string | null
+    channel: $Enums.CommunicationChannel
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    notification: NotificationCreateNestedOneWithoutMessagesInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutMessageInput
+  }
+
+  export type NotificationMessageUncheckedCreateWithoutEmailTemplateInput = {
+    id?: string
+    notificationId: string
+    sequence: number
+    delayMinutes?: number | null
+    recurrencePattern?: string | null
+    sequenceLimit?: number | null
+    content?: string | null
+    channel: $Enums.CommunicationChannel
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutMessageInput
+  }
+
+  export type NotificationMessageCreateOrConnectWithoutEmailTemplateInput = {
+    where: NotificationMessageWhereUniqueInput
+    create: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput>
+  }
+
+  export type NotificationMessageCreateManyEmailTemplateInputEnvelope = {
+    data: NotificationMessageCreateManyEmailTemplateInput | NotificationMessageCreateManyEmailTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificationMessageUpsertWithWhereUniqueWithoutEmailTemplateInput = {
+    where: NotificationMessageWhereUniqueInput
+    update: XOR<NotificationMessageUpdateWithoutEmailTemplateInput, NotificationMessageUncheckedUpdateWithoutEmailTemplateInput>
+    create: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput>
+  }
+
+  export type NotificationMessageUpdateWithWhereUniqueWithoutEmailTemplateInput = {
+    where: NotificationMessageWhereUniqueInput
+    data: XOR<NotificationMessageUpdateWithoutEmailTemplateInput, NotificationMessageUncheckedUpdateWithoutEmailTemplateInput>
+  }
+
+  export type NotificationMessageUpdateManyWithWhereWithoutEmailTemplateInput = {
+    where: NotificationMessageScalarWhereInput
+    data: XOR<NotificationMessageUpdateManyMutationInput, NotificationMessageUncheckedUpdateManyWithoutEmailTemplateInput>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -88966,7 +90482,8 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
-    content: string
+    content?: string | null
+    emailTemplateId?: string | null
     channel: $Enums.CommunicationChannel
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -88978,10 +90495,11 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailTemplate?: EmailTemplateUpdateOneWithoutNotificationMessagesNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutMessageNestedInput
   }
 
@@ -88991,7 +90509,8 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -89004,7 +90523,8 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -89054,6 +90574,60 @@ export namespace Prisma {
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationMessageCreateManyEmailTemplateInput = {
+    id?: string
+    notificationId: string
+    sequence: number
+    delayMinutes?: number | null
+    recurrencePattern?: string | null
+    sequenceLimit?: number | null
+    content?: string | null
+    channel: $Enums.CommunicationChannel
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationMessageUpdateWithoutEmailTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
+    recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notification?: NotificationUpdateOneRequiredWithoutMessagesNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutMessageNestedInput
+  }
+
+  export type NotificationMessageUncheckedUpdateWithoutEmailTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notificationId?: StringFieldUpdateOperationsInput | string
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
+    recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutMessageNestedInput
+  }
+
+  export type NotificationMessageUncheckedUpdateManyWithoutEmailTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notificationId?: StringFieldUpdateOperationsInput | string
+    sequence?: FloatFieldUpdateOperationsInput | number
+    delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
+    recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
+    sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -89428,6 +91002,10 @@ export namespace Prisma {
      */
     export type NotificationMessageCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NotificationMessageCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use EmailTemplateCountOutputTypeDefaultArgs instead
+     */
+    export type EmailTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EmailTemplateCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -89603,6 +91181,10 @@ export namespace Prisma {
      * @deprecated Use NotificationHistoryDefaultArgs instead
      */
     export type NotificationHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NotificationHistoryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use EmailTemplateDefaultArgs instead
+     */
+    export type EmailTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EmailTemplateDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
