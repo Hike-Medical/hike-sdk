@@ -2,8 +2,9 @@ import { isString } from '@hike/utils';
 import { isAxiosError } from 'axios';
 
 export enum HikeErrorCode {
-  // Generic errors
+  // General errors
   ERR_UNKNOWN = 'ERR_UNKNOWN',
+  ERR_EMAIL_MAX_LIMIT = 'ERR_EMAIL_MAX_LIMIT',
 
   // Data errors
   ERR_DATA_NOT_FOUND = 'ERR_DATA_NOT_FOUND',
@@ -23,7 +24,6 @@ export enum HikeErrorCode {
   // Company errors
   ERR_COMPANY_USER_NOT_ASSOCIATED = 'ERR_COMPANY_USER_NOT_ASSOCIATED',
   ERR_COMPANY_INVITATION_INVALID = 'ERR_COMPANY_INVITATION_INVALID',
-  ERR_COMPANY_INVITATION_MAX_LIMIT = 'ERR_COMPANY_INVITATION_MAX_LIMIT',
 
   // Token errors
   ERR_TOKEN_INVALID = 'ERR_TOKEN_INVALID'
