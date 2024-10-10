@@ -234,6 +234,11 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  */
 export type AccountVerification = $Result.DefaultSelection<Prisma.$AccountVerificationPayload>
 /**
+ * Model CompanyInvitation
+ * 
+ */
+export type CompanyInvitation = $Result.DefaultSelection<Prisma.$CompanyInvitationPayload>
+/**
  * Model ApiKey
  * 
  */
@@ -603,6 +608,13 @@ export const AccountRecoveryType: {
 
 export type AccountRecoveryType = (typeof AccountRecoveryType)[keyof typeof AccountRecoveryType]
 
+
+export const ContactType: {
+  EMAIL: 'EMAIL'
+};
+
+export type ContactType = (typeof ContactType)[keyof typeof ContactType]
+
 }
 
 export type FacilityType = $Enums.FacilityType
@@ -736,6 +748,10 @@ export const AgreementType: typeof $Enums.AgreementType
 export type AccountRecoveryType = $Enums.AccountRecoveryType
 
 export const AccountRecoveryType: typeof $Enums.AccountRecoveryType
+
+export type ContactType = $Enums.ContactType
+
+export const ContactType: typeof $Enums.ContactType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1300,6 +1316,16 @@ export class PrismaClient<
   get accountVerification(): Prisma.AccountVerificationDelegate<ExtArgs>;
 
   /**
+   * `prisma.companyInvitation`: Exposes CRUD operations for the **CompanyInvitation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompanyInvitations
+    * const companyInvitations = await prisma.companyInvitation.findMany()
+    * ```
+    */
+  get companyInvitation(): Prisma.CompanyInvitationDelegate<ExtArgs>;
+
+  /**
    * `prisma.apiKey`: Exposes CRUD operations for the **ApiKey** model.
     * Example usage:
     * ```ts
@@ -1839,6 +1865,7 @@ export namespace Prisma {
     Agreement: 'Agreement',
     Account: 'Account',
     AccountVerification: 'AccountVerification',
+    CompanyInvitation: 'CompanyInvitation',
     ApiKey: 'ApiKey',
     ViewFlattenedWorkbench: 'ViewFlattenedWorkbench'
   };
@@ -1857,7 +1884,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'companyInvitation' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -4941,6 +4968,76 @@ export namespace Prisma {
           }
         }
       }
+      CompanyInvitation: {
+        payload: Prisma.$CompanyInvitationPayload<ExtArgs>
+        fields: Prisma.CompanyInvitationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanyInvitationFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanyInvitationFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanyInvitationFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanyInvitationFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          findMany: {
+            args: Prisma.CompanyInvitationFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>[]
+          }
+          create: {
+            args: Prisma.CompanyInvitationCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          createMany: {
+            args: Prisma.CompanyInvitationCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CompanyInvitationCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>[]
+          }
+          delete: {
+            args: Prisma.CompanyInvitationDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          update: {
+            args: Prisma.CompanyInvitationUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanyInvitationDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanyInvitationUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.CompanyInvitationUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CompanyInvitationPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanyInvitationAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCompanyInvitation>
+          }
+          groupBy: {
+            args: Prisma.CompanyInvitationGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyInvitationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CompanyInvitationCountArgs<ExtArgs>,
+            result: $Utils.Optional<CompanyInvitationCountAggregateOutputType> | number
+          }
+        }
+      }
       ApiKey: {
         payload: Prisma.$ApiKeyPayload<ExtArgs>
         fields: Prisma.ApiKeyFieldRefs
@@ -5248,6 +5345,7 @@ export namespace Prisma {
     users: number
     departments: number
     patients: number
+    invitations: number
     auditLogs: number
     stripeEntities: number
   }
@@ -5260,6 +5358,7 @@ export namespace Prisma {
     users?: boolean | CompanyCountOutputTypeCountUsersArgs
     departments?: boolean | CompanyCountOutputTypeCountDepartmentsArgs
     patients?: boolean | CompanyCountOutputTypeCountPatientsArgs
+    invitations?: boolean | CompanyCountOutputTypeCountInvitationsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
     stripeEntities?: boolean | CompanyCountOutputTypeCountStripeEntitiesArgs
   }
@@ -5322,6 +5421,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyPatientWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyInvitationWhereInput
   }
 
   /**
@@ -6556,6 +6662,7 @@ export namespace Prisma {
     users?: boolean | Company$usersArgs<ExtArgs>
     departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
+    invitations?: boolean | Company$invitationsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -6582,6 +6689,7 @@ export namespace Prisma {
     users?: boolean | Company$usersArgs<ExtArgs>
     departments?: boolean | Company$departmentsArgs<ExtArgs>
     patients?: boolean | Company$patientsArgs<ExtArgs>
+    invitations?: boolean | Company$invitationsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -6598,6 +6706,7 @@ export namespace Prisma {
       users: Prisma.$CompanyUserPayload<ExtArgs>[]
       departments: Prisma.$DepartmentUserPayload<ExtArgs>[]
       patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
+      invitations: Prisma.$CompanyInvitationPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       stripeEntities: Prisma.$StripeEntityPayload<ExtArgs>[]
     }
@@ -7015,6 +7124,8 @@ export namespace Prisma {
     departments<T extends Company$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     patients<T extends Company$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Company$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    invitations<T extends Company$invitationsArgs<ExtArgs> = {}>(args?: Subset<T, Company$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -7512,6 +7623,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Company.invitations
+   */
+  export type Company$invitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    where?: CompanyInvitationWhereInput
+    orderBy?: CompanyInvitationOrderByWithRelationInput | CompanyInvitationOrderByWithRelationInput[]
+    cursor?: CompanyInvitationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyInvitationScalarFieldEnum | CompanyInvitationScalarFieldEnum[]
   }
 
   /**
@@ -51920,6 +52051,1011 @@ export namespace Prisma {
 
 
   /**
+   * Model CompanyInvitation
+   */
+
+  export type AggregateCompanyInvitation = {
+    _count: CompanyInvitationCountAggregateOutputType | null
+    _min: CompanyInvitationMinAggregateOutputType | null
+    _max: CompanyInvitationMaxAggregateOutputType | null
+  }
+
+  export type CompanyInvitationMinAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    contact: string | null
+    contactType: $Enums.ContactType | null
+    role: $Enums.CompanyRole | null
+    token: string | null
+    verified: boolean | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyInvitationMaxAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    contact: string | null
+    contactType: $Enums.ContactType | null
+    role: $Enums.CompanyRole | null
+    token: string | null
+    verified: boolean | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyInvitationCountAggregateOutputType = {
+    id: number
+    companyId: number
+    contact: number
+    contactType: number
+    role: number
+    token: number
+    verified: number
+    expiresAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CompanyInvitationMinAggregateInputType = {
+    id?: true
+    companyId?: true
+    contact?: true
+    contactType?: true
+    role?: true
+    token?: true
+    verified?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyInvitationMaxAggregateInputType = {
+    id?: true
+    companyId?: true
+    contact?: true
+    contactType?: true
+    role?: true
+    token?: true
+    verified?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyInvitationCountAggregateInputType = {
+    id?: true
+    companyId?: true
+    contact?: true
+    contactType?: true
+    role?: true
+    token?: true
+    verified?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CompanyInvitationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyInvitation to aggregate.
+     */
+    where?: CompanyInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyInvitations to fetch.
+     */
+    orderBy?: CompanyInvitationOrderByWithRelationInput | CompanyInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanyInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompanyInvitations
+    **/
+    _count?: true | CompanyInvitationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanyInvitationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanyInvitationMaxAggregateInputType
+  }
+
+  export type GetCompanyInvitationAggregateType<T extends CompanyInvitationAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyInvitation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompanyInvitation[P]>
+      : GetScalarType<T[P], AggregateCompanyInvitation[P]>
+  }
+
+
+
+
+  export type CompanyInvitationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyInvitationWhereInput
+    orderBy?: CompanyInvitationOrderByWithAggregationInput | CompanyInvitationOrderByWithAggregationInput[]
+    by: CompanyInvitationScalarFieldEnum[] | CompanyInvitationScalarFieldEnum
+    having?: CompanyInvitationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanyInvitationCountAggregateInputType | true
+    _min?: CompanyInvitationMinAggregateInputType
+    _max?: CompanyInvitationMaxAggregateInputType
+  }
+
+  export type CompanyInvitationGroupByOutputType = {
+    id: string
+    companyId: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified: boolean
+    expiresAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: CompanyInvitationCountAggregateOutputType | null
+    _min: CompanyInvitationMinAggregateOutputType | null
+    _max: CompanyInvitationMaxAggregateOutputType | null
+  }
+
+  type GetCompanyInvitationGroupByPayload<T extends CompanyInvitationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanyInvitationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanyInvitationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanyInvitationGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyInvitationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanyInvitationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    contact?: boolean
+    contactType?: boolean
+    role?: boolean
+    token?: boolean
+    verified?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companyInvitation"]>
+
+  export type CompanyInvitationSelectScalar = {
+    id?: boolean
+    companyId?: boolean
+    contact?: boolean
+    contactType?: boolean
+    role?: boolean
+    token?: boolean
+    verified?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type CompanyInvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  }
+
+
+  export type $CompanyInvitationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyInvitation"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      companyId: string
+      contact: string
+      contactType: $Enums.ContactType
+      role: $Enums.CompanyRole
+      token: string
+      verified: boolean
+      expiresAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["companyInvitation"]>
+    composites: {}
+  }
+
+
+  type CompanyInvitationGetPayload<S extends boolean | null | undefined | CompanyInvitationDefaultArgs> = $Result.GetResult<Prisma.$CompanyInvitationPayload, S>
+
+  type CompanyInvitationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CompanyInvitationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CompanyInvitationCountAggregateInputType | true
+    }
+
+  export interface CompanyInvitationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyInvitation'], meta: { name: 'CompanyInvitation' } }
+    /**
+     * Find zero or one CompanyInvitation that matches the filter.
+     * @param {CompanyInvitationFindUniqueArgs} args - Arguments to find a CompanyInvitation
+     * @example
+     * // Get one CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends CompanyInvitationFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationFindUniqueArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one CompanyInvitation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CompanyInvitationFindUniqueOrThrowArgs} args - Arguments to find a CompanyInvitation
+     * @example
+     * // Get one CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends CompanyInvitationFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first CompanyInvitation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationFindFirstArgs} args - Arguments to find a CompanyInvitation
+     * @example
+     * // Get one CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends CompanyInvitationFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationFindFirstArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first CompanyInvitation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationFindFirstOrThrowArgs} args - Arguments to find a CompanyInvitation
+     * @example
+     * // Get one CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends CompanyInvitationFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more CompanyInvitations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompanyInvitations
+     * const companyInvitations = await prisma.companyInvitation.findMany()
+     * 
+     * // Get first 10 CompanyInvitations
+     * const companyInvitations = await prisma.companyInvitation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companyInvitationWithIdOnly = await prisma.companyInvitation.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends CompanyInvitationFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a CompanyInvitation.
+     * @param {CompanyInvitationCreateArgs} args - Arguments to create a CompanyInvitation.
+     * @example
+     * // Create one CompanyInvitation
+     * const CompanyInvitation = await prisma.companyInvitation.create({
+     *   data: {
+     *     // ... data to create a CompanyInvitation
+     *   }
+     * })
+     * 
+    **/
+    create<T extends CompanyInvitationCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationCreateArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many CompanyInvitations.
+     * @param {CompanyInvitationCreateManyArgs} args - Arguments to create many CompanyInvitations.
+     * @example
+     * // Create many CompanyInvitations
+     * const companyInvitation = await prisma.companyInvitation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends CompanyInvitationCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CompanyInvitations and returns the data saved in the database.
+     * @param {CompanyInvitationCreateManyAndReturnArgs} args - Arguments to create many CompanyInvitations.
+     * @example
+     * // Create many CompanyInvitations
+     * const companyInvitation = await prisma.companyInvitation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CompanyInvitations and only return the `id`
+     * const companyInvitationWithIdOnly = await prisma.companyInvitation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends CompanyInvitationCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a CompanyInvitation.
+     * @param {CompanyInvitationDeleteArgs} args - Arguments to delete one CompanyInvitation.
+     * @example
+     * // Delete one CompanyInvitation
+     * const CompanyInvitation = await prisma.companyInvitation.delete({
+     *   where: {
+     *     // ... filter to delete one CompanyInvitation
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends CompanyInvitationDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationDeleteArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one CompanyInvitation.
+     * @param {CompanyInvitationUpdateArgs} args - Arguments to update one CompanyInvitation.
+     * @example
+     * // Update one CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends CompanyInvitationUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationUpdateArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more CompanyInvitations.
+     * @param {CompanyInvitationDeleteManyArgs} args - Arguments to filter CompanyInvitations to delete.
+     * @example
+     * // Delete a few CompanyInvitations
+     * const { count } = await prisma.companyInvitation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends CompanyInvitationDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CompanyInvitationDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanyInvitations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompanyInvitations
+     * const companyInvitation = await prisma.companyInvitation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends CompanyInvitationUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CompanyInvitation.
+     * @param {CompanyInvitationUpsertArgs} args - Arguments to update or create a CompanyInvitation.
+     * @example
+     * // Update or create a CompanyInvitation
+     * const companyInvitation = await prisma.companyInvitation.upsert({
+     *   create: {
+     *     // ... data to create a CompanyInvitation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompanyInvitation we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends CompanyInvitationUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CompanyInvitationUpsertArgs<ExtArgs>>
+    ): Prisma__CompanyInvitationClient<$Result.GetResult<Prisma.$CompanyInvitationPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of CompanyInvitations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationCountArgs} args - Arguments to filter CompanyInvitations to count.
+     * @example
+     * // Count the number of CompanyInvitations
+     * const count = await prisma.companyInvitation.count({
+     *   where: {
+     *     // ... the filter for the CompanyInvitations we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanyInvitationCountArgs>(
+      args?: Subset<T, CompanyInvitationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanyInvitationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompanyInvitation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanyInvitationAggregateArgs>(args: Subset<T, CompanyInvitationAggregateArgs>): Prisma.PrismaPromise<GetCompanyInvitationAggregateType<T>>
+
+    /**
+     * Group by CompanyInvitation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyInvitationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanyInvitationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanyInvitationGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyInvitationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanyInvitationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyInvitationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompanyInvitation model
+   */
+  readonly fields: CompanyInvitationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompanyInvitation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanyInvitationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the CompanyInvitation model
+   */ 
+  interface CompanyInvitationFieldRefs {
+    readonly id: FieldRef<"CompanyInvitation", 'String'>
+    readonly companyId: FieldRef<"CompanyInvitation", 'String'>
+    readonly contact: FieldRef<"CompanyInvitation", 'String'>
+    readonly contactType: FieldRef<"CompanyInvitation", 'ContactType'>
+    readonly role: FieldRef<"CompanyInvitation", 'CompanyRole'>
+    readonly token: FieldRef<"CompanyInvitation", 'String'>
+    readonly verified: FieldRef<"CompanyInvitation", 'Boolean'>
+    readonly expiresAt: FieldRef<"CompanyInvitation", 'DateTime'>
+    readonly createdAt: FieldRef<"CompanyInvitation", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanyInvitation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompanyInvitation findUnique
+   */
+  export type CompanyInvitationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyInvitation to fetch.
+     */
+    where: CompanyInvitationWhereUniqueInput
+  }
+
+  /**
+   * CompanyInvitation findUniqueOrThrow
+   */
+  export type CompanyInvitationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyInvitation to fetch.
+     */
+    where: CompanyInvitationWhereUniqueInput
+  }
+
+  /**
+   * CompanyInvitation findFirst
+   */
+  export type CompanyInvitationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyInvitation to fetch.
+     */
+    where?: CompanyInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyInvitations to fetch.
+     */
+    orderBy?: CompanyInvitationOrderByWithRelationInput | CompanyInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyInvitations.
+     */
+    cursor?: CompanyInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyInvitations.
+     */
+    distinct?: CompanyInvitationScalarFieldEnum | CompanyInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyInvitation findFirstOrThrow
+   */
+  export type CompanyInvitationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyInvitation to fetch.
+     */
+    where?: CompanyInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyInvitations to fetch.
+     */
+    orderBy?: CompanyInvitationOrderByWithRelationInput | CompanyInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyInvitations.
+     */
+    cursor?: CompanyInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyInvitations.
+     */
+    distinct?: CompanyInvitationScalarFieldEnum | CompanyInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyInvitation findMany
+   */
+  export type CompanyInvitationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyInvitations to fetch.
+     */
+    where?: CompanyInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyInvitations to fetch.
+     */
+    orderBy?: CompanyInvitationOrderByWithRelationInput | CompanyInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompanyInvitations.
+     */
+    cursor?: CompanyInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyInvitations.
+     */
+    skip?: number
+    distinct?: CompanyInvitationScalarFieldEnum | CompanyInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyInvitation create
+   */
+  export type CompanyInvitationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompanyInvitation.
+     */
+    data: XOR<CompanyInvitationCreateInput, CompanyInvitationUncheckedCreateInput>
+  }
+
+  /**
+   * CompanyInvitation createMany
+   */
+  export type CompanyInvitationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompanyInvitations.
+     */
+    data: CompanyInvitationCreateManyInput | CompanyInvitationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CompanyInvitation createManyAndReturn
+   */
+  export type CompanyInvitationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * The data used to create many CompanyInvitations.
+     */
+    data: CompanyInvitationCreateManyInput | CompanyInvitationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CompanyInvitation update
+   */
+  export type CompanyInvitationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompanyInvitation.
+     */
+    data: XOR<CompanyInvitationUpdateInput, CompanyInvitationUncheckedUpdateInput>
+    /**
+     * Choose, which CompanyInvitation to update.
+     */
+    where: CompanyInvitationWhereUniqueInput
+  }
+
+  /**
+   * CompanyInvitation updateMany
+   */
+  export type CompanyInvitationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompanyInvitations.
+     */
+    data: XOR<CompanyInvitationUpdateManyMutationInput, CompanyInvitationUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanyInvitations to update
+     */
+    where?: CompanyInvitationWhereInput
+  }
+
+  /**
+   * CompanyInvitation upsert
+   */
+  export type CompanyInvitationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompanyInvitation to update in case it exists.
+     */
+    where: CompanyInvitationWhereUniqueInput
+    /**
+     * In case the CompanyInvitation found by the `where` argument doesn't exist, create a new CompanyInvitation with this data.
+     */
+    create: XOR<CompanyInvitationCreateInput, CompanyInvitationUncheckedCreateInput>
+    /**
+     * In case the CompanyInvitation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanyInvitationUpdateInput, CompanyInvitationUncheckedUpdateInput>
+  }
+
+  /**
+   * CompanyInvitation delete
+   */
+  export type CompanyInvitationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+    /**
+     * Filter which CompanyInvitation to delete.
+     */
+    where: CompanyInvitationWhereUniqueInput
+  }
+
+  /**
+   * CompanyInvitation deleteMany
+   */
+  export type CompanyInvitationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyInvitations to delete
+     */
+    where?: CompanyInvitationWhereInput
+  }
+
+  /**
+   * CompanyInvitation without action
+   */
+  export type CompanyInvitationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyInvitation
+     */
+    select?: CompanyInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInvitationInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model ApiKey
    */
 
@@ -55002,6 +56138,22 @@ export namespace Prisma {
   export type AccountVerificationScalarFieldEnum = (typeof AccountVerificationScalarFieldEnum)[keyof typeof AccountVerificationScalarFieldEnum]
 
 
+  export const CompanyInvitationScalarFieldEnum: {
+    id: 'id',
+    companyId: 'companyId',
+    contact: 'contact',
+    contactType: 'contactType',
+    role: 'role',
+    token: 'token',
+    verified: 'verified',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CompanyInvitationScalarFieldEnum = (typeof CompanyInvitationScalarFieldEnum)[keyof typeof CompanyInvitationScalarFieldEnum]
+
+
   export const ApiKeyScalarFieldEnum: {
     id: 'id',
     key: 'key',
@@ -55656,6 +56808,20 @@ export namespace Prisma {
    */
   export type ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountRecoveryType[]'>
     
+
+
+  /**
+   * Reference to a field of type 'ContactType'
+   */
+  export type EnumContactTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ContactType[]'
+   */
+  export type ListEnumContactTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactType[]'>
+    
   /**
    * Deep Input Types
    */
@@ -55681,6 +56847,7 @@ export namespace Prisma {
     users?: CompanyUserListRelationFilter
     departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
+    invitations?: CompanyInvitationListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
   }
@@ -55702,6 +56869,7 @@ export namespace Prisma {
     users?: CompanyUserOrderByRelationAggregateInput
     departments?: DepartmentUserOrderByRelationAggregateInput
     patients?: CompanyPatientOrderByRelationAggregateInput
+    invitations?: CompanyInvitationOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     stripeEntities?: StripeEntityOrderByRelationAggregateInput
   }
@@ -55726,6 +56894,7 @@ export namespace Prisma {
     users?: CompanyUserListRelationFilter
     departments?: DepartmentUserListRelationFilter
     patients?: CompanyPatientListRelationFilter
+    invitations?: CompanyInvitationListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
   }, "id" | "slug">
@@ -59145,6 +60314,87 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
   }
 
+  export type CompanyInvitationWhereInput = {
+    AND?: CompanyInvitationWhereInput | CompanyInvitationWhereInput[]
+    OR?: CompanyInvitationWhereInput[]
+    NOT?: CompanyInvitationWhereInput | CompanyInvitationWhereInput[]
+    id?: StringFilter<"CompanyInvitation"> | string
+    companyId?: StringFilter<"CompanyInvitation"> | string
+    contact?: StringFilter<"CompanyInvitation"> | string
+    contactType?: EnumContactTypeFilter<"CompanyInvitation"> | $Enums.ContactType
+    role?: EnumCompanyRoleFilter<"CompanyInvitation"> | $Enums.CompanyRole
+    token?: StringFilter<"CompanyInvitation"> | string
+    verified?: BoolFilter<"CompanyInvitation"> | boolean
+    expiresAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    createdAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }
+
+  export type CompanyInvitationOrderByWithRelationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    contact?: SortOrder
+    contactType?: SortOrder
+    role?: SortOrder
+    token?: SortOrder
+    verified?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+  }
+
+  export type CompanyInvitationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    token?: string
+    contact_companyId?: CompanyInvitationContactCompanyIdCompoundUniqueInput
+    AND?: CompanyInvitationWhereInput | CompanyInvitationWhereInput[]
+    OR?: CompanyInvitationWhereInput[]
+    NOT?: CompanyInvitationWhereInput | CompanyInvitationWhereInput[]
+    companyId?: StringFilter<"CompanyInvitation"> | string
+    contact?: StringFilter<"CompanyInvitation"> | string
+    contactType?: EnumContactTypeFilter<"CompanyInvitation"> | $Enums.ContactType
+    role?: EnumCompanyRoleFilter<"CompanyInvitation"> | $Enums.CompanyRole
+    verified?: BoolFilter<"CompanyInvitation"> | boolean
+    expiresAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    createdAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+  }, "id" | "token" | "contact_companyId">
+
+  export type CompanyInvitationOrderByWithAggregationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    contact?: SortOrder
+    contactType?: SortOrder
+    role?: SortOrder
+    token?: SortOrder
+    verified?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CompanyInvitationCountOrderByAggregateInput
+    _max?: CompanyInvitationMaxOrderByAggregateInput
+    _min?: CompanyInvitationMinOrderByAggregateInput
+  }
+
+  export type CompanyInvitationScalarWhereWithAggregatesInput = {
+    AND?: CompanyInvitationScalarWhereWithAggregatesInput | CompanyInvitationScalarWhereWithAggregatesInput[]
+    OR?: CompanyInvitationScalarWhereWithAggregatesInput[]
+    NOT?: CompanyInvitationScalarWhereWithAggregatesInput | CompanyInvitationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CompanyInvitation"> | string
+    companyId?: StringWithAggregatesFilter<"CompanyInvitation"> | string
+    contact?: StringWithAggregatesFilter<"CompanyInvitation"> | string
+    contactType?: EnumContactTypeWithAggregatesFilter<"CompanyInvitation"> | $Enums.ContactType
+    role?: EnumCompanyRoleWithAggregatesFilter<"CompanyInvitation"> | $Enums.CompanyRole
+    token?: StringWithAggregatesFilter<"CompanyInvitation"> | string
+    verified?: BoolWithAggregatesFilter<"CompanyInvitation"> | boolean
+    expiresAt?: DateTimeWithAggregatesFilter<"CompanyInvitation"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyInvitation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanyInvitation"> | Date | string
+  }
+
   export type ApiKeyWhereInput = {
     AND?: ApiKeyWhereInput | ApiKeyWhereInput[]
     OR?: ApiKeyWhereInput[]
@@ -59518,6 +60768,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -59539,6 +60790,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -59560,6 +60812,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -59581,6 +60834,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -63321,6 +64575,96 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CompanyInvitationCreateInput = {
+    id?: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutInvitationsInput
+  }
+
+  export type CompanyInvitationUncheckedCreateInput = {
+    id?: string
+    companyId: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyInvitationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutInvitationsNestedInput
+  }
+
+  export type CompanyInvitationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyInvitationCreateManyInput = {
+    id?: string
+    companyId: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyInvitationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyInvitationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ApiKeyCreateInput = {
     id?: string
     key: string
@@ -63885,6 +65229,12 @@ export namespace Prisma {
     none?: CompanyPatientWhereInput
   }
 
+  export type CompanyInvitationListRelationFilter = {
+    every?: CompanyInvitationWhereInput
+    some?: CompanyInvitationWhereInput
+    none?: CompanyInvitationWhereInput
+  }
+
   export type AuditLogListRelationFilter = {
     every?: AuditLogWhereInput
     some?: AuditLogWhereInput
@@ -63927,6 +65277,10 @@ export namespace Prisma {
   }
 
   export type CompanyPatientOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompanyInvitationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -66788,6 +68142,67 @@ export namespace Prisma {
     _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
   }
 
+  export type EnumContactTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ContactType | EnumContactTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumContactTypeFilter<$PrismaModel> | $Enums.ContactType
+  }
+
+  export type CompanyInvitationContactCompanyIdCompoundUniqueInput = {
+    contact: string
+    companyId: string
+  }
+
+  export type CompanyInvitationCountOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    contact?: SortOrder
+    contactType?: SortOrder
+    role?: SortOrder
+    token?: SortOrder
+    verified?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyInvitationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    contact?: SortOrder
+    contactType?: SortOrder
+    role?: SortOrder
+    token?: SortOrder
+    verified?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyInvitationMinOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    contact?: SortOrder
+    contactType?: SortOrder
+    role?: SortOrder
+    token?: SortOrder
+    verified?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumContactTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ContactType | EnumContactTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumContactTypeWithAggregatesFilter<$PrismaModel> | $Enums.ContactType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumContactTypeFilter<$PrismaModel>
+    _max?: NestedEnumContactTypeFilter<$PrismaModel>
+  }
+
   export type ApiKeyIdCompanyIdCompoundUniqueInput = {
     id: string
     companyId: string
@@ -67162,6 +68577,13 @@ export namespace Prisma {
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
+  export type CompanyInvitationCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput> | CompanyInvitationCreateWithoutCompanyInput[] | CompanyInvitationUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyInvitationCreateOrConnectWithoutCompanyInput | CompanyInvitationCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyInvitationCreateManyCompanyInputEnvelope
+    connect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+  }
+
   export type AuditLogCreateNestedManyWithoutCompanyInput = {
     create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
@@ -67223,6 +68645,13 @@ export namespace Prisma {
     connectOrCreate?: CompanyPatientCreateOrConnectWithoutCompanyInput | CompanyPatientCreateOrConnectWithoutCompanyInput[]
     createMany?: CompanyPatientCreateManyCompanyInputEnvelope
     connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput> | CompanyInvitationCreateWithoutCompanyInput[] | CompanyInvitationUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyInvitationCreateOrConnectWithoutCompanyInput | CompanyInvitationCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyInvitationCreateManyCompanyInputEnvelope
+    connect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
   }
 
   export type AuditLogUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -67353,6 +68782,20 @@ export namespace Prisma {
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
+  export type CompanyInvitationUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput> | CompanyInvitationCreateWithoutCompanyInput[] | CompanyInvitationUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyInvitationCreateOrConnectWithoutCompanyInput | CompanyInvitationCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput | CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyInvitationCreateManyCompanyInputEnvelope
+    set?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    disconnect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    delete?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    connect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    update?: CompanyInvitationUpdateWithWhereUniqueWithoutCompanyInput | CompanyInvitationUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyInvitationUpdateManyWithWhereWithoutCompanyInput | CompanyInvitationUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyInvitationScalarWhereInput | CompanyInvitationScalarWhereInput[]
+  }
+
   export type AuditLogUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<AuditLogCreateWithoutCompanyInput, AuditLogUncheckedCreateWithoutCompanyInput> | AuditLogCreateWithoutCompanyInput[] | AuditLogUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
@@ -67477,6 +68920,20 @@ export namespace Prisma {
     update?: CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput | CompanyPatientUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: CompanyPatientUpdateManyWithWhereWithoutCompanyInput | CompanyPatientUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput> | CompanyInvitationCreateWithoutCompanyInput[] | CompanyInvitationUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyInvitationCreateOrConnectWithoutCompanyInput | CompanyInvitationCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput | CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyInvitationCreateManyCompanyInputEnvelope
+    set?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    disconnect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    delete?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    connect?: CompanyInvitationWhereUniqueInput | CompanyInvitationWhereUniqueInput[]
+    update?: CompanyInvitationUpdateWithWhereUniqueWithoutCompanyInput | CompanyInvitationUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyInvitationUpdateManyWithWhereWithoutCompanyInput | CompanyInvitationUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyInvitationScalarWhereInput | CompanyInvitationScalarWhereInput[]
   }
 
   export type AuditLogUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -70748,6 +72205,24 @@ export namespace Prisma {
     set?: $Enums.AccountRecoveryType
   }
 
+  export type CompanyCreateNestedOneWithoutInvitationsInput = {
+    create?: XOR<CompanyCreateWithoutInvitationsInput, CompanyUncheckedCreateWithoutInvitationsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutInvitationsInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type EnumContactTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ContactType
+  }
+
+  export type CompanyUpdateOneRequiredWithoutInvitationsNestedInput = {
+    create?: XOR<CompanyCreateWithoutInvitationsInput, CompanyUncheckedCreateWithoutInvitationsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutInvitationsInput
+    upsert?: CompanyUpsertWithoutInvitationsInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutInvitationsInput, CompanyUpdateWithoutInvitationsInput>, CompanyUncheckedUpdateWithoutInvitationsInput>
+  }
+
   export type CompanyCreateNestedOneWithoutApiKeysInput = {
     create?: XOR<CompanyCreateWithoutApiKeysInput, CompanyUncheckedCreateWithoutApiKeysInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutApiKeysInput
@@ -71642,6 +73117,23 @@ export namespace Prisma {
     _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
   }
 
+  export type NestedEnumContactTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ContactType | EnumContactTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumContactTypeFilter<$PrismaModel> | $Enums.ContactType
+  }
+
+  export type NestedEnumContactTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ContactType | EnumContactTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ContactType[] | ListEnumContactTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumContactTypeWithAggregatesFilter<$PrismaModel> | $Enums.ContactType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumContactTypeFilter<$PrismaModel>
+    _max?: NestedEnumContactTypeFilter<$PrismaModel>
+  }
+
   export type NestedEnumWorkbenchStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.WorkbenchStatus | EnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.WorkbenchStatus[] | ListEnumWorkbenchStatusFieldRefInput<$PrismaModel> | null
@@ -71997,6 +73489,40 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompanyInvitationCreateWithoutCompanyInput = {
+    id?: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyInvitationUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyInvitationCreateOrConnectWithoutCompanyInput = {
+    where: CompanyInvitationWhereUniqueInput
+    create: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type CompanyInvitationCreateManyCompanyInputEnvelope = {
+    data: CompanyInvitationCreateManyCompanyInput | CompanyInvitationCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AuditLogCreateWithoutCompanyInput = {
     id?: string
     entityId?: string | null
@@ -72303,6 +73829,38 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
   }
 
+  export type CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyInvitationWhereUniqueInput
+    update: XOR<CompanyInvitationUpdateWithoutCompanyInput, CompanyInvitationUncheckedUpdateWithoutCompanyInput>
+    create: XOR<CompanyInvitationCreateWithoutCompanyInput, CompanyInvitationUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type CompanyInvitationUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyInvitationWhereUniqueInput
+    data: XOR<CompanyInvitationUpdateWithoutCompanyInput, CompanyInvitationUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type CompanyInvitationUpdateManyWithWhereWithoutCompanyInput = {
+    where: CompanyInvitationScalarWhereInput
+    data: XOR<CompanyInvitationUpdateManyMutationInput, CompanyInvitationUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type CompanyInvitationScalarWhereInput = {
+    AND?: CompanyInvitationScalarWhereInput | CompanyInvitationScalarWhereInput[]
+    OR?: CompanyInvitationScalarWhereInput[]
+    NOT?: CompanyInvitationScalarWhereInput | CompanyInvitationScalarWhereInput[]
+    id?: StringFilter<"CompanyInvitation"> | string
+    companyId?: StringFilter<"CompanyInvitation"> | string
+    contact?: StringFilter<"CompanyInvitation"> | string
+    contactType?: EnumContactTypeFilter<"CompanyInvitation"> | $Enums.ContactType
+    role?: EnumCompanyRoleFilter<"CompanyInvitation"> | $Enums.CompanyRole
+    token?: StringFilter<"CompanyInvitation"> | string
+    verified?: BoolFilter<"CompanyInvitation"> | boolean
+    expiresAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    createdAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyInvitation"> | Date | string
+  }
+
   export type AuditLogUpsertWithWhereUniqueWithoutCompanyInput = {
     where: AuditLogWhereUniqueInput
     update: XOR<AuditLogUpdateWithoutCompanyInput, AuditLogUncheckedUpdateWithoutCompanyInput>
@@ -72385,6 +73943,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -72405,6 +73964,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -72612,6 +74172,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -72632,6 +74193,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -73356,6 +74918,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -73376,6 +74939,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -73735,6 +75299,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -73755,6 +75320,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -75952,6 +77518,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -75972,6 +77539,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -76008,6 +77576,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -76028,6 +77597,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -77380,6 +78950,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
 
@@ -77400,6 +78971,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -77483,6 +79055,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
 
@@ -77503,6 +79076,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -77522,6 +79096,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -77542,6 +79117,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -77619,6 +79195,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -77639,6 +79216,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -77747,6 +79325,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -77767,6 +79346,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -77850,6 +79430,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -77870,6 +79451,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -77890,6 +79472,7 @@ export namespace Prisma {
     packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -77910,6 +79493,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -77993,6 +79577,7 @@ export namespace Prisma {
     packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -78013,6 +79598,7 @@ export namespace Prisma {
     packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -79030,6 +80616,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
   }
 
@@ -79050,6 +80637,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
   }
 
@@ -79295,6 +80883,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
@@ -79315,6 +80904,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
@@ -80303,6 +81893,106 @@ export namespace Prisma {
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type CompanyCreateWithoutInvitationsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutInvitationsInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutInvitationsInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutInvitationsInput, CompanyUncheckedCreateWithoutInvitationsInput>
+  }
+
+  export type CompanyUpsertWithoutInvitationsInput = {
+    update: XOR<CompanyUpdateWithoutInvitationsInput, CompanyUncheckedUpdateWithoutInvitationsInput>
+    create: XOR<CompanyCreateWithoutInvitationsInput, CompanyUncheckedCreateWithoutInvitationsInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutInvitationsInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutInvitationsInput, CompanyUncheckedUpdateWithoutInvitationsInput>
+  }
+
+  export type CompanyUpdateWithoutInvitationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutInvitationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
   export type CompanyCreateWithoutApiKeysInput = {
     id?: string
     name: string
@@ -80319,6 +82009,7 @@ export namespace Prisma {
     users?: CompanyUserCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
   }
@@ -80339,6 +82030,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
     departments?: DepartmentUserUncheckedCreateNestedManyWithoutCompanyInput
     patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    invitations?: CompanyInvitationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
   }
@@ -80375,6 +82067,7 @@ export namespace Prisma {
     users?: CompanyUserUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
   }
@@ -80395,6 +82088,7 @@ export namespace Prisma {
     users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
     departments?: DepartmentUserUncheckedUpdateManyWithoutCompanyNestedInput
     patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
@@ -80481,6 +82175,18 @@ export namespace Prisma {
   export type CompanyPatientCreateManyCompanyInput = {
     patientId: string
     externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyInvitationCreateManyCompanyInput = {
+    id?: string
+    contact: string
+    contactType: $Enums.ContactType
+    role: $Enums.CompanyRole
+    token: string
+    verified?: boolean
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -80777,6 +82483,42 @@ export namespace Prisma {
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyInvitationUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyInvitationUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyInvitationUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
+    token?: StringFieldUpdateOperationsInput | string
+    verified?: BoolFieldUpdateOperationsInput | boolean
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -84439,6 +86181,10 @@ export namespace Prisma {
      * @deprecated Use AccountVerificationDefaultArgs instead
      */
     export type AccountVerificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AccountVerificationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CompanyInvitationDefaultArgs instead
+     */
+    export type CompanyInvitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CompanyInvitationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ApiKeyDefaultArgs instead
      */
