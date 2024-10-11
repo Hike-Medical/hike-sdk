@@ -39,7 +39,7 @@ export const addCompany = async (params: AddCompanyParams): Promise<CompanyExten
 };
 
 export const findInvitations = async (
-  params: FindCompanyInvitationsParams
+  params?: FindCompanyInvitationsParams
 ): Promise<PagedResponse<Omit<CompanyInvitation, 'token'>[]>> => {
   try {
     const response = await backendApi.get('company/invite', { params });

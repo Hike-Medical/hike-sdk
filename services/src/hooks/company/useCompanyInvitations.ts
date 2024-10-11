@@ -8,11 +8,11 @@ export interface UseCompanyInvitationsOptions
     UseQueryOptions<PagedResponse<Omit<CompanyInvitation, 'token'>[]>, HikeError<null>>,
     'queryKey' | 'queryFn'
   > {
-  params: FindCompanyInvitationsParams;
+  params?: FindCompanyInvitationsParams;
   queryKey?: QueryKey;
 }
 
-export const useCompanyInvitations = ({ params, queryKey = [], ...options }: UseCompanyInvitationsOptions) =>
+export const useCompanyInvitations = ({ params, queryKey = [], ...options }: UseCompanyInvitationsOptions = {}) =>
   useQuery({
     queryKey: ['company-invitations', params, queryKey],
     queryFn: async () => await findInvitations(params),
