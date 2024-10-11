@@ -1,4 +1,5 @@
 import {
+  AcceptCompanyInvitationParams,
   AddCompanyParams,
   CompanyExtended,
   CompanyInvitation,
@@ -74,6 +75,24 @@ export const updateInvitations = async (
 export const revokeInvitations = async (params: DeleteCompanyInvitationsParams): Promise<{ count: number }> => {
   try {
     const response = await backendApi.patch(`company/invite/revoke`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const verifyInvitation = async (token: string): Promise<Omit<CompanyInvitation, 'token'>> => {
+  try {
+    const response = await backendApi.get(`auth/company/invite/${token}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const acceptInvitation = async (params: AcceptCompanyInvitationParams) => {
+  try {
+    const response = await backendApi.post('auth/company/invite', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
