@@ -117,3 +117,19 @@ export const deleteTemplate = async (templateId: string): Promise<void> => {
     throw toHikeError(error);
   }
 };
+
+export const validatePassword = (value: string) => {
+  if (value.length < 6) {
+    return 'Password must be at least 6 characters';
+  }
+
+  if (!/[0-9]/.test(value)) {
+    return 'Password must contain at least 1 number';
+  }
+
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+    return 'Password must contain at least 1 symbol';
+  }
+
+  return null;
+};

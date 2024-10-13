@@ -10,6 +10,7 @@ export type * from './dto/augment/AssetAugmentStatus';
 export type * from './dto/augment/AssetAugmentStatusForAugmentId';
 export type * from './dto/augment/FindAssetAugmentStatusData';
 export type * from './dto/augment/UpdateAssetAugmentMedia';
+export type * from './dto/auth/AcceptCompanyInvitationParams';
 export type * from './dto/auth/AccountRecoveryParams';
 export type * from './dto/auth/InviteUserParams';
 export type * from './dto/auth/PasswordResetParams';
@@ -118,4 +119,3 @@ export type * from './forms/InvalidFormField';
 export type * from './forms/InvalidFormSection';
 export type * from './pdf/PdfContent';
 export type * from './pdf/PdfDoc';
-
