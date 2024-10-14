@@ -13,4 +13,5 @@ export interface CreateCampaignParams {
   limit?: number;
   channel: CommunicationChannel;
   emailTemplateId?: string;
+  pathwayId?: string;
 }
