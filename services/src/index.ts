@@ -69,6 +69,7 @@ export * from './hooks/catalog/useProductById';
 export * from './hooks/catalog/useProductBySku';
 export * from './hooks/catalog/useVendors';
 export * from './hooks/company/useAddCompany';
+export * from './hooks/company/useCompanies';
 export * from './hooks/company/useCompanyInvitations';
 export * from './hooks/company/useIsFreeTrial';
 export * from './hooks/evaluations/useCancelEvaluation';

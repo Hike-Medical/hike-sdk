@@ -30,6 +30,7 @@ export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/CompanyPreferences';
 export type * from './dto/company/CreateCompanyInvitationsParams';
 export type * from './dto/company/DeleteCompanyInvitationsParams';
+export type * from './dto/company/FindCompaniesParams';
 export type * from './dto/company/FindCompanyInvitationsParams';
 export type * from './dto/company/UpdateCompanyInvitationsParams';
 export type * from './dto/evaluation/ActionEvaluationParams';
