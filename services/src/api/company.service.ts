@@ -1,16 +1,27 @@
 import {
   AcceptCompanyInvitationParams,
   AddCompanyParams,
+  Company,
   CompanyExtended,
   CompanyInvitation,
   CreateCompanyInvitationsParams,
   DeleteCompanyInvitationsParams,
+  FindCompaniesParams,
   FindCompanyInvitationsParams,
   PagedResponse,
   UpdateCompanyInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
+
+export const findCompanies = async (params?: FindCompaniesParams): Promise<PagedResponse<Company[]>> => {
+  try {
+    const response = await backendApi.get('company', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 
 export const findCompanyPreferences = async (): Promise<CompanyExtended['preferences']> => {
   try {
