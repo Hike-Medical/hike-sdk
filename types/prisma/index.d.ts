@@ -256,7 +256,8 @@ export namespace $Enums {
   export const FacilityType: {
   CLINIC: 'CLINIC',
   EMPLOYER: 'EMPLOYER',
-  PARTNER: 'PARTNER'
+  PARTNER: 'PARTNER',
+  SITE: 'SITE'
 };
 
 export type FacilityType = (typeof FacilityType)[keyof typeof FacilityType]
@@ -5450,12 +5451,14 @@ export namespace Prisma {
    */
 
   export type FacilityCountOutputType = {
+    children: number
     users: number
     evaluations: number
     shippingLabels: number
   }
 
   export type FacilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    children?: boolean | FacilityCountOutputTypeCountChildrenArgs
     users?: boolean | FacilityCountOutputTypeCountUsersArgs
     evaluations?: boolean | FacilityCountOutputTypeCountEvaluationsArgs
     shippingLabels?: boolean | FacilityCountOutputTypeCountShippingLabelsArgs
@@ -5470,6 +5473,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the FacilityCountOutputType
      */
     select?: FacilityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FacilityCountOutputType without action
+   */
+  export type FacilityCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityWhereInput
   }
 
   /**
@@ -7758,6 +7768,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    parentId: string | null
     contactId: string | null
   }
 
@@ -7769,6 +7780,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    parentId: string | null
     contactId: string | null
   }
 
@@ -7780,6 +7792,7 @@ export namespace Prisma {
     active: number
     createdAt: number
     updatedAt: number
+    parentId: number
     contactId: number
     _all: number
   }
@@ -7793,6 +7806,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    parentId?: true
     contactId?: true
   }
 
@@ -7804,6 +7818,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    parentId?: true
     contactId?: true
   }
 
@@ -7815,6 +7830,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    parentId?: true
     contactId?: true
     _all?: true
   }
@@ -7899,6 +7915,7 @@ export namespace Prisma {
     active: boolean
     createdAt: Date
     updatedAt: Date
+    parentId: string | null
     contactId: string | null
     _count: FacilityCountAggregateOutputType | null
     _min: FacilityMinAggregateOutputType | null
@@ -7927,7 +7944,10 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    parentId?: boolean
     contactId?: boolean
+    parent?: boolean | Facility$parentArgs<ExtArgs>
+    children?: boolean | Facility$childrenArgs<ExtArgs>
     contact?: boolean | Facility$contactArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
@@ -7944,11 +7964,14 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    parentId?: boolean
     contactId?: boolean
   }
 
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Facility$parentArgs<ExtArgs>
+    children?: boolean | Facility$childrenArgs<ExtArgs>
     contact?: boolean | Facility$contactArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
@@ -7961,6 +7984,8 @@ export namespace Prisma {
   export type $FacilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Facility"
     objects: {
+      parent: Prisma.$FacilityPayload<ExtArgs> | null
+      children: Prisma.$FacilityPayload<ExtArgs>[]
       contact: Prisma.$ContactPayload<ExtArgs> | null
       company: Prisma.$CompanyPayload<ExtArgs>
       users: Prisma.$FacilityUserPayload<ExtArgs>[]
@@ -7975,6 +8000,7 @@ export namespace Prisma {
       active: boolean
       createdAt: Date
       updatedAt: Date
+      parentId: string | null
       contactId: string | null
     }, ExtArgs["result"]["facility"]>
     composites: {}
@@ -8367,6 +8393,10 @@ export namespace Prisma {
   export interface Prisma__FacilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    parent<T extends Facility$parentArgs<ExtArgs> = {}>(args?: Subset<T, Facility$parentArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    children<T extends Facility$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Facility$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     contact<T extends Facility$contactArgs<ExtArgs> = {}>(args?: Subset<T, Facility$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -8412,6 +8442,7 @@ export namespace Prisma {
     readonly active: FieldRef<"Facility", 'Boolean'>
     readonly createdAt: FieldRef<"Facility", 'DateTime'>
     readonly updatedAt: FieldRef<"Facility", 'DateTime'>
+    readonly parentId: FieldRef<"Facility", 'String'>
     readonly contactId: FieldRef<"Facility", 'String'>
   }
     
@@ -8728,6 +8759,41 @@ export namespace Prisma {
      * Filter which Facilities to delete
      */
     where?: FacilityWhereInput
+  }
+
+  /**
+   * Facility.parent
+   */
+  export type Facility$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facility
+     */
+    select?: FacilitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+  }
+
+  /**
+   * Facility.children
+   */
+  export type Facility$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facility
+     */
+    select?: FacilitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+    orderBy?: FacilityOrderByWithRelationInput | FacilityOrderByWithRelationInput[]
+    cursor?: FacilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
   }
 
   /**
@@ -55631,6 +55697,7 @@ export namespace Prisma {
     active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    parentId: 'parentId',
     contactId: 'contactId'
   };
 
@@ -57059,7 +57126,10 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    parentId?: StringNullableFilter<"Facility"> | string | null
     contactId?: StringNullableFilter<"Facility"> | string | null
+    parent?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    children?: FacilityListRelationFilter
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     users?: FacilityUserListRelationFilter
@@ -57075,7 +57145,10 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentId?: SortOrderInput | SortOrder
     contactId?: SortOrderInput | SortOrder
+    parent?: FacilityOrderByWithRelationInput
+    children?: FacilityOrderByRelationAggregateInput
     contact?: ContactOrderByWithRelationInput
     company?: CompanyOrderByWithRelationInput
     users?: FacilityUserOrderByRelationAggregateInput
@@ -57094,7 +57167,10 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    parentId?: StringNullableFilter<"Facility"> | string | null
     contactId?: StringNullableFilter<"Facility"> | string | null
+    parent?: XOR<FacilityNullableRelationFilter, FacilityWhereInput> | null
+    children?: FacilityListRelationFilter
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     users?: FacilityUserListRelationFilter
@@ -57110,6 +57186,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentId?: SortOrderInput | SortOrder
     contactId?: SortOrderInput | SortOrder
     _count?: FacilityCountOrderByAggregateInput
     _max?: FacilityMaxOrderByAggregateInput
@@ -57127,6 +57204,7 @@ export namespace Prisma {
     active?: BoolWithAggregatesFilter<"Facility"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Facility"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Facility"> | Date | string
+    parentId?: StringNullableWithAggregatesFilter<"Facility"> | string | null
     contactId?: StringNullableWithAggregatesFilter<"Facility"> | string | null
   }
 
@@ -61012,6 +61090,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
@@ -61027,7 +61107,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
@@ -61040,6 +61122,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
@@ -61055,7 +61139,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
@@ -61069,6 +61155,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
   }
 
@@ -61089,6 +61176,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -65556,6 +65644,11 @@ export namespace Prisma {
     not?: NestedEnumFacilityTypeFilter<$PrismaModel> | $Enums.FacilityType
   }
 
+  export type FacilityNullableRelationFilter = {
+    is?: FacilityWhereInput | null
+    isNot?: FacilityWhereInput | null
+  }
+
   export type ContactNullableRelationFilter = {
     is?: ContactWhereInput | null
     isNot?: ContactWhereInput | null
@@ -65594,6 +65687,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentId?: SortOrder
     contactId?: SortOrder
   }
 
@@ -65605,6 +65699,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentId?: SortOrder
     contactId?: SortOrder
   }
 
@@ -65616,6 +65711,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    parentId?: SortOrder
     contactId?: SortOrder
   }
 
@@ -65875,11 +65971,6 @@ export namespace Prisma {
   export type DiagnosisNullableRelationFilter = {
     is?: DiagnosisWhereInput | null
     isNot?: DiagnosisWhereInput | null
-  }
-
-  export type FacilityNullableRelationFilter = {
-    is?: FacilityWhereInput | null
-    isNot?: FacilityWhereInput | null
   }
 
   export type StripeInvoiceNullableRelationFilter = {
@@ -69107,6 +69198,19 @@ export namespace Prisma {
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
   }
 
+  export type FacilityCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<FacilityCreateWithoutChildrenInput, FacilityUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutChildrenInput
+    connect?: FacilityWhereUniqueInput
+  }
+
+  export type FacilityCreateNestedManyWithoutParentInput = {
+    create?: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput> | FacilityCreateWithoutParentInput[] | FacilityUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentInput | FacilityCreateOrConnectWithoutParentInput[]
+    createMany?: FacilityCreateManyParentInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
   export type ContactCreateNestedOneWithoutFacilitiesInput = {
     create?: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
     connectOrCreate?: ContactCreateOrConnectWithoutFacilitiesInput
@@ -69140,6 +69244,13 @@ export namespace Prisma {
     connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
   }
 
+  export type FacilityUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput> | FacilityCreateWithoutParentInput[] | FacilityUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentInput | FacilityCreateOrConnectWithoutParentInput[]
+    createMany?: FacilityCreateManyParentInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
   export type FacilityUserUncheckedCreateNestedManyWithoutFacilityInput = {
     create?: XOR<FacilityUserCreateWithoutFacilityInput, FacilityUserUncheckedCreateWithoutFacilityInput> | FacilityUserCreateWithoutFacilityInput[] | FacilityUserUncheckedCreateWithoutFacilityInput[]
     connectOrCreate?: FacilityUserCreateOrConnectWithoutFacilityInput | FacilityUserCreateOrConnectWithoutFacilityInput[]
@@ -69163,6 +69274,30 @@ export namespace Prisma {
 
   export type EnumFacilityTypeFieldUpdateOperationsInput = {
     set?: $Enums.FacilityType
+  }
+
+  export type FacilityUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<FacilityCreateWithoutChildrenInput, FacilityUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: FacilityCreateOrConnectWithoutChildrenInput
+    upsert?: FacilityUpsertWithoutChildrenInput
+    disconnect?: FacilityWhereInput | boolean
+    delete?: FacilityWhereInput | boolean
+    connect?: FacilityWhereUniqueInput
+    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutChildrenInput, FacilityUpdateWithoutChildrenInput>, FacilityUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type FacilityUpdateManyWithoutParentNestedInput = {
+    create?: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput> | FacilityCreateWithoutParentInput[] | FacilityUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentInput | FacilityCreateOrConnectWithoutParentInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutParentInput | FacilityUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: FacilityCreateManyParentInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutParentInput | FacilityUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutParentInput | FacilityUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
   export type ContactUpdateOneWithoutFacilitiesNestedInput = {
@@ -69223,6 +69358,20 @@ export namespace Prisma {
     update?: ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput | ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: ShippingLabelUpdateManyWithWhereWithoutFacilityInput | ShippingLabelUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput> | FacilityCreateWithoutParentInput[] | FacilityUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutParentInput | FacilityCreateOrConnectWithoutParentInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutParentInput | FacilityUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: FacilityCreateManyParentInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutParentInput | FacilityUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutParentInput | FacilityUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
   }
 
   export type FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput = {
@@ -73455,6 +73604,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     contact?: ContactCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
@@ -73468,7 +73619,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
@@ -73845,6 +73998,7 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    parentId?: StringNullableFilter<"Facility"> | string | null
     contactId?: StringNullableFilter<"Facility"> | string | null
   }
 
@@ -74144,6 +74298,81 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"StripeEntity"> | Date | string
   }
 
+  export type FacilityCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parentId?: string | null
+    contactId?: string | null
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityCreateOrConnectWithoutChildrenInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutChildrenInput, FacilityUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type FacilityCreateWithoutParentInput = {
+    id?: string
+    name: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: FacilityCreateNestedManyWithoutParentInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
+    company: CompanyCreateNestedOneWithoutFacilitiesInput
+    users?: FacilityUserCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityUncheckedCreateWithoutParentInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
+    users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
+  }
+
+  export type FacilityCreateOrConnectWithoutParentInput = {
+    where: FacilityWhereUniqueInput
+    create: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput>
+  }
+
+  export type FacilityCreateManyParentInputEnvelope = {
+    data: FacilityCreateManyParentInput | FacilityCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ContactCreateWithoutFacilitiesInput = {
     id?: string
     name?: string | null
@@ -74362,6 +74591,63 @@ export namespace Prisma {
   export type ShippingLabelCreateManyFacilityInputEnvelope = {
     data: ShippingLabelCreateManyFacilityInput | ShippingLabelCreateManyFacilityInput[]
     skipDuplicates?: boolean
+  }
+
+  export type FacilityUpsertWithoutChildrenInput = {
+    update: XOR<FacilityUpdateWithoutChildrenInput, FacilityUncheckedUpdateWithoutChildrenInput>
+    create: XOR<FacilityCreateWithoutChildrenInput, FacilityUncheckedCreateWithoutChildrenInput>
+    where?: FacilityWhereInput
+  }
+
+  export type FacilityUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: FacilityWhereInput
+    data: XOR<FacilityUpdateWithoutChildrenInput, FacilityUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type FacilityUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUpsertWithWhereUniqueWithoutParentInput = {
+    where: FacilityWhereUniqueInput
+    update: XOR<FacilityUpdateWithoutParentInput, FacilityUncheckedUpdateWithoutParentInput>
+    create: XOR<FacilityCreateWithoutParentInput, FacilityUncheckedCreateWithoutParentInput>
+  }
+
+  export type FacilityUpdateWithWhereUniqueWithoutParentInput = {
+    where: FacilityWhereUniqueInput
+    data: XOR<FacilityUpdateWithoutParentInput, FacilityUncheckedUpdateWithoutParentInput>
+  }
+
+  export type FacilityUpdateManyWithWhereWithoutParentInput = {
+    where: FacilityScalarWhereInput
+    data: XOR<FacilityUpdateManyMutationInput, FacilityUncheckedUpdateManyWithoutParentInput>
   }
 
   export type ContactUpsertWithoutFacilitiesInput = {
@@ -75263,6 +75549,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
@@ -75277,7 +75565,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -75674,6 +75964,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
@@ -75688,7 +75980,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -77664,6 +77958,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
@@ -77678,6 +77974,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
@@ -77858,6 +78156,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
@@ -77872,7 +78172,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -77940,6 +78242,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
@@ -77954,7 +78258,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -79996,6 +80302,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parent?: FacilityCreateNestedOneWithoutChildrenInput
+    children?: FacilityCreateNestedManyWithoutParentInput
     contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
@@ -80010,7 +80318,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
+    children?: FacilityUncheckedCreateNestedManyWithoutParentInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -80079,6 +80389,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
@@ -80093,7 +80405,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -82433,6 +82747,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
     contactId?: string | null
   }
 
@@ -82559,6 +82874,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
@@ -82572,7 +82889,9 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
@@ -82585,6 +82904,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -82948,6 +83268,17 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FacilityCreateManyParentInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contactId?: string | null
+  }
+
   export type FacilityUserCreateManyFacilityInput = {
     userId: string
     createdAt?: Date | string
@@ -82995,6 +83326,47 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type FacilityUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: FacilityUpdateManyWithoutParentNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FacilityUserUpdateWithoutFacilityInput = {
@@ -84276,6 +84648,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    parentId?: string | null
   }
 
   export type CompanyPatientCreateManyContactInput = {
@@ -84293,6 +84666,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: FacilityUpdateOneWithoutChildrenNestedInput
+    children?: FacilityUpdateManyWithoutParentNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
@@ -84307,6 +84682,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    children?: FacilityUncheckedUpdateManyWithoutParentNestedInput
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
@@ -84320,6 +84697,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUpdateWithoutContactInput = {
