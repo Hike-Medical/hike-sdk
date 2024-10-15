@@ -59,9 +59,17 @@ export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Pr
   }
 };
 
-export const getCampaignStats = async (notificationId: string): Promise<CampaignWithStats> => {
+export const getCampaignStats = async (notificationId: string, companyIds?: string[]): Promise<CampaignWithStats> => {
   try {
-    const response = await backendApi.get(`notify/${notificationId}/stats`);
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+
+    const response = await backendApi.get(`notify/${notificationId}/stats`, { headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
