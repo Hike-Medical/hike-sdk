@@ -1,4 +1,3 @@
+import type { PagedParams } from '../PagedParams';
 
-export interface FindCompanyInvitationsParams {
-  contacts: string[];
-}
+export interface FindCompanyInvitationsParams extends PagedParams {}
