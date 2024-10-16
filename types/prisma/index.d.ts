@@ -79,10 +79,10 @@ export type WorkbenchNotes = $Result.DefaultSelection<Prisma.$WorkbenchNotesPayl
  */
 export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
 /**
- * Model FacilityAddress
+ * Model Contact
  * 
  */
-export type FacilityAddress = $Result.DefaultSelection<Prisma.$FacilityAddressPayload>
+export type Contact = $Result.DefaultSelection<Prisma.$ContactPayload>
 /**
  * Model ShippingPackage
  * 
@@ -1006,14 +1006,14 @@ export class PrismaClient<
   get order(): Prisma.OrderDelegate<ExtArgs>;
 
   /**
-   * `prisma.facilityAddress`: Exposes CRUD operations for the **FacilityAddress** model.
+   * `prisma.contact`: Exposes CRUD operations for the **Contact** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more FacilityAddresses
-    * const facilityAddresses = await prisma.facilityAddress.findMany()
+    * // Fetch zero or more Contacts
+    * const contacts = await prisma.contact.findMany()
     * ```
     */
-  get facilityAddress(): Prisma.FacilityAddressDelegate<ExtArgs>;
+  get contact(): Prisma.ContactDelegate<ExtArgs>;
 
   /**
    * `prisma.shippingPackage`: Exposes CRUD operations for the **ShippingPackage** model.
@@ -1834,7 +1834,7 @@ export namespace Prisma {
     Workbench: 'Workbench',
     WorkbenchNotes: 'WorkbenchNotes',
     Order: 'Order',
-    FacilityAddress: 'FacilityAddress',
+    Contact: 'Contact',
     ShippingPackage: 'ShippingPackage',
     ShippingLabel: 'ShippingLabel',
     Physician: 'Physician',
@@ -1884,7 +1884,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'facilityAddress' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'companyInvitation' | 'apiKey' | 'viewFlattenedWorkbench'
+      modelProps: 'company' | 'facility' | 'patient' | 'clinician' | 'evaluation' | 'foot' | 'asset' | 'assetAugment' | 'assetAugmentMedia' | 'product' | 'workbench' | 'workbenchNotes' | 'order' | 'contact' | 'shippingPackage' | 'shippingLabel' | 'physician' | 'diagnosis' | 'billingCode' | 'deviceType' | 'visitType' | 'formSchema' | 'formSubmission' | 'formTemplate' | 'catalogProduct' | 'catalogProductAttribute' | 'catalogProductVariant' | 'catalogCategory' | 'catalogVendor' | 'auditLog' | 'printer' | 'companyUser' | 'departmentUser' | 'companyPatient' | 'facilityUser' | 'stripeProduct' | 'stripeInvoice' | 'stripeEntity' | 'stripeSubscription' | 'user' | 'userAgreement' | 'agreement' | 'account' | 'accountVerification' | 'companyInvitation' | 'apiKey' | 'viewFlattenedWorkbench'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2798,73 +2798,73 @@ export namespace Prisma {
           }
         }
       }
-      FacilityAddress: {
-        payload: Prisma.$FacilityAddressPayload<ExtArgs>
-        fields: Prisma.FacilityAddressFieldRefs
+      Contact: {
+        payload: Prisma.$ContactPayload<ExtArgs>
+        fields: Prisma.ContactFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.FacilityAddressFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
+            args: Prisma.ContactFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.FacilityAddressFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           findFirst: {
-            args: Prisma.FacilityAddressFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload> | null
+            args: Prisma.ContactFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.FacilityAddressFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           findMany: {
-            args: Prisma.FacilityAddressFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>[]
+            args: Prisma.ContactFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
           }
           create: {
-            args: Prisma.FacilityAddressCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           createMany: {
-            args: Prisma.FacilityAddressCreateManyArgs<ExtArgs>,
+            args: Prisma.ContactCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.FacilityAddressCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>[]
+            args: Prisma.ContactCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
           }
           delete: {
-            args: Prisma.FacilityAddressDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           update: {
-            args: Prisma.FacilityAddressUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           deleteMany: {
-            args: Prisma.FacilityAddressDeleteManyArgs<ExtArgs>,
+            args: Prisma.ContactDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.FacilityAddressUpdateManyArgs<ExtArgs>,
+            args: Prisma.ContactUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.FacilityAddressUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$FacilityAddressPayload>
+            args: Prisma.ContactUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
           }
           aggregate: {
-            args: Prisma.FacilityAddressAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateFacilityAddress>
+            args: Prisma.ContactAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateContact>
           }
           groupBy: {
-            args: Prisma.FacilityAddressGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityAddressGroupByOutputType>[]
+            args: Prisma.ContactGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ContactGroupByOutputType>[]
           }
           count: {
-            args: Prisma.FacilityAddressCountArgs<ExtArgs>,
-            result: $Utils.Optional<FacilityAddressCountAggregateOutputType> | number
+            args: Prisma.ContactCountArgs<ExtArgs>,
+            result: $Utils.Optional<ContactCountAggregateOutputType> | number
           }
         }
       }
@@ -5842,6 +5842,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ContactCountOutputType
+   */
+
+  export type ContactCountOutputType = {
+    facilities: number
+    patients: number
+  }
+
+  export type ContactCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facilities?: boolean | ContactCountOutputTypeCountFacilitiesArgs
+    patients?: boolean | ContactCountOutputTypeCountPatientsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactCountOutputType
+     */
+    select?: ContactCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilityWhereInput
+  }
+
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyPatientWhereInput
+  }
+
+
+  /**
    * Count Type ShippingLabelCountOutputType
    */
 
@@ -7718,6 +7758,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    contactId: string | null
   }
 
   export type FacilityMaxAggregateOutputType = {
@@ -7728,6 +7769,7 @@ export namespace Prisma {
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    contactId: string | null
   }
 
   export type FacilityCountAggregateOutputType = {
@@ -7738,6 +7780,7 @@ export namespace Prisma {
     active: number
     createdAt: number
     updatedAt: number
+    contactId: number
     _all: number
   }
 
@@ -7750,6 +7793,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
   }
 
   export type FacilityMaxAggregateInputType = {
@@ -7760,6 +7804,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
   }
 
   export type FacilityCountAggregateInputType = {
@@ -7770,6 +7815,7 @@ export namespace Prisma {
     active?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
     _all?: true
   }
 
@@ -7853,6 +7899,7 @@ export namespace Prisma {
     active: boolean
     createdAt: Date
     updatedAt: Date
+    contactId: string | null
     _count: FacilityCountAggregateOutputType | null
     _min: FacilityMinAggregateOutputType | null
     _max: FacilityMaxAggregateOutputType | null
@@ -7880,8 +7927,9 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    contactId?: boolean
+    contact?: boolean | Facility$contactArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
     shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
@@ -7896,12 +7944,13 @@ export namespace Prisma {
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    contactId?: boolean
   }
 
 
   export type FacilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contact?: boolean | Facility$contactArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
-    address?: boolean | Facility$addressArgs<ExtArgs>
     users?: boolean | Facility$usersArgs<ExtArgs>
     evaluations?: boolean | Facility$evaluationsArgs<ExtArgs>
     shippingLabels?: boolean | Facility$shippingLabelsArgs<ExtArgs>
@@ -7912,8 +7961,8 @@ export namespace Prisma {
   export type $FacilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Facility"
     objects: {
+      contact: Prisma.$ContactPayload<ExtArgs> | null
       company: Prisma.$CompanyPayload<ExtArgs>
-      address: Prisma.$FacilityAddressPayload<ExtArgs> | null
       users: Prisma.$FacilityUserPayload<ExtArgs>[]
       evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       shippingLabels: Prisma.$ShippingLabelPayload<ExtArgs>[]
@@ -7926,6 +7975,7 @@ export namespace Prisma {
       active: boolean
       createdAt: Date
       updatedAt: Date
+      contactId: string | null
     }, ExtArgs["result"]["facility"]>
     composites: {}
   }
@@ -8317,9 +8367,9 @@ export namespace Prisma {
   export interface Prisma__FacilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    contact<T extends Facility$contactArgs<ExtArgs> = {}>(args?: Subset<T, Facility$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    address<T extends Facility$addressArgs<ExtArgs> = {}>(args?: Subset<T, Facility$addressArgs<ExtArgs>>): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     users<T extends Facility$usersArgs<ExtArgs> = {}>(args?: Subset<T, Facility$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityUserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -8362,6 +8412,7 @@ export namespace Prisma {
     readonly active: FieldRef<"Facility", 'Boolean'>
     readonly createdAt: FieldRef<"Facility", 'DateTime'>
     readonly updatedAt: FieldRef<"Facility", 'DateTime'>
+    readonly contactId: FieldRef<"Facility", 'String'>
   }
     
 
@@ -8680,18 +8731,18 @@ export namespace Prisma {
   }
 
   /**
-   * Facility.address
+   * Facility.contact
    */
-  export type Facility$addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Facility$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
-    where?: FacilityAddressWhereInput
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
   }
 
   /**
@@ -20914,16 +20965,16 @@ export namespace Prisma {
 
 
   /**
-   * Model FacilityAddress
+   * Model Contact
    */
 
-  export type AggregateFacilityAddress = {
-    _count: FacilityAddressCountAggregateOutputType | null
-    _min: FacilityAddressMinAggregateOutputType | null
-    _max: FacilityAddressMaxAggregateOutputType | null
+  export type AggregateContact = {
+    _count: ContactCountAggregateOutputType | null
+    _min: ContactMinAggregateOutputType | null
+    _max: ContactMaxAggregateOutputType | null
   }
 
-  export type FacilityAddressMinAggregateOutputType = {
+  export type ContactMinAggregateOutputType = {
     id: string | null
     name: string | null
     addressLine1: string | null
@@ -20937,10 +20988,9 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
-    facilityId: string | null
   }
 
-  export type FacilityAddressMaxAggregateOutputType = {
+  export type ContactMaxAggregateOutputType = {
     id: string | null
     name: string | null
     addressLine1: string | null
@@ -20954,10 +21004,9 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date | null
     updatedAt: Date | null
-    facilityId: string | null
   }
 
-  export type FacilityAddressCountAggregateOutputType = {
+  export type ContactCountAggregateOutputType = {
     id: number
     name: number
     addressLine1: number
@@ -20971,12 +21020,11 @@ export namespace Prisma {
     shippingAccountCarrier: number
     createdAt: number
     updatedAt: number
-    facilityId: number
     _all: number
   }
 
 
-  export type FacilityAddressMinAggregateInputType = {
+  export type ContactMinAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -20990,10 +21038,9 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
   }
 
-  export type FacilityAddressMaxAggregateInputType = {
+  export type ContactMaxAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -21007,10 +21054,9 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
   }
 
-  export type FacilityAddressCountAggregateInputType = {
+  export type ContactCountAggregateInputType = {
     id?: true
     name?: true
     addressLine1?: true
@@ -21024,83 +21070,82 @@ export namespace Prisma {
     shippingAccountCarrier?: true
     createdAt?: true
     updatedAt?: true
-    facilityId?: true
     _all?: true
   }
 
-  export type FacilityAddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityAddress to aggregate.
+     * Filter which Contact to aggregate.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned FacilityAddresses
+     * Count returned Contacts
     **/
-    _count?: true | FacilityAddressCountAggregateInputType
+    _count?: true | ContactCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: FacilityAddressMinAggregateInputType
+    _min?: ContactMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: FacilityAddressMaxAggregateInputType
+    _max?: ContactMaxAggregateInputType
   }
 
-  export type GetFacilityAddressAggregateType<T extends FacilityAddressAggregateArgs> = {
-        [P in keyof T & keyof AggregateFacilityAddress]: P extends '_count' | 'count'
+  export type GetContactAggregateType<T extends ContactAggregateArgs> = {
+        [P in keyof T & keyof AggregateContact]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateFacilityAddress[P]>
-      : GetScalarType<T[P], AggregateFacilityAddress[P]>
+        : GetScalarType<T[P], AggregateContact[P]>
+      : GetScalarType<T[P], AggregateContact[P]>
   }
 
 
 
 
-  export type FacilityAddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FacilityAddressWhereInput
-    orderBy?: FacilityAddressOrderByWithAggregationInput | FacilityAddressOrderByWithAggregationInput[]
-    by: FacilityAddressScalarFieldEnum[] | FacilityAddressScalarFieldEnum
-    having?: FacilityAddressScalarWhereWithAggregatesInput
+  export type ContactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContactWhereInput
+    orderBy?: ContactOrderByWithAggregationInput | ContactOrderByWithAggregationInput[]
+    by: ContactScalarFieldEnum[] | ContactScalarFieldEnum
+    having?: ContactScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: FacilityAddressCountAggregateInputType | true
-    _min?: FacilityAddressMinAggregateInputType
-    _max?: FacilityAddressMaxAggregateInputType
+    _count?: ContactCountAggregateInputType | true
+    _min?: ContactMinAggregateInputType
+    _max?: ContactMaxAggregateInputType
   }
 
-  export type FacilityAddressGroupByOutputType = {
+  export type ContactGroupByOutputType = {
     id: string
     name: string | null
     addressLine1: string
@@ -21114,27 +21159,26 @@ export namespace Prisma {
     shippingAccountCarrier: $Enums.Carrier | null
     createdAt: Date
     updatedAt: Date
-    facilityId: string
-    _count: FacilityAddressCountAggregateOutputType | null
-    _min: FacilityAddressMinAggregateOutputType | null
-    _max: FacilityAddressMaxAggregateOutputType | null
+    _count: ContactCountAggregateOutputType | null
+    _min: ContactMinAggregateOutputType | null
+    _max: ContactMaxAggregateOutputType | null
   }
 
-  type GetFacilityAddressGroupByPayload<T extends FacilityAddressGroupByArgs> = Prisma.PrismaPromise<
+  type GetContactGroupByPayload<T extends ContactGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<FacilityAddressGroupByOutputType, T['by']> &
+      PickEnumerable<ContactGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof FacilityAddressGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ContactGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
-            : GetScalarType<T[P], FacilityAddressGroupByOutputType[P]>
+              : GetScalarType<T[P], ContactGroupByOutputType[P]>
+            : GetScalarType<T[P], ContactGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type FacilityAddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     addressLine1?: boolean
@@ -21148,11 +21192,12 @@ export namespace Prisma {
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    facilityId?: boolean
-    facility?: boolean | FacilityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["facilityAddress"]>
+    facilities?: boolean | Contact$facilitiesArgs<ExtArgs>
+    patients?: boolean | Contact$patientsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contact"]>
 
-  export type FacilityAddressSelectScalar = {
+  export type ContactSelectScalar = {
     id?: boolean
     name?: boolean
     addressLine1?: boolean
@@ -21166,19 +21211,21 @@ export namespace Prisma {
     shippingAccountCarrier?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    facilityId?: boolean
   }
 
 
-  export type FacilityAddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    facility?: boolean | FacilityDefaultArgs<ExtArgs>
+  export type ContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facilities?: boolean | Contact$facilitiesArgs<ExtArgs>
+    patients?: boolean | Contact$patientsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $FacilityAddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "FacilityAddress"
+  export type $ContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Contact"
     objects: {
-      facility: Prisma.$FacilityPayload<ExtArgs>
+      facilities: Prisma.$FacilityPayload<ExtArgs>[]
+      patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -21194,152 +21241,151 @@ export namespace Prisma {
       shippingAccountCarrier: $Enums.Carrier | null
       createdAt: Date
       updatedAt: Date
-      facilityId: string
-    }, ExtArgs["result"]["facilityAddress"]>
+    }, ExtArgs["result"]["contact"]>
     composites: {}
   }
 
 
-  type FacilityAddressGetPayload<S extends boolean | null | undefined | FacilityAddressDefaultArgs> = $Result.GetResult<Prisma.$FacilityAddressPayload, S>
+  type ContactGetPayload<S extends boolean | null | undefined | ContactDefaultArgs> = $Result.GetResult<Prisma.$ContactPayload, S>
 
-  type FacilityAddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<FacilityAddressFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: FacilityAddressCountAggregateInputType | true
+  type ContactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ContactFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ContactCountAggregateInputType | true
     }
 
-  export interface FacilityAddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilityAddress'], meta: { name: 'FacilityAddress' } }
+  export interface ContactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Contact'], meta: { name: 'Contact' } }
     /**
-     * Find zero or one FacilityAddress that matches the filter.
-     * @param {FacilityAddressFindUniqueArgs} args - Arguments to find a FacilityAddress
+     * Find zero or one Contact that matches the filter.
+     * @param {ContactFindUniqueArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findUnique({
+     * // Get one Contact
+     * const contact = await prisma.contact.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends FacilityAddressFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressFindUniqueArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends ContactFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactFindUniqueArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one FacilityAddress that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Contact that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {FacilityAddressFindUniqueOrThrowArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindUniqueOrThrowArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findUniqueOrThrow({
+     * // Get one Contact
+     * const contact = await prisma.contact.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends ContactFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first FacilityAddress that matches the filter.
+     * Find the first Contact that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindFirstArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindFirstArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findFirst({
+     * // Get one Contact
+     * const contact = await prisma.contact.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends FacilityAddressFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindFirstArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends ContactFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindFirstArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first FacilityAddress that matches the filter or
+     * Find the first Contact that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindFirstOrThrowArgs} args - Arguments to find a FacilityAddress
+     * @param {ContactFindFirstOrThrowArgs} args - Arguments to find a Contact
      * @example
-     * // Get one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.findFirstOrThrow({
+     * // Get one Contact
+     * const contact = await prisma.contact.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends FacilityAddressFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends ContactFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more FacilityAddresses that matches the filter.
+     * Find zero or more Contacts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ContactFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all FacilityAddresses
-     * const facilityAddresses = await prisma.facilityAddress.findMany()
+     * // Get all Contacts
+     * const contacts = await prisma.contact.findMany()
      * 
-     * // Get first 10 FacilityAddresses
-     * const facilityAddresses = await prisma.facilityAddress.findMany({ take: 10 })
+     * // Get first 10 Contacts
+     * const contacts = await prisma.contact.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const facilityAddressWithIdOnly = await prisma.facilityAddress.findMany({ select: { id: true } })
+     * const contactWithIdOnly = await prisma.contact.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends FacilityAddressFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends ContactFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a FacilityAddress.
-     * @param {FacilityAddressCreateArgs} args - Arguments to create a FacilityAddress.
+     * Create a Contact.
+     * @param {ContactCreateArgs} args - Arguments to create a Contact.
      * @example
-     * // Create one FacilityAddress
-     * const FacilityAddress = await prisma.facilityAddress.create({
+     * // Create one Contact
+     * const Contact = await prisma.contact.create({
      *   data: {
-     *     // ... data to create a FacilityAddress
+     *     // ... data to create a Contact
      *   }
      * })
      * 
     **/
-    create<T extends FacilityAddressCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressCreateArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends ContactCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactCreateArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many FacilityAddresses.
-     * @param {FacilityAddressCreateManyArgs} args - Arguments to create many FacilityAddresses.
+     * Create many Contacts.
+     * @param {ContactCreateManyArgs} args - Arguments to create many Contacts.
      * @example
-     * // Create many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.createMany({
+     * // Create many Contacts
+     * const contact = await prisma.contact.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
     **/
-    createMany<T extends FacilityAddressCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressCreateManyArgs<ExtArgs>>
+    createMany<T extends ContactCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many FacilityAddresses and returns the data saved in the database.
-     * @param {FacilityAddressCreateManyAndReturnArgs} args - Arguments to create many FacilityAddresses.
+     * Create many Contacts and returns the data saved in the database.
+     * @param {ContactCreateManyAndReturnArgs} args - Arguments to create many Contacts.
      * @example
-     * // Create many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.createManyAndReturn({
+     * // Create many Contacts
+     * const contact = await prisma.contact.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many FacilityAddresses and only return the `id`
-     * const facilityAddressWithIdOnly = await prisma.facilityAddress.createManyAndReturn({ 
+     * // Create many Contacts and only return the `id`
+     * const contactWithIdOnly = await prisma.contact.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -21349,32 +21395,32 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
     **/
-    createManyAndReturn<T extends FacilityAddressCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'createManyAndReturn'>>
+    createManyAndReturn<T extends ContactCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
-     * Delete a FacilityAddress.
-     * @param {FacilityAddressDeleteArgs} args - Arguments to delete one FacilityAddress.
+     * Delete a Contact.
+     * @param {ContactDeleteArgs} args - Arguments to delete one Contact.
      * @example
-     * // Delete one FacilityAddress
-     * const FacilityAddress = await prisma.facilityAddress.delete({
+     * // Delete one Contact
+     * const Contact = await prisma.contact.delete({
      *   where: {
-     *     // ... filter to delete one FacilityAddress
+     *     // ... filter to delete one Contact
      *   }
      * })
      * 
     **/
-    delete<T extends FacilityAddressDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressDeleteArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends ContactDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactDeleteArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one FacilityAddress.
-     * @param {FacilityAddressUpdateArgs} args - Arguments to update one FacilityAddress.
+     * Update one Contact.
+     * @param {ContactUpdateArgs} args - Arguments to update one Contact.
      * @example
-     * // Update one FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.update({
+     * // Update one Contact
+     * const contact = await prisma.contact.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -21384,34 +21430,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends FacilityAddressUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpdateArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends ContactUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpdateArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more FacilityAddresses.
-     * @param {FacilityAddressDeleteManyArgs} args - Arguments to filter FacilityAddresses to delete.
+     * Delete zero or more Contacts.
+     * @param {ContactDeleteManyArgs} args - Arguments to filter Contacts to delete.
      * @example
-     * // Delete a few FacilityAddresses
-     * const { count } = await prisma.facilityAddress.deleteMany({
+     * // Delete a few Contacts
+     * const { count } = await prisma.contact.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends FacilityAddressDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, FacilityAddressDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends ContactDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ContactDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more FacilityAddresses.
+     * Update zero or more Contacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ContactUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many FacilityAddresses
-     * const facilityAddress = await prisma.facilityAddress.updateMany({
+     * // Update many Contacts
+     * const contact = await prisma.contact.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -21421,59 +21467,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends FacilityAddressUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpdateManyArgs<ExtArgs>>
+    updateMany<T extends ContactUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one FacilityAddress.
-     * @param {FacilityAddressUpsertArgs} args - Arguments to update or create a FacilityAddress.
+     * Create or update one Contact.
+     * @param {ContactUpsertArgs} args - Arguments to update or create a Contact.
      * @example
-     * // Update or create a FacilityAddress
-     * const facilityAddress = await prisma.facilityAddress.upsert({
+     * // Update or create a Contact
+     * const contact = await prisma.contact.upsert({
      *   create: {
-     *     // ... data to create a FacilityAddress
+     *     // ... data to create a Contact
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the FacilityAddress we want to update
+     *     // ... the filter for the Contact we want to update
      *   }
      * })
     **/
-    upsert<T extends FacilityAddressUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, FacilityAddressUpsertArgs<ExtArgs>>
-    ): Prisma__FacilityAddressClient<$Result.GetResult<Prisma.$FacilityAddressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends ContactUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ContactUpsertArgs<ExtArgs>>
+    ): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of FacilityAddresses.
+     * Count the number of Contacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressCountArgs} args - Arguments to filter FacilityAddresses to count.
+     * @param {ContactCountArgs} args - Arguments to filter Contacts to count.
      * @example
-     * // Count the number of FacilityAddresses
-     * const count = await prisma.facilityAddress.count({
+     * // Count the number of Contacts
+     * const count = await prisma.contact.count({
      *   where: {
-     *     // ... the filter for the FacilityAddresses we want to count
+     *     // ... the filter for the Contacts we want to count
      *   }
      * })
     **/
-    count<T extends FacilityAddressCountArgs>(
-      args?: Subset<T, FacilityAddressCountArgs>,
+    count<T extends ContactCountArgs>(
+      args?: Subset<T, ContactCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], FacilityAddressCountAggregateOutputType>
+          : GetScalarType<T['select'], ContactCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a FacilityAddress.
+     * Allows you to perform aggregations operations on a Contact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ContactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -21493,13 +21539,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends FacilityAddressAggregateArgs>(args: Subset<T, FacilityAddressAggregateArgs>): Prisma.PrismaPromise<GetFacilityAddressAggregateType<T>>
+    aggregate<T extends ContactAggregateArgs>(args: Subset<T, ContactAggregateArgs>): Prisma.PrismaPromise<GetContactAggregateType<T>>
 
     /**
-     * Group by FacilityAddress.
+     * Group by Contact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {FacilityAddressGroupByArgs} args - Group by arguments.
+     * @param {ContactGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -21514,14 +21560,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends FacilityAddressGroupByArgs,
+      T extends ContactGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FacilityAddressGroupByArgs['orderBy'] }
-        : { orderBy?: FacilityAddressGroupByArgs['orderBy'] },
+        ? { orderBy: ContactGroupByArgs['orderBy'] }
+        : { orderBy?: ContactGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -21570,23 +21616,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, FacilityAddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilityAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ContactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the FacilityAddress model
+   * Fields of the Contact model
    */
-  readonly fields: FacilityAddressFieldRefs;
+  readonly fields: ContactFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for FacilityAddress.
+   * The delegate class that acts as a "Promise-like" for Contact.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__FacilityAddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    facility<T extends FacilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FacilityDefaultArgs<ExtArgs>>): Prisma__FacilityClient<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    facilities<T extends Contact$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Contact$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilityPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    patients<T extends Contact$patientsArgs<ExtArgs> = {}>(args?: Subset<T, Contact$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -21613,352 +21661,391 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the FacilityAddress model
+   * Fields of the Contact model
    */ 
-  interface FacilityAddressFieldRefs {
-    readonly id: FieldRef<"FacilityAddress", 'String'>
-    readonly name: FieldRef<"FacilityAddress", 'String'>
-    readonly addressLine1: FieldRef<"FacilityAddress", 'String'>
-    readonly addressLine2: FieldRef<"FacilityAddress", 'String'>
-    readonly city: FieldRef<"FacilityAddress", 'String'>
-    readonly stateOrProvince: FieldRef<"FacilityAddress", 'String'>
-    readonly postalCode: FieldRef<"FacilityAddress", 'String'>
-    readonly countryCode: FieldRef<"FacilityAddress", 'String'>
-    readonly shippingAccountId: FieldRef<"FacilityAddress", 'String'>
-    readonly phoneNumber: FieldRef<"FacilityAddress", 'String'>
-    readonly shippingAccountCarrier: FieldRef<"FacilityAddress", 'Carrier'>
-    readonly createdAt: FieldRef<"FacilityAddress", 'DateTime'>
-    readonly updatedAt: FieldRef<"FacilityAddress", 'DateTime'>
-    readonly facilityId: FieldRef<"FacilityAddress", 'String'>
+  interface ContactFieldRefs {
+    readonly id: FieldRef<"Contact", 'String'>
+    readonly name: FieldRef<"Contact", 'String'>
+    readonly addressLine1: FieldRef<"Contact", 'String'>
+    readonly addressLine2: FieldRef<"Contact", 'String'>
+    readonly city: FieldRef<"Contact", 'String'>
+    readonly stateOrProvince: FieldRef<"Contact", 'String'>
+    readonly postalCode: FieldRef<"Contact", 'String'>
+    readonly countryCode: FieldRef<"Contact", 'String'>
+    readonly shippingAccountId: FieldRef<"Contact", 'String'>
+    readonly phoneNumber: FieldRef<"Contact", 'String'>
+    readonly shippingAccountCarrier: FieldRef<"Contact", 'Carrier'>
+    readonly createdAt: FieldRef<"Contact", 'DateTime'>
+    readonly updatedAt: FieldRef<"Contact", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * FacilityAddress findUnique
+   * Contact findUnique
    */
-  export type FacilityAddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress findUniqueOrThrow
+   * Contact findUniqueOrThrow
    */
-  export type FacilityAddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress findFirst
+   * Contact findFirst
    */
-  export type FacilityAddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityAddresses.
+     * Sets the position for searching for Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityAddresses.
+     * Filter by unique combinations of Contacts.
      */
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress findFirstOrThrow
+   * Contact findFirstOrThrow
    */
-  export type FacilityAddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddress to fetch.
+     * Filter, which Contact to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for FacilityAddresses.
+     * Sets the position for searching for Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of FacilityAddresses.
+     * Filter by unique combinations of Contacts.
      */
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress findMany
+   * Contact findMany
    */
-  export type FacilityAddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter, which FacilityAddresses to fetch.
+     * Filter, which Contacts to fetch.
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of FacilityAddresses to fetch.
+     * Determine the order of Contacts to fetch.
      */
-    orderBy?: FacilityAddressOrderByWithRelationInput | FacilityAddressOrderByWithRelationInput[]
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing FacilityAddresses.
+     * Sets the position for listing Contacts.
      */
-    cursor?: FacilityAddressWhereUniqueInput
+    cursor?: ContactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` FacilityAddresses from the position of the cursor.
+     * Take `±n` Contacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` FacilityAddresses.
+     * Skip the first `n` Contacts.
      */
     skip?: number
-    distinct?: FacilityAddressScalarFieldEnum | FacilityAddressScalarFieldEnum[]
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
   }
 
   /**
-   * FacilityAddress create
+   * Contact create
    */
-  export type FacilityAddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data needed to create a FacilityAddress.
+     * The data needed to create a Contact.
      */
-    data: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
+    data: XOR<ContactCreateInput, ContactUncheckedCreateInput>
   }
 
   /**
-   * FacilityAddress createMany
+   * Contact createMany
    */
-  export type FacilityAddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many FacilityAddresses.
+     * The data used to create many Contacts.
      */
-    data: FacilityAddressCreateManyInput | FacilityAddressCreateManyInput[]
+    data: ContactCreateManyInput | ContactCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityAddress createManyAndReturn
+   * Contact createManyAndReturn
    */
-  export type FacilityAddressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data used to create many FacilityAddresses.
+     * The data used to create many Contacts.
      */
-    data: FacilityAddressCreateManyInput | FacilityAddressCreateManyInput[]
+    data: ContactCreateManyInput | ContactCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * FacilityAddress update
+   * Contact update
    */
-  export type FacilityAddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The data needed to update a FacilityAddress.
+     * The data needed to update a Contact.
      */
-    data: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
+    data: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
     /**
-     * Choose, which FacilityAddress to update.
+     * Choose, which Contact to update.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress updateMany
+   * Contact updateMany
    */
-  export type FacilityAddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update FacilityAddresses.
+     * The data used to update Contacts.
      */
-    data: XOR<FacilityAddressUpdateManyMutationInput, FacilityAddressUncheckedUpdateManyInput>
+    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyInput>
     /**
-     * Filter which FacilityAddresses to update
+     * Filter which Contacts to update
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
   }
 
   /**
-   * FacilityAddress upsert
+   * Contact upsert
    */
-  export type FacilityAddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * The filter to search for the FacilityAddress to update in case it exists.
+     * The filter to search for the Contact to update in case it exists.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
     /**
-     * In case the FacilityAddress found by the `where` argument doesn't exist, create a new FacilityAddress with this data.
+     * In case the Contact found by the `where` argument doesn't exist, create a new Contact with this data.
      */
-    create: XOR<FacilityAddressCreateInput, FacilityAddressUncheckedCreateInput>
+    create: XOR<ContactCreateInput, ContactUncheckedCreateInput>
     /**
-     * In case the FacilityAddress was found with the provided `where` argument, update it with this data.
+     * In case the Contact was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<FacilityAddressUpdateInput, FacilityAddressUncheckedUpdateInput>
+    update: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
   }
 
   /**
-   * FacilityAddress delete
+   * Contact delete
    */
-  export type FacilityAddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Contact
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: ContactSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: ContactInclude<ExtArgs> | null
     /**
-     * Filter which FacilityAddress to delete.
+     * Filter which Contact to delete.
      */
-    where: FacilityAddressWhereUniqueInput
+    where: ContactWhereUniqueInput
   }
 
   /**
-   * FacilityAddress deleteMany
+   * Contact deleteMany
    */
-  export type FacilityAddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ContactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which FacilityAddresses to delete
+     * Filter which Contacts to delete
      */
-    where?: FacilityAddressWhereInput
+    where?: ContactWhereInput
   }
 
   /**
-   * FacilityAddress without action
+   * Contact.facilities
    */
-  export type FacilityAddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Contact$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FacilityAddress
+     * Select specific fields to fetch from the Facility
      */
-    select?: FacilityAddressSelect<ExtArgs> | null
+    select?: FacilitySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: FacilityAddressInclude<ExtArgs> | null
+    include?: FacilityInclude<ExtArgs> | null
+    where?: FacilityWhereInput
+    orderBy?: FacilityOrderByWithRelationInput | FacilityOrderByWithRelationInput[]
+    cursor?: FacilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilityScalarFieldEnum | FacilityScalarFieldEnum[]
+  }
+
+  /**
+   * Contact.patients
+   */
+  export type Contact$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyPatient
+     */
+    select?: CompanyPatientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
+  }
+
+  /**
+   * Contact without action
+   */
+  export type ContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
   }
 
 
@@ -40704,6 +40791,7 @@ export namespace Prisma {
     externalId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    contactId: string | null
   }
 
   export type CompanyPatientMaxAggregateOutputType = {
@@ -40712,6 +40800,7 @@ export namespace Prisma {
     externalId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    contactId: string | null
   }
 
   export type CompanyPatientCountAggregateOutputType = {
@@ -40720,6 +40809,7 @@ export namespace Prisma {
     externalId: number
     createdAt: number
     updatedAt: number
+    contactId: number
     _all: number
   }
 
@@ -40730,6 +40820,7 @@ export namespace Prisma {
     externalId?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
   }
 
   export type CompanyPatientMaxAggregateInputType = {
@@ -40738,6 +40829,7 @@ export namespace Prisma {
     externalId?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
   }
 
   export type CompanyPatientCountAggregateInputType = {
@@ -40746,6 +40838,7 @@ export namespace Prisma {
     externalId?: true
     createdAt?: true
     updatedAt?: true
+    contactId?: true
     _all?: true
   }
 
@@ -40827,6 +40920,7 @@ export namespace Prisma {
     externalId: string | null
     createdAt: Date
     updatedAt: Date
+    contactId: string | null
     _count: CompanyPatientCountAggregateOutputType | null
     _min: CompanyPatientMinAggregateOutputType | null
     _max: CompanyPatientMaxAggregateOutputType | null
@@ -40852,8 +40946,10 @@ export namespace Prisma {
     externalId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    contactId?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
   }, ExtArgs["result"]["companyPatient"]>
 
   export type CompanyPatientSelectScalar = {
@@ -40862,12 +40958,14 @@ export namespace Prisma {
     externalId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    contactId?: boolean
   }
 
 
   export type CompanyPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
   }
 
 
@@ -40876,6 +40974,7 @@ export namespace Prisma {
     objects: {
       company: Prisma.$CompanyPayload<ExtArgs>
       patient: Prisma.$PatientPayload<ExtArgs>
+      contact: Prisma.$ContactPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       patientId: string
@@ -40883,6 +40982,7 @@ export namespace Prisma {
       externalId: string | null
       createdAt: Date
       updatedAt: Date
+      contactId: string | null
     }, ExtArgs["result"]["companyPatient"]>
     composites: {}
   }
@@ -41278,6 +41378,8 @@ export namespace Prisma {
 
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
+    contact<T extends CompanyPatient$contactArgs<ExtArgs> = {}>(args?: Subset<T, CompanyPatient$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -41311,6 +41413,7 @@ export namespace Prisma {
     readonly externalId: FieldRef<"CompanyPatient", 'String'>
     readonly createdAt: FieldRef<"CompanyPatient", 'DateTime'>
     readonly updatedAt: FieldRef<"CompanyPatient", 'DateTime'>
+    readonly contactId: FieldRef<"CompanyPatient", 'String'>
   }
     
 
@@ -41626,6 +41729,21 @@ export namespace Prisma {
      * Filter which CompanyPatients to delete
      */
     where?: CompanyPatientWhereInput
+  }
+
+  /**
+   * CompanyPatient.contact
+   */
+  export type CompanyPatient$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
   }
 
   /**
@@ -55512,7 +55630,8 @@ export namespace Prisma {
     type: 'type',
     active: 'active',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    contactId: 'contactId'
   };
 
   export type FacilityScalarFieldEnum = (typeof FacilityScalarFieldEnum)[keyof typeof FacilityScalarFieldEnum]
@@ -55725,7 +55844,7 @@ export namespace Prisma {
   export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
-  export const FacilityAddressScalarFieldEnum: {
+  export const ContactScalarFieldEnum: {
     id: 'id',
     name: 'name',
     addressLine1: 'addressLine1',
@@ -55738,11 +55857,10 @@ export namespace Prisma {
     phoneNumber: 'phoneNumber',
     shippingAccountCarrier: 'shippingAccountCarrier',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    facilityId: 'facilityId'
+    updatedAt: 'updatedAt'
   };
 
-  export type FacilityAddressScalarFieldEnum = (typeof FacilityAddressScalarFieldEnum)[keyof typeof FacilityAddressScalarFieldEnum]
+  export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
 
 
   export const ShippingPackageScalarFieldEnum: {
@@ -55995,7 +56113,8 @@ export namespace Prisma {
     companyId: 'companyId',
     externalId: 'externalId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    contactId: 'contactId'
   };
 
   export type CompanyPatientScalarFieldEnum = (typeof CompanyPatientScalarFieldEnum)[keyof typeof CompanyPatientScalarFieldEnum]
@@ -56940,8 +57059,9 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
     evaluations?: EvaluationListRelationFilter
     shippingLabels?: ShippingLabelListRelationFilter
@@ -56955,8 +57075,9 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    contact?: ContactOrderByWithRelationInput
     company?: CompanyOrderByWithRelationInput
-    address?: FacilityAddressOrderByWithRelationInput
     users?: FacilityUserOrderByRelationAggregateInput
     evaluations?: EvaluationOrderByRelationAggregateInput
     shippingLabels?: ShippingLabelOrderByRelationAggregateInput
@@ -56973,8 +57094,9 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
-    address?: XOR<FacilityAddressNullableRelationFilter, FacilityAddressWhereInput> | null
     users?: FacilityUserListRelationFilter
     evaluations?: EvaluationListRelationFilter
     shippingLabels?: ShippingLabelListRelationFilter
@@ -56988,6 +57110,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrderInput | SortOrder
     _count?: FacilityCountOrderByAggregateInput
     _max?: FacilityMaxOrderByAggregateInput
     _min?: FacilityMinOrderByAggregateInput
@@ -57004,6 +57127,7 @@ export namespace Prisma {
     active?: BoolWithAggregatesFilter<"Facility"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Facility"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Facility"> | Date | string
+    contactId?: StringNullableWithAggregatesFilter<"Facility"> | string | null
   }
 
   export type PatientWhereInput = {
@@ -58141,28 +58265,28 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
-  export type FacilityAddressWhereInput = {
-    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    OR?: FacilityAddressWhereInput[]
-    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    id?: StringFilter<"FacilityAddress"> | string
-    name?: StringNullableFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
-    city?: StringFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    postalCode?: StringFilter<"FacilityAddress"> | string
-    countryCode?: StringFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    facilityId?: StringFilter<"FacilityAddress"> | string
-    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
+  export type ContactWhereInput = {
+    AND?: ContactWhereInput | ContactWhereInput[]
+    OR?: ContactWhereInput[]
+    NOT?: ContactWhereInput | ContactWhereInput[]
+    id?: StringFilter<"Contact"> | string
+    name?: StringNullableFilter<"Contact"> | string | null
+    addressLine1?: StringFilter<"Contact"> | string
+    addressLine2?: StringNullableFilter<"Contact"> | string | null
+    city?: StringFilter<"Contact"> | string
+    stateOrProvince?: StringFilter<"Contact"> | string
+    postalCode?: StringFilter<"Contact"> | string
+    countryCode?: StringFilter<"Contact"> | string
+    shippingAccountId?: StringNullableFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    facilities?: FacilityListRelationFilter
+    patients?: CompanyPatientListRelationFilter
   }
 
-  export type FacilityAddressOrderByWithRelationInput = {
+  export type ContactOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
@@ -58176,32 +58300,32 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
-    facility?: FacilityOrderByWithRelationInput
+    facilities?: FacilityOrderByRelationAggregateInput
+    patients?: CompanyPatientOrderByRelationAggregateInput
   }
 
-  export type FacilityAddressWhereUniqueInput = Prisma.AtLeast<{
+  export type ContactWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    facilityId?: string
-    AND?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    OR?: FacilityAddressWhereInput[]
-    NOT?: FacilityAddressWhereInput | FacilityAddressWhereInput[]
-    name?: StringNullableFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableFilter<"FacilityAddress"> | string | null
-    city?: StringFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringFilter<"FacilityAddress"> | string
-    postalCode?: StringFilter<"FacilityAddress"> | string
-    countryCode?: StringFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeFilter<"FacilityAddress"> | Date | string
-    facility?: XOR<FacilityRelationFilter, FacilityWhereInput>
-  }, "id" | "facilityId">
+    AND?: ContactWhereInput | ContactWhereInput[]
+    OR?: ContactWhereInput[]
+    NOT?: ContactWhereInput | ContactWhereInput[]
+    name?: StringNullableFilter<"Contact"> | string | null
+    addressLine1?: StringFilter<"Contact"> | string
+    addressLine2?: StringNullableFilter<"Contact"> | string | null
+    city?: StringFilter<"Contact"> | string
+    stateOrProvince?: StringFilter<"Contact"> | string
+    postalCode?: StringFilter<"Contact"> | string
+    countryCode?: StringFilter<"Contact"> | string
+    shippingAccountId?: StringNullableFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    facilities?: FacilityListRelationFilter
+    patients?: CompanyPatientListRelationFilter
+  }, "id">
 
-  export type FacilityAddressOrderByWithAggregationInput = {
+  export type ContactOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     addressLine1?: SortOrder
@@ -58215,30 +58339,28 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
-    _count?: FacilityAddressCountOrderByAggregateInput
-    _max?: FacilityAddressMaxOrderByAggregateInput
-    _min?: FacilityAddressMinOrderByAggregateInput
+    _count?: ContactCountOrderByAggregateInput
+    _max?: ContactMaxOrderByAggregateInput
+    _min?: ContactMinOrderByAggregateInput
   }
 
-  export type FacilityAddressScalarWhereWithAggregatesInput = {
-    AND?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
-    OR?: FacilityAddressScalarWhereWithAggregatesInput[]
-    NOT?: FacilityAddressScalarWhereWithAggregatesInput | FacilityAddressScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    name?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    addressLine1?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    addressLine2?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    city?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    stateOrProvince?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    postalCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    countryCode?: StringWithAggregatesFilter<"FacilityAddress"> | string
-    shippingAccountId?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    phoneNumber?: StringNullableWithAggregatesFilter<"FacilityAddress"> | string | null
-    shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"FacilityAddress"> | $Enums.Carrier | null
-    createdAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"FacilityAddress"> | Date | string
-    facilityId?: StringWithAggregatesFilter<"FacilityAddress"> | string
+  export type ContactScalarWhereWithAggregatesInput = {
+    AND?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
+    OR?: ContactScalarWhereWithAggregatesInput[]
+    NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Contact"> | string
+    name?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    addressLine1?: StringWithAggregatesFilter<"Contact"> | string
+    addressLine2?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    city?: StringWithAggregatesFilter<"Contact"> | string
+    stateOrProvince?: StringWithAggregatesFilter<"Contact"> | string
+    postalCode?: StringWithAggregatesFilter<"Contact"> | string
+    countryCode?: StringWithAggregatesFilter<"Contact"> | string
+    shippingAccountId?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    shippingAccountCarrier?: EnumCarrierNullableWithAggregatesFilter<"Contact"> | $Enums.Carrier | null
+    createdAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
   }
 
   export type ShippingPackageWhereInput = {
@@ -59502,8 +59624,10 @@ export namespace Prisma {
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
   }
 
   export type CompanyPatientOrderByWithRelationInput = {
@@ -59512,8 +59636,10 @@ export namespace Prisma {
     externalId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrderInput | SortOrder
     company?: CompanyOrderByWithRelationInput
     patient?: PatientOrderByWithRelationInput
+    contact?: ContactOrderByWithRelationInput
   }
 
   export type CompanyPatientWhereUniqueInput = Prisma.AtLeast<{
@@ -59527,8 +59653,10 @@ export namespace Prisma {
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
   }, "patientId_companyId" | "externalId_companyId">
 
   export type CompanyPatientOrderByWithAggregationInput = {
@@ -59537,6 +59665,7 @@ export namespace Prisma {
     externalId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrderInput | SortOrder
     _count?: CompanyPatientCountOrderByAggregateInput
     _max?: CompanyPatientMaxOrderByAggregateInput
     _min?: CompanyPatientMinOrderByAggregateInput
@@ -59551,6 +59680,7 @@ export namespace Prisma {
     externalId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
+    contactId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
   }
 
   export type FacilityUserWhereInput = {
@@ -60882,8 +61012,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
@@ -60897,7 +61027,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    contactId?: string | null
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
@@ -60910,8 +61040,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
@@ -60925,7 +61055,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
@@ -60939,6 +61069,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type FacilityUpdateManyMutationInput = {
@@ -60958,6 +61089,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PatientCreateInput = {
@@ -62231,7 +62363,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityAddressCreateInput = {
+  export type ContactCreateInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -62245,10 +62377,11 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facility: FacilityCreateNestedOneWithoutAddressInput
+    facilities?: FacilityCreateNestedManyWithoutContactInput
+    patients?: CompanyPatientCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressUncheckedCreateInput = {
+  export type ContactUncheckedCreateInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -62262,10 +62395,11 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilityId: string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutContactInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutContactInput
   }
 
-  export type FacilityAddressUpdateInput = {
+  export type ContactUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -62279,10 +62413,11 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facility?: FacilityUpdateOneRequiredWithoutAddressNestedInput
+    facilities?: FacilityUpdateManyWithoutContactNestedInput
+    patients?: CompanyPatientUpdateManyWithoutContactNestedInput
   }
 
-  export type FacilityAddressUncheckedUpdateInput = {
+  export type ContactUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -62296,10 +62431,11 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilityId?: StringFieldUpdateOperationsInput | string
+    facilities?: FacilityUncheckedUpdateManyWithoutContactNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutContactNestedInput
   }
 
-  export type FacilityAddressCreateManyInput = {
+  export type ContactCreateManyInput = {
     id?: string
     name?: string | null
     addressLine1: string
@@ -62313,10 +62449,9 @@ export namespace Prisma {
     shippingAccountCarrier?: $Enums.Carrier | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    facilityId: string
   }
 
-  export type FacilityAddressUpdateManyMutationInput = {
+  export type ContactUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -62332,7 +62467,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityAddressUncheckedUpdateManyInput = {
+  export type ContactUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -62346,7 +62481,6 @@ export namespace Prisma {
     shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    facilityId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ShippingPackageCreateInput = {
@@ -63711,6 +63845,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
     patient: PatientCreateNestedOneWithoutCompaniesInput
+    contact?: ContactCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateInput = {
@@ -63719,6 +63854,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type CompanyPatientUpdateInput = {
@@ -63727,6 +63863,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+    contact?: ContactUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateInput = {
@@ -63735,6 +63872,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientCreateManyInput = {
@@ -63743,6 +63881,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type CompanyPatientUpdateManyMutationInput = {
@@ -63757,6 +63896,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FacilityUserCreateInput = {
@@ -65416,14 +65556,14 @@ export namespace Prisma {
     not?: NestedEnumFacilityTypeFilter<$PrismaModel> | $Enums.FacilityType
   }
 
+  export type ContactNullableRelationFilter = {
+    is?: ContactWhereInput | null
+    isNot?: ContactWhereInput | null
+  }
+
   export type CompanyRelationFilter = {
     is?: CompanyWhereInput
     isNot?: CompanyWhereInput
-  }
-
-  export type FacilityAddressNullableRelationFilter = {
-    is?: FacilityAddressWhereInput | null
-    isNot?: FacilityAddressWhereInput | null
   }
 
   export type FacilityUserListRelationFilter = {
@@ -65454,6 +65594,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
   }
 
   export type FacilityMaxOrderByAggregateInput = {
@@ -65464,6 +65605,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
   }
 
   export type FacilityMinOrderByAggregateInput = {
@@ -65474,6 +65616,7 @@ export namespace Prisma {
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
   }
 
   export type EnumFacilityTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -66551,12 +66694,7 @@ export namespace Prisma {
     not?: NestedEnumCarrierNullableFilter<$PrismaModel> | $Enums.Carrier | null
   }
 
-  export type FacilityRelationFilter = {
-    is?: FacilityWhereInput
-    isNot?: FacilityWhereInput
-  }
-
-  export type FacilityAddressCountOrderByAggregateInput = {
+  export type ContactCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -66570,10 +66708,9 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
-  export type FacilityAddressMaxOrderByAggregateInput = {
+  export type ContactMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -66587,10 +66724,9 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
-  export type FacilityAddressMinOrderByAggregateInput = {
+  export type ContactMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     addressLine1?: SortOrder
@@ -66604,7 +66740,6 @@ export namespace Prisma {
     shippingAccountCarrier?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    facilityId?: SortOrder
   }
 
   export type EnumCarrierNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -67560,6 +67695,7 @@ export namespace Prisma {
     externalId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
   }
 
   export type CompanyPatientMaxOrderByAggregateInput = {
@@ -67568,6 +67704,7 @@ export namespace Prisma {
     externalId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
   }
 
   export type CompanyPatientMinOrderByAggregateInput = {
@@ -67576,6 +67713,12 @@ export namespace Prisma {
     externalId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    contactId?: SortOrder
+  }
+
+  export type FacilityRelationFilter = {
+    is?: FacilityWhereInput
+    isNot?: FacilityWhereInput
   }
 
   export type FacilityUserUserIdFacilityIdCompoundUniqueInput = {
@@ -68964,16 +69107,16 @@ export namespace Prisma {
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
   }
 
+  export type ContactCreateNestedOneWithoutFacilitiesInput = {
+    create?: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutFacilitiesInput
+    connect?: ContactWhereUniqueInput
+  }
+
   export type CompanyCreateNestedOneWithoutFacilitiesInput = {
     create?: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutFacilitiesInput
     connect?: CompanyWhereUniqueInput
-  }
-
-  export type FacilityAddressCreateNestedOneWithoutFacilityInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    connect?: FacilityAddressWhereUniqueInput
   }
 
   export type FacilityUserCreateNestedManyWithoutFacilityInput = {
@@ -68995,12 +69138,6 @@ export namespace Prisma {
     connectOrCreate?: ShippingLabelCreateOrConnectWithoutFacilityInput | ShippingLabelCreateOrConnectWithoutFacilityInput[]
     createMany?: ShippingLabelCreateManyFacilityInputEnvelope
     connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
-  }
-
-  export type FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    connect?: FacilityAddressWhereUniqueInput
   }
 
   export type FacilityUserUncheckedCreateNestedManyWithoutFacilityInput = {
@@ -69028,22 +69165,22 @@ export namespace Prisma {
     set?: $Enums.FacilityType
   }
 
+  export type ContactUpdateOneWithoutFacilitiesNestedInput = {
+    create?: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutFacilitiesInput
+    upsert?: ContactUpsertWithoutFacilitiesInput
+    disconnect?: ContactWhereInput | boolean
+    delete?: ContactWhereInput | boolean
+    connect?: ContactWhereUniqueInput
+    update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutFacilitiesInput, ContactUpdateWithoutFacilitiesInput>, ContactUncheckedUpdateWithoutFacilitiesInput>
+  }
+
   export type CompanyUpdateOneRequiredWithoutFacilitiesNestedInput = {
     create?: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutFacilitiesInput
     upsert?: CompanyUpsertWithoutFacilitiesInput
     connect?: CompanyWhereUniqueInput
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutFacilitiesInput, CompanyUpdateWithoutFacilitiesInput>, CompanyUncheckedUpdateWithoutFacilitiesInput>
-  }
-
-  export type FacilityAddressUpdateOneWithoutFacilityNestedInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    upsert?: FacilityAddressUpsertWithoutFacilityInput
-    disconnect?: FacilityAddressWhereInput | boolean
-    delete?: FacilityAddressWhereInput | boolean
-    connect?: FacilityAddressWhereUniqueInput
-    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
   }
 
   export type FacilityUserUpdateManyWithoutFacilityNestedInput = {
@@ -69086,16 +69223,6 @@ export namespace Prisma {
     update?: ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput | ShippingLabelUpdateWithWhereUniqueWithoutFacilityInput[]
     updateMany?: ShippingLabelUpdateManyWithWhereWithoutFacilityInput | ShippingLabelUpdateManyWithWhereWithoutFacilityInput[]
     deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
-  }
-
-  export type FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput = {
-    create?: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    connectOrCreate?: FacilityAddressCreateOrConnectWithoutFacilityInput
-    upsert?: FacilityAddressUpsertWithoutFacilityInput
-    disconnect?: FacilityAddressWhereInput | boolean
-    delete?: FacilityAddressWhereInput | boolean
-    connect?: FacilityAddressWhereUniqueInput
-    update?: XOR<XOR<FacilityAddressUpdateToOneWithWhereWithoutFacilityInput, FacilityAddressUpdateWithoutFacilityInput>, FacilityAddressUncheckedUpdateWithoutFacilityInput>
   }
 
   export type FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput = {
@@ -70361,22 +70488,92 @@ export namespace Prisma {
     update?: XOR<XOR<ShippingLabelUpdateToOneWithWhereWithoutOrdersInput, ShippingLabelUpdateWithoutOrdersInput>, ShippingLabelUncheckedUpdateWithoutOrdersInput>
   }
 
-  export type FacilityCreateNestedOneWithoutAddressInput = {
-    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
-    connect?: FacilityWhereUniqueInput
+  export type FacilityCreateNestedManyWithoutContactInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
+  export type CompanyPatientCreateNestedManyWithoutContactInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
+  export type FacilityUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+  }
+
+  export type CompanyPatientUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type NullableEnumCarrierFieldUpdateOperationsInput = {
     set?: $Enums.Carrier | null
   }
 
-  export type FacilityUpdateOneRequiredWithoutAddressNestedInput = {
-    create?: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    connectOrCreate?: FacilityCreateOrConnectWithoutAddressInput
-    upsert?: FacilityUpsertWithoutAddressInput
-    connect?: FacilityWhereUniqueInput
-    update?: XOR<XOR<FacilityUpdateToOneWithWhereWithoutAddressInput, FacilityUpdateWithoutAddressInput>, FacilityUncheckedUpdateWithoutAddressInput>
+  export type FacilityUpdateManyWithoutContactNestedInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutContactInput | FacilityUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutContactInput | FacilityUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutContactInput | FacilityUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
+  }
+
+  export type CompanyPatientUpdateManyWithoutContactNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutContactInput | CompanyPatientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutContactInput | CompanyPatientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutContactInput | CompanyPatientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput> | FacilityCreateWithoutContactInput[] | FacilityUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: FacilityCreateOrConnectWithoutContactInput | FacilityCreateOrConnectWithoutContactInput[]
+    upsert?: FacilityUpsertWithWhereUniqueWithoutContactInput | FacilityUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: FacilityCreateManyContactInputEnvelope
+    set?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    disconnect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    delete?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    connect?: FacilityWhereUniqueInput | FacilityWhereUniqueInput[]
+    update?: FacilityUpdateWithWhereUniqueWithoutContactInput | FacilityUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: FacilityUpdateManyWithWhereWithoutContactInput | FacilityUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: FacilityScalarWhereInput | FacilityScalarWhereInput[]
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput> | CompanyPatientCreateWithoutContactInput[] | CompanyPatientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutContactInput | CompanyPatientCreateOrConnectWithoutContactInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutContactInput | CompanyPatientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: CompanyPatientCreateManyContactInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutContactInput | CompanyPatientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutContactInput | CompanyPatientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutPackagesInput = {
@@ -71143,6 +71340,12 @@ export namespace Prisma {
     connect?: PatientWhereUniqueInput
   }
 
+  export type ContactCreateNestedOneWithoutPatientsInput = {
+    create?: XOR<ContactCreateWithoutPatientsInput, ContactUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutPatientsInput
+    connect?: ContactWhereUniqueInput
+  }
+
   export type CompanyUpdateOneRequiredWithoutPatientsNestedInput = {
     create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput
@@ -71157,6 +71360,16 @@ export namespace Prisma {
     upsert?: PatientUpsertWithoutCompaniesInput
     connect?: PatientWhereUniqueInput
     update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutCompaniesInput, PatientUpdateWithoutCompaniesInput>, PatientUncheckedUpdateWithoutCompaniesInput>
+  }
+
+  export type ContactUpdateOneWithoutPatientsNestedInput = {
+    create?: XOR<ContactCreateWithoutPatientsInput, ContactUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutPatientsInput
+    upsert?: ContactUpsertWithoutPatientsInput
+    disconnect?: ContactWhereInput | boolean
+    delete?: ContactWhereInput | boolean
+    connect?: ContactWhereUniqueInput
+    update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutPatientsInput, ContactUpdateWithoutPatientsInput>, ContactUncheckedUpdateWithoutPatientsInput>
   }
 
   export type FacilityCreateNestedOneWithoutUsersInput = {
@@ -73242,7 +73455,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
@@ -73255,7 +73468,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    contactId?: string | null
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
@@ -73470,6 +73683,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
+    contact?: ContactCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutCompanyInput = {
@@ -73477,6 +73691,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type CompanyPatientCreateOrConnectWithoutCompanyInput = {
@@ -73630,6 +73845,7 @@ export namespace Prisma {
     active?: BoolFilter<"Facility"> | boolean
     createdAt?: DateTimeFilter<"Facility"> | Date | string
     updatedAt?: DateTimeFilter<"Facility"> | Date | string
+    contactId?: StringNullableFilter<"Facility"> | string | null
   }
 
   export type EvaluationUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -73827,6 +74043,7 @@ export namespace Prisma {
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
+    contactId?: StringNullableFilter<"CompanyPatient"> | string | null
   }
 
   export type CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -73927,6 +74144,45 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"StripeEntity"> | Date | string
   }
 
+  export type ContactCreateWithoutFacilitiesInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patients?: CompanyPatientCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactUncheckedCreateWithoutFacilitiesInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactCreateOrConnectWithoutFacilitiesInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+  }
+
   export type CompanyCreateWithoutFacilitiesInput = {
     id?: string
     name: string
@@ -73972,43 +74228,6 @@ export namespace Prisma {
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
     where: CompanyWhereUniqueInput
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
-  }
-
-  export type FacilityAddressCreateWithoutFacilityInput = {
-    id?: string
-    name?: string | null
-    addressLine1: string
-    addressLine2?: string | null
-    city: string
-    stateOrProvince: string
-    postalCode: string
-    countryCode: string
-    shippingAccountId?: string | null
-    phoneNumber?: string | null
-    shippingAccountCarrier?: $Enums.Carrier | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FacilityAddressUncheckedCreateWithoutFacilityInput = {
-    id?: string
-    name?: string | null
-    addressLine1: string
-    addressLine2?: string | null
-    city: string
-    stateOrProvince: string
-    postalCode: string
-    countryCode: string
-    shippingAccountId?: string | null
-    phoneNumber?: string | null
-    shippingAccountCarrier?: $Enums.Carrier | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FacilityAddressCreateOrConnectWithoutFacilityInput = {
-    where: FacilityAddressWhereUniqueInput
-    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
   }
 
   export type FacilityUserCreateWithoutFacilityInput = {
@@ -74145,6 +74364,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ContactUpsertWithoutFacilitiesInput = {
+    update: XOR<ContactUpdateWithoutFacilitiesInput, ContactUncheckedUpdateWithoutFacilitiesInput>
+    create: XOR<ContactCreateWithoutFacilitiesInput, ContactUncheckedCreateWithoutFacilitiesInput>
+    where?: ContactWhereInput
+  }
+
+  export type ContactUpdateToOneWithWhereWithoutFacilitiesInput = {
+    where?: ContactWhereInput
+    data: XOR<ContactUpdateWithoutFacilitiesInput, ContactUncheckedUpdateWithoutFacilitiesInput>
+  }
+
+  export type ContactUpdateWithoutFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patients?: CompanyPatientUpdateManyWithoutContactNestedInput
+  }
+
+  export type ContactUncheckedUpdateWithoutFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patients?: CompanyPatientUncheckedUpdateManyWithoutContactNestedInput
+  }
+
   export type CompanyUpsertWithoutFacilitiesInput = {
     update: XOR<CompanyUpdateWithoutFacilitiesInput, CompanyUncheckedUpdateWithoutFacilitiesInput>
     create: XOR<CompanyCreateWithoutFacilitiesInput, CompanyUncheckedCreateWithoutFacilitiesInput>
@@ -74196,49 +74460,6 @@ export namespace Prisma {
     invitations?: CompanyInvitationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type FacilityAddressUpsertWithoutFacilityInput = {
-    update: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
-    create: XOR<FacilityAddressCreateWithoutFacilityInput, FacilityAddressUncheckedCreateWithoutFacilityInput>
-    where?: FacilityAddressWhereInput
-  }
-
-  export type FacilityAddressUpdateToOneWithWhereWithoutFacilityInput = {
-    where?: FacilityAddressWhereInput
-    data: XOR<FacilityAddressUpdateWithoutFacilityInput, FacilityAddressUncheckedUpdateWithoutFacilityInput>
-  }
-
-  export type FacilityAddressUpdateWithoutFacilityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    addressLine1?: StringFieldUpdateOperationsInput | string
-    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: StringFieldUpdateOperationsInput | string
-    stateOrProvince?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
-    countryCode?: StringFieldUpdateOperationsInput | string
-    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FacilityAddressUncheckedUpdateWithoutFacilityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    addressLine1?: StringFieldUpdateOperationsInput | string
-    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: StringFieldUpdateOperationsInput | string
-    stateOrProvince?: StringFieldUpdateOperationsInput | string
-    postalCode?: StringFieldUpdateOperationsInput | string
-    countryCode?: StringFieldUpdateOperationsInput | string
-    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacilityUserUpsertWithWhereUniqueWithoutFacilityInput = {
@@ -74521,6 +74742,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
+    contact?: ContactCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutPatientInput = {
@@ -74528,6 +74750,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type CompanyPatientCreateOrConnectWithoutPatientInput = {
@@ -75040,8 +75263,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
@@ -75054,7 +75277,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    contactId?: string | null
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -75451,8 +75674,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
@@ -75465,7 +75688,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -77434,7 +77657,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FacilityCreateWithoutAddressInput = {
+  export type FacilityCreateWithoutContactInput = {
     id?: string
     name: string
     type: $Enums.FacilityType
@@ -77447,7 +77670,7 @@ export namespace Prisma {
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
 
-  export type FacilityUncheckedCreateWithoutAddressInput = {
+  export type FacilityUncheckedCreateWithoutContactInput = {
     id?: string
     name: string
     companyId: string
@@ -77460,46 +77683,72 @@ export namespace Prisma {
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
 
-  export type FacilityCreateOrConnectWithoutAddressInput = {
+  export type FacilityCreateOrConnectWithoutContactInput = {
     where: FacilityWhereUniqueInput
-    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
+    create: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput>
   }
 
-  export type FacilityUpsertWithoutAddressInput = {
-    update: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
-    create: XOR<FacilityCreateWithoutAddressInput, FacilityUncheckedCreateWithoutAddressInput>
-    where?: FacilityWhereInput
+  export type FacilityCreateManyContactInputEnvelope = {
+    data: FacilityCreateManyContactInput | FacilityCreateManyContactInput[]
+    skipDuplicates?: boolean
   }
 
-  export type FacilityUpdateToOneWithWhereWithoutAddressInput = {
-    where?: FacilityWhereInput
-    data: XOR<FacilityUpdateWithoutAddressInput, FacilityUncheckedUpdateWithoutAddressInput>
+  export type CompanyPatientCreateWithoutContactInput = {
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutPatientsInput
+    patient: PatientCreateNestedOneWithoutCompaniesInput
   }
 
-  export type FacilityUpdateWithoutAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
-    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
-    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+  export type CompanyPatientUncheckedCreateWithoutContactInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type FacilityUncheckedUpdateWithoutAddressInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
-    active?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
-    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
-    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+  export type CompanyPatientCreateOrConnectWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput>
+  }
+
+  export type CompanyPatientCreateManyContactInputEnvelope = {
+    data: CompanyPatientCreateManyContactInput | CompanyPatientCreateManyContactInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FacilityUpsertWithWhereUniqueWithoutContactInput = {
+    where: FacilityWhereUniqueInput
+    update: XOR<FacilityUpdateWithoutContactInput, FacilityUncheckedUpdateWithoutContactInput>
+    create: XOR<FacilityCreateWithoutContactInput, FacilityUncheckedCreateWithoutContactInput>
+  }
+
+  export type FacilityUpdateWithWhereUniqueWithoutContactInput = {
+    where: FacilityWhereUniqueInput
+    data: XOR<FacilityUpdateWithoutContactInput, FacilityUncheckedUpdateWithoutContactInput>
+  }
+
+  export type FacilityUpdateManyWithWhereWithoutContactInput = {
+    where: FacilityScalarWhereInput
+    data: XOR<FacilityUpdateManyMutationInput, FacilityUncheckedUpdateManyWithoutContactInput>
+  }
+
+  export type CompanyPatientUpsertWithWhereUniqueWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutContactInput, CompanyPatientUncheckedUpdateWithoutContactInput>
+    create: XOR<CompanyPatientCreateWithoutContactInput, CompanyPatientUncheckedCreateWithoutContactInput>
+  }
+
+  export type CompanyPatientUpdateWithWhereUniqueWithoutContactInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutContactInput, CompanyPatientUncheckedUpdateWithoutContactInput>
+  }
+
+  export type CompanyPatientUpdateManyWithWhereWithoutContactInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutContactInput>
   }
 
   export type CompanyCreateWithoutPackagesInput = {
@@ -77609,8 +77858,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     users?: FacilityUserCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
   }
@@ -77623,7 +77872,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    contactId?: string | null
     users?: FacilityUserUncheckedCreateNestedManyWithoutFacilityInput
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -77691,8 +77940,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
   }
@@ -77705,7 +77954,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -79550,6 +79799,45 @@ export namespace Prisma {
     create: XOR<PatientCreateWithoutCompaniesInput, PatientUncheckedCreateWithoutCompaniesInput>
   }
 
+  export type ContactCreateWithoutPatientsInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactUncheckedCreateWithoutPatientsInput = {
+    id?: string
+    name?: string | null
+    addressLine1: string
+    addressLine2?: string | null
+    city: string
+    stateOrProvince: string
+    postalCode: string
+    countryCode: string
+    shippingAccountId?: string | null
+    phoneNumber?: string | null
+    shippingAccountCarrier?: $Enums.Carrier | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    facilities?: FacilityUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type ContactCreateOrConnectWithoutPatientsInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutPatientsInput, ContactUncheckedCreateWithoutPatientsInput>
+  }
+
   export type CompanyUpsertWithoutPatientsInput = {
     update: XOR<CompanyUpdateWithoutPatientsInput, CompanyUncheckedUpdateWithoutPatientsInput>
     create: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
@@ -79656,6 +79944,51 @@ export namespace Prisma {
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
   }
 
+  export type ContactUpsertWithoutPatientsInput = {
+    update: XOR<ContactUpdateWithoutPatientsInput, ContactUncheckedUpdateWithoutPatientsInput>
+    create: XOR<ContactCreateWithoutPatientsInput, ContactUncheckedCreateWithoutPatientsInput>
+    where?: ContactWhereInput
+  }
+
+  export type ContactUpdateToOneWithWhereWithoutPatientsInput = {
+    where?: ContactWhereInput
+    data: XOR<ContactUpdateWithoutPatientsInput, ContactUncheckedUpdateWithoutPatientsInput>
+  }
+
+  export type ContactUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUpdateManyWithoutContactNestedInput
+  }
+
+  export type ContactUncheckedUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: StringFieldUpdateOperationsInput | string
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    stateOrProvince?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    countryCode?: StringFieldUpdateOperationsInput | string
+    shippingAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    shippingAccountCarrier?: NullableEnumCarrierFieldUpdateOperationsInput | $Enums.Carrier | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    facilities?: FacilityUncheckedUpdateManyWithoutContactNestedInput
+  }
+
   export type FacilityCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -79663,8 +79996,8 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contact?: ContactCreateNestedOneWithoutFacilitiesInput
     company: CompanyCreateNestedOneWithoutFacilitiesInput
-    address?: FacilityAddressCreateNestedOneWithoutFacilityInput
     evaluations?: EvaluationCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelCreateNestedManyWithoutFacilityInput
   }
@@ -79677,7 +80010,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    address?: FacilityAddressUncheckedCreateNestedOneWithoutFacilityInput
+    contactId?: string | null
     evaluations?: EvaluationUncheckedCreateNestedManyWithoutFacilityInput
     shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutFacilityInput
   }
@@ -79746,8 +80079,8 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
   }
@@ -79760,7 +80093,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
   }
@@ -82100,6 +82433,7 @@ export namespace Prisma {
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type EvaluationCreateManyCompanyInput = {
@@ -82177,6 +82511,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type CompanyInvitationCreateManyCompanyInput = {
@@ -82224,7 +82559,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUpdateOneWithoutFacilityNestedInput
+    contact?: ContactUpdateOneWithoutFacilitiesNestedInput
     users?: FacilityUserUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
@@ -82237,7 +82572,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: FacilityAddressUncheckedUpdateOneWithoutFacilityNestedInput
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
     users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
     evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
     shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
@@ -82250,6 +82585,7 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EvaluationUpdateWithoutCompanyInput = {
@@ -82471,6 +82807,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+    contact?: ContactUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutCompanyInput = {
@@ -82478,6 +82815,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyInput = {
@@ -82485,6 +82823,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyInvitationUpdateWithoutCompanyInput = {
@@ -82882,6 +83221,7 @@ export namespace Prisma {
     externalId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    contactId?: string | null
   }
 
   export type FootUpdateWithoutPatientInput = {
@@ -83103,6 +83443,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    contact?: ContactUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutPatientInput = {
@@ -83110,6 +83451,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutPatientInput = {
@@ -83117,6 +83459,7 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EvaluationUpdateWithoutCliniciansInput = {
@@ -83923,6 +84266,84 @@ export namespace Prisma {
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FacilityCreateManyContactInput = {
+    id?: string
+    name: string
+    companyId: string
+    type: $Enums.FacilityType
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyPatientCreateManyContactInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilityUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutFacilitiesNestedInput
+    users?: FacilityUserUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: FacilityUserUncheckedUpdateManyWithoutFacilityNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutFacilityNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutFacilityNestedInput
+  }
+
+  export type FacilityUncheckedUpdateManyWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    type?: EnumFacilityTypeFieldUpdateOperationsInput | $Enums.FacilityType
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUpdateWithoutContactInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+  }
+
+  export type CompanyPatientUncheckedUpdateWithoutContactInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutContactInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateManyShippingLabelInput = {
@@ -85946,6 +86367,10 @@ export namespace Prisma {
      */
     export type WorkbenchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkbenchCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ContactCountOutputTypeDefaultArgs instead
+     */
+    export type ContactCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContactCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use ShippingLabelCountOutputTypeDefaultArgs instead
      */
     export type ShippingLabelCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
@@ -86058,9 +86483,9 @@ export namespace Prisma {
      */
     export type OrderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrderDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use FacilityAddressDefaultArgs instead
+     * @deprecated Use ContactDefaultArgs instead
      */
-    export type FacilityAddressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FacilityAddressDefaultArgs<ExtArgs>
+    export type ContactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContactDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ShippingPackageDefaultArgs instead
      */
