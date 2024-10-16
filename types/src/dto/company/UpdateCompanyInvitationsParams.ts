@@ -5,6 +5,7 @@ export interface UpdateCompanyInvitationParams {
   role: CompanyRole;
   verified?: boolean;
   extend?: boolean;
+  url?: string;
 }
 
 export interface UpdateCompanyInvitationsParams {
