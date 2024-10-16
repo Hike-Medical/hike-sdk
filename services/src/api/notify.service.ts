@@ -3,6 +3,7 @@ import type {
   CreateCampaignParams,
   EmailTemplate,
   EnrollPatientsParams,
+  GetCampaignParams,
   Notification,
   NotificationExtended,
   NotificationHistory,
@@ -20,9 +21,20 @@ export const createCampaign = async (params: CreateCampaignParams): Promise<Noti
   }
 };
 
-export const getCampaigns = async (): Promise<NotificationExtended[]> => {
+export const getCampaigns = async (
+  params?: GetCampaignParams,
+  companyIds?: string[]
+): Promise<NotificationExtended[]> => {
   try {
-    const response = await backendApi.get('notify/campaigns');
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+
+    const response = await backendApi.get('notify/campaigns', { params, headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -47,9 +59,17 @@ export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Pr
   }
 };
 
-export const getCampaignStats = async (notificationId: string): Promise<CampaignWithStats> => {
+export const getCampaignStats = async (notificationId: string, companyIds?: string[]): Promise<CampaignWithStats> => {
   try {
-    const response = await backendApi.get(`notify/${notificationId}/stats`);
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+
+    const response = await backendApi.get(`notify/${notificationId}/stats`, { headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -59,6 +79,15 @@ export const getCampaignStats = async (notificationId: string): Promise<Campaign
 export const enrollPatients = async (params: EnrollPatientsParams): Promise<(NotificationHistory | null)[]> => {
   try {
     const response = await backendApi.post('notify/enroll-patients', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const publishNotification = async (notificationId: string): Promise<Notification> => {
+  try {
+    const response = await backendApi.post(`notify/${notificationId}/publish`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
