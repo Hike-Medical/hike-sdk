@@ -59,6 +59,7 @@ export type * from './dto/notes/Notes';
 export type * from './dto/notes/UpdateNotes';
 export type * from './dto/notify/create-campaign-params';
 export type * from './dto/notify/enroll-patients-params';
+export type * from './dto/notify/get-campaign-params';
 export type * from './dto/notify/JobData';
 export type * from './dto/notify/SlackMessage';
 export type * from './dto/notify/SurveyResponse';
