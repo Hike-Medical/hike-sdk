@@ -14,9 +14,16 @@ import type {
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const createOrder = async (params: CreateOrderParams): Promise<Order> => {
+export const createOrder = async (params: CreateOrderParams, companyIds: string[]): Promise<Order> => {
   try {
-    const response = await backendApi.post('order', params);
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+    const response = await backendApi.post('order', params, { headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

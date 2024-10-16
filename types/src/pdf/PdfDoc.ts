@@ -9,4 +9,5 @@ export interface PdfDoc {
   spacing?: {
     row?: number;
   };
+  toWordDocx?: boolean;
 }
