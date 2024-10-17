@@ -5,12 +5,12 @@ import {
   GetCliniciansParams,
   GetUsersParams,
   PagedResponse,
-  UserExtended
+  SafeUserExtended
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse<UserExtended[]>> => {
+export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse<SafeUserExtended[]>> => {
   try {
     const response = await backendApi.get('user', { params });
     return response.data;

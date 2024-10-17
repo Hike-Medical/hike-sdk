@@ -25,8 +25,6 @@ export * from './auth/accountRecovery';
 export * from './auth/defaultCompany';
 export * from './auth/fetchSession';
 export * from './auth/findCompaniesBySession';
-export * from './auth/findCompanyById';
-export * from './auth/findCompanyBySlug';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
 export * from './auth/logout';
