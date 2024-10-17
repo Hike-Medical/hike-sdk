@@ -1,4 +1,4 @@
-import { AuthUser } from '@hike/types';
+import { AgreementStatus, AgreementType, AuthUser } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
 import { isAuthUser } from '../src/guards/isAuthUser';
 
@@ -10,8 +10,8 @@ describe('isAuthUser tests', () => {
         company1: 'ADMIN',
         company2: 'PATIENT'
       },
-      facilities: ['facility1'],
-      departments: {},
+      permissions: {},
+      agreements: {} as Record<AgreementType, AgreementStatus>,
       slugs: {
         company1: 'slug1',
         company2: 'slug2'

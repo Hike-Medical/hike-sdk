@@ -114,6 +114,8 @@ export type * from './entities/FacilityExtended';
 export type * from './entities/NotificationExtended';
 export type * from './entities/OrderExtended';
 export type * from './entities/PatientExtended';
+export type * from './entities/SafeCompany';
+export type * from './entities/SafeUserExtended';
 export type * from './entities/UserExtended';
 export type * from './entities/WorkbenchExtended';
 export type * from './forms/FieldPrint';

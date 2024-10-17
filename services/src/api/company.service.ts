@@ -9,6 +9,7 @@ import {
   FindCompaniesParams,
   FindCompanyInvitationsParams,
   PagedResponse,
+  SafeCompany,
   UpdateCompanyInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
@@ -108,4 +109,14 @@ export const acceptInvitation = async (params: AcceptCompanyInvitationParams) =>
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const findCompanyById = async (companyId: string): Promise<SafeCompany> => {
+  const response = await backendApi.get(`auth/company/${companyId}`);
+  return response.data;
+};
+
+export const findCompanyBySlug = async (slug: string): Promise<SafeCompany> => {
+  const response = await backendApi.get(`auth/company/slug/${slug}`);
+  return response.data;
 };
