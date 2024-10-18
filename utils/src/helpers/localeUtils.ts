@@ -22,6 +22,7 @@ export const selectPreferredLocale = ({
           if (supportedLocales.includes(locale ?? '')) {
             return true;
           }
+
           // Check if it's a base match only if no full match is found
           return index === array.length - 1 && supportedLocales.includes(locale?.split('-')[0] ?? '');
         }) || defaultLocale
