@@ -6568,6 +6568,7 @@ export namespace Prisma {
     companies: number
     departments: number
     permissions: number
+    patients: number
     notes: number
     auditsLogs: number
     agreements: number
@@ -6578,6 +6579,7 @@ export namespace Prisma {
     companies?: boolean | UserCountOutputTypeCountCompaniesArgs
     departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
     permissions?: boolean | UserCountOutputTypeCountPermissionsArgs
+    patients?: boolean | UserCountOutputTypeCountPatientsArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
     auditsLogs?: boolean | UserCountOutputTypeCountAuditsLogsArgs
     agreements?: boolean | UserCountOutputTypeCountAgreementsArgs
@@ -6620,6 +6622,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserPermissionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyPatientWhereInput
   }
 
   /**
@@ -42283,27 +42292,36 @@ export namespace Prisma {
     patientId: string | null
     companyId: string | null
     externalId: string | null
+    email: string | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     contactId: string | null
+    userId: string | null
   }
 
   export type CompanyPatientMaxAggregateOutputType = {
     patientId: string | null
     companyId: string | null
     externalId: string | null
+    email: string | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     contactId: string | null
+    userId: string | null
   }
 
   export type CompanyPatientCountAggregateOutputType = {
     patientId: number
     companyId: number
     externalId: number
+    email: number
+    phone: number
     createdAt: number
     updatedAt: number
     contactId: number
+    userId: number
     _all: number
   }
 
@@ -42312,27 +42330,36 @@ export namespace Prisma {
     patientId?: true
     companyId?: true
     externalId?: true
+    email?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     contactId?: true
+    userId?: true
   }
 
   export type CompanyPatientMaxAggregateInputType = {
     patientId?: true
     companyId?: true
     externalId?: true
+    email?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     contactId?: true
+    userId?: true
   }
 
   export type CompanyPatientCountAggregateInputType = {
     patientId?: true
     companyId?: true
     externalId?: true
+    email?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     contactId?: true
+    userId?: true
     _all?: true
   }
 
@@ -42412,9 +42439,12 @@ export namespace Prisma {
     patientId: string
     companyId: string
     externalId: string | null
+    email: string | null
+    phone: string | null
     createdAt: Date
     updatedAt: Date
     contactId: string | null
+    userId: string | null
     _count: CompanyPatientCountAggregateOutputType | null
     _min: CompanyPatientMinAggregateOutputType | null
     _max: CompanyPatientMaxAggregateOutputType | null
@@ -42438,45 +42468,58 @@ export namespace Prisma {
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
+    email?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contactId?: boolean
+    userId?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
+    user?: boolean | CompanyPatient$userArgs<ExtArgs>
   }, ExtArgs["result"]["companyPatient"]>
 
   export type CompanyPatientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
+    email?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contactId?: boolean
+    userId?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
+    user?: boolean | CompanyPatient$userArgs<ExtArgs>
   }, ExtArgs["result"]["companyPatient"]>
 
   export type CompanyPatientSelectScalar = {
     patientId?: boolean
     companyId?: boolean
     externalId?: boolean
+    email?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contactId?: boolean
+    userId?: boolean
   }
 
-  export type CompanyPatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"patientId" | "companyId" | "externalId" | "createdAt" | "updatedAt" | "contactId", ExtArgs["result"]["companyPatient"]>
+  export type CompanyPatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"patientId" | "companyId" | "externalId" | "email" | "phone" | "createdAt" | "updatedAt" | "contactId" | "userId", ExtArgs["result"]["companyPatient"]>
   export type CompanyPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
+    user?: boolean | CompanyPatient$userArgs<ExtArgs>
   }
   export type CompanyPatientIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     contact?: boolean | CompanyPatient$contactArgs<ExtArgs>
+    user?: boolean | CompanyPatient$userArgs<ExtArgs>
   }
 
   export type $CompanyPatientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -42485,14 +42528,18 @@ export namespace Prisma {
       company: Prisma.$CompanyPayload<ExtArgs>
       patient: Prisma.$PatientPayload<ExtArgs>
       contact: Prisma.$ContactPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       patientId: string
       companyId: string
       externalId: string | null
+      email: string | null
+      phone: string | null
       createdAt: Date
       updatedAt: Date
       contactId: string | null
+      userId: string | null
     }, ExtArgs["result"]["companyPatient"]>
     composites: {}
   }
@@ -42860,6 +42907,7 @@ export namespace Prisma {
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     contact<T extends CompanyPatient$contactArgs<ExtArgs> = {}>(args?: Subset<T, CompanyPatient$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    user<T extends CompanyPatient$userArgs<ExtArgs> = {}>(args?: Subset<T, CompanyPatient$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -42892,9 +42940,12 @@ export namespace Prisma {
     readonly patientId: FieldRef<"CompanyPatient", 'String'>
     readonly companyId: FieldRef<"CompanyPatient", 'String'>
     readonly externalId: FieldRef<"CompanyPatient", 'String'>
+    readonly email: FieldRef<"CompanyPatient", 'String'>
+    readonly phone: FieldRef<"CompanyPatient", 'String'>
     readonly createdAt: FieldRef<"CompanyPatient", 'DateTime'>
     readonly updatedAt: FieldRef<"CompanyPatient", 'DateTime'>
     readonly contactId: FieldRef<"CompanyPatient", 'String'>
+    readonly userId: FieldRef<"CompanyPatient", 'String'>
   }
     
 
@@ -43269,6 +43320,25 @@ export namespace Prisma {
      */
     include?: ContactInclude<ExtArgs> | null
     where?: ContactWhereInput
+  }
+
+  /**
+   * CompanyPatient.user
+   */
+  export type CompanyPatient$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -49150,6 +49220,7 @@ export namespace Prisma {
     departments?: boolean | User$departmentsArgs<ExtArgs>
     permissions?: boolean | User$permissionsArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    patients?: boolean | User$patientsArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     agreements?: boolean | User$agreementsArgs<ExtArgs>
@@ -49185,6 +49256,7 @@ export namespace Prisma {
     departments?: boolean | User$departmentsArgs<ExtArgs>
     permissions?: boolean | User$permissionsArgs<ExtArgs>
     clinician?: boolean | User$clinicianArgs<ExtArgs>
+    patients?: boolean | User$patientsArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
     auditsLogs?: boolean | User$auditsLogsArgs<ExtArgs>
     agreements?: boolean | User$agreementsArgs<ExtArgs>
@@ -49200,6 +49272,7 @@ export namespace Prisma {
       departments: Prisma.$DepartmentPayload<ExtArgs>[]
       permissions: Prisma.$UserPermissionPayload<ExtArgs>[]
       clinician: Prisma.$ClinicianPayload<ExtArgs> | null
+      patients: Prisma.$CompanyPatientPayload<ExtArgs>[]
       notes: Prisma.$WorkbenchNotesPayload<ExtArgs>[]
       auditsLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       agreements: Prisma.$UserAgreementPayload<ExtArgs>[]
@@ -49582,6 +49655,7 @@ export namespace Prisma {
     departments<T extends User$departmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     permissions<T extends User$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     clinician<T extends User$clinicianArgs<ExtArgs> = {}>(args?: Subset<T, User$clinicianArgs<ExtArgs>>): Prisma__ClinicianClient<$Result.GetResult<Prisma.$ClinicianPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    patients<T extends User$patientsArgs<ExtArgs> = {}>(args?: Subset<T, User$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPatientPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkbenchNotesPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     auditsLogs<T extends User$auditsLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     agreements<T extends User$agreementsArgs<ExtArgs> = {}>(args?: Subset<T, User$agreementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAgreementPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
@@ -50088,6 +50162,30 @@ export namespace Prisma {
      */
     include?: ClinicianInclude<ExtArgs> | null
     where?: ClinicianWhereInput
+  }
+
+  /**
+   * User.patients
+   */
+  export type User$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyPatient
+     */
+    select?: CompanyPatientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyPatient
+     */
+    omit?: CompanyPatientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyPatientInclude<ExtArgs> | null
+    where?: CompanyPatientWhereInput
+    orderBy?: CompanyPatientOrderByWithRelationInput | CompanyPatientOrderByWithRelationInput[]
+    cursor?: CompanyPatientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyPatientScalarFieldEnum | CompanyPatientScalarFieldEnum[]
   }
 
   /**
@@ -59161,9 +59259,12 @@ export namespace Prisma {
     patientId: 'patientId',
     companyId: 'companyId',
     externalId: 'externalId',
+    email: 'email',
+    phone: 'phone',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    contactId: 'contactId'
+    contactId: 'contactId',
+    userId: 'userId'
   };
 
   export type CompanyPatientScalarFieldEnum = (typeof CompanyPatientScalarFieldEnum)[keyof typeof CompanyPatientScalarFieldEnum]
@@ -62692,28 +62793,39 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    email?: StringNullableFilter<"CompanyPatient"> | string | null
+    phone?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     contactId?: StringNullableFilter<"CompanyPatient"> | string | null
+    userId?: StringNullableFilter<"CompanyPatient"> | string | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
   export type CompanyPatientOrderByWithRelationInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contactId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     company?: CompanyOrderByWithRelationInput
     patient?: PatientOrderByWithRelationInput
     contact?: ContactOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type CompanyPatientWhereUniqueInput = Prisma.AtLeast<{
     externalId_companyId?: CompanyPatientExternalIdCompanyIdCompoundUniqueInput
+    userId_companyId?: CompanyPatientUserIdCompanyIdCompoundUniqueInput
+    email_companyId?: CompanyPatientEmailCompanyIdCompoundUniqueInput
+    phone_companyId?: CompanyPatientPhoneCompanyIdCompoundUniqueInput
     patientId_companyId?: CompanyPatientPatientIdCompanyIdCompoundUniqueInput
     AND?: CompanyPatientWhereInput | CompanyPatientWhereInput[]
     OR?: CompanyPatientWhereInput[]
@@ -62721,21 +62833,28 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    email?: StringNullableFilter<"CompanyPatient"> | string | null
+    phone?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     contactId?: StringNullableFilter<"CompanyPatient"> | string | null
+    userId?: StringNullableFilter<"CompanyPatient"> | string | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
-  }, "patientId_companyId" | "externalId_companyId">
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+  }, "patientId_companyId" | "externalId_companyId" | "userId_companyId" | "email_companyId" | "phone_companyId">
 
   export type CompanyPatientOrderByWithAggregationInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contactId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: CompanyPatientCountOrderByAggregateInput
     _max?: CompanyPatientMaxOrderByAggregateInput
     _min?: CompanyPatientMinOrderByAggregateInput
@@ -62748,9 +62867,12 @@ export namespace Prisma {
     patientId?: StringWithAggregatesFilter<"CompanyPatient"> | string
     companyId?: StringWithAggregatesFilter<"CompanyPatient"> | string
     externalId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    email?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
     contactId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    userId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
   }
 
   export type FacilityPatientWhereInput = {
@@ -63213,6 +63335,7 @@ export namespace Prisma {
     departments?: DepartmentListRelationFilter
     permissions?: UserPermissionListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    patients?: CompanyPatientListRelationFilter
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
     agreements?: UserAgreementListRelationFilter
@@ -63232,6 +63355,7 @@ export namespace Prisma {
     departments?: DepartmentOrderByRelationAggregateInput
     permissions?: UserPermissionOrderByRelationAggregateInput
     clinician?: ClinicianOrderByWithRelationInput
+    patients?: CompanyPatientOrderByRelationAggregateInput
     notes?: WorkbenchNotesOrderByRelationAggregateInput
     auditsLogs?: AuditLogOrderByRelationAggregateInput
     agreements?: UserAgreementOrderByRelationAggregateInput
@@ -63254,6 +63378,7 @@ export namespace Prisma {
     departments?: DepartmentListRelationFilter
     permissions?: UserPermissionListRelationFilter
     clinician?: XOR<ClinicianNullableRelationFilter, ClinicianWhereInput> | null
+    patients?: CompanyPatientListRelationFilter
     notes?: WorkbenchNotesListRelationFilter
     auditsLogs?: AuditLogListRelationFilter
     agreements?: UserAgreementListRelationFilter
@@ -66989,51 +67114,68 @@ export namespace Prisma {
 
   export type CompanyPatientCreateInput = {
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
     patient: PatientCreateNestedOneWithoutCompaniesInput
     contact?: ContactCreateNestedOneWithoutPatientsInput
+    user?: UserCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateInput = {
     patientId: string
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type CompanyPatientUpdateInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
     contact?: ContactUpdateOneWithoutPatientsNestedInput
+    user?: UserUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientCreateManyInput = {
     patientId: string
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type CompanyPatientUpdateManyMutationInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -67042,9 +67184,12 @@ export namespace Prisma {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FacilityPatientCreateInput = {
@@ -67536,6 +67681,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -67555,6 +67701,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -67574,6 +67721,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -67593,6 +67741,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -70904,6 +71053,21 @@ export namespace Prisma {
     companyId: string
   }
 
+  export type CompanyPatientUserIdCompanyIdCompoundUniqueInput = {
+    userId: string
+    companyId: string
+  }
+
+  export type CompanyPatientEmailCompanyIdCompoundUniqueInput = {
+    email: string
+    companyId: string
+  }
+
+  export type CompanyPatientPhoneCompanyIdCompoundUniqueInput = {
+    phone: string
+    companyId: string
+  }
+
   export type CompanyPatientPatientIdCompanyIdCompoundUniqueInput = {
     patientId: string
     companyId: string
@@ -70913,27 +71077,36 @@ export namespace Prisma {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contactId?: SortOrder
+    userId?: SortOrder
   }
 
   export type CompanyPatientMaxOrderByAggregateInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contactId?: SortOrder
+    userId?: SortOrder
   }
 
   export type CompanyPatientMinOrderByAggregateInput = {
     patientId?: SortOrder
     companyId?: SortOrder
     externalId?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contactId?: SortOrder
+    userId?: SortOrder
   }
 
   export type FacilityRelationFilter = {
@@ -74781,6 +74954,12 @@ export namespace Prisma {
     connect?: ContactWhereUniqueInput
   }
 
+  export type UserCreateNestedOneWithoutPatientsInput = {
+    create?: XOR<UserCreateWithoutPatientsInput, UserUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPatientsInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type CompanyUpdateOneRequiredWithoutPatientsNestedInput = {
     create?: XOR<CompanyCreateWithoutPatientsInput, CompanyUncheckedCreateWithoutPatientsInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutPatientsInput
@@ -74805,6 +74984,16 @@ export namespace Prisma {
     delete?: ContactWhereInput | boolean
     connect?: ContactWhereUniqueInput
     update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutPatientsInput, ContactUpdateWithoutPatientsInput>, ContactUncheckedUpdateWithoutPatientsInput>
+  }
+
+  export type UserUpdateOneWithoutPatientsNestedInput = {
+    create?: XOR<UserCreateWithoutPatientsInput, UserUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPatientsInput
+    upsert?: UserUpsertWithoutPatientsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPatientsInput, UserUpdateWithoutPatientsInput>, UserUncheckedUpdateWithoutPatientsInput>
   }
 
   export type FacilityCreateNestedOneWithoutPatientsInput = {
@@ -75464,6 +75653,13 @@ export namespace Prisma {
     connect?: ClinicianWhereUniqueInput
   }
 
+  export type CompanyPatientCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput> | CompanyPatientCreateWithoutUserInput[] | CompanyPatientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutUserInput | CompanyPatientCreateOrConnectWithoutUserInput[]
+    createMany?: CompanyPatientCreateManyUserInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+  }
+
   export type WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput = {
     create?: XOR<WorkbenchNotesCreateWithoutCreatedByUserInput, WorkbenchNotesUncheckedCreateWithoutCreatedByUserInput> | WorkbenchNotesCreateWithoutCreatedByUserInput[] | WorkbenchNotesUncheckedCreateWithoutCreatedByUserInput[]
     connectOrCreate?: WorkbenchNotesCreateOrConnectWithoutCreatedByUserInput | WorkbenchNotesCreateOrConnectWithoutCreatedByUserInput[]
@@ -75516,6 +75712,13 @@ export namespace Prisma {
     create?: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
     connectOrCreate?: ClinicianCreateOrConnectWithoutUserInput
     connect?: ClinicianWhereUniqueInput
+  }
+
+  export type CompanyPatientUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput> | CompanyPatientCreateWithoutUserInput[] | CompanyPatientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutUserInput | CompanyPatientCreateOrConnectWithoutUserInput[]
+    createMany?: CompanyPatientCreateManyUserInputEnvelope
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
   }
 
   export type WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput = {
@@ -75602,6 +75805,20 @@ export namespace Prisma {
     delete?: ClinicianWhereInput | boolean
     connect?: ClinicianWhereUniqueInput
     update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CompanyPatientUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput> | CompanyPatientCreateWithoutUserInput[] | CompanyPatientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutUserInput | CompanyPatientCreateOrConnectWithoutUserInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutUserInput | CompanyPatientUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompanyPatientCreateManyUserInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutUserInput | CompanyPatientUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutUserInput | CompanyPatientUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput = {
@@ -75709,6 +75926,20 @@ export namespace Prisma {
     delete?: ClinicianWhereInput | boolean
     connect?: ClinicianWhereUniqueInput
     update?: XOR<XOR<ClinicianUpdateToOneWithWhereWithoutUserInput, ClinicianUpdateWithoutUserInput>, ClinicianUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput> | CompanyPatientCreateWithoutUserInput[] | CompanyPatientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CompanyPatientCreateOrConnectWithoutUserInput | CompanyPatientCreateOrConnectWithoutUserInput[]
+    upsert?: CompanyPatientUpsertWithWhereUniqueWithoutUserInput | CompanyPatientUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CompanyPatientCreateManyUserInputEnvelope
+    set?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    disconnect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    delete?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    connect?: CompanyPatientWhereUniqueInput | CompanyPatientWhereUniqueInput[]
+    update?: CompanyPatientUpdateWithWhereUniqueWithoutUserInput | CompanyPatientUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CompanyPatientUpdateManyWithWhereWithoutUserInput | CompanyPatientUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CompanyPatientScalarWhereInput | CompanyPatientScalarWhereInput[]
   }
 
   export type WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
@@ -77145,18 +77376,24 @@ export namespace Prisma {
 
   export type CompanyPatientCreateWithoutCompanyInput = {
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
     contact?: ContactCreateNestedOneWithoutPatientsInput
+    user?: UserCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutCompanyInput = {
     patientId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type CompanyPatientCreateOrConnectWithoutCompanyInput = {
@@ -77533,9 +77770,12 @@ export namespace Prisma {
     patientId?: StringFilter<"CompanyPatient"> | string
     companyId?: StringFilter<"CompanyPatient"> | string
     externalId?: StringNullableFilter<"CompanyPatient"> | string | null
+    email?: StringNullableFilter<"CompanyPatient"> | string | null
+    phone?: StringNullableFilter<"CompanyPatient"> | string | null
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     contactId?: StringNullableFilter<"CompanyPatient"> | string | null
+    userId?: StringNullableFilter<"CompanyPatient"> | string | null
   }
 
   export type CompanyInvitationUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -77727,6 +77967,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -77745,6 +77986,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -78571,18 +78813,24 @@ export namespace Prisma {
 
   export type CompanyPatientCreateWithoutPatientInput = {
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
     contact?: ContactCreateNestedOneWithoutPatientsInput
+    user?: UserCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutPatientInput = {
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type CompanyPatientCreateOrConnectWithoutPatientInput = {
@@ -78782,6 +79030,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -78800,6 +79049,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -78909,6 +79159,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -78927,6 +79178,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -81270,6 +81522,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
@@ -81288,6 +81541,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
@@ -81373,6 +81627,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
@@ -81391,6 +81646,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -81593,18 +81849,24 @@ export namespace Prisma {
 
   export type CompanyPatientCreateWithoutContactInput = {
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
     patient: PatientCreateNestedOneWithoutCompaniesInput
+    user?: UserCreateNestedOneWithoutPatientsInput
   }
 
   export type CompanyPatientUncheckedCreateWithoutContactInput = {
     patientId: string
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: string | null
   }
 
   export type CompanyPatientCreateOrConnectWithoutContactInput = {
@@ -83067,6 +83329,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
   }
@@ -83085,6 +83348,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
   }
@@ -83168,6 +83432,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
   }
@@ -83186,6 +83451,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -83307,6 +83573,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -83325,6 +83592,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -83414,6 +83682,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -83432,6 +83701,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -83572,6 +83842,49 @@ export namespace Prisma {
   export type ContactCreateOrConnectWithoutPatientsInput = {
     where: ContactWhereUniqueInput
     create: XOR<ContactCreateWithoutPatientsInput, ContactUncheckedCreateWithoutPatientsInput>
+  }
+
+  export type UserCreateWithoutPatientsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    pin?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    companies?: CompanyUserCreateNestedManyWithoutUserInput
+    departments?: DepartmentCreateNestedManyWithoutUsersInput
+    permissions?: UserPermissionCreateNestedManyWithoutUserInput
+    clinician?: ClinicianCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPatientsInput = {
+    id?: string
+    email?: string | null
+    phone?: string | null
+    password?: string | null
+    pin?: string | null
+    photoUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
+    departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
+    clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
+    agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPatientsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPatientsInput, UserUncheckedCreateWithoutPatientsInput>
   }
 
   export type CompanyUpsertWithoutPatientsInput = {
@@ -83727,6 +84040,55 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUncheckedUpdateManyWithoutContactNestedInput
+  }
+
+  export type UserUpsertWithoutPatientsInput = {
+    update: XOR<UserUpdateWithoutPatientsInput, UserUncheckedUpdateWithoutPatientsInput>
+    create: XOR<UserCreateWithoutPatientsInput, UserUncheckedCreateWithoutPatientsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPatientsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPatientsInput, UserUncheckedUpdateWithoutPatientsInput>
+  }
+
+  export type UserUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUpdateManyWithoutUsersNestedInput
+    permissions?: UserPermissionUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPatientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    pin?: NullableStringFieldUpdateOperationsInput | string | null
+    photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
+    departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+    permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
+    clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
+    agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FacilityCreateWithoutPatientsInput = {
@@ -85476,6 +85838,38 @@ export namespace Prisma {
     create: XOR<ClinicianCreateWithoutUserInput, ClinicianUncheckedCreateWithoutUserInput>
   }
 
+  export type CompanyPatientCreateWithoutUserInput = {
+    externalId?: string | null
+    email?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutPatientsInput
+    patient: PatientCreateNestedOneWithoutCompaniesInput
+    contact?: ContactCreateNestedOneWithoutPatientsInput
+  }
+
+  export type CompanyPatientUncheckedCreateWithoutUserInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    email?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contactId?: string | null
+  }
+
+  export type CompanyPatientCreateOrConnectWithoutUserInput = {
+    where: CompanyPatientWhereUniqueInput
+    create: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput>
+  }
+
+  export type CompanyPatientCreateManyUserInputEnvelope = {
+    data: CompanyPatientCreateManyUserInput | CompanyPatientCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type WorkbenchNotesCreateWithoutCreatedByUserInput = {
     id?: string
     title?: string | null
@@ -85670,6 +86064,22 @@ export namespace Prisma {
     evaluations?: EvaluationUncheckedUpdateManyWithoutCliniciansNestedInput
   }
 
+  export type CompanyPatientUpsertWithWhereUniqueWithoutUserInput = {
+    where: CompanyPatientWhereUniqueInput
+    update: XOR<CompanyPatientUpdateWithoutUserInput, CompanyPatientUncheckedUpdateWithoutUserInput>
+    create: XOR<CompanyPatientCreateWithoutUserInput, CompanyPatientUncheckedCreateWithoutUserInput>
+  }
+
+  export type CompanyPatientUpdateWithWhereUniqueWithoutUserInput = {
+    where: CompanyPatientWhereUniqueInput
+    data: XOR<CompanyPatientUpdateWithoutUserInput, CompanyPatientUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CompanyPatientUpdateManyWithWhereWithoutUserInput = {
+    where: CompanyPatientScalarWhereInput
+    data: XOR<CompanyPatientUpdateManyMutationInput, CompanyPatientUncheckedUpdateManyWithoutUserInput>
+  }
+
   export type WorkbenchNotesUpsertWithWhereUniqueWithoutCreatedByUserInput = {
     where: WorkbenchNotesWhereUniqueInput
     update: XOR<WorkbenchNotesUpdateWithoutCreatedByUserInput, WorkbenchNotesUncheckedUpdateWithoutCreatedByUserInput>
@@ -85742,6 +86152,7 @@ export namespace Prisma {
     companies?: CompanyUserCreateNestedManyWithoutUserInput
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -85760,6 +86171,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -85843,6 +86255,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -85861,6 +86274,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -85935,6 +86349,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
   }
@@ -85953,6 +86368,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
   }
@@ -86008,6 +86424,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
   }
@@ -86026,6 +86443,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -86110,6 +86528,7 @@ export namespace Prisma {
     departments?: DepartmentCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionCreateNestedManyWithoutUserInput
     clinician?: ClinicianCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogCreateNestedManyWithoutUserInput
     agreements?: UserAgreementCreateNestedManyWithoutUserInput
@@ -86128,6 +86547,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedCreateNestedManyWithoutUsersInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutUserInput
     clinician?: ClinicianUncheckedCreateNestedOneWithoutUserInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutUserInput
     notes?: WorkbenchNotesUncheckedCreateNestedManyWithoutCreatedByUserInput
     auditsLogs?: AuditLogUncheckedCreateNestedManyWithoutUserInput
     agreements?: UserAgreementUncheckedCreateNestedManyWithoutUserInput
@@ -86162,6 +86582,7 @@ export namespace Prisma {
     departments?: DepartmentUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -86180,6 +86601,7 @@ export namespace Prisma {
     departments?: DepartmentUncheckedUpdateManyWithoutUsersNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -86475,9 +86897,12 @@ export namespace Prisma {
   export type CompanyPatientCreateManyCompanyInput = {
     patientId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type CompanyInvitationCreateManyCompanyInput = {
@@ -86780,26 +87205,35 @@ export namespace Prisma {
 
   export type CompanyPatientUpdateWithoutCompanyInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
     contact?: ContactUpdateOneWithoutPatientsNestedInput
+    user?: UserUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutCompanyInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyInvitationUpdateWithoutCompanyInput = {
@@ -86964,6 +87398,7 @@ export namespace Prisma {
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
     permissions?: UserPermissionUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUpdateManyWithoutUserNestedInput
@@ -86982,6 +87417,7 @@ export namespace Prisma {
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutUserNestedInput
     clinician?: ClinicianUncheckedUpdateOneWithoutUserNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutUserNestedInput
     notes?: WorkbenchNotesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     auditsLogs?: AuditLogUncheckedUpdateManyWithoutUserNestedInput
     agreements?: UserAgreementUncheckedUpdateManyWithoutUserNestedInput
@@ -87321,9 +87757,12 @@ export namespace Prisma {
   export type CompanyPatientCreateManyPatientInput = {
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactId?: string | null
+    userId?: string | null
   }
 
   export type FacilityPatientCreateManyPatientInput = {
@@ -87548,26 +87987,35 @@ export namespace Prisma {
 
   export type CompanyPatientUpdateWithoutPatientInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
     contact?: ContactUpdateOneWithoutPatientsNestedInput
+    user?: UserUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutPatientInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FacilityPatientUpdateWithoutPatientInput = {
@@ -88409,8 +88857,11 @@ export namespace Prisma {
     patientId: string
     companyId: string
     externalId?: string | null
+    email?: string | null
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: string | null
   }
 
   export type FacilityUpdateWithoutContactInput = {
@@ -88456,26 +88907,35 @@ export namespace Prisma {
 
   export type CompanyPatientUpdateWithoutContactInput = {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+    user?: UserUpdateOneWithoutPatientsNestedInput
   }
 
   export type CompanyPatientUncheckedUpdateWithoutContactInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CompanyPatientUncheckedUpdateManyWithoutContactInput = {
     patientId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type OrderCreateManyShippingLabelInput = {
@@ -90214,6 +90674,17 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type CompanyPatientCreateManyUserInput = {
+    patientId: string
+    companyId: string
+    externalId?: string | null
+    email?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contactId?: string | null
+  }
+
   export type WorkbenchNotesCreateManyCreatedByUserInput = {
     id?: string
     workbenchId: string
@@ -90335,6 +90806,39 @@ export namespace Prisma {
     role?: EnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyPatientUpdateWithoutUserInput = {
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
+    patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
+    contact?: ContactUpdateOneWithoutPatientsNestedInput
+  }
+
+  export type CompanyPatientUncheckedUpdateWithoutUserInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CompanyPatientUncheckedUpdateManyWithoutUserInput = {
+    patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    externalId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WorkbenchNotesUpdateWithoutCreatedByUserInput = {
