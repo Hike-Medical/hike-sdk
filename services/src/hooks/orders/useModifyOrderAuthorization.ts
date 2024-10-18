@@ -6,6 +6,7 @@ import { HikeError } from '../../errors/HikeError';
 interface ModifyOrderAuthorizationParams {
   orderId: string;
   authorizationStatus: OrderAuthorizationStatus;
+  companyIds?: string[];
   jwtToken?: string;
 }
 
@@ -15,7 +16,12 @@ export const useModifyOrderAuthorization = (
   return useMutation({
     mutationKey: ['modifyOrder'],
     mutationFn: async (params: ModifyOrderAuthorizationParams) => {
-      return await modifyOrderAuthorization(params.orderId, params.authorizationStatus, params.jwtToken);
+      return await modifyOrderAuthorization(
+        params.orderId,
+        params.authorizationStatus,
+        params.companyIds,
+        params.jwtToken
+      );
     },
     ...mutationOptions
   });
