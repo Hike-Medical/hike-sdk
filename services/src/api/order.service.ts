@@ -117,9 +117,20 @@ export const updateOrder = async (
 export const modifyOrderAuthorization = async (
   orderId: string,
   authorizationStatus: OrderAuthorizationStatus,
+  companyIds?: string[],
   jwtToken?: string
 ): Promise<OrderExtended> => {
-  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+  let headers: {
+    [key: string]: string;
+  } = {};
+
+  if (companyIds?.length) {
+    headers = { ...headers, 'x-company-id': companyIds.join(',') };
+  }
+
+  if (jwtToken) {
+    headers = { ...headers, Authorization: `Bearer ${jwtToken}` };
+  }
 
   try {
     const response = await backendApi.post(
