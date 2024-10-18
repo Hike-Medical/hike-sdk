@@ -29,6 +29,7 @@ export * from './helpers/findKeyInNested';
 export * from './helpers/formSchemaUtils';
 export * from './helpers/httpUtils';
 export * from './helpers/isEmpty';
+export * from './helpers/localeUtils';
 export * from './helpers/postMessageToSlack';
 export * from './helpers/range';
 export * from './helpers/streamToString';
