@@ -1,20 +1,10 @@
-import type {
-  Agreement,
-  Clinician,
-  Company,
-  CompanyUser,
-  DepartmentUser,
-  FacilityUser,
-  User,
-  UserAgreement
-} from '../../prisma';
+import type { Agreement, Clinician, Company, CompanyUser, User, UserAgreement, UserPermission } from '../../prisma';
 
 export type UserExtended = User & {
   companies: (CompanyUser & {
     company: Company;
   })[];
-  facilities: FacilityUser[];
-  departments: DepartmentUser[];
+  permissions: UserPermission[];
   clinician: Clinician | null;
   agreements: (UserAgreement & {
     agreement: Agreement;
