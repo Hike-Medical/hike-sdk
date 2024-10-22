@@ -10,3 +10,18 @@ export const generateRosterUploadlink = async (data: GenerateUploadLinkOptions) 
     throw toHikeError(error);
   }
 };
+
+export const uploadRosterCSV = async (file: File) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const response = await backendApi.post('roster/create', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
+
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
