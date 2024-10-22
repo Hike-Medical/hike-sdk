@@ -36,7 +36,8 @@
   "dependencies": {
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
-    "@hike/utils": "workspace:*"
+    "@hike/utils": "workspace:*",
+    "@tabler/icons-react": "^2"
   },
   "peerDependencies": {
     "react": "^18",
