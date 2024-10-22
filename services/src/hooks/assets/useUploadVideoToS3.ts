@@ -38,7 +38,7 @@ export const useUploadVideoToS3 = (
         });
 
         xhr.upload.addEventListener('progress', (event) => {
-          progressCount++;
+          progressCount += 1;
           if (onProgress) {
             const now = Date.now();
             const loadDelta = event.loaded - lastLoaded;
