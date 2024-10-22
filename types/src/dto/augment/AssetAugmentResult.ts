@@ -1,4 +1,4 @@
-import { AssetAugmentMedia } from '../../../prisma';
+import { AssetAugment, AssetAugmentMedia } from '../../../prisma';
 import { AssetAugmentMediaData } from './AssetAugmentMediaData';
 
 export interface AssetAugmentResult extends AssetAugment {
