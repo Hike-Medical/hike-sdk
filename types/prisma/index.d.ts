@@ -618,6 +618,14 @@ export const NotificationResponseType: {
 export type NotificationResponseType = (typeof NotificationResponseType)[keyof typeof NotificationResponseType]
 
 
+export const MessageType: {
+  TRANSACTIONAL: 'TRANSACTIONAL',
+  MARKETING: 'MARKETING'
+};
+
+export type MessageType = (typeof MessageType)[keyof typeof MessageType]
+
+
 export const CommunicationChannel: {
   SMS: 'SMS',
   EMAIL: 'EMAIL',
@@ -794,6 +802,10 @@ export const NotificationType: typeof $Enums.NotificationType
 export type NotificationResponseType = $Enums.NotificationResponseType
 
 export const NotificationResponseType: typeof $Enums.NotificationResponseType
+
+export type MessageType = $Enums.MessageType
+
+export const MessageType: typeof $Enums.MessageType
 
 export type CommunicationChannel = $Enums.CommunicationChannel
 
@@ -50645,6 +50657,7 @@ export namespace Prisma {
     delayMinutes: number | null
     recurrencePattern: string | null
     sequenceLimit: number | null
+    type: $Enums.MessageType | null
     content: string | null
     emailTemplateId: string | null
     pathwayId: string | null
@@ -50660,6 +50673,7 @@ export namespace Prisma {
     delayMinutes: number | null
     recurrencePattern: string | null
     sequenceLimit: number | null
+    type: $Enums.MessageType | null
     content: string | null
     emailTemplateId: string | null
     pathwayId: string | null
@@ -50675,6 +50689,7 @@ export namespace Prisma {
     delayMinutes: number
     recurrencePattern: number
     sequenceLimit: number
+    type: number
     content: number
     emailTemplateId: number
     pathwayId: number
@@ -50704,6 +50719,7 @@ export namespace Prisma {
     delayMinutes?: true
     recurrencePattern?: true
     sequenceLimit?: true
+    type?: true
     content?: true
     emailTemplateId?: true
     pathwayId?: true
@@ -50719,6 +50735,7 @@ export namespace Prisma {
     delayMinutes?: true
     recurrencePattern?: true
     sequenceLimit?: true
+    type?: true
     content?: true
     emailTemplateId?: true
     pathwayId?: true
@@ -50734,6 +50751,7 @@ export namespace Prisma {
     delayMinutes?: true
     recurrencePattern?: true
     sequenceLimit?: true
+    type?: true
     content?: true
     emailTemplateId?: true
     pathwayId?: true
@@ -50836,6 +50854,7 @@ export namespace Prisma {
     delayMinutes: number | null
     recurrencePattern: string | null
     sequenceLimit: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId: string | null
     pathwayId: string | null
@@ -50870,6 +50889,7 @@ export namespace Prisma {
     delayMinutes?: boolean
     recurrencePattern?: boolean
     sequenceLimit?: boolean
+    type?: boolean
     content?: boolean
     emailTemplateId?: boolean
     pathwayId?: boolean
@@ -50889,8 +50909,10 @@ export namespace Prisma {
     delayMinutes?: boolean
     recurrencePattern?: boolean
     sequenceLimit?: boolean
+    type?: boolean
     content?: boolean
     emailTemplateId?: boolean
+    pathwayId?: boolean
     channel?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -50905,6 +50927,7 @@ export namespace Prisma {
     delayMinutes?: boolean
     recurrencePattern?: boolean
     sequenceLimit?: boolean
+    type?: boolean
     content?: boolean
     emailTemplateId?: boolean
     pathwayId?: boolean
@@ -50913,7 +50936,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type NotificationMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "notificationId" | "sequence" | "delayMinutes" | "recurrencePattern" | "sequenceLimit" | "content" | "emailTemplateId" | "channel" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationMessage"]>
+  export type NotificationMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "notificationId" | "sequence" | "delayMinutes" | "recurrencePattern" | "sequenceLimit" | "type" | "content" | "emailTemplateId" | "pathwayId" | "channel" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationMessage"]>
   export type NotificationMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notification?: boolean | NotificationDefaultArgs<ExtArgs>
     emailTemplate?: boolean | NotificationMessage$emailTemplateArgs<ExtArgs>
@@ -50939,6 +50962,7 @@ export namespace Prisma {
       delayMinutes: number | null
       recurrencePattern: string | null
       sequenceLimit: number | null
+      type: $Enums.MessageType
       content: string
       emailTemplateId: string | null
       pathwayId: string | null
@@ -51347,6 +51371,7 @@ export namespace Prisma {
     readonly delayMinutes: FieldRef<"NotificationMessage", 'Float'>
     readonly recurrencePattern: FieldRef<"NotificationMessage", 'String'>
     readonly sequenceLimit: FieldRef<"NotificationMessage", 'Float'>
+    readonly type: FieldRef<"NotificationMessage", 'MessageType'>
     readonly content: FieldRef<"NotificationMessage", 'String'>
     readonly emailTemplateId: FieldRef<"NotificationMessage", 'String'>
     readonly pathwayId: FieldRef<"NotificationMessage", 'String'>
@@ -64178,6 +64203,7 @@ export namespace Prisma {
     delayMinutes: 'delayMinutes',
     recurrencePattern: 'recurrencePattern',
     sequenceLimit: 'sequenceLimit',
+    type: 'type',
     content: 'content',
     emailTemplateId: 'emailTemplateId',
     pathwayId: 'pathwayId',
@@ -64931,6 +64957,20 @@ export namespace Prisma {
    * Reference to a field of type 'NotificationResponseType[]'
    */
   export type ListEnumNotificationResponseTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationResponseType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MessageType'
+   */
+  export type EnumMessageTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MessageType'>
+    
+
+
+  /**
+   * Reference to a field of type 'MessageType[]'
+   */
+  export type ListEnumMessageTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MessageType[]'>
     
 
 
@@ -68328,6 +68368,7 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
+    type?: EnumMessageTypeFilter<"NotificationMessage"> | $Enums.MessageType
     content?: StringFilter<"NotificationMessage"> | string
     emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     pathwayId?: StringNullableFilter<"NotificationMessage"> | string | null
@@ -68346,6 +68387,7 @@ export namespace Prisma {
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
     sequenceLimit?: SortOrderInput | SortOrder
+    type?: SortOrder
     content?: SortOrder
     emailTemplateId?: SortOrderInput | SortOrder
     pathwayId?: SortOrderInput | SortOrder
@@ -68368,6 +68410,7 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
+    type?: EnumMessageTypeFilter<"NotificationMessage"> | $Enums.MessageType
     content?: StringFilter<"NotificationMessage"> | string
     emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     pathwayId?: StringNullableFilter<"NotificationMessage"> | string | null
@@ -68386,6 +68429,7 @@ export namespace Prisma {
     delayMinutes?: SortOrderInput | SortOrder
     recurrencePattern?: SortOrderInput | SortOrder
     sequenceLimit?: SortOrderInput | SortOrder
+    type?: SortOrder
     content?: SortOrder
     emailTemplateId?: SortOrderInput | SortOrder
     pathwayId?: SortOrderInput | SortOrder
@@ -68409,6 +68453,7 @@ export namespace Prisma {
     delayMinutes?: FloatNullableWithAggregatesFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableWithAggregatesFilter<"NotificationMessage"> | number | null
+    type?: EnumMessageTypeWithAggregatesFilter<"NotificationMessage"> | $Enums.MessageType
     content?: StringWithAggregatesFilter<"NotificationMessage"> | string
     emailTemplateId?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
     pathwayId?: StringNullableWithAggregatesFilter<"NotificationMessage"> | string | null
@@ -73026,6 +73071,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -73043,6 +73089,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId?: string | null
     pathwayId?: string | null
@@ -73058,6 +73105,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -73075,6 +73123,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73091,6 +73140,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId?: string | null
     pathwayId?: string | null
@@ -73105,6 +73155,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -73119,6 +73170,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77174,6 +77226,13 @@ export namespace Prisma {
     _max?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
   }
 
+  export type EnumMessageTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MessageType | EnumMessageTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMessageTypeFilter<$PrismaModel> | $Enums.MessageType
+  }
+
   export type EnumCommunicationChannelFilter<$PrismaModel = never> = {
     equals?: $Enums.CommunicationChannel | EnumCommunicationChannelFieldRefInput<$PrismaModel>
     in?: $Enums.CommunicationChannel[] | ListEnumCommunicationChannelFieldRefInput<$PrismaModel>
@@ -77203,6 +77262,7 @@ export namespace Prisma {
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
+    type?: SortOrder
     content?: SortOrder
     emailTemplateId?: SortOrder
     pathwayId?: SortOrder
@@ -77224,6 +77284,7 @@ export namespace Prisma {
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
+    type?: SortOrder
     content?: SortOrder
     emailTemplateId?: SortOrder
     pathwayId?: SortOrder
@@ -77239,6 +77300,7 @@ export namespace Prisma {
     delayMinutes?: SortOrder
     recurrencePattern?: SortOrder
     sequenceLimit?: SortOrder
+    type?: SortOrder
     content?: SortOrder
     emailTemplateId?: SortOrder
     pathwayId?: SortOrder
@@ -77251,6 +77313,16 @@ export namespace Prisma {
     sequence?: SortOrder
     delayMinutes?: SortOrder
     sequenceLimit?: SortOrder
+  }
+
+  export type EnumMessageTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MessageType | EnumMessageTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMessageTypeWithAggregatesFilter<$PrismaModel> | $Enums.MessageType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMessageTypeFilter<$PrismaModel>
+    _max?: NestedEnumMessageTypeFilter<$PrismaModel>
   }
 
   export type EnumCommunicationChannelWithAggregatesFilter<$PrismaModel = never> = {
@@ -81618,6 +81690,10 @@ export namespace Prisma {
     connect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
   }
 
+  export type EnumMessageTypeFieldUpdateOperationsInput = {
+    set?: $Enums.MessageType
+  }
+
   export type EnumCommunicationChannelFieldUpdateOperationsInput = {
     set?: $Enums.CommunicationChannel
   }
@@ -83108,11 +83184,28 @@ export namespace Prisma {
     _max?: NestedEnumNotificationResponseTypeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumMessageTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MessageType | EnumMessageTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMessageTypeFilter<$PrismaModel> | $Enums.MessageType
+  }
+
   export type NestedEnumCommunicationChannelFilter<$PrismaModel = never> = {
     equals?: $Enums.CommunicationChannel | EnumCommunicationChannelFieldRefInput<$PrismaModel>
     in?: $Enums.CommunicationChannel[] | ListEnumCommunicationChannelFieldRefInput<$PrismaModel>
     notIn?: $Enums.CommunicationChannel[] | ListEnumCommunicationChannelFieldRefInput<$PrismaModel>
     not?: NestedEnumCommunicationChannelFilter<$PrismaModel> | $Enums.CommunicationChannel
+  }
+
+  export type NestedEnumMessageTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MessageType | EnumMessageTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MessageType[] | ListEnumMessageTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMessageTypeWithAggregatesFilter<$PrismaModel> | $Enums.MessageType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMessageTypeFilter<$PrismaModel>
+    _max?: NestedEnumMessageTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumCommunicationChannelWithAggregatesFilter<$PrismaModel = never> = {
@@ -91981,6 +92074,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -91996,6 +92090,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId?: string | null
     pathwayId?: string | null
@@ -92041,6 +92136,7 @@ export namespace Prisma {
     delayMinutes?: FloatNullableFilter<"NotificationMessage"> | number | null
     recurrencePattern?: StringNullableFilter<"NotificationMessage"> | string | null
     sequenceLimit?: FloatNullableFilter<"NotificationMessage"> | number | null
+    type?: EnumMessageTypeFilter<"NotificationMessage"> | $Enums.MessageType
     content?: StringFilter<"NotificationMessage"> | string
     emailTemplateId?: StringNullableFilter<"NotificationMessage"> | string | null
     pathwayId?: StringNullableFilter<"NotificationMessage"> | string | null
@@ -92284,6 +92380,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -92300,6 +92397,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId?: string | null
     pathwayId?: string | null
@@ -92387,6 +92485,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -92403,6 +92502,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -92417,6 +92517,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -92433,6 +92534,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -97456,6 +97558,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     emailTemplateId?: string | null
     pathwayId?: string | null
@@ -97470,6 +97573,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -97485,6 +97589,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -97500,6 +97605,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     emailTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -97563,6 +97669,7 @@ export namespace Prisma {
     delayMinutes?: number | null
     recurrencePattern?: string | null
     sequenceLimit?: number | null
+    type: $Enums.MessageType
     content: string
     pathwayId?: string | null
     channel: $Enums.CommunicationChannel
@@ -97576,6 +97683,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -97592,6 +97700,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
@@ -97607,6 +97716,7 @@ export namespace Prisma {
     delayMinutes?: NullableFloatFieldUpdateOperationsInput | number | null
     recurrencePattern?: NullableStringFieldUpdateOperationsInput | string | null
     sequenceLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    type?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: StringFieldUpdateOperationsInput | string
     pathwayId?: NullableStringFieldUpdateOperationsInput | string | null
     channel?: EnumCommunicationChannelFieldUpdateOperationsInput | $Enums.CommunicationChannel
