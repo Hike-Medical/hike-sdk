@@ -10742,6 +10742,9 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    isEmailSubscribed: boolean | null
+    isSMSSubscribed: boolean | null
+    unsubscribeEmailToken: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -10760,6 +10763,9 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    isEmailSubscribed: boolean | null
+    isSMSSubscribed: boolean | null
+    unsubscribeEmailToken: string | null
     active: boolean | null
     deceasedAt: Date | null
     createdAt: Date | null
@@ -10778,6 +10784,9 @@ export namespace Prisma {
     weight: number
     maritalStatus: number
     photoUrl: number
+    isEmailSubscribed: number
+    isSMSSubscribed: number
+    unsubscribeEmailToken: number
     active: number
     deceasedAt: number
     createdAt: number
@@ -10808,6 +10817,9 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
+    unsubscribeEmailToken?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -10826,6 +10838,9 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
+    unsubscribeEmailToken?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -10844,6 +10859,9 @@ export namespace Prisma {
     weight?: true
     maritalStatus?: true
     photoUrl?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
+    unsubscribeEmailToken?: true
     active?: true
     deceasedAt?: true
     createdAt?: true
@@ -10949,6 +10967,9 @@ export namespace Prisma {
     weight: number | null
     maritalStatus: $Enums.MaritalStatus | null
     photoUrl: string | null
+    isEmailSubscribed: boolean
+    isSMSSubscribed: boolean
+    unsubscribeEmailToken: string | null
     active: boolean
     deceasedAt: Date | null
     createdAt: Date
@@ -10986,6 +11007,9 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
@@ -11012,6 +11036,9 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
@@ -11031,6 +11058,9 @@ export namespace Prisma {
     weight?: boolean
     maritalStatus?: boolean
     photoUrl?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: boolean
     active?: boolean
     deceasedAt?: boolean
     createdAt?: boolean
@@ -11038,7 +11068,7 @@ export namespace Prisma {
     primaryPhysicianId?: boolean
   }
 
-  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "middleName" | "lastName" | "gender" | "birthDate" | "height" | "weight" | "maritalStatus" | "photoUrl" | "active" | "deceasedAt" | "createdAt" | "updatedAt" | "primaryPhysicianId", ExtArgs["result"]["patient"]>
+  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "middleName" | "lastName" | "gender" | "birthDate" | "height" | "weight" | "maritalStatus" | "photoUrl" | "isEmailSubscribed" | "isSMSSubscribed" | "unsubscribeEmailToken" | "active" | "deceasedAt" | "createdAt" | "updatedAt" | "primaryPhysicianId", ExtArgs["result"]["patient"]>
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     primaryPhysician?: boolean | Patient$primaryPhysicianArgs<ExtArgs>
     feet?: boolean | Patient$feetArgs<ExtArgs>
@@ -11075,6 +11105,9 @@ export namespace Prisma {
       weight: number | null
       maritalStatus: $Enums.MaritalStatus | null
       photoUrl: string | null
+      isEmailSubscribed: boolean
+      isSMSSubscribed: boolean
+      unsubscribeEmailToken: string | null
       active: boolean
       deceasedAt: Date | null
       createdAt: Date
@@ -11490,6 +11523,9 @@ export namespace Prisma {
     readonly weight: FieldRef<"Patient", 'Float'>
     readonly maritalStatus: FieldRef<"Patient", 'MaritalStatus'>
     readonly photoUrl: FieldRef<"Patient", 'String'>
+    readonly isEmailSubscribed: FieldRef<"Patient", 'Boolean'>
+    readonly isSMSSubscribed: FieldRef<"Patient", 'Boolean'>
+    readonly unsubscribeEmailToken: FieldRef<"Patient", 'String'>
     readonly active: FieldRef<"Patient", 'Boolean'>
     readonly deceasedAt: FieldRef<"Patient", 'DateTime'>
     readonly createdAt: FieldRef<"Patient", 'DateTime'>
@@ -63639,6 +63675,9 @@ export namespace Prisma {
     weight: 'weight',
     maritalStatus: 'maritalStatus',
     photoUrl: 'photoUrl',
+    isEmailSubscribed: 'isEmailSubscribed',
+    isSMSSubscribed: 'isSMSSubscribed',
+    unsubscribeEmailToken: 'unsubscribeEmailToken',
     active: 'active',
     deceasedAt: 'deceasedAt',
     createdAt: 'createdAt',
@@ -65333,6 +65372,9 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    isEmailSubscribed?: BoolFilter<"Patient"> | boolean
+    isSMSSubscribed?: BoolFilter<"Patient"> | boolean
+    unsubscribeEmailToken?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
@@ -65358,6 +65400,9 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
+    unsubscribeEmailToken?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -65374,6 +65419,7 @@ export namespace Prisma {
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    unsubscribeEmailToken?: string
     AND?: PatientWhereInput | PatientWhereInput[]
     OR?: PatientWhereInput[]
     NOT?: PatientWhereInput | PatientWhereInput[]
@@ -65386,6 +65432,8 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    isEmailSubscribed?: BoolFilter<"Patient"> | boolean
+    isSMSSubscribed?: BoolFilter<"Patient"> | boolean
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
@@ -65398,7 +65446,7 @@ export namespace Prisma {
     companies?: CompanyPatientListRelationFilter
     notificationHistory?: NotificationHistoryListRelationFilter
     facilities?: FacilityPatientListRelationFilter
-  }, "id">
+  }, "id" | "unsubscribeEmailToken">
 
   export type PatientOrderByWithAggregationInput = {
     id?: SortOrder
@@ -65411,6 +65459,9 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     maritalStatus?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
+    unsubscribeEmailToken?: SortOrderInput | SortOrder
     active?: SortOrder
     deceasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -65437,6 +65488,9 @@ export namespace Prisma {
     weight?: FloatNullableWithAggregatesFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableWithAggregatesFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    isEmailSubscribed?: BoolWithAggregatesFilter<"Patient"> | boolean
+    isSMSSubscribed?: BoolWithAggregatesFilter<"Patient"> | boolean
+    unsubscribeEmailToken?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     active?: BoolWithAggregatesFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
@@ -69732,6 +69786,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -69756,6 +69813,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -69780,6 +69840,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69804,6 +69867,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69828,6 +69894,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -69846,6 +69915,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69863,6 +69935,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -74813,6 +74888,9 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
+    unsubscribeEmailToken?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -74836,6 +74914,9 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
+    unsubscribeEmailToken?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -74854,6 +74935,9 @@ export namespace Prisma {
     weight?: SortOrder
     maritalStatus?: SortOrder
     photoUrl?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
+    unsubscribeEmailToken?: SortOrder
     active?: SortOrder
     deceasedAt?: SortOrder
     createdAt?: SortOrder
@@ -85539,6 +85623,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -85562,6 +85649,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -85924,6 +86014,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -85947,6 +86040,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -86312,6 +86408,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -86335,6 +86434,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -86461,6 +86563,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -86484,6 +86589,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -87174,6 +87282,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -87197,6 +87308,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -87525,6 +87639,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -87548,6 +87665,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88578,6 +88698,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -88601,6 +88724,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -88669,6 +88795,9 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"Patient"> | number | null
     maritalStatus?: EnumMaritalStatusNullableFilter<"Patient"> | $Enums.MaritalStatus | null
     photoUrl?: StringNullableFilter<"Patient"> | string | null
+    isEmailSubscribed?: BoolFilter<"Patient"> | boolean
+    isSMSSubscribed?: BoolFilter<"Patient"> | boolean
+    unsubscribeEmailToken?: StringNullableFilter<"Patient"> | string | null
     active?: BoolFilter<"Patient"> | boolean
     deceasedAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     createdAt?: DateTimeFilter<"Patient"> | Date | string
@@ -90060,6 +90189,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -90083,6 +90215,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -90253,6 +90388,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -90276,6 +90414,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -90483,6 +90624,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -90506,6 +90650,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -90586,6 +90733,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -90609,6 +90759,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -92334,6 +92487,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -92357,6 +92513,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -92433,6 +92592,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -92456,6 +92618,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -95941,6 +96106,9 @@ export namespace Prisma {
     weight?: number | null
     maritalStatus?: $Enums.MaritalStatus | null
     photoUrl?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
+    unsubscribeEmailToken?: string | null
     active?: boolean
     deceasedAt?: Date | string | null
     createdAt?: Date | string
@@ -96061,6 +96229,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -96084,6 +96255,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -96107,6 +96281,9 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     maritalStatus?: NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    unsubscribeEmailToken?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     deceasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
