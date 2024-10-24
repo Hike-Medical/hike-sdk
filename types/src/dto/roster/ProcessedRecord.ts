@@ -5,6 +5,7 @@ export interface ProcessedRecord {
   emailAddress?: string | null;
   phoneNumber?: string | null;
   jobFunction?: string | null;
+  facilityName?: string | null;
   facilityAddress1?: string | null;
   facilityAddress2?: string | null;
   facilityCity?: string | null;
