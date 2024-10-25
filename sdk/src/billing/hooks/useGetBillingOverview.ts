@@ -1,7 +1,7 @@
+import { HikeError } from '@hike/services';
 import type { BillingOverview } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { getBillingOverview } from '../../api/billing.service';
-import { HikeError } from '../../errors/HikeError';
+import { getBillingOverview } from '../billing.service';
 
 export interface useGetBillingOverviewContext
   extends Omit<UseQueryOptions<BillingOverview, HikeError<null>>, 'queryKey' | 'queryFn'> {
