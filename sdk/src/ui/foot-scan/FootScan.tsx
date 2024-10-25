@@ -3,7 +3,6 @@ import { toTitleCase } from '@hike/utils';
 import { ActionIcon, Box, Button, Group, Paper, Pill, Stack, Switch, Text, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronUp, IconCircle, IconUpload } from '@tabler/icons-react';
-import React from 'react';
 
 export type FootScanStatus = 'NOT_STARTED' | 'APPROVED' | 'REJECTED' | 'PROCESSING';
 

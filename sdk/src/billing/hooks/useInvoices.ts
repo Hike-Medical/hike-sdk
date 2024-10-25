@@ -1,7 +1,7 @@
+import { HikeError } from '@hike/services';
 import type { GetStripeInvoiceParams, PagedResponse, StripeInvoiceExtended } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { fetchInvoices } from '../../api/billing.service';
-import { HikeError } from '../../errors/HikeError';
+import { fetchInvoices } from '../billing.service';
 
 export interface UseInvoiceOptions
   extends Omit<UseQueryOptions<PagedResponse<StripeInvoiceExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {

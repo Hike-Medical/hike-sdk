@@ -1,7 +1,7 @@
+import { HikeError } from '@hike/services';
 import type { StripeEntity } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { getStripeEntities } from '../../api/billing.service';
-import { HikeError } from '../../errors/HikeError';
+import { getStripeEntities } from '../billing.service';
 
 export interface useGetStripeEntitiesOptions
   extends Omit<UseQueryOptions<StripeEntity[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {

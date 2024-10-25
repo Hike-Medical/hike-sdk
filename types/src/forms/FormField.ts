@@ -31,6 +31,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'address' })
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'file'; multiple?: boolean })
+  | (BaseFormField<string[]> & { type: 'lidar' })
   | (BaseFormField<undefined> & { type: 'content'; image?: string })
   | (BaseFormField<string> & { type: 'clinician' })
   | (BaseFormField<string> & {

@@ -1,3 +1,4 @@
+import { backendApi, toHikeError } from '@hike/services';
 import {
   BillingOverview,
   GetStripeInvoiceParams,
@@ -6,8 +7,6 @@ import {
   UpFrontPaymentInfo
 } from '@hike/types';
 import { Stripe } from 'stripe';
-import { toHikeError } from '../errors/HikeError';
-import { backendApi } from '../utils/backendApi';
 
 export const getStripeEntities = async () => {
   try {
