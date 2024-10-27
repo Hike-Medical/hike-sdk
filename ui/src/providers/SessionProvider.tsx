@@ -40,7 +40,7 @@ export const SessionProvider = ({
       setUser(value.sessionUser);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value);
-    } catch (error) {
+    } catch {
       await logout();
     }
   };

@@ -13,7 +13,7 @@ export const toURL = (value: unknown) => {
   try {
     const url = new URL(value);
     return url.hostname ? url : null;
-  } catch (error) {
+  } catch {
     return null;
   }
 };
