@@ -603,7 +603,8 @@ export const NotificationType: {
   ABANDONED_CART: 'ABANDONED_CART',
   ORDER_CONFIRMATION: 'ORDER_CONFIRMATION',
   CAMPAIGN: 'CAMPAIGN',
-  SURVEY: 'SURVEY'
+  SURVEY: 'SURVEY',
+  INVITATION: 'INVITATION'
 };
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
