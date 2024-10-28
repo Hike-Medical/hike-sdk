@@ -563,7 +563,8 @@ export type StripeInvoiceStatus = (typeof StripeInvoiceStatus)[keyof typeof Stri
 export const StripeEntityType: {
   COMPANY: 'COMPANY',
   FACILITY: 'FACILITY',
-  DEPARTMENT: 'DEPARTMENT'
+  DEPARTMENT: 'DEPARTMENT',
+  SITE: 'SITE'
 };
 
 export type StripeEntityType = (typeof StripeEntityType)[keyof typeof StripeEntityType]
