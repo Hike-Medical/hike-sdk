@@ -42768,6 +42768,8 @@ export namespace Prisma {
     userId: string | null
     email: string | null
     phone: string | null
+    isEmailSubscribed: boolean | null
+    isSMSSubscribed: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42780,6 +42782,8 @@ export namespace Prisma {
     userId: string | null
     email: string | null
     phone: string | null
+    isEmailSubscribed: boolean | null
+    isSMSSubscribed: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -42792,6 +42796,8 @@ export namespace Prisma {
     userId: number
     email: number
     phone: number
+    isEmailSubscribed: number
+    isSMSSubscribed: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -42806,6 +42812,8 @@ export namespace Prisma {
     userId?: true
     email?: true
     phone?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -42818,6 +42826,8 @@ export namespace Prisma {
     userId?: true
     email?: true
     phone?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -42830,6 +42840,8 @@ export namespace Prisma {
     userId?: true
     email?: true
     phone?: true
+    isEmailSubscribed?: true
+    isSMSSubscribed?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -42915,6 +42927,8 @@ export namespace Prisma {
     userId: string | null
     email: string | null
     phone: string | null
+    isEmailSubscribed: boolean
+    isSMSSubscribed: boolean
     createdAt: Date
     updatedAt: Date
     _count: CompanyPatientCountAggregateOutputType | null
@@ -42944,6 +42958,8 @@ export namespace Prisma {
     userId?: boolean
     email?: boolean
     phone?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -42960,6 +42976,8 @@ export namespace Prisma {
     userId?: boolean
     email?: boolean
     phone?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -42976,11 +42994,13 @@ export namespace Prisma {
     userId?: boolean
     email?: boolean
     phone?: boolean
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CompanyPatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"patientId" | "companyId" | "externalId" | "contactId" | "userId" | "email" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["companyPatient"]>
+  export type CompanyPatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"patientId" | "companyId" | "externalId" | "contactId" | "userId" | "email" | "phone" | "isEmailSubscribed" | "isSMSSubscribed" | "createdAt" | "updatedAt", ExtArgs["result"]["companyPatient"]>
   export type CompanyPatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -43010,6 +43030,8 @@ export namespace Prisma {
       userId: string | null
       email: string | null
       phone: string | null
+      isEmailSubscribed: boolean
+      isSMSSubscribed: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["companyPatient"]>
@@ -43416,6 +43438,8 @@ export namespace Prisma {
     readonly userId: FieldRef<"CompanyPatient", 'String'>
     readonly email: FieldRef<"CompanyPatient", 'String'>
     readonly phone: FieldRef<"CompanyPatient", 'String'>
+    readonly isEmailSubscribed: FieldRef<"CompanyPatient", 'Boolean'>
+    readonly isSMSSubscribed: FieldRef<"CompanyPatient", 'Boolean'>
     readonly createdAt: FieldRef<"CompanyPatient", 'DateTime'>
     readonly updatedAt: FieldRef<"CompanyPatient", 'DateTime'>
   }
@@ -63036,6 +63060,8 @@ export namespace Prisma {
     userId: 'userId',
     email: 'email',
     phone: 'phone',
+    isEmailSubscribed: 'isEmailSubscribed',
+    isSMSSubscribed: 'isSMSSubscribed',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -66687,6 +66713,8 @@ export namespace Prisma {
     userId?: StringNullableFilter<"CompanyPatient"> | string | null
     email?: StringNullableFilter<"CompanyPatient"> | string | null
     phone?: StringNullableFilter<"CompanyPatient"> | string | null
+    isEmailSubscribed?: BoolFilter<"CompanyPatient"> | boolean
+    isSMSSubscribed?: BoolFilter<"CompanyPatient"> | boolean
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -66703,6 +66731,8 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
@@ -66727,6 +66757,8 @@ export namespace Prisma {
     userId?: StringNullableFilter<"CompanyPatient"> | string | null
     email?: StringNullableFilter<"CompanyPatient"> | string | null
     phone?: StringNullableFilter<"CompanyPatient"> | string | null
+    isEmailSubscribed?: BoolFilter<"CompanyPatient"> | boolean
+    isSMSSubscribed?: BoolFilter<"CompanyPatient"> | boolean
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -66743,6 +66775,8 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CompanyPatientCountOrderByAggregateInput
@@ -66761,6 +66795,8 @@ export namespace Prisma {
     userId?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
     email?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
     phone?: StringNullableWithAggregatesFilter<"CompanyPatient"> | string | null
+    isEmailSubscribed?: BoolWithAggregatesFilter<"CompanyPatient"> | boolean
+    isSMSSubscribed?: BoolWithAggregatesFilter<"CompanyPatient"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyPatient"> | Date | string
   }
@@ -71294,6 +71330,8 @@ export namespace Prisma {
     externalId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
@@ -71310,6 +71348,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71318,6 +71358,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
@@ -71334,6 +71376,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -71346,6 +71390,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71354,6 +71400,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -71366,6 +71414,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -75577,6 +75627,8 @@ export namespace Prisma {
     userId?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -75589,6 +75641,8 @@ export namespace Prisma {
     userId?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -75601,6 +75655,8 @@ export namespace Prisma {
     userId?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    isEmailSubscribed?: SortOrder
+    isSMSSubscribed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -82384,6 +82440,8 @@ export namespace Prisma {
     externalId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
@@ -82398,6 +82456,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -82780,6 +82840,8 @@ export namespace Prisma {
     userId?: StringNullableFilter<"CompanyPatient"> | string | null
     email?: StringNullableFilter<"CompanyPatient"> | string | null
     phone?: StringNullableFilter<"CompanyPatient"> | string | null
+    isEmailSubscribed?: BoolFilter<"CompanyPatient"> | boolean
+    isSMSSubscribed?: BoolFilter<"CompanyPatient"> | boolean
     createdAt?: DateTimeFilter<"CompanyPatient"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyPatient"> | Date | string
   }
@@ -83880,6 +83942,8 @@ export namespace Prisma {
     externalId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutPatientsInput
@@ -83894,6 +83958,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -87027,6 +87093,8 @@ export namespace Prisma {
     externalId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
@@ -87041,6 +87109,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -91301,6 +91371,8 @@ export namespace Prisma {
     externalId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutCompaniesInput
@@ -91315,6 +91387,8 @@ export namespace Prisma {
     contactId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -92332,6 +92406,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -92638,6 +92714,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
@@ -92652,6 +92730,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -92663,6 +92743,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -93251,6 +93333,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -93509,6 +93593,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutPatientsNestedInput
@@ -93523,6 +93609,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -93534,6 +93622,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -94440,6 +94530,8 @@ export namespace Prisma {
     userId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -94489,6 +94581,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
@@ -94503,6 +94597,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -94514,6 +94610,8 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96437,6 +96535,8 @@ export namespace Prisma {
     contactId?: string | null
     email?: string | null
     phone?: string | null
+    isEmailSubscribed?: boolean
+    isSMSSubscribed?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96544,6 +96644,8 @@ export namespace Prisma {
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutCompaniesNestedInput
@@ -96558,6 +96660,8 @@ export namespace Prisma {
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96569,6 +96673,8 @@ export namespace Prisma {
     contactId?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    isEmailSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    isSMSSubscribed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
