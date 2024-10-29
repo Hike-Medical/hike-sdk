@@ -53114,10 +53114,10 @@ export namespace Prisma {
 
   export type AccountVerificationMinAggregateOutputType = {
     token: string | null
-    contact: string | null
-    companyId: string | null
     type: $Enums.AccountRecoveryType | null
+    contact: string | null
     contactType: $Enums.ContactType | null
+    companyId: string | null
     role: $Enums.CompanyRole | null
     expiresAt: Date | null
     createdAt: Date | null
@@ -53126,10 +53126,10 @@ export namespace Prisma {
 
   export type AccountVerificationMaxAggregateOutputType = {
     token: string | null
-    contact: string | null
-    companyId: string | null
     type: $Enums.AccountRecoveryType | null
+    contact: string | null
     contactType: $Enums.ContactType | null
+    companyId: string | null
     role: $Enums.CompanyRole | null
     expiresAt: Date | null
     createdAt: Date | null
@@ -53138,10 +53138,10 @@ export namespace Prisma {
 
   export type AccountVerificationCountAggregateOutputType = {
     token: number
-    contact: number
-    companyId: number
     type: number
+    contact: number
     contactType: number
+    companyId: number
     role: number
     expiresAt: number
     createdAt: number
@@ -53152,10 +53152,10 @@ export namespace Prisma {
 
   export type AccountVerificationMinAggregateInputType = {
     token?: true
-    contact?: true
-    companyId?: true
     type?: true
+    contact?: true
     contactType?: true
+    companyId?: true
     role?: true
     expiresAt?: true
     createdAt?: true
@@ -53164,10 +53164,10 @@ export namespace Prisma {
 
   export type AccountVerificationMaxAggregateInputType = {
     token?: true
-    contact?: true
-    companyId?: true
     type?: true
+    contact?: true
     contactType?: true
+    companyId?: true
     role?: true
     expiresAt?: true
     createdAt?: true
@@ -53176,10 +53176,10 @@ export namespace Prisma {
 
   export type AccountVerificationCountAggregateInputType = {
     token?: true
-    contact?: true
-    companyId?: true
     type?: true
+    contact?: true
     contactType?: true
+    companyId?: true
     role?: true
     expiresAt?: true
     createdAt?: true
@@ -53261,10 +53261,10 @@ export namespace Prisma {
 
   export type AccountVerificationGroupByOutputType = {
     token: string
-    contact: string
-    companyId: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
+    companyId: string | null
     role: $Enums.CompanyRole | null
     expiresAt: Date
     createdAt: Date
@@ -53290,61 +53290,61 @@ export namespace Prisma {
 
   export type AccountVerificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     token?: boolean
-    contact?: boolean
-    companyId?: boolean
     type?: boolean
+    contact?: boolean
     contactType?: boolean
+    companyId?: boolean
     role?: boolean
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    company?: boolean | AccountVerification$companyArgs<ExtArgs>
   }, ExtArgs["result"]["accountVerification"]>
 
   export type AccountVerificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     token?: boolean
-    contact?: boolean
-    companyId?: boolean
     type?: boolean
+    contact?: boolean
     contactType?: boolean
+    companyId?: boolean
     role?: boolean
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    company?: boolean | AccountVerification$companyArgs<ExtArgs>
   }, ExtArgs["result"]["accountVerification"]>
 
   export type AccountVerificationSelectScalar = {
     token?: boolean
-    contact?: boolean
-    companyId?: boolean
     type?: boolean
+    contact?: boolean
     contactType?: boolean
+    companyId?: boolean
     role?: boolean
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AccountVerificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"token" | "contact" | "companyId" | "type" | "contactType" | "role" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["accountVerification"]>
+  export type AccountVerificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"token" | "type" | "contact" | "contactType" | "companyId" | "role" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["accountVerification"]>
   export type AccountVerificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    company?: boolean | AccountVerification$companyArgs<ExtArgs>
   }
   export type AccountVerificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    company?: boolean | AccountVerification$companyArgs<ExtArgs>
   }
 
   export type $AccountVerificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AccountVerification"
     objects: {
-      company: Prisma.$CompanyPayload<ExtArgs>
+      company: Prisma.$CompanyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       token: string
-      contact: string
-      companyId: string
       type: $Enums.AccountRecoveryType
+      contact: string
       contactType: $Enums.ContactType
+      companyId: string | null
       role: $Enums.CompanyRole | null
       expiresAt: Date
       createdAt: Date
@@ -53713,7 +53713,7 @@ export namespace Prisma {
    */
   export interface Prisma__AccountVerificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    company<T extends AccountVerification$companyArgs<ExtArgs> = {}>(args?: Subset<T, AccountVerification$companyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -53744,10 +53744,10 @@ export namespace Prisma {
    */ 
   interface AccountVerificationFieldRefs {
     readonly token: FieldRef<"AccountVerification", 'String'>
-    readonly contact: FieldRef<"AccountVerification", 'String'>
-    readonly companyId: FieldRef<"AccountVerification", 'String'>
     readonly type: FieldRef<"AccountVerification", 'AccountRecoveryType'>
+    readonly contact: FieldRef<"AccountVerification", 'String'>
     readonly contactType: FieldRef<"AccountVerification", 'ContactType'>
+    readonly companyId: FieldRef<"AccountVerification", 'String'>
     readonly role: FieldRef<"AccountVerification", 'CompanyRole'>
     readonly expiresAt: FieldRef<"AccountVerification", 'DateTime'>
     readonly createdAt: FieldRef<"AccountVerification", 'DateTime'>
@@ -54107,6 +54107,25 @@ export namespace Prisma {
      * Filter which AccountVerifications to delete
      */
     where?: AccountVerificationWhereInput
+  }
+
+  /**
+   * AccountVerification.company
+   */
+  export type AccountVerification$companyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    where?: CompanyWhereInput
   }
 
   /**
@@ -57309,10 +57328,10 @@ export namespace Prisma {
 
   export const AccountVerificationScalarFieldEnum: {
     token: 'token',
-    contact: 'contact',
-    companyId: 'companyId',
     type: 'type',
+    contact: 'contact',
     contactType: 'contactType',
+    companyId: 'companyId',
     role: 'role',
     expiresAt: 'expiresAt',
     createdAt: 'createdAt',
@@ -61488,23 +61507,23 @@ export namespace Prisma {
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     token?: StringFilter<"AccountVerification"> | string
-    contact?: StringFilter<"AccountVerification"> | string
-    companyId?: StringFilter<"AccountVerification"> | string
     type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    contact?: StringFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
+    companyId?: StringNullableFilter<"AccountVerification"> | string | null
     role?: EnumCompanyRoleNullableFilter<"AccountVerification"> | $Enums.CompanyRole | null
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
   }
 
   export type AccountVerificationOrderByWithRelationInput = {
     token?: SortOrder
-    contact?: SortOrder
-    companyId?: SortOrder
     type?: SortOrder
+    contact?: SortOrder
     contactType?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     role?: SortOrderInput | SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -61519,22 +61538,22 @@ export namespace Prisma {
     AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
-    companyId?: StringFilter<"AccountVerification"> | string
     type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
+    companyId?: StringNullableFilter<"AccountVerification"> | string | null
     role?: EnumCompanyRoleNullableFilter<"AccountVerification"> | $Enums.CompanyRole | null
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
-    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
   }, "token" | "contact" | "contact_companyId">
 
   export type AccountVerificationOrderByWithAggregationInput = {
     token?: SortOrder
-    contact?: SortOrder
-    companyId?: SortOrder
     type?: SortOrder
+    contact?: SortOrder
     contactType?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     role?: SortOrderInput | SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -61549,10 +61568,10 @@ export namespace Prisma {
     OR?: AccountVerificationScalarWhereWithAggregatesInput[]
     NOT?: AccountVerificationScalarWhereWithAggregatesInput | AccountVerificationScalarWhereWithAggregatesInput[]
     token?: StringWithAggregatesFilter<"AccountVerification"> | string
-    contact?: StringWithAggregatesFilter<"AccountVerification"> | string
-    companyId?: StringWithAggregatesFilter<"AccountVerification"> | string
     type?: EnumAccountRecoveryTypeWithAggregatesFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    contact?: StringWithAggregatesFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeWithAggregatesFilter<"AccountVerification"> | $Enums.ContactType
+    companyId?: StringNullableWithAggregatesFilter<"AccountVerification"> | string | null
     role?: EnumCompanyRoleNullableWithAggregatesFilter<"AccountVerification"> | $Enums.CompanyRole | null
     expiresAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"AccountVerification"> | Date | string
@@ -65742,22 +65761,22 @@ export namespace Prisma {
 
   export type AccountVerificationCreateInput = {
     token: string
-    contact: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutVerificationsInput
+    company?: CompanyCreateNestedOneWithoutVerificationsInput
   }
 
   export type AccountVerificationUncheckedCreateInput = {
     token: string
-    contact: string
-    companyId: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
+    companyId?: string | null
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
     createdAt?: Date | string
@@ -65766,22 +65785,22 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutVerificationsNestedInput
+    company?: CompanyUpdateOneWithoutVerificationsNestedInput
   }
 
   export type AccountVerificationUncheckedUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -65790,10 +65809,10 @@ export namespace Prisma {
 
   export type AccountVerificationCreateManyInput = {
     token: string
-    contact: string
-    companyId: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
+    companyId?: string | null
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
     createdAt?: Date | string
@@ -65802,8 +65821,8 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateManyMutationInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -65813,10 +65832,10 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateManyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69320,6 +69339,11 @@ export namespace Prisma {
     not?: NestedEnumContactTypeFilter<$PrismaModel> | $Enums.ContactType
   }
 
+  export type CompanyNullableRelationFilter = {
+    is?: CompanyWhereInput | null
+    isNot?: CompanyWhereInput | null
+  }
+
   export type AccountVerificationContactCompanyIdCompoundUniqueInput = {
     contact: string
     companyId: string
@@ -69327,10 +69351,10 @@ export namespace Prisma {
 
   export type AccountVerificationCountOrderByAggregateInput = {
     token?: SortOrder
-    contact?: SortOrder
-    companyId?: SortOrder
     type?: SortOrder
+    contact?: SortOrder
     contactType?: SortOrder
+    companyId?: SortOrder
     role?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -69339,10 +69363,10 @@ export namespace Prisma {
 
   export type AccountVerificationMaxOrderByAggregateInput = {
     token?: SortOrder
-    contact?: SortOrder
-    companyId?: SortOrder
     type?: SortOrder
+    contact?: SortOrder
     contactType?: SortOrder
+    companyId?: SortOrder
     role?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -69351,10 +69375,10 @@ export namespace Prisma {
 
   export type AccountVerificationMinOrderByAggregateInput = {
     token?: SortOrder
-    contact?: SortOrder
-    companyId?: SortOrder
     type?: SortOrder
+    contact?: SortOrder
     contactType?: SortOrder
+    companyId?: SortOrder
     role?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -73679,10 +73703,12 @@ export namespace Prisma {
     set?: $Enums.ContactType
   }
 
-  export type CompanyUpdateOneRequiredWithoutVerificationsNestedInput = {
+  export type CompanyUpdateOneWithoutVerificationsNestedInput = {
     create?: XOR<CompanyCreateWithoutVerificationsInput, CompanyUncheckedCreateWithoutVerificationsInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutVerificationsInput
     upsert?: CompanyUpsertWithoutVerificationsInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
     connect?: CompanyWhereUniqueInput
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutVerificationsInput, CompanyUpdateWithoutVerificationsInput>, CompanyUncheckedUpdateWithoutVerificationsInput>
   }
@@ -74982,8 +75008,8 @@ export namespace Prisma {
 
   export type AccountVerificationCreateWithoutCompanyInput = {
     token: string
-    contact: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
@@ -74993,8 +75019,8 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedCreateWithoutCompanyInput = {
     token: string
-    contact: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
@@ -75371,10 +75397,10 @@ export namespace Prisma {
     OR?: AccountVerificationScalarWhereInput[]
     NOT?: AccountVerificationScalarWhereInput | AccountVerificationScalarWhereInput[]
     token?: StringFilter<"AccountVerification"> | string
-    contact?: StringFilter<"AccountVerification"> | string
-    companyId?: StringFilter<"AccountVerification"> | string
     type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    contact?: StringFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
+    companyId?: StringNullableFilter<"AccountVerification"> | string | null
     role?: EnumCompanyRoleNullableFilter<"AccountVerification"> | $Enums.CompanyRole | null
     expiresAt?: DateTimeFilter<"AccountVerification"> | Date | string
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
@@ -84310,8 +84336,8 @@ export namespace Prisma {
 
   export type AccountVerificationCreateManyCompanyInput = {
     token: string
-    contact: string
     type: $Enums.AccountRecoveryType
+    contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
     expiresAt: Date | string
@@ -84640,8 +84666,8 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -84651,8 +84677,8 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -84662,8 +84688,8 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateManyWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    contact?: StringFieldUpdateOperationsInput | string
     type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string

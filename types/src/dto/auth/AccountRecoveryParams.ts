@@ -1,7 +1,8 @@
-import { AccountRecoveryType } from '../../../prisma';
+import { AccountRecoveryType, ContactType } from '../../../prisma';
 
 export interface AccountRecoveryParams {
-  email: string;
   type: AccountRecoveryType;
+  contact: string;
+  contactType: ContactType;
   url: string;
 }
