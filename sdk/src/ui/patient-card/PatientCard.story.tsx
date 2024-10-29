@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { PatientCard, PatientCardProps } from './PatientCard';
 
 export default {
@@ -32,4 +32,4 @@ export default {
     ]
   } as PatientCardProps
 };
-export const Default = (args: PatientCardProps) => React.createElement(PatientCard, args);
+export const Default = (args: PatientCardProps) => createElement(PatientCard, args);

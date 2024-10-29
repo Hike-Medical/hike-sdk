@@ -1,7 +1,7 @@
+import { HikeError } from '@hike/services';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { Stripe } from 'stripe';
-import { fetchStripeInvoice } from '../../api/billing.service';
-import { HikeError } from '../../errors/HikeError';
+import { fetchStripeInvoice } from '../billing.service';
 
 interface StripeInvoiceContext {
   stripeInvoiceId: string;
