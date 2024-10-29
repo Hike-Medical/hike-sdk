@@ -80,6 +80,7 @@ export type * from './dto/patient/UpdatePatientParams';
 export type * from './dto/pin/CreatePinDto';
 export type * from './dto/printer/SendGcodeToPrinterParams';
 export type * from './dto/roster/GenerateUploadLinkOptions';
+export type * from './dto/roster/ProcessedRecord';
 export type * from './dto/scan/SubmitRenderParams';
 export type * from './dto/search/GetSearchParams';
 export type * from './dto/search/SearchResponse';

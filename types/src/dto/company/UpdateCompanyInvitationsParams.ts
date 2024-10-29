@@ -2,8 +2,7 @@ import { CompanyRole } from '../../../prisma';
 
 export interface UpdateCompanyInvitationParams {
   contact: string;
-  role: CompanyRole;
-  verified?: boolean;
+  role?: CompanyRole;
   extend?: boolean;
   url?: string;
 }

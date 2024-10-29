@@ -1,7 +1,7 @@
+import { HikeError } from '@hike/services';
 import type { UpFrontPaymentInfo } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { getUpFrontPaymentInfo } from '../../api/billing.service';
-import { HikeError } from '../../errors/HikeError';
+import { getUpFrontPaymentInfo } from '../billing.service';
 
 export interface useGetUpFrontPaymentInfoContext
   extends Omit<UseQueryOptions<UpFrontPaymentInfo | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
