@@ -3,8 +3,8 @@ import { CompanyRole, ContactType } from '../../../prisma';
 export interface CreateCompanyInvitationParams {
   contact: string;
   contactType: ContactType;
-  role?: CompanyRole;
-  url: string;
+  role?: CompanyRole | null;
+  redirectUrl?: string;
 }
 
 export interface CreateCompanyInvitationsParams {
