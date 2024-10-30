@@ -9,4 +9,6 @@ export interface CreateCompanyInvitationParams {
 
 export interface CreateCompanyInvitationsParams {
   invitations: CreateCompanyInvitationParams[];
+  htmlContent?: string;
+  message?: string;
 }
