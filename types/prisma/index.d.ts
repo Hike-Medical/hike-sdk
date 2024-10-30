@@ -594,7 +594,8 @@ export const NotificationType: {
   ABANDONED_CART: 'ABANDONED_CART',
   ORDER_CONFIRMATION: 'ORDER_CONFIRMATION',
   CAMPAIGN: 'CAMPAIGN',
-  SURVEY: 'SURVEY'
+  SURVEY: 'SURVEY',
+  INVITATION: 'INVITATION'
 };
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
@@ -5695,6 +5696,7 @@ export namespace Prisma {
     permissions: number
     auditLogs: number
     stripeEntities: number
+    notificationHistory: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5709,6 +5711,7 @@ export namespace Prisma {
     permissions?: boolean | CompanyCountOutputTypeCountPermissionsArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
     stripeEntities?: boolean | CompanyCountOutputTypeCountStripeEntitiesArgs
+    notificationHistory?: boolean | CompanyCountOutputTypeCountNotificationHistoryArgs
   }
 
   // Custom InputTypes
@@ -5797,6 +5800,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountStripeEntitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: StripeEntityWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountNotificationHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationHistoryWhereInput
   }
 
 
@@ -7221,6 +7231,7 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
+    notificationHistory?: boolean | Company$notificationHistoryArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -7261,6 +7272,7 @@ export namespace Prisma {
     permissions?: boolean | Company$permissionsArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
+    notificationHistory?: boolean | Company$notificationHistoryArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7279,6 +7291,7 @@ export namespace Prisma {
       permissions: Prisma.$UserPermissionPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       stripeEntities: Prisma.$StripeEntityPayload<ExtArgs>[]
+      notificationHistory: Prisma.$NotificationHistoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7665,6 +7678,7 @@ export namespace Prisma {
     permissions<T extends Company$permissionsArgs<ExtArgs> = {}>(args?: Subset<T, Company$permissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPermissionPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     stripeEntities<T extends Company$stripeEntitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeEntitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeEntityPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    notificationHistory<T extends Company$notificationHistoryArgs<ExtArgs> = {}>(args?: Subset<T, Company$notificationHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationHistoryPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8318,6 +8332,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: StripeEntityScalarFieldEnum | StripeEntityScalarFieldEnum[]
+  }
+
+  /**
+   * Company.notificationHistory
+   */
+  export type Company$notificationHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NotificationHistory
+     */
+    select?: NotificationHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NotificationHistory
+     */
+    omit?: NotificationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationHistoryInclude<ExtArgs> | null
+    where?: NotificationHistoryWhereInput
+    orderBy?: NotificationHistoryOrderByWithRelationInput | NotificationHistoryOrderByWithRelationInput[]
+    cursor?: NotificationHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationHistoryScalarFieldEnum | NotificationHistoryScalarFieldEnum[]
   }
 
   /**
@@ -50719,6 +50757,7 @@ export namespace Prisma {
     id: string | null
     patientId: string | null
     messageId: string | null
+    companyId: string | null
     sentAt: Date | null
     response: string | null
     responseReceivedAt: Date | null
@@ -50732,6 +50771,7 @@ export namespace Prisma {
     id: string | null
     patientId: string | null
     messageId: string | null
+    companyId: string | null
     sentAt: Date | null
     response: string | null
     responseReceivedAt: Date | null
@@ -50745,6 +50785,7 @@ export namespace Prisma {
     id: number
     patientId: number
     messageId: number
+    companyId: number
     sentAt: number
     response: number
     responseReceivedAt: number
@@ -50760,6 +50801,7 @@ export namespace Prisma {
     id?: true
     patientId?: true
     messageId?: true
+    companyId?: true
     sentAt?: true
     response?: true
     responseReceivedAt?: true
@@ -50773,6 +50815,7 @@ export namespace Prisma {
     id?: true
     patientId?: true
     messageId?: true
+    companyId?: true
     sentAt?: true
     response?: true
     responseReceivedAt?: true
@@ -50786,6 +50829,7 @@ export namespace Prisma {
     id?: true
     patientId?: true
     messageId?: true
+    companyId?: true
     sentAt?: true
     response?: true
     responseReceivedAt?: true
@@ -50872,6 +50916,7 @@ export namespace Prisma {
     id: string
     patientId: string
     messageId: string
+    companyId: string
     sentAt: Date | null
     response: string | null
     responseReceivedAt: Date | null
@@ -50902,6 +50947,7 @@ export namespace Prisma {
     id?: boolean
     patientId?: boolean
     messageId?: boolean
+    companyId?: boolean
     sentAt?: boolean
     response?: boolean
     responseReceivedAt?: boolean
@@ -50910,6 +50956,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     message?: boolean | NotificationMessageDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificationHistory"]>
 
@@ -50917,6 +50964,7 @@ export namespace Prisma {
     id?: boolean
     patientId?: boolean
     messageId?: boolean
+    companyId?: boolean
     sentAt?: boolean
     response?: boolean
     responseReceivedAt?: boolean
@@ -50925,6 +50973,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     message?: boolean | NotificationMessageDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificationHistory"]>
 
@@ -50932,6 +50981,7 @@ export namespace Prisma {
     id?: boolean
     patientId?: boolean
     messageId?: boolean
+    companyId?: boolean
     sentAt?: boolean
     response?: boolean
     responseReceivedAt?: boolean
@@ -50941,13 +50991,15 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type NotificationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "messageId" | "sentAt" | "response" | "responseReceivedAt" | "removedAt" | "jobId" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationHistory"]>
+  export type NotificationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "messageId" | "companyId" | "sentAt" | "response" | "responseReceivedAt" | "removedAt" | "jobId" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationHistory"]>
   export type NotificationHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     message?: boolean | NotificationMessageDefaultArgs<ExtArgs>
   }
   export type NotificationHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     message?: boolean | NotificationMessageDefaultArgs<ExtArgs>
   }
 
@@ -50955,12 +51007,14 @@ export namespace Prisma {
     name: "NotificationHistory"
     objects: {
       patient: Prisma.$PatientPayload<ExtArgs>
+      company: Prisma.$CompanyPayload<ExtArgs>
       message: Prisma.$NotificationMessagePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       patientId: string
       messageId: string
+      companyId: string
       sentAt: Date | null
       response: string | null
       responseReceivedAt: Date | null
@@ -51333,6 +51387,7 @@ export namespace Prisma {
   export interface Prisma__NotificationHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     message<T extends NotificationMessageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NotificationMessageDefaultArgs<ExtArgs>>): Prisma__NotificationMessageClient<$Result.GetResult<Prisma.$NotificationMessagePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -51366,6 +51421,7 @@ export namespace Prisma {
     readonly id: FieldRef<"NotificationHistory", 'String'>
     readonly patientId: FieldRef<"NotificationHistory", 'String'>
     readonly messageId: FieldRef<"NotificationHistory", 'String'>
+    readonly companyId: FieldRef<"NotificationHistory", 'String'>
     readonly sentAt: FieldRef<"NotificationHistory", 'DateTime'>
     readonly response: FieldRef<"NotificationHistory", 'String'>
     readonly responseReceivedAt: FieldRef<"NotificationHistory", 'DateTime'>
@@ -62163,6 +62219,7 @@ export namespace Prisma {
     id: 'id',
     patientId: 'patientId',
     messageId: 'messageId',
+    companyId: 'companyId',
     sentAt: 'sentAt',
     response: 'response',
     responseReceivedAt: 'responseReceivedAt',
@@ -63016,6 +63073,7 @@ export namespace Prisma {
     permissions?: UserPermissionListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
+    notificationHistory?: NotificationHistoryListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -63039,6 +63097,7 @@ export namespace Prisma {
     permissions?: UserPermissionOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     stripeEntities?: StripeEntityOrderByRelationAggregateInput
+    notificationHistory?: NotificationHistoryOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -63065,6 +63124,7 @@ export namespace Prisma {
     permissions?: UserPermissionListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     stripeEntities?: StripeEntityListRelationFilter
+    notificationHistory?: NotificationHistoryListRelationFilter
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -66359,6 +66419,7 @@ export namespace Prisma {
     id?: StringFilter<"NotificationHistory"> | string
     patientId?: StringFilter<"NotificationHistory"> | string
     messageId?: StringFilter<"NotificationHistory"> | string
+    companyId?: StringFilter<"NotificationHistory"> | string
     sentAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
     response?: StringNullableFilter<"NotificationHistory"> | string | null
     responseReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
@@ -66367,6 +66428,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     message?: XOR<NotificationMessageRelationFilter, NotificationMessageWhereInput>
   }
 
@@ -66374,6 +66436,7 @@ export namespace Prisma {
     id?: SortOrder
     patientId?: SortOrder
     messageId?: SortOrder
+    companyId?: SortOrder
     sentAt?: SortOrderInput | SortOrder
     response?: SortOrderInput | SortOrder
     responseReceivedAt?: SortOrderInput | SortOrder
@@ -66382,6 +66445,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
+    company?: CompanyOrderByWithRelationInput
     message?: NotificationMessageOrderByWithRelationInput
   }
 
@@ -66392,6 +66456,7 @@ export namespace Prisma {
     NOT?: NotificationHistoryWhereInput | NotificationHistoryWhereInput[]
     patientId?: StringFilter<"NotificationHistory"> | string
     messageId?: StringFilter<"NotificationHistory"> | string
+    companyId?: StringFilter<"NotificationHistory"> | string
     sentAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
     response?: StringNullableFilter<"NotificationHistory"> | string | null
     responseReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
@@ -66400,6 +66465,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
+    company?: XOR<CompanyRelationFilter, CompanyWhereInput>
     message?: XOR<NotificationMessageRelationFilter, NotificationMessageWhereInput>
   }, "id">
 
@@ -66407,6 +66473,7 @@ export namespace Prisma {
     id?: SortOrder
     patientId?: SortOrder
     messageId?: SortOrder
+    companyId?: SortOrder
     sentAt?: SortOrderInput | SortOrder
     response?: SortOrderInput | SortOrder
     responseReceivedAt?: SortOrderInput | SortOrder
@@ -66426,6 +66493,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"NotificationHistory"> | string
     patientId?: StringWithAggregatesFilter<"NotificationHistory"> | string
     messageId?: StringWithAggregatesFilter<"NotificationHistory"> | string
+    companyId?: StringWithAggregatesFilter<"NotificationHistory"> | string
     sentAt?: DateTimeNullableWithAggregatesFilter<"NotificationHistory"> | Date | string | null
     response?: StringNullableWithAggregatesFilter<"NotificationHistory"> | string | null
     responseReceivedAt?: DateTimeNullableWithAggregatesFilter<"NotificationHistory"> | Date | string | null
@@ -67283,6 +67351,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -67306,6 +67375,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -67329,6 +67399,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -67352,6 +67423,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -70985,6 +71057,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutNotificationHistoryInput
+    company: CompanyCreateNestedOneWithoutNotificationHistoryInput
     message: NotificationMessageCreateNestedOneWithoutNotificationHistoryInput
   }
 
@@ -70992,6 +71065,7 @@ export namespace Prisma {
     id?: string
     patientId: string
     messageId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -71011,6 +71085,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
+    company?: CompanyUpdateOneRequiredWithoutNotificationHistoryNestedInput
     message?: NotificationMessageUpdateOneRequiredWithoutNotificationHistoryNestedInput
   }
 
@@ -71018,6 +71093,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     messageId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71031,6 +71107,7 @@ export namespace Prisma {
     id?: string
     patientId: string
     messageId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -71055,6 +71132,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
     messageId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72155,6 +72233,12 @@ export namespace Prisma {
     none?: StripeEntityWhereInput
   }
 
+  export type NotificationHistoryListRelationFilter = {
+    every?: NotificationHistoryWhereInput
+    some?: NotificationHistoryWhereInput
+    none?: NotificationHistoryWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -72201,6 +72285,10 @@ export namespace Prisma {
   }
 
   export type StripeEntityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NotificationHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -72496,21 +72584,11 @@ export namespace Prisma {
     none?: WorkbenchWhereInput
   }
 
-  export type NotificationHistoryListRelationFilter = {
-    every?: NotificationHistoryWhereInput
-    some?: NotificationHistoryWhereInput
-    none?: NotificationHistoryWhereInput
-  }
-
   export type FootOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type WorkbenchOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type NotificationHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -75021,6 +75099,7 @@ export namespace Prisma {
     id?: SortOrder
     patientId?: SortOrder
     messageId?: SortOrder
+    companyId?: SortOrder
     sentAt?: SortOrder
     response?: SortOrder
     responseReceivedAt?: SortOrder
@@ -75034,6 +75113,7 @@ export namespace Prisma {
     id?: SortOrder
     patientId?: SortOrder
     messageId?: SortOrder
+    companyId?: SortOrder
     sentAt?: SortOrder
     response?: SortOrder
     responseReceivedAt?: SortOrder
@@ -75047,6 +75127,7 @@ export namespace Prisma {
     id?: SortOrder
     patientId?: SortOrder
     messageId?: SortOrder
+    companyId?: SortOrder
     sentAt?: SortOrder
     response?: SortOrder
     responseReceivedAt?: SortOrder
@@ -75815,6 +75896,13 @@ export namespace Prisma {
     connect?: StripeEntityWhereUniqueInput | StripeEntityWhereUniqueInput[]
   }
 
+  export type NotificationHistoryCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput> | NotificationHistoryCreateWithoutCompanyInput[] | NotificationHistoryUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: NotificationHistoryCreateOrConnectWithoutCompanyInput | NotificationHistoryCreateOrConnectWithoutCompanyInput[]
+    createMany?: NotificationHistoryCreateManyCompanyInputEnvelope
+    connect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+  }
+
   export type DepartmentUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
@@ -75890,6 +75978,13 @@ export namespace Prisma {
     connectOrCreate?: StripeEntityCreateOrConnectWithoutCompanyInput | StripeEntityCreateOrConnectWithoutCompanyInput[]
     createMany?: StripeEntityCreateManyCompanyInputEnvelope
     connect?: StripeEntityWhereUniqueInput | StripeEntityWhereUniqueInput[]
+  }
+
+  export type NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput> | NotificationHistoryCreateWithoutCompanyInput[] | NotificationHistoryUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: NotificationHistoryCreateOrConnectWithoutCompanyInput | NotificationHistoryCreateOrConnectWithoutCompanyInput[]
+    createMany?: NotificationHistoryCreateManyCompanyInputEnvelope
+    connect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -76062,6 +76157,20 @@ export namespace Prisma {
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
   }
 
+  export type NotificationHistoryUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput> | NotificationHistoryCreateWithoutCompanyInput[] | NotificationHistoryUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: NotificationHistoryCreateOrConnectWithoutCompanyInput | NotificationHistoryCreateOrConnectWithoutCompanyInput[]
+    upsert?: NotificationHistoryUpsertWithWhereUniqueWithoutCompanyInput | NotificationHistoryUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: NotificationHistoryCreateManyCompanyInputEnvelope
+    set?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    disconnect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    delete?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    connect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    update?: NotificationHistoryUpdateWithWhereUniqueWithoutCompanyInput | NotificationHistoryUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: NotificationHistoryUpdateManyWithWhereWithoutCompanyInput | NotificationHistoryUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
+  }
+
   export type DepartmentUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
@@ -76214,6 +76323,20 @@ export namespace Prisma {
     update?: StripeEntityUpdateWithWhereUniqueWithoutCompanyInput | StripeEntityUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: StripeEntityUpdateManyWithWhereWithoutCompanyInput | StripeEntityUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: StripeEntityScalarWhereInput | StripeEntityScalarWhereInput[]
+  }
+
+  export type NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput> | NotificationHistoryCreateWithoutCompanyInput[] | NotificationHistoryUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: NotificationHistoryCreateOrConnectWithoutCompanyInput | NotificationHistoryCreateOrConnectWithoutCompanyInput[]
+    upsert?: NotificationHistoryUpsertWithWhereUniqueWithoutCompanyInput | NotificationHistoryUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: NotificationHistoryCreateManyCompanyInputEnvelope
+    set?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    disconnect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    delete?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    connect?: NotificationHistoryWhereUniqueInput | NotificationHistoryWhereUniqueInput[]
+    update?: NotificationHistoryUpdateWithWhereUniqueWithoutCompanyInput | NotificationHistoryUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: NotificationHistoryUpdateManyWithWhereWithoutCompanyInput | NotificationHistoryUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutDepartmentsInput = {
@@ -79421,6 +79544,12 @@ export namespace Prisma {
     connect?: PatientWhereUniqueInput
   }
 
+  export type CompanyCreateNestedOneWithoutNotificationHistoryInput = {
+    create?: XOR<CompanyCreateWithoutNotificationHistoryInput, CompanyUncheckedCreateWithoutNotificationHistoryInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutNotificationHistoryInput
+    connect?: CompanyWhereUniqueInput
+  }
+
   export type NotificationMessageCreateNestedOneWithoutNotificationHistoryInput = {
     create?: XOR<NotificationMessageCreateWithoutNotificationHistoryInput, NotificationMessageUncheckedCreateWithoutNotificationHistoryInput>
     connectOrCreate?: NotificationMessageCreateOrConnectWithoutNotificationHistoryInput
@@ -79433,6 +79562,14 @@ export namespace Prisma {
     upsert?: PatientUpsertWithoutNotificationHistoryInput
     connect?: PatientWhereUniqueInput
     update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutNotificationHistoryInput, PatientUpdateWithoutNotificationHistoryInput>, PatientUncheckedUpdateWithoutNotificationHistoryInput>
+  }
+
+  export type CompanyUpdateOneRequiredWithoutNotificationHistoryNestedInput = {
+    create?: XOR<CompanyCreateWithoutNotificationHistoryInput, CompanyUncheckedCreateWithoutNotificationHistoryInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutNotificationHistoryInput
+    upsert?: CompanyUpsertWithoutNotificationHistoryInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutNotificationHistoryInput, CompanyUpdateWithoutNotificationHistoryInput>, CompanyUncheckedUpdateWithoutNotificationHistoryInput>
   }
 
   export type NotificationMessageUpdateOneRequiredWithoutNotificationHistoryNestedInput = {
@@ -81468,6 +81605,42 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type NotificationHistoryCreateWithoutCompanyInput = {
+    id?: string
+    sentAt?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patient: PatientCreateNestedOneWithoutNotificationHistoryInput
+    message: NotificationMessageCreateNestedOneWithoutNotificationHistoryInput
+  }
+
+  export type NotificationHistoryUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    patientId: string
+    messageId: string
+    sentAt?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationHistoryCreateOrConnectWithoutCompanyInput = {
+    where: NotificationHistoryWhereUniqueInput
+    create: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type NotificationHistoryCreateManyCompanyInputEnvelope = {
+    data: NotificationHistoryCreateManyCompanyInput | NotificationHistoryCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type DepartmentUpsertWithWhereUniqueWithoutCompanyInput = {
     where: DepartmentWhereUniqueInput
     update: XOR<DepartmentUpdateWithoutCompanyInput, DepartmentUncheckedUpdateWithoutCompanyInput>
@@ -81826,6 +81999,39 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"StripeEntity"> | Date | string
   }
 
+  export type NotificationHistoryUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: NotificationHistoryWhereUniqueInput
+    update: XOR<NotificationHistoryUpdateWithoutCompanyInput, NotificationHistoryUncheckedUpdateWithoutCompanyInput>
+    create: XOR<NotificationHistoryCreateWithoutCompanyInput, NotificationHistoryUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type NotificationHistoryUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: NotificationHistoryWhereUniqueInput
+    data: XOR<NotificationHistoryUpdateWithoutCompanyInput, NotificationHistoryUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type NotificationHistoryUpdateManyWithWhereWithoutCompanyInput = {
+    where: NotificationHistoryScalarWhereInput
+    data: XOR<NotificationHistoryUpdateManyMutationInput, NotificationHistoryUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type NotificationHistoryScalarWhereInput = {
+    AND?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
+    OR?: NotificationHistoryScalarWhereInput[]
+    NOT?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
+    id?: StringFilter<"NotificationHistory"> | string
+    patientId?: StringFilter<"NotificationHistory"> | string
+    messageId?: StringFilter<"NotificationHistory"> | string
+    companyId?: StringFilter<"NotificationHistory"> | string
+    sentAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    response?: StringNullableFilter<"NotificationHistory"> | string | null
+    responseReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    removedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    jobId?: StringNullableFilter<"NotificationHistory"> | string | null
+    createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
+    updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
+  }
+
   export type CompanyCreateWithoutDepartmentsInput = {
     id?: string
     name: string
@@ -81846,6 +82052,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutDepartmentsInput = {
@@ -81868,6 +82075,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutDepartmentsInput = {
@@ -81959,6 +82167,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutDepartmentsInput = {
@@ -81981,6 +82190,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithWhereUniqueWithoutDepartmentsInput = {
@@ -82154,6 +82364,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -82176,6 +82387,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -82481,6 +82693,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -82503,6 +82716,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithWhereUniqueWithoutFacilitiesInput = {
@@ -82836,12 +83050,14 @@ export namespace Prisma {
     jobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutNotificationHistoryInput
     message: NotificationMessageCreateNestedOneWithoutNotificationHistoryInput
   }
 
   export type NotificationHistoryUncheckedCreateWithoutPatientInput = {
     id?: string
     messageId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -83062,22 +83278,6 @@ export namespace Prisma {
   export type NotificationHistoryUpdateManyWithWhereWithoutPatientInput = {
     where: NotificationHistoryScalarWhereInput
     data: XOR<NotificationHistoryUpdateManyMutationInput, NotificationHistoryUncheckedUpdateManyWithoutPatientInput>
-  }
-
-  export type NotificationHistoryScalarWhereInput = {
-    AND?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
-    OR?: NotificationHistoryScalarWhereInput[]
-    NOT?: NotificationHistoryScalarWhereInput | NotificationHistoryScalarWhereInput[]
-    id?: StringFilter<"NotificationHistory"> | string
-    patientId?: StringFilter<"NotificationHistory"> | string
-    messageId?: StringFilter<"NotificationHistory"> | string
-    sentAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
-    response?: StringNullableFilter<"NotificationHistory"> | string | null
-    responseReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
-    removedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
-    jobId?: StringNullableFilter<"NotificationHistory"> | string | null
-    createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
-    updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
   }
 
   export type FacilityUpsertWithWhereUniqueWithoutPatientsInput = {
@@ -83348,6 +83548,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -83370,6 +83571,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -83741,6 +83943,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -83763,6 +83966,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -86030,6 +86234,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -86052,6 +86257,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -86090,6 +86296,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -86112,6 +86319,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type FacilityCreateWithoutShippingLabelsInput = {
@@ -87458,6 +87666,7 @@ export namespace Prisma {
     verifications?: AccountVerificationCreateNestedManyWithoutCompanyInput
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -87480,6 +87689,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -87565,6 +87775,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUpdateManyWithoutCompanyNestedInput
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -87587,6 +87798,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -87609,6 +87821,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -87631,6 +87844,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -87710,6 +87924,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -87732,6 +87947,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -87854,6 +88070,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -87876,6 +88093,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -88053,6 +88271,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -88075,6 +88294,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type ContactUpsertWithoutPatientsInput = {
@@ -88976,6 +89196,7 @@ export namespace Prisma {
     verifications?: AccountVerificationCreateNestedManyWithoutCompanyInput
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeEntitiesInput = {
@@ -88998,6 +89219,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedCreateNestedManyWithoutCompanyInput
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeEntitiesInput = {
@@ -89245,6 +89467,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUpdateManyWithoutCompanyNestedInput
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeEntitiesInput = {
@@ -89267,6 +89490,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedUpdateManyWithoutCompanyNestedInput
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type StripeEntityUpsertWithoutChildEntitiesInput = {
@@ -89761,11 +89985,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutNotificationHistoryInput
+    company: CompanyCreateNestedOneWithoutNotificationHistoryInput
   }
 
   export type NotificationHistoryUncheckedCreateWithoutMessageInput = {
     id?: string
     patientId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -89924,6 +90150,57 @@ export namespace Prisma {
     create: XOR<PatientCreateWithoutNotificationHistoryInput, PatientUncheckedCreateWithoutNotificationHistoryInput>
   }
 
+  export type CompanyCreateWithoutNotificationHistoryInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    verifications?: AccountVerificationCreateNestedManyWithoutCompanyInput
+    permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutNotificationHistoryInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    verifications?: AccountVerificationUncheckedCreateNestedManyWithoutCompanyInput
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutNotificationHistoryInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutNotificationHistoryInput, CompanyUncheckedCreateWithoutNotificationHistoryInput>
+  }
+
   export type NotificationMessageCreateWithoutNotificationHistoryInput = {
     id?: string
     sequence: number
@@ -90018,6 +90295,63 @@ export namespace Prisma {
     workbenches?: WorkbenchUncheckedUpdateManyWithoutPatientNestedInput
     companies?: CompanyPatientUncheckedUpdateManyWithoutPatientNestedInput
     facilities?: FacilityUncheckedUpdateManyWithoutPatientsNestedInput
+  }
+
+  export type CompanyUpsertWithoutNotificationHistoryInput = {
+    update: XOR<CompanyUpdateWithoutNotificationHistoryInput, CompanyUncheckedUpdateWithoutNotificationHistoryInput>
+    create: XOR<CompanyCreateWithoutNotificationHistoryInput, CompanyUncheckedCreateWithoutNotificationHistoryInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutNotificationHistoryInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutNotificationHistoryInput, CompanyUncheckedUpdateWithoutNotificationHistoryInput>
+  }
+
+  export type CompanyUpdateWithoutNotificationHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    verifications?: AccountVerificationUpdateManyWithoutCompanyNestedInput
+    permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutNotificationHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    verifications?: AccountVerificationUncheckedUpdateManyWithoutCompanyNestedInput
+    permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type NotificationMessageUpsertWithoutNotificationHistoryInput = {
@@ -90570,6 +90904,7 @@ export namespace Prisma {
     verifications?: AccountVerificationCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPermissionsInput = {
@@ -90592,6 +90927,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPermissionsInput = {
@@ -90677,6 +91013,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPermissionsInput = {
@@ -90699,6 +91036,7 @@ export namespace Prisma {
     verifications?: AccountVerificationUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserCreateWithoutAgreementsInput = {
@@ -90985,6 +91323,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutVerificationsInput = {
@@ -91007,6 +91346,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutVerificationsInput = {
@@ -91045,6 +91385,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutVerificationsInput = {
@@ -91067,6 +91408,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -91089,6 +91431,7 @@ export namespace Prisma {
     permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -91111,6 +91454,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -91149,6 +91493,7 @@ export namespace Prisma {
     permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -91171,6 +91516,7 @@ export namespace Prisma {
     permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DepartmentCreateManyCompanyInput = {
@@ -91307,6 +91653,19 @@ export namespace Prisma {
     active?: boolean
     entityParentId?: string | null
     stripeEntityType: $Enums.StripeEntityType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NotificationHistoryCreateManyCompanyInput = {
+    id?: string
+    patientId: string
+    messageId: string
+    sentAt?: Date | string | null
+    response?: string | null
+    responseReceivedAt?: Date | string | null
+    removedAt?: Date | string | null
+    jobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -91743,6 +92102,45 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     entityParentId?: NullableStringFieldUpdateOperationsInput | string | null
     stripeEntityType?: EnumStripeEntityTypeFieldUpdateOperationsInput | $Enums.StripeEntityType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationHistoryUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
+    message?: NotificationMessageUpdateOneRequiredWithoutNotificationHistoryNestedInput
+  }
+
+  export type NotificationHistoryUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    messageId?: StringFieldUpdateOperationsInput | string
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationHistoryUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    messageId?: StringFieldUpdateOperationsInput | string
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    response?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -92191,6 +92589,7 @@ export namespace Prisma {
   export type NotificationHistoryCreateManyPatientInput = {
     id?: string
     messageId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -92486,12 +92885,14 @@ export namespace Prisma {
     jobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutNotificationHistoryNestedInput
     message?: NotificationMessageUpdateOneRequiredWithoutNotificationHistoryNestedInput
   }
 
   export type NotificationHistoryUncheckedUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     messageId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -92504,6 +92905,7 @@ export namespace Prisma {
   export type NotificationHistoryUncheckedUpdateManyWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     messageId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95247,6 +95649,7 @@ export namespace Prisma {
   export type NotificationHistoryCreateManyMessageInput = {
     id?: string
     patientId: string
+    companyId: string
     sentAt?: Date | string | null
     response?: string | null
     responseReceivedAt?: Date | string | null
@@ -95266,11 +95669,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
+    company?: CompanyUpdateOneRequiredWithoutNotificationHistoryNestedInput
   }
 
   export type NotificationHistoryUncheckedUpdateWithoutMessageInput = {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95283,6 +95688,7 @@ export namespace Prisma {
   export type NotificationHistoryUncheckedUpdateManyWithoutMessageInput = {
     id?: StringFieldUpdateOperationsInput | string
     patientId?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     response?: NullableStringFieldUpdateOperationsInput | string | null
     responseReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

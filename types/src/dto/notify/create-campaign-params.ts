@@ -1,4 +1,4 @@
-import { CommunicationChannel, NotificationResponseType } from '../../../prisma/index';
+import { CommunicationChannel, NotificationResponseType, NotificationType } from '../../../prisma/index';
 
 export interface CreateCampaignParams {
   name: string;
@@ -8,7 +8,7 @@ export interface CreateCampaignParams {
   recurrencePattern?: string;
   active?: boolean;
   message: string;
-  isSurvey?: boolean;
+  type: NotificationType;
   responseType?: NotificationResponseType;
   limit?: number;
   channel: CommunicationChannel;
