@@ -33,6 +33,7 @@ export type * from './dto/company/DeleteCompanyInvitationsParams';
 export type * from './dto/company/FindCompaniesParams';
 export type * from './dto/company/FindCompanyInvitationsParams';
 export type * from './dto/company/UpdateCompanyInvitationsParams';
+export type * from './dto/email/EmailEvent';
 export type * from './dto/evaluation/ActionEvaluationParams';
 export type * from './dto/evaluation/CreateEvaluationByProductParams';
 export type * from './dto/evaluation/CreateEvaluationParams';

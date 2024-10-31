@@ -5,6 +5,7 @@ export interface CreateCompanyInvitationParams {
   contactType: ContactType;
   role?: CompanyRole | null;
   redirectUrl?: string;
+  notifyMessageId?: string;
 }
 
 export interface CreateCompanyInvitationsParams {
