@@ -631,7 +631,10 @@ export const SenderMessageStatus: {
   BOUNCED: 'BOUNCED',
   COMPLAINED: 'COMPLAINED',
   DELIVERED: 'DELIVERED',
-  SENT: 'SENT'
+  SENT: 'SENT',
+  UNKNOWN: 'UNKNOWN',
+  UNDELIVERED: 'UNDELIVERED',
+  FAILED: 'FAILED'
 };
 
 export type SenderMessageStatus = (typeof SenderMessageStatus)[keyof typeof SenderMessageStatus]
