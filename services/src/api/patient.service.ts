@@ -4,7 +4,8 @@ import type {
   PagedParams,
   PagedResponse,
   SearchPatientsParams,
-  UpdatePatientParams
+  UpdatePatientParams,
+  UpsertContactParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
@@ -60,6 +61,15 @@ export const searchPatients = async (params: SearchPatientsParams): Promise<Page
 export const updatePatient = async (patientId: string, params: UpdatePatientParams): Promise<PatientExtended> => {
   try {
     const response = await backendApi.patch(`patient/${patientId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const upsertContact = async (patientId: string, params: UpsertContactParams): Promise<PatientExtended> => {
+  try {
+    const response = await backendApi.patch(`patient/${patientId}/contact`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
