@@ -1,4 +1,5 @@
 import { AppId, HikeEnvironment } from '@hike/types';
+import { isLocalHost } from '@hike/utils';
 /**
  * Returns the app name for the given app.
  */
@@ -88,9 +89,10 @@ export const generateFrontendUrl = ({
   params?: Record<string, string | null | undefined>;
   environment: HikeEnvironment;
 }): string => {
-  const protocol = environment === 'development' ? 'http' : 'https';
+  const host = appHost(appId, environment);
+  const protocol = isLocalHost(host) ? 'http' : 'https';
   const slugPath = slug ? `/${slug}` : '';
-  const url = new URL(`${protocol}://${appHost(appId, environment)}${slugPath}${pathname}`);
+  const url = new URL(`${protocol}://${host}${slugPath}${pathname}`);
 
   Object.entries(params).forEach(([key, value]) => {
     if (value) {
