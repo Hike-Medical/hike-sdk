@@ -1,7 +1,7 @@
-import { AccountRecoveryType, ContactType } from '../../../prisma';
+import { AccountVerificationType, ContactType } from '../../../prisma';
 
 export interface AccountRecoveryParams {
-  type: AccountRecoveryType;
+  type: AccountVerificationType;
   contact: string;
   contactType: ContactType;
   redirectUrl?: string;
