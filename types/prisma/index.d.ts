@@ -668,12 +668,12 @@ export const AgreementType: {
 export type AgreementType = (typeof AgreementType)[keyof typeof AgreementType]
 
 
-export const AccountRecoveryType: {
+export const AccountVerificationType: {
   RESET_PASSWORD: 'RESET_PASSWORD',
   INVITATION: 'INVITATION'
 };
 
-export type AccountRecoveryType = (typeof AccountRecoveryType)[keyof typeof AccountRecoveryType]
+export type AccountVerificationType = (typeof AccountVerificationType)[keyof typeof AccountVerificationType]
 
 
 export const ContactType: {
@@ -833,9 +833,9 @@ export type AgreementType = $Enums.AgreementType
 
 export const AgreementType: typeof $Enums.AgreementType
 
-export type AccountRecoveryType = $Enums.AccountRecoveryType
+export type AccountVerificationType = $Enums.AccountVerificationType
 
-export const AccountRecoveryType: typeof $Enums.AccountRecoveryType
+export const AccountVerificationType: typeof $Enums.AccountVerificationType
 
 export type ContactType = $Enums.ContactType
 
@@ -58090,7 +58090,7 @@ export namespace Prisma {
 
   export type AccountVerificationMinAggregateOutputType = {
     token: string | null
-    type: $Enums.AccountRecoveryType | null
+    type: $Enums.AccountVerificationType | null
     contact: string | null
     contactType: $Enums.ContactType | null
     companyId: string | null
@@ -58102,7 +58102,7 @@ export namespace Prisma {
 
   export type AccountVerificationMaxAggregateOutputType = {
     token: string | null
-    type: $Enums.AccountRecoveryType | null
+    type: $Enums.AccountVerificationType | null
     contact: string | null
     contactType: $Enums.ContactType | null
     companyId: string | null
@@ -58237,7 +58237,7 @@ export namespace Prisma {
 
   export type AccountVerificationGroupByOutputType = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     companyId: string | null
@@ -58317,7 +58317,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       token: string
-      type: $Enums.AccountRecoveryType
+      type: $Enums.AccountVerificationType
       contact: string
       contactType: $Enums.ContactType
       companyId: string | null
@@ -58720,7 +58720,7 @@ export namespace Prisma {
    */ 
   interface AccountVerificationFieldRefs {
     readonly token: FieldRef<"AccountVerification", 'String'>
-    readonly type: FieldRef<"AccountVerification", 'AccountRecoveryType'>
+    readonly type: FieldRef<"AccountVerification", 'AccountVerificationType'>
     readonly contact: FieldRef<"AccountVerification", 'String'>
     readonly contactType: FieldRef<"AccountVerification", 'ContactType'>
     readonly companyId: FieldRef<"AccountVerification", 'String'>
@@ -63102,16 +63102,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'AccountRecoveryType'
+   * Reference to a field of type 'AccountVerificationType'
    */
-  export type EnumAccountRecoveryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountRecoveryType'>
+  export type EnumAccountVerificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountVerificationType'>
     
 
 
   /**
-   * Reference to a field of type 'AccountRecoveryType[]'
+   * Reference to a field of type 'AccountVerificationType[]'
    */
-  export type ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountRecoveryType[]'>
+  export type ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountVerificationType[]'>
     
 
 
@@ -67006,7 +67006,7 @@ export namespace Prisma {
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     token?: StringFilter<"AccountVerification"> | string
-    type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFilter<"AccountVerification"> | $Enums.AccountVerificationType
     contact?: StringFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
     companyId?: StringNullableFilter<"AccountVerification"> | string | null
@@ -67032,12 +67032,12 @@ export namespace Prisma {
 
   export type AccountVerificationWhereUniqueInput = Prisma.AtLeast<{
     token?: string
-    contact?: string
     contact_companyId?: AccountVerificationContactCompanyIdCompoundUniqueInput
     AND?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
     OR?: AccountVerificationWhereInput[]
     NOT?: AccountVerificationWhereInput | AccountVerificationWhereInput[]
-    type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFilter<"AccountVerification"> | $Enums.AccountVerificationType
+    contact?: StringFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
     companyId?: StringNullableFilter<"AccountVerification"> | string | null
     role?: EnumCompanyRoleNullableFilter<"AccountVerification"> | $Enums.CompanyRole | null
@@ -67045,7 +67045,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AccountVerification"> | Date | string
     updatedAt?: DateTimeFilter<"AccountVerification"> | Date | string
     company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
-  }, "token" | "contact" | "contact_companyId">
+  }, "token" | "contact_companyId">
 
   export type AccountVerificationOrderByWithAggregationInput = {
     token?: SortOrder
@@ -67067,7 +67067,7 @@ export namespace Prisma {
     OR?: AccountVerificationScalarWhereWithAggregatesInput[]
     NOT?: AccountVerificationScalarWhereWithAggregatesInput | AccountVerificationScalarWhereWithAggregatesInput[]
     token?: StringWithAggregatesFilter<"AccountVerification"> | string
-    type?: EnumAccountRecoveryTypeWithAggregatesFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeWithAggregatesFilter<"AccountVerification"> | $Enums.AccountVerificationType
     contact?: StringWithAggregatesFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeWithAggregatesFilter<"AccountVerification"> | $Enums.ContactType
     companyId?: StringNullableWithAggregatesFilter<"AccountVerification"> | string | null
@@ -71695,7 +71695,7 @@ export namespace Prisma {
 
   export type AccountVerificationCreateInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
@@ -71707,7 +71707,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedCreateInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     companyId?: string | null
@@ -71719,7 +71719,7 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
@@ -71731,7 +71731,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     companyId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71743,7 +71743,7 @@ export namespace Prisma {
 
   export type AccountVerificationCreateManyInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     companyId?: string | null
@@ -71755,7 +71755,7 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateManyMutationInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
@@ -71766,7 +71766,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateManyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     companyId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -75574,11 +75574,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumAccountRecoveryTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  export type EnumAccountVerificationTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountVerificationType | EnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountVerificationTypeFilter<$PrismaModel> | $Enums.AccountVerificationType
   }
 
   export type EnumContactTypeFilter<$PrismaModel = never> = {
@@ -75634,14 +75634,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  export type EnumAccountVerificationTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountVerificationType | EnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountVerificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountVerificationType
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
-    _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
+    _min?: NestedEnumAccountVerificationTypeFilter<$PrismaModel>
+    _max?: NestedEnumAccountVerificationTypeFilter<$PrismaModel>
   }
 
   export type EnumContactTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -80246,8 +80246,8 @@ export namespace Prisma {
     connect?: CompanyWhereUniqueInput
   }
 
-  export type EnumAccountRecoveryTypeFieldUpdateOperationsInput = {
-    set?: $Enums.AccountRecoveryType
+  export type EnumAccountVerificationTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AccountVerificationType
   }
 
   export type EnumContactTypeFieldUpdateOperationsInput = {
@@ -81243,11 +81243,11 @@ export namespace Prisma {
     _max?: NestedEnumAgreementTypeFilter<$PrismaModel>
   }
 
-  export type NestedEnumAccountRecoveryTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  export type NestedEnumAccountVerificationTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountVerificationType | EnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountVerificationTypeFilter<$PrismaModel> | $Enums.AccountVerificationType
   }
 
   export type NestedEnumContactTypeFilter<$PrismaModel = never> = {
@@ -81257,14 +81257,14 @@ export namespace Prisma {
     not?: NestedEnumContactTypeFilter<$PrismaModel> | $Enums.ContactType
   }
 
-  export type NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AccountRecoveryType | EnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AccountRecoveryType[] | ListEnumAccountRecoveryTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAccountRecoveryTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountRecoveryType
+  export type NestedEnumAccountVerificationTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AccountVerificationType | EnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AccountVerificationType[] | ListEnumAccountVerificationTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAccountVerificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.AccountVerificationType
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
-    _max?: NestedEnumAccountRecoveryTypeFilter<$PrismaModel>
+    _min?: NestedEnumAccountVerificationTypeFilter<$PrismaModel>
+    _max?: NestedEnumAccountVerificationTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumContactTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -81648,7 +81648,7 @@ export namespace Prisma {
 
   export type AccountVerificationCreateWithoutCompanyInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
@@ -81659,7 +81659,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedCreateWithoutCompanyInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
@@ -82083,7 +82083,7 @@ export namespace Prisma {
     OR?: AccountVerificationScalarWhereInput[]
     NOT?: AccountVerificationScalarWhereInput | AccountVerificationScalarWhereInput[]
     token?: StringFilter<"AccountVerification"> | string
-    type?: EnumAccountRecoveryTypeFilter<"AccountVerification"> | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFilter<"AccountVerification"> | $Enums.AccountVerificationType
     contact?: StringFilter<"AccountVerification"> | string
     contactType?: EnumContactTypeFilter<"AccountVerification"> | $Enums.ContactType
     companyId?: StringNullableFilter<"AccountVerification"> | string | null
@@ -91822,7 +91822,7 @@ export namespace Prisma {
 
   export type AccountVerificationCreateManyCompanyInput = {
     token: string
-    type: $Enums.AccountRecoveryType
+    type: $Enums.AccountVerificationType
     contact: string
     contactType: $Enums.ContactType
     role?: $Enums.CompanyRole | null
@@ -92175,7 +92175,7 @@ export namespace Prisma {
 
   export type AccountVerificationUpdateWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
@@ -92186,7 +92186,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
@@ -92197,7 +92197,7 @@ export namespace Prisma {
 
   export type AccountVerificationUncheckedUpdateManyWithoutCompanyInput = {
     token?: StringFieldUpdateOperationsInput | string
-    type?: EnumAccountRecoveryTypeFieldUpdateOperationsInput | $Enums.AccountRecoveryType
+    type?: EnumAccountVerificationTypeFieldUpdateOperationsInput | $Enums.AccountVerificationType
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: EnumContactTypeFieldUpdateOperationsInput | $Enums.ContactType
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null

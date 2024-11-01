@@ -14,6 +14,7 @@ export interface PagedResponse<T> {
 export interface PaginationState {
   pageIndex: number;
   pageSize: number;
+  limit: number;
 }
 
 /**
