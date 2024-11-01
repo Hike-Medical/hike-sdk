@@ -1,6 +1,6 @@
-import type { CompanyPatient, Evaluation, Patient } from '../../prisma';
+import type { CompanyPatient, Contact, Evaluation, Patient } from '../../prisma';
 
 export type PatientExtended = Patient & {
-  companies?: CompanyPatient[];
+  companies?: (CompanyPatient & { contact?: Contact | null })[];
   evaluations?: Pick<Evaluation, 'id' | 'isDiabetic' | 'isVeteran' | 'startedAt' | 'cancelledAt' | 'submittedAt'>[];
 };

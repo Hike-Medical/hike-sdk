@@ -110,6 +110,7 @@ export * from './hooks/patients/useCreatePatient';
 export * from './hooks/patients/usePatientById';
 export * from './hooks/patients/usePatients';
 export * from './hooks/patients/usePatientsByMissingExternalId';
+export * from './hooks/patients/useUpsertContact';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
 export * from './hooks/roster/useGenerateUploadLink';
