@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 interface HikeMiddlewareOptions {
   keyOrSecret: string;
-  config: (request: NextRequest) => Pick<HikeConfig, 'apiHosts' | 'appHost' | 'appEnv'>;
+  config: (request: NextRequest) => Pick<HikeConfig, 'appEnv' | 'appId'>;
   callback?: {
     beforeAuth?: (request: NextRequest) => Promise<void> | void;
     afterAuth?: (
@@ -35,6 +35,9 @@ export const withHikeMiddleware = ({
   allowedPaths
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
+    // Set up services such as backend API
+    configureServices(config(request));
+
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
     const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
@@ -55,9 +58,6 @@ export const withHikeMiddleware = ({
     }
 
     try {
-      // Set up services such as backend API
-      configureServices(config(request));
-
       // Execute pre-authentication hook; may throw error to prevent access
       await callback?.beforeAuth?.(request);
 
