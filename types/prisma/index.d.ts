@@ -591,6 +591,7 @@ export type AgreementStatus = (typeof AgreementStatus)[keyof typeof AgreementSta
 export const AgreementType: {
   CLINICAL_TC: 'CLINICAL_TC',
   CONSUMER_TC: 'CONSUMER_TC',
+  ADMIN_TC: 'ADMIN_TC',
   SIMPLR_TC: 'SIMPLR_TC',
   ENABLE_SMS: 'ENABLE_SMS'
 };
