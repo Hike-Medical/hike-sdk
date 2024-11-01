@@ -1,3 +1,5 @@
+import { AppId } from './AppId';
+
 /**
  * Represents the configuration options for the Hike SDK.
  */
@@ -41,7 +43,7 @@ export interface HikeConfig {
   /**
    * The app associated with the app.
    */
-  readonly appId?: string;
+  readonly appId?: AppId;
 
   /**
    * The version of the app associated with the app.

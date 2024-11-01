@@ -7,6 +7,7 @@ export const Constants = {
   DEFAULT_QUERY_LIMIT: 1000,
   DEFAULT_PAGINATION: {
     pageIndex: 0,
-    pageSize: 25
+    pageSize: 25,
+    limit: 10
   } satisfies PaginationState
 } as const;

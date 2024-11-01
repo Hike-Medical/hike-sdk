@@ -65,3 +65,12 @@ export const updatePatient = async (patientId: string, params: UpdatePatientPara
     throw toHikeError(error);
   }
 };
+
+export const approvePatient = async (patientId: string) => {
+  try {
+    const response = await backendApi.patch(`patient/approve/${patientId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

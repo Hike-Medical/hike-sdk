@@ -36,7 +36,7 @@ export const configureServices = (config: HikeConfig) => {
   const { apiKey: _apiKey, cookies: _cookies, ...safeConfig } = config;
 
   // Return safe config to initialize client-side if needed
-  return safeConfig;
+  return safeConfig satisfies Omit<HikeConfig, 'apiKey' | 'cookies'>;
 };
 
 /**
