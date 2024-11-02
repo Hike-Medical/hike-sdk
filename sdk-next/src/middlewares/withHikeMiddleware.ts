@@ -23,8 +23,9 @@ interface HikeMiddlewareOptions {
     ) => Promise<void> | void;
     onResponse?: (request: NextRequest, session: AuthUser | null) => NextResponse<unknown>;
   };
-  restrictedRoles?: CompanyRole[];
+  loginPath?: (session: AuthUser | null) => string | null;
   allowedPaths?: string[];
+  restrictedRoles?: CompanyRole[];
 }
 
 export const withHikeMiddleware = ({
@@ -32,16 +33,16 @@ export const withHikeMiddleware = ({
   config,
   callback,
   restrictedRoles,
-  allowedPaths
+  allowedPaths,
+  loginPath
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
-    // Set up services such as backend API
-    configureServices(config(request));
-
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
     const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
-    const loginPath = slug ? `/${slug}/login` : '/login';
+
+    // Set up services such as backend API
+    configureServices(config(request));
 
     const onNextResponse = (session: AuthUser | null = null) =>
       callback?.onResponse?.(request, session) ?? NextResponse.next();
@@ -95,9 +96,26 @@ export const withHikeMiddleware = ({
       console.error(error);
     }
 
+    // Determine login path
+    const login = await (async () => {
+      const path =
+        loginPath?.(
+          await (async () => {
+            try {
+              const token = extractToken(request);
+              return await fetchSession(token);
+            } catch {
+              return null;
+            }
+          })()
+        ) || '/login';
+
+      return slug ? `/${slug}${path}` : path;
+    })();
+
     // Default redirection to login
-    if (!pathname.startsWith(loginPath) && pathname !== '/') {
-      const loginUrl = new URL(loginPath, request.url);
+    if (!pathname.startsWith(login) && pathname !== '/') {
+      const loginUrl = new URL(login, request.url);
       loginUrl.searchParams.set('redirect', request.url);
       return NextResponse.redirect(loginUrl);
     }

@@ -4,8 +4,8 @@ import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
 
 export const CompanyProvider = async ({
-  config,
   slug,
+  config,
   children
 }: {
   slug: string;
