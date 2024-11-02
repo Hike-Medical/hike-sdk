@@ -5,12 +5,13 @@ import { backendApi } from './utils/backendApi';
 /**
  * Provisions the services module.
  */
-export const configureServices = (config: HikeConfig) => {
-  const currentAppUrl = config.appId && config.appEnv ? appUrl(config.appId, config.appEnv) : null;
-  const currentApiUrl = config.apiUrl || (config.appId && config.appEnv ? apiUrl(config.appId, config.appEnv) : null);
+export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey' | 'cookies'> => {
+  const baseAppUrl = config.appId && config.appEnv ? appUrl(config.appId, config.appEnv) : null;
+  const baseApiUrl = config.apiUrl || (config.appId && config.appEnv ? apiUrl(config.appId, config.appEnv) : null);
+  const versionedApiUrl = baseApiUrl && `${baseApiUrl}/v2`;
 
   backendApi.defaults.headers.common['x-api-key'] ??= config.apiKey;
-  backendApi.defaults.headers.common['x-app-url'] ??= currentAppUrl;
+  backendApi.defaults.headers.common['x-app-url'] ??= baseAppUrl;
   backendApi.defaults.headers.common['x-app-env'] ??= config.appEnv;
   backendApi.defaults.headers.common['x-app-id'] ??= config.appId;
   backendApi.defaults.headers.common['x-app-version'] ??= config.appVersion;
@@ -18,8 +19,8 @@ export const configureServices = (config: HikeConfig) => {
   backendApi.defaults.headers.common['x-time-zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   // Set the base URL for backend API requests
-  if (currentApiUrl && !backendApi.defaults.baseURL) {
-    backendApi.defaults.baseURL = `${currentApiUrl}/v2`;
+  if (versionedApiUrl && versionedApiUrl !== backendApi.defaults.baseURL) {
+    backendApi.defaults.baseURL = versionedApiUrl;
   }
 
   // Set the cookie for server-side requests
@@ -38,7 +39,7 @@ export const configureServices = (config: HikeConfig) => {
   const { apiKey: _apiKey, cookies: _cookies, ...safeConfig } = config;
 
   // Return safe config to initialize client-side if needed
-  return safeConfig satisfies Omit<HikeConfig, 'apiKey' | 'cookies'>;
+  return safeConfig;
 };
 
 /**

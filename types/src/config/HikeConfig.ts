@@ -8,7 +8,7 @@ export interface HikeConfig {
   /**
    * The environment associated with the app.
    */
-  readonly appEnv?: HikeEnvironment;
+  readonly appEnv: HikeEnvironment;
 
   /**
    * The url associated with API requests.
@@ -25,7 +25,7 @@ export interface HikeConfig {
   /**
    * The app associated with the app.
    */
-  readonly appId?: AppId;
+  readonly appId: AppId;
 
   /**
    * The version of the app associated with the app.
