@@ -1,5 +1,4 @@
 import { AppId, HikeEnvironment } from '@hike/types';
-import { isLocalHost } from '@hike/utils';
 /**
  * Returns the app name for the given app.
  */
@@ -13,62 +12,62 @@ export const appName = (appId: AppId): string => {
 };
 
 /**
- * Returns the API host for the given app and environment.
+ * Returns the API url for the given app and environment.
  */
-export const apiHost = (appId: AppId, environment: HikeEnvironment) => {
+export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
   if (environment === 'development') {
-    return 'localhost:8000';
+    return 'http://localhost:8000';
   }
 
   switch (appId) {
     case '@hike/insoles-web':
       switch (environment) {
         case 'staging':
-          return 'api-staging.insoles.ai';
+          return 'https://api-staging.insoles.ai';
         default:
-          return 'api.insoles.ai';
+          return 'https://api.insoles.ai';
       }
     default:
       switch (environment) {
         case 'staging':
-          return 'api-staging.hike-medical-server.com';
+          return 'https://api-staging.hike-medical-server.com';
         default:
-          return 'api.hikemedical.com';
+          return 'https://api.hikemedical.com';
       }
   }
 };
 
 /**
- * Returns the app host for the given app and environment.
+ * Returns the app url for the given app and environment.
  */
-export const appHost = (appId: AppId, environment: HikeEnvironment) => {
+export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
   switch (appId) {
     case '@hike/insoles-web':
       switch (environment) {
         case 'development':
-          return 'localhost:3001';
+          return 'http://localhost:3001';
         case 'staging':
-          return 'app-staging.insoles.ai';
+          return 'https://app-staging.insoles.ai';
         default:
-          return 'app.insoles.ai';
+          return 'https://app.insoles.ai';
       }
     case '@hike/consumer-web':
       switch (environment) {
         case 'development':
-          return 'localhost:3002';
+          return 'http://localhost:3002';
         case 'staging':
-          return 'appv2-staging.hike-medical-server.com';
+          return 'https://appv2-staging.hike-medical-server.com';
         default:
-          return 'appv2.hikemedical.com';
+          return 'https://appv2.hikemedical.com';
       }
     default:
       switch (environment) {
         case 'development':
-          return 'localhost:8001';
+          return 'http://localhost:8001';
         case 'staging':
-          return 'admin-staging.hike-medical-server.com';
+          return 'https://admin-staging.hike-medical-server.com';
         default:
-          return 'admin.hikemedical.com';
+          return 'https://admin.hikemedical.com';
       }
   }
 };
@@ -89,10 +88,9 @@ export const generateFrontendUrl = ({
   params?: Record<string, string | null | undefined>;
   environment: HikeEnvironment;
 }): string => {
-  const host = appHost(appId, environment);
-  const protocol = isLocalHost(host) ? 'http' : 'https';
+  const baseUrl = appUrl(appId, environment);
   const slugPath = slug ? `/${slug}` : '';
-  const url = new URL(`${protocol}://${host}${slugPath}${pathname}`);
+  const url = new URL(`${baseUrl}${slugPath}${pathname}`);
 
   Object.entries(params).forEach(([key, value]) => {
     if (value) {

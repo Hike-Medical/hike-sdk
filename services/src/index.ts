@@ -151,4 +151,3 @@ export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useUpdateRenderType';
 export * from './utils/appUtils';
 export * from './utils/backendApi';
-export * from './utils/configureBaseUrl';
