@@ -36,13 +36,25 @@ export class StripeService {
     return nextBillingDate.unix();
   }
 
-  async is100PercentOffCoupon(couponIds: string[]) {
+  async getFinalPrice(couponIds: string[], priceId: string): Promise<{ original: number; discounted: number }> {
     const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
-    if (bestCoupon[0]?.coupon) {
-      const coupon = await this.stripe.coupons.retrieve(bestCoupon[0]?.coupon);
-      return coupon.amount_off === 100;
+    const couponId = bestCoupon[0]?.coupon;
+
+    const coupon = couponId ? await this.stripe.coupons.retrieve(couponId) : null;
+
+    const price = await this.stripe.prices.retrieve(priceId);
+    let finalPrice = price.unit_amount || 0;
+
+    if (coupon) {
+      if (coupon.percent_off) {
+        finalPrice -= finalPrice * (coupon.percent_off / 100);
+      }
+      if (coupon.amount_off) {
+        finalPrice -= coupon.amount_off;
+      }
     }
-    return false;
+
+    return { original: price.unit_amount || 0, discounted: Math.max(0, finalPrice) };
   }
 
   async createSubscription(
