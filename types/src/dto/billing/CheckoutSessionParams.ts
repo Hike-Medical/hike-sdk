@@ -1,4 +1,4 @@
 export interface CheckoutSessionParams {
-  successUrl?: string;
-  cancelUrl?: string;
+  successUrl: string;
+  cancelUrl: string;
 }
