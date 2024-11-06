@@ -9,4 +9,5 @@ export interface AssetAugmentMediaData {
   boundingBox?: { Box?: [number, number, number, number]; Confidence?: number }[];
   painMapCondition?: string;
   painMapOption?: string;
+  viewpoints?: Record<string, number>;
 }
