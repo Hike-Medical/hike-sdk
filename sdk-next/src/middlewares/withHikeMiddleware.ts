@@ -39,16 +39,19 @@ export const withHikeMiddleware = ({
   async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
-    const slug = pathParts[1] || null;
+    const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
 
     // Set up services such as backend API
     configureServices(config(request));
 
     const onNextResponse = (session: AuthUser | null = null) =>
       callback?.onResponse?.(request, session) ?? NextResponse.next();
-
+    const allowedPathLogins = [...(allowedPaths || []), '/login'];
+    if (slug) {
+      allowedPathLogins.push(`/${slug}/login`);
+    }
     // Allow requests to paths that are not protected
-    if (allowedPaths?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))) {
+    if (allowedPathLogins?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))) {
       try {
         const token = extractToken(request);
         const session = await fetchSession(token);
@@ -97,24 +100,21 @@ export const withHikeMiddleware = ({
     }
 
     // Determine login path
-    const login =
-      slug === 'login'
-        ? '/'
-        : await (async () => {
-            const path =
-              loginPath?.(
-                await (async () => {
-                  try {
-                    const token = extractToken(request);
-                    return await fetchSession(token);
-                  } catch {
-                    return null;
-                  }
-                })()
-              ) || '/login';
+    const login = await (async () => {
+      const path =
+        loginPath?.(
+          await (async () => {
+            try {
+              const token = extractToken(request);
+              return await fetchSession(token);
+            } catch {
+              return null;
+            }
+          })()
+        ) || '/login';
 
-            return slug ? `/${slug}${path}` : path;
-          })();
+      return slug ? `/${slug}${path}` : path;
+    })();
 
     // Default redirection to login
     if (!pathname.startsWith(login) && pathname !== '/') {
