@@ -382,7 +382,7 @@ export type AssetStatus = (typeof AssetStatus)[keyof typeof AssetStatus]
 export const AssetAugmentType: {
   ANCHOR_FRAMES: 'ANCHOR_FRAMES',
   PATHOLOGY_DETECTION: 'PATHOLOGY_DETECTION',
-  VIEWPOINT: 'VIEWPOINT',
+  VIEWPOINT: 'VIEWPOINT'
 };
 
 export type AssetAugmentType = (typeof AssetAugmentType)[keyof typeof AssetAugmentType]
@@ -41166,6 +41166,7 @@ export namespace Prisma {
     userId: string | null
     companyId: string | null
     role: $Enums.CompanyRole | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -41174,6 +41175,7 @@ export namespace Prisma {
     userId: string | null
     companyId: string | null
     role: $Enums.CompanyRole | null
+    active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -41182,6 +41184,7 @@ export namespace Prisma {
     userId: number
     companyId: number
     role: number
+    active: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -41192,6 +41195,7 @@ export namespace Prisma {
     userId?: true
     companyId?: true
     role?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -41200,6 +41204,7 @@ export namespace Prisma {
     userId?: true
     companyId?: true
     role?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -41208,6 +41213,7 @@ export namespace Prisma {
     userId?: true
     companyId?: true
     role?: true
+    active?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -41289,6 +41295,7 @@ export namespace Prisma {
     userId: string
     companyId: string
     role: $Enums.CompanyRole | null
+    active: boolean
     createdAt: Date
     updatedAt: Date
     _count: CompanyUserCountAggregateOutputType | null
@@ -41314,6 +41321,7 @@ export namespace Prisma {
     userId?: boolean
     companyId?: boolean
     role?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -41324,6 +41332,7 @@ export namespace Prisma {
     userId?: boolean
     companyId?: boolean
     role?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -41334,11 +41343,12 @@ export namespace Prisma {
     userId?: boolean
     companyId?: boolean
     role?: boolean
+    active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CompanyUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "companyId" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["companyUser"]>
+  export type CompanyUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "companyId" | "role" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["companyUser"]>
   export type CompanyUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -41358,6 +41368,7 @@ export namespace Prisma {
       userId: string
       companyId: string
       role: $Enums.CompanyRole | null
+      active: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["companyUser"]>
@@ -41758,6 +41769,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"CompanyUser", 'String'>
     readonly companyId: FieldRef<"CompanyUser", 'String'>
     readonly role: FieldRef<"CompanyUser", 'CompanyRole'>
+    readonly active: FieldRef<"CompanyUser", 'Boolean'>
     readonly createdAt: FieldRef<"CompanyUser", 'DateTime'>
     readonly updatedAt: FieldRef<"CompanyUser", 'DateTime'>
   }
@@ -57178,6 +57190,7 @@ export namespace Prisma {
     userId: 'userId',
     companyId: 'companyId',
     role: 'role',
+    active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -60644,6 +60657,7 @@ export namespace Prisma {
     userId?: StringFilter<"CompanyUser"> | string
     companyId?: StringFilter<"CompanyUser"> | string
     role?: EnumCompanyRoleNullableFilter<"CompanyUser"> | $Enums.CompanyRole | null
+    active?: BoolFilter<"CompanyUser"> | boolean
     createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -60654,6 +60668,7 @@ export namespace Prisma {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrderInput | SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
@@ -60668,6 +60683,7 @@ export namespace Prisma {
     userId?: StringFilter<"CompanyUser"> | string
     companyId?: StringFilter<"CompanyUser"> | string
     role?: EnumCompanyRoleNullableFilter<"CompanyUser"> | $Enums.CompanyRole | null
+    active?: BoolFilter<"CompanyUser"> | boolean
     createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
@@ -60678,6 +60694,7 @@ export namespace Prisma {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrderInput | SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CompanyUserCountOrderByAggregateInput
@@ -60692,6 +60709,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"CompanyUser"> | string
     companyId?: StringWithAggregatesFilter<"CompanyUser"> | string
     role?: EnumCompanyRoleNullableWithAggregatesFilter<"CompanyUser"> | $Enums.CompanyRole | null
+    active?: BoolWithAggregatesFilter<"CompanyUser"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"CompanyUser"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CompanyUser"> | Date | string
   }
@@ -64855,6 +64873,7 @@ export namespace Prisma {
 
   export type CompanyUserCreateInput = {
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutUsersInput
@@ -64865,12 +64884,14 @@ export namespace Prisma {
     userId: string
     companyId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CompanyUserUpdateInput = {
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
@@ -64881,6 +64902,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -64889,12 +64911,14 @@ export namespace Prisma {
     userId: string
     companyId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CompanyUserUpdateManyMutationInput = {
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -64903,6 +64927,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     companyId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -68672,6 +68697,7 @@ export namespace Prisma {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -68680,6 +68706,7 @@ export namespace Prisma {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -68688,6 +68715,7 @@ export namespace Prisma {
     userId?: SortOrder
     companyId?: SortOrder
     role?: SortOrder
+    active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -74954,6 +74982,7 @@ export namespace Prisma {
 
   export type CompanyUserCreateWithoutCompanyInput = {
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCompaniesInput
@@ -74962,6 +74991,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedCreateWithoutCompanyInput = {
     userId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -75343,6 +75373,7 @@ export namespace Prisma {
     userId?: StringFilter<"CompanyUser"> | string
     companyId?: StringFilter<"CompanyUser"> | string
     role?: EnumCompanyRoleNullableFilter<"CompanyUser"> | $Enums.CompanyRole | null
+    active?: BoolFilter<"CompanyUser"> | boolean
     createdAt?: DateTimeFilter<"CompanyUser"> | Date | string
     updatedAt?: DateTimeFilter<"CompanyUser"> | Date | string
   }
@@ -83224,6 +83255,7 @@ export namespace Prisma {
 
   export type CompanyUserCreateWithoutUserInput = {
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutUsersInput
@@ -83232,6 +83264,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedCreateWithoutUserInput = {
     companyId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -84321,6 +84354,7 @@ export namespace Prisma {
   export type CompanyUserCreateManyCompanyInput = {
     userId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -84614,6 +84648,7 @@ export namespace Prisma {
 
   export type CompanyUserUpdateWithoutCompanyInput = {
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCompaniesNestedInput
@@ -84622,6 +84657,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedUpdateWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -84629,6 +84665,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedUpdateManyWithoutCompanyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88187,6 +88224,7 @@ export namespace Prisma {
   export type CompanyUserCreateManyUserInput = {
     companyId: string
     role?: $Enums.CompanyRole | null
+    active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -88264,6 +88302,7 @@ export namespace Prisma {
 
   export type CompanyUserUpdateWithoutUserInput = {
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutUsersNestedInput
@@ -88272,6 +88311,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedUpdateWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88279,6 +88319,7 @@ export namespace Prisma {
   export type CompanyUserUncheckedUpdateManyWithoutUserInput = {
     companyId?: StringFieldUpdateOperationsInput | string
     role?: NullableEnumCompanyRoleFieldUpdateOperationsInput | $Enums.CompanyRole | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
