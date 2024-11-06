@@ -50,7 +50,7 @@ export const withHikeMiddleware = ({
 
     // Allow requests to paths that are not protected
     if (
-      `${slugPath}/login` ||
+      pathname.startsWith(`${slugPath}/login`) ||
       allowedPaths?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))
     ) {
       try {
