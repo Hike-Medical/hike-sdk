@@ -40,18 +40,19 @@ export const withHikeMiddleware = ({
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
     const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
+    const slugPath = slug ? `/${slug}` : '';
 
     // Set up services such as backend API
     configureServices(config(request));
 
     const onNextResponse = (session: AuthUser | null = null) =>
       callback?.onResponse?.(request, session) ?? NextResponse.next();
-    const allowedPathLogins = [...(allowedPaths || []), '/login'];
-    if (slug) {
-      allowedPathLogins.push(`/${slug}/login`);
-    }
+
     // Allow requests to paths that are not protected
-    if (allowedPathLogins?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))) {
+    if (
+      `${slugPath}/login` ||
+      allowedPaths?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))
+    ) {
       try {
         const token = extractToken(request);
         const session = await fetchSession(token);
@@ -113,7 +114,7 @@ export const withHikeMiddleware = ({
           })()
         ) || '/login';
 
-      return slug ? `/${slug}${path}` : path;
+      return `${slugPath}${path}`;
     })();
 
     // Default redirection to login
