@@ -39,7 +39,7 @@ export const withHikeMiddleware = ({
   async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
-    const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
+    const slug = pathParts[1] || null;
 
     // Set up services such as backend API
     configureServices(config(request));
@@ -97,21 +97,24 @@ export const withHikeMiddleware = ({
     }
 
     // Determine login path
-    const login = await (async () => {
-      const path =
-        loginPath?.(
-          await (async () => {
-            try {
-              const token = extractToken(request);
-              return await fetchSession(token);
-            } catch {
-              return null;
-            }
-          })()
-        ) || '/login';
+    const login =
+      slug === 'login'
+        ? '/'
+        : await (async () => {
+            const path =
+              loginPath?.(
+                await (async () => {
+                  try {
+                    const token = extractToken(request);
+                    return await fetchSession(token);
+                  } catch {
+                    return null;
+                  }
+                })()
+              ) || '/login';
 
-      return slug ? `/${slug}${path}` : path;
-    })();
+            return slug ? `/${slug}${path}` : path;
+          })();
 
     // Default redirection to login
     if (!pathname.startsWith(login) && pathname !== '/') {
