@@ -590,7 +590,8 @@ export class StripeService {
     successUrl: string,
     cancelUrl: string,
     couponIds: string[],
-    externalId?: string
+    externalId?: string,
+    productId?: string
   ): Promise<Stripe.Checkout.Session> {
     try {
       const sessionParams: Stripe.Checkout.SessionCreateParams = {
@@ -625,7 +626,8 @@ export class StripeService {
         }),
         metadata: {
           companyId,
-          ...(externalId && { externalId })
+          ...(externalId && { externalId }),
+          ...(productId && { productId })
         },
         invoice_creation: {
           enabled: true,
@@ -633,7 +635,8 @@ export class StripeService {
             description: `Checkout session invoice: ${externalId}`,
             metadata: {
               companyId,
-              ...(externalId && { externalId })
+              ...(externalId && { externalId }),
+              ...(productId && { productId })
             }
           }
         }
