@@ -105,6 +105,7 @@ export * from './hooks/orders/useOrdersByLabelId';
 export * from './hooks/orders/useOrdersByType';
 export * from './hooks/orders/useOrdersStats';
 export * from './hooks/orders/useOrderUpdate';
+export * from './hooks/orders/useSubmitConsumerOrder';
 export * from './hooks/orders/useSubmitOrder';
 export * from './hooks/patients/useCreatePatient';
 export * from './hooks/patients/usePatientById';

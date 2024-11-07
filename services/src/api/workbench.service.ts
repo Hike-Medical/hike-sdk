@@ -50,6 +50,16 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
     throw toHikeError(error);
   }
 };
+
+export const submitConsumerOrder = async (workbenchId: string): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const updateRenderType = async (
   workbenchId: string,
   body: { renderType: number },
