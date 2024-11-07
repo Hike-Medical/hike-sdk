@@ -1,14 +1,15 @@
 import {
   AcceptCompanyInvitationParams,
+  AccountVerification,
   AddCompanyParams,
   Company,
   CompanyExtended,
-  CompanyInvitation,
   CreateCompanyInvitationsParams,
   DeleteCompanyInvitationsParams,
   FindCompaniesParams,
   FindCompanyInvitationsParams,
   PagedResponse,
+  SafeCompany,
   UpdateCompanyInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
@@ -52,7 +53,7 @@ export const addCompany = async (params: AddCompanyParams): Promise<CompanyExten
 
 export const findInvitations = async (
   params?: FindCompanyInvitationsParams
-): Promise<PagedResponse<Omit<CompanyInvitation, 'token'>[]>> => {
+): Promise<PagedResponse<Omit<AccountVerification, 'token'>[]>> => {
   try {
     const response = await backendApi.get('company/invite', { params });
     return response.data;
@@ -63,7 +64,7 @@ export const findInvitations = async (
 
 export const createInvitations = async (
   params: CreateCompanyInvitationsParams
-): Promise<Omit<CompanyInvitation, 'token'>[]> => {
+): Promise<Omit<AccountVerification, 'token'>[]> => {
   try {
     const response = await backendApi.post('company/invite', params);
     return response.data;
@@ -74,7 +75,7 @@ export const createInvitations = async (
 
 export const updateInvitations = async (
   params: UpdateCompanyInvitationsParams
-): Promise<Omit<CompanyInvitation, 'token'>[]> => {
+): Promise<Omit<AccountVerification, 'token'>[]> => {
   try {
     const response = await backendApi.patch('company/invite', params);
     return response.data;
@@ -92,7 +93,7 @@ export const revokeInvitations = async (params: DeleteCompanyInvitationsParams):
   }
 };
 
-export const verifyInvitation = async (token: string): Promise<Omit<CompanyInvitation, 'token'>> => {
+export const verifyInvitation = async (token: string): Promise<Omit<AccountVerification, 'token'>> => {
   try {
     const response = await backendApi.get(`auth/company/invite/${token}`);
     return response.data;
@@ -108,4 +109,14 @@ export const acceptInvitation = async (params: AcceptCompanyInvitationParams) =>
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const findCompanyById = async (companyId: string): Promise<SafeCompany> => {
+  const response = await backendApi.get(`auth/company/${companyId}`);
+  return response.data;
+};
+
+export const findCompanyBySlug = async (slug: string): Promise<SafeCompany> => {
+  const response = await backendApi.get(`auth/company/slug/${slug}`);
+  return response.data;
 };

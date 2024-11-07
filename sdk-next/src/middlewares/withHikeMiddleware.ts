@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 interface HikeMiddlewareOptions {
   keyOrSecret: string;
-  config: (request: NextRequest) => Pick<HikeConfig, 'apiHosts' | 'appHost' | 'appEnv'>;
+  config: (request: NextRequest) => Pick<HikeConfig, 'appEnv' | 'appId'>;
   callback?: {
     beforeAuth?: (request: NextRequest) => Promise<void> | void;
     afterAuth?: (
@@ -23,20 +23,46 @@ interface HikeMiddlewareOptions {
     ) => Promise<void> | void;
     onResponse?: (request: NextRequest, session: AuthUser | null) => NextResponse<unknown>;
   };
+  loginPath?: (session: AuthUser | null) => string | null;
+  allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
 }
 
-export const withHikeMiddleware = ({ keyOrSecret, config, callback, restrictedRoles }: HikeMiddlewareOptions) =>
+export const withHikeMiddleware = ({
+  keyOrSecret,
+  config,
+  callback,
+  restrictedRoles,
+  allowedPaths,
+  loginPath
+}: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
     const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
-    const loginPath = slug ? `/${slug}/login` : '/login';
+    const slugPath = slug ? `/${slug}` : '';
+
+    // Set up services such as backend API
+    configureServices(config(request));
+
+    const onNextResponse = (session: AuthUser | null = null) =>
+      callback?.onResponse?.(request, session) ?? NextResponse.next();
+
+    // Allow requests to paths that are not protected
+    if (
+      pathname.startsWith(`${slugPath}/login`) ||
+      allowedPaths?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))
+    ) {
+      try {
+        const token = extractToken(request);
+        const session = await fetchSession(token);
+        return onNextResponse(session);
+      } catch {
+        return onNextResponse();
+      }
+    }
 
     try {
-      // Set up services such as backend API
-      configureServices(config(request));
-
       // Execute pre-authentication hook; may throw error to prevent access
       await callback?.beforeAuth?.(request);
 
@@ -68,18 +94,35 @@ export const withHikeMiddleware = ({ keyOrSecret, config, callback, restrictedRo
         // Execute post-authentication hook; may throw error to prevent access
         await callback?.afterAuth?.(session, companyId, isAdmin, request);
 
-        return callback?.onResponse?.(request, session) ?? NextResponse.next();
+        return onNextResponse(session);
       }
     } catch (error) {
       console.error(error);
     }
 
+    // Determine login path
+    const login = await (async () => {
+      const path =
+        loginPath?.(
+          await (async () => {
+            try {
+              const token = extractToken(request);
+              return await fetchSession(token);
+            } catch {
+              return null;
+            }
+          })()
+        ) || '/login';
+
+      return `${slugPath}${path}`;
+    })();
+
     // Default redirection to login
-    if (!pathname.startsWith(loginPath) && pathname !== '/') {
-      const loginUrl = new URL(loginPath, request.url);
+    if (!pathname.startsWith(login) && pathname !== '/') {
+      const loginUrl = new URL(login, request.url);
       loginUrl.searchParams.set('redirect', request.url);
       return NextResponse.redirect(loginUrl);
     }
 
-    return callback?.onResponse?.(request, null) ?? NextResponse.next();
+    return onNextResponse();
   };

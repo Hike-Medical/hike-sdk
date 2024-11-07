@@ -1,3 +1,3 @@
 {
-  "extends": ["airbnb-typescript/base", "../../../.eslintrc.json"]
+  "extends": ["@kesills/airbnb-typescript/base", "../../../.eslintrc.json"]
 }

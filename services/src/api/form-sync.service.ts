@@ -133,7 +133,7 @@ export const formSchemaEvaluationDefaults = (
             acc[`${field.name}-label`] = evaluation.facility?.name;
             acc[`${field.name}Address`] = evaluation.facility?.contact?.addressLine2
               ? `${evaluation.facility?.contact?.addressLine1}, ${evaluation.facility?.contact?.addressLine2}`
-              : evaluation.facility?.contact?.addressLine1 ?? undefined;
+              : (evaluation.facility?.contact?.addressLine1 ?? undefined);
             acc[`${field.name}City`] = evaluation.facility?.contact?.city ?? undefined;
             acc[`${field.name}State`] = evaluation.facility?.contact?.stateOrProvince ?? undefined;
             acc[`${field.name}Zipcode`] = evaluation.facility?.contact?.postalCode ?? undefined;
