@@ -140,6 +140,7 @@ export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
+export * from './hooks/workbenches/useGetWorkbench';
 export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useUpdateRenderType';
 export * from './utils/appUtils';
