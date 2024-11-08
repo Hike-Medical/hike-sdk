@@ -42,7 +42,7 @@ export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets
   }
 };
 
-export const getWorkbench = async (workbenchId: string): Promise<Workbench> => {
+export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
   try {
     const response = await backendApi.get(`workbench/${workbenchId}`);
     return response.data;
