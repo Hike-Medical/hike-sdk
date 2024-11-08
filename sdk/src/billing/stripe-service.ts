@@ -163,9 +163,9 @@ export class StripeService {
         } else if (discount.percent_off === bestPercentOff.percent_off) {
           if (
             bestPercentOff.max_redemptions &&
-            discount.max_redemptions &&
-            (discount.max_redemptions > bestPercentOff.max_redemptions ||
-              discount.times_redeemed! > bestPercentOff.times_redeemed!)
+            (!discount.max_redemptions ||
+              discount.max_redemptions - discount.times_redeemed! >
+                bestPercentOff.max_redemptions - bestPercentOff.times_redeemed!)
           ) {
             bestPercentOff = discount;
           }
@@ -176,9 +176,9 @@ export class StripeService {
         } else if (discount.amount_off === bestAmountOff.amount_off) {
           if (
             bestAmountOff.max_redemptions &&
-            discount.max_redemptions &&
-            (discount.max_redemptions > bestAmountOff.max_redemptions ||
-              discount.times_redeemed! > bestAmountOff.times_redeemed!)
+            (!discount.max_redemptions ||
+              discount.max_redemptions - discount.times_redeemed! >
+                bestAmountOff.max_redemptions - bestAmountOff.times_redeemed!)
           ) {
             bestAmountOff = discount;
           }
