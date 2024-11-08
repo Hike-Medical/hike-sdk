@@ -92,6 +92,7 @@ export type * from './dto/shipping/GetShipengineShippingResponse';
 export type * from './dto/shipping/GetShippingLabelLegacyResponse';
 export type * from './dto/shipping/SaveTrackingInfoParams';
 export type * from './dto/shipping/ValidateAddressBody';
+export type * from './dto/taika/InsoleMeasurements';
 export type * from './dto/terms/AcceptTermsParams';
 export type * from './dto/user/AssignClinicianParams';
 export type * from './dto/user/GetCliniciansParams';
