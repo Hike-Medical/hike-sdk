@@ -503,6 +503,14 @@ export const ProductAttributeType: {
 export type ProductAttributeType = (typeof ProductAttributeType)[keyof typeof ProductAttributeType]
 
 
+export const PrinterType: {
+  ARTILLERY: 'ARTILLERY',
+  BAMBU: 'BAMBU'
+};
+
+export type PrinterType = (typeof PrinterType)[keyof typeof PrinterType]
+
+
 export const CompanyRole: {
   ADMIN: 'ADMIN',
   EDITOR: 'EDITOR',
@@ -725,6 +733,10 @@ export const FormSchemaType: typeof $Enums.FormSchemaType
 export type ProductAttributeType = $Enums.ProductAttributeType
 
 export const ProductAttributeType: typeof $Enums.ProductAttributeType
+
+export type PrinterType = $Enums.PrinterType
+
+export const PrinterType: typeof $Enums.PrinterType
 
 export type CompanyRole = $Enums.CompanyRole
 
@@ -40385,6 +40397,8 @@ export namespace Prisma {
     tailScaleIP: string | null
     portNumber: string | null
     privateIPAddress: string | null
+    active: boolean | null
+    type: $Enums.PrinterType | null
   }
 
   export type PrinterMaxAggregateOutputType = {
@@ -40393,6 +40407,8 @@ export namespace Prisma {
     tailScaleIP: string | null
     portNumber: string | null
     privateIPAddress: string | null
+    active: boolean | null
+    type: $Enums.PrinterType | null
   }
 
   export type PrinterCountAggregateOutputType = {
@@ -40401,6 +40417,8 @@ export namespace Prisma {
     tailScaleIP: number
     portNumber: number
     privateIPAddress: number
+    active: number
+    type: number
     _all: number
   }
 
@@ -40411,6 +40429,8 @@ export namespace Prisma {
     tailScaleIP?: true
     portNumber?: true
     privateIPAddress?: true
+    active?: true
+    type?: true
   }
 
   export type PrinterMaxAggregateInputType = {
@@ -40419,6 +40439,8 @@ export namespace Prisma {
     tailScaleIP?: true
     portNumber?: true
     privateIPAddress?: true
+    active?: true
+    type?: true
   }
 
   export type PrinterCountAggregateInputType = {
@@ -40427,6 +40449,8 @@ export namespace Prisma {
     tailScaleIP?: true
     portNumber?: true
     privateIPAddress?: true
+    active?: true
+    type?: true
     _all?: true
   }
 
@@ -40508,6 +40532,8 @@ export namespace Prisma {
     tailScaleIP: string
     portNumber: string
     privateIPAddress: string
+    active: boolean
+    type: $Enums.PrinterType
     _count: PrinterCountAggregateOutputType | null
     _min: PrinterMinAggregateOutputType | null
     _max: PrinterMaxAggregateOutputType | null
@@ -40533,6 +40559,8 @@ export namespace Prisma {
     tailScaleIP?: boolean
     portNumber?: boolean
     privateIPAddress?: boolean
+    active?: boolean
+    type?: boolean
   }, ExtArgs["result"]["printer"]>
 
   export type PrinterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -40541,6 +40569,8 @@ export namespace Prisma {
     tailScaleIP?: boolean
     portNumber?: boolean
     privateIPAddress?: boolean
+    active?: boolean
+    type?: boolean
   }, ExtArgs["result"]["printer"]>
 
   export type PrinterSelectScalar = {
@@ -40549,9 +40579,11 @@ export namespace Prisma {
     tailScaleIP?: boolean
     portNumber?: boolean
     privateIPAddress?: boolean
+    active?: boolean
+    type?: boolean
   }
 
-  export type PrinterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "printerIdentifier" | "tailScaleIP" | "portNumber" | "privateIPAddress", ExtArgs["result"]["printer"]>
+  export type PrinterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "printerIdentifier" | "tailScaleIP" | "portNumber" | "privateIPAddress" | "active" | "type", ExtArgs["result"]["printer"]>
 
   export type $PrinterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Printer"
@@ -40562,6 +40594,8 @@ export namespace Prisma {
       tailScaleIP: string
       portNumber: string
       privateIPAddress: string
+      active: boolean
+      type: $Enums.PrinterType
     }, ExtArgs["result"]["printer"]>
     composites: {}
   }
@@ -40960,6 +40994,8 @@ export namespace Prisma {
     readonly tailScaleIP: FieldRef<"Printer", 'String'>
     readonly portNumber: FieldRef<"Printer", 'String'>
     readonly privateIPAddress: FieldRef<"Printer", 'String'>
+    readonly active: FieldRef<"Printer", 'Boolean'>
+    readonly type: FieldRef<"Printer", 'PrinterType'>
   }
     
 
@@ -58322,7 +58358,9 @@ export namespace Prisma {
     printerIdentifier: 'printerIdentifier',
     tailScaleIP: 'tailScaleIP',
     portNumber: 'portNumber',
-    privateIPAddress: 'privateIPAddress'
+    privateIPAddress: 'privateIPAddress',
+    active: 'active',
+    type: 'type'
   };
 
   export type PrinterScalarFieldEnum = (typeof PrinterScalarFieldEnum)[keyof typeof PrinterScalarFieldEnum]
@@ -59024,6 +59062,20 @@ export namespace Prisma {
    * Reference to a field of type 'ProductAttributeType[]'
    */
   export type ListEnumProductAttributeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductAttributeType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PrinterType'
+   */
+  export type EnumPrinterTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrinterType'>
+    
+
+
+  /**
+   * Reference to a field of type 'PrinterType[]'
+   */
+  export type ListEnumPrinterTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrinterType[]'>
     
 
 
@@ -61779,6 +61831,8 @@ export namespace Prisma {
     tailScaleIP?: StringFilter<"Printer"> | string
     portNumber?: StringFilter<"Printer"> | string
     privateIPAddress?: StringFilter<"Printer"> | string
+    active?: BoolFilter<"Printer"> | boolean
+    type?: EnumPrinterTypeFilter<"Printer"> | $Enums.PrinterType
   }
 
   export type PrinterOrderByWithRelationInput = {
@@ -61787,6 +61841,8 @@ export namespace Prisma {
     tailScaleIP?: SortOrder
     portNumber?: SortOrder
     privateIPAddress?: SortOrder
+    active?: SortOrder
+    type?: SortOrder
   }
 
   export type PrinterWhereUniqueInput = Prisma.AtLeast<{
@@ -61798,6 +61854,8 @@ export namespace Prisma {
     AND?: PrinterWhereInput | PrinterWhereInput[]
     OR?: PrinterWhereInput[]
     NOT?: PrinterWhereInput | PrinterWhereInput[]
+    active?: BoolFilter<"Printer"> | boolean
+    type?: EnumPrinterTypeFilter<"Printer"> | $Enums.PrinterType
   }, "id" | "printerIdentifier" | "tailScaleIP" | "portNumber" | "privateIPAddress">
 
   export type PrinterOrderByWithAggregationInput = {
@@ -61806,6 +61864,8 @@ export namespace Prisma {
     tailScaleIP?: SortOrder
     portNumber?: SortOrder
     privateIPAddress?: SortOrder
+    active?: SortOrder
+    type?: SortOrder
     _count?: PrinterCountOrderByAggregateInput
     _max?: PrinterMaxOrderByAggregateInput
     _min?: PrinterMinOrderByAggregateInput
@@ -61820,6 +61880,8 @@ export namespace Prisma {
     tailScaleIP?: StringWithAggregatesFilter<"Printer"> | string
     portNumber?: StringWithAggregatesFilter<"Printer"> | string
     privateIPAddress?: StringWithAggregatesFilter<"Printer"> | string
+    active?: BoolWithAggregatesFilter<"Printer"> | boolean
+    type?: EnumPrinterTypeWithAggregatesFilter<"Printer"> | $Enums.PrinterType
   }
 
   export type CompanyUserWhereInput = {
@@ -66063,6 +66125,8 @@ export namespace Prisma {
     tailScaleIP: string
     portNumber: string
     privateIPAddress: string
+    active?: boolean
+    type?: $Enums.PrinterType
   }
 
   export type PrinterUncheckedCreateInput = {
@@ -66071,6 +66135,8 @@ export namespace Prisma {
     tailScaleIP: string
     portNumber: string
     privateIPAddress: string
+    active?: boolean
+    type?: $Enums.PrinterType
   }
 
   export type PrinterUpdateInput = {
@@ -66079,6 +66145,8 @@ export namespace Prisma {
     tailScaleIP?: StringFieldUpdateOperationsInput | string
     portNumber?: StringFieldUpdateOperationsInput | string
     privateIPAddress?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumPrinterTypeFieldUpdateOperationsInput | $Enums.PrinterType
   }
 
   export type PrinterUncheckedUpdateInput = {
@@ -66087,6 +66155,8 @@ export namespace Prisma {
     tailScaleIP?: StringFieldUpdateOperationsInput | string
     portNumber?: StringFieldUpdateOperationsInput | string
     privateIPAddress?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumPrinterTypeFieldUpdateOperationsInput | $Enums.PrinterType
   }
 
   export type PrinterCreateManyInput = {
@@ -66095,6 +66165,8 @@ export namespace Prisma {
     tailScaleIP: string
     portNumber: string
     privateIPAddress: string
+    active?: boolean
+    type?: $Enums.PrinterType
   }
 
   export type PrinterUpdateManyMutationInput = {
@@ -66103,6 +66175,8 @@ export namespace Prisma {
     tailScaleIP?: StringFieldUpdateOperationsInput | string
     portNumber?: StringFieldUpdateOperationsInput | string
     privateIPAddress?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumPrinterTypeFieldUpdateOperationsInput | $Enums.PrinterType
   }
 
   export type PrinterUncheckedUpdateManyInput = {
@@ -66111,6 +66185,8 @@ export namespace Prisma {
     tailScaleIP?: StringFieldUpdateOperationsInput | string
     portNumber?: StringFieldUpdateOperationsInput | string
     privateIPAddress?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumPrinterTypeFieldUpdateOperationsInput | $Enums.PrinterType
   }
 
   export type CompanyUserCreateInput = {
@@ -69978,12 +70054,21 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type EnumPrinterTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.PrinterType | EnumPrinterTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPrinterTypeFilter<$PrismaModel> | $Enums.PrinterType
+  }
+
   export type PrinterCountOrderByAggregateInput = {
     id?: SortOrder
     printerIdentifier?: SortOrder
     tailScaleIP?: SortOrder
     portNumber?: SortOrder
     privateIPAddress?: SortOrder
+    active?: SortOrder
+    type?: SortOrder
   }
 
   export type PrinterMaxOrderByAggregateInput = {
@@ -69992,6 +70077,8 @@ export namespace Prisma {
     tailScaleIP?: SortOrder
     portNumber?: SortOrder
     privateIPAddress?: SortOrder
+    active?: SortOrder
+    type?: SortOrder
   }
 
   export type PrinterMinOrderByAggregateInput = {
@@ -70000,6 +70087,18 @@ export namespace Prisma {
     tailScaleIP?: SortOrder
     portNumber?: SortOrder
     privateIPAddress?: SortOrder
+    active?: SortOrder
+    type?: SortOrder
+  }
+
+  export type EnumPrinterTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PrinterType | EnumPrinterTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPrinterTypeWithAggregatesFilter<$PrismaModel> | $Enums.PrinterType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPrinterTypeFilter<$PrismaModel>
+    _max?: NestedEnumPrinterTypeFilter<$PrismaModel>
   }
 
   export type EnumCompanyRoleNullableFilter<$PrismaModel = never> = {
@@ -73993,6 +74092,10 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutAuditLogsInput, CompanyUpdateWithoutAuditLogsInput>, CompanyUncheckedUpdateWithoutAuditLogsInput>
   }
 
+  export type EnumPrinterTypeFieldUpdateOperationsInput = {
+    set?: $Enums.PrinterType
+  }
+
   export type CompanyCreateNestedOneWithoutUsersInput = {
     create?: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutUsersInput
@@ -75899,6 +76002,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumProductAttributeTypeFilter<$PrismaModel>
     _max?: NestedEnumProductAttributeTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPrinterTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.PrinterType | EnumPrinterTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPrinterTypeFilter<$PrismaModel> | $Enums.PrinterType
+  }
+
+  export type NestedEnumPrinterTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PrinterType | EnumPrinterTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PrinterType[] | ListEnumPrinterTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumPrinterTypeWithAggregatesFilter<$PrismaModel> | $Enums.PrinterType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPrinterTypeFilter<$PrismaModel>
+    _max?: NestedEnumPrinterTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumCompanyRoleNullableFilter<$PrismaModel = never> = {
