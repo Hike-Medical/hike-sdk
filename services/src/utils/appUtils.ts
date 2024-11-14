@@ -60,6 +60,15 @@ export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
         default:
           return 'https://appv2.hikemedical.com';
       }
+    case '@hike/backend':
+      switch (environment) {
+        case 'development':
+          return 'http://localhost:8000';
+        case 'staging':
+          return 'https://api-staging.hike-medical-server.com';
+        default:
+          return 'https://api.hikemedical.com';
+      }
     default:
       switch (environment) {
         case 'development':

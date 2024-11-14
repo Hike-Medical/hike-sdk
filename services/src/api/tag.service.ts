@@ -11,9 +11,17 @@ export const upsertTag = async (params?: UpsertTagParams): Promise<Tag> => {
   }
 };
 
-export const fetchTags = async (): Promise<{ [name: string]: TagResult }[]> => {
+export const fetchTags = async (companyIds?: string[]): Promise<{ [name: string]: TagResult }[]> => {
   try {
-    const response = await backendApi.get('tag');
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+
+    const response = await backendApi.get('tag', { headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
