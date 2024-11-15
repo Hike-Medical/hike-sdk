@@ -10,7 +10,8 @@ import {
   FindCompanyInvitationsParams,
   PagedResponse,
   SafeCompany,
-  UpdateCompanyInvitationsParams
+  UpdateCompanyInvitationsParams,
+  UserExtended
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -102,7 +103,7 @@ export const verifyInvitation = async (token: string): Promise<Omit<AccountVerif
   }
 };
 
-export const acceptInvitation = async (params: AcceptCompanyInvitationParams) => {
+export const acceptInvitation = async (params: AcceptCompanyInvitationParams): Promise<UserExtended> => {
   try {
     const response = await backendApi.post('auth/company/invite', params);
     return response.data;

@@ -116,6 +116,7 @@ export * from './hooks/orders/useOrderUpdate';
 export * from './hooks/orders/useSubmitOrder';
 export * from './hooks/patients/useCreatePatient';
 export * from './hooks/patients/usePatientById';
+export * from './hooks/patients/usePatientByUserId';
 export * from './hooks/patients/usePatients';
 export * from './hooks/patients/usePatientsByMissingExternalId';
 export * from './hooks/patients/useUpsertContact';
