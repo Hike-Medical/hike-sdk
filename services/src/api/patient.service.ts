@@ -1,11 +1,9 @@
 import type {
-  CompanyPatient,
-  CompanyUser,
   CreatePatientParams,
   GetPatientsParams,
   PagedParams,
   PagedResponse,
-  Patient,
+  PatientUserResponse,
   SearchPatientsParams,
   UpdatePatientParams,
   UpsertContactParams
@@ -32,11 +30,7 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const findPatientByUserId = async (): Promise<{
-  patient: Patient;
-  companyPatient: CompanyPatient;
-  companyUser: CompanyUser;
-}> => {
+export const findPatientByUserId = async (): Promise<PatientUserResponse> => {
   try {
     const response = await backendApi.get('patient/user');
     return response.data;

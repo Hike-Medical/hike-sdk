@@ -11,7 +11,8 @@ import {
   PagedResponse,
   SafeCompany,
   UpdateCompanyInvitationsParams,
-  UserExtended
+  UserExtended,
+  VerifyCompanyInvitationResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -94,7 +95,7 @@ export const revokeInvitations = async (params: DeleteCompanyInvitationsParams):
   }
 };
 
-export const verifyInvitation = async (token: string): Promise<Omit<AccountVerification, 'token'>> => {
+export const verifyInvitation = async (token: string): Promise<VerifyCompanyInvitationResponse> => {
   try {
     const response = await backendApi.get(`auth/company/invite/${token}`);
     return response.data;
