@@ -3,6 +3,7 @@ import type {
   GetPatientsParams,
   PagedParams,
   PagedResponse,
+  PatientUserResponse,
   SearchPatientsParams,
   UpdatePatientParams,
   UpsertContactParams
@@ -23,6 +24,15 @@ export const createPatient = async (params: CreatePatientParams): Promise<Patien
 export const findPatientById = async (patientId: string): Promise<PatientExtended> => {
   try {
     const response = await backendApi.get(`patient/${patientId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findPatientByUserId = async (): Promise<PatientUserResponse> => {
+  try {
+    const response = await backendApi.get('patient/user');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
