@@ -21,6 +21,7 @@ export type * from './dto/auth/SignInWithPinBody';
 export type * from './dto/auth/VerifyCompanyInvitationResponse';
 export type * from './dto/auto-slicer/RunScriptParams';
 export type * from './dto/billing/CheckoutSessionParams';
+export type * from './dto/billing/ConsumerBillingInfo';
 export type * from './dto/billing/GetStripeInvoiceParams';
 export type * from './dto/billing/stripeInfo';
 export type * from './dto/billing/StripeInvoiceExtended';
