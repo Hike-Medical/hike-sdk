@@ -47,6 +47,27 @@ export const createEvaluationByProduct = async (
   }
 };
 
+export const createEvaluationByProductForPatient = async (
+  params: CreateEvaluationByProductParams,
+  companyId?: string
+): Promise<EvaluationExtended> => {
+  try {
+    const response = await backendApi.post(
+      'evaluation/patient/create/product',
+      params,
+      companyId
+        ? {
+            headers: { 'x-company-id': companyId }
+          }
+        : undefined
+    );
+
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const startEvaluationByProduct = async (params: StartEvaluationByProductParams): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post('evaluation/start/product', params);
