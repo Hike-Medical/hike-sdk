@@ -149,6 +149,7 @@ export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useContinueWorkbench';
+export * from './hooks/workbenches/useGetDetectionStatus';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
 export * from './hooks/workbenches/useSearchWorkbenches';

@@ -1,5 +1,6 @@
 import {
   Asset,
+  DetectionStatusResponse,
   FlattenedWorkbench,
   Foot,
   GenerateWorkbenchPdfParams,
@@ -148,6 +149,15 @@ export const generateWorkbenchPdf = async (
 ): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getDetectionStatusForWorkbench = async (workbenchId: string): Promise<DetectionStatusResponse> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/detection`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
