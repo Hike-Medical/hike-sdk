@@ -2,6 +2,7 @@ import type {
   ActionEvaluationParams,
   CreateEvaluationByProductParams,
   CreateEvaluationParams,
+  DuplicateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
@@ -86,6 +87,18 @@ export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<
 export const reorderEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post(`evaluation/${params.evaluationId}/reorder`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const duplicateEvaluation = async (
+  evaluationId: string,
+  data: DuplicateEvaluationParams
+): Promise<EvaluationExtended> => {
+  try {
+    const response = await backendApi.post(`evaluation/${evaluationId}/duplicate`, data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -416,6 +416,7 @@ export type AssetAugmentType = (typeof AssetAugmentType)[keyof typeof AssetAugme
 export const WorkbenchCreatedReason: {
   REMAKE: 'REMAKE',
   REORDER: 'REORDER',
+  DUPLICATE: 'DUPLICATE',
   EDIT: 'EDIT'
 };
 
