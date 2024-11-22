@@ -5,6 +5,7 @@ export type * from './auth/AuthUser';
 export type * from './config/AppId';
 export type * from './config/HikeConfig';
 export type * from './config/HikeEnvironment';
+export type * from './dto/augment/AssetAugmentData';
 export type * from './dto/augment/AssetAugmentMediaData';
 export type * from './dto/augment/AssetAugmentMediaResult';
 export type * from './dto/augment/AssetAugmentResult';
