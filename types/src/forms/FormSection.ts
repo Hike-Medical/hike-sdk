@@ -3,6 +3,7 @@ import { FormRule } from './FormRule';
 
 export interface FormSection {
   title: string;
+  id?: string;
   description?: string;
   badge?: string;
   fields: FormField[];

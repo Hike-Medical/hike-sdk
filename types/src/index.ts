@@ -109,6 +109,7 @@ export type * from './dto/user/AssignClinicianParams';
 export type * from './dto/user/GetCliniciansParams';
 export type * from './dto/user/GetUsersParams';
 export type * from './dto/workbench/CustomizationResponse';
+export type * from './dto/workbench/DetectionStatusReponse';
 export type * from './dto/workbench/FlattenedWorkbench';
 export type * from './dto/workbench/GenerateWorkbenchPdfParams';
 export type * from './dto/workbench/GetAggregatedParams';
