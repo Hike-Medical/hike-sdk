@@ -32,12 +32,17 @@ export type FormField =
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'file'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'lidar' })
-  | (BaseFormField<undefined> & { type: 'content'; image?: string })
+  | (BaseFormField<undefined> & {
+      type: 'content';
+      image?: string;
+      size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+      color?: 'dimmed';
+    })
   | (BaseFormField<string> & { type: 'clinician' })
   | (BaseFormField<string> & {
       type: 'select';
       options: { label: string; value: string; description?: string }[];
-      ui?: 'dropdown' | 'radio' | 'accordion' | 'segmented';
+      ui?: 'dropdown' | 'radio' | 'radio-col' | 'accordion' | 'segmented';
     })
   | (BaseFormField<string> & { type: 'select:gender' })
   | (BaseFormField<string> & { type: 'select:height' })

@@ -1,4 +1,4 @@
-import { configureServices, findCompanyBySlug } from '@hike/services';
+import { configureServices, fetchCompanyBySlug } from '@hike/services';
 import { HikeConfig } from '@hike/types';
 import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
@@ -13,7 +13,7 @@ export const CompanyProvider = async ({
   children: ReactNode;
 }): Promise<ReactNode> => {
   try {
-    const company = await findCompanyBySlug(slug);
+    const company = await fetchCompanyBySlug(slug);
     configureServices({ ...config, companyId: company.id }); // Server-side initialization
     return (
       <CompanyProviderClient company={company} config={config}>
