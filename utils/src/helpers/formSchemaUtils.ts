@@ -90,11 +90,21 @@ export const isFieldValid = (
 ): boolean => {
   return (
     (!field.required && !isOnlyField) ||
-    (state &&
-      Object.keys(state).some(
-        (key) =>
-          key.startsWith(field.name) && state[key] != null && (state[key]?.toLocaleString() !== '' || !field.required)
-      )) ||
+    (field.type === 'address'
+      ? state &&
+        state[`${field.name}Address1`] != null &&
+        state[`${field.name}Address1`]?.toLocaleString() !== '' &&
+        state[`${field.name}City`] != null &&
+        state[`${field.name}City`]?.toLocaleString() !== '' &&
+        state[`${field.name}State`] != null &&
+        state[`${field.name}State`]?.toLocaleString() !== '' &&
+        state[`${field.name}ZipCode`] != null &&
+        state[`${field.name}ZipCode`]?.toLocaleString() !== ''
+      : state &&
+        Object.keys(state).some(
+          (key) =>
+            key.startsWith(field.name) && state[key] != null && (state[key]?.toLocaleString() !== '' || !field.required)
+        )) ||
     !isFormFieldDisplayed(field, state, activeFoot)
   );
 };
