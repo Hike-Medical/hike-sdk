@@ -4,7 +4,7 @@ import { findFormSchemaById } from '../../api/form.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface UseFormSchemaOptions
-  extends Omit<UseQueryOptions<FormSchemaTyped | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<FormSchemaTyped, HikeError<null>>, 'queryKey' | 'queryFn'> {
   schemaId: string;
   templateable?: boolean;
   enabled?: boolean;

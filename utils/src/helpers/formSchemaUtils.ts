@@ -6,6 +6,7 @@ import type {
   FormSection,
   InvalidFormSection
 } from '@hike/types';
+import { asStringArray } from '../guards/isString';
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -167,6 +168,28 @@ export const getInvalidSections = (sections: FormSection[], state: Record<string
         .filter((field) => isFormFieldDisplayed(field, state) && field.required)
         .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1))
     );
+
+export const getVisibleSections = ({
+  sections,
+  state,
+  slug
+}: {
+  sections: FormSection[] | null | undefined;
+  state: Record<string, FormFieldValue>;
+  slug?: string;
+}): FormSection[] =>
+  sections?.filter(
+    (section) =>
+      isFormSectionDisplayed(section, state) && !asStringArray(section.meta?.excludedSlugs)?.includes(slug ?? '')
+  ) ?? [];
+
+export const getSectionId = (section: FormSection) => section.id ?? encodeURIComponent(section.title);
+
+export const getSectionIndex = (sections: FormSection[], sectionId: string) =>
+  Math.max(
+    sections.findIndex((section) => getSectionId(section) === sectionId),
+    parseInt(sectionId, 10) || 0
+  );
 
 export const schemaStats = (
   sections: FormSection[],
