@@ -37,23 +37,12 @@ export const updateEvaluation = async (
 };
 
 export const createEvaluationByProduct = async (
-  params: CreateEvaluationByProductParams
-): Promise<EvaluationExtended> => {
-  try {
-    const response = await backendApi.post('evaluation/create/product', params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const createEvaluationByProductForPatient = async (
   params: CreateEvaluationByProductParams,
   companyId?: string
 ): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post(
-      'evaluation/patient/create/product',
+      'evaluation/create/product',
       params,
       companyId
         ? {
