@@ -48,3 +48,10 @@ export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey'
 export const configureAuthorization = (token: string | null) => {
   backendApi.defaults.headers.common.Authorization = token && `Bearer ${token}`;
 };
+
+/**
+ * Provisions the services with a company.
+ */
+export const configureCompany = (companyId: string) => {
+  backendApi.defaults.headers.common['x-company-id'] = companyId;
+};

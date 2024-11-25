@@ -24,7 +24,6 @@ export * from './api/user.service';
 export * from './api/workbench.service';
 export * from './auth/accountRecovery';
 export * from './auth/defaultCompany';
-export * from './auth/fetchCompanyBySlug';
 export * from './auth/fetchSession';
 export * from './auth/findCompaniesBySession';
 export * from './auth/getSessionCookieName';
