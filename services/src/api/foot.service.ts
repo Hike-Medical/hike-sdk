@@ -29,7 +29,10 @@ export const setActive = async (footId: string): Promise<Foot> => {
   }
 };
 
-export const updateFootByWorkbenchId = async (workbenchId: string, body: UpdateFootFromWorkbenchId): Promise<Foot> => {
+export const updateFootByWorkbenchId = async (
+  workbenchId: string,
+  body: UpdateFootFromWorkbenchId
+): Promise<Foot | null> => {
   try {
     const response = await backendApi.post(`foot/${workbenchId}/update`, body);
     return response.data;

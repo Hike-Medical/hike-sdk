@@ -9,7 +9,7 @@ interface UpdateFootFromWorkbenchContext {
 }
 
 export const useUpdateFootFromWorkbench = (
-  options?: UseMutationOptions<Foot, HikeError<null>, UpdateFootFromWorkbenchContext>
+  options?: UseMutationOptions<Foot | null, HikeError<null>, UpdateFootFromWorkbenchContext>
 ) =>
   useMutation({
     mutationKey: ['updateRenderType'],

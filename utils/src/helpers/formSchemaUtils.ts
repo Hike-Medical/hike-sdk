@@ -99,8 +99,8 @@ export const isFieldValid = (
         state[`${field.name}City`]?.toLocaleString() !== '' &&
         state[`${field.name}State`] != null &&
         state[`${field.name}State`]?.toLocaleString() !== '' &&
-        state[`${field.name}ZipCode`] != null &&
-        state[`${field.name}ZipCode`]?.toLocaleString() !== ''
+        state[`${field.name}Zipcode`] != null &&
+        state[`${field.name}Zipcode`]?.toLocaleString() !== ''
       : state &&
         Object.keys(state).some(
           (key) =>
