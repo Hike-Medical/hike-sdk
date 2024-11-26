@@ -27,6 +27,7 @@ export * from './helpers/currentPaginatedPage';
 export * from './helpers/currentUrl';
 export * from './helpers/extractDomain';
 export * from './helpers/findKeyInNested';
+export * from './helpers/formAddressUtils';
 export * from './helpers/formSchemaUtils';
 export * from './helpers/httpUtils';
 export * from './helpers/isEmpty';
