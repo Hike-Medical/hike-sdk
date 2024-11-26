@@ -92,7 +92,12 @@ export const isFieldValid = (
 ): boolean => {
   return (
     (!field.required && !isOnlyField) ||
-    (field.type === 'address' && isAddressFieldValid(field.name, state)) ||
+    (field.type === 'address'
+      ? isAddressFieldValid(field.name, state)
+      : Object.keys(state).some(
+          (key) =>
+            key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
+        )) ||
     !isFormFieldDisplayed(field, state, activeFoot)
   );
 };
