@@ -7,6 +7,7 @@ import type {
   InvalidFormSection
 } from '@hike/types';
 import { asStringArray } from '../guards/isString';
+import { isAddressFieldValid } from './formAddressUtils';
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -91,21 +92,7 @@ export const isFieldValid = (
 ): boolean => {
   return (
     (!field.required && !isOnlyField) ||
-    (field.type === 'address'
-      ? state &&
-        state[`${field.name}Address1`] != null &&
-        state[`${field.name}Address1`]?.toLocaleString() !== '' &&
-        state[`${field.name}City`] != null &&
-        state[`${field.name}City`]?.toLocaleString() !== '' &&
-        state[`${field.name}State`] != null &&
-        state[`${field.name}State`]?.toLocaleString() !== '' &&
-        state[`${field.name}ZipCode`] != null &&
-        state[`${field.name}ZipCode`]?.toLocaleString() !== ''
-      : state &&
-        Object.keys(state).some(
-          (key) =>
-            key.startsWith(field.name) && state[key] != null && (state[key]?.toLocaleString() !== '' || !field.required)
-        )) ||
+    (field.type === 'address' && isAddressFieldValid(field.name, state)) ||
     !isFormFieldDisplayed(field, state, activeFoot)
   );
 };

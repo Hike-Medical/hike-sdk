@@ -121,6 +121,7 @@ export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/ClinicianExtended';
 export type * from './entities/CompanyExtended';
+export type * from './entities/ContactAddress';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/FacilityExtended';
 export type * from './entities/NotificationExtended';
