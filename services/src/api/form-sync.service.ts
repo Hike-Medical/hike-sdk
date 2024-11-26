@@ -1,12 +1,22 @@
-import type { EvaluationExtended, FormFieldValue, FormSection, Gender, Side, VerticalPosition } from '@hike/types';
+import type {
+  EvaluationExtended,
+  Foot,
+  FormFieldValue,
+  FormSection,
+  Gender,
+  PatientExtended,
+  Side,
+  VerticalPosition
+} from '@hike/types';
 import { formatConstant, parseDate } from '@hike/utils';
 import { updateEvaluation } from './evaluation.service';
-import { updatePatient } from './patient.service';
+import { updateFootByWorkbenchId } from './foot.service';
+import { updatePatient, upsertContact } from './patient.service';
 import { updateInactiveFootInWorkbench } from './workbench.service';
 /**
  * Updates patients with form submission.
  */
-export const formSubmissionToPatient = async (patientId: string, formState: Record<string, FormFieldValue>) =>
+export const formSubmissionToPatient = async (patientId: string, formState: Record<string, FormFieldValue>) => {
   await updatePatient(patientId, {
     birthDate: formState.birthDate !== undefined ? parseDate(formState.birthDate as string) : undefined,
     gender: formState.gender !== undefined ? (formState.gender as Gender) : undefined,
@@ -15,6 +25,29 @@ export const formSubmissionToPatient = async (patientId: string, formState: Reco
     primaryPhysicianId:
       formState.primaryPhysicianId !== undefined ? (formState.primaryPhysicianId as string) : undefined
   });
+
+  if (
+    typeof formState.shippingAddressAddress1 === 'string' &&
+    formState.shippingAddressAddress1.toLocaleString() !== '' &&
+    typeof formState.shippingAddressCity === 'string' &&
+    formState.shippingAddressCity.toLocaleString() !== '' &&
+    typeof formState.shippingAddressState === 'string' &&
+    formState.shippingAddressState.toLocaleString() !== '' &&
+    typeof formState.shippingAddressZipcode === 'string' &&
+    formState.shippingAddressZipcode.toLocaleString() !== ''
+  ) {
+    const contact = {
+      addressLine1: formState.shippingAddressAddress1,
+      addressLine2:
+        formState.shippingAddressAddress2 !== undefined ? String(formState.shippingAddressAddress2) : undefined,
+      city: formState.shippingAddressCity,
+      stateOrProvince: formState.shippingAddressState,
+      postalCode: formState.shippingAddressZipcode
+    };
+
+    await upsertContact(patientId, contact);
+  }
+};
 
 /**
  * Updates evaluation with form submission.
@@ -47,6 +80,22 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
       ? (formState.patientAmputation as Side)
       : undefined;
 
+  if (formState.shoeGender || formState.shoeSize) {
+    await updateFootByWorkbenchId(workbenchId, {
+      side: 'LEFT',
+      shoeWidth: formState.shoeGender === 'YOUTH' ? 'YOUTH' : null,
+      shoeGender: formState.shoeGender !== 'YOUTH' ? (formState.shoeGender as Gender) : null,
+      shoeSize: formState.shoeSize as number
+    });
+
+    await updateFootByWorkbenchId(workbenchId, {
+      side: 'RIGHT',
+      shoeWidth: formState.shoeGender === 'YOUTH' ? 'YOUTH' : null,
+      shoeGender: formState.shoeGender !== 'YOUTH' ? (formState.shoeGender as Gender) : null,
+      shoeSize: formState.shoeSize as number
+    });
+  }
+
   return await updateInactiveFootInWorkbench(workbenchId, {
     isToeFiller,
     isPreFabOrHeatMoldable,
@@ -59,7 +108,9 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
  */
 export const formSchemaEvaluationDefaults = (
   sections: FormSection[],
-  evaluation: EvaluationExtended
+  evaluation: EvaluationExtended,
+  patient?: PatientExtended,
+  activeFeet?: Foot[]
 ): Record<string, FormFieldValue> =>
   sections
     .flatMap((section) => section.fields)
@@ -141,6 +192,20 @@ export const formSchemaEvaluationDefaults = (
             acc[`${field.name}-description`] ??=
               evaluation.facility?.contact &&
               `${evaluation.facility.contact.addressLine1}, ${evaluation.facility.contact.city}, ${evaluation.facility.contact.stateOrProvince}`;
+            break;
+          case 'shippingAddress':
+            acc[`${field.name}Address1`] = patient?.companies?.[0]?.contact?.addressLine1;
+            acc[`${field.name}Address2`] = patient?.companies?.[0]?.contact?.addressLine2;
+            acc[`${field.name}City`] = patient?.companies?.[0]?.contact?.city;
+            acc[`${field.name}State`] = patient?.companies?.[0]?.contact?.stateOrProvince;
+            acc[`${field.name}Zipcode`] = patient?.companies?.[0]?.contact?.postalCode;
+            break;
+          case 'shoeGender':
+            acc[field.name] =
+              activeFeet?.[0]?.shoeWidth === 'YOUTH' ? activeFeet?.[0]?.shoeWidth : activeFeet?.[0]?.shoeGender;
+            break;
+          case 'shoeSize':
+            acc[field.name] = String(activeFeet?.[0]?.shoeSize);
             break;
           default:
             if (!(field.name in acc)) {

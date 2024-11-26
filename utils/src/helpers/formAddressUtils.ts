@@ -9,7 +9,7 @@ import { isEmpty } from './isEmpty';
  * @returns `true` if all required fields are valid; otherwise, `false`.
  */
 export const isAddressFieldValid = (type: string, state: Record<string, unknown>): boolean =>
-  ['Address1', 'City', 'State', 'ZipCode'].every((field) => !isEmpty(state[`${type}${field}`]));
+  ['Address1', 'City', 'State', 'Zipcode'].every((field) => !isEmpty(state[`${type}${field}`]));
 
 /**
  * Extract the address fields into a `ContactAddress` object.
@@ -19,7 +19,7 @@ export const fromAddressField = (name: string, state: Record<string, unknown>): 
   addressLine2: (state[`${name}Address2`] as string | null) || null,
   city: state[`${name}City`] as string,
   stateOrProvince: state[`${name}State`] as string,
-  postalCode: state[`${name}ZipCode`] as string
+  postalCode: state[`${name}Zipcode`] as string
 });
 
 /**
