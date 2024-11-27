@@ -26,6 +26,7 @@ export type FormField =
       hidden?: boolean;
     })
   | (BaseFormField<number> & { type: 'number'; suffix?: string; keyboard?: 'numeric' | 'decimal' })
+  | (BaseFormField<string> & { type: 'multiline'; suffix?: string })
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
