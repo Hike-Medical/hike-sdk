@@ -74,6 +74,15 @@ export const generateCheckoutSession = async (workbenchId: string, params: Check
   }
 };
 
+export const createPaymentIntent = async (workbenchId: string) => {
+  try {
+    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const generateCheckoutSessionInfo = async (workbenchId: string) => {
   try {
     const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`);

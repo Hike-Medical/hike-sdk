@@ -36,6 +36,25 @@ export class StripeService {
     return nextBillingDate.unix();
   }
 
+  async createPaymentIntent(
+    amount: number,
+    currency: string = 'usd',
+    metadata?: Stripe.MetadataParam
+  ): Promise<Stripe.PaymentIntent> {
+    try {
+      const paymentIntent = await this.stripe.paymentIntents.create({
+        amount,
+        currency,
+        payment_method_types: ['card', 'cashapp'],
+        metadata
+      });
+      return paymentIntent;
+    } catch (error) {
+      console.error('Error creating PaymentIntent:', error);
+      throw error;
+    }
+  }
+
   async getFinalPrice(couponIds: string[], priceId: string): Promise<{ original: number; discounted: number }> {
     const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
     const couponId = bestCoupon[0]?.coupon;
