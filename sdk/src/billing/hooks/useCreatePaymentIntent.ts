@@ -11,7 +11,7 @@ export interface useCreatePaymentIntentOptions
 
 export const useCreatePaymentIntent = ({ queryKey = [], workbenchId, ...options }: useCreatePaymentIntentOptions) =>
   useQuery({
-    queryKey: ['createPaymentIntent', queryKey],
+    queryKey: ['createPaymentIntent', workbenchId, queryKey],
     queryFn: async () => await createPaymentIntent(workbenchId),
     ...options
   });
