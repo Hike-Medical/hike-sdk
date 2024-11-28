@@ -1,4 +1,4 @@
-import { StreamCompleteParams } from '@hike/types';
+import { Asset, StreamCompleteParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { handleStreamComplete } from '../../api/asset.service';
 import { HikeError } from '../../errors/HikeError';
@@ -9,7 +9,7 @@ interface StreamCompleteContext {
 }
 
 export const useStreamComplete = (
-  mutationOptions?: UseMutationOptions<void, HikeError<null>, StreamCompleteContext>
+  mutationOptions?: UseMutationOptions<Asset, HikeError<null>, StreamCompleteContext>
 ) => {
   return useMutation({
     mutationKey: ['streamComplete'],

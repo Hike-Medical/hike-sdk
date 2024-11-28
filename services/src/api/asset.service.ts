@@ -1,4 +1,4 @@
-import { StreamCompleteParams } from '@hike/types';
+import { Asset, StreamCompleteParams } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -10,9 +10,10 @@ export const uploadComplete = async (assetId: string): Promise<void> => {
   }
 };
 
-export const handleStreamComplete = async (assetId: string, params: StreamCompleteParams) => {
+export const handleStreamComplete = async (assetId: string, params: StreamCompleteParams): Promise<Asset> => {
   try {
-    await backendApi.post(`asset/${assetId}/stream-complete`, params);
+    const response = await backendApi.post(`asset/${assetId}/stream-complete`, params);
+    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
