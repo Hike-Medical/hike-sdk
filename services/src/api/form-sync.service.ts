@@ -8,7 +8,7 @@ import type {
   Side,
   VerticalPosition
 } from '@hike/types';
-import { formatConstant, parseDate } from '@hike/utils';
+import { formatConstant, parseDate, toBoolean } from '@hike/utils';
 import { updateEvaluation } from './evaluation.service';
 import { updateFootByWorkbenchId } from './foot.service';
 import { updatePatient, upsertContact } from './patient.service';
@@ -57,6 +57,7 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
     deviceTypeId: formState.deviceTypeId !== undefined ? (formState.deviceTypeId as string) : undefined,
     devicePosition: formState.devicePosition !== undefined ? (formState.devicePosition as VerticalPosition) : undefined,
     deviceSide: formState.deviceSide !== undefined ? (formState.deviceSide as Side) : undefined,
+    isDiabetic: formState.isDiabetic !== undefined ? toBoolean(formState.isDiabetic) : undefined,
     referringPhysicianId:
       formState.referringPhysicianId !== undefined && formState.referringPhysicianId !== ''
         ? (formState.referringPhysicianId as string)
