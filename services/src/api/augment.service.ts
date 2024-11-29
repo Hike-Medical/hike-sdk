@@ -69,3 +69,12 @@ export const findAssetAugmentStatusByAugmentId = async (augmentId: string): Prom
     throw toHikeError(error);
   }
 };
+
+export const findAugmentByAssetIdAndType = async (assetId: string, augmentType: AssetAugmentType) => {
+  try {
+    const response = await backendApi.get(`asset/${assetId}/${augmentType}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
