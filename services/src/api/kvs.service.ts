@@ -13,3 +13,11 @@ export const getSignalingChannel = async (
     throw toHikeError(error);
   }
 };
+
+export const startViewpoint = async (assetId: string): Promise<void> => {
+  try {
+    await backendApi.post('kvs/viewpoint/start', { assetId });
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
