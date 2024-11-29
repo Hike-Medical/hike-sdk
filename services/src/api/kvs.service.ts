@@ -21,3 +21,11 @@ export const startViewpoint = async (assetId: string): Promise<void> => {
     throw toHikeError(error);
   }
 };
+
+export const startDevViewpoint = async (assetId: string): Promise<void> => {
+  try {
+    await backendApi.post('kvs/dev-viewpoint/start', { assetId });
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
