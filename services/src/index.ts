@@ -70,6 +70,7 @@ export * from './hooks/evaluations/useCreateEvaluationByProduct';
 export * from './hooks/evaluations/useEditEvaluation';
 export * from './hooks/evaluations/useEvaluationByWorkbench';
 export * from './hooks/evaluations/useEvaluations';
+export * from './hooks/evaluations/useEvaluationsByPatient';
 export * from './hooks/evaluations/useEvaluationSearch';
 export * from './hooks/evaluations/useEvaluationStats';
 export * from './hooks/evaluations/useRemakeEvaluation';

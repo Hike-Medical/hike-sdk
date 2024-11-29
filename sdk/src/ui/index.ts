@@ -1,6 +1,7 @@
 // Require explicit import from the UI package to optimize server-side consumption
 export * from '@hike/ui';
 
+export * from './components/CopyButton';
 export * from './emails/insoles-ai/ClinicianRegistrationEmail';
 export * from './emails/insoles-ai/CompanyRegistrationEmail';
 export * from './emails/insoles-ai/FreeTrialCompletionEmail';
