@@ -30,9 +30,16 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const findPatientByUserId = async (): Promise<PatientUserResponse> => {
+export const findPatientByUserId = async (companyId?: string): Promise<PatientUserResponse> => {
   try {
-    const response = await backendApi.get('patient/user');
+    const response = await backendApi.get(
+      'patient/user',
+      companyId
+        ? {
+            headers: { 'x-company-id': companyId }
+          }
+        : undefined
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
