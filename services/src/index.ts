@@ -97,7 +97,7 @@ export * from './hooks/forms/useFormTemplates';
 export * from './hooks/forms/useUpdateFormTemplate';
 export * from './hooks/forms/useUpsertFormSubmission';
 export * from './hooks/kvs/useGetSignalingChannel';
-export * from './hooks/kvs/useStartViewpoint';
+export * from './hooks/kvs/useDeleteSignalingChannel';
 export * from './hooks/augments/useFindAssetAugmentByIdAndType';
 export * from './hooks/notes/useCreateNotes';
 export * from './hooks/notes/useDeleteNote';
