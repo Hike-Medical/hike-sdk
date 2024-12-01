@@ -14,17 +14,9 @@ export const getSignalingChannel = async (
   }
 };
 
-export const startViewpoint = async (assetId: string): Promise<void> => {
+export const deleteSignalingChannel = async (channelName: string) => {
   try {
-    await backendApi.post('kvs/viewpoint/start', { assetId });
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const startDevViewpoint = async (assetId: string): Promise<void> => {
-  try {
-    await backendApi.post('kvs/dev-viewpoint/start', { assetId });
+    await backendApi.delete(`kvs/channel/${channelName}`);
   } catch (error) {
     throw toHikeError(error);
   }
