@@ -1,5 +1,6 @@
 import {
   Asset,
+  DetectionStatusResponse,
   FlattenedWorkbench,
   Foot,
   GenerateWorkbenchPdfParams,
@@ -42,6 +43,15 @@ export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets
   }
 };
 
+export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const submitOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/submit`, body);
@@ -50,6 +60,16 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
     throw toHikeError(error);
   }
 };
+
+export const submitConsumerOrder = async (workbenchId: string): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const updateRenderType = async (
   workbenchId: string,
   body: { renderType: number },
@@ -129,6 +149,15 @@ export const generateWorkbenchPdf = async (
 ): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getDetectionStatusForWorkbench = async (workbenchId: string): Promise<DetectionStatusResponse> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/detection`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

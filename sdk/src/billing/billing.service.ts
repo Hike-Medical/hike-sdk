@@ -1,6 +1,7 @@
 import { backendApi, toHikeError } from '@hike/services';
 import {
   BillingOverview,
+  CheckoutSessionParams,
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
@@ -58,6 +59,33 @@ export const getUpFrontPaymentInfo = async (stripeInvoiceId: string): Promise<Up
 export const getBillingOverview = async (stripeInvoiceId: string): Promise<BillingOverview> => {
   try {
     const response = await backendApi.get(`billing/overview/${stripeInvoiceId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateCheckoutSession = async (workbenchId: string, params: CheckoutSessionParams) => {
+  try {
+    const response = await backendApi.post(`billing/generate-checkout-session/${workbenchId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createPaymentIntent = async (workbenchId: string) => {
+  try {
+    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateCheckoutSessionInfo = async (workbenchId: string) => {
+  try {
+    const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

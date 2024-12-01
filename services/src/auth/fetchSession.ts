@@ -28,7 +28,8 @@ export const fetchSession = async (token: string | null): Promise<AuthUser> => {
   }
 
   const response = await fetch(`${baseUrl}/auth/session`, {
-    headers: { Authorization: `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store'
   });
   const user = await response.json();
 

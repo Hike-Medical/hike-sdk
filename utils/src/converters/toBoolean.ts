@@ -4,7 +4,7 @@ export const toBoolean = (value: unknown) => {
   }
 
   if (typeof value === 'string') {
-    return value.toLowerCase() === 'true';
+    return ['true', 'yes'].includes(value.toLowerCase());
   }
 
   if (typeof value === 'number') {

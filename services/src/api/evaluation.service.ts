@@ -5,6 +5,7 @@ import type {
   EvaluationExtended,
   EvaluationsStats,
   EvaluationsUploadResult,
+  GetEvaluationsByPatientParams,
   GetEvaluationsParams,
   PagedResponse,
   PrimaryPhysiciansUploadResult,
@@ -37,10 +38,20 @@ export const updateEvaluation = async (
 };
 
 export const createEvaluationByProduct = async (
-  params: CreateEvaluationByProductParams
+  params: CreateEvaluationByProductParams,
+  companyId?: string
 ): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.post('evaluation/create/product', params);
+    const response = await backendApi.post(
+      'evaluation/create/product',
+      params,
+      companyId
+        ? {
+            headers: { 'x-company-id': companyId }
+          }
+        : undefined
+    );
+
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -101,9 +112,21 @@ export const findEvaluationById = async (evaluationId: string): Promise<Evaluati
   }
 };
 
+export const findEvaluationsByPatientId = async (
+  patientId: string,
+  params?: GetEvaluationsByPatientParams
+): Promise<PagedResponse<EvaluationExtended[]>> => {
+  try {
+    const response = await backendApi.get(`evaluation/patient/${patientId}`, { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findEvaluationByWorkbenchId = async (workbenchId: string): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.get(`evaluation/${workbenchId}/workbench`);
+    const response = await backendApi.get(`evaluation/workbench/${workbenchId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

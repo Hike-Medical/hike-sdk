@@ -36,13 +36,44 @@ export class StripeService {
     return nextBillingDate.unix();
   }
 
-  async is100PercentOffCoupon(couponIds: string[]) {
-    const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
-    if (bestCoupon[0]?.coupon) {
-      const coupon = await this.stripe.coupons.retrieve(bestCoupon[0]?.coupon);
-      return coupon.amount_off === 100;
+  async createPaymentIntent(
+    amount: number,
+    currency: string = 'usd',
+    metadata?: Stripe.MetadataParam
+  ): Promise<Stripe.PaymentIntent> {
+    try {
+      const paymentIntent = await this.stripe.paymentIntents.create({
+        amount,
+        currency,
+        payment_method_types: ['card', 'cashapp'],
+        metadata
+      });
+      return paymentIntent;
+    } catch (error) {
+      console.error('Error creating PaymentIntent:', error);
+      throw error;
     }
-    return false;
+  }
+
+  async getFinalPrice(couponIds: string[], priceId: string): Promise<{ original: number; discounted: number }> {
+    const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
+    const couponId = bestCoupon[0]?.coupon;
+
+    const coupon = couponId ? await this.stripe.coupons.retrieve(couponId) : null;
+
+    const price = await this.stripe.prices.retrieve(priceId);
+    let finalPrice = price.unit_amount || 0;
+
+    if (coupon) {
+      if (coupon.percent_off) {
+        finalPrice -= finalPrice * (coupon.percent_off / 100);
+      }
+      if (coupon.amount_off) {
+        finalPrice -= coupon.amount_off;
+      }
+    }
+
+    return { original: price.unit_amount || 0, discounted: Math.max(0, finalPrice) };
   }
 
   async createSubscription(
@@ -151,9 +182,9 @@ export class StripeService {
         } else if (discount.percent_off === bestPercentOff.percent_off) {
           if (
             bestPercentOff.max_redemptions &&
-            discount.max_redemptions &&
-            (discount.max_redemptions > bestPercentOff.max_redemptions ||
-              discount.times_redeemed! > bestPercentOff.times_redeemed!)
+            (!discount.max_redemptions ||
+              discount.max_redemptions - discount.times_redeemed! >
+                bestPercentOff.max_redemptions - bestPercentOff.times_redeemed!)
           ) {
             bestPercentOff = discount;
           }
@@ -164,9 +195,9 @@ export class StripeService {
         } else if (discount.amount_off === bestAmountOff.amount_off) {
           if (
             bestAmountOff.max_redemptions &&
-            discount.max_redemptions &&
-            (discount.max_redemptions > bestAmountOff.max_redemptions ||
-              discount.times_redeemed! > bestAmountOff.times_redeemed!)
+            (!discount.max_redemptions ||
+              discount.max_redemptions - discount.times_redeemed! >
+                bestAmountOff.max_redemptions - bestAmountOff.times_redeemed!)
           ) {
             bestAmountOff = discount;
           }
@@ -578,7 +609,8 @@ export class StripeService {
     successUrl: string,
     cancelUrl: string,
     couponIds: string[],
-    externalId?: string
+    externalId?: string,
+    productId?: string
   ): Promise<Stripe.Checkout.Session> {
     try {
       const sessionParams: Stripe.Checkout.SessionCreateParams = {
@@ -613,7 +645,8 @@ export class StripeService {
         }),
         metadata: {
           companyId,
-          ...(externalId && { externalId })
+          ...(externalId && { externalId }),
+          ...(productId && { productId })
         },
         invoice_creation: {
           enabled: true,
@@ -621,7 +654,8 @@ export class StripeService {
             description: `Checkout session invoice: ${externalId}`,
             metadata: {
               companyId,
-              ...(externalId && { externalId })
+              ...(externalId && { externalId }),
+              ...(productId && { productId })
             }
           }
         }

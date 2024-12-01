@@ -2,6 +2,7 @@ import { FormField, FormFieldValue } from './FormField';
 import { FormRule } from './FormRule';
 
 export interface FormSection {
+  id?: string;
   title: string;
   description?: string;
   badge?: string;

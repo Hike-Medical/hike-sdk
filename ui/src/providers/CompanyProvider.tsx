@@ -1,4 +1,4 @@
-import { configureServices, findCompanyBySlug } from '@hike/services';
+import { configureCompany, configureServices, findCompanyBySlug } from '@hike/services';
 import { HikeConfig } from '@hike/types';
 import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
@@ -13,17 +13,17 @@ export const CompanyProvider = async ({
   children: ReactNode;
 }): Promise<ReactNode> => {
   try {
+    configureServices(config);
     const company = await findCompanyBySlug(slug);
-    configureServices({ ...config, companyId: company.id }); // Server-side initialization
+    configureCompany(company.id);
+
     return (
       <CompanyProviderClient company={company} config={config}>
         {children}
       </CompanyProviderClient>
     );
-  } catch {
+  } catch (error) {
+    console.error('Failed to fetch company data:', error);
     return children;
   }
 };
-
-// Re-export client-side functionality
-export { useCompany } from './CompanyProviderClient';
