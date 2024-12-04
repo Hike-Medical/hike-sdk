@@ -1,4 +1,5 @@
 import type {
+  CompanyUser,
   CreatePatientParams,
   GetPatientsParams,
   PagedParams,
@@ -101,3 +102,14 @@ export const approvePatient = async (patientId: string) => {
     throw toHikeError(error);
   }
 };
+
+export const verifyPatientByExternalId = async (externalId: string, patientId: string) => {
+  try {
+    const response = await backendApi.patch(`patient/${patientId}/verify/external/${externalId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const isPatientApproved = (user: CompanyUser): boolean => !!user.role && user.active;
