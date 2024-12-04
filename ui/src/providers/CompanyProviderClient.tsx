@@ -1,11 +1,11 @@
 'use client';
 
 import { configureServices } from '@hike/services';
-import type { Company, HikeConfig } from '@hike/types';
+import type { HikeConfig, SafeCompany } from '@hike/types';
 import { ReactNode, createContext, useContext } from 'react';
 
 interface CompanyProviderClientProps {
-  company: Pick<Company, 'id' | 'name' | 'slug' | 'logoUrl'> | null;
+  company: SafeCompany | null;
   config: HikeConfig;
   children: ReactNode;
 }

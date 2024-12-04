@@ -85,7 +85,7 @@ export const withHikeMiddleware = ({
 
       // Ensure user has minimum role access
       const hasAccess =
-        !restrictedRoles || Object.values(session.companies).some((role) => !restrictedRoles.includes(role));
+        !restrictedRoles || Object.values(session.companies).some((role) => role && !restrictedRoles.includes(role));
 
       if (hasAccess) {
         const companyId = Object.entries(session.slugs).find(([key]) => session.slugs[key] === slug)?.[0];
