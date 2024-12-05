@@ -17,7 +17,7 @@ export const useEvaluationsByPatient = ({
   ...options
 }: UseEvaluationsByPatientOptions) =>
   useQuery({
-    queryKey: ['evaluationsByPatient', params, queryKey],
+    queryKey: ['evaluationsByPatient', patientId, params, queryKey],
     queryFn: async () => await findEvaluationsByPatientId(patientId, params),
     ...options
   });
