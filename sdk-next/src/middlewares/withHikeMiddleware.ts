@@ -6,6 +6,7 @@ import {
   fetchSession,
   HikeConfig,
   HikeError,
+  isDefined,
   verifyToken
 } from '@hike/sdk';
 import { NextRequest, NextResponse } from 'next/server';
@@ -51,7 +52,13 @@ export const withHikeMiddleware = ({
     // Allow requests to paths that are not protected
     if (
       pathname.startsWith(`${slugPath}/login`) ||
-      allowedPaths?.map((path) => path.replace(/\/$/, '')).includes(pathname.replace(/\/$/, ''))
+      allowedPaths
+        // Handle slug based paths
+        ?.map((path) => (slug ? path.replace('{slug}', slug) : null))
+        .filter(isDefined)
+        // Match exact paths; ignore trailing slashes
+        .map((path) => path.replace(/\/$/, ''))
+        .includes(pathname.replace(/\/$/, ''))
     ) {
       try {
         const token = extractToken(request);
