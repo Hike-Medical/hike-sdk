@@ -4,6 +4,7 @@ export * from './constants/customUserGroups';
 export * from './converters/formatConstant';
 export * from './converters/formatCurrency';
 export * from './converters/formatDate';
+export * from './converters/formatPhoneNumber';
 export * from './converters/parseClinicianName';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
