@@ -87,6 +87,7 @@ export type * from './dto/patient/CreatePatientParams';
 export type * from './dto/patient/GetPatientsParams';
 export type * from './dto/patient/PatientUserResponse';
 export type * from './dto/patient/SearchPatientsParams';
+export type * from './dto/patient/SelfApprovePatientParams';
 export type * from './dto/patient/UpdatePatientParams';
 export type * from './dto/patient/UpsertContactParams';
 export type * from './dto/pin/CreatePinDto';
