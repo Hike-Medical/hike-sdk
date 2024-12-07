@@ -6,6 +6,7 @@ import type {
   PagedResponse,
   PatientUserResponse,
   SearchPatientsParams,
+  SelfApprovePatientParams,
   UpdatePatientParams,
   UpsertContactParams
 } from '@hike/types';
@@ -103,9 +104,9 @@ export const approvePatient = async (patientId: string) => {
   }
 };
 
-export const verifyPatientByExternalId = async (externalId: string, patientId: string) => {
+export const selfApprovePatient = async (patientId: string, params: SelfApprovePatientParams) => {
   try {
-    const response = await backendApi.patch(`patient/${patientId}/verify/external/${externalId}`);
+    const response = await backendApi.patch(`patient/${patientId}/approve/self`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

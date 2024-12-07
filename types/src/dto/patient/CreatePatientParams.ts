@@ -10,6 +10,8 @@ export interface CreatePatientParams {
   height?: number | null;
   weight?: number | null;
   maritalStatus?: MaritalStatus | null;
+  phone?: string | null;
+  email?: string | null;
   photoUrl?: string | null;
   primaryPhysicianId?: string | null;
   deceasedAt?: Date | null;

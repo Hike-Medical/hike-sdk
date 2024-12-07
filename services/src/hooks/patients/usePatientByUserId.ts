@@ -9,7 +9,7 @@ export interface UseFindPatientByUserIdOptions
 }
 
 export const usePatientByUserId = ({ queryKey = [], ...options }: UseFindPatientByUserIdOptions = {}) =>
-  useQuery<PatientUserResponse, HikeError<null>>({
+  useQuery({
     queryKey: ['patientsByUserId', queryKey],
     queryFn: async () => await findPatientByUserId(),
     ...options
