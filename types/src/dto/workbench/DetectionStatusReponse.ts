@@ -8,6 +8,7 @@ export interface DetectionStatusResponse {
 interface FootDetectionStatus {
   isActive: boolean;
   detectedAt?: Date;
+  hasScan: boolean;
   isPending: boolean;
   augments: AssetAugment[];
 }
