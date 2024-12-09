@@ -1,10 +1,12 @@
 import type {
+  CompanyUser,
   CreatePatientParams,
   GetPatientsParams,
   PagedParams,
   PagedResponse,
   PatientUserResponse,
   SearchPatientsParams,
+  SelfApprovePatientParams,
   UpdatePatientParams,
   UpsertContactParams
 } from '@hike/types';
@@ -101,3 +103,14 @@ export const approvePatient = async (patientId: string) => {
     throw toHikeError(error);
   }
 };
+
+export const selfApprovePatient = async (patientId: string, params: SelfApprovePatientParams) => {
+  try {
+    const response = await backendApi.patch(`patient/${patientId}/approve/self`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const isPatientApproved = (user: CompanyUser): boolean => !!user.role && user.active;
