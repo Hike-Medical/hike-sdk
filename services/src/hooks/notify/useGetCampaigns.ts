@@ -12,7 +12,7 @@ export interface useGetCampaignsOptions
 
 export const useGetCampaigns = ({ queryKey = [], params, companyIds, ...options }: useGetCampaignsOptions) =>
   useQuery({
-    queryKey: ['campaigns', queryKey],
+    queryKey: ['campaigns', queryKey, params, companyIds],
     queryFn: async () => await getCampaigns(params, companyIds),
     ...options
   });
