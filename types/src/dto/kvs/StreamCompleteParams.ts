@@ -1,4 +1,4 @@
 export interface StreamCompleteParams {
-  status: 'SUCCESS' | 'FAILURE';
-  fileUrl: string;
+  status?: 'SUCCESS' | 'FAILURE';
+  fileUrl?: string;
 }
