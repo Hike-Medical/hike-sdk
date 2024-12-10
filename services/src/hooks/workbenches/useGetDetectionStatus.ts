@@ -11,7 +11,7 @@ export interface useGetDetectionStatusOptions
 
 export const useGetDetectionStatus = ({ workbenchId, queryKey = [], ...options }: useGetDetectionStatusOptions) =>
   useQuery<DetectionStatusResponse, HikeError<null>>({
-    queryKey: ['workbenchId', workbenchId, queryKey],
+    queryKey: ['detectionStatus', workbenchId, queryKey],
     queryFn: async () => await getDetectionStatusForWorkbench(workbenchId),
     ...options
   });
