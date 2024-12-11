@@ -38,6 +38,7 @@ export * from './configure';
 export * from './errors/HikeError';
 export * from './errors/HikeErrorCode';
 export * from './errors/toErrorMessage';
+export * from './hooks/assets/useAssets';
 export * from './hooks/assets/useGetPresignedURL';
 export * from './hooks/assets/useStreamComplete';
 export * from './hooks/assets/useUploadComplete';
