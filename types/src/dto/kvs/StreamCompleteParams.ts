@@ -1,3 +1,3 @@
 export interface StreamCompleteParams {
-  status: 'SUCCESS' | 'FAILURE';
+  status?: 'SUCCESS' | 'FAILURE';
 }
