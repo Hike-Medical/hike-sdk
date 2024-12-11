@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-dayjs.extend(localizedFormat);
+dayjs.extend(customParseFormat);
 
-export const parseDate = (value: string | number | Date | null | undefined): Date | null => {
+export const parseDate = (value: string | number | Date | null | undefined, format?: string): Date | null => {
   if (value == null) {
     return null;
   }
 
-  const parsed = dayjs(value);
+  const parsed = dayjs(value, format);
   return parsed.isValid() ? parsed.toDate() : null;
 };
