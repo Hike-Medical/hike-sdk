@@ -152,3 +152,4 @@ export * from './pdf/PdfContent';
 export * from './pdf/PdfDoc';
 export * from './logger';
 export * from './logger/types';
+export * from './aws/s3.types';

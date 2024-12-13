@@ -36,7 +36,8 @@ export {
   DatadogLoggerProvider,
   configureServices,
   fetchSession,
-  HikeError
+  HikeError,
+  getAwsBucketUrl
 } from '@hike/services';
 
 // Re-export logger types from @hike/types
@@ -54,7 +55,8 @@ export type {
   Workbench,
   WorkbenchExtended,
   PdfDoc,
-  Foot
+  Foot,
+  AwsBucketConfig
 } from '@hike/types';
 
 // Re-export Side from prisma
