@@ -167,3 +167,4 @@ export * from './utils/appUtils';
 export * from './utils/backendApi';
 export * from './logger';
 export * from './logger/providers';
+export * from './logger/types';

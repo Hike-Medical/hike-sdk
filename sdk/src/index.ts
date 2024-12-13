@@ -38,11 +38,15 @@ export {
   configureServices,
   fetchSession,
   HikeError,
-  getAwsBucketUrl
+  getAwsBucketUrl,
+  useStreamComplete,
+  useDeleteSignalingChannel,
+  useGetDetectionStatus
 } from '@hike/services';
 
-// Re-export logger types from @hike/types
+// Re-export types from @hike/types
 export type {
+  AppId,
   LoggerProvider,
   LogContext,
   LogLevel,
