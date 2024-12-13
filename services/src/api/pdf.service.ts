@@ -1,4 +1,5 @@
-import { AwsBucketConfig, getAwsBucketUrl } from './s3.service';
+import { AwsBucketConfig } from '@hike/types';
+import { getAwsBucketUrl } from './s3.service';
 
 /**
  * Interface representing the parameters required for generating a workbench PDF.
