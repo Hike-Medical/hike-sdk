@@ -39,7 +39,7 @@ export {
   HikeError
 } from '@hike/services';
 
-// Export types
+// Re-export logger types from @hike/types
 export type {
   LoggerProvider,
   LogContext,

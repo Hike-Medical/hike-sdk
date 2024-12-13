@@ -151,3 +151,4 @@ export * from './forms/InvalidFormSection';
 export * from './pdf/PdfContent';
 export * from './pdf/PdfDoc';
 export * from './logger';
+export * from './logger/types';
