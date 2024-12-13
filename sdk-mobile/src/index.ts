@@ -29,7 +29,20 @@ export default {
 };
 
 // Export functionality from SDK for external use
-export * from '@hike/services';
-export type * from '@hike/types'; // eslint-disable-line import/export
+export {
+  Logger,
+  ConsoleLoggerProvider,
+  DatadogLoggerProvider
+} from '@hike/services';
+
+// Export types
+export type {
+  LoggerProvider,
+  LogContext,
+  LogLevel,
+  LoggerOptions
+} from '@hike/types';
+
+// Export other SDK functionality
 export * from '@hike/ui';
 export * from '@hike/utils';

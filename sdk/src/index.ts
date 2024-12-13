@@ -2,6 +2,7 @@ import * as services from '@hike/services';
 import { configureServices } from '@hike/services';
 import type { HikeConfig } from '@hike/types';
 import * as utils from '@hike/utils';
+import type { Side } from '@prisma/client';
 
 export default {
   /**
@@ -29,8 +30,36 @@ export default {
 };
 
 // Export functionality from SDK for external use
-export * from '@hike/services';
-export type * from '@hike/types'; // eslint-disable-line import/export
+export {
+  Logger,
+  ConsoleLoggerProvider,
+  DatadogLoggerProvider,
+  configureServices,
+  fetchSession,
+  HikeError
+} from '@hike/services';
+
+// Export types
+export type {
+  LoggerProvider,
+  LogContext,
+  LogLevel,
+  LoggerOptions,
+  AuthUser,
+  CompanyRole,
+  HikeConfig,
+  ProcessedRecord,
+  Patient,
+  PatientExtended,
+  Workbench,
+  WorkbenchExtended,
+  PdfDoc,
+  Foot
+} from '@hike/types';
+
+// Re-export Side from prisma
+export type { Side };
+
 export * from '@hike/utils';
 
 // Export platform specific functionality
