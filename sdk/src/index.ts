@@ -32,6 +32,7 @@ export default {
 // Export functionality from SDK for external use
 export {
   Logger,
+  createLogger,
   ConsoleLoggerProvider,
   DatadogLoggerProvider,
   configureServices,
