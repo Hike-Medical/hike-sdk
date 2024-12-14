@@ -1,7 +1,7 @@
 import { AppId } from 'config/AppId';
 import { CompanyRole, ContactType } from '../../../prisma';
 
-export interface CreateCompanyInvitationParams {
+export interface CreateInvitationParams {
   contact: string;
   contactType: ContactType;
   role?: CompanyRole | null;
@@ -9,7 +9,7 @@ export interface CreateCompanyInvitationParams {
   appId?: AppId;
 }
 
-export interface CreateCompanyInvitationsParams {
-  invitations: CreateCompanyInvitationParams[];
+export interface CreateInvitationsParams {
+  invitations: CreateInvitationParams[];
   notificationId?: string;
 }
