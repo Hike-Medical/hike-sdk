@@ -1,6 +1,6 @@
 import { AuthSession, SignInWithPinBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { signInWithPin } from '../../auth/signInWithPin';
+import { signInWithPin } from '../../api/auth.service';
 import { HikeError } from '../../errors/HikeError';
 
 export const useSignInWithPin = (
