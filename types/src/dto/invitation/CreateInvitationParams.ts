@@ -7,9 +7,5 @@ export interface CreateInvitationParams {
   role?: CompanyRole | null;
   redirectUrl?: string;
   appId?: AppId;
-}
-
-export interface CreateInvitationsParams {
-  invitations: CreateInvitationParams[];
   notificationId?: string;
 }
