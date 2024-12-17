@@ -115,6 +115,7 @@ export type * from './dto/terms/AcceptTermsParams';
 export type * from './dto/user/AssignClinicianParams';
 export type * from './dto/user/GetCliniciansParams';
 export type * from './dto/user/GetUsersParams';
+export type * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export type * from './dto/workbench/CustomizationResponse';
 export type * from './dto/workbench/DetectionStatusReponse';
 export type * from './dto/workbench/FlattenedWorkbench';

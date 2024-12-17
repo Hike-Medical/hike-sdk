@@ -672,6 +672,14 @@ export const SenderMessageStatus: {
 export type SenderMessageStatus = (typeof SenderMessageStatus)[keyof typeof SenderMessageStatus]
 
 
+export const TemplateType: {
+  EMAIL: 'EMAIL',
+  PAMPHLET_PRINT: 'PAMPHLET_PRINT'
+};
+
+export type TemplateType = (typeof TemplateType)[keyof typeof TemplateType]
+
+
 export const EntityType: {
   COMPANY: 'COMPANY',
   DEPARTMENT: 'DEPARTMENT',
@@ -873,6 +881,10 @@ export const CommunicationChannel: typeof $Enums.CommunicationChannel
 export type SenderMessageStatus = $Enums.SenderMessageStatus
 
 export const SenderMessageStatus: typeof $Enums.SenderMessageStatus
+
+export type TemplateType = $Enums.TemplateType
+
+export const TemplateType: typeof $Enums.TemplateType
 
 export type EntityType = $Enums.EntityType
 
@@ -52132,6 +52144,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     htmlContent: string | null
+    type: $Enums.TemplateType | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -52141,6 +52154,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     htmlContent: string | null
+    type: $Enums.TemplateType | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -52151,6 +52165,7 @@ export namespace Prisma {
     title: number
     design: number
     htmlContent: number
+    type: number
     active: number
     createdAt: number
     updatedAt: number
@@ -52162,6 +52177,7 @@ export namespace Prisma {
     id?: true
     title?: true
     htmlContent?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -52171,6 +52187,7 @@ export namespace Prisma {
     id?: true
     title?: true
     htmlContent?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -52181,6 +52198,7 @@ export namespace Prisma {
     title?: true
     design?: true
     htmlContent?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -52264,6 +52282,7 @@ export namespace Prisma {
     title: string
     design: JsonValue
     htmlContent: string
+    type: $Enums.TemplateType
     active: boolean
     createdAt: Date
     updatedAt: Date
@@ -52291,6 +52310,7 @@ export namespace Prisma {
     title?: boolean
     design?: boolean
     htmlContent?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -52303,6 +52323,7 @@ export namespace Prisma {
     title?: boolean
     design?: boolean
     htmlContent?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -52313,12 +52334,13 @@ export namespace Prisma {
     title?: boolean
     design?: boolean
     htmlContent?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EmailTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "design" | "htmlContent" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["emailTemplate"]>
+  export type EmailTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "design" | "htmlContent" | "type" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["emailTemplate"]>
   export type EmailTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notificationMessages?: boolean | EmailTemplate$notificationMessagesArgs<ExtArgs>
     _count?: boolean | EmailTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -52335,6 +52357,7 @@ export namespace Prisma {
       title: string
       design: Prisma.JsonValue
       htmlContent: string
+      type: $Enums.TemplateType
       active: boolean
       createdAt: Date
       updatedAt: Date
@@ -52736,6 +52759,7 @@ export namespace Prisma {
     readonly title: FieldRef<"EmailTemplate", 'String'>
     readonly design: FieldRef<"EmailTemplate", 'Json'>
     readonly htmlContent: FieldRef<"EmailTemplate", 'String'>
+    readonly type: FieldRef<"EmailTemplate", 'TemplateType'>
     readonly active: FieldRef<"EmailTemplate", 'Boolean'>
     readonly createdAt: FieldRef<"EmailTemplate", 'DateTime'>
     readonly updatedAt: FieldRef<"EmailTemplate", 'DateTime'>
@@ -63574,6 +63598,7 @@ export namespace Prisma {
     title: 'title',
     design: 'design',
     htmlContent: 'htmlContent',
+    type: 'type',
     active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -64366,6 +64391,20 @@ export namespace Prisma {
    * Reference to a field of type 'SenderMessageStatus[]'
    */
   export type ListEnumSenderMessageStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SenderMessageStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TemplateType'
+   */
+  export type EnumTemplateTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TemplateType'>
+    
+
+
+  /**
+   * Reference to a field of type 'TemplateType[]'
+   */
+  export type ListEnumTemplateTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TemplateType[]'>
     
 
 
@@ -67971,6 +68010,7 @@ export namespace Prisma {
     title?: StringFilter<"EmailTemplate"> | string
     design?: JsonFilter<"EmailTemplate">
     htmlContent?: StringFilter<"EmailTemplate"> | string
+    type?: EnumTemplateTypeFilter<"EmailTemplate"> | $Enums.TemplateType
     active?: BoolFilter<"EmailTemplate"> | boolean
     createdAt?: DateTimeFilter<"EmailTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"EmailTemplate"> | Date | string
@@ -67982,6 +68022,7 @@ export namespace Prisma {
     title?: SortOrder
     design?: SortOrder
     htmlContent?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -67996,6 +68037,7 @@ export namespace Prisma {
     title?: StringFilter<"EmailTemplate"> | string
     design?: JsonFilter<"EmailTemplate">
     htmlContent?: StringFilter<"EmailTemplate"> | string
+    type?: EnumTemplateTypeFilter<"EmailTemplate"> | $Enums.TemplateType
     active?: BoolFilter<"EmailTemplate"> | boolean
     createdAt?: DateTimeFilter<"EmailTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"EmailTemplate"> | Date | string
@@ -68007,6 +68049,7 @@ export namespace Prisma {
     title?: SortOrder
     design?: SortOrder
     htmlContent?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -68023,6 +68066,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"EmailTemplate"> | string
     design?: JsonWithAggregatesFilter<"EmailTemplate">
     htmlContent?: StringWithAggregatesFilter<"EmailTemplate"> | string
+    type?: EnumTemplateTypeWithAggregatesFilter<"EmailTemplate"> | $Enums.TemplateType
     active?: BoolWithAggregatesFilter<"EmailTemplate"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"EmailTemplate"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"EmailTemplate"> | Date | string
@@ -72752,6 +72796,7 @@ export namespace Prisma {
     title: string
     design: JsonNullValueInput | InputJsonValue
     htmlContent: string
+    type?: $Enums.TemplateType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72763,6 +72808,7 @@ export namespace Prisma {
     title: string
     design: JsonNullValueInput | InputJsonValue
     htmlContent: string
+    type?: $Enums.TemplateType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72774,6 +72820,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72785,6 +72832,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72796,6 +72844,7 @@ export namespace Prisma {
     title: string
     design: JsonNullValueInput | InputJsonValue
     htmlContent: string
+    type?: $Enums.TemplateType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72806,6 +72855,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72816,6 +72866,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -76909,11 +76960,19 @@ export namespace Prisma {
     _max?: NestedEnumSenderMessageStatusNullableFilter<$PrismaModel>
   }
 
+  export type EnumTemplateTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TemplateType | EnumTemplateTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTemplateTypeFilter<$PrismaModel> | $Enums.TemplateType
+  }
+
   export type EmailTemplateCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     design?: SortOrder
     htmlContent?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -76923,6 +76982,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     htmlContent?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -76932,9 +76992,20 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     htmlContent?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumTemplateTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TemplateType | EnumTemplateTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTemplateTypeWithAggregatesFilter<$PrismaModel> | $Enums.TemplateType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTemplateTypeFilter<$PrismaModel>
+    _max?: NestedEnumTemplateTypeFilter<$PrismaModel>
   }
 
   export type EnumEntityTypeFilter<$PrismaModel = never> = {
@@ -81476,6 +81547,10 @@ export namespace Prisma {
     connect?: NotificationMessageWhereUniqueInput | NotificationMessageWhereUniqueInput[]
   }
 
+  export type EnumTemplateTypeFieldUpdateOperationsInput = {
+    set?: $Enums.TemplateType
+  }
+
   export type NotificationMessageUpdateManyWithoutEmailTemplateNestedInput = {
     create?: XOR<NotificationMessageCreateWithoutEmailTemplateInput, NotificationMessageUncheckedCreateWithoutEmailTemplateInput> | NotificationMessageCreateWithoutEmailTemplateInput[] | NotificationMessageUncheckedCreateWithoutEmailTemplateInput[]
     connectOrCreate?: NotificationMessageCreateOrConnectWithoutEmailTemplateInput | NotificationMessageCreateOrConnectWithoutEmailTemplateInput[]
@@ -82943,6 +83018,23 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumSenderMessageStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumSenderMessageStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTemplateTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TemplateType | EnumTemplateTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTemplateTypeFilter<$PrismaModel> | $Enums.TemplateType
+  }
+
+  export type NestedEnumTemplateTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TemplateType | EnumTemplateTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TemplateType[] | ListEnumTemplateTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTemplateTypeWithAggregatesFilter<$PrismaModel> | $Enums.TemplateType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTemplateTypeFilter<$PrismaModel>
+    _max?: NestedEnumTemplateTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumEntityTypeFilter<$PrismaModel = never> = {
@@ -92105,6 +92197,7 @@ export namespace Prisma {
     title: string
     design: JsonNullValueInput | InputJsonValue
     htmlContent: string
+    type?: $Enums.TemplateType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -92115,6 +92208,7 @@ export namespace Prisma {
     title: string
     design: JsonNullValueInput | InputJsonValue
     htmlContent: string
+    type?: $Enums.TemplateType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -92196,6 +92290,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -92206,6 +92301,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     design?: JsonNullValueInput | InputJsonValue
     htmlContent?: StringFieldUpdateOperationsInput | string
+    type?: EnumTemplateTypeFieldUpdateOperationsInput | $Enums.TemplateType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

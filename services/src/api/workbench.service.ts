@@ -1,4 +1,5 @@
 import {
+  ActionMultipleWorkbenchIdsParams,
   Asset,
   DetectionStatusResponse,
   FlattenedWorkbench,
@@ -132,19 +133,14 @@ export const getAggregatedWorkbenches = async (
 };
 
 export const getFilesFromWorkbenches = async (
-  workbenchIds: string[],
-  withLabel: boolean,
-  companyIds
+  params: ActionMultipleWorkbenchIdsParams,
+  companyIds?: string[]
 ): Promise<Blob> => {
   try {
-    const response = await backendApi.post(
-      'workbench/files',
-      { workbenchIds, withLabel },
-      {
-        headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
-        responseType: 'arraybuffer'
-      }
-    );
+    const response = await backendApi.post('workbench/files', params, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+      responseType: 'arraybuffer'
+    });
 
     return response.data;
   } catch (error) {
