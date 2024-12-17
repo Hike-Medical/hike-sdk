@@ -5,7 +5,13 @@ import type {
   UserExtended,
   VerifyInvitationResponse
 } from '@hike/types';
-import { AccountRecoveryParams, PasswordResetParams, SignInWithEmailParams, SignInWithPinBody } from '@hike/types';
+import {
+  AccountRecoveryParams,
+  InviteUserParams,
+  PasswordResetParams,
+  SignInWithEmailParams,
+  SignInWithPinBody
+} from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -58,6 +64,15 @@ export const logout = async (): Promise<void> => {
   }
 };
 
+export const inviteUserEmail = async (params: InviteUserParams): Promise<boolean> => {
+  try {
+    const response = await backendApi.post('auth/invite', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const accountRecovery = async (params: AccountRecoveryParams, companyId?: string): Promise<void> => {
   try {
     const response = await backendApi.post(
@@ -98,18 +113,9 @@ export const acceptInvitation = async (params: AcceptInvitationParams): Promise<
   }
 };
 
-export const sendOtp = async (params: SendOtpParams): Promise<VerifyInvitationResponse> => {
+export const sendOtp = async (params: SendOtpParams) => {
   try {
     const response = await backendApi.post('auth/invitation/otp', params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const verifyOtp = async (token: string): Promise<VerifyInvitationResponse> => {
-  try {
-    const response = await backendApi.get(`auth/invitation/otp/${token}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
