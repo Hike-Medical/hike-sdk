@@ -1,4 +1,5 @@
 import {
+  ActionMultipleWorkbenchIdsParams,
   Asset,
   DetectionStatusResponse,
   FlattenedWorkbench,
@@ -7,7 +8,9 @@ import {
   GetAggregatedParams,
   Order,
   PagedResponse,
+  PrintShippingParams,
   SearchWorkbenchParams,
+  ShippingLabel,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
@@ -94,6 +97,18 @@ export const updateRenderType = async (
   }
 };
 
+export const printShippingInfo = async (
+  workbenchId: string,
+  data: PrintShippingParams
+): Promise<ShippingLabel | null> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/print/shipping`, data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const processWorkbench = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/process`);
@@ -132,19 +147,14 @@ export const getAggregatedWorkbenches = async (
 };
 
 export const getFilesFromWorkbenches = async (
-  workbenchIds: string[],
-  withLabel: boolean,
-  companyIds
+  params: ActionMultipleWorkbenchIdsParams,
+  companyIds?: string[]
 ): Promise<Blob> => {
   try {
-    const response = await backendApi.post(
-      'workbench/files',
-      { workbenchIds, withLabel },
-      {
-        headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
-        responseType: 'arraybuffer'
-      }
-    );
+    const response = await backendApi.post('workbench/files', params, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+      responseType: 'arraybuffer'
+    });
 
     return response.data;
   } catch (error) {

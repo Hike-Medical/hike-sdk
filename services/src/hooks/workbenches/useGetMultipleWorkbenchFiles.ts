@@ -1,11 +1,11 @@
+import { ActionMultipleWorkbenchIdsParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { getFilesFromWorkbenches } from '../../api/workbench.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface GetMultipleWorkbenchFilesContext {
-  workbenchIds: string[];
-  withLabel: boolean;
   companyIds?: string[];
+  params: ActionMultipleWorkbenchIdsParams;
 }
 
 export const useGetMultipleWorkbenchFiles = (
@@ -13,8 +13,8 @@ export const useGetMultipleWorkbenchFiles = (
 ) => {
   return useMutation({
     mutationKey: ['workbenchFiles'],
-    mutationFn: ({ workbenchIds, withLabel, companyIds }: GetMultipleWorkbenchFilesContext) =>
-      getFilesFromWorkbenches(workbenchIds, withLabel, companyIds),
+    mutationFn: ({ params, companyIds }: GetMultipleWorkbenchFilesContext) =>
+      getFilesFromWorkbenches(params, companyIds),
     ...mutationOptions
   });
 };

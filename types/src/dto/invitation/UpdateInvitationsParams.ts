@@ -1,12 +1,12 @@
 import { CompanyRole } from '../../../prisma';
 
-export interface UpdateCompanyInvitationParams {
+export interface UpdateInvitationParams {
   contact: string;
   role?: CompanyRole | null;
   extendExpiry?: boolean;
   redirectUrl?: string;
 }
 
-export interface UpdateCompanyInvitationsParams {
-  invitations: UpdateCompanyInvitationParams[];
+export interface UpdateInvitationsParams {
+  invitations: UpdateInvitationParams[];
 }

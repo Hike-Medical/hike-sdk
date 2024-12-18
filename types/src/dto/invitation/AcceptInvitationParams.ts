@@ -1,4 +1,4 @@
-export interface AcceptCompanyInvitationParams {
+export interface AcceptInvitationParams {
   token: string;
   password?: string;
   firstName?: string;
