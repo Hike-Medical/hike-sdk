@@ -8,7 +8,9 @@ import {
   GetAggregatedParams,
   Order,
   PagedResponse,
+  PrintShippingParams,
   SearchWorkbenchParams,
+  ShippingLabel,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
@@ -89,6 +91,18 @@ export const updateRenderType = async (
     const response = await backendApi.post(`workbench/${workbenchId}/update-render-type`, body, {
       headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
     });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const printShippingInfo = async (
+  workbenchId: string,
+  data: PrintShippingParams
+): Promise<ShippingLabel | null> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/print/shipping`, data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
