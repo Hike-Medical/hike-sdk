@@ -3,4 +3,5 @@ export interface JobData {
   notifyMessageId: string;
   companyId: string;
   role?: string;
+  workbenchId?: string;
 }
