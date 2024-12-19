@@ -6,4 +6,5 @@ export interface JobData {
   companyId: string;
   role?: string;
   appId?: AppId;
+  workbenchId?: string;
 }
