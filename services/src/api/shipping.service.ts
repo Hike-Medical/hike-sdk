@@ -78,10 +78,9 @@ export const purchaseLabelByRateId = async (rateId: string) => {
   }
 };
 
-export const voidLabel = async (labelId: string, onlySetLabelVoid?: boolean) => {
+export const voidLabel = async (labelId: string, voidShippedLabel?: boolean) => {
   try {
-    const queryString = onlySetLabelVoid ? `?onlySetLabelVoid=${onlySetLabelVoid}` : '';
-    await backendApi.put(`shipping/labels/${labelId}/void${queryString}`);
+    await backendApi.put(`shipping/labels/${labelId}/void`, { voidShippedLabel });
   } catch (error) {
     throw toHikeError(error);
   }
