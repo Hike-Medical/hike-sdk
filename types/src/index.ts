@@ -35,6 +35,7 @@ export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/CompanyPreferences';
 export type * from './dto/company/FindCompaniesParams';
 export type * from './dto/email/EmailEvent';
+export type * from './dto/email/SendEmailTemplateParams';
 export type * from './dto/evaluation/ActionEvaluationParams';
 export type * from './dto/evaluation/CreateEvaluationByProductParams';
 export type * from './dto/evaluation/CreateEvaluationParams';
