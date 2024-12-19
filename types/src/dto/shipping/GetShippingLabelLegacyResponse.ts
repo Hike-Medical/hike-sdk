@@ -9,6 +9,7 @@ export interface ShippingLabelResponseByShipmentId {
   actualDeliveryDate: string | null;
   shipDate: string | null;
   statusDescription: string;
+  pdfLink: string | null;
 }
 
 export interface FlattenedShippingResponse {

@@ -7,6 +7,7 @@ import type {
   Notification,
   NotificationExtended,
   NotificationHistory,
+  SendEmailTemplateParams,
   UpsertEmailTemplateParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
@@ -97,6 +98,15 @@ export const publishNotification = async (notificationId: string): Promise<Notif
 export const removeQueuedMessages = async (notificationId: string): Promise<NotificationHistory[]> => {
   try {
     const response = await backendApi.post(`notify/${notificationId}/remove-queued-messages`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendEmailTemplate = async (templateId: string, params: SendEmailTemplateParams): Promise<void> => {
+  try {
+    const response = await backendApi.post(`notify/${templateId}/send`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

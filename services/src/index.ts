@@ -114,6 +114,7 @@ export * from './hooks/notify/useGetCampaignStats';
 export * from './hooks/notify/useGetEmailTemplates';
 export * from './hooks/notify/usePublishNotification';
 export * from './hooks/notify/useRemoveQueuedMessages';
+export * from './hooks/notify/useSendEmailTemplate';
 export * from './hooks/notify/useUpsertEmailTemplate';
 export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
