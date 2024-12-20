@@ -1,5 +1,7 @@
 import type { Side } from '../../../prisma';
 
 export interface GetSignalingChannelParams {
-  side: Side;
+  footSide?: Side;
+  patientId: string;
+  workbenchId: string;
 }
