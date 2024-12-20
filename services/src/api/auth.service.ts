@@ -1,10 +1,4 @@
-import type {
-  AcceptInvitationParams,
-  AuthSession,
-  SendOtpParams,
-  UserExtended,
-  VerifyInvitationResponse
-} from '@hike/types';
+import type { AcceptInvitationParams, AuthSession, UserExtended, VerifyInvitationResponse } from '@hike/types';
 import {
   AccountRecoveryParams,
   InviteUserParams,
@@ -107,15 +101,6 @@ export const verifyInvitation = async (token: string): Promise<VerifyInvitationR
 export const acceptInvitation = async (params: AcceptInvitationParams): Promise<UserExtended> => {
   try {
     const response = await backendApi.post('auth/invitation', params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const sendOtp = async (params: SendOtpParams) => {
-  try {
-    const response = await backendApi.post('auth/invitation/otp', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

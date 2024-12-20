@@ -54190,6 +54190,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -54201,6 +54203,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -54212,6 +54216,8 @@ export namespace Prisma {
     password: number
     pin: number
     photoUrl: number
+    emailVerifiedAt: number
+    phoneVerifiedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -54225,6 +54231,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -54236,6 +54244,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -54247,6 +54257,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -54331,6 +54343,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -54359,6 +54373,8 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -54379,6 +54395,8 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -54390,11 +54408,13 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "password" | "pin" | "photoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "password" | "pin" | "photoUrl" | "emailVerifiedAt" | "phoneVerifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
@@ -54427,6 +54447,8 @@ export namespace Prisma {
       password: string | null
       pin: string | null
       photoUrl: string | null
+      emailVerifiedAt: Date | null
+      phoneVerifiedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -54836,6 +54858,8 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly pin: FieldRef<"User", 'String'>
     readonly photoUrl: FieldRef<"User", 'String'>
+    readonly emailVerifiedAt: FieldRef<"User", 'DateTime'>
+    readonly phoneVerifiedAt: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -63628,6 +63652,8 @@ export namespace Prisma {
     password: 'password',
     pin: 'pin',
     photoUrl: 'photoUrl',
+    emailVerifiedAt: 'emailVerifiedAt',
+    phoneVerifiedAt: 'phoneVerifiedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -68153,6 +68179,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -68172,6 +68200,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    emailVerifiedAt?: SortOrderInput | SortOrder
+    phoneVerifiedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
@@ -68194,6 +68224,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -68213,6 +68245,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    emailVerifiedAt?: SortOrderInput | SortOrder
+    phoneVerifiedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -68230,6 +68264,8 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     pin?: StringNullableWithAggregatesFilter<"User"> | string | null
     photoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -72955,6 +72991,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -72974,6 +73012,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -72993,6 +73033,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -73012,6 +73054,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -73031,6 +73075,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -73042,6 +73088,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -73053,6 +73101,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -77096,6 +77146,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77107,6 +77159,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77118,6 +77172,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -85386,6 +85442,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -85404,6 +85462,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -85513,6 +85573,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -85531,6 +85593,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -87924,6 +87988,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -87942,6 +88008,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -88027,6 +88095,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -88045,6 +88115,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -89794,6 +89866,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -89812,6 +89886,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -89899,6 +89975,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -89917,6 +89995,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -90047,6 +90127,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -90065,6 +90147,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -90158,6 +90242,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -90176,6 +90262,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -90341,6 +90429,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -90359,6 +90449,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -90558,6 +90650,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -90576,6 +90670,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -93182,6 +93278,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -93200,6 +93298,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -93287,6 +93387,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -93305,6 +93407,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -93382,6 +93486,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -93400,6 +93506,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -93455,6 +93563,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -93473,6 +93583,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -93558,6 +93670,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
@@ -93576,6 +93690,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
@@ -93610,6 +93726,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
@@ -93628,6 +93746,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput

@@ -4,6 +4,7 @@ import {
   DeleteInvitationsParams,
   FindInvitationsParams,
   PagedResponse,
+  SendOtpParams,
   UpdateInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
@@ -34,6 +35,15 @@ export const updateInvitations = async (
 ): Promise<Omit<AccountVerification, 'token'>[]> => {
   try {
     const response = await backendApi.patch('invitation', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendOtp = async (params: SendOtpParams) => {
+  try {
+    const response = await backendApi.post('invitation/otp', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
