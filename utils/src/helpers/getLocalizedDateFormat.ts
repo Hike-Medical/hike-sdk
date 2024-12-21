@@ -32,12 +32,10 @@ export const getLocalizedDateFormat = (
   const defaultSeparator = parts.find((part) => part.type === 'literal')?.value.trim();
   let usedSeparator = separator ?? defaultSeparator ?? '/';
 
-  // Add spaces around the separator if requested
   if (addSpaces) {
     usedSeparator = ` ${usedSeparator} `;
   }
 
-  // Generate the format string
   return parts
     .filter((part) => formatMap[part.type])
     .map((part) => formatMap[part.type])
