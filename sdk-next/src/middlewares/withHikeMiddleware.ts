@@ -49,16 +49,29 @@ export const withHikeMiddleware = ({
     const onNextResponse = (session: AuthUser | null = null) =>
       callback?.onResponse?.(request, session) ?? NextResponse.next();
 
+    // Adjust allowed paths
+    const allowedPathGroups = allowedPaths
+      // Ignore trailing slashes
+      ?.map((path) => path.replace(/\/$/, ''))
+      // Handle slug based paths
+      .map((path) => (slug ? path.replace('{slug}', slug) : path.includes('{slug}') ? null : path))
+      .filter(isDefined)
+      // Handle wildcard paths
+      .reduce<{ static: string[]; wildcards: string[] }>(
+        (acc, path) => {
+          const isWildcard = path.endsWith('/*');
+          const allowPath = isWildcard ? path.slice(0, -2) : path;
+          acc[isWildcard ? 'wildcards' : 'static'].push(allowPath);
+          return acc;
+        },
+        { static: [], wildcards: [] }
+      );
+
     // Allow requests to paths that are not protected
     if (
       pathname.startsWith(`${slugPath}/login`) ||
-      allowedPaths
-        // Handle slug based paths
-        ?.map((path) => (slug ? path.replace('{slug}', slug) : null))
-        .filter(isDefined)
-        // Match exact paths; ignore trailing slashes
-        .map((path) => path.replace(/\/$/, ''))
-        .includes(pathname.replace(/\/$/, ''))
+      allowedPathGroups?.static.includes(pathname.replace(/\/$/, '')) ||
+      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path))
     ) {
       try {
         const token = extractToken(request);
