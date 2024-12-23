@@ -8,7 +8,7 @@ export interface GenerateSignedURLParams {
   mimeTypeOrExtension: string;
   suggestedFootSide?: string;
   useMultipart?: boolean;
-  fileSize: number;
+  fileSize?: number;
 }
 
 export interface GenerateSignedURLResponse {
