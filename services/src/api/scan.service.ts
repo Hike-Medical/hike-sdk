@@ -7,6 +7,7 @@ export interface GenerateSignedURLParams {
   productType: ProductType;
   mimeTypeOrExtension: string;
   suggestedFootSide?: string;
+  useMultipart?: boolean;
 }
 
 export interface GenerateSignedURLResponse {
