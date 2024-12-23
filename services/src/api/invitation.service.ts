@@ -1,5 +1,6 @@
 import {
   AccountVerification,
+  ApprovePatientParams,
   CreateInvitationParams,
   DeleteInvitationsParams,
   FindInvitationsParams,
@@ -36,6 +37,15 @@ export const updateInvitations = async (
   try {
     const response = await backendApi.patch('invitation', params);
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const approveInvitation = async (patientId: string, params?: ApprovePatientParams): Promise<boolean> => {
+  try {
+    const response = await backendApi.patch(`invitation/approve/patient/${patientId}`, params);
+    return response.data.isApproved;
   } catch (error) {
     throw toHikeError(error);
   }
