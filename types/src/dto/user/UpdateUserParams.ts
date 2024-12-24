@@ -1,5 +1,5 @@
 export interface UpdateUserParams {
-  email?: string;
-  phone?: string;
-  photoUrl?: string;
+  email?: string | null;
+  phone?: string | null;
+  photoUrl?: string | null;
 }
