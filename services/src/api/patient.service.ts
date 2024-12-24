@@ -103,4 +103,4 @@ export const approvePatient = async (patientId: string) => {
   }
 };
 
-export const isPatientApproved = (user: CompanyUser | undefined): boolean => !!user && !!user.role && user.active;
+export const isPatientApproved = (user: CompanyUser | undefined): boolean => !!user?.role && user.active;
