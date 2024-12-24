@@ -2,6 +2,7 @@ export interface SignalingChannelResponse {
   channelARN: string;
   websocketUrl: string;
   assetId: string;
+  footId: string;
   iceServers: IceServer[];
 }
 

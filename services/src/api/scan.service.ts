@@ -1,4 +1,4 @@
-import { ProductType, SubmitRenderParams } from '@hike/types';
+import { CreateMultipartUrls, ProductType, SubmitRenderParams } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -7,6 +7,8 @@ export interface GenerateSignedURLParams {
   productType: ProductType;
   mimeTypeOrExtension: string;
   suggestedFootSide?: string;
+  useMultipart?: boolean;
+  fileSize?: number;
 }
 
 export interface GenerateSignedURLResponse {
@@ -17,7 +19,7 @@ export interface GenerateSignedURLResponse {
 export const getPreSignedURL = async (
   footId: string,
   body: Omit<GenerateSignedURLParams, 'footId'>
-): Promise<GenerateSignedURLResponse> => {
+): Promise<GenerateSignedURLResponse | CreateMultipartUrls> => {
   try {
     const response = await backendApi.post(`scan/${footId}/pre-signed-url`, body);
     return response.data;
