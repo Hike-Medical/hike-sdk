@@ -30,6 +30,15 @@ export const updateUser = async (params: UpdateUserParams): Promise<Omit<User, '
   }
 };
 
+export const fetchSelf = async (): Promise<SafeUserExtended> => {
+  try {
+    const response = await backendApi.get('user/self');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const fetchClinicians = async (params?: GetCliniciansParams): Promise<PagedResponse<ClinicianExtended[]>> => {
   try {
     const response = await backendApi.get('user/clinicians', { params });
