@@ -3,6 +3,7 @@ import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export interface GenerateSignedURLParams {
+  assetId?: string;
   footId: string;
   productType: ProductType;
   mimeTypeOrExtension: string;
