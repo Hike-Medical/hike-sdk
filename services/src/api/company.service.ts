@@ -54,3 +54,8 @@ export const findCompanyBySlug = async (slug: string): Promise<SafeCompany> => {
   const response = await backendApi.get(`auth/company/slug/${slug}`);
   return response.data;
 };
+
+export const findCompanyByName = async (name: string): Promise<{ name: string; slug: string }[]> => {
+  const response = await backendApi.get(`auth/company/name/${name}`);
+  return response.data;
+};
