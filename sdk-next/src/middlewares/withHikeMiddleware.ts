@@ -40,7 +40,7 @@ export const withHikeMiddleware = ({
   async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
-    const slug = pathParts[1] !== 'login' ? pathParts[1] || null : null;
+    const slug = pathParts[1] && !['login', 'enroll'].includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
 
     // Set up services such as backend API
