@@ -31,10 +31,10 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const findPatientByUserId = async (companyId?: string): Promise<PatientUserResponse> => {
+export const findCurrentPatient = async (companyId?: string): Promise<PatientUserResponse> => {
   try {
     const response = await backendApi.get(
-      'patient/user',
+      'patient/current',
       companyId
         ? {
             headers: { 'x-company-id': companyId }
