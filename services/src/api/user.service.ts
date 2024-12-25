@@ -5,9 +5,9 @@ import {
   GetCliniciansParams,
   GetUsersParams,
   PagedResponse,
+  SafeUser,
   SafeUserExtended,
-  UpdateUserParams,
-  User
+  UpdateUserParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -21,18 +21,18 @@ export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse
   }
 };
 
-export const updateUser = async (params: UpdateUserParams): Promise<Omit<User, 'password' | 'pin'>> => {
+export const fetchCurrentUser = async (): Promise<SafeUser> => {
   try {
-    const response = await backendApi.patch('user', params);
+    const response = await backendApi.get('user/current');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const fetchSelf = async (): Promise<SafeUserExtended> => {
+export const updateUser = async (params: UpdateUserParams): Promise<SafeUser> => {
   try {
-    const response = await backendApi.get('user/self');
+    const response = await backendApi.patch('user', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
