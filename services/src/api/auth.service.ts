@@ -9,8 +9,8 @@ import {
   AccountRecoveryParams,
   InviteUserParams,
   PasswordResetParams,
-  SignInWithEmailParams,
-  SignInWithPinBody
+  SignInWithPinBody,
+  SignInWithTokenParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -28,7 +28,7 @@ export const signIn = async (
   }
 };
 
-export const signInWithEmail = async (credentials: SignInWithEmailParams): Promise<AuthSession> => {
+export const signInWithToken = async (credentials: SignInWithTokenParams): Promise<AuthSession> => {
   const response = await backendApi.post('auth/magic-link', credentials);
   return response.data;
 };
