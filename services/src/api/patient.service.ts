@@ -5,8 +5,10 @@ import type {
   PagedParams,
   PagedResponse,
   PatientUserResponse,
+  SafeUser,
   SearchPatientsParams,
   UpdatePatientParams,
+  UpdateUserParams,
   UpsertContactParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
@@ -70,6 +72,15 @@ export const fetchPatientsByMissingExternalId = async (
 export const searchPatients = async (params: SearchPatientsParams): Promise<PagedResponse<PatientExtended[]>> => {
   try {
     const response = await backendApi.get('patient/search', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updatePatientUser = async (patientId: string, params: UpdateUserParams): Promise<SafeUser> => {
+  try {
+    const response = await backendApi.patch(`patient/${patientId}/user`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
