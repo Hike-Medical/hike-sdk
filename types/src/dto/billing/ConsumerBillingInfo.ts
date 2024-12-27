@@ -3,4 +3,5 @@ export type CheckoutSessionInfo = {
   employeeDiscounted: number;
   employerOriginal: number;
   employerDiscounted: number;
+  isReorder: boolean;
 };
