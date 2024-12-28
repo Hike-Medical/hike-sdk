@@ -18,6 +18,13 @@ interface BaseFormField<T extends FormFieldValue> {
   meta?: Record<string, FormFieldValue>;
 }
 
+export interface FormFieldOption {
+  label: string;
+  value: string;
+  description?: string;
+  icon?: string;
+}
+
 export type FormField =
   | (BaseFormField<string> & {
       type: 'text';
@@ -41,7 +48,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'clinician' })
   | (BaseFormField<string> & {
       type: 'select';
-      options: { label: string; value: string; description?: string }[];
+      options: FormFieldOption[];
       ui?: 'dropdown' | 'radio' | 'radio-col' | 'accordion' | 'segmented';
     })
   | (BaseFormField<string> & { type: 'select:gender' })
@@ -59,7 +66,7 @@ export type FormField =
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';
-      options: { label: string; value: string }[];
+      options: FormFieldOption[];
       title?: string;
       ui?: 'accordion';
     });

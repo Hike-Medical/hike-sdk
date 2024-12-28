@@ -30,6 +30,7 @@ export * from './helpers/extractDomain';
 export * from './helpers/findKeyInNested';
 export * from './helpers/formAddressUtils';
 export * from './helpers/formSchemaUtils';
+export * from './helpers/getLocalizedDateFormat';
 export * from './helpers/httpUtils';
 export * from './helpers/isEmpty';
 export * from './helpers/localeUtils';

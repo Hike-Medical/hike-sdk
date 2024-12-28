@@ -1,5 +1,7 @@
 export const formatPhoneNumber = (phoneNumber: string): string => {
-  if (!phoneNumber) return '';
+  if (!phoneNumber) {
+    return '';
+  }
 
   const digitsOnly = phoneNumber.replace(/\D/g, '');
 

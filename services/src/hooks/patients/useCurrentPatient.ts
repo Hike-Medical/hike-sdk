@@ -1,16 +1,16 @@
 import { PatientUserResponse } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { findPatientByUserId } from '../../api/patient.service';
+import { findCurrentPatient } from '../../api/patient.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseFindPatientByUserIdOptions
+export interface UseFindCurrentPatientOptions
   extends Omit<UseQueryOptions<PatientUserResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
 
-export const usePatientByUserId = ({ queryKey = [], ...options }: UseFindPatientByUserIdOptions = {}) =>
+export const useCurrentPatient = ({ queryKey = [], ...options }: UseFindCurrentPatientOptions = {}) =>
   useQuery({
-    queryKey: ['patientsByUserId', queryKey],
-    queryFn: async () => await findPatientByUserId(),
+    queryKey: ['currentPatient', queryKey],
+    queryFn: async () => await findCurrentPatient(),
     ...options
   });

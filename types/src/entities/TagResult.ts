@@ -1,8 +1,9 @@
-import { Clinician, Department, Facility, Patient, User } from '../../prisma';
+import { Clinician, Department, Facility, Patient } from '../../prisma';
 import { SafeCompany } from './SafeCompany';
+import { SafeUser } from './SafeUser';
 
 export interface TagResult {
-  users?: Omit<User, 'password' | 'pin'>[];
+  users?: SafeUser[];
   patients?: Patient[];
   clinicians?: Clinician[];
   companies?: SafeCompany[];

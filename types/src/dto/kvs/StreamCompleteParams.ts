@@ -1,8 +1,6 @@
-import { Side } from '../../../prisma';
-
 export interface StreamCompleteParams {
-  status?: 'SUCCESS' | 'FAILURE';
-  fileUrl?: string;
-  workbenchId: string;
-  footSide: Side;
+  status: 'SUCCESS' | 'FAILURE';
+  key: string;
+  uploadId: string;
+  completedParts: { ETag: string; PartNumber: number }[];
 }

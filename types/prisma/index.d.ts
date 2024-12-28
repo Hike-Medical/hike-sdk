@@ -7211,8 +7211,18 @@ export namespace Prisma {
 
   export type AggregateCompany = {
     _count: CompanyCountAggregateOutputType | null
+    _avg: CompanyAvgAggregateOutputType | null
+    _sum: CompanySumAggregateOutputType | null
     _min: CompanyMinAggregateOutputType | null
     _max: CompanyMaxAggregateOutputType | null
+  }
+
+  export type CompanyAvgAggregateOutputType = {
+    activationSequence: number | null
+  }
+
+  export type CompanySumAggregateOutputType = {
+    activationSequence: number | null
   }
 
   export type CompanyMinAggregateOutputType = {
@@ -7222,6 +7232,7 @@ export namespace Prisma {
     logoUrl: string | null
     slug: string | null
     active: boolean | null
+    activationSequence: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7233,6 +7244,7 @@ export namespace Prisma {
     logoUrl: string | null
     slug: string | null
     active: boolean | null
+    activationSequence: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7245,11 +7257,20 @@ export namespace Prisma {
     slug: number
     preferences: number
     active: number
+    activationSequence: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type CompanyAvgAggregateInputType = {
+    activationSequence?: true
+  }
+
+  export type CompanySumAggregateInputType = {
+    activationSequence?: true
+  }
 
   export type CompanyMinAggregateInputType = {
     id?: true
@@ -7258,6 +7279,7 @@ export namespace Prisma {
     logoUrl?: true
     slug?: true
     active?: true
+    activationSequence?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7269,6 +7291,7 @@ export namespace Prisma {
     logoUrl?: true
     slug?: true
     active?: true
+    activationSequence?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7281,6 +7304,7 @@ export namespace Prisma {
     slug?: true
     preferences?: true
     active?: true
+    activationSequence?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7324,6 +7348,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CompanyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CompanySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CompanyMinAggregateInputType
@@ -7354,6 +7390,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CompanyCountAggregateInputType | true
+    _avg?: CompanyAvgAggregateInputType
+    _sum?: CompanySumAggregateInputType
     _min?: CompanyMinAggregateInputType
     _max?: CompanyMaxAggregateInputType
   }
@@ -7366,9 +7404,12 @@ export namespace Prisma {
     slug: string
     preferences: JsonValue | null
     active: boolean
+    activationSequence: number
     createdAt: Date
     updatedAt: Date
     _count: CompanyCountAggregateOutputType | null
+    _avg: CompanyAvgAggregateOutputType | null
+    _sum: CompanySumAggregateOutputType | null
     _min: CompanyMinAggregateOutputType | null
     _max: CompanyMaxAggregateOutputType | null
   }
@@ -7395,6 +7436,7 @@ export namespace Prisma {
     slug?: boolean
     preferences?: boolean
     active?: boolean
+    activationSequence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     departments?: boolean | Company$departmentsArgs<ExtArgs>
@@ -7421,6 +7463,7 @@ export namespace Prisma {
     slug?: boolean
     preferences?: boolean
     active?: boolean
+    activationSequence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["company"]>
@@ -7433,11 +7476,12 @@ export namespace Prisma {
     slug?: boolean
     preferences?: boolean
     active?: boolean
+    activationSequence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "logoUrl" | "slug" | "preferences" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "logoUrl" | "slug" | "preferences" | "active" | "activationSequence" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     departments?: boolean | Company$departmentsArgs<ExtArgs>
     facilities?: boolean | Company$facilitiesArgs<ExtArgs>
@@ -7481,6 +7525,7 @@ export namespace Prisma {
       slug: string
       preferences: Prisma.JsonValue | null
       active: boolean
+      activationSequence: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["company"]>
@@ -7896,6 +7941,7 @@ export namespace Prisma {
     readonly slug: FieldRef<"Company", 'String'>
     readonly preferences: FieldRef<"Company", 'Json'>
     readonly active: FieldRef<"Company", 'Boolean'>
+    readonly activationSequence: FieldRef<"Company", 'Float'>
     readonly createdAt: FieldRef<"Company", 'DateTime'>
     readonly updatedAt: FieldRef<"Company", 'DateTime'>
   }
@@ -13150,8 +13196,18 @@ export namespace Prisma {
 
   export type AggregateEvaluation = {
     _count: EvaluationCountAggregateOutputType | null
+    _avg: EvaluationAvgAggregateOutputType | null
+    _sum: EvaluationSumAggregateOutputType | null
     _min: EvaluationMinAggregateOutputType | null
     _max: EvaluationMaxAggregateOutputType | null
+  }
+
+  export type EvaluationAvgAggregateOutputType = {
+    activationSequence: number | null
+  }
+
+  export type EvaluationSumAggregateOutputType = {
+    activationSequence: number | null
   }
 
   export type EvaluationMinAggregateOutputType = {
@@ -13184,6 +13240,8 @@ export namespace Prisma {
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
+    activationSequence: number | null
+    billedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13218,6 +13276,8 @@ export namespace Prisma {
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
+    activationSequence: number | null
+    billedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13252,11 +13312,21 @@ export namespace Prisma {
     submittedAt: number
     startedAt: number
     cancelledAt: number
+    activationSequence: number
+    billedAt: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type EvaluationAvgAggregateInputType = {
+    activationSequence?: true
+  }
+
+  export type EvaluationSumAggregateInputType = {
+    activationSequence?: true
+  }
 
   export type EvaluationMinAggregateInputType = {
     id?: true
@@ -13288,6 +13358,8 @@ export namespace Prisma {
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
+    activationSequence?: true
+    billedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13322,6 +13394,8 @@ export namespace Prisma {
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
+    activationSequence?: true
+    billedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -13356,6 +13430,8 @@ export namespace Prisma {
     submittedAt?: true
     startedAt?: true
     cancelledAt?: true
+    activationSequence?: true
+    billedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -13399,6 +13475,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: EvaluationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EvaluationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: EvaluationMinAggregateInputType
@@ -13429,6 +13517,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EvaluationCountAggregateInputType | true
+    _avg?: EvaluationAvgAggregateInputType
+    _sum?: EvaluationSumAggregateInputType
     _min?: EvaluationMinAggregateInputType
     _max?: EvaluationMaxAggregateInputType
   }
@@ -13463,9 +13553,13 @@ export namespace Prisma {
     submittedAt: Date | null
     startedAt: Date | null
     cancelledAt: Date | null
+    activationSequence: number | null
+    billedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: EvaluationCountAggregateOutputType | null
+    _avg: EvaluationAvgAggregateOutputType | null
+    _sum: EvaluationSumAggregateOutputType | null
     _min: EvaluationMinAggregateOutputType | null
     _max: EvaluationMaxAggregateOutputType | null
   }
@@ -13514,6 +13608,8 @@ export namespace Prisma {
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
+    activationSequence?: boolean
+    billedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -13560,6 +13656,8 @@ export namespace Prisma {
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
+    activationSequence?: boolean
+    billedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -13603,11 +13701,13 @@ export namespace Prisma {
     submittedAt?: boolean
     startedAt?: boolean
     cancelledAt?: boolean
+    activationSequence?: boolean
+    billedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EvaluationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "externalId" | "poNumber" | "type" | "patientId" | "companyId" | "deviceTypeId" | "isDiabetic" | "isVeteran" | "deviceSide" | "devicePosition" | "appointmentAt" | "appointmentStatus" | "referringPhysicianId" | "diagnosisId" | "diagnosisedAt" | "visitTypeId" | "visitedAt" | "facilityId" | "location" | "prescribedAt" | "prescribedActive" | "stripeInvoiceId" | "stripeCheckoutInvoiceId" | "primaryInsurance" | "secondaryInsurance" | "submittedAt" | "startedAt" | "cancelledAt" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
+  export type EvaluationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "externalId" | "poNumber" | "type" | "patientId" | "companyId" | "deviceTypeId" | "isDiabetic" | "isVeteran" | "deviceSide" | "devicePosition" | "appointmentAt" | "appointmentStatus" | "referringPhysicianId" | "diagnosisId" | "diagnosisedAt" | "visitTypeId" | "visitedAt" | "facilityId" | "location" | "prescribedAt" | "prescribedActive" | "stripeInvoiceId" | "stripeCheckoutInvoiceId" | "primaryInsurance" | "secondaryInsurance" | "submittedAt" | "startedAt" | "cancelledAt" | "activationSequence" | "billedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
   export type EvaluationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -13679,6 +13779,8 @@ export namespace Prisma {
       submittedAt: Date | null
       startedAt: Date | null
       cancelledAt: Date | null
+      activationSequence: number | null
+      billedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["evaluation"]>
@@ -14114,6 +14216,8 @@ export namespace Prisma {
     readonly submittedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly startedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly cancelledAt: FieldRef<"Evaluation", 'DateTime'>
+    readonly activationSequence: FieldRef<"Evaluation", 'Float'>
+    readonly billedAt: FieldRef<"Evaluation", 'DateTime'>
     readonly createdAt: FieldRef<"Evaluation", 'DateTime'>
     readonly updatedAt: FieldRef<"Evaluation", 'DateTime'>
   }
@@ -54190,6 +54294,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -54201,6 +54307,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -54212,6 +54320,8 @@ export namespace Prisma {
     password: number
     pin: number
     photoUrl: number
+    emailVerifiedAt: number
+    phoneVerifiedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -54225,6 +54335,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -54236,6 +54348,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -54247,6 +54361,8 @@ export namespace Prisma {
     password?: true
     pin?: true
     photoUrl?: true
+    emailVerifiedAt?: true
+    phoneVerifiedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -54331,6 +54447,8 @@ export namespace Prisma {
     password: string | null
     pin: string | null
     photoUrl: string | null
+    emailVerifiedAt: Date | null
+    phoneVerifiedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -54359,6 +54477,8 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -54379,6 +54499,8 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -54390,11 +54512,13 @@ export namespace Prisma {
     password?: boolean
     pin?: boolean
     photoUrl?: boolean
+    emailVerifiedAt?: boolean
+    phoneVerifiedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "password" | "pin" | "photoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "password" | "pin" | "photoUrl" | "emailVerifiedAt" | "phoneVerifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     companies?: boolean | User$companiesArgs<ExtArgs>
@@ -54427,6 +54551,8 @@ export namespace Prisma {
       password: string | null
       pin: string | null
       photoUrl: string | null
+      emailVerifiedAt: Date | null
+      phoneVerifiedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -54836,6 +54962,8 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly pin: FieldRef<"User", 'String'>
     readonly photoUrl: FieldRef<"User", 'String'>
+    readonly emailVerifiedAt: FieldRef<"User", 'DateTime'>
+    readonly phoneVerifiedAt: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -62954,6 +63082,7 @@ export namespace Prisma {
     slug: 'slug',
     preferences: 'preferences',
     active: 'active',
+    activationSequence: 'activationSequence',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -63050,6 +63179,8 @@ export namespace Prisma {
     submittedAt: 'submittedAt',
     startedAt: 'startedAt',
     cancelledAt: 'cancelledAt',
+    activationSequence: 'activationSequence',
+    billedAt: 'billedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -63628,6 +63759,8 @@ export namespace Prisma {
     password: 'password',
     pin: 'pin',
     photoUrl: 'photoUrl',
+    emailVerifiedAt: 'emailVerifiedAt',
+    phoneVerifiedAt: 'phoneVerifiedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -63849,6 +63982,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -63887,20 +64034,6 @@ export namespace Prisma {
    * Reference to a field of type 'Gender[]'
    */
   export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -64506,6 +64639,7 @@ export namespace Prisma {
     slug?: StringFilter<"Company"> | string
     preferences?: JsonNullableFilter<"Company">
     active?: BoolFilter<"Company"> | boolean
+    activationSequence?: FloatFilter<"Company"> | number
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     departments?: DepartmentListRelationFilter
@@ -64531,6 +64665,7 @@ export namespace Prisma {
     slug?: SortOrder
     preferences?: SortOrderInput | SortOrder
     active?: SortOrder
+    activationSequence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     departments?: DepartmentOrderByRelationAggregateInput
@@ -64559,6 +64694,7 @@ export namespace Prisma {
     logoUrl?: StringNullableFilter<"Company"> | string | null
     preferences?: JsonNullableFilter<"Company">
     active?: BoolFilter<"Company"> | boolean
+    activationSequence?: FloatFilter<"Company"> | number
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     departments?: DepartmentListRelationFilter
@@ -64584,11 +64720,14 @@ export namespace Prisma {
     slug?: SortOrder
     preferences?: SortOrderInput | SortOrder
     active?: SortOrder
+    activationSequence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CompanyCountOrderByAggregateInput
+    _avg?: CompanyAvgOrderByAggregateInput
     _max?: CompanyMaxOrderByAggregateInput
     _min?: CompanyMinOrderByAggregateInput
+    _sum?: CompanySumOrderByAggregateInput
   }
 
   export type CompanyScalarWhereWithAggregatesInput = {
@@ -64602,6 +64741,7 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Company"> | string
     preferences?: JsonNullableWithAggregatesFilter<"Company">
     active?: BoolWithAggregatesFilter<"Company"> | boolean
+    activationSequence?: FloatWithAggregatesFilter<"Company"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
   }
@@ -64980,6 +65120,8 @@ export namespace Prisma {
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    activationSequence?: FloatNullableFilter<"Evaluation"> | number | null
+    billedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -65025,6 +65167,8 @@ export namespace Prisma {
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
+    activationSequence?: SortOrderInput | SortOrder
+    billedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
@@ -65076,6 +65220,8 @@ export namespace Prisma {
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    activationSequence?: FloatNullableFilter<"Evaluation"> | number | null
+    billedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -65121,11 +65267,15 @@ export namespace Prisma {
     submittedAt?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     cancelledAt?: SortOrderInput | SortOrder
+    activationSequence?: SortOrderInput | SortOrder
+    billedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EvaluationCountOrderByAggregateInput
+    _avg?: EvaluationAvgOrderByAggregateInput
     _max?: EvaluationMaxOrderByAggregateInput
     _min?: EvaluationMinOrderByAggregateInput
+    _sum?: EvaluationSumOrderByAggregateInput
   }
 
   export type EvaluationScalarWhereWithAggregatesInput = {
@@ -65161,6 +65311,8 @@ export namespace Prisma {
     submittedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+    activationSequence?: FloatNullableWithAggregatesFilter<"Evaluation"> | number | null
+    billedAt?: DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
   }
@@ -68153,6 +68305,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -68172,6 +68326,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    emailVerifiedAt?: SortOrderInput | SortOrder
+    phoneVerifiedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
@@ -68194,6 +68350,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     pin?: StringNullableFilter<"User"> | string | null
     photoUrl?: StringNullableFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -68213,6 +68371,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     pin?: SortOrderInput | SortOrder
     photoUrl?: SortOrderInput | SortOrder
+    emailVerifiedAt?: SortOrderInput | SortOrder
+    phoneVerifiedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -68230,6 +68390,8 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     pin?: StringNullableWithAggregatesFilter<"User"> | string | null
     photoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    emailVerifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    phoneVerifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -68913,6 +69075,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -68938,6 +69101,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -68963,6 +69127,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -68988,6 +69153,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -69013,6 +69179,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -69025,6 +69192,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -69037,6 +69205,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -69433,6 +69602,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -69478,6 +69649,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -69505,6 +69678,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -69550,6 +69725,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -69586,6 +69763,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -69611,6 +69790,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -69645,6 +69826,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72955,6 +73138,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -72974,6 +73159,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -72993,6 +73180,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -73012,6 +73201,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -73031,6 +73222,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -73042,6 +73235,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -73053,6 +73248,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -73888,6 +74085,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -74042,8 +74250,13 @@ export namespace Prisma {
     slug?: SortOrder
     preferences?: SortOrder
     active?: SortOrder
+    activationSequence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CompanyAvgOrderByAggregateInput = {
+    activationSequence?: SortOrder
   }
 
   export type CompanyMaxOrderByAggregateInput = {
@@ -74053,6 +74266,7 @@ export namespace Prisma {
     logoUrl?: SortOrder
     slug?: SortOrder
     active?: SortOrder
+    activationSequence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -74064,8 +74278,13 @@ export namespace Prisma {
     logoUrl?: SortOrder
     slug?: SortOrder
     active?: SortOrder
+    activationSequence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CompanySumOrderByAggregateInput = {
+    activationSequence?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -74135,6 +74354,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -74571,8 +74806,14 @@ export namespace Prisma {
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
+    activationSequence?: SortOrder
+    billedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EvaluationAvgOrderByAggregateInput = {
+    activationSequence?: SortOrder
   }
 
   export type EvaluationMaxOrderByAggregateInput = {
@@ -74605,6 +74846,8 @@ export namespace Prisma {
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
+    activationSequence?: SortOrder
+    billedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -74639,8 +74882,14 @@ export namespace Prisma {
     submittedAt?: SortOrder
     startedAt?: SortOrder
     cancelledAt?: SortOrder
+    activationSequence?: SortOrder
+    billedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EvaluationSumOrderByAggregateInput = {
+    activationSequence?: SortOrder
   }
 
   export type EnumCareTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -75417,17 +75666,6 @@ export namespace Prisma {
     _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type EnumWeightUnitFilter<$PrismaModel = never> = {
     equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
     in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
@@ -75512,22 +75750,6 @@ export namespace Prisma {
     width?: SortOrder
     height?: SortOrder
     insoleCapacity?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type EnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
@@ -77096,6 +77318,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77107,6 +77331,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77118,6 +77344,8 @@ export namespace Prisma {
     password?: SortOrder
     pin?: SortOrder
     photoUrl?: SortOrder
+    emailVerifiedAt?: SortOrder
+    phoneVerifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77910,6 +78138,14 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -79981,14 +80217,6 @@ export namespace Prisma {
     create?: XOR<CompanyCreateWithoutPackagesInput, CompanyUncheckedCreateWithoutPackagesInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutPackagesInput
     connect?: CompanyWhereUniqueInput
-  }
-
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type EnumWeightUnitFieldUpdateOperationsInput = {
@@ -82150,6 +82378,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -82245,6 +82484,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -82636,17 +82891,6 @@ export namespace Prisma {
     _max?: NestedEnumCarrierNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedEnumWeightUnitFilter<$PrismaModel = never> = {
     equals?: $Enums.WeightUnit | EnumWeightUnitFieldRefInput<$PrismaModel>
     in?: $Enums.WeightUnit[] | ListEnumWeightUnitFieldRefInput<$PrismaModel>
@@ -82659,22 +82903,6 @@ export namespace Prisma {
     in?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
     notIn?: $Enums.DimensionUnit[] | ListEnumDimensionUnitFieldRefInput<$PrismaModel>
     not?: NestedEnumDimensionUnitFilter<$PrismaModel> | $Enums.DimensionUnit
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumWeightUnitWithAggregatesFilter<$PrismaModel = never> = {
@@ -83342,6 +83570,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -83385,6 +83615,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -83846,6 +84078,8 @@ export namespace Prisma {
     submittedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     startedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     cancelledAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
+    activationSequence?: FloatNullableFilter<"Evaluation"> | number | null
+    billedAt?: DateTimeNullableFilter<"Evaluation"> | Date | string | null
     createdAt?: DateTimeFilter<"Evaluation"> | Date | string
     updatedAt?: DateTimeFilter<"Evaluation"> | Date | string
   }
@@ -84173,6 +84407,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityCreateNestedManyWithoutCompanyInput
@@ -84197,6 +84432,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
@@ -84290,6 +84526,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUpdateManyWithoutCompanyNestedInput
@@ -84314,6 +84551,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
@@ -84487,6 +84725,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -84511,6 +84750,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -84606,6 +84846,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -84649,6 +84891,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -84786,6 +85030,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -84810,6 +85055,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -84973,6 +85219,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutEvaluationsInput
@@ -85016,6 +85264,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -85386,6 +85636,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -85404,6 +85656,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -85441,6 +85695,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -85485,6 +85741,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     workbenches?: WorkbenchUncheckedCreateNestedManyWithoutEvaluationInput
@@ -85513,6 +85771,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -85531,6 +85791,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -85619,6 +85881,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -85643,6 +85906,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -86014,6 +86278,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -86038,6 +86303,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -87329,6 +87595,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -87373,6 +87641,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -87696,6 +87966,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -87740,6 +88012,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -87924,6 +88198,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -87942,6 +88218,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -88027,6 +88305,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -88045,6 +88325,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -88388,6 +88670,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -88412,6 +88695,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -88452,6 +88736,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -88476,6 +88761,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -88657,6 +88943,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -88700,6 +88988,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -88827,6 +89117,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -88870,6 +89162,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -88923,6 +89217,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -88966,6 +89262,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -89019,6 +89317,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -89062,6 +89362,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -89794,6 +90096,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -89812,6 +90116,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -89836,6 +90142,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -89860,6 +90167,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -89899,6 +90207,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -89917,6 +90227,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -89947,6 +90259,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -89971,6 +90284,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -89995,6 +90309,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -90019,6 +90334,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -90047,6 +90363,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -90065,6 +90383,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -90100,6 +90420,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -90124,6 +90445,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -90158,6 +90480,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -90176,6 +90500,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -90248,6 +90574,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -90272,6 +90599,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -90341,6 +90669,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -90359,6 +90689,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -90453,6 +90785,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -90477,6 +90810,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -90558,6 +90892,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -90576,6 +90912,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -91026,6 +91364,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -91069,6 +91409,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -91106,6 +91448,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutEvaluationsInput
@@ -91149,6 +91493,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clinicians?: ClinicianUncheckedCreateNestedManyWithoutEvaluationsInput
@@ -91382,6 +91728,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -91406,6 +91753,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -91655,6 +92003,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -91679,6 +92028,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -92372,6 +92722,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -92396,6 +92747,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -92532,6 +92884,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -92556,6 +92909,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -92681,6 +93035,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -92705,6 +93060,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -92745,6 +93101,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -92769,6 +93126,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -93182,6 +93540,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -93200,6 +93560,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -93224,6 +93586,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -93248,6 +93611,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -93287,6 +93651,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -93305,6 +93671,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -93335,6 +93703,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -93359,6 +93728,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -93382,6 +93752,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -93400,6 +93772,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -93455,6 +93829,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -93473,6 +93849,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -93558,6 +93936,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserCreateNestedManyWithoutUserInput
@@ -93576,6 +93956,8 @@ export namespace Prisma {
     password?: string | null
     pin?: string | null
     photoUrl?: string | null
+    emailVerifiedAt?: Date | string | null
+    phoneVerifiedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     companies?: CompanyUserUncheckedCreateNestedManyWithoutUserInput
@@ -93610,6 +93992,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUpdateManyWithoutUserNestedInput
@@ -93628,6 +94012,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     pin?: NullableStringFieldUpdateOperationsInput | string | null
     photoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phoneVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companies?: CompanyUserUncheckedUpdateManyWithoutUserNestedInput
@@ -93647,6 +94033,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -93671,6 +94058,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -93711,6 +94099,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -93735,6 +94124,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -93759,6 +94149,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentCreateNestedManyWithoutCompanyInput
@@ -93783,6 +94174,7 @@ export namespace Prisma {
     slug: string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: boolean
+    activationSequence?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
@@ -93823,6 +94215,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUpdateManyWithoutCompanyNestedInput
@@ -93847,6 +94240,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     preferences?: NullableJsonNullValueInput | InputJsonValue
     active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -93910,6 +94304,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -94112,6 +94508,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -94155,6 +94553,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -94190,6 +94590,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -94653,6 +95055,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -94783,6 +95187,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -94826,6 +95232,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -94861,6 +95269,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -94912,6 +95322,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -95062,6 +95474,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -95105,6 +95519,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -95140,6 +95556,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -95350,6 +95768,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -95394,6 +95814,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     workbenches?: WorkbenchUncheckedUpdateManyWithoutEvaluationNestedInput
@@ -95429,6 +95851,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96383,6 +96807,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96425,6 +96851,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -96468,6 +96896,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -96503,6 +96933,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96601,6 +97033,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96626,6 +97060,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -96669,6 +97105,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -96704,6 +97142,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96737,6 +97177,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96762,6 +97204,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -96805,6 +97249,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -96840,6 +97286,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -96873,6 +97321,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96898,6 +97348,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -96941,6 +97393,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -96976,6 +97430,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -97377,6 +97833,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -97410,6 +97868,8 @@ export namespace Prisma {
     submittedAt?: Date | string | null
     startedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    activationSequence?: number | null
+    billedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -97532,6 +97992,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -97575,6 +98037,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -97610,6 +98074,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -97635,6 +98101,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutEvaluationsNestedInput
@@ -97678,6 +98146,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clinicians?: ClinicianUncheckedUpdateManyWithoutEvaluationsNestedInput
@@ -97713,6 +98183,8 @@ export namespace Prisma {
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    activationSequence?: NullableFloatFieldUpdateOperationsInput | number | null
+    billedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

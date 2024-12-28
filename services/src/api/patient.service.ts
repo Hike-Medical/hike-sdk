@@ -5,9 +5,10 @@ import type {
   PagedParams,
   PagedResponse,
   PatientUserResponse,
+  SafeUser,
   SearchPatientsParams,
-  SelfApprovePatientParams,
   UpdatePatientParams,
+  UpdateUserParams,
   UpsertContactParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
@@ -32,10 +33,10 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const findPatientByUserId = async (companyId?: string): Promise<PatientUserResponse> => {
+export const findCurrentPatient = async (companyId?: string): Promise<PatientUserResponse> => {
   try {
     const response = await backendApi.get(
-      'patient/user',
+      'patient/current',
       companyId
         ? {
             headers: { 'x-company-id': companyId }
@@ -77,6 +78,15 @@ export const searchPatients = async (params: SearchPatientsParams): Promise<Page
   }
 };
 
+export const updatePatientUser = async (patientId: string, params: UpdateUserParams): Promise<SafeUser> => {
+  try {
+    const response = await backendApi.patch(`patient/${patientId}/user`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const updatePatient = async (patientId: string, params: UpdatePatientParams): Promise<PatientExtended> => {
   try {
     const response = await backendApi.patch(`patient/${patientId}`, params);
@@ -104,13 +114,4 @@ export const approvePatient = async (patientId: string) => {
   }
 };
 
-export const selfApprovePatient = async (patientId: string, params: SelfApprovePatientParams) => {
-  try {
-    const response = await backendApi.patch(`patient/${patientId}/approve/self`, params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const isPatientApproved = (user: CompanyUser): boolean => !!user.role && user.active;
+export const isPatientApproved = (user: CompanyUser | undefined): boolean => !!user?.role && user.active;

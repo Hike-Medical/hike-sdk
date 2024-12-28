@@ -1,13 +1,12 @@
 import {
-  AcceptInvitationParams,
   AccountVerification,
-  CreateInvitationsParams,
+  ApprovePatientParams,
+  CreateInvitationParams,
   DeleteInvitationsParams,
   FindInvitationsParams,
   PagedResponse,
-  UpdateInvitationsParams,
-  UserExtended,
-  VerifyInvitationResponse
+  SendOtpParams,
+  UpdateInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -23,9 +22,7 @@ export const findInvitations = async (
   }
 };
 
-export const createInvitations = async (
-  params: CreateInvitationsParams
-): Promise<Omit<AccountVerification, 'token'>[]> => {
+export const createInvitation = async (params: CreateInvitationParams): Promise<Omit<AccountVerification, 'token'>> => {
   try {
     const response = await backendApi.post('invitation', params);
     return response.data;
@@ -45,27 +42,27 @@ export const updateInvitations = async (
   }
 };
 
+export const approveInvitation = async (patientId: string, params?: ApprovePatientParams): Promise<boolean> => {
+  try {
+    const response = await backendApi.patch(`invitation/approve/patient/${patientId}`, params);
+    return response.data.isApproved;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendOtp = async (params: SendOtpParams) => {
+  try {
+    const response = await backendApi.post('invitation/otp', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const revokeInvitations = async (params: DeleteInvitationsParams): Promise<{ count: number }> => {
   try {
     const response = await backendApi.patch(`invitation/revoke`, params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const verifyInvitation = async (token: string): Promise<VerifyInvitationResponse> => {
-  try {
-    const response = await backendApi.get(`auth/invitation/${token}`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const acceptInvitation = async (params: AcceptInvitationParams): Promise<UserExtended> => {
-  try {
-    const response = await backendApi.post('auth/invitation', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

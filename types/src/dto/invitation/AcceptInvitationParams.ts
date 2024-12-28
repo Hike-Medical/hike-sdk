@@ -4,6 +4,4 @@ export interface AcceptInvitationParams {
   firstName?: string;
   lastName?: string;
   birthDate?: Date;
-  phone?: string;
-  email?: string;
 }

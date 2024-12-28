@@ -4,6 +4,7 @@ import type {
   Company,
   CompanyPatient,
   CompanyUser,
+  Patient,
   User,
   UserAgreement,
   UserPermission
@@ -15,7 +16,11 @@ export type UserExtended = User & {
   })[];
   permissions: UserPermission[];
   clinician: Clinician | null;
-  patients: CompanyPatient[] | null;
+  patients:
+    | (CompanyPatient & {
+        patient: Patient;
+      })[]
+    | null;
   agreements: (UserAgreement & {
     agreement: Agreement;
   })[];
