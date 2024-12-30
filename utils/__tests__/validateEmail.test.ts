@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import { validateEmail } from '../src/helpers/validateEmail';
 
-describe('validateEmailOrPhone', () => {
+describe('validateEmail', () => {
   test('should validate emails correctly', () => {
     expect(validateEmail('test@example.com')).toBeTruthy();
   });

@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import { validatePhone } from '../src/helpers/validatePhone';
 
-describe('validateEmailOrPhone', () => {
+describe('validatePhone', () => {
   test('should validate phone numbers correctly with various formats', () => {
     expect(validatePhone('+1234567890')).toBeTruthy();
     expect(validatePhone('+601234567890')).toBeTruthy();
