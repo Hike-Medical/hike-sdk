@@ -40,3 +40,4 @@ export * from './helpers/randomString';
 export * from './helpers/range';
 export * from './helpers/streamToString';
 export * from './helpers/truncateMiddle';
+export * from './helpers/validateEmailOrPhone';
