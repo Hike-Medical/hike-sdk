@@ -10,7 +10,7 @@ interface SubmitOrderContext {
 
 export const useSubmitOrder = (options?: UseMutationOptions<Workbench, HikeError<null>, SubmitOrderContext>) => {
   return useMutation({
-    mutationKey: ['submitOrder'],
+    mutationKey: ['submitWorkbenchOrder'],
     mutationFn: async ({ workbenchId, body }: SubmitOrderContext) => await submitOrder(workbenchId, body),
     ...options
   });

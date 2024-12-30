@@ -674,7 +674,8 @@ export type SenderMessageStatus = (typeof SenderMessageStatus)[keyof typeof Send
 
 export const TemplateType: {
   EMAIL: 'EMAIL',
-  PAMPHLET_PRINT: 'PAMPHLET_PRINT'
+  PAMPHLET_PRINT: 'PAMPHLET_PRINT',
+  ONE_TIME_PASSWORD: 'ONE_TIME_PASSWORD'
 };
 
 export type TemplateType = (typeof TemplateType)[keyof typeof TemplateType]
