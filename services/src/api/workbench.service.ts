@@ -57,7 +57,7 @@ export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtend
 
 export const submitOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/submit`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/clinical/submit`, body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
