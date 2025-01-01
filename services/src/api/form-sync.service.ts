@@ -86,14 +86,14 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
       side: 'LEFT',
       shoeWidth: formState.shoeGender === 'YOUTH' ? 'YOUTH' : null,
       shoeGender: formState.shoeGender !== 'YOUTH' ? (formState.shoeGender as Gender) : null,
-      shoeSize: formState.shoeSize as number
+      shoeSize: parseFloat(formState.shoeSize as string) || undefined
     });
 
     await updateFootByWorkbenchId(workbenchId, {
       side: 'RIGHT',
       shoeWidth: formState.shoeGender === 'YOUTH' ? 'YOUTH' : null,
       shoeGender: formState.shoeGender !== 'YOUTH' ? (formState.shoeGender as Gender) : null,
-      shoeSize: formState.shoeSize as number
+      shoeSize: parseFloat(formState.shoeSize as string) || undefined
     });
   }
 
