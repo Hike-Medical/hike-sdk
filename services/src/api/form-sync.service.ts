@@ -39,7 +39,9 @@ export const formSubmissionToPatient = async (patientId: string, formState: Reco
     const contact = {
       addressLine1: formState.shippingAddressAddress1,
       addressLine2:
-        formState.shippingAddressAddress2 !== undefined ? String(formState.shippingAddressAddress2) : undefined,
+        formState.shippingAddressAddress2 !== undefined && formState.shippingAddressAddress2 !== null
+          ? String(formState.shippingAddressAddress2)
+          : undefined,
       city: formState.shippingAddressCity,
       stateOrProvince: formState.shippingAddressState,
       postalCode: formState.shippingAddressZipcode
