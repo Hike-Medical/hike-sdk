@@ -1,7 +1,4 @@
-import { LegacyOrderResponse } from '../legacy/LegacyOrderResponse';
-
 export interface ShippingLabelResponseByShipmentId {
-  legacyOrders: LegacyOrderResponse[];
   trackingURL: string;
   updatedOrders: FlattenedShippingResponse[];
   addressName: string | null;
