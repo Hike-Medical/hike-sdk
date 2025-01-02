@@ -67,7 +67,6 @@ export type * from './dto/invitation/VerifyInvitationResponse';
 export type * from './dto/kvs/GetSignalingChannelParams';
 export type * from './dto/kvs/SignalingChannelResponse';
 export type * from './dto/kvs/StreamCompleteParams';
-export type * from './dto/legacy/LegacyOrderResponse';
 export type * from './dto/manufacturing/RenderType';
 export type * from './dto/notes/CreateNotes';
 export type * from './dto/notes/Notes';
