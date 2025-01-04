@@ -118,6 +118,15 @@ export const processWorkbench = async (workbenchId: string): Promise<Workbench &
   }
 };
 
+export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/approve`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const updateInactiveFootInWorkbench = async (
   workbenchId: string,
   body: UpdateInactiveFootBody
