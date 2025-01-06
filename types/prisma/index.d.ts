@@ -51149,6 +51149,7 @@ export namespace Prisma {
     senderId: string | null
     senderStatus: $Enums.SenderMessageStatus | null
     webhookReceivedAt: Date | null
+    clickedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -51167,6 +51168,7 @@ export namespace Prisma {
     senderId: string | null
     senderStatus: $Enums.SenderMessageStatus | null
     webhookReceivedAt: Date | null
+    clickedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -51185,6 +51187,7 @@ export namespace Prisma {
     senderId: number
     senderStatus: number
     webhookReceivedAt: number
+    clickedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -51205,6 +51208,7 @@ export namespace Prisma {
     senderId?: true
     senderStatus?: true
     webhookReceivedAt?: true
+    clickedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -51223,6 +51227,7 @@ export namespace Prisma {
     senderId?: true
     senderStatus?: true
     webhookReceivedAt?: true
+    clickedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -51241,6 +51246,7 @@ export namespace Prisma {
     senderId?: true
     senderStatus?: true
     webhookReceivedAt?: true
+    clickedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -51332,6 +51338,7 @@ export namespace Prisma {
     senderId: string | null
     senderStatus: $Enums.SenderMessageStatus | null
     webhookReceivedAt: Date | null
+    clickedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: NotificationHistoryCountAggregateOutputType | null
@@ -51367,6 +51374,7 @@ export namespace Prisma {
     senderId?: boolean
     senderStatus?: boolean
     webhookReceivedAt?: boolean
+    clickedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -51388,6 +51396,7 @@ export namespace Prisma {
     senderId?: boolean
     senderStatus?: boolean
     webhookReceivedAt?: boolean
+    clickedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patient?: boolean | PatientDefaultArgs<ExtArgs>
@@ -51409,11 +51418,12 @@ export namespace Prisma {
     senderId?: boolean
     senderStatus?: boolean
     webhookReceivedAt?: boolean
+    clickedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NotificationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "messageId" | "companyId" | "sentAt" | "response" | "responseReceivedAt" | "removedAt" | "jobId" | "failedAt" | "senderId" | "senderStatus" | "webhookReceivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationHistory"]>
+  export type NotificationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "messageId" | "companyId" | "sentAt" | "response" | "responseReceivedAt" | "removedAt" | "jobId" | "failedAt" | "senderId" | "senderStatus" | "webhookReceivedAt" | "clickedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notificationHistory"]>
   export type NotificationHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -51446,6 +51456,7 @@ export namespace Prisma {
       senderId: string | null
       senderStatus: $Enums.SenderMessageStatus | null
       webhookReceivedAt: Date | null
+      clickedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["notificationHistory"]>
@@ -51857,6 +51868,7 @@ export namespace Prisma {
     readonly senderId: FieldRef<"NotificationHistory", 'String'>
     readonly senderStatus: FieldRef<"NotificationHistory", 'SenderMessageStatus'>
     readonly webhookReceivedAt: FieldRef<"NotificationHistory", 'DateTime'>
+    readonly clickedAt: FieldRef<"NotificationHistory", 'DateTime'>
     readonly createdAt: FieldRef<"NotificationHistory", 'DateTime'>
     readonly updatedAt: FieldRef<"NotificationHistory", 'DateTime'>
   }
@@ -63718,6 +63730,7 @@ export namespace Prisma {
     senderId: 'senderId',
     senderStatus: 'senderStatus',
     webhookReceivedAt: 'webhookReceivedAt',
+    clickedAt: 'clickedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -68061,6 +68074,7 @@ export namespace Prisma {
     senderId?: StringNullableFilter<"NotificationHistory"> | string | null
     senderStatus?: EnumSenderMessageStatusNullableFilter<"NotificationHistory"> | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    clickedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
     createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -68082,6 +68096,7 @@ export namespace Prisma {
     senderId?: SortOrderInput | SortOrder
     senderStatus?: SortOrderInput | SortOrder
     webhookReceivedAt?: SortOrderInput | SortOrder
+    clickedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patient?: PatientOrderByWithRelationInput
@@ -68106,6 +68121,7 @@ export namespace Prisma {
     senderId?: StringNullableFilter<"NotificationHistory"> | string | null
     senderStatus?: EnumSenderMessageStatusNullableFilter<"NotificationHistory"> | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    clickedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
     createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     patient?: XOR<PatientRelationFilter, PatientWhereInput>
@@ -68127,6 +68143,7 @@ export namespace Prisma {
     senderId?: SortOrderInput | SortOrder
     senderStatus?: SortOrderInput | SortOrder
     webhookReceivedAt?: SortOrderInput | SortOrder
+    clickedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: NotificationHistoryCountOrderByAggregateInput
@@ -68151,6 +68168,7 @@ export namespace Prisma {
     senderId?: StringNullableWithAggregatesFilter<"NotificationHistory"> | string | null
     senderStatus?: EnumSenderMessageStatusNullableWithAggregatesFilter<"NotificationHistory"> | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: DateTimeNullableWithAggregatesFilter<"NotificationHistory"> | Date | string | null
+    clickedAt?: DateTimeNullableWithAggregatesFilter<"NotificationHistory"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NotificationHistory"> | Date | string
   }
@@ -72863,6 +72881,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutNotificationHistoryInput
@@ -72884,6 +72903,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -72899,6 +72919,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
@@ -72920,6 +72941,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72938,6 +72960,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -72953,6 +72976,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72971,6 +72995,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -77133,6 +77158,7 @@ export namespace Prisma {
     senderId?: SortOrder
     senderStatus?: SortOrder
     webhookReceivedAt?: SortOrder
+    clickedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77151,6 +77177,7 @@ export namespace Prisma {
     senderId?: SortOrder
     senderStatus?: SortOrder
     webhookReceivedAt?: SortOrder
+    clickedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -77169,6 +77196,7 @@ export namespace Prisma {
     senderId?: SortOrder
     senderStatus?: SortOrder
     webhookReceivedAt?: SortOrder
+    clickedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -83909,6 +83937,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutNotificationHistoryInput
@@ -83928,6 +83957,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -84366,6 +84396,7 @@ export namespace Prisma {
     senderId?: StringNullableFilter<"NotificationHistory"> | string | null
     senderStatus?: EnumSenderMessageStatusNullableFilter<"NotificationHistory"> | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
+    clickedAt?: DateTimeNullableFilter<"NotificationHistory"> | Date | string | null
     createdAt?: DateTimeFilter<"NotificationHistory"> | Date | string
     updatedAt?: DateTimeFilter<"NotificationHistory"> | Date | string
   }
@@ -85413,6 +85444,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutNotificationHistoryInput
@@ -85432,6 +85464,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -92514,6 +92547,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     patient: PatientCreateNestedOneWithoutNotificationHistoryInput
@@ -92533,6 +92567,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -94412,6 +94447,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -94880,6 +94916,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
@@ -94899,6 +94936,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -94916,6 +94954,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -95370,6 +95409,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -95708,6 +95748,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutNotificationHistoryNestedInput
@@ -95727,6 +95768,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -95744,6 +95786,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -98559,6 +98602,7 @@ export namespace Prisma {
     senderId?: string | null
     senderStatus?: $Enums.SenderMessageStatus | null
     webhookReceivedAt?: Date | string | null
+    clickedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -98574,6 +98618,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patient?: PatientUpdateOneRequiredWithoutNotificationHistoryNestedInput
@@ -98593,6 +98638,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -98610,6 +98656,7 @@ export namespace Prisma {
     senderId?: NullableStringFieldUpdateOperationsInput | string | null
     senderStatus?: NullableEnumSenderMessageStatusFieldUpdateOperationsInput | $Enums.SenderMessageStatus | null
     webhookReceivedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clickedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
