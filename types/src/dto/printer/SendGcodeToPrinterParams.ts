@@ -1,7 +1,7 @@
 import type { Side } from '../../../prisma';
 
 export interface SendGcodeToPrinterParams {
-  printerId: string;
+  printerIds: string[];
   workbenchId: string;
   side: Side;
 }
