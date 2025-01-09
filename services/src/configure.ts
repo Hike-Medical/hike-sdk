@@ -55,3 +55,10 @@ export const configureAuthorization = (token: string | null) => {
 export const configureCompany = (companyId: string) => {
   backendApi.defaults.headers.common['x-company-id'] = companyId;
 };
+
+/**
+ * Provisions the services with a company.
+ */
+export const configureFingerprint = (fingerprint: string) => {
+  backendApi.defaults.headers.common['x-fingerprint'] = fingerprint;
+};
