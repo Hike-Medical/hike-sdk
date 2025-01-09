@@ -164,5 +164,6 @@ export * from './hooks/workbenches/useGetWorkbench';
 export * from './hooks/workbenches/usePrintShippingInfo';
 export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useUpdateRenderType';
+export * from './hooks/workbenches/useWorkbenchStats';
 export * from './utils/appUtils';
 export * from './utils/backendApi';
