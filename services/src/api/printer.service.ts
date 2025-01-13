@@ -13,6 +13,17 @@ export const printGcode = async (body: SendGcodeToPrinterParams, companyIds: str
   }
 };
 
+export const sendPrinterLabel = async (workbenchId: string, companyIds: string[]) => {
+  try {
+    const response = await backendApi.post(`printer/${workbenchId}/label`, {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getPrinters = async () => {
   try {
     const response = await backendApi.get(`printer`);
