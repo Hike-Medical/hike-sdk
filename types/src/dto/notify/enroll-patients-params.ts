@@ -3,4 +3,5 @@ export interface EnrollPatientsParams {
   status: string;
   notificationId: string;
   tags?: string[];
+  onlyExternalId?: boolean;
 }
