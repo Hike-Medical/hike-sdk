@@ -12,18 +12,13 @@ export const CompanyProvider = async ({
   config: HikeConfig;
   children: ReactNode;
 }): Promise<ReactNode> => {
-  try {
-    configureServices(config);
-    const company = await findCompanyBySlug(slug);
-    configureCompany(company.id);
+  configureServices(config);
+  const company = await findCompanyBySlug(slug);
+  configureCompany(company.id);
 
-    return (
-      <CompanyProviderClient company={company} config={config}>
-        {children}
-      </CompanyProviderClient>
-    );
-  } catch (error) {
-    console.error('Failed to fetch company data:', error);
-    return children;
-  }
+  return (
+    <CompanyProviderClient company={company} config={config}>
+      {children}
+    </CompanyProviderClient>
+  );
 };
