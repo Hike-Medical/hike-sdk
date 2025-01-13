@@ -2,7 +2,18 @@ import { Prisma } from '../../../prisma';
 import type { PagedParams } from '../PagedParams';
 
 export interface GetAssetsParams extends PagedParams {
-  filter?: Record<'type' | 'status' | 'foot.patientId' | 'foot.side' | 'foot.workbench.status', string>;
+  filter?: Partial<
+    Record<
+      | 'type'
+      | 'status'
+      | 'foot.patientId'
+      | 'foot.patient.companies.externalId'
+      | 'foot.patient.companies.userId'
+      | 'foot.side'
+      | 'foot.workbench.status',
+      string
+    >
+  >;
   sortBy?:
     | 'type'
     | 'status'

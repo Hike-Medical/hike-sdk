@@ -14,4 +14,18 @@ export interface GetAggregatedParams extends PagedParams {
   productType?: string[];
   companySlugs?: string[];
   orderAuthorizationStatus?: OrderAuthorizationStatus[];
+  filter?: Partial<
+    Record<
+      | 'workbenchId'
+      | 'patientId'
+      | 'patientFirstName'
+      | 'patientLastName'
+      | 'externalId'
+      | 'userId'
+      | 'poNumber'
+      | 'orderStatus'
+      | 'workbenchStatus',
+      string
+    >
+  >;
 }

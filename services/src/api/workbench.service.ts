@@ -14,7 +14,8 @@ import {
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
-  WorkbenchExtended
+  WorkbenchExtended,
+  WorkbenchStatus
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -249,6 +250,18 @@ export const continueWorkbench = async (workbenchId: string, companyIds: string[
         headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
       }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Retrieves the statistics for workbenches.
+ */
+export const statsForWorkbenches = async (): Promise<{ status: WorkbenchStatus; count: number }[]> => {
+  try {
+    const response = await backendApi.get('workbench/stats');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
