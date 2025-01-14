@@ -95,6 +95,15 @@ export const accountRecovery = async (params: AccountRecoveryParams, companyId?:
   }
 };
 
+export const sendLink = async (params: Omit<AccountRecoveryParams, 'type'>): Promise<void> => {
+  try {
+    const response = await backendApi.post('auth/send-link', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const resetPassword = async (params: PasswordResetParams): Promise<void> => {
   try {
     const response = await backendApi.post('auth/password/reset', params);
