@@ -131,6 +131,7 @@ export * from './hooks/patients/usePatientsByMissingExternalId';
 export * from './hooks/patients/useUpsertContact';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
+export * from './hooks/printer/useSendPrinterToLabel';
 export * from './hooks/roster/useGenerateUploadLink';
 export * from './hooks/scan/useUploadFootRender';
 export * from './hooks/settings/useCompanyPreferences';
