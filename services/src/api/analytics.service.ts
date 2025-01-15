@@ -1,6 +1,6 @@
 import { OrderStatus } from '@hike/types';
-import { toHikeError } from 'errors/HikeError';
-import { backendApi } from 'utils/backendApi';
+import { toHikeError } from '../errors/HikeError';
+import { backendApi } from '../utils/backendApi';
 
 export const getOrderStatusesPerHour = async (
   orderStatuses: OrderStatus[],
@@ -13,12 +13,10 @@ export const getOrderStatusesPerHour = async (
   }
 ) => {
   try {
-    const response = await backendApi.get(`analytics/orders/statuses/hourly`, {
-      data: {
-        orderStatuses,
-        startDate,
-        endDate
-      }
+    const response = await backendApi.post('analytics/orders/statuses/hourly', {
+      orderStatuses,
+      startDate,
+      endDate
     });
 
     return response.data;
