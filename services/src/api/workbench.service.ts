@@ -9,6 +9,7 @@ import {
   Order,
   PagedResponse,
   PrintShippingParams,
+  ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
   SubmitOrderParams,
@@ -122,6 +123,15 @@ export const processWorkbench = async (workbenchId: string): Promise<Workbench &
 export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/approve`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const resetScans = async (workbenchId: string, params: ResetWorkbenchParams): Promise<Asset[]> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/reset`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
