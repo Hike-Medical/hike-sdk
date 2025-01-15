@@ -144,7 +144,7 @@ export const modifyOrderAuthorization = async (
   }
 };
 
-export const manuallyCompleteFabricatedDevice = async (orderId: string): Promise<OrderExtended> => {
+export const manuallyCompleteFabricatedDeviceOrder = async (orderId: string): Promise<OrderExtended> => {
   try {
     const response = await backendApi.post(`order/${orderId}/manually-complete-fabricated-device`);
     return response.data;
