@@ -144,6 +144,15 @@ export const modifyOrderAuthorization = async (
   }
 };
 
+export const manuallyCompleteFabricatedDevice = async (orderId: string): Promise<OrderExtended> => {
+  try {
+    const response = await backendApi.post(`order/${orderId}/manually-complete-fabricated-device`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const deliverOrder = async (params: DeliverOrderParams): Promise<Order> => {
   try {
     const response = await backendApi.post('order/deliver', params);
