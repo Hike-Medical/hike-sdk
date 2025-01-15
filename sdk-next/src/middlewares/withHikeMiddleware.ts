@@ -15,16 +15,31 @@ interface HikeMiddlewareOptions {
   keyOrSecret: string;
   config: (request: NextRequest) => Pick<HikeConfig, 'appEnv' | 'appId'>;
   callback?: {
-    beforeAuth?: (request: NextRequest) => Promise<void> | void;
-    afterAuth?: (
-      session: AuthUser,
-      companyId: string | undefined,
-      isAdmin: boolean,
-      request: NextRequest
-    ) => Promise<void> | void;
-    onResponse?: (request: NextRequest, session: AuthUser | null) => NextResponse<unknown>;
+    beforeAuth?: ({ request, slug }: { request: NextRequest; slug: string | null }) => Promise<void> | void;
+    afterAuth?: ({
+      request,
+      session,
+      companyId,
+      isAdmin,
+      slug
+    }: {
+      request: NextRequest;
+      session: AuthUser;
+      companyId: string | undefined;
+      isAdmin: boolean;
+      slug: string | null;
+    }) => Promise<void> | void;
+    onResponse?: ({
+      request,
+      session,
+      slug
+    }: {
+      request: NextRequest;
+      session: AuthUser | null;
+      slug: string | null;
+    }) => NextResponse<unknown>;
   };
-  loginPath?: (session: AuthUser | null) => string | null;
+  loginPath?: ({ session, slug }: { session: AuthUser | null; slug: string | null }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
 }
@@ -47,7 +62,7 @@ export const withHikeMiddleware = ({
     configureServices(config(request));
 
     const onNextResponse = (session: AuthUser | null = null) =>
-      callback?.onResponse?.(request, session) ?? NextResponse.next();
+      callback?.onResponse?.({ request, session, slug }) ?? NextResponse.next();
 
     // Adjust allowed paths
     const allowedPathGroups = allowedPaths
@@ -84,7 +99,7 @@ export const withHikeMiddleware = ({
 
     try {
       // Execute pre-authentication hook; may throw error to prevent access
-      await callback?.beforeAuth?.(request);
+      await callback?.beforeAuth?.({ request, slug });
 
       // Extract token from header or cookie
       const token = extractToken(request);
@@ -112,7 +127,7 @@ export const withHikeMiddleware = ({
         const isAdmin = !!companyId && session.companies[companyId] === 'ADMIN';
 
         // Execute post-authentication hook; may throw error to prevent access
-        await callback?.afterAuth?.(session, companyId, isAdmin, request);
+        await callback?.afterAuth?.({ request, session, companyId, isAdmin, slug });
 
         return onNextResponse(session);
       }
@@ -123,16 +138,17 @@ export const withHikeMiddleware = ({
     // Determine login path
     const login = await (async () => {
       const path =
-        loginPath?.(
-          await (async () => {
+        loginPath?.({
+          session: await (async () => {
             try {
               const token = extractToken(request);
               return await fetchSession(token);
             } catch {
               return null;
             }
-          })()
-        ) || '/login';
+          })(),
+          slug
+        }) || '/login';
 
       return `${slugPath}${path}`;
     })();
