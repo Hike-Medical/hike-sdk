@@ -1,4 +1,5 @@
 export * from './api/asset.service';
+export * from './api/analytics.service';
 export * from './api/auth.service';
 export * from './api/billing-code.service';
 export * from './api/catalog.service';
@@ -40,6 +41,7 @@ export * from './hooks/assets/useGetPresignedURL';
 export * from './hooks/assets/useStreamComplete';
 export * from './hooks/assets/useUploadComplete';
 export * from './hooks/assets/useUploadVideoToS3';
+export * from './hooks/analytics/useGetOrderStatusesHourly';
 export * from './hooks/augments/useFindAssetAugmentById';
 export * from './hooks/augments/useFindAssetAugmentByIdAndType';
 export * from './hooks/augments/useFindAssetAugmentsByAssetId';
