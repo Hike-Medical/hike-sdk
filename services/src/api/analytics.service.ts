@@ -10,14 +10,23 @@ export const getOrderStatusesPerHour = async (
   }: {
     startDate: string;
     endDate: string;
-  }
+  },
+  companyIds: string[]
 ) => {
   try {
-    const response = await backendApi.post('analytics/orders/statuses/hourly', {
-      orderStatuses,
-      startDate,
-      endDate
-    });
+    const response = await backendApi.post(
+      'analytics/orders/statuses/hourly',
+      {
+        orderStatuses,
+        startDate,
+        endDate
+      },
+      {
+        headers: {
+          'x-company-id': companyIds.join(',')
+        }
+      }
+    );
 
     return response.data;
   } catch (error) {
