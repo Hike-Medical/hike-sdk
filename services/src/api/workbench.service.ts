@@ -129,7 +129,7 @@ export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> =>
   }
 };
 
-export const resetScans = async (workbenchId: string, params: ResetWorkbenchParams): Promise<Asset[]> => {
+export const resetScans = async (workbenchId: string, params: ResetWorkbenchParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/reset`, params);
     return response.data;
