@@ -6,6 +6,7 @@ export * from './emails/insoles-ai/ClinicianRegistrationEmail';
 export * from './emails/insoles-ai/CompanyRegistrationEmail';
 export * from './emails/insoles-ai/FreeTrialCompletionEmail';
 export * from './foot-scan/FootScan';
+export * from './hooks/useMobilePlatform';
 export * from './media/camera';
 export * from './media/getBestSupportedVideoFormat';
 export * from './patient-card/PatientCard';
