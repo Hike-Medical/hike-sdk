@@ -269,9 +269,13 @@ export const continueWorkbench = async (workbenchId: string, companyIds: string[
 /**
  * Retrieves the statistics for workbenches.
  */
-export const statsForWorkbenches = async (): Promise<{ status: WorkbenchStatus; count: number }[]> => {
+export const statsForWorkbenches = async (
+  companyIds?: string[]
+): Promise<{ status: WorkbenchStatus; count: number }[]> => {
   try {
-    const response = await backendApi.get('workbench/stats');
+    const response = await backendApi.get('workbench/stats', {
+      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
