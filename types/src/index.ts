@@ -123,6 +123,7 @@ export type * from './dto/workbench/FlattenedWorkbench';
 export type * from './dto/workbench/GenerateWorkbenchPdfParams';
 export type * from './dto/workbench/GetAggregatedParams';
 export type * from './dto/workbench/PrintShippingParams';
+export type * from './dto/workbench/ResetWorkbenchParams';
 export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';

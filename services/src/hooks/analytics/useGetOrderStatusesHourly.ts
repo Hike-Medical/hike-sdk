@@ -9,7 +9,7 @@ interface DateFilter {
 }
 
 interface HourlyOptions {
-  companyId: string;
+  companyIds: string[];
   orderStatuses: OrderStatus[];
   dateFilters: DateFilter;
 }
@@ -27,10 +27,10 @@ export const useGetOrderStatusesHourly = (body: HourlyOptions, queryOptions?: Us
     queryKey: [
       'orderStatusesHourly',
       ...body.orderStatuses,
-      body.companyId,
+      ...body.companyIds,
       { startDate: body.dateFilters?.startDate, endDate: body.dateFilters?.endDate }
     ],
-    queryFn: async () => await getOrderStatusesPerHour(body.orderStatuses, body.dateFilters),
+    queryFn: async () => await getOrderStatusesPerHour(body.orderStatuses, body.dateFilters, body.companyIds),
     ...queryOptions
   });
 };
