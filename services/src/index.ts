@@ -134,6 +134,7 @@ export * from './hooks/patients/useUpsertContact';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
 export * from './hooks/printer/useSendPrinterToLabel';
+export * from './hooks/s3/useUploadFileToS3';
 export * from './hooks/scan/useUploadFootRender';
 export * from './hooks/settings/useCompanyPreferences';
 export * from './hooks/shipping/useCompanyPackages';
