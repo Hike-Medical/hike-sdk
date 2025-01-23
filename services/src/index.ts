@@ -71,6 +71,7 @@ export * from './hooks/company/useCompanyPreferences';
 export * from './hooks/company/useIsFreeTrial';
 export * from './hooks/evaluations/useCancelEvaluation';
 export * from './hooks/evaluations/useCreateEvaluationByProduct';
+export * from './hooks/evaluations/useDuplicateEvaluation';
 export * from './hooks/evaluations/useEditEvaluation';
 export * from './hooks/evaluations/useEvaluationByWorkbench';
 export * from './hooks/evaluations/useEvaluations';

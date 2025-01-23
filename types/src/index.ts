@@ -125,6 +125,7 @@ export type * from './dto/user/UpdateUserParams';
 export type * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export type * from './dto/workbench/CustomizationResponse';
 export type * from './dto/workbench/DetectionStatusReponse';
+export type * from './dto/workbench/DuplicateEvaluationParams';
 export type * from './dto/workbench/FlattenedWorkbench';
 export type * from './dto/workbench/GenerateWorkbenchPdfParams';
 export type * from './dto/workbench/GetAggregatedParams';
@@ -161,3 +162,4 @@ export type * from './forms/InvalidFormField';
 export type * from './forms/InvalidFormSection';
 export type * from './pdf/PdfContent';
 export type * from './pdf/PdfDoc';
+
