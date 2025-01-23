@@ -1,3 +1,5 @@
+import { ImportRosterParams } from '../roster/ImportRosterParams';
+
 export interface CompanyPreferences {
   carrierServiceCode?: string;
   carrierPreferenceId?: string;
@@ -17,4 +19,5 @@ export interface CompanyPreferences {
   engraveInsoleWithExternalId?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
+  roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
 }
