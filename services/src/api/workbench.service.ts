@@ -129,6 +129,15 @@ export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> =>
   }
 };
 
+export const rushWorkbench = async (workbenchId: string): Promise<Asset[]> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/rush`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const resetScans = async (workbenchId: string, params: ResetWorkbenchParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/reset`, params);
