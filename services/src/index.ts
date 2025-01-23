@@ -167,6 +167,7 @@ export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
 export * from './hooks/workbenches/usePrintShippingInfo';
 export * from './hooks/workbenches/useResetWorkbench';
+export * from './hooks/workbenches/useRushWorkbench';
 export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useUpdateRenderType';
 export * from './hooks/workbenches/useWorkbenchStats';
