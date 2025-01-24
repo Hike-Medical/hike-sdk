@@ -40268,7 +40268,7 @@ export namespace Prisma {
 
   export type AuditLogGroupByOutputType = {
     id: string
-    userId: string
+    userId: string | null
     companyId: string
     entityId: string | null
     entityType: string | null
@@ -40305,7 +40305,7 @@ export namespace Prisma {
     context?: boolean
     comment?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | AuditLog$userArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["auditLog"]>
 
@@ -40319,7 +40319,7 @@ export namespace Prisma {
     context?: boolean
     comment?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | AuditLog$userArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["auditLog"]>
 
@@ -40337,23 +40337,23 @@ export namespace Prisma {
 
   export type AuditLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "companyId" | "entityId" | "entityType" | "action" | "context" | "comment" | "createdAt", ExtArgs["result"]["auditLog"]>
   export type AuditLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | AuditLog$userArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
   export type AuditLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | AuditLog$userArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
   }
 
   export type $AuditLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AuditLog"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
       company: Prisma.$CompanyPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
+      userId: string | null
       companyId: string
       entityId: string | null
       entityType: string | null
@@ -40725,7 +40725,7 @@ export namespace Prisma {
    */
   export interface Prisma__AuditLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    user<T extends AuditLog$userArgs<ExtArgs> = {}>(args?: Subset<T, AuditLog$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -41120,6 +41120,25 @@ export namespace Prisma {
      * Filter which AuditLogs to delete
      */
     where?: AuditLogWhereInput
+  }
+
+  /**
+   * AuditLog.user
+   */
+  export type AuditLog$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -61589,6 +61608,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     isReprint: boolean | null
+    rushedAt: Date | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -61646,6 +61666,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     isReprint: boolean | null
+    rushedAt: Date | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -61703,6 +61724,7 @@ export namespace Prisma {
     productType: number
     submittedAt: number
     isReprint: number
+    rushedAt: number
     orderShoeSize: number
     orderShoeWidth: number
     orderGender: number
@@ -61770,6 +61792,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     isReprint?: true
+    rushedAt?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -61827,6 +61850,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     isReprint?: true
+    rushedAt?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -61884,6 +61908,7 @@ export namespace Prisma {
     productType?: true
     submittedAt?: true
     isReprint?: true
+    rushedAt?: true
     orderShoeSize?: true
     orderShoeWidth?: true
     orderGender?: true
@@ -62028,6 +62053,7 @@ export namespace Prisma {
     productType: $Enums.ProductType | null
     submittedAt: Date | null
     isReprint: boolean | null
+    rushedAt: Date | null
     orderShoeSize: string | null
     orderShoeWidth: string | null
     orderGender: string | null
@@ -62104,6 +62130,7 @@ export namespace Prisma {
     productType?: boolean
     submittedAt?: boolean
     isReprint?: boolean
+    rushedAt?: boolean
     orderShoeSize?: boolean
     orderShoeWidth?: boolean
     orderGender?: boolean
@@ -62161,6 +62188,7 @@ export namespace Prisma {
     productType?: boolean
     submittedAt?: boolean
     isReprint?: boolean
+    rushedAt?: boolean
     orderShoeSize?: boolean
     orderShoeWidth?: boolean
     orderGender?: boolean
@@ -62218,6 +62246,7 @@ export namespace Prisma {
     productType?: boolean
     submittedAt?: boolean
     isReprint?: boolean
+    rushedAt?: boolean
     orderShoeSize?: boolean
     orderShoeWidth?: boolean
     orderGender?: boolean
@@ -62246,7 +62275,7 @@ export namespace Prisma {
     companyName?: boolean
   }
 
-  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName", ExtArgs["result"]["viewFlattenedWorkbench"]>
+  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "rushedAt" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName", ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type $ViewFlattenedWorkbenchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ViewFlattenedWorkbench"
@@ -62280,6 +62309,7 @@ export namespace Prisma {
       productType: $Enums.ProductType | null
       submittedAt: Date | null
       isReprint: boolean | null
+      rushedAt: Date | null
       orderShoeSize: string | null
       orderShoeWidth: string | null
       orderGender: string | null
@@ -62727,6 +62757,7 @@ export namespace Prisma {
     readonly productType: FieldRef<"ViewFlattenedWorkbench", 'ProductType'>
     readonly submittedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly isReprint: FieldRef<"ViewFlattenedWorkbench", 'Boolean'>
+    readonly rushedAt: FieldRef<"ViewFlattenedWorkbench", 'DateTime'>
     readonly orderShoeSize: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderShoeWidth: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly orderGender: FieldRef<"ViewFlattenedWorkbench", 'String'>
@@ -63896,6 +63927,7 @@ export namespace Prisma {
     productType: 'productType',
     submittedAt: 'submittedAt',
     isReprint: 'isReprint',
+    rushedAt: 'rushedAt',
     orderShoeSize: 'orderShoeSize',
     orderShoeWidth: 'orderShoeWidth',
     orderGender: 'orderGender',
@@ -67194,7 +67226,7 @@ export namespace Prisma {
     OR?: AuditLogWhereInput[]
     NOT?: AuditLogWhereInput | AuditLogWhereInput[]
     id?: StringFilter<"AuditLog"> | string
-    userId?: StringFilter<"AuditLog"> | string
+    userId?: StringNullableFilter<"AuditLog"> | string | null
     companyId?: StringFilter<"AuditLog"> | string
     entityId?: StringNullableFilter<"AuditLog"> | string | null
     entityType?: StringNullableFilter<"AuditLog"> | string | null
@@ -67202,13 +67234,13 @@ export namespace Prisma {
     context?: JsonNullableFilter<"AuditLog">
     comment?: StringNullableFilter<"AuditLog"> | string | null
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }
 
   export type AuditLogOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     companyId?: SortOrder
     entityId?: SortOrderInput | SortOrder
     entityType?: SortOrderInput | SortOrder
@@ -67225,7 +67257,7 @@ export namespace Prisma {
     AND?: AuditLogWhereInput | AuditLogWhereInput[]
     OR?: AuditLogWhereInput[]
     NOT?: AuditLogWhereInput | AuditLogWhereInput[]
-    userId?: StringFilter<"AuditLog"> | string
+    userId?: StringNullableFilter<"AuditLog"> | string | null
     companyId?: StringFilter<"AuditLog"> | string
     entityId?: StringNullableFilter<"AuditLog"> | string | null
     entityType?: StringNullableFilter<"AuditLog"> | string | null
@@ -67233,13 +67265,13 @@ export namespace Prisma {
     context?: JsonNullableFilter<"AuditLog">
     comment?: StringNullableFilter<"AuditLog"> | string | null
     createdAt?: DateTimeFilter<"AuditLog"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     company?: XOR<CompanyRelationFilter, CompanyWhereInput>
   }, "id">
 
   export type AuditLogOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     companyId?: SortOrder
     entityId?: SortOrderInput | SortOrder
     entityType?: SortOrderInput | SortOrder
@@ -67257,7 +67289,7 @@ export namespace Prisma {
     OR?: AuditLogScalarWhereWithAggregatesInput[]
     NOT?: AuditLogScalarWhereWithAggregatesInput | AuditLogScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AuditLog"> | string
-    userId?: StringWithAggregatesFilter<"AuditLog"> | string
+    userId?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
     companyId?: StringWithAggregatesFilter<"AuditLog"> | string
     entityId?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
     entityType?: StringNullableWithAggregatesFilter<"AuditLog"> | string | null
@@ -68837,6 +68869,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isReprint?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    rushedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -68894,6 +68927,7 @@ export namespace Prisma {
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     isReprint?: SortOrderInput | SortOrder
+    rushedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
@@ -68954,6 +68988,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isReprint?: BoolNullableFilter<"ViewFlattenedWorkbench"> | boolean | null
+    rushedAt?: DateTimeNullableFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
@@ -69011,6 +69046,7 @@ export namespace Prisma {
     productType?: SortOrderInput | SortOrder
     submittedAt?: SortOrderInput | SortOrder
     isReprint?: SortOrderInput | SortOrder
+    rushedAt?: SortOrderInput | SortOrder
     orderShoeSize?: SortOrderInput | SortOrder
     orderShoeWidth?: SortOrderInput | SortOrder
     orderGender?: SortOrderInput | SortOrder
@@ -69076,6 +69112,7 @@ export namespace Prisma {
     productType?: EnumProductTypeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | $Enums.ProductType | null
     submittedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     isReprint?: BoolNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | boolean | null
+    rushedAt?: DateTimeNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | Date | string | null
     orderShoeSize?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderShoeWidth?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     orderGender?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
@@ -71945,13 +71982,13 @@ export namespace Prisma {
     context?: NullableJsonNullValueInput | InputJsonValue
     comment?: string | null
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutAuditsLogsInput
+    user?: UserCreateNestedOneWithoutAuditsLogsInput
     company: CompanyCreateNestedOneWithoutAuditLogsInput
   }
 
   export type AuditLogUncheckedCreateInput = {
     id?: string
-    userId: string
+    userId?: string | null
     companyId: string
     entityId?: string | null
     entityType?: string | null
@@ -71969,13 +72006,13 @@ export namespace Prisma {
     context?: NullableJsonNullValueInput | InputJsonValue
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
+    user?: UserUpdateOneWithoutAuditsLogsNestedInput
     company?: CompanyUpdateOneRequiredWithoutAuditLogsNestedInput
   }
 
   export type AuditLogUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     companyId?: StringFieldUpdateOperationsInput | string
     entityId?: NullableStringFieldUpdateOperationsInput | string | null
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71987,7 +72024,7 @@ export namespace Prisma {
 
   export type AuditLogCreateManyInput = {
     id?: string
-    userId: string
+    userId?: string | null
     companyId: string
     entityId?: string | null
     entityType?: string | null
@@ -72009,7 +72046,7 @@ export namespace Prisma {
 
   export type AuditLogUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     companyId?: StringFieldUpdateOperationsInput | string
     entityId?: NullableStringFieldUpdateOperationsInput | string | null
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73709,6 +73746,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     isReprint?: boolean | null
+    rushedAt?: Date | string | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -73766,6 +73804,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     isReprint?: boolean | null
+    rushedAt?: Date | string | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -73823,6 +73862,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rushedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73880,6 +73920,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rushedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73937,6 +73978,7 @@ export namespace Prisma {
     productType?: $Enums.ProductType | null
     submittedAt?: Date | string | null
     isReprint?: boolean | null
+    rushedAt?: Date | string | null
     orderShoeSize?: string | null
     orderShoeWidth?: string | null
     orderGender?: string | null
@@ -73994,6 +74036,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rushedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74051,6 +74094,7 @@ export namespace Prisma {
     productType?: NullableEnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType | null
     submittedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isReprint?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rushedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     orderShoeSize?: NullableStringFieldUpdateOperationsInput | string | null
     orderShoeWidth?: NullableStringFieldUpdateOperationsInput | string | null
     orderGender?: NullableStringFieldUpdateOperationsInput | string | null
@@ -76445,11 +76489,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type AuditLogCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -76539,6 +76578,11 @@ export namespace Prisma {
     in?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.CompanyRole[] | ListEnumCompanyRoleFieldRefInput<$PrismaModel> | null
     not?: NestedEnumCompanyRoleNullableFilter<$PrismaModel> | $Enums.CompanyRole | null
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type CompanyUserUserIdCompanyIdCompoundUniqueInput = {
@@ -77787,6 +77831,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     isReprint?: SortOrder
+    rushedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
@@ -77848,6 +77893,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     isReprint?: SortOrder
+    rushedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
@@ -77905,6 +77951,7 @@ export namespace Prisma {
     productType?: SortOrder
     submittedAt?: SortOrder
     isReprint?: SortOrder
+    rushedAt?: SortOrder
     orderShoeSize?: SortOrder
     orderShoeWidth?: SortOrder
     orderGender?: SortOrder
@@ -80934,10 +80981,12 @@ export namespace Prisma {
     connect?: CompanyWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutAuditsLogsNestedInput = {
+  export type UserUpdateOneWithoutAuditsLogsNestedInput = {
     create?: XOR<UserCreateWithoutAuditsLogsInput, UserUncheckedCreateWithoutAuditsLogsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAuditsLogsInput
     upsert?: UserUpsertWithoutAuditsLogsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAuditsLogsInput, UserUpdateWithoutAuditsLogsInput>, UserUncheckedUpdateWithoutAuditsLogsInput>
   }
@@ -83882,12 +83931,12 @@ export namespace Prisma {
     context?: NullableJsonNullValueInput | InputJsonValue
     comment?: string | null
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutAuditsLogsInput
+    user?: UserCreateNestedOneWithoutAuditsLogsInput
   }
 
   export type AuditLogUncheckedCreateWithoutCompanyInput = {
     id?: string
-    userId: string
+    userId?: string | null
     entityId?: string | null
     entityType?: string | null
     action: string
@@ -84346,7 +84395,7 @@ export namespace Prisma {
     OR?: AuditLogScalarWhereInput[]
     NOT?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
     id?: StringFilter<"AuditLog"> | string
-    userId?: StringFilter<"AuditLog"> | string
+    userId?: StringNullableFilter<"AuditLog"> | string | null
     companyId?: StringFilter<"AuditLog"> | string
     entityId?: StringNullableFilter<"AuditLog"> | string | null
     entityType?: StringNullableFilter<"AuditLog"> | string | null
@@ -94438,7 +94487,7 @@ export namespace Prisma {
 
   export type AuditLogCreateManyCompanyInput = {
     id?: string
-    userId: string
+    userId?: string | null
     entityId?: string | null
     entityType?: string | null
     action: string
@@ -94855,12 +94904,12 @@ export namespace Prisma {
     context?: NullableJsonNullValueInput | InputJsonValue
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutAuditsLogsNestedInput
+    user?: UserUpdateOneWithoutAuditsLogsNestedInput
   }
 
   export type AuditLogUncheckedUpdateWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     entityId?: NullableStringFieldUpdateOperationsInput | string | null
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
@@ -94871,7 +94920,7 @@ export namespace Prisma {
 
   export type AuditLogUncheckedUpdateManyWithoutCompanyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     entityId?: NullableStringFieldUpdateOperationsInput | string | null
     entityType?: NullableStringFieldUpdateOperationsInput | string | null
     action?: StringFieldUpdateOperationsInput | string
