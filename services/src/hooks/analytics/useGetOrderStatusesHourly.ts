@@ -16,7 +16,13 @@ interface HourlyOptions {
 
 interface HourlyResponse {
   status: OrderStatus;
-  countsPerHour: Record<string, number>;
+  countsPerHour: Record<
+    string,
+    {
+      total: number;
+      users: Record<string, number>;
+    }
+  >;
 }
 
 export interface UseGetOrderStatusesHourlyOptions
