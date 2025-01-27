@@ -21,4 +21,5 @@ export interface CompanyPreferences {
   toWordDocx?: boolean;
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
   rushAll?: boolean;
+  unenrollDetectionNotification?: boolean;
 }
