@@ -1,3 +1,4 @@
+import type { GetCompanyByNameParams } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findCompanyByName } from '../../api/company.service';
 import { HikeError } from '../../errors/HikeError';
@@ -7,13 +8,14 @@ export interface UseCompaniesByNameOptions
     UseQueryOptions<Awaited<ReturnType<typeof findCompanyByName>>, HikeError<null>>,
     'queryKey' | 'queryFn'
   > {
-  params: { name: string };
+  name: string;
+  params?: GetCompanyByNameParams;
   queryKey?: QueryKey;
 }
 
-export const useCompaniesByName = ({ params, queryKey = [], ...options }: UseCompaniesByNameOptions) =>
+export const useCompaniesByName = ({ name, params, queryKey = [], ...options }: UseCompaniesByNameOptions) =>
   useQuery({
-    queryKey: ['companiesByName', params, queryKey],
-    queryFn: async () => await findCompanyByName(params.name),
+    queryKey: ['companiesByName', name, params, queryKey],
+    queryFn: async () => await findCompanyByName(name, params),
     ...options
   });
