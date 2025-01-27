@@ -22,4 +22,5 @@ export interface CompanyPreferences {
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
   rushAll?: boolean;
   unenrollDetectionNotification?: boolean;
+  hideInEnrollList?: boolean;
 }
