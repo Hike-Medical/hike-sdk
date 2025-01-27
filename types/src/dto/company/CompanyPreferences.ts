@@ -1,3 +1,4 @@
+import { ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 
 export interface CompanyPreferences {
@@ -23,4 +24,11 @@ export interface CompanyPreferences {
   rushAll?: boolean;
   unenrollDetectionNotification?: boolean;
   hideInEnrollList?: boolean;
+  productType?: ProductType;
+  clinicalCustomization?: {
+    removeRemake?: boolean;
+    removeReorder?: boolean;
+    assignPONumber?: boolean;
+  };
+  webhookUrl?: string;
 }
