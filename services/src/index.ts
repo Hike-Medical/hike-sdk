@@ -146,6 +146,7 @@ export * from './hooks/shipping/useGetPendingLabels';
 export * from './hooks/shipping/useGetShippingRates';
 export * from './hooks/shipping/useLabels';
 export * from './hooks/shipping/usePurchaseLabel';
+export * from './hooks/shipping/useSearchShippingLabels';
 export * from './hooks/shipping/useShipments';
 export * from './hooks/shipping/useUpdateTrackingInfo';
 export * from './hooks/shipping/useValidateShippingAddress';
