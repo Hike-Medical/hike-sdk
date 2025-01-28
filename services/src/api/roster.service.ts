@@ -28,7 +28,7 @@ export const deactivateRoster = async (data: DeactivateRosterParams): Promise<{ 
 
 export const fetchRosterImportStatus = async (
   jobId: string
-): Promise<{ progress: number; data: ImportRosterResponse }> => {
+): Promise<{ progress: number; data?: ImportRosterResponse }> => {
   try {
     const response = await backendApi.get(`roster/import/${jobId}`);
     return response.data;
@@ -39,7 +39,7 @@ export const fetchRosterImportStatus = async (
 
 export const fetchRosterDeactivateStatus = async (
   jobId: string
-): Promise<{ progress: number; data: DeactivateRosterResponse }> => {
+): Promise<{ progress: number; data?: DeactivateRosterResponse }> => {
   try {
     const response = await backendApi.get(`roster/deactivate/${jobId}`);
     return response.data;

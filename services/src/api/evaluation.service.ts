@@ -4,11 +4,14 @@ import type {
   CreateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
-  EvaluationsUploadResult,
+  GenerateEvaluationsUploadLinkParams,
   GetEvaluationsByPatientParams,
   GetEvaluationsParams,
+  ImportEvaluationsParams,
+  ImportEvaluationsResponse,
+  ImportPrimaryPhysiciansParams,
+  ImportPrimaryPhysiciansResponse,
   PagedResponse,
-  PrimaryPhysiciansUploadResult,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
   UpdateEvaluationParams
@@ -165,17 +168,51 @@ export const statsForEvaluations = async (assignedOnly?: boolean): Promise<Evalu
   }
 };
 
-export const uploadEvaluations = async (
-  file: File
-): Promise<EvaluationsUploadResult | PrimaryPhysiciansUploadResult> => {
-  const formData = new FormData();
-  formData.append('file', file);
-
+export const importEvaluations = async (data: ImportEvaluationsParams): Promise<{ jobId?: string }> => {
   try {
-    const response = await backendApi.post('evaluation/upload', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
+    const response = await backendApi.post('evaluation/import', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 
+export const importPrimaryPhysicians = async (data: ImportPrimaryPhysiciansParams): Promise<{ jobId?: string }> => {
+  try {
+    const response = await backendApi.post('evaluation/import/primary-physicians', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchEvaluationsImportStatus = async (
+  jobId: string
+): Promise<{ progress: number; data?: ImportEvaluationsResponse }> => {
+  try {
+    const response = await backendApi.get(`evaluation/import/${jobId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPrimaryPhysiciansImportStatus = async (
+  jobId: string
+): Promise<{ progress: number; data?: ImportPrimaryPhysiciansResponse }> => {
+  try {
+    const response = await backendApi.get(`evaluation/import/primary-physicians/${jobId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateEvaluationsUploadLink = async (
+  data: GenerateEvaluationsUploadLinkParams
+): Promise<{ key: string; presignedUrl: string }> => {
+  try {
+    const response = await backendApi.post('evaluation/upload-link', data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

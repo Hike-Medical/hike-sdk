@@ -5,7 +5,7 @@ import { HikeError } from '../../errors/HikeError';
 
 export interface UseRosterDeactivateJobOptions
   extends Omit<
-    UseQueryOptions<{ progress: number; data: DeactivateRosterResponse }, HikeError<null>>,
+    UseQueryOptions<{ progress: number; data?: DeactivateRosterResponse }, HikeError<null>>,
     'queryKey' | 'queryFn'
   > {
   id: string;
