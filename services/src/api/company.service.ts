@@ -3,6 +3,7 @@ import {
   Company,
   CompanyExtended,
   FindCompaniesParams,
+  GetCompanyByNameParams,
   PagedResponse,
   SafeCompany
 } from '@hike/types';
@@ -55,7 +56,10 @@ export const findCompanyBySlug = async (slug: string): Promise<SafeCompany> => {
   return response.data;
 };
 
-export const findCompanyByName = async (name: string): Promise<{ name: string; slug: string }[]> => {
-  const response = await backendApi.get(`auth/company/name/${name}`);
+export const findCompanyByName = async (
+  name: string,
+  params?: GetCompanyByNameParams
+): Promise<{ name: string; slug: string }[]> => {
+  const response = await backendApi.get(`auth/company/name/${name}`, { params });
   return response.data;
 };

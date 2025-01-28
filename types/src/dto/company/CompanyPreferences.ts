@@ -20,4 +20,8 @@ export interface CompanyPreferences {
   freeTrialOrders?: number;
   toWordDocx?: boolean;
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
+  rushAll?: boolean;
+  unenrollDetectionNotification?: boolean;
+  hideInEnrollList?: boolean;
+  defaultTimeZone?: string;
 }

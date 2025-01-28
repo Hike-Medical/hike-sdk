@@ -139,6 +139,15 @@ export const fetchPendingShippingLabels = async (): Promise<ShippingLabel[]> => 
   }
 };
 
+export const findShippingLabels = async (query: string): Promise<ShippingLabel[]> => {
+  try {
+    const response = await backendApi.get(`shipping/labels/search`, { params: { query } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLabelResponseByShipmentId> => {
   try {
     const response = await backendApi.get(`shipping/orders/${labelId}`);
