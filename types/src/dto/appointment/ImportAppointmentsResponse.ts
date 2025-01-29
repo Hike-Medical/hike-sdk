@@ -1,4 +1,4 @@
-export interface ImportEvaluationsResponse {
+export interface ImportAppointmentsResponse {
   parsed: number;
   skipped: number;
   evaluationsProcessed: number;
