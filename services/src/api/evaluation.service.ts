@@ -4,11 +4,9 @@ import type {
   CreateEvaluationParams,
   EvaluationExtended,
   EvaluationsStats,
-  EvaluationsUploadResult,
   GetEvaluationsByPatientParams,
   GetEvaluationsParams,
   PagedResponse,
-  PrimaryPhysiciansUploadResult,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
   UpdateEvaluationParams
@@ -159,23 +157,6 @@ export const searchEvaluations = async (
 export const statsForEvaluations = async (assignedOnly?: boolean): Promise<EvaluationsStats> => {
   try {
     const response = await backendApi.get('evaluation/stats', { params: { assignedOnly } });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const uploadEvaluations = async (
-  file: File
-): Promise<EvaluationsUploadResult | PrimaryPhysiciansUploadResult> => {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  try {
-    const response = await backendApi.post('evaluation/upload', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
-
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -23,4 +23,5 @@ export interface CompanyPreferences {
   rushAll?: boolean;
   unenrollDetectionNotification?: boolean;
   hideInEnrollList?: boolean;
+  defaultTimeZone?: string;
 }
