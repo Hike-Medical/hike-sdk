@@ -28,4 +28,6 @@ export interface GetAggregatedParams extends PagedParams {
       string
     >
   >;
+  nullFilter?: string[];
+  notNullFilter?: string[];
 }
