@@ -425,7 +425,8 @@ export type DetectionType = (typeof DetectionType)[keyof typeof DetectionType]
 export const WorkbenchCreatedReason: {
   REMAKE: 'REMAKE',
   REORDER: 'REORDER',
-  EDIT: 'EDIT'
+  EDIT: 'EDIT',
+  ADJUSTMENT: 'ADJUSTMENT'
 };
 
 export type WorkbenchCreatedReason = (typeof WorkbenchCreatedReason)[keyof typeof WorkbenchCreatedReason]
