@@ -3,12 +3,18 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { adjustmentEvaluation } from '../../api/evaluation.service';
 import { HikeError } from '../../errors/HikeError';
 
+interface AdjustEvaluationContext {
+  params: ActionEvaluationParams;
+  companyIds?: string[];
+}
+
 export const useAdjustEvaluation = (
-  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
+  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, AdjustEvaluationContext>
 ) => {
   return useMutation({
     mutationKey: ['adjustEvaluation'],
-    mutationFn: async (body: ActionEvaluationParams) => await adjustmentEvaluation(body),
+    mutationFn: async ({ params, companyIds }: AdjustEvaluationContext) =>
+      await adjustmentEvaluation(params, companyIds),
     ...mutationOptions
   });
 };
