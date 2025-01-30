@@ -101,6 +101,15 @@ export const reorderEvaluation = async (params: ActionEvaluationParams): Promise
   }
 };
 
+export const adjustmentEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+  try {
+    const response = await backendApi.post(`evaluation/${params.evaluationId}/adjustment`, { notes: params.notes });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findEvaluationById = async (evaluationId: string): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.get(`evaluation/${evaluationId}`);

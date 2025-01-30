@@ -72,6 +72,7 @@ export * from './hooks/company/useCompanies';
 export * from './hooks/company/useCompaniesByName';
 export * from './hooks/company/useCompanyPreferences';
 export * from './hooks/company/useIsFreeTrial';
+export * from './hooks/evaluations/useAdjustEvaluation';
 export * from './hooks/evaluations/useCancelEvaluation';
 export * from './hooks/evaluations/useCreateEvaluationByProduct';
 export * from './hooks/evaluations/useEditEvaluation';
