@@ -101,6 +101,29 @@ export const reorderEvaluation = async (params: ActionEvaluationParams): Promise
   }
 };
 
+export const adjustmentEvaluation = async (
+  params: ActionEvaluationParams,
+  companyIds?: string[]
+): Promise<EvaluationExtended> => {
+  try {
+    let headers: {
+      [key: string]: string;
+    } = {};
+
+    if (companyIds?.length) {
+      headers = { ...headers, 'x-company-id': companyIds.join(',') };
+    }
+    const response = await backendApi.post(
+      `evaluation/${params.evaluationId}/adjustment`,
+      { notes: params.notes },
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findEvaluationById = async (evaluationId: string): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.get(`evaluation/${evaluationId}`);

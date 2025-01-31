@@ -425,7 +425,8 @@ export type DetectionType = (typeof DetectionType)[keyof typeof DetectionType]
 export const WorkbenchCreatedReason: {
   REMAKE: 'REMAKE',
   REORDER: 'REORDER',
-  EDIT: 'EDIT'
+  EDIT: 'EDIT',
+  ADJUSTMENT: 'ADJUSTMENT'
 };
 
 export type WorkbenchCreatedReason = (typeof WorkbenchCreatedReason)[keyof typeof WorkbenchCreatedReason]
@@ -626,6 +627,7 @@ export const NotificationType: {
   PENDING_VERIFICATION: 'PENDING_VERIFICATION',
   SCANNED: 'SCANNED',
   ORDER_CONFIRMATION: 'ORDER_CONFIRMATION',
+  ADJUSTMENT_NOTICE: 'ADJUSTMENT_NOTICE',
   CAMPAIGN: 'CAMPAIGN',
   SURVEY: 'SURVEY',
   INVITATION: 'INVITATION'
@@ -61636,6 +61638,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
@@ -61694,6 +61697,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
@@ -61752,6 +61756,7 @@ export namespace Prisma {
     taikaDevId: number
     externalId: number
     companyName: number
+    createdNotes: number
     _all: number
   }
 
@@ -61820,6 +61825,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
@@ -61878,6 +61884,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
@@ -61936,6 +61943,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
     _all?: true
   }
 
@@ -62081,6 +62089,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -62158,6 +62167,7 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -62216,6 +62226,7 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
@@ -62274,9 +62285,10 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }
 
-  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "rushedAt" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName", ExtArgs["result"]["viewFlattenedWorkbench"]>
+  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "rushedAt" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName" | "createdNotes", ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type $ViewFlattenedWorkbenchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ViewFlattenedWorkbench"
@@ -62337,6 +62349,7 @@ export namespace Prisma {
       taikaDevId: string | null
       externalId: string | null
       companyName: string | null
+      createdNotes: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -62785,6 +62798,7 @@ export namespace Prisma {
     readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly externalId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly companyName: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly createdNotes: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -63954,7 +63968,8 @@ export namespace Prisma {
     taikaId: 'taikaId',
     taikaDevId: 'taikaDevId',
     externalId: 'externalId',
-    companyName: 'companyName'
+    companyName: 'companyName',
+    createdNotes: 'createdNotes'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -68897,6 +68912,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
@@ -68955,6 +68971,7 @@ export namespace Prisma {
     taikaDevId?: SortOrderInput | SortOrder
     externalId?: SortOrderInput | SortOrder
     companyName?: SortOrderInput | SortOrder
+    createdNotes?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -69016,6 +69033,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
@@ -69074,6 +69092,7 @@ export namespace Prisma {
     taikaDevId?: SortOrderInput | SortOrder
     externalId?: SortOrderInput | SortOrder
     companyName?: SortOrderInput | SortOrder
+    createdNotes?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -69140,6 +69159,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -73774,6 +73794,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
@@ -73832,6 +73853,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
@@ -73890,6 +73912,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
@@ -73948,6 +73971,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
@@ -74006,6 +74030,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
@@ -74064,6 +74089,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
@@ -74122,6 +74148,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -77859,6 +77886,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -77921,6 +77949,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
@@ -77979,6 +78008,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
