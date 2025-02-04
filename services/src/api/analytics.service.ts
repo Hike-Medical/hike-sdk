@@ -34,9 +34,13 @@ export const getOrderStatusesPerHour = async (
   }
 };
 
-export const getOrdersStuck = async (body: GetStuckOrdersByStatuses) => {
+export const getOrdersStuck = async (body: GetStuckOrdersByStatuses, companyIds: string[]) => {
   try {
-    const response = await backendApi.post('analytics/orders/stuck', body);
+    const response = await backendApi.post('analytics/orders/stuck', body, {
+      headers: {
+        'x-company-id': companyIds.join(',')
+      }
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
