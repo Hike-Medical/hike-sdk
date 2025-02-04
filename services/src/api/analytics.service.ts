@@ -1,4 +1,4 @@
-import { OrderStatus } from '@hike/types';
+import { GetStuckOrdersByStatuses, OrderStatus } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -28,6 +28,15 @@ export const getOrderStatusesPerHour = async (
       }
     );
 
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrdersStuck = async (body: GetStuckOrdersByStatuses) => {
+  try {
+    const response = await backendApi.post('analytics/orders/stuck', body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

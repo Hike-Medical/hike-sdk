@@ -37,6 +37,7 @@ export * from './errors/HikeError';
 export * from './errors/HikeErrorCode';
 export * from './errors/toErrorMessage';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
+export * from './hooks/analytics/useGetOrdersStuck';
 export * from './hooks/appointment/useAppointmentsImportJob';
 export * from './hooks/appointment/usePrescriptionsImportJob';
 export * from './hooks/assets/useAssets';
