@@ -5,6 +5,8 @@ export interface NotifyWebhookInfo {
   webhookUrl: string;
   webhookStatus: string;
   responseStatus: number;
-  responseBody: Record<string, string>;
+  responseBody: string;
   sentAt: Date;
+  poNumber: string;
+  patientName: string;
 }
