@@ -1,4 +1,5 @@
 export * from './api/analytics.service';
+export * from './api/appointment.service';
 export * from './api/asset.service';
 export * from './api/auth.service';
 export * from './api/billing-code.service';
@@ -36,6 +37,8 @@ export * from './errors/HikeError';
 export * from './errors/HikeErrorCode';
 export * from './errors/toErrorMessage';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
+export * from './hooks/appointment/useAppointmentsImportJob';
+export * from './hooks/appointment/usePrescriptionsImportJob';
 export * from './hooks/assets/useAssets';
 export * from './hooks/assets/useAssetStats';
 export * from './hooks/assets/useGetPresignedURL';

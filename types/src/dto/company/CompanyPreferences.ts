@@ -31,4 +31,5 @@ export interface CompanyPreferences {
     assignPONumber?: boolean;
   };
   webhookUrl?: string;
+  defaultTimeZone?: string;
 }
