@@ -9,5 +9,7 @@ export const Constants = {
     pageIndex: 0,
     pageSize: 25,
     limit: 10
-  } satisfies PaginationState
+  } satisfies PaginationState,
+  NETWORK_SPEED_FILE_SIZE_KB: 100,
+  NETWORK_SPEED_MIN_MBPS: 3
 } as const;
