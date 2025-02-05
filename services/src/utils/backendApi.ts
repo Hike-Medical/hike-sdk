@@ -5,6 +5,7 @@ import axios from 'axios';
  * Instance for making backend API requests.
  */
 export const backendApi = axios.create({
+  adapter: 'fetch',
   withCredentials: true
 });
 
