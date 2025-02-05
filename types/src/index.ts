@@ -78,6 +78,7 @@ export type * from './dto/notify/create-campaign-params';
 export type * from './dto/notify/enroll-patients-params';
 export type * from './dto/notify/get-campaign-params';
 export type * from './dto/notify/JobData';
+export type * from './dto/notify/notify-webhook-info';
 export type * from './dto/notify/SlackMessage';
 export type * from './dto/notify/upsert-email-template-params';
 export type * from './dto/order/CreateOrderParams';
