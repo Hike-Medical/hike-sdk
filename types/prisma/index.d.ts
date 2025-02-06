@@ -25902,6 +25902,7 @@ export namespace Prisma {
     labelId: string | null
     trackingNumber: string | null
     trackingStatus: $Enums.ShippingTrackingStatus | null
+    shouldBillRecipient: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25913,6 +25914,7 @@ export namespace Prisma {
     labelId: string | null
     trackingNumber: string | null
     trackingStatus: $Enums.ShippingTrackingStatus | null
+    shouldBillRecipient: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25924,6 +25926,7 @@ export namespace Prisma {
     labelId: number
     trackingNumber: number
     trackingStatus: number
+    shouldBillRecipient: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -25937,6 +25940,7 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25948,6 +25952,7 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25959,6 +25964,7 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -26043,6 +26049,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient: boolean
     createdAt: Date
     updatedAt: Date
     _count: ShippingLabelCountAggregateOutputType | null
@@ -26071,6 +26078,7 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
@@ -26085,6 +26093,7 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
@@ -26097,11 +26106,12 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
+  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "shouldBillRecipient" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
   export type ShippingLabelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
     orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
@@ -26124,6 +26134,7 @@ export namespace Prisma {
       labelId: string
       trackingNumber: string
       trackingStatus: $Enums.ShippingTrackingStatus
+      shouldBillRecipient: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["shippingLabel"]>
@@ -26527,6 +26538,7 @@ export namespace Prisma {
     readonly labelId: FieldRef<"ShippingLabel", 'String'>
     readonly trackingNumber: FieldRef<"ShippingLabel", 'String'>
     readonly trackingStatus: FieldRef<"ShippingLabel", 'ShippingTrackingStatus'>
+    readonly shouldBillRecipient: FieldRef<"ShippingLabel", 'Boolean'>
     readonly createdAt: FieldRef<"ShippingLabel", 'DateTime'>
     readonly updatedAt: FieldRef<"ShippingLabel", 'DateTime'>
   }
@@ -63429,6 +63441,7 @@ export namespace Prisma {
     labelId: 'labelId',
     trackingNumber: 'trackingNumber',
     trackingStatus: 'trackingStatus',
+    shouldBillRecipient: 'shouldBillRecipient',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -66330,6 +66343,7 @@ export namespace Prisma {
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingNumber?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
@@ -66343,6 +66357,7 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contact?: ContactOrderByWithRelationInput
@@ -66359,6 +66374,7 @@ export namespace Prisma {
     contactId?: StringNullableFilter<"ShippingLabel"> | string | null
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
@@ -66372,6 +66388,7 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ShippingLabelCountOrderByAggregateInput
@@ -66389,6 +66406,7 @@ export namespace Prisma {
     labelId?: StringWithAggregatesFilter<"ShippingLabel"> | string
     trackingNumber?: StringWithAggregatesFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusWithAggregatesFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolWithAggregatesFilter<"ShippingLabel"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
   }
@@ -70989,6 +71007,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
@@ -71002,6 +71021,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -71013,6 +71033,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
@@ -71026,6 +71047,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -71038,6 +71060,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71048,6 +71071,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -71059,6 +71083,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -75898,6 +75923,7 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -75909,6 +75935,7 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -75920,6 +75947,7 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -88501,6 +88529,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
@@ -88513,6 +88542,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -88590,6 +88620,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
@@ -88602,6 +88633,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88686,6 +88718,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderCreateNestedManyWithoutShippingLabelInput
@@ -88697,6 +88730,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -88770,6 +88804,7 @@ export namespace Prisma {
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingNumber?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
   }
@@ -96726,6 +96761,7 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96814,6 +96850,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUpdateManyWithoutShippingLabelNestedInput
@@ -96825,6 +96862,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -96836,6 +96874,7 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

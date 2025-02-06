@@ -222,7 +222,8 @@ export class StripeService {
     sendInvoice: boolean = false,
     invoiceCouponIds?: string[],
     description?: string,
-    subscriptionId?: string
+    subscriptionId?: string,
+    overrideItemExists?: boolean
   ) {
     try {
       const discounts: { coupon: string }[] = invoiceCouponIds
@@ -275,16 +276,20 @@ export class StripeService {
 
         let itemExists = false;
 
-        for (const lineItem of upcomingInvoice.lines.data) {
-          if (Number(lineItem.unit_amount_excluding_tax) === totalInvoice.amount_due) {
-            const itemId = lineItem.invoice_item?.toString();
-            if (itemId && lineItem.quantity) {
-              await this.stripe.invoiceItems.update(itemId, {
-                quantity: lineItem.quantity + 1
-              });
-              itemExists = true;
+        if (overrideItemExists !== undefined) {
+          itemExists = overrideItemExists;
+        } else {
+          for (const lineItem of upcomingInvoice.lines.data) {
+            if (Number(lineItem.unit_amount_excluding_tax) === totalInvoice.amount_due) {
+              const itemId = lineItem.invoice_item?.toString();
+              if (itemId && lineItem.quantity) {
+                await this.stripe.invoiceItems.update(itemId, {
+                  quantity: lineItem.quantity + 1
+                });
+                itemExists = true;
+              }
+              break;
             }
-            break;
           }
         }
 
@@ -295,7 +300,7 @@ export class StripeService {
             unit_amount: totalInvoice.amount_due,
             quantity: 1,
             currency: 'usd',
-            description: 'Custom Hike Insole'
+            description: overrideItemExists !== undefined ? (description ?? 'Hike Invoice Item') : 'Custom Hike Insole'
           });
         }
 
