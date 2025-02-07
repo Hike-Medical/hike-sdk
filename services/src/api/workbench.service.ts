@@ -138,6 +138,15 @@ export const rushWorkbench = async (workbenchId: string): Promise<Asset[]> => {
   }
 };
 
+export const rushWorkbenchByCompany = async (workbenchId: string): Promise<Asset[]> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/rush/company`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const resetScans = async (workbenchId: string, params: ResetWorkbenchParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/reset`, params);
