@@ -84,6 +84,7 @@ export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/DeliverOrderParams';
 export type * from './dto/order/GetOrdersByTypeParams';
 export type * from './dto/order/GetOrdersParams';
+export type * from './dto/order/ModifyOrderAuthorizationParams';
 export type * from './dto/order/OrdersStats';
 export type * from './dto/order/OrderType';
 export type * from './dto/order/UpdateOrderParams';
