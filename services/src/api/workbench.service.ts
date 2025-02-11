@@ -39,7 +39,7 @@ export const searchWorkbenches = async (
   }
 };
 
-export const getActiveFeet = async (workbenchId: string): Promise<FootWithAssets[]> => {
+export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> => {
   try {
     const response = await backendApi.get(`workbench/${workbenchId}/feet`);
     return response.data;
@@ -132,6 +132,15 @@ export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> =>
 export const rushWorkbench = async (workbenchId: string): Promise<Asset[]> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/rush`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const rushWorkbenchByCompany = async (workbenchId: string): Promise<Asset[]> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/rush/company`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

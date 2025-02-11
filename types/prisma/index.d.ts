@@ -425,7 +425,8 @@ export type DetectionType = (typeof DetectionType)[keyof typeof DetectionType]
 export const WorkbenchCreatedReason: {
   REMAKE: 'REMAKE',
   REORDER: 'REORDER',
-  EDIT: 'EDIT'
+  EDIT: 'EDIT',
+  ADJUSTMENT: 'ADJUSTMENT'
 };
 
 export type WorkbenchCreatedReason = (typeof WorkbenchCreatedReason)[keyof typeof WorkbenchCreatedReason]
@@ -626,6 +627,7 @@ export const NotificationType: {
   PENDING_VERIFICATION: 'PENDING_VERIFICATION',
   SCANNED: 'SCANNED',
   ORDER_CONFIRMATION: 'ORDER_CONFIRMATION',
+  ADJUSTMENT_NOTICE: 'ADJUSTMENT_NOTICE',
   CAMPAIGN: 'CAMPAIGN',
   SURVEY: 'SURVEY',
   INVITATION: 'INVITATION'
@@ -20262,6 +20264,7 @@ export namespace Prisma {
     productId: string | null
     evaluationId: string | null
     webhookUrl: string | null
+    appId: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     status: $Enums.WorkbenchStatus | null
     failedAt: Date | null
@@ -20277,6 +20280,7 @@ export namespace Prisma {
     productId: string | null
     evaluationId: string | null
     webhookUrl: string | null
+    appId: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     status: $Enums.WorkbenchStatus | null
     failedAt: Date | null
@@ -20293,6 +20297,7 @@ export namespace Prisma {
     evaluationId: number
     customization: number
     webhookUrl: number
+    appId: number
     createdReason: number
     status: number
     failedAt: number
@@ -20310,6 +20315,7 @@ export namespace Prisma {
     productId?: true
     evaluationId?: true
     webhookUrl?: true
+    appId?: true
     createdReason?: true
     status?: true
     failedAt?: true
@@ -20325,6 +20331,7 @@ export namespace Prisma {
     productId?: true
     evaluationId?: true
     webhookUrl?: true
+    appId?: true
     createdReason?: true
     status?: true
     failedAt?: true
@@ -20341,6 +20348,7 @@ export namespace Prisma {
     evaluationId?: true
     customization?: true
     webhookUrl?: true
+    appId?: true
     createdReason?: true
     status?: true
     failedAt?: true
@@ -20430,6 +20438,7 @@ export namespace Prisma {
     evaluationId: string
     customization: JsonValue | null
     webhookUrl: string | null
+    appId: string | null
     createdReason: $Enums.WorkbenchCreatedReason | null
     status: $Enums.WorkbenchStatus
     failedAt: Date | null
@@ -20463,6 +20472,7 @@ export namespace Prisma {
     evaluationId?: boolean
     customization?: boolean
     webhookUrl?: boolean
+    appId?: boolean
     createdReason?: boolean
     status?: boolean
     failedAt?: boolean
@@ -20488,6 +20498,7 @@ export namespace Prisma {
     evaluationId?: boolean
     customization?: boolean
     webhookUrl?: boolean
+    appId?: boolean
     createdReason?: boolean
     status?: boolean
     failedAt?: boolean
@@ -20507,6 +20518,7 @@ export namespace Prisma {
     evaluationId?: boolean
     customization?: boolean
     webhookUrl?: boolean
+    appId?: boolean
     createdReason?: boolean
     status?: boolean
     failedAt?: boolean
@@ -20516,7 +20528,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type WorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "productId" | "evaluationId" | "customization" | "webhookUrl" | "createdReason" | "status" | "failedAt" | "completedAt" | "submittedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["workbench"]>
+  export type WorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "productId" | "evaluationId" | "customization" | "webhookUrl" | "appId" | "createdReason" | "status" | "failedAt" | "completedAt" | "submittedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["workbench"]>
   export type WorkbenchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patient?: boolean | PatientDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
@@ -20553,6 +20565,7 @@ export namespace Prisma {
       evaluationId: string
       customization: Prisma.JsonValue | null
       webhookUrl: string | null
+      appId: string | null
       createdReason: $Enums.WorkbenchCreatedReason | null
       status: $Enums.WorkbenchStatus
       failedAt: Date | null
@@ -20967,6 +20980,7 @@ export namespace Prisma {
     readonly evaluationId: FieldRef<"Workbench", 'String'>
     readonly customization: FieldRef<"Workbench", 'Json'>
     readonly webhookUrl: FieldRef<"Workbench", 'String'>
+    readonly appId: FieldRef<"Workbench", 'String'>
     readonly createdReason: FieldRef<"Workbench", 'WorkbenchCreatedReason'>
     readonly status: FieldRef<"Workbench", 'WorkbenchStatus'>
     readonly failedAt: FieldRef<"Workbench", 'DateTime'>
@@ -61636,6 +61650,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateOutputType = {
@@ -61694,6 +61709,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
   }
 
   export type ViewFlattenedWorkbenchCountAggregateOutputType = {
@@ -61752,6 +61768,7 @@ export namespace Prisma {
     taikaDevId: number
     externalId: number
     companyName: number
+    createdNotes: number
     _all: number
   }
 
@@ -61820,6 +61837,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
   }
 
   export type ViewFlattenedWorkbenchMaxAggregateInputType = {
@@ -61878,6 +61896,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
   }
 
   export type ViewFlattenedWorkbenchCountAggregateInputType = {
@@ -61936,6 +61955,7 @@ export namespace Prisma {
     taikaDevId?: true
     externalId?: true
     companyName?: true
+    createdNotes?: true
     _all?: true
   }
 
@@ -62081,6 +62101,7 @@ export namespace Prisma {
     taikaDevId: string | null
     externalId: string | null
     companyName: string | null
+    createdNotes: string | null
     _count: ViewFlattenedWorkbenchCountAggregateOutputType | null
     _avg: ViewFlattenedWorkbenchAvgAggregateOutputType | null
     _sum: ViewFlattenedWorkbenchSumAggregateOutputType | null
@@ -62158,6 +62179,7 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -62216,6 +62238,7 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }, ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type ViewFlattenedWorkbenchSelectScalar = {
@@ -62274,9 +62297,10 @@ export namespace Prisma {
     taikaDevId?: boolean
     externalId?: boolean
     companyName?: boolean
+    createdNotes?: boolean
   }
 
-  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "rushedAt" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName", ExtArgs["result"]["viewFlattenedWorkbench"]>
+  export type ViewFlattenedWorkbenchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"workbenchId" | "companyId" | "workbenchStatus" | "evaluationId" | "patientId" | "orderId" | "orderStatus" | "workbenchCreatedAt" | "companySlug" | "labelId" | "trackingStatus" | "createdReason" | "orderAuthorizationStatus" | "slicerProfile" | "poNumber" | "clinicianName" | "clinicianId" | "patientFirstName" | "patientLastName" | "orderCreatedAt" | "authorizationUpdatedAt" | "orderCompletedAt" | "isDiabetic" | "orderSide" | "orderQuantity" | "productType" | "submittedAt" | "isReprint" | "rushedAt" | "orderShoeSize" | "orderShoeWidth" | "orderGender" | "validatedAt" | "printingStartedAt" | "printingStartedBy" | "grindingCompletedAt" | "grindingCompletedBy" | "gluingCompletedAt" | "gluingCompletedBy" | "finishingCompletedAt" | "finishingCompletedBy" | "shippingCompletedAt" | "shippingCompletedBy" | "printingCompletedAt" | "printingCompletedBy" | "addonCompletedAt" | "addonCompletedBy" | "validationStatus" | "needsDevValidation" | "isImpressionBox" | "deviceTypeName" | "taikaId" | "taikaDevId" | "externalId" | "companyName" | "createdNotes", ExtArgs["result"]["viewFlattenedWorkbench"]>
 
   export type $ViewFlattenedWorkbenchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ViewFlattenedWorkbench"
@@ -62337,6 +62361,7 @@ export namespace Prisma {
       taikaDevId: string | null
       externalId: string | null
       companyName: string | null
+      createdNotes: string | null
     }, ExtArgs["result"]["viewFlattenedWorkbench"]>
     composites: {}
   }
@@ -62785,6 +62810,7 @@ export namespace Prisma {
     readonly taikaDevId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly externalId: FieldRef<"ViewFlattenedWorkbench", 'String'>
     readonly companyName: FieldRef<"ViewFlattenedWorkbench", 'String'>
+    readonly createdNotes: FieldRef<"ViewFlattenedWorkbench", 'String'>
   }
     
 
@@ -63338,6 +63364,7 @@ export namespace Prisma {
     evaluationId: 'evaluationId',
     customization: 'customization',
     webhookUrl: 'webhookUrl',
+    appId: 'appId',
     createdReason: 'createdReason',
     status: 'status',
     failedAt: 'failedAt',
@@ -63954,7 +63981,8 @@ export namespace Prisma {
     taikaId: 'taikaId',
     taikaDevId: 'taikaDevId',
     externalId: 'externalId',
-    companyName: 'companyName'
+    companyName: 'companyName',
+    createdNotes: 'createdNotes'
   };
 
   export type ViewFlattenedWorkbenchScalarFieldEnum = (typeof ViewFlattenedWorkbenchScalarFieldEnum)[keyof typeof ViewFlattenedWorkbenchScalarFieldEnum]
@@ -65840,6 +65868,7 @@ export namespace Prisma {
     evaluationId?: StringFilter<"Workbench"> | string
     customization?: JsonNullableFilter<"Workbench">
     webhookUrl?: StringNullableFilter<"Workbench"> | string | null
+    appId?: StringNullableFilter<"Workbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"Workbench"> | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
@@ -65864,6 +65893,7 @@ export namespace Prisma {
     evaluationId?: SortOrder
     customization?: SortOrderInput | SortOrder
     webhookUrl?: SortOrderInput | SortOrder
+    appId?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
     status?: SortOrder
     failedAt?: SortOrderInput | SortOrder
@@ -65891,6 +65921,7 @@ export namespace Prisma {
     evaluationId?: StringFilter<"Workbench"> | string
     customization?: JsonNullableFilter<"Workbench">
     webhookUrl?: StringNullableFilter<"Workbench"> | string | null
+    appId?: StringNullableFilter<"Workbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"Workbench"> | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
@@ -65915,6 +65946,7 @@ export namespace Prisma {
     evaluationId?: SortOrder
     customization?: SortOrderInput | SortOrder
     webhookUrl?: SortOrderInput | SortOrder
+    appId?: SortOrderInput | SortOrder
     createdReason?: SortOrderInput | SortOrder
     status?: SortOrder
     failedAt?: SortOrderInput | SortOrder
@@ -65937,6 +65969,7 @@ export namespace Prisma {
     evaluationId?: StringWithAggregatesFilter<"Workbench"> | string
     customization?: JsonNullableWithAggregatesFilter<"Workbench">
     webhookUrl?: StringNullableWithAggregatesFilter<"Workbench"> | string | null
+    appId?: StringNullableWithAggregatesFilter<"Workbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableWithAggregatesFilter<"Workbench"> | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusWithAggregatesFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableWithAggregatesFilter<"Workbench"> | Date | string | null
@@ -68897,6 +68930,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type ViewFlattenedWorkbenchOrderByWithRelationInput = {
@@ -68955,6 +68989,7 @@ export namespace Prisma {
     taikaDevId?: SortOrderInput | SortOrder
     externalId?: SortOrderInput | SortOrder
     companyName?: SortOrderInput | SortOrder
+    createdNotes?: SortOrderInput | SortOrder
   }
 
   export type ViewFlattenedWorkbenchWhereUniqueInput = Prisma.AtLeast<{
@@ -69016,6 +69051,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableFilter<"ViewFlattenedWorkbench"> | string | null
   }, "workbenchId">
 
   export type ViewFlattenedWorkbenchOrderByWithAggregationInput = {
@@ -69074,6 +69110,7 @@ export namespace Prisma {
     taikaDevId?: SortOrderInput | SortOrder
     externalId?: SortOrderInput | SortOrder
     companyName?: SortOrderInput | SortOrder
+    createdNotes?: SortOrderInput | SortOrder
     _count?: ViewFlattenedWorkbenchCountOrderByAggregateInput
     _avg?: ViewFlattenedWorkbenchAvgOrderByAggregateInput
     _max?: ViewFlattenedWorkbenchMaxOrderByAggregateInput
@@ -69140,6 +69177,7 @@ export namespace Prisma {
     taikaDevId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     externalId?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
     companyName?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
+    createdNotes?: StringNullableWithAggregatesFilter<"ViewFlattenedWorkbench"> | string | null
   }
 
   export type CompanyCreateInput = {
@@ -70431,6 +70469,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -70455,6 +70494,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -70473,6 +70513,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70497,6 +70538,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70518,6 +70560,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -70531,6 +70574,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70547,6 +70591,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -73774,6 +73819,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedCreateInput = {
@@ -73832,6 +73878,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateInput = {
@@ -73890,6 +73937,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateInput = {
@@ -73948,6 +73996,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchCreateManyInput = {
@@ -74006,6 +74055,7 @@ export namespace Prisma {
     taikaDevId?: string | null
     externalId?: string | null
     companyName?: string | null
+    createdNotes?: string | null
   }
 
   export type ViewFlattenedWorkbenchUpdateManyMutationInput = {
@@ -74064,6 +74114,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ViewFlattenedWorkbenchUncheckedUpdateManyInput = {
@@ -74122,6 +74173,7 @@ export namespace Prisma {
     taikaDevId?: NullableStringFieldUpdateOperationsInput | string | null
     externalId?: NullableStringFieldUpdateOperationsInput | string | null
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdNotes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -75498,6 +75550,7 @@ export namespace Prisma {
     evaluationId?: SortOrder
     customization?: SortOrder
     webhookUrl?: SortOrder
+    appId?: SortOrder
     createdReason?: SortOrder
     status?: SortOrder
     failedAt?: SortOrder
@@ -75513,6 +75566,7 @@ export namespace Prisma {
     productId?: SortOrder
     evaluationId?: SortOrder
     webhookUrl?: SortOrder
+    appId?: SortOrder
     createdReason?: SortOrder
     status?: SortOrder
     failedAt?: SortOrder
@@ -75528,6 +75582,7 @@ export namespace Prisma {
     productId?: SortOrder
     evaluationId?: SortOrder
     webhookUrl?: SortOrder
+    appId?: SortOrder
     createdReason?: SortOrder
     status?: SortOrder
     failedAt?: SortOrder
@@ -77859,6 +77914,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchAvgOrderByAggregateInput = {
@@ -77921,6 +77977,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchMinOrderByAggregateInput = {
@@ -77979,6 +78036,7 @@ export namespace Prisma {
     taikaDevId?: SortOrder
     externalId?: SortOrder
     companyName?: SortOrder
+    createdNotes?: SortOrder
   }
 
   export type ViewFlattenedWorkbenchSumOrderByAggregateInput = {
@@ -85396,6 +85454,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -85418,6 +85477,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -85684,6 +85744,7 @@ export namespace Prisma {
     evaluationId?: StringFilter<"Workbench"> | string
     customization?: JsonNullableFilter<"Workbench">
     webhookUrl?: StringNullableFilter<"Workbench"> | string | null
+    appId?: StringNullableFilter<"Workbench"> | string | null
     createdReason?: EnumWorkbenchCreatedReasonNullableFilter<"Workbench"> | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFilter<"Workbench"> | $Enums.WorkbenchStatus
     failedAt?: DateTimeNullableFilter<"Workbench"> | Date | string | null
@@ -86266,6 +86327,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -86288,6 +86350,7 @@ export namespace Prisma {
     productId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -86774,6 +86837,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -86797,6 +86861,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -86933,6 +86998,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -86956,6 +87022,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -87051,6 +87118,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -87074,6 +87142,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -87497,6 +87566,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -87519,6 +87589,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -88262,6 +88333,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -88285,6 +88357,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -88363,6 +88436,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88386,6 +88460,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88454,6 +88529,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -88477,6 +88553,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -88537,6 +88614,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88560,6 +88638,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -89577,6 +89656,7 @@ export namespace Prisma {
     id?: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -89600,6 +89680,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -89662,6 +89743,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -89685,6 +89767,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95452,6 +95535,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -95685,6 +95769,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95707,6 +95792,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95727,6 +95813,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -95985,6 +96072,7 @@ export namespace Prisma {
     productId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -96025,6 +96113,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96047,6 +96136,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96067,6 +96157,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96154,6 +96245,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96177,6 +96269,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96197,6 +96290,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96300,6 +96394,7 @@ export namespace Prisma {
     evaluationId: string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: string | null
+    appId?: string | null
     createdReason?: $Enums.WorkbenchCreatedReason | null
     status?: $Enums.WorkbenchStatus
     failedAt?: Date | string | null
@@ -96381,6 +96476,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96403,6 +96499,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -96423,6 +96520,7 @@ export namespace Prisma {
     evaluationId?: StringFieldUpdateOperationsInput | string
     customization?: NullableJsonNullValueInput | InputJsonValue
     webhookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
     createdReason?: NullableEnumWorkbenchCreatedReasonFieldUpdateOperationsInput | $Enums.WorkbenchCreatedReason | null
     status?: EnumWorkbenchStatusFieldUpdateOperationsInput | $Enums.WorkbenchStatus
     failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

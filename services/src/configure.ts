@@ -57,8 +57,15 @@ export const configureCompany = (companyId: string) => {
 };
 
 /**
- * Provisions the services with a company.
+ * Provisions the services with a fingerprint.
  */
 export const configureFingerprint = (fingerprint: string) => {
   backendApi.defaults.headers.common['x-fingerprint'] = fingerprint;
+};
+
+/**
+ * Provisions the services with the network speed.
+ */
+export const configureNetworkSpeed = (speed?: string) => {
+  backendApi.defaults.headers.common['x-network-speed'] = speed;
 };

@@ -3,8 +3,8 @@ import type {
   DeliverOrderParams,
   GetOrdersByTypeParams,
   GetOrdersParams,
+  ModifyOrderAuthorizationParams,
   Order,
-  OrderAuthorizationStatus,
   OrderExtended,
   OrderType,
   OrdersStats,
@@ -114,12 +114,12 @@ export const updateOrder = async (
   }
 };
 
-export const modifyOrderAuthorization = async (
-  orderId: string,
-  authorizationStatus: OrderAuthorizationStatus,
-  companyIds?: string[],
-  jwtToken?: string
-): Promise<OrderExtended> => {
+export const modifyOrderAuthorization = async ({
+  orderId,
+  authorizationStatus,
+  companyIds,
+  jwtToken
+}: ModifyOrderAuthorizationParams): Promise<OrderExtended> => {
   let headers: {
     [key: string]: string;
   } = {};
