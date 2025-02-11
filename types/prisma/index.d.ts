@@ -6871,6 +6871,7 @@ export namespace Prisma {
     combinedInvoices: number
     employerEvaluations: number
     checkoutEvaluations: number
+    shippingLabels: number
   }
 
   export type StripeInvoiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6878,6 +6879,7 @@ export namespace Prisma {
     combinedInvoices?: boolean | StripeInvoiceCountOutputTypeCountCombinedInvoicesArgs
     employerEvaluations?: boolean | StripeInvoiceCountOutputTypeCountEmployerEvaluationsArgs
     checkoutEvaluations?: boolean | StripeInvoiceCountOutputTypeCountCheckoutEvaluationsArgs
+    shippingLabels?: boolean | StripeInvoiceCountOutputTypeCountShippingLabelsArgs
   }
 
   // Custom InputTypes
@@ -6917,6 +6919,13 @@ export namespace Prisma {
    */
   export type StripeInvoiceCountOutputTypeCountCheckoutEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EvaluationWhereInput
+  }
+
+  /**
+   * StripeInvoiceCountOutputType without action
+   */
+  export type StripeInvoiceCountOutputTypeCountShippingLabelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShippingLabelWhereInput
   }
 
 
@@ -25941,6 +25950,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus | null
     shouldBillRecipient: boolean | null
     price: number | null
+    stripeInvoiceId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25954,6 +25964,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus | null
     shouldBillRecipient: boolean | null
     price: number | null
+    stripeInvoiceId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25967,6 +25978,7 @@ export namespace Prisma {
     trackingStatus: number
     shouldBillRecipient: number
     price: number
+    stripeInvoiceId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -25990,6 +26002,7 @@ export namespace Prisma {
     trackingStatus?: true
     shouldBillRecipient?: true
     price?: true
+    stripeInvoiceId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -26003,6 +26016,7 @@ export namespace Prisma {
     trackingStatus?: true
     shouldBillRecipient?: true
     price?: true
+    stripeInvoiceId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -26016,6 +26030,7 @@ export namespace Prisma {
     trackingStatus?: true
     shouldBillRecipient?: true
     price?: true
+    stripeInvoiceId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -26116,6 +26131,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient: boolean
     price: number | null
+    stripeInvoiceId: string | null
     createdAt: Date
     updatedAt: Date
     _count: ShippingLabelCountAggregateOutputType | null
@@ -26148,8 +26164,10 @@ export namespace Prisma {
     trackingStatus?: boolean
     shouldBillRecipient?: boolean
     price?: boolean
+    stripeInvoiceId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    stripeInvoice?: boolean | ShippingLabel$stripeInvoiceArgs<ExtArgs>
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
     orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
     _count?: boolean | ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
@@ -26164,8 +26182,10 @@ export namespace Prisma {
     trackingStatus?: boolean
     shouldBillRecipient?: boolean
     price?: boolean
+    stripeInvoiceId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    stripeInvoice?: boolean | ShippingLabel$stripeInvoiceArgs<ExtArgs>
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
   }, ExtArgs["result"]["shippingLabel"]>
 
@@ -26178,23 +26198,27 @@ export namespace Prisma {
     trackingStatus?: boolean
     shouldBillRecipient?: boolean
     price?: boolean
+    stripeInvoiceId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "shouldBillRecipient" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
+  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "shouldBillRecipient" | "price" | "stripeInvoiceId" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
   export type ShippingLabelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stripeInvoice?: boolean | ShippingLabel$stripeInvoiceArgs<ExtArgs>
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
     orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
     _count?: boolean | ShippingLabelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ShippingLabelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stripeInvoice?: boolean | ShippingLabel$stripeInvoiceArgs<ExtArgs>
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
   }
 
   export type $ShippingLabelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ShippingLabel"
     objects: {
+      stripeInvoice: Prisma.$StripeInvoicePayload<ExtArgs> | null
       contact: Prisma.$ContactPayload<ExtArgs> | null
       orders: Prisma.$OrderPayload<ExtArgs>[]
     }
@@ -26207,6 +26231,7 @@ export namespace Prisma {
       trackingStatus: $Enums.ShippingTrackingStatus
       shouldBillRecipient: boolean
       price: number | null
+      stripeInvoiceId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["shippingLabel"]>
@@ -26573,6 +26598,7 @@ export namespace Prisma {
    */
   export interface Prisma__ShippingLabelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    stripeInvoice<T extends ShippingLabel$stripeInvoiceArgs<ExtArgs> = {}>(args?: Subset<T, ShippingLabel$stripeInvoiceArgs<ExtArgs>>): Prisma__StripeInvoiceClient<$Result.GetResult<Prisma.$StripeInvoicePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     contact<T extends ShippingLabel$contactArgs<ExtArgs> = {}>(args?: Subset<T, ShippingLabel$contactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     orders<T extends ShippingLabel$ordersArgs<ExtArgs> = {}>(args?: Subset<T, ShippingLabel$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
@@ -26612,6 +26638,7 @@ export namespace Prisma {
     readonly trackingStatus: FieldRef<"ShippingLabel", 'ShippingTrackingStatus'>
     readonly shouldBillRecipient: FieldRef<"ShippingLabel", 'Boolean'>
     readonly price: FieldRef<"ShippingLabel", 'Float'>
+    readonly stripeInvoiceId: FieldRef<"ShippingLabel", 'String'>
     readonly createdAt: FieldRef<"ShippingLabel", 'DateTime'>
     readonly updatedAt: FieldRef<"ShippingLabel", 'DateTime'>
   }
@@ -26969,6 +26996,25 @@ export namespace Prisma {
      * Filter which ShippingLabels to delete
      */
     where?: ShippingLabelWhereInput
+  }
+
+  /**
+   * ShippingLabel.stripeInvoice
+   */
+  export type ShippingLabel$stripeInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StripeInvoice
+     */
+    select?: StripeInvoiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StripeInvoice
+     */
+    omit?: StripeInvoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StripeInvoiceInclude<ExtArgs> | null
+    where?: StripeInvoiceWhereInput
   }
 
   /**
@@ -45737,6 +45783,7 @@ export namespace Prisma {
     stripeEntity?: boolean | StripeInvoice$stripeEntityArgs<ExtArgs>
     employerEvaluations?: boolean | StripeInvoice$employerEvaluationsArgs<ExtArgs>
     checkoutEvaluations?: boolean | StripeInvoice$checkoutEvaluationsArgs<ExtArgs>
+    shippingLabels?: boolean | StripeInvoice$shippingLabelsArgs<ExtArgs>
     _count?: boolean | StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stripeInvoice"]>
 
@@ -45782,6 +45829,7 @@ export namespace Prisma {
     stripeEntity?: boolean | StripeInvoice$stripeEntityArgs<ExtArgs>
     employerEvaluations?: boolean | StripeInvoice$employerEvaluationsArgs<ExtArgs>
     checkoutEvaluations?: boolean | StripeInvoice$checkoutEvaluationsArgs<ExtArgs>
+    shippingLabels?: boolean | StripeInvoice$shippingLabelsArgs<ExtArgs>
     _count?: boolean | StripeInvoiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type StripeInvoiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -45800,6 +45848,7 @@ export namespace Prisma {
       stripeEntity: Prisma.$StripeEntityPayload<ExtArgs> | null
       employerEvaluations: Prisma.$EvaluationPayload<ExtArgs>[]
       checkoutEvaluations: Prisma.$EvaluationPayload<ExtArgs>[]
+      shippingLabels: Prisma.$ShippingLabelPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -46185,6 +46234,7 @@ export namespace Prisma {
     stripeEntity<T extends StripeInvoice$stripeEntityArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$stripeEntityArgs<ExtArgs>>): Prisma__StripeEntityClient<$Result.GetResult<Prisma.$StripeEntityPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     employerEvaluations<T extends StripeInvoice$employerEvaluationsArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$employerEvaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     checkoutEvaluations<T extends StripeInvoice$checkoutEvaluationsArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$checkoutEvaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    shippingLabels<T extends StripeInvoice$shippingLabelsArgs<ExtArgs> = {}>(args?: Subset<T, StripeInvoice$shippingLabelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingLabelPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -46734,6 +46784,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EvaluationScalarFieldEnum | EvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * StripeInvoice.shippingLabels
+   */
+  export type StripeInvoice$shippingLabelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShippingLabel
+     */
+    select?: ShippingLabelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShippingLabel
+     */
+    omit?: ShippingLabelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShippingLabelInclude<ExtArgs> | null
+    where?: ShippingLabelWhereInput
+    orderBy?: ShippingLabelOrderByWithRelationInput | ShippingLabelOrderByWithRelationInput[]
+    cursor?: ShippingLabelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ShippingLabelScalarFieldEnum | ShippingLabelScalarFieldEnum[]
   }
 
   /**
@@ -63541,6 +63615,7 @@ export namespace Prisma {
     trackingStatus: 'trackingStatus',
     shouldBillRecipient: 'shouldBillRecipient',
     price: 'price',
+    stripeInvoiceId: 'stripeInvoiceId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -66465,8 +66540,10 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     price?: FloatNullableFilter<"ShippingLabel"> | number | null
+    stripeInvoiceId?: StringNullableFilter<"ShippingLabel"> | string | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    stripeInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     orders?: OrderListRelationFilter
   }
@@ -66480,8 +66557,10 @@ export namespace Prisma {
     trackingStatus?: SortOrder
     shouldBillRecipient?: SortOrder
     price?: SortOrderInput | SortOrder
+    stripeInvoiceId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    stripeInvoice?: StripeInvoiceOrderByWithRelationInput
     contact?: ContactOrderByWithRelationInput
     orders?: OrderOrderByRelationAggregateInput
   }
@@ -66498,8 +66577,10 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     price?: FloatNullableFilter<"ShippingLabel"> | number | null
+    stripeInvoiceId?: StringNullableFilter<"ShippingLabel"> | string | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
+    stripeInvoice?: XOR<StripeInvoiceNullableRelationFilter, StripeInvoiceWhereInput> | null
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
     orders?: OrderListRelationFilter
   }, "id" | "trackingNumber">
@@ -66513,6 +66594,7 @@ export namespace Prisma {
     trackingStatus?: SortOrder
     shouldBillRecipient?: SortOrder
     price?: SortOrderInput | SortOrder
+    stripeInvoiceId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ShippingLabelCountOrderByAggregateInput
@@ -66534,6 +66616,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusWithAggregatesFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolWithAggregatesFilter<"ShippingLabel"> | boolean
     price?: FloatNullableWithAggregatesFilter<"ShippingLabel"> | number | null
+    stripeInvoiceId?: StringNullableWithAggregatesFilter<"ShippingLabel"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
   }
@@ -67796,6 +67879,7 @@ export namespace Prisma {
     stripeEntity?: XOR<StripeEntityNullableRelationFilter, StripeEntityWhereInput> | null
     employerEvaluations?: EvaluationListRelationFilter
     checkoutEvaluations?: EvaluationListRelationFilter
+    shippingLabels?: ShippingLabelListRelationFilter
   }
 
   export type StripeInvoiceOrderByWithRelationInput = {
@@ -67818,6 +67902,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityOrderByWithRelationInput
     employerEvaluations?: EvaluationOrderByRelationAggregateInput
     checkoutEvaluations?: EvaluationOrderByRelationAggregateInput
+    shippingLabels?: ShippingLabelOrderByRelationAggregateInput
   }
 
   export type StripeInvoiceWhereUniqueInput = Prisma.AtLeast<{
@@ -67843,6 +67928,7 @@ export namespace Prisma {
     stripeEntity?: XOR<StripeEntityNullableRelationFilter, StripeEntityWhereInput> | null
     employerEvaluations?: EvaluationListRelationFilter
     checkoutEvaluations?: EvaluationListRelationFilter
+    shippingLabels?: ShippingLabelListRelationFilter
   }, "id" | "stripeInvoiceId">
 
   export type StripeInvoiceOrderByWithAggregationInput = {
@@ -71155,6 +71241,7 @@ export namespace Prisma {
     price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutShippingLabelsInput
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
     orders?: OrderCreateNestedManyWithoutShippingLabelInput
   }
@@ -71168,6 +71255,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient?: boolean
     price?: number | null
+    stripeInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -71183,6 +71271,7 @@ export namespace Prisma {
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutShippingLabelsNestedInput
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
     orders?: OrderUpdateManyWithoutShippingLabelNestedInput
   }
@@ -71196,6 +71285,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableFloatFieldUpdateOperationsInput | number | null
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -71210,6 +71300,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient?: boolean
     price?: number | null
+    stripeInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71235,6 +71326,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableFloatFieldUpdateOperationsInput | number | null
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72594,6 +72686,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateInput = {
@@ -72613,6 +72706,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUpdateInput = {
@@ -72632,6 +72726,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateInput = {
@@ -72651,6 +72746,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceCreateManyInput = {
@@ -76093,6 +76189,7 @@ export namespace Prisma {
     trackingStatus?: SortOrder
     shouldBillRecipient?: SortOrder
     price?: SortOrder
+    stripeInvoiceId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -76110,6 +76207,7 @@ export namespace Prisma {
     trackingStatus?: SortOrder
     shouldBillRecipient?: SortOrder
     price?: SortOrder
+    stripeInvoiceId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -76123,6 +76221,7 @@ export namespace Prisma {
     trackingStatus?: SortOrder
     shouldBillRecipient?: SortOrder
     price?: SortOrder
+    stripeInvoiceId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -80578,6 +80677,12 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutPackagesInput, CompanyUpdateWithoutPackagesInput>, CompanyUncheckedUpdateWithoutPackagesInput>
   }
 
+  export type StripeInvoiceCreateNestedOneWithoutShippingLabelsInput = {
+    create?: XOR<StripeInvoiceCreateWithoutShippingLabelsInput, StripeInvoiceUncheckedCreateWithoutShippingLabelsInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutShippingLabelsInput
+    connect?: StripeInvoiceWhereUniqueInput
+  }
+
   export type ContactCreateNestedOneWithoutShippingLabelsInput = {
     create?: XOR<ContactCreateWithoutShippingLabelsInput, ContactUncheckedCreateWithoutShippingLabelsInput>
     connectOrCreate?: ContactCreateOrConnectWithoutShippingLabelsInput
@@ -80600,6 +80705,16 @@ export namespace Prisma {
 
   export type EnumShippingTrackingStatusFieldUpdateOperationsInput = {
     set?: $Enums.ShippingTrackingStatus
+  }
+
+  export type StripeInvoiceUpdateOneWithoutShippingLabelsNestedInput = {
+    create?: XOR<StripeInvoiceCreateWithoutShippingLabelsInput, StripeInvoiceUncheckedCreateWithoutShippingLabelsInput>
+    connectOrCreate?: StripeInvoiceCreateOrConnectWithoutShippingLabelsInput
+    upsert?: StripeInvoiceUpsertWithoutShippingLabelsInput
+    disconnect?: StripeInvoiceWhereInput | boolean
+    delete?: StripeInvoiceWhereInput | boolean
+    connect?: StripeInvoiceWhereUniqueInput
+    update?: XOR<XOR<StripeInvoiceUpdateToOneWithWhereWithoutShippingLabelsInput, StripeInvoiceUpdateWithoutShippingLabelsInput>, StripeInvoiceUncheckedUpdateWithoutShippingLabelsInput>
   }
 
   export type ContactUpdateOneWithoutShippingLabelsNestedInput = {
@@ -81475,6 +81590,13 @@ export namespace Prisma {
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
   }
 
+  export type ShippingLabelCreateNestedManyWithoutStripeInvoiceInput = {
+    create?: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput> | ShippingLabelCreateWithoutStripeInvoiceInput[] | ShippingLabelUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutStripeInvoiceInput | ShippingLabelCreateOrConnectWithoutStripeInvoiceInput[]
+    createMany?: ShippingLabelCreateManyStripeInvoiceInputEnvelope
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+  }
+
   export type StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput = {
     create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
     connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
@@ -81500,6 +81622,13 @@ export namespace Prisma {
     connectOrCreate?: EvaluationCreateOrConnectWithoutStripeCheckoutInvoiceInput | EvaluationCreateOrConnectWithoutStripeCheckoutInvoiceInput[]
     createMany?: EvaluationCreateManyStripeCheckoutInvoiceInputEnvelope
     connect?: EvaluationWhereUniqueInput | EvaluationWhereUniqueInput[]
+  }
+
+  export type ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput = {
+    create?: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput> | ShippingLabelCreateWithoutStripeInvoiceInput[] | ShippingLabelUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutStripeInvoiceInput | ShippingLabelCreateOrConnectWithoutStripeInvoiceInput[]
+    createMany?: ShippingLabelCreateManyStripeInvoiceInputEnvelope
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
   }
 
   export type EnumStripeInvoiceTypeFieldUpdateOperationsInput = {
@@ -81595,6 +81724,20 @@ export namespace Prisma {
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
   }
 
+  export type ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput = {
+    create?: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput> | ShippingLabelCreateWithoutStripeInvoiceInput[] | ShippingLabelUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutStripeInvoiceInput | ShippingLabelCreateOrConnectWithoutStripeInvoiceInput[]
+    upsert?: ShippingLabelUpsertWithWhereUniqueWithoutStripeInvoiceInput | ShippingLabelUpsertWithWhereUniqueWithoutStripeInvoiceInput[]
+    createMany?: ShippingLabelCreateManyStripeInvoiceInputEnvelope
+    set?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    disconnect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    delete?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    update?: ShippingLabelUpdateWithWhereUniqueWithoutStripeInvoiceInput | ShippingLabelUpdateWithWhereUniqueWithoutStripeInvoiceInput[]
+    updateMany?: ShippingLabelUpdateManyWithWhereWithoutStripeInvoiceInput | ShippingLabelUpdateManyWithWhereWithoutStripeInvoiceInput[]
+    deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
+  }
+
   export type StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput = {
     create?: XOR<StripeProductCreateWithoutStripeInvoicesInput, StripeProductUncheckedCreateWithoutStripeInvoicesInput> | StripeProductCreateWithoutStripeInvoicesInput[] | StripeProductUncheckedCreateWithoutStripeInvoicesInput[]
     connectOrCreate?: StripeProductCreateOrConnectWithoutStripeInvoicesInput | StripeProductCreateOrConnectWithoutStripeInvoicesInput[]
@@ -81648,6 +81791,20 @@ export namespace Prisma {
     update?: EvaluationUpdateWithWhereUniqueWithoutStripeCheckoutInvoiceInput | EvaluationUpdateWithWhereUniqueWithoutStripeCheckoutInvoiceInput[]
     updateMany?: EvaluationUpdateManyWithWhereWithoutStripeCheckoutInvoiceInput | EvaluationUpdateManyWithWhereWithoutStripeCheckoutInvoiceInput[]
     deleteMany?: EvaluationScalarWhereInput | EvaluationScalarWhereInput[]
+  }
+
+  export type ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput = {
+    create?: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput> | ShippingLabelCreateWithoutStripeInvoiceInput[] | ShippingLabelUncheckedCreateWithoutStripeInvoiceInput[]
+    connectOrCreate?: ShippingLabelCreateOrConnectWithoutStripeInvoiceInput | ShippingLabelCreateOrConnectWithoutStripeInvoiceInput[]
+    upsert?: ShippingLabelUpsertWithWhereUniqueWithoutStripeInvoiceInput | ShippingLabelUpsertWithWhereUniqueWithoutStripeInvoiceInput[]
+    createMany?: ShippingLabelCreateManyStripeInvoiceInputEnvelope
+    set?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    disconnect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    delete?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    connect?: ShippingLabelWhereUniqueInput | ShippingLabelWhereUniqueInput[]
+    update?: ShippingLabelUpdateWithWhereUniqueWithoutStripeInvoiceInput | ShippingLabelUpdateWithWhereUniqueWithoutStripeInvoiceInput[]
+    updateMany?: ShippingLabelUpdateManyWithWhereWithoutStripeInvoiceInput | ShippingLabelUpdateManyWithWhereWithoutStripeInvoiceInput[]
+    deleteMany?: ShippingLabelScalarWhereInput | ShippingLabelScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutStripeEntitiesInput = {
@@ -86427,6 +86584,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionCreateNestedOneWithoutStripeInvoicesInput
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutEmployerEvaluationsInput = {
@@ -86445,6 +86603,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutEmployerEvaluationsInput = {
@@ -86468,6 +86627,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionCreateNestedOneWithoutStripeInvoicesInput
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutCheckoutEvaluationsInput = {
@@ -86486,6 +86646,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutCheckoutEvaluationsInput = {
@@ -86862,6 +87023,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionUpdateOneWithoutStripeInvoicesNestedInput
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutEmployerEvaluationsInput = {
@@ -86880,6 +87042,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUpsertWithoutCheckoutEvaluationsInput = {
@@ -86909,6 +87072,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionUpdateOneWithoutStripeInvoicesNestedInput
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutCheckoutEvaluationsInput = {
@@ -86927,6 +87091,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type ClinicianUpsertWithWhereUniqueWithoutEvaluationsInput = {
@@ -88775,6 +88940,7 @@ export namespace Prisma {
     price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutShippingLabelsInput
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
   }
 
@@ -88787,6 +88953,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient?: boolean
     price?: number | null
+    stripeInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -88870,6 +89037,7 @@ export namespace Prisma {
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutShippingLabelsNestedInput
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
   }
 
@@ -88882,6 +89050,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableFloatFieldUpdateOperationsInput | number | null
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88970,6 +89139,7 @@ export namespace Prisma {
     price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    stripeInvoice?: StripeInvoiceCreateNestedOneWithoutShippingLabelsInput
     orders?: OrderCreateNestedManyWithoutShippingLabelInput
   }
 
@@ -88981,6 +89151,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient?: boolean
     price?: number | null
+    stripeInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -89056,6 +89227,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
     price?: FloatNullableFilter<"ShippingLabel"> | number | null
+    stripeInvoiceId?: StringNullableFilter<"ShippingLabel"> | string | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
   }
@@ -89176,6 +89348,49 @@ export namespace Prisma {
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
+  export type StripeInvoiceCreateWithoutShippingLabelsInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeProducts?: StripeProductCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoice?: StripeInvoiceCreateNestedOneWithoutCombinedInvoicesInput
+    combinedInvoices?: StripeInvoiceCreateNestedManyWithoutCombinedInvoiceInput
+    stripeSubscription?: StripeSubscriptionCreateNestedOneWithoutStripeInvoicesInput
+    stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
+    employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
+    checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+  }
+
+  export type StripeInvoiceUncheckedCreateWithoutShippingLabelsInput = {
+    id?: string
+    stripeInvoiceId: string
+    price: number
+    type: $Enums.StripeInvoiceType
+    status: $Enums.StripeInvoiceStatus
+    lastWebhookId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    subscriptionId?: string | null
+    combinedInvoiceId?: string | null
+    stripeEntityId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
+    combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
+    employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
+    checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+  }
+
+  export type StripeInvoiceCreateOrConnectWithoutShippingLabelsInput = {
+    where: StripeInvoiceWhereUniqueInput
+    create: XOR<StripeInvoiceCreateWithoutShippingLabelsInput, StripeInvoiceUncheckedCreateWithoutShippingLabelsInput>
+  }
+
   export type ContactCreateWithoutShippingLabelsInput = {
     id?: string
     name?: string | null
@@ -89255,6 +89470,55 @@ export namespace Prisma {
   export type OrderCreateManyShippingLabelInputEnvelope = {
     data: OrderCreateManyShippingLabelInput | OrderCreateManyShippingLabelInput[]
     skipDuplicates?: boolean
+  }
+
+  export type StripeInvoiceUpsertWithoutShippingLabelsInput = {
+    update: XOR<StripeInvoiceUpdateWithoutShippingLabelsInput, StripeInvoiceUncheckedUpdateWithoutShippingLabelsInput>
+    create: XOR<StripeInvoiceCreateWithoutShippingLabelsInput, StripeInvoiceUncheckedCreateWithoutShippingLabelsInput>
+    where?: StripeInvoiceWhereInput
+  }
+
+  export type StripeInvoiceUpdateToOneWithWhereWithoutShippingLabelsInput = {
+    where?: StripeInvoiceWhereInput
+    data: XOR<StripeInvoiceUpdateWithoutShippingLabelsInput, StripeInvoiceUncheckedUpdateWithoutShippingLabelsInput>
+  }
+
+  export type StripeInvoiceUpdateWithoutShippingLabelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeProducts?: StripeProductUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoice?: StripeInvoiceUpdateOneWithoutCombinedInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUpdateManyWithoutCombinedInvoiceNestedInput
+    stripeSubscription?: StripeSubscriptionUpdateOneWithoutStripeInvoicesNestedInput
+    stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
+    employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
+    checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+  }
+
+  export type StripeInvoiceUncheckedUpdateWithoutShippingLabelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stripeInvoiceId?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    type?: EnumStripeInvoiceTypeFieldUpdateOperationsInput | $Enums.StripeInvoiceType
+    status?: EnumStripeInvoiceStatusFieldUpdateOperationsInput | $Enums.StripeInvoiceStatus
+    lastWebhookId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    subscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    combinedInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeEntityId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
+    combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
+    employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
+    checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
   }
 
   export type ContactUpsertWithoutShippingLabelsInput = {
@@ -91386,6 +91650,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutStripeProductsInput = {
@@ -91404,6 +91669,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutStripeProductsInput = {
@@ -91609,6 +91875,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutCombinedInvoicesInput = {
@@ -91627,6 +91894,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedCreateNestedManyWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutCombinedInvoicesInput = {
@@ -91650,6 +91918,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutCombinedInvoiceInput = {
@@ -91668,6 +91937,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutCombinedInvoiceInput = {
@@ -91918,6 +92188,44 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ShippingLabelCreateWithoutStripeInvoiceInput = {
+    id?: string
+    addressName: string
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contact?: ContactCreateNestedOneWithoutShippingLabelsInput
+    orders?: OrderCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelUncheckedCreateWithoutStripeInvoiceInput = {
+    id?: string
+    addressName: string
+    contactId?: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
+  }
+
+  export type ShippingLabelCreateOrConnectWithoutStripeInvoiceInput = {
+    where: ShippingLabelWhereUniqueInput
+    create: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput>
+  }
+
+  export type ShippingLabelCreateManyStripeInvoiceInputEnvelope = {
+    data: ShippingLabelCreateManyStripeInvoiceInput | ShippingLabelCreateManyStripeInvoiceInput[]
+    skipDuplicates?: boolean
+  }
+
   export type StripeProductUpsertWithWhereUniqueWithoutStripeInvoicesInput = {
     where: StripeProductWhereUniqueInput
     update: XOR<StripeProductUpdateWithoutStripeInvoicesInput, StripeProductUncheckedUpdateWithoutStripeInvoicesInput>
@@ -91979,6 +92287,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutCombinedInvoicesInput = {
@@ -91997,6 +92306,7 @@ export namespace Prisma {
     stripeProducts?: StripeProductUncheckedUpdateManyWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUpsertWithWhereUniqueWithoutCombinedInvoiceInput = {
@@ -92127,6 +92437,22 @@ export namespace Prisma {
   export type EvaluationUpdateManyWithWhereWithoutStripeCheckoutInvoiceInput = {
     where: EvaluationScalarWhereInput
     data: XOR<EvaluationUpdateManyMutationInput, EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceInput>
+  }
+
+  export type ShippingLabelUpsertWithWhereUniqueWithoutStripeInvoiceInput = {
+    where: ShippingLabelWhereUniqueInput
+    update: XOR<ShippingLabelUpdateWithoutStripeInvoiceInput, ShippingLabelUncheckedUpdateWithoutStripeInvoiceInput>
+    create: XOR<ShippingLabelCreateWithoutStripeInvoiceInput, ShippingLabelUncheckedCreateWithoutStripeInvoiceInput>
+  }
+
+  export type ShippingLabelUpdateWithWhereUniqueWithoutStripeInvoiceInput = {
+    where: ShippingLabelWhereUniqueInput
+    data: XOR<ShippingLabelUpdateWithoutStripeInvoiceInput, ShippingLabelUncheckedUpdateWithoutStripeInvoiceInput>
+  }
+
+  export type ShippingLabelUpdateManyWithWhereWithoutStripeInvoiceInput = {
+    where: ShippingLabelScalarWhereInput
+    data: XOR<ShippingLabelUpdateManyMutationInput, ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceInput>
   }
 
   export type CompanyCreateWithoutStripeEntitiesInput = {
@@ -92365,6 +92691,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutStripeEntityInput = {
@@ -92383,6 +92710,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutStripeEntityInput = {
@@ -92628,6 +92956,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityCreateNestedOneWithoutStripeInvoicesInput
     employerEvaluations?: EvaluationCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceUncheckedCreateWithoutStripeSubscriptionInput = {
@@ -92646,6 +92975,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedCreateNestedManyWithoutCombinedInvoiceInput
     employerEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeInvoiceInput
     checkoutEvaluations?: EvaluationUncheckedCreateNestedManyWithoutStripeCheckoutInvoiceInput
+    shippingLabels?: ShippingLabelUncheckedCreateNestedManyWithoutStripeInvoiceInput
   }
 
   export type StripeInvoiceCreateOrConnectWithoutStripeSubscriptionInput = {
@@ -97042,6 +97372,7 @@ export namespace Prisma {
     trackingStatus: $Enums.ShippingTrackingStatus
     shouldBillRecipient?: boolean
     price?: number | null
+    stripeInvoiceId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -97134,6 +97465,7 @@ export namespace Prisma {
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeInvoice?: StripeInvoiceUpdateOneWithoutShippingLabelsNestedInput
     orders?: OrderUpdateManyWithoutShippingLabelNestedInput
   }
 
@@ -97145,6 +97477,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableFloatFieldUpdateOperationsInput | number | null
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -97158,6 +97491,7 @@ export namespace Prisma {
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
     shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableFloatFieldUpdateOperationsInput | number | null
+    stripeInvoiceId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -98171,6 +98505,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutStripeProductsInput = {
@@ -98189,6 +98524,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateManyWithoutStripeProductsInput = {
@@ -98322,6 +98658,19 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ShippingLabelCreateManyStripeInvoiceInput = {
+    id?: string
+    addressName: string
+    contactId?: string | null
+    labelId: string
+    trackingNumber: string
+    trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type StripeProductUpdateWithoutStripeInvoicesInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumStripeProductTypeFieldUpdateOperationsInput | $Enums.StripeProductType
@@ -98385,6 +98734,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutCombinedInvoiceInput = {
@@ -98403,6 +98753,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceInput = {
@@ -98637,6 +98988,47 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ShippingLabelUpdateWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
+    orders?: OrderUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
+  }
+
+  export type ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    addressName?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    labelId?: StringFieldUpdateOperationsInput | string
+    trackingNumber?: StringFieldUpdateOperationsInput | string
+    trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StripeEntityCreateManyParentEntityInput = {
     id?: string
     companyId: string
@@ -98837,6 +99229,7 @@ export namespace Prisma {
     stripeSubscription?: StripeSubscriptionUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutStripeEntityInput = {
@@ -98855,6 +99248,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateManyWithoutStripeEntityInput = {
@@ -98901,6 +99295,7 @@ export namespace Prisma {
     stripeEntity?: StripeEntityUpdateOneWithoutStripeInvoicesNestedInput
     employerEvaluations?: EvaluationUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateWithoutStripeSubscriptionInput = {
@@ -98919,6 +99314,7 @@ export namespace Prisma {
     combinedInvoices?: StripeInvoiceUncheckedUpdateManyWithoutCombinedInvoiceNestedInput
     employerEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeInvoiceNestedInput
     checkoutEvaluations?: EvaluationUncheckedUpdateManyWithoutStripeCheckoutInvoiceNestedInput
+    shippingLabels?: ShippingLabelUncheckedUpdateManyWithoutStripeInvoiceNestedInput
   }
 
   export type StripeInvoiceUncheckedUpdateManyWithoutStripeSubscriptionInput = {
