@@ -116,6 +116,7 @@ export * from './hooks/notify/useEnrollPatients';
 export * from './hooks/notify/useGetCampaigns';
 export * from './hooks/notify/useGetCampaignStats';
 export * from './hooks/notify/useGetEmailTemplates';
+export * from './hooks/notify/useGetWebhookInfo';
 export * from './hooks/notify/usePublishNotification';
 export * from './hooks/notify/useRemoveQueuedMessages';
 export * from './hooks/notify/useSendEmailTemplate';

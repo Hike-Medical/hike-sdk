@@ -7,6 +7,7 @@ import type {
   Notification,
   NotificationExtended,
   NotificationHistory,
+  NotifyWebhookInfo,
   SendEmailTemplateParams,
   UpsertEmailTemplateParams
 } from '@hike/types';
@@ -16,6 +17,15 @@ import { backendApi } from '../utils/backendApi';
 export const createCampaign = async (params: CreateCampaignParams): Promise<Notification> => {
   try {
     const response = await backendApi.post('notify/campaign', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWebhookInfo = async (): Promise<NotifyWebhookInfo[]> => {
+  try {
+    const response = await backendApi.get(`notify/webhook/info`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
