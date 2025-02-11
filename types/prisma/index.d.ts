@@ -567,7 +567,8 @@ export const StripeProductType: {
   TOE_FILLER: 'TOE_FILLER',
   EMPLOYER_PAY: 'EMPLOYER_PAY',
   EMPLOYEE_PAY: 'EMPLOYEE_PAY',
-  UNVERIFIED_PAY: 'UNVERIFIED_PAY'
+  UNVERIFIED_PAY: 'UNVERIFIED_PAY',
+  SHIPPING: 'SHIPPING'
 };
 
 export type StripeProductType = (typeof StripeProductType)[keyof typeof StripeProductType]
@@ -613,6 +614,14 @@ export const StripeEntityType: {
 };
 
 export type StripeEntityType = (typeof StripeEntityType)[keyof typeof StripeEntityType]
+
+
+export const StripeSubscriptionType: {
+  BASE: 'BASE',
+  SHIPPING: 'SHIPPING'
+};
+
+export type StripeSubscriptionType = (typeof StripeSubscriptionType)[keyof typeof StripeSubscriptionType]
 
 
 export const NotificationType: {
@@ -865,6 +874,10 @@ export const StripeInvoiceStatus: typeof $Enums.StripeInvoiceStatus
 export type StripeEntityType = $Enums.StripeEntityType
 
 export const StripeEntityType: typeof $Enums.StripeEntityType
+
+export type StripeSubscriptionType = $Enums.StripeSubscriptionType
+
+export const StripeSubscriptionType: typeof $Enums.StripeSubscriptionType
 
 export type NotificationType = $Enums.NotificationType
 
@@ -25905,8 +25918,18 @@ export namespace Prisma {
 
   export type AggregateShippingLabel = {
     _count: ShippingLabelCountAggregateOutputType | null
+    _avg: ShippingLabelAvgAggregateOutputType | null
+    _sum: ShippingLabelSumAggregateOutputType | null
     _min: ShippingLabelMinAggregateOutputType | null
     _max: ShippingLabelMaxAggregateOutputType | null
+  }
+
+  export type ShippingLabelAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type ShippingLabelSumAggregateOutputType = {
+    price: number | null
   }
 
   export type ShippingLabelMinAggregateOutputType = {
@@ -25916,6 +25939,8 @@ export namespace Prisma {
     labelId: string | null
     trackingNumber: string | null
     trackingStatus: $Enums.ShippingTrackingStatus | null
+    shouldBillRecipient: boolean | null
+    price: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25927,6 +25952,8 @@ export namespace Prisma {
     labelId: string | null
     trackingNumber: string | null
     trackingStatus: $Enums.ShippingTrackingStatus | null
+    shouldBillRecipient: boolean | null
+    price: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25938,11 +25965,21 @@ export namespace Prisma {
     labelId: number
     trackingNumber: number
     trackingStatus: number
+    shouldBillRecipient: number
+    price: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type ShippingLabelAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type ShippingLabelSumAggregateInputType = {
+    price?: true
+  }
 
   export type ShippingLabelMinAggregateInputType = {
     id?: true
@@ -25951,6 +25988,8 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
+    price?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25962,6 +26001,8 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
+    price?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25973,6 +26014,8 @@ export namespace Prisma {
     labelId?: true
     trackingNumber?: true
     trackingStatus?: true
+    shouldBillRecipient?: true
+    price?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -26016,6 +26059,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ShippingLabelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ShippingLabelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ShippingLabelMinAggregateInputType
@@ -26046,6 +26101,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ShippingLabelCountAggregateInputType | true
+    _avg?: ShippingLabelAvgAggregateInputType
+    _sum?: ShippingLabelSumAggregateInputType
     _min?: ShippingLabelMinAggregateInputType
     _max?: ShippingLabelMaxAggregateInputType
   }
@@ -26057,9 +26114,13 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient: boolean
+    price: number | null
     createdAt: Date
     updatedAt: Date
     _count: ShippingLabelCountAggregateOutputType | null
+    _avg: ShippingLabelAvgAggregateOutputType | null
+    _sum: ShippingLabelSumAggregateOutputType | null
     _min: ShippingLabelMinAggregateOutputType | null
     _max: ShippingLabelMaxAggregateOutputType | null
   }
@@ -26085,6 +26146,8 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
+    price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
@@ -26099,6 +26162,8 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
+    price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
@@ -26111,11 +26176,13 @@ export namespace Prisma {
     labelId?: boolean
     trackingNumber?: boolean
     trackingStatus?: boolean
+    shouldBillRecipient?: boolean
+    price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
+  export type ShippingLabelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "addressName" | "contactId" | "labelId" | "trackingNumber" | "trackingStatus" | "shouldBillRecipient" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["shippingLabel"]>
   export type ShippingLabelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     contact?: boolean | ShippingLabel$contactArgs<ExtArgs>
     orders?: boolean | ShippingLabel$ordersArgs<ExtArgs>
@@ -26138,6 +26205,8 @@ export namespace Prisma {
       labelId: string
       trackingNumber: string
       trackingStatus: $Enums.ShippingTrackingStatus
+      shouldBillRecipient: boolean
+      price: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["shippingLabel"]>
@@ -26541,6 +26610,8 @@ export namespace Prisma {
     readonly labelId: FieldRef<"ShippingLabel", 'String'>
     readonly trackingNumber: FieldRef<"ShippingLabel", 'String'>
     readonly trackingStatus: FieldRef<"ShippingLabel", 'ShippingTrackingStatus'>
+    readonly shouldBillRecipient: FieldRef<"ShippingLabel", 'Boolean'>
+    readonly price: FieldRef<"ShippingLabel", 'Float'>
     readonly createdAt: FieldRef<"ShippingLabel", 'DateTime'>
     readonly updatedAt: FieldRef<"ShippingLabel", 'DateTime'>
   }
@@ -47908,6 +47979,7 @@ export namespace Prisma {
     stripeEntityId: string | null
     stripeSubscriptionId: string | null
     stripeProductId: string | null
+    type: $Enums.StripeSubscriptionType | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -47918,6 +47990,7 @@ export namespace Prisma {
     stripeEntityId: string | null
     stripeSubscriptionId: string | null
     stripeProductId: string | null
+    type: $Enums.StripeSubscriptionType | null
     active: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -47928,6 +48001,7 @@ export namespace Prisma {
     stripeEntityId: number
     stripeSubscriptionId: number
     stripeProductId: number
+    type: number
     active: number
     createdAt: number
     updatedAt: number
@@ -47940,6 +48014,7 @@ export namespace Prisma {
     stripeEntityId?: true
     stripeSubscriptionId?: true
     stripeProductId?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -47950,6 +48025,7 @@ export namespace Prisma {
     stripeEntityId?: true
     stripeSubscriptionId?: true
     stripeProductId?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -47960,6 +48036,7 @@ export namespace Prisma {
     stripeEntityId?: true
     stripeSubscriptionId?: true
     stripeProductId?: true
+    type?: true
     active?: true
     createdAt?: true
     updatedAt?: true
@@ -48043,6 +48120,7 @@ export namespace Prisma {
     stripeEntityId: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type: $Enums.StripeSubscriptionType
     active: boolean
     createdAt: Date
     updatedAt: Date
@@ -48070,6 +48148,7 @@ export namespace Prisma {
     stripeEntityId?: boolean
     stripeSubscriptionId?: boolean
     stripeProductId?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -48084,6 +48163,7 @@ export namespace Prisma {
     stripeEntityId?: boolean
     stripeSubscriptionId?: boolean
     stripeProductId?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -48096,12 +48176,13 @@ export namespace Prisma {
     stripeEntityId?: boolean
     stripeSubscriptionId?: boolean
     stripeProductId?: boolean
+    type?: boolean
     active?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type StripeSubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "stripeEntityId" | "stripeSubscriptionId" | "stripeProductId" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["stripeSubscription"]>
+  export type StripeSubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "stripeEntityId" | "stripeSubscriptionId" | "stripeProductId" | "type" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["stripeSubscription"]>
   export type StripeSubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stripeEntity?: boolean | StripeEntityDefaultArgs<ExtArgs>
     stripeInvoices?: boolean | StripeSubscription$stripeInvoicesArgs<ExtArgs>
@@ -48125,6 +48206,7 @@ export namespace Prisma {
       stripeEntityId: string
       stripeSubscriptionId: string
       stripeProductId: string
+      type: $Enums.StripeSubscriptionType
       active: boolean
       createdAt: Date
       updatedAt: Date
@@ -48528,6 +48610,7 @@ export namespace Prisma {
     readonly stripeEntityId: FieldRef<"StripeSubscription", 'String'>
     readonly stripeSubscriptionId: FieldRef<"StripeSubscription", 'String'>
     readonly stripeProductId: FieldRef<"StripeSubscription", 'String'>
+    readonly type: FieldRef<"StripeSubscription", 'StripeSubscriptionType'>
     readonly active: FieldRef<"StripeSubscription", 'Boolean'>
     readonly createdAt: FieldRef<"StripeSubscription", 'DateTime'>
     readonly updatedAt: FieldRef<"StripeSubscription", 'DateTime'>
@@ -63456,6 +63539,8 @@ export namespace Prisma {
     labelId: 'labelId',
     trackingNumber: 'trackingNumber',
     trackingStatus: 'trackingStatus',
+    shouldBillRecipient: 'shouldBillRecipient',
+    price: 'price',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -63744,6 +63829,7 @@ export namespace Prisma {
     stripeEntityId: 'stripeEntityId',
     stripeSubscriptionId: 'stripeSubscriptionId',
     stripeProductId: 'stripeProductId',
+    type: 'type',
     active: 'active',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -64542,6 +64628,20 @@ export namespace Prisma {
    * Reference to a field of type 'StripeEntityType[]'
    */
   export type ListEnumStripeEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeEntityType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeSubscriptionType'
+   */
+  export type EnumStripeSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeSubscriptionType'>
+    
+
+
+  /**
+   * Reference to a field of type 'StripeSubscriptionType[]'
+   */
+  export type ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StripeSubscriptionType[]'>
     
 
 
@@ -66363,6 +66463,8 @@ export namespace Prisma {
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingNumber?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
+    price?: FloatNullableFilter<"ShippingLabel"> | number | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
@@ -66376,6 +66478,8 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
+    price?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     contact?: ContactOrderByWithRelationInput
@@ -66392,6 +66496,8 @@ export namespace Prisma {
     contactId?: StringNullableFilter<"ShippingLabel"> | string | null
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
+    price?: FloatNullableFilter<"ShippingLabel"> | number | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     contact?: XOR<ContactNullableRelationFilter, ContactWhereInput> | null
@@ -66405,11 +66511,15 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
+    price?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ShippingLabelCountOrderByAggregateInput
+    _avg?: ShippingLabelAvgOrderByAggregateInput
     _max?: ShippingLabelMaxOrderByAggregateInput
     _min?: ShippingLabelMinOrderByAggregateInput
+    _sum?: ShippingLabelSumOrderByAggregateInput
   }
 
   export type ShippingLabelScalarWhereWithAggregatesInput = {
@@ -66422,6 +66532,8 @@ export namespace Prisma {
     labelId?: StringWithAggregatesFilter<"ShippingLabel"> | string
     trackingNumber?: StringWithAggregatesFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusWithAggregatesFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolWithAggregatesFilter<"ShippingLabel"> | boolean
+    price?: FloatNullableWithAggregatesFilter<"ShippingLabel"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ShippingLabel"> | Date | string
   }
@@ -67889,6 +68001,7 @@ export namespace Prisma {
     stripeEntityId?: StringFilter<"StripeSubscription"> | string
     stripeSubscriptionId?: StringFilter<"StripeSubscription"> | string
     stripeProductId?: StringFilter<"StripeSubscription"> | string
+    type?: EnumStripeSubscriptionTypeFilter<"StripeSubscription"> | $Enums.StripeSubscriptionType
     active?: BoolFilter<"StripeSubscription"> | boolean
     createdAt?: DateTimeFilter<"StripeSubscription"> | Date | string
     updatedAt?: DateTimeFilter<"StripeSubscription"> | Date | string
@@ -67902,6 +68015,7 @@ export namespace Prisma {
     stripeEntityId?: SortOrder
     stripeSubscriptionId?: SortOrder
     stripeProductId?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -67918,6 +68032,7 @@ export namespace Prisma {
     stripeEntityId?: StringFilter<"StripeSubscription"> | string
     stripeSubscriptionId?: StringFilter<"StripeSubscription"> | string
     stripeProductId?: StringFilter<"StripeSubscription"> | string
+    type?: EnumStripeSubscriptionTypeFilter<"StripeSubscription"> | $Enums.StripeSubscriptionType
     active?: BoolFilter<"StripeSubscription"> | boolean
     createdAt?: DateTimeFilter<"StripeSubscription"> | Date | string
     updatedAt?: DateTimeFilter<"StripeSubscription"> | Date | string
@@ -67931,6 +68046,7 @@ export namespace Prisma {
     stripeEntityId?: SortOrder
     stripeSubscriptionId?: SortOrder
     stripeProductId?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -67947,6 +68063,7 @@ export namespace Prisma {
     stripeEntityId?: StringWithAggregatesFilter<"StripeSubscription"> | string
     stripeSubscriptionId?: StringWithAggregatesFilter<"StripeSubscription"> | string
     stripeProductId?: StringWithAggregatesFilter<"StripeSubscription"> | string
+    type?: EnumStripeSubscriptionTypeWithAggregatesFilter<"StripeSubscription"> | $Enums.StripeSubscriptionType
     active?: BoolWithAggregatesFilter<"StripeSubscription"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"StripeSubscription"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"StripeSubscription"> | Date | string
@@ -71034,6 +71151,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
@@ -71047,6 +71166,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -71058,6 +71179,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
@@ -71071,6 +71194,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -71083,6 +71208,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71093,6 +71220,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -71104,6 +71233,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72693,6 +72824,7 @@ export namespace Prisma {
   export type StripeSubscriptionCreateInput = {
     id?: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72706,6 +72838,7 @@ export namespace Prisma {
     stripeEntityId: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72715,6 +72848,7 @@ export namespace Prisma {
   export type StripeSubscriptionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72728,6 +72862,7 @@ export namespace Prisma {
     stripeEntityId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
     stripeProductId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72739,6 +72874,7 @@ export namespace Prisma {
     stripeEntityId: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -72747,6 +72883,7 @@ export namespace Prisma {
   export type StripeSubscriptionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -72757,6 +72894,7 @@ export namespace Prisma {
     stripeEntityId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
     stripeProductId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -75953,8 +76091,14 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
+    price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ShippingLabelAvgOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type ShippingLabelMaxOrderByAggregateInput = {
@@ -75964,6 +76108,8 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
+    price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -75975,8 +76121,14 @@ export namespace Prisma {
     labelId?: SortOrder
     trackingNumber?: SortOrder
     trackingStatus?: SortOrder
+    shouldBillRecipient?: SortOrder
+    price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ShippingLabelSumOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type EnumShippingTrackingStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -77025,6 +77177,13 @@ export namespace Prisma {
     _max?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
   }
 
+  export type EnumStripeSubscriptionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeSubscriptionType | EnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel> | $Enums.StripeSubscriptionType
+  }
+
   export type StripeEntityRelationFilter = {
     is?: StripeEntityWhereInput
     isNot?: StripeEntityWhereInput
@@ -77040,6 +77199,7 @@ export namespace Prisma {
     stripeEntityId?: SortOrder
     stripeSubscriptionId?: SortOrder
     stripeProductId?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -77050,6 +77210,7 @@ export namespace Prisma {
     stripeEntityId?: SortOrder
     stripeSubscriptionId?: SortOrder
     stripeProductId?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -77060,9 +77221,20 @@ export namespace Prisma {
     stripeEntityId?: SortOrder
     stripeSubscriptionId?: SortOrder
     stripeProductId?: SortOrder
+    type?: SortOrder
     active?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumStripeSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeSubscriptionType | EnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeSubscriptionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type EnumNotificationTypeFilter<$PrismaModel = never> = {
@@ -81706,6 +81878,10 @@ export namespace Prisma {
     connect?: StripeInvoiceWhereUniqueInput | StripeInvoiceWhereUniqueInput[]
   }
 
+  export type EnumStripeSubscriptionTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StripeSubscriptionType
+  }
+
   export type StripeEntityUpdateOneRequiredWithoutStripeSubscriptionsNestedInput = {
     create?: XOR<StripeEntityCreateWithoutStripeSubscriptionsInput, StripeEntityUncheckedCreateWithoutStripeSubscriptionsInput>
     connectOrCreate?: StripeEntityCreateOrConnectWithoutStripeSubscriptionsInput
@@ -83326,6 +83502,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumStripeEntityTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStripeSubscriptionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeSubscriptionType | EnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel> | $Enums.StripeSubscriptionType
+  }
+
+  export type NestedEnumStripeSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StripeSubscriptionType | EnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StripeSubscriptionType[] | ListEnumStripeSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStripeSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.StripeSubscriptionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel>
+    _max?: NestedEnumStripeSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
@@ -88578,6 +88771,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contact?: ContactCreateNestedOneWithoutShippingLabelsInput
@@ -88590,6 +88785,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -88669,6 +88866,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contact?: ContactUpdateOneWithoutShippingLabelsNestedInput
@@ -88681,6 +88880,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88765,6 +88966,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderCreateNestedManyWithoutShippingLabelInput
@@ -88776,6 +88979,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutShippingLabelInput
@@ -88849,6 +89054,8 @@ export namespace Prisma {
     labelId?: StringFilter<"ShippingLabel"> | string
     trackingNumber?: StringFilter<"ShippingLabel"> | string
     trackingStatus?: EnumShippingTrackingStatusFilter<"ShippingLabel"> | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFilter<"ShippingLabel"> | boolean
+    price?: FloatNullableFilter<"ShippingLabel"> | number | null
     createdAt?: DateTimeFilter<"ShippingLabel"> | Date | string
     updatedAt?: DateTimeFilter<"ShippingLabel"> | Date | string
   }
@@ -91207,6 +91414,7 @@ export namespace Prisma {
   export type StripeSubscriptionCreateWithoutStripeProductsInput = {
     id?: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -91218,6 +91426,7 @@ export namespace Prisma {
     id?: string
     stripeEntityId: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -91341,6 +91550,7 @@ export namespace Prisma {
     stripeEntityId?: StringFilter<"StripeSubscription"> | string
     stripeSubscriptionId?: StringFilter<"StripeSubscription"> | string
     stripeProductId?: StringFilter<"StripeSubscription"> | string
+    type?: EnumStripeSubscriptionTypeFilter<"StripeSubscription"> | $Enums.StripeSubscriptionType
     active?: BoolFilter<"StripeSubscription"> | boolean
     createdAt?: DateTimeFilter<"StripeSubscription"> | Date | string
     updatedAt?: DateTimeFilter<"StripeSubscription"> | Date | string
@@ -91473,6 +91683,7 @@ export namespace Prisma {
   export type StripeSubscriptionCreateWithoutStripeInvoicesInput = {
     id?: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -91485,6 +91696,7 @@ export namespace Prisma {
     stripeEntityId: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -91817,6 +92029,7 @@ export namespace Prisma {
   export type StripeSubscriptionUpdateWithoutStripeInvoicesInput = {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -91829,6 +92042,7 @@ export namespace Prisma {
     stripeEntityId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
     stripeProductId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -92106,6 +92320,7 @@ export namespace Prisma {
   export type StripeSubscriptionCreateWithoutStripeEntityInput = {
     id?: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -92117,6 +92332,7 @@ export namespace Prisma {
     id?: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -96824,6 +97040,8 @@ export namespace Prisma {
     labelId: string
     trackingNumber: string
     trackingStatus: $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: boolean
+    price?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -96912,6 +97130,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUpdateManyWithoutShippingLabelNestedInput
@@ -96923,6 +97143,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutShippingLabelNestedInput
@@ -96934,6 +97156,8 @@ export namespace Prisma {
     labelId?: StringFieldUpdateOperationsInput | string
     trackingNumber?: StringFieldUpdateOperationsInput | string
     trackingStatus?: EnumShippingTrackingStatusFieldUpdateOperationsInput | $Enums.ShippingTrackingStatus
+    shouldBillRecipient?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -97925,6 +98149,7 @@ export namespace Prisma {
     id?: string
     stripeEntityId: string
     stripeSubscriptionId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -97984,6 +98209,7 @@ export namespace Prisma {
   export type StripeSubscriptionUpdateWithoutStripeProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -97995,6 +98221,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeEntityId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -98005,6 +98232,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeEntityId?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -98442,6 +98670,7 @@ export namespace Prisma {
     id?: string
     stripeSubscriptionId: string
     stripeProductId: string
+    type?: $Enums.StripeSubscriptionType
     active?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -98563,6 +98792,7 @@ export namespace Prisma {
   export type StripeSubscriptionUpdateWithoutStripeEntityInput = {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -98574,6 +98804,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
     stripeProductId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -98584,6 +98815,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     stripeSubscriptionId?: StringFieldUpdateOperationsInput | string
     stripeProductId?: StringFieldUpdateOperationsInput | string
+    type?: EnumStripeSubscriptionTypeFieldUpdateOperationsInput | $Enums.StripeSubscriptionType
     active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
