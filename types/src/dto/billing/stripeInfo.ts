@@ -1,3 +1,5 @@
+import { StripeSubscriptionType } from '../../../prisma/index';
+
 export interface StripeLineItem {
   quantity: number;
   priceId?: string;
@@ -25,6 +27,7 @@ export interface BillingSubscriptionStats {
   currentCycle?: boolean;
   stripeSubscriptionId: string;
   stripeInvoiceId?: string;
+  type: StripeSubscriptionType;
 }
 
 export interface BillingOverview {

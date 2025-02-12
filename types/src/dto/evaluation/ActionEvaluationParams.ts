@@ -3,4 +3,5 @@
  */
 export interface ActionEvaluationParams {
   evaluationId: string;
+  notes?: string;
 }

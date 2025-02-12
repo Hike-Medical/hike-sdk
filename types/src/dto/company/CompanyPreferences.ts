@@ -1,3 +1,4 @@
+import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 
 export interface CompanyPreferences {
@@ -6,6 +7,7 @@ export interface CompanyPreferences {
   emailToUser?: boolean;
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
+  preferredConsumerSubmittedEmail?: string;
   preferredVeteranEmailAddress?: string;
   preferredHospitalDeliveryReceiptEmailAddress?: string;
   preferredWalkInDeliveryReceiptEmailAddress?: string;
@@ -21,7 +23,15 @@ export interface CompanyPreferences {
   toWordDocx?: boolean;
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
   rushAll?: boolean;
-  unenrollDetectionNotification?: boolean;
   hideInEnrollList?: boolean;
+  productType?: ProductType;
+  clinicalCustomization?: {
+    removeRemake?: boolean;
+    removeReorder?: boolean;
+    assignPONumber?: boolean;
+  };
+  webhookUrl?: string;
   defaultTimeZone?: string;
+  transferConsumerSubmission?: boolean;
+  onlyNotificationTypes?: NotificationType[];
 }
