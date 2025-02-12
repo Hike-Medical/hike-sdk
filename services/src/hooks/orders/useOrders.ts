@@ -7,11 +7,12 @@ export interface UseOrdersOptions
   extends Omit<UseQueryOptions<PagedResponse<OrderExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetOrdersParams;
   queryKey?: QueryKey;
+  companyIds?: string[];
 }
 
-export const useOrders = ({ params, queryKey = [], ...options }: UseOrdersOptions = {}) =>
+export const useOrders = ({ params, companyIds, queryKey = [], ...options }: UseOrdersOptions = {}) =>
   useQuery({
     queryKey: ['orders', params, queryKey],
-    queryFn: async () => await fetchOrders(params),
+    queryFn: async () => await fetchOrders(params, companyIds),
     ...options
   });
