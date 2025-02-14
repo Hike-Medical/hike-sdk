@@ -36,8 +36,8 @@ export type FormField =
       type: 'number';
       suffix?: string;
       keyboard?: 'numeric' | 'decimal';
-      min?: string;
-      max?: string;
+      min?: number;
+      max?: number;
     })
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
