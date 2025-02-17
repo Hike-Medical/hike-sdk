@@ -1,6 +1,6 @@
 import { RewardInfo } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { fetchRewardsForPatient } from 'api/reward.service';
+import { fetchRewardsForPatient } from '../../api/reward.service';
 import { HikeError } from '../../errors/HikeError';
 
 export const useFetchRewardForPatient = (

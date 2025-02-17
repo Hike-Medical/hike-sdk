@@ -1,6 +1,6 @@
 import { Incentive, IncentiveType } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { fetchReferralIncentive } from 'api/incentive.service';
+import { fetchReferralIncentive } from '../../api/incentive.service';
 import { HikeError } from '../../errors/HikeError';
 
 export const useFetchIncentive = (
