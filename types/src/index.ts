@@ -99,6 +99,7 @@ export type * from './dto/patient/UpdatePatientParams';
 export type * from './dto/patient/UpsertContactParams';
 export type * from './dto/pin/CreatePinDto';
 export type * from './dto/printer/SendGcodeToPrinterParams';
+export type * from './dto/reward/RewardInfo';
 export type * from './dto/roster/DeactivateRosterParams';
 export type * from './dto/roster/DeactivateRosterResponse';
 export type * from './dto/roster/GenerateRosterUploadLinkParams';
