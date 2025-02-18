@@ -32,7 +32,13 @@ export type FormField =
       keyboard?: 'email' | 'url' | 'phone' | 'punctuation';
       hidden?: boolean;
     })
-  | (BaseFormField<number> & { type: 'number'; suffix?: string; keyboard?: 'numeric' | 'decimal' })
+  | (BaseFormField<number> & {
+      type: 'number';
+      suffix?: string;
+      keyboard?: 'numeric' | 'decimal';
+      min?: number;
+      max?: number;
+    })
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
