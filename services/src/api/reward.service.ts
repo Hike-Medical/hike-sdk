@@ -10,3 +10,12 @@ export const fetchRewardsForPatient = async (patientId: string): Promise<RewardI
     throw toHikeError(error);
   }
 };
+
+export const fetchPatientPoints = async (patientId: string): Promise<number> => {
+  try {
+    const response = await backendApi.get(`reward/${patientId}/points`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

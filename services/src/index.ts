@@ -141,6 +141,7 @@ export * from './hooks/patients/useUpsertContact';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
 export * from './hooks/printer/useSendPrinterToLabel';
+export * from './hooks/reward/useFetchPatientPoints';
 export * from './hooks/reward/useFetchRewardForPatient';
 export * from './hooks/roster/useRosterDeactivateJob';
 export * from './hooks/roster/useRosterImportJob';
