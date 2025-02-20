@@ -1,6 +1,6 @@
 import { CommunicationChannel, NotificationResponseType, NotificationType } from '../../../prisma/index';
 
-export interface CreateCampaignParams {
+export interface CreateNotificationParams {
   name: string;
   description?: string;
   startTime?: Date;

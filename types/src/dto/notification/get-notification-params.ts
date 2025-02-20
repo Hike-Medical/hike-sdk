@@ -1,4 +1,4 @@
-export interface GetCampaignParams {
+export interface GetNotificationParams {
   publish?: boolean;
   invitation?: boolean;
 }

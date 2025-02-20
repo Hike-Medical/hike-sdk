@@ -1,10 +1,10 @@
-import { CreateCampaignParams, Notification } from '@hike/types';
+import { CreateNotificationParams, Notification } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { createCampaign } from '../../api/notify.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface CreateCampaignContext {
-  body: CreateCampaignParams;
+  body: CreateNotificationParams;
 }
 
 export const useCreateCampaign = (
