@@ -24,6 +24,7 @@ export * from './guards/isNotEmpty';
 export * from './guards/isPrintableField';
 export * from './guards/isString';
 export * from './guards/isTruthy';
+export * from './helpers/addHeaders';
 export * from './helpers/colorMapper';
 export * from './helpers/convertRenderTypeToValue';
 export * from './helpers/currentPaginatedPage';

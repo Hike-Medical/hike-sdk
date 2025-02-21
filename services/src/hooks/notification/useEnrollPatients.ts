@@ -1,6 +1,6 @@
 import { EnrollPatientsParams, NotificationHistory } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { enrollPatients } from '../../api/notify.service';
+import { enrollPatients } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface EnrollPatientsContext {

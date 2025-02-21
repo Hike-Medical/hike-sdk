@@ -7,52 +7,37 @@ import type {
   NotificationHistory,
   NotificationWithStats
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createNotification = async (params: CreateNotificationParams): Promise<Notification> => {
   try {
-    const response = await backendApi.post('notify/campaign', params);
+    const response = await backendApi.post('notification', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const getNotifications = async (
+export const findNotifications = async (
   params?: GetNotificationParams,
   companyIds?: string[]
 ): Promise<NotificationExtended[]> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
-
-    const response = await backendApi.get('notify/campaigns', { params, headers });
+    const response = await backendApi.get('notification', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const getNotificationStats = async (
+export const statsForNotification = async (
   notificationId: string,
   companyIds?: string[]
 ): Promise<NotificationWithStats> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
-
-    const response = await backendApi.get(`notify/${notificationId}/stats`, { headers });
+    const response = await backendApi.get(`notification/${notificationId}/stats`, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -61,7 +46,7 @@ export const getNotificationStats = async (
 
 export const enrollPatients = async (params: EnrollPatientsParams): Promise<(NotificationHistory | null)[]> => {
   try {
-    const response = await backendApi.post('notify/enroll-patients', params);
+    const response = await backendApi.post('notification/enroll-patients', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

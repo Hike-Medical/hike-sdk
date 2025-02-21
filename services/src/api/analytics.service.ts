@@ -1,4 +1,5 @@
 import { OrderStatus } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -22,9 +23,7 @@ export const getOrderStatusesPerHour = async (
         endDate
       },
       {
-        headers: {
-          'x-company-id': companyIds.join(',')
-        }
+        headers: addHeaders(companyIds)
       }
     );
 

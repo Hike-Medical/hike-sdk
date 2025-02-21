@@ -1,6 +1,6 @@
 import { NotificationHistory } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { removeQueuedMessages } from '../../api/notify.service';
+import { removeQueuedMessages } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface RemoveQueuesMessagesContext {

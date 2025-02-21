@@ -1,6 +1,6 @@
 import { Notification } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { publishNotification } from '../../api/notify.service';
+import { publishNotification } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface PublishNotificationContext {

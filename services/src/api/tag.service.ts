@@ -1,4 +1,5 @@
 import { EntityType, Tag, TagResult, UpsertTagParams } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -13,15 +14,7 @@ export const upsertTag = async (params?: UpsertTagParams): Promise<Tag> => {
 
 export const fetchTags = async (companyIds?: string[]): Promise<{ [name: string]: TagResult }[]> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
-
-    const response = await backendApi.get('tag', { headers });
+    const response = await backendApi.get('tag', { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
