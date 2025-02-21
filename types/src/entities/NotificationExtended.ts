@@ -18,7 +18,7 @@ export type SurveyResponseInfo = {
   responseReceivedAt: Date | null;
 };
 
-export type CampaignWithStats = Notification & {
+export type NotificationWithStats = Notification & {
   messages: MessageWithStats[];
   totalMessagesSent: number;
   patientCount: number;

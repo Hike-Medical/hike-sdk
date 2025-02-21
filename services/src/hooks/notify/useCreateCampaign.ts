@@ -1,6 +1,6 @@
 import { CreateNotificationParams, Notification } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { createCampaign } from '../../api/notify.service';
+import { createNotification } from '../../api/notify.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface CreateCampaignContext {
@@ -12,7 +12,7 @@ export const useCreateCampaign = (
 ) => {
   return useMutation({
     mutationKey: ['createCampaign'],
-    mutationFn: async ({ body }: CreateCampaignContext) => await createCampaign(body),
+    mutationFn: async ({ body }: CreateCampaignContext) => await createNotification(body),
     ...options
   });
 };

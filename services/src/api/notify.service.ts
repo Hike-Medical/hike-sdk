@@ -1,5 +1,4 @@
 import type {
-  CampaignWithStats,
   CreateNotificationParams,
   EmailTemplate,
   EnrollPatientsParams,
@@ -7,6 +6,7 @@ import type {
   Notification,
   NotificationExtended,
   NotificationHistory,
+  NotificationWithStats,
   NotifyWebhookInfo,
   SendEmailTemplateParams,
   UpsertEmailTemplateParams
@@ -14,7 +14,7 @@ import type {
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const createCampaign = async (params: CreateNotificationParams): Promise<Notification> => {
+export const createNotification = async (params: CreateNotificationParams): Promise<Notification> => {
   try {
     const response = await backendApi.post('notify/campaign', params);
     return response.data;
@@ -32,7 +32,7 @@ export const getWebhookInfo = async (): Promise<NotifyWebhookInfo[]> => {
   }
 };
 
-export const getCampaigns = async (
+export const getNotifications = async (
   params?: GetNotificationParams,
   companyIds?: string[]
 ): Promise<NotificationExtended[]> => {
@@ -70,7 +70,10 @@ export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Pr
   }
 };
 
-export const getCampaignStats = async (notificationId: string, companyIds?: string[]): Promise<CampaignWithStats> => {
+export const getNotificationStats = async (
+  notificationId: string,
+  companyIds?: string[]
+): Promise<NotificationWithStats> => {
   try {
     let headers: {
       [key: string]: string;
