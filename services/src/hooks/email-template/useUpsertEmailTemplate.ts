@@ -1,6 +1,6 @@
 import { EmailTemplate, UpsertEmailTemplateParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { upsertEmailTemplate } from '../../api/notify.service';
+import { upsertEmailTemplate } from '../../api/email-template.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface UpsertEmailTemplateContext {

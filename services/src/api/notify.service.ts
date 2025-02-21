@@ -1,15 +1,11 @@
 import type {
   CreateNotificationParams,
-  EmailTemplate,
   EnrollPatientsParams,
   GetNotificationParams,
   Notification,
   NotificationExtended,
   NotificationHistory,
-  NotificationWithStats,
-  NotifyWebhookInfo,
-  SendEmailTemplateParams,
-  UpsertEmailTemplateParams
+  NotificationWithStats
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -17,15 +13,6 @@ import { backendApi } from '../utils/backendApi';
 export const createNotification = async (params: CreateNotificationParams): Promise<Notification> => {
   try {
     const response = await backendApi.post('notify/campaign', params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getWebhookInfo = async (): Promise<NotifyWebhookInfo[]> => {
-  try {
-    const response = await backendApi.get(`notify/webhook/info`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -46,24 +33,6 @@ export const getNotifications = async (
     }
 
     const response = await backendApi.get('notify/campaigns', { params, headers });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getEmailTemplates = async (): Promise<EmailTemplate[]> => {
-  try {
-    const response = await backendApi.get('notify/email-templates');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Promise<EmailTemplate> => {
-  try {
-    const response = await backendApi.post('notify/upsert-email-template', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -111,15 +80,6 @@ export const publishNotification = async (notificationId: string): Promise<Notif
 export const removeQueuedMessages = async (notificationId: string): Promise<NotificationHistory[]> => {
   try {
     const response = await backendApi.post(`notify/${notificationId}/remove-queued-messages`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const sendEmailTemplate = async (templateId: string, params: SendEmailTemplateParams): Promise<void> => {
-  try {
-    const response = await backendApi.post(`notify/${templateId}/send`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

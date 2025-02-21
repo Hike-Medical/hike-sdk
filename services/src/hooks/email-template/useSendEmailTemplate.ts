@@ -1,6 +1,6 @@
 import { SendEmailTemplateParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
-import { sendEmailTemplate } from '../../api/notify.service';
+import { sendEmailTemplate } from '../../api/email-template.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface SendEmailTemplateContext {

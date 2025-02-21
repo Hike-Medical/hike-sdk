@@ -1,6 +1,6 @@
 import { EmailTemplate } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { getEmailTemplates } from '../../api/notify.service';
+import { fetchEmailTemplates } from '../../api/email-template.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface useGetEmailTemplatesOptions
@@ -11,6 +11,6 @@ export interface useGetEmailTemplatesOptions
 export const useGetEmailTemplates = ({ queryKey = [], ...options }: useGetEmailTemplatesOptions = {}) =>
   useQuery({
     queryKey: ['emailTemplates', queryKey],
-    queryFn: async () => await getEmailTemplates(),
+    queryFn: async () => await fetchEmailTemplates(),
     ...options
   });
