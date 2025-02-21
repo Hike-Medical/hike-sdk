@@ -72,7 +72,7 @@ export * from './hooks/company/useAddCompany';
 export * from './hooks/company/useCompanies';
 export * from './hooks/company/useCompaniesByName';
 export * from './hooks/company/useCompanyPreferences';
-export * from './hooks/company/useGetCompanyWorkbenchWebhook';
+export * from './hooks/company/useGetCompanyWorkbenchWebhooks';
 export * from './hooks/company/useIsFreeTrial';
 export * from './hooks/email-template/useGetEmailTemplates';
 export * from './hooks/email-template/useSendEmailTemplate';
