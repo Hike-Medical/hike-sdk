@@ -8,6 +8,7 @@ import {
   GetAggregatedParams,
   Order,
   PagedResponse,
+  PatientWorkbenchResponse,
   PrintShippingParams,
   ResetWorkbenchParams,
   SearchWorkbenchParams,
@@ -105,6 +106,15 @@ export const printShippingInfo = async (
 ): Promise<ShippingLabel | null> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/print/shipping`, data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const patientWorkbenchInformation = async (patientId: string): Promise<PatientWorkbenchResponse[]> => {
+  try {
+    const response = await backendApi.get(`workbench/patient/${patientId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -176,6 +176,7 @@ export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useGetDetectionStatus';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
+export * from './hooks/workbenches/usePatientWorkbenchInformation';
 export * from './hooks/workbenches/usePrintShippingInfo';
 export * from './hooks/workbenches/useResetWorkbench';
 export * from './hooks/workbenches/useRushWorkbench';
