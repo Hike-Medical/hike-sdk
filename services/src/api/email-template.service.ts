@@ -11,6 +11,15 @@ export const fetchEmailTemplates = async (): Promise<EmailTemplate[]> => {
   }
 };
 
+export const findEmailTemplateById = async (templateId: string): Promise<EmailTemplate> => {
+  try {
+    const response = await backendApi.get(`email-template/${templateId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Promise<EmailTemplate> => {
   try {
     const response = await backendApi.post('email-template', params);

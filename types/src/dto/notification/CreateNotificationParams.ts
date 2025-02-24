@@ -13,5 +13,4 @@ export interface CreateNotificationParams {
   limit?: number;
   channel: CommunicationChannel;
   emailTemplateId?: string;
-  pathwayId?: string;
 }

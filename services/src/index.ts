@@ -74,6 +74,7 @@ export * from './hooks/company/useCompaniesByName';
 export * from './hooks/company/useCompanyPreferences';
 export * from './hooks/company/useGetCompanyWorkbenchWebhooks';
 export * from './hooks/company/useIsFreeTrial';
+export * from './hooks/email-template/useGetEmailTemplate';
 export * from './hooks/email-template/useGetEmailTemplates';
 export * from './hooks/email-template/useSendEmailTemplate';
 export * from './hooks/email-template/useUpsertEmailTemplate';
