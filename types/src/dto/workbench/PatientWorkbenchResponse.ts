@@ -9,11 +9,11 @@ export interface PatientWorkbenchResponse {
   shippedDate: Date | null;
   contact: string | null;
   trackingStatus: ShippingTrackingStatus | null;
-  orderStatus: OrderStatus | null;
-  orderAuthorizationStatus: OrderAuthorizationStatus | null;
+  orderStatus: OrderStatus;
+  orderAuthorizationStatus: OrderAuthorizationStatus;
   trackingNumber: string | null;
   trackingLink: string | null;
-  submittedAt: Date | null;
+  submittedAt: Date;
   createdAt: Date;
   evaluationId: string;
   workbenchId: string;

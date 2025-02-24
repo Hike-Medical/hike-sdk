@@ -112,7 +112,7 @@ export const printShippingInfo = async (
   }
 };
 
-export const patientWorkbenchInformation = async (patientId: string): Promise<PatientWorkbenchResponse[]> => {
+export const patientWorkbenchInformation = async (patientId: string): Promise<(PatientWorkbenchResponse | null)[]> => {
   try {
     const response = await backendApi.get(`workbench/patient/${patientId}`);
     return response.data;

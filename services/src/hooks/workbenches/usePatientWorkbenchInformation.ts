@@ -4,7 +4,7 @@ import { patientWorkbenchInformation } from '../../api/workbench.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface UsePatientWorkbenchInformationOptions
-  extends Omit<UseQueryOptions<PatientWorkbenchResponse[], HikeError<null>>, 'queryFn' | 'queryKey'> {
+  extends Omit<UseQueryOptions<(PatientWorkbenchResponse | null)[], HikeError<null>>, 'queryFn' | 'queryKey'> {
   patientId: string;
   queryKey?: QueryKey;
 }
@@ -14,7 +14,7 @@ export const usePatientWorkbenchInformation = ({
   queryKey = [],
   ...options
 }: UsePatientWorkbenchInformationOptions) =>
-  useQuery<PatientWorkbenchResponse[], HikeError<null>>({
+  useQuery<(PatientWorkbenchResponse | null)[], HikeError<null>>({
     queryKey: ['usePatientWorkbenchInformation', patientId, queryKey],
     queryFn: async () => await patientWorkbenchInformation(patientId),
     ...options
