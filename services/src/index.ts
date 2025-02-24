@@ -120,8 +120,6 @@ export * from './hooks/notification/useCreateNotification';
 export * from './hooks/notification/useEnrollPatients';
 export * from './hooks/notification/useGetNotifications';
 export * from './hooks/notification/useGetNotificationStats';
-export * from './hooks/notification/usePublishNotification';
-export * from './hooks/notification/useRemoveQueuedMessages';
 export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';

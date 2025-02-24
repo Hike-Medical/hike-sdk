@@ -1,4 +1,3 @@
 export interface GetNotificationParams {
-  publish?: boolean;
-  invitation?: boolean;
+  filter?: Partial<Record<'type', string>>;
 }

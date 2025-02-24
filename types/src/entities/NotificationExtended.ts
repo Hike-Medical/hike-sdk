@@ -13,15 +13,9 @@ export type MessageWithStats = NotificationMessageExtended & {
   messagesQueued: number;
 };
 
-export type SurveyResponseInfo = {
-  response: string | null;
-  responseReceivedAt: Date | null;
-};
-
 export type NotificationWithStats = Notification & {
   messages: MessageWithStats[];
   totalMessagesSent: number;
   patientCount: number;
   companySlugs: string[];
-  surveyResponses: SurveyResponseInfo[];
 };

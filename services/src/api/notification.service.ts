@@ -52,21 +52,3 @@ export const enrollPatients = async (params: EnrollPatientsParams): Promise<(Not
     throw toHikeError(error);
   }
 };
-
-export const publishNotification = async (notificationId: string): Promise<Notification> => {
-  try {
-    const response = await backendApi.post(`notify/${notificationId}/publish`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const removeQueuedMessages = async (notificationId: string): Promise<NotificationHistory[]> => {
-  try {
-    const response = await backendApi.post(`notify/${notificationId}/remove-queued-messages`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};

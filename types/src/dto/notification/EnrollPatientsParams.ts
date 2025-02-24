@@ -1,5 +1,6 @@
 export interface EnrollPatientsParams {
-  status: string;
+  patientIds?: string[];
+  status?: string;
   tags?: string[];
   onlyExternalId?: boolean;
 }

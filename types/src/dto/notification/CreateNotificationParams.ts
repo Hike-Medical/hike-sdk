@@ -1,4 +1,4 @@
-import { CommunicationChannel, NotificationResponseType, NotificationType } from '../../../prisma/index';
+import { CommunicationChannel, NotificationType } from '../../../prisma/index';
 
 export interface CreateNotificationParams {
   name: string;
@@ -7,9 +7,9 @@ export interface CreateNotificationParams {
   endTime?: Date;
   recurrencePattern?: string;
   active?: boolean;
+  transactional?: boolean;
   message: string;
   type: NotificationType;
-  responseType?: NotificationResponseType;
   limit?: number;
   channel: CommunicationChannel;
   emailTemplateId?: string;
