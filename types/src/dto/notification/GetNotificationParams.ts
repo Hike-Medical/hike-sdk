@@ -1,3 +1,6 @@
+import { NotificationType } from '../../../prisma';
+
 export interface GetNotificationParams {
-  filter?: Partial<Record<'type', string>>;
+  type?: NotificationType[];
+  active?: boolean;
 }
