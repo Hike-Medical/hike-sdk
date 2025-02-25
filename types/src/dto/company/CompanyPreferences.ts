@@ -34,4 +34,5 @@ export interface CompanyPreferences {
   defaultTimeZone?: string;
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
+  setTaikIdAsPONumber?: boolean;
 }
