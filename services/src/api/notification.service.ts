@@ -4,7 +4,6 @@ import type {
   GetNotificationParams,
   Notification,
   NotificationExtended,
-  NotificationHistory,
   NotificationWithStats
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -44,9 +43,24 @@ export const statsForNotification = async (
   }
 };
 
-export const enrollPatients = async (params: EnrollPatientsParams): Promise<(NotificationHistory | null)[]> => {
+export const enrollPatients = async (
+  notificationId: string,
+  params: EnrollPatientsParams
+): Promise<{ jobId?: string }> => {
   try {
-    const response = await backendApi.post('notification/enroll-patients', params);
+    const response = await backendApi.post(`notification/${notificationId}/enroll`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const statsForEnroll = async (
+  notificationId: string,
+  params: EnrollPatientsParams
+): Promise<{ count: number }> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/enroll/stats`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

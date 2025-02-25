@@ -65,3 +65,12 @@ export const deleteTag = async (name: string): Promise<number> => {
     throw toHikeError(error);
   }
 };
+
+export const statsForTagEntity = async (type: EntityType): Promise<Record<string, number>> => {
+  try {
+    const response = await backendApi.get('tag/entity/stats', { params: { type } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

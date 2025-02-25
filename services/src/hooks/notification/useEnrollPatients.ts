@@ -1,18 +1,18 @@
-import { EnrollPatientsParams, NotificationHistory } from '@hike/types';
+import { EnrollPatientsParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { enrollPatients } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-interface EnrollPatientsContext {
-  body: EnrollPatientsParams;
+interface EnrollPatientsOptions {
+  notificationId: string;
+  params: EnrollPatientsParams;
 }
 
 export const useEnrollPatients = (
-  options?: UseMutationOptions<(NotificationHistory | null)[], HikeError<null>, EnrollPatientsContext>
-) => {
-  return useMutation({
+  options?: UseMutationOptions<{ jobId?: string }, HikeError<null>, EnrollPatientsOptions>
+) =>
+  useMutation({
     mutationKey: ['enrollPatients'],
-    mutationFn: async ({ body }: EnrollPatientsContext) => await enrollPatients(body),
+    mutationFn: async ({ notificationId, params }) => await enrollPatients(notificationId, params),
     ...options
   });
-};
