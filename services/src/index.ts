@@ -103,6 +103,7 @@ export * from './hooks/forms/useFormTemplates';
 export * from './hooks/forms/useUpdateFormTemplate';
 export * from './hooks/forms/useUpsertFormSubmission';
 export * from './hooks/incentive/useFetchIncentive';
+export * from './hooks/incentive/useFetchPatientIncentiveByType';
 export * from './hooks/invitation/useInvitations';
 export * from './hooks/kvs/useDeleteSignalingChannel';
 export * from './hooks/kvs/useGetSignalingChannel';
