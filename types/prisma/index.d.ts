@@ -5883,6 +5883,7 @@ export namespace Prisma {
     stripeEntities: number
     notificationHistory: number
     tags: number
+    formSchemas: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5899,6 +5900,7 @@ export namespace Prisma {
     stripeEntities?: boolean | CompanyCountOutputTypeCountStripeEntitiesArgs
     notificationHistory?: boolean | CompanyCountOutputTypeCountNotificationHistoryArgs
     tags?: boolean | CompanyCountOutputTypeCountTagsArgs
+    formSchemas?: boolean | CompanyCountOutputTypeCountFormSchemasArgs
   }
 
   // Custom InputTypes
@@ -6001,6 +6003,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TagWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountFormSchemasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FormSchemaWhereInput
   }
 
 
@@ -7478,6 +7487,7 @@ export namespace Prisma {
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
     notificationHistory?: boolean | Company$notificationHistoryArgs<ExtArgs>
     tags?: boolean | Company$tagsArgs<ExtArgs>
+    formSchemas?: boolean | Company$formSchemasArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -7522,6 +7532,7 @@ export namespace Prisma {
     stripeEntities?: boolean | Company$stripeEntitiesArgs<ExtArgs>
     notificationHistory?: boolean | Company$notificationHistoryArgs<ExtArgs>
     tags?: boolean | Company$tagsArgs<ExtArgs>
+    formSchemas?: boolean | Company$formSchemasArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7542,6 +7553,7 @@ export namespace Prisma {
       stripeEntities: Prisma.$StripeEntityPayload<ExtArgs>[]
       notificationHistory: Prisma.$NotificationHistoryPayload<ExtArgs>[]
       tags: Prisma.$TagPayload<ExtArgs>[]
+      formSchemas: Prisma.$FormSchemaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7931,6 +7943,7 @@ export namespace Prisma {
     stripeEntities<T extends Company$stripeEntitiesArgs<ExtArgs> = {}>(args?: Subset<T, Company$stripeEntitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StripeEntityPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     notificationHistory<T extends Company$notificationHistoryArgs<ExtArgs> = {}>(args?: Subset<T, Company$notificationHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationHistoryPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     tags<T extends Company$tagsArgs<ExtArgs> = {}>(args?: Subset<T, Company$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    formSchemas<T extends Company$formSchemasArgs<ExtArgs> = {}>(args?: Subset<T, Company$formSchemasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSchemaPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8633,6 +8646,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TagScalarFieldEnum | TagScalarFieldEnum[]
+  }
+
+  /**
+   * Company.formSchemas
+   */
+  export type Company$formSchemasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FormSchema
+     */
+    select?: FormSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FormSchema
+     */
+    omit?: FormSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSchemaInclude<ExtArgs> | null
+    where?: FormSchemaWhereInput
+    orderBy?: FormSchemaOrderByWithRelationInput | FormSchemaOrderByWithRelationInput[]
+    cursor?: FormSchemaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FormSchemaScalarFieldEnum | FormSchemaScalarFieldEnum[]
   }
 
   /**
@@ -32028,6 +32065,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     type: $Enums.FormSchemaType | null
+    companyId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -32036,6 +32074,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     type: $Enums.FormSchemaType | null
+    companyId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -32045,6 +32084,7 @@ export namespace Prisma {
     title: number
     type: number
     data: number
+    companyId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -32055,6 +32095,7 @@ export namespace Prisma {
     id?: true
     title?: true
     type?: true
+    companyId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -32063,6 +32104,7 @@ export namespace Prisma {
     id?: true
     title?: true
     type?: true
+    companyId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -32072,6 +32114,7 @@ export namespace Prisma {
     title?: true
     type?: true
     data?: true
+    companyId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -32154,6 +32197,7 @@ export namespace Prisma {
     title: string
     type: $Enums.FormSchemaType | null
     data: JsonValue
+    companyId: string | null
     createdAt: Date
     updatedAt: Date
     _count: FormSchemaCountAggregateOutputType | null
@@ -32180,9 +32224,11 @@ export namespace Prisma {
     title?: boolean
     type?: boolean
     data?: boolean
+    companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     submissions?: boolean | FormSchema$submissionsArgs<ExtArgs>
+    company?: boolean | FormSchema$companyArgs<ExtArgs>
     _count?: boolean | FormSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["formSchema"]>
 
@@ -32191,8 +32237,10 @@ export namespace Prisma {
     title?: boolean
     type?: boolean
     data?: boolean
+    companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    company?: boolean | FormSchema$companyArgs<ExtArgs>
   }, ExtArgs["result"]["formSchema"]>
 
   export type FormSchemaSelectScalar = {
@@ -32200,27 +32248,33 @@ export namespace Prisma {
     title?: boolean
     type?: boolean
     data?: boolean
+    companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type FormSchemaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "type" | "data" | "createdAt" | "updatedAt", ExtArgs["result"]["formSchema"]>
+  export type FormSchemaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "type" | "data" | "companyId" | "createdAt" | "updatedAt", ExtArgs["result"]["formSchema"]>
   export type FormSchemaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submissions?: boolean | FormSchema$submissionsArgs<ExtArgs>
+    company?: boolean | FormSchema$companyArgs<ExtArgs>
     _count?: boolean | FormSchemaCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type FormSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FormSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | FormSchema$companyArgs<ExtArgs>
+  }
 
   export type $FormSchemaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "FormSchema"
     objects: {
       submissions: Prisma.$FormSubmissionPayload<ExtArgs>[]
+      company: Prisma.$CompanyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
       type: $Enums.FormSchemaType | null
       data: Prisma.JsonValue
+      companyId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["formSchema"]>
@@ -32588,6 +32642,7 @@ export namespace Prisma {
   export interface Prisma__FormSchemaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     submissions<T extends FormSchema$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, FormSchema$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormSubmissionPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    company<T extends FormSchema$companyArgs<ExtArgs> = {}>(args?: Subset<T, FormSchema$companyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -32621,6 +32676,7 @@ export namespace Prisma {
     readonly title: FieldRef<"FormSchema", 'String'>
     readonly type: FieldRef<"FormSchema", 'FormSchemaType'>
     readonly data: FieldRef<"FormSchema", 'Json'>
+    readonly companyId: FieldRef<"FormSchema", 'String'>
     readonly createdAt: FieldRef<"FormSchema", 'DateTime'>
     readonly updatedAt: FieldRef<"FormSchema", 'DateTime'>
   }
@@ -32872,6 +32928,10 @@ export namespace Prisma {
      */
     data: FormSchemaCreateManyInput | FormSchemaCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FormSchemaIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -32998,6 +33058,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FormSubmissionScalarFieldEnum | FormSubmissionScalarFieldEnum[]
+  }
+
+  /**
+   * FormSchema.company
+   */
+  export type FormSchema$companyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    where?: CompanyWhereInput
   }
 
   /**
@@ -63695,6 +63774,7 @@ export namespace Prisma {
     title: 'title',
     type: 'type',
     data: 'data',
+    companyId: 'companyId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -64931,6 +65011,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityListRelationFilter
     notificationHistory?: NotificationHistoryListRelationFilter
     tags?: TagListRelationFilter
+    formSchemas?: FormSchemaListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -64957,6 +65038,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityOrderByRelationAggregateInput
     notificationHistory?: NotificationHistoryOrderByRelationAggregateInput
     tags?: TagOrderByRelationAggregateInput
+    formSchemas?: FormSchemaOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -64986,6 +65068,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityListRelationFilter
     notificationHistory?: NotificationHistoryListRelationFilter
     tags?: TagListRelationFilter
+    formSchemas?: FormSchemaListRelationFilter
   }, "id" | "slug">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -66917,9 +67000,11 @@ export namespace Prisma {
     title?: StringFilter<"FormSchema"> | string
     type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonFilter<"FormSchema">
+    companyId?: StringNullableFilter<"FormSchema"> | string | null
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
     submissions?: FormSubmissionListRelationFilter
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
   }
 
   export type FormSchemaOrderByWithRelationInput = {
@@ -66927,9 +67012,11 @@ export namespace Prisma {
     title?: SortOrder
     type?: SortOrderInput | SortOrder
     data?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     submissions?: FormSubmissionOrderByRelationAggregateInput
+    company?: CompanyOrderByWithRelationInput
   }
 
   export type FormSchemaWhereUniqueInput = Prisma.AtLeast<{
@@ -66940,9 +67027,11 @@ export namespace Prisma {
     title?: StringFilter<"FormSchema"> | string
     type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonFilter<"FormSchema">
+    companyId?: StringNullableFilter<"FormSchema"> | string | null
     createdAt?: DateTimeFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
     submissions?: FormSubmissionListRelationFilter
+    company?: XOR<CompanyNullableRelationFilter, CompanyWhereInput> | null
   }, "id">
 
   export type FormSchemaOrderByWithAggregationInput = {
@@ -66950,6 +67039,7 @@ export namespace Prisma {
     title?: SortOrder
     type?: SortOrderInput | SortOrder
     data?: SortOrder
+    companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: FormSchemaCountOrderByAggregateInput
@@ -66965,6 +67055,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"FormSchema"> | string
     type?: EnumFormSchemaTypeNullableWithAggregatesFilter<"FormSchema"> | $Enums.FormSchemaType | null
     data?: JsonWithAggregatesFilter<"FormSchema">
+    companyId?: StringNullableWithAggregatesFilter<"FormSchema"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FormSchema"> | Date | string
   }
@@ -69425,6 +69516,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -69451,6 +69543,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -69477,6 +69570,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -69503,6 +69597,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -71657,6 +71752,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     submissions?: FormSubmissionCreateNestedManyWithoutSchemaInput
+    company?: CompanyCreateNestedOneWithoutFormSchemasInput
   }
 
   export type FormSchemaUncheckedCreateInput = {
@@ -71664,6 +71760,7 @@ export namespace Prisma {
     title: string
     type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
+    companyId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submissions?: FormSubmissionUncheckedCreateNestedManyWithoutSchemaInput
@@ -71677,6 +71774,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submissions?: FormSubmissionUpdateManyWithoutSchemaNestedInput
+    company?: CompanyUpdateOneWithoutFormSchemasNestedInput
   }
 
   export type FormSchemaUncheckedUpdateInput = {
@@ -71684,6 +71782,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submissions?: FormSubmissionUncheckedUpdateManyWithoutSchemaNestedInput
@@ -71694,6 +71793,7 @@ export namespace Prisma {
     title: string
     type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
+    companyId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -71712,6 +71812,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -74592,6 +74693,12 @@ export namespace Prisma {
     none?: TagWhereInput
   }
 
+  export type FormSchemaListRelationFilter = {
+    every?: FormSchemaWhereInput
+    some?: FormSchemaWhereInput
+    none?: FormSchemaWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -74646,6 +74753,10 @@ export namespace Prisma {
   }
 
   export type TagOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FormSchemaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -76442,11 +76553,17 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type CompanyNullableRelationFilter = {
+    is?: CompanyWhereInput | null
+    isNot?: CompanyWhereInput | null
+  }
+
   export type FormSchemaCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     type?: SortOrder
     data?: SortOrder
+    companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -76455,6 +76572,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     type?: SortOrder
+    companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -76463,6 +76581,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     type?: SortOrder
+    companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -78008,11 +78127,6 @@ export namespace Prisma {
     not?: NestedEnumContactTypeFilter<$PrismaModel> | $Enums.ContactType
   }
 
-  export type CompanyNullableRelationFilter = {
-    is?: CompanyWhereInput | null
-    isNot?: CompanyWhereInput | null
-  }
-
   export type AccountVerificationContactCompanyIdCompoundUniqueInput = {
     contact: string
     companyId: string
@@ -78499,6 +78613,13 @@ export namespace Prisma {
     connect?: TagWhereUniqueInput | TagWhereUniqueInput[]
   }
 
+  export type FormSchemaCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput> | FormSchemaCreateWithoutCompanyInput[] | FormSchemaUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: FormSchemaCreateOrConnectWithoutCompanyInput | FormSchemaCreateOrConnectWithoutCompanyInput[]
+    createMany?: FormSchemaCreateManyCompanyInputEnvelope
+    connect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+  }
+
   export type DepartmentUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
@@ -78588,6 +78709,13 @@ export namespace Prisma {
     connectOrCreate?: TagCreateOrConnectWithoutCompanyInput | TagCreateOrConnectWithoutCompanyInput[]
     createMany?: TagCreateManyCompanyInputEnvelope
     connect?: TagWhereUniqueInput | TagWhereUniqueInput[]
+  }
+
+  export type FormSchemaUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput> | FormSchemaCreateWithoutCompanyInput[] | FormSchemaUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: FormSchemaCreateOrConnectWithoutCompanyInput | FormSchemaCreateOrConnectWithoutCompanyInput[]
+    createMany?: FormSchemaCreateManyCompanyInputEnvelope
+    connect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -78796,6 +78924,20 @@ export namespace Prisma {
     deleteMany?: TagScalarWhereInput | TagScalarWhereInput[]
   }
 
+  export type FormSchemaUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput> | FormSchemaCreateWithoutCompanyInput[] | FormSchemaUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: FormSchemaCreateOrConnectWithoutCompanyInput | FormSchemaCreateOrConnectWithoutCompanyInput[]
+    upsert?: FormSchemaUpsertWithWhereUniqueWithoutCompanyInput | FormSchemaUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: FormSchemaCreateManyCompanyInputEnvelope
+    set?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    disconnect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    delete?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    connect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    update?: FormSchemaUpdateWithWhereUniqueWithoutCompanyInput | FormSchemaUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: FormSchemaUpdateManyWithWhereWithoutCompanyInput | FormSchemaUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: FormSchemaScalarWhereInput | FormSchemaScalarWhereInput[]
+  }
+
   export type DepartmentUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<DepartmentCreateWithoutCompanyInput, DepartmentUncheckedCreateWithoutCompanyInput> | DepartmentCreateWithoutCompanyInput[] | DepartmentUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: DepartmentCreateOrConnectWithoutCompanyInput | DepartmentCreateOrConnectWithoutCompanyInput[]
@@ -78976,6 +79118,20 @@ export namespace Prisma {
     update?: TagUpdateWithWhereUniqueWithoutCompanyInput | TagUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: TagUpdateManyWithWhereWithoutCompanyInput | TagUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: TagScalarWhereInput | TagScalarWhereInput[]
+  }
+
+  export type FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput> | FormSchemaCreateWithoutCompanyInput[] | FormSchemaUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: FormSchemaCreateOrConnectWithoutCompanyInput | FormSchemaCreateOrConnectWithoutCompanyInput[]
+    upsert?: FormSchemaUpsertWithWhereUniqueWithoutCompanyInput | FormSchemaUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: FormSchemaCreateManyCompanyInputEnvelope
+    set?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    disconnect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    delete?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    connect?: FormSchemaWhereUniqueInput | FormSchemaWhereUniqueInput[]
+    update?: FormSchemaUpdateWithWhereUniqueWithoutCompanyInput | FormSchemaUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: FormSchemaUpdateManyWithWhereWithoutCompanyInput | FormSchemaUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: FormSchemaScalarWhereInput | FormSchemaScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutDepartmentsInput = {
@@ -81008,6 +81164,12 @@ export namespace Prisma {
     connect?: FormSubmissionWhereUniqueInput | FormSubmissionWhereUniqueInput[]
   }
 
+  export type CompanyCreateNestedOneWithoutFormSchemasInput = {
+    create?: XOR<CompanyCreateWithoutFormSchemasInput, CompanyUncheckedCreateWithoutFormSchemasInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutFormSchemasInput
+    connect?: CompanyWhereUniqueInput
+  }
+
   export type FormSubmissionUncheckedCreateNestedManyWithoutSchemaInput = {
     create?: XOR<FormSubmissionCreateWithoutSchemaInput, FormSubmissionUncheckedCreateWithoutSchemaInput> | FormSubmissionCreateWithoutSchemaInput[] | FormSubmissionUncheckedCreateWithoutSchemaInput[]
     connectOrCreate?: FormSubmissionCreateOrConnectWithoutSchemaInput | FormSubmissionCreateOrConnectWithoutSchemaInput[]
@@ -81031,6 +81193,16 @@ export namespace Prisma {
     update?: FormSubmissionUpdateWithWhereUniqueWithoutSchemaInput | FormSubmissionUpdateWithWhereUniqueWithoutSchemaInput[]
     updateMany?: FormSubmissionUpdateManyWithWhereWithoutSchemaInput | FormSubmissionUpdateManyWithWhereWithoutSchemaInput[]
     deleteMany?: FormSubmissionScalarWhereInput | FormSubmissionScalarWhereInput[]
+  }
+
+  export type CompanyUpdateOneWithoutFormSchemasNestedInput = {
+    create?: XOR<CompanyCreateWithoutFormSchemasInput, CompanyUncheckedCreateWithoutFormSchemasInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutFormSchemasInput
+    upsert?: CompanyUpsertWithoutFormSchemasInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutFormSchemasInput, CompanyUpdateWithoutFormSchemasInput>, CompanyUncheckedUpdateWithoutFormSchemasInput>
   }
 
   export type FormSubmissionUncheckedUpdateManyWithoutSchemaNestedInput = {
@@ -84516,6 +84688,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FormSchemaCreateWithoutCompanyInput = {
+    id?: string
+    title: string
+    type?: $Enums.FormSchemaType | null
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: FormSubmissionCreateNestedManyWithoutSchemaInput
+  }
+
+  export type FormSchemaUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    title: string
+    type?: $Enums.FormSchemaType | null
+    data: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: FormSubmissionUncheckedCreateNestedManyWithoutSchemaInput
+  }
+
+  export type FormSchemaCreateOrConnectWithoutCompanyInput = {
+    where: FormSchemaWhereUniqueInput
+    create: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type FormSchemaCreateManyCompanyInputEnvelope = {
+    data: FormSchemaCreateManyCompanyInput | FormSchemaCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type DepartmentUpsertWithWhereUniqueWithoutCompanyInput = {
     where: DepartmentWhereUniqueInput
     update: XOR<DepartmentUpdateWithoutCompanyInput, DepartmentUncheckedUpdateWithoutCompanyInput>
@@ -84945,6 +85147,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Tag"> | Date | string
   }
 
+  export type FormSchemaUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: FormSchemaWhereUniqueInput
+    update: XOR<FormSchemaUpdateWithoutCompanyInput, FormSchemaUncheckedUpdateWithoutCompanyInput>
+    create: XOR<FormSchemaCreateWithoutCompanyInput, FormSchemaUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type FormSchemaUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: FormSchemaWhereUniqueInput
+    data: XOR<FormSchemaUpdateWithoutCompanyInput, FormSchemaUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type FormSchemaUpdateManyWithWhereWithoutCompanyInput = {
+    where: FormSchemaScalarWhereInput
+    data: XOR<FormSchemaUpdateManyMutationInput, FormSchemaUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type FormSchemaScalarWhereInput = {
+    AND?: FormSchemaScalarWhereInput | FormSchemaScalarWhereInput[]
+    OR?: FormSchemaScalarWhereInput[]
+    NOT?: FormSchemaScalarWhereInput | FormSchemaScalarWhereInput[]
+    id?: StringFilter<"FormSchema"> | string
+    title?: StringFilter<"FormSchema"> | string
+    type?: EnumFormSchemaTypeNullableFilter<"FormSchema"> | $Enums.FormSchemaType | null
+    data?: JsonFilter<"FormSchema">
+    companyId?: StringNullableFilter<"FormSchema"> | string | null
+    createdAt?: DateTimeFilter<"FormSchema"> | Date | string
+    updatedAt?: DateTimeFilter<"FormSchema"> | Date | string
+  }
+
   export type CompanyCreateWithoutDepartmentsInput = {
     id?: string
     name: string
@@ -84968,6 +85199,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutDepartmentsInput = {
@@ -84993,6 +85225,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutDepartmentsInput = {
@@ -85087,6 +85320,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutDepartmentsInput = {
@@ -85112,6 +85346,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithWhereUniqueWithoutDepartmentsInput = {
@@ -85286,6 +85521,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutFacilitiesInput = {
@@ -85311,6 +85547,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutFacilitiesInput = {
@@ -85591,6 +85828,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutFacilitiesInput = {
@@ -85616,6 +85854,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type PatientUpsertWithWhereUniqueWithoutFacilitiesInput = {
@@ -86447,6 +86686,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutEvaluationsInput = {
@@ -86472,6 +86712,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutEvaluationsInput = {
@@ -86850,6 +87091,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutEvaluationsInput = {
@@ -86875,6 +87117,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DeviceTypeUpsertWithoutEvaluationsInput = {
@@ -89283,6 +89526,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPackagesInput = {
@@ -89308,6 +89552,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPackagesInput = {
@@ -89349,6 +89594,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPackagesInput = {
@@ -89374,6 +89620,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type StripeInvoiceCreateWithoutShippingLabelsInput = {
@@ -90112,6 +90359,63 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompanyCreateWithoutFormSchemasInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    activationSequence?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departments?: DepartmentCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientCreateNestedManyWithoutCompanyInput
+    verifications?: AccountVerificationCreateNestedManyWithoutCompanyInput
+    permissions?: UserPermissionCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
+    tags?: TagCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutFormSchemasInput = {
+    id?: string
+    name: string
+    url?: string | null
+    logoUrl?: string | null
+    slug: string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: boolean
+    activationSequence?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departments?: DepartmentUncheckedCreateNestedManyWithoutCompanyInput
+    facilities?: FacilityUncheckedCreateNestedManyWithoutCompanyInput
+    evaluations?: EvaluationUncheckedCreateNestedManyWithoutCompanyInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutCompanyInput
+    packages?: ShippingPackageUncheckedCreateNestedManyWithoutCompanyInput
+    users?: CompanyUserUncheckedCreateNestedManyWithoutCompanyInput
+    patients?: CompanyPatientUncheckedCreateNestedManyWithoutCompanyInput
+    verifications?: AccountVerificationUncheckedCreateNestedManyWithoutCompanyInput
+    permissions?: UserPermissionUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
+    notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
+    tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutFormSchemasInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutFormSchemasInput, CompanyUncheckedCreateWithoutFormSchemasInput>
+  }
+
   export type FormSubmissionUpsertWithWhereUniqueWithoutSchemaInput = {
     where: FormSubmissionWhereUniqueInput
     update: XOR<FormSubmissionUpdateWithoutSchemaInput, FormSubmissionUncheckedUpdateWithoutSchemaInput>
@@ -90128,6 +90432,69 @@ export namespace Prisma {
     data: XOR<FormSubmissionUpdateManyMutationInput, FormSubmissionUncheckedUpdateManyWithoutSchemaInput>
   }
 
+  export type CompanyUpsertWithoutFormSchemasInput = {
+    update: XOR<CompanyUpdateWithoutFormSchemasInput, CompanyUncheckedUpdateWithoutFormSchemasInput>
+    create: XOR<CompanyCreateWithoutFormSchemasInput, CompanyUncheckedCreateWithoutFormSchemasInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutFormSchemasInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutFormSchemasInput, CompanyUncheckedUpdateWithoutFormSchemasInput>
+  }
+
+  export type CompanyUpdateWithoutFormSchemasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departments?: DepartmentUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUpdateManyWithoutCompanyNestedInput
+    verifications?: AccountVerificationUpdateManyWithoutCompanyNestedInput
+    permissions?: UserPermissionUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
+    tags?: TagUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutFormSchemasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    preferences?: NullableJsonNullValueInput | InputJsonValue
+    active?: BoolFieldUpdateOperationsInput | boolean
+    activationSequence?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departments?: DepartmentUncheckedUpdateManyWithoutCompanyNestedInput
+    facilities?: FacilityUncheckedUpdateManyWithoutCompanyNestedInput
+    evaluations?: EvaluationUncheckedUpdateManyWithoutCompanyNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutCompanyNestedInput
+    packages?: ShippingPackageUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: CompanyUserUncheckedUpdateManyWithoutCompanyNestedInput
+    patients?: CompanyPatientUncheckedUpdateManyWithoutCompanyNestedInput
+    verifications?: AccountVerificationUncheckedUpdateManyWithoutCompanyNestedInput
+    permissions?: UserPermissionUncheckedUpdateManyWithoutCompanyNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
+    notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
+    tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
   export type FormSchemaCreateWithoutSubmissionsInput = {
     id?: string
     title: string
@@ -90135,6 +90502,7 @@ export namespace Prisma {
     data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
+    company?: CompanyCreateNestedOneWithoutFormSchemasInput
   }
 
   export type FormSchemaUncheckedCreateWithoutSubmissionsInput = {
@@ -90142,6 +90510,7 @@ export namespace Prisma {
     title: string
     type?: $Enums.FormSchemaType | null
     data: JsonNullValueInput | InputJsonValue
+    companyId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -90216,6 +90585,7 @@ export namespace Prisma {
     data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneWithoutFormSchemasNestedInput
   }
 
   export type FormSchemaUncheckedUpdateWithoutSubmissionsInput = {
@@ -90223,6 +90593,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
     data?: JsonNullValueInput | InputJsonValue
+    companyId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -90851,6 +91222,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -90876,6 +91248,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -90968,6 +91341,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -90993,6 +91367,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutUsersInput = {
@@ -91018,6 +91393,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -91043,6 +91419,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -91129,6 +91506,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -91154,6 +91532,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCompaniesInput = {
@@ -91283,6 +91662,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPatientsInput = {
@@ -91308,6 +91688,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPatientsInput = {
@@ -91494,6 +91875,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPatientsInput = {
@@ -91519,6 +91901,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type ContactUpsertWithoutPatientsInput = {
@@ -92506,6 +92889,7 @@ export namespace Prisma {
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutStripeEntitiesInput = {
@@ -92531,6 +92915,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutStripeEntitiesInput = {
@@ -92785,6 +93170,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutStripeEntitiesInput = {
@@ -92810,6 +93196,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type StripeEntityUpsertWithoutChildEntitiesInput = {
@@ -93508,6 +93895,7 @@ export namespace Prisma {
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutNotificationHistoryInput = {
@@ -93533,6 +93921,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutNotificationHistoryInput = {
@@ -93670,6 +94059,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutNotificationHistoryInput = {
@@ -93695,6 +94085,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type NotificationMessageUpsertWithoutNotificationHistoryInput = {
@@ -93821,6 +94212,7 @@ export namespace Prisma {
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutTagsInput = {
@@ -93846,6 +94238,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutTagsInput = {
@@ -93887,6 +94280,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutTagsInput = {
@@ -93912,6 +94306,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -94372,6 +94767,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPermissionsInput = {
@@ -94397,6 +94793,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPermissionsInput = {
@@ -94489,6 +94886,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPermissionsInput = {
@@ -94514,6 +94912,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserCreateWithoutAgreementsInput = {
@@ -94819,6 +95218,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutVerificationsInput = {
@@ -94844,6 +95244,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutVerificationsInput = {
@@ -94885,6 +95286,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutVerificationsInput = {
@@ -94910,6 +95312,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutApiKeysInput = {
@@ -94935,6 +95338,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryCreateNestedManyWithoutCompanyInput
     tags?: TagCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutApiKeysInput = {
@@ -94960,6 +95364,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedCreateNestedManyWithoutCompanyInput
     notificationHistory?: NotificationHistoryUncheckedCreateNestedManyWithoutCompanyInput
     tags?: TagUncheckedCreateNestedManyWithoutCompanyInput
+    formSchemas?: FormSchemaUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutApiKeysInput = {
@@ -95001,6 +95406,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUpdateManyWithoutCompanyNestedInput
     tags?: TagUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutApiKeysInput = {
@@ -95026,6 +95432,7 @@ export namespace Prisma {
     stripeEntities?: StripeEntityUncheckedUpdateManyWithoutCompanyNestedInput
     notificationHistory?: NotificationHistoryUncheckedUpdateManyWithoutCompanyNestedInput
     tags?: TagUncheckedUpdateManyWithoutCompanyNestedInput
+    formSchemas?: FormSchemaUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type DepartmentCreateManyCompanyInput = {
@@ -95193,6 +95600,15 @@ export namespace Prisma {
     description?: string | null
     entityId: string
     entityType: $Enums.EntityType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FormSchemaCreateManyCompanyInput = {
+    id?: string
+    title: string
+    type?: $Enums.FormSchemaType | null
+    data: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -95720,6 +96136,35 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     entityId?: StringFieldUpdateOperationsInput | string
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FormSchemaUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: FormSubmissionUpdateManyWithoutSchemaNestedInput
+  }
+
+  export type FormSchemaUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    data?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: FormSubmissionUncheckedUpdateManyWithoutSchemaNestedInput
+  }
+
+  export type FormSchemaUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    type?: NullableEnumFormSchemaTypeFieldUpdateOperationsInput | $Enums.FormSchemaType | null
+    data?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
