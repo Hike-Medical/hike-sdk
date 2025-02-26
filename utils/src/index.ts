@@ -9,6 +9,7 @@ export * from './converters/parseClinicianName';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
+export * from './converters/toJobQueueTask';
 export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './converters/toUTC';

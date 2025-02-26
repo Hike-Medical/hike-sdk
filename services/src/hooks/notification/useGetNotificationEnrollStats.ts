@@ -1,6 +1,6 @@
 import { EnrollPatientsParams } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { statsForEnroll } from '../../api/notification.service';
+import { statsForEnrollNotification } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface useGetNotificationEnrollStatsOptions
@@ -18,6 +18,6 @@ export const useGetNotificationEnrollStats = ({
 }: useGetNotificationEnrollStatsOptions) =>
   useQuery({
     queryKey: ['notificationEnrollStats', notificationId, params, queryKey],
-    queryFn: async () => await statsForEnroll(notificationId, params),
+    queryFn: async () => await statsForEnrollNotification(notificationId, params),
     ...options
   });

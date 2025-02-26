@@ -1,7 +1,9 @@
 import type {
   CreateNotificationParams,
+  EnrollPatientsJobData,
   EnrollPatientsParams,
   GetNotificationParams,
+  JobQueueTask,
   Notification,
   NotificationExtended,
   NotificationWithStats
@@ -31,6 +33,36 @@ export const findNotifications = async (
   }
 };
 
+export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTask<EnrollPatientsJobData, void>[]> => {
+  try {
+    const response = await backendApi.get('notification/enroll-patients-job');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueTask<EnrollPatientsJobData, void>> => {
+  try {
+    const response = await backendApi.get(`notification/job/${jobId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const enrollPatientsToNotification = async (
+  notificationId: string,
+  params: EnrollPatientsParams
+): Promise<{ jobId?: string }> => {
+  try {
+    const response = await backendApi.post(`notification/${notificationId}/enroll`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const statsForNotification = async (
   notificationId: string,
   companyIds?: string[]
@@ -43,19 +75,7 @@ export const statsForNotification = async (
   }
 };
 
-export const enrollPatients = async (
-  notificationId: string,
-  params: EnrollPatientsParams
-): Promise<{ jobId?: string }> => {
-  try {
-    const response = await backendApi.post(`notification/${notificationId}/enroll`, params);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const statsForEnroll = async (
+export const statsForEnrollNotification = async (
   notificationId: string,
   params: EnrollPatientsParams
 ): Promise<{ count: number }> => {

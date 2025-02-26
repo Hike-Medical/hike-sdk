@@ -1,0 +1,26 @@
+import { JobQueueTask } from '@hike/types';
+
+interface JobQueueTaskDto {
+  id: string;
+  name: string;
+  data: unknown;
+  progress: number;
+  delay: number;
+  failedReason?: string;
+  stacktrace?: string[];
+  returnvalue: unknown;
+  finishedOn: number;
+  processedOn: number;
+}
+
+export const toJobQueueTask = <T, U>(task: JobQueueTaskDto): JobQueueTask<T, U> | null => ({
+  id: task.id,
+  name: task.name,
+  data: task.data as T,
+  progress: task.progress,
+  delay: task.delay,
+  error: task.failedReason ?? task.stacktrace?.[0] ?? null,
+  returnValue: task.returnvalue as U,
+  startedAt: new Date(task.processedOn),
+  finishedAt: new Date(task.finishedOn)
+});
