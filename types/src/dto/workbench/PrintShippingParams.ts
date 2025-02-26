@@ -1,3 +1,4 @@
 export interface PrintShippingParams {
-  withShippingLabel?: boolean;
+  withShippingLabel: boolean;
+  withPamphlet: boolean;
 }
