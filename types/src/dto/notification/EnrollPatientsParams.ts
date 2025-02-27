@@ -3,4 +3,5 @@ export interface EnrollPatientsParams {
   status?: 'ALL' | 'ACTIVE' | 'INACTIVE';
   tags?: string[];
   onlyExternalId?: boolean;
+  allowResend?: boolean;
 }

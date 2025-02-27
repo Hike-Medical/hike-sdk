@@ -6,6 +6,6 @@ export interface JobQueueTask<T, U> {
   delay: number;
   error: string | null;
   returnValue: U | null;
-  startedAt: Date;
-  finishedAt: Date;
+  startedAt?: Date | null;
+  finishedAt?: Date | null;
 }

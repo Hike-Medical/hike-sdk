@@ -9,8 +9,8 @@ interface JobQueueTaskDto {
   failedReason?: string;
   stacktrace?: string[];
   returnvalue: unknown;
-  finishedOn: number;
-  processedOn: number;
+  finishedOn?: number | null;
+  processedOn?: number | null;
 }
 
 export const toJobQueueTask = <T, U>(task: JobQueueTaskDto): JobQueueTask<T, U> | null => ({
@@ -21,6 +21,6 @@ export const toJobQueueTask = <T, U>(task: JobQueueTaskDto): JobQueueTask<T, U> 
   delay: task.delay,
   error: task.failedReason ?? task.stacktrace?.[0] ?? null,
   returnValue: task.returnvalue as U,
-  startedAt: new Date(task.processedOn),
-  finishedAt: new Date(task.finishedOn)
+  startedAt: task.processedOn != null ? new Date(task.processedOn) : undefined,
+  finishedAt: task.finishedOn != null ? new Date(task.finishedOn) : undefined
 });

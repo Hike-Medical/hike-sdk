@@ -1,23 +1,21 @@
-import { NotificationWithStats } from '@hike/types';
+import { NotificationStats } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { statsForNotification } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface useGetNotificationStatsOptions
-  extends Omit<UseQueryOptions<NotificationWithStats, HikeError<null>>, 'queryKey' | 'queryFn'> {
-  notificationId: string;
+  extends Omit<UseQueryOptions<NotificationStats[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   companyIds?: string[];
   queryKey?: QueryKey;
 }
 
 export const useGetNotificationStats = ({
   queryKey = [],
-  notificationId,
   companyIds,
   ...options
-}: useGetNotificationStatsOptions) =>
+}: useGetNotificationStatsOptions = {}) =>
   useQuery({
     queryKey: ['notificationStats', queryKey],
-    queryFn: async () => await statsForNotification(notificationId, companyIds),
+    queryFn: async () => await statsForNotification(companyIds),
     ...options
   });

@@ -6,7 +6,7 @@ import type {
   JobQueueTask,
   Notification,
   NotificationExtended,
-  NotificationWithStats
+  NotificationStats
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
@@ -51,6 +51,22 @@ export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueT
   }
 };
 
+export const activateNotification = async (notificationId: string): Promise<void> => {
+  try {
+    await backendApi.post(`notification/${notificationId}/activate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deactivateNotification = async (notificationId: string): Promise<void> => {
+  try {
+    await backendApi.post(`notification/${notificationId}/deactivate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const enrollPatientsToNotification = async (
   notificationId: string,
   params: EnrollPatientsParams
@@ -63,10 +79,19 @@ export const enrollPatientsToNotification = async (
   }
 };
 
-export const statsForNotification = async (
+export const statsForNotification = async (companyIds?: string[]): Promise<NotificationStats[]> => {
+  try {
+    const response = await backendApi.get(`notification/stats`, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const statsForNotificationById = async (
   notificationId: string,
   companyIds?: string[]
-): Promise<NotificationWithStats> => {
+): Promise<NotificationStats> => {
   try {
     const response = await backendApi.get(`notification/${notificationId}/stats`, { headers: addHeaders(companyIds) });
     return response.data;
@@ -82,6 +107,14 @@ export const statsForEnrollNotification = async (
   try {
     const response = await backendApi.get(`notification/${notificationId}/enroll/stats`, { params });
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteNotificationJob = async (jobId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`notification/job/${jobId}`);
   } catch (error) {
     throw toHikeError(error);
   }

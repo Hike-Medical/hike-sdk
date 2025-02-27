@@ -147,6 +147,7 @@ export type * from './entities/EvaluationExtended';
 export type * from './entities/FacilityExtended';
 export type * from './entities/JobQueueTask';
 export type * from './entities/NotificationExtended';
+export type * from './entities/NotificationStats';
 export type * from './entities/OrderExtended';
 export type * from './entities/PatientExtended';
 export type * from './entities/SafeCompany';
