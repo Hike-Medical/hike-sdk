@@ -23,6 +23,7 @@ export interface FormFieldOption {
   value: string;
   description?: string;
   icon?: string;
+  alias?: Record<string, FormFieldValue>;
 }
 
 export type FormField =
