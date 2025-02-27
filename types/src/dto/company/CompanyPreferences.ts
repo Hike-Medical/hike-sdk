@@ -30,7 +30,10 @@ export interface CompanyPreferences {
     removeReorder?: boolean;
     assignPONumber?: boolean;
   };
-  webhookUrl?: string;
+  webhook?: {
+    url?: string;
+    headers?: Record<string, string>;
+  };
   defaultTimeZone?: string;
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
