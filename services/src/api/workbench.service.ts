@@ -19,6 +19,7 @@ import {
   WorkbenchExtended,
   WorkbenchStatus
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -29,11 +30,7 @@ export const searchWorkbenches = async (
   companyIds?: string[]
 ): Promise<PagedResponse<WorkbenchExtended[]>> => {
   try {
-    const response = await backendApi.get('workbench/search', {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
-      params
-    });
-
+    const response = await backendApi.get('workbench/search', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -92,7 +89,7 @@ export const updateRenderType = async (
 ): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/update-render-type`, body, {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
+      headers: addHeaders(companyIds)
     });
     return response.data;
   } catch (error) {
@@ -183,11 +180,7 @@ export const getAggregatedWorkbenches = async (
   companyIds?: string[]
 ): Promise<PagedResponse<FlattenedWorkbench[]>> => {
   try {
-    const response = await backendApi.get('workbench/aggregate', {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
-      params
-    });
-
+    const response = await backendApi.get('workbench/aggregate', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -200,7 +193,7 @@ export const getFilesFromWorkbenches = async (
 ): Promise<Blob> => {
   try {
     const response = await backendApi.post('workbench/files', params, {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined,
+      headers: addHeaders(companyIds),
       responseType: 'arraybuffer'
     });
 
@@ -284,9 +277,7 @@ export const continueWorkbench = async (workbenchId: string, companyIds: string[
     const response = await backendApi.post(
       `workbench/${workbenchId}/continue`,
       {},
-      {
-        headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
-      }
+      { headers: addHeaders(companyIds) }
     );
     return response.data;
   } catch (error) {
@@ -301,9 +292,7 @@ export const statsForWorkbenches = async (
   companyIds?: string[]
 ): Promise<{ status: WorkbenchStatus; count: number }[]> => {
   try {
-    const response = await backendApi.get('workbench/stats', {
-      headers: companyIds?.length ? { 'x-company-id': companyIds.join(',') } : undefined
-    });
+    const response = await backendApi.get('workbench/stats', { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

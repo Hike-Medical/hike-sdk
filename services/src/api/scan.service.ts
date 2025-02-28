@@ -1,4 +1,5 @@
 import { CreateMultipartUrls, ProductType, SubmitRenderParams } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -37,17 +38,9 @@ export const uploadFootRender = async (file: File, body: SubmitRenderParams, com
     formData.append(key, value);
   });
 
-  let headers: {
-    [key: string]: string;
-  } = { 'Content-Type': 'multipart/form-data' };
-
-  if (companyIds?.length) {
-    headers = { ...headers, 'x-company-id': companyIds.join(',') };
-  }
-
   try {
     const response = await backendApi.post('scan/manual-render-upload', formData, {
-      headers
+      headers: addHeaders(companyIds, { 'Content-Type': 'multipart/form-data' })
     });
 
     return response.data;
