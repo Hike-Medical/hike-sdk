@@ -1,4 +1,5 @@
 import { FacilityExtended, PagedResponse, SearchFacilityParams } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -16,14 +17,7 @@ export const searchCompanyFacilityAndAddresses = async (
   companyIds?: string[]
 ): Promise<PagedResponse<FacilityExtended[]>> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
-    const response = await backendApi.get('facility/search', { params, headers });
+    const response = await backendApi.get('facility/search', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

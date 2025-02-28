@@ -2,6 +2,7 @@ import {
   AddCompanyParams,
   Company,
   CompanyExtended,
+  CompanyWorkbenchWebhook,
   FindCompaniesParams,
   GetCompanyByNameParams,
   PagedResponse,
@@ -62,4 +63,13 @@ export const findCompanyByName = async (
 ): Promise<{ name: string; slug: string }[]> => {
   const response = await backendApi.get(`auth/company/name/${name}`, { params });
   return response.data;
+};
+
+export const findCompanyWorkbenchWebhooks = async (): Promise<CompanyWorkbenchWebhook[]> => {
+  try {
+    const response = await backendApi.get(`company/workbench/webhook`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };

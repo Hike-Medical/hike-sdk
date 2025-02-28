@@ -1,9 +1,11 @@
-export interface NotifyWebhookInfo {
+export type WorkbenchWebhookStatus = 'ASSETS_READY' | 'ORDER_SUBMITTED' | 'FAILURE';
+
+export interface CompanyWorkbenchWebhook {
   id: string;
   workbenchId: string;
   body: Record<string, string>;
   webhookUrl: string;
-  webhookStatus: string;
+  webhookStatus: WorkbenchWebhookStatus;
   responseStatus: number;
   responseBody: string;
   sentAt: Date;

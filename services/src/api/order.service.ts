@@ -11,19 +11,13 @@ import type {
   PagedResponse,
   UpdateOrderParams
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createOrder = async (params: CreateOrderParams, companyIds: string[]): Promise<Order> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
-    const response = await backendApi.post('order', params, { headers });
+    const response = await backendApi.post('order', params, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -94,20 +88,10 @@ export const updateOrder = async (
   jwtToken?: string,
   companyIds?: string[]
 ): Promise<OrderExtended> => {
-  let headers: {
-    [key: string]: string;
-  } = {};
-
-  if (companyIds?.length) {
-    headers = { ...headers, 'x-company-id': companyIds.join(',') };
-  }
-
-  if (jwtToken) {
-    headers = { ...headers, Authorization: `Bearer ${jwtToken}` };
-  }
-
   try {
-    const response = await backendApi.patch(`order/${orderId}`, params, { headers });
+    const response = await backendApi.patch(`order/${orderId}`, params, {
+      headers: addHeaders(companyIds, { Authorization: `Bearer ${jwtToken}` })
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -120,23 +104,11 @@ export const modifyOrderAuthorization = async ({
   companyIds,
   jwtToken
 }: ModifyOrderAuthorizationParams): Promise<OrderExtended> => {
-  let headers: {
-    [key: string]: string;
-  } = {};
-
-  if (companyIds?.length) {
-    headers = { ...headers, 'x-company-id': companyIds.join(',') };
-  }
-
-  if (jwtToken) {
-    headers = { ...headers, Authorization: `Bearer ${jwtToken}` };
-  }
-
   try {
     const response = await backendApi.post(
       `order/${orderId}/modify-authorization`,
       { authorizationStatus },
-      { headers }
+      { headers: addHeaders(companyIds, { Authorization: `Bearer ${jwtToken}` }) }
     );
     return response.data;
   } catch (error) {
