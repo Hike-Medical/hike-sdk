@@ -8,4 +8,5 @@ export interface EnrollPatientsJobData {
   role?: CompanyRole;
   companyId: string;
   appId: AppId;
+  workbenchId?: string;
 }
