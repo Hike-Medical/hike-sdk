@@ -5,7 +5,6 @@ export interface NotificationStats {
   name: string;
   total: number;
   sent: number;
-  failed: number;
   clicked: number;
   status: {
     [key in SenderMessageStatus]: number;

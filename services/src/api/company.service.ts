@@ -67,7 +67,7 @@ export const findCompanyByName = async (
 
 export const findCompanyWorkbenchWebhooks = async (): Promise<CompanyWorkbenchWebhook[]> => {
   try {
-    const response = await backendApi.get(`company/workbench/webhook`);
+    const response = await backendApi.get('company/workbench/webhook');
     return response.data;
   } catch (error) {
     throw toHikeError(error);

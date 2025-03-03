@@ -5,12 +5,11 @@ export interface CreateNotificationParams {
   description?: string;
   startTime?: Date;
   endTime?: Date;
-  recurrencePattern?: string;
   active?: boolean;
   transactional?: boolean;
   message: string;
   type: NotificationType;
-  limit?: number;
+  delayMinutes?: number;
   channel: CommunicationChannel;
   emailTemplateId?: string;
 }
