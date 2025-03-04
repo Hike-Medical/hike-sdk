@@ -1,3 +1,4 @@
+import { FileEncryptionConfig } from '../../entities/FileEncryptionConfig';
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 
@@ -37,4 +38,5 @@ export interface CompanyPreferences {
   defaultTimeZone?: string;
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
+  encryption?: FileEncryptionConfig;
 }

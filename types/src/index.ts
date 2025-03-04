@@ -142,6 +142,7 @@ export type * from './dto/workbench/SearchWorkbenchParams';
 export type * from './dto/workbench/SubmitOrderParams';
 export type * from './dto/workbench/UpdateInactiveFootBody';
 export type * from './entities/AssetExtended';
+export type * from './entities/FileEncryptionConfig'
 export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/ClinicianExtended';
