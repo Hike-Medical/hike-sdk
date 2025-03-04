@@ -5,8 +5,8 @@ import { EnrollPatientsParams } from './EnrollPatientsParams';
 export interface EnrollPatientsJobData {
   notificationId: string;
   params: EnrollPatientsParams;
-  role?: CompanyRole;
+  workbenchId?: string;
   companyId: string;
   appId: AppId;
-  workbenchId?: string;
+  role?: CompanyRole;
 }
