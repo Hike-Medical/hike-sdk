@@ -1,4 +1,5 @@
 import type {
+  CreateNotificationMessageParams,
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
@@ -6,7 +7,10 @@ import type {
   JobQueueTask,
   Notification,
   NotificationExtended,
-  NotificationStats
+  NotificationHistoryExtended,
+  NotificationMessage,
+  NotificationStats,
+  UpdateNotificationMessageParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
@@ -45,6 +49,15 @@ export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTas
 export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueTask<EnrollPatientsJobData, void>> => {
   try {
     const response = await backendApi.get(`notification/job/${jobId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchNotificationHistoryByJob = async (jobId: string): Promise<NotificationHistoryExtended[]> => {
+  try {
+    const response = await backendApi.get(`notification/job/${jobId}/history`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -107,6 +120,37 @@ export const statsForEnrollNotification = async (
   try {
     const response = await backendApi.get(`notification/${notificationId}/enroll/stats`, { params });
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createNotificationMessage = async (
+  params: CreateNotificationMessageParams
+): Promise<NotificationMessage> => {
+  try {
+    const response = await backendApi.post('notification/message', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateNotificationMessage = async (
+  messageId: string,
+  params: UpdateNotificationMessageParams
+): Promise<NotificationMessage> => {
+  try {
+    const response = await backendApi.patch(`notification/message/${messageId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteNotificationMessage = async (messageId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`notification/message/${messageId}`);
   } catch (error) {
     throw toHikeError(error);
   }
