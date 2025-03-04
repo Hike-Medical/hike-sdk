@@ -39,4 +39,5 @@ export interface CompanyPreferences {
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
   encryption?: FileEncryptionConfig;
+  setTaikIdAsPONumber?: boolean;
 }
