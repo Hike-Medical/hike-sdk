@@ -11,6 +11,7 @@ import type {
   StartEvaluationByProductParams,
   UpdateEvaluationParams
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -106,17 +107,10 @@ export const adjustmentEvaluation = async (
   companyIds?: string[]
 ): Promise<EvaluationExtended> => {
   try {
-    let headers: {
-      [key: string]: string;
-    } = {};
-
-    if (companyIds?.length) {
-      headers = { ...headers, 'x-company-id': companyIds.join(',') };
-    }
     const response = await backendApi.post(
       `evaluation/${params.evaluationId}/adjustment`,
       { notes: params.notes },
-      { headers }
+      { headers: addHeaders(companyIds) }
     );
     return response.data;
   } catch (error) {
