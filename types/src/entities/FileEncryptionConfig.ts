@@ -7,22 +7,16 @@ export interface FileEncryptionConfig {
   method: EncryptionMethod;
   /**
    * The secret ARN of the key used for decryption.
+   * If this is omitted, then files inbound to our system will not be decrypted.
    */
-  decryptionKeySecretArn: string;
+  decryptionKeySecretArn?: string;
   /**
    * The secret ARN of the key used for encryption.
+   * If this is omitted, then files outbound from our system will not be encrypted.
    */
-  encryptionKeySecretArn: string;
+  encryptionKeySecretArn?: string;
   /**
    * Passphrase ARN for the private key (optional)
    */
   passphraseSecretArn?: string;
-  /**
-   * Indicates if inbound files are encrypted and require decryption (default false).
-   */
-  inboundEncrypted?: boolean;
-  /**
-   * Indicates if outbound files are encrypted and require encryption (default false).
-   */
-  outboundEncrypted?: boolean;
 }
