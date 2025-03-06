@@ -12,6 +12,7 @@ import type {
   NotificationHistoryMessageExtended,
   NotificationMessage,
   NotificationStats,
+  SendTestParams,
   UpdateNotificationMessageParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -210,6 +211,14 @@ export const deleteNotificationMessage = async (messageId: string): Promise<void
 export const deleteNotificationJob = async (jobId: string): Promise<void> => {
   try {
     await backendApi.delete(`notification/job/${jobId}`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendNotificationTest = async (messageId: string, params: SendTestParams): Promise<void> => {
+  try {
+    await backendApi.post(`notification/message/${messageId}/test`, params);
   } catch (error) {
     throw toHikeError(error);
   }
