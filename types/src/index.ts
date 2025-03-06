@@ -9,6 +9,7 @@ export type * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
 export type * from './dto/appointment/ImportAppointmentsParams';
 export type * from './dto/appointment/ImportAppointmentsResponse';
 export type * from './dto/appointment/ImportPrescriptionsResponse';
+
 export type * from './dto/asset/GetAssetsParams';
 export type * from './dto/augment/AssetAugmentData';
 export type * from './dto/augment/AssetAugmentMediaData';
@@ -146,6 +147,7 @@ export type * from './entities/CatalogProductExtended';
 export type * from './entities/CatalogProductVariantExtended';
 export type * from './entities/ClinicianExtended';
 export type * from './entities/CompanyExtended';
+export type * from './entities/CompanyPatientExtended';
 export type * from './entities/ContactAddress';
 export type * from './entities/EvaluationExtended';
 export type * from './entities/FacilityExtended';

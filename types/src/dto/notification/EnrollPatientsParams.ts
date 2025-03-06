@@ -4,4 +4,5 @@ export interface EnrollPatientsParams {
   tags?: string[];
   onlyExternalId?: boolean;
   allowResend?: boolean;
+  search?: string;
 }
