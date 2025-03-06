@@ -3,11 +3,12 @@ import type {
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
-  GetNotificationParams,
+  GetNotificationsParams,
   JobQueueTask,
   Notification,
   NotificationExtended,
   NotificationHistoryExtended,
+  NotificationHistoryMessageExtended,
   NotificationMessage,
   NotificationStats,
   UpdateNotificationMessageParams
@@ -26,11 +27,20 @@ export const createNotification = async (params: CreateNotificationParams): Prom
 };
 
 export const findNotifications = async (
-  params?: GetNotificationParams,
+  params?: GetNotificationsParams,
   companyIds?: string[]
 ): Promise<NotificationExtended[]> => {
   try {
     const response = await backendApi.get('notification', { params, headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchNotificationById = async (notificationId: string): Promise<NotificationExtended> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -58,6 +68,24 @@ export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueT
 export const fetchNotificationHistoryByJob = async (jobId: string): Promise<NotificationHistoryExtended[]> => {
   try {
     const response = await backendApi.get(`notification/job/${jobId}/history`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchHistoryByNotification = async (notificationId: string): Promise<NotificationHistoryExtended[]> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/history`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchHistoryByPatient = async (patientId: string): Promise<NotificationHistoryMessageExtended[]> => {
+  try {
+    const response = await backendApi.get(`notification/patient/${patientId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -119,6 +147,17 @@ export const statsForEnrollNotification = async (
 ): Promise<{ count: number }> => {
   try {
     const response = await backendApi.get(`notification/${notificationId}/enroll/stats`, { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const statsForNotificationsByPatient = async (
+  patientId: string
+): Promise<Omit<NotificationStats, 'id' | 'name'>> => {
+  try {
+    const response = await backendApi.get(`notification/patient/${patientId}/stats`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

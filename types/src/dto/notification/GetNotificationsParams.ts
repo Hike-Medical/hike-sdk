@@ -1,6 +1,6 @@
 import { NotificationType } from '../../../prisma';
 
-export interface GetNotificationParams {
+export interface GetNotificationsParams {
   type?: NotificationType[];
   includeShared?: boolean;
   active?: boolean;

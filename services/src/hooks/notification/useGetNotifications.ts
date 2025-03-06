@@ -1,11 +1,11 @@
-import { GetNotificationParams, NotificationExtended } from '@hike/types';
+import { GetNotificationsParams, NotificationExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findNotifications } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface useGetNotificationsOptions
   extends Omit<UseQueryOptions<NotificationExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
-  params?: GetNotificationParams;
+  params?: GetNotificationsParams;
   companyIds?: string[];
   queryKey?: QueryKey;
 }
