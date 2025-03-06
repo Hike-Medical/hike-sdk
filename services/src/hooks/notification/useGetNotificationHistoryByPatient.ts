@@ -1,6 +1,6 @@
 import { NotificationHistoryMessageExtended } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { fetchHistoryByPatient } from '../../api/notification.service';
+import { fetchNotificationHistoryByPatient } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
 export interface UseGetNotificationHistoryByPatientOptions
@@ -16,6 +16,6 @@ export const useGetNotificationHistoryByPatient = ({
 }: UseGetNotificationHistoryByPatientOptions) =>
   useQuery({
     queryKey: ['notificationHistoryByPatient', patientId, queryKey],
-    queryFn: async () => await fetchHistoryByPatient(patientId),
+    queryFn: async () => await fetchNotificationHistoryByPatient(patientId),
     ...options
   });
