@@ -136,6 +136,7 @@ export * from './hooks/notification/useGetNotifications';
 export * from './hooks/notification/useGetNotificationStats';
 export * from './hooks/notification/useGetNotificationStatsById';
 export * from './hooks/notification/useGetNotificationStatsByPatient';
+export * from './hooks/notification/useSendNotificationTest';
 export * from './hooks/notification/useToggleNotification';
 export * from './hooks/notification/useUpdateNotificationMessage';
 export * from './hooks/orders/useCreateOrder';
