@@ -1,4 +1,4 @@
-export type WorkbenchWebhookStatus = 'ASSETS_READY' | 'ORDER_SUBMITTED' | 'FAILURE';
+export type WorkbenchWebhookStatus = 'ASSETS_READY' | 'ORDER_SUBMITTED' | 'FAILURE' | 'SHIPPED';
 
 export interface CompanyWorkbenchWebhook {
   id: string;
