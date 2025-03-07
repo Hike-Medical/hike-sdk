@@ -90,7 +90,7 @@ export const updateOrder = async (
 ): Promise<OrderExtended> => {
   try {
     const response = await backendApi.patch(`order/${orderId}`, params, {
-      headers: addHeaders(companyIds, { Authorization: `Bearer ${jwtToken}` })
+      headers: addHeaders(companyIds, { Authorization: jwtToken && `Bearer ${jwtToken}` })
     });
     return response.data;
   } catch (error) {
@@ -108,7 +108,7 @@ export const modifyOrderAuthorization = async ({
     const response = await backendApi.post(
       `order/${orderId}/modify-authorization`,
       { authorizationStatus },
-      { headers: addHeaders(companyIds, { Authorization: `Bearer ${jwtToken}` }) }
+      { headers: addHeaders(companyIds, { Authorization: jwtToken && `Bearer ${jwtToken}` }) }
     );
     return response.data;
   } catch (error) {
