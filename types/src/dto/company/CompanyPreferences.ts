@@ -31,9 +31,10 @@ export interface CompanyPreferences {
     assignPONumber?: boolean;
   };
   webhook?: {
-    url?: string;
+    url: string;
     headers?: Record<string, string>;
-  };
+    identifier?: string;
+  }[];
   defaultTimeZone?: string;
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
