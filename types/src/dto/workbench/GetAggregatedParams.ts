@@ -8,6 +8,7 @@ export interface GetAggregatedParams extends PagedParams {
   diabeticOnly?: boolean;
   submittedOnly?: boolean;
   includeSubmissions?: boolean;
+  prioritizeRushed?: boolean;
   authorizationStartDate?: string;
   authorizationEndDate?: string;
   searchQuery?: string;
@@ -24,7 +25,8 @@ export interface GetAggregatedParams extends PagedParams {
       | 'userId'
       | 'poNumber'
       | 'orderStatus'
-      | 'workbenchStatus',
+      | 'workbenchStatus'
+      | 'productType',
       string
     >
   >;
