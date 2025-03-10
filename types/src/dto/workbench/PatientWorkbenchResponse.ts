@@ -1,4 +1,5 @@
 import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '../../../prisma';
+import { InsoleSideMeasurements } from '../taika/InsoleMeasurements';
 
 export interface PatientWorkbenchResponse {
   shoeGender: string | null;
@@ -10,4 +11,13 @@ export interface PatientWorkbenchResponse {
   poNumber: string | null;
   workbenchId: string;
   trackingStatus: ShippingTrackingStatus | null;
+  cost: number;
+  shoeWidth: string | null;
+  shoeType: string | null;
+  contact: string | null;
+  trackingNumber: string | null;
+  trackingLink: string | null;
+  shippedDate: Date | null;
+  leftMeasurements: InsoleSideMeasurements | null;
+  rightMeasurements: InsoleSideMeasurements | null;
 }
