@@ -10,6 +10,10 @@ export const Constants = {
     pageSize: 25,
     limit: 10
   } satisfies PaginationState,
+  TRACKING: {
+    CLICK_PARAM: '_trk-clk',
+    OPEN_PARAM: '_trk-opn'
+  },
   NETWORK_SPEED_FILE_SIZE_KB: 100,
   NETWORK_SPEED_MIN_MBPS: 3
 } as const;
