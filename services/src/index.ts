@@ -26,6 +26,7 @@ export * from './api/s3.service';
 export * from './api/scan.service';
 export * from './api/shipping.service';
 export * from './api/terms.service';
+export * from './api/tracking.service';
 export * from './api/user.service';
 export * from './api/workbench.service';
 export * from './auth/defaultCompany';
