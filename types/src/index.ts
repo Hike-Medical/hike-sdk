@@ -9,7 +9,6 @@ export type * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
 export type * from './dto/appointment/ImportAppointmentsParams';
 export type * from './dto/appointment/ImportAppointmentsResponse';
 export type * from './dto/appointment/ImportPrescriptionsResponse';
-
 export type * from './dto/asset/GetAssetsParams';
 export type * from './dto/augment/AssetAugmentData';
 export type * from './dto/augment/AssetAugmentMediaData';
@@ -83,6 +82,7 @@ export type * from './dto/notification/EnrollPatientsJobData';
 export type * from './dto/notification/EnrollPatientsParams';
 export type * from './dto/notification/GetNotificationsParams';
 export type * from './dto/notification/SendTestParams';
+export type * from './dto/notification/TrackNotificationAction';
 export type * from './dto/notification/UpdateNotificationMessageParams';
 export type * from './dto/order/CreateOrderParams';
 export type * from './dto/order/DeliverOrderParams';
