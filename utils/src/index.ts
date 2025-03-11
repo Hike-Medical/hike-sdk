@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './constants/autoSlicerProfiles';
+export * from './converters/flattenObject';
 export * from './converters/formatConstant';
 export * from './converters/formatCurrency';
 export * from './converters/formatDate';
@@ -9,7 +10,6 @@ export * from './converters/parseClinicianName';
 export * from './converters/parseDate';
 export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
-export * from './converters/toFlattenObject';
 export * from './converters/toJobQueueTask';
 export * from './converters/toTitleCase';
 export * from './converters/toURL';

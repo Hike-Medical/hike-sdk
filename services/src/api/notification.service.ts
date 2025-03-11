@@ -13,10 +13,11 @@ import type {
   NotificationMessage,
   NotificationStats,
   SendTestParams,
+  TrackNotificationAction,
   UpdateNotificationMessageParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { HikeError, toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createNotification = async (params: CreateNotificationParams): Promise<Notification> => {
@@ -222,4 +223,23 @@ export const sendNotificationTest = async (messageId: string, params: SendTestPa
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+/**
+ * Track a click using the notification history identifier.
+ *
+ * @note This helper is used in the frontend middleware which
+ * has restrictions on timing and what can be imported.
+ */
+export const trackNotification = async (id: string, action: TrackNotificationAction): Promise<void> => {
+  const baseUrl = backendApi.defaults.baseURL; // Must be previously set via `configureServices`
+
+  if (!baseUrl) {
+    throw new HikeError({
+      message: 'Base URL not set for backend services.',
+      statusCode: 500
+    });
+  }
+
+  await fetch(`${baseUrl}/webhook/track-notification/${id}/${action}`, { method: 'POST' });
 };
