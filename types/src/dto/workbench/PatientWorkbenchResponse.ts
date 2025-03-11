@@ -14,10 +14,11 @@ export interface PatientWorkbenchResponse {
   cost: number;
   shoeWidth: string | null;
   shoeType: string | null;
-  contact: string | null;
+  contact: string[] | null;
   trackingNumber: string | null;
   trackingLink: string | null;
   shippedDate: Date | null;
   leftMeasurements: InsoleSideMeasurements | null;
   rightMeasurements: InsoleSideMeasurements | null;
+  evaluationId: string;
 }
