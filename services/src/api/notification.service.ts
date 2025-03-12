@@ -61,6 +61,17 @@ export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTas
   }
 };
 
+export const fetchEnrollPatientsNotificationJobsByPatientId = async (
+  patientId: string
+): Promise<JobQueueTask<EnrollPatientsJobData, void>[]> => {
+  try {
+    const response = await backendApi.get(`notification/enroll-patients-job/${patientId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueTask<EnrollPatientsJobData, void>> => {
   try {
     const response = await backendApi.get(`notification/job/${jobId}`);
