@@ -4,6 +4,7 @@ import type {
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
+  GetNotificationHistoryParams,
   GetNotificationsParams,
   JobQueueTask,
   Notification,
@@ -12,11 +13,13 @@ import type {
   NotificationHistoryMessageExtended,
   NotificationMessage,
   NotificationStats,
+  PagedResponse,
   SendTestParams,
+  TrackNotificationAction,
   UpdateNotificationMessageParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { HikeError, toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createNotification = async (params: CreateNotificationParams): Promise<Notification> => {
@@ -58,6 +61,17 @@ export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTas
   }
 };
 
+export const fetchEnrollPatientsNotificationJobsByPatientId = async (
+  patientId: string
+): Promise<JobQueueTask<EnrollPatientsJobData, void>[]> => {
+  try {
+    const response = await backendApi.get(`notification/enroll-patients-job/${patientId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const fetchNotificationJobById = async (jobId: string): Promise<JobQueueTask<EnrollPatientsJobData, void>> => {
   try {
     const response = await backendApi.get(`notification/job/${jobId}`);
@@ -76,9 +90,12 @@ export const fetchNotificationHistoryByJob = async (jobId: string): Promise<Noti
   }
 };
 
-export const fetchHistoryByNotification = async (notificationId: string): Promise<NotificationHistoryExtended[]> => {
+export const fetchHistoryByNotification = async (
+  notificationId: string,
+  params: GetNotificationHistoryParams
+): Promise<PagedResponse<NotificationHistoryExtended[]>> => {
   try {
-    const response = await backendApi.get(`notification/${notificationId}/history`);
+    const response = await backendApi.get(`notification/${notificationId}/history`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -222,4 +239,23 @@ export const sendNotificationTest = async (messageId: string, params: SendTestPa
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+/**
+ * Track a click using the notification history identifier.
+ *
+ * @note This helper is used in the frontend middleware which
+ * has restrictions on timing and what can be imported.
+ */
+export const trackNotification = async (id: string, action: TrackNotificationAction): Promise<void> => {
+  const baseUrl = backendApi.defaults.baseURL; // Must be previously set via `configureServices`
+
+  if (!baseUrl) {
+    throw new HikeError({
+      message: 'Base URL not set for backend services.',
+      statusCode: 500
+    });
+  }
+
+  await fetch(`${baseUrl}/webhook/track-notification/${id}/${action}`, { method: 'POST' });
 };
