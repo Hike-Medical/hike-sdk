@@ -126,6 +126,7 @@ export * from './hooks/notification/useDeleteNotificationJob';
 export * from './hooks/notification/useDeleteNotificationMessage';
 export * from './hooks/notification/useEnrollPatientsToNotification';
 export * from './hooks/notification/useGetEnrollPatientsNotificationJobs';
+export * from './hooks/notification/useGetEnrollPatientsNotificationJobsByPatient';
 export * from './hooks/notification/useGetNotificationById';
 export * from './hooks/notification/useGetNotificationEnrollPatients';
 export * from './hooks/notification/useGetNotificationEnrollStats';
