@@ -80,6 +80,7 @@ export type * from './dto/notification/CreateNotificationMessageParams';
 export type * from './dto/notification/CreateNotificationParams';
 export type * from './dto/notification/EnrollPatientsJobData';
 export type * from './dto/notification/EnrollPatientsParams';
+export type * from './dto/notification/GetNotificationHistoryParams';
 export type * from './dto/notification/GetNotificationsParams';
 export type * from './dto/notification/SendTestParams';
 export type * from './dto/notification/TrackNotificationAction';
