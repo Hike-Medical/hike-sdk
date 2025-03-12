@@ -4,6 +4,7 @@ import type {
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
+  GetNotificationHistoryParams,
   GetNotificationsParams,
   JobQueueTask,
   Notification,
@@ -12,6 +13,7 @@ import type {
   NotificationHistoryMessageExtended,
   NotificationMessage,
   NotificationStats,
+  PagedResponse,
   SendTestParams,
   TrackNotificationAction,
   UpdateNotificationMessageParams
@@ -77,9 +79,12 @@ export const fetchNotificationHistoryByJob = async (jobId: string): Promise<Noti
   }
 };
 
-export const fetchHistoryByNotification = async (notificationId: string): Promise<NotificationHistoryExtended[]> => {
+export const fetchHistoryByNotification = async (
+  notificationId: string,
+  params: GetNotificationHistoryParams
+): Promise<PagedResponse<NotificationHistoryExtended[]>> => {
   try {
-    const response = await backendApi.get(`notification/${notificationId}/history`);
+    const response = await backendApi.get(`notification/${notificationId}/history`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
