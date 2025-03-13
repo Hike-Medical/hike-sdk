@@ -1,6 +1,6 @@
+import { AssetAugmentStatus, AssetAugmentType } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { findAssetAugmentStatusByWorkbenchId } from '../../api/augment.service';
-import { AssetAugmentStatus, AssetAugmentType } from '@hike/types';
 
 export const useFindAssetAugmentStatusByWorkbenchId = (
   workbenchId: string,

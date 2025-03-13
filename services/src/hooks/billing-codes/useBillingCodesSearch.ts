@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchBillingCodes, searchBillingCodes } from '../../api/billing-code.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseBillingCodesSearchOptions
+interface UseBillingCodesSearchOptions
   extends Omit<UseQueryOptions<PagedResponse<BillingCode[]> | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   searchTerm?: string | null;
   queryKey?: QueryKey;

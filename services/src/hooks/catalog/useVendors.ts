@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchVendors } from '../../api/catalog.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseVendorsOptions
+interface UseVendorsOptions
   extends Omit<UseQueryOptions<PagedResponse<CatalogVendor[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetVendorsParams;
   queryKey?: QueryKey;

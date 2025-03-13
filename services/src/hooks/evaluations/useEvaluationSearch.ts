@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { searchEvaluations } from '../../api/evaluation.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {
+interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {
   key?: string[];
   enabled?: boolean;
 }

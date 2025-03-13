@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findNotifications } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface useGetNotificationsOptions
+interface UseGetNotificationsOptions
   extends Omit<UseQueryOptions<NotificationExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetNotificationsParams;
   companyIds?: string[];
@@ -15,7 +15,7 @@ export const useGetNotifications = ({
   companyIds,
   queryKey = [],
   ...options
-}: useGetNotificationsOptions = {}) =>
+}: UseGetNotificationsOptions = {}) =>
   useQuery({
     queryKey: ['notifications', params, companyIds, queryKey],
     queryFn: async () => await findNotifications(params, companyIds),

@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findAssets } from '../../api/asset.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseAssetsOptions
+interface UseAssetsOptions
   extends Omit<UseQueryOptions<PagedResponse<AssetExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params: GetAssetsParams;
   queryKey?: QueryKey;

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { searchEvaluations } from '../api/search.service';
 import { HikeError } from '../errors/HikeError';
 
-export interface UseGlobalSearchOptions extends GetSearchParams {
+interface UseGlobalSearchOptions extends GetSearchParams {
   key?: string[];
   enabled?: boolean;
 }

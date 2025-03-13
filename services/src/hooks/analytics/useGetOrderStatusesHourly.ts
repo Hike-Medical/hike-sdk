@@ -25,7 +25,7 @@ interface HourlyResponse {
   >;
 }
 
-export interface UseGetOrderStatusesHourlyOptions
+interface UseGetOrderStatusesHourlyOptions
   extends Omit<UseQueryOptions<HourlyResponse[], HikeError<null>>, 'queryKey' | 'queryFn'> {}
 
 export const useGetOrderStatusesHourly = (body: HourlyOptions, queryOptions?: UseGetOrderStatusesHourlyOptions) => {

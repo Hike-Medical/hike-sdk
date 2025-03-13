@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { statsForAssets } from '../../api/asset.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseAssetStatsOptions
+interface UseAssetStatsOptions
   extends Omit<UseQueryOptions<{ status: AssetStatus; count: number }[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }

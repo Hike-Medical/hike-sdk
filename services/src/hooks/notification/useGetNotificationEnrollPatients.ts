@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchNotificationEnrollPatients } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface useGetNotificationEnrollPatientsOptions
+interface UseGetNotificationEnrollPatientsOptions
   extends Omit<UseQueryOptions<CompanyPatientExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   notificationId: string;
   params: EnrollPatientsParams;
@@ -17,7 +17,7 @@ export const useGetNotificationEnrollPatients = ({
   limit,
   queryKey = [],
   ...options
-}: useGetNotificationEnrollPatientsOptions) =>
+}: UseGetNotificationEnrollPatientsOptions) =>
   useQuery({
     queryKey: ['notificationEnrollPatients', notificationId, params, queryKey],
     queryFn: async () => await fetchNotificationEnrollPatients(notificationId, params, limit),

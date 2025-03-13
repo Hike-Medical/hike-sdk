@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchRosterImportStatus } from '../../api/roster.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseRosterImportJobOptions
+interface UseRosterImportJobOptions
   extends Omit<
     UseQueryOptions<{ progress: number; data?: ImportRosterResponse }, HikeError<null>>,
     'queryKey' | 'queryFn'

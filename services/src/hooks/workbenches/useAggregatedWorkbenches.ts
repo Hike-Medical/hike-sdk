@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getAggregatedWorkbenches } from '../../api/workbench.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseAggregatedWorkbenchesOptions
+interface UseAggregatedWorkbenchesOptions
   extends Omit<UseQueryOptions<PagedResponse<FlattenedWorkbench[]>, HikeError<null>>, 'queryFn' | 'queryKey'> {
   params?: GetAggregatedParams;
   companyIds?: string[];

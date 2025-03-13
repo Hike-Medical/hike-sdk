@@ -3,8 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findFormSchemaById } from '../../api/form.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseFormSchemaOptions
-  extends Omit<UseQueryOptions<FormSchemaTyped, HikeError<null>>, 'queryKey' | 'queryFn'> {
+interface UseFormSchemaOptions extends Omit<UseQueryOptions<FormSchemaTyped, HikeError<null>>, 'queryKey' | 'queryFn'> {
   schemaId: string;
   templateable?: boolean;
   enabled?: boolean;

@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findInvitations } from '../../api/invitation.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseInvitationsOptions
+interface UseInvitationsOptions
   extends Omit<
     UseQueryOptions<PagedResponse<Omit<AccountVerification, 'token'>[]>, HikeError<null>>,
     'queryKey' | 'queryFn'

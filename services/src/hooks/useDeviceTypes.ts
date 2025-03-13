@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchDeviceTypes, searchDeviceTypes } from '../api/device-type.service';
 import { HikeError } from '../errors/HikeError';
 
-export interface UseDeviceTypesOptions
+interface UseDeviceTypesOptions
   extends Omit<UseQueryOptions<PagedResponse<DeviceType[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   searchTerm?: string | null;
   params?: PagedParams;
