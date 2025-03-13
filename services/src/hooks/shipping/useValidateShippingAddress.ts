@@ -8,6 +8,6 @@ export const useValidateShippignAddress = (
 ) =>
   useMutation({
     mutationKey: ['validateAddress'],
-    mutationFn: async (body: ValidateAddressBody) => await validateAddress(body),
+    mutationFn: async (body) => await validateAddress(body),
     ...mutationOptions
   });

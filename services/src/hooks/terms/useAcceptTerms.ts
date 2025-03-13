@@ -8,10 +8,9 @@ interface AcceptTermsContext {
   status?: AgreementStatus;
 }
 
-export const useAcceptTerms = (options?: UseMutationOptions<UserAgreement, HikeError<null>, AcceptTermsContext>) => {
-  return useMutation({
+export const useAcceptTerms = (options?: UseMutationOptions<UserAgreement, HikeError<null>, AcceptTermsContext>) =>
+  useMutation({
     mutationKey: ['acceptTerms'],
-    mutationFn: async ({ type, status }: AcceptTermsContext) => await acceptTerms({ type, status }),
+    mutationFn: async ({ type, status }) => await acceptTerms({ type, status }),
     ...options
   });
-};

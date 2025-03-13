@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useModifyOrderAuthorization = (
   mutationOptions?: UseMutationOptions<OrderExtended, HikeError<null>, ModifyOrderAuthorizationParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['modifyOrder'],
-    mutationFn: async (params: ModifyOrderAuthorizationParams) => await modifyOrderAuthorization(params),
+    mutationFn: async (params) => await modifyOrderAuthorization(params),
     ...mutationOptions
   });
-};

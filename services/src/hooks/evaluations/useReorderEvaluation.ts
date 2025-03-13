@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useReorderEvaluation = (
   mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['reorderEvaluation'],
-    mutationFn: async (body: ActionEvaluationParams) => await reorderEvaluation(body),
+    mutationFn: async (body) => await reorderEvaluation(body),
     ...mutationOptions
   });
-};

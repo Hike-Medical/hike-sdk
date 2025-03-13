@@ -10,11 +10,9 @@ interface UseUpdateEvaluationParams {
 
 export const useUpdateEvaluation = (
   mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, UseUpdateEvaluationParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateEvaluation'],
-    mutationFn: async ({ evaluationId, params }: UseUpdateEvaluationParams) =>
-      await updateEvaluation(evaluationId, params),
+    mutationFn: async ({ evaluationId, params }) => await updateEvaluation(evaluationId, params),
     ...mutationOptions
   });
-};

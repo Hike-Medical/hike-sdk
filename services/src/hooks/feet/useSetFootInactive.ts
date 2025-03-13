@@ -9,10 +9,9 @@ interface SetFootInactiveParams extends SetFootInactive {
 
 export const useSetFootInactive = (
   mutationOptions?: Omit<UseMutationOptions<Foot, HikeError<null>, SetFootInactiveParams>, 'mutationKey' | 'mutationFn'>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['setInactive'],
-    mutationFn: async (body: SetFootInactiveParams) => await setInactive(body.footId, body),
+    mutationFn: async (body) => await setInactive(body.footId, body),
     ...mutationOptions
   });
-};

@@ -9,6 +9,6 @@ export interface DeleteNoteParams {
 export const useDeleteNote = (mutationOptions?: UseMutationOptions<void, HikeError<null>, DeleteNoteParams>) =>
   useMutation({
     mutationKey: ['deleteNote'],
-    mutationFn: async ({ noteId }: DeleteNoteParams) => await deleteNotesByIdForWorkbench(noteId),
+    mutationFn: async ({ noteId }) => await deleteNotesByIdForWorkbench(noteId),
     ...mutationOptions
   });

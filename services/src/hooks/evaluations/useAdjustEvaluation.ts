@@ -10,11 +10,9 @@ interface AdjustEvaluationContext {
 
 export const useAdjustEvaluation = (
   mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, AdjustEvaluationContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['adjustEvaluation'],
-    mutationFn: async ({ params, companyIds }: AdjustEvaluationContext) =>
-      await adjustmentEvaluation(params, companyIds),
+    mutationFn: async ({ params, companyIds }) => await adjustmentEvaluation(params, companyIds),
     ...mutationOptions
   });
-};

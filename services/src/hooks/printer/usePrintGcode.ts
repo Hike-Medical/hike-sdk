@@ -8,10 +8,9 @@ interface PrintGcodeContext {
   companyIds: string[];
 }
 
-export const usePrintGcode = (options?: UseMutationOptions<void, HikeError<null>, PrintGcodeContext>) => {
-  return useMutation({
+export const usePrintGcode = (options?: UseMutationOptions<void, HikeError<null>, PrintGcodeContext>) =>
+  useMutation({
     mutationKey: ['printGcode'],
-    mutationFn: async ({ body, companyIds }: PrintGcodeContext) => await printGcode(body, companyIds),
+    mutationFn: async ({ body, companyIds }) => await printGcode(body, companyIds),
     ...options
   });
-};

@@ -8,10 +8,9 @@ interface SendEmailTemplateContext {
   params: SendEmailTemplateParams;
 }
 
-export const useSendEmailTemplate = (options?: UseMutationOptions<void, HikeError<null>, SendEmailTemplateContext>) => {
-  return useMutation({
+export const useSendEmailTemplate = (options?: UseMutationOptions<void, HikeError<null>, SendEmailTemplateContext>) =>
+  useMutation({
     mutationKey: ['sendEmailTemplate'],
-    mutationFn: async ({ templateId, params }: SendEmailTemplateContext) => await sendEmailTemplate(templateId, params),
+    mutationFn: async ({ templateId, params }) => await sendEmailTemplate(templateId, params),
     ...options
   });
-};

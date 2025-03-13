@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useFormTemplates = (
   queryOptions?: Omit<UseQueryOptions<Partial<FormTemplateResponse>[], HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['findFormTemplates'],
     queryFn: async () => await findFormTemplates(),
     ...queryOptions
   });
-};

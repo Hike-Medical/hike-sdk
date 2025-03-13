@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useCancelEvaluation = (
   mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['cancelEvalaution'],
-    mutationFn: async (body: ActionEvaluationParams) => await cancelEvaluation(body),
+    mutationFn: async (body) => await cancelEvaluation(body),
     ...mutationOptions
   });
-};

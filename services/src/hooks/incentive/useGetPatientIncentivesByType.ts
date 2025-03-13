@@ -13,10 +13,9 @@ export const useGetPatientIncentivesByType = ({
   incentiveType,
   queryKey = [],
   ...options
-}: UseGetPatientIncentivesByTypeOptions) => {
-  return useQuery({
+}: UseGetPatientIncentivesByTypeOptions) =>
+  useQuery({
     queryKey: ['patientIncentive', incentiveType, queryKey],
     queryFn: async () => await fetchPatientIncentivesByType(incentiveType),
     ...options
   });
-};

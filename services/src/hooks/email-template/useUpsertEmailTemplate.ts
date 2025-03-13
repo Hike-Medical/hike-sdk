@@ -9,10 +9,9 @@ interface UpsertEmailTemplateContext {
 
 export const useUpsertEmailTemplate = (
   options?: UseMutationOptions<EmailTemplate, HikeError<null>, UpsertEmailTemplateContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['upsertEmailTemplates'],
-    mutationFn: async ({ body }: UpsertEmailTemplateContext) => await upsertEmailTemplate(body),
+    mutationFn: async ({ body }) => await upsertEmailTemplate(body),
     ...options
   });
-};

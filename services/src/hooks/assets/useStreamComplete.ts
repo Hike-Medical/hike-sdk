@@ -10,10 +10,9 @@ interface StreamCompleteContext {
 
 export const useStreamComplete = (
   mutationOptions?: UseMutationOptions<Asset, HikeError<null>, StreamCompleteContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['streamComplete'],
-    mutationFn: ({ assetId, params }: StreamCompleteContext) => handleStreamComplete(assetId, params),
+    mutationFn: ({ assetId, params }) => handleStreamComplete(assetId, params),
     ...mutationOptions
   });
-};

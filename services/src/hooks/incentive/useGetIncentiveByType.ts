@@ -9,10 +9,9 @@ interface UseGetIncentiveByTypeOptions
   queryKey?: QueryKey;
 }
 
-export const useGetIncentiveByType = ({ incentiveType, queryKey = [], ...options }: UseGetIncentiveByTypeOptions) => {
-  return useQuery({
+export const useGetIncentiveByType = ({ incentiveType, queryKey = [], ...options }: UseGetIncentiveByTypeOptions) =>
+  useQuery({
     queryKey: ['incentive', incentiveType, queryKey],
     queryFn: async () => await findIncentiveByType(incentiveType),
     ...options
   });
-};

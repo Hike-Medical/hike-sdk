@@ -10,11 +10,10 @@ interface UpdateOrderContext {
   companyIds?: string[];
 }
 
-export const useOrderUpdate = (options?: UseMutationOptions<Order, HikeError<Order>, UpdateOrderContext>) => {
-  return useMutation({
+export const useOrderUpdate = (options?: UseMutationOptions<Order, HikeError<Order>, UpdateOrderContext>) =>
+  useMutation({
     mutationKey: ['updateOrder'],
-    mutationFn: async ({ orderId, body, jwtToken, companyIds }: UpdateOrderContext) =>
+    mutationFn: async ({ orderId, body, jwtToken, companyIds }) =>
       await updateOrder(orderId, body, jwtToken, companyIds),
     ...options
   });
-};

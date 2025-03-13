@@ -8,10 +8,9 @@ interface CreateOrderContext {
   companyIds: string[];
 }
 
-export const useCreateOrder = (options?: UseMutationOptions<Order, HikeError<Order>, CreateOrderContext>) => {
-  return useMutation({
+export const useCreateOrder = (options?: UseMutationOptions<Order, HikeError<Order>, CreateOrderContext>) =>
+  useMutation({
     mutationKey: ['updateOrder'],
-    mutationFn: async ({ body, companyIds }: CreateOrderContext) => await createOrder(body, companyIds),
+    mutationFn: async ({ body, companyIds }) => await createOrder(body, companyIds),
     ...options
   });
-};
