@@ -7,10 +7,9 @@ interface InviteUserContext {
   body: InviteUserParams;
 }
 
-export const useInviteUsers = (options?: UseMutationOptions<boolean, HikeError<null>, InviteUserContext>) => {
-  return useMutation({
+export const useInviteUsers = (options?: UseMutationOptions<boolean, HikeError<null>, InviteUserContext>) =>
+  useMutation({
     mutationKey: ['inviteUsers'],
-    mutationFn: async ({ body }: InviteUserContext) => await inviteUserEmail(body),
+    mutationFn: async ({ body }) => await inviteUserEmail(body),
     ...options
   });
-};

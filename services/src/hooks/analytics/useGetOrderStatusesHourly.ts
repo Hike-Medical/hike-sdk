@@ -25,11 +25,11 @@ interface HourlyResponse {
   >;
 }
 
-export interface UseGetOrderStatusesHourlyOptions
+interface UseGetOrderStatusesHourlyOptions
   extends Omit<UseQueryOptions<HourlyResponse[], HikeError<null>>, 'queryKey' | 'queryFn'> {}
 
-export const useGetOrderStatusesHourly = (body: HourlyOptions, queryOptions?: UseGetOrderStatusesHourlyOptions) => {
-  return useQuery({
+export const useGetOrderStatusesHourly = (body: HourlyOptions, queryOptions?: UseGetOrderStatusesHourlyOptions) =>
+  useQuery({
     queryKey: [
       'orderStatusesHourly',
       ...body.orderStatuses,
@@ -39,4 +39,3 @@ export const useGetOrderStatusesHourly = (body: HourlyOptions, queryOptions?: Us
     queryFn: async () => await getOrderStatusesPerHour(body.orderStatuses, body.dateFilters, body.companyIds),
     ...queryOptions
   });
-};

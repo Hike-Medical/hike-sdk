@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useGetLabelByShippingId = (
   mutationOptions?: UseMutationOptions<LabelsResponse, HikeError<null>, string>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['getLabelByShippingId'],
-    mutationFn: async (shippingId: string) => await fetchLabelByShippingId(shippingId),
+    mutationFn: async (shippingId) => await fetchLabelByShippingId(shippingId),
     ...mutationOptions
   });
-};

@@ -10,10 +10,9 @@ interface UseSaveTrackingInfoContext {
 
 export const useUpdateTrackingInfo = (
   mutationOptions?: UseMutationOptions<void, HikeError<null>, UseSaveTrackingInfoContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateTrackingInfo'],
-    mutationFn: async ({ labelId, body }: UseSaveTrackingInfoContext) => await updateTrackingInfo(labelId, body),
+    mutationFn: async ({ labelId, body }) => await updateTrackingInfo(labelId, body),
     ...mutationOptions
   });
-};

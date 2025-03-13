@@ -9,11 +9,9 @@ interface UploadFootRenderContext {
   companyIds: string[];
 }
 
-export const useUploadFootRender = (options?: UseMutationOptions<void, HikeError<null>, UploadFootRenderContext>) => {
-  return useMutation({
+export const useUploadFootRender = (options?: UseMutationOptions<void, HikeError<null>, UploadFootRenderContext>) =>
+  useMutation({
     mutationKey: ['uploadFootRender'],
-    mutationFn: async ({ file, body, companyIds }: UploadFootRenderContext) =>
-      await uploadFootRender(file, body, companyIds),
+    mutationFn: async ({ file, body, companyIds }) => await uploadFootRender(file, body, companyIds),
     ...options
   });
-};

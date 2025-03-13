@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findShippingLabels } from '../../api/shipping.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseSearchShippingLabelsOptions
+interface UseSearchShippingLabelsOptions
   extends Omit<UseQueryOptions<ShippingLabel[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   query: string;
   queryKey?: QueryKey;

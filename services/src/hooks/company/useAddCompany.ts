@@ -7,10 +7,9 @@ interface AddCompanyContext {
   body: AddCompanyParams;
 }
 
-export const useAddCompany = (options?: UseMutationOptions<CompanyExtended, HikeError<null>, AddCompanyContext>) => {
-  return useMutation({
+export const useAddCompany = (options?: UseMutationOptions<CompanyExtended, HikeError<null>, AddCompanyContext>) =>
+  useMutation({
     mutationKey: ['addCompany'],
-    mutationFn: async ({ body }: AddCompanyContext) => await addCompany(body),
+    mutationFn: async ({ body }) => await addCompany(body),
     ...options
   });
-};

@@ -13,10 +13,9 @@ export const useUpdateFormTemplate = (
     UseMutationOptions<FormTemplateResponse, HikeError<null>, UpdateFormTemplateParams>,
     'mutationKey' | 'mutationFn'
   >
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateFormTemplate'],
-    mutationFn: async (params: UpdateFormTemplateParams) => await updateFormTemplate(params.templateId, params.body),
+    mutationFn: async (params) => await updateFormTemplate(params.templateId, params.body),
     ...mutationOptions
   });
-};

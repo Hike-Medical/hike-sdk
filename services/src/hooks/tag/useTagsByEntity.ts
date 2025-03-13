@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { statsForTagEntity } from '../../api/tag.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseTagsByEntityOptions
+interface UseTagsByEntityOptions
   extends Omit<UseQueryOptions<Record<string, number>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   type: EntityType;
   queryKey?: QueryKey;

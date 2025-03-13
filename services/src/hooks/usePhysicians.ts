@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchPhysicians, searchPhysicians } from '../api/physician.service';
 import { HikeError } from '../errors/HikeError';
 
-export interface UsePhysiciansOptions extends PagedParams {
+interface UsePhysiciansOptions extends PagedParams {
   key?: string[];
   searchTerm?: string | null;
   enabled?: boolean;

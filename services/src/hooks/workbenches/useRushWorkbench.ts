@@ -10,6 +10,6 @@ interface RushWorkbenchContext {
 export const useRushWorkbench = (options?: UseMutationOptions<Asset[], HikeError<null>, RushWorkbenchContext>) =>
   useMutation({
     mutationKey: ['rushWorkbench'],
-    mutationFn: async ({ workbenchId }: RushWorkbenchContext) => await rushWorkbench(workbenchId),
+    mutationFn: async ({ workbenchId }) => await rushWorkbench(workbenchId),
     ...options
   });

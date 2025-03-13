@@ -3,7 +3,7 @@ import type { BillingOverview } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getBillingOverview } from '../billing.service';
 
-export interface useGetBillingOverviewContext
+interface UseGetBillingOverviewContext
   extends Omit<UseQueryOptions<BillingOverview, HikeError<null>>, 'queryKey' | 'queryFn'> {
   stripeEntityId: string;
   enabled: boolean;
@@ -15,7 +15,7 @@ export const useGetBillingOverview = ({
   stripeEntityId,
   enabled = true,
   ...options
-}: useGetBillingOverviewContext) =>
+}: UseGetBillingOverviewContext) =>
   useQuery({
     queryKey: ['stripeBillingOverview', queryKey],
     queryFn: async () => await getBillingOverview(stripeEntityId),

@@ -11,6 +11,6 @@ interface ResetWorkbenchContext {
 export const useResetWorkbench = (options?: UseMutationOptions<Workbench, HikeError<null>, ResetWorkbenchContext>) =>
   useMutation({
     mutationKey: ['resetWorkbench'],
-    mutationFn: async ({ workbenchId, params }: ResetWorkbenchContext) => await resetScans(workbenchId, params),
+    mutationFn: async ({ workbenchId, params }) => await resetScans(workbenchId, params),
     ...options
   });

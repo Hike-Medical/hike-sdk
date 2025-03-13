@@ -13,7 +13,6 @@ export const useUpdateFootFromWorkbench = (
 ) =>
   useMutation({
     mutationKey: ['updateRenderType'],
-    mutationFn: async ({ workbenchId, params }: UpdateFootFromWorkbenchContext) =>
-      await updateFootByWorkbenchId(workbenchId, params),
+    mutationFn: async ({ workbenchId, params }) => await updateFootByWorkbenchId(workbenchId, params),
     ...options
   });

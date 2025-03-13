@@ -138,15 +138,6 @@ export const deactivateNotification = async (notificationId: string): Promise<vo
   }
 };
 
-export const clearNotification = async (notificationId: string): Promise<{ count: number }> => {
-  try {
-    const response = await backendApi.delete(`notification/${notificationId}/clear`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
 export const enrollPatientsToNotification = async (
   notificationId: string,
   params: EnrollPatientsParams
@@ -237,6 +228,15 @@ export const deleteNotificationMessage = async (messageId: string): Promise<void
 export const deleteNotificationJob = async (jobId: string): Promise<void> => {
   try {
     await backendApi.delete(`notification/job/${jobId}`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteNotificationJobs = async (notificationId: string): Promise<{ count: number }> => {
+  try {
+    const response = await backendApi.delete(`notification/${notificationId}/job`);
+    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }

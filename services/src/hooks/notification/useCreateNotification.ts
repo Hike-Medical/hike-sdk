@@ -9,10 +9,9 @@ interface UseCreateNotificationOptions {
 
 export const useCreateNotification = (
   options?: UseMutationOptions<Notification, HikeError<null>, UseCreateNotificationOptions>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['createNotification'],
-    mutationFn: async ({ params }: UseCreateNotificationOptions) => await createNotification(params),
+    mutationFn: async ({ params }) => await createNotification(params),
     ...options
   });
-};

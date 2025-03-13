@@ -6,10 +6,9 @@ import { HikeError } from '../../errors/HikeError';
 export const useFormTemplateById = (
   templateId: string,
   queryOptions?: UseQueryOptions<FormTemplateResponse, HikeError<null>>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['findFormTemplateById', templateId],
     queryFn: async () => await findFormTemplateById(templateId),
     ...queryOptions
   });
-};

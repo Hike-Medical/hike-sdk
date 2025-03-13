@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchOrdersByLabelId } from '../../api/shipping.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseOrdersByLabelId {
+interface UseOrdersByLabelId {
   key?: string[];
   enabled?: boolean;
   labelId: string;

@@ -9,11 +9,9 @@ interface ValidateConsumerSubmissionContext {
 
 export const useValidateConsumerSubmission = (
   options?: UseMutationOptions<Workbench, HikeError<null>, ValidateConsumerSubmissionContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['validateConsumerSubmission'],
-    mutationFn: async ({ workbenchId }: ValidateConsumerSubmissionContext) =>
-      await validateConsumerSubmission(workbenchId),
+    mutationFn: async ({ workbenchId }) => await validateConsumerSubmission(workbenchId),
     ...options
   });
-};

@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { searchWorkbenches } from '../../api/workbench.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseSearchWorkbenchesOptions
+interface UseSearchWorkbenchesOptions
   extends Omit<UseQueryOptions<PagedResponse<WorkbenchExtended[]>, HikeError<null>>, 'queryFn' | 'queryKey'> {
   params: SearchWorkbenchParams;
   companyIds?: string[];

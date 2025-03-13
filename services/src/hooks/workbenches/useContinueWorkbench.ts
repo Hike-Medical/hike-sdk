@@ -10,11 +10,9 @@ interface ContinueWorkbenchContext {
 
 export const useContinueWorkbench = (
   options?: UseMutationOptions<Workbench, HikeError<null>, ContinueWorkbenchContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['continueWorkbench'],
-    mutationFn: async ({ workbenchId, companyIds }: ContinueWorkbenchContext) =>
-      await continueWorkbench(workbenchId, companyIds),
+    mutationFn: async ({ workbenchId, companyIds }) => await continueWorkbench(workbenchId, companyIds),
     ...options
   });
-};

@@ -8,10 +8,9 @@ export const useUpsertSubmission = (
     UseMutationOptions<FormSubmissionTyped, HikeError<null>, UpsertFormSubmissionParams>,
     'mutationKey' | 'mutationFn'
   >
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['upsertSubmission'],
-    mutationFn: async (params: UpsertFormSubmissionParams) => await upsertFormSubmission(params),
+    mutationFn: async (params) => await upsertFormSubmission(params),
     ...mutationOptions
   });
-};

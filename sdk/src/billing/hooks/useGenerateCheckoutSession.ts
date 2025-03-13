@@ -11,11 +11,9 @@ interface GenerateCheckoutSessionContext {
 
 export const useGenerateCheckoutSession = (
   options?: UseMutationOptions<Stripe.Checkout.Session, HikeError<null>, GenerateCheckoutSessionContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['generateCheckoutSession'],
-    mutationFn: async ({ workbenchId, params }: GenerateCheckoutSessionContext) =>
-      await generateCheckoutSession(workbenchId, params),
+    mutationFn: async ({ workbenchId, params }) => await generateCheckoutSession(workbenchId, params),
     ...options
   });
-};
