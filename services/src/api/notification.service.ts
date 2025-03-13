@@ -138,6 +138,15 @@ export const deactivateNotification = async (notificationId: string): Promise<vo
   }
 };
 
+export const clearNotification = async (notificationId: string): Promise<{ count: number }> => {
+  try {
+    const response = await backendApi.delete(`notification/${notificationId}/clear`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const enrollPatientsToNotification = async (
   notificationId: string,
   params: EnrollPatientsParams
