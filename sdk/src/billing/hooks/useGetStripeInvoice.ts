@@ -12,7 +12,7 @@ export const useStripeInvoice = (
 ) => {
   return useMutation({
     mutationKey: ['stripeInvoice'],
-    mutationFn: async ({ stripeInvoiceId }: StripeInvoiceContext) => await fetchStripeInvoice(stripeInvoiceId),
+    mutationFn: async ({ stripeInvoiceId }) => await fetchStripeInvoice(stripeInvoiceId),
     ...options
   });
 };

@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { searchCompanyFacilityAndAddresses } from '../../api/facility.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseFacilitySearchOptions extends SearchFacilityParams {
+interface UseFacilitySearchOptions extends SearchFacilityParams {
   key?: string[];
   companyIds?: string[];
   enabled?: boolean;

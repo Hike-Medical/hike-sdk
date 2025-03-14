@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findCompanyByName } from '../../api/company.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseCompaniesByNameOptions
+interface UseCompaniesByNameOptions
   extends Omit<
     UseQueryOptions<Awaited<ReturnType<typeof findCompanyByName>>, HikeError<null>>,
     'queryKey' | 'queryFn'

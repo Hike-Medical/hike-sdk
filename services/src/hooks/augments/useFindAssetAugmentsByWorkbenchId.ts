@@ -5,10 +5,9 @@ import { findAssetAugmentsByWorkbenchId } from '../../api/augment.service';
 export const useFindAssetAugmentsByWorkbenchId = (
   workbenchId: string,
   options?: Omit<UseQueryOptions<AssetAugmentResult[], Error>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery<AssetAugmentResult[], Error>({
+) =>
+  useQuery<AssetAugmentResult[], Error>({
     queryKey: ['augment', 'workbench', workbenchId],
     queryFn: async () => await findAssetAugmentsByWorkbenchId(workbenchId),
     ...options
   });
-};

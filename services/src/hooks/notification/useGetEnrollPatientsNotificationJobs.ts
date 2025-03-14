@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchEnrollPatientsNotificationJobs } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetEnrollPatientsNotificationJobsOptions
+interface UseGetEnrollPatientsNotificationJobsOptions
   extends Omit<UseQueryOptions<JobQueueTask<EnrollPatientsJobData, void>[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }

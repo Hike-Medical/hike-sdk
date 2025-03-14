@@ -14,7 +14,7 @@ export const useUpdateRenderType = (
 ) =>
   useMutation({
     mutationKey: ['updateRenderType'],
-    mutationFn: async ({ workbenchId, renderType, companyIds }: UpdateRenderTypeContext) =>
+    mutationFn: async ({ workbenchId, renderType, companyIds }) =>
       await updateRenderType(workbenchId, { renderType }, companyIds),
     ...options
   });

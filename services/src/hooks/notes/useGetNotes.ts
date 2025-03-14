@@ -3,8 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findNotesByWorkbenchId } from '../../api/notes.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetNotesOptions
-  extends Omit<UseQueryOptions<Notes[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
+interface UseGetNotesOptions extends Omit<UseQueryOptions<Notes[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
   tags?: string[];
   deleted?: boolean;

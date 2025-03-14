@@ -13,11 +13,9 @@ export const useGetSignalingChannel = (
     UseMutationOptions<SignalingChannelResponse, HikeError<null>, GetSignalingChannelContext>,
     'mutationKey' | 'mutationFn'
   >
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['getSignalingChannel'],
-    mutationFn: async ({ workbenchId, params }: GetSignalingChannelContext) =>
-      await getSignalingChannel(workbenchId, params),
+    mutationFn: async ({ workbenchId, params }) => await getSignalingChannel(workbenchId, params),
     ...mutationOptions
   });
-};

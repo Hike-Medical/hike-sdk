@@ -2,10 +2,9 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { uploadComplete } from '../../api/asset.service';
 import { HikeError } from '../../errors/HikeError';
 
-export const useUploadComplete = (mutationOptions?: UseMutationOptions<void, HikeError<null>, string>) => {
-  return useMutation({
+export const useUploadComplete = (mutationOptions?: UseMutationOptions<void, HikeError<null>, string>) =>
+  useMutation({
     mutationKey: ['uploadComplete'],
-    mutationFn: (assetId: string) => uploadComplete(assetId),
+    mutationFn: (assetId) => uploadComplete(assetId),
     ...mutationOptions
   });
-};

@@ -1,7 +1,7 @@
+import { CreateMultipartUrls } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { GenerateSignedURLParams, GenerateSignedURLResponse, getPreSignedURL } from '../../api/scan.service';
 import { HikeError } from '../../errors/HikeError';
-import { CreateMultipartUrls } from '@hike/types';
 
 export const useCreatePresignedUrl = (
   mutationOptions?: UseMutationOptions<
@@ -9,10 +9,9 @@ export const useCreatePresignedUrl = (
     HikeError<null>,
     GenerateSignedURLParams
   >
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['createPresignedUrl'],
-    mutationFn: ({ footId, ...body }: GenerateSignedURLParams) => getPreSignedURL(footId, body),
+    mutationFn: ({ footId, ...body }) => getPreSignedURL(footId, body),
     ...mutationOptions
   });
-};

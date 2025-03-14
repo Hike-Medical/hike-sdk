@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchOrders } from '../../api/order.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseOrdersOptions
+interface UseOrdersOptions
   extends Omit<UseQueryOptions<PagedResponse<OrderExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetOrdersParams;
   queryKey?: QueryKey;

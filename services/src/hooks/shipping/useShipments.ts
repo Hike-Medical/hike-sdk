@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchShipments } from '../../api/shipping.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetShipengineShipmentsOptions extends GetShipengineShipmentsParams {
+interface UseGetShipengineShipmentsOptions extends GetShipengineShipmentsParams {
   key?: string[];
   enabled?: boolean;
 }

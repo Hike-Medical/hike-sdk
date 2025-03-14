@@ -13,7 +13,7 @@ export const useUploadFileToS3 = (
 ) =>
   useMutation({
     mutationKey: ['uploadFileToS3'],
-    mutationFn: async ({ file, presignedUrl, onProgress }: UploadFileToS3Params) => {
+    mutationFn: async ({ file, presignedUrl, onProgress }) => {
       await axios.put(presignedUrl, file, {
         headers: {
           'Content-Type': file instanceof File ? file.type : 'application/octet-stream'

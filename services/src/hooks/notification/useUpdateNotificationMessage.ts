@@ -10,11 +10,9 @@ interface UseUpdateNotificationMessageOptions {
 
 export const useUpdateNotificationMessage = (
   options?: UseMutationOptions<NotificationMessage, HikeError<null>, UseUpdateNotificationMessageOptions>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateNotificationMessage'],
-    mutationFn: async ({ messageId, params }: UseUpdateNotificationMessageOptions) =>
-      await updateNotificationMessage(messageId, params),
+    mutationFn: async ({ messageId, params }) => await updateNotificationMessage(messageId, params),
     ...options
   });
-};

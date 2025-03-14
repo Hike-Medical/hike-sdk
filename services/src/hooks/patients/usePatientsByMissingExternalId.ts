@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchPatientsByMissingExternalId } from '../../api/patient.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UsePatientsWithMissingIdsOptions
+interface UsePatientsWithMissingIdsOptions
   extends Omit<UseQueryOptions<PagedResponse<PatientExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: PagedParams;
   queryKey?: QueryKey;

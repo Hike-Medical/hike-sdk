@@ -7,7 +7,6 @@ export const useVoidLabel = (
 ) =>
   useMutation({
     mutationKey: ['voidLabel'],
-    mutationFn: async ({ labelId, voidShippedLabel }: { labelId: string; voidShippedLabel?: boolean }) =>
-      await voidLabel(labelId, voidShippedLabel),
+    mutationFn: async ({ labelId, voidShippedLabel }) => await voidLabel(labelId, voidShippedLabel),
     ...mutationOptions
   });

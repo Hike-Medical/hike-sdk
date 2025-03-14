@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useSignInWithPin = (
   mutationOptions?: UseMutationOptions<AuthSession, HikeError<null>, SignInWithPinBody>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['signInWithPin'],
-    mutationFn: async (credentials: SignInWithPinBody) => await signInWithPin(credentials),
+    mutationFn: async (credentials) => await signInWithPin(credentials),
     ...mutationOptions
   });
-};

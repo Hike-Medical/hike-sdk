@@ -9,10 +9,9 @@ interface SubmitConsumerOrderContext {
 
 export const useSubmitConsumerOrder = (
   options?: UseMutationOptions<Workbench, HikeError<null>, SubmitConsumerOrderContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['submitConsumerOrder'],
-    mutationFn: async ({ workbenchId }: SubmitConsumerOrderContext) => await submitConsumerOrder(workbenchId),
+    mutationFn: async ({ workbenchId }) => await submitConsumerOrder(workbenchId),
     ...options
   });
-};

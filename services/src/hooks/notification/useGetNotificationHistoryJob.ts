@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchNotificationHistoryByJob } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetNotificationHistoryJobOptions
+interface UseGetNotificationHistoryJobOptions
   extends Omit<UseQueryOptions<NotificationHistoryExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   jobId: string;
   queryKey?: QueryKey;

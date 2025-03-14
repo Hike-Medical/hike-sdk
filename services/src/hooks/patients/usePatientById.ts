@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { findPatientById } from '../../api/patient.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseFindPatientByIdOptions
+interface UseFindPatientByIdOptions
   extends Omit<UseQueryOptions<PatientExtended, HikeError<null>>, 'queryKey' | 'queryFn'> {
   patientId: string;
   queryKey?: QueryKey;

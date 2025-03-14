@@ -8,10 +8,9 @@ interface RunCustomSlicerContext {
   companyIds?: string[];
 }
 
-export const useRunSlicerForSide = (options?: UseMutationOptions<void, HikeError<null>, RunCustomSlicerContext>) => {
-  return useMutation({
+export const useRunSlicerForSide = (options?: UseMutationOptions<void, HikeError<null>, RunCustomSlicerContext>) =>
+  useMutation({
     mutationKey: ['submitOrder'],
-    mutationFn: async ({ body, companyIds }: RunCustomSlicerContext) => await runSlicerForSide(body, companyIds),
+    mutationFn: async ({ body, companyIds }) => await runSlicerForSide(body, companyIds),
     ...options
   });
-};

@@ -8,10 +8,9 @@ export const useCreateFormTemplate = (
     UseMutationOptions<FormTemplateResponse, HikeError<null>, CreateFormTemplateBody>,
     'mutationKey' | 'mutationFn'
   >
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['createFormTemplate'],
-    mutationFn: async (params: CreateFormTemplateBody) => await createFormTemplate(params),
+    mutationFn: async (params) => await createFormTemplate(params),
     ...mutationOptions
   });
-};

@@ -10,11 +10,9 @@ interface UseSendNotificationTestOptions {
 
 export const useSendNotificationTest = (
   options?: UseMutationOptions<void, HikeError<null>, UseSendNotificationTestOptions>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['sendNotificationTest'],
-    mutationFn: async ({ messageId, params }: UseSendNotificationTestOptions) =>
-      await sendNotificationTest(messageId, params),
+    mutationFn: async ({ messageId, params }) => await sendNotificationTest(messageId, params),
     ...options
   });
-};

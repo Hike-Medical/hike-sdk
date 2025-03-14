@@ -10,10 +10,10 @@ interface UploadVideoParams {
 
 export const useUploadVideoToS3 = (
   mutationOptions?: Omit<UseMutationOptions<void, HikeError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['uploadVideoToS3'],
-    mutationFn: ({ video, s3Url, tagSet, onProgress }: UploadVideoParams) => {
+    mutationFn: ({ video, s3Url, tagSet, onProgress }) => {
       console.log('Starting video upload to S3');
       return new Promise<void>((resolve, reject) => {
         let tagString: string | undefined;
@@ -116,4 +116,3 @@ export const useUploadVideoToS3 = (
     },
     ...mutationOptions
   });
-};

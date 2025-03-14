@@ -3,7 +3,7 @@ import type { UpFrontPaymentInfo } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getUpFrontPaymentInfo } from '../billing.service';
 
-export interface useGetUpFrontPaymentInfoContext
+interface UseGetUpFrontPaymentInfoContext
   extends Omit<UseQueryOptions<UpFrontPaymentInfo | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   stripeEntityId: string;
   enabled: boolean;
@@ -15,7 +15,7 @@ export const useGetUpFrontPaymentInfo = ({
   stripeEntityId,
   enabled = true,
   ...options
-}: useGetUpFrontPaymentInfoContext) =>
+}: UseGetUpFrontPaymentInfoContext) =>
   useQuery({
     queryKey: ['stripeUpFrontPaymentInfo', queryKey],
     queryFn: async () => await getUpFrontPaymentInfo(stripeEntityId),

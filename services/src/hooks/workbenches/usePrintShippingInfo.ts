@@ -13,7 +13,6 @@ export const usePrintShippingInfo = (
 ) =>
   useMutation({
     mutationKey: ['printShippingInfo'],
-    mutationFn: async ({ workbenchId, params }: PrintShippingInfoContext) =>
-      await printShippingInfo(workbenchId, params),
+    mutationFn: async ({ workbenchId, params }) => await printShippingInfo(workbenchId, params),
     ...options
   });

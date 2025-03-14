@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useCreateEvaluationByProduct = (
   mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, CreateEvaluationByProductParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['createEvaluationByProduct'],
-    mutationFn: async (body: CreateEvaluationByProductParams) => await createEvaluationByProduct(body),
+    mutationFn: async (body) => await createEvaluationByProduct(body),
     ...mutationOptions
   });
-};
