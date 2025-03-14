@@ -3,7 +3,7 @@ import type { GetStripeInvoiceParams, PagedResponse, StripeInvoiceExtended } fro
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchInvoices } from '../billing.service';
 
-export interface UseInvoiceOptions
+interface UseInvoiceOptions
   extends Omit<UseQueryOptions<PagedResponse<StripeInvoiceExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params?: GetStripeInvoiceParams;
   enabled?: boolean;

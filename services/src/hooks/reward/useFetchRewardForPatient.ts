@@ -6,10 +6,9 @@ import { HikeError } from '../../errors/HikeError';
 export const useFetchRewardForPatient = (
   patientId: string,
   queryOptions?: Omit<UseQueryOptions<RewardInfo[], HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['reward', patientId],
     queryFn: () => fetchRewardsForPatient(patientId),
     ...queryOptions
   });
-};

@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useGetShippingRates = (
   mutationOptions?: UseMutationOptions<GetRatesResponse[], HikeError<null>, GetRatesOrLabels>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['getShippingRates'],
-    mutationFn: async (body: GetRatesOrLabels) => await getRateEstimates(body),
+    mutationFn: async (body) => await getRateEstimates(body),
     ...mutationOptions
   });
-};

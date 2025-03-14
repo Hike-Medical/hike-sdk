@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { patientWorkbenchInformation } from '../../api/workbench.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UsePatientWorkbenchInformationOptions
+interface UsePatientWorkbenchInformationOptions
   extends Omit<UseQueryOptions<(PatientWorkbenchResponse | null)[], HikeError<null>>, 'queryFn' | 'queryKey'> {
   patientId: string;
   queryKey?: QueryKey;

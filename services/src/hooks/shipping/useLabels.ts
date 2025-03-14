@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchLabels } from '../../api/shipping.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetShipengineLabelsOptions extends GetShipengineLabelsParams {
+interface UseGetShipengineLabelsOptions extends GetShipengineLabelsParams {
   key?: string[];
   enabled?: boolean;
 }

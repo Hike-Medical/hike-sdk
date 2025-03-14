@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchRosterDeactivateStatus } from '../../api/roster.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseRosterDeactivateJobOptions
+interface UseRosterDeactivateJobOptions
   extends Omit<
     UseQueryOptions<{ progress: number; data?: DeactivateRosterResponse }, HikeError<null>>,
     'queryKey' | 'queryFn'

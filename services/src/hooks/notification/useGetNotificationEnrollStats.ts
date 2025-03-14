@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { statsForEnrollNotification } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface useGetNotificationEnrollStatsOptions
+interface UseGetNotificationEnrollStatsOptions
   extends Omit<UseQueryOptions<{ count: number }, HikeError<null>>, 'queryKey' | 'queryFn'> {
   notificationId: string;
   params: EnrollPatientsParams;
@@ -15,7 +15,7 @@ export const useGetNotificationEnrollStats = ({
   params,
   queryKey = [],
   ...options
-}: useGetNotificationEnrollStatsOptions) =>
+}: UseGetNotificationEnrollStatsOptions) =>
   useQuery({
     queryKey: ['notificationEnrollStats', notificationId, params, queryKey],
     queryFn: async () => await statsForEnrollNotification(notificationId, params),

@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useCreatePatient = (
   mutationOptions?: UseMutationOptions<PatientExtended, HikeError<null>, CreatePatientParams>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['createPatient'],
-    mutationFn: async (body: CreatePatientParams) => await createPatient(body),
+    mutationFn: async (body) => await createPatient(body),
     ...mutationOptions
   });
-};

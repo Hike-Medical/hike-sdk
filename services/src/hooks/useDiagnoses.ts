@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchDiagnoses, searchDiagnoses } from '../api/diagnosis.service';
 import { HikeError } from '../errors/HikeError';
 
-export interface UseDiagnosesOptions extends PagedParams {
+interface UseDiagnosesOptions extends PagedParams {
   key?: string[];
   searchTerm?: string | null;
   enabled?: boolean;

@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useFacilities = (
   options?: Omit<UseQueryOptions<FacilityExtended[], HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['facilities'],
     queryFn: async () => await fetchCompanyFacilitiesAndAddresses(),
     ...options
   });
-};

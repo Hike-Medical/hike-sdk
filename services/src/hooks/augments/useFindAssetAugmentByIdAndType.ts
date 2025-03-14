@@ -6,12 +6,11 @@ export const useFindAssetAugmentByIdAndType = (
   assetId: string,
   augmentType: AssetAugmentType,
   queryOptions?: Omit<UseQueryOptions<AssetAugmentResult, Error>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['augment', assetId, augmentType],
     queryFn: async () => {
       return await findAugmentByAssetIdAndType(assetId, augmentType);
     },
     ...queryOptions
   });
-};

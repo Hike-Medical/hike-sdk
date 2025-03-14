@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { findCompaniesBySession } from '../../auth/findCompaniesBySession';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseCompaniesBySessionOptions {
+interface UseCompaniesBySessionOptions {
   key?: string[];
   enabled?: boolean;
 }

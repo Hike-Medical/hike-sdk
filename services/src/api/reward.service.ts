@@ -4,7 +4,7 @@ import { backendApi } from '../utils/backendApi';
 
 export const fetchRewardsForPatient = async (patientId: string): Promise<RewardInfo[]> => {
   try {
-    const response = await backendApi.get(`reward/${patientId}`);
+    const response = await backendApi.get(`reward/patient/${patientId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -13,7 +13,7 @@ export const fetchRewardsForPatient = async (patientId: string): Promise<RewardI
 
 export const fetchPatientPoints = async (patientId: string): Promise<number> => {
   try {
-    const response = await backendApi.get(`reward/${patientId}/points`);
+    const response = await backendApi.get(`reward/patient/${patientId}/points`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

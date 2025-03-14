@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchAppointmentsImportStatus } from '../../api/appointment.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseAppointmentsImportJobOptions
+interface UseAppointmentsImportJobOptions
   extends Omit<
     UseQueryOptions<{ progress: number; data?: ImportAppointmentsResponse }, HikeError<null>>,
     'queryKey' | 'queryFn'

@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findEvaluations } from '../../api/evaluation.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseEvaluationsOptions
+interface UseEvaluationsOptions
   extends Omit<UseQueryOptions<PagedResponse<EvaluationExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   params: GetEvaluationsParams;
   queryKey?: QueryKey;

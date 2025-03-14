@@ -7,13 +7,9 @@ interface SendPrinterToLabelContext {
   companyIds: string[];
 }
 
-export const useSendPrinterToLabel = (
-  options?: UseMutationOptions<void, HikeError<null>, SendPrinterToLabelContext>
-) => {
-  return useMutation({
+export const useSendPrinterToLabel = (options?: UseMutationOptions<void, HikeError<null>, SendPrinterToLabelContext>) =>
+  useMutation({
     mutationKey: ['sendPrinterToLabel'],
-    mutationFn: async ({ workbenchId, companyIds }: SendPrinterToLabelContext) =>
-      await sendPrinterLabel(workbenchId, companyIds),
+    mutationFn: async ({ workbenchId, companyIds }) => await sendPrinterLabel(workbenchId, companyIds),
     ...options
   });
-};

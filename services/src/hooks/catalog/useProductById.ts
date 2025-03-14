@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findProductById } from '../../api/catalog.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseProductByIdOptions
+interface UseProductByIdOptions
   extends Omit<UseQueryOptions<CatalogProductExtended, HikeError<null>>, 'queryKey' | 'queryFn'> {
   productId: string;
   queryKey?: QueryKey;

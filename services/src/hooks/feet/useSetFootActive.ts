@@ -9,10 +9,9 @@ interface SetFootActiveParams {
 
 export const useSetFootActive = (
   mutationOptions?: Omit<UseMutationOptions<Foot, HikeError<null>, SetFootActiveParams>, 'mutationKey' | 'mutationFn'>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['setActive'],
-    mutationFn: async (params: SetFootActiveParams) => await setActive(params.footId),
+    mutationFn: async (params) => await setActive(params.footId),
     ...mutationOptions
   });
-};

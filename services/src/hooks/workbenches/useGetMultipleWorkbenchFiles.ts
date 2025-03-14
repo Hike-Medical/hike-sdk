@@ -10,11 +10,9 @@ interface GetMultipleWorkbenchFilesContext {
 
 export const useGetMultipleWorkbenchFiles = (
   mutationOptions?: UseMutationOptions<Blob, HikeError<null>, GetMultipleWorkbenchFilesContext>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['workbenchFiles'],
-    mutationFn: ({ params, companyIds }: GetMultipleWorkbenchFilesContext) =>
-      getFilesFromWorkbenches(params, companyIds),
+    mutationFn: ({ params, companyIds }) => getFilesFromWorkbenches(params, companyIds),
     ...mutationOptions
   });
-};

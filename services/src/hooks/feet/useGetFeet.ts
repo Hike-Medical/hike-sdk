@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 export const useGetFeet = (
   workbenchId: string,
   queryOptions?: Omit<UseQueryOptions<FootWithAssets[], HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['activeFeet', workbenchId],
     queryFn: () => getFeet(workbenchId),
     ...queryOptions
   });
-};

@@ -9,12 +9,11 @@ interface UpdateAssetAugmentMediaDto {
 
 export const useUpdateAssetAugmentMedia = (
   mutationOptions?: MutationOptions<AssetAugmentMediaResult, Error, UpdateAssetAugmentMediaDto, unknown>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationKey: ['updateAssetAugmentMedia'],
-    mutationFn: async ({ mediaId, body }: UpdateAssetAugmentMediaDto) => {
+    mutationFn: async ({ mediaId, body }) => {
       return await updateAssetAugmentMedia(mediaId, body);
     },
     ...mutationOptions
   });
-};

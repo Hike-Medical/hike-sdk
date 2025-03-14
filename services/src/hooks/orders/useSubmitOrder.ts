@@ -8,10 +8,9 @@ interface SubmitOrderContext {
   body: SubmitOrderParams;
 }
 
-export const useSubmitOrder = (options?: UseMutationOptions<Workbench, HikeError<null>, SubmitOrderContext>) => {
-  return useMutation({
+export const useSubmitOrder = (options?: UseMutationOptions<Workbench, HikeError<null>, SubmitOrderContext>) =>
+  useMutation({
     mutationKey: ['submitWorkbenchOrder'],
-    mutationFn: async ({ workbenchId, body }: SubmitOrderContext) => await submitOrder(workbenchId, body),
+    mutationFn: async ({ workbenchId, body }) => await submitOrder(workbenchId, body),
     ...options
   });
-};

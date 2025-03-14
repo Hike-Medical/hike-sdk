@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { findCompanyWorkbenchWebhooks } from '../../api/company.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface useGetCompanyWorkbenchWebhooksOptions
+interface UseGetCompanyWorkbenchWebhooksOptions
   extends Omit<UseQueryOptions<CompanyWorkbenchWebhook[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
 }
@@ -11,7 +11,7 @@ export interface useGetCompanyWorkbenchWebhooksOptions
 export const useGetCompanyWorkbenchWebhooks = ({
   queryKey = [],
   ...options
-}: useGetCompanyWorkbenchWebhooksOptions = {}) =>
+}: UseGetCompanyWorkbenchWebhooksOptions = {}) =>
   useQuery({
     queryKey: ['companyWorkbenchWebhook', queryKey],
     queryFn: async () => await findCompanyWorkbenchWebhooks(),

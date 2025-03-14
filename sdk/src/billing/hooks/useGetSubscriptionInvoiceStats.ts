@@ -3,7 +3,7 @@ import type { BillingSubscriptionStats } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { getStripeSubscriptionStats } from '../billing.service';
 
-export interface useGetStripeSubscriptionInvoice
+interface UseGetStripeSubscriptionInvoice
   extends Omit<UseQueryOptions<BillingSubscriptionStats[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   stripeEntityId: string;
   enabled: boolean;
@@ -15,7 +15,7 @@ export const useGetStripeSubscriptionStats = ({
   stripeEntityId,
   enabled = true,
   ...options
-}: useGetStripeSubscriptionInvoice) =>
+}: UseGetStripeSubscriptionInvoice) =>
   useQuery({
     queryKey: ['stripeSubscriptionStats', queryKey],
     queryFn: async () => await getStripeSubscriptionStats(stripeEntityId),

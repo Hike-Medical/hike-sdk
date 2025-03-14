@@ -6,10 +6,9 @@ import { HikeError } from '../../errors/HikeError';
 export const useGetFootStatus = (
   footId: string,
   queryOptions?: Omit<UseQueryOptions<FootStatus, HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['clinicalFootStatus', footId],
     queryFn: () => getClinicalFootStatus(footId),
     ...queryOptions
   });
-};

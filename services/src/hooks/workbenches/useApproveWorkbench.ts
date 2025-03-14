@@ -10,6 +10,6 @@ interface ApproveWorkbenchContext {
 export const useApproveWorkbench = (options?: UseMutationOptions<Asset[], HikeError<null>, ApproveWorkbenchContext>) =>
   useMutation({
     mutationKey: ['approveWorkbench'],
-    mutationFn: async ({ workbenchId }: ApproveWorkbenchContext) => await approveWorkbench(workbenchId),
+    mutationFn: async ({ workbenchId }) => await approveWorkbench(workbenchId),
     ...options
   });

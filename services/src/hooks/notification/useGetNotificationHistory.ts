@@ -3,7 +3,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchHistoryByNotification } from '../../api/notification.service';
 import { HikeError } from '../../errors/HikeError';
 
-export interface UseGetNotificationHistoryOptions
+interface UseGetNotificationHistoryOptions
   extends Omit<UseQueryOptions<PagedResponse<NotificationHistoryExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   notificationId: string;
   params: GetNotificationHistoryParams;
