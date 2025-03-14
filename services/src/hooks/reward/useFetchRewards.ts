@@ -5,10 +5,9 @@ import { HikeError } from '../../errors/HikeError';
 
 export const useFetchRewards = (
   queryOptions?: Omit<UseQueryOptions<Reward[], HikeError<null>>, 'queryKey' | 'queryFn'>
-) => {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: ['reward'],
-    queryFn: () => fetchCompanyRewards(),
+    queryFn: async () => await fetchCompanyRewards(),
     ...queryOptions
   });
-};
