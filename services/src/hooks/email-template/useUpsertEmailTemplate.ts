@@ -4,7 +4,7 @@ import { upsertEmailTemplate } from '../../api/email-template.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface UpsertEmailTemplateContext {
-  body: UpsertEmailTemplateParams;
+  params: UpsertEmailTemplateParams;
 }
 
 export const useUpsertEmailTemplate = (
@@ -12,6 +12,6 @@ export const useUpsertEmailTemplate = (
 ) =>
   useMutation({
     mutationKey: ['upsertEmailTemplates'],
-    mutationFn: async ({ body }) => await upsertEmailTemplate(body),
+    mutationFn: async ({ params }) => await upsertEmailTemplate(params),
     ...options
   });
