@@ -1,20 +1,24 @@
-import { Gender, OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '../../../prisma';
+import { InsoleSideMeasurements } from '../taika/InsoleMeasurements';
 
 export interface PatientWorkbenchResponse {
-  shoeGender: Gender | null;
+  shoeGender: string | null;
   shoeSize: number | null;
-  shoeWidth: string | null;
-  shoeType: string | null;
   isDiabetic: boolean;
-  shippedDate: Date | null;
-  contact: string | null;
-  trackingStatus: ShippingTrackingStatus | null;
   orderStatus: OrderStatus;
   orderAuthorizationStatus: OrderAuthorizationStatus;
+  submittedAt: Date;
+  poNumber: string | null;
+  workbenchId: string;
+  trackingStatus: ShippingTrackingStatus | null;
+  cost: number;
+  shoeWidth: string | null;
+  shoeType: string | null;
+  contact: string[] | null;
   trackingNumber: string | null;
   trackingLink: string | null;
-  submittedAt: Date;
-  createdAt: Date;
+  shippedDate: Date | null;
+  leftMeasurements: InsoleSideMeasurements | null;
+  rightMeasurements: InsoleSideMeasurements | null;
   evaluationId: string;
-  workbenchId: string;
 }

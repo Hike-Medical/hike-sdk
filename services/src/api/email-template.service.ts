@@ -1,8 +1,13 @@
-import type { EmailTemplate, SendEmailTemplateParams, UpsertEmailTemplateParams } from '@hike/types';
+import type {
+  EmailTemplate,
+  EmailTemplateExtended,
+  SendEmailTemplateParams,
+  UpsertEmailTemplateParams
+} from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchEmailTemplates = async (): Promise<EmailTemplate[]> => {
+export const fetchEmailTemplates = async (): Promise<EmailTemplateExtended[]> => {
   try {
     const response = await backendApi.get('email-template');
     return response.data;
@@ -32,6 +37,33 @@ export const upsertEmailTemplate = async (params: UpsertEmailTemplateParams): Pr
 export const sendEmailTemplate = async (templateId: string, params: SendEmailTemplateParams): Promise<void> => {
   try {
     const response = await backendApi.post(`email-template/${templateId}/send`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const activateEmailTemplate = async (templateId: string): Promise<void> => {
+  try {
+    const response = await backendApi.post(`email-template/${templateId}/activate`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deactivateEmailTemplate = async (templateId: string): Promise<void> => {
+  try {
+    const response = await backendApi.post(`email-template/${templateId}/deactivate`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteEmailTemplate = async (templateId: string): Promise<void> => {
+  try {
+    const response = await backendApi.delete(`email-template/${templateId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
