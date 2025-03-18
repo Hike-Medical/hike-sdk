@@ -19,9 +19,9 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
   }
 };
 
-export const findFormSchemasByIds = async (schemaIds: string[]): Promise<FormSchemaTyped[]> => {
+export const findFormSchemas = async (schemaIds?: string[]): Promise<FormSchemaTyped[]> => {
   try {
-    const response = await backendApi.get(`form/schema?schemaIds=${schemaIds.join(',')}`);
+    const response = await backendApi.get(`form/schema${schemaIds ? `?schemaIds=${schemaIds.join(',')}` : ''}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
