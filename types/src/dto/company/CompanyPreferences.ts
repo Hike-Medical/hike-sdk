@@ -29,6 +29,7 @@ export interface CompanyPreferences {
     removeRemake?: boolean;
     removeReorder?: boolean;
     assignPONumber?: boolean;
+    removeNotes?: boolean;
   };
   webhook?: {
     url: string;
