@@ -40,4 +40,5 @@ export interface CompanyPreferences {
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
   setTaikIdAsPONumber?: boolean;
+  allowPatientIdEditable?: boolean;
 }
