@@ -114,6 +114,7 @@ export type * from './dto/scan/CreateMultipartUrls';
 export type * from './dto/scan/SubmitRenderParams';
 export type * from './dto/search/GetSearchParams';
 export type * from './dto/search/SearchResponse';
+export type * from './dto/search/sqlQueryParms';
 export type * from './dto/shipping/GeneratePackingSlip';
 export type * from './dto/shipping/GetLabelsResponse';
 export type * from './dto/shipping/GetLabelTrackingInfo';
