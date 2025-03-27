@@ -65,3 +65,19 @@ export const assignClinician = async (params: AssignClinicianParams): Promise<Cl
     throw toHikeError(error);
   }
 };
+
+export const activateUser = async (userId: string): Promise<void> => {
+  try {
+    await backendApi.post(`user/${userId}/activate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deactivateUser = async (userId: string): Promise<void> => {
+  try {
+    await backendApi.post(`user/${userId}/deactivate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
