@@ -129,6 +129,7 @@ export type * from './dto/tag/UpsertTagParams';
 export type * from './dto/taika/InsoleMeasurements';
 export type * from './dto/terms/AcceptTermsParams';
 export type * from './dto/user/AssignClinicianParams';
+export type * from './dto/user/CreateUserParams';
 export type * from './dto/user/GetCliniciansParams';
 export type * from './dto/user/GetUsersParams';
 export type * from './dto/user/UpdateUserParams';
