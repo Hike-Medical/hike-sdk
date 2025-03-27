@@ -39,10 +39,8 @@ export const signInWithPin = async (credentials: SignInWithPinBody): Promise<Aut
   return response.data;
 };
 
-export const signUp = async (credentials: CreateUserParams, companyId: string) => {
-  const response = await backendApi.post('auth/signup', credentials, {
-    headers: { 'x-company-id': companyId }
-  });
+export const signUp = async (credentials: CreateUserParams) => {
+  const response = await backendApi.post('auth/signup', credentials);
   return response.data;
 };
 
