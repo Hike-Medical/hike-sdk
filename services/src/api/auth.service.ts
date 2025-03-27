@@ -7,6 +7,7 @@ import type {
 } from '@hike/types';
 import {
   AccountRecoveryParams,
+  CreateUserParams,
   InviteUserParams,
   PasswordResetParams,
   SignInWithPinBody,
@@ -38,10 +39,8 @@ export const signInWithPin = async (credentials: SignInWithPinBody): Promise<Aut
   return response.data;
 };
 
-export const signUp = async (credentials: { name: string; email: string; password: string; companyId: string }) => {
-  const response = await backendApi.post('auth/signup', credentials, {
-    headers: { 'x-company-id': credentials.companyId }
-  });
+export const signUp = async (credentials: CreateUserParams) => {
+  const response = await backendApi.post('auth/signup', credentials);
   return response.data;
 };
 
