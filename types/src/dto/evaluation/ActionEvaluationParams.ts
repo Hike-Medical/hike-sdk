@@ -4,4 +4,5 @@
 export interface ActionEvaluationParams {
   evaluationId: string;
   notes?: string;
+  companyIds?: string[];
 }

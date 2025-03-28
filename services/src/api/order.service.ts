@@ -58,6 +58,9 @@ export const fetchOrdersByType = async (
     case 'ready':
       route = 'ready';
       break;
+    case 'completed':
+      route = 'completed';
+      break;
     default:
       throw new Error('Invalid order type');
   }
