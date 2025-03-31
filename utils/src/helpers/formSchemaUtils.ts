@@ -1,7 +1,7 @@
 import type {
   FormField,
+  FormFieldDisplayOptions,
   FormFieldValue,
-  FormRule,
   FormSchemaTyped,
   FormSection,
   InvalidFormSection
@@ -15,8 +15,8 @@ import { isAddressFieldValid } from './formAddressUtils';
 export const isFormFieldDisplayed = (
   field: FormField,
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
-): boolean => isFormRuleDisplayed(field, state, activeFoot);
+  options?: FormFieldDisplayOptions
+): boolean => isFormRuleDisplayed(field, state, options);
 
 /**
  * Determines if a given form section should be displayed based on its rule and current form state.
@@ -25,17 +25,21 @@ export const isFormSectionDisplayed = (section: FormSection, state: Record<strin
   isFormRuleDisplayed(section, state);
 
 export const isFormRuleDisplayed = (
-  formItem: { rule?: FormRule },
+  formItem: Partial<FormField>,
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: FormFieldDisplayOptions
 ): boolean => {
+  if (options?.onlyRelevant) {
+    return isRelevantOrAlwaysShown(formItem, options);
+  }
+
   if (!formItem.rule || !state) {
     return true;
   }
 
   const { effect, condition } = formItem.rule;
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name + (activeFoot ?? '')];
+  const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -98,7 +102,7 @@ export const isFieldValid = (
           (key) =>
             key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
         )) ||
-    !isFormFieldDisplayed(field, state, activeFoot)
+    !isFormFieldDisplayed(field, state, { activeFoot })
   );
 };
 
@@ -195,13 +199,13 @@ export const schemaStats = (
   const validSections = sections.filter((section) => isFormSectionDisplayed(section, state));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }))
       .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot))
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }), activeFoot)
       .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, activeFoot))
   );
 
@@ -225,3 +229,8 @@ export const formValidator = (sections: FormSection[], state: Record<string, For
         };
       })
   }));
+
+export const isRelevantOrAlwaysShown = (formItem: Partial<FormField>, options?: FormFieldDisplayOptions): boolean => {
+  const isAlwaysShown = options?.alwaysShow?.includes(formItem.type ?? '');
+  return (options?.onlyRelevant && formItem.required) || isAlwaysShown || false;
+};
