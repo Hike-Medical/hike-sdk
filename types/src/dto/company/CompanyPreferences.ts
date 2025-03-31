@@ -30,6 +30,7 @@ export interface CompanyPreferences {
     removeReorder?: boolean;
     assignPONumber?: boolean;
     removeNotes?: boolean;
+    flowType?: 'core' | 'simple' | 'enterprise';
   };
   webhook?: {
     url: string;
