@@ -26,12 +26,6 @@ export interface FormFieldOption {
   alias?: Record<string, FormFieldValue>;
 }
 
-export interface FormFieldDisplayOptions {
-  onlyRelevant?: boolean;
-  alwaysShow?: string[];
-  activeFoot?: string;
-}
-
 export type FormField =
   | (BaseFormField<string> & {
       type: 'text';
