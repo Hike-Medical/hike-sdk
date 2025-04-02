@@ -165,7 +165,6 @@ export type * from './entities/PatientExtended';
 export type * from './entities/SafeCompany';
 export type * from './entities/SafeUser';
 export type * from './entities/SafeUserExtended';
-export type * from './entities/SlackMessage';
 export type * from './entities/TagResult';
 export type * from './entities/UserExtended';
 export type * from './entities/WorkbenchExtended';
