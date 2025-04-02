@@ -1,11 +1,4 @@
-import type {
-  FormField,
-  FormFieldValue,
-  FormRule,
-  FormSchemaTyped,
-  FormSection,
-  InvalidFormSection
-} from '@hike/types';
+import type { FormField, FormFieldValue, FormSchemaTyped, FormSection, InvalidFormSection } from '@hike/types';
 import { asStringArray } from '../guards/isString';
 import { isAddressFieldValid } from './formAddressUtils';
 
@@ -15,27 +8,46 @@ import { isAddressFieldValid } from './formAddressUtils';
 export const isFormFieldDisplayed = (
   field: FormField,
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
-): boolean => isFormRuleDisplayed(field, state, activeFoot);
+  options?: {
+    onlyRelevant?: boolean;
+    alwaysShow?: string[];
+    activeFoot?: string;
+  }
+): boolean => isFormRuleDisplayed(field, state, options);
 
 /**
  * Determines if a given form section should be displayed based on its rule and current form state.
  */
-export const isFormSectionDisplayed = (section: FormSection, state: Record<string, FormFieldValue>): boolean =>
-  isFormRuleDisplayed(section, state);
+export const isFormSectionDisplayed = (
+  section: FormSection,
+  state: Record<string, FormFieldValue>,
+  options?: {
+    onlyRelevant?: boolean;
+    alwaysShow?: string[];
+    activeFoot?: string;
+  }
+): boolean => isFormRuleDisplayed(section, state, options);
 
 export const isFormRuleDisplayed = (
-  formItem: { rule?: FormRule },
+  formItem: Partial<FormField>,
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    onlyRelevant?: boolean;
+    alwaysShow?: string[];
+    activeFoot?: string;
+  }
 ): boolean => {
+  if (options?.onlyRelevant) {
+    return !!((options?.onlyRelevant && formItem.required) || options?.alwaysShow?.includes(formItem.type ?? ''));
+  }
+
   if (!formItem.rule || !state) {
     return true;
   }
 
   const { effect, condition } = formItem.rule;
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name + (activeFoot ?? '')];
+  const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -98,7 +110,7 @@ export const isFieldValid = (
           (key) =>
             key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
         )) ||
-    !isFormFieldDisplayed(field, state, activeFoot)
+    !isFormFieldDisplayed(field, state, { activeFoot })
   );
 };
 
@@ -195,13 +207,13 @@ export const schemaStats = (
   const validSections = sections.filter((section) => isFormSectionDisplayed(section, state));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }))
       .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot))
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }), activeFoot)
       .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, activeFoot))
   );
 
