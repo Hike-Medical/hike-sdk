@@ -1,5 +1,12 @@
-import type { FormField, FormFieldValue, FormSchemaTyped, FormSection, InvalidFormSection } from '@hike/types';
-import { asStringArray } from '../guards/isString';
+import type {
+  FormField,
+  FormFieldValue,
+  FormRule,
+  FormSchemaTyped,
+  FormSection,
+  InvalidFormSection
+} from '@hike/types';
+import { asStringArray, isStringArray } from '../guards/isString';
 import { isAddressFieldValid } from './formAddressUtils';
 
 /**
@@ -9,8 +16,6 @@ export const isFormFieldDisplayed = (
   field: FormField,
   state: Record<string, FormFieldValue>,
   options?: {
-    onlyRelevant?: boolean;
-    alwaysShow?: string[];
     activeFoot?: string;
   }
 ): boolean => isFormRuleDisplayed(field, state, options);
@@ -22,25 +27,28 @@ export const isFormSectionDisplayed = (
   section: FormSection,
   state: Record<string, FormFieldValue>,
   options?: {
-    onlyRelevant?: boolean;
-    alwaysShow?: string[];
-    activeFoot?: string;
-  }
-): boolean => isFormRuleDisplayed(section, state, options);
-
-export const isFormRuleDisplayed = (
-  formItem: Partial<FormField>,
-  state: Record<string, FormFieldValue>,
-  options?: {
-    onlyRelevant?: boolean;
-    alwaysShow?: string[];
+    taggedOnly?: string;
     activeFoot?: string;
   }
 ): boolean => {
-  if (options?.onlyRelevant) {
-    return !!((options?.onlyRelevant && formItem.required) || options?.alwaysShow?.includes(formItem.type ?? ''));
+  // Show section that have been tagged if specified
+  if (
+    options?.taggedOnly &&
+    (!section.meta?.tags || (isStringArray(section.meta?.tags) && !section.meta.tags.includes(options.taggedOnly)))
+  ) {
+    return false;
   }
 
+  return isFormRuleDisplayed(section, state, options);
+};
+
+export const isFormRuleDisplayed = (
+  formItem: { rule?: FormRule },
+  state: Record<string, FormFieldValue>,
+  options?: {
+    activeFoot?: string;
+  }
+): boolean => {
   if (!formItem.rule || !state) {
     return true;
   }
