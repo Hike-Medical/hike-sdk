@@ -128,12 +128,15 @@ export const isFieldValid = (
 export const isFormValid = (
   sections: FormSection[],
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    taggedOnly?: string;
+    activeFoot?: string;
+  }
 ): boolean =>
   sections
-    .filter((section) => isFormSectionDisplayed(section, state))
+    .filter((section) => isFormSectionDisplayed(section, state, options))
     .flatMap((section) => section.fields)
-    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot));
+    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot));
 
 /**
  * The initial values for the form fields based on the schema and submission.
@@ -206,23 +209,26 @@ export const getSectionIndex = (sections: FormSection[], sectionId: string) =>
 export const schemaStats = (
   sections: FormSection[],
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    taggedOnly?: string;
+    activeFoot?: string;
+  }
 ): {
   sectionsCompleted: number;
   sectionsTotal: number;
   sectionNext: FormSection | null;
 } => {
-  const validSections = sections.filter((section) => isFormSectionDisplayed(section, state));
+  const validSections = sections.filter((section) => isFormSectionDisplayed(section, state, options));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }))
-      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
+      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot))
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot }), activeFoot)
-      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
+      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, options?.activeFoot))
   );
 
   return {
