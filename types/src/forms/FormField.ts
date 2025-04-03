@@ -10,6 +10,7 @@ interface BaseFormField<T extends FormFieldValue> {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  hidden?: boolean;
   print?: boolean | Record<string, FieldPrint>;
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
