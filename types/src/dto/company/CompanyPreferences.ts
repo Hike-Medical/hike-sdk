@@ -1,5 +1,6 @@
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
+import { ClinicalFlowType } from './ClinicalFlowType';
 
 export interface CompanyPreferences {
   carrierServiceCode?: string;
@@ -30,7 +31,7 @@ export interface CompanyPreferences {
     removeReorder?: boolean;
     assignPONumber?: boolean;
     removeNotes?: boolean;
-    flowType?: 'core' | 'simple' | 'enterprise' | null;
+    flowType?: ClinicalFlowType | null;
   };
   webhook?: {
     url: string;
