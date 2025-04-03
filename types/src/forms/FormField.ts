@@ -71,6 +71,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
   | (BaseFormField<string> & { type: 'multiselect:billingCodes' })
+  | (BaseFormField<string> & { type: 'signature' })
   | (BaseFormField<string> & { type: 'custom:orthofeet' })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
