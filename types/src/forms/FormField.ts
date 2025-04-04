@@ -10,6 +10,7 @@ interface BaseFormField<T extends FormFieldValue> {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  hidden?: boolean;
   print?: boolean | Record<string, FieldPrint>;
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
@@ -71,6 +72,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
   | (BaseFormField<string> & { type: 'multiselect:billingCodes' })
+  | (BaseFormField<string> & { type: 'signature' })
   | (BaseFormField<string> & { type: 'custom:orthofeet' })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {

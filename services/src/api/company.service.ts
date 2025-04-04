@@ -6,7 +6,8 @@ import {
   FindCompaniesParams,
   GetCompanyByNameParams,
   PagedResponse,
-  SafeCompany
+  SafeCompany,
+  UpdateCompanyParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -41,6 +42,24 @@ export const isFreeTrial = async (): Promise<boolean> => {
 export const addCompany = async (params: AddCompanyParams): Promise<CompanyExtended> => {
   try {
     const response = await backendApi.post('company', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateCompany = async (companyId: string, params: UpdateCompanyParams): Promise<CompanyExtended> => {
+  try {
+    const response = await backendApi.patch(`company/${companyId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCompany = async (companyId: string): Promise<CompanyExtended> => {
+  try {
+    const response = await backendApi.get(`company/${companyId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
