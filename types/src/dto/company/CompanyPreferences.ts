@@ -43,4 +43,5 @@ export interface CompanyPreferences {
   onlyNotificationTypes?: NotificationType[];
   setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
+  orderDeliveryETA?: Record<string, number>;
 }
