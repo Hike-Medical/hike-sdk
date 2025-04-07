@@ -17,6 +17,7 @@ export interface StripeFlaggedCoupon {
 export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
   allowPayrollDeduction?: boolean;
+  tierUpgradeCount?: number;
 }
 
 export interface BillingSubscriptionStats {
