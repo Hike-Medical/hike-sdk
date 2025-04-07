@@ -50,8 +50,40 @@ export class StripeService {
       });
       return paymentIntent;
     } catch (error) {
-      console.error('Error creating PaymentIntent:', error);
-      throw error;
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async createSetupIntent(
+    customerId: string,
+    stripeEntityId: string,
+    usage: 'off_session' | 'on_session' = 'off_session'
+  ): Promise<Stripe.SetupIntent> {
+    try {
+      return await this.stripe.setupIntents.create({
+        customer: customerId,
+        usage,
+        payment_method_types: ['card', 'us_bank_account'],
+        metadata: {
+          reason: 'Saving card on file',
+          stripeEntityId: stripeEntityId
+        }
+      });
+    } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async setDefaultPaymentMethod(customerId: string, paymentMethodId: string): Promise<Stripe.Customer> {
+    try {
+      return await this.stripe.customers.update(customerId, {
+        invoice_settings: {
+          default_payment_method: paymentMethodId
+        }
+      });
+    } catch (error) {
+      console.error('Error setting default payment method:', error);
+      throw this.handleStripeError(error);
     }
   }
 
@@ -115,6 +147,19 @@ export class StripeService {
       return subscription;
     } catch (error) {
       console.error('Error creating subscription', { error, customerId, priceId, companyId });
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async createStripeCustomer(name?: string, email?: string, metadata?: Record<string, any>): Promise<Stripe.Customer> {
+    try {
+      return await this.stripe.customers.create({
+        name,
+        email,
+        metadata
+      });
+    } catch (error) {
+      console.error('Error creating Stripe Customer:', error);
       throw this.handleStripeError(error);
     }
   }
