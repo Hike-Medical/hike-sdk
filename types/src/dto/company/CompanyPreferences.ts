@@ -32,6 +32,7 @@ export interface CompanyPreferences {
     assignPONumber?: boolean;
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
+    showDirectedTips?: boolean;
   };
   webhook?: {
     url: string;
