@@ -5,6 +5,7 @@ export type * from './auth/AuthUser';
 export type * from './config/AppId';
 export type * from './config/HikeConfig';
 export type * from './config/HikeEnvironment';
+export type * from './dto/analytics/HourlyOptions';
 export type * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
 export type * from './dto/appointment/ImportAppointmentsParams';
 export type * from './dto/appointment/ImportAppointmentsResponse';
