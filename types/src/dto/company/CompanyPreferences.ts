@@ -45,4 +45,5 @@ export interface CompanyPreferences {
   setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
+  defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
 }
