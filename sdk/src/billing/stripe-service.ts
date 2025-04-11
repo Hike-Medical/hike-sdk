@@ -108,6 +108,22 @@ export class StripeService {
     return { original: price.unit_amount || 0, discounted: Math.max(0, finalPrice) };
   }
 
+  async addCreditToCustomerBalance(customerId: string, addBalance: number): Promise<Stripe.Customer> {
+    const customer = await this.stripe.customers.retrieve(customerId);
+
+    if (customer.deleted) {
+      throw new Error('Cannot add credit to deleted customer');
+    }
+
+    const currentBalance = typeof customer.balance === 'number' ? customer.balance : 0;
+
+    const newBalance = currentBalance + addBalance;
+
+    return await this.stripe.customers.update(customerId, {
+      balance: newBalance
+    });
+  }
+
   async createSubscription(
     customerId: string,
     priceId: string,

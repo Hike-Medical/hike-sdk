@@ -20,6 +20,10 @@ export interface BillingPreferences {
   tierUpgradeCount?: number;
 }
 
+export interface StripeProductPreferences {
+  addCreditToCustomer?: boolean;
+}
+
 export interface BillingSubscriptionStats {
   totalPrice: number;
   periodStart: number;
