@@ -30,6 +30,7 @@ export interface CompanyPreferences {
     removeReorder?: boolean;
     assignPONumber?: boolean;
     removeNotes?: boolean;
+    showDirectedTips?: boolean;
   };
   webhook?: {
     url: string;
