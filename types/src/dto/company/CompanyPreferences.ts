@@ -1,6 +1,7 @@
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
+import { CompanyThemes } from './CompanyThemes';
 
 export interface CompanyPreferences {
   carrierServiceCode?: string;
@@ -47,6 +48,6 @@ export interface CompanyPreferences {
   orderDeliveryETA?: Record<string, number>;
   defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
   theme?: {
-    version?: 'legacy' | '2025-apr';
+    version?: CompanyThemes;
   };
 }
