@@ -47,6 +47,6 @@ export interface CompanyPreferences {
   orderDeliveryETA?: Record<string, number>;
   defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
   theme?: {
-    version?: 'legacy' | 'apr-2025';
+    version?: 'legacy' | '2025-apr';
   };
 }
