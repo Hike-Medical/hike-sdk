@@ -46,4 +46,7 @@ export interface CompanyPreferences {
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
   defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
+  theme?: {
+    version?: 'legacy' | 'apr-2025';
+  };
 }
