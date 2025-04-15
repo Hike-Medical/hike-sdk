@@ -17,6 +17,7 @@ export interface CompanyPreferences {
   modifyTaikaHeelStyle?: boolean;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
+    billWhenShipped?: boolean;
   };
   noAuthNeeded?: boolean;
   engraveInsoleWithExternalId?: boolean;
