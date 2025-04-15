@@ -97,6 +97,7 @@ export * from './hooks/evaluations/useReorderEvaluation';
 export * from './hooks/evaluations/useStartEvaluationByProduct';
 export * from './hooks/evaluations/useUpdateEvaluation';
 export * from './hooks/facilities/useFacilities';
+export * from './hooks/facilities/useFetchFacilityById';
 export * from './hooks/facilities/useSearchFacilities';
 export * from './hooks/feet/useGetFeet';
 export * from './hooks/feet/useGetFootStatus';

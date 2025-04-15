@@ -23,3 +23,12 @@ export const searchCompanyFacilityAndAddresses = async (
     throw toHikeError(error);
   }
 };
+
+export const getFacilityById = async (facilityId: string): Promise<FacilityExtended> => {
+  try {
+    const response = await backendApi.get(`facility/${facilityId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
