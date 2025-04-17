@@ -3,15 +3,13 @@ import { HikeConfig } from '@hike/types';
 import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
 
-export const CompanyProvider = async ({
-  slug,
-  config,
-  children
-}: {
+interface CompanyProviderProps {
   slug: string;
   config: HikeConfig;
   children: ReactNode;
-}): Promise<ReactNode> => {
+}
+
+export default async function CompanyProvider({ slug, config, children }: CompanyProviderProps) {
   configureServices(config);
   const company = await findCompanyBySlug(slug);
   configureCompany(company.id);
@@ -21,4 +19,4 @@ export const CompanyProvider = async ({
       {children}
     </CompanyProviderClient>
   );
-};
+}

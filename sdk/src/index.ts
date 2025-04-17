@@ -36,6 +36,7 @@ export * from '@hike/utils';
 // Export platform specific functionality
 export * from './auth/extractToken';
 export * from './auth/verifyToken';
+export * from './billing/hooks/useCreateInvoiceProductType';
 export * from './billing/hooks/useCreatePaymentIntent';
 export * from './billing/hooks/useGenerateCheckoutSession';
 export * from './billing/hooks/useGenerateCheckoutSessionInfo';
