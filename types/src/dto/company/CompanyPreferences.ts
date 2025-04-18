@@ -1,5 +1,6 @@
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
+import { ClinicalFlowType } from './ClinicalFlowType';
 
 export interface CompanyPreferences {
   carrierServiceCode?: string;
@@ -16,6 +17,7 @@ export interface CompanyPreferences {
   modifyTaikaHeelStyle?: boolean;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
+    billWhenShipped?: boolean;
   };
   noAuthNeeded?: boolean;
   engraveInsoleWithExternalId?: boolean;
@@ -30,6 +32,8 @@ export interface CompanyPreferences {
     removeReorder?: boolean;
     assignPONumber?: boolean;
     removeNotes?: boolean;
+    flowType?: ClinicalFlowType | null;
+    showDirectedTips?: boolean;
   };
   webhook?: {
     url: string;
@@ -41,4 +45,6 @@ export interface CompanyPreferences {
   onlyNotificationTypes?: NotificationType[];
   setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
+  orderDeliveryETA?: Record<string, number>;
+  defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
 }

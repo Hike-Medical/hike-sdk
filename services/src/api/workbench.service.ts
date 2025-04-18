@@ -55,7 +55,7 @@ export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtend
   }
 };
 
-export const submitOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
+export const submitClinicalOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/clinical/submit`, body);
     return response.data;
@@ -67,6 +67,15 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
 export const submitConsumerOrder = async (workbenchId: string): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const submitSimplrOrder = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/simplr/submit`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -112,15 +121,6 @@ export const printShippingInfo = async (
 export const patientWorkbenchInformation = async (patientId: string): Promise<(PatientWorkbenchResponse | null)[]> => {
   try {
     const response = await backendApi.get(`workbench/patient/${patientId}`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const processWorkbench = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
-  try {
-    const response = await backendApi.post(`workbench/${workbenchId}/process`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

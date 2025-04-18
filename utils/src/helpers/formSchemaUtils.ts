@@ -6,7 +6,7 @@ import type {
   FormSection,
   InvalidFormSection
 } from '@hike/types';
-import { asStringArray } from '../guards/isString';
+import { asStringArray, isStringArray } from '../guards/isString';
 import { isAddressFieldValid } from './formAddressUtils';
 
 /**
@@ -15,19 +15,39 @@ import { isAddressFieldValid } from './formAddressUtils';
 export const isFormFieldDisplayed = (
   field: FormField,
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
-): boolean => isFormRuleDisplayed(field, state, activeFoot);
+  options?: {
+    activeFoot?: string;
+  }
+): boolean => isFormRuleDisplayed(field, state, options);
 
 /**
  * Determines if a given form section should be displayed based on its rule and current form state.
  */
-export const isFormSectionDisplayed = (section: FormSection, state: Record<string, FormFieldValue>): boolean =>
-  isFormRuleDisplayed(section, state);
+export const isFormSectionDisplayed = (
+  section: FormSection,
+  state: Record<string, FormFieldValue>,
+  options?: {
+    taggedOnly?: string;
+    activeFoot?: string;
+  }
+): boolean => {
+  // Show section that have been tagged if specified
+  if (
+    options?.taggedOnly &&
+    (!section.meta?.tags || (isStringArray(section.meta?.tags) && !section.meta.tags.includes(options.taggedOnly)))
+  ) {
+    return false;
+  }
+
+  return isFormRuleDisplayed(section, state, options);
+};
 
 export const isFormRuleDisplayed = (
   formItem: { rule?: FormRule },
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    activeFoot?: string;
+  }
 ): boolean => {
   if (!formItem.rule || !state) {
     return true;
@@ -35,7 +55,7 @@ export const isFormRuleDisplayed = (
 
   const { effect, condition } = formItem.rule;
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name + (activeFoot ?? '')];
+  const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -98,7 +118,7 @@ export const isFieldValid = (
           (key) =>
             key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
         )) ||
-    !isFormFieldDisplayed(field, state, activeFoot)
+    !isFormFieldDisplayed(field, state, { activeFoot })
   );
 };
 
@@ -108,12 +128,15 @@ export const isFieldValid = (
 export const isFormValid = (
   sections: FormSection[],
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    taggedOnly?: string;
+    activeFoot?: string;
+  }
 ): boolean =>
   sections
-    .filter((section) => isFormSectionDisplayed(section, state))
+    .filter((section) => isFormSectionDisplayed(section, state, options))
     .flatMap((section) => section.fields)
-    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot));
+    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot));
 
 /**
  * The initial values for the form fields based on the schema and submission.
@@ -186,23 +209,26 @@ export const getSectionIndex = (sections: FormSection[], sectionId: string) =>
 export const schemaStats = (
   sections: FormSection[],
   state: Record<string, FormFieldValue>,
-  activeFoot?: string
+  options?: {
+    taggedOnly?: string;
+    activeFoot?: string;
+  }
 ): {
   sectionsCompleted: number;
   sectionsTotal: number;
   sectionNext: FormSection | null;
 } => {
-  const validSections = sections.filter((section) => isFormSectionDisplayed(section, state));
+  const validSections = sections.filter((section) => isFormSectionDisplayed(section, state, options));
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
-      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
+      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot))
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state), activeFoot)
-      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
+      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, options?.activeFoot))
   );
 
   return {

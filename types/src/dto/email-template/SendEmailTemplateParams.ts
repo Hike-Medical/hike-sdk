@@ -1,3 +1,3 @@
 export interface SendEmailTemplateParams {
-  email: string;
+  emails: string[];
 }

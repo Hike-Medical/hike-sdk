@@ -1,26 +1,16 @@
-import { OrderStatus } from '@hike/types';
+import { HourlyOptions } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const getOrderStatusesPerHour = async (
-  orderStatuses: OrderStatus[],
-  {
-    startDate,
-    endDate
-  }: {
-    startDate: string;
-    endDate: string;
-  },
-  companyIds: string[]
-) => {
+export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: string[]) => {
   try {
     const response = await backendApi.post(
       'analytics/orders/statuses/hourly',
       {
-        orderStatuses,
-        startDate,
-        endDate
+        ...body,
+        startDate: body.dateFilters.startDate,
+        endDate: body.dateFilters.endDate
       },
       {
         headers: addHeaders(companyIds)

@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus, OrderStatus } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, ProductType } from '../../../prisma';
 import { PagedParams } from '../PagedParams';
 
 export interface GetAggregatedParams extends PagedParams {
@@ -12,7 +12,7 @@ export interface GetAggregatedParams extends PagedParams {
   authorizationStartDate?: string;
   authorizationEndDate?: string;
   searchQuery?: string;
-  productType?: string[];
+  productType?: ProductType[];
   companySlugs?: string[];
   orderAuthorizationStatus?: OrderAuthorizationStatus[];
   filter?: Partial<
