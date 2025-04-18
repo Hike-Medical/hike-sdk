@@ -19,7 +19,7 @@ export const useGetNotificationEnrollPatients = ({
   ...options
 }: UseGetNotificationEnrollPatientsOptions) =>
   useQuery({
-    queryKey: ['notificationEnrollPatients', notificationId, params, queryKey],
+    queryKey: ['notificationEnrollPatients', notificationId, params, limit, queryKey],
     queryFn: async () => await fetchNotificationEnrollPatients(notificationId, params, limit),
     ...options
   });
