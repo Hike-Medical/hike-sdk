@@ -69,9 +69,9 @@ export const getRateEstimates = async ({ packages, shipDate, address, addressId,
   }
 };
 
-export const purchaseLabelByRateId = async (rateId: string) => {
+export const purchaseLabelByRateId = async (rateId: string, addressId?: string) => {
   try {
-    const response = await backendApi.post(`shipping/labels/${rateId}`);
+    const response = await backendApi.post(`shipping/labels/${rateId}`, addressId ? { addressId } : {});
     return response.data;
   } catch (error) {
     throw toHikeError(error);

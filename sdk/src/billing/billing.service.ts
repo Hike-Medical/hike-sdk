@@ -5,6 +5,7 @@ import {
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
+  StripeProductType,
   UpFrontPaymentInfo
 } from '@hike/types';
 import { Stripe } from 'stripe';
@@ -77,6 +78,15 @@ export const generateCheckoutSession = async (workbenchId: string, params: Check
 export const createPaymentIntent = async (workbenchId: string) => {
   try {
     const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createInvoiceForProductType = async (stripeProductType: StripeProductType) => {
+  try {
+    const response = await backendApi.post(`billing/invoice/${stripeProductType}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
