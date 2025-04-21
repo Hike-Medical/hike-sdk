@@ -119,3 +119,12 @@ export const fetchPricing = async () => {
     throw toHikeError(error);
   }
 };
+
+export const fetchPricingByProductType = async (stripeProductType: StripeProductType) => {
+  try {
+    const response = await backendApi.get(`billing/pricing/${stripeProductType}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

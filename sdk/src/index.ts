@@ -40,6 +40,7 @@ export * from './billing/hooks/useCreateInvoiceProductType';
 export * from './billing/hooks/useCreatePaymentIntent';
 export * from './billing/hooks/useCreateSetupIntent';
 export * from './billing/hooks/useFetchPricing';
+export * from './billing/hooks/useFetchPricingByProductType';
 export * from './billing/hooks/useGenerateCheckoutSession';
 export * from './billing/hooks/useGenerateCheckoutSessionInfo';
 export * from './billing/hooks/useGetBillingOverview';
