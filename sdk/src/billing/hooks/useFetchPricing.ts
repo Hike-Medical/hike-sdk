@@ -1,5 +1,5 @@
 import { HikeError } from '@hike/services';
-import type { StripeEntity, StripeProduct } from '@prisma/client';
+import type { StripeEntity, StripeProduct } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchPricing } from '../billing.service';
 
