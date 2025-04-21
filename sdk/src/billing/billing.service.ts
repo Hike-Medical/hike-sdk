@@ -101,3 +101,21 @@ export const generateCheckoutSessionInfo = async (workbenchId: string) => {
     throw toHikeError(error);
   }
 };
+
+export const createSetupIntentForCompany = async () => {
+  try {
+    const response = await backendApi.get(`billing/generate-setup-session`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPricing = async () => {
+  try {
+    const response = await backendApi.get(`billing/pricing`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
