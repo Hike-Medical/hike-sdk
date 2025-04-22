@@ -8,7 +8,7 @@
 export const requestCameraPermissions = (constraints: MediaStreamConstraints = {}): Promise<MediaStream> =>
   new Promise((resolve, reject) => {
     navigator.mediaDevices
-      .getUserMedia({ ...constraints })
+      .getUserMedia(constraints)
       .then((stream) => {
         resolve(stream);
       })
