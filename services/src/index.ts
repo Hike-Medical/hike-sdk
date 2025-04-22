@@ -30,7 +30,7 @@ export * from './api/terms.service';
 export * from './api/user.service';
 export * from './api/workbench.service';
 export * from './auth/defaultCompany';
-export * from './auth/fetchSession';
+export * from './auth/fetchSessionUser';
 export * from './auth/findCompaniesBySession';
 export * from './auth/getSessionCookieName';
 export * from './auth/isMinimumRole';
