@@ -9,8 +9,8 @@
     "sourceMap": true,
     "removeComments": false,
     "paths": {
-      "@prisma/client/*": ["../../../node_modules/.prisma/client/*"]
+      "@prisma/client/*": ["./prisma/*"]
     }
   },
-  "include": ["./src", "../../../node_modules/.prisma/client/index.d.ts"]
+  "include": ["./src", "./prisma"]
 }
