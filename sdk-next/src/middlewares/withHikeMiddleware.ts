@@ -3,7 +3,7 @@ import {
   CompanyRole,
   configureServices,
   extractToken,
-  fetchSession,
+  fetchSessionUser,
   HikeConfig,
   HikeError,
   isDefined,
@@ -44,6 +44,12 @@ interface HikeMiddlewareOptions {
   restrictedRoles?: CompanyRole[];
 }
 
+/**
+ * Middleware to authenticate requests for Next.js applications.
+ *
+ * @param options - The options for the middleware.
+ * @returns The middleware function.
+ */
 export const withHikeMiddleware = ({
   keyOrSecret,
   config,
@@ -61,7 +67,7 @@ export const withHikeMiddleware = ({
     // Set up services such as backend API
     configureServices(config(request));
 
-    const onNextResponse = (session: AuthUser | null = null) =>
+    const onNextResponse = (session: AuthUser | null) =>
       callback?.onResponse?.({ request, session, slug }) ?? NextResponse.next();
 
     // Adjust allowed paths
@@ -90,10 +96,10 @@ export const withHikeMiddleware = ({
     ) {
       try {
         const token = extractToken(request);
-        const session = await fetchSession(token);
+        const session = await fetchSessionUser(token);
         return onNextResponse(session);
       } catch {
-        return onNextResponse();
+        return onNextResponse(null);
       }
     }
 
@@ -116,7 +122,7 @@ export const withHikeMiddleware = ({
 
       // Retrieve additional session details from the backend
       // TODO: Optimize latency; caching or client optionally provides
-      const session = await fetchSession(token);
+      const session = await fetchSessionUser(token);
 
       // Ensure user has minimum role access
       const hasAccess =
@@ -142,7 +148,7 @@ export const withHikeMiddleware = ({
           session: await (async () => {
             try {
               const token = extractToken(request);
-              return await fetchSession(token);
+              return await fetchSessionUser(token);
             } catch {
               return null;
             }
@@ -160,5 +166,5 @@ export const withHikeMiddleware = ({
       return NextResponse.redirect(loginUrl);
     }
 
-    return onNextResponse();
+    return onNextResponse(null);
   };

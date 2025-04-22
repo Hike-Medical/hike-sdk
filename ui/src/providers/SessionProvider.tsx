@@ -2,6 +2,7 @@
 
 import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
 import type { AuthStatus, AuthUser } from '@hike/types';
+import { decodeJwt } from 'jose';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 
 interface Tokens {
@@ -12,6 +13,8 @@ interface Tokens {
 export interface SessionState {
   user: AuthUser | null;
   status: AuthStatus;
+  accessToken: string | null;
+  expiresAt: Date | null;
   update: (newTokens?: Tokens | null) => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -28,6 +31,7 @@ export const SessionProvider = ({
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
+  const [expiresAt, setExpiresAt] = useState<Date | null>(null);
 
   const update = async (newTokens?: Tokens | null) => {
     try {
@@ -36,10 +40,12 @@ export const SessionProvider = ({
       //TODO: Replace with proper exclude-cookie flag from Simplr
       const excludeCookie = !!disableAutoStart;
       const value = await refreshToken(latest?.refreshToken, excludeCookie);
-      configureAuthorization(excludeCookie ? value.accessToken : null);
-      setUser(value.sessionUser);
+      configureAuthorization(excludeCookie ? value.tokens.accessToken : null);
+      setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
-      setTokens(value);
+      setTokens(value.tokens);
+      const decoded = decodeJwt(value.tokens.accessToken);
+      setExpiresAt(decoded.exp ? new Date(decoded.exp * 1000) : null);
     } catch {
       await logout();
     }
@@ -50,6 +56,7 @@ export const SessionProvider = ({
     setUser(null);
     setStatus('UNAUTHENTICATED');
     setTokens(null);
+    setExpiresAt(null);
     await backendLogout();
   };
 
@@ -59,7 +66,13 @@ export const SessionProvider = ({
     }
   }, []);
 
-  return <SessionContext.Provider value={{ user, status, update, logout }}>{children}</SessionContext.Provider>;
+  return (
+    <SessionContext.Provider
+      value={{ user, status, accessToken: tokens?.accessToken ?? null, expiresAt, update, logout }}
+    >
+      {children}
+    </SessionContext.Provider>
+  );
 };
 
 export const useSession = () => useContext(SessionContext);

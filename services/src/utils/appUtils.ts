@@ -1,4 +1,5 @@
 import { AppId, HikeEnvironment } from '@hike/types';
+
 /**
  * Returns the app name for the given app.
  */
