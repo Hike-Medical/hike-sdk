@@ -1,4 +1,4 @@
-import { StripeInvoice } from '@prisma/client';
+import { StripeInvoice } from '../../../prisma/index';
 
 export type StripeInvoiceExtended = StripeInvoice & {
   name?: string;

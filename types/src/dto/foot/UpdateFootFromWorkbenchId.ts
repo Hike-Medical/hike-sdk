@@ -1,4 +1,4 @@
-import { Gender, ShoeWidth, Side } from '@prisma/client';
+import { Gender, ShoeWidth, Side } from '../../../prisma/index';
 
 export interface UpdateFootFromWorkbenchId {
   side: Side;

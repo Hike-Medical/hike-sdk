@@ -1,4 +1,4 @@
-import { InactiveFootReason } from '@prisma/client';
+import { InactiveFootReason } from '../../../prisma/index';
 
 export interface SetFootInactive {
   inactiveReason: InactiveFootReason;

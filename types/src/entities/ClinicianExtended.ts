@@ -1,4 +1,4 @@
-import type { Clinician, User } from '@prisma/client';
+import type { Clinician, User } from '../../prisma/index';
 
 export type ClinicianExtended = Clinician & {
   user: Pick<User, 'id' | 'email' | 'photoUrl'> | null;

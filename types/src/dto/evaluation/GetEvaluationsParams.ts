@@ -1,4 +1,4 @@
-import { CareType, ProductType } from '@prisma/client';
+import { CareType, ProductType } from '../../../prisma/index';
 import type { PagedParams } from '../PagedParams';
 import type { EvaluationStatus } from './EvaluationStatus';
 

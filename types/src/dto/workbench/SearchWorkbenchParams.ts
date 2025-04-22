@@ -1,4 +1,4 @@
-import { AssetStatus, OrderStatus, WorkbenchStatus } from '@prisma/client';
+import { AssetStatus, OrderStatus, WorkbenchStatus } from '../../../prisma/index';
 
 export interface SearchWorkbenchParams {
   offset?: number;

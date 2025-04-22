@@ -1,4 +1,4 @@
-export type * from '../prisma';
+export type * from '../prisma/index';
 export type * from './auth/AuthSession';
 export type * from './auth/AuthStatus';
 export type * from './auth/AuthUser';

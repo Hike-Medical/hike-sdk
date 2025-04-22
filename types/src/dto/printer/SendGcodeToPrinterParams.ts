@@ -1,4 +1,4 @@
-import type { Side } from '@prisma/client';
+import type { Side } from '../../../prisma/index';
 
 export interface SendGcodeToPrinterParams {
   printerIds: string[];

@@ -1,4 +1,4 @@
-import { CompanyRole } from '@prisma/client';
+import { CompanyRole } from '../../../prisma/index';
 import { AppId } from '../../config/AppId';
 import { EnrollPatientsParams } from './EnrollPatientsParams';
 

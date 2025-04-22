@@ -1,4 +1,4 @@
-import { AgreementStatus, AgreementType } from '@prisma/client';
+import { AgreementStatus, AgreementType } from '../../../prisma/index';
 
 export interface AcceptTermsParams {
   type: AgreementType;

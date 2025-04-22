@@ -1,4 +1,4 @@
-import { WorkbenchNotes as PrismaWorkbenchNotes } from '@prisma/client';
+import { WorkbenchNotes as PrismaWorkbenchNotes } from '../../../prisma/index';
 
 export interface Block {
   image: string;

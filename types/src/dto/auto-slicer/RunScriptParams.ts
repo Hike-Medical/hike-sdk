@@ -1,4 +1,4 @@
-import { PrinterType, Side } from '@prisma/client';
+import { PrinterType, Side } from '../../../prisma/index';
 
 export interface RunAutoSlicerParams {
   workbenchId: string;

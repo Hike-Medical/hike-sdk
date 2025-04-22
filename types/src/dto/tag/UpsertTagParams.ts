@@ -1,4 +1,4 @@
-import { EntityType } from '@prisma/client';
+import { EntityType } from '../../../prisma/index';
 
 export interface UpsertTagParams {
   name: string;

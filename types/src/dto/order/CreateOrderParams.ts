@@ -1,4 +1,4 @@
-import type { OrderAuthorizationStatus, OrderStatus } from '@prisma/client';
+import type { OrderAuthorizationStatus, OrderStatus } from '../../../prisma/index';
 
 export interface CreateOrderParams {
   workbenchId: string;

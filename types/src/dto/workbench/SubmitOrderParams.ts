@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus } from '@prisma/client';
+import { OrderAuthorizationStatus } from '../../../prisma/index';
 
 export interface SubmitOrderParams {
   signatureBase64Data?: string;

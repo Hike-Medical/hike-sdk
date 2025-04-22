@@ -1,3 +1,3 @@
-import { CompanyPatient, Patient, User } from '@prisma/client';
+import { CompanyPatient, Patient, User } from '../../prisma/index';
 
 export type CompanyPatientExtended = CompanyPatient & { patient: Patient; user: User | null };

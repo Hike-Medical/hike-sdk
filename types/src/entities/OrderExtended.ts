@@ -1,4 +1,4 @@
-import type { Order } from '@prisma/client';
+import type { Order } from '../../prisma/index';
 import { WorkbenchExtended } from './WorkbenchExtended';
 
 export type OrderExtended = Order & {

@@ -1,4 +1,4 @@
-import { AssetAugment } from '@prisma/client';
+import { AssetAugment } from '../../../prisma/index';
 
 export interface DetectionStatusResponse {
   rightFoot: FootDetectionStatus;

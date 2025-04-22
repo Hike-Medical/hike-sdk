@@ -1,4 +1,4 @@
-import type { CatalogProductVariant } from '@prisma/client';
+import type { CatalogProductVariant } from '../../prisma/index';
 import { CatalogProductExtended } from './CatalogProductExtended';
 
 export type CatalogProductVariantExtended = CatalogProductVariant & {

@@ -1,4 +1,4 @@
-import { StripeInvoiceType } from '@prisma/client';
+import { StripeInvoiceType } from '../../../prisma/index';
 import { PagedParams } from '../PagedParams';
 
 export interface GetStripeInvoiceParams extends PagedParams {

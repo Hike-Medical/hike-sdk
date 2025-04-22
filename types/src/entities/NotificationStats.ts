@@ -1,4 +1,4 @@
-import { SenderMessageStatus } from '@prisma/client';
+import { SenderMessageStatus } from '../../prisma/index';
 
 export interface NotificationStats {
   id: string;

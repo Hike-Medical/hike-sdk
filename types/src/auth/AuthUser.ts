@@ -1,4 +1,4 @@
-import type { AgreementStatus, AgreementType, CompanyPermission, CompanyRole } from '@prisma/client';
+import type { AgreementStatus, AgreementType, CompanyPermission, CompanyRole } from '../../prisma/index';
 
 export interface AuthUser {
   id: string;

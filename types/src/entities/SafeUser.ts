@@ -1,3 +1,3 @@
-import { User } from '@prisma/client';
+import { User } from '../../prisma/index';
 
 export type SafeUser = Omit<User, 'password' | 'pin'>;
