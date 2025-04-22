@@ -2,6 +2,7 @@ import { backendApi, toHikeError } from '@hike/services';
 import {
   BillingOverview,
   CheckoutSessionParams,
+  CreateFacilityParams,
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
@@ -84,9 +85,9 @@ export const createPaymentIntent = async (workbenchId: string) => {
   }
 };
 
-export const createInvoiceForProductType = async (stripeProductType: StripeProductType) => {
+export const createInvoiceForProductType = async (stripeProductType: StripeProductType, body: CreateFacilityParams) => {
   try {
-    const response = await backendApi.post(`billing/invoice/${stripeProductType}`);
+    const response = await backendApi.post(`billing/invoice/${stripeProductType}`, body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -96,6 +97,33 @@ export const createInvoiceForProductType = async (stripeProductType: StripeProdu
 export const generateCheckoutSessionInfo = async (workbenchId: string) => {
   try {
     const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createSetupIntentForCompany = async () => {
+  try {
+    const response = await backendApi.get(`billing/generate-setup-session`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPricing = async () => {
+  try {
+    const response = await backendApi.get(`billing/pricing`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPricingByProductType = async (stripeProductType: StripeProductType) => {
+  try {
+    const response = await backendApi.get(`billing/pricing/${stripeProductType}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
