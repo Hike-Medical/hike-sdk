@@ -1,4 +1,4 @@
-import { InactiveFootReason } from '../../../prisma';
+import { InactiveFootReason } from '@prisma/client';
 
 export interface FootStatus {
   id: string;

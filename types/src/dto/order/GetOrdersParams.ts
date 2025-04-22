@@ -1,4 +1,4 @@
-import type { OrderAuthorizationStatus, OrderStatus, Prisma, ProductType } from '../../../prisma';
+import type { OrderAuthorizationStatus, OrderStatus, Prisma, ProductType } from '@prisma/client';
 import type { PagedParams } from '../PagedParams';
 
 export interface GetOrdersParams extends PagedParams {

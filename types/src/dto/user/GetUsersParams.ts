@@ -1,4 +1,4 @@
-import { CompanyRole, Prisma } from '../../../prisma';
+import { CompanyRole, Prisma } from '@prisma/client';
 import type { PagedParams } from '../PagedParams';
 
 export interface GetUsersParams extends PagedParams {

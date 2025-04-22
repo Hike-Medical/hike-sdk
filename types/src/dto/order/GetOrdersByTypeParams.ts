@@ -1,4 +1,4 @@
-import { ProductType } from '../../../prisma';
+import { ProductType } from '@prisma/client';
 import type { PagedParams } from '../PagedParams';
 
 export interface GetOrdersByTypeParams extends PagedParams {

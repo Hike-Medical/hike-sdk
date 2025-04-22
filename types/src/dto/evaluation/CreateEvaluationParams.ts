@@ -1,4 +1,4 @@
-import { CareType, Side, VerticalPosition } from '../../../prisma';
+import { CareType, Side, VerticalPosition } from '@prisma/client';
 
 /**
  * Data transfer object for creating an evaluation.

@@ -1,4 +1,4 @@
-import { CompanyRole } from '../../../prisma';
+import { CompanyRole } from '@prisma/client';
 
 export interface CreateUserParams {
   name?: string;

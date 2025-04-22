@@ -1,4 +1,4 @@
-import { FormSchema, FormSubmission } from '../../prisma';
+import { FormSchema, FormSubmission } from '@prisma/client';
 
 export type FormSubmissionExtended = FormSubmission & {
   schema: FormSchema;

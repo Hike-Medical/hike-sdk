@@ -1,4 +1,4 @@
-import type { Gender, MaritalStatus } from '../../../prisma';
+import type { Gender, MaritalStatus } from '@prisma/client';
 
 export interface CreatePatientParams {
   externalId?: string | null;

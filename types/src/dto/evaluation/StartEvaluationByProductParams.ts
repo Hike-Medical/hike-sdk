@@ -1,4 +1,4 @@
-import { ProductType, Side } from '../../../prisma';
+import { ProductType, Side } from '@prisma/client';
 
 /**
  * Data transfer object for creating an evaluation as an insole.

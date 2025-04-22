@@ -1,4 +1,4 @@
-import { Asset, CompanyPatient, Foot, Patient, Workbench } from '../../prisma';
+import { Asset, CompanyPatient, Foot, Patient, Workbench } from '@prisma/client';
 
 export type AssetExtended = Asset & {
   foot: Foot & {

@@ -1,4 +1,4 @@
-import { NotificationType } from '../../../prisma';
+import { NotificationType } from '@prisma/client';
 
 export interface GetNotificationsParams {
   type?: NotificationType[];

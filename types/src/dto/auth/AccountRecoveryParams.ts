@@ -1,4 +1,4 @@
-import { AccountVerificationType, ContactType } from '../../../prisma';
+import { AccountVerificationType, ContactType } from '@prisma/client';
 
 export interface AccountRecoveryParams {
   type: AccountVerificationType;

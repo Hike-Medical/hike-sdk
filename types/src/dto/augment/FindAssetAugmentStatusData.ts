@@ -1,4 +1,4 @@
-import { AssetAugmentType } from '../../../prisma';
+import { AssetAugmentType } from '@prisma/client';
 
 export interface FindAssetAugmentStatusData {
   type: AssetAugmentType;

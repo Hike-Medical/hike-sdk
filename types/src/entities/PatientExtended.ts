@@ -1,4 +1,4 @@
-import type { CompanyPatient, CompanyUser, Contact, Evaluation, Patient, User } from '../../prisma';
+import type { CompanyPatient, CompanyUser, Contact, Evaluation, Patient, User } from '@prisma/client';
 
 export type PatientExtended = Patient & {
   companies?: (CompanyPatient & {

@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '@prisma/client';
 import { InsoleSideMeasurements } from '../taika/InsoleMeasurements';
 
 export interface PatientWorkbenchResponse {

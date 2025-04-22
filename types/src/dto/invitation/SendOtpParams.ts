@@ -1,4 +1,4 @@
-import { ContactType } from '../../../prisma';
+import { ContactType } from '@prisma/client';
 
 export class SendOtpParams {
   contact: string;

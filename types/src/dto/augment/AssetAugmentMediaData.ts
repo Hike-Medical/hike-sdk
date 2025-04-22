@@ -1,4 +1,4 @@
-import { Side } from '../../../prisma';
+import { Side } from '@prisma/client';
 
 export interface AssetAugmentMediaData {
   view?: string;

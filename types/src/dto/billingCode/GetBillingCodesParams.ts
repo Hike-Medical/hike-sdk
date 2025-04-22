@@ -1,4 +1,4 @@
-import { Prisma } from '../../../prisma';
+import { Prisma } from '@prisma/client';
 import type { PagedParams } from '../PagedParams';
 
 export interface GetBillingCodesParams extends PagedParams {

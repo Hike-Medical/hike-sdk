@@ -1,4 +1,4 @@
-import { StripeSubscriptionType } from '../../../prisma/index';
+import { StripeSubscriptionType } from '@prisma/client';
 
 export interface StripeLineItem {
   quantity: number;

@@ -1,5 +1,5 @@
-import { Reward } from '../../../prisma';
+import { Reward } from '@prisma/client';
 
-export interface RewardInfo extends Reward {
+export type RewardInfo = Reward & {
   earnedAt: Date | null;
-}
+};

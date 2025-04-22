@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus } from '../../../prisma';
+import { OrderAuthorizationStatus } from '@prisma/client';
 
 export interface ModifyOrderAuthorizationParams {
   orderId: string;
