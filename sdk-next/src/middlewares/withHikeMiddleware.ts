@@ -18,28 +18,28 @@ interface HikeMiddlewareOptions {
     beforeAuth?: ({ request, slug }: { request: NextRequest; slug: string | null }) => Promise<void> | void;
     afterAuth?: ({
       request,
-      session,
+      user,
       companyId,
       isAdmin,
       slug
     }: {
       request: NextRequest;
-      session: AuthUser;
+      user: AuthUser;
       companyId: string | undefined;
       isAdmin: boolean;
       slug: string | null;
     }) => Promise<void> | void;
     onResponse?: ({
       request,
-      session,
+      user,
       slug
     }: {
       request: NextRequest;
-      session: AuthUser | null;
+      user: AuthUser | null;
       slug: string | null;
     }) => NextResponse<unknown>;
   };
-  loginPath?: ({ session, slug }: { session: AuthUser | null; slug: string | null }) => string | null;
+  loginPath?: ({ user, slug }: { user: AuthUser | null; slug: string | null }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
 }
@@ -67,8 +67,8 @@ export const withHikeMiddleware = ({
     // Set up services such as backend API
     configureServices(config(request));
 
-    const onNextResponse = (session: AuthUser | null) =>
-      callback?.onResponse?.({ request, session, slug }) ?? NextResponse.next();
+    const onNextResponse = (user: AuthUser | null) =>
+      callback?.onResponse?.({ request, user, slug }) ?? NextResponse.next();
 
     // Adjust allowed paths
     const allowedPathGroups = allowedPaths
@@ -96,8 +96,8 @@ export const withHikeMiddleware = ({
     ) {
       try {
         const token = extractToken(request);
-        const session = await fetchSessionUser(token);
-        return onNextResponse(session);
+        const user = await fetchSessionUser(token);
+        return onNextResponse(user);
       } catch {
         return onNextResponse(null);
       }
@@ -111,31 +111,28 @@ export const withHikeMiddleware = ({
       const token = extractToken(request);
 
       if (!token) {
-        throw new HikeError({
-          message: 'Token not found',
-          statusCode: 401
-        });
+        throw new HikeError({ message: 'Token not found', statusCode: 401 });
       }
 
       // Validate token has been signed by the server
       await verifyToken(token, keyOrSecret);
 
-      // Retrieve additional session details from the backend
+      // Retrieve additional user details from the backend
       // TODO: Optimize latency; caching or client optionally provides
-      const session = await fetchSessionUser(token);
+      const user = await fetchSessionUser(token);
 
       // Ensure user has minimum role access
       const hasAccess =
-        !restrictedRoles || Object.values(session.companies).some((role) => role && !restrictedRoles.includes(role));
+        !restrictedRoles || Object.values(user.companies).some((role) => role && !restrictedRoles.includes(role));
 
       if (hasAccess) {
-        const companyId = Object.entries(session.slugs).find(([key]) => session.slugs[key] === slug)?.[0];
-        const isAdmin = !!companyId && session.companies[companyId] === 'ADMIN';
+        const companyId = Object.entries(user.slugs).find(([key]) => user.slugs[key] === slug)?.[0];
+        const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
         // Execute post-authentication hook; may throw error to prevent access
-        await callback?.afterAuth?.({ request, session, companyId, isAdmin, slug });
+        await callback?.afterAuth?.({ request, user, companyId, isAdmin, slug });
 
-        return onNextResponse(session);
+        return onNextResponse(user);
       }
     } catch (error) {
       console.error(error);
@@ -145,7 +142,7 @@ export const withHikeMiddleware = ({
     const login = await (async () => {
       const path =
         loginPath?.({
-          session: await (async () => {
+          user: await (async () => {
             try {
               const token = extractToken(request);
               return await fetchSessionUser(token);
