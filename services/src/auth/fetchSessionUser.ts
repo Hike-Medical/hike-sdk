@@ -1,4 +1,5 @@
 import { AuthUser } from '@hike/types';
+import { isAuthUser } from '@hike/utils';
 import { HikeError } from '../errors/HikeError';
 import { HikeErrorCode } from '../errors/HikeErrorCode';
 import { backendApi } from '../utils/backendApi';
@@ -30,6 +31,11 @@ export const fetchSessionUser = async (token: string | null): Promise<AuthUser> 
     headers: { Authorization: `Bearer ${token}` },
     cache: 'no-store'
   });
+  const user = await response.json();
 
-  return await response.json();
+  if (!isAuthUser(user)) {
+    throw new HikeError({ message: 'Session not found', statusCode: 401 });
+  }
+
+  return user;
 };
