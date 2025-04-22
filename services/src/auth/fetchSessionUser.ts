@@ -1,5 +1,4 @@
 import { AuthUser } from '@hike/types';
-import { isAuthUser } from '@hike/utils';
 import { HikeError } from '../errors/HikeError';
 import { HikeErrorCode } from '../errors/HikeErrorCode';
 import { backendApi } from '../utils/backendApi';
