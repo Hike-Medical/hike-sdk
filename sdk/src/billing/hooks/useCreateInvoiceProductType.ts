@@ -1,11 +1,12 @@
 import { HikeError } from '@hike/services';
-import { StripeProductType } from '@hike/types';
+import { CreateFacilityParams, StripeProductType } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import { Stripe } from 'stripe';
 import { createInvoiceForProductType } from '../billing.service';
 
 interface CreateInvoiceProductTypeContext {
   stripeProductType: StripeProductType;
+  body: CreateFacilityParams;
 }
 
 export const useCreateInvoiceProductType = (
@@ -13,6 +14,6 @@ export const useCreateInvoiceProductType = (
 ) =>
   useMutation({
     mutationKey: ['createInvoiceProductType'],
-    mutationFn: async ({ stripeProductType }) => await createInvoiceForProductType(stripeProductType),
+    mutationFn: async ({ stripeProductType, body }) => await createInvoiceForProductType(stripeProductType, body),
     ...options
   });

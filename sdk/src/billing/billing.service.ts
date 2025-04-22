@@ -2,6 +2,7 @@ import { backendApi, toHikeError } from '@hike/services';
 import {
   BillingOverview,
   CheckoutSessionParams,
+  CreateFacilityParams,
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
@@ -84,9 +85,9 @@ export const createPaymentIntent = async (workbenchId: string) => {
   }
 };
 
-export const createInvoiceForProductType = async (stripeProductType: StripeProductType) => {
+export const createInvoiceForProductType = async (stripeProductType: StripeProductType, body: CreateFacilityParams) => {
   try {
-    const response = await backendApi.post(`billing/invoice/${stripeProductType}`);
+    const response = await backendApi.post(`billing/invoice/${stripeProductType}`, body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
