@@ -22,3 +22,15 @@ export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: s
     throw toHikeError(error);
   }
 };
+
+export const getSolemateStats = async (companyIds: string[]) => {
+  try {
+    const response = await backendApi.get('analytics/solemate-stats', {
+      headers: addHeaders(companyIds)
+    });
+
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
