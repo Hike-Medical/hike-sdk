@@ -42,7 +42,7 @@
     "@hike/types": "workspace:*",
     "@hike/utils": "workspace:*",
     "@tanstack/react-query": "^5.59.15",
-    "axios": "^1.6.7"
+    "axios": "^1.8.4"
   },
   "jest": {
     "testRegex": ".+\\.test\\.ts$",
