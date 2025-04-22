@@ -1,8 +1,9 @@
 import { AuthUser } from './AuthUser';
 
 export interface AuthSession {
-  email: string;
-  sessionUser: AuthUser;
-  accessToken: string;
-  refreshToken: string;
+  user: AuthUser;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+  };
 }
