@@ -31,11 +31,10 @@ export const fetchSessionUser = async (token: string | null): Promise<AuthUser> 
     headers: { Authorization: `Bearer ${token}` },
     cache: 'no-store'
   });
-  const user = await response.json();
 
-  if (!isAuthUser(user)) {
+  if (!response.ok) {
     throw new HikeError({ message: 'Session not found', statusCode: 401 });
   }
 
-  return user;
+  return await response.json();
 };
