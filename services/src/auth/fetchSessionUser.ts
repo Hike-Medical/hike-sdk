@@ -31,5 +31,9 @@ export const fetchSessionUser = async (token: string | null): Promise<AuthUser> 
     cache: 'no-store'
   });
 
+  if (!response.ok) {
+    throw new HikeError({ message: 'Session not found', statusCode: 401 });
+  }
+
   return await response.json();
 };
