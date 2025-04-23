@@ -1,4 +1,4 @@
-import { Carrier, FacilityType } from '../../../prisma/index';
+import { Carrier, FacilityType } from '../../../prisma';
 
 export interface CreateFacilityParams {
   name: string;
