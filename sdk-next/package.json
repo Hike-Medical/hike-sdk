@@ -28,15 +28,15 @@
   },
   "dependencies": {
     "@hike/sdk": "workspace:*",
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "peerDependencies": {
-    "next": "^14"
+    "next": "^15"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "typescript": "^5"
   }
 }

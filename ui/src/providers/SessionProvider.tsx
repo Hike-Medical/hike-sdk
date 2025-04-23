@@ -2,7 +2,7 @@
 
 import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
 import type { AuthStatus, AuthUser } from '@hike/types';
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 
 interface Tokens {
   accessToken: string;
@@ -61,10 +61,8 @@ export const SessionProvider = ({
   }, []);
 
   return (
-    <SessionContext.Provider value={{ user, status, accessToken: tokens?.accessToken ?? null, update, logout }}>
+    <SessionContext value={{ user, status, accessToken: tokens?.accessToken ?? null, update, logout }}>
       {children}
-    </SessionContext.Provider>
+    </SessionContext>
   );
 };
-
-export const useSession = () => useContext(SessionContext);
