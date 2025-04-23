@@ -1,4 +1,4 @@
-import { AssetAugment, AssetAugmentMedia, AssetAugmentType } from '../../../prisma/index';
+import { AssetAugment, AssetAugmentMedia, AssetAugmentType } from '../../../prisma';
 import { AssetAugmentMediaData } from './AssetAugmentMediaData';
 
 export interface AssetAugmentResult extends Omit<AssetAugment, 'type'> {

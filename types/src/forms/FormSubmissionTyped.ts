@@ -1,4 +1,4 @@
-import { FormSubmission } from '../../prisma/index';
+import { FormSubmission } from '../../prisma';
 import { FormFieldValue } from './FormField';
 
 export type FormSubmissionTyped = FormSubmission & {

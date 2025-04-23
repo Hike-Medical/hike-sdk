@@ -1,4 +1,4 @@
-import { CompanyPatient, CompanyUser, Patient } from '../../../prisma/index';
+import { CompanyPatient, CompanyUser, Patient } from '../../../prisma';
 import { SafeUser } from '../../entities/SafeUser';
 
 export interface PatientUserResponse {

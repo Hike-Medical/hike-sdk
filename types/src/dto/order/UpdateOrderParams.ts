@@ -1,4 +1,4 @@
-import { OrderStatus } from '../../../prisma/index';
+import { OrderStatus } from '../../../prisma';
 
 export interface UpdateOrderParams {
   status?: OrderStatus;

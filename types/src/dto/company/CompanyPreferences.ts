@@ -1,4 +1,4 @@
-import { NotificationType, ProductType } from '../../../prisma/index';
+import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
 import { CompanyThemes } from './CompanyThemes';

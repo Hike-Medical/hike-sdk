@@ -8,7 +8,7 @@ import type {
   User,
   UserAgreement,
   UserPermission
-} from '../../prisma/index';
+} from '../../prisma';
 
 export type UserExtended = User & {
   companies: (CompanyUser & {

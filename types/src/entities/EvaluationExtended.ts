@@ -10,7 +10,7 @@ import type {
   Product,
   VisitType,
   Workbench
-} from '../../prisma/index';
+} from '../../prisma';
 import { EvaluationStatus } from '../dto/evaluation/EvaluationStatus';
 import { FacilityExtended } from './FacilityExtended';
 

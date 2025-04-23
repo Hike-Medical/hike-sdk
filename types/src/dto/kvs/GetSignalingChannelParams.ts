@@ -1,4 +1,4 @@
-import type { Side } from '../../../prisma/index';
+import type { Side } from '../../../prisma';
 
 export interface GetSignalingChannelParams {
   footSide?: Side;

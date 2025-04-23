@@ -1,4 +1,4 @@
-import { FormSchema } from '../../prisma/index';
+import { FormSchema } from '../../prisma';
 import { FormSection } from './FormSection';
 
 export type FormSchemaTyped = FormSchema & {

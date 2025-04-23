@@ -1,4 +1,4 @@
-import { Clinician, Department, Facility, Patient } from '../../prisma/index';
+import { Clinician, Department, Facility, Patient } from '../../prisma';
 import { SafeCompany } from './SafeCompany';
 import { SafeUser } from './SafeUser';
 

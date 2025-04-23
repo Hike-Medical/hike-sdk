@@ -1,4 +1,4 @@
-import { AssetStatus, Side } from '../../../prisma/index';
+import { AssetStatus, Side } from '../../../prisma';
 
 export interface SubmitRenderParams {
   workbenchId: string;

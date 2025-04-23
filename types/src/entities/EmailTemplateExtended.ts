@@ -1,4 +1,4 @@
-import { EmailTemplate, Notification, NotificationMessage } from '../../prisma/index';
+import { EmailTemplate, Notification, NotificationMessage } from '../../prisma';
 
 export type EmailTemplateExtended = Omit<EmailTemplate, 'htmlContent' | 'design'> & {
   notificationMessages: (Pick<NotificationMessage, 'id' | 'sequence' | 'type'> & {

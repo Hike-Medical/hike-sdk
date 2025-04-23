@@ -4,7 +4,7 @@ import type {
   CatalogProductAttribute,
   CatalogProductVariant,
   CatalogVendor
-} from '../../prisma/index';
+} from '../../prisma';
 
 export type CatalogProductExtended = CatalogProduct & {
   attributes: CatalogProductAttribute[];

@@ -1,4 +1,4 @@
-import { ProductType, Side } from '../../../prisma/index';
+import { ProductType, Side } from '../../../prisma';
 import { CreateEvaluationParams } from './CreateEvaluationParams';
 
 export interface CreateEvaluationByProductParams extends CreateEvaluationParams {

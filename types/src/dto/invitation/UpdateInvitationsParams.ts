@@ -1,4 +1,4 @@
-import { CompanyRole } from '../../../prisma/index';
+import { CompanyRole } from '../../../prisma';
 
 export interface UpdateInvitationParams {
   contact: string;

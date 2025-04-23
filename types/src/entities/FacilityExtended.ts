@@ -1,4 +1,4 @@
-import type { Contact, Facility } from '../../prisma/index';
+import type { Contact, Facility } from '../../prisma';
 
 export type FacilityExtended = Facility & {
   contact?: Contact | null;

@@ -1,5 +1,5 @@
 import { AppId } from 'config/AppId';
-import { CompanyRole, ContactType } from '../../../prisma/index';
+import { CompanyRole, ContactType } from '../../../prisma';
 
 export interface CreateInvitationParams {
   contact: string;

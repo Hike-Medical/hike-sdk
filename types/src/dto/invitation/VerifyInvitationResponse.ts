@@ -1,4 +1,4 @@
-import { AccountVerification, CompanyPatient, Patient } from '../../../prisma/index';
+import { AccountVerification, CompanyPatient, Patient } from '../../../prisma';
 import { SafeCompany } from '../../entities/SafeCompany';
 
 export interface VerifyInvitationResponse {

@@ -1,4 +1,4 @@
-import { Reward } from '../../../prisma/index';
+import { Reward } from '../../../prisma';
 
 export type RewardInfo = Reward & {
   earnedAt: Date | null;
