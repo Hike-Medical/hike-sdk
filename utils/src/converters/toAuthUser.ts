@@ -47,6 +47,7 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<AgreementType, AgreementStatus>
   ),
+  clinician: user.clinician,
   createdAt: user.createdAt,
   updatedAt: user.updatedAt
 });
