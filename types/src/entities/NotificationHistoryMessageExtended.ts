@@ -1,4 +1,4 @@
-import { Notification, NotificationHistory, NotificationMessage } from '../../prisma/index';
+import { Notification, NotificationHistory, NotificationMessage } from '../../prisma';
 
 export type NotificationHistoryMessageExtended = NotificationHistory & {
   message: NotificationMessage & { notification: Notification };
