@@ -45,8 +45,8 @@ export class StripeService {
       const paymentIntent = await this.stripe.paymentIntents.create({
         amount,
         currency,
-        payment_method_types: ['card', 'cashapp'],
-        metadata
+        metadata,
+        automatic_payment_methods: { enabled: true }
       });
       return paymentIntent;
     } catch (error) {
