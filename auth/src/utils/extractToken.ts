@@ -1,5 +1,5 @@
-import { getSessionCookieName } from '@hike/services';
 import { BaseRequest, getHeaderValue, isHttps } from '@hike/utils';
+import { getSessionCookieName } from './getSessionCookieName';
 
 /**
  * Represents a base cookie.

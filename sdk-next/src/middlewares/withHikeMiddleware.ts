@@ -1,29 +1,33 @@
-import {
-  AuthUser,
-  CompanyRole,
-  configureServices,
-  extractToken,
-  fetchSessionUser,
-  HikeConfig,
-  HikeError,
-  isDefined,
-  verifyToken
-} from '@hike/sdk';
+import { extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
+import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
+import { isDefined } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
+
+type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
 
 interface HikeMiddlewareOptions {
   keyOrSecret: string;
-  config: (request: NextRequest) => Pick<HikeConfig, 'appEnv' | 'appId'>;
+  config: HikeMiddlewareConfig;
   callback?: {
-    beforeAuth?: ({ request, slug }: { request: NextRequest; slug: string | null }) => Promise<void> | void;
+    beforeAuth?: ({
+      request,
+      config,
+      slug
+    }: {
+      request: NextRequest;
+      config: HikeMiddlewareConfig;
+      slug: string | null;
+    }) => Promise<void> | void;
     afterAuth?: ({
       request,
+      config,
       user,
       companyId,
       isAdmin,
       slug
     }: {
       request: NextRequest;
+      config: HikeMiddlewareConfig;
       user: AuthUser;
       companyId: string | undefined;
       isAdmin: boolean;
@@ -31,15 +35,25 @@ interface HikeMiddlewareOptions {
     }) => Promise<void> | void;
     onResponse?: ({
       request,
+      config,
       user,
       slug
     }: {
       request: NextRequest;
+      config: HikeMiddlewareConfig;
       user: AuthUser | null;
       slug: string | null;
     }) => NextResponse<unknown>;
   };
-  loginPath?: ({ user, slug }: { user: AuthUser | null; slug: string | null }) => string | null;
+  loginPath?: ({
+    config,
+    user,
+    slug
+  }: {
+    config: HikeMiddlewareConfig;
+    user: AuthUser | null;
+    slug: string | null;
+  }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
 }
@@ -64,11 +78,8 @@ export const withHikeMiddleware = ({
     const slug = pathParts[1] && !['login', 'enroll'].includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
 
-    // Set up services such as backend API
-    configureServices(config(request));
-
     const onNextResponse = (user: AuthUser | null) =>
-      callback?.onResponse?.({ request, user, slug }) ?? NextResponse.next();
+      callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
 
     // Adjust allowed paths
     const allowedPathGroups = allowedPaths
@@ -96,7 +107,7 @@ export const withHikeMiddleware = ({
     ) {
       try {
         const token = extractToken(request);
-        const user = await fetchSessionUser(token);
+        const user = await fetchSessionUser(token, config);
         return onNextResponse(user);
       } catch {
         return onNextResponse(null);
@@ -105,13 +116,13 @@ export const withHikeMiddleware = ({
 
     try {
       // Execute pre-authentication hook; may throw error to prevent access
-      await callback?.beforeAuth?.({ request, slug });
+      await callback?.beforeAuth?.({ request, config, slug });
 
       // Extract token from header or cookie
       const token = extractToken(request);
 
       if (!token) {
-        throw new HikeError({ message: 'Token not found', statusCode: 401 });
+        throw new Error('Token not found');
       }
 
       // Validate token has been signed by the server
@@ -119,7 +130,7 @@ export const withHikeMiddleware = ({
 
       // Retrieve additional user details from the backend
       // TODO: Optimize latency; caching or client optionally provides
-      const user = await fetchSessionUser(token);
+      const user = await fetchSessionUser(token, config);
 
       // Ensure user has minimum role access
       const hasAccess =
@@ -130,7 +141,7 @@ export const withHikeMiddleware = ({
         const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
         // Execute post-authentication hook; may throw error to prevent access
-        await callback?.afterAuth?.({ request, user, companyId, isAdmin, slug });
+        await callback?.afterAuth?.({ request, config, user, companyId, isAdmin, slug });
 
         return onNextResponse(user);
       }
@@ -142,10 +153,11 @@ export const withHikeMiddleware = ({
     const login = await (async () => {
       const path =
         loginPath?.({
+          config,
           user: await (async () => {
             try {
               const token = extractToken(request);
-              return await fetchSessionUser(token);
+              return await fetchSessionUser(token, config);
             } catch {
               return null;
             }

@@ -27,7 +27,9 @@
     "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
-    "@hike/sdk": "workspace:*",
+    "@hike/auth": "workspace:*",
+    "@hike/types": "workspace:*",
+    "@hike/utils": "workspace:*",
     "react": "^19",
     "react-dom": "^19"
   },

@@ -1,5 +1,5 @@
 {
-  "name": "@hike/sdk",
+  "name": "@hike/auth",
   "version": "1.0.0",
   "description": "Hike SDK enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
   "keywords": [
@@ -20,10 +20,6 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.js"
-    },
-    "./ui": {
-      "import": "./dist/ui/index.js",
-      "require": "./dist/cjs/ui/index.js"
     }
   },
   "files": [
@@ -32,39 +28,20 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
     "test": "jest"
   },
   "dependencies": {
-    "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
-    "@hike/ui": "workspace:*",
     "@hike/utils": "workspace:*",
-    "@react-email/components": "0.0.36",
-    "@react-email/render": "1.0.6",
-    "@tabler/icons-react": "^3.31.0",
-    "react-email": "^4.0.7",
-    "dayjs": "^1.11.13",
-    "stripe": "^16.2.0"
-  },
-  "peerDependencies": {
-    "@mantine/core": "^7.17.4",
-    "@mantine/hooks": "^7.17.4",
-    "react": "^19",
-    "react-dom": "^19"
+    "jose": "^6.0.10"
   },
   "devDependencies": {
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
-    "react": "^19",
-    "react-dom": "^19",
     "ts-jest": "^29.1.2"
   },
   "jest": {

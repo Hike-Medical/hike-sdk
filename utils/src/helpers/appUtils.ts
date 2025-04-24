@@ -1,4 +1,4 @@
-import { AppId, HikeEnvironment } from '@hike/types';
+import { AppId, HikeConfig, HikeEnvironment } from '@hike/types';
 
 /**
  * Returns the app name for the given app.
@@ -80,6 +80,17 @@ export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
           return 'https://admin.hikemedical.com';
       }
   }
+};
+
+/**
+ * Generates base URLs.
+ */
+export const generateBaseUrls = (
+  config: Pick<HikeConfig, 'appId' | 'appEnv' | 'apiUrl'>
+): { baseAppUrl: string; baseApiUrl: string } => {
+  const baseAppUrl = appUrl(config.appId, config.appEnv);
+  const baseApiUrl = config.apiUrl || apiUrl(config.appId, config.appEnv);
+  return { baseAppUrl, baseApiUrl: `${baseApiUrl}/v2` };
 };
 
 /**
