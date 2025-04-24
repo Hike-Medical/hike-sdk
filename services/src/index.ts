@@ -23,7 +23,6 @@ export * from './api/pdf.service';
 export * from './api/physician.service';
 export * from './api/pin.service';
 export * from './api/roster.service';
-export * from './api/s3.service';
 export * from './api/scan.service';
 export * from './api/shipping.service';
 export * from './api/terms.service';

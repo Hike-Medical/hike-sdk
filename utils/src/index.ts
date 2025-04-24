@@ -45,6 +45,7 @@ export * from './helpers/postMessageToSlack';
 export * from './helpers/queryStringUtils';
 export * from './helpers/randomString';
 export * from './helpers/range';
+export * from './helpers/s3Utils';
 export * from './helpers/sleep';
 export * from './helpers/streamToString';
 export * from './helpers/truncateMiddle';
