@@ -9,7 +9,7 @@ interface Tokens {
   refreshToken: string;
 }
 
-export interface SessionState {
+interface SessionState {
   user: AuthUser | null;
   status: AuthStatus;
   accessToken: string | null;
