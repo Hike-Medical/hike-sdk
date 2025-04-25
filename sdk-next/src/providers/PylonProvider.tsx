@@ -6,6 +6,7 @@
 import { AppId, randomString, useCurrentPatient } from '@hike/sdk';
 import { SessionContext } from '@hike/sdk/ui';
 import { Overlay } from '@mantine/core';
+import { useParams } from 'next/navigation';
 import Script from 'next/script';
 import { createContext, ReactNode, use, useEffect, useState } from 'react';
 
@@ -26,7 +27,12 @@ interface PylonProviderProps {
 export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) => {
   const [isPylonVisible, setIsPylonVisible] = useState(false);
   const { status, user } = use(SessionContext);
-  const { data } = useCurrentPatient({ enabled: status === 'AUTHENTICATED' });
+  const params = useParams<{ slug: string }>();
+
+  const { data } = useCurrentPatient({
+    params: { slug: params.slug },
+    enabled: appId === '@hike/consumer-web' && status === 'AUTHENTICATED' && !!params.slug
+  });
 
   useEffect(() => {
     if (typeof window !== 'undefined' && pylonId) {

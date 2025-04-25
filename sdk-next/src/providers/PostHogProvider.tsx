@@ -21,7 +21,7 @@ interface PostHogProviderProps {
 export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogProviderProps) => {
   const [hasInitialized, setHasInitialized] = useState(false);
   const { user } = use(SessionContext);
-  const { speed } = use(NetworkContext);
+  const network = use(NetworkContext);
 
   useEffect(() => {
     if (!postHogKey || !postHogHost || hasInitialized) {
@@ -50,9 +50,9 @@ export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogPr
     posthog.identify(user?.id, {
       userId: user?.id,
       companies: JSON.stringify(user?.companies),
-      networkSpeed: speed
+      networkSpeed: network.speed
     });
-  }, [user, speed, hasInitialized]);
+  }, [user, network, hasInitialized]);
 
   return (
     <PHProvider client={posthog}>
