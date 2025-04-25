@@ -8,10 +8,10 @@ interface NetworkState {
   speed: 'slow' | 'fast' | undefined;
 }
 
-export const NetworkContext = createContext<NetworkState>(undefined as never);
-
 export const NetworkProvider = ({ children }: { children: ReactNode }) => {
   const { speed } = useNetwork();
   useEffect(() => configureNetworkSpeed(speed), [speed]);
   return <NetworkContext value={{ speed }}>{children}</NetworkContext>;
 };
+
+export const NetworkContext = createContext<NetworkState>(undefined as never);

@@ -16,8 +16,6 @@ interface PylonState {
   isPylonVisible: boolean;
 }
 
-export const PylonContext = createContext<PylonState>(undefined as never);
-
 interface PylonProviderProps {
   appId: AppId;
   pylonId: string | undefined;
@@ -93,3 +91,5 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
     </PylonContext>
   );
 };
+
+export const PylonContext = createContext<PylonState>(undefined as never);

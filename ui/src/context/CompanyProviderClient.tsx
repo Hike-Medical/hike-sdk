@@ -4,8 +4,6 @@ import { configureServices } from '@hike/services';
 import type { HikeConfig, SafeCompany } from '@hike/types';
 import { ReactNode, createContext } from 'react';
 
-export const CompanyContext = createContext<SafeCompany | null>(null);
-
 interface CompanyProviderClientProps {
   company: SafeCompany | null;
   config: HikeConfig;
@@ -16,3 +14,5 @@ export const CompanyProviderClient = ({ company, config, children }: CompanyProv
   configureServices({ ...config, companyId: company?.id }); // Client-side initialization
   return <CompanyContext value={company}>{children}</CompanyContext>;
 };
+
+export const CompanyContext = createContext<SafeCompany | null>(null);

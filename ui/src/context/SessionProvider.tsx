@@ -17,8 +17,6 @@ interface SessionState {
   logout: () => Promise<void>;
 }
 
-export const SessionContext = createContext<SessionState>(undefined as never);
-
 export const SessionProvider = ({
   disableAutoStart,
   children
@@ -66,3 +64,5 @@ export const SessionProvider = ({
     </SessionContext>
   );
 };
+
+export const SessionContext = createContext<SessionState>(undefined as never);
