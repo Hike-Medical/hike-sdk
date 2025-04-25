@@ -7,4 +7,5 @@ export * from './providers/DataDogProvider';
 export * from './providers/NetworkProvider';
 export * from './providers/PostHogProvider';
 export * from './providers/PylonProvider';
+export * from './utils/analytics';
 export * from './utils/logger';
