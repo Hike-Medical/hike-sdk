@@ -88,6 +88,7 @@ export const DataDogCompanyProvider = () => {
     datadogLogs.setGlobalContextProperty('companyRole', user?.companies[company?.id || ''] || null);
     datadogLogs.setGlobalContextProperty('companies', (!company?.id && user?.companies) || null);
     datadogLogs.setGlobalContextProperty('patientId', user?.patients?.[company?.id || ''] || null);
+    datadogLogs.setGlobalContextProperty('clinicianId', user?.clinician?.id || null);
   }, [user, company?.id]);
 
   return null;
