@@ -5,6 +5,7 @@ import { AppId, HikeEnvironment } from '@hike/sdk';
 import { CompanyContext, SessionContext } from '@hike/sdk/ui';
 import { useParams } from 'next/navigation';
 import { ReactNode, use, useEffect, useState } from 'react';
+import { NetworkContext } from './NetworkProvider';
 
 const setGlobalContext = (config: Omit<DataDogProviderProps, 'children'>) => {
   datadogLogs.setGlobalContext({
@@ -15,7 +16,7 @@ const setGlobalContext = (config: Omit<DataDogProviderProps, 'children'>) => {
 };
 
 const initializeDataDog = (config: Omit<DataDogProviderProps, 'children'>) => {
-  if (!config.dataDogClientToken) {
+  if (!config.dataDogClientToken || datadogLogs.getInitConfiguration()) {
     return;
   }
 
@@ -43,12 +44,13 @@ interface DataDogProviderProps {
 }
 
 export const DataDogProvider = ({ children, ...config }: DataDogProviderProps) => {
-  const [hasInitialized, setHasInitialized] = useState(false);
+  const [isInitialized, setIssInitialized] = useState(false);
   const { user, status } = use(SessionContext);
+  const { speed } = use(NetworkContext);
   const params = useParams<{ workbenchId: string }>();
 
   useEffect(() => {
-    if (!hasInitialized) {
+    if (!isInitialized) {
       return;
     }
 
@@ -67,14 +69,20 @@ export const DataDogProvider = ({ children, ...config }: DataDogProviderProps) =
 
     datadogLogs.setGlobalContextProperty('userId', user?.id);
     datadogLogs.setGlobalContextProperty('workbenchId', params.workbenchId || null);
-  }, [hasInitialized, user, status, params.workbenchId]);
+  }, [user, status, params.workbenchId, isInitialized]);
 
   useEffect(() => {
-    if (!hasInitialized) {
-      initializeDataDog(config);
-      setHasInitialized(true);
+    if (!isInitialized) {
+      return;
     }
-  }, [hasInitialized]);
+
+    datadogLogs.setGlobalContextProperty('networkSpeed', speed);
+  }, [speed, isInitialized]);
+
+  useEffect(() => {
+    initializeDataDog(config);
+    setIssInitialized(true);
+  }, []);
 
   return children;
 };
@@ -84,6 +92,10 @@ export const DataDogCompanyProvider = () => {
   const company = use(CompanyContext);
 
   useEffect(() => {
+    if (!datadogLogs.getInitConfiguration()) {
+      return;
+    }
+
     datadogLogs.setGlobalContextProperty('companyId', company?.id);
     datadogLogs.setGlobalContextProperty('companyRole', user?.companies[company?.id || ''] || null);
     datadogLogs.setGlobalContextProperty('companies', (!company?.id && user?.companies) || null);

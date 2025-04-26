@@ -4,8 +4,8 @@ import { configureNetworkSpeed } from '@hike/sdk';
 import { createContext, ReactNode, useEffect } from 'react';
 import { useNetwork } from '../hooks/useNetwork';
 
-interface NetworkState {
-  speed: 'slow' | 'fast' | undefined;
+export interface NetworkState {
+  speed: 'slow' | 'fast' | 'unknown';
 }
 
 export const NetworkProvider = ({ children }: { children: ReactNode }) => {

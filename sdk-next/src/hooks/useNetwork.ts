@@ -2,11 +2,12 @@
 
 import { backendApi, Constants } from '@hike/sdk';
 import { useNetwork as useMantineNetwork } from '@mantine/hooks';
+import { NetworkState } from 'context/NetworkProvider';
 import { useEffect, useState } from 'react';
 
 export const useNetwork = () => {
   const { effectiveType, online } = useMantineNetwork();
-  const [speed, setSpeed] = useState<'slow' | 'fast' | undefined>();
+  const [speed, setSpeed] = useState<NetworkState['speed']>('unknown');
 
   useEffect(() => {
     // Use mantine speed if browser supported

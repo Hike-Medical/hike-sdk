@@ -5,7 +5,7 @@ import { datadogLogs } from '@datadog/browser-logs';
  */
 export const logger = {
   debug: (message: string, context?: object) => {
-    if (typeof window === 'undefined' || !datadogLogs) {
+    if (typeof window === 'undefined' || !datadogLogs.getInitConfiguration()) {
       console.debug(message, context);
       return;
     }
@@ -13,7 +13,7 @@ export const logger = {
     datadogLogs.logger.debug(message, context);
   },
   info: (message: string, context?: object) => {
-    if (typeof window === 'undefined' || !datadogLogs) {
+    if (typeof window === 'undefined' || !datadogLogs.getInitConfiguration()) {
       console.log(message, context);
       return;
     }
@@ -21,7 +21,7 @@ export const logger = {
     datadogLogs.logger.info(message, context);
   },
   warn: (message: string, context?: object) => {
-    if (typeof window === 'undefined' || !datadogLogs) {
+    if (typeof window === 'undefined' || !datadogLogs.getInitConfiguration()) {
       console.warn(message, context);
       return;
     }
@@ -29,7 +29,7 @@ export const logger = {
     datadogLogs.logger.warn(message, context);
   },
   error: (message: string, context?: object | Error) => {
-    if (typeof window === 'undefined' || !datadogLogs) {
+    if (typeof window === 'undefined' || !datadogLogs.getInitConfiguration()) {
       console.error(message, context);
       return;
     }
