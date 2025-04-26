@@ -1,4 +1,4 @@
-export { default as CompanyProvider } from './context/CompanyProvider';
-export { CompanyContext } from './context/CompanyProviderClient';
-export * from './context/HikeProvider';
-export * from './context/SessionProvider';
+export { default as CompanyProvider } from './contexts/CompanyProvider';
+export { CompanyContext } from './contexts/CompanyProviderClient';
+export * from './contexts/HikeProvider';
+export * from './contexts/SessionProvider';

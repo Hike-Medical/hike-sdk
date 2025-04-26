@@ -2,7 +2,7 @@
 
 import { backendApi, Constants } from '@hike/sdk';
 import { useNetwork as useMantineNetwork } from '@mantine/hooks';
-import { NetworkState } from 'context/NetworkProvider';
+import { NetworkState } from 'contexts/NetworkProvider';
 import { useEffect, useState } from 'react';
 
 export const useNetwork = () => {
