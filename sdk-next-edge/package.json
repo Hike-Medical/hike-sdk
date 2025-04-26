@@ -1,5 +1,5 @@
 {
-  "name": "@hike/sdk-next",
+  "name": "@hike/sdk-next-edge",
   "version": "1.0.0",
   "description": "Hike SDK for Next.js enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
   "keywords": [
@@ -27,14 +27,11 @@
     "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
-    "@datadog/browser-logs": "^6.6.3",
-    "@hike/sdk": "workspace:*",
-    "posthog-js": "^1.236.5"
+    "@hike/auth": "workspace:*",
+    "@hike/types": "workspace:*",
+    "@hike/utils": "workspace:*"
   },
   "peerDependencies": {
-    "@mantine/core": "^7",
-    "@mantine/hooks": "^7",
-    "@tabler/icons-react": "^3",
     "next": "^15",
     "react": "^19",
     "react-dom": "^19"
@@ -42,8 +39,6 @@
   "devDependencies": {
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "react": "^19",
-    "react-dom": "^19",
     "typescript": "^5"
   }
 }

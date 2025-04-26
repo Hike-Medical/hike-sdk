@@ -3,7 +3,6 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "declaration": true,

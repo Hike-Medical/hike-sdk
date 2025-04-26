@@ -5,12 +5,13 @@ import { HikeError } from '../../errors/HikeError';
 
 interface UseFindCurrentPatientOptions
   extends Omit<UseQueryOptions<PatientUserResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  params?: { companyId: string } | { slug: string };
   queryKey?: QueryKey;
 }
 
-export const useCurrentPatient = ({ queryKey = [], ...options }: UseFindCurrentPatientOptions = {}) =>
+export const useCurrentPatient = ({ params, queryKey = [], ...options }: UseFindCurrentPatientOptions = {}) =>
   useQuery({
     queryKey: ['currentPatient', queryKey],
-    queryFn: async () => await findCurrentPatient(),
+    queryFn: async () => await findCurrentPatient(params),
     ...options
   });
