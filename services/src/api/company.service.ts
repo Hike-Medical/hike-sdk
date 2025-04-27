@@ -2,6 +2,8 @@ import {
   AddCompanyParams,
   Company,
   CompanyExtended,
+  CompanyPreferences,
+  CompanyTheme,
   CompanyWorkbenchWebhook,
   FindCompaniesParams,
   GetCompanyByNameParams,
@@ -21,9 +23,18 @@ export const findCompanies = async (params?: FindCompaniesParams): Promise<Paged
   }
 };
 
-export const findCompanyPreferences = async (): Promise<CompanyExtended['preferences']> => {
+export const findCompanyPreferences = async (): Promise<CompanyPreferences> => {
   try {
     const response = await backendApi.get('company/preferences');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findCompanyTheme = async (): Promise<CompanyTheme> => {
+  try {
+    const response = await backendApi.get('auth/company/theme');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
