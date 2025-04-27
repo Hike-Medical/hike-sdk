@@ -39,7 +39,7 @@ export type * from './dto/catalog/GetVendorsParams';
 export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/ClinicalFlowType';
 export type * from './dto/company/CompanyPreferences';
-export type * from './dto/company/CompanyThemes';
+export type * from './dto/company/CompanyTheme';
 export type * from './dto/company/CompanyWorkbenchWebhook';
 export type * from './dto/company/FindCompaniesParams';
 export type * from './dto/company/GetCompanyByNameParams';
