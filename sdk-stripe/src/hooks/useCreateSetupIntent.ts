@@ -8,7 +8,7 @@ interface UseCreateSetupIntentOptions
   queryKey?: QueryKey;
 }
 
-export const useCreateSetupIntent = ({ queryKey = [], ...options }: UseCreateSetupIntentOptions) =>
+export const useCreateSetupIntent = ({ queryKey = [], ...options }: UseCreateSetupIntentOptions = {}) =>
   useQuery({
     queryKey: ['createSetupIntent', queryKey],
     queryFn: async () => await createSetupIntentForCompany(),

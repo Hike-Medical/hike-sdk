@@ -1,4 +1,5 @@
 export * from './components/CopyButton';
+export * from './components/SubmitButton';
 export * from './contexts/DataDogProvider';
 export * from './contexts/NetworkProvider';
 export * from './contexts/PostHogProvider';
@@ -7,5 +8,7 @@ export * from './hooks/useIsMobile';
 export * from './hooks/useMobilePlatform';
 export * from './media/camera';
 export * from './media/getBestSupportedVideoFormat';
+export * from './themes/apr2025';
+export * from './themes/themeIconColor';
 export * from './utils/analytics';
 export * from './utils/logger';
