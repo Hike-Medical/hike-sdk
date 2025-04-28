@@ -57,6 +57,7 @@ interface HikeMiddlewareOptions {
   }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
+  isMaintenanceMode?: boolean;
 }
 
 /**
@@ -72,9 +73,15 @@ export const withHikeMiddleware = ({
   callback,
   restrictedRoles,
   allowedPaths,
-  loginPath
+  loginPath,
+  isMaintenanceMode
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
+    if (isMaintenanceMode) {
+      request.nextUrl.pathname = '/maintenance';
+      return NextResponse.rewrite(request.nextUrl);
+    }
+
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
     const slug = pathParts[1] && !['login', 'enroll'].includes(pathParts[1]) ? pathParts[1] : null;
