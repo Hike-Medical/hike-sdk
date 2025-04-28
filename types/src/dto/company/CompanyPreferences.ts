@@ -47,7 +47,7 @@ export interface CompanyPreferences {
   setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
-  defaultAdminPortal?: 'clinical' | 'employer' | 'operations';
+  portals?: ('clinical' | 'employer' | 'operations')[];
   ui?: {
     theme?: CompanyTheme;
   };
