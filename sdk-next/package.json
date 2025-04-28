@@ -29,6 +29,7 @@
   "dependencies": {
     "@datadog/browser-logs": "^6.6.3",
     "@hike/sdk": "workspace:*",
+    "lodash": "^4.17.21",
     "posthog-js": "^1.236.5"
   },
   "peerDependencies": {
@@ -44,6 +45,7 @@
     "react-dom": "^19"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.16",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "react": "^19",

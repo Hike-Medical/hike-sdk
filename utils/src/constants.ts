@@ -16,5 +16,9 @@ export const Constants = {
   },
   NETWORK_SPEED_FILE_SIZE_KB: 100,
   NETWORK_SPEED_MIN_MBPS: 3,
-  DEFAULT_COMPANY_THEME: '2025-apr' satisfies CompanyTheme
+  DEFAULT_COMPANY_THEME: '2025-apr' satisfies CompanyTheme,
+  i18n: {
+    DEFAULT_LOCALE: 'en',
+    LOCALE_COOKIE_NAME: 'locale'
+  }
 } as const;

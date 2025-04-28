@@ -1,8 +1,7 @@
 import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { isDefined, selectPreferredLocale } from '@hike/utils';
+import { Constants, isDefined, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
-import { i18nConstants } from '../i18n/constants';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
 
@@ -97,11 +96,11 @@ export const withHikeMiddleware = ({
             : selectPreferredLocale({
                 acceptLanguage,
                 supportedLocales: locales,
-                defaultLocale: i18nConstants.DEFAULT_LOCALE
+                defaultLocale: Constants.i18n.DEFAULT_LOCALE
               });
 
         response.headers.set('X-Locale', locale);
-        response.cookies.set(i18nConstants.LOCALE_COOKIE_NAME, `${locale}${slugSuffix}`);
+        response.cookies.set(Constants.i18n.LOCALE_COOKIE_NAME, `${locale}${slugSuffix}`);
       }
 
       return response;
