@@ -1,13 +1,15 @@
 import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { isDefined } from '@hike/utils';
+import { isDefined, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
+import { i18nConstants } from '../i18n/constants';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
 
 interface HikeMiddlewareOptions {
   keyOrSecret: string;
   config: HikeMiddlewareConfig;
+  locales?: string[];
   callback?: {
     beforeAuth?: ({
       request,
@@ -67,6 +69,7 @@ interface HikeMiddlewareOptions {
 export const withHikeMiddleware = ({
   keyOrSecret,
   config,
+  locales,
   callback,
   restrictedRoles,
   allowedPaths,
@@ -78,8 +81,31 @@ export const withHikeMiddleware = ({
     const slug = pathParts[1] && !['login', 'enroll'].includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
 
-    const onNextResponse = (user: AuthUser | null) =>
-      callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
+    // Build response to return
+    const onNextResponse = (user: AuthUser | null): NextResponse<unknown> => {
+      const response = callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
+
+      // Handle internationalization if applicable
+      if (locales) {
+        const localeCookie = request.cookies.get('locale')?.value;
+        const acceptLanguage = request.headers.get('accept-language');
+        const slugSuffix = slug ? `.${slug}` : '';
+
+        const locale =
+          localeCookie && locales.includes(localeCookie)
+            ? localeCookie
+            : selectPreferredLocale({
+                acceptLanguage,
+                supportedLocales: locales,
+                defaultLocale: i18nConstants.DEFAULT_LOCALE
+              });
+
+        response.headers.set('X-Locale', locale);
+        response.cookies.set(i18nConstants.LOCALE_COOKIE_NAME, `${locale}${slugSuffix}`);
+      }
+
+      return response;
+    };
 
     // Adjust allowed paths
     const allowedPathGroups = allowedPaths
