@@ -3,7 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { fetchPricingByProductType } from '../api/billing.service';
 
 interface UseFetchPricingByProductTypeContext
-  extends Omit<UseQueryOptions<StripeProduct, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<StripeProduct | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   enabled: boolean;
   queryKey?: QueryKey;
   stripeProductType: StripeProductType;

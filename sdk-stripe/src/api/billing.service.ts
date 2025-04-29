@@ -6,6 +6,7 @@ import {
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
+  StripeProduct,
   StripeProductType,
   toHikeError,
   UpFrontPaymentInfo
@@ -122,7 +123,9 @@ export const fetchPricing = async () => {
   }
 };
 
-export const fetchPricingByProductType = async (stripeProductType: StripeProductType) => {
+export const fetchPricingByProductType = async (
+  stripeProductType: StripeProductType
+): Promise<StripeProduct | null> => {
   try {
     const response = await backendApi.get(`billing/pricing/${stripeProductType}`);
     return response.data;
