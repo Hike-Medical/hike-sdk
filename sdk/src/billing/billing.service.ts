@@ -5,6 +5,7 @@ import {
   GetStripeInvoiceParams,
   PagedResponse,
   StripeInvoiceExtended,
+  StripeProduct,
   StripeProductType,
   UpFrontPaymentInfo
 } from '@hike/types';
@@ -96,6 +97,35 @@ export const createInvoiceForProductType = async (stripeProductType: StripeProdu
 export const generateCheckoutSessionInfo = async (workbenchId: string) => {
   try {
     const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createSetupIntentForCompany = async () => {
+  try {
+    const response = await backendApi.get(`billing/generate-setup-session`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPricing = async () => {
+  try {
+    const response = await backendApi.get(`billing/pricing`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPricingByProductType = async (
+  stripeProductType: StripeProductType
+): Promise<StripeProduct | null> => {
+  try {
+    const response = await backendApi.get(`billing/pricing/${stripeProductType}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
