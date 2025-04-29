@@ -58,6 +58,8 @@ interface HikeMiddlewareOptions {
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
   isMaintenanceMode?: boolean;
+  maintenancePath?: string;
+  nonSlugs?: string[];
 }
 
 /**
@@ -74,18 +76,24 @@ export const withHikeMiddleware = ({
   restrictedRoles,
   allowedPaths,
   loginPath,
-  isMaintenanceMode
+  isMaintenanceMode,
+  maintenancePath = '/maintenance',
+  nonSlugs = []
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
-    if (isMaintenanceMode) {
-      request.nextUrl.pathname = '/maintenance';
-      return NextResponse.rewrite(request.nextUrl);
-    }
-
     const pathname = request.nextUrl.pathname;
     const pathParts = pathname.split('/');
-    const slug = pathParts[1] && !['login', 'enroll'].includes(pathParts[1]) ? pathParts[1] : null;
+
+    // Determine slug from path
+    nonSlugs.push('login', maintenancePath.slice(1));
+    const slug = pathParts[1] && !nonSlugs.includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
+
+    // Exit to maintenance page if applicable
+    if (isMaintenanceMode) {
+      request.nextUrl.pathname = maintenancePath;
+      return NextResponse.rewrite(request.nextUrl);
+    }
 
     // Build response to return
     const onNextResponse = (user: AuthUser | null): NextResponse<unknown> => {
@@ -135,7 +143,8 @@ export const withHikeMiddleware = ({
     if (
       pathname.startsWith(`${slugPath}/login`) ||
       allowedPathGroups?.static.includes(pathname.replace(/\/$/, '')) ||
-      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path))
+      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path)) ||
+      pathname === maintenancePath
     ) {
       try {
         const token = extractToken(request);
