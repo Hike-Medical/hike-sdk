@@ -10,7 +10,6 @@ import {
   Input,
   Loader,
   MantineColor,
-  MantineRadius,
   MantineSize,
   MantineThemeOverride,
   NumberInput,
@@ -22,11 +21,9 @@ import {
 import { DatePickerInput, DateTimePicker, TimeInput } from '@mantine/dates';
 
 const defaultStyles: {
-  radius: MantineRadius;
   size: MantineSize;
   c: MantineColor;
 } = {
-  radius: 'xl',
   size: 'lg',
   c: 'hike-dimmed'
 };
@@ -115,6 +112,7 @@ export const apr2025 = {
   },
   primaryColor: 'hike',
   primaryShade: 9,
+  defaultRadius: 'xl',
   headings: {
     fontWeight: '700',
     textWrap: 'balance',
@@ -140,7 +138,6 @@ export const apr2025 = {
       }
     }
   },
-  defaultRadius: 'xl',
   components: {
     Title: {
       styles: {
