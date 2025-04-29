@@ -129,6 +129,10 @@ export const apr2025 = {
         fontSize: rem(24),
         lineHeight: rem(32)
       },
+      h3: {
+        fontSize: rem(20),
+        lineHeight: rem(28)
+      },
       h4: {
         fontWeight: '500',
         fontSize: rem(14),
