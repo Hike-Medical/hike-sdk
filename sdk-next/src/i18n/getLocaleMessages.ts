@@ -22,7 +22,7 @@ const getCachedFile = async (path: string, file: string): Promise<Record<string,
  */
 export const getLocaleMessages = async (): Promise<{ locale: string; messages: Record<string, string> }> => {
   const { locale, slug } = await getUserLocale();
-  const messagesPath = join(process.cwd(), 'messages');
+  const messagesPath = join(process.cwd(), 'i18n', 'messages');
   const messages = await getCachedFile(messagesPath, `${locale}.json`);
 
   if (slug) {
