@@ -1,7 +1,7 @@
 'use server';
 
-import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 /**
  * Reads a JSON file and returns the parsed object.

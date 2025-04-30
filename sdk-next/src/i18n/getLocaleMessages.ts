@@ -1,5 +1,4 @@
 import merge from 'lodash/merge';
-import { join } from 'path';
 import { readJsonFile } from '../utils/readJsonFile';
 import { getUserLocale } from './userLocale';
 
@@ -20,14 +19,15 @@ const getCachedFile = async (path: string, file: string): Promise<Record<string,
 /**
  * Get the `next‑intl` based messages for the current company.
  */
-export const getLocaleMessages = async (): Promise<{ locale: string; messages: Record<string, string> }> => {
+export const getLocaleMessages = async (
+  basePath: string
+): Promise<{ locale: string; messages: Record<string, string> }> => {
   const { locale, slug } = await getUserLocale();
-  const messagesPath = join(process.cwd(), 'i18n', 'messages');
-  const messages = await getCachedFile(messagesPath, `${locale}.json`);
+  const messages = await getCachedFile(basePath, `${locale}.json`);
 
   if (slug) {
     try {
-      const companyMessages = await getCachedFile(messagesPath, `${locale}.${slug}.json`);
+      const companyMessages = await getCachedFile(basePath, `${locale}.${slug}.json`);
       return { locale, messages: merge({}, messages, companyMessages) };
     } catch (error) {
       const isMissing = typeof error === 'object' && error !== null && 'code' in error && error.code === 'ENOENT';
