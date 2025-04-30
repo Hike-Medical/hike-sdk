@@ -53,6 +53,11 @@ export const sendSignInOtp = async (params: SendOtpParams) => {
   }
 };
 
+export const getIsCompanyVoluntary = async (): Promise<boolean> => {
+  const response = await backendApi.get(`auth/company/is-voluntary`);
+  return response.data;
+};
+
 export const refreshToken = async (token?: string, excludeCookie?: boolean): Promise<AuthSession> => {
   try {
     const queryString = excludeCookie === true ? '?exclude-cookie=true' : '';
