@@ -28,8 +28,6 @@ export * from './api/shipping.service';
 export * from './api/terms.service';
 export * from './api/user.service';
 export * from './api/workbench.service';
-export * from './auth/defaultCompany';
-export * from './auth/findCompaniesBySession';
 export * from './configure';
 export * from './errors/HikeError';
 export * from './errors/HikeErrorCode';

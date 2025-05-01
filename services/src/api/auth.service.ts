@@ -1,6 +1,7 @@
 import type {
   AcceptInvitationParams,
   AuthSession,
+  SafeCompany,
   SendOtpParams,
   UserExtended,
   VerifyInvitationResponse
@@ -133,4 +134,9 @@ export const acceptInvitation = async (params: AcceptInvitationParams): Promise<
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
+  const response = await backendApi.get('auth/session/companies');
+  return response.data;
 };

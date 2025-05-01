@@ -1,6 +1,6 @@
 import type { SafeCompany } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
-import { findCompaniesBySession } from '../../auth/findCompaniesBySession';
+import { findCompaniesBySession } from '../../api/auth.service';
 import { HikeError } from '../../errors/HikeError';
 
 interface UseCompaniesBySessionOptions {
