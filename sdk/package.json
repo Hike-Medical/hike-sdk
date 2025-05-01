@@ -20,10 +20,6 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.js"
-    },
-    "./ui": {
-      "import": "./dist/ui/index.js",
-      "require": "./dist/cjs/ui/index.js"
     }
   },
   "files": [
@@ -40,7 +36,6 @@
   "dependencies": {
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
-    "@hike/ui": "workspace:*",
     "@hike/utils": "workspace:*"
   },
   "devDependencies": {

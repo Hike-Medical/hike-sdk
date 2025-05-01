@@ -2,7 +2,7 @@
 
 import { datadogLogs, LogsInitConfiguration } from '@datadog/browser-logs';
 import { AppId, HikeEnvironment } from '@hike/sdk';
-import { CompanyContext, SessionContext } from '@hike/sdk/ui';
+import { CompanyContext, SessionContext } from '@hike/ui';
 import { useParams } from 'next/navigation';
 import { ReactNode, use, useEffect, useState } from 'react';
 import { NetworkContext } from './NetworkProvider';

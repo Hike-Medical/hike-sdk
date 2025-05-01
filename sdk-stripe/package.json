@@ -20,6 +20,10 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./ui": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/cjs/hooks/index.js"
     }
   },
   "files": [
@@ -38,6 +42,11 @@
     "stripe": "^16.2.0"
   },
   "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19",
+    "react-dom": "^19",
+    "@tanstack/react-query": "^5",
     "typescript": "^5"
   }
 }
