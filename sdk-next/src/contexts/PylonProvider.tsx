@@ -4,7 +4,7 @@
 'use client';
 
 import { AppId, randomString } from '@hike/sdk';
-import { SessionContext, useCurrentPatient } from '@hike/sdk/ui';
+import { SessionContext, useCurrentPatient } from '@hike/ui';
 import { Overlay } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import Script from 'next/script';
