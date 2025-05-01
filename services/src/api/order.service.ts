@@ -33,9 +33,20 @@ export const findOrderById = async (orderId: string): Promise<OrderExtended> => 
   }
 };
 
-export const fetchOrders = async (params?: GetOrdersParams): Promise<PagedResponse<OrderExtended[]>> => {
+export const fetchOrders = async (
+  params?: GetOrdersParams,
+  companyIds?: string[]
+): Promise<PagedResponse<OrderExtended[]>> => {
+  let headers: {
+    [key: string]: string;
+  } = {};
+
+  if (companyIds?.length) {
+    headers = { ...headers, 'x-company-id': companyIds.join(',') };
+  }
+
   try {
-    const response = await backendApi.get('order', { params });
+    const response = await backendApi.get('order', { params, headers });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
