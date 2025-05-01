@@ -3,8 +3,8 @@
 
 'use client';
 
-import { AppId, randomString, useCurrentPatient } from '@hike/sdk';
-import { SessionContext } from '@hike/sdk/ui';
+import { AppId, randomString } from '@hike/sdk';
+import { SessionContext, useCurrentPatient } from '@hike/ui';
 import { Overlay } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import Script from 'next/script';

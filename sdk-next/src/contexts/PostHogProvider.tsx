@@ -1,7 +1,7 @@
 'use client';
 
 import { configureFingerprint } from '@hike/sdk';
-import { SessionContext } from '@hike/sdk/ui';
+import { SessionContext } from '@hike/ui';
 import dynamic from 'next/dynamic';
 import posthog from 'posthog-js'; // eslint-disable-line import/no-named-as-default
 import { PostHogProvider as PHProvider } from 'posthog-js/react';

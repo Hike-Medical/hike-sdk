@@ -6,13 +6,15 @@ import { useFormStatus } from 'react-dom';
 interface SubmitButtonProps {
   label?: string;
   loading?: boolean;
+  fullWidth?: boolean;
+  disabled?: boolean;
 }
 
-export const SubmitButton = ({ label, loading }: SubmitButtonProps) => {
+export const SubmitButton = ({ label, loading, fullWidth = true, disabled }: SubmitButtonProps) => {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending} loading={loading} fullWidth>
+    <Button type="submit" loading={loading} disabled={disabled || pending} fullWidth={fullWidth}>
       {label || 'Submit'}
     </Button>
   );

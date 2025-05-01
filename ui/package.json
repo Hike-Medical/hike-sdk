@@ -37,11 +37,12 @@
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
     "@hike/utils": "workspace:*",
-    "@tabler/icons-react": "^3.31.0"
+    "@tanstack/react-query": "^5.74.4"
   },
   "peerDependencies": {
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "axios": "^1"
   },
   "devDependencies": {
     "@types/react": "^19",

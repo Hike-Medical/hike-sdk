@@ -1,6 +1,7 @@
 import type {
   AcceptInvitationParams,
   AuthSession,
+  SafeCompany,
   SendOtpParams,
   UserExtended,
   VerifyInvitationResponse
@@ -51,6 +52,11 @@ export const sendSignInOtp = async (params: SendOtpParams) => {
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const getIsCompanyVoluntary = async (): Promise<boolean> => {
+  const response = await backendApi.get(`auth/company/is-voluntary`);
+  return response.data;
 };
 
 export const refreshToken = async (token?: string, excludeCookie?: boolean): Promise<AuthSession> => {
@@ -128,4 +134,9 @@ export const acceptInvitation = async (params: AcceptInvitationParams): Promise<
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
+  const response = await backendApi.get('auth/session/companies');
+  return response.data;
 };

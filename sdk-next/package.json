@@ -29,6 +29,7 @@
   "dependencies": {
     "@datadog/browser-logs": "^6.6.3",
     "@hike/sdk": "workspace:*",
+    "@hike/ui": "workspace:*",
     "lodash": "^4.17.21",
     "posthog-js": "^1.236.5"
   },
