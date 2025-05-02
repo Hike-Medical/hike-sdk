@@ -24,7 +24,6 @@ export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
 export * from './hooks/auth/useGetIsCompanyVoluntary';
 export * from './hooks/auth/useGetPinStatus';
-export * from './hooks/auth/useInviteUsers';
 export * from './hooks/auth/useSignInWithPin';
 export * from './hooks/auto-slicer/useRunSlicerForSide';
 export * from './hooks/billing-codes/useBillingCodes';
