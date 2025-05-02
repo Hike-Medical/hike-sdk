@@ -2,7 +2,6 @@
 
 import {
   Anchor,
-  Button,
   Checkbox,
   CheckIcon,
   Combobox,
@@ -28,7 +27,7 @@ const defaultStyles: {
   c: 'hike-dimmed'
 };
 
-const labelStyles = {
+export const labelStyles = {
   fontSize: rem(16),
   fontWeight: '700',
   color: '#78828A',
@@ -159,30 +158,10 @@ export const apr2025 = {
         c: 'hike'
       }
     }),
-    Button: Button.extend({
-      defaultProps: {
-        variant: 'filled',
-        size: 'lg',
-        radius: '24',
-        mih: rem(58),
-        styles: {
-          root: {
-            fontWeight: '600',
-            fontSize: rem(18),
-            lineHeight: rem(22.68),
-            '&:disabled': {
-              backgroundColor: '#D7D7D7',
-              color: 'var(--mantine-color-white)'
-            }
-          }
-        }
-      }
-    }),
     InputBase: Input.extend({
       defaultProps: {
         ...defaultStyles,
         styles: () => ({
-          label: labelStyles,
           input: inputStyles
         })
       }
