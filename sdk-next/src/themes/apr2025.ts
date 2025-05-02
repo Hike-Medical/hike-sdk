@@ -2,7 +2,6 @@
 
 import {
   Anchor,
-  Button,
   Checkbox,
   CheckIcon,
   Combobox,
@@ -28,7 +27,7 @@ const defaultStyles: {
   c: 'hike-dimmed'
 };
 
-const labelStyles = {
+export const apr2025LabelStyles = {
   fontSize: rem(16),
   fontWeight: '700',
   color: '#78828A',
@@ -40,7 +39,7 @@ const placeholderStyles = {
   color: 'var(--mantine-color-hike-dimmed-3)'
 };
 
-const inputStyles = {
+export const apr2025InputStyles = {
   fontSize: rem(18),
   fontWeight: 'bold',
   lineHeight: rem(24),
@@ -63,7 +62,7 @@ const descriptionStyles = {
 };
 
 const datePickerInputStyles = {
-  ...inputStyles,
+  ...apr2025InputStyles,
   '.mantine-InputPlaceholder-placeholder': placeholderStyles,
   '&:not(:has(.mantine-InputPlaceholder-placeholder))': {
     borderColor: 'var(--mantine-color-hike-9)'
@@ -159,32 +158,9 @@ export const apr2025 = {
         c: 'hike'
       }
     }),
-    Button: Button.extend({
-      defaultProps: {
-        variant: 'filled',
-        size: 'lg',
-        radius: '24',
-        mih: rem(58),
-        styles: {
-          root: {
-            fontWeight: '600',
-            fontSize: rem(18),
-            lineHeight: rem(22.68),
-            '&:disabled': {
-              backgroundColor: '#D7D7D7',
-              color: 'var(--mantine-color-white)'
-            }
-          }
-        }
-      }
-    }),
     InputBase: Input.extend({
       defaultProps: {
-        ...defaultStyles,
-        styles: () => ({
-          label: labelStyles,
-          input: inputStyles
-        })
+        ...defaultStyles
       }
     }),
     NumberInput: NumberInput.extend({
@@ -192,8 +168,8 @@ export const apr2025 = {
         ...defaultStyles,
         hideControls: true,
         styles: {
-          label: labelStyles,
-          input: inputStyles
+          label: apr2025LabelStyles,
+          input: apr2025InputStyles
         }
       }
     }),
@@ -207,8 +183,8 @@ export const apr2025 = {
       defaultProps: {
         ...defaultStyles,
         styles: () => ({
-          label: { ...labelStyles, marginBottom: 0, fontWeight: '500' },
-          input: inputStyles,
+          label: { ...apr2025LabelStyles, marginBottom: 0, fontWeight: '500' },
+          input: apr2025InputStyles,
           description: descriptionStyles
         })
       }
@@ -217,8 +193,8 @@ export const apr2025 = {
       defaultProps: {
         ...defaultStyles,
         styles: {
-          label: labelStyles,
-          input: inputStyles,
+          label: apr2025LabelStyles,
+          input: apr2025InputStyles,
           description: descriptionStyles
         }
       }
@@ -228,7 +204,7 @@ export const apr2025 = {
         size: 'md',
         c: 'hike-dimmed',
         styles: {
-          label: { ...labelStyles, marginBottom: 0 }
+          label: { ...apr2025LabelStyles, marginBottom: 0 }
         }
       }
     }),
@@ -237,7 +213,7 @@ export const apr2025 = {
         valueFormat: 'DD MMMM YYYY',
         ...defaultStyles,
         styles: {
-          label: labelStyles,
+          label: apr2025LabelStyles,
           input: datePickerInputStyles
         }
       }
@@ -247,7 +223,7 @@ export const apr2025 = {
         valueFormat: 'DD MMMM YYYY hh:mm A',
         ...defaultStyles,
         styles: {
-          label: labelStyles,
+          label: apr2025LabelStyles,
           input: datePickerInputStyles
         }
       }
@@ -256,7 +232,7 @@ export const apr2025 = {
       defaultProps: {
         ...defaultStyles,
         styles: {
-          label: labelStyles,
+          label: apr2025LabelStyles,
           input: datePickerInputStyles
         }
       }
@@ -276,8 +252,8 @@ export const apr2025 = {
       defaultProps: {
         ...defaultStyles,
         styles: {
-          label: labelStyles,
-          input: inputStyles
+          label: apr2025LabelStyles,
+          input: apr2025InputStyles
         }
       }
     },
