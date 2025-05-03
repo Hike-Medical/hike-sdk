@@ -2,6 +2,8 @@ import type { AgreementStatus, AgreementType, Clinician, CompanyPermission, Comp
 
 export interface AuthUser {
   id: string;
+  firstName: string | null;
+  lastName: string | null;
   email: string | null;
   phone: string | null;
   companies: Record<string, CompanyRole | null>;
