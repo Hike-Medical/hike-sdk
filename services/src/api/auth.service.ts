@@ -9,7 +9,6 @@ import type {
 import {
   AccountRecoveryParams,
   CreateUserParams,
-  InviteUserParams,
   PasswordResetParams,
   SignInWithPinBody,
   SignInWithTokenParams
@@ -72,15 +71,6 @@ export const refreshToken = async (token?: string, excludeCookie?: boolean): Pro
 export const logout = async (): Promise<void> => {
   try {
     const response = await backendApi.post('auth/logout');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const inviteUserEmail = async (params: InviteUserParams): Promise<boolean> => {
-  try {
-    const response = await backendApi.post('auth/invite', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
