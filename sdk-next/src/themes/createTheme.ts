@@ -95,7 +95,7 @@ export const createColors = (colors?: {
     colors ?? {}
   );
 
-export const createComponents = (colors: ThemeColors, themeInput?: Partial<ThemeComponent>): ThemeComponent =>
+export const createComponents = (colors: ThemeColors, components?: Partial<ThemeComponent>): ThemeComponent =>
   merge(
     {},
     {
@@ -130,7 +130,7 @@ export const createComponents = (colors: ThemeColors, themeInput?: Partial<Theme
       dateTimeFormat: 'DD MMMM YYYY hh:mm A',
       loader: 'dots'
     },
-    themeInput ?? {}
+    components ?? {}
   );
 
 export const createTheme = (
