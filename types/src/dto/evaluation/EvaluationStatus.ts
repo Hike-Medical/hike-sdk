@@ -5,4 +5,5 @@ export type EvaluationStatus =
   | 'AWAITING_AUTH'
   | 'AWAITING_ORDER'
   | 'PROCESSING'
-  | 'COMPLETED';
+  | 'COMPLETED'
+  | 'DELIVERED';
