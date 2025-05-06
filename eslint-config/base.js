@@ -56,6 +56,7 @@ const customConfig = [
       'guard-for-in': 'warn',
       'max-classes-per-file': 'off',
       'no-await-in-loop': 'warn',
+      'no-bitwise': 'warn',
       'no-nested-ternary': 'off',
       'no-plusplus': 'warn',
       'no-restricted-exports': 'off',
@@ -109,6 +110,7 @@ const customConfig = [
       '@typescript-eslint/no-throw-literal': 'off',
       '@typescript-eslint/no-use-before-define': 'off',
       '@typescript-eslint/no-useless-constructor': 'error',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
       '@typescript-eslint/prefer-destructuring': 'warn',
       '@typescript-eslint/return-await': 'off'
     }

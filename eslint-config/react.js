@@ -18,7 +18,8 @@ export const config = [
       'react/jsx-filename-extension': 'off',
       'react/no-unstable-nested-components': 'off',
       'react/react-in-jsx-scope': 'off',
-      'react/require-default-props': 'off'
+      'react/require-default-props': 'off',
+      'react/prop-types': 'off'
     }
   }
 ];
