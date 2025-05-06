@@ -46,9 +46,11 @@
     "react-dom": "^19"
   },
   "devDependencies": {
+    "@hike/eslint-config": "workspace:*",
     "@types/lodash": "^4.17.16",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.26.0",
     "react": "^19",
     "react-dom": "^19",
     "typescript": "^5"

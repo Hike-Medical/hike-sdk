@@ -31,5 +31,9 @@
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist"
+  },
+  "devDependencies": {
+    "@hike/eslint-config": "workspace:*",
+    "eslint": "^9.26.0"
   }
 }
