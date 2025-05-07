@@ -1,4 +1,4 @@
-import { ShipTo } from '../shipping/GetShipengineShippingResponse';
+import { ShipTo } from './GetShipengineShippingResponse';
 
 export interface GeneratePackingSlip {
   shipTo: ShipTo;

@@ -26,7 +26,7 @@ export const fromAddressField = (name: string, state: Record<string, unknown>): 
  * Extracts and formats address components from Google Places into a structured `ContactAddress` object.
  */
 export const fromGoogleAddress = (
-  addressComponents: Array<{ long_name: string; short_name: string; types: string[] }>
+  addressComponents: { long_name: string; short_name: string; types: string[] }[]
 ): ContactAddress => {
   const address: ContactAddress = {
     addressLine1: '',
