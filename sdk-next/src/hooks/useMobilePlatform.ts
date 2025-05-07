@@ -13,7 +13,7 @@ interface MobilePlatformInfo {
  */
 export const useMobilePlatform = (): MobilePlatformInfo => {
   const platformInfo = useMemo(() => {
-    const userAgent = navigator.userAgent;
+    const { userAgent } = navigator;
     const isAndroid = /Android/i.test(userAgent);
     const isIOS = /iPad|iPhone|iPod/.test(userAgent);
 
