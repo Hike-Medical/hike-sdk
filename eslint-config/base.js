@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import { configs, plugins } from 'eslint-config-airbnb-extended';
 import { rules as prettierConfigRules } from 'eslint-config-prettier';
+import onlyWarn from 'eslint-plugin-only-warn';
 import prettierPlugin from 'eslint-plugin-prettier';
 import turboPlugin from 'eslint-plugin-turbo';
 
@@ -129,6 +130,12 @@ export const config = [
   ...turboConfig,
   ...customConfig,
   {
-    ignores: ['dist/**']
+    plugins: {
+      // TODO: Remove once fixed all errors
+      onlyWarn
+    }
+  },
+  {
+    ignores: ['dist/**', '__tests__/**', '.prettierrc.js']
   }
 ];

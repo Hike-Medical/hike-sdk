@@ -44,7 +44,7 @@ interface HikeMiddlewareOptions {
       config: HikeMiddlewareConfig;
       user: AuthUser | null;
       slug: string | null;
-    }) => NextResponse<unknown>;
+    }) => NextResponse;
   };
   loginPath?: ({
     config,
@@ -81,7 +81,7 @@ export const withHikeMiddleware = ({
   nonSlugs = []
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
-    const pathname = request.nextUrl.pathname;
+    const { pathname } = request.nextUrl;
     const pathParts = pathname.split('/');
 
     // Determine slug from path
@@ -96,7 +96,7 @@ export const withHikeMiddleware = ({
     }
 
     // Build response to return
-    const onNextResponse = (user: AuthUser | null): NextResponse<unknown> => {
+    const onNextResponse = (user: AuthUser | null): NextResponse => {
       const response = callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
 
       // Handle internationalization if applicable
