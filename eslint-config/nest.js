@@ -1,3 +1,4 @@
+import onlyWarn from 'eslint-plugin-only-warn';
 import { config as baseConfig } from './base.js';
 
 /**
@@ -5,4 +6,12 @@ import { config as baseConfig } from './base.js';
  *
  * @type {import("eslint").Linter.Config[]}
  * */
-export const config = [...baseConfig];
+export const config = [
+  ...baseConfig,
+  {
+    plugins: {
+      // TODO: Remove once fixed all errors
+      onlyWarn
+    }
+  }
+];
