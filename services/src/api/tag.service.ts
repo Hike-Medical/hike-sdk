@@ -12,7 +12,7 @@ export const upsertTag = async (params?: UpsertTagParams): Promise<Tag> => {
   }
 };
 
-export const fetchTags = async (companyIds?: string[]): Promise<{ [name: string]: TagResult }[]> => {
+export const fetchTags = async (companyIds?: string[]): Promise<Record<string, TagResult>[]> => {
   try {
     const response = await backendApi.get('tag', { headers: addHeaders(companyIds) });
     return response.data;

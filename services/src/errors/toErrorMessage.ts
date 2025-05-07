@@ -4,7 +4,9 @@ const parseMessage = (text: unknown) => {
   // Combine array of messages if applicable
   if (Array.isArray(text) && text.length > 0) {
     return text.join(', ');
-  } else if (typeof text === 'string') {
+  }
+
+  if (typeof text === 'string') {
     return text;
   }
 

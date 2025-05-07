@@ -11,7 +11,7 @@ export class StripeService {
     });
   }
 
-  getNextBillingDate(interval: Stripe.Price.Recurring.Interval, increment: number = 1): number {
+  getNextBillingDate(interval: Stripe.Price.Recurring.Interval, increment = 1): number {
     const currentDate = dayjs();
     let nextBillingDate: dayjs.Dayjs;
 
@@ -37,7 +37,7 @@ export class StripeService {
 
   async createPaymentIntent(
     amount: number,
-    currency: string = 'usd',
+    currency = 'usd',
     metadata?: Stripe.MetadataParam
   ): Promise<Stripe.PaymentIntent> {
     try {
@@ -65,7 +65,7 @@ export class StripeService {
         payment_method_types: ['card', 'us_bank_account'],
         metadata: {
           reason: 'Saving card on file',
-          stripeEntityId: stripeEntityId
+          stripeEntityId
         }
       });
     } catch (error) {
@@ -149,7 +149,7 @@ export class StripeService {
           }
         ],
         metadata: {
-          companyId: companyId
+          companyId
         },
         payment_behavior: 'allow_incomplete',
         proration_behavior: 'none',
@@ -243,8 +243,8 @@ export class StripeService {
           if (
             bestPercentOff.max_redemptions &&
             (!discount.max_redemptions ||
-              discount.max_redemptions - discount.times_redeemed! >
-                bestPercentOff.max_redemptions - bestPercentOff.times_redeemed!)
+              discount.max_redemptions - discount.times_redeemed >
+                bestPercentOff.max_redemptions - bestPercentOff.times_redeemed)
           ) {
             bestPercentOff = discount;
           }
@@ -256,8 +256,8 @@ export class StripeService {
           if (
             bestAmountOff.max_redemptions &&
             (!discount.max_redemptions ||
-              discount.max_redemptions - discount.times_redeemed! >
-                bestAmountOff.max_redemptions - bestAmountOff.times_redeemed!)
+              discount.max_redemptions - discount.times_redeemed >
+                bestAmountOff.max_redemptions - bestAmountOff.times_redeemed)
           ) {
             bestAmountOff = discount;
           }
@@ -278,8 +278,8 @@ export class StripeService {
     customerId: string,
     lineItems: StripeLineItem[],
     companyId: string,
-    shouldAutoAdvance: boolean = false,
-    sendInvoice: boolean = false,
+    shouldAutoAdvance = false,
+    sendInvoice = false,
     invoiceCouponIds?: string[],
     description?: string,
     subscriptionId?: string,
@@ -294,7 +294,7 @@ export class StripeService {
         customer: customerId,
         auto_advance: shouldAutoAdvance,
         metadata: {
-          companyId: companyId,
+          companyId,
           ...(subscriptionId && { subscriptionId })
         },
         discounts,
@@ -315,7 +315,7 @@ export class StripeService {
 
         invoiceItemData.discounts = item.couponIds ? await this.validateAndFindBestCoupon(item.couponIds) : [];
 
-        //If an amount is given, then use that amount with the productId, if not then use the given Price (used for orthofeet)
+        // If an amount is given, then use that amount with the productId, if not then use the given Price (used for orthofeet)
         if (item.amount) {
           invoiceItemData.price_data = { product: item.productId, unit_amount: item.amount, currency: 'usd' };
         } else if (item.priceId) {
@@ -379,7 +379,7 @@ export class StripeService {
   async createCompleteInvoice(
     customerId: string,
     companyId: string,
-    shouldAutoAdvance: boolean = false,
+    shouldAutoAdvance = false,
     startDate?: Date,
     endDate?: Date
   ) {
@@ -388,14 +388,12 @@ export class StripeService {
       if (previousInvoices.length === 0) {
         throw new Error('There are no invoices to combine together.');
       }
-      const invoiceDetails = previousInvoices.map((invoice) => {
-        return {
-          id: invoice.id,
-          status: invoice.status,
-          amount: invoice.amount_due,
-          description: `Summary of Invoice ${invoice.id}`
-        };
-      });
+      const invoiceDetails = previousInvoices.map((invoice) => ({
+        id: invoice.id,
+        status: invoice.status,
+        amount: invoice.amount_due,
+        description: `Summary of Invoice ${invoice.id}`
+      }));
 
       const startDateStr = startDate ? dayjs(startDate).format('YYYY-MM-DD') : 'beginning';
       const endDateStr = endDate ? dayjs(endDate).format('YYYY-MM-DD') : 'now';
@@ -404,7 +402,7 @@ export class StripeService {
       const combinedInvoice = await this.stripe.invoices.create({
         customer: customerId,
         metadata: {
-          companyId: companyId,
+          companyId,
           combined: 'true'
         },
         description: invoiceDescription,
@@ -426,6 +424,7 @@ export class StripeService {
             await this.stripe.invoices.finalizeInvoice(invoice.id);
           }
           if (invoice.amount === 0) {
+            // eslint-disable-next-line no-continue
             continue;
           }
           await this.stripe.invoices.voidInvoice(invoice.id);
@@ -446,7 +445,7 @@ export class StripeService {
     }
   }
 
-  async createPriceForCompany(productId: string, companyId: string, amount: number, currency: string = 'usd') {
+  async createPriceForCompany(productId: string, companyId: string, amount: number, currency = 'usd') {
     try {
       const query = [`metadata['companyId']:'${companyId}'`, `product:'${productId}'`, `active:'true'`].join(' AND ');
 
@@ -462,9 +461,9 @@ export class StripeService {
       const newPrice = await this.stripe.prices.create({
         product: productId,
         unit_amount: amount,
-        currency: currency,
+        currency,
         metadata: {
-          companyId: companyId
+          companyId
         }
       });
 
@@ -476,8 +475,8 @@ export class StripeService {
 
   async searchInvoicesForCompany(
     customerId: string,
-    isUnpaid: boolean = false,
-    removeCombined: boolean = false,
+    isUnpaid = false,
+    removeCombined = false,
     startDate?: Date,
     endDate?: Date
   ) {
@@ -512,7 +511,7 @@ export class StripeService {
         const query = queryParts.join(' AND ');
 
         const invoices = await this.stripe.invoices.search({
-          query: query,
+          query,
           limit: 100,
           page: page ?? undefined
         });
@@ -616,7 +615,7 @@ export class StripeService {
         duration: 'forever',
         metadata: {
           productType: String(productType),
-          companyId: companyId,
+          companyId,
           flag: String(flag)
         }
       });
