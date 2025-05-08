@@ -20,9 +20,11 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
   }
 };
 
-export const findFormSchemas = async (): Promise<FormSchemaTyped[]> => {
+export const findFormSchemas = async (formSchemaTypes?: (FormSchemaType | null)[]): Promise<FormSchemaTyped[]> => {
   try {
-    const response = await backendApi.get(`form/schema`);
+    const response = await backendApi.get(`form/schema`, {
+      params: { formSchemaTypes: formSchemaTypes?.map((type) => (type === null ? '' : type)) }
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
