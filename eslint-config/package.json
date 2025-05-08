@@ -15,10 +15,10 @@
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
-    "./base": "./base.js",
-    "./next-js": "./next.js",
-    "./nestjs": "./nest.js",
-    "./react": "./react.js"
+    "./base": "./src/base.js",
+    "./next-js": "./src/next.js",
+    "./nestjs": "./src/nest.js",
+    "./react": "./src/react.js"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.9",
