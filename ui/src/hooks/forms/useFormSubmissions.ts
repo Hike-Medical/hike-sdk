@@ -1,9 +1,9 @@
 import { HikeError, findFormSubmissionsByWorkbenchId } from '@hike/services';
-import type { FormSubmissionTyped } from '@hike/types';
+import { FormFieldValue } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseFormSubmissionsOptions
-  extends Omit<UseQueryOptions<FormSubmissionTyped[], HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<Record<string, FormFieldValue>, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
   queryKey?: QueryKey;
 }
