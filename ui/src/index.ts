@@ -20,6 +20,7 @@ export * from './hooks/augments/useFindAssetAugmentStatusByAugmentId';
 export * from './hooks/augments/useFindAssetAugmentStatusByWorkbenchId';
 export * from './hooks/augments/useUpdateAssetAugmentMedia';
 export * from './hooks/auth/useAcceptInvitation';
+export * from './hooks/auth/useAcceptInvitationCompany';
 export * from './hooks/auth/useCompaniesBySession';
 export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
