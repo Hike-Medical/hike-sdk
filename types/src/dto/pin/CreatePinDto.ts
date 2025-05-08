@@ -1,4 +1,4 @@
-import { SignInWithPinBody } from '../../dto/auth/SignInWithPinBody';
+import { SignInWithPinBody } from '../auth/SignInWithPinBody';
 
 export interface CreatePinDto {
   pin: SignInWithPinBody['pin'];

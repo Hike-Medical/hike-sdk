@@ -14,7 +14,7 @@ dayjs.extend(localizedFormat);
  * // e.g., "May 13, 2024"
  *
  */
-export const formatDate = (value: string | number | Date = new Date(), template: string = 'll'): string | null => {
+export const formatDate = (value: string | number | Date = new Date(), template = 'll'): string | null => {
   const obj = dayjs(value);
 
   if (!obj.isValid()) {

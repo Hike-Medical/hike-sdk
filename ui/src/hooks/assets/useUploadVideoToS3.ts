@@ -52,14 +52,14 @@ export const useUploadVideoToS3 = (
 
             if (event.lengthComputable) {
               const progress = (event.loaded / event.total) * 100;
-              console.log('Computed progress:', progress.toFixed(2) + '%');
+              console.log('Computed progress:', `${progress.toFixed(2)}%`);
               onProgress(progress);
             } else if (timeDelta > 0) {
               const speed = loadDelta / timeDelta;
               console.log('Upload speed:', speed.toFixed(2), 'bytes/ms');
               const estimatedTotal = video instanceof File ? video.size : (video as Blob).size;
               const estimatedProgress = Math.min((event.loaded / estimatedTotal) * 100, 99);
-              console.log('Estimated progress:', estimatedProgress.toFixed(2) + '%');
+              console.log('Estimated progress:', `${estimatedProgress.toFixed(2)}%`);
               onProgress(estimatedProgress);
             }
 
