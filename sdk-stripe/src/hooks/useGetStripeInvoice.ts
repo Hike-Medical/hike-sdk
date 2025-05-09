@@ -7,12 +7,9 @@ interface StripeInvoiceContext {
   stripeInvoiceId: string;
 }
 
-export const useStripeInvoice = (
-  options?: UseMutationOptions<Stripe.Invoice, HikeError<null>, StripeInvoiceContext>
-) => {
-  return useMutation({
+export const useStripeInvoice = (options?: UseMutationOptions<Stripe.Invoice, HikeError<null>, StripeInvoiceContext>) =>
+  useMutation({
     mutationKey: ['stripeInvoice'],
     mutationFn: async ({ stripeInvoiceId }) => await fetchStripeInvoice(stripeInvoiceId),
     ...options
   });
-};

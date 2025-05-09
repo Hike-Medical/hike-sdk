@@ -1,6 +1,3 @@
-// Pylon currently does not have a client-side SDK
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 'use client';
 
 import { AppId, randomString } from '@hike/sdk';
@@ -22,6 +19,9 @@ interface PylonProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Component that provides a Pylon context to the app since Pylon does not have a client-side SDK.
+ */
 export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) => {
   const [isPylonVisible, setIsPylonVisible] = useState(false);
   const { status, user } = use(SessionContext);
@@ -55,18 +55,19 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
         }
       };
 
-      (window as any).Pylon('onShow', function () {
+      (window as any).Pylon('onShow', () => {
         setIsPylonVisible(true);
       });
 
-      (window as any).Pylon('onHide', function () {
+      (window as any).Pylon('onHide', () => {
         setIsPylonVisible(false);
       });
     }
-  }, [status, data]);
+  }, [status, data, pylonId, user?.clinician?.name, appId]);
 
   return (
     <PylonContext
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         showPylon: () => {
           if ('Pylon' in window) {

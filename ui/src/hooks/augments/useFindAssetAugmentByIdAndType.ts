@@ -5,12 +5,10 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 export const useFindAssetAugmentByIdAndType = (
   assetId: string,
   augmentType: AssetAugmentType,
-  queryOptions?: Omit<UseQueryOptions<AssetAugmentResult, Error>, 'queryKey' | 'queryFn'>
+  queryOptions?: Omit<UseQueryOptions<AssetAugmentResult>, 'queryKey' | 'queryFn'>
 ) =>
   useQuery({
     queryKey: ['augment', assetId, augmentType],
-    queryFn: async () => {
-      return await findAugmentByAssetIdAndType(assetId, augmentType);
-    },
+    queryFn: async () => await findAugmentByAssetIdAndType(assetId, augmentType),
     ...queryOptions
   });

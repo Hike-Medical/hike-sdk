@@ -3,7 +3,7 @@ import { TagResult } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseTagsOptions
-  extends Omit<UseQueryOptions<{ [name: string]: TagResult }[], HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<Record<string, TagResult>[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
   companyIds?: string[];
 }

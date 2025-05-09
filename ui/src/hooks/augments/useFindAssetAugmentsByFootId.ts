@@ -4,9 +4,9 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useFindAssetAugmentsByFootId = (
   footId: string,
-  options?: Omit<UseQueryOptions<AssetAugment[], Error>, 'queryKey' | 'queryFn'>
+  options?: Omit<UseQueryOptions<AssetAugment[]>, 'queryKey' | 'queryFn'>
 ) =>
-  useQuery<AssetAugment[], Error>({
+  useQuery<AssetAugment[]>({
     queryKey: ['augment', 'foot', footId],
     queryFn: async () => await findAssetAugmentsByFootId(footId),
     ...options

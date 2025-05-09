@@ -29,7 +29,7 @@ export const findKeyInNested = (
         return true;
       }
       if (value !== null && typeof value === 'object') {
-        return recurse(value as Prisma.JsonObject | Prisma.JsonArray);
+        return recurse(value);
       }
       return false;
     });

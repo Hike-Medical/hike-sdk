@@ -1,4 +1,6 @@
 import type {
+  AcceptInvitationCompanyParams,
+  AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
   AuthSession,
   SafeCompany,
@@ -120,6 +122,17 @@ export const verifyInvitation = async (token: string): Promise<VerifyInvitationR
 export const acceptInvitation = async (params: AcceptInvitationParams): Promise<UserExtended> => {
   try {
     const response = await backendApi.post('auth/invitation', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const acceptInvitationCompany = async (
+  params: AcceptInvitationCompanyParams
+): Promise<AcceptInvitationCompanyResponse> => {
+  try {
+    const response = await backendApi.post('auth/invitation/company', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

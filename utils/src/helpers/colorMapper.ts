@@ -1,6 +1,4 @@
-type ColorMap = {
-  [key: string]: string;
-};
+type ColorMap = Record<string, string>;
 
 const colorHexMap: ColorMap = {
   white: '#FFFFFF',

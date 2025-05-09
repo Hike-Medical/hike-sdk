@@ -4,7 +4,7 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useFindAssetAugmentStatusByAugmentId = (
   augmentId: string,
-  queryOptions?: Omit<UseQueryOptions<AssetAugmentStatusForAugmentId, Error>, 'queryFn' | 'queryKey'>
+  queryOptions?: Omit<UseQueryOptions<AssetAugmentStatusForAugmentId>, 'queryFn' | 'queryKey'>
 ) =>
   useQuery({
     queryKey: ['augment', augmentId, 'status'],

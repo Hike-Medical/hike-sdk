@@ -1,3 +1,1 @@
-export const getCurrentPaginatedPage = (page: string): number => {
-  return Math.max(parseInt(page, 10), 1);
-};
+export const getCurrentPaginatedPage = (page: string): number => Math.max(parseInt(page, 10), 1);

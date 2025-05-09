@@ -32,7 +32,7 @@ export const SessionProvider = ({
     try {
       setStatus('LOADING');
       const latest = newTokens ?? tokens ?? null;
-      //TODO: Replace with proper exclude-cookie flag from Simplr
+      // TODO: Replace with proper exclude-cookie flag from Simplr
       const excludeCookie = !!disableAutoStart;
       const value = await refreshToken(latest?.refreshToken, excludeCookie);
       configureAuthorization(excludeCookie ? value.tokens.accessToken : null);

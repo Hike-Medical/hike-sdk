@@ -4,9 +4,9 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useFindAssetAugmentsByWorkbenchId = (
   workbenchId: string,
-  options?: Omit<UseQueryOptions<AssetAugmentResult[], Error>, 'queryKey' | 'queryFn'>
+  options?: Omit<UseQueryOptions<AssetAugmentResult[]>, 'queryKey' | 'queryFn'>
 ) =>
-  useQuery<AssetAugmentResult[], Error>({
+  useQuery<AssetAugmentResult[]>({
     queryKey: ['augment', 'workbench', workbenchId],
     queryFn: async () => await findAssetAugmentsByWorkbenchId(workbenchId),
     ...options

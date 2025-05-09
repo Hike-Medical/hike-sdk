@@ -8,7 +8,5 @@ export interface NotificationStats {
   clicked: number;
   opened: number;
   unsubscribed: number;
-  status: {
-    [key in SenderMessageStatus]: number;
-  };
+  status: Record<SenderMessageStatus, number>;
 }

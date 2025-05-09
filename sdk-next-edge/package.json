@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc --build",
     "dev": "tsc --watch",
-    "lint": "eslint .",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist"
   },
@@ -37,8 +37,10 @@
     "react-dom": "^19"
   },
   "devDependencies": {
+    "@hike/eslint-config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.26.0",
     "typescript": "^5"
   }
 }
