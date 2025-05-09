@@ -1,4 +1,4 @@
-import { isString } from '@hike/utils';
+import { isString } from '@hike/types';
 import { isAxiosError } from 'axios';
 
 export enum HikeErrorCode {

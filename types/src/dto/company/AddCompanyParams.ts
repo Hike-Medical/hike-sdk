@@ -5,10 +5,3 @@ export interface AddCompanyParams {
   slug: string;
   preferences?: CompanyPreferences;
 }
-
-export interface UpdateCompanyParams {
-  logoUrl?: string;
-  url?: string;
-  preferences?: CompanyPreferences;
-  active?: boolean;
-}

@@ -1,6 +1,7 @@
 import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { Constants, isDefined, selectPreferredLocale } from '@hike/utils';
+import { isDefined } from '@hike/types';
+import { Constants, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
@@ -44,7 +45,7 @@ interface HikeMiddlewareOptions {
       config: HikeMiddlewareConfig;
       user: AuthUser | null;
       slug: string | null;
-    }) => NextResponse<unknown>;
+    }) => NextResponse;
   };
   loginPath?: ({
     config,
@@ -77,15 +78,15 @@ export const withHikeMiddleware = ({
   allowedPaths,
   loginPath,
   isMaintenanceMode,
-  maintenancePath = '/maintenance',
+  maintenancePath = '/maintenance.html',
   nonSlugs = []
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
-    const pathname = request.nextUrl.pathname;
+    const { pathname } = request.nextUrl;
     const pathParts = pathname.split('/');
 
     // Determine slug from path
-    nonSlugs.push('login', maintenancePath.slice(1));
+    nonSlugs.push('login');
     const slug = pathParts[1] && !nonSlugs.includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
 
@@ -96,7 +97,7 @@ export const withHikeMiddleware = ({
     }
 
     // Build response to return
-    const onNextResponse = (user: AuthUser | null): NextResponse<unknown> => {
+    const onNextResponse = (user: AuthUser | null): NextResponse => {
       const response = callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
 
       // Handle internationalization if applicable
@@ -143,8 +144,7 @@ export const withHikeMiddleware = ({
     if (
       pathname.startsWith(`${slugPath}/login`) ||
       allowedPathGroups?.static.includes(pathname.replace(/\/$/, '')) ||
-      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path)) ||
-      pathname === maintenancePath
+      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path))
     ) {
       try {
         const token = extractToken(request);

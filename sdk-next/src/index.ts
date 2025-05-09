@@ -12,5 +12,7 @@ export * from './media/camera';
 export * from './media/getBestSupportedVideoFormat';
 export * from './themes/createTheme';
 export * from './themes/themeIconColor';
+export * from './themes/types/ThemeColors';
+export * from './themes/types/ThemeComponent';
 export * from './utils/analytics';
 export * from './utils/logger';

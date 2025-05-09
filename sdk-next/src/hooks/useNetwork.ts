@@ -45,7 +45,7 @@ export const useNetwork = () => {
 
         setSpeed(speedMbps < Constants.NETWORK_SPEED_MIN_MBPS ? 'slow' : 'fast');
       } catch {
-        return;
+        // Silently fail
       }
     };
 

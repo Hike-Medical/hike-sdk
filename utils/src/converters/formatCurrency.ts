@@ -19,7 +19,7 @@ const getFormatter = (currencyCode = 'USD', rounded = false, locale: string | nu
   }
 
   // Assert value always defined since above condition handles
-  return cache[key]!;
+  return cache[key];
 };
 
 /**

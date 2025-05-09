@@ -1,6 +1,7 @@
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
+import { CompanyPortal } from './CompanyPortal';
 import { CompanyTheme } from './CompanyTheme';
 
 export interface CompanyPreferences {
@@ -47,7 +48,9 @@ export interface CompanyPreferences {
   setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
-  portals?: ('clinical' | 'employer' | 'operations')[];
+  diabeticPatients?: string;
+  patientVolume?: string;
+  portals?: CompanyPortal[];
   ui?: {
     theme?: CompanyTheme;
   };

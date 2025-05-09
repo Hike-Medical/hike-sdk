@@ -6,7 +6,7 @@ import type {
   FormSection,
   InvalidFormSection
 } from '@hike/types';
-import { asStringArray, isStringArray } from '../guards/isString';
+import { asStringArray, isStringArray } from '@hike/types';
 import { isAddressFieldValid } from './formAddressUtils';
 
 /**
@@ -61,9 +61,11 @@ export const isFormRuleDisplayed = (
     case 'show':
       if (typeof conditionValue === 'boolean') {
         return conditionValue === !!selectedValue && selectedValue != null;
-      } else if (typeof conditionValue === 'string') {
+      }
+      if (typeof conditionValue === 'string') {
         return selectedValue != null && conditionValue === selectedValue;
-      } else if (Array.isArray(conditionValue)) {
+      }
+      if (Array.isArray(conditionValue)) {
         if (selectedValue == null) {
           return false;
         }
@@ -71,17 +73,18 @@ export const isFormRuleDisplayed = (
           const hasIntersection = (array1: string[], array2: string[]) =>
             array2.some((item) => new Set(array1).has(item));
           return selectedValue.length > 0 && hasIntersection(conditionValue.map(String), selectedValue.map(String));
-        } else {
-          return conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
         }
+        return conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
       }
       break;
     case 'hide':
       if (typeof conditionValue === 'boolean') {
         return !(conditionValue === !!selectedValue && selectedValue != null);
-      } else if (typeof conditionValue === 'string') {
+      }
+      if (typeof conditionValue === 'string') {
         return !(selectedValue != null && conditionValue === selectedValue);
-      } else if (Array.isArray(conditionValue)) {
+      }
+      if (Array.isArray(conditionValue)) {
         if (selectedValue == null) {
           return true;
         }
@@ -89,9 +92,8 @@ export const isFormRuleDisplayed = (
           const hasIntersection = (array1: string[], array2: string[]) =>
             array2.some((item) => new Set(array1).has(item));
           return !(selectedValue.length > 0 && hasIntersection(conditionValue.map(String), selectedValue.map(String)));
-        } else {
-          return !conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
         }
+        return !conditionValue.reduce((acc, item) => acc || item === selectedValue, false);
       }
       break;
     default:
@@ -109,18 +111,14 @@ export const isFieldValid = (
   state: Record<string, FormFieldValue>,
   isOnlyField?: boolean,
   activeFoot?: string
-): boolean => {
-  return (
-    (!field.required && !isOnlyField) ||
-    (field.type === 'address'
-      ? isAddressFieldValid(field.name, state)
-      : Object.keys(state).some(
-          (key) =>
-            key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
-        )) ||
-    !isFormFieldDisplayed(field, state, { activeFoot })
-  );
-};
+): boolean =>
+  (!field.required && !isOnlyField) ||
+  (field.type === 'address'
+    ? isAddressFieldValid(field.name, state)
+    : Object.keys(state).some(
+        (key) => key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
+      )) ||
+  !isFormFieldDisplayed(field, state, { activeFoot });
 
 /**
  * Determines if all the required fields in the form are answered.
@@ -244,10 +242,8 @@ export const formValidator = (sections: FormSection[], state: Record<string, For
     title: section.title,
     fields: section.fields
       .filter((field) => !isFieldValid(field, state, section.fields.length === 1))
-      .map((field) => {
-        return {
-          name: field.name,
-          label: field.label
-        };
-      })
+      .map((field) => ({
+        name: field.name,
+        label: field.label
+      }))
   }));
