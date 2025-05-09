@@ -40,6 +40,7 @@ export type * from './dto/catalog/GetCategoriesParams';
 export type * from './dto/catalog/GetProductsParams';
 export type * from './dto/catalog/GetVendorsParams';
 export type * from './dto/clinician/AssignClinicianParams';
+export type * from './dto/clinician/CreateClinicianParams';
 export type * from './dto/clinician/GetCliniciansParams';
 export type * from './dto/company/AddCompanyParams';
 export type * from './dto/company/ClinicalFlowType';

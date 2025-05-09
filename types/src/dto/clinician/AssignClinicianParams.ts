@@ -1,5 +1,4 @@
 export interface AssignClinicianParams {
+  clinicianId: string;
   userId: string;
-  clinicianName: string;
-  shouldCreate?: boolean;
 }

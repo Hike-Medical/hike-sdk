@@ -1,6 +1,22 @@
-import { AssignClinicianParams, Clinician, ClinicianExtended, GetCliniciansParams, PagedResponse } from '@hike/types';
+import {
+  AssignClinicianParams,
+  Clinician,
+  ClinicianExtended,
+  CreateClinicianParams,
+  GetCliniciansParams,
+  PagedResponse
+} from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
+
+export const createClinician = async (params: CreateClinicianParams): Promise<Clinician> => {
+  try {
+    const response = await backendApi.post('clinician', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 
 export const fetchClinicians = async (params?: GetCliniciansParams): Promise<PagedResponse<ClinicianExtended[]>> => {
   try {
@@ -20,9 +36,18 @@ export const fetchClinician = async (): Promise<Clinician | null> => {
   }
 };
 
-export const assignClinician = async (params: AssignClinicianParams): Promise<Clinician> => {
+export const fetchUnassignedClinicians = async (name: string): Promise<Clinician[]> => {
   try {
-    const response = await backendApi.post('clinician/assign', params);
+    const response = await backendApi.get('clinician/unassigned', { params: { name } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const assignClinician = async ({ clinicianId, userId }: AssignClinicianParams): Promise<Clinician> => {
+  try {
+    const response = await backendApi.post(`clinician/assign/${clinicianId}/user/${userId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
