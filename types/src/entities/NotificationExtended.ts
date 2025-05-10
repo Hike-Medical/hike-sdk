@@ -1,4 +1,4 @@
-import { EmailTemplate, Notification, NotificationMessage } from '../../prisma/index';
+import { EmailTemplate, Notification, NotificationMessage } from '../../prisma';
 
 export type NotificationMessageExtended = NotificationMessage & {
   emailTemplate?: EmailTemplate | null;

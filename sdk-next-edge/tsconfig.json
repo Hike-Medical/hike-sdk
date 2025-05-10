@@ -1,0 +1,16 @@
+{
+  "extends": "../../../tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "jsx": "preserve"
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist", "eslint.config.mjs"]
+}

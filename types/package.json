@@ -28,8 +28,12 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
-    "lint": "eslint .",
+    "lint": "eslint \"src/**/*.{ts,js}\"",
     "format": "prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist"
+  },
+  "devDependencies": {
+    "@hike/eslint-config": "workspace:*",
+    "eslint": "^9.26.0"
   }
 }

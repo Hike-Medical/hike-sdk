@@ -1,4 +1,5 @@
-import { OrderStatus } from '../../../prisma/index';
+import { OrderStatus } from '../../../prisma';
+
 export interface DateFilter {
   startDate: string;
   endDate: string;

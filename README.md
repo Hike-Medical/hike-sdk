@@ -68,7 +68,7 @@ For client-side applications, initialize the SDK on the server-side and then wra
 ```javascript
 // Inside your root App or Layout component
 import hikeClient from '@/utils/hikeClient';
-import { HikeProvider } from '@hike/sdk/ui';
+import { HikeProvider } from '@hike/ui';
 
 export default function RootLayout({ children }) {
   return (

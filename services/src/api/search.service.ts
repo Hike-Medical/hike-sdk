@@ -2,7 +2,7 @@ import type { EvaluationExtended, GetSearchParams, PagedResponse, PatientExtende
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const searchEvaluations = async (
+export const globalSearch = async (
   params: GetSearchParams
 ): Promise<{ patients: PagedResponse<PatientExtended[]>; evaluations: PagedResponse<EvaluationExtended[]> }> => {
   try {

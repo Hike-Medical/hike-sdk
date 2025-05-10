@@ -2,8 +2,8 @@ export interface SlackMessage {
   channelUrl: string | undefined;
   text?: string;
   pretext?: string;
-  attachments?: Array<{
-    mrkdwn_in?: Array<string>;
+  attachments?: {
+    mrkdwn_in?: string[];
     color?: string;
     pretext?: string;
     author_name?: string;
@@ -12,16 +12,16 @@ export interface SlackMessage {
     title?: string;
     title_link?: string;
     text?: string;
-    fields?: Array<{
+    fields?: {
       title?: string;
       value?: string;
       short?: boolean;
-    }>;
+    }[];
     thumb_url?: string;
     footer?: string;
     footer_icon?: string;
     ts?: number;
-  }>;
+  }[];
 }
 
 export const postMessageToSlack = async ({ channelUrl, text, attachments }: SlackMessage) => {

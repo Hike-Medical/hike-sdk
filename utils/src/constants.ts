@@ -1,4 +1,4 @@
-import type { PaginationState } from '@hike/types';
+import type { CompanyTheme, PaginationState } from '@hike/types';
 
 export const Constants = {
   AUTH_COOKIE_NAME: 'hike.session-token',
@@ -15,5 +15,10 @@ export const Constants = {
     OPEN_PARAM: 'xoid'
   },
   NETWORK_SPEED_FILE_SIZE_KB: 100,
-  NETWORK_SPEED_MIN_MBPS: 3
+  NETWORK_SPEED_MIN_MBPS: 3,
+  DEFAULT_COMPANY_THEME: '2025-apr' satisfies CompanyTheme,
+  i18n: {
+    DEFAULT_LOCALE: 'en',
+    LOCALE_COOKIE_NAME: 'locale'
+  }
 } as const;

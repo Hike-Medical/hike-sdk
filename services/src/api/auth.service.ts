@@ -1,6 +1,9 @@
 import type {
+  AcceptInvitationCompanyParams,
+  AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
   AuthSession,
+  SafeCompany,
   SendOtpParams,
   UserExtended,
   VerifyInvitationResponse
@@ -8,7 +11,6 @@ import type {
 import {
   AccountRecoveryParams,
   CreateUserParams,
-  InviteUserParams,
   PasswordResetParams,
   SignInWithPinBody,
   SignInWithTokenParams
@@ -53,6 +55,11 @@ export const sendSignInOtp = async (params: SendOtpParams) => {
   }
 };
 
+export const getIsCompanyVoluntary = async (): Promise<boolean> => {
+  const response = await backendApi.get(`auth/company/is-voluntary`);
+  return response.data;
+};
+
 export const refreshToken = async (token?: string, excludeCookie?: boolean): Promise<AuthSession> => {
   try {
     const queryString = excludeCookie === true ? '?exclude-cookie=true' : '';
@@ -66,15 +73,6 @@ export const refreshToken = async (token?: string, excludeCookie?: boolean): Pro
 export const logout = async (): Promise<void> => {
   try {
     const response = await backendApi.post('auth/logout');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const inviteUserEmail = async (params: InviteUserParams): Promise<boolean> => {
-  try {
-    const response = await backendApi.post('auth/invite', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -128,4 +126,20 @@ export const acceptInvitation = async (params: AcceptInvitationParams): Promise<
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const acceptInvitationCompany = async (
+  params: AcceptInvitationCompanyParams
+): Promise<AcceptInvitationCompanyResponse> => {
+  try {
+    const response = await backendApi.post('auth/invitation/company', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
+  const response = await backendApi.get('auth/session/companies');
+  return response.data;
 };
