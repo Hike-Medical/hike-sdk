@@ -1,4 +1,4 @@
-import { isEmpty } from '../helpers/isEmpty';
+import { isEmpty } from './isEmpty';
 
 /**
  * Type guard for filtering out empty values.

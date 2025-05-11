@@ -1,6 +1,7 @@
 import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { Constants, isDefined, selectPreferredLocale } from '@hike/utils';
+import { isDefined } from '@hike/types';
+import { Constants, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;

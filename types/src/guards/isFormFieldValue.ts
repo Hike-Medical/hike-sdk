@@ -1,4 +1,4 @@
-import { FormFieldValue } from '@hike/types';
+import { FormFieldValue } from '../forms/FormField';
 import { isBoolean } from './isBoolean';
 import { isNumber, isNumberArray } from './isNumber';
 import { isString, isStringArray } from './isString';
