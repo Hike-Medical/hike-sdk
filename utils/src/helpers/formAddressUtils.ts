@@ -1,5 +1,4 @@
-import { ContactAddress } from '@hike/types';
-import { isEmpty } from './isEmpty';
+import { ContactAddress, isEmpty } from '@hike/types';
 
 /**
  * Validates if all required address fields for a given type are non-empty strings.

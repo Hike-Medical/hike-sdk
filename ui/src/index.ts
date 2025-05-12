@@ -92,6 +92,7 @@ export * from './hooks/forms/useUpdateFormTemplate';
 export * from './hooks/forms/useUpsertFormSubmission';
 export * from './hooks/incentive/useGetIncentiveByType';
 export * from './hooks/incentive/useGetPatientIncentivesByType';
+export * from './hooks/invitation/useCreateInvitation';
 export * from './hooks/invitation/useInvitations';
 export * from './hooks/kvs/useDeleteSignalingChannel';
 export * from './hooks/kvs/useGetSignalingChannel';
