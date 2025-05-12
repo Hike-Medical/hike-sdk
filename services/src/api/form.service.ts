@@ -1,5 +1,6 @@
 import type {
   CreateFormTemplateBody,
+  FormFieldValue,
   FormSchemaType,
   FormSchemaTyped,
   FormSubmissionTyped,
@@ -19,9 +20,11 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
   }
 };
 
-export const findFormSchemas = async (schemaIds?: string[]): Promise<FormSchemaTyped[]> => {
+export const findFormSchemas = async (formSchemaTypes?: (FormSchemaType | null)[]): Promise<FormSchemaTyped[]> => {
   try {
-    const response = await backendApi.get(`form/schema${schemaIds ? `?schemaIds=${schemaIds.join(',')}` : ''}`);
+    const response = await backendApi.get(`form/schema`, {
+      params: { formSchemaTypes: formSchemaTypes?.map((type) => (type === null ? '' : type)) }
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -40,7 +43,9 @@ export const findFormSubmission = async (
   }
 };
 
-export const findFormSubmissionsByWorkbenchId = async (workbenchId: string): Promise<FormSubmissionTyped[]> => {
+export const findFormSubmissionsByWorkbenchId = async (
+  workbenchId: string
+): Promise<Record<string, FormFieldValue>> => {
   try {
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission`);
     return response.data;
