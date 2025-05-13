@@ -16,6 +16,7 @@ export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './converters/toUTC';
 export * from './geography';
+export * from './helpers/isIOS';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
 export * from './helpers/colorMapper';
