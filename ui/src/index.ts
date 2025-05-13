@@ -173,6 +173,7 @@ export * from './hooks/useGetHealth';
 export * from './hooks/usePhysicians';
 export * from './hooks/users/useCurrentUser';
 export * from './hooks/users/useToggleUser';
+export * from './hooks/users/useUpdateUser';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
