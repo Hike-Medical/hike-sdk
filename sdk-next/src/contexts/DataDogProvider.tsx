@@ -44,7 +44,7 @@ interface DataDogProviderProps {
 }
 
 export const DataDogProvider = ({ children, ...config }: DataDogProviderProps) => {
-  const [isInitialized, setIssInitialized] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
   const { user, status } = use(SessionContext);
   const { speed } = use(NetworkContext);
   const params = useParams<{ workbenchId: string }>();
@@ -69,7 +69,7 @@ export const DataDogProvider = ({ children, ...config }: DataDogProviderProps) =
 
     datadogLogs.setGlobalContextProperty('userId', user?.id);
     datadogLogs.setGlobalContextProperty('workbenchId', params.workbenchId || null);
-  }, [user, status, params.workbenchId, isInitialized]);
+  }, [user, status, params.workbenchId, isInitialized, config]);
 
   useEffect(() => {
     if (!isInitialized) {
@@ -81,8 +81,8 @@ export const DataDogProvider = ({ children, ...config }: DataDogProviderProps) =
 
   useEffect(() => {
     initializeDataDog(config);
-    setIssInitialized(true);
-  }, []);
+    setIsInitialized(true);
+  }, [config]);
 
   return children;
 };
