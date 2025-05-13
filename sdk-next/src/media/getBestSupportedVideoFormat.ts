@@ -7,8 +7,10 @@ import { getSupportedMimeTypes } from './getSupportedMimeTypes';
  * @returns The best supported video format or 'video/mp4' if none of the formats are supported.
  */
 export const getBestSupportedVideoFormat = (): string => {
-  const videoTypes = ['webm', 'ogg', 'mp4', 'x-matroska'];
-  const codecs = [
+  const containers = ['mp4', 'webm', 'ogg', 'x-matroska'];
+  const preferredCodecs = [
+    'avc1.42E01E',
+    'avc1',
     'vp9',
     'vp9.0',
     'vp8',
@@ -26,8 +28,8 @@ export const getBestSupportedVideoFormat = (): string => {
     'mp4a'
   ];
 
-  const supportedVideos = getSupportedMimeTypes('video', videoTypes, codecs);
+  const supportedVideos = getSupportedMimeTypes('video', containers, preferredCodecs, containers);
 
-  // Default to mp4 if no supported format is found
-  return supportedVideos[0] || 'video/mp4';
+  // Default to webm if no preferred mp4 format is not possible
+  return supportedVideos[0] || 'video/webm;codecs=vp8';
 };
