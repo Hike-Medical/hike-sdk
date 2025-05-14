@@ -1,4 +1,4 @@
-import { FormSubmissionTyped } from '@hike/types';
+import { FormSubmissionTyped } from '../forms/FormSubmissionTyped';
 import { isFormFieldValue } from './isFormFieldValue';
 
 /**

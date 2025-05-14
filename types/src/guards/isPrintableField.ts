@@ -1,4 +1,5 @@
-import type { FieldPrint, FormField } from '@hike/types';
+import { FieldPrint } from '../forms/FieldPrint';
+import { FormField } from '../forms/FormField';
 import { isFieldPrint } from './isFieldPrint';
 
 export const isPrintableField = (value: unknown): value is FormField & { print: Record<string, FieldPrint> } =>

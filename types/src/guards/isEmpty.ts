@@ -1,4 +1,4 @@
-import { isString } from '../guards/isString';
+import { isString } from './isString';
 
 export const isEmpty = (value: unknown) =>
   value == null ||

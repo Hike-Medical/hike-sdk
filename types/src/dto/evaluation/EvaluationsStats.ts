@@ -10,4 +10,5 @@ export interface EvaluationsStats {
   completedCount: number;
   uniqueCliniciansCount: number;
   uniqueFacilitiesCount: number;
+  deliveredCount: number;
 }

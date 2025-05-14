@@ -1,4 +1,4 @@
-import { isPlainObject } from '../helpers/isPlainObject';
+import { isPlainObject } from '@hike/types';
 
 /**
  * Recursively flattens a nested object into a single-level object using dot notation.

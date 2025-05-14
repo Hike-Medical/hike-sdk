@@ -1,7 +1,8 @@
-import { InactiveFootReason } from '../../../prisma';
+import { InactiveFootReason, Side } from '../../../prisma';
 
 export interface FootStatus {
   id: string;
+  side: Side;
   notStarted: boolean;
   error: boolean;
   pending: boolean;

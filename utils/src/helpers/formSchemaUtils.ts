@@ -6,7 +6,7 @@ import type {
   FormSection,
   InvalidFormSection
 } from '@hike/types';
-import { asStringArray, isStringArray } from '../guards/isString';
+import { asStringArray, isStringArray } from '@hike/types';
 import { isAddressFieldValid } from './formAddressUtils';
 
 /**

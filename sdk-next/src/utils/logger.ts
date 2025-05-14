@@ -1,3 +1,6 @@
+// Console log is expected to be used in the logger
+/* eslint-disable no-console */
+
 import { datadogLogs } from '@datadog/browser-logs';
 
 /**

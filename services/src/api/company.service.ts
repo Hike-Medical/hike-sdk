@@ -32,7 +32,7 @@ export const findCompanyPreferences = async (): Promise<CompanyPreferences> => {
   }
 };
 
-export const findCompanyTheme = async (): Promise<CompanyTheme> => {
+export const findCompanyTheme = async (): Promise<{ theme: CompanyTheme | null }> => {
   try {
     const response = await backendApi.get('auth/company/theme');
     return response.data;
