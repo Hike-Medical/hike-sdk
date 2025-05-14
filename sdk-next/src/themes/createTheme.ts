@@ -27,8 +27,8 @@ import {
   DatePickerInputProps,
   DateTimePicker,
   DateTimePickerProps,
-  TimeInput,
-  TimeInputProps
+  TimePicker,
+  TimePickerProps
 } from '@mantine/dates';
 import merge from 'lodash/merge';
 import { ThemeColors } from './types/ThemeColors';
@@ -279,9 +279,9 @@ export const createTheme = (
           })
         }
       }),
-      TimeInput: TimeInput.extend({
+      TimePicker: TimePicker.extend({
         defaultProps: {
-          ...(components.defaultProps as Partial<TimeInputProps>),
+          ...(components.defaultProps as Partial<TimePickerProps>),
           styles: () => ({
             label: components.label,
             input: components.input,
