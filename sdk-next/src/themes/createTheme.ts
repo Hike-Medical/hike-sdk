@@ -140,6 +140,9 @@ export const createTheme = (
 ): MantineThemeOverride => {
   const baseTheme = {
     colors: colors.palette,
+    other: {
+      semanticColors: colors.semantic
+    },
     primaryColor: 'hike',
     primaryShade: 9,
     defaultRadius: 'xl',
