@@ -4,6 +4,7 @@ export interface GeneratePackingSlip {
   shipTo: ShipTo;
   orders: TrackingOrders[];
   shipmentId: string;
+  emailPackingSlips?: string[];
 }
 
 interface TrackingOrders {

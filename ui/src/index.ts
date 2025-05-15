@@ -4,6 +4,7 @@ export * from './contexts/HikeProvider';
 export * from './contexts/SessionProvider';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
 export * from './hooks/analytics/useGetSolemateStats';
+export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/appointment/useAppointmentsImportJob';
 export * from './hooks/appointment/usePrescriptionsImportJob';
 export * from './hooks/assets/useAssets';
