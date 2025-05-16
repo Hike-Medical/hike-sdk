@@ -15,6 +15,8 @@ import {
   mergeThemeOverrides,
   NumberInput,
   NumberInputProps,
+  PasswordInput,
+  PasswordInputProps,
   RadioGroup,
   RadioGroupProps,
   RadioIndicator,
@@ -206,6 +208,16 @@ export const createTheme = (
         defaultProps: {
           ...(components.defaultProps as Partial<NumberInputProps>),
           hideControls: true,
+          styles: () => ({
+            label: components.label,
+            input: components.input,
+            description: components.description
+          })
+        }
+      }),
+      PasswordInput: PasswordInput.extend({
+        defaultProps: {
+          ...(components.defaultProps as Partial<PasswordInputProps>),
           styles: () => ({
             label: components.label,
             input: components.input,

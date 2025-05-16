@@ -10,10 +10,10 @@ import type {
 } from '@hike/types';
 import {
   AccountRecoveryParams,
-  CreateUserParams,
   PasswordResetParams,
   SignInWithPinBody,
-  SignInWithTokenParams
+  SignInWithTokenParams,
+  SignUpClinicianParams
 } from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
@@ -32,21 +32,33 @@ export const signIn = async (
 };
 
 export const signInWithToken = async (credentials: SignInWithTokenParams): Promise<AuthSession> => {
-  const response = await backendApi.post('auth/magic-link', credentials);
-  return response.data;
+  try {
+    const response = await backendApi.post('auth/magic-link', credentials);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
 export const signInWithPin = async (credentials: SignInWithPinBody): Promise<AuthSession> => {
-  const response = await backendApi.post('auth/pin', credentials);
-  return response.data;
+  try {
+    const response = await backendApi.post('auth/pin', credentials);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
-export const signUp = async (credentials: CreateUserParams) => {
-  const response = await backendApi.post('auth/signup', credentials);
-  return response.data;
+export const signUpClinician = async (data: SignUpClinicianParams): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/signup/clinician', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
-export const sendSignInOtp = async (params: SendOtpParams) => {
+export const sendSignInOtp = async (params: SendOtpParams): Promise<AuthSession> => {
   try {
     const response = await backendApi.post('auth/account/otp', params);
     return response.data;

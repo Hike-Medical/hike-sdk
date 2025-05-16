@@ -1,4 +1,11 @@
-import { GetUsersParams, PagedResponse, SafeUser, SafeUserExtended, UpdateUserParams } from '@hike/types';
+import {
+  GetUsersParams,
+  PagedResponse,
+  SafeUser,
+  SafeUserExtended,
+  UpdateUserParams,
+  UpdateUserPasswordParams
+} from '@hike/types';
 import { toHikeError } from '../errors/HikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -29,6 +36,14 @@ export const updateUser = async (params: UpdateUserParams): Promise<SafeUser> =>
   }
 };
 
+export const updateUserPassword = async (params: UpdateUserPasswordParams): Promise<SafeUser> => {
+  try {
+    const response = await backendApi.patch('user/password', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 export const activateUser = async (userId: string): Promise<void> => {
   try {
     await backendApi.post(`user/${userId}/activate`);

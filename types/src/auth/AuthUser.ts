@@ -13,6 +13,9 @@ export interface AuthUser {
   clinician?: Clinician | null;
   slugs: Record<string, string>;
   agreements: Record<AgreementType, AgreementStatus>;
+  active: Record<string, boolean>;
+  emailVerifiedAt: Date | null;
+  phoneVerifiedAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -69,7 +72,16 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<AgreementType, AgreementStatus>
   ),
+  active: user.companies.reduce(
+    (acc, obj) => {
+      acc[obj.company.slug] = obj.active;
+      return acc;
+    },
+    {} as Record<string, boolean>
+  ),
   clinician: user.clinician,
+  emailVerifiedAt: user.emailVerifiedAt,
+  phoneVerifiedAt: user.phoneVerifiedAt,
   createdAt: user.createdAt,
   updatedAt: user.updatedAt
 });

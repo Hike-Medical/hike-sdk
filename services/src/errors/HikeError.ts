@@ -40,11 +40,20 @@ export class HikeError<T> extends Error {
  * Converts an unknown error to a `HikeError` instance.
  */
 export const toHikeError = (error: unknown) => {
+  if (error instanceof HikeError) {
+    return error;
+  }
+
   const message = toErrorMessage(error);
   const errorCode = toErrorCode(error);
 
   if (isAxiosError(error) && error.response) {
-    return new HikeError({ message, statusCode: error.response.status, data: error.response.data, errorCode });
+    return new HikeError({
+      message,
+      statusCode: error.response.status,
+      data: error.response.data.data || error.response.data,
+      errorCode
+    });
   }
 
   // Check if the error is an instance of HttpException

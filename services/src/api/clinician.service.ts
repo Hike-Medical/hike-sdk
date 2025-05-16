@@ -27,9 +27,9 @@ export const fetchClinicians = async (params?: GetCliniciansParams): Promise<Pag
   }
 };
 
-export const fetchClinician = async (): Promise<Clinician | null> => {
+export const fetchUnassignedClinician = async (clinicianId: string): Promise<Clinician> => {
   try {
-    const response = await backendApi.get('clinician/current');
+    const response = await backendApi.get(`auth/clinician/unassigned/${clinicianId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

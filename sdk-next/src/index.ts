@@ -3,6 +3,7 @@ export * from './components/login/AccountRecovery';
 export * from './components/login/MagicLink';
 export * from './components/login/ResetPassword';
 export * from './components/login/TokenInvalid';
+export * from './components/SelectCompany';
 export * from './components/SubmitButton';
 export * from './contexts/DataDogProvider';
 export * from './contexts/NetworkProvider';
