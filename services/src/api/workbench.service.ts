@@ -260,9 +260,14 @@ export const generateWorkbenchDeliveryReceiptPdf = async (
   }
 };
 
-export const uploadFiles = async (workbenchId: string, formData: FormData): Promise<{ key: string; url: string }[]> => {
+export const uploadFiles = async (
+  workbenchId: string,
+  formData: FormData,
+  { retainName }: { retainName?: boolean } = {}
+): Promise<{ key: string; url: string }[]> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/upload`, formData, {
+    const queryParams = retainName != null ? `?retainName=${retainName}` : '';
+    const response = await backendApi.post(`workbench/${workbenchId}/upload${queryParams}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 

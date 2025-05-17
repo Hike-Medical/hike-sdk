@@ -6,6 +6,7 @@ export * from './config/AppId';
 export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
 export * from './dto/analytics/HourlyOptions';
+export * from './dto/analytics/OrdersByCompanies';
 export * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
 export * from './dto/appointment/ImportAppointmentsParams';
 export * from './dto/appointment/ImportAppointmentsResponse';

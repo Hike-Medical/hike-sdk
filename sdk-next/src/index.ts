@@ -4,6 +4,7 @@ export * from './contexts/DataDogProvider';
 export * from './contexts/NetworkProvider';
 export * from './contexts/PostHogProvider';
 export * from './contexts/PylonProvider';
+export * from './contexts/ScanProvider';
 export * from './hooks/useIsMobile';
 export * from './hooks/useMobilePlatform';
 export * from './i18n/userLocale';
