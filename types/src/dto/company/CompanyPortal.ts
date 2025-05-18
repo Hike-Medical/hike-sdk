@@ -1,5 +1,3 @@
-import { isType } from '../../guards/isType';
-
 /**
  * The type of portal for a company.
  *
@@ -20,4 +18,5 @@ export type CompanyPortal = (typeof CompanyPortal)[keyof typeof CompanyPortal];
 /**
  * Check if a value is a valid company portal.
  */
-export const isCompanyPortal = isType(CompanyPortal);
+export const isCompanyPortal = (value: string | null | undefined): value is CompanyPortal =>
+  !!value && value in CompanyPortal;
