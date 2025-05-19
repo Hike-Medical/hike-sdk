@@ -79,7 +79,6 @@ export const AccountRecovery = ({ params: paramsAsync }: AccountRecoveryProps) =
                 autoComplete="email"
                 autoCapitalize="none"
                 autoCorrect="off"
-                radius="md"
                 required
               />
               <SubmitButton label={t('actionButton')} loading={isAccountRecoveryLoading} />

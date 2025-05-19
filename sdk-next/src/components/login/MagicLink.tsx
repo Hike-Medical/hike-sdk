@@ -109,7 +109,6 @@ export const MagicLink = ({ params: paramsAsync, searchParams: searchParamsAsync
                 label={tShared('fields.emailOrPhone')}
                 autoCapitalize="none"
                 autoCorrect="off"
-                radius="md"
                 required
               />
               <Button type="submit" radius="md" loading={isAccountRecoveryLoading || isSignInWithTokenLoading}>

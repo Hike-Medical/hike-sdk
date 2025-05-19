@@ -29,21 +29,22 @@ export const fetchCurrentUser = async (): Promise<SafeUser> => {
 
 export const updateUser = async (params: UpdateUserParams): Promise<SafeUser> => {
   try {
-    const response = await backendApi.patch('user', params);
+    const response = await backendApi.patch('auth/user', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const updateUserPassword = async (params: UpdateUserPasswordParams): Promise<SafeUser> => {
+export const updateUserPassword = async (params: UpdateUserPasswordParams): Promise<void> => {
   try {
-    const response = await backendApi.patch('user/password', params);
+    const response = await backendApi.patch('auth/user/password', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
+
 export const activateUser = async (userId: string): Promise<void> => {
   try {
     await backendApi.post(`user/${userId}/activate`);

@@ -8,11 +8,12 @@ import { useEffect, useMemo, useState } from 'react';
 
 interface SelectCompanyProps {
   w?: string | number;
+  error?: string | null;
   forEnroll?: boolean;
   onSelect: (value: string | null) => void;
 }
 
-export const SelectCompany = ({ w, forEnroll, onSelect }: SelectCompanyProps) => {
+export const SelectCompany = ({ w, error, forEnroll, onSelect }: SelectCompanyProps) => {
   const minSearchLength = 3;
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -74,6 +75,7 @@ export const SelectCompany = ({ w, forEnroll, onSelect }: SelectCompanyProps) =>
           autoComplete="off"
           autoCorrect="off"
           w={w}
+          error={error}
           required
         />
       </Combobox.Target>

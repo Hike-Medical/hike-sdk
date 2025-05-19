@@ -12,4 +12,5 @@ export interface AcceptInvitationCompanyParams {
     name: string;
     preferences: Pick<CompanyPreferences, 'diabeticPatients' | 'patientVolume'>;
   };
+  isTermsAccepted?: boolean;
 }

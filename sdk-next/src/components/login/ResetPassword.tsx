@@ -101,7 +101,6 @@ export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsA
                 type="password"
                 placeholder={tShared('fields.newPasswordPlaceholder')}
                 autoComplete="new-password"
-                radius="md"
                 required
               />
               <PasswordInput
@@ -110,7 +109,6 @@ export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsA
                 type="password"
                 placeholder={tShared('fields.confirmPasswordPlaceholder')}
                 autoComplete="new-password"
-                radius="md"
                 required
               />
               <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />

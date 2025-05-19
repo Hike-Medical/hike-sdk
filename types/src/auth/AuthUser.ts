@@ -56,15 +56,13 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<string, Record<CompanyPermission, CompanyRole>>
   ),
-  slugs: user.companies
-    .flatMap((item) => item.company)
-    .reduce(
-      (acc, obj) => {
-        acc[obj.id] = obj.slug;
-        return acc;
-      },
-      {} as Record<string, string>
-    ),
+  slugs: user.companies.reduce(
+    (acc, obj) => {
+      acc[obj.companyId] = obj.company.slug;
+      return acc;
+    },
+    {} as Record<string, string>
+  ),
   agreements: user.agreements.reduce(
     (acc, obj) => {
       acc[obj.agreement.type] = obj.status;
@@ -74,7 +72,7 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
   ),
   active: user.companies.reduce(
     (acc, obj) => {
-      acc[obj.company.slug] = obj.active;
+      acc[obj.company.id] = obj.active;
       return acc;
     },
     {} as Record<string, boolean>
