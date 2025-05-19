@@ -4,4 +4,5 @@ export interface SignUpClinicianParams {
   email: string;
   phone?: string;
   isTermsAccepted?: boolean;
+  token?: string;
 }
