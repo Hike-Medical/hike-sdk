@@ -42,6 +42,8 @@
     "@mantine/notifications": "^7",
     "@tabler/icons-react": "^3",
     "next": "^15",
+    "next-intl": "^4",
+    "next-view-transitions": "^0.3",
     "react": "^19",
     "react-dom": "^19"
   },
