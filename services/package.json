@@ -30,7 +30,6 @@
     "dev": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "format": "prettier --check . --ignore-path ../../../.gitignore",
-    "test": "jest",
     "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
