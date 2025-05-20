@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { getSupportedMimeTypes } from '../src/ui/media/getSupportedMimeTypes';
+import { getSupportedMimeTypes } from '../src/media/getSupportedMimeTypes';
 
 describe('getSupportedMimeTypes', () => {
   beforeAll(() => {
