@@ -30,3 +30,4 @@ This repository contains Hike's TypeScript SDK that is shared across the platfor
 - Avoid adding third-party dependencies unless necessary; try to use existing packages.
 - Create tests for new code added unless it's UI code.
 - When creating a PR, add the original prompt in the PR description.
+- Do not make changes to `types/prisma/index.d.ts` as this is generated file from the Prisma schema.
