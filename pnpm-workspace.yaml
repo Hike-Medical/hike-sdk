@@ -1,6 +1,8 @@
 packages:
   - 'auth'
   - 'eslint-config'
+  - 'prettier-config'
+  - 'tsconfig'
   - 'sdk'
   - 'sdk-next'
   - 'sdk-next-edge'

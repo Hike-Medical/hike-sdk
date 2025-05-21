@@ -29,6 +29,8 @@
     "@types/node": "^22",
     "prettier": "^3",
     "turbo": "^2.5.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@hike/prettier-config": "workspace:*",
+    "@hike/tsconfig": "workspace:*"
   }
 }

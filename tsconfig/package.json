@@ -1,0 +1,11 @@
+{
+  "name": "@hike/tsconfig",
+  "version": "1.0.0",
+  "description": "Shared TypeScript configurations for Hike SDK.",
+  "license": "Apache-2.0",
+  "exports": {
+    "./base": "./base.json",
+    "./react-library": "./react-library.json",
+    "./next": "./next.json"
+  }
+}

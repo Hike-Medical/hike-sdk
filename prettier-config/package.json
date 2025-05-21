@@ -1,0 +1,7 @@
+{
+  "name": "@hike/prettier-config",
+  "version": "1.0.0",
+  "description": "Shared Prettier configuration for Hike SDK.",
+  "license": "Apache-2.0",
+  "main": "index.js"
+}
