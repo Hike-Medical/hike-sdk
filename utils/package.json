@@ -29,7 +29,7 @@
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,js}\"",
-    "format": "prettier --check . --ignore-path ../../../.gitignore",
+    "format": "npx prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
     "test": "jest"
   },
