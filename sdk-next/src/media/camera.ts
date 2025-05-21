@@ -5,7 +5,9 @@
  *
  * @returns A promise that resolves with the media stream if permissions are granted.
  */
-export const requestCameraPermissions = (constraints: MediaStreamConstraints = {}): Promise<MediaStream> =>
+export const requestCameraPermissions = (
+  constraints: MediaStreamConstraints = {}
+): Promise<MediaStream> =>
   new Promise((resolve, reject) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
