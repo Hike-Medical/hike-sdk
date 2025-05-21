@@ -1,10 +1,9 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "lint"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
-      "env": ["NODE_ENV", "AUTH_*", "VAPID_*", "IMAGE_TAG"]
+      "outputs": ["dist/**"]
     },
     "dev": {
       "dependsOn": ["^build"],
