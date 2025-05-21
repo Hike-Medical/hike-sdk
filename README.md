@@ -2,6 +2,19 @@
 
 The Hike SDK provides developers with a robust set of APIs to interact with our healthcare manufacturing effectively. It is designed for both server-side and client-side TypeScript environments, ensuring flexible integration into various web applications.
 
+## Repository Overview
+
+- `@hike/auth`: Authentication-related logic and components. Handles user login, token management, authorization, and session handling.
+- `@hike/eslint-config`: Shared ESLint configuration, defining consistent code-quality rules, standards, and linting guidelines across the monorepo.
+- `@hike/sdk`: Core SDK functionality. Centralized client interfaces, API wrappers, helpers, and common utilities used across different applications and services.
+- `@hike/sdk-next`: Provides shared components, hooks, and utilities specifically optimized for Next.js applications. Includes code reuse patterns for server-side rendering (SSR) and client-side rendering (CSR).
+- `@hike/sdk-next-edge`: Contains specialized components and utilities compatible with Next.js edge runtimes, such as middleware functions and other restricted edge-specific logic suitable for serverless or edge environments.
+- `@hike/sdk-stripe`: Stripe payment integrations and utilities, including type-safe wrappers around Stripe API interactions, checkout flows, and payment processing logic.
+- `@hike/services`: Type-safe wrappers around HTTP endpoints and backend API integrations. Facilitates consistent data fetching, error handling, and interaction with APIs through strongly typed interfaces.
+- `@hike/types`: Centralized, reusable TypeScript type definitions. Contains fundamental types and schemas that are shared across the entire repository to maintain consistency and type safety.
+- `@hike/ui`: Cross-platform UI components, styling, and theming utilities. Includes reusable React components that maintain visual consistency and UX guidelines throughout applications.
+- `@hike/utils`: Common utility functions, helpers, and small reusable modules that provide generic functionalities used across different packages in the repository.
+
 ## Getting Started
 
 ### Prerequisites
@@ -29,39 +42,6 @@ pnpm add @hike/sdk
 ```
 
 ### Initialization
-
-To use the Hike SDK, you must first initialize it with your configuration. This is done by providing an API key, the application environment, application ID, and version as follows:
-
-```javascript
-// utils/hikeClient.ts
-import hike from '@hike/sdk';
-
-export default hike.init({
-  apiKey: process.env.HIKE_API_KEY,
-  appEnv: process.env.NODE_ENV,
-  appId: '@hike/my-web', // or process.env.npm_package_name
-  appVersion: '1.0.0' // or process.env.npm_package_version
-  companyId: '***'
-});
-```
-
-### Usage
-
-Once initialized, you can use the SDK to perform various operations. For example, to find a patient by their ID:
-
-```javascript
-import hikeClient from '@/utils/hikeClient';
-const patient = await hikeClient.services.findPatientById('Abc123');
-```
-
-Or using destructuring:
-
-```javascript
-const { findPatientById } = await hikeClient.services;
-const patient = await findPatientById('Abc123');
-```
-
-### Client-Side Integration
 
 For client-side applications, initialize the SDK on the server-side and then wrap your root application component with the `HikeProvider` to ensure all server and client sub-components have access to the configured SDK:
 
