@@ -45,13 +45,11 @@
     "axios": "^1"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
+    "@hike/config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.26.0",
     "react": "^19",
-    "react-dom": "^19",
-    "@hike/prettier-config": "workspace:*",
-    "@hike/tsconfig": "workspace:*"
+    "react-dom": "^19"
   }
 }

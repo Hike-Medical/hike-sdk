@@ -1,5 +1,5 @@
 {
-  "extends": "@hike/tsconfig/react-library",
+  "extends": "@hike/config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",
@@ -7,7 +7,8 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "removeComments": false
+    "removeComments": false,
+    "jsx": "preserve"
   },
   "include": ["./src", "emails"],
   "exclude": ["node_modules", "dist", "eslint.config.mjs"]

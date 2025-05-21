@@ -1,5 +1,5 @@
 {
-  "extends": "@hike/tsconfig/base",
+  "extends": "@hike/config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",

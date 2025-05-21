@@ -42,15 +42,13 @@
     "stripe": "^16.2.0"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
+    "@hike/config": "workspace:*",
     "@tanstack/react-query": "^5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.26.0",
     "react": "^19",
     "react-dom": "^19",
-    "typescript": "^5",
-    "@hike/prettier-config": "workspace:*",
-    "@hike/tsconfig": "workspace:*"
+    "typescript": "^5"
   }
 }

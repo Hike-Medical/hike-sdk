@@ -33,9 +33,7 @@
     "clean": "rm -rf node_modules dist"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
-    "eslint": "^9.26.0",
-    "@hike/prettier-config": "workspace:*",
-    "@hike/tsconfig": "workspace:*"
+    "@hike/config": "workspace:*",
+    "eslint": "^9.26.0"
   }
 }

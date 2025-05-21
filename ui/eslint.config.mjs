@@ -1,1 +1,1 @@
-export { config as default } from '@hike/eslint-config/react';
+export { config as default } from '@hike/config/eslint/react';

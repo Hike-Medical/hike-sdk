@@ -5,7 +5,7 @@ This repository contains Hike's TypeScript SDK that is shared across the platfor
 ## Repository Overview
 
 - `@hike/auth`: Authentication-related logic and components. Handles user login, token management, authorization, and session handling.
-- `@hike/eslint-config`: Shared ESLint configuration, defining consistent code-quality rules, standards, and linting guidelines across the monorepo.
+- `@hike/config`: Shared ESLint, Prettier, and TypeScript configuration, defining consistent code-quality rules, standards, and linting guidelines across the monorepo.
 - `@hike/sdk`: Core SDK functionality. Centralized client interfaces, API wrappers, helpers, and common utilities used across different applications and services.
 - `@hike/sdk-next`: Provides shared components, hooks, and utilities specifically optimized for Next.js applications. Includes code reuse patterns for server-side rendering (SSR) and client-side rendering (CSR).
 - `@hike/sdk-next-edge`: Contains specialized components and utilities compatible with Next.js edge runtimes, such as middleware functions and other restricted edge-specific logic suitable for serverless or edge environments.
