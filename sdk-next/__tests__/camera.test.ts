@@ -1,13 +1,21 @@
 import { requestCameraPermissions } from '../src/media/camera';
 
 describe('requestCameraPermissions', () => {
+  const originalMediaDevices = (navigator as any).mediaDevices;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    (navigator as any).mediaDevices = { getUserMedia: jest.fn() };
+  });
+
+  afterAll(() => {
+    (navigator as any).mediaDevices = originalMediaDevices;
   });
 
   it('should resolve if camera access is granted', async () => {
+    const track = { stop: jest.fn() };
     const mockStream = {
-      getTracks: jest.fn(() => [{ stop: jest.fn() }])
+      getTracks: jest.fn(() => [track])
     };
 
     // Mocking navigator.mediaDevices.getUserMedia to resolve with mockStream
@@ -16,7 +24,7 @@ describe('requestCameraPermissions', () => {
     await expect(requestCameraPermissions()).resolves.toBeUndefined();
     expect(navigator.mediaDevices.getUserMedia).toHaveBeenCalledWith({ video: true });
     expect(mockStream.getTracks).toHaveBeenCalled();
-    expect(mockStream.getTracks()[0]?.stop).toHaveBeenCalled();
+    expect(track.stop).toHaveBeenCalled();
   });
 
   it('should reject if camera access is denied', async () => {
