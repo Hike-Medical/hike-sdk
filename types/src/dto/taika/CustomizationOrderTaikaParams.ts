@@ -13,6 +13,7 @@ export interface CustomizationOrderTaikaParams {
   engravingDepth?: number;
   moveBottomMedialInwards?: number;
   moveBottomLateralInwards?: number;
+  wallThickness?: number;
   wallThicknessMultiplierMedial?: number;
   wallThicknessMultiplierLateral?: number;
   distalEdgeThickness?: number;
