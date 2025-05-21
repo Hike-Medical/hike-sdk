@@ -1,0 +1,35 @@
+{
+  "name": "hike-sdk",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Hike SDK enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
+  "keywords": [
+    "insoles",
+    "medical",
+    "foot",
+    "health",
+    "orthotics",
+    "prosthetics",
+    "healthcare"
+  ],
+  "author": "support@hikemedical.com",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "pnpm turbo build",
+    "build:clean": "pnpm clean && pnpm install && pnpm build --force",
+    "lint": "pnpm turbo lint",
+    "format": "pnpm turbo format",
+    "test": "pnpm turbo test",
+    "clean": "pnpm turbo clean && rm -rf node_modules"
+  },
+  "engines": {
+    "node": "^22"
+  },
+  "packageManager": "pnpm@10.9.0",
+  "devDependencies": {
+    "@types/node": "^22",
+    "prettier": "^3",
+    "turbo": "^2.5.0",
+    "typescript": "^5"
+  }
+}
