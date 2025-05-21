@@ -50,11 +50,13 @@ interface HikeMiddlewareOptions {
   loginPath?: ({
     config,
     user,
-    slug
+    slug,
+    companyId
   }: {
     config: HikeMiddlewareConfig;
     user: AuthUser | null;
     slug: string | null;
+    companyId: string | undefined;
   }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
@@ -178,7 +180,7 @@ export const withHikeMiddleware = ({
         !restrictedRoles || Object.values(user.companies).some((role) => role && !restrictedRoles.includes(role));
 
       if (hasAccess) {
-        const companyId = Object.entries(user.slugs).find(([key]) => user.slugs[key] === slug)?.[0];
+        const companyId = Object.keys(user.slugs).find((id) => user?.slugs[id] === slug);
         const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
         // Execute post-authentication hook; may throw error to prevent access
@@ -190,24 +192,20 @@ export const withHikeMiddleware = ({
       console.error(error);
     }
 
-    // Determine login path
-    const login = await (async () => {
-      const path =
-        loginPath?.({
-          config,
-          user: await (async () => {
-            try {
-              const token = extractToken(request);
-              return await fetchSessionUser(token, config);
-            } catch {
-              return null;
-            }
-          })(),
-          slug
-        }) || '/login';
-
-      return `${slugPath}${path}`;
+    // Passively retrieve user details
+    const user = await (async () => {
+      try {
+        const token = extractToken(request);
+        return await fetchSessionUser(token, config);
+      } catch {
+        return null;
+      }
     })();
+
+    const companyId = Object.keys(user?.slugs ?? {}).find((id) => user?.slugs[id] === slug);
+
+    // Determine login path
+    const login = `${slugPath}${loginPath?.({ config, user, slug, companyId }) || '/login'}`;
 
     // Default redirection to login
     if (!pathname.startsWith(login) && pathname !== '/') {
