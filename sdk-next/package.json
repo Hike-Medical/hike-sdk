@@ -49,7 +49,7 @@
     "react-dom": "^19"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
+    "@hike/config": "workspace:*",
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.16",

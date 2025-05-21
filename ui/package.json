@@ -45,7 +45,7 @@
     "axios": "^1"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
+    "@hike/config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.26.0",
