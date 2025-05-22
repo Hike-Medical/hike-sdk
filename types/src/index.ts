@@ -44,6 +44,7 @@ export * from './dto/catalog/GetVendorsParams';
 export * from './dto/clinician/AssignClinicianParams';
 export * from './dto/clinician/CreateClinicianParams';
 export * from './dto/clinician/GetCliniciansParams';
+export * from './dto/clinician/SendCoInviteParams';
 export * from './dto/company/AddCompanyParams';
 export * from './dto/company/ClinicalFlowType';
 export * from './dto/company/CompanyPortal';
