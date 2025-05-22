@@ -9,7 +9,7 @@ interface UploadFileToS3Params {
 }
 
 export const useUploadFileToS3 = (
-  mutationOptions?: Omit<UseMutationOptions<void, HikeError<null>, UploadFileToS3Params>, 'mutationKey' | 'mutationFn'>
+  options?: Omit<UseMutationOptions<void, HikeError<null>, UploadFileToS3Params>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['uploadFileToS3'],
@@ -26,5 +26,5 @@ export const useUploadFileToS3 = (
         }
       });
     },
-    ...mutationOptions
+    ...options
   });

@@ -8,7 +8,7 @@ interface GetSignalingChannelContext {
 }
 
 export const useGetSignalingChannel = (
-  mutationOptions?: Omit<
+  options?: Omit<
     UseMutationOptions<SignalingChannelResponse, HikeError<null>, GetSignalingChannelContext>,
     'mutationKey' | 'mutationFn'
   >
@@ -16,5 +16,5 @@ export const useGetSignalingChannel = (
   useMutation({
     mutationKey: ['getSignalingChannel'],
     mutationFn: async ({ workbenchId, params }) => await getSignalingChannel(workbenchId, params),
-    ...mutationOptions
+    ...options
   });

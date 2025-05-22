@@ -7,9 +7,9 @@ export interface CreateNotesParams {
   data: CreateNotesBody;
 }
 
-export const useCreateNotes = (mutationOptions?: UseMutationOptions<Notes, HikeError<null>, CreateNotesParams>) =>
+export const useCreateNotes = (options?: UseMutationOptions<Notes, HikeError<null>, CreateNotesParams>) =>
   useMutation({
     mutationKey: ['createNotes'],
     mutationFn: async ({ workbenchId, data }) => await createNotes(workbenchId, data),
-    ...mutationOptions
+    ...options
   });
