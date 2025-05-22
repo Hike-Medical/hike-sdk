@@ -8,10 +8,10 @@ interface UpsertContactContext {
 }
 
 export const useUpsertContact = (
-  mutationOptions?: UseMutationOptions<PatientExtended, HikeError<null>, UpsertContactContext>
+  options?: UseMutationOptions<PatientExtended, HikeError<null>, UpsertContactContext>
 ) =>
   useMutation({
     mutationKey: ['upsertContact'],
     mutationFn: async ({ body, patientId }) => await upsertContact(patientId, body),
-    ...mutationOptions
+    ...options
   });

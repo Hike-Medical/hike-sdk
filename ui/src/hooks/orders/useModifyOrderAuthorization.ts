@@ -3,10 +3,10 @@ import { HikeError, ModifyOrderAuthorizationParams, OrderExtended } from '@hike/
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useModifyOrderAuthorization = (
-  mutationOptions?: UseMutationOptions<OrderExtended, HikeError<null>, ModifyOrderAuthorizationParams>
+  options?: UseMutationOptions<OrderExtended, HikeError<null>, ModifyOrderAuthorizationParams>
 ) =>
   useMutation({
     mutationKey: ['modifyOrder'],
     mutationFn: async (params) => await modifyOrderAuthorization(params),
-    ...mutationOptions
+    ...options
   });

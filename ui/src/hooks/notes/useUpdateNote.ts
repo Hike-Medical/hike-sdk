@@ -7,9 +7,9 @@ export interface UpdateNotesParam {
   data: UpdateNotesBody;
 }
 
-export const useUpdateNotes = (mutationOptions?: UseMutationOptions<Notes, HikeError<null>, UpdateNotesParam>) =>
+export const useUpdateNotes = (options?: UseMutationOptions<Notes, HikeError<null>, UpdateNotesParam>) =>
   useMutation({
     mutationKey: ['updateNotes'],
     mutationFn: async ({ noteId, data }) => await updateNotesByIdForWorkbench(noteId, data),
-    ...mutationOptions
+    ...options
   });

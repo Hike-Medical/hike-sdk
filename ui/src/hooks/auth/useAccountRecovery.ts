@@ -7,11 +7,9 @@ interface AccountRecoveryOptions {
   companyId?: string;
 }
 
-export const useAccountRecovery = (
-  mutationOptions?: UseMutationOptions<void, HikeError<null>, AccountRecoveryOptions>
-) =>
+export const useAccountRecovery = (options?: UseMutationOptions<void, HikeError<null>, AccountRecoveryOptions>) =>
   useMutation({
     mutationKey: ['accountRecovery'],
     mutationFn: async ({ params, companyId }) => await accountRecovery(params, companyId),
-    ...mutationOptions
+    ...options
   });

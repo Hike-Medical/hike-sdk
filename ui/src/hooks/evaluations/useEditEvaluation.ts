@@ -3,10 +3,10 @@ import { ActionEvaluationParams, EvaluationExtended, HikeError } from '@hike/typ
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useEditEvaluation = (
-  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
+  options?: UseMutationOptions<EvaluationExtended, HikeError<null>, ActionEvaluationParams>
 ) =>
   useMutation({
     mutationKey: ['editEvaluation'],
     mutationFn: async (body) => await editEvaluation(body),
-    ...mutationOptions
+    ...options
   });

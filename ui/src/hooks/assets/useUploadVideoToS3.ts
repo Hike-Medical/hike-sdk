@@ -9,7 +9,7 @@ interface UploadVideoParams {
 }
 
 export const useUploadVideoToS3 = (
-  mutationOptions?: Omit<UseMutationOptions<void, HikeError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
+  options?: Omit<UseMutationOptions<void, HikeError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['uploadVideoToS3'],
@@ -114,5 +114,5 @@ export const useUploadVideoToS3 = (
         xhr.send(video);
       });
     },
-    ...mutationOptions
+    ...options
   });

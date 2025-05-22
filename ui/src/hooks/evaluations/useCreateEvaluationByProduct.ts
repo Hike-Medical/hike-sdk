@@ -3,10 +3,10 @@ import { CreateEvaluationByProductParams, EvaluationExtended, HikeError } from '
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateEvaluationByProduct = (
-  mutationOptions?: UseMutationOptions<EvaluationExtended, HikeError<null>, CreateEvaluationByProductParams>
+  options?: UseMutationOptions<EvaluationExtended, HikeError<null>, CreateEvaluationByProductParams>
 ) =>
   useMutation({
     mutationKey: ['createEvaluationByProduct'],
     mutationFn: async (body) => await createEvaluationByProduct(body),
-    ...mutationOptions
+    ...options
   });

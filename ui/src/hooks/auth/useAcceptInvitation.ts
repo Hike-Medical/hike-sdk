@@ -3,10 +3,10 @@ import { AcceptInvitationParams, HikeError, UserExtended } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useAcceptInvitation = (
-  mutationOptions?: UseMutationOptions<UserExtended, HikeError<null>, AcceptInvitationParams>
+  options?: UseMutationOptions<UserExtended, HikeError<null>, AcceptInvitationParams>
 ) =>
   useMutation({
     mutationKey: ['acceptInvitation'],
     mutationFn: async (params) => await acceptInvitation(params),
-    ...mutationOptions
+    ...options
   });

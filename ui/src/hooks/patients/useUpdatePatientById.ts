@@ -8,10 +8,10 @@ interface UpdatePatientById {
 }
 
 export const useUpdatePatientById = (
-  mutationOptions?: UseMutationOptions<PatientExtended, HikeError<null>, UpdatePatientById>
+  options?: UseMutationOptions<PatientExtended, HikeError<null>, UpdatePatientById>
 ) =>
   useMutation({
     mutationKey: ['updatePatient'],
     mutationFn: async ({ patientId, body }) => await updatePatient(patientId, body),
-    ...mutationOptions
+    ...options
   });
