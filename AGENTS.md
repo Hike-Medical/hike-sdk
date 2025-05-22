@@ -28,6 +28,6 @@ This repository contains Hike's TypeScript SDK that is shared across the platfor
 - Prioritize scalability, maintainability, and security.
 - Do not use `any` or cast with `as` in TypeScript without good reason.
 - Avoid adding third-party dependencies unless necessary; try to use existing packages.
-- Create tests for new code added unless it's UI code.
+- Create tests for new code added unless it's UI code or unnecessary; mostly for complex logic or highly used or low level utilities.
 - When creating a PR, add the original prompt in the PR description.
 - Do not make changes to `types/prisma/index.d.ts` as this is generated file from the Prisma schema.
