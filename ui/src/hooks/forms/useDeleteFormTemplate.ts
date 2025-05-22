@@ -1,4 +1,5 @@
-import { deleteTemplate, HikeError } from '@hike/services';
+import { deleteTemplate } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useDeleteFormTemplate = (mutationOptions?: UseMutationOptions<void, HikeError<null>, string>) =>

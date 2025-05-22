@@ -1,5 +1,6 @@
-import { HikeError, findEvaluations } from '@hike/services';
+import { findEvaluations } from '@hike/services';
 import type { EvaluationExtended, GetEvaluationsParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseEvaluationsOptions

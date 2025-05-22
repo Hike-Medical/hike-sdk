@@ -1,5 +1,5 @@
 import { GetSignalingChannelParams, SignalingChannelResponse } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const getSignalingChannel = async (

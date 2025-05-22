@@ -187,6 +187,8 @@ export * from './entities/SafeUserExtended';
 export * from './entities/TagResult';
 export * from './entities/UserExtended';
 export * from './entities/WorkbenchExtended';
+export * from './errors/HikeError';
+export * from './errors/HikeErrorCode';
 export * from './forms/FieldPrint';
 export * from './forms/FormField';
 export * from './forms/FormRule';

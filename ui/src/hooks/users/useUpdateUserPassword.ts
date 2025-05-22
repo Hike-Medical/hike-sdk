@@ -1,5 +1,5 @@
-import { HikeError, updateUserPassword } from '@hike/services';
-import { UpdateUserPasswordParams } from '@hike/types';
+import { updateUserPassword } from '@hike/services';
+import { HikeError, UpdateUserPasswordParams } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useUpdateUserPassword = (

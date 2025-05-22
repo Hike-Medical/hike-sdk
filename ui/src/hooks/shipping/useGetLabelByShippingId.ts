@@ -1,5 +1,5 @@
-import { HikeError, fetchLabelByShippingId } from '@hike/services';
-import { LabelsResponse } from '@hike/types';
+import { fetchLabelByShippingId } from '@hike/services';
+import { HikeError, LabelsResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useGetLabelByShippingId = (

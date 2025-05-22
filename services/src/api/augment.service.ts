@@ -7,7 +7,7 @@ import {
   AssetAugmentType,
   UpdateAssetAugmentMedia
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findAssetAugmentsByFootId = async (footId: string): Promise<AssetAugment[]> => {

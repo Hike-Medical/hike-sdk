@@ -1,5 +1,5 @@
-import { HikeError, reorderEvaluation } from '@hike/services';
-import { ActionEvaluationParams, EvaluationExtended } from '@hike/types';
+import { reorderEvaluation } from '@hike/services';
+import { ActionEvaluationParams, EvaluationExtended, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useReorderEvaluation = (

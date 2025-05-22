@@ -1,5 +1,5 @@
-import { HikeError, getFilesFromWorkbenches } from '@hike/services';
-import { ActionMultipleWorkbenchIdsParams } from '@hike/types';
+import { getFilesFromWorkbenches } from '@hike/services';
+import { ActionMultipleWorkbenchIdsParams, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface GetMultipleWorkbenchFilesContext {

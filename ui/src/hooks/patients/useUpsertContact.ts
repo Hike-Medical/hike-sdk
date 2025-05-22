@@ -1,5 +1,5 @@
-import { HikeError, upsertContact } from '@hike/services';
-import { PatientExtended, UpsertContactParams } from '@hike/types';
+import { upsertContact } from '@hike/services';
+import { HikeError, PatientExtended, UpsertContactParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpsertContactContext {

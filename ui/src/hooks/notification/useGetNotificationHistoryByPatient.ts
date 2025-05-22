@@ -1,5 +1,5 @@
-import { fetchNotificationHistoryByPatient, HikeError } from '@hike/services';
-import { NotificationHistoryMessageExtended } from '@hike/types';
+import { fetchNotificationHistoryByPatient } from '@hike/services';
+import { HikeError, NotificationHistoryMessageExtended } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationHistoryByPatientOptions

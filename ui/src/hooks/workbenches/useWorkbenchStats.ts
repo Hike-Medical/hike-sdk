@@ -1,5 +1,5 @@
-import { HikeError, statsForWorkbenches } from '@hike/services';
-import { WorkbenchStatus } from '@hike/types';
+import { statsForWorkbenches } from '@hike/services';
+import { HikeError, WorkbenchStatus } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseWorkbenchStatsOptions

@@ -1,5 +1,5 @@
-import { HikeError, updateEvaluation } from '@hike/services';
-import { EvaluationExtended, UpdateEvaluationParams } from '@hike/types';
+import { updateEvaluation } from '@hike/services';
+import { EvaluationExtended, HikeError, UpdateEvaluationParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseUpdateEvaluationParams {

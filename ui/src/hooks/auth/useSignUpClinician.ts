@@ -1,5 +1,5 @@
-import { HikeError, signUpClinician } from '@hike/services';
-import { AuthSession, SignUpClinicianParams } from '@hike/types';
+import { signUpClinician } from '@hike/services';
+import { AuthSession, HikeError, SignUpClinicianParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useSignUpClinician = (

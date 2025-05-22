@@ -1,5 +1,6 @@
-import { HikeError, fetchUsers } from '@hike/services';
+import { fetchUsers } from '@hike/services';
 import type { GetUsersParams, PagedResponse, SafeUserExtended } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseUsersOptions

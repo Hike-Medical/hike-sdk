@@ -1,5 +1,5 @@
-import { HikeError, signInWithToken } from '@hike/services';
-import { AuthSession, SignInWithTokenParams } from '@hike/types';
+import { signInWithToken } from '@hike/services';
+import { AuthSession, HikeError, SignInWithTokenParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useSignInWithToken = (

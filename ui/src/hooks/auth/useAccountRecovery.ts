@@ -1,5 +1,5 @@
-import { accountRecovery, HikeError } from '@hike/services';
-import { AccountRecoveryParams } from '@hike/types';
+import { accountRecovery } from '@hike/services';
+import { AccountRecoveryParams, HikeError } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 interface AccountRecoveryOptions {

@@ -1,5 +1,5 @@
-import { HikeError, upsertEmailTemplate } from '@hike/services';
-import { EmailTemplate, UpsertEmailTemplateParams } from '@hike/types';
+import { upsertEmailTemplate } from '@hike/services';
+import { EmailTemplate, HikeError, UpsertEmailTemplateParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useUpsertEmailTemplate = (

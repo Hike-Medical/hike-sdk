@@ -1,5 +1,5 @@
-import { HikeError, modifyOrderAuthorization } from '@hike/services';
-import { ModifyOrderAuthorizationParams, OrderExtended } from '@hike/types';
+import { modifyOrderAuthorization } from '@hike/services';
+import { HikeError, ModifyOrderAuthorizationParams, OrderExtended } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useModifyOrderAuthorization = (

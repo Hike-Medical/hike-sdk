@@ -1,5 +1,5 @@
-import { acceptInvitation, HikeError } from '@hike/services';
-import { AcceptInvitationParams, UserExtended } from '@hike/types';
+import { acceptInvitation } from '@hike/services';
+import { AcceptInvitationParams, HikeError, UserExtended } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useAcceptInvitation = (

@@ -1,5 +1,5 @@
-import { HikeError, findNotesByWorkbenchId } from '@hike/services';
-import { Notes } from '@hike/types';
+import { findNotesByWorkbenchId } from '@hike/services';
+import { HikeError, Notes } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotesOptions extends Omit<UseQueryOptions<Notes[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {

@@ -4,7 +4,7 @@ import type {
   ImportAppointmentsResponse,
   ImportPrescriptionsResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const importAppointments = async (data: ImportAppointmentsParams): Promise<{ jobId?: string }> => {

@@ -1,5 +1,5 @@
-import { fetchEnrollPatientsNotificationJobs, HikeError } from '@hike/services';
-import { EnrollPatientsJobData, JobQueueTask } from '@hike/types';
+import { fetchEnrollPatientsNotificationJobs } from '@hike/services';
+import { EnrollPatientsJobData, HikeError, JobQueueTask } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetEnrollPatientsNotificationJobsOptions

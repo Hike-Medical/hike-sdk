@@ -1,5 +1,5 @@
-import { findPatientById, HikeError } from '@hike/services';
-import { PatientExtended } from '@hike/types';
+import { findPatientById } from '@hike/services';
+import { HikeError, PatientExtended } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseFindPatientByIdOptions
