@@ -1,9 +1,14 @@
 import { describe, expect, test } from '@jest/globals';
-import { getSupportedMimeTypes } from '../src/ui/media/getSupportedMimeTypes';
+import { getSupportedMimeTypes } from '../src/media/getSupportedMimeTypes';
 
 describe('getSupportedMimeTypes', () => {
+  const originalMediaRecorder = (global as any).MediaRecorder;
+
   beforeAll(() => {
-    jest.spyOn(MediaRecorder, 'isTypeSupported').mockImplementation((type: string) => {
+    (global as any).MediaRecorder = { isTypeSupported: jest.fn() };
+    jest
+      .spyOn(MediaRecorder, 'isTypeSupported')
+      .mockImplementation((type: string) => {
       const supportedTypes = [
         'video/webm',
         'video/webm;codecs=vp8',
@@ -23,6 +28,7 @@ describe('getSupportedMimeTypes', () => {
   // Restore the original implementation after all tests
   afterAll(() => {
     (MediaRecorder.isTypeSupported as jest.Mock).mockRestore();
+    (global as any).MediaRecorder = originalMediaRecorder;
   });
 
   test('should return supported MIME types', () => {

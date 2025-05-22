@@ -1,5 +1,5 @@
+import { isFormFieldValue } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
-import { isFormFieldValue } from '../src/guards/isFormFieldValue';
 
 describe('isFormFieldValue tests', () => {
   test('should return true for strings', () => {

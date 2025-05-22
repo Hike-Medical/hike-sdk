@@ -1,4 +1,4 @@
-import { isPlainObject } from '../src/helpers/isPlainObject';
+import { isPlainObject } from '@hike/types';
 
 describe('isPlainObject', () => {
   it('should return true for plain objects', () => {
