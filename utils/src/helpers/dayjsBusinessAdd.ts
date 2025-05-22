@@ -1,18 +1,18 @@
 import { Dayjs, PluginFunc } from 'dayjs';
 
+declare module 'dayjs' {
+  interface Dayjs {
+    businessAdd(days: number): this;
+  }
+}
+
 export interface BusinessAddOptions {
   holidays?: string[];
   workingWeekdays?: number[];
 }
 
-declare module 'dayjs' {
-  interface Dayjs {
-    businessAdd(days: number);
-  }
-}
-
-const businessAddPlugin: PluginFunc<BusinessAddOptions> = (opts, dayjsClass) => {
-  const workingWeekdays = opts?.workingWeekdays ?? [1, 2, 3, 4, 5];
+export const dayjsBusinessAdd: PluginFunc<BusinessAddOptions> = (opts, dayjsClass) => {
+  const workingWeekdays = new Set(opts?.workingWeekdays ?? [1, 2, 3, 4, 5]);
   const holidaySet = new Set(opts?.holidays ?? []);
 
   dayjsClass.prototype.businessAdd = function businessAdd(this: Dayjs, days: number): Dayjs {
@@ -22,7 +22,7 @@ const businessAddPlugin: PluginFunc<BusinessAddOptions> = (opts, dayjsClass) => 
     while (remaining > 0) {
       date = date.add(1, 'day');
 
-      const isWeekend = !workingWeekdays.includes(date.day());
+      const isWeekend = !workingWeekdays.has(date.day());
       const isHoliday = holidaySet.has(date.format('YYYY-MM-DD'));
 
       if (!isWeekend && !isHoliday) {
@@ -33,5 +33,3 @@ const businessAddPlugin: PluginFunc<BusinessAddOptions> = (opts, dayjsClass) => 
     return date;
   };
 };
-
-export { businessAddPlugin };
