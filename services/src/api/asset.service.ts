@@ -37,7 +37,7 @@ export const statsForAssets = async (): Promise<{ status: AssetStatus; count: nu
   }
 };
 
-export const exportAssetsCsv = async (params?: GetAssetsParams): Promise<Blob> => {
+export const exportAssets = async (params?: GetAssetsParams): Promise<Blob> => {
   try {
     const response = await backendApi.get('asset/export', { params, responseType: 'arraybuffer' });
     return response.data;
