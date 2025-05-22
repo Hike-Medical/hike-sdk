@@ -36,3 +36,12 @@ export const statsForAssets = async (): Promise<{ status: AssetStatus; count: nu
     throw toHikeError(error);
   }
 };
+
+export const exportAssets = async (params?: GetAssetsParams): Promise<Blob> => {
+  try {
+    const response = await backendApi.get('asset/export', { params, responseType: 'arraybuffer' });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
