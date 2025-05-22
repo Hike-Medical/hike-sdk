@@ -21,7 +21,10 @@ export interface CompanyPreferences {
   taikaCustomizations?: {
     orderForm?: CreateCustomizationsTaikaParams;
     setTaikaIdAsPONumber?: boolean;
-    engraveInsoleWithExternalId?: boolean;
+    engravingText?: {
+      asExternalId?: boolean;
+      withSide?: boolean;
+    };
   };
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
