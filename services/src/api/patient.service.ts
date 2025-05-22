@@ -12,7 +12,7 @@ import type {
   UpsertContactParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 import { findCompanyBySlug } from './company.service';
 

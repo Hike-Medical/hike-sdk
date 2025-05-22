@@ -1,5 +1,5 @@
-import { fetchCompanyRewards, HikeError } from '@hike/services';
-import { Reward } from '@hike/types';
+import { fetchCompanyRewards } from '@hike/services';
+import { HikeError, Reward } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useFetchRewards = (

@@ -11,9 +11,6 @@ importers:
       '@types/node':
         specifier: ^22
         version: 22.15.21
-      prettier:
-        specifier: ^3
-        version: 3.5.3
       turbo:
         specifier: ^2.5.0
         version: 2.5.3
@@ -33,9 +30,9 @@ importers:
         specifier: ^6.0.10
         version: 6.0.11
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -52,7 +49,7 @@ importers:
         specifier: ^29.1.2
         version: 29.3.4(@babel/core@7.27.1)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.27.1))(jest@29.7.0(@types/node@22.15.21))(typescript@5.8.3)
 
-  eslint-config:
+  config:
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.9
@@ -108,6 +105,9 @@ importers:
       globals:
         specifier: ^16.0.0
         version: 16.1.0
+      prettier:
+        specifier: ^3
+        version: 3.5.3
       typescript:
         specifier: ^5.8.2
         version: 5.8.3
@@ -127,9 +127,9 @@ importers:
         specifier: workspace:*
         version: link:../utils
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -192,11 +192,11 @@ importers:
         version: 0.3.4(next@15.3.2(@babel/core@7.27.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       posthog-js:
         specifier: ^1.236.5
-        version: 1.245.0
+        version: 1.245.1
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -249,9 +249,9 @@ importers:
         specifier: ^19
         version: 19.1.0(react@19.1.0)
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@types/react':
         specifier: ^19
         version: 19.1.4
@@ -277,9 +277,9 @@ importers:
         specifier: ^16.2.0
         version: 16.12.0
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@tanstack/react-query':
         specifier: ^5
         version: 5.76.1(react@19.1.0)
@@ -314,9 +314,9 @@ importers:
         specifier: ^1.8.4
         version: 1.9.0
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.14
@@ -332,9 +332,9 @@ importers:
 
   types:
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       eslint:
         specifier: ^9.26.0
         version: 9.27.0
@@ -357,9 +357,9 @@ importers:
         specifier: ^1
         version: 1.9.0
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@types/react':
         specifier: ^19
         version: 19.1.4
@@ -385,9 +385,9 @@ importers:
         specifier: ^1.11.13
         version: 1.11.13
     devDependencies:
-      '@hike/eslint-config':
+      '@hike/config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../config
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -2809,8 +2809,8 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.245.0:
-    resolution: {integrity: sha512-vrEyQ2ARC07kmgrcJY+2/ij6PfSiBb9IGnmaWxxikYrkHL4LEGNkJ637R1EvNDE6+IflQMixo/3Kd2IjXFYx+A==}
+  posthog-js@1.245.1:
+    resolution: {integrity: sha512-I2HWR4VKAfX6Y8e/VtAq1DRUMcZi/1pjlpaRqDp60AGs0JnTiJ1F7o2ke52VTIs6gBnoZIQCe3Xh8z384hLMGQ==}
     peerDependencies:
       '@rrweb/types': 2.0.0-alpha.17
       rrweb-snapshot: 2.0.0-alpha.17
@@ -6273,7 +6273,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  posthog-js@1.245.0:
+  posthog-js@1.245.1:
     dependencies:
       core-js: 3.42.0
       fflate: 0.4.8

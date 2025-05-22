@@ -1,5 +1,5 @@
-import { getOrdersByCompanies, HikeError } from '@hike/services';
-import { DateFilter, OrdersByCompaniesResponse } from '@hike/types';
+import { getOrdersByCompanies } from '@hike/services';
+import { DateFilter, HikeError, OrdersByCompaniesResponse } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useGetOrdersByCompanies = (

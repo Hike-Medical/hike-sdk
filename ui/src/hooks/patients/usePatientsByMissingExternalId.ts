@@ -1,5 +1,6 @@
-import { fetchPatientsByMissingExternalId, HikeError } from '@hike/services';
+import { fetchPatientsByMissingExternalId } from '@hike/services';
 import type { PagedParams, PagedResponse, PatientExtended } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UsePatientsWithMissingIdsOptions

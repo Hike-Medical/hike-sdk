@@ -1,5 +1,5 @@
-import { HikeError, getSignalingChannel } from '@hike/services';
-import { GetSignalingChannelParams, SignalingChannelResponse } from '@hike/types';
+import { getSignalingChannel } from '@hike/services';
+import { GetSignalingChannelParams, HikeError, SignalingChannelResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface GetSignalingChannelContext {
@@ -8,7 +8,7 @@ interface GetSignalingChannelContext {
 }
 
 export const useGetSignalingChannel = (
-  mutationOptions?: Omit<
+  options?: Omit<
     UseMutationOptions<SignalingChannelResponse, HikeError<null>, GetSignalingChannelContext>,
     'mutationKey' | 'mutationFn'
   >
@@ -16,5 +16,5 @@ export const useGetSignalingChannel = (
   useMutation({
     mutationKey: ['getSignalingChannel'],
     mutationFn: async ({ workbenchId, params }) => await getSignalingChannel(workbenchId, params),
-    ...mutationOptions
+    ...options
   });

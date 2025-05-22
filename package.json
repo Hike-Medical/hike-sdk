@@ -27,7 +27,6 @@
   "packageManager": "pnpm@10.9.0",
   "devDependencies": {
     "@types/node": "^22",
-    "prettier": "^3",
     "turbo": "^2.5.0",
     "typescript": "^5"
   }

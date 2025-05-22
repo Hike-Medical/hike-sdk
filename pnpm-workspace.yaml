@@ -1,6 +1,6 @@
 packages:
   - 'auth'
-  - 'eslint-config'
+  - 'config'
   - 'sdk'
   - 'sdk-next'
   - 'sdk-next-edge'
