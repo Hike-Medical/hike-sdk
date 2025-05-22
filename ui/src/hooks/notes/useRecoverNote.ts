@@ -1,4 +1,5 @@
-import { HikeError, recoverNoteByIdForWorkbench } from '@hike/services';
+import { recoverNoteByIdForWorkbench } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useRecoverNote = (

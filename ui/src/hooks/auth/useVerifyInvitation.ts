@@ -1,5 +1,5 @@
-import { HikeError, verifyInvitation } from '@hike/services';
-import { VerifyInvitationResponse } from '@hike/types';
+import { verifyInvitation } from '@hike/services';
+import { HikeError, VerifyInvitationResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useVerifyInvitation = (

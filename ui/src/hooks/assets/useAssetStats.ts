@@ -1,5 +1,5 @@
-import { HikeError, statsForAssets } from '@hike/services';
-import { AssetStatus } from '@hike/types';
+import { statsForAssets } from '@hike/services';
+import { AssetStatus, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseAssetStatsOptions

@@ -1,5 +1,5 @@
-import { HikeError, createFormTemplate } from '@hike/services';
-import { CreateFormTemplateBody, FormTemplateResponse } from '@hike/types';
+import { createFormTemplate } from '@hike/services';
+import { CreateFormTemplateBody, FormTemplateResponse, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateFormTemplate = (

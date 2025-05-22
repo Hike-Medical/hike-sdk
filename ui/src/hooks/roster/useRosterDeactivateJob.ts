@@ -1,5 +1,6 @@
-import { HikeError, fetchRosterDeactivateStatus } from '@hike/services';
+import { fetchRosterDeactivateStatus } from '@hike/services';
 import type { DeactivateRosterResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseRosterDeactivateJobOptions

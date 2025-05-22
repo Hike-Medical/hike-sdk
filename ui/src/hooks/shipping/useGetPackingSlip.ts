@@ -1,4 +1,5 @@
-import { HikeError, getPackingSlip } from '@hike/services';
+import { getPackingSlip } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useGetPackingSlip = (mutationOptions?: UseMutationOptions<string, HikeError<null>, string>) =>

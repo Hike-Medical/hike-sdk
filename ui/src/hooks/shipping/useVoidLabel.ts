@@ -1,4 +1,5 @@
-import { HikeError, voidLabel } from '@hike/services';
+import { voidLabel } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useVoidLabel = (

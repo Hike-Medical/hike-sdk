@@ -1,5 +1,5 @@
-import { HikeError, setInactive } from '@hike/services';
-import { Foot, SetFootInactive } from '@hike/types';
+import { setInactive } from '@hike/services';
+import { Foot, HikeError, SetFootInactive } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface SetFootInactiveParams extends SetFootInactive {

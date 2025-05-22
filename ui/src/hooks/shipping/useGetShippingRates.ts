@@ -1,5 +1,5 @@
-import { GetRatesOrLabels, HikeError, getRateEstimates } from '@hike/services';
-import { GetRatesResponse } from '@hike/types';
+import { GetRatesOrLabels, getRateEstimates } from '@hike/services';
+import { GetRatesResponse, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useGetShippingRates = (

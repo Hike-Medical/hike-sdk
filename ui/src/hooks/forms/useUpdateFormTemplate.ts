@@ -1,5 +1,5 @@
-import { HikeError, updateFormTemplate } from '@hike/services';
-import { FormTemplateResponse, UpdateFormTemplateBody } from '@hike/types';
+import { updateFormTemplate } from '@hike/services';
+import { FormTemplateResponse, HikeError, UpdateFormTemplateBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateFormTemplateParams {

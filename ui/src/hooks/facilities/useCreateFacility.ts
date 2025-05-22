@@ -1,5 +1,5 @@
-import { HikeError, createFacility } from '@hike/services';
-import { CreateFacilityParams, FacilityExtended } from '@hike/types';
+import { createFacility } from '@hike/services';
+import { CreateFacilityParams, FacilityExtended, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateFacility = (

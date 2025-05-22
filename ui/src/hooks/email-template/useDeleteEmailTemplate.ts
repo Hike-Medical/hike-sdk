@@ -1,4 +1,5 @@
-import { HikeError, deleteEmailTemplate } from '@hike/services';
+import { deleteEmailTemplate } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseDeleteEmailTemplateOptions {

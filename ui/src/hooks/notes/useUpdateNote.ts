@@ -1,5 +1,5 @@
-import { HikeError, updateNotesByIdForWorkbench } from '@hike/services';
-import { Notes, UpdateNotesBody } from '@hike/types';
+import { updateNotesByIdForWorkbench } from '@hike/services';
+import { HikeError, Notes, UpdateNotesBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export interface UpdateNotesParam {

@@ -1,5 +1,5 @@
-import { HikeError, updateTrackingInfo } from '@hike/services';
-import { SaveTrackingInfoParams } from '@hike/types';
+import { updateTrackingInfo } from '@hike/services';
+import { HikeError, SaveTrackingInfoParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseSaveTrackingInfoContext {

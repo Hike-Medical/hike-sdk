@@ -1,5 +1,5 @@
-import { HikeError, updatePatient } from '@hike/services';
-import { PatientExtended, UpdatePatientParams } from '@hike/types';
+import { updatePatient } from '@hike/services';
+import { HikeError, PatientExtended, UpdatePatientParams } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 interface UpdatePatientById {

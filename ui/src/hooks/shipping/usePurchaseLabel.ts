@@ -1,5 +1,5 @@
-import { HikeError, purchaseLabelByRateId } from '@hike/services';
-import { GetLabelsResponse } from '@hike/types';
+import { purchaseLabelByRateId } from '@hike/services';
+import { GetLabelsResponse, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface PurchaseLabelProps {

@@ -1,5 +1,5 @@
-import { HikeError, updateUser } from '@hike/services';
-import { SafeUser, UpdateUserParams } from '@hike/types';
+import { updateUser } from '@hike/services';
+import { HikeError, SafeUser, UpdateUserParams } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useUpdateUser = (mutationOptions?: UseMutationOptions<SafeUser, HikeError<null>, UpdateUserParams>) =>

@@ -1,4 +1,5 @@
-import { deleteSignalingChannel, HikeError } from '@hike/services';
+import { deleteSignalingChannel } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useDeleteSignalingChannel = (

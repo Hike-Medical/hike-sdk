@@ -1,5 +1,5 @@
 import { Asset, AssetExtended, AssetStatus, GetAssetsParams, PagedResponse, StreamCompleteParams } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findAssets = async (params?: GetAssetsParams): Promise<PagedResponse<AssetExtended[]>> => {

@@ -1,5 +1,5 @@
-import { HikeError, getSignalingChannel } from '@hike/services';
-import { GetSignalingChannelParams, SignalingChannelResponse } from '@hike/types';
+import { getSignalingChannel } from '@hike/services';
+import { GetSignalingChannelParams, HikeError, SignalingChannelResponse } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface GetSignalingChannelContext {

@@ -1,4 +1,5 @@
-import { HikeError, deleteNotesByIdForWorkbench } from '@hike/services';
+import { deleteNotesByIdForWorkbench } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export interface DeleteNoteParams {

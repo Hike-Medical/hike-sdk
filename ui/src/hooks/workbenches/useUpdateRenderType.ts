@@ -1,5 +1,5 @@
-import { HikeError, updateRenderType } from '@hike/services';
-import { Workbench } from '@hike/types';
+import { updateRenderType } from '@hike/services';
+import { HikeError, Workbench } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateRenderTypeContext {

@@ -1,5 +1,5 @@
-import { HikeError, createNotes } from '@hike/services';
-import { CreateNotesBody, Notes } from '@hike/types';
+import { createNotes } from '@hike/services';
+import { CreateNotesBody, HikeError, Notes } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export interface CreateNotesParams {

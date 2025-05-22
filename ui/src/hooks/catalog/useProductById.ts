@@ -1,5 +1,5 @@
-import { HikeError, findProductById } from '@hike/services';
-import { CatalogProductExtended } from '@hike/types';
+import { findProductById } from '@hike/services';
+import { CatalogProductExtended, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseProductByIdOptions

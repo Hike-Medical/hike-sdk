@@ -1,5 +1,5 @@
 import { CreateNotesBody, Notes, UpdateNotesBody } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createNotes = async (workbenchId: string, body: CreateNotesBody): Promise<Notes> => {
