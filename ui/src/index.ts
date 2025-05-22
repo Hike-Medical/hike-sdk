@@ -13,6 +13,7 @@ export * from './hooks/assets/useGetPresignedURL';
 export * from './hooks/assets/useStreamComplete';
 export * from './hooks/assets/useUploadComplete';
 export * from './hooks/assets/useUploadVideoToS3';
+export * from './hooks/assets/useExportAssetsCsv';
 export * from './hooks/augments/useFindAssetAugmentById';
 export * from './hooks/augments/useFindAssetAugmentByIdAndType';
 export * from './hooks/augments/useFindAssetAugmentsByFootId';
