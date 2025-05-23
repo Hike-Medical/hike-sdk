@@ -31,6 +31,7 @@ export interface CompanyPreferences {
     billWhenShipped?: boolean;
   };
   noAuthNeeded?: boolean;
+  blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
