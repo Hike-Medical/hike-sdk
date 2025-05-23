@@ -1,4 +1,5 @@
-import { HikeError, activateEmailTemplate, deactivateEmailTemplate } from '@hike/services';
+import { activateEmailTemplate, deactivateEmailTemplate } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseToggleEmailTemplateOptions {

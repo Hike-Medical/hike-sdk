@@ -21,6 +21,7 @@ export interface FootTaikaParams {
   metBarSize: number;
   dancersPad: number;
   toeCrest: number;
+  engravingText: string;
 
   rearfootPostingDirection: number;
   rearfootPostingDegrees: number;

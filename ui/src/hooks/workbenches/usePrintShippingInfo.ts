@@ -1,5 +1,5 @@
-import { HikeError, printShippingInfo } from '@hike/services';
-import { PrintShippingParams, ShippingLabel } from '@hike/types';
+import { printShippingInfo } from '@hike/services';
+import { HikeError, PrintShippingParams, ShippingLabel } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface PrintShippingInfoContext {

@@ -1,5 +1,5 @@
-import { HikeError, resetScans } from '@hike/services';
-import { ResetWorkbenchParams, Workbench } from '@hike/types';
+import { resetScans } from '@hike/services';
+import { HikeError, ResetWorkbenchParams, Workbench } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface ResetWorkbenchContext {

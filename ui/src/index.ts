@@ -9,6 +9,7 @@ export * from './hooks/appointment/useAppointmentsImportJob';
 export * from './hooks/appointment/usePrescriptionsImportJob';
 export * from './hooks/assets/useAssets';
 export * from './hooks/assets/useAssetStats';
+export * from './hooks/assets/useExportAssets';
 export * from './hooks/assets/useGetPresignedURL';
 export * from './hooks/assets/useStreamComplete';
 export * from './hooks/assets/useUploadComplete';

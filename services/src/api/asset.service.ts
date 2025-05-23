@@ -1,5 +1,5 @@
 import { Asset, AssetExtended, AssetStatus, GetAssetsParams, PagedResponse, StreamCompleteParams } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findAssets = async (params?: GetAssetsParams): Promise<PagedResponse<AssetExtended[]>> => {
@@ -31,6 +31,15 @@ export const handleStreamComplete = async (assetId: string, params: StreamComple
 export const statsForAssets = async (): Promise<{ status: AssetStatus; count: number }[]> => {
   try {
     const response = await backendApi.get('asset/stats');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const exportAssets = async (params?: GetAssetsParams): Promise<Blob> => {
+  try {
+    const response = await backendApi.get('asset/export', { params, responseType: 'arraybuffer' });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

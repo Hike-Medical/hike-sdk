@@ -1,6 +1,7 @@
 'use client';
 
-import { HikeError, fetchPatientPoints } from '@hike/services';
+import { fetchPatientPoints } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 export const useFetchPatientPoints = (

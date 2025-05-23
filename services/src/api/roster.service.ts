@@ -5,7 +5,7 @@ import {
   ImportRosterParams,
   ImportRosterResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const importRoster = async (data: ImportRosterParams): Promise<{ jobId?: string }> => {

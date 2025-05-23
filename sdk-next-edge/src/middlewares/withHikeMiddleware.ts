@@ -1,6 +1,6 @@
-import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
+import { extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { isDefined } from '@hike/types';
+import { HikeError, HikeErrorCode, isDefined } from '@hike/types';
 import { Constants, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -165,7 +165,11 @@ export const withHikeMiddleware = ({
       const token = extractToken(request);
 
       if (!token) {
-        throw new AuthError({ message: 'Token not found', statusCode: 401 });
+        throw new HikeError({
+          message: 'Token not found',
+          statusCode: 401,
+          errorCode: HikeErrorCode.ERR_TOKEN_INVALID
+        });
       }
 
       // Validate token has been signed by the server

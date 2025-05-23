@@ -1,5 +1,6 @@
-import { fetchPhysicians, HikeError, searchPhysicians } from '@hike/services';
+import { fetchPhysicians, searchPhysicians } from '@hike/services';
 import type { PagedParams, PagedResponse, Physician } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UsePhysiciansOptions extends PagedParams {
