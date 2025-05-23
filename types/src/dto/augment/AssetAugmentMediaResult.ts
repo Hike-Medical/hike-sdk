@@ -1,10 +1,8 @@
-import { Prisma } from '../../../prisma';
-
 export interface AssetAugmentMediaResult {
   id: string;
   augmentId: string;
-  data: Prisma.JsonValue;
-  originalData: Prisma.JsonValue;
+  data: Record<string, any>;
+  originalData: Record<string, any>;
   region: string | null;
   bucket: string | null;
   key: string | null;
