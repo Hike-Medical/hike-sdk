@@ -21,6 +21,8 @@ export * from './hooks/augments/useFindAssetAugmentsByWorkbenchId';
 export * from './hooks/augments/useFindAssetAugmentStatusByAugmentId';
 export * from './hooks/augments/useFindAssetAugmentStatusByWorkbenchId';
 export * from './hooks/augments/useUpdateAssetAugmentMedia';
+export * from './hooks/augments/useAugments';
+export * from './hooks/augments/useExportAugments';
 export * from './hooks/auth/useAcceptInvitation';
 export * from './hooks/auth/useAcceptInvitationCompany';
 export * from './hooks/auth/useAccountRecovery';
