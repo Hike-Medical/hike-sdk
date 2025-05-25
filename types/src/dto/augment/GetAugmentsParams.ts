@@ -20,5 +20,5 @@ export interface GetAugmentsParams extends PagedParams {
   /** Filter augments created before this date (inclusive). Format: YYYY-MM-DD */
   endDate?: string;
   /** Filter by pathology detected either in media or detection type. */
-  pathology?: DetectionType;
+  pathologies?: DetectionType[];
 }

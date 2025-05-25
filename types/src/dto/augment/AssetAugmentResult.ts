@@ -1,9 +1,10 @@
-import { Asset, AssetAugmentType } from '../../../prisma';
+import { Asset, AssetAugmentType, Side } from '../../../prisma';
 import { AssetAugmentMediaResult } from './AssetAugmentMediaResult';
 
 export interface AssetAugmentResult {
   id: string;
   assetId: string;
+  footSide?: Side;
   type: AssetAugmentType;
   detectionType: any;
   data: any;
