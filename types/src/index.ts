@@ -14,6 +14,7 @@ export * from './dto/appointment/ImportPrescriptionsResponse';
 export * from './dto/asset/GetAssetsParams';
 export * from './dto/audit-log/AuditAction';
 export * from './dto/audit-log/AuditEntity';
+export * from './dto/audit-log/GetAuditLogsParams';
 export * from './dto/augment/AssetAugmentData';
 export * from './dto/augment/AssetAugmentMediaData';
 export * from './dto/augment/AssetAugmentMediaResult';
