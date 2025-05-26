@@ -184,6 +184,7 @@ export * from './hooks/users/useUpdateUser';
 export * from './hooks/users/useUpdateUserPassword';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
+export * from './hooks/audit-logs/useAuditLogs';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useContinueWorkbench';

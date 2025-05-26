@@ -22,6 +22,7 @@ export * from './api/invitation.service';
 export * from './api/kvs.service';
 export * from './api/notes.service';
 export * from './api/notification.service';
+export * from './api/audit-log.service';
 export * from './api/order.service';
 export * from './api/patient.service';
 export * from './api/pdf.service';
