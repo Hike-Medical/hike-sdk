@@ -64,7 +64,7 @@ const customConfig = [
       'no-restricted-syntax': 'warn',
       'no-return-await': 'off',
       'no-shadow': 'off',
-      'no-useless-constructor': 'off',
+      'no-useless-constructor': 'error',
       'prefer-destructuring': 'warn',
       radix: 'warn'
     }
