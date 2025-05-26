@@ -4,11 +4,13 @@ import type { PagedParams } from '../PagedParams';
 export interface GetAugmentsParams extends PagedParams {
   filter?: Partial<
     Record<
+      | 'id'
       | 'assetId'
       | 'type'
       | 'asset.foot.workbenchId'
       | 'asset.foot.patientId'
-      | 'asset.foot.patient.companies.userId'
+      | 'asset.foot.side'
+      | 'userId'
       | 'pathologies',
       string
     >
