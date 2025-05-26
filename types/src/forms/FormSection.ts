@@ -1,4 +1,5 @@
 import { FormField, FormFieldValue } from './FormField';
+import { FormModal } from './FormModal';
 import { FormRule } from './FormRule';
 
 export interface FormSection {
@@ -12,4 +13,5 @@ export interface FormSection {
   required?: boolean;
   disabled?: boolean;
   ui?: 'accordion' | 'accordion:toggle';
+  modal?: FormModal;
 }

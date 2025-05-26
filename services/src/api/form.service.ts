@@ -93,9 +93,9 @@ export const findFormTemplateById = async (templateId: string): Promise<FormTemp
   }
 };
 
-export const findFormTemplates = async (): Promise<Partial<FormTemplateResponse>[]> => {
+export const findFormTemplates = async (withSystemGenerated: boolean): Promise<Partial<FormTemplateResponse>[]> => {
   try {
-    const response = await backendApi.get(`form/template`);
+    const response = await backendApi.get(`form/template`, { params: { withSystemGenerated } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
