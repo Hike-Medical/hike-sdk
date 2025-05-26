@@ -7,7 +7,7 @@ interface UseAuditLogsOptions extends Omit<UseQueryOptions<AuditLog[], HikeError
   queryKey?: QueryKey;
 }
 
-export const useAuditLogs = ({ companyIds, queryKey = [], ...options }: UseAuditLogsOptions) =>
+export const useAuditLogs = ({ companyIds, queryKey = [], ...options }: UseAuditLogsOptions = {}) =>
   useQuery({
     queryKey: ['auditLogs', companyIds, queryKey],
     queryFn: async () => await fetchAuditLogs(companyIds),
