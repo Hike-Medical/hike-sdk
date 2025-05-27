@@ -1,0 +1,23 @@
+import { OrderStatus } from '../../../prisma';
+
+export const OrderStatusList = [
+  'DRAFT',
+  'TOE_FILLER',
+  'NEEDS_MANUFACTURING',
+  'PRINTING',
+  'NEEDS_GRINDING',
+  'NEEDS_GLUING',
+  'NEEDS_FINISHING',
+  'NEEDS_SHIPPING',
+  'NEEDS_ADDON',
+  'NEEDS_CAD_MOD',
+  'NEEDS_CAD_MOD_CARVING',
+  'NEEDS_PLASTER_MOD_PREP',
+  'NEEDS_PLASTER_MOD',
+  'NEEDS_FABRICATION',
+  'NEEDS_FABRICATION_VACUUM_FORM',
+  'NEEDS_QUALITY_CONTROL',
+  'PACKAGED',
+  'COMPLETED',
+  'CANCELLED'
+] satisfies OrderStatus[];
