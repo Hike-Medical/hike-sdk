@@ -1,5 +1,5 @@
-import { HikeError, findFormSchemas } from '@hike/services';
-import { FormSchemaType, FormSchemaTyped } from '@hike/types';
+import { findFormSchemas } from '@hike/services';
+import { FormSchemaType, FormSchemaTyped, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseFormSchemasOptions
