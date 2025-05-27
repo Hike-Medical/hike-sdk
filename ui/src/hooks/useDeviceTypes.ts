@@ -1,5 +1,6 @@
-import { HikeError, fetchDeviceTypes, searchDeviceTypes } from '@hike/services';
+import { fetchDeviceTypes, searchDeviceTypes } from '@hike/services';
 import type { DeviceType, PagedParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseDeviceTypesOptions

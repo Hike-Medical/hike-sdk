@@ -1,5 +1,6 @@
-import { findEvaluationByWorkbenchId, HikeError } from '@hike/services';
+import { findEvaluationByWorkbenchId } from '@hike/services';
 import type { EvaluationExtended } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseEvaluationByWorkbenchOptions {

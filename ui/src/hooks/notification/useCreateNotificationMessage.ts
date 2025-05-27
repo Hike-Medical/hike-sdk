@@ -1,16 +1,12 @@
-import { HikeError, createNotificationMessage } from '@hike/services';
-import { CreateNotificationMessageParams, NotificationMessage } from '@hike/types';
+import { createNotificationMessage } from '@hike/services';
+import { CreateNotificationMessageParams, HikeError, NotificationMessage } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
-interface UseCreateNotificationMessageOptions {
-  params: CreateNotificationMessageParams;
-}
-
 export const useCreateNotificationMessage = (
-  options?: UseMutationOptions<NotificationMessage, HikeError<null>, UseCreateNotificationMessageOptions>
+  options?: UseMutationOptions<NotificationMessage, HikeError<null>, CreateNotificationMessageParams>
 ) =>
   useMutation({
     mutationKey: ['createNotificationMessage'],
-    mutationFn: async ({ params }) => await createNotificationMessage(params),
+    mutationFn: async (params) => await createNotificationMessage(params),
     ...options
   });

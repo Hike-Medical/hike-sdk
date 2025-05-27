@@ -1,33 +1,36 @@
+import { isIOS } from '@hike/sdk';
 import { getSupportedMimeTypes } from './getSupportedMimeTypes';
 
 /**
- * Determines the best supported video format based on a predefined list of video types and codecs.
- * The function returns the first supported format found. If no supported format is found, it defaults to 'video/mp4'.
+ * Determines the best supported video format for the current device.
  *
- * @returns The best supported video format or 'video/mp4' if none of the formats are supported.
+ * iOS -> Prefer MP4, then MOV
+ * non‑iOS (Android, desktop) -> Prefer WebM
+ *
+ * The first (container, codec) pair reported as supported by
+ * `MediaRecorder.isTypeSupported` wins and is returned.
  */
 export const getBestSupportedVideoFormat = (): string => {
-  const videoTypes = ['webm', 'ogg', 'mp4', 'x-matroska'];
-  const codecs = [
-    'vp9',
-    'vp9.0',
-    'vp8',
-    'vp8.0',
-    'avc1',
-    'av1',
-    'h265',
-    'h.265',
-    'h264',
-    'h.264',
-    'opus',
-    'pcm',
-    'aac',
-    'mpeg',
-    'mp4a'
-  ];
+  const ios = isIOS();
 
-  const supportedVideos = getSupportedMimeTypes('video', videoTypes, codecs);
+  /**
+   * Ordered map of container -> codec preference list
+   * Only the first supported combo will be used.
+   */
+  const containerPreferences: Record<string, string[]> = ios
+    ? {
+        mp4: ['h264', 'av01', 'h265', 'hev1', 'hvc1'],
+        mov: ['h264', 'h265', 'hev1', 'hvc1']
+      }
+    : {
+        webm: ['vp9', 'vp8', 'av01']
+      };
 
-  // Default to mp4 if no supported format is found
-  return supportedVideos[0] || 'video/mp4';
+  for (const [container, codecs] of Object.entries(containerPreferences)) {
+    const supported = getSupportedMimeTypes('video', [container], codecs);
+    if (supported.length && supported[0]) return supported[0]; // first match = best match
+  }
+
+  // Absolute fall‑back (unlikely to be reached in modern browsers)
+  return ios ? 'video/mp4' : 'video/webm;codecs="vp8"';
 };

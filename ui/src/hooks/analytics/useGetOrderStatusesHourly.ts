@@ -1,5 +1,5 @@
-import { getOrderStatusesPerHour, HikeError } from '@hike/services';
-import { HourlyOptions, OrderStatus } from '@hike/types';
+import { getOrderStatusesPerHour } from '@hike/services';
+import { HikeError, HourlyOptions, OrderStatus } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface HourlyResponse {

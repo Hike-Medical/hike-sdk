@@ -1,5 +1,6 @@
 {
   "name": "@hike/ui",
+  "private": true,
   "version": "1.0.0",
   "description": "Hike SDK enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
   "keywords": [
@@ -29,7 +30,7 @@
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
-    "format": "prettier --check . --ignore-path ../../../.gitignore",
+    "format": "npx prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
     "dev:email": "email dev"
   },
@@ -45,7 +46,7 @@
     "axios": "^1"
   },
   "devDependencies": {
-    "@hike/eslint-config": "workspace:*",
+    "@hike/config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.26.0",

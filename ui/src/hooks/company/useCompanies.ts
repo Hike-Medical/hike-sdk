@@ -1,5 +1,6 @@
-import { HikeError, findCompanies } from '@hike/services';
+import { findCompanies } from '@hike/services';
 import type { Company, FindCompaniesParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCompaniesOptions

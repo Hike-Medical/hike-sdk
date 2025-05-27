@@ -1,5 +1,6 @@
-import { HikeError, findAssets } from '@hike/services';
+import { findAssets } from '@hike/services';
 import type { AssetExtended, GetAssetsParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseAssetsOptions

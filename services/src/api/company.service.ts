@@ -11,7 +11,7 @@ import {
   SafeCompany,
   UpdateCompanyParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findCompanies = async (params?: FindCompaniesParams): Promise<PagedResponse<Company[]>> => {
@@ -32,7 +32,7 @@ export const findCompanyPreferences = async (): Promise<CompanyPreferences> => {
   }
 };
 
-export const findCompanyTheme = async (): Promise<CompanyTheme> => {
+export const findCompanyTheme = async (): Promise<{ theme: CompanyTheme | null }> => {
   try {
     const response = await backendApi.get('auth/company/theme');
     return response.data;

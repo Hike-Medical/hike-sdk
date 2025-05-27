@@ -1,4 +1,4 @@
-import { HikeError } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ interface UploadFileToS3Params {
 }
 
 export const useUploadFileToS3 = (
-  mutationOptions?: Omit<UseMutationOptions<void, HikeError<null>, UploadFileToS3Params>, 'mutationKey' | 'mutationFn'>
+  options?: Omit<UseMutationOptions<void, HikeError<null>, UploadFileToS3Params>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['uploadFileToS3'],
@@ -26,5 +26,5 @@ export const useUploadFileToS3 = (
         }
       });
     },
-    ...mutationOptions
+    ...options
   });

@@ -1,5 +1,5 @@
-import { HikeError, updateFootByWorkbenchId } from '@hike/services';
-import { Foot, UpdateFootFromWorkbenchId } from '@hike/types';
+import { updateFootByWorkbenchId } from '@hike/services';
+import { Foot, HikeError, UpdateFootFromWorkbenchId } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateFootFromWorkbenchContext {

@@ -1,6 +1,7 @@
-import { AuthError, extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
+import { extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
-import { Constants, isDefined, selectPreferredLocale } from '@hike/utils';
+import { HikeError, HikeErrorCode, isDefined } from '@hike/types';
+import { Constants, selectPreferredLocale } from '@hike/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
@@ -49,11 +50,13 @@ interface HikeMiddlewareOptions {
   loginPath?: ({
     config,
     user,
-    slug
+    slug,
+    companyId
   }: {
     config: HikeMiddlewareConfig;
     user: AuthUser | null;
     slug: string | null;
+    companyId: string | undefined;
   }) => string | null;
   allowedPaths?: string[];
   restrictedRoles?: CompanyRole[];
@@ -77,7 +80,7 @@ export const withHikeMiddleware = ({
   allowedPaths,
   loginPath,
   isMaintenanceMode,
-  maintenancePath = '/maintenance',
+  maintenancePath = '/maintenance.html',
   nonSlugs = []
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
@@ -85,7 +88,7 @@ export const withHikeMiddleware = ({
     const pathParts = pathname.split('/');
 
     // Determine slug from path
-    nonSlugs.push('login', maintenancePath.slice(1));
+    nonSlugs.push('login');
     const slug = pathParts[1] && !nonSlugs.includes(pathParts[1]) ? pathParts[1] : null;
     const slugPath = slug ? `/${slug}` : '';
 
@@ -143,8 +146,7 @@ export const withHikeMiddleware = ({
     if (
       pathname.startsWith(`${slugPath}/login`) ||
       allowedPathGroups?.static.includes(pathname.replace(/\/$/, '')) ||
-      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path)) ||
-      pathname === maintenancePath
+      allowedPathGroups?.wildcards.some((path) => pathname.startsWith(path))
     ) {
       try {
         const token = extractToken(request);
@@ -163,7 +165,11 @@ export const withHikeMiddleware = ({
       const token = extractToken(request);
 
       if (!token) {
-        throw new AuthError({ message: 'Token not found', statusCode: 401 });
+        throw new HikeError({
+          message: 'Token not found',
+          statusCode: 401,
+          errorCode: HikeErrorCode.ERR_TOKEN_INVALID
+        });
       }
 
       // Validate token has been signed by the server
@@ -178,7 +184,7 @@ export const withHikeMiddleware = ({
         !restrictedRoles || Object.values(user.companies).some((role) => role && !restrictedRoles.includes(role));
 
       if (hasAccess) {
-        const companyId = Object.entries(user.slugs).find(([key]) => user.slugs[key] === slug)?.[0];
+        const companyId = Object.keys(user.slugs).find((id) => user?.slugs[id] === slug);
         const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
         // Execute post-authentication hook; may throw error to prevent access
@@ -190,24 +196,20 @@ export const withHikeMiddleware = ({
       console.error(error);
     }
 
-    // Determine login path
-    const login = await (async () => {
-      const path =
-        loginPath?.({
-          config,
-          user: await (async () => {
-            try {
-              const token = extractToken(request);
-              return await fetchSessionUser(token, config);
-            } catch {
-              return null;
-            }
-          })(),
-          slug
-        }) || '/login';
-
-      return `${slugPath}${path}`;
+    // Passively retrieve user details
+    const user = await (async () => {
+      try {
+        const token = extractToken(request);
+        return await fetchSessionUser(token, config);
+      } catch {
+        return null;
+      }
     })();
+
+    const companyId = Object.keys(user?.slugs ?? {}).find((id) => user?.slugs[id] === slug);
+
+    // Determine login path
+    const login = `${slugPath}${loginPath?.({ config, user, slug, companyId }) || '/login'}`;
 
     // Default redirection to login
     if (!pathname.startsWith(login) && pathname !== '/') {

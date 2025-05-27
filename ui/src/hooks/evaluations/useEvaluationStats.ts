@@ -1,5 +1,6 @@
-import { HikeError, statsForEvaluations } from '@hike/services';
+import { statsForEvaluations } from '@hike/services';
 import type { EvaluationsStats } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseEvaluationStatsOptions

@@ -1,5 +1,6 @@
-import { fetchOrdersByLabelId, HikeError } from '@hike/services';
+import { fetchOrdersByLabelId } from '@hike/services';
 import type { ShippingLabelResponseByShipmentId } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseOrdersByLabelId {
