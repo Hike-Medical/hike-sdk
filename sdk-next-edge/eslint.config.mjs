@@ -1,1 +1,1 @@
-export { config as default } from '@hike/eslint-config/next-js';
+export { config as default } from '@hike/config/eslint/next-js';

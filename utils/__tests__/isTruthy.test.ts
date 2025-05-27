@@ -1,5 +1,5 @@
+import { isTruthy } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
-import { isTruthy } from '../src/guards/isTruthy';
 
 describe('isTruthy tests', () => {
   test('should filter out all falsy values from an array', () => {

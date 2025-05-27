@@ -1,5 +1,5 @@
-import { HikeError, updateFacility } from '@hike/services';
-import { FacilityExtended, UpdateFacilityParams } from '@hike/types';
+import { updateFacility } from '@hike/services';
+import { FacilityExtended, HikeError, UpdateFacilityParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateFacilityContext {

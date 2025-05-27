@@ -1,5 +1,6 @@
 import { NotificationType, ProductType } from '../../../prisma';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
+import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
 import { CompanyPortal } from './CompanyPortal';
 import { CompanyTheme } from './CompanyTheme';
@@ -8,6 +9,7 @@ export interface CompanyPreferences {
   carrierServiceCode?: string;
   carrierPreferenceId?: string;
   emailToUser?: boolean;
+  emailPackingSlips?: string[];
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredConsumerSubmittedEmail?: string;
@@ -16,13 +18,20 @@ export interface CompanyPreferences {
   preferredWalkInDeliveryReceiptEmailAddress?: string;
   preSubmissionAuth?: boolean;
   requiredSnapshotReview?: boolean;
-  modifyTaikaHeelStyle?: boolean;
+  taikaCustomizations?: {
+    orderForm?: CreateCustomizationsTaikaParams;
+    setTaikaIdAsPONumber?: boolean;
+    engravingText?: {
+      asExternalId?: boolean;
+      withSide?: boolean;
+    };
+  };
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
   };
   noAuthNeeded?: boolean;
-  engraveInsoleWithExternalId?: boolean;
+  blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
   roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
@@ -45,7 +54,6 @@ export interface CompanyPreferences {
   defaultTimeZone?: string;
   transferConsumerSubmission?: boolean;
   onlyNotificationTypes?: NotificationType[];
-  setTaikIdAsPONumber?: boolean;
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
   diabeticPatients?: string;

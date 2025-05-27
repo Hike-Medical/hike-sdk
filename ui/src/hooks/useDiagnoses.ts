@@ -1,5 +1,6 @@
-import { fetchDiagnoses, HikeError, searchDiagnoses } from '@hike/services';
+import { fetchDiagnoses, searchDiagnoses } from '@hike/services';
 import type { Diagnosis, PagedParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseDiagnosesOptions extends PagedParams {

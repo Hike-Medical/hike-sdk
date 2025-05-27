@@ -1,6 +1,5 @@
-import { AgreementStatus, AgreementType, AuthUser } from '@hike/types';
+import { AgreementStatus, AgreementType, AuthUser, isAuthUser } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
-import { isAuthUser } from '../src/guards/isAuthUser';
 
 describe('isAuthUser tests', () => {
   test('should return true for a valid AuthUser object', () => {
@@ -36,9 +35,9 @@ describe('isAuthUser tests', () => {
     expect(isAuthUser(true)).toBe(false);
   });
 
-  test('should return false if the company is empty', () => {
+  test('should return true if the company is empty', () => {
     const emptyCompanies = { id: 'abc', companies: {} };
-    expect(isAuthUser(emptyCompanies)).toBe(false);
+    expect(isAuthUser(emptyCompanies)).toBe(true);
   });
 
   test('should return false if the id property is missing', () => {

@@ -8,7 +8,7 @@ import type {
   UpdateFormTemplateBody,
   UpsertFormSubmissionParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findFormSchemaById = async (schemaId: string, templateable = false): Promise<FormSchemaTyped> => {

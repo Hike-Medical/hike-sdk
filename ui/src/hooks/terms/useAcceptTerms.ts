@@ -1,5 +1,5 @@
-import { HikeError, acceptTerms } from '@hike/services';
-import { AgreementStatus, AgreementType, UserAgreement } from '@hike/types';
+import { acceptTerms } from '@hike/services';
+import { AgreementStatus, AgreementType, HikeError, UserAgreement } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface AcceptTermsContext {

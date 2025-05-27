@@ -5,9 +5,12 @@ import {
   AssetAugmentStatus,
   AssetAugmentStatusForAugmentId,
   AssetAugmentType,
-  UpdateAssetAugmentMedia
+  UpdateAssetAugmentMedia,
+  AugmentExtended,
+  GetAugmentsParams,
+  PagedResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findAssetAugmentsByFootId = async (footId: string): Promise<AssetAugment[]> => {
@@ -73,6 +76,27 @@ export const findAssetAugmentStatusByAugmentId = async (augmentId: string): Prom
 export const findAugmentByAssetIdAndType = async (assetId: string, augmentType: AssetAugmentType) => {
   try {
     const response = await backendApi.get(`asset/${assetId}/${augmentType}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findAugments = async (params?: GetAugmentsParams): Promise<PagedResponse<AugmentExtended[]>> => {
+  try {
+    const response = await backendApi.get('augment', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const exportAugments = async (params?: GetAugmentsParams): Promise<Blob> => {
+  try {
+    const response = await backendApi.get('augment/data/export', {
+      params,
+      responseType: 'arraybuffer'
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -1,5 +1,6 @@
-import { HikeError, getCompany } from '@hike/services';
+import { getCompany } from '@hike/services';
 import type { CompanyExtended } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetCompanyOptions extends Omit<UseQueryOptions<CompanyExtended, HikeError<null>>, 'queryKey' | 'queryFn'> {

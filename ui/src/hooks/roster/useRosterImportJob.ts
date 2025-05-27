@@ -1,5 +1,6 @@
-import { HikeError, fetchRosterImportStatus } from '@hike/services';
+import { fetchRosterImportStatus } from '@hike/services';
 import type { ImportRosterResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseRosterImportJobOptions

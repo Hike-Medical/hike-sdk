@@ -1,5 +1,5 @@
+import { isDefined } from '@hike/types';
 import { describe, expect, test } from '@jest/globals';
-import { isDefined } from '../src/guards/isDefined';
 
 describe('isDefined tests', () => {
   test('should filter out null values from an array', () => {
