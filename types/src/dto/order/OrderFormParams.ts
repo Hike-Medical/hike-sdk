@@ -1,4 +1,3 @@
-import { InsertType } from '../manufacturing/InsertType';
 import { RenderType } from '../manufacturing/RenderType';
 
 export interface OrderFormCastingType {
@@ -88,7 +87,6 @@ export interface OrderFormFoot {
 }
 
 export interface OrderFormParams {
-  insertType: InsertType;
   castingType: OrderFormCastingType;
   productType: OrderFormProductType;
   shellSpecs: OrderFormShellSpecs;

@@ -1,5 +1,5 @@
-import { HikeError, updatePatient } from '@hike/services';
-import { PatientExtended, UpdatePatientParams } from '@hike/types';
+import { updatePatient } from '@hike/services';
+import { HikeError, PatientExtended, UpdatePatientParams } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 interface UpdatePatientById {
@@ -8,10 +8,10 @@ interface UpdatePatientById {
 }
 
 export const useUpdatePatientById = (
-  mutationOptions?: UseMutationOptions<PatientExtended, HikeError<null>, UpdatePatientById>
+  options?: UseMutationOptions<PatientExtended, HikeError<null>, UpdatePatientById>
 ) =>
   useMutation({
     mutationKey: ['updatePatient'],
     mutationFn: async ({ patientId, body }) => await updatePatient(patientId, body),
-    ...mutationOptions
+    ...options
   });

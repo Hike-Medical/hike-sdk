@@ -1,1 +1,1 @@
-export { config as default } from '@hike/eslint-config/base';
+export { config as default } from '@hike/config/eslint/base';

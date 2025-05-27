@@ -1,4 +1,5 @@
-import { HikeError, sendPrinterLabel } from '@hike/services';
+import { sendPrinterLabel } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface SendPrinterToLabelContext {

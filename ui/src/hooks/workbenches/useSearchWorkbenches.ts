@@ -1,5 +1,5 @@
-import { HikeError, searchWorkbenches } from '@hike/services';
-import { PagedResponse, SearchWorkbenchParams, WorkbenchExtended } from '@hike/types';
+import { searchWorkbenches } from '@hike/services';
+import { HikeError, PagedResponse, SearchWorkbenchParams, WorkbenchExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseSearchWorkbenchesOptions

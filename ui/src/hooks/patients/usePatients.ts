@@ -1,5 +1,6 @@
-import { fetchPatients, HikeError, searchPatients } from '@hike/services';
+import { fetchPatients, searchPatients } from '@hike/services';
 import type { PagedResponse, PatientExtended, SearchPatientsParams } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UsePatientsOptions

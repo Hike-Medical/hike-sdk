@@ -13,6 +13,9 @@ export interface AuthUser {
   clinician?: Clinician | null;
   slugs: Record<string, string>;
   agreements: Record<AgreementType, AgreementStatus>;
+  active: Record<string, boolean>;
+  emailVerifiedAt: Date | null;
+  phoneVerifiedAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -53,15 +56,13 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<string, Record<CompanyPermission, CompanyRole>>
   ),
-  slugs: user.companies
-    .flatMap((item) => item.company)
-    .reduce(
-      (acc, obj) => {
-        acc[obj.id] = obj.slug;
-        return acc;
-      },
-      {} as Record<string, string>
-    ),
+  slugs: user.companies.reduce(
+    (acc, obj) => {
+      acc[obj.companyId] = obj.company.slug;
+      return acc;
+    },
+    {} as Record<string, string>
+  ),
   agreements: user.agreements.reduce(
     (acc, obj) => {
       acc[obj.agreement.type] = obj.status;
@@ -69,7 +70,16 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<AgreementType, AgreementStatus>
   ),
+  active: user.companies.reduce(
+    (acc, obj) => {
+      acc[obj.company.id] = obj.active;
+      return acc;
+    },
+    {} as Record<string, boolean>
+  ),
   clinician: user.clinician,
+  emailVerifiedAt: user.emailVerifiedAt,
+  phoneVerifiedAt: user.phoneVerifiedAt,
   createdAt: user.createdAt,
   updatedAt: user.updatedAt
 });

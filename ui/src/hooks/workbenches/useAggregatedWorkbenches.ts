@@ -1,5 +1,5 @@
-import { HikeError, getAggregatedWorkbenches } from '@hike/services';
-import { FlattenedWorkbench, GetAggregatedParams, PagedResponse } from '@hike/types';
+import { getAggregatedWorkbenches } from '@hike/services';
+import { FlattenedWorkbench, GetAggregatedParams, HikeError, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseAggregatedWorkbenchesOptions

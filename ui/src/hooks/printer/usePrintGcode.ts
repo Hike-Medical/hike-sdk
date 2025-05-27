@@ -1,5 +1,5 @@
-import { HikeError, printGcode } from '@hike/services';
-import { SendGcodeToPrinterParams } from '@hike/types';
+import { printGcode } from '@hike/services';
+import { HikeError, SendGcodeToPrinterParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface PrintGcodeContext {

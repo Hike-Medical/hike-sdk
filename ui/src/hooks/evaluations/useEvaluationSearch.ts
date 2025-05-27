@@ -1,5 +1,6 @@
-import { HikeError, searchEvaluations } from '@hike/services';
+import { searchEvaluations } from '@hike/services';
 import type { EvaluationExtended, PagedResponse, SearchEvaluationsParams } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseEvaluationsSearchOptions extends SearchEvaluationsParams {

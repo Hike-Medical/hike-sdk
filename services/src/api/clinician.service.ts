@@ -6,7 +6,7 @@ import {
   GetCliniciansParams,
   PagedResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createClinician = async (params: CreateClinicianParams): Promise<Clinician> => {
@@ -27,9 +27,9 @@ export const fetchClinicians = async (params?: GetCliniciansParams): Promise<Pag
   }
 };
 
-export const fetchClinician = async (): Promise<Clinician | null> => {
+export const fetchUnassignedClinician = async (clinicianId: string): Promise<Clinician> => {
   try {
-    const response = await backendApi.get('clinician/current');
+    const response = await backendApi.get(`auth/clinician/unassigned/${clinicianId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -1,5 +1,5 @@
-import { HikeError, addCompany } from '@hike/services';
-import { AddCompanyParams, CompanyExtended } from '@hike/types';
+import { addCompany } from '@hike/services';
+import { AddCompanyParams, CompanyExtended, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useAddCompany = (options?: UseMutationOptions<CompanyExtended, HikeError<null>, AddCompanyParams>) =>
