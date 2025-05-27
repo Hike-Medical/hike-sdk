@@ -1,14 +1,13 @@
 'use client';
 
-import useUpdateBodyClass from '../../hooks/useUpdateBodyClass';
 import { signIn, validateEmail, validatePassword } from '@hike/sdk';
-import { SubmitButton } from '../SubmitButton';
 import { SessionContext } from '@hike/ui';
 import { Anchor, Box, Center, Container, Paper, PasswordInput, Stack, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { use } from 'react';
+import { SubmitButton } from '../SubmitButton';
 
 interface LoginParams {
   company?: {
@@ -25,8 +24,6 @@ export const Login = ({ company }: LoginParams) => {
   const redirectUrl = searchParams.get('redirect');
   const slug = company?.slug ?? '';
   const slugPath = slug ? `/${slug}` : '';
-
-  useUpdateBodyClass('alternativeBg');
 
   const form = useForm({
     mode: 'controlled',
