@@ -19,5 +19,6 @@ export * from './themes/createTheme';
 export * from './themes/themeIconColor';
 export * from './themes/types/ThemeColors';
 export * from './themes/types/ThemeComponent';
+export * from './types/TablerIconComponent';
 export * from './utils/analytics';
 export * from './utils/logger';
