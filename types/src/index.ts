@@ -30,6 +30,7 @@ export * from './dto/auth/AcceptInvitationParams';
 export * from './dto/auth/AccountRecoveryParams';
 export * from './dto/auth/InviteUserParams';
 export * from './dto/auth/PasswordResetParams';
+export * from './dto/auth/SignInParams';
 export * from './dto/auth/SignInWithPinBody';
 export * from './dto/auth/SignInWithTokenParams';
 export * from './dto/auth/SignUpClinicianParams';
