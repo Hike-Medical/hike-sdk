@@ -1,5 +1,6 @@
-import { HikeError, fetchAppointmentsImportStatus } from '@hike/services';
+import { fetchAppointmentsImportStatus } from '@hike/services';
 import type { ImportAppointmentsResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseAppointmentsImportJobOptions

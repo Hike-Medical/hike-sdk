@@ -11,7 +11,7 @@ export const config = [
   plugins.reactA11y,
   ...baseConfig,
   {
-    ...plugins.react,
+    name: 'react/custom-rules',
     rules: {
       'react/destructuring-assignment': 'warn',
       'react/function-component-definition': 'off',

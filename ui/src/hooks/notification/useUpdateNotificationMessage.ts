@@ -1,5 +1,5 @@
-import { HikeError, updateNotificationMessage } from '@hike/services';
-import { NotificationMessage, UpdateNotificationMessageParams } from '@hike/types';
+import { updateNotificationMessage } from '@hike/services';
+import { HikeError, NotificationMessage, UpdateNotificationMessageParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseUpdateNotificationMessageOptions {

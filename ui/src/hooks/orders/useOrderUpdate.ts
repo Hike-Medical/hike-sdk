@@ -1,5 +1,5 @@
-import { HikeError, updateOrder } from '@hike/services';
-import { Order, UpdateOrderParams } from '@hike/types';
+import { updateOrder } from '@hike/services';
+import { HikeError, Order, UpdateOrderParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateOrderContext {

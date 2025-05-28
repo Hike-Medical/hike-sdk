@@ -1,5 +1,5 @@
-import { HikeError, createInvitation } from '@hike/services';
-import { AccountVerification, CreateInvitationParams } from '@hike/types';
+import { createInvitation } from '@hike/services';
+import { AccountVerification, CreateInvitationParams, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateInvitation = (

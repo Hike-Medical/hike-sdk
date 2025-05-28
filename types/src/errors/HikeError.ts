@@ -1,24 +1,24 @@
-import { AuthErrorCode } from './AuthErrorCode';
+import { HikeErrorCode } from './HikeErrorCode';
 
 /**
- * Options for creating a `AuthError` instance.
+ * Options for creating a `HikeError` instance.
  */
-interface AuthErrorOptions<T> {
+interface HikeErrorOptions<T> {
   message: string;
   statusCode: number;
-  errorCode?: AuthErrorCode;
+  errorCode?: HikeErrorCode;
   data?: T;
 }
 
 /**
  * Class representing a response error with status and data.
  */
-export class AuthError<T> extends Error {
+export class HikeError<T> extends Error {
   readonly statusCode: number;
-  readonly errorCode?: AuthErrorCode;
+  readonly errorCode?: HikeErrorCode;
   readonly data?: T;
 
-  constructor({ message, statusCode, errorCode, data }: AuthErrorOptions<T>) {
+  constructor({ message, statusCode, errorCode, data }: HikeErrorOptions<T>) {
     super(message);
     this.statusCode = statusCode;
     this.errorCode = errorCode;

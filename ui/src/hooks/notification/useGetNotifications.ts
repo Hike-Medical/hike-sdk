@@ -1,5 +1,5 @@
-import { HikeError, findNotifications } from '@hike/services';
-import { GetNotificationsParams, NotificationExtended } from '@hike/types';
+import { findNotifications } from '@hike/services';
+import { GetNotificationsParams, HikeError, NotificationExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotificationsOptions

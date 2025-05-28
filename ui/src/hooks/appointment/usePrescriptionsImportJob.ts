@@ -1,5 +1,6 @@
-import { HikeError, fetchPrescriptionsImportStatus } from '@hike/services';
+import { fetchPrescriptionsImportStatus } from '@hike/services';
 import type { ImportPrescriptionsResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UsePrescriptionsImportJobOptions

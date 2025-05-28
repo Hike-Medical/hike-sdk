@@ -1,5 +1,5 @@
-import { HikeError, createPin } from '@hike/services';
-import { CreatePinDto } from '@hike/types';
+import { createPin } from '@hike/services';
+import { CreatePinDto, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreatePin = (options?: UseMutationOptions<void, HikeError<null>, CreatePinDto>) =>

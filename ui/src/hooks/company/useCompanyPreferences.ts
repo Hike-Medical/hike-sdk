@@ -1,5 +1,6 @@
-import { HikeError, findCompanyPreferences } from '@hike/services';
+import { findCompanyPreferences } from '@hike/services';
 import type { CompanyPreferences } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCompanyPreferencesOptions

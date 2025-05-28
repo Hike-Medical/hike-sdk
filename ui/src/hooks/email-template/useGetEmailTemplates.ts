@@ -1,5 +1,5 @@
-import { HikeError, fetchEmailTemplates } from '@hike/services';
-import { EmailTemplateExtended } from '@hike/types';
+import { fetchEmailTemplates } from '@hike/services';
+import { EmailTemplateExtended, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetEmailTemplatesOptions

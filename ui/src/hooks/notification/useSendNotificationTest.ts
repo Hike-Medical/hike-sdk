@@ -1,5 +1,5 @@
-import { HikeError, sendNotificationTest } from '@hike/services';
-import { SendTestParams } from '@hike/types';
+import { sendNotificationTest } from '@hike/services';
+import { HikeError, SendTestParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseSendNotificationTestOptions {

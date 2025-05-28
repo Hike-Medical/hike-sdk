@@ -1,4 +1,5 @@
-import { HikeError, isFreeTrial } from '@hike/services';
+import { isFreeTrial } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseIsFreeTrialOptions extends Omit<UseQueryOptions<boolean, HikeError<null>>, 'queryKey' | 'queryFn'> {

@@ -1,5 +1,5 @@
-import { fetchHistoryByNotification, HikeError } from '@hike/services';
-import { GetNotificationHistoryParams, NotificationHistoryExtended, PagedResponse } from '@hike/types';
+import { fetchHistoryByNotification } from '@hike/services';
+import { GetNotificationHistoryParams, HikeError, NotificationHistoryExtended, PagedResponse } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationHistoryOptions

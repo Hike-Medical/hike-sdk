@@ -1,5 +1,5 @@
-import { HikeError, statsForNotification } from '@hike/services';
-import { NotificationStats } from '@hike/types';
+import { statsForNotification } from '@hike/services';
+import { HikeError, NotificationStats } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationStatsOptions

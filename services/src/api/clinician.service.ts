@@ -6,7 +6,7 @@ import {
   GetCliniciansParams,
   PagedResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createClinician = async (params: CreateClinicianParams): Promise<Clinician> => {

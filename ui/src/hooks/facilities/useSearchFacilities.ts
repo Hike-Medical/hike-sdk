@@ -1,6 +1,6 @@
-import { HikeError, searchCompanyFacilityAndAddresses } from '@hike/services';
+import { searchCompanyFacilityAndAddresses } from '@hike/services';
 import type { SearchFacilityParams } from '@hike/types';
-import { FacilityExtended, PagedResponse } from '@hike/types';
+import { FacilityExtended, HikeError, PagedResponse } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseFacilitySearchOptions extends SearchFacilityParams {

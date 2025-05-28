@@ -1,5 +1,5 @@
-import { HikeError, fetchPatientIncentivesByType } from '@hike/services';
-import { IncentiveType, PatientIncentive } from '@hike/types';
+import { fetchPatientIncentivesByType } from '@hike/services';
+import { HikeError, IncentiveType, PatientIncentive } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetPatientIncentivesByTypeOptions

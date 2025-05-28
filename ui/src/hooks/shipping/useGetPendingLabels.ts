@@ -1,5 +1,5 @@
-import { HikeError, fetchPendingShippingLabels } from '@hike/services';
-import { ShippingLabel } from '@hike/types';
+import { fetchPendingShippingLabels } from '@hike/services';
+import { HikeError, ShippingLabel } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetPendingLabels extends Omit<UseQueryOptions<ShippingLabel[], HikeError<null>>, 'queryFn' | 'queryKey'> {

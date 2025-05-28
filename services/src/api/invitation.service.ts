@@ -2,13 +2,13 @@ import {
   AccountVerification,
   ApprovePatientParams,
   CreateInvitationParams,
-  DeleteInvitationsParams,
   FindInvitationsParams,
   PagedResponse,
+  RevokeInvitationsParams,
   SendOtpParams,
   UpdateInvitationsParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findInvitations = async (
@@ -60,7 +60,7 @@ export const sendOtp = async (params: SendOtpParams) => {
   }
 };
 
-export const revokeInvitations = async (params: DeleteInvitationsParams): Promise<{ count: number }> => {
+export const revokeInvitations = async (params: RevokeInvitationsParams): Promise<{ count: number }> => {
   try {
     const response = await backendApi.patch(`invitation/revoke`, params);
     return response.data;

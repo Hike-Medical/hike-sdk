@@ -1,4 +1,4 @@
-import { HikeError } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UploadVideoParams {
@@ -9,7 +9,7 @@ interface UploadVideoParams {
 }
 
 export const useUploadVideoToS3 = (
-  mutationOptions?: Omit<UseMutationOptions<void, HikeError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
+  options?: Omit<UseMutationOptions<void, HikeError<null>, UploadVideoParams>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['uploadVideoToS3'],
@@ -114,5 +114,5 @@ export const useUploadVideoToS3 = (
         xhr.send(video);
       });
     },
-    ...mutationOptions
+    ...options
   });

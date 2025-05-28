@@ -1,5 +1,6 @@
-import { HikeError, findShippingLabels } from '@hike/services';
+import { findShippingLabels } from '@hike/services';
 import type { ShippingLabel } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseSearchShippingLabelsOptions

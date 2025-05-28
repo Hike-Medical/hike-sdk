@@ -1,5 +1,6 @@
-import { HikeError, fetchCategories } from '@hike/services';
+import { fetchCategories } from '@hike/services';
 import type { CatalogCategory, GetCategoriesParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCatalogCategoriesOptions

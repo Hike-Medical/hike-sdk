@@ -1,5 +1,6 @@
-import { HikeError, findInvitations } from '@hike/services';
+import { findInvitations } from '@hike/services';
 import type { AccountVerification, FindInvitationsParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseInvitationsOptions

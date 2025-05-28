@@ -1,5 +1,5 @@
-import { fetchNotificationEnrollPatients, HikeError } from '@hike/services';
-import { CompanyPatientExtended, EnrollPatientsParams } from '@hike/types';
+import { fetchNotificationEnrollPatients } from '@hike/services';
+import { CompanyPatientExtended, EnrollPatientsParams, HikeError } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationEnrollPatientsOptions

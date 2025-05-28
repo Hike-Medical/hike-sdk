@@ -1,5 +1,5 @@
-import { HikeError, updateFormTemplate } from '@hike/services';
-import { FormTemplateResponse, UpdateFormTemplateBody } from '@hike/types';
+import { updateFormTemplate } from '@hike/services';
+import { FormTemplateResponse, HikeError, UpdateFormTemplateBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateFormTemplateParams {
@@ -8,7 +8,7 @@ interface UpdateFormTemplateParams {
 }
 
 export const useUpdateFormTemplate = (
-  mutationOptions?: Omit<
+  options?: Omit<
     UseMutationOptions<FormTemplateResponse, HikeError<null>, UpdateFormTemplateParams>,
     'mutationKey' | 'mutationFn'
   >
@@ -16,5 +16,5 @@ export const useUpdateFormTemplate = (
   useMutation({
     mutationKey: ['updateFormTemplate'],
     mutationFn: async (params) => await updateFormTemplate(params.templateId, params.body),
-    ...mutationOptions
+    ...options
   });

@@ -1,7 +1,6 @@
-import { AuthUser, HikeConfig } from '@hike/types';
+import type { AuthUser, HikeConfig } from '@hike/types';
+import { HikeError, HikeErrorCode } from '@hike/types';
 import { generateBaseUrls } from '@hike/utils';
-import { AuthError } from '../errors/AuthError';
-import { AuthErrorCode } from '../errors/AuthErrorCode';
 
 /**
  * Fetches the session information from the authenticated user's token.
@@ -12,10 +11,10 @@ export const fetchSessionUser = async (
   config: Pick<HikeConfig, 'appEnv' | 'appId'>
 ): Promise<AuthUser> => {
   if (!token) {
-    throw new AuthError({
+    throw new HikeError({
       message: 'Token not found',
       statusCode: 401,
-      errorCode: AuthErrorCode.ERR_TOKEN_INVALID
+      errorCode: HikeErrorCode.ERR_TOKEN_INVALID
     });
   }
 
@@ -27,7 +26,11 @@ export const fetchSessionUser = async (
   });
 
   if (!response.ok) {
-    throw new AuthError({ message: 'Session not found', statusCode: 401 });
+    throw new HikeError({
+      message: 'Session not found',
+      statusCode: 401,
+      errorCode: HikeErrorCode.ERR_DATA_NOT_FOUND
+    });
   }
 
   return await response.json();

@@ -1,5 +1,5 @@
-import { HikeError, patientWorkbenchInformation } from '@hike/services';
-import { PatientWorkbenchResponse } from '@hike/types';
+import { patientWorkbenchInformation } from '@hike/services';
+import { HikeError, PatientWorkbenchResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UsePatientWorkbenchInformationOptions

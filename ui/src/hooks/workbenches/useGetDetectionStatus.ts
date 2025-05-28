@@ -1,5 +1,5 @@
-import { HikeError, getDetectionStatusForWorkbench } from '@hike/services';
-import { DetectionStatusResponse } from '@hike/types';
+import { getDetectionStatusForWorkbench } from '@hike/services';
+import { DetectionStatusResponse, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetDetectionStatusOptions

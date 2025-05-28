@@ -8,10 +8,10 @@ interface UpdateAssetAugmentMediaDto {
 }
 
 export const useUpdateAssetAugmentMedia = (
-  mutationOptions?: MutationOptions<AssetAugmentMediaResult, Error, UpdateAssetAugmentMediaDto>
+  options?: MutationOptions<AssetAugmentMediaResult, Error, UpdateAssetAugmentMediaDto>
 ) =>
   useMutation({
     mutationKey: ['updateAssetAugmentMedia'],
     mutationFn: async ({ mediaId, body }) => await updateAssetAugmentMedia(mediaId, body),
-    ...mutationOptions
+    ...options
   });

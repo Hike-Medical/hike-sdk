@@ -1,5 +1,6 @@
 export * from './components/CopyButton';
 export * from './components/login/AccountRecovery';
+export * from './components/login/Login';
 export * from './components/login/MagicLink';
 export * from './components/login/ResetPassword';
 export * from './components/login/TokenInvalid';
@@ -19,5 +20,6 @@ export * from './themes/createTheme';
 export * from './themes/themeIconColor';
 export * from './themes/types/ThemeColors';
 export * from './themes/types/ThemeComponent';
+export * from './types/TablerIconComponent';
 export * from './utils/analytics';
 export * from './utils/logger';

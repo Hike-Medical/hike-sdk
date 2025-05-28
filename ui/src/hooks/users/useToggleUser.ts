@@ -1,4 +1,5 @@
-import { HikeError, activateUser, deactivateUser } from '@hike/services';
+import { activateUser, deactivateUser } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseToggleUserOptions {

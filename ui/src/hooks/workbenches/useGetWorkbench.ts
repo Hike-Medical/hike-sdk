@@ -1,5 +1,5 @@
-import { HikeError, getWorkbench } from '@hike/services';
-import { WorkbenchExtended } from '@hike/types';
+import { getWorkbench } from '@hike/services';
+import { HikeError, WorkbenchExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetWorkbenchOptions

@@ -1,5 +1,6 @@
-import { HikeError, findEvaluationsByPatientId } from '@hike/services';
+import { findEvaluationsByPatientId } from '@hike/services';
 import type { EvaluationExtended, GetEvaluationsByPatientParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseEvaluationsByPatientOptions

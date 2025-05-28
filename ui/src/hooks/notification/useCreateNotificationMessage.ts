@@ -1,5 +1,5 @@
-import { HikeError, createNotificationMessage } from '@hike/services';
-import { CreateNotificationMessageParams, NotificationMessage } from '@hike/types';
+import { createNotificationMessage } from '@hike/services';
+import { CreateNotificationMessageParams, HikeError, NotificationMessage } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateNotificationMessage = (

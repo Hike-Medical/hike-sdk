@@ -1,5 +1,5 @@
-import { HikeError, getClinicalFootStatus } from '@hike/services';
-import { FootStatus } from '@hike/types';
+import { getClinicalFootStatus } from '@hike/services';
+import { FootStatus, HikeError } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 export const useGetFootStatus = (

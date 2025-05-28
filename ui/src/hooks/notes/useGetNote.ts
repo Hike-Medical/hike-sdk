@@ -1,5 +1,5 @@
-import { HikeError, findNoteById } from '@hike/services';
-import { Notes } from '@hike/types';
+import { findNoteById } from '@hike/services';
+import { HikeError, Notes } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 export const useGetNote = (

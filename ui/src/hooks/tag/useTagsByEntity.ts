@@ -1,5 +1,5 @@
-import { HikeError, statsForTagEntity } from '@hike/services';
-import { EntityType } from '@hike/types';
+import { statsForTagEntity } from '@hike/services';
+import { EntityType, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseTagsByEntityOptions

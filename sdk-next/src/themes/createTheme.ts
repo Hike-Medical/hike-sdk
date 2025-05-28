@@ -113,7 +113,6 @@ export const createComponents = (colors: ThemeColors, components?: Partial<Theme
       },
       input: {
         fontSize: rem(18),
-        fontWeight: '100',
         lineHeight: rem(24),
         color: colors.semantic.inputText,
         display: 'flex',

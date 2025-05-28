@@ -1,9 +1,9 @@
-import { HikeError, createFormTemplate } from '@hike/services';
-import { CreateFormTemplateBody, FormTemplateResponse } from '@hike/types';
+import { createFormTemplate } from '@hike/services';
+import { CreateFormTemplateBody, FormTemplateResponse, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateFormTemplate = (
-  mutationOptions?: Omit<
+  options?: Omit<
     UseMutationOptions<FormTemplateResponse, HikeError<null>, CreateFormTemplateBody>,
     'mutationKey' | 'mutationFn'
   >
@@ -11,5 +11,5 @@ export const useCreateFormTemplate = (
   useMutation({
     mutationKey: ['createFormTemplate'],
     mutationFn: async (params) => await createFormTemplate(params),
-    ...mutationOptions
+    ...options
   });

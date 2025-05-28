@@ -1,5 +1,5 @@
-import { HikeError, getPrinters } from '@hike/services';
-import { Printer } from '@hike/types';
+import { getPrinters } from '@hike/services';
+import { HikeError, Printer } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetPrintersOptions extends Omit<UseQueryOptions<Printer[], HikeError<null>>, 'queryFn' | 'queryKey'> {

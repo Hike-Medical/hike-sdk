@@ -1,5 +1,5 @@
-import { HikeError, createNotes } from '@hike/services';
-import { CreateNotesBody, Notes } from '@hike/types';
+import { createNotes } from '@hike/services';
+import { CreateNotesBody, HikeError, Notes } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export interface CreateNotesParams {
@@ -7,9 +7,9 @@ export interface CreateNotesParams {
   data: CreateNotesBody;
 }
 
-export const useCreateNotes = (mutationOptions?: UseMutationOptions<Notes, HikeError<null>, CreateNotesParams>) =>
+export const useCreateNotes = (options?: UseMutationOptions<Notes, HikeError<null>, CreateNotesParams>) =>
   useMutation({
     mutationKey: ['createNotes'],
     mutationFn: async ({ workbenchId, data }) => await createNotes(workbenchId, data),
-    ...mutationOptions
+    ...options
   });

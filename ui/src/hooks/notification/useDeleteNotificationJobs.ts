@@ -1,4 +1,5 @@
-import { HikeError, deleteNotificationJobs } from '@hike/services';
+import { deleteNotificationJobs } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseDeleteNotificationJobsOptions {

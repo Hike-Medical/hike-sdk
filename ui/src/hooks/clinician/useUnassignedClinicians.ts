@@ -1,5 +1,6 @@
-import { HikeError, fetchUnassignedClinicians } from '@hike/services';
+import { fetchUnassignedClinicians } from '@hike/services';
 import type { Clinician } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseUnassignedCliniciansOptions

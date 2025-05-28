@@ -1,5 +1,6 @@
-import { fetchShipments, HikeError } from '@hike/services';
+import { fetchShipments } from '@hike/services';
 import type { GetShipengineShipmentsParams, GetShipengineShipmentsResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseGetShipengineShipmentsOptions extends GetShipengineShipmentsParams {

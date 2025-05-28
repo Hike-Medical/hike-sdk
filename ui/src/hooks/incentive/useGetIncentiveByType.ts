@@ -1,5 +1,5 @@
-import { HikeError, findIncentiveByType } from '@hike/services';
-import { Incentive, IncentiveType } from '@hike/types';
+import { findIncentiveByType } from '@hike/services';
+import { HikeError, Incentive, IncentiveType } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetIncentiveByTypeOptions

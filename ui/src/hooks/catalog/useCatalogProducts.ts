@@ -1,5 +1,6 @@
-import { HikeError, fetchProducts } from '@hike/services';
+import { fetchProducts } from '@hike/services';
 import type { CatalogProductExtended, GetProductsParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCatalogProductsOptions

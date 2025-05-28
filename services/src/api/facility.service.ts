@@ -6,7 +6,7 @@ import {
   UpdateFacilityParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const fetchCompanyFacilitiesAndAddresses = async (): Promise<FacilityExtended[]> => {

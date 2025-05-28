@@ -1,5 +1,6 @@
-import { HikeError, globalSearch } from '@hike/services';
+import { globalSearch } from '@hike/services';
 import type { GetSearchParams, SearchResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseGlobalSearchOptions extends GetSearchParams {

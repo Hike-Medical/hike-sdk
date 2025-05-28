@@ -1,5 +1,5 @@
-import { HikeError, enrollPatientsToNotification } from '@hike/services';
-import { EnrollPatientsParams } from '@hike/types';
+import { enrollPatientsToNotification } from '@hike/services';
+import { EnrollPatientsParams, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseEnrollPatientsToNotificationOptions {

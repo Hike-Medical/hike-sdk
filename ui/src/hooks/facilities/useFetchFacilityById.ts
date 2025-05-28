@@ -1,5 +1,5 @@
-import { HikeError, getFacilityById } from '@hike/services';
-import { FacilityExtended } from '@hike/types';
+import { getFacilityById } from '@hike/services';
+import { FacilityExtended, HikeError } from '@hike/types';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 export const useFacilityById = (

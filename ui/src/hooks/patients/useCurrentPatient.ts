@@ -1,5 +1,5 @@
-import { findCurrentPatient, HikeError } from '@hike/services';
-import { PatientUserResponse } from '@hike/types';
+import { findCurrentPatient } from '@hike/services';
+import { HikeError, PatientUserResponse } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseFindCurrentPatientOptions

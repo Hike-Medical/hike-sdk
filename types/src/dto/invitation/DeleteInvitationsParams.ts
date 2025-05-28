@@ -1,3 +1,3 @@
-export interface DeleteInvitationsParams {
+export interface RevokeInvitationsParams {
   contacts: string[];
 }

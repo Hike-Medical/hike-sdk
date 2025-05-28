@@ -1,5 +1,5 @@
-import { HikeError, updateCompany } from '@hike/services';
-import { CompanyExtended, UpdateCompanyParams } from '@hike/types';
+import { updateCompany } from '@hike/services';
+import { CompanyExtended, HikeError, UpdateCompanyParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UpdateCompanyOptions {

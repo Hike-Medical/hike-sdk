@@ -1,5 +1,6 @@
-import { HikeError, fetchClinicians } from '@hike/services';
+import { fetchClinicians } from '@hike/services';
 import type { ClinicianExtended, GetCliniciansParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCliniciansOptions

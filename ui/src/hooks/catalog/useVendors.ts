@@ -1,5 +1,6 @@
-import { HikeError, fetchVendors } from '@hike/services';
+import { fetchVendors } from '@hike/services';
 import type { CatalogVendor, GetVendorsParams, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseVendorsOptions

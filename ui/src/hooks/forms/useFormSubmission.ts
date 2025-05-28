@@ -1,5 +1,6 @@
-import { HikeError, findFormSubmission } from '@hike/services';
+import { findFormSubmission } from '@hike/services';
 import type { FormSubmissionTyped } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseFormSubmissionOptions

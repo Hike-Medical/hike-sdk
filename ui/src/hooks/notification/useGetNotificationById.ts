@@ -1,5 +1,5 @@
-import { HikeError, fetchNotificationById } from '@hike/services';
-import { NotificationExtended } from '@hike/types';
+import { fetchNotificationById } from '@hike/services';
+import { HikeError, NotificationExtended } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotificationByIdOptions

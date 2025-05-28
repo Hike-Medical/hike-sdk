@@ -1,5 +1,5 @@
-import { fetchNotificationHistoryByJob, HikeError } from '@hike/services';
-import { NotificationHistoryExtended } from '@hike/types';
+import { fetchNotificationHistoryByJob } from '@hike/services';
+import { HikeError, NotificationHistoryExtended } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationHistoryJobOptions

@@ -1,5 +1,5 @@
-import { HikeError, fetchTags } from '@hike/services';
-import { TagResult } from '@hike/types';
+import { fetchTags } from '@hike/services';
+import { HikeError, TagResult } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseTagsOptions

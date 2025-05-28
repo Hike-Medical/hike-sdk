@@ -1,5 +1,6 @@
-import { HikeError, fetchOrders, fetchOrdersByType } from '@hike/services';
+import { fetchOrders, fetchOrdersByType } from '@hike/services';
 import type { GetOrdersByTypeParams, OrderExtended, OrderType, PagedResponse } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseOrdersByTypeOptions

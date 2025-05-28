@@ -1,5 +1,6 @@
-import { HikeError, findCompanyByName } from '@hike/services';
+import { findCompanyByName } from '@hike/services';
 import type { GetCompanyByNameParams } from '@hike/types';
+import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCompaniesByNameOptions

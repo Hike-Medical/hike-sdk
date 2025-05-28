@@ -1,5 +1,5 @@
-import { HikeError, statsForEnrollNotification } from '@hike/services';
-import { EnrollPatientsParams } from '@hike/types';
+import { statsForEnrollNotification } from '@hike/services';
+import { EnrollPatientsParams, HikeError } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationEnrollStatsOptions

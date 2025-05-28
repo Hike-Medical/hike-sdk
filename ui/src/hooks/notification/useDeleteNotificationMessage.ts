@@ -1,4 +1,5 @@
-import { HikeError, deleteNotificationMessage } from '@hike/services';
+import { deleteNotificationMessage } from '@hike/services';
+import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseDeleteNotificationMessageOptions {
