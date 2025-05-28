@@ -1,13 +1,30 @@
 'use client';
 
-import { signIn, validateEmail, validatePassword } from '@hike/sdk';
-import { SessionContext } from '@hike/ui';
-import { Anchor, Box, Center, Container, Paper, PasswordInput, Stack, TextInput, Title } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { AppId, appName, validateEmail } from '@hike/sdk';
+import { SessionContext, useSignIn } from '@hike/ui';
+import {
+  Anchor,
+  Box,
+  Button,
+  Center,
+  Container,
+  Divider,
+  Group,
+  Paper,
+  PasswordInput,
+  Space,
+  Stack,
+  TextInput,
+  Title
+} from '@mantine/core';
+import { isNotEmpty, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
+import { IconMailFast } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { use } from 'react';
+import { Suspense, use } from 'react';
 import { SubmitButton } from '../SubmitButton';
+import { GoogleLoginButton } from './GoogleLoginButton';
 
 interface LoginParams {
   company?: {
@@ -15,42 +32,74 @@ interface LoginParams {
     name: string;
     slug: string;
   };
+  registerPath?: string;
+  enableSocial?: boolean;
+  appId?: AppId;
 }
 
-export const Login = ({ company }: LoginParams) => {
+export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admin-web' }: LoginParams) => {
   const { update } = use(SessionContext);
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get('redirect');
   const slug = company?.slug ?? '';
   const slugPath = slug ? `/${slug}` : '';
+  const tShared = useTranslations('shared');
+  const t = useTranslations('login.page');
 
   const form = useForm({
     mode: 'controlled',
     initialValues: {
       email: '',
-      password: '',
-      name: '',
-      company: ''
+      password: ''
     },
     validate: {
-      email: (value) => (validateEmail(value) ? null : 'Invalid email'),
-      password: validatePassword
+      email: (value) => (validateEmail(value) ? null : tShared('fields.emailInvalid')),
+      password: isNotEmpty(tShared('fields.passwordRequired'))
+    }
+  });
+
+  const { mutate: signIn, isPending } = useSignIn({
+    onSuccess: async () => {
+      await update();
+      router.replace(redirectUrl || `${slugPath}/`);
+    },
+    onError: (error) => {
+      if (error.statusCode === 429) {
+        showNotification({
+          title: tShared('error.title'),
+          message: tShared('error.tooManyRequests'),
+          color: 'red'
+        });
+
+        return;
+      }
+
+      showNotification({
+        title: tShared('error.title'),
+        message: tShared('error.incorrectCredentials'),
+        color: 'red'
+      });
     }
   });
 
   const handleSubmit = async (values: typeof form.values) => {
-    try {
-      await signIn(values);
-      await update();
-      router.replace(redirectUrl || `${slugPath}/`);
-    } catch {
-      showNotification({
-        title: 'Error',
-        message: 'Failed to login',
-        color: 'red'
-      });
+    signIn({ credentials: values });
+  };
+
+  const handleMagicLinkLogin = () => {
+    const queryParams = new URLSearchParams();
+    const { email } = form.getValues();
+
+    if (email) {
+      queryParams.set('contact', email);
     }
+
+    if (redirectUrl) {
+      queryParams.set('redirect', redirectUrl);
+    }
+
+    router.push(`${slugPath}/login/magic-link?${queryParams.toString()}`);
   };
 
   return (
@@ -58,16 +107,38 @@ export const Login = ({ company }: LoginParams) => {
       <Center w="100%" h="80dvh">
         <Container size={'xs'} w={420}>
           <Title order={4} component="h1" fw={700} ta="center">
-            Welcome to {company?.name || 'Insoles.ai'}, login with
+            {t('title', { companyName: company?.name || appName(appId) })}
           </Title>
+          {company ? (
+            <>
+              <Group grow mb="md" mt="md">
+                {enableSocial && (
+                  <Suspense>
+                    <GoogleLoginButton company={company} />
+                  </Suspense>
+                )}
+                <Button
+                  leftSection={<IconMailFast />}
+                  variant="default"
+                  radius="xl"
+                  onClick={() => handleMagicLinkLogin()}
+                >
+                  {t('magicLink')}
+                </Button>
+              </Group>
+              <Divider label={t('orContinue')} labelPosition="center" my="lg" />
+            </>
+          ) : (
+            <Space my="lg" />
+          )}
           <Paper mt="lg" shadow="md" radius="md" p="xl" withBorder>
-            <form onSubmit={form.onSubmit(handleSubmit)}>
+            <form onSubmit={form.onSubmit(handleSubmit)} noValidate>
               <Stack>
                 <TextInput
                   {...form.getInputProps('email')}
-                  label="Email"
+                  label={tShared('fields.email')}
                   type="email"
-                  placeholder="hello@insoles.ai"
+                  placeholder={tShared('fields.emailPlaceholder')}
                   autoComplete="email"
                   autoCapitalize="none"
                   autoCorrect="off"
@@ -76,23 +147,22 @@ export const Login = ({ company }: LoginParams) => {
                 <PasswordInput
                   {...form.getInputProps('password')}
                   key="password"
-                  label="Password"
-                  placeholder="Your password"
+                  label={tShared('fields.password')}
+                  placeholder={tShared('fields.passwordPlaceholder')}
                   autoComplete="current-password"
-                  radius="md"
                   required
                 />
                 <Stack my="md">
-                  {!!company && (
-                    <Anchor href={`${slugPath}/register/clinician`} component="a" c="dimmed" size="xs">
-                      Don&apos;t have an account? Register
+                  {registerPath && (
+                    <Anchor href={registerPath} component="a" c="dimmed" size="xs">
+                      {t('register')}
                     </Anchor>
                   )}
                   <Anchor href={`${slugPath}/login/recovery`} component="a" c="dimmed" size="xs">
-                    Forgot your password?
+                    {t('forgotPassword')}
                   </Anchor>
                 </Stack>
-                <SubmitButton label="Login" />
+                <SubmitButton label={t('actionButton')} loading={isPending} />
               </Stack>
             </form>
           </Paper>
