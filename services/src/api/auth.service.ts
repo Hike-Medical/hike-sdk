@@ -22,7 +22,6 @@ import { backendApi } from '../utils/backendApi';
 export const signIn = async ({ credentials, excludeCookie }: SignInParams): Promise<AuthSession | null> => {
   try {
     const queryString = excludeCookie === true ? '?exclude-cookie=true' : '';
-
     const response = await backendApi.post(`auth/login${queryString}`, credentials);
     return response.data;
   } catch (error) {
