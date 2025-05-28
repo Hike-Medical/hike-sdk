@@ -138,10 +138,10 @@ export const fetchPricingByProductType = async (
 
 export const generateInvoice = async (
   workbenchId: string,
-  data: WorkbenchGenerateInvoiceParams
+  params: WorkbenchGenerateInvoiceParams
 ): Promise<CheckoutProduct[]> => {
   try {
-    const response = await backendApi.post(`billing/workbench/${workbenchId}/generate-invoice`, data);
+    const response = await backendApi.post(`billing/workbench/${workbenchId}/generate-invoice`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

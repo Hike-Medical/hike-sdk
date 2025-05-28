@@ -5,6 +5,7 @@ import type {
   FormSchemaTyped,
   FormSubmissionTyped,
   FormTemplateResponse,
+  GetFormSchemasParams,
   UpdateFormTemplateBody,
   UpsertFormSubmissionParams
 } from '@hike/types';
@@ -20,11 +21,9 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
   }
 };
 
-export const findFormSchemas = async (formSchemaTypes?: (FormSchemaType | null)[]): Promise<FormSchemaTyped[]> => {
+export const findFormSchemas = async (params?: GetFormSchemasParams): Promise<FormSchemaTyped[]> => {
   try {
-    const response = await backendApi.get(`form/schema`, {
-      params: { formSchemaTypes: formSchemaTypes?.map((type) => (type === null ? '' : type)) }
-    });
+    const response = await backendApi.get(`form/schema`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
