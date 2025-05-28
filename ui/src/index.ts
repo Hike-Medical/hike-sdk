@@ -34,6 +34,7 @@ export * from './hooks/auth/useGetIsCompanyVoluntary';
 export * from './hooks/auth/useGetPinStatus';
 export * from './hooks/auth/useResetPassword';
 export * from './hooks/auth/useSendSignInOtp';
+export * from './hooks/auth/useSignIn';
 export * from './hooks/auth/useSignInWithPin';
 export * from './hooks/auth/useSignInWithToken';
 export * from './hooks/auth/useSignUpClinician';
