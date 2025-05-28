@@ -1,16 +1,16 @@
 import { findFormSchemas } from '@hike/services';
-import { FormSchemaType, FormSchemaTyped, HikeError } from '@hike/types';
+import { FormSchemaTyped, GetFormSchemasParams, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseFormSchemasOptions
   extends Omit<UseQueryOptions<FormSchemaTyped[] | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  params?: GetFormSchemasParams;
   queryKey?: QueryKey;
-  formSchemaTypes?: (FormSchemaType | null)[];
 }
 
-export const useFormSchemas = ({ queryKey = [], formSchemaTypes, ...options }: UseFormSchemasOptions = {}) =>
+export const useFormSchemas = ({ queryKey = [], params, ...options }: UseFormSchemasOptions = {}) =>
   useQuery({
-    queryKey: ['formSchemas', queryKey],
-    queryFn: async () => await findFormSchemas(formSchemaTypes),
+    queryKey: ['formSchemas', queryKey, params],
+    queryFn: async () => await findFormSchemas(params),
     ...options
   });
