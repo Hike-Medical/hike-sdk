@@ -191,6 +191,7 @@ export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useContinueWorkbench';
+export * from './hooks/workbenches/useGenerateWorkbenchForm';
 export * from './hooks/workbenches/useGetDetectionStatus';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
