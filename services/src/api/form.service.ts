@@ -1,5 +1,6 @@
 import type {
   CreateFormTemplateBody,
+  FormFieldValue,
   FormSchemaType,
   FormSchemaTyped,
   FormSubmissionTyped,
@@ -50,6 +51,15 @@ export const findFormSubmissions = async (workbenchId: string): Promise<FormSubm
   }
 };
 
+export const flattenedFormSubmissions = async (workbenchId: string): Promise<Record<string, FormFieldValue>> => {
+  try {
+    const response = await backendApi.get(`form/workbench/${workbenchId}/submission/flattened`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findFormSubmissionsBySchemaType = async (
   workbenchId: string,
   schemaType: FormSchemaType
@@ -89,9 +99,9 @@ export const findFormTemplateById = async (templateId: string): Promise<FormTemp
   }
 };
 
-export const findFormTemplates = async (): Promise<Partial<FormTemplateResponse>[]> => {
+export const findFormTemplates = async (withSystemGenerated: boolean): Promise<Partial<FormTemplateResponse>[]> => {
   try {
-    const response = await backendApi.get(`form/template`);
+    const response = await backendApi.get(`form/template`, { params: { withSystemGenerated } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
