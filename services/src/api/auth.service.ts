@@ -56,7 +56,7 @@ export const signUpClinician = async (data: SignUpClinicianParams): Promise<Auth
   }
 };
 
-export const sendSignInOtp = async (params: SendOtpParams): Promise<AuthSession> => {
+export const sendOtp = async (params: SendOtpParams): Promise<void> => {
   try {
     const response = await backendApi.post('auth/account/otp', params);
     return response.data;
