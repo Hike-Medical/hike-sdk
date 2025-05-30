@@ -45,7 +45,7 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
   const slug = company?.slug ?? '';
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.page');
+  const t = useTranslations('shared.login.page');
 
   const form = useForm({
     mode: 'controlled',
@@ -79,7 +79,7 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
       showNotification({
         variant: 'error',
         title: tShared('error.title'),
-        message: tShared('error.incorrectCredentials'),
+        message: t('error.incorrectCredentials'),
         color: 'red'
       });
     }
@@ -164,7 +164,7 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
                     {t('forgotPassword')}
                   </Anchor>
                 </Stack>
-                <SubmitButton label={t('actionButton')} loading={isPending} />
+                <SubmitButton label={tShared('action.login')} loading={isPending} />
               </Stack>
             </form>
           </Paper>

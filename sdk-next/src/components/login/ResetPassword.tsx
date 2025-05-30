@@ -2,7 +2,7 @@
 
 import { toErrorMessage } from '@hike/sdk';
 import { useResetPassword } from '@hike/ui';
-import { Button, Center, Paper, PasswordInput, Stack, Text } from '@mantine/core';
+import { Button, Center, Checkbox, Paper, PasswordInput, Stack, Text } from '@mantine/core';
 import { isNotEmpty, matchesField, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
@@ -24,7 +24,7 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const { token } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.resetPassword');
+  const t = useTranslations('shared.login.resetPassword');
 
   const form = useForm({
     initialValues: {
@@ -109,6 +109,26 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
                 autoComplete="new-password"
                 required
               />
+              <Stack pl="sm" pr="xl">
+                <Text fs="italic" c="hike-dimmed.8">
+                  {t('criteria.description')}
+                </Text>
+                <Stack gap="md" fs="italic">
+                  <Checkbox
+                    label={t('criteria.length')}
+                    checked={form.values.password.length >= 8}
+                    size="xs"
+                    readOnly
+                  />
+                  <Checkbox label={t('criteria.number')} checked={/\d/.test(form.values.password)} size="xs" readOnly />
+                  <Checkbox
+                    label={t('criteria.special')}
+                    checked={/[^A-Za-z0-9]/.test(form.values.password)}
+                    size="xs"
+                    readOnly
+                  />
+                </Stack>
+              </Stack>
               <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />
             </Stack>
           </form>

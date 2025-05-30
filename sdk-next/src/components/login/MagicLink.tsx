@@ -29,7 +29,7 @@ export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
   const { token, contact, redirect: redirectUrl } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.magicLink');
+  const t = useTranslations('shared.login.magicLink');
 
   const form = useForm({
     initialValues: {

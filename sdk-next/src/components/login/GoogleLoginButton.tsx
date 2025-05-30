@@ -12,9 +12,9 @@ interface GoogleLoginButtonParams {
 }
 
 export const GoogleLoginButton = ({ company }: GoogleLoginButtonParams) => {
+  const [signInUrl, setSignInUrl] = useState('');
   const searchParams = useSearchParams();
   const redirectParam = searchParams.get('redirect');
-  const [signInUrl, setSignInUrl] = useState('');
 
   useEffect(() => {
     const url = currentUrl();
