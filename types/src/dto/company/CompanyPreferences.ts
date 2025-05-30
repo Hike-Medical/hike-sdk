@@ -13,6 +13,7 @@ export interface CompanyPreferences {
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredConsumerSubmittedEmail?: string;
+  preferredConsumerSubmittedPhone?: string;
   preferredVeteranEmailAddress?: string;
   preferredHospitalDeliveryReceiptEmailAddress?: string;
   preferredWalkInDeliveryReceiptEmailAddress?: string;
