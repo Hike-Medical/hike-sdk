@@ -67,6 +67,7 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
     onError: (error) => {
       if (error.statusCode === 429) {
         showNotification({
+          variant: 'error',
           title: tShared('error.title'),
           message: tShared('error.tooManyRequests'),
           color: 'red'
@@ -76,6 +77,7 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
       }
 
       showNotification({
+        variant: 'error',
         title: tShared('error.title'),
         message: tShared('error.incorrectCredentials'),
         color: 'red'
