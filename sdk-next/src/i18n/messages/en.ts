@@ -32,6 +32,9 @@ export default {
     },
     action: {
       continue: 'Continue',
+      loading: 'Loading',
+      submit: 'Submit',
+      next: 'Next',
       login: 'Login',
       register: 'Register',
       select: 'Select',
@@ -40,6 +43,8 @@ export default {
     error: {
       title: 'Error',
       message: 'An error occurred for your request.',
+      notLoading: 'An error occurred while loading your info.',
+      invitationNotFound: 'Your details could not be found. Please check your invitation link.',
       tooManyRequests: 'Too many requests, please try again later.'
     },
     login: {
