@@ -24,7 +24,7 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const { token } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.resetPassword');
+  const t = useTranslations('shared.login.resetPassword');
 
   const form = useForm({
     initialValues: {

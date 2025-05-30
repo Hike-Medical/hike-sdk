@@ -21,7 +21,7 @@ export const AccountRecovery = ({ params }: AccountRecoveryProps) => {
   const { slug } = use(params);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.accountRecovery');
+  const t = useTranslations('shared.login.accountRecovery');
 
   const form = useForm({
     initialValues: {

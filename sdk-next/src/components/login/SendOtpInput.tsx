@@ -26,7 +26,7 @@ export const SendOtpInput = ({ contact, contactType, onVerified, HikeShell }: Se
   const { update } = use(SessionContext);
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.otp');
+  const t = useTranslations('shared.login.otp');
 
   const { mutate: sendOtp, isPending: isSendingOtp } = useSendOtp({
     onMutate: () => setIsInvalidOtp(false),
