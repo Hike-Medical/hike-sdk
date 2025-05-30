@@ -303,3 +303,16 @@ export const statsForWorkbenches = async (
     throw toHikeError(error);
   }
 };
+
+export const generateWorkbenchForm = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/generate-pdf`,
+      {},
+      { headers: addHeaders(companyIds) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
