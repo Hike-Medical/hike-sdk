@@ -107,5 +107,13 @@ export default {
         actionButton: 'Go to Login'
       }
     }
+  },
+  components: {
+    selectCompany: {
+      label: 'Select a company',
+      placeholder: 'Search for a company',
+      noResults: 'No results found',
+      minSearchLength: 'Type at least {length} characters'
+    }
   }
 } as const;
