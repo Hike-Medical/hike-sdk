@@ -1,4 +1,4 @@
-import { setInactive } from '@hike/services';
+import { setFootInactive } from '@hike/services';
 import { Foot, HikeError, SetFootInactive } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
@@ -10,7 +10,7 @@ export const useSetFootInactive = (
   options?: Omit<UseMutationOptions<Foot, HikeError<null>, SetFootInactiveParams>, 'mutationKey' | 'mutationFn'>
 ) =>
   useMutation({
-    mutationKey: ['setInactive'],
-    mutationFn: async (body) => await setInactive(body.footId, body),
+    mutationKey: ['setFootInactive'],
+    mutationFn: async ({ footId, inactiveReason }) => await setFootInactive(footId, { inactiveReason }),
     ...options
   });

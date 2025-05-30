@@ -16,14 +16,12 @@ export interface ResetPasswordProps {
   searchParams: Promise<{ token: string }>;
 }
 
-export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsAsync }: ResetPasswordProps) => {
+export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [tokenValid, setTokenValid] = useState(true);
   const router = useTransitionRouter();
-  const params = use(paramsAsync);
-  const searchParams = use(searchParamsAsync);
-  const { token } = searchParams;
-  const { slug } = params;
+  const { slug } = use(params);
+  const { token } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
   const t = useTranslations('login.resetPassword');

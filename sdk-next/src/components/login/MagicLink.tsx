@@ -19,16 +19,14 @@ export interface MagicLinkProps {
   }>;
 }
 
-export const MagicLink = ({ params: paramsAsync, searchParams: searchParamsAsync }: MagicLinkProps) => {
+export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [tokenValid, setTokenValid] = useState(true);
   const { update, status } = use(SessionContext);
   const company = use(CompanyContext);
   const router = useTransitionRouter();
-  const params = use(paramsAsync);
-  const searchParams = use(searchParamsAsync);
-  const { token, contact, redirect: redirectUrl } = searchParams;
-  const { slug } = params;
+  const { slug } = use(params);
+  const { token, contact, redirect: redirectUrl } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
   const t = useTranslations('login.magicLink');
