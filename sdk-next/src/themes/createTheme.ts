@@ -2,6 +2,7 @@
 
 import {
   Anchor,
+  Button,
   Checkbox,
   CheckboxProps,
   CheckIcon,
@@ -32,6 +33,7 @@ import {
   TimePicker,
   TimePickerProps
 } from '@mantine/dates';
+import { Notifications } from '@mantine/notifications';
 import merge from 'lodash/merge';
 import { ThemeColors } from './types/ThemeColors';
 import { ThemeComponent } from './types/ThemeComponent';
@@ -147,6 +149,7 @@ export const createTheme = (
     primaryColor: 'hike',
     primaryShade: 9,
     defaultRadius: 'xl',
+    cursorType: 'pointer',
     headings: {
       fontWeight: '700',
       textWrap: 'balance',
@@ -324,6 +327,50 @@ export const createTheme = (
           })
         }
       },
+      Button: Button.extend({
+        vars: (_, props) => {
+          switch (props.variant) {
+            case 'footer':
+              return {
+                root: {
+                  '--button-height': rem(58),
+                  '--button-fz': rem(18),
+                  color: 'var(--mantine-color-white)',
+                  width: '100%',
+                  borderRadius: rem(25),
+                  ...(props.disabled && {
+                    backgroundColor: 'var(--mantine-color-gray-4)'
+                  })
+                }
+              };
+            default:
+              return { root: {} };
+          }
+        }
+      }),
+      Notification: Notifications.extend({
+        styles: (_, props) => {
+          switch (props.variant) {
+            case 'error':
+              return {
+                root: {
+                  backgroundColor: colors.palette['hike-danger'][9],
+                  '--notification-color': 'var(--mantine-color-red-9)'
+                },
+                title: {
+                  color: 'var(--mantine-color-white)',
+                  fontWeight: 700
+                },
+                description: {
+                  color: 'var(--mantine-color-white)',
+                  fontWeight: 500
+                }
+              };
+            default:
+              return {};
+          }
+        }
+      }),
       Loader: Loader.extend({
         defaultProps: {
           type: components.loader

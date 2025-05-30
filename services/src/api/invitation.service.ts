@@ -5,7 +5,6 @@ import {
   FindInvitationsParams,
   PagedResponse,
   RevokeInvitationsParams,
-  SendOtpParams,
   UpdateInvitationsParams
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -46,15 +45,6 @@ export const approveInvitation = async (patientId: string, params?: ApprovePatie
   try {
     const response = await backendApi.patch(`invitation/approve/patient/${patientId}`, params);
     return response.data.isApproved;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const sendOtp = async (params: SendOtpParams) => {
-  try {
-    const response = await backendApi.post('invitation/otp', params);
-    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
