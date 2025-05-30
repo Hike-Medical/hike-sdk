@@ -1,6 +1,7 @@
 import {
   backendApi,
   BillingOverview,
+  CheckoutProduct,
   CheckoutSessionParams,
   CreateFacilityParams,
   GetStripeInvoiceParams,
@@ -9,7 +10,8 @@ import {
   StripeProduct,
   StripeProductType,
   toHikeError,
-  UpFrontPaymentInfo
+  UpFrontPaymentInfo,
+  WorkbenchGenerateInvoiceParams
 } from '@hike/sdk';
 import { Stripe } from 'stripe';
 
@@ -128,6 +130,18 @@ export const fetchPricingByProductType = async (
 ): Promise<StripeProduct | null> => {
   try {
     const response = await backendApi.get(`billing/pricing/${stripeProductType}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateInvoice = async (
+  workbenchId: string,
+  data: WorkbenchGenerateInvoiceParams
+): Promise<CheckoutProduct[]> => {
+  try {
+    const response = await backendApi.post(`billing/workbench/${workbenchId}/generate-invoice`, data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

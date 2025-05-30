@@ -5,6 +5,7 @@ export * from './useFetchPricing';
 export * from './useFetchPricingByProductType';
 export * from './useGenerateCheckoutSession';
 export * from './useGenerateCheckoutSessionInfo';
+export * from './useGenerateInvoice';
 export * from './useGetBillingOverview';
 export * from './useGetStripeEntities';
 export * from './useGetStripeInvoice';
