@@ -15,11 +15,10 @@ export interface AccountRecoveryProps {
   params: Promise<{ slug: string }>;
 }
 
-export const AccountRecovery = ({ params: paramsAsync }: AccountRecoveryProps) => {
+export const AccountRecovery = ({ params }: AccountRecoveryProps) => {
   const [submitted, setSubmitted] = useState(false);
   const router = useTransitionRouter();
-  const params = use(paramsAsync);
-  const { slug } = params;
+  const { slug } = use(params);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
   const t = useTranslations('login.accountRecovery');
