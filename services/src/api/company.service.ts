@@ -5,6 +5,7 @@ import {
   CompanyPreferences,
   CompanyTheme,
   CompanyWorkbenchWebhook,
+  GetCompanyWorkbenchWebhooksParams,
   FindCompaniesParams,
   GetCompanyByNameParams,
   PagedResponse,
@@ -95,9 +96,11 @@ export const findCompanyByName = async (
   return response.data;
 };
 
-export const findCompanyWorkbenchWebhooks = async (): Promise<CompanyWorkbenchWebhook[]> => {
+export const findCompanyWorkbenchWebhooks = async (
+  params?: GetCompanyWorkbenchWebhooksParams
+): Promise<PagedResponse<CompanyWorkbenchWebhook[]>> => {
   try {
-    const response = await backendApi.get('company/workbench/webhook');
+    const response = await backendApi.get('company/workbench/webhook', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

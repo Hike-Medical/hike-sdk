@@ -58,6 +58,7 @@ export * from './dto/company/CompanyPreferences';
 export * from './dto/company/CompanyRole';
 export * from './dto/company/CompanyTheme';
 export * from './dto/company/CompanyWorkbenchWebhook';
+export * from './dto/company/GetCompanyWorkbenchWebhooksParams';
 export * from './dto/company/FindCompaniesParams';
 export * from './dto/company/GetCompanyByNameParams';
 export * from './dto/company/UpdateCompanyParams';
