@@ -11,13 +11,15 @@ export default {
       lastName: 'Last name',
       lastNameError: 'Last name is required',
       email: 'Email address',
-      emailPlaceholder: 'hello@insoles.ai',
+      emailPlaceholder: 'Your email address',
       emailError: 'Email address is required',
       emailInvalid: 'Invalid email address',
       phone: 'Phone number',
+      phonePlaceholder: 'Your phone number',
       phoneError: 'Phone number is required',
       phoneInvalid: 'Invalid phone number',
       emailPhoneError: 'You must provide either an email or a phone number',
+      emailPhoneConflict: 'You must provide either an email or a phone number',
       emailOrPhone: 'Email or phone number',
       emailOrPhoneInvalid: 'Invalid email or phone number',
       requiredOptionError: 'Please choose an option',
@@ -38,12 +40,15 @@ export default {
       login: 'Login',
       register: 'Register',
       select: 'Select',
-      back: 'Back'
+      back: 'Back',
+      skip: 'Skip'
     },
     error: {
       title: 'Error',
       message: 'An error occurred for your request.',
       notLoading: 'An error occurred while loading your info.',
+      detailsNotUpdated: 'Failed to update details. Please try again.',
+      detailsConflict: 'The details you provided is already in use. Please try again.',
       invitationNotFound: 'Your details could not be found. Please check your invitation link.',
       tooManyRequests: 'Too many requests, please try again later.'
     },
