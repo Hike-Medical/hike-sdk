@@ -93,7 +93,8 @@ export const createColors = (colors?: {
         placeholder: 'var(--mantine-color-hike-dimmed-3)',
         border: 'var(--mantine-color-hike-9)',
         dropdownBackground: '#f5f5f5',
-        disabledButtonBackground: '#D7D7D7'
+        disabledButtonBackground: '#D7D7D7',
+        link: '#2E7CF6'
       }
     },
     colors ?? {}

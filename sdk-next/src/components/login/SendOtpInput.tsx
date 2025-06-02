@@ -1,32 +1,32 @@
 'use client';
 
 import { ContactType, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
-import { SessionContext, useSendOtp, useVerifyInvitation } from '@hike/ui';
+import { useSendOtp, useVerifyInvitation } from '@hike/ui';
 import { Button, PinInput, Text } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
-import { ComponentType, PropsWithChildren, ReactNode, use, useEffect, useRef, useState } from 'react';
+import { ComponentType, PropsWithChildren, ReactNode, useEffect, useRef, useState } from 'react';
 
 interface SendOtpInputProps {
   contact: string;
   contactType: ContactType;
   onVerified: (response: VerifyInvitationResponse, token: string) => Promise<void>;
+  onSkipped?: () => void;
   HikeShell: {
     Main: ComponentType<PropsWithChildren<{ title: string; description: ReactNode }>>;
     Footer: ComponentType<PropsWithChildren<{ vertical?: boolean }>>;
   };
 }
 
-export const SendOtpInput = ({ contact, contactType, onVerified, HikeShell }: SendOtpInputProps) => {
+export const SendOtpInput = ({ contact, contactType, onVerified, onSkipped, HikeShell }: SendOtpInputProps) => {
   const [inputOtp, setInputOtp] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(0);
   const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [isInvalidOtp, setIsInvalidOtp] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const { update } = use(SessionContext);
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.otp');
+  const t = useTranslations('shared.login.otp');
 
   const { mutate: sendOtp, isPending: isSendingOtp } = useSendOtp({
     onMutate: () => setIsInvalidOtp(false),
@@ -45,7 +45,6 @@ export const SendOtpInput = ({ contact, contactType, onVerified, HikeShell }: Se
   const { mutate: verifyInvitation, isPending: isVerifyingOtp } = useVerifyInvitation({
     onMutate: () => setIsInvalidOtp(false),
     onSuccess: async (response) => {
-      await update();
       setCountdown(0);
       setIsVerified(true);
       await onVerified(response, inputOtp ?? '');
@@ -115,10 +114,18 @@ export const SendOtpInput = ({ contact, contactType, onVerified, HikeShell }: Se
         )}
       </HikeShell.Main>
       <HikeShell.Footer vertical>
-        {countdown > 0 && isCountdownShown && (
+        {countdown > 0 && isCountdownShown ? (
           <Text fz="11" c="hike-danger" mx="auto">
             {t('waitMessage', { seconds: countdown })}
           </Text>
+        ) : (
+          onSkipped &&
+          !isSendingOtp &&
+          !isVerifyingOtp && (
+            <Button variant="subtle" onClick={onSkipped}>
+              {tShared('action.skip')}
+            </Button>
+          )
         )}
         <Button
           variant="footer"

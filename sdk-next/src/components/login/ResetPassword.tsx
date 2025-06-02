@@ -2,7 +2,7 @@
 
 import { toErrorMessage } from '@hike/sdk';
 import { useResetPassword } from '@hike/ui';
-import { Button, Center, Paper, PasswordInput, Stack, Text } from '@mantine/core';
+import { Button, Center, Checkbox, Paper, PasswordInput, Stack, Text } from '@mantine/core';
 import { isNotEmpty, matchesField, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
@@ -16,17 +16,15 @@ export interface ResetPasswordProps {
   searchParams: Promise<{ token: string }>;
 }
 
-export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsAsync }: ResetPasswordProps) => {
+export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [tokenValid, setTokenValid] = useState(true);
   const router = useTransitionRouter();
-  const params = use(paramsAsync);
-  const searchParams = use(searchParamsAsync);
-  const { token } = searchParams;
-  const { slug } = params;
+  const { slug } = use(params);
+  const { token } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.resetPassword');
+  const t = useTranslations('shared.login.resetPassword');
 
   const form = useForm({
     initialValues: {
@@ -111,6 +109,34 @@ export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsA
                 autoComplete="new-password"
                 required
               />
+              <Stack pl="sm" pr="xl">
+                <Text fs="italic" c="hike-dimmed.8">
+                  {t('criteria.description')}
+                </Text>
+                <Stack gap="md" fs="italic">
+                  <Checkbox
+                    label={t('criteria.length')}
+                    checked={form.values.password.length >= 8}
+                    size="xs"
+                    radius="xl"
+                    readOnly
+                  />
+                  <Checkbox
+                    label={t('criteria.number')}
+                    checked={/\d/.test(form.values.password)}
+                    size="xs"
+                    radius="xl"
+                    readOnly
+                  />
+                  <Checkbox
+                    label={t('criteria.special')}
+                    checked={/[^A-Za-z0-9]/.test(form.values.password)}
+                    size="xs"
+                    radius="xl"
+                    readOnly
+                  />
+                </Stack>
+              </Stack>
               <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />
             </Stack>
           </form>

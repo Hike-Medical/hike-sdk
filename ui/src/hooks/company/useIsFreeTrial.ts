@@ -6,7 +6,7 @@ interface UseIsFreeTrialOptions extends Omit<UseQueryOptions<boolean, HikeError<
   queryKey?: QueryKey;
 }
 
-export const useIsFreeTrial = ({ queryKey = [], ...options }: UseIsFreeTrialOptions) =>
+export const useIsFreeTrial = ({ queryKey = [], ...options }: UseIsFreeTrialOptions = {}) =>
   useQuery({
     queryKey: ['isFreeTrial', queryKey],
     queryFn: async () => await isFreeTrial(),
