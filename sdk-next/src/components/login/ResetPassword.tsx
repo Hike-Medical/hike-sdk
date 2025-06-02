@@ -121,7 +121,13 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
                     radius="xl"
                     readOnly
                   />
-                  <Checkbox label={t('criteria.number')} checked={/\d/.test(form.values.password)} size="xs" readOnly />
+                  <Checkbox
+                    label={t('criteria.number')}
+                    checked={/\d/.test(form.values.password)}
+                    size="xs"
+                    radius="xl"
+                    readOnly
+                  />
                   <Checkbox
                     label={t('criteria.special')}
                     checked={/[^A-Za-z0-9]/.test(form.values.password)}
