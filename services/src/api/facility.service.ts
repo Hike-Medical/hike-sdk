@@ -56,3 +56,19 @@ export const updateFacility = async (facilityId: string, facility: UpdateFacilit
     throw toHikeError(error);
   }
 };
+
+export const activateFacility = async (facilityId: string): Promise<void> => {
+  try {
+    await backendApi.post(`facility/${facilityId}/activate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deactivateFacility = async (facilityId: string): Promise<void> => {
+  try {
+    await backendApi.post(`facility/${facilityId}/deactivate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

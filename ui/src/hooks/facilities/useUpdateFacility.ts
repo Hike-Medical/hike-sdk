@@ -2,13 +2,13 @@ import { updateFacility } from '@hike/services';
 import { FacilityExtended, HikeError, UpdateFacilityParams } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
-interface UpdateFacilityContext {
+interface UpdateFacilityOptions {
   facilityId: string;
   body: UpdateFacilityParams;
 }
 
 export const useUpdateFacility = (
-  options?: UseMutationOptions<FacilityExtended, HikeError<null>, UpdateFacilityContext>
+  options?: UseMutationOptions<FacilityExtended, HikeError<null>, UpdateFacilityOptions>
 ) =>
   useMutation({
     mutationKey: ['updateFacility'],

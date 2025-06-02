@@ -8,6 +8,7 @@ import type {
   Patient,
   Physician,
   Product,
+  ShippingLabel,
   VisitType,
   Workbench
 } from '../../prisma';
@@ -16,7 +17,9 @@ import { FacilityExtended } from './FacilityExtended';
 
 export type EvaluationExtended = Evaluation & {
   patient: Patient & { companies?: CompanyPatient[]; primaryPhysician?: Physician };
-  workbenches?: (Workbench & { product?: Product | null; orders?: Order[] | null })[] | null;
+  workbenches?:
+    | (Workbench & { product?: Product | null; orders?: (Order & { shippingLabel?: ShippingLabel | null })[] | null })[]
+    | null;
   deviceType?: DeviceType | null;
   visitType?: VisitType | null;
   diagnosis?: Diagnosis | null;
