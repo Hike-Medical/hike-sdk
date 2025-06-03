@@ -3,4 +3,4 @@ export type AppId =
   | '@hike/insoles-web'
   | '@hike/consumer-web'
   | '@hike/backend'
-  | '@hike/medicare-ai';
+  | '@hike/medicare-web';

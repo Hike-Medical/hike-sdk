@@ -7,7 +7,7 @@ export const appName = (appId: AppId): string => {
   switch (appId) {
     case '@hike/insoles-web':
       return 'Insole.ai';
-    case '@hike/medicare-ai':
+    case '@hike/medicare-web':
       return 'Medicare.ai';
     default:
       return 'Hike';
@@ -30,7 +30,7 @@ export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
         default:
           return 'https://api.insoles.ai';
       }
-    case '@hike/medicare-ai':
+    case '@hike/medicare-web':
       switch (environment) {
         case 'staging':
           return 'https://api-staging.hikemedicare.com';
@@ -61,7 +61,7 @@ export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
         default:
           return 'https://app.insoles.ai';
       }
-    case '@hike/medicare-ai':
+    case '@hike/medicare-web':
       switch (environment) {
         case 'development':
           return 'http://localhost:5173';
