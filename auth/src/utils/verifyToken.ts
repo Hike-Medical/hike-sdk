@@ -9,9 +9,13 @@ export const verifyToken = async (
   keyFormat: 'base64' = 'base64',
   algorithm: 'ES256' = 'ES256'
 ): Promise<JWTPayload> => {
+  if (!value) {
+    throw new errors.JOSEError('Token not provided');
+  }
+
   const parsedKey = keyFormat === 'base64' ? Buffer.from(keyOrSecret, 'base64').toString('utf-8') : keyOrSecret;
   const publicKey = await importSPKI(parsedKey, algorithm);
-  const decoded = await jwtVerify(value ?? '', publicKey, { algorithms: [algorithm] });
+  const decoded = await jwtVerify(value, publicKey, { algorithms: [algorithm] });
 
   if (!decoded) {
     throw new errors.JOSEError('Token verification failed');

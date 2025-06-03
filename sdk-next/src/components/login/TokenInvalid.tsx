@@ -13,7 +13,7 @@ export const TokenInvalid = () => {
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get('redirect');
   const slugPath = company?.slug ? `/${company.slug}` : '';
-  const t = useTranslations('login.tokenInvalid');
+  const t = useTranslations('shared.login.tokenInvalid');
 
   const handleSubmit = () => {
     const queryParams = new URLSearchParams();

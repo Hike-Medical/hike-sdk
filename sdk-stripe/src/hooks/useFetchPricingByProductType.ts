@@ -4,20 +4,17 @@ import { fetchPricingByProductType } from '../api/billing.service';
 
 interface UseFetchPricingByProductTypeContext
   extends Omit<UseQueryOptions<StripeProduct | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
-  enabled: boolean;
-  queryKey?: QueryKey;
   stripeProductType: StripeProductType;
+  queryKey?: QueryKey;
 }
 
 export const useFetchPricingByProductType = ({
-  queryKey = [],
-  enabled = true,
   stripeProductType,
+  queryKey = [],
   ...options
 }: UseFetchPricingByProductTypeContext) =>
   useQuery({
-    queryKey: ['stripePricingByProductType', queryKey],
+    queryKey: ['stripePricingByProductType', queryKey, stripeProductType],
     queryFn: async () => await fetchPricingByProductType(stripeProductType),
-    enabled,
     ...options
   });

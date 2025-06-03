@@ -7,14 +7,12 @@ interface UseFetchPricingContext
     UseQueryOptions<{ tier: StripeEntity; products: StripeProduct[] }[], HikeError<null>>,
     'queryKey' | 'queryFn'
   > {
-  enabled: boolean;
   queryKey?: QueryKey;
 }
 
-export const useFetchPricing = ({ queryKey = [], enabled = true, ...options }: UseFetchPricingContext) =>
+export const useFetchPricing = ({ queryKey = [], ...options }: UseFetchPricingContext = {}) =>
   useQuery({
     queryKey: ['stripePricing', queryKey],
     queryFn: async () => await fetchPricing(),
-    enabled,
     ...options
   });

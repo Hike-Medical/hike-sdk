@@ -2,15 +2,16 @@
 
 import { Constants } from '@hike/sdk';
 import { cookies } from 'next/headers';
+import en from './messages/en';
 
 /**
  * Get the user's locale from the cookie.
  */
-export const getUserLocale = async (): Promise<{ locale: string; slug?: string }> => {
+export const getUserLocale = async (): Promise<{ locale: string; slug?: string; messages: object }> => {
   const cookieStore = await cookies();
   const cookieValue = cookieStore.get(Constants.i18n.LOCALE_COOKIE_NAME)?.value;
   const [locale, slug] = cookieValue?.split('.') ?? [];
-  return { locale: locale || Constants.i18n.DEFAULT_LOCALE, slug };
+  return { locale: locale || Constants.i18n.DEFAULT_LOCALE, slug, messages: en };
 };
 
 /**
