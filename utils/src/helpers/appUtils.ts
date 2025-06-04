@@ -8,7 +8,7 @@ export const appName = (appId: AppId): string => {
     case '@hike/insoles-web':
       return 'Insole.ai';
     case '@hike/medicare-web':
-      return 'Medicare.ai';
+      return 'Hikemedicare.com';
     default:
       return 'Hike';
   }
