@@ -139,6 +139,8 @@ export * from './dto/roster/DeactivateRosterResponse';
 export * from './dto/roster/GenerateRosterUploadLinkParams';
 export * from './dto/roster/ImportRosterParams';
 export * from './dto/roster/ImportRosterResponse';
+export * from './dto/roster/ParseRosterColumnsParams';
+export * from './dto/roster/ParseRosterColumnsResponse';
 export * from './dto/roster/RoasterPatientCsvRecord';
 export * from './dto/scan/CreateMultipartUrls';
 export * from './dto/scan/SubmitRenderParams';
