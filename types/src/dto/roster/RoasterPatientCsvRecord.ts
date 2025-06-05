@@ -2,7 +2,7 @@
  * Represents a CSV record for an roster import.
  */
 export interface RoasterPatientCsvRecord {
-  'Employee ID'?: string | null;
+  'Employee ID': string;
   'Full Name'?: string | null;
   'First Name'?: string | null;
   'Middle Name'?: string | null;

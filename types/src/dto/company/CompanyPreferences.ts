@@ -1,4 +1,5 @@
 import { NotificationType, ProductType } from '../../../prisma';
+import { ImportAppointmentsParams } from '../appointment/ImportAppointmentsParams';
 import { ImportRosterParams } from '../roster/ImportRosterParams';
 import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
@@ -34,7 +35,8 @@ export interface CompanyPreferences {
   blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
-  roster?: Pick<ImportRosterParams, 'columnMapping' | 'dateFormat'>;
+  roster?: Pick<ImportRosterParams, 'columnMapping'>;
+  appointments?: Pick<ImportAppointmentsParams, 'columnMapping' | 'timeZone'>;
   rushAll?: boolean;
   hideInEnrollList?: boolean;
   productType?: ProductType;
