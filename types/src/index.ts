@@ -73,6 +73,7 @@ export * from './dto/evaluation/EvaluationsStats';
 export * from './dto/evaluation/EvaluationStatus';
 export * from './dto/evaluation/GetEvaluationsByPatientParams';
 export * from './dto/evaluation/GetEvaluationsParams';
+export * from './dto/evaluation/GetFilteredEvaluationsParams';
 export * from './dto/evaluation/SearchEvaluationsParams';
 export * from './dto/evaluation/StartEvaluationByProductParams';
 export * from './dto/evaluation/UpdateEvaluationParams';
