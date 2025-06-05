@@ -76,6 +76,7 @@ export * from './hooks/evaluations/useEvaluations';
 export * from './hooks/evaluations/useEvaluationsByPatient';
 export * from './hooks/evaluations/useEvaluationSearch';
 export * from './hooks/evaluations/useEvaluationStats';
+export * from './hooks/evaluations/useFilteredEvaluations';
 export * from './hooks/evaluations/useRemakeEvaluation';
 export * from './hooks/evaluations/useReorderEvaluation';
 export * from './hooks/evaluations/useStartEvaluationByProduct';

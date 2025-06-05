@@ -1,6 +1,7 @@
 export * from './api/analytics.service';
 export * from './api/appointment.service';
 export * from './api/asset.service';
+export * from './api/audit-log.service';
 export * from './api/augment.service';
 export * from './api/auth.service';
 export * from './api/auto-slicer.service';
@@ -22,7 +23,6 @@ export * from './api/invitation.service';
 export * from './api/kvs.service';
 export * from './api/notes.service';
 export * from './api/notification.service';
-export * from './api/audit-log.service';
 export * from './api/order.service';
 export * from './api/patient.service';
 export * from './api/pdf.service';
