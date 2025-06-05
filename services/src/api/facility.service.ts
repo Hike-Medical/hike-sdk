@@ -1,6 +1,7 @@
 import {
   CreateFacilityParams,
   FacilityExtended,
+  GetFacilitiesParams,
   PagedResponse,
   SearchFacilityParams,
   UpdateFacilityParams
@@ -9,9 +10,9 @@ import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchCompanyFacilitiesAndAddresses = async (): Promise<FacilityExtended[]> => {
+export const fetchCompanyFacilitiesAndAddresses = async (params?: GetFacilitiesParams): Promise<FacilityExtended[]> => {
   try {
-    const response = await backendApi.get('facility');
+    const response = await backendApi.get('facility', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

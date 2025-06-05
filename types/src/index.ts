@@ -81,6 +81,7 @@ export * from './dto/evaluation/StartEvaluationByProductParams';
 export * from './dto/evaluation/UpdateEvaluationParams';
 export * from './dto/facility/CreateFacilityParams';
 export * from './dto/facility/FacilityType';
+export * from './dto/facility/GetFacilitiesParams';
 export * from './dto/facility/SearchFacilityParams';
 export * from './dto/facility/UpdateFacilityParams';
 export * from './dto/foot/FootStatus';
