@@ -83,7 +83,7 @@ export default {
       resetPassword: {
         title: 'Set a password for your account',
         criteria: {
-          description: 'Password must be at least 6 characters with at least 1 number and 1 special character (!%#)',
+          description: 'Password must be at least 8 characters with at least 1 number and 1 special character (!%#)',
           length: 'Contains at least 8 characters',
           number: 'Contains at least one number',
           special: 'Contains at least one special character ( !@#$&% )'

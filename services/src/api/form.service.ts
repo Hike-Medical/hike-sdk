@@ -120,8 +120,8 @@ export const deleteTemplate = async (templateId: string): Promise<void> => {
 };
 
 export const validatePassword = (value: string) => {
-  if (value.length < 6) {
-    return 'Password must be at least 6 characters';
+  if (value.length < 8) {
+    return 'Password must be at least 8 characters';
   }
 
   if (!/[0-9]/.test(value)) {

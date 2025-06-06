@@ -28,6 +28,7 @@ export * from './helpers/findKeyInNested';
 export * from './helpers/formAddressUtils';
 export * from './helpers/formSchemaUtils';
 export * from './helpers/formSubmissionUtils';
+export * from './helpers/getIntervalDateRange';
 export * from './helpers/getLocalizedDateFormat';
 export * from './helpers/httpUtils';
 export * from './helpers/isIOS';

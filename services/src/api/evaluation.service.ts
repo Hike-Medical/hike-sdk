@@ -6,6 +6,7 @@ import type {
   EvaluationsStats,
   GetEvaluationsByPatientParams,
   GetEvaluationsParams,
+  GetFilteredEvaluationsParams,
   PagedResponse,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
@@ -171,6 +172,17 @@ export const searchEvaluations = async (
 ): Promise<PagedResponse<EvaluationExtended[]>> => {
   try {
     const response = await backendApi.get('evaluation/search', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findFilteredEvaluations = async (
+  params: GetFilteredEvaluationsParams
+): Promise<PagedResponse<EvaluationExtended[]>> => {
+  try {
+    const response = await backendApi.get('evaluation/filtered', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

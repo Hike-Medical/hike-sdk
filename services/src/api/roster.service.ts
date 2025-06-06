@@ -3,7 +3,9 @@ import {
   DeactivateRosterResponse,
   GenerateRosterUploadLinkParams,
   ImportRosterParams,
-  ImportRosterResponse
+  ImportRosterResponse,
+  ParseRosterColumnsParams,
+  ParseRosterColumnsResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -53,6 +55,15 @@ export const generateRosterUploadLink = async (
 ): Promise<{ key: string; presignedUrl: string }> => {
   try {
     const response = await backendApi.post('roster/upload-link', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const parseRosterColumns = async (data: ParseRosterColumnsParams): Promise<ParseRosterColumnsResponse> => {
+  try {
+    const response = await backendApi.post('roster/columns', data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
