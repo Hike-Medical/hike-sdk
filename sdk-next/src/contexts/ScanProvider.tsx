@@ -11,7 +11,7 @@ export const OPTIMAL_VIDEO_CONSTRAINTS = {
   video: {
     facingMode: { ideal: 'user' }, // Will be updated based on mode
     aspectRatio: { ideal: 16 / 9 }, // Consistent aspect ratio
-    width: { min: 1280, ideal: 1920 },
-    height: { min: 720, ideal: 1080 }
+    width: { min: 640, ideal: 1280, max: 1920 },
+    height: { min: 480, ideal: 720, max: 1080 }
   }
-};
+} satisfies MediaStreamConstraints;
