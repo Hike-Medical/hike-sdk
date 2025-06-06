@@ -10,6 +10,8 @@ export const OPTIMAL_VIDEO_CONSTRAINTS = {
   audio: false,
   video: {
     facingMode: { ideal: 'user' }, // Will be updated based on mode
-    aspectRatio: { ideal: 16 / 9 } // Consistent aspect ratio
+    aspectRatio: { ideal: 16 / 9 }, // Consistent aspect ratio
+    width: { min: 1280, ideal: 1920 },
+    height: { min: 720, ideal: 1080 }
   }
 };
