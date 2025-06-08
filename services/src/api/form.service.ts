@@ -4,6 +4,7 @@ import type {
   FormSchemaTyped,
   FormSubmissionTyped,
   FormTemplateResponse,
+  GetFormSchemasParams,
   UpdateFormTemplateBody,
   UpsertFormSubmissionParams
 } from '@hike/types';
@@ -19,9 +20,9 @@ export const findFormSchemaById = async (schemaId: string, templateable = false)
   }
 };
 
-export const findFormSchemas = async (schemaIds?: string[]): Promise<FormSchemaTyped[]> => {
+export const findFormSchemas = async (params?: GetFormSchemasParams): Promise<FormSchemaTyped[]> => {
   try {
-    const response = await backendApi.get(`form/schema${schemaIds ? `?schemaIds=${schemaIds.join(',')}` : ''}`);
+    const response = await backendApi.get(`form/schema`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -40,7 +41,7 @@ export const findFormSubmission = async (
   }
 };
 
-export const findFormSubmissionsByWorkbenchId = async (workbenchId: string): Promise<FormSubmissionTyped[]> => {
+export const findFormSubmissions = async (workbenchId: string): Promise<FormSubmissionTyped[]> => {
   try {
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission`);
     return response.data;
@@ -119,8 +120,8 @@ export const deleteTemplate = async (templateId: string): Promise<void> => {
 };
 
 export const validatePassword = (value: string) => {
-  if (value.length < 6) {
-    return 'Password must be at least 6 characters';
+  if (value.length < 8) {
+    return 'Password must be at least 8 characters';
   }
 
   if (!/[0-9]/.test(value)) {

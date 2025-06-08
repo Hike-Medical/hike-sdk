@@ -11,6 +11,7 @@ import type {
 import {
   AccountRecoveryParams,
   PasswordResetParams,
+  SignInParams,
   SignInWithPinBody,
   SignInWithTokenParams,
   SignUpClinicianParams
@@ -18,10 +19,7 @@ import {
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const signIn = async (
-  credentials: { email: string; password: string },
-  excludeCookie?: boolean
-): Promise<AuthSession | null> => {
+export const signIn = async ({ credentials, excludeCookie }: SignInParams): Promise<AuthSession | null> => {
   try {
     const queryString = excludeCookie === true ? '?exclude-cookie=true' : '';
     const response = await backendApi.post(`auth/login${queryString}`, credentials);
@@ -58,7 +56,7 @@ export const signUpClinician = async (data: SignUpClinicianParams): Promise<Auth
   }
 };
 
-export const sendSignInOtp = async (params: SendOtpParams): Promise<AuthSession> => {
+export const sendOtp = async (params: SendOtpParams): Promise<void> => {
   try {
     const response = await backendApi.post('auth/account/otp', params);
     return response.data;

@@ -1,14 +1,15 @@
 'use client';
 
-import { toErrorMessage } from '@hike/sdk';
+import { toErrorMessage, validatePassword } from '@hike/sdk';
 import { useResetPassword } from '@hike/ui';
 import { Button, Center, Paper, PasswordInput, Stack, Text } from '@mantine/core';
-import { isNotEmpty, matchesField, useForm } from '@mantine/form';
+import { matchesField, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
 import { use, useEffect, useState } from 'react';
 import { SubmitButton } from '../SubmitButton';
+import { PasswordCriteria } from './PasswordCriteria';
 import { TokenInvalid } from './TokenInvalid';
 
 export interface ResetPasswordProps {
@@ -16,17 +17,15 @@ export interface ResetPasswordProps {
   searchParams: Promise<{ token: string }>;
 }
 
-export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsAsync }: ResetPasswordProps) => {
+export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [tokenValid, setTokenValid] = useState(true);
   const router = useTransitionRouter();
-  const params = use(paramsAsync);
-  const searchParams = use(searchParamsAsync);
-  const { token } = searchParams;
-  const { slug } = params;
+  const { slug } = use(params);
+  const { token } = use(searchParams);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
-  const t = useTranslations('login.resetPassword');
+  const t = useTranslations('shared.login.resetPassword');
 
   const form = useForm({
     initialValues: {
@@ -34,7 +33,7 @@ export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsA
       confirmPassword: ''
     },
     validate: {
-      password: isNotEmpty(tShared('fields.passwordRequired')),
+      password: validatePassword,
       confirmPassword: matchesField('password', tShared('fields.passwordMismatch'))
     }
   });
@@ -98,19 +97,20 @@ export const ResetPassword = ({ params: paramsAsync, searchParams: searchParamsA
               <PasswordInput
                 {...form.getInputProps('password')}
                 label={tShared('fields.newPassword')}
-                type="password"
                 placeholder={tShared('fields.newPasswordPlaceholder')}
+                type="password"
                 autoComplete="new-password"
                 required
               />
               <PasswordInput
                 {...form.getInputProps('confirmPassword')}
                 label={tShared('fields.confirmPassword')}
-                type="password"
                 placeholder={tShared('fields.confirmPasswordPlaceholder')}
+                type="password"
                 autoComplete="new-password"
                 required
               />
+              <PasswordCriteria form={form} />
               <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />
             </Stack>
           </form>
