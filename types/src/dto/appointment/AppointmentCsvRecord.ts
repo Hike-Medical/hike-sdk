@@ -19,11 +19,14 @@ export interface AppointmentCsvRecord {
   Status?: string | null;
   'Appt For'?: string | null;
   'Referring Physician'?: string | null;
+  'Referring Physician NPI'?: string | null;
   'PCP Physician'?: string | null;
+  'PCP Physician NPI'?: string | null;
   'Primary Dx Code'?: string | null;
+  'Primary Dx Date'?: string | null;
   'Visit Type'?: string | null;
   'Visit Date'?: string | null;
-  Branch?: string | null;
+  Facility?: string | null;
   Location?: string | null;
   'Treating Practitioner'?: string | null;
   'Rx Date'?: string | null;
