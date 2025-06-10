@@ -7,6 +7,8 @@ export interface AppointmentCsvRecord {
   'Patient First Name'?: string | null;
   'Patient Middle Name'?: string | null;
   'Patient Last Name'?: string | null;
+  'Patient Height'?: string | null;
+  'Patient Weight'?: string | null;
   Gender?: string | null;
   DOB?: string | null;
   Type?: string | null;

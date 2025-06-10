@@ -10,6 +10,8 @@ export interface TransformedEvaluation {
   lastName: string;
   gender?: Gender | null;
   birthDate?: Date | null;
+  height?: number | null;
+  weight?: number | null;
   externalEvaluationId: string;
   careType: CareType;
   deviceType?: string | null;
