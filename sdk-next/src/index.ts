@@ -6,6 +6,8 @@ export * from './components/login/PasswordCriteria';
 export * from './components/login/ResetPassword';
 export * from './components/login/SendOtpInput';
 export * from './components/login/TokenInvalid';
+export * from './components/login/TwoFaSetup';
+export * from './components/login/TwoFaVerify';
 export * from './components/SelectCompany';
 export * from './components/SubmitButton';
 export * from './contexts/DataDogProvider';

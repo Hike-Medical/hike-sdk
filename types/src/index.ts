@@ -38,6 +38,8 @@ export * from './dto/auth/SignInParams';
 export * from './dto/auth/SignInWithPinBody';
 export * from './dto/auth/SignInWithTokenParams';
 export * from './dto/auth/SignUpClinicianParams';
+export * from './dto/auth/VerifyTwoFaBody';
+export * from './dto/auth/TwoFaSetupResponse';
 export * from './dto/auto-slicer/RunScriptParams';
 export * from './dto/billing/CheckoutProduct';
 export * from './dto/billing/CheckoutSessionParams';
