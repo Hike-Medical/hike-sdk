@@ -2,7 +2,7 @@
 
 import { useSetupTwoFa, useVerifyTwoFa } from '@hike/ui';
 import { Box, Center, Container, Image, Loader, Paper, PinInput, Space, Stack, Text, Title } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { hasLength, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import QRCode from 'qrcode';
 import { useEffect, useRef, useState } from 'react';
@@ -17,10 +17,13 @@ export const TwoFaSetup = () => {
 
   const form = useForm({
     initialValues: { code: '' },
-    onValuesChange: () => setError(null)
+    onValuesChange: () => setError(null),
+    validate: {
+      code: hasLength(6, 'Code must be 6 digits')
+    }
   });
 
-  const { mutate: setupTwoFa, isSuccess: isSetupSuccess } = useSetupTwoFa({
+  const { mutate: setupTwoFa } = useSetupTwoFa({
     onSuccess: (data) => {
       QRCode.toDataURL(data.otpauthUrl, { width: 400, margin: 0 })
         .then((dataUrl) => setQrCodeDataUrl(dataUrl))
@@ -97,11 +100,7 @@ export const TwoFaSetup = () => {
                     {error}
                   </Text>
                 )}
-                <SubmitButton
-                  label="Verify"
-                  loading={isVerifyLoading}
-                  disabled={!isSetupSuccess || form.values.code.length < 6}
-                />
+                <SubmitButton label="Enable" loading={isVerifyLoading} disabled={!secret} />
               </Stack>
             </Paper>
           </form>
