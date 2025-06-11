@@ -11,7 +11,7 @@ export const setupTwoFa = async (): Promise<TwoFaSetupResponse> => {
   }
 };
 
-export const verifyTwoFa = async (params: TwoFaVerifyParams): Promise<{ valid: boolean }> => {
+export const verifyTwoFa = async (params: TwoFaVerifyParams): Promise<void> => {
   try {
     const response = await backendApi.post('auth/account/2fa/verify', params);
     return response.data;

@@ -33,7 +33,8 @@
     "@hike/sdk": "workspace:*",
     "@hike/ui": "workspace:*",
     "lodash": "^4.17.21",
-    "posthog-js": "^1.236.5"
+    "posthog-js": "^1.236.5",
+    "qrcode": "^1.5.4"
   },
   "peerDependencies": {
     "@mantine/core": "^7",
