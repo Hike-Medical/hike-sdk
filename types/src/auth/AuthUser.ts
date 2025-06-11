@@ -13,6 +13,7 @@ export interface AuthUser {
   clinician?: Clinician | null;
   slugs: Record<string, string>;
   agreements: Record<AgreementType, AgreementStatus>;
+  accounts: UserExtended['accounts'];
   active: Record<string, boolean>;
   emailVerifiedAt: Date | null;
   phoneVerifiedAt: Date | null;
@@ -70,6 +71,7 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<AgreementType, AgreementStatus>
   ),
+  accounts: user.accounts,
   active: user.companies.reduce(
     (acc, obj) => {
       acc[obj.company.id] = obj.active;
