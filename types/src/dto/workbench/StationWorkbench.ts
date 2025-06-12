@@ -1,8 +1,13 @@
-import { OrderStatus, ProductType } from '../../../prisma';
+import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
+import { OrderAuthorizationStatus, OrderStatus, ProductType } from '../../../prisma';
+import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 
 export interface StationWorkbench {
   workbenchId: string;
+  externalId: string | null;
   authorizationUpdatedAt: Date | null;
+  patientFirstName: string | null;
+  patientLastName: string | null;
   evaluationId: string | null;
   patientId: string | null;
   orderId: string | null;
@@ -10,6 +15,8 @@ export interface StationWorkbench {
   productType: ProductType | null;
   poNumber: string | null;
   status: OrderStatus | null;
+  orderAuthorizationStatus: OrderAuthorizationStatus | null;
+  committedDeliveryAt: Date | null;
   orderCompletedAt: Date | null;
   quantity: string | null;
   printingCompletedAt?: Date | null;
@@ -22,4 +29,5 @@ export interface StationWorkbench {
   finishingCompletedBy?: string | null;
   shippingCompletedAt?: Date | null;
   shippingCompletedBy?: string | null;
+  formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 }
