@@ -2,6 +2,7 @@ import { extractToken, fetchSessionUser, verifyToken } from '@hike/auth';
 import type { AuthUser, CompanyRole, HikeConfig } from '@hike/types';
 import { HikeError, HikeErrorCode, isDefined } from '@hike/types';
 import { Constants, selectPreferredLocale } from '@hike/utils';
+import type { JWTPayload } from 'jose';
 import { NextRequest, NextResponse } from 'next/server';
 
 type HikeMiddlewareConfig = Pick<HikeConfig, 'appEnv' | 'appId'>;
@@ -22,6 +23,7 @@ interface HikeMiddlewareOptions {
     }) => Promise<void> | void;
     afterAuth?: ({
       request,
+      jwt,
       config,
       user,
       companyId,
@@ -29,6 +31,7 @@ interface HikeMiddlewareOptions {
       slug
     }: {
       request: NextRequest;
+      jwt: JWTPayload;
       config: HikeMiddlewareConfig;
       user: AuthUser;
       companyId: string | undefined;
@@ -62,6 +65,7 @@ interface HikeMiddlewareOptions {
   restrictedRoles?: CompanyRole[];
   isMaintenanceMode?: boolean;
   maintenancePath?: string;
+  twoFaPath?: string;
   nonSlugs?: string[];
 }
 
@@ -81,6 +85,7 @@ export const withHikeMiddleware = ({
   loginPath,
   isMaintenanceMode,
   maintenancePath = '/maintenance.html',
+  twoFaPath = '/login/2fa',
   nonSlugs = []
 }: HikeMiddlewareOptions) =>
   async function middleware(request: NextRequest) {
@@ -173,7 +178,7 @@ export const withHikeMiddleware = ({
       }
 
       // Validate token has been signed by the server
-      await verifyToken(token, keyOrSecret);
+      const jwt = await verifyToken(token, keyOrSecret);
 
       // Retrieve additional user details from the backend
       // TODO: Optimize latency; caching or client optionally provides
@@ -187,8 +192,15 @@ export const withHikeMiddleware = ({
         const companyId = Object.keys(user.slugs).find((id) => user?.slugs[id] === slug);
         const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
+        // Validate 2FA if enabled
+        if (user.accounts.find((account) => account.provider === '2fa') && !jwt.twofa) {
+          const twoFaUrl = new URL(`${slugPath}${twoFaPath}`, request.url);
+          twoFaUrl.searchParams.set('redirect', request.url);
+          return NextResponse.redirect(twoFaUrl);
+        }
+
         // Execute post-authentication hook; may throw error to prevent access
-        await callback?.afterAuth?.({ request, config, user, companyId, isAdmin, slug });
+        await callback?.afterAuth?.({ request, jwt, config, user, companyId, isAdmin, slug });
 
         return onNextResponse(user);
       }

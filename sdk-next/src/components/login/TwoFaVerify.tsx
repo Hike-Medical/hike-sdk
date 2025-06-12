@@ -1,43 +1,65 @@
 'use client';
 
-import { Center, Paper, Stack, Text, Button, PinInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { useSignInWith2fa } from '@hike/ui';
+import { Center, Paper, PinInput, Stack, Text } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
-import { toErrorMessage } from '@hike/sdk';
-import { useVerifyTwoFa } from '@hike/ui';
+import { useTransitionRouter } from 'next-view-transitions';
+import { useParams, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 export const TwoFaVerify = () => {
-  const form = useForm({ initialValues: { code: '' } });
-  const { mutate: verifyTwoFa, isPending } = useVerifyTwoFa({
-    onError: (error) =>
-      showNotification({ title: 'Error', message: toErrorMessage(error) })
-  });
+  const [input2fa, setInput2fa] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const router = useTransitionRouter();
+  const { slug } = useParams<{ slug: string }>();
+  const searchParams = useSearchParams();
+  const slugPath = slug ? `/${slug}` : '';
+  const redirectUrl = searchParams.get('redirect');
 
-  const handleSubmit = (values: { code: string }) => {
-    verifyTwoFa({ code: values.code });
-  };
+  const { mutate: signInWith2fa, isPending } = useSignInWith2fa({
+    onSuccess: () => router.replace(redirectUrl || `${slugPath}/`),
+    onError: (err) => {
+      showNotification({ title: 'Error', message: err.message, color: 'red' });
+      setError('Invalid code, please try again');
+    }
+  });
 
   return (
     <Center p="xl">
       <Paper radius="md" p="xl" miw={300} maw={400} withBorder>
-        <Text size="lg" fw={500} mb="md">
-          Two-Factor Verification
+        <Text size="lg" fw={500}>
+          Two-Factor Authentication
         </Text>
-        <form onSubmit={form.onSubmit(handleSubmit)} noValidate>
-          <Stack>
-            <PinInput
-              {...form.getInputProps('code')}
-              onChange={(value) => form.setFieldValue('code', value)}
-              length={6}
-              inputMode="numeric"
-              radius="md"
-              aria-label="Authenticator code"
-            />
-            <Button type="submit" loading={isPending}>
-              Verify
-            </Button>
-          </Stack>
-        </form>
+        <Text size="sm" c="dimmed" ta="center">
+          Enter the code from your authenticator app.
+        </Text>
+        <Stack ta="center" mt="lg">
+          <PinInput
+            value={input2fa ?? ''}
+            onChange={(value) => {
+              setError(null);
+              setInput2fa(value);
+
+              if (value.length === 6) {
+                signInWith2fa(value);
+              }
+            }}
+            length={6}
+            inputMode="numeric"
+            placeholder=""
+            radius="md"
+            aria-label="Authenticator code"
+            oneTimeCode
+            autoFocus
+            error={!!error}
+            disabled={isPending}
+          />
+          {error && (
+            <Text fz="12" fw="bold" fs="italic" c="red" ta="center">
+              {error}
+            </Text>
+          )}
+        </Stack>
       </Paper>
     </Center>
   );
