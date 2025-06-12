@@ -19,6 +19,8 @@ export interface StationWorkbench {
   committedDeliveryAt: Date | null;
   orderCompletedAt: Date | null;
   quantity: string | null;
+  addonCompletedAt?: Date | null;
+  addonCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
   printingCompletedBy?: string | null;
   grindingCompletedAt?: Date | null;
