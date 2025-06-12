@@ -1,18 +1,23 @@
 'use client';
 
-import { useSetupTwoFa, useVerifyTwoFa } from '@hike/ui';
-import { Box, Center, Container, Image, Loader, Paper, PinInput, Space, Stack, Text, Title } from '@mantine/core';
+import { SessionContext, useSetupTwoFa, useSignInWith2fa, useVerifyTwoFa } from '@hike/ui';
+import { Box, Center, Image, Loader, PinInput, Stack, Text } from '@mantine/core';
 import { hasLength, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import QRCode from 'qrcode';
-import { useEffect, useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { CopyButton } from '../../components/CopyButton';
 import { SubmitButton } from '../../components/SubmitButton';
 
-export const TwoFaSetup = () => {
+interface TwoFaSetupProps {
+  onVerified?: () => Promise<void>;
+}
+
+export const TwoFaSetup = ({ onVerified }: TwoFaSetupProps) => {
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState('');
   const [secret, setSecret] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const { update } = use(SessionContext);
   const hasInitialized = useRef(false);
 
   const form = useForm({
@@ -37,7 +42,16 @@ export const TwoFaSetup = () => {
   });
 
   const { mutate: verifyTwoFa, isPending: isVerifyLoading } = useVerifyTwoFa({
-    onSuccess: () => showNotification({ title: 'Success', message: 'Two-Factor Authentication setup successful' }),
+    onSuccess: () => signInWith2fa(form.values.code),
+    onError: (err) => setError(err.message)
+  });
+
+  const { mutate: signInWith2fa, isPending: isSignInLoading } = useSignInWith2fa({
+    onSuccess: async (data) => {
+      showNotification({ title: 'Success', message: 'Two-Factor Authentication setup successful' });
+      await update(data.tokens); // Refresh with verified session
+      await onVerified?.();
+    },
     onError: (err) => setError(err.message)
   });
 
@@ -54,60 +68,48 @@ export const TwoFaSetup = () => {
   }, [setupTwoFa]);
 
   return (
-    <Box p={0}>
-      <Center w="100%" h="80dvh">
-        <Container size={'xs'} w={420}>
-          <Title order={4} component="h1" fw={700} ta="center">
-            Set up Two-Factor Authentication
-          </Title>
-          <Space my="lg" />
-          <form onSubmit={form.onSubmit(handleSubmit)} noValidate>
-            <Paper mt="lg" shadow="md" radius="md" p="xl" withBorder>
-              <Stack>
-                {qrCodeDataUrl && secret ? (
-                  <>
-                    <Stack w="100%" h="100%">
-                      <Image src={qrCodeDataUrl} alt="QR Code" />
-                    </Stack>
-                    <Stack gap="xs" align="center">
-                      <Text size="xs" c="dimmed">
-                        If you can&apos;t scan the QR code, enter this key manually:
-                      </Text>
-                      <Box>
-                        <CopyButton value={secret} ff="monospace" />
-                      </Box>
-                    </Stack>
-                  </>
-                ) : (
-                  !error && (
-                    <Center p="xl">
-                      <Loader size="lg" />
-                    </Center>
-                  )
-                )}
-                <PinInput
-                  {...form.getInputProps('code')}
-                  length={6}
-                  inputMode="numeric"
-                  placeholder=""
-                  radius="md"
-                  mx="auto"
-                  my="lg"
-                  aria-label="Authenticator code"
-                  oneTimeCode
-                  autoFocus
-                />
-                {error && (
-                  <Text fz="sm" c="red" mx="auto">
-                    {error}
-                  </Text>
-                )}
-                <SubmitButton label="Enable" loading={isVerifyLoading} disabled={!secret} />
-              </Stack>
-            </Paper>
-          </form>
-        </Container>
-      </Center>
-    </Box>
+    <form onSubmit={form.onSubmit(handleSubmit)} noValidate>
+      <Stack>
+        {qrCodeDataUrl && secret ? (
+          <>
+            <Stack h="100%" maw={300} mx="auto">
+              <Image src={qrCodeDataUrl} alt="QR Code" />
+            </Stack>
+            <Stack gap="xs" align="center">
+              <Text size="xs" c="dimmed">
+                If you can&apos;t scan the QR code, enter this key manually:
+              </Text>
+              <Box>
+                <CopyButton value={secret} ff="monospace" />
+              </Box>
+            </Stack>
+          </>
+        ) : (
+          !error && (
+            <Center p="xl">
+              <Loader size="lg" />
+            </Center>
+          )
+        )}
+        <PinInput
+          {...form.getInputProps('code')}
+          length={6}
+          inputMode="numeric"
+          placeholder=""
+          radius="md"
+          mx="auto"
+          my="lg"
+          aria-label="Authenticator code"
+          oneTimeCode
+          autoFocus
+        />
+        {error && (
+          <Text fz="sm" c="red" mx="auto">
+            {error}
+          </Text>
+        )}
+        <SubmitButton label="Enable" loading={isVerifyLoading || isSignInLoading} disabled={!secret} />
+      </Stack>
+    </form>
   );
 };

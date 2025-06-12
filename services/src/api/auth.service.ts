@@ -47,6 +47,15 @@ export const signInWithPin = async (credentials: SignInWithPinBody): Promise<Aut
   }
 };
 
+export const signInWith2fa = async (code: string): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/2fa', { code });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const signUpClinician = async (data: SignUpClinicianParams): Promise<AuthSession> => {
   try {
     const response = await backendApi.post('auth/signup/clinician', data);
