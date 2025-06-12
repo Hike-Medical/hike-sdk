@@ -177,6 +177,8 @@ export * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export * from './dto/workbench/CustomizationResponse';
 export * from './dto/workbench/DetectionStatusReponse';
 export * from './dto/workbench/FlattenedWorkbench';
+export * from './dto/workbench/GetStationsParams';
+export * from './dto/workbench/StationWorkbench';
 export * from './dto/workbench/GenerateWorkbenchPdfParams';
 export * from './dto/workbench/GetAggregatedParams';
 export * from './dto/workbench/PatientWorkbenchResponse';

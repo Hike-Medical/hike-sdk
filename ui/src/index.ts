@@ -198,6 +198,7 @@ export * from './hooks/users/useUpsertUserPermissions';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
+export * from './hooks/workbenches/useStationWorkbenches';
 export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useGenerateWorkbenchForm';
