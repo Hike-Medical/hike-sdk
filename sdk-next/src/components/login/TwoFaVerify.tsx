@@ -1,15 +1,16 @@
 'use client';
 
-import { useSignInWith2fa } from '@hike/ui';
+import { SessionContext, useSignInWith2fa } from '@hike/ui';
 import { Center, Paper, PinInput, Stack, Text } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useParams, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 export const TwoFaVerify = () => {
   const [input2fa, setInput2fa] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { update } = use(SessionContext);
   const router = useTransitionRouter();
   const { slug } = useParams<{ slug: string }>();
   const searchParams = useSearchParams();
@@ -17,7 +18,10 @@ export const TwoFaVerify = () => {
   const redirectUrl = searchParams.get('redirect');
 
   const { mutate: signInWith2fa, isPending } = useSignInWith2fa({
-    onSuccess: () => router.replace(redirectUrl || `${slugPath}/`),
+    onSuccess: async (data) => {
+      await update(data.tokens); // Refresh with verified session
+      router.replace(redirectUrl || `${slugPath}/`);
+    },
     onError: (err) => {
       showNotification({ title: 'Error', message: err.message, color: 'red' });
       setError('Invalid code, please try again');
