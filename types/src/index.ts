@@ -13,6 +13,7 @@ export * from './dto/appointment/ImportAppointmentsParams';
 export * from './dto/appointment/ImportAppointmentsResponse';
 export * from './dto/appointment/ParseAppointmentColumnsParams';
 export * from './dto/appointment/ParseAppointmentColumnsResponse';
+export * from './dto/appointment/TransformedEvaluation';
 export * from './dto/asset/GetAssetsParams';
 export * from './dto/audit-log/AuditAction';
 export * from './dto/audit-log/AuditEntity';

@@ -7,6 +7,8 @@ export interface AppointmentCsvRecord {
   'Patient First Name'?: string | null;
   'Patient Middle Name'?: string | null;
   'Patient Last Name'?: string | null;
+  'Patient Height'?: string | null;
+  'Patient Weight'?: string | null;
   Gender?: string | null;
   DOB?: string | null;
   Type?: string | null;
@@ -19,11 +21,14 @@ export interface AppointmentCsvRecord {
   Status?: string | null;
   'Appt For'?: string | null;
   'Referring Physician'?: string | null;
+  'Referring Physician NPI'?: string | null;
   'PCP Physician'?: string | null;
+  'PCP Physician NPI'?: string | null;
   'Primary Dx Code'?: string | null;
+  'Primary Dx Date'?: string | null;
   'Visit Type'?: string | null;
   'Visit Date'?: string | null;
-  Branch?: string | null;
+  Facility?: string | null;
   Location?: string | null;
   'Treating Practitioner'?: string | null;
   'Rx Date'?: string | null;
