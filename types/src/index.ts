@@ -170,6 +170,7 @@ export * from './dto/taika/InsoleMeasurements';
 export * from './dto/taika/PatientInformationTaikaParams';
 export * from './dto/terms/AcceptTermsParams';
 export * from './dto/twofa/TwoFaSetupResponse';
+export * from './dto/twofa/TwoFaToggleParams';
 export * from './dto/twofa/TwoFaVerifyParams';
 export * from './dto/user/GetUsersParams';
 export * from './dto/user/UpdateUserParams';

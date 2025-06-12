@@ -35,7 +35,6 @@ export * from './hooks/auth/useApproveInvitation';
 export * from './hooks/auth/useCompaniesBySession';
 export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
-export * from './hooks/auth/useDisableTwoFa';
 export * from './hooks/auth/useGetIsCompanyVoluntary';
 export * from './hooks/auth/useGetPinStatus';
 export * from './hooks/auth/useResetPassword';

@@ -41,17 +41,17 @@ export const TwoFaSetup = () => {
     onError: (err) => setError(err.message)
   });
 
+  const handleSubmit = (values: { code: string }) => {
+    setError(null);
+    verifyTwoFa({ code: values.code, enable: true });
+  };
+
   useEffect(() => {
     if (!hasInitialized.current) {
       setupTwoFa();
       hasInitialized.current = true;
     }
   }, [setupTwoFa]);
-
-  const handleSubmit = (values: { code: string }) => {
-    setError(null);
-    verifyTwoFa({ code: values.code });
-  };
 
   return (
     <Box p={0}>
@@ -79,9 +79,11 @@ export const TwoFaSetup = () => {
                     </Stack>
                   </>
                 ) : (
-                  <Center p="xl">
-                    <Loader size="lg" />
-                  </Center>
+                  !error && (
+                    <Center p="xl">
+                      <Loader size="lg" />
+                    </Center>
+                  )
                 )}
                 <PinInput
                   {...form.getInputProps('code')}
