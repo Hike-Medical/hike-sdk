@@ -304,7 +304,7 @@ export const statsForWorkbenches = async (
   }
 };
 
-export const generateWorkbenchForm = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+export const generateWorkbenchForm = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
   try {
     const response = await backendApi.post(
       `workbench/${workbenchId}/generate-pdf`,
