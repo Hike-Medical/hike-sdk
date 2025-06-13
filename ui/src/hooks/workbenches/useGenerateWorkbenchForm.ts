@@ -4,7 +4,7 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface GenerateWorkbenchFormContext {
   workbenchId: string;
-  companyIds: string[];
+  companyIds?: string[];
 }
 
 export const useGenerateWorkbenchForm = (

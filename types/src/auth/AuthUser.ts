@@ -7,12 +7,14 @@ export interface AuthUser {
   lastName: string | null;
   email: string | null;
   phone: string | null;
+  photoUrl: string | null;
   companies: Record<string, CompanyRole | null>;
   patients?: Record<string, string>;
   permissions: Record<string, Record<CompanyPermission, CompanyRole>>;
   clinician?: Clinician | null;
   slugs: Record<string, string>;
   agreements: Record<AgreementType, AgreementStatus>;
+  accounts: UserExtended['accounts'];
   active: Record<string, boolean>;
   emailVerifiedAt: Date | null;
   phoneVerifiedAt: Date | null;
@@ -29,6 +31,7 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
   lastName: user.lastName,
   email: user.email,
   phone: user.phone,
+  photoUrl: user.photoUrl,
   companies: user.companies
     .filter((item) => item.company.active)
     .sort((a, b) => a.company.createdAt.getTime() - b.company.createdAt.getTime())
@@ -70,6 +73,7 @@ export const toAuthUser = (user: UserExtended): AuthUser => ({
     },
     {} as Record<AgreementType, AgreementStatus>
   ),
+  accounts: user.accounts,
   active: user.companies.reduce(
     (acc, obj) => {
       acc[obj.company.id] = obj.active;

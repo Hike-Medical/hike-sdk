@@ -1,4 +1,5 @@
 import type {
+  Account,
   Agreement,
   Clinician,
   Company,
@@ -24,4 +25,5 @@ export type UserExtended = User & {
   agreements: (UserAgreement & {
     agreement: Agreement;
   })[];
+  accounts: Pick<Account, 'profileId' | 'provider' | 'createdAt' | 'updatedAt'>[];
 };
