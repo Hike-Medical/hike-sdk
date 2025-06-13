@@ -3,7 +3,7 @@
 import { validatePassword } from '@hike/sdk';
 import { useUpdateUserPassword } from '@hike/ui';
 import { Button, PasswordInput, Stack } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { matchesField, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { PasswordCriteria } from './PasswordCriteria';
@@ -22,7 +22,7 @@ export const UpdatePassword = ({ onSuccess }: UpdatePasswordProps) => {
     },
     validate: {
       password: validatePassword,
-      confirmPassword: (value, values) => (value === values.password ? null : 'Passwords do not match')
+      confirmPassword: matchesField('password', tShared('fields.passwordMismatch'))
     }
   });
 

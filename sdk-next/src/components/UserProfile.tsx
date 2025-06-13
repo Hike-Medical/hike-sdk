@@ -45,7 +45,7 @@ export const UserProfile = () => {
   const { slug } = useParams<{ slug: string }>();
   const router = useTransitionRouter();
   const slugPath = slug ? `/${slug}` : '';
-  const is2FaEnabled = user?.accounts.find((account) => account.provider === '2fa');
+  const is2FaEnabled = user?.accounts.find((item) => item.provider === '2fa');
 
   const { mutate: toggleTwoFa, isPending: isTogglingTwoFa } = useToggleTwoFa({
     onSuccess: async () => {
