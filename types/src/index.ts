@@ -15,6 +15,8 @@ export * from './dto/appointment/ParseAppointmentColumnsParams';
 export * from './dto/appointment/ParseAppointmentColumnsResponse';
 export * from './dto/appointment/TransformedEvaluation';
 export * from './dto/asset/GetAssetsParams';
+export * from './dto/attachment/CreateAttachmentParams';
+export * from './dto/attachment/UpdateAttachmentParams';
 export * from './dto/audit-log/AuditAction';
 export * from './dto/audit-log/AuditEntity';
 export * from './dto/audit-log/GetAuditLogsParams';
