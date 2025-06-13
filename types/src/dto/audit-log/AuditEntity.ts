@@ -6,8 +6,9 @@ export const AuditEntity = {
   ORDER: 'ORDER',
   INVITATION: 'INVITATION',
   ROSTER: 'ROSTER',
-  API_KEY: 'API_KEY',
-  PHYSICIAN: 'PHYSICIAN'
+  PHYSICIAN: 'PHYSICIAN',
+  ACCOUNT: 'ACCOUNT',
+  API_KEY: 'API_KEY'
 } as const;
 
 export type AuditEntity = (typeof AuditEntity)[keyof typeof AuditEntity];
