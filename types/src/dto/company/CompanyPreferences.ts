@@ -47,6 +47,7 @@ export interface CompanyPreferences {
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
     showDirectedTips?: boolean;
+    showDispensingForm?: boolean;
   };
   webhook?: {
     url: string;

@@ -188,6 +188,7 @@ export * from './dto/workbench/PatientWorkbenchResponse';
 export * from './dto/workbench/PrintShippingParams';
 export * from './dto/workbench/ResetWorkbenchParams';
 export * from './dto/workbench/SearchWorkbenchParams';
+export * from './dto/workbench/SubmitDeliveryParams';
 export * from './dto/workbench/SubmitOrderParams';
 export * from './dto/workbench/UpdateInactiveFootBody';
 export * from './entities/AssetExtended';
