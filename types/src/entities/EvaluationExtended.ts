@@ -30,5 +30,5 @@ export type EvaluationExtended = Evaluation & {
   status?: EvaluationStatus;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
-  attachments: EvaluationAttachmentExtended[];
+  attachments?: EvaluationAttachmentExtended[];
 };
