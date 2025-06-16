@@ -29,7 +29,7 @@ export const fetchEvaluationAttachments = async (
   params?: GetEvaluationAttachmentsParams
 ): Promise<PagedResponse<EvaluationAttachmentExtended[]>> => {
   try {
-    const response = await backendApi.get('attachment', { params });
+    const response = await backendApi.get('attachment/evaluation', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
