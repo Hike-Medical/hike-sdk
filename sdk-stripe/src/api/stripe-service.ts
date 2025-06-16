@@ -707,6 +707,7 @@ export class StripeService {
 
           return lineItem;
         }),
+        customer_creation: 'always',
         metadata: {
           companyId,
           ...(externalId && { externalId }),
