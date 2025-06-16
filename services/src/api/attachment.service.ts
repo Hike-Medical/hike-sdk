@@ -35,3 +35,12 @@ export const fetchEvaluationAttachments = async (
     throw toHikeError(error);
   }
 };
+
+export const findEvaluationAttachmentById = async (evaluationId: string): Promise<EvaluationAttachmentExtended> => {
+  try {
+    const response = await backendApi.get(`attachment/evaluation/${evaluationId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
