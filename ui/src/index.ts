@@ -19,6 +19,7 @@ export * from './hooks/assets/useStreamComplete';
 export * from './hooks/assets/useUploadComplete';
 export * from './hooks/assets/useUploadVideoToS3';
 export * from './hooks/attachment/useCreatePresignedUrlForAttachment';
+export * from './hooks/attachment/useFetchEvaluationAttachments';
 export * from './hooks/audit-logs/useAuditLogs';
 export * from './hooks/augments/useAugments';
 export * from './hooks/augments/useExportAugments';
