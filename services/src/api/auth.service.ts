@@ -38,7 +38,7 @@ export const signInWithToken = async (credentials: SignInWithTokenParams): Promi
   }
 };
 
-export const signInWithPin = async (credentials: SignInWithPinBody): Promise<AuthSession> => {
+export const signInWithPin = async (credentials: SignInWithPinBody): Promise<{ accessToken: string }> => {
   try {
     const response = await backendApi.post('auth/pin', credentials);
     return response.data;
