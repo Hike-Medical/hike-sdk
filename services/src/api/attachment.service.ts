@@ -44,3 +44,12 @@ export const findEvaluationAttachmentById = async (evaluationId: string): Promis
     throw toHikeError(error);
   }
 };
+
+export const getAttachmentUrl = async (attachmentId: string): Promise<{ url: string }> => {
+  try {
+    const response = await backendApi.get(`attachment/${attachmentId}/url`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
