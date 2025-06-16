@@ -4,6 +4,7 @@ import type {
   DeviceType,
   Diagnosis,
   Evaluation,
+  EvaluationAttachment,
   Order,
   Patient,
   Physician,
@@ -13,7 +14,6 @@ import type {
   Workbench
 } from '../../prisma';
 import { EvaluationStatus } from '../dto/evaluation/EvaluationStatus';
-import { EvaluationAttachmentExtended } from './EvaluationAttachmentExtended';
 import { FacilityExtended } from './FacilityExtended';
 
 export type EvaluationExtended = Evaluation & {
@@ -30,5 +30,5 @@ export type EvaluationExtended = Evaluation & {
   status?: EvaluationStatus;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
-  attachments?: EvaluationAttachmentExtended[];
+  attachments?: EvaluationAttachment[];
 };
