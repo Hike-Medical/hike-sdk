@@ -4,6 +4,7 @@ import type {
   DeviceType,
   Diagnosis,
   Evaluation,
+  EvaluationAttachment,
   Order,
   Patient,
   Physician,
@@ -29,4 +30,5 @@ export type EvaluationExtended = Evaluation & {
   status?: EvaluationStatus;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
+  attachments?: EvaluationAttachment[];
 };
