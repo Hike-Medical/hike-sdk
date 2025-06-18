@@ -30,6 +30,28 @@ export const createNotification = async (params: CreateNotificationParams): Prom
   }
 };
 
+export const fetchActiveInAppNotifications = async (companyIds?: string[]): Promise<NotificationExtended[]> => {
+  try {
+    const response = await backendApi.get('notification/in-app/active', {
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchInactiveNotifications = async (companyIds?: string[]): Promise<NotificationExtended[]> => {
+  try {
+    const response = await backendApi.get('notification/inactive', {
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findNotifications = async (
   params?: GetNotificationsParams,
   companyIds?: string[]
