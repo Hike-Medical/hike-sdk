@@ -13,6 +13,7 @@ import {
   ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
+  SubmitDeliveryParams,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
@@ -265,6 +266,14 @@ export const generateWorkbenchOrderPdf = async (
   }
 };
 
+export const submitDelivery = async (workbenchId: string, body: SubmitDeliveryParams): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/delivery/submit`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 export const generateWorkbenchDeliveryReceiptPdf = async (
   workbenchId: string,
   body: GenerateWorkbenchPdfParams
@@ -321,7 +330,7 @@ export const statsForWorkbenches = async (
   }
 };
 
-export const generateWorkbenchForm = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+export const generateWorkbenchForm = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
   try {
     const response = await backendApi.post(
       `workbench/${workbenchId}/generate-pdf`,
