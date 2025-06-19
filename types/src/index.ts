@@ -71,7 +71,6 @@ export * from './dto/company/GetCompanyByNameParams';
 export * from './dto/company/UpdateCompanyParams';
 export * from './dto/email-template/SendEmailTemplateParams';
 export * from './dto/email-template/UpsertEmailTemplateParams';
-export * from './dto/email/EmailEvent';
 export * from './dto/evaluation/ActionEvaluationParams';
 export * from './dto/evaluation/CreateEvaluationByProductParams';
 export * from './dto/evaluation/CreateEvaluationParams';
