@@ -2,7 +2,7 @@
 
 import React, { createContext, use, useState, type PropsWithChildren } from 'react';
 import { Modal, Stack, Text, Group, Box, Button, ThemeIcon, rem } from '@mantine/core';
-import { IconInfoCircle, IconAlertCircle } from '@tabler/icons-react';
+import { IconClockExclamation, IconAlertCircle } from '@tabler/icons-react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { NotificationExtended } from '@hike/types';
@@ -53,7 +53,7 @@ export const InAppNotificationsProvider = ({ children }: InAppNotificationsProvi
       <Group w="100%" justify="space-between" align="center" h="100%">
         <Group gap={10} align="center" h="100%">
           <ThemeIcon radius="xl" color={notice.type === 'IN_APP_URGENT' ? 'red' : 'yellow'} size={30} variant="light">
-            {notice.type === 'IN_APP_URGENT' ? <IconAlertCircle size={18} /> : <IconInfoCircle size={18} />}
+            {notice.type === 'IN_APP_INFO' ? <IconAlertCircle size={18} /> : <IconClockExclamation size={18} />}
           </ThemeIcon>
           <Stack gap={2}>
             <Group gap={5} align="center" wrap="nowrap">
@@ -106,7 +106,7 @@ export const InAppNotificationsProvider = ({ children }: InAppNotificationsProvi
           }}
         >
           <ThemeIcon size={30} radius="xl" variant="light" color={iconColor} style={{ marginTop: rem(2) }}>
-            {isUrgent ? <IconAlertCircle size={18} /> : <IconInfoCircle size={18} />}
+            {!isUrgent ? <IconAlertCircle size={22} /> : <IconClockExclamation size={22} />}
           </ThemeIcon>
 
           <Box style={{ flex: 1 }}>
