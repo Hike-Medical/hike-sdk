@@ -270,3 +270,11 @@ export const sendNotificationTest = async (messageId: string, params: SendTestPa
     throw toHikeError(error);
   }
 };
+
+export const deleteNotification = async (notificationId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`notification/${notificationId}`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

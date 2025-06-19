@@ -126,6 +126,7 @@ export * from './hooks/notes/useGetNotes';
 export * from './hooks/notes/useRecoverNote';
 export * from './hooks/notes/useUpdateNote';
 export * from './hooks/notification/useCreateNotification';
+export * from './hooks/notification/useDeleteNotification';
 export * from './hooks/notification/useCreateNotificationMessage';
 export * from './hooks/notification/useDeleteNotificationJob';
 export * from './hooks/notification/useDeleteNotificationJobs';
