@@ -1,4 +1,4 @@
-import { Gender } from '@prisma/client';
+import { Gender } from '../../../prisma';
 import { TransformedContact } from '../contact/TransformedContact';
 
 export interface TransformedPatient {
