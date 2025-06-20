@@ -1,4 +1,5 @@
 import { CareType, Gender, Side, VerticalPosition } from '../../../prisma';
+import { TransformedContact } from '../contact/TransformedContact';
 
 /**
  * Represents a transformed record from an uploaded report.
@@ -12,6 +13,9 @@ export interface TransformedEvaluation {
   birthDate?: Date | null;
   height?: number | null;
   weight?: number | null;
+  email?: string | null;
+  phone?: string | null;
+  contact?: TransformedContact;
   externalEvaluationId: string;
   careType: CareType;
   deviceType?: string | null;
