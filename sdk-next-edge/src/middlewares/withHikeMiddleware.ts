@@ -193,7 +193,7 @@ export const withHikeMiddleware = ({
         const isAdmin = !!companyId && user.companies[companyId] === 'ADMIN';
 
         // Validate 2FA if enabled
-        if (user.accounts.find((item) => item.profileId === user.id && item.provider === '2fa') && !jwt.twofa) {
+        if (user.accounts.find((item) => item.provider === '2fa') && !jwt.twofa) {
           const twoFaUrl = new URL(`${slugPath}${twoFaPath}`, request.url);
           twoFaUrl.searchParams.set('redirect', request.url);
           return NextResponse.redirect(twoFaUrl);
