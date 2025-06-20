@@ -1,5 +1,5 @@
 import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
-import { OrderAuthorizationStatus, OrderStatus, ProductType } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, Prisma, ProductType } from '../../../prisma';
 import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 
 export interface StationWorkbench {
@@ -33,3 +33,48 @@ export interface StationWorkbench {
   shippingCompletedBy?: string | null;
   formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 }
+
+export type WorkbenchWithRelations = Prisma.WorkbenchGetPayload<{
+  include: {
+    evaluation: {
+      select: {
+        id: true;
+        poNumber: true;
+        company: { select: { slug: true } };
+      };
+    };
+    patient: {
+      include: {
+        companies: { select: { externalId: true }; take: 1 };
+      };
+    };
+    product: { select: { type: true } };
+    formSubmissions: { include: { schema: true } };
+  };
+}>;
+
+export type OrderSlim = Prisma.OrderGetPayload<{
+  select: {
+    id: true;
+    status: true;
+    completedAt: true;
+    committedDeliveryAt: true;
+    authorizationUpdatedAt: true;
+    authorizationStatus: true;
+  };
+}>;
+
+export type StationWorkbenchOrderBy =
+  | 'completedAt'
+  | 'authorizationUpdatedAt'
+  | 'printingCompletedAt'
+  | 'grindingCompletedAt'
+  | 'gluingCompletedAt'
+  | 'finishingCompletedAt'
+  | 'shippingCompletedAt'
+  | 'addonCompletedAt';
+
+export type WorkbenchSubmissionsFilter =
+  | [string, string]
+  | [string, string[]];
+

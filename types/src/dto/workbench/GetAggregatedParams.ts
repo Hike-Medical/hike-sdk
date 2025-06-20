@@ -8,6 +8,7 @@ export interface GetAggregatedParams extends PagedParams {
   diabeticOnly?: boolean;
   submittedOnly?: boolean;
   includeSubmissions?: boolean;
+  workbenchSubmissionsFilter?: [string, string | string[]];
   prioritizeRushed?: boolean;
   authorizationStartDate?: string;
   authorizationEndDate?: string;
