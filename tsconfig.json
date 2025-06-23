@@ -1,3 +1,3 @@
 {
-  "extends": "config/tsconfig"
+  "extends": "./config/tsconfig"
 }
