@@ -1,5 +1,4 @@
 export * from './components/CopyButton';
-export * from './components/CompanyDisabled'
 export * from './components/login/AccountRecovery';
 export * from './components/login/Login';
 export * from './components/login/MagicLink';

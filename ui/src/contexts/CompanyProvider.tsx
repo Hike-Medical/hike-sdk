@@ -1,8 +1,8 @@
 import { configureCompany, configureServices, findCompanyBySlug } from '@hike/services';
-import { CompanyDisabled } from '@hike/sdk-next'
 import { HikeConfig } from '@hike/types';
 import { ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
+import { CompanyDisabled } from '../components/CompanyDisabled';
 
 interface CompanyProviderProps {
   slug: string;
