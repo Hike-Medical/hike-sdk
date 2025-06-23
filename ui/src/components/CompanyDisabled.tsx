@@ -1,5 +1,6 @@
 'use client';
 
+import { Constants } from '@hike/utils';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
 
 export function CompanyDisabled() {
@@ -37,9 +38,9 @@ export function CompanyDisabled() {
       <Group justify="center">
         <Button variant="subtle" size="md"
           component="a"
-          href="mailto:support@hikemedical.com"
+          href={`mailto:${Constants.HIKE_SUPPORT_EMAIL}`}
         >
-          support@hikemedical.com
+          {Constants.HIKE_SUPPORT_EMAIL}
         </Button>
       </Group>
     </Container>
