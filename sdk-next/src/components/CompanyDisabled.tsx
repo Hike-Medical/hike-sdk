@@ -1,8 +1,6 @@
 "use client"
 
 import type React from "react"
-import Head from "next/head"
-
 import { Constants } from "@hike/sdk"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
@@ -97,9 +95,7 @@ export function CompanyDisabled() {
 
   return (
     <>
-      <Head>
-        <title>Hike Medical</title>
-      </Head>
+      <title>Hike Medical</title>
       <style >{`
         @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap");
         
