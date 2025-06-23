@@ -3,7 +3,7 @@ import utc from 'dayjs/plugin/utc';
 
 dayjs.extend(utc);
 
-export const getIntervalDateRange = (interval: 'week' | 'month' | 'day'): { startDate: Date; endDate: Date } => {
+export const getIntervalDateRange = (interval: 'day' | 'week' | 'month'): { startDate: Date; endDate: Date } => {
   const now = dayjs().utc();
 
   if (interval === 'day') {
