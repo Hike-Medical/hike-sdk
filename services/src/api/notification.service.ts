@@ -30,6 +30,28 @@ export const createNotification = async (params: CreateNotificationParams): Prom
   }
 };
 
+export const fetchActiveInAppNotifications = async (companyIds?: string[]): Promise<NotificationExtended[]> => {
+  try {
+    const response = await backendApi.get('notification/in-app/active', {
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchInactiveNotifications = async (companyIds?: string[]): Promise<NotificationExtended[]> => {
+  try {
+    const response = await backendApi.get('notification/inactive', {
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findNotifications = async (
   params?: GetNotificationsParams,
   companyIds?: string[]
@@ -244,6 +266,14 @@ export const deleteNotificationJobs = async (notificationId: string): Promise<{ 
 export const sendNotificationTest = async (messageId: string, params: SendTestParams): Promise<void> => {
   try {
     await backendApi.post(`notification/message/${messageId}/test`, params);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteNotification = async (notificationId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`notification/${notificationId}`);
   } catch (error) {
     throw toHikeError(error);
   }
