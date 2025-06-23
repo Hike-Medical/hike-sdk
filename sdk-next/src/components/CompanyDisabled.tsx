@@ -1,6 +1,6 @@
 'use client';
 
-import { Constants } from '@hike/utils';
+import { Constants } from '@hike/sdk';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
 
 export function CompanyDisabled() {
