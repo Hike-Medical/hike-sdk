@@ -2,8 +2,11 @@
 
 import { Constants } from '@hike/sdk';
 import { Button, Container, Group, Text, Title } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 
 export function CompanyDisabled() {
+  const t = useTranslations();
+
   return (
     <Container pt={80} pb={80}>
       <Title
@@ -18,7 +21,7 @@ export function CompanyDisabled() {
           },
         })}
       >
-        Company Disabled
+        {t('shared.companyDisabled.title')}
       </Title>
 
       <Text
@@ -32,7 +35,7 @@ export function CompanyDisabled() {
           marginBottom: `calc(1.5 * ${theme.spacing.xl})`,
         })}
       >
-        This company has been disabled. If you think this is a mistake, contact our support line for further assistance.
+        {t('shared.companyDisabled.description')}
       </Text>
 
       <Group justify="center">
