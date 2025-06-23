@@ -2,6 +2,7 @@
  * Represents a CSV record for an appointment report.
  */
 export interface AppointmentCsvRecord {
+  'Evaluation ID'?: string;
   'Patient ID': string;
   'Patient Name'?: string | null;
   'Patient First Name'?: string | null;
