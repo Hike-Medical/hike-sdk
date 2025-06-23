@@ -344,9 +344,6 @@ importers:
 
   ui:
     dependencies:
-      '@hike/sdk-next':
-        specifier: workspace:*
-        version: link:../sdk-next
       '@hike/services':
         specifier: workspace:*
         version: link:../services
