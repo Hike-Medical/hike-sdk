@@ -1,13 +1,13 @@
 import { configureCompany, configureServices, findCompanyBySlug } from '@hike/services';
 import { HikeConfig } from '@hike/types';
-import { ReactNode } from 'react';
+import { JSX, ReactNode } from 'react';
 import { CompanyProviderClient } from './CompanyProviderClient';
 
 interface CompanyProviderProps {
   slug: string;
   config: HikeConfig;
   children: ReactNode;
-  companyNotFoundRender?: () => ReactNode;
+  companyNotFoundRender?: JSX.Element;
 }
 
 export default async function CompanyProvider({ slug, config, children, companyNotFoundRender }: CompanyProviderProps) {
@@ -15,7 +15,7 @@ export default async function CompanyProvider({ slug, config, children, companyN
   const company = await findCompanyBySlug(slug);
   configureCompany(company.id);
 
-  if (!company.active) {
+  if (!company.active && companyNotFoundRender) {
     return <>{companyNotFoundRender}</>
   }
 
