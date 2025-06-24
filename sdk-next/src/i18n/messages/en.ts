@@ -111,6 +111,10 @@ export default {
         description: 'Please request a new login link.',
         actionButton: 'Go to Login'
       }
+    },
+    companyDisabled: {
+      title: "Company Disabled",
+      description: "This company has been disabled. If you think this is a mistake, contact our support line for further assistance."
     }
   },
   components: {
