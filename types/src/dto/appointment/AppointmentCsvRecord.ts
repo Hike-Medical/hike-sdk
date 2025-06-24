@@ -2,6 +2,7 @@
  * Represents a CSV record for an appointment report.
  */
 export interface AppointmentCsvRecord {
+  'Evaluation ID'?: string;
   'Patient ID': string;
   'Patient Name'?: string | null;
   'Patient First Name'?: string | null;
@@ -11,6 +12,15 @@ export interface AppointmentCsvRecord {
   'Patient Weight'?: string | null;
   Gender?: string | null;
   DOB?: string | null;
+  'Email Address'?: string | null;
+  'Phone Number'?: string | null;
+  'Patient Address 1'?: string | null;
+  'Patient Address 2'?: string | null;
+  'Patient City'?: string | null;
+  'Patient State'?: string | null;
+  'Patient Zip'?: string | null;
+  'Patient City State Zip'?: string | null;
+  'Patient Country'?: string | null;
   Type?: string | null;
   'Device Type'?: string | null;
   'Device Type Side'?: string | null;
