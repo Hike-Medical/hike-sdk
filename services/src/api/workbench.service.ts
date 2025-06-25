@@ -18,7 +18,9 @@ import {
   UpdateInactiveFootBody,
   Workbench,
   WorkbenchExtended,
-  WorkbenchStatus
+  WorkbenchStatus,
+  GetStationsParams,
+  StationWorkbench
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -182,6 +184,21 @@ export const getAggregatedWorkbenches = async (
 ): Promise<PagedResponse<FlattenedWorkbench[]>> => {
   try {
     const response = await backendApi.get('workbench/aggregate', { params, headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getStationWorkbenches = async (
+  params?: GetStationsParams,
+  companyIds?: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
