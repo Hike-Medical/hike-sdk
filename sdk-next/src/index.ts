@@ -30,4 +30,4 @@ export * from './themes/types/ThemeComponent';
 export * from './types/TablerIconComponent';
 export * from './utils/analytics';
 export * from './utils/logger';
-export * from './next.config';
+export * from './config/withSecurityHeaders';
