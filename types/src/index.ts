@@ -196,6 +196,8 @@ export * from './dto/workbench/SearchWorkbenchParams';
 export * from './dto/workbench/SubmitDeliveryParams';
 export * from './dto/workbench/SubmitOrderParams';
 export * from './dto/workbench/UpdateInactiveFootBody';
+export * from './dto/workbench/GetWorkbenchSummaryParams';
+export * from './dto/workbench/WorkbenchSummary';
 export * from './entities/AssetExtended';
 export * from './entities/AugmentExtended';
 export * from './entities/CatalogProductExtended';

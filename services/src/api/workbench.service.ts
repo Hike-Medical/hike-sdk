@@ -20,7 +20,11 @@ import {
   WorkbenchExtended,
   WorkbenchStatus,
   GetStationsParams,
-  StationWorkbench
+  StationWorkbench,
+  GetWorkbenchSummaryParams,
+  WorkbenchSummary
+  // GetWorkbenchSummaryParams,
+  // WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -337,6 +341,21 @@ export const generateWorkbenchForm = async (workbenchId: string, companyIds?: st
       {},
       { headers: addHeaders(companyIds) }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchSummary = async (
+  params?: GetWorkbenchSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
