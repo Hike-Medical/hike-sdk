@@ -15,8 +15,8 @@ export interface WorkbenchSummary {
   orderStatus: OrderStatus | null;
   authorizationDate: Date | null;
   clinicians: string[];
-  orderPdfUrl: string;
-  evaluationPdfUrl: string;
+  orderPdfUrlExists: boolean;
+  evaluationPdfUrlExists: boolean;
   orderSide: RenderType | null;
   orderQuantity: string | null;
   createdReason: WorkbenchCreatedReason | null;
