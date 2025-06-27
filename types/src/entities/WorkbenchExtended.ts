@@ -4,6 +4,12 @@ import { FormSubmissionExtended } from '../forms/FormSubmissionExtended';
 import { EvaluationExtended } from './EvaluationExtended';
 import { PatientExtended } from './PatientExtended';
 
+export interface WorkbenchPdfUrls {
+  orderFormPdfUrl?: string;
+  patientFormPdfUrl?: string;
+  deliveryReceiptPdfUrl?: string;
+}
+
 export type WorkbenchExtended = Workbench & {
   patient: PatientExtended;
   product: Product;
@@ -13,4 +19,4 @@ export type WorkbenchExtended = Workbench & {
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
   customization: CustomizationResponse;
-};
+} & WorkbenchPdfUrls;

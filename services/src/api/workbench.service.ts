@@ -23,8 +23,6 @@ import {
   StationWorkbench,
   GetWorkbenchSummaryParams,
   WorkbenchSummary
-  // GetWorkbenchSummaryParams,
-  // WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -53,9 +51,9 @@ export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> =>
   }
 };
 
-export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
+export const getWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<WorkbenchExtended> => {
   try {
-    const response = await backendApi.get(`workbench/${workbenchId}`);
+    const response = await backendApi.get(`workbench/${workbenchId}`, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
