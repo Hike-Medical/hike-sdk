@@ -3,8 +3,13 @@
  * @param length - The desired length of the random string.
  * @returns A randomly generated string.
  */
-export const randomString = (length: number): string =>
+export const randomString = (length: number, numericOnly?: boolean): string =>
   Array.from({ length }, () => {
+    if (numericOnly) {
+      // Only digits 0-9
+      return String.fromCharCode(48 + Math.floor(Math.random() * 10));
+    }
+    // Alphanumeric: 0-9, A-Z, a-z
     const charCode = Math.floor(Math.random() * 62);
     return String.fromCharCode(
       charCode < 10
