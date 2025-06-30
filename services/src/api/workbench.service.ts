@@ -7,6 +7,7 @@ import {
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
   GetStationsParams,
+  GetWorkbenchDevSummaryParams,
   GetWorkbenchSummaryParams,
   Order,
   PagedResponse,
@@ -20,6 +21,7 @@ import {
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
+  WorkbenchDevSummary,
   WorkbenchExtended,
   WorkbenchStatus,
   WorkbenchSummary
@@ -360,6 +362,21 @@ export const getWorkbenchSummary = async (
 ): Promise<PagedResponse<WorkbenchSummary[]>> => {
   try {
     const response = await backendApi.get('workbench/summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchDevSummary = async (
+  params?: GetWorkbenchDevSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchDevSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/dev-summary', {
       params,
       headers: addHeaders(companyIds)
     });

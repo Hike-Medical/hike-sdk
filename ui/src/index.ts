@@ -227,5 +227,6 @@ export * from './hooks/workbenches/useSearchWorkbenches';
 export * from './hooks/workbenches/useStationWorkbenches';
 export * from './hooks/workbenches/useSubmitDelivery';
 export * from './hooks/workbenches/useUpdateRenderType';
+export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
