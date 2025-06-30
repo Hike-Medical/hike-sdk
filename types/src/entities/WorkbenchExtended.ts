@@ -14,7 +14,7 @@ export type WorkbenchExtended = Workbench & {
   patient: PatientExtended;
   product: Product;
   evaluation: Pick<EvaluationExtended, 'clinicians'> & Evaluation;
-  orders: (Order & { shippingLabel?: ShippingLabel })[];
+  orders?: (Order & { shippingLabel?: ShippingLabel })[];
   assets: Asset[];
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
