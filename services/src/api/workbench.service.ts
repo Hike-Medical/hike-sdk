@@ -6,6 +6,8 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetStationsParams,
+  GetWorkbenchSummaryParams,
   Order,
   PagedResponse,
   PatientWorkbenchResponse,
@@ -13,15 +15,13 @@ import {
   ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
+  StationWorkbench,
   SubmitDeliveryParams,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
   WorkbenchExtended,
   WorkbenchStatus,
-  GetStationsParams,
-  StationWorkbench,
-  GetWorkbenchSummaryParams,
   WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -54,6 +54,15 @@ export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> =>
 export const getWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<WorkbenchExtended> => {
   try {
     const response = await backendApi.get(`workbench/${workbenchId}`, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchComplete = async (workbenchId: string): Promise<WorkbenchExtended> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/complete`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
