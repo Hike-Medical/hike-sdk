@@ -6,6 +6,8 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetStationsParams,
+  GetWorkbenchSummaryParams,
   Order,
   PagedResponse,
   PatientWorkbenchResponse,
@@ -13,14 +15,14 @@ import {
   ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
+  StationWorkbench,
   SubmitDeliveryParams,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
   WorkbenchExtended,
   WorkbenchStatus,
-  GetStationsParams,
-  StationWorkbench
+  WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -49,9 +51,18 @@ export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> =>
   }
 };
 
-export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
+export const getWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<WorkbenchExtended> => {
   try {
-    const response = await backendApi.get(`workbench/${workbenchId}`);
+    const response = await backendApi.get(`workbench/${workbenchId}`, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchComplete = async (workbenchId: string): Promise<WorkbenchExtended> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/complete`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -337,6 +348,21 @@ export const generateWorkbenchForm = async (workbenchId: string, companyIds?: st
       {},
       { headers: addHeaders(companyIds) }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchSummary = async (
+  params?: GetWorkbenchSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
