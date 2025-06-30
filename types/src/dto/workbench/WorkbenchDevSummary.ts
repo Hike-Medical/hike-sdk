@@ -6,7 +6,8 @@ export interface WorkbenchDevSummary {
   patientLastName: string;
   submittedAt: Date | null;
   workbenchStatus: string;
-  renderScore: number | null;
+  leftRenderScore: number | null;
+  rightRenderScore: number | null;
   companySlug: string | null;
   poNumber: string | null;
   taikaDevId: string | null;
