@@ -16,7 +16,7 @@ export const trackNotification = async (
 
   try {
     await fetch(`${baseApiUrl}/webhook/track-notification/${id}/${action}`, { method: 'POST' });
-  } catch (error) {
+  } catch {
     // Silence error for non-critical request
   }
 };
