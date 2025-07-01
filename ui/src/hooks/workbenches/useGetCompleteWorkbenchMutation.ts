@@ -1,10 +1,9 @@
-import { getWorkbench } from '@hike/services';
+import { getWorkbenchComplete } from '@hike/services';
 import { HikeError, WorkbenchExtended } from '@hike/types';
 import { QueryKey, UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface Variables {
   workbenchId: string;
-  companyIds: string[];
 }
 
 interface UseGetWorkbenchMutationOptions
@@ -15,6 +14,6 @@ interface UseGetWorkbenchMutationOptions
 export const useGetWorkbenchMutation = ({ mutationKey = [], ...options }: UseGetWorkbenchMutationOptions = {}) =>
   useMutation<WorkbenchExtended, HikeError<null>, Variables>({
     mutationKey: ['workbenchId', ...mutationKey],
-    mutationFn: async ({ workbenchId, companyIds }) => getWorkbench(workbenchId, companyIds),
+    mutationFn: async ({ workbenchId }) => getWorkbenchComplete(workbenchId),
     ...options
   });
