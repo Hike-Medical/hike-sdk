@@ -68,6 +68,7 @@ export * from './dto/company/CompanyTheme';
 export * from './dto/company/CompanyWorkbenchWebhook';
 export * from './dto/company/FindCompaniesParams';
 export * from './dto/company/GetCompanyByNameParams';
+export * from './dto/company/GetWorkbenchWebhooksParams';
 export * from './dto/company/UpdateCompanyParams';
 export * from './dto/contact/TransformedContact';
 export * from './dto/email-template/SendEmailTemplateParams';
@@ -251,3 +252,4 @@ export * from './guards/isPlainObject';
 export * from './guards/isPrintableField';
 export * from './guards/isString';
 export * from './guards/isTruthy';
+
