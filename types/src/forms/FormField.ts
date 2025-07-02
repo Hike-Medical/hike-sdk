@@ -5,6 +5,7 @@ export type FormFieldValue = string | string[] | number | number[] | boolean | n
 
 interface BaseFormField<T extends FormFieldValue> {
   name: string;
+  reviewable?: number;
   label: string;
   description?: string;
   placeholder?: string;
@@ -74,7 +75,6 @@ export type FormField =
   | (BaseFormField<string> & { type: 'multiselect:billingCodes' })
   | (BaseFormField<string> & { type: 'signature' })
   | (BaseFormField<string> & { type: 'custom:orthofeet' })
-  | (BaseFormField<string> & { type: 'custom:review:evaluation' })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';
