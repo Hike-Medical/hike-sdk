@@ -5,7 +5,6 @@ export type FormFieldValue = string | string[] | number | number[] | boolean | n
 
 interface BaseFormField<T extends FormFieldValue> {
   name: string;
-  reviewable?: number;
   label: string;
   description?: string;
   placeholder?: string;
@@ -17,6 +16,7 @@ interface BaseFormField<T extends FormFieldValue> {
   dbField?: { table: string; column: string; unique?: string[] };
   rule?: FormRule;
   templateable?: boolean;
+  reviewable?: number;
   meta?: Record<string, FormFieldValue>;
 }
 
