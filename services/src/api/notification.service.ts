@@ -278,3 +278,12 @@ export const deleteNotification = async (notificationId: string): Promise<void> 
     throw toHikeError(error);
   }
 };
+
+export const fetchNotificationContent = async (historyId: string): Promise<string> => {
+  try {
+    const response = await backendApi.get(`notification/content/${historyId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

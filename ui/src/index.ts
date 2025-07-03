@@ -136,6 +136,7 @@ export * from './hooks/notification/useGetEnrollPatientsNotificationJobs';
 export * from './hooks/notification/useGetEnrollPatientsNotificationJobsByPatient';
 export * from './hooks/notification/useGetInAppNotifications';
 export * from './hooks/notification/useGetNotificationById';
+export * from './hooks/notification/useGetNotificationContent';
 export * from './hooks/notification/useGetNotificationEnrollPatients';
 export * from './hooks/notification/useGetNotificationEnrollStats';
 export * from './hooks/notification/useGetNotificationHistory';
