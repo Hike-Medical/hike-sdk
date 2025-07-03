@@ -188,6 +188,7 @@ export * from './dto/workbench/DetectionStatusReponse';
 export * from './dto/workbench/FlattenedWorkbench';
 export * from './dto/workbench/GenerateWorkbenchPdfParams';
 export * from './dto/workbench/GetAggregatedParams';
+export * from './dto/workbench/GetManufacturingParams';
 export * from './dto/workbench/GetStationsParams';
 export * from './dto/workbench/GetWorkbenchDevSummaryParams';
 export * from './dto/workbench/GetWorkbenchSummaryParams';
