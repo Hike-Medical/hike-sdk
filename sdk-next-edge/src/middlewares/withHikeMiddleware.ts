@@ -48,7 +48,7 @@ interface HikeMiddlewareOptions {
       config: HikeMiddlewareConfig;
       user: AuthUser | null;
       slug: string | null;
-    }) => NextResponse;
+    }) => Promise<NextResponse>;
   };
   loginPath?: ({
     config,
@@ -104,8 +104,8 @@ export const withHikeMiddleware = ({
     }
 
     // Build response to return
-    const onNextResponse = (user: AuthUser | null): NextResponse => {
-      const response = callback?.onResponse?.({ request, config, user, slug }) ?? NextResponse.next();
+    const onNextResponse = async (user: AuthUser | null): Promise<NextResponse> => {
+      const response = (await callback?.onResponse?.({ request, config, user, slug })) ?? NextResponse.next();
 
       // Handle internationalization if applicable
       if (locales) {
@@ -156,9 +156,9 @@ export const withHikeMiddleware = ({
       try {
         const token = extractToken(request);
         const user = await fetchSessionUser(token, config);
-        return onNextResponse(user);
+        return await onNextResponse(user);
       } catch {
-        return onNextResponse(null);
+        return await onNextResponse(null);
       }
     }
 
@@ -202,7 +202,7 @@ export const withHikeMiddleware = ({
         // Execute post-authentication hook; may throw error to prevent access
         await callback?.afterAuth?.({ request, jwt, config, user, companyId, isAdmin, slug });
 
-        return onNextResponse(user);
+        return await onNextResponse(user);
       }
     } catch (error) {
       console.error(error);
@@ -230,5 +230,5 @@ export const withHikeMiddleware = ({
       return NextResponse.redirect(loginUrl);
     }
 
-    return onNextResponse(null);
+    return await onNextResponse(null);
   };
