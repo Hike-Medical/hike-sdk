@@ -10,7 +10,7 @@ interface UseGetNotificationContentOptions
 
 export const useGetNotificationContent = ({ historyId, queryKey = [], ...options }: UseGetNotificationContentOptions) =>
   useQuery({
-    queryKey: ['notifications', 'content', historyId, queryKey],
+    queryKey: ['notificationContent', historyId, queryKey],
     queryFn: async () => await fetchNotificationContent(historyId),
     ...options
   });
