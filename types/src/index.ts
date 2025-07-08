@@ -153,6 +153,7 @@ export * from './dto/roster/ParseRosterColumnsParams';
 export * from './dto/roster/ParseRosterColumnsResponse';
 export * from './dto/roster/RoasterPatientCsvRecord';
 export * from './dto/roster/TransformedPatient';
+export * from './dto/s3/PresignedFile';
 export * from './dto/scan/CreateMultipartUrls';
 export * from './dto/scan/SubmitRenderParams';
 export * from './dto/search/GetSearchParams';
@@ -252,4 +253,3 @@ export * from './guards/isPlainObject';
 export * from './guards/isPrintableField';
 export * from './guards/isString';
 export * from './guards/isTruthy';
-

@@ -14,6 +14,7 @@ import type {
   NotificationMessage,
   NotificationStats,
   PagedResponse,
+  PresignedFile,
   SendTestParams,
   UpdateNotificationMessageParams
 } from '@hike/types';
@@ -143,7 +144,7 @@ export const fetchNotificationEnrollPatients = async (
   return response.data;
 };
 
-export const fetchNotificationContent = async (historyId: string): Promise<{ url: string; contentType: string }> => {
+export const fetchNotificationContent = async (historyId: string): Promise<PresignedFile> => {
   try {
     const response = await backendApi.get(`notification/content/${historyId}`);
     return response.data;

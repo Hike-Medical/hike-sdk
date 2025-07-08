@@ -1,9 +1,9 @@
 import { fetchNotificationContent } from '@hike/services';
-import { HikeError } from '@hike/types';
+import { HikeError, PresignedFile } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotificationContentOptions
-  extends Omit<UseQueryOptions<{ url: string; contentType: string }, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PresignedFile, HikeError<null>>, 'queryKey' | 'queryFn'> {
   historyId: string;
   queryKey?: QueryKey;
 }
