@@ -143,6 +143,15 @@ export const fetchNotificationEnrollPatients = async (
   return response.data;
 };
 
+export const fetchNotificationContent = async (historyId: string): Promise<{ url: string; contentType: string }> => {
+  try {
+    const response = await backendApi.get(`notification/content/${historyId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const activateNotification = async (notificationId: string): Promise<void> => {
   try {
     await backendApi.post(`notification/${notificationId}/activate`);
@@ -274,15 +283,6 @@ export const sendNotificationTest = async (messageId: string, params: SendTestPa
 export const deleteNotification = async (notificationId: string): Promise<void> => {
   try {
     await backendApi.delete(`notification/${notificationId}`);
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const fetchNotificationContent = async (historyId: string): Promise<string> => {
-  try {
-    const response = await backendApi.get(`notification/content/${historyId}`);
-    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }

@@ -3,7 +3,7 @@ import { HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotificationContentOptions
-  extends Omit<UseQueryOptions<string, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<{ url: string; contentType: string }, HikeError<null>>, 'queryKey' | 'queryFn'> {
   historyId: string;
   queryKey?: QueryKey;
 }
