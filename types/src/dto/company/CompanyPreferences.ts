@@ -44,6 +44,7 @@ export interface CompanyPreferences {
     removeRemake?: boolean;
     removeReorder?: boolean;
     assignPONumber?: boolean;
+    allowCancelIncomplete?: boolean;
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
     showDirectedTips?: boolean;
