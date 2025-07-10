@@ -97,6 +97,7 @@ export * from './hooks/facilities/useFetchFacilityById';
 export * from './hooks/facilities/useSearchFacilities';
 export * from './hooks/facilities/useToggleFacility';
 export * from './hooks/facilities/useUpdateFacility';
+export * from './hooks/feature-flags';
 export * from './hooks/feet/useGetFeet';
 export * from './hooks/feet/useGetFootStatus';
 export * from './hooks/feet/useSetFootActive';

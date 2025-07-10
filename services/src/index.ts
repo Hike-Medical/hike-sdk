@@ -16,6 +16,7 @@ export * from './api/diagnosis.service';
 export * from './api/email-template.service';
 export * from './api/evaluation.service';
 export * from './api/facility.service';
+export * from './api/feature-flag.service';
 export * from './api/foot.service';
 export * from './api/form-sync.service';
 export * from './api/form.service';
