@@ -38,9 +38,18 @@ export const signInWithToken = async (credentials: SignInWithTokenParams): Promi
   }
 };
 
-export const signInWithPin = async (credentials: SignInWithPinBody): Promise<AuthSession> => {
+export const signInWithPin = async (credentials: SignInWithPinBody): Promise<{ accessToken: string }> => {
   try {
     const response = await backendApi.post('auth/pin', credentials);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const signInWith2fa = async (code: string): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/2fa', { code });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

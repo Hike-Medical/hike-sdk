@@ -1,9 +1,11 @@
 import type {
   Clinician,
   CompanyPatient,
+  Contact,
   DeviceType,
   Diagnosis,
   Evaluation,
+  EvaluationAttachment,
   Order,
   Patient,
   Physician,
@@ -16,7 +18,7 @@ import { EvaluationStatus } from '../dto/evaluation/EvaluationStatus';
 import { FacilityExtended } from './FacilityExtended';
 
 export type EvaluationExtended = Evaluation & {
-  patient: Patient & { companies?: CompanyPatient[]; primaryPhysician?: Physician };
+  patient: Patient & { companies?: CompanyPatient[]; primaryPhysician?: Physician & { contact?: Contact | null } };
   workbenches?:
     | (Workbench & { product?: Product | null; orders?: (Order & { shippingLabel?: ShippingLabel | null })[] | null })[]
     | null;
@@ -29,4 +31,5 @@ export type EvaluationExtended = Evaluation & {
   status?: EvaluationStatus;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
+  attachments?: EvaluationAttachment[];
 };

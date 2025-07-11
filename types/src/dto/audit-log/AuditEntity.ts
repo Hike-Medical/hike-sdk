@@ -6,6 +6,8 @@ export const AuditEntity = {
   ORDER: 'ORDER',
   INVITATION: 'INVITATION',
   ROSTER: 'ROSTER',
+  PHYSICIAN: 'PHYSICIAN',
+  ACCOUNT: 'ACCOUNT',
   API_KEY: 'API_KEY'
 } as const;
 

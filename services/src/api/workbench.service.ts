@@ -6,6 +6,9 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetStationsParams,
+  GetWorkbenchDevSummaryParams,
+  GetWorkbenchSummaryParams,
   Order,
   PagedResponse,
   PatientWorkbenchResponse,
@@ -13,11 +16,15 @@ import {
   ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
+  StationWorkbench,
+  SubmitDeliveryParams,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
+  WorkbenchDevSummary,
   WorkbenchExtended,
-  WorkbenchStatus
+  WorkbenchStatus,
+  WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -46,9 +53,18 @@ export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> =>
   }
 };
 
-export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
+export const getWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<WorkbenchExtended> => {
   try {
-    const response = await backendApi.get(`workbench/${workbenchId}`);
+    const response = await backendApi.get(`workbench/${workbenchId}`, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchComplete = async (workbenchId: string): Promise<WorkbenchExtended> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/complete`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -187,6 +203,21 @@ export const getAggregatedWorkbenches = async (
   }
 };
 
+export const getStationWorkbenches = async (
+  params?: GetStationsParams,
+  companyIds?: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getFilesFromWorkbenches = async (
   params: ActionMultipleWorkbenchIdsParams,
   companyIds?: string[]
@@ -248,6 +279,14 @@ export const generateWorkbenchOrderPdf = async (
   }
 };
 
+export const submitDelivery = async (workbenchId: string, body: SubmitDeliveryParams): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/delivery/submit`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 export const generateWorkbenchDeliveryReceiptPdf = async (
   workbenchId: string,
   body: GenerateWorkbenchPdfParams
@@ -304,13 +343,43 @@ export const statsForWorkbenches = async (
   }
 };
 
-export const generateWorkbenchForm = async (workbenchId: string, companyIds: string[]): Promise<Workbench> => {
+export const generateWorkbenchForm = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
   try {
     const response = await backendApi.post(
       `workbench/${workbenchId}/generate-pdf`,
       {},
       { headers: addHeaders(companyIds) }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchSummary = async (
+  params?: GetWorkbenchSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchDevSummary = async (
+  params?: GetWorkbenchDevSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchDevSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/dev-summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

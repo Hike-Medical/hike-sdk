@@ -1,14 +1,15 @@
 'use client';
 
-import { toErrorMessage } from '@hike/sdk';
+import { toErrorMessage, validatePassword } from '@hike/sdk';
 import { useResetPassword } from '@hike/ui';
-import { Button, Center, Checkbox, Paper, PasswordInput, Stack, Text } from '@mantine/core';
-import { isNotEmpty, matchesField, useForm } from '@mantine/form';
+import { Button, Center, Paper, PasswordInput, Stack, Text } from '@mantine/core';
+import { matchesField, useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
 import { use, useEffect, useState } from 'react';
 import { SubmitButton } from '../SubmitButton';
+import { PasswordCriteria } from './PasswordCriteria';
 import { TokenInvalid } from './TokenInvalid';
 
 export interface ResetPasswordProps {
@@ -32,7 +33,7 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
       confirmPassword: ''
     },
     validate: {
-      password: isNotEmpty(tShared('fields.passwordRequired')),
+      password: validatePassword,
       confirmPassword: matchesField('password', tShared('fields.passwordMismatch'))
     }
   });
@@ -96,47 +97,20 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
               <PasswordInput
                 {...form.getInputProps('password')}
                 label={tShared('fields.newPassword')}
-                type="password"
                 placeholder={tShared('fields.newPasswordPlaceholder')}
+                type="password"
                 autoComplete="new-password"
                 required
               />
               <PasswordInput
                 {...form.getInputProps('confirmPassword')}
                 label={tShared('fields.confirmPassword')}
-                type="password"
                 placeholder={tShared('fields.confirmPasswordPlaceholder')}
+                type="password"
                 autoComplete="new-password"
                 required
               />
-              <Stack pl="sm" pr="xl">
-                <Text fs="italic" c="hike-dimmed.8">
-                  {t('criteria.description')}
-                </Text>
-                <Stack gap="md" fs="italic">
-                  <Checkbox
-                    label={t('criteria.length')}
-                    checked={form.values.password.length >= 8}
-                    size="xs"
-                    radius="xl"
-                    readOnly
-                  />
-                  <Checkbox
-                    label={t('criteria.number')}
-                    checked={/\d/.test(form.values.password)}
-                    size="xs"
-                    radius="xl"
-                    readOnly
-                  />
-                  <Checkbox
-                    label={t('criteria.special')}
-                    checked={/[^A-Za-z0-9]/.test(form.values.password)}
-                    size="xs"
-                    radius="xl"
-                    readOnly
-                  />
-                </Stack>
-              </Stack>
+              <PasswordCriteria form={form} />
               <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />
             </Stack>
           </form>

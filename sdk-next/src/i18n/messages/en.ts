@@ -83,7 +83,7 @@ export default {
       resetPassword: {
         title: 'Set a password for your account',
         criteria: {
-          description: 'Password must be at least 6 characters with at least 1 number and 1 special character (!%#)',
+          description: 'Password must be at least 8 characters with at least 1 number and 1 special character (!%#)',
           length: 'Contains at least 8 characters',
           number: 'Contains at least one number',
           special: 'Contains at least one special character ( !@#$&% )'
@@ -106,11 +106,20 @@ export default {
           couldNotSend: 'Failed to send OTP. Please try again.'
         }
       },
+      tokenRefresher: {
+        title: 'Session expiring soon',
+        message: 'You will be logged out in less than {minutes} minutes unless you become active.'
+      },
       tokenInvalid: {
         title: 'The token is invalid or has expired.',
         description: 'Please request a new login link.',
         actionButton: 'Go to Login'
       }
+    },
+    companyDisabled: {
+      title: 'Company Disabled',
+      description:
+        'This company has been disabled. If you think this is a mistake, contact our support line for further assistance.'
     }
   },
   components: {

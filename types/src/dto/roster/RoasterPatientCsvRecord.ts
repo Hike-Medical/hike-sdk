@@ -2,13 +2,15 @@
  * Represents a CSV record for an roster import.
  */
 export interface RoasterPatientCsvRecord {
-  'Employee ID'?: string | null;
+  'Patient ID': string;
   'Full Name'?: string | null;
   'First Name'?: string | null;
   'Middle Name'?: string | null;
   'Last Name'?: string | null;
   Gender?: string | null;
   DOB?: string | null;
+  Height?: string | null;
+  Weight?: string | null;
   'Email Address'?: string | null;
   'Phone Number'?: string | null;
   'Address 1'?: string | null;
@@ -19,6 +21,8 @@ export interface RoasterPatientCsvRecord {
   'City State Zip'?: string | null;
   Country?: string | null;
   'Job Title'?: string | null;
+  'PCP Physician'?: string | null;
+  'PCP Physician NPI'?: string | null;
   Department?: string | null;
   Facility?: string | null;
   'Facility Address 1'?: string | null;

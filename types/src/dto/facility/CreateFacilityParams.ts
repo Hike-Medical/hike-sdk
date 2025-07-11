@@ -1,4 +1,4 @@
-import { Carrier, FacilityType } from '../../../prisma';
+import { FacilityType } from '../../../prisma';
 
 export interface CreateFacilityParams {
   name: string;
@@ -9,8 +9,6 @@ export interface CreateFacilityParams {
   stateOrProvince: string;
   postalCode: string;
   country?: string;
-  shippingAccountId?: string;
-  shippingAccountCarrier?: Carrier;
   phoneNumber?: string;
   parentId?: string;
 }

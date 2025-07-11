@@ -11,5 +11,5 @@ export interface GeneratePackingSlip {
 interface TrackingOrders {
   poNumber: string;
   patientName: string;
-  clinicianName: string;
+  additionalInfo?: { label: string; value: string };
 }
