@@ -183,6 +183,8 @@ export * from './dto/user/GetUsersParams';
 export * from './dto/user/UpdateUserParams';
 export * from './dto/user/UpdateUserPasswordParams';
 export * from './dto/user/UpsertPermissionsParams';
+export * from './dto/vendor/orthofeet/GetOrthofeetInventoryParams';
+export * from './dto/vendor/orthofeet/GetOrthofeetInventoryResponse';
 export * from './dto/webhook/SftpFileUploadParams';
 export * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export * from './dto/workbench/CustomizationResponse';
