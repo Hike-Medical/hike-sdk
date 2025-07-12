@@ -4,7 +4,7 @@ import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseOrthofeetInventoryOptions
   extends Omit<UseQueryOptions<GetOrthofeetInventoryResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
-  partNumber: string;
+  partNumber: string | string[];
   queryKey?: QueryKey;
 }
 
