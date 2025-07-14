@@ -9,4 +9,6 @@ export interface PdfContent {
   height?: number;
   border?: boolean;
   pageBreak?: boolean;
+  style?: 'bold' | 'italic' | 'underline' | 'strikethrough';
+  color?: string;
 }

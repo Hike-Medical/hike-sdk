@@ -211,6 +211,7 @@ export * from './hooks/users/useUpdateUserPassword';
 export * from './hooks/users/useUpsertUserPermissions';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
+export * from './hooks/vendor/useOrthofeetInventory';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useContinueWorkbench';

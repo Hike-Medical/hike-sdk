@@ -14,6 +14,7 @@ import type {
   NotificationMessage,
   NotificationStats,
   PagedResponse,
+  PresignedFile,
   SendTestParams,
   UpdateNotificationMessageParams
 } from '@hike/types';
@@ -141,6 +142,15 @@ export const fetchNotificationEnrollPatients = async (
 ): Promise<CompanyPatientExtended[]> => {
   const response = await backendApi.get(`notification/${notificationId}/enroll/patient/${limit}`, { params });
   return response.data;
+};
+
+export const fetchNotificationContent = async (historyId: string): Promise<PresignedFile> => {
+  try {
+    const response = await backendApi.get(`notification/content/${historyId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
 export const activateNotification = async (notificationId: string): Promise<void> => {
@@ -274,15 +284,6 @@ export const sendNotificationTest = async (messageId: string, params: SendTestPa
 export const deleteNotification = async (notificationId: string): Promise<void> => {
   try {
     await backendApi.delete(`notification/${notificationId}`);
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const fetchNotificationContent = async (historyId: string): Promise<string> => {
-  try {
-    const response = await backendApi.get(`notification/content/${historyId}`);
-    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
