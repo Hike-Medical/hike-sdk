@@ -30,6 +30,7 @@ export interface CompanyPreferences {
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
+    excludeShoeVendorExport?: boolean;
   };
   noAuthNeeded?: boolean;
   blockAll?: boolean;

@@ -5,7 +5,7 @@ import { TransformedContact } from '../contact/TransformedContact';
  * Represents a transformed record from an uploaded report.
  */
 export interface TransformedEvaluation {
-  externalPatientId: string;
+  externalPatientId?: string | null;
   firstName: string;
   middleName?: string | null;
   lastName: string;
