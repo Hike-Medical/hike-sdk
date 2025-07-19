@@ -288,3 +288,15 @@ export const deleteNotification = async (notificationId: string): Promise<void> 
     throw toHikeError(error);
   }
 };
+
+export const updateNotification = async (
+  notificationId: string,
+  params: Partial<CreateNotificationParams>
+): Promise<Notification> => {
+  try {
+    const response = await backendApi.patch(`notification/${notificationId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
