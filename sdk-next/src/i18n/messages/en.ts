@@ -106,6 +106,10 @@ export default {
           couldNotSend: 'Failed to send OTP. Please try again.'
         }
       },
+      tokenRefresher: {
+        title: 'Session expiring soon',
+        message: 'You will be logged out in less than {minutes} minutes unless you become active.'
+      },
       tokenInvalid: {
         title: 'The token is invalid or has expired.',
         description: 'Please request a new login link.',
@@ -113,8 +117,9 @@ export default {
       }
     },
     companyDisabled: {
-      title: "Company Disabled",
-      description: "This company has been disabled. If you think this is a mistake, contact our support line for further assistance."
+      title: 'Company Disabled',
+      description:
+        'This company has been disabled. If you think this is a mistake, contact our support line for further assistance.'
     }
   },
   components: {

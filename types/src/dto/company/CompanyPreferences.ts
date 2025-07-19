@@ -1,6 +1,6 @@
 import { NotificationType, ProductType } from '../../../prisma';
-import { ImportAppointmentsParams } from '../appointment/ImportAppointmentsParams';
-import { ImportRosterParams } from '../roster/ImportRosterParams';
+import { AppointmentCsvRecord } from '../appointment/AppointmentCsvRecord';
+import { RoasterPatientCsvRecord } from '../roster/RoasterPatientCsvRecord';
 import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
 import { CompanyPortal } from './CompanyPortal';
@@ -30,13 +30,19 @@ export interface CompanyPreferences {
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
+    excludeShoeVendorExport?: boolean;
   };
   noAuthNeeded?: boolean;
   blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
-  roster?: Pick<ImportRosterParams, 'columnMapping'>;
-  appointments?: Pick<ImportAppointmentsParams, 'columnMapping' | 'timeZone'>;
+  roster?: {
+    columnMapping: Partial<Record<keyof RoasterPatientCsvRecord, string[]>>;
+  };
+  appointments?: {
+    columnMapping: Partial<Record<keyof AppointmentCsvRecord, string[]>>;
+    timeZone?: string;
+  };
   rushAll?: boolean;
   hideInEnrollList?: boolean;
   productType?: ProductType;
@@ -44,9 +50,11 @@ export interface CompanyPreferences {
     removeRemake?: boolean;
     removeReorder?: boolean;
     assignPONumber?: boolean;
+    allowCancelIncomplete?: boolean;
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
     showDirectedTips?: boolean;
+    globalSearchAssignedOnly?: boolean;
   };
   webhook?: {
     url: string;

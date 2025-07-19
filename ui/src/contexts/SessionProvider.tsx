@@ -1,7 +1,7 @@
 'use client';
 
 import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
-import type { AuthStatus, AuthUser } from '@hike/types';
+import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
 interface Tokens {
@@ -13,7 +13,7 @@ interface SessionState {
   user: AuthUser | null;
   status: AuthStatus;
   accessToken: string | null;
-  update: (newTokens?: Tokens | null) => Promise<void>;
+  update: (newTokens?: Tokens | null) => Promise<AuthSession | null>;
   logout: () => Promise<void>;
 }
 
@@ -28,7 +28,7 @@ export const SessionProvider = ({
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
 
-  const update = async (newTokens?: Tokens | null) => {
+  const update = async (newTokens?: Tokens | null): Promise<AuthSession | null> => {
     try {
       setStatus('LOADING');
       const latest = newTokens ?? tokens ?? null;
@@ -39,8 +39,10 @@ export const SessionProvider = ({
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
+      return value;
     } catch {
       await logout();
+      return null;
     }
   };
 
