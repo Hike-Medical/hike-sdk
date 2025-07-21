@@ -150,6 +150,7 @@ export * from './hooks/notification/useGetNotificationStatsByPatient';
 export * from './hooks/notification/useSendNotificationTest';
 export * from './hooks/notification/useToggleNotification';
 export * from './hooks/notification/useUpdateNotificationMessage';
+export * from './hooks/notification/useUpdateNotification';
 export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';
