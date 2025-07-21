@@ -5,7 +5,7 @@ export const GetFilteredEvaluationsFilter = [
   'poNumber',
   'type',
   'deviceType.name',
-  'patient.id',
+  'patient.externalId',
   'patient.firstName',
   'patient.lastName',
   'clinicians.name',
