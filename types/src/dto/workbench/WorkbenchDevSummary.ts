@@ -13,6 +13,7 @@ export interface WorkbenchDevSummary {
   taikaDevId: string | null;
   taikaId: string | null;
   authorizationUpdatedAt: Date | null;
+  rushedAt?: Date | null;
   clinicianName: string | null;
   orderPdfUrlExists: boolean;
   evaluationPdfUrlExists: boolean;
