@@ -161,6 +161,19 @@ export const failWorkbench = async (workbenchId: string, companyIds?: string[]):
   }
 };
 
+export const reconcileRemake = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/reconcile-remake`,
+      {},
+      { headers: addHeaders(companyIds) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const rushWorkbench = async (workbenchId: string): Promise<Asset[]> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/rush`);
