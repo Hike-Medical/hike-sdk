@@ -1,14 +1,12 @@
 import type { HikeConfig } from '@hike/types';
-import { apiUrl, appUrl } from './utils/appUtils';
+import { generateBaseUrls } from '@hike/utils';
 import { backendApi } from './utils/backendApi';
 
 /**
  * Provisions the services module.
  */
 export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey' | 'cookies'> => {
-  const baseAppUrl = config.appId && config.appEnv ? appUrl(config.appId, config.appEnv) : null;
-  const baseApiUrl = config.apiUrl || (config.appId && config.appEnv ? apiUrl(config.appId, config.appEnv) : null);
-  const versionedApiUrl = baseApiUrl && `${baseApiUrl}/v2`;
+  const { baseAppUrl, baseApiUrl } = generateBaseUrls(config);
 
   backendApi.defaults.headers.common['x-api-key'] ??= config.apiKey;
   backendApi.defaults.headers.common['x-app-url'] ??= baseAppUrl;
@@ -19,8 +17,8 @@ export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey'
   backendApi.defaults.headers.common['x-time-zone'] = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   // Set the base URL for backend API requests
-  if (versionedApiUrl && versionedApiUrl !== backendApi.defaults.baseURL) {
-    backendApi.defaults.baseURL = versionedApiUrl;
+  if (baseApiUrl !== backendApi.defaults.baseURL) {
+    backendApi.defaults.baseURL = baseApiUrl;
   }
 
   // Set the cookie for server-side requests

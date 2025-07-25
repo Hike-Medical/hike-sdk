@@ -1,8 +1,10 @@
 {
-  "extends": "../../../tsconfig",
+  "extends": "../config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "declaration": true,
     "declarationMap": true,
@@ -10,5 +12,6 @@
     "removeComments": false,
     "jsx": "preserve"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist", "eslint.config.mjs"]
 }

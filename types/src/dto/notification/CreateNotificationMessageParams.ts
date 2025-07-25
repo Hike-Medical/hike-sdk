@@ -1,4 +1,4 @@
-import { CommunicationChannel } from '../../../prisma/index';
+import { CommunicationChannel } from '../../../prisma';
 
 export interface CreateNotificationMessageParams {
   notificationId: string;

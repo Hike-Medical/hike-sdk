@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig",
+  "extends": "../config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",
@@ -9,5 +9,6 @@
     "sourceMap": true,
     "removeComments": false
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist", "eslint.config.mjs"]
 }

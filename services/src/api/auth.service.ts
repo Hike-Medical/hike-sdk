@@ -1,24 +1,25 @@
 import type {
+  AcceptInvitationCompanyParams,
+  AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
   AuthSession,
+  SafeCompany,
   SendOtpParams,
   UserExtended,
   VerifyInvitationResponse
 } from '@hike/types';
 import {
   AccountRecoveryParams,
-  InviteUserParams,
   PasswordResetParams,
+  SignInParams,
   SignInWithPinBody,
-  SignInWithTokenParams
+  SignInWithTokenParams,
+  SignUpClinicianParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const signIn = async (
-  credentials: { email: string; password: string },
-  excludeCookie?: boolean
-): Promise<AuthSession | null> => {
+export const signIn = async ({ credentials, excludeCookie }: SignInParams): Promise<AuthSession | null> => {
   try {
     const queryString = excludeCookie === true ? '?exclude-cookie=true' : '';
     const response = await backendApi.post(`auth/login${queryString}`, credentials);
@@ -29,29 +30,53 @@ export const signIn = async (
 };
 
 export const signInWithToken = async (credentials: SignInWithTokenParams): Promise<AuthSession> => {
-  const response = await backendApi.post('auth/magic-link', credentials);
-  return response.data;
+  try {
+    const response = await backendApi.post('auth/magic-link', credentials);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
-export const signInWithPin = async (credentials: SignInWithPinBody): Promise<AuthSession> => {
-  const response = await backendApi.post('auth/pin', credentials);
-  return response.data;
+export const signInWithPin = async (credentials: SignInWithPinBody): Promise<{ accessToken: string }> => {
+  try {
+    const response = await backendApi.post('auth/pin', credentials);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
-export const signUp = async (credentials: { name: string; email: string; password: string; companyId: string }) => {
-  const response = await backendApi.post('auth/signup', credentials, {
-    headers: { 'x-company-id': credentials.companyId }
-  });
-  return response.data;
+export const signInWith2fa = async (code: string): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/2fa', { code });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
 
-export const sendSignInOtp = async (params: SendOtpParams) => {
+export const signUpClinician = async (data: SignUpClinicianParams): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/signup/clinician', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendOtp = async (params: SendOtpParams): Promise<void> => {
   try {
     const response = await backendApi.post('auth/account/otp', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const getIsCompanyVoluntary = async (): Promise<boolean> => {
+  const response = await backendApi.get(`auth/company/is-voluntary`);
+  return response.data;
 };
 
 export const refreshToken = async (token?: string, excludeCookie?: boolean): Promise<AuthSession> => {
@@ -67,15 +92,6 @@ export const refreshToken = async (token?: string, excludeCookie?: boolean): Pro
 export const logout = async (): Promise<void> => {
   try {
     const response = await backendApi.post('auth/logout');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const inviteUserEmail = async (params: InviteUserParams): Promise<boolean> => {
-  try {
-    const response = await backendApi.post('auth/invite', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -129,4 +145,20 @@ export const acceptInvitation = async (params: AcceptInvitationParams): Promise<
   } catch (error) {
     throw toHikeError(error);
   }
+};
+
+export const acceptInvitationCompany = async (
+  params: AcceptInvitationCompanyParams
+): Promise<AcceptInvitationCompanyResponse> => {
+  try {
+    const response = await backendApi.post('auth/invitation/company', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
+  const response = await backendApi.get('auth/session/companies');
+  return response.data;
 };

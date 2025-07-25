@@ -21,4 +21,7 @@ export interface PatientWorkbenchResponse {
   leftMeasurements: InsoleSideMeasurements | null;
   rightMeasurements: InsoleSideMeasurements | null;
   evaluationId: string;
+  orderFormPdfUrl?: string;
+  patientFormPdfUrl?: string;
+  deliveryReceiptPdfUrl?: string;
 }

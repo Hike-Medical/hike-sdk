@@ -8,4 +8,5 @@ export interface GetLabelsResponse {
     pdfLink: string;
     packages: string[];
   }[];
+  billToShippingCompany?: boolean;
 }

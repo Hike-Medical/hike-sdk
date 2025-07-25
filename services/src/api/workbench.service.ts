@@ -6,6 +6,9 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetStationsParams,
+  GetWorkbenchDevSummaryParams,
+  GetWorkbenchSummaryParams,
   Order,
   PagedResponse,
   PatientWorkbenchResponse,
@@ -13,14 +16,18 @@ import {
   ResetWorkbenchParams,
   SearchWorkbenchParams,
   ShippingLabel,
+  StationWorkbench,
+  SubmitDeliveryParams,
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
+  WorkbenchDevSummary,
   WorkbenchExtended,
-  WorkbenchStatus
+  WorkbenchStatus,
+  WorkbenchSummary
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export type FootWithAssets = Foot & { assets: Asset[] };
@@ -46,16 +53,25 @@ export const getFeet = async (workbenchId: string): Promise<FootWithAssets[]> =>
   }
 };
 
-export const getWorkbench = async (workbenchId: string): Promise<WorkbenchExtended> => {
+export const getWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<WorkbenchExtended> => {
   try {
-    const response = await backendApi.get(`workbench/${workbenchId}`);
+    const response = await backendApi.get(`workbench/${workbenchId}`, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const submitOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
+export const getWorkbenchComplete = async (workbenchId: string): Promise<WorkbenchExtended> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/complete`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const submitClinicalOrder = async (workbenchId: string, body: SubmitOrderParams): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/clinical/submit`, body);
     return response.data;
@@ -67,6 +83,15 @@ export const submitOrder = async (workbenchId: string, body: SubmitOrderParams):
 export const submitConsumerOrder = async (workbenchId: string): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const submitSimplrOrder = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/simplr/submit`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -118,18 +143,31 @@ export const patientWorkbenchInformation = async (patientId: string): Promise<(P
   }
 };
 
-export const processWorkbench = async (workbenchId: string): Promise<Workbench & { orders: Order[] }> => {
+export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/process`);
+    const response = await backendApi.post(`workbench/${workbenchId}/approve`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> => {
+export const failWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/approve`);
+    const response = await backendApi.post(`workbench/${workbenchId}/fail`, {}, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const reconcileRemake = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/reconcile-remake`,
+      {},
+      { headers: addHeaders(companyIds) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -181,6 +219,21 @@ export const getAggregatedWorkbenches = async (
 ): Promise<PagedResponse<FlattenedWorkbench[]>> => {
   try {
     const response = await backendApi.get('workbench/aggregate', { params, headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getStationWorkbenches = async (
+  params?: GetStationsParams,
+  companyIds?: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -248,6 +301,14 @@ export const generateWorkbenchOrderPdf = async (
   }
 };
 
+export const submitDelivery = async (workbenchId: string, body: SubmitDeliveryParams): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/delivery/submit`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 export const generateWorkbenchDeliveryReceiptPdf = async (
   workbenchId: string,
   body: GenerateWorkbenchPdfParams
@@ -260,9 +321,14 @@ export const generateWorkbenchDeliveryReceiptPdf = async (
   }
 };
 
-export const uploadFiles = async (workbenchId: string, formData: FormData): Promise<{ key: string; url: string }[]> => {
+export const uploadFiles = async (
+  workbenchId: string,
+  formData: FormData,
+  { retainName }: { retainName?: boolean } = {}
+): Promise<{ key: string; url: string }[]> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/upload`, formData, {
+    const queryParams = retainName != null ? `?retainName=${retainName}` : '';
+    const response = await backendApi.post(`workbench/${workbenchId}/upload${queryParams}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 
@@ -293,6 +359,49 @@ export const statsForWorkbenches = async (
 ): Promise<{ status: WorkbenchStatus; count: number }[]> => {
   try {
     const response = await backendApi.get('workbench/stats', { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateWorkbenchForm = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/generate-pdf`,
+      {},
+      { headers: addHeaders(companyIds) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchSummary = async (
+  params?: GetWorkbenchSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchDevSummary = async (
+  params?: GetWorkbenchDevSummaryParams,
+  companyIds?: string[]
+): Promise<PagedResponse<WorkbenchDevSummary[]>> => {
+  try {
+    const response = await backendApi.get('workbench/dev-summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

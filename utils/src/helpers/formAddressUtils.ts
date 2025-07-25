@@ -1,5 +1,4 @@
-import { ContactAddress } from '@hike/types';
-import { isEmpty } from './isEmpty';
+import { ContactAddress, isEmpty } from '@hike/types';
 
 /**
  * Validates if all required address fields for a given type are non-empty strings.
@@ -26,7 +25,7 @@ export const fromAddressField = (name: string, state: Record<string, unknown>): 
  * Extracts and formats address components from Google Places into a structured `ContactAddress` object.
  */
 export const fromGoogleAddress = (
-  addressComponents: Array<{ long_name: string; short_name: string; types: string[] }>
+  addressComponents: { long_name: string; short_name: string; types: string[] }[]
 ): ContactAddress => {
   const address: ContactAddress = {
     addressLine1: '',

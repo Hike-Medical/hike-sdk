@@ -6,13 +6,14 @@ import type {
   EvaluationsStats,
   GetEvaluationsByPatientParams,
   GetEvaluationsParams,
+  GetFilteredEvaluationsParams,
   PagedResponse,
   SearchEvaluationsParams,
   StartEvaluationByProductParams,
   UpdateEvaluationParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createEvaluation = async (params: CreateEvaluationParams): Promise<EvaluationExtended> => {
@@ -77,7 +78,11 @@ export const cancelEvaluation = async (params: ActionEvaluationParams): Promise<
 
 export const editEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.post(`evaluation/${params.evaluationId}/edit`);
+    const response = await backendApi.post(
+      `evaluation/${params.evaluationId}/edit`,
+      {},
+      { headers: addHeaders(params.companyIds) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -86,7 +91,11 @@ export const editEvaluation = async (params: ActionEvaluationParams): Promise<Ev
 
 export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.post(`evaluation/${params.evaluationId}/remake`);
+    const response = await backendApi.post(
+      `evaluation/${params.evaluationId}/remake`,
+      {},
+      { headers: addHeaders(params.companyIds) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -95,22 +104,23 @@ export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<
 
 export const reorderEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.post(`evaluation/${params.evaluationId}/reorder`);
+    const response = await backendApi.post(
+      `evaluation/${params.evaluationId}/reorder`,
+      {},
+      { headers: addHeaders(params.companyIds) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const adjustmentEvaluation = async (
-  params: ActionEvaluationParams,
-  companyIds?: string[]
-): Promise<EvaluationExtended> => {
+export const adjustmentEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post(
       `evaluation/${params.evaluationId}/adjustment`,
       { notes: params.notes },
-      { headers: addHeaders(companyIds) }
+      { headers: addHeaders(params.companyIds) }
     );
     return response.data;
   } catch (error) {
@@ -162,6 +172,17 @@ export const searchEvaluations = async (
 ): Promise<PagedResponse<EvaluationExtended[]>> => {
   try {
     const response = await backendApi.get('evaluation/search', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findFilteredEvaluations = async (
+  params: GetFilteredEvaluationsParams
+): Promise<PagedResponse<EvaluationExtended[]>> => {
+  try {
+    const response = await backendApi.get('evaluation/filtered', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

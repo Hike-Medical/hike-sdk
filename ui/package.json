@@ -1,5 +1,6 @@
 {
   "name": "@hike/ui",
+  "private": true,
   "version": "1.0.0",
   "description": "Hike SDK enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
   "keywords": [
@@ -28,8 +29,8 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
-    "lint": "eslint .",
-    "format": "prettier --check . --ignore-path ../../../.gitignore",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format": "npx prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist",
     "dev:email": "email dev"
   },
@@ -37,16 +38,19 @@
     "@hike/services": "workspace:*",
     "@hike/types": "workspace:*",
     "@hike/utils": "workspace:*",
-    "@tabler/icons-react": "^2"
+    "@tanstack/react-query": "^5.74.4"
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^19",
+    "react-dom": "^19",
+    "axios": "^1"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "react": "^18",
-    "react-dom": "^18"
+    "@hike/config": "workspace:*",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.26.0",
+    "react": "^19",
+    "react-dom": "^19"
   }
 }

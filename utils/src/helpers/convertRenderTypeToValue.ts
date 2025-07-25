@@ -8,6 +8,4 @@ export const RenderTypeDescriptions: Record<number, string> = {
   0: 'Both'
 };
 
-export const getRenderTypeDescription = (value: RenderType): string | undefined => {
-  return RenderTypeDescriptions[value];
-};
+export const getRenderTypeDescription = (value: RenderType): string | undefined => RenderTypeDescriptions[value];

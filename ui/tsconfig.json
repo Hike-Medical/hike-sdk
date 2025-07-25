@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig",
+  "extends": "../config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist",
@@ -10,5 +10,6 @@
     "removeComments": false,
     "jsx": "preserve"
   },
-  "include": ["./src", "emails"]
+  "include": ["./src", "emails"],
+  "exclude": ["node_modules", "dist", "eslint.config.mjs"]
 }

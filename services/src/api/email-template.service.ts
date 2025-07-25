@@ -4,7 +4,7 @@ import type {
   SendEmailTemplateParams,
   UpsertEmailTemplateParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const fetchEmailTemplates = async (): Promise<EmailTemplateExtended[]> => {

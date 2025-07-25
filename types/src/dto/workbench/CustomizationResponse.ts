@@ -1,4 +1,4 @@
-import { RenderType } from '../../dto/manufacturing/RenderType';
+import { RenderType } from '../manufacturing/RenderType';
 
 export interface CustomizationResponse {
   orderReference?: string;

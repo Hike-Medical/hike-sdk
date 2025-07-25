@@ -12,8 +12,9 @@ import type {
   UpsertContactParams
 } from '@hike/types';
 import { PatientExtended } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
+import { findCompanyBySlug } from './company.service';
 
 export const createPatient = async (params: CreatePatientParams): Promise<PatientExtended> => {
   try {
@@ -33,7 +34,18 @@ export const findPatientById = async (patientId: string): Promise<PatientExtende
   }
 };
 
-export const findCurrentPatient = async (companyId?: string): Promise<PatientUserResponse> => {
+export const findCurrentPatient = async (
+  params?: { companyId: string } | { slug: string }
+): Promise<PatientUserResponse> => {
+  // Handle cases where company not within context
+  let companyId = params && 'companyId' in params ? params.companyId : backendApi.defaults.headers['x-company-id'];
+
+  // Get company from provided slug if available
+  if (!companyId && params && 'slug' in params) {
+    const company = await findCompanyBySlug(params.slug);
+    companyId = company.id;
+  }
+
   try {
     const response = await backendApi.get(
       'patient/current',

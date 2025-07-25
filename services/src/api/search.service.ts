@@ -1,7 +1,8 @@
 import type { EvaluationExtended, GetSearchParams, PagedResponse, PatientExtended, SqlQueryParams } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
-export const searchEvaluations = async (
+
+export const globalSearch = async (
   params: GetSearchParams
 ): Promise<{ patients: PagedResponse<PatientExtended[]>; evaluations: PagedResponse<EvaluationExtended[]> }> => {
   try {

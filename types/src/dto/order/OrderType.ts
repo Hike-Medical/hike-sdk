@@ -1,1 +1,1 @@
-export type OrderType = 'authorized' | 'onHold' | 'ready';
+export type OrderType = 'authorized' | 'onHold' | 'ready' | 'completed';

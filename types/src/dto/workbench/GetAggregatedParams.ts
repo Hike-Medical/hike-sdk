@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus, OrderStatus } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, ProductType } from '../../../prisma';
 import { PagedParams } from '../PagedParams';
 
 export interface GetAggregatedParams extends PagedParams {
@@ -8,11 +8,12 @@ export interface GetAggregatedParams extends PagedParams {
   diabeticOnly?: boolean;
   submittedOnly?: boolean;
   includeSubmissions?: boolean;
+  workbenchSubmissionsFilter?: [string, string | string[]];
   prioritizeRushed?: boolean;
   authorizationStartDate?: string;
   authorizationEndDate?: string;
   searchQuery?: string;
-  productType?: string[];
+  productType?: ProductType[];
   companySlugs?: string[];
   orderAuthorizationStatus?: OrderAuthorizationStatus[];
   filter?: Partial<
@@ -32,4 +33,5 @@ export interface GetAggregatedParams extends PagedParams {
   >;
   nullFilter?: string[];
   notNullFilter?: string[];
+  facilityId?: string;
 }

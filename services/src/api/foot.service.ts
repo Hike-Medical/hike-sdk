@@ -1,5 +1,5 @@
 import { Foot, FootStatus, SetFootInactive, UpdateFootFromWorkbenchId } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const getClinicalFootStatus = async (footId: string): Promise<FootStatus> => {
@@ -11,7 +11,7 @@ export const getClinicalFootStatus = async (footId: string): Promise<FootStatus>
   }
 };
 
-export const setInactive = async (footId: string, body: SetFootInactive): Promise<Foot> => {
+export const setFootInactive = async (footId: string, body: SetFootInactive): Promise<Foot> => {
   try {
     const response = await backendApi.post(`foot/${footId}/inactive`, body);
     return response.data;
@@ -20,7 +20,7 @@ export const setInactive = async (footId: string, body: SetFootInactive): Promis
   }
 };
 
-export const setActive = async (footId: string): Promise<Foot> => {
+export const setFootActive = async (footId: string): Promise<Foot> => {
   try {
     const response = await backendApi.post(`foot/${footId}/active`);
     return response.data;

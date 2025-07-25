@@ -2,9 +2,10 @@ import type {
   GenerateAppointmentsUploadLinkParams,
   ImportAppointmentsParams,
   ImportAppointmentsResponse,
-  ImportPrescriptionsResponse
+  ParseAppointmentColumnsParams,
+  ParseAppointmentColumnsResponse
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const importAppointments = async (data: ImportAppointmentsParams): Promise<{ jobId?: string }> => {
@@ -16,14 +17,6 @@ export const importAppointments = async (data: ImportAppointmentsParams): Promis
   }
 };
 
-export const importPrescriptions = async (data: ImportAppointmentsParams): Promise<{ jobId?: string }> => {
-  try {
-    const response = await backendApi.post('appointment/import/prescriptions', data);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
 
 export const fetchAppointmentsImportStatus = async (
   jobId: string
@@ -36,22 +29,23 @@ export const fetchAppointmentsImportStatus = async (
   }
 };
 
-export const fetchPrescriptionsImportStatus = async (
-  jobId: string
-): Promise<{ progress: number; data?: ImportPrescriptionsResponse }> => {
-  try {
-    const response = await backendApi.get(`appointment/import/prescriptions/${jobId}`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
 
 export const generateAppointmentsUploadLink = async (
   data: GenerateAppointmentsUploadLinkParams
 ): Promise<{ key: string; presignedUrl: string }> => {
   try {
     const response = await backendApi.post('appointment/upload-link', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const parseAppointmentColumns = async (
+  data: ParseAppointmentColumnsParams
+): Promise<ParseAppointmentColumnsResponse> => {
+  try {
+    const response = await backendApi.post('appointment/columns', data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

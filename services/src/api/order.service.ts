@@ -12,7 +12,7 @@ import type {
   UpdateOrderParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const createOrder = async (params: CreateOrderParams, companyIds: string[]): Promise<Order> => {
@@ -57,6 +57,9 @@ export const fetchOrdersByType = async (
       break;
     case 'ready':
       route = 'ready';
+      break;
+    case 'completed':
+      route = 'completed';
       break;
     default:
       throw new Error('Invalid order type');
@@ -110,15 +113,6 @@ export const modifyOrderAuthorization = async ({
       { authorizationStatus },
       { headers: addHeaders(companyIds, { Authorization: jwtToken && `Bearer ${jwtToken}` }) }
     );
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const manuallyCompleteFabricatedDeviceOrder = async (orderId: string): Promise<OrderExtended> => {
-  try {
-    const response = await backendApi.post(`order/${orderId}/manually-complete-fabricated-device`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

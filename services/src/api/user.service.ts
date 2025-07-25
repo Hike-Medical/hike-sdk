@@ -1,15 +1,14 @@
 import {
-  AssignClinicianParams,
-  Clinician,
-  ClinicianExtended,
-  GetCliniciansParams,
+  CompanyPermission,
   GetUsersParams,
   PagedResponse,
   SafeUser,
   SafeUserExtended,
-  UpdateUserParams
+  UpdateUserParams,
+  UpdateUserPasswordParams,
+  UpsertPermissionsParams
 } from '@hike/types';
-import { toHikeError } from '../errors/HikeError';
+import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse<SafeUserExtended[]>> => {
@@ -32,35 +31,49 @@ export const fetchCurrentUser = async (): Promise<SafeUser> => {
 
 export const updateUser = async (params: UpdateUserParams): Promise<SafeUser> => {
   try {
-    const response = await backendApi.patch('user', params);
+    const response = await backendApi.patch('auth/user', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const fetchClinicians = async (params?: GetCliniciansParams): Promise<PagedResponse<ClinicianExtended[]>> => {
+export const updateUserPassword = async (params: UpdateUserPasswordParams): Promise<void> => {
   try {
-    const response = await backendApi.get('user/clinicians', { params });
+    const response = await backendApi.patch('auth/user/password', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const fetchClinician = async (): Promise<Clinician | null> => {
+export const activateUser = async (userId: string): Promise<void> => {
   try {
-    const response = await backendApi.get('user/clinician');
-    return response.data;
+    await backendApi.post(`user/${userId}/activate`);
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const assignClinician = async (params: AssignClinicianParams): Promise<Clinician> => {
+export const deactivateUser = async (userId: string): Promise<void> => {
   try {
-    const response = await backendApi.post('user/clinician', params);
-    return response.data;
+    await backendApi.post(`user/${userId}/deactivate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const upsertUserPermissions = async (userId: string, params: UpsertPermissionsParams): Promise<void> => {
+  try {
+    await backendApi.post(`user/permissions/${userId}`, params);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const removeUserPermissions = async (userId: string, permissions: CompanyPermission[]): Promise<void> => {
+  try {
+    await backendApi.delete(`user/permissions/${userId}`, { params: { permissions } });
   } catch (error) {
     throw toHikeError(error);
   }
