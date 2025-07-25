@@ -13,6 +13,8 @@ export interface GetAggregatedParams extends PagedParams {
   authorizationStartDate?: string;
   authorizationEndDate?: string;
   searchQuery?: string;
+  pastDue?: boolean;
+  deliveryWithin?: number;
   productType?: ProductType[];
   companySlugs?: string[];
   orderAuthorizationStatus?: OrderAuthorizationStatus[];
