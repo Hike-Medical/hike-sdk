@@ -34,6 +34,7 @@ export * from './api/printer.service';
 export * from './api/reward.service';
 export * from './api/roster.service';
 export * from './api/scan.service';
+export * from './api/schema.service';
 export * from './api/search.service';
 export * from './api/shipping.service';
 export * from './api/tag.service';
