@@ -7,6 +7,7 @@ export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
 export * from './dto/analytics/HourlyOptions';
 export * from './dto/analytics/OrdersByCompanies';
+export * from './dto/analytics/CompanyTurnaroundStats';
 export * from './dto/appointment/AppointmentCsvRecord';
 export * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
 export * from './dto/appointment/ImportAppointmentsParams';
