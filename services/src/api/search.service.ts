@@ -21,26 +21,3 @@ export const sqlSearchQuery = async (body: SqlQueryParams): Promise<unknown> => 
     throw toHikeError(error);
   }
 };
-
-export interface SchemaInfo {
-  fields: string[];
-  columnTypes: Record<string, string>;
-}
-
-export const getSchemaInfo = async (): Promise<SchemaInfo> => {
-  try {
-    const response = await backendApi.get(`search/schema/flattened-workbench`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getEnumValues = async (): Promise<Record<string, string[]>> => {
-  try {
-    const response = await backendApi.get('search/enum-values');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
