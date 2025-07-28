@@ -54,3 +54,23 @@ export const getOrdersByCompanies = async (body: DateFilter, companyIds: string[
     throw toHikeError(error);
   }
 };
+
+export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: string[]) => {
+  try {
+    const response = await backendApi.post(
+      'analytics/orders/turnaround',
+      {
+        ...body,
+        startDate: body.startDate,
+        endDate: body.endDate
+      },
+      {
+        headers: addHeaders(companyIds)
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
