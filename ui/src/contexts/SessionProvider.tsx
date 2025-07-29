@@ -2,6 +2,7 @@
 
 import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
 import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
+import { useQueryClient } from '@tanstack/react-query';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
 interface Tokens {
@@ -27,6 +28,7 @@ export const SessionProvider = ({
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
+  const queryClient = useQueryClient();
 
   const update = async (newTokens?: Tokens | null): Promise<AuthSession | null> => {
     try {
@@ -52,6 +54,7 @@ export const SessionProvider = ({
     setStatus('UNAUTHENTICATED');
     setTokens(null);
     await backendLogout();
+    queryClient.clear();
   };
 
   useEffect(() => {
