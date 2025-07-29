@@ -1,5 +1,6 @@
 import { AppId } from './AppId';
 import { HikeEnvironment } from './HikeEnvironment';
+import { type AuthSession } from '../auth/AuthSession';
 
 /**
  * Represents the configuration options for the Hike SDK.
@@ -41,4 +42,14 @@ export interface HikeConfig {
    * The cookies to attach to each request.
    */
   readonly cookies?: string;
+
+  /**
+   * The callback to get the tokens.
+   */
+  readonly getTokens?: () => { accessToken: string; refreshToken: string } | null;
+
+  /**
+   * The callback to set the tokens.
+   */
+  readonly setTokens?: (session: AuthSession) => Promise<void>;
 }

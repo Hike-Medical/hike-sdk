@@ -1,7 +1,7 @@
 import type { HikeConfig } from '@hike/types';
 import { generateBaseUrls } from '@hike/utils';
 import { backendApi } from './utils/backendApi';
-
+import { refreshToken } from './api/auth.service';
 /**
  * Provisions the services module.
  */
@@ -30,6 +30,36 @@ export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey'
         return newConfig;
       },
       (error) => Promise.reject(error)
+    );
+  }
+
+  // Set refresh logic for mobile app
+  if (config.getTokens) {
+    backendApi.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        if (error.response.status === 401) {
+          const tokens = config?.getTokens?.();
+
+          if (!tokens?.refreshToken) {
+            return Promise.reject(error);
+          }
+
+          const authSession = await refreshToken(tokens.refreshToken);
+
+          if (authSession) {
+            configureAuthorization(authSession.tokens.accessToken);
+            config?.setTokens?.(authSession);
+
+            // Retry the original request with new token
+            if (error.config) {
+              error.config.headers['Authorization'] = `Bearer ${authSession.tokens.accessToken}`;
+              return backendApi.request(error.config);
+            }
+          }
+        }
+        return Promise.reject(error);
+      }
     );
   }
 
