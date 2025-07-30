@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@hike/config": "workspace:*",
+    "@prisma/client": "^6.13.0",
     "eslint": "^9.26.0"
   }
 }
