@@ -1,4 +1,4 @@
-import { ProductType } from '../../../prisma';
+import { OrderStatus, ProductType } from '../../../prisma';
 import { PagedParams } from '../PagedParams';
 
 export interface GetPrintFarmWorkbenchParams extends PagedParams {
@@ -11,5 +11,6 @@ export interface GetPrintFarmWorkbenchParams extends PagedParams {
   productType?: ProductType[];
   companySlugs?: string[];
   orderAuthorizationStatus?: string[];
+  orderStatus?: OrderStatus[];
   devValidationStatus?: boolean | null;
 }

@@ -3,7 +3,8 @@ import { ProductType, WorkbenchStatus } from '../../../prisma';
 export interface PrintFarmWorkbench {
   workbenchId: string;
   externalId: string | null;
-  diabetic: boolean;
+  isDiabetic: boolean;
+  isReprint: boolean;
   authorizationUpdatedAt: Date | null;
   patientFirstName: string;
   patientLastName: string;
@@ -16,8 +17,10 @@ export interface PrintFarmWorkbench {
   status: WorkbenchStatus;
   orderAuthorizationStatus: string;
   committedDeliveryAt: Date | null;
+  orderCreatedAt: Date | null;
   orderPdfUrlExists: boolean;
-  quantity: string;
+  clinicianName: string | null;
+  orderQuantity: string;
   orderShoeWidth: string;
   orderShoeSize: string;
   orderGender: string;
