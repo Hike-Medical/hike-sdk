@@ -54,6 +54,7 @@ export interface CompanyPreferences {
     flowType?: ClinicalFlowType | null;
     showDirectedTips?: boolean;
     globalSearchAssignedOnly?: boolean;
+    canModifyFlowTypeOnWorkbench?: boolean;
   };
   webhook?: {
     url: string;
