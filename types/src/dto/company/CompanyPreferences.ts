@@ -49,6 +49,7 @@ export interface CompanyPreferences {
   clinicalCustomization?: {
     removeRemake?: boolean;
     removeReorder?: boolean;
+    removeDuplicate?: boolean;
     assignPONumber?: boolean;
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
