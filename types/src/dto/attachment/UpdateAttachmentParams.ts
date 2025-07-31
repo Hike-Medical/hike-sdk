@@ -1,8 +1,7 @@
-import { JsonValue } from '@prisma/client/runtime/library';
-import { EvaluationAttachmentStatus } from '../../../prisma';
+import { EvaluationAttachmentStatus, Prisma } from '../../../prisma';
 
 export interface UpdateAttachmentParams {
   status: EvaluationAttachmentStatus;
-  metadata?: JsonValue;
+  metadata?: Prisma.JsonValue;
   companyId: string;
 }
