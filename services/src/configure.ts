@@ -1,7 +1,7 @@
-import type { HikeConfig, AuthSession } from '@hike/types';
+import type { AuthSession, HikeConfig } from '@hike/types';
 import { generateBaseUrls } from '@hike/utils';
-import { backendApi } from './utils/backendApi';
 import { refreshToken } from './api/auth.service';
+import { backendApi } from './utils/backendApi';
 
 /**
  * Provisions the services module.
@@ -88,32 +88,45 @@ export const ejectRequestInterceptor = (id: number) => backendApi.interceptors.r
  * @param tokens
  * @param setAuthSession - handler to set new auth session
  */
+let isRefreshing = false;
+
 export const configureRefreshToken = (
   tokens: AuthSession['tokens'] | null,
   setAuthSession: (session: AuthSession) => void
 ) => {
-  if (!tokens) {
-    return;
-  }
+  if (!tokens) return;
 
   backendApi.interceptors.response.use(
     (response) => response,
     async (error) => {
-      if (error.response.status !== 401 || !tokens?.refreshToken) {
+      const originalRequest = error.config;
+
+      const shouldRefresh =
+        error.response?.status === 401 && !originalRequest?.isRetryAttempt && tokens?.refreshToken && !isRefreshing;
+
+      if (!shouldRefresh) {
         return Promise.reject(error);
       }
 
-      const authSession = await refreshToken(tokens.refreshToken);
+      originalRequest.isRetryAttempt = true;
+      isRefreshing = true;
 
-      if (authSession) {
-        configureAuthorization(authSession.tokens.accessToken);
-        setAuthSession(authSession);
+      try {
+        const authSession = await refreshToken(tokens.refreshToken);
 
-        // Retry the original request with new token
-        if (error.config) {
-          error.config.headers['Authorization'] = `Bearer ${authSession.tokens.accessToken}`;
-          return backendApi.request(error.config);
+        if (authSession) {
+          configureAuthorization(authSession.tokens.accessToken);
+          setAuthSession(authSession);
+
+          // Retry the original request with new token
+          originalRequest.headers.Authorization = `Bearer ${authSession.tokens.accessToken}`;
+          return backendApi(originalRequest);
         }
+      } catch (refreshError) {
+        isRefreshing = false;
+        return Promise.reject(refreshError);
+      } finally {
+        isRefreshing = false;
       }
 
       return Promise.reject(error);
