@@ -3,6 +3,7 @@ export { CompanyContext } from './contexts/CompanyProviderClient';
 export * from './contexts/HikeProvider';
 export * from './contexts/InAppNotificationsProvider';
 export * from './contexts/SessionProvider';
+export * from './contexts/MobileSessionProvider';
 export * from './hooks/analytics/useGetCompanyTurnaroundStats';
 export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/analytics/useGetOrderStatusesHourly';

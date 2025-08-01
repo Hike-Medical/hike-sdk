@@ -1,9 +1,11 @@
 import { AuthUser } from './AuthUser';
 
+export type Tokens = {
+  accessToken: string;
+  refreshToken: string;
+};
+
 export interface AuthSession {
   user: AuthUser;
-  tokens: {
-    accessToken: string;
-    refreshToken: string;
-  };
+  tokens: Tokens;
 }

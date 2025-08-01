@@ -7,15 +7,10 @@ import {
   ejectRequestInterceptor,
   refreshToken
 } from '@hike/services';
-import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
+import type { AuthSession, AuthStatus, AuthUser, Tokens } from '@hike/types';
 import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react';
 
 const REFRESH_THRESHOLD = 3 * 60 * 1000; // 3 minutes before expiry
-
-interface Tokens {
-  accessToken: string;
-  refreshToken: string;
-}
 
 interface SessionState {
   user: AuthUser | null;

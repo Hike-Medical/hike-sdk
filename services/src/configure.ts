@@ -1,7 +1,8 @@
-import type { HikeConfig } from '@hike/types';
+import type { HikeConfig, AuthSession } from '@hike/types';
 import { generateBaseUrls } from '@hike/utils';
 import { backendApi } from './utils/backendApi';
 import { refreshToken } from './api/auth.service';
+
 /**
  * Provisions the services module.
  */
@@ -30,36 +31,6 @@ export const configureServices = (config: HikeConfig): Omit<HikeConfig, 'apiKey'
         return newConfig;
       },
       (error) => Promise.reject(error)
-    );
-  }
-
-  // Set refresh logic for mobile app
-  if (config.getTokens) {
-    backendApi.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        if (error.response.status === 401) {
-          const tokens = config?.getTokens?.();
-
-          if (!tokens?.refreshToken) {
-            return Promise.reject(error);
-          }
-
-          const authSession = await refreshToken(tokens.refreshToken);
-
-          if (authSession) {
-            configureAuthorization(authSession.tokens.accessToken);
-            config?.setTokens?.(authSession);
-
-            // Retry the original request with new token
-            if (error.config) {
-              error.config.headers['Authorization'] = `Bearer ${authSession.tokens.accessToken}`;
-              return backendApi.request(error.config);
-            }
-          }
-        }
-        return Promise.reject(error);
-      }
     );
   }
 
@@ -111,3 +82,41 @@ export const addRequestInterceptor = (handler: Parameters<typeof backendApi.inte
  * @param id - The interceptor ID.
  */
 export const ejectRequestInterceptor = (id: number) => backendApi.interceptors.request.eject(id);
+
+/**
+ * Add refresh token interceptor
+ * @param tokens
+ * @param setAuthSession - handler to set new auth session
+ */
+export const configureRefreshToken = (
+  tokens: AuthSession['tokens'] | null,
+  setAuthSession: (session: AuthSession) => void
+) => {
+  if (!tokens) {
+    return;
+  }
+
+  backendApi.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      if (error.response.status !== 401 || !tokens?.refreshToken) {
+        return Promise.reject(error);
+      }
+
+      const authSession = await refreshToken(tokens.refreshToken);
+
+      if (authSession) {
+        configureAuthorization(authSession.tokens.accessToken);
+        setAuthSession(authSession);
+
+        // Retry the original request with new token
+        if (error.config) {
+          error.config.headers['Authorization'] = `Bearer ${authSession.tokens.accessToken}`;
+          return backendApi.request(error.config);
+        }
+      }
+
+      return Promise.reject(error);
+    }
+  );
+};
