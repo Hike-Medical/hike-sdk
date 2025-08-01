@@ -27,6 +27,7 @@ export interface CompanyPreferences {
       withSide?: boolean;
     };
   };
+  slicerProfile?: string;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
