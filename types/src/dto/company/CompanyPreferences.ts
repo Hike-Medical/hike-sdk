@@ -27,10 +27,11 @@ export interface CompanyPreferences {
       withSide?: boolean;
     };
   };
+  vendorId?: string;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
-    excludeShoeVendorExport?: boolean;
+    vendorPays?: boolean;
   };
   noAuthNeeded?: boolean;
   blockAll?: boolean;
