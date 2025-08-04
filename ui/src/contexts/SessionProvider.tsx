@@ -105,7 +105,7 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
 
       const currentTokens = tokensRef.current;
       const expiry = expiresAtRef.current;
-      const isExpiring = !!currentTokens && !!expiry && Date.now() >= expiry.getTime() - 60_000;
+      const isExpiring = !!currentTokens && !!expiry && Date.now() >= expiry.getTime() - 60_000 * 3; // 3 minutes before expiry
 
       if (isExpiring) {
         await update(currentTokens, true);
