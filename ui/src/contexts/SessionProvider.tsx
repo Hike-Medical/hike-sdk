@@ -1,8 +1,16 @@
 'use client';
 
-import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
+import {
+  addRequestInterceptor,
+  logout as backendLogout,
+  configureAuthorization,
+  ejectRequestInterceptor,
+  refreshToken
+} from '@hike/services';
 import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
-import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react';
+
+const REFRESH_THRESHOLD = 3 * 60 * 1000; // 3 minutes before expiry
 
 interface Tokens {
   accessToken: string;
@@ -18,15 +26,17 @@ interface SessionState {
 }
 
 interface SessionProviderProps {
+  autoRefresh?: boolean;
   noCookie?: boolean;
   children: ReactNode;
 }
 
-export const SessionProvider = ({ noCookie, children }: SessionProviderProps) => {
+export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProviderProps) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
-  const [, setExpiresAt] = useState<Date | null>(null);
+  const tokensRef = useRef<Tokens | null>(null);
+  const expiryRef = useRef<Date | null>(null);
 
   const decodeJwtExpiry = (token: string): Date | null => {
     try {
@@ -43,16 +53,22 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
     }
   };
 
-  const update = async (newTokens?: Tokens | null): Promise<AuthSession | null> => {
+  const update = async (newTokens?: Tokens | null, silent?: boolean): Promise<AuthSession | null> => {
     try {
-      setStatus('LOADING');
+      if (!silent) {
+        setStatus('LOADING');
+      }
+
       const latest = newTokens ?? tokens ?? null;
       const value = await refreshToken(latest?.refreshToken, noCookie);
       configureAuthorization(noCookie ? value.tokens.accessToken : null);
-      setExpiresAt(decodeJwtExpiry(value.tokens.accessToken));
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
+
+      // References to prevent re-registering refresh interceptor
+      tokensRef.current = value.tokens;
+      expiryRef.current = decodeJwtExpiry(value.tokens.accessToken);
       return value;
     } catch {
       await logout();
@@ -68,16 +84,28 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
     await backendLogout();
   };
 
-  const contextValue = useMemo(
-    () => ({
-      user,
-      status,
-      accessToken: tokens?.accessToken ?? null,
-      update,
-      logout
-    }),
-    [user, status, tokens, update, logout]
-  );
+  // Attach interceptor to auto refresh token if enabled
+  useEffect(() => {
+    if (!autoRefresh) {
+      return () => {};
+    }
+
+    const id = addRequestInterceptor(async (config) => {
+      const isExpiring =
+        !config.url?.includes('auth/refresh') && // Skip if refresh request to avoid infinite loop
+        tokensRef.current &&
+        expiryRef.current &&
+        Date.now() >= expiryRef.current.getTime() - REFRESH_THRESHOLD;
+
+      if (isExpiring) {
+        await update(tokensRef.current, true);
+      }
+
+      return config;
+    });
+
+    return () => ejectRequestInterceptor(id);
+  }, [autoRefresh]);
 
   // Tokens auto loaded from cookie, otherwise caller responsible for executing
   // update after restoring token from other source, i.e. keychain
@@ -86,6 +114,17 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
       update();
     }
   }, []);
+
+  const contextValue = useMemo(
+    () => ({
+      user,
+      status,
+      accessToken: tokens?.accessToken ?? null,
+      update,
+      logout
+    }),
+    [user, status, tokens?.accessToken]
+  );
 
   return <SessionContext value={contextValue}>{children}</SessionContext>;
 };
