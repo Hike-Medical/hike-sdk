@@ -2,7 +2,7 @@
 
 import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
 import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
 
 interface Tokens {
   accessToken: string;
@@ -26,6 +26,22 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
+  const [, setExpiresAt] = useState<Date | null>(null);
+
+  const decodeJwtExpiry = (token: string): Date | null => {
+    try {
+      const [, payload] = token.split('.');
+
+      if (!payload) {
+        return null;
+      }
+
+      const decoded = JSON.parse(atob(payload));
+      return decoded.exp ? new Date(decoded.exp * 1000) : null;
+    } catch {
+      return null;
+    }
+  };
 
   const update = async (newTokens?: Tokens | null): Promise<AuthSession | null> => {
     try {
@@ -33,6 +49,7 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
       const latest = newTokens ?? tokens ?? null;
       const value = await refreshToken(latest?.refreshToken, noCookie);
       configureAuthorization(noCookie ? value.tokens.accessToken : null);
+      setExpiresAt(decodeJwtExpiry(value.tokens.accessToken));
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
@@ -51,6 +68,17 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
     await backendLogout();
   };
 
+  const contextValue = useMemo(
+    () => ({
+      user,
+      status,
+      accessToken: tokens?.accessToken ?? null,
+      update,
+      logout
+    }),
+    [user, status, tokens, update, logout]
+  );
+
   // Tokens auto loaded from cookie, otherwise caller responsible for executing
   // update after restoring token from other source, i.e. keychain
   useEffect(() => {
@@ -59,11 +87,7 @@ export const SessionProvider = ({ noCookie, children }: SessionProviderProps) =>
     }
   }, []);
 
-  return (
-    <SessionContext value={{ user, status, accessToken: tokens?.accessToken ?? null, update, logout }}>
-      {children}
-    </SessionContext>
-  );
+  return <SessionContext value={contextValue}>{children}</SessionContext>;
 };
 
 export const SessionContext = createContext<SessionState>(undefined as never);
