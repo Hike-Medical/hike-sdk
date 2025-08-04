@@ -1,8 +1,16 @@
 'use client';
 
-import { logout as backendLogout, configureAuthorization, refreshToken } from '@hike/services';
+import {
+  addRequestInterceptor,
+  logout as backendLogout,
+  configureAuthorization,
+  ejectRequestInterceptor,
+  refreshToken
+} from '@hike/services';
 import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react';
+
+const REFRESH_THRESHOLD = 3 * 60 * 1000; // 3 minutes before expiry
 
 interface Tokens {
   accessToken: string;
@@ -17,28 +25,50 @@ interface SessionState {
   logout: () => Promise<void>;
 }
 
-export const SessionProvider = ({
-  disableAutoStart,
-  children
-}: {
-  disableAutoStart?: boolean;
+interface SessionProviderProps {
+  autoRefresh?: boolean;
+  noCookie?: boolean;
   children: ReactNode;
-}) => {
+}
+
+export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProviderProps) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
+  const tokensRef = useRef<Tokens | null>(null);
+  const expiryRef = useRef<Date | null>(null);
 
-  const update = async (newTokens?: Tokens | null): Promise<AuthSession | null> => {
+  const decodeJwtExpiry = (token: string): Date | null => {
     try {
-      setStatus('LOADING');
+      const [, payload] = token.split('.');
+
+      if (!payload) {
+        return null;
+      }
+
+      const decoded = JSON.parse(atob(payload));
+      return decoded.exp ? new Date(decoded.exp * 1000) : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const update = async (newTokens?: Tokens | null, silent?: boolean): Promise<AuthSession | null> => {
+    try {
+      if (!silent) {
+        setStatus('LOADING');
+      }
+
       const latest = newTokens ?? tokens ?? null;
-      // TODO: Replace with proper exclude-cookie flag from Simplr
-      const excludeCookie = !!disableAutoStart;
-      const value = await refreshToken(latest?.refreshToken, excludeCookie);
-      configureAuthorization(excludeCookie ? value.tokens.accessToken : null);
+      const value = await refreshToken(latest?.refreshToken, noCookie);
+      configureAuthorization(noCookie ? value.tokens.accessToken : null);
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
+
+      // References to prevent re-registering refresh interceptor
+      tokensRef.current = value.tokens;
+      expiryRef.current = decodeJwtExpiry(value.tokens.accessToken);
       return value;
     } catch {
       await logout();
@@ -54,17 +84,49 @@ export const SessionProvider = ({
     await backendLogout();
   };
 
+  // Attach interceptor to auto refresh token if enabled
   useEffect(() => {
-    if (disableAutoStart !== true) {
+    if (!autoRefresh) {
+      return () => {};
+    }
+
+    const id = addRequestInterceptor(async (config) => {
+      const isExpiring =
+        !config.url?.includes('auth/refresh') && // Skip if refresh request to avoid infinite loop
+        tokensRef.current &&
+        expiryRef.current &&
+        Date.now() >= expiryRef.current.getTime() - REFRESH_THRESHOLD;
+
+      if (isExpiring) {
+        await update(tokensRef.current, true);
+      }
+
+      return config;
+    });
+
+    return () => ejectRequestInterceptor(id);
+  }, [autoRefresh]);
+
+  // Tokens auto loaded from cookie, otherwise caller responsible for executing
+  // update after restoring token from other source, i.e. keychain
+  useEffect(() => {
+    if (noCookie !== true) {
       update();
     }
   }, []);
 
-  return (
-    <SessionContext value={{ user, status, accessToken: tokens?.accessToken ?? null, update, logout }}>
-      {children}
-    </SessionContext>
+  const contextValue = useMemo(
+    () => ({
+      user,
+      status,
+      accessToken: tokens?.accessToken ?? null,
+      update,
+      logout
+    }),
+    [user, status, tokens?.accessToken]
   );
+
+  return <SessionContext value={contextValue}>{children}</SessionContext>;
 };
 
 export const SessionContext = createContext<SessionState>(undefined as never);

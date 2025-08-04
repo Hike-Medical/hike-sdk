@@ -55,7 +55,7 @@ export const TokenRefresher = () => {
       return;
     }
 
-    const isUserActive = now - lastActivityRef.current < exp - now;
+    const isUserActive = now - lastActivityRef.current < REFRESH_THRESHOLD;
     const timeLeft = exp - now;
 
     logger.debug('Token check', { isUserActive, timeLeft });
@@ -95,6 +95,7 @@ export const TokenRefresher = () => {
     const handleActivity = () => {
       lastActivityRef.current = Date.now();
       setWarningShown(false);
+      refreshIfNeeded();
     };
 
     const events = ['mousemove', 'keydown', 'scroll', 'touchstart'];

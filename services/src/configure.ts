@@ -67,3 +67,17 @@ export const configureFingerprint = (fingerprint: string) => {
 export const configureNetworkSpeed = (speed?: string) => {
   backendApi.defaults.headers.common['x-network-speed'] = speed;
 };
+
+/**
+ * Adds a request interceptor to the backend API.
+ * @param handler - The interceptor function.
+ * @returns The interceptor ID.
+ */
+export const addRequestInterceptor = (handler: Parameters<typeof backendApi.interceptors.request.use>[0]) =>
+  backendApi.interceptors.request.use(handler);
+
+/**
+ * Removes a request interceptor from the backend API.
+ * @param id - The interceptor ID.
+ */
+export const ejectRequestInterceptor = (id: number) => backendApi.interceptors.request.eject(id);
