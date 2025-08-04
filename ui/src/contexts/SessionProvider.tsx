@@ -17,13 +17,12 @@ interface SessionState {
   logout: () => Promise<void>;
 }
 
-export const SessionProvider = ({
-  disableAutoStart,
-  children
-}: {
-  disableAutoStart?: boolean;
+interface SessionProviderProps {
+  noCookie?: boolean;
   children: ReactNode;
-}) => {
+}
+
+export const SessionProvider = ({ noCookie, children }: SessionProviderProps) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
@@ -32,10 +31,8 @@ export const SessionProvider = ({
     try {
       setStatus('LOADING');
       const latest = newTokens ?? tokens ?? null;
-      // TODO: Replace with proper exclude-cookie flag from Simplr
-      const excludeCookie = !!disableAutoStart;
-      const value = await refreshToken(latest?.refreshToken, excludeCookie);
-      configureAuthorization(excludeCookie ? value.tokens.accessToken : null);
+      const value = await refreshToken(latest?.refreshToken, noCookie);
+      configureAuthorization(noCookie ? value.tokens.accessToken : null);
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
@@ -54,8 +51,10 @@ export const SessionProvider = ({
     await backendLogout();
   };
 
+  // Tokens auto loaded from cookie, otherwise caller responsible for executing
+  // update after restoring token from other source, i.e. keychain
   useEffect(() => {
-    if (disableAutoStart !== true) {
+    if (noCookie !== true) {
       update();
     }
   }, []);
