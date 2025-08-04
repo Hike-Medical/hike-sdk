@@ -33,9 +33,8 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
-  const [expiresAt, setExpiresAt] = useState<Date | null>(null);
   const tokensRef = useRef<Tokens | null>(null);
-  const expiresAtRef = useRef<Date | null>(null);
+  const expiryRef = useRef<Date | null>(null);
 
   const decodeJwtExpiry = (token: string): Date | null => {
     try {
@@ -52,7 +51,7 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
     }
   };
 
-  const update = async (newTokens?: Tokens | null, silent = false): Promise<AuthSession | null> => {
+  const update = async (newTokens?: Tokens | null, silent?: boolean): Promise<AuthSession | null> => {
     try {
       if (!silent) {
         setStatus('LOADING');
@@ -61,10 +60,13 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
       const latest = newTokens ?? tokens ?? null;
       const value = await refreshToken(latest?.refreshToken, noCookie);
       configureAuthorization(noCookie ? value.tokens.accessToken : null);
-      setExpiresAt(decodeJwtExpiry(value.tokens.accessToken));
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
+
+      // References to prevent re-registering refresh interceptor
+      tokensRef.current = value.tokens;
+      expiryRef.current = decodeJwtExpiry(value.tokens.accessToken);
       return value;
     } catch {
       await logout();
@@ -80,6 +82,37 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
     await backendLogout();
   };
 
+  // Attach interceptor to auto refresh token if enabled
+  useEffect(() => {
+    if (!autoRefresh) {
+      return () => {};
+    }
+
+    const id = addRequestInterceptor(async (config) => {
+      const isExpiring =
+        !config.url?.includes('auth/refresh') && // Skip if refresh request to avoid infinite loop
+        tokensRef.current &&
+        expiryRef.current &&
+        Date.now() >= expiryRef.current.getTime() - 60_000 * 3; // 3 minutes before expiry
+
+      if (isExpiring) {
+        await update(tokensRef.current, true);
+      }
+
+      return config;
+    });
+
+    return () => ejectRequestInterceptor(id);
+  }, [autoRefresh]);
+
+  // Tokens auto loaded from cookie, otherwise caller responsible for executing
+  // update after restoring token from other source, i.e. keychain
+  useEffect(() => {
+    if (noCookie !== true) {
+      update();
+    }
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       user,
@@ -90,46 +123,6 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
     }),
     [user, status, tokens?.accessToken]
   );
-
-  // Attach interceptor to auto refresh token if enabled
-  useEffect(() => {
-    if (!autoRefresh) {
-      return () => {};
-    }
-
-    const id = addRequestInterceptor(async (config) => {
-      // Skip if refresh request to avoid infinite loop
-      if (config.url?.includes('auth/refresh')) {
-        return config;
-      }
-
-      const currentTokens = tokensRef.current;
-      const expiry = expiresAtRef.current;
-      const isExpiring = !!currentTokens && !!expiry && Date.now() >= expiry.getTime() - 60_000 * 3; // 3 minutes before expiry
-
-      if (isExpiring) {
-        await update(currentTokens, true);
-      }
-
-      return config;
-    });
-
-    return () => ejectRequestInterceptor(id);
-  }, [autoRefresh]);
-
-  // References to prevent re-registering interceptor
-  useEffect(() => {
-    tokensRef.current = tokens;
-    expiresAtRef.current = expiresAt;
-  }, [tokens, expiresAt]);
-
-  // Tokens auto loaded from cookie, otherwise caller responsible for executing
-  // update after restoring token from other source, i.e. keychain
-  useEffect(() => {
-    if (noCookie !== true) {
-      update();
-    }
-  }, []);
 
   return <SessionContext value={contextValue}>{children}</SessionContext>;
 };
