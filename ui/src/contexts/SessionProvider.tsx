@@ -10,6 +10,8 @@ import {
 import type { AuthSession, AuthStatus, AuthUser } from '@hike/types';
 import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from 'react';
 
+const REFRESH_THRESHOLD = 3 * 60 * 1000; // 3 minutes before expiry
+
 interface Tokens {
   accessToken: string;
   refreshToken: string;
@@ -93,7 +95,7 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
         !config.url?.includes('auth/refresh') && // Skip if refresh request to avoid infinite loop
         tokensRef.current &&
         expiryRef.current &&
-        Date.now() >= expiryRef.current.getTime() - 60_000 * 3; // 3 minutes before expiry
+        Date.now() >= expiryRef.current.getTime() - REFRESH_THRESHOLD;
 
       if (isExpiring) {
         await update(tokensRef.current, true);
