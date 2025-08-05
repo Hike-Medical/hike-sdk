@@ -28,10 +28,11 @@ interface SessionState {
 interface SessionProviderProps {
   autoRefresh?: boolean;
   noCookie?: boolean;
+  onChange?: (session: AuthSession | null) => Promise<void>;
   children: ReactNode;
 }
 
-export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProviderProps) => {
+export const SessionProvider = ({ autoRefresh, noCookie, onChange, children }: SessionProviderProps) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('LOADING');
   const [tokens, setTokens] = useState<Tokens | null>(null);
@@ -65,10 +66,12 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
       setUser(value.user);
       setStatus(value ? 'AUTHENTICATED' : 'UNAUTHENTICATED');
       setTokens(value.tokens);
+      await onChange?.(value);
 
       // References to prevent re-registering refresh interceptor
       tokensRef.current = value.tokens;
       expiryRef.current = decodeJwtExpiry(value.tokens.accessToken);
+
       return value;
     } catch {
       await logout();
@@ -81,7 +84,10 @@ export const SessionProvider = ({ autoRefresh, noCookie, children }: SessionProv
     setUser(null);
     setStatus('UNAUTHENTICATED');
     setTokens(null);
+    tokensRef.current = null;
+    expiryRef.current = null;
     await backendLogout();
+    await onChange?.(null);
   };
 
   // Attach interceptor to auto refresh token if enabled
