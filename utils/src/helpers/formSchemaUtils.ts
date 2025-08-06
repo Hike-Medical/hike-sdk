@@ -29,6 +29,7 @@ export const isFormSectionDisplayed = (
   options?: {
     taggedOnly?: string;
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean => {
   // Show section that have been tagged if specified
@@ -36,6 +37,10 @@ export const isFormSectionDisplayed = (
     options?.taggedOnly &&
     (!section.meta?.tags || (isStringArray(section.meta?.tags) && !section.meta.tags.includes(options.taggedOnly)))
   ) {
+    return false;
+  }
+
+  if (options?.slug && section.meta?.excludedSlugs && (section.meta.excludedSlugs as string[]).includes(options.slug)) {
     return false;
   }
 
@@ -129,6 +134,7 @@ export const isFormValid = (
   options?: {
     taggedOnly?: string;
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean =>
   sections
@@ -210,6 +216,7 @@ export const schemaStats = (
   options?: {
     taggedOnly?: string;
     activeFoot?: string;
+    slug?: string;
   }
 ): {
   sectionsCompleted: number;
