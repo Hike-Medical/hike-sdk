@@ -6,7 +6,6 @@ export enum SlicerProfile {
   LDPE = 'LDPE',
   UCBL = 'UCBL',
   FUNCTIONAL_HIKE = 'FUNCTIONAL_HIKE',
-  MANUAL_SLICE = 'MANUAL_SLICE',
   SHELL = 'SHELL',
   ORTHOFEET = 'ORTHOFEET'
 }
