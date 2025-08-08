@@ -25,4 +25,5 @@ export interface PrintFarmWorkbench {
   orderShoeSize: string;
   orderGender: string;
   orderSide: number | null;
+  slicerProfile?: string | null;
 }

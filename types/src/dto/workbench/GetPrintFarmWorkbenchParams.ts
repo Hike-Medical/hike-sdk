@@ -1,16 +1,6 @@
-import { OrderStatus, ProductType } from '../../../prisma';
-import { PagedParams } from '../PagedParams';
+import { GetAggregatedParams } from './GetAggregatedParams';
 
-export interface GetPrintFarmWorkbenchParams extends PagedParams {
+export interface GetPrintFarmWorkbenchParams extends GetAggregatedParams {
+  hideRushedOrders?: boolean;
   prioritizeRushOrders?: boolean;
-  diabeticOnly?: boolean;
-  submittedOnly?: boolean;
-  authorizationStartDate?: string;
-  authorizationEndDate?: string;
-  searchQuery?: string;
-  productType?: ProductType[];
-  companySlugs?: string[];
-  orderAuthorizationStatus?: string[];
-  orderStatus?: OrderStatus[];
-  devValidationStatus?: boolean | null;
 }
