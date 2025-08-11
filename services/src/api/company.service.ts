@@ -2,7 +2,6 @@ import {
   AddCompanyParams,
   Company,
   CompanyExtended,
-  CompanyPreferences,
   CompanyTheme,
   CompanyWorkbenchWebhook,
   FindCompaniesParams,
@@ -18,15 +17,6 @@ import { backendApi } from '../utils/backendApi';
 export const findCompanies = async (params?: FindCompaniesParams): Promise<PagedResponse<Company[]>> => {
   try {
     const response = await backendApi.get('company', { params });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const findCompanyPreferences = async (facilityId?: string): Promise<CompanyPreferences> => {
-  try {
-    const response = await backendApi.get('company/preferences', { params: { facilityId } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

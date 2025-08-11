@@ -1,5 +1,5 @@
 import type { Contact, Facility } from '../../prisma';
-import { CompanyPreferences } from '../dto/company/CompanyPreferences';
+import { CompanyPreferences } from '../dto/preferences/CompanyPreferences';
 
 export type FacilityExtended = Omit<Facility, 'preferences'> & {
   contact?: Contact | null;
