@@ -4,7 +4,7 @@ export interface ValidateAddressBody {
   city: string;
   stateOrProvince: string;
   postalCode: string;
-  country?: string;
+  countryCode?: string;
 }
 
 export interface ShippingAddressBody extends ValidateAddressBody {
