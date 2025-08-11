@@ -1,9 +1,9 @@
 import { validateAddress } from '@hike/services';
-import { HikeError, ValidateAddressBody } from '@hike/types';
+import { HikeError, ShipEngineValidateAddressResponse, ValidateAddressBody } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useValidateShippignAddress = (
-  options?: UseMutationOptions<boolean, HikeError<null>, ValidateAddressBody>
+  options?: UseMutationOptions<ShipEngineValidateAddressResponse[], HikeError<null>, ValidateAddressBody>
 ) =>
   useMutation({
     mutationKey: ['validateAddress'],
