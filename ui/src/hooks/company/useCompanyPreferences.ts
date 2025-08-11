@@ -5,12 +5,13 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseCompanyPreferencesOptions
   extends Omit<UseQueryOptions<CompanyPreferences, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  facilityId?: string;
   queryKey?: QueryKey;
 }
 
-export const useCompanyPreferences = ({ queryKey = [], ...options }: UseCompanyPreferencesOptions = {}) =>
+export const useCompanyPreferences = ({ facilityId, queryKey = [], ...options }: UseCompanyPreferencesOptions = {}) =>
   useQuery({
-    queryKey: ['session', 'companies', queryKey],
-    queryFn: async () => await findCompanyPreferences(),
+    queryKey: ['session', 'companies', facilityId, queryKey],
+    queryFn: async () => await findCompanyPreferences(facilityId),
     ...options
   });

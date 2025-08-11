@@ -24,9 +24,9 @@ export const findCompanies = async (params?: FindCompaniesParams): Promise<Paged
   }
 };
 
-export const findCompanyPreferences = async (): Promise<CompanyPreferences> => {
+export const findCompanyPreferences = async (facilityId?: string): Promise<CompanyPreferences> => {
   try {
-    const response = await backendApi.get('company/preferences');
+    const response = await backendApi.get('company/preferences', { params: { facilityId } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
