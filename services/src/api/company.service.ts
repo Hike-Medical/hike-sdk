@@ -32,15 +32,6 @@ export const findCompanyTheme = async (): Promise<{ theme: CompanyTheme | null }
   }
 };
 
-export const isFreeTrial = async (): Promise<boolean> => {
-  try {
-    const response = await backendApi.get('auth/isFreeTrial');
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
 export const addCompany = async (params: AddCompanyParams): Promise<CompanyExtended> => {
   try {
     const response = await backendApi.post('company', params);
