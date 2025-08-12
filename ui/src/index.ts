@@ -230,6 +230,7 @@ export * from './hooks/workbenches/useGetCompleteWorkbenchMutation';
 export * from './hooks/workbenches/useGetDetectionStatus';
 export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
+export * from './hooks/workbenches/useManufacturingWorkbenches';
 export * from './hooks/workbenches/usePatientWorkbenchInformation';
 export * from './hooks/workbenches/usePrintFarmWorkbench';
 export * from './hooks/workbenches/usePrintShippingInfo';
