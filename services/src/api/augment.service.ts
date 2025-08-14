@@ -8,10 +8,13 @@ import {
   UpdateAssetAugmentMedia,
   AugmentExtended,
   GetAugmentsParams,
-  PagedResponse
+  PagedResponse,
+  GetNeedsValidationWorkbenchParams,
+  ManufacturingWorkbench
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
+import { addHeaders } from '@hike/utils';
 
 export const findAssetAugmentsByFootId = async (footId: string): Promise<AssetAugment[]> => {
   try {
@@ -96,6 +99,21 @@ export const exportAugments = async (params?: GetAugmentsParams): Promise<Blob> 
     const response = await backendApi.get('augment/data/export', {
       params,
       responseType: 'arraybuffer'
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getNeedsValidationWorkbenches = async (
+  params?: GetNeedsValidationWorkbenchParams,
+  companyIds?: string[]
+): Promise<PagedResponse<ManufacturingWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/needs-validation', {
+      params,
+      headers: addHeaders(companyIds)
     });
     return response.data;
   } catch (error) {
