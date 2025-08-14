@@ -73,15 +73,10 @@ export class StripeService {
     }
   }
 
-  async setDefaultPaymentMethod(customerId: string, paymentMethodId: string): Promise<Stripe.Customer> {
+  async updateCustomer(customerId: string, data: Stripe.CustomerUpdateParams): Promise<Stripe.Customer> {
     try {
-      return await this.stripe.customers.update(customerId, {
-        invoice_settings: {
-          default_payment_method: paymentMethodId
-        }
-      });
+      return await this.stripe.customers.update(customerId, data);
     } catch (error) {
-      console.error('Error setting default payment method:', error);
       throw this.handleStripeError(error);
     }
   }

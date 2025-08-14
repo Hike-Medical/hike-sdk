@@ -27,10 +27,12 @@ export interface CompanyPreferences {
       withSide?: boolean;
     };
   };
+  slicerProfile?: string;
+  vendorId?: string;
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
-    excludeShoeVendorExport?: boolean;
+    vendorPays?: boolean;
   };
   noAuthNeeded?: boolean;
   blockAll?: boolean;
@@ -49,12 +51,13 @@ export interface CompanyPreferences {
   clinicalCustomization?: {
     removeRemake?: boolean;
     removeReorder?: boolean;
+    removeDuplicate?: boolean;
     assignPONumber?: boolean;
-    allowCancelIncomplete?: boolean;
     removeNotes?: boolean;
     flowType?: ClinicalFlowType | null;
     showDirectedTips?: boolean;
     globalSearchAssignedOnly?: boolean;
+    canModifyFlowTypeOnWorkbench?: boolean;
   };
   webhook?: {
     url: string;

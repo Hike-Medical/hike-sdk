@@ -6,12 +6,16 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetManufacturingWorkbenchParams,
+  GetPrintFarmWorkbenchParams,
   GetStationsParams,
   GetWorkbenchDevSummaryParams,
   GetWorkbenchSummaryParams,
+  ManufacturingWorkbench,
   Order,
   PagedResponse,
   PatientWorkbenchResponse,
+  PrintFarmWorkbench,
   PrintShippingParams,
   ResetWorkbenchParams,
   SearchWorkbenchParams,
@@ -399,6 +403,36 @@ export const getWorkbenchDevSummary = async (
 ): Promise<PagedResponse<WorkbenchDevSummary[]>> => {
   try {
     const response = await backendApi.get('workbench/dev-summary', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getPrintFarmWorkbenches = async (
+  params?: GetPrintFarmWorkbenchParams,
+  companyIds?: string[]
+): Promise<PagedResponse<PrintFarmWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/print-farm', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getManufacturingWorkbenches = async (
+  params?: GetManufacturingWorkbenchParams,
+  companyIds?: string[]
+): Promise<PagedResponse<ManufacturingWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/manufacturing', {
       params,
       headers: addHeaders(companyIds)
     });

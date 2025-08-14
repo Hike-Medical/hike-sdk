@@ -89,6 +89,19 @@ export const editEvaluation = async (params: ActionEvaluationParams): Promise<Ev
   }
 };
 
+export const duplicateEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+  try {
+    const response = await backendApi.post(
+      `evaluation/${params.evaluationId}/duplicate`,
+      {},
+      { headers: addHeaders(params.companyIds) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post(

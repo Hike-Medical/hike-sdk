@@ -3,9 +3,9 @@ export interface GetOrthofeetInventoryResponse {
     string,
     {
       barcode: string;
-      style: string;
+      product: string;
+      description: string;
       quantity: number;
-      active: boolean;
     }
   >;
 }
