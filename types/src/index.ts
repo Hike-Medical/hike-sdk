@@ -193,6 +193,7 @@ export * from './dto/vendor/orthofeet/GetOrthofeetInventoryResponse';
 export * from './dto/webhook/SftpFileUploadParams';
 export * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export * from './dto/workbench/GetManufacturingWorkbenchParams';
+export * from './dto/workbench/GetNeedsValidationWorkbenchParams';
 export * from './dto/workbench/ManufacturingWorkbench';
 export * from './dto/workbench/CustomizationResponse';
 export * from './dto/workbench/DetectionStatusReponse';

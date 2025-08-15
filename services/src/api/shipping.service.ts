@@ -5,6 +5,8 @@ import {
   GetShipengineShipmentsResponse,
   LabelsResponse,
   SaveTrackingInfoParams,
+  ShipEngineValidateAddressResponse,
+  ShippingAddressBody,
   ShippingLabel,
   ShippingLabelResponseByShipmentId,
   ShippingPackage,
@@ -24,9 +26,8 @@ interface Package {
 export interface GetRatesOrLabels {
   packages: Package[];
   shipDate: string;
-  address?: ValidateAddressBody;
+  address?: ShippingAddressBody;
   addressId?: string;
-  billRecipient?: boolean;
 }
 
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
@@ -38,31 +39,18 @@ export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
   }
 };
 
-export const validateAddress = async (address: ValidateAddressBody): Promise<boolean> => {
+export const validateAddress = async (address: ValidateAddressBody): Promise<ShipEngineValidateAddressResponse[]> => {
   try {
-    const response = await backendApi.post('shipping/address/validate', {
-      addressLine1: address.addressLine1,
-      addressLine2: address.addressLine2,
-      city: address.city,
-      stateOrProvince: address.stateOrProvince,
-      postalCode: address.postalCode,
-      countryCode: 'US'
-    });
+    const response = await backendApi.post('shipping/address/validate', address);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const getRateEstimates = async ({ packages, shipDate, address, addressId, billRecipient }: GetRatesOrLabels) => {
+export const getRateEstimates = async (params: GetRatesOrLabels) => {
   try {
-    const response = await backendApi.post('shipping/rates', {
-      packages,
-      shipDate,
-      address,
-      addressId,
-      billRecipient
-    });
+    const response = await backendApi.post('shipping/rates', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
