@@ -30,6 +30,7 @@ export * from './api/patient.service';
 export * from './api/pdf.service';
 export * from './api/physician.service';
 export * from './api/pin.service';
+export * from './api/preferences.service';
 export * from './api/printer.service';
 export * from './api/reward.service';
 export * from './api/roster.service';
