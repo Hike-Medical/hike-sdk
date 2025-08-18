@@ -68,6 +68,7 @@ export * from './dto/company/GetCompanyByNameParams';
 export * from './dto/company/GetWorkbenchWebhooksParams';
 export * from './dto/company/UpdateCompanyParams';
 export * from './dto/contact/TransformedContact';
+export * from './dto/company/NotificationType';
 export * from './dto/email-template/SendEmailTemplateParams';
 export * from './dto/email-template/UpsertEmailTemplateParams';
 export * from './dto/evaluation/ActionEvaluationParams';

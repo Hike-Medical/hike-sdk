@@ -1,4 +1,4 @@
-interface SelectPreferredLocaleParams {
+export interface SelectPreferredLocaleParams {
   acceptLanguage?: string | null;
   supportedLocales: string[];
   defaultLocale: string;
