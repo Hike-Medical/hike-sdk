@@ -1,6 +1,6 @@
 import { ProductType } from '../../../prisma';
 
-export const ProductTypeEnum = {
+const ProductTypeEnum = {
   FOOT_SCAN: 'FOOT_SCAN',
   FOOT_RENDER: 'FOOT_RENDER',
   INSOLE_RENDER: 'INSOLE_RENDER',
@@ -13,5 +13,5 @@ export const ProductTypeEnum = {
   [K in ProductType]: K;
 };
 
-export const ProductTypeList = Object.values(ProductTypeEnum) as [ProductType, ...ProductType[]];
+export const ProductTypeList = Object.values(ProductTypeEnum);
 

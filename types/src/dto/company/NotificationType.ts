@@ -1,6 +1,6 @@
 import { NotificationType } from '../../../prisma';
 
-export const NotificationTypeEnum = {
+const NotificationTypeEnum = {
   CALLUS_AND_ULCER: 'CALLUS_AND_ULCER',
   ULCER: 'ULCER',
   CALLUS: 'CALLUS',
@@ -28,4 +28,4 @@ export const NotificationTypeEnum = {
   [K in NotificationType]: K;
 };
 
-export const NotificationTypeList = Object.values(NotificationTypeEnum) as [NotificationType, ...NotificationType[]];
+export const NotificationTypeList = Object.values(NotificationTypeEnum);
