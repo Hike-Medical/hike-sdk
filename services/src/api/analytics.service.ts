@@ -74,3 +74,12 @@ export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: st
     throw toHikeError(error);
   }
 };
+
+export const getCompanyDashboardMetrics = async () => {
+  try {
+    const response = await backendApi.get('analytics/company-dashboard');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
