@@ -6,6 +6,7 @@ export * from './config/AppId';
 export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
 export * from './dto/analytics/CompanyTurnaroundStats';
+export * from './dto/analytics/OrderMetricsOptions';
 export * from './dto/analytics/HourlyOptions';
 export * from './dto/analytics/OrderMetricsResponse';
 export * from './dto/analytics/OrdersByCompanies';
