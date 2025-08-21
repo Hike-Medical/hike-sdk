@@ -1,15 +1,16 @@
 import { getOrderMetrics } from '@hike/services';
-import { HikeError, OrderMetricsResponse } from '@hike/types';
+import { HikeError, OrderMetricsOptions, OrderMetricsResponse } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetOrderMetricsOptions
   extends Omit<UseQueryOptions<OrderMetricsResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
   queryKey?: QueryKey;
+  params?: OrderMetricsOptions;
 }
 
-export const useGetOrderMetrics = ({ queryKey = [], ...options }: UseGetOrderMetricsOptions = {}) =>
+export const useGetOrderMetrics = ({ queryKey = [], params, ...options }: UseGetOrderMetricsOptions = {}) =>
   useQuery({
-    queryKey: ['orderMetrics', queryKey],
-    queryFn: async () => await getOrderMetrics(),
+    queryKey: ['orderMetrics', queryKey, params],
+    queryFn: async () => await getOrderMetrics(params),
     ...options
   });
