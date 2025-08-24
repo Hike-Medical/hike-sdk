@@ -1,4 +1,4 @@
-import { DateFilter, HourlyOptions } from '@hike/types';
+import { DateFilter, HourlyOptions, OrderMetricsOptions, OrderMetricsResponse } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -49,6 +49,15 @@ export const getOrdersByCompanies = async (body: DateFilter, companyIds: string[
       }
     );
 
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrderMetrics = async (params?: OrderMetricsOptions): Promise<OrderMetricsResponse> => {
+  try {
+    const response = await backendApi.get('analytics/order/metrics', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

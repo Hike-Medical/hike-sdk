@@ -1,4 +1,4 @@
-import { CompanyPreferences } from '../company/CompanyPreferences';
+import { CompanyPreferences } from '../preferences/CompanyPreferences';
 
 export interface AcceptInvitationCompanyParams {
   token: string;

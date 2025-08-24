@@ -1,4 +1,4 @@
-import { CompanyPreferences } from './CompanyPreferences';
+import { CompanyPreferences } from '../preferences/CompanyPreferences';
 
 export interface UpdateCompanyParams {
   logoUrl?: string;

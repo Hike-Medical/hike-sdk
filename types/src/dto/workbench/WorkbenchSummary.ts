@@ -22,4 +22,5 @@ export interface WorkbenchSummary {
   orderQuantity: string | null;
   createdReason: WorkbenchCreatedReason | null;
   orderShoeSize: string | null;
+  rushedAt?: Date | null;
 }

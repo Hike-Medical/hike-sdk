@@ -6,7 +6,7 @@ import { AppId, HikeConfig, HikeEnvironment } from '@hike/types';
 export const appName = (appId: AppId): string => {
   switch (appId) {
     case '@hike/insoles-web':
-      return 'Insole.ai';
+      return 'Insoles.ai';
     case '@hike/medicare-web':
       return 'Hikemedicare.com';
     default:
