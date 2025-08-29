@@ -67,21 +67,14 @@ export const startEvaluationByProduct = async (params: StartEvaluationByProductP
   }
 };
 
-export const cancelEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
-  try {
-    const response = await backendApi.post(`evaluation/${params.evaluationId}/cancel`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const editEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+export const cancelEvaluation = async (evaluationId: string, companyIds?: string[]): Promise<EvaluationExtended> => {
   try {
     const response = await backendApi.post(
-      `evaluation/${params.evaluationId}/edit`,
+      `evaluation/${evaluationId}/cancel`,
       {},
-      { headers: addHeaders(params.companyIds) }
+      {
+        headers: addHeaders(companyIds)
+      }
     );
     return response.data;
   } catch (error) {
@@ -89,52 +82,15 @@ export const editEvaluation = async (params: ActionEvaluationParams): Promise<Ev
   }
 };
 
-export const duplicateEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
+export const actionEvaluation = async (
+  evaluationId: string,
+  params: ActionEvaluationParams,
+  companyIds?: string[]
+): Promise<EvaluationExtended> => {
   try {
-    const response = await backendApi.post(
-      `evaluation/${params.evaluationId}/duplicate`,
-      {},
-      { headers: addHeaders(params.companyIds) }
-    );
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const remakeEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
-  try {
-    const response = await backendApi.post(
-      `evaluation/${params.evaluationId}/remake`,
-      {},
-      { headers: addHeaders(params.companyIds) }
-    );
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const reorderEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
-  try {
-    const response = await backendApi.post(
-      `evaluation/${params.evaluationId}/reorder`,
-      {},
-      { headers: addHeaders(params.companyIds) }
-    );
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const adjustmentEvaluation = async (params: ActionEvaluationParams): Promise<EvaluationExtended> => {
-  try {
-    const response = await backendApi.post(
-      `evaluation/${params.evaluationId}/adjustment`,
-      { notes: params.notes },
-      { headers: addHeaders(params.companyIds) }
-    );
+    const response = await backendApi.post(`evaluation/${evaluationId}/action`, params, {
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
