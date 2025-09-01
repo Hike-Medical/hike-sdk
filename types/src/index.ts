@@ -179,6 +179,8 @@ export * from './dto/shipping/GetShipengineShippingResponse';
 export * from './dto/shipping/GetShippingLabelLegacyResponse';
 export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/ValidateAddressBody';
+export * from './dto/step-engine/Asset';
+export * from './dto/step-engine/WorkflowStatus';
 export * from './dto/tag/UpsertTagParams';
 export * from './dto/taika/CreateCustomizationsTaikaParams';
 export * from './dto/taika/CustomizationOrderTaikaParams';
