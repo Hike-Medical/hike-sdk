@@ -41,6 +41,15 @@ export const findFormSubmission = async (
   }
 };
 
+export const findFlattenedFormSubmission = async (workbenchId: string): Promise<FormSubmissionTyped['data']> => {
+  try {
+    const response = await backendApi.get(`form/workbench/${workbenchId}/flattened-submission`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findFormSubmissions = async (workbenchId: string): Promise<FormSubmissionTyped[]> => {
   try {
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission`);
