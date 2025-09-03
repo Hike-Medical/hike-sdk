@@ -75,4 +75,5 @@ export interface CompanyPreferences {
   ui?: {
     theme?: CompanyTheme;
   };
+  benefitsWhiteList?: string[];
 }
