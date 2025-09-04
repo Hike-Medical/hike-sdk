@@ -170,6 +170,7 @@ export * from './hooks/patients/useUpsertContact';
 export * from './hooks/patients/useUpsertPrimaryPhysician';
 export * from './hooks/preferences/useIsFreeTrial';
 export * from './hooks/preferences/usePreferences';
+export * from './hooks/preferences/useOidcPreferences';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
 export * from './hooks/printer/useSendPrinterToLabel';

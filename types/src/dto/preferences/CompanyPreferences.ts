@@ -76,4 +76,8 @@ export interface CompanyPreferences {
     theme?: CompanyTheme;
   };
   benefitsWhiteList?: string[];
+  oidc?: {
+    enabled?: boolean;
+    color?: string;
+  };
 }

@@ -1,10 +1,19 @@
-import { CompanyPreferences } from '@hike/types';
+import { CompanyPreferences, OidcSettings } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
 export const findPreferences = async (facilityId?: string): Promise<CompanyPreferences> => {
   try {
     const response = await backendApi.get('preferences', { params: { facilityId } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findOidcPreferences = async (slug: string): Promise<OidcSettings> => {
+  try {
+    const response = await backendApi.get('preferences/oidc', { params: { slug } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
