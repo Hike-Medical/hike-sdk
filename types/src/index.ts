@@ -145,6 +145,7 @@ export * from './dto/pin/CreatePinDto';
 export * from './dto/preferences/ClinicalFlowType';
 export * from './dto/preferences/CompanyPortal';
 export * from './dto/preferences/CompanyPreferences';
+export * from './dto/preferences/OidcSettings';
 export * from './dto/preferences/CompanyTheme';
 export * from './dto/printer/SendGcodeToPrinterParams';
 export * from './dto/reward/RewardInfo';

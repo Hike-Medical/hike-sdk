@@ -13,7 +13,7 @@ export const findPreferences = async (facilityId?: string): Promise<CompanyPrefe
 
 export const findOidcPreferences = async (slug: string): Promise<OidcSettings> => {
   try {
-    const response = await backendApi.get('preferences/oidc', { params: { slug } });
+    const response = await backendApi.get(`preferences/${slug}/oidc`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
