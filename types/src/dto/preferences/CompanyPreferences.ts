@@ -5,6 +5,7 @@ import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTa
 import { ClinicalFlowType } from './ClinicalFlowType';
 import { CompanyPortal } from './CompanyPortal';
 import { CompanyTheme } from './CompanyTheme';
+import { PaymentResponsibility } from './PaymentResponsibility';
 
 export interface CompanyPreferences {
   carrierServiceCode?: string;
@@ -32,7 +33,7 @@ export interface CompanyPreferences {
   pricing?: {
     orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
-    vendorPays?: boolean;
+    paymentResponsibility?: PaymentResponsibility;
   };
   noAuthNeeded?: boolean;
   blockAll?: boolean;
