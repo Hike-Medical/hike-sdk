@@ -102,6 +102,7 @@ export * from './hooks/feet/useSetFootInactive';
 export * from './hooks/feet/useUpdateFootFromWorkbench';
 export * from './hooks/forms/useCreateFormTemplate';
 export * from './hooks/forms/useDeleteFormTemplate';
+export * from './hooks/forms/useFlattenedSubmission';
 export * from './hooks/forms/useFormSchema';
 export * from './hooks/forms/useFormSchemas';
 export * from './hooks/forms/useFormSubmission';
