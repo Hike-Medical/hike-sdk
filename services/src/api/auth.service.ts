@@ -2,6 +2,7 @@ import type {
   AcceptInvitationCompanyParams,
   AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
+  AuthPreferences,
   AuthSession,
   SafeCompany,
   SendOtpParams,
@@ -161,4 +162,31 @@ export const acceptInvitationCompany = async (
 export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
   const response = await backendApi.get('auth/session/companies');
   return response.data;
+};
+
+export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> => {
+  try {
+    const response = await backendApi.get(`auth/oidc/start`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const oidcExchangeAuthCode = async (code: string) => {
+  try {
+    const response = await backendApi.get(`auth/oidc/callback`, { params: { code } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findAuthPreferences = async (): Promise<AuthPreferences> => {
+  try {
+    const response = await backendApi.get('auth/preferences');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };
