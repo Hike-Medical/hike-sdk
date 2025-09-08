@@ -175,11 +175,10 @@ export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> 
 
 export const oidcExchangeAuthCode = async (data: {
   code?: string;
-  token?: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  dateOfBirth?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
 }) => {
   try {
     const response = await backendApi.post(
@@ -188,10 +187,10 @@ export const oidcExchangeAuthCode = async (data: {
         email: data.email,
         firstName: data.firstName,
         lastName: data.lastName,
-        dateOfBirth: data.dateOfBirth
+        birthDate: data.birthDate
       },
       {
-        params: { code: data.code, token: data.token }
+        params: { code: data.code }
       }
     );
     return response.data;
