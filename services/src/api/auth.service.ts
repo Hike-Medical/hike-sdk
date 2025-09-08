@@ -173,9 +173,27 @@ export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> 
   }
 };
 
-export const oidcExchangeAuthCode = async (code: string) => {
+export const oidcExchangeAuthCode = async (data: {
+  code?: string;
+  token?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  dateOfBirth?: string;
+}) => {
   try {
-    const response = await backendApi.get(`auth/oidc/callback`, { params: { code } });
+    const response = await backendApi.post(
+      `auth/oidc/callback`,
+      {
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        dateOfBirth: data.dateOfBirth
+      },
+      {
+        params: { code: data.code, token: data.token }
+      }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
