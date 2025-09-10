@@ -4,6 +4,7 @@ import type {
   AcceptInvitationParams,
   AuthPreferences,
   AuthSession,
+  OIDCResponse,
   SafeCompany,
   SendOtpParams,
   UserExtended,
@@ -167,6 +168,35 @@ export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
 export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> => {
   try {
     const response = await backendApi.get(`auth/oidc/start`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Pre-exchange the code; returns either AuthSession (auto-login) or a needs-info payload
+export const oidcPrecheck = async (code: string): Promise<AuthSession | OIDCResponse> => {
+  try {
+    const response = await backendApi.post(`auth/oidc/callback`, {}, { params: { code } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Complete enrollment using provider access_token + collected PII
+export const oidcCompleteEnrollment = async (data: {
+  accessToken: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}): Promise<AuthSession> => {
+  try {
+    const { accessToken, ...body } = data;
+    const response = await backendApi.post(`auth/oidc/complete`, body, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
