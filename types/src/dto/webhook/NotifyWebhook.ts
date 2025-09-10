@@ -16,6 +16,7 @@ export interface WorkbenchWebhookBody {
   productType: string;
   extPatientId?: string;
   evalExternalId?: string;
+  companyId: string;
 }
 
 export type NotifyWebhookBody = ShippedWebhookBody | WorkbenchWebhookBody;
