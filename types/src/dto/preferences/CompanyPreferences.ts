@@ -36,6 +36,7 @@ export interface CompanyPreferences {
     paymentResponsibility?: PaymentResponsibility;
   };
   noAuthNeeded?: boolean;
+  skipExternalIdVerification?: boolean;
   blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
