@@ -2,6 +2,7 @@ export type * from '../prisma';
 export * from './auth/AuthSession';
 export * from './auth/AuthStatus';
 export * from './auth/AuthUser';
+export * from './auth/OIDCResponse';
 export * from './config/AppId';
 export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
