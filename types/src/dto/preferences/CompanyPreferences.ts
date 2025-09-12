@@ -20,6 +20,7 @@ export interface CompanyPreferences {
   preferredWalkInDeliveryReceiptEmailAddress?: string;
   preSubmissionAuth?: boolean;
   requiredSnapshotReview?: boolean;
+  consumerSubmitRedirectUrl?: string;
   taikaCustomizations?: {
     orderForm?: CreateCustomizationsTaikaParams;
     setTaikaIdAsPONumber?: boolean;
