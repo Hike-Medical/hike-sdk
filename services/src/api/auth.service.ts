@@ -4,6 +4,7 @@ import type {
   AcceptInvitationParams,
   AuthPreferences,
   AuthSession,
+  OIDCResponse,
   SafeCompany,
   SendOtpParams,
   UserExtended,
@@ -173,9 +174,59 @@ export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> 
   }
 };
 
-export const oidcExchangeAuthCode = async (code: string) => {
+// Pre-exchange the code; returns either AuthSession (auto-login) or a needs-info payload
+export const oidcPrecheck = async (code: string, iss?: string): Promise<AuthSession | OIDCResponse> => {
   try {
-    const response = await backendApi.get(`auth/oidc/callback`, { params: { code } });
+    const params: Record<string, string> = { code };
+    if (iss) {
+      params.iss = iss;
+    }
+    const response = await backendApi.post(`auth/oidc/callback`, {}, { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Complete enrollment using provider access_token + collected PII
+export const oidcCompleteEnrollment = async (data: {
+  accessToken: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}): Promise<AuthSession> => {
+  try {
+    const { accessToken, ...body } = data;
+    const response = await backendApi.post(`auth/oidc/complete`, body, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const oidcExchangeAuthCode = async (data: {
+  code?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}) => {
+  try {
+    const response = await backendApi.post(
+      `auth/oidc/callback`,
+      {
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        birthDate: data.birthDate
+      },
+      {
+        params: { code: data.code }
+      }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);
