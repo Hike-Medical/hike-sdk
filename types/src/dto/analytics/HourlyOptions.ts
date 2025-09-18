@@ -9,4 +9,5 @@ export interface HourlyOptions {
   orderStatuses: OrderStatus[];
   dateFilters: DateFilter;
   removeWeekends?: boolean;
+  showPairs?: boolean;
 }
