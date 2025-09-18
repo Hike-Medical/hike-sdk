@@ -4,6 +4,7 @@ import { OrderStatus, ShippingTrackingStatus, WorkbenchCreatedReason } from '../
 export interface WorkbenchSummary {
   id: string;
   companyId: string;
+  companySlug: string;
   patientName: string;
   externalId: string | null;
   poNumber: string | null;
