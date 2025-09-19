@@ -17,7 +17,9 @@ export const WorkflowStepStatusEnum = {
   IN_PROGRESS: 'IN_PROGRESS',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  SKIPPED: 'SKIPPED'
+  SKIPPED: 'SKIPPED',
+  QUEUED: 'QUEUED',
+  CANCELLED: 'CANCELLED'
 } as const satisfies Record<WorkflowStepStatus, WorkflowStepStatus> & {
   [K in WorkflowStepStatus]: K;
 };
