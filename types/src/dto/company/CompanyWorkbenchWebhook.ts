@@ -2,6 +2,7 @@ export type WorkbenchWebhookStatus = 'ASSETS_READY' | 'ORDER_SUBMITTED' | 'FAILU
 
 export interface CompanyWorkbenchWebhook {
   id: string;
+  companySlug?: string;
   workbenchId: string;
   body: Record<string, string>;
   webhookUrl: string;
