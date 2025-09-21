@@ -175,11 +175,14 @@ export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> 
 };
 
 // Pre-exchange the code; returns either AuthSession (auto-login) or a needs-info payload
-export const oidcPrecheck = async (code: string, iss?: string): Promise<AuthSession | OIDCResponse> => {
+export const oidcPrecheck = async (code: string, iss?: string, state?: string): Promise<AuthSession | OIDCResponse> => {
   try {
     const params: Record<string, string> = { code };
     if (iss) {
       params.iss = iss;
+    }
+    if (state) {
+      params.state = state;
     }
     const response = await backendApi.post(`auth/oidc/callback`, {}, { params });
     return response.data;
