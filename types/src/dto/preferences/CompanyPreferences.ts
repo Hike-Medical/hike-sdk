@@ -83,6 +83,7 @@ export interface CompanyPreferences {
     oidc?: {
       enabled?: boolean;
       color?: string;
+      facilityWhitelistRequired?: boolean;
     };
   };
 }
