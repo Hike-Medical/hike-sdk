@@ -2,7 +2,6 @@ export * from './api/analytics.service';
 export * from './api/api-key.service';
 export * from './api/appointment.service';
 export * from './api/asset.service';
-export * from './api/attachment.service';
 export * from './api/audit-log.service';
 export * from './api/augment.service';
 export * from './api/auth.service';
