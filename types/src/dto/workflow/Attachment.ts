@@ -1,4 +1,4 @@
-import { EvaluationAttachmentType, EvaluationAttachmentStatus } from '../../../prisma';
+import { EvaluationAttachmentStatus, EvaluationAttachmentType } from '../../../prisma';
 
 const EvaluationAttachmentTypeEnum = {
   REFERRING_PHYSICIAN: 'REFERRING_PHYSICIAN',
@@ -24,8 +24,6 @@ const EvaluationAttachmentStatusEnum = {
   CREATED: 'CREATED',
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED',
-  DENIED: 'DENIED',
   FAILED: 'FAILED'
 } as const satisfies Record<EvaluationAttachmentStatus, EvaluationAttachmentStatus> & {
   [K in EvaluationAttachmentStatus]: K;
