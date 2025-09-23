@@ -1,4 +1,13 @@
-import { DateFilter, HourlyOptions, OrderMetricsOptions, OrderMetricsResponse } from '@hike/types';
+import {
+  DateFilter,
+  FacilityOrderAnalyticsResponse,
+  FacilityOrderSummaryResponse,
+  FacilityOrdersOptions,
+  FacilityTopOrdersOptions,
+  HourlyOptions,
+  OrderMetricsOptions,
+  OrderMetricsResponse
+} from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -78,6 +87,26 @@ export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: st
       }
     );
 
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getFacilityOrders = async (params?: FacilityOrdersOptions): Promise<FacilityOrderAnalyticsResponse> => {
+  try {
+    const response = await backendApi.get('analytics/facility/orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getTopFacilityOrders = async (
+  params?: FacilityTopOrdersOptions
+): Promise<FacilityOrderSummaryResponse> => {
+  try {
+    const response = await backendApi.get('analytics/facility/orders/top', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
