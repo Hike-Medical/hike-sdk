@@ -2,7 +2,9 @@ import type {
   AcceptInvitationCompanyParams,
   AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
+  AuthPreferences,
   AuthSession,
+  OIDCResponse,
   SafeCompany,
   SendOtpParams,
   UserExtended,
@@ -161,4 +163,84 @@ export const acceptInvitationCompany = async (
 export const findCompaniesBySession = async (): Promise<SafeCompany[]> => {
   const response = await backendApi.get('auth/session/companies');
   return response.data;
+};
+
+export const startOidcConnect = async (): Promise<{ authorizationUrl: string }> => {
+  try {
+    const response = await backendApi.get(`auth/oidc/start`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Pre-exchange the code; returns either AuthSession (auto-login) or a needs-info payload
+export const oidcPrecheck = async (code: string, iss?: string, state?: string): Promise<AuthSession | OIDCResponse> => {
+  try {
+    const params: Record<string, string> = { code };
+    if (iss) {
+      params.iss = iss;
+    }
+    if (state) {
+      params.state = state;
+    }
+    const response = await backendApi.post(`auth/oidc/callback`, {}, { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Complete enrollment using provider access_token + collected PII
+export const oidcCompleteEnrollment = async (data: {
+  accessToken: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}): Promise<AuthSession> => {
+  try {
+    const { accessToken, ...body } = data;
+    const response = await backendApi.post(`auth/oidc/complete`, body, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const oidcExchangeAuthCode = async (data: {
+  code?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}) => {
+  try {
+    const response = await backendApi.post(
+      `auth/oidc/callback`,
+      {
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        birthDate: data.birthDate
+      },
+      {
+        params: { code: data.code }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const findAuthPreferences = async (): Promise<AuthPreferences> => {
+  try {
+    const response = await backendApi.get('auth/preferences');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
 };

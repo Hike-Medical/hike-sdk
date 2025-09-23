@@ -1,4 +1,4 @@
-import { NotificationType, ProductType } from '../../../prisma';
+import { FacilityType, NotificationType, ProductType } from '../../../prisma';
 import { AppointmentCsvRecord } from '../appointment/AppointmentCsvRecord';
 import { RoasterPatientCsvRecord } from '../roster/RoasterPatientCsvRecord';
 import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
@@ -20,6 +20,7 @@ export interface CompanyPreferences {
   preferredWalkInDeliveryReceiptEmailAddress?: string;
   preSubmissionAuth?: boolean;
   requiredSnapshotReview?: boolean;
+  consumerSubmitRedirectUrl?: string;
   taikaCustomizations?: {
     orderForm?: CreateCustomizationsTaikaParams;
     setTaikaIdAsPONumber?: boolean;
@@ -36,6 +37,7 @@ export interface CompanyPreferences {
     paymentResponsibility?: PaymentResponsibility;
   };
   noAuthNeeded?: boolean;
+  skipExternalIdVerification?: boolean;
   blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
@@ -76,5 +78,13 @@ export interface CompanyPreferences {
   ui?: {
     theme?: CompanyTheme;
   };
-  benefitsWhiteList?: string[];
+  auth?: {
+    benefitsWhiteList?: string[];
+    oidc?: {
+      enabled?: boolean;
+      color?: string;
+      facilityWhitelistRequired?: boolean;
+      facilityType?: FacilityType;
+    };
+  };
 }
