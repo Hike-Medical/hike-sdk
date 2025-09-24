@@ -239,3 +239,5 @@ export * from './hooks/workbenches/useUpdateRenderType';
 export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
+export * from './hooks/workflows/useWorkflow';
+export * from './hooks/workflows/useWorkflows';
