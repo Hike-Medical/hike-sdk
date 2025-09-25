@@ -3,7 +3,6 @@ import { WorkflowStatus, WorkflowStepStatus } from '../../../prisma';
 export const WorkflowStatusEnum = {
   CREATED: 'CREATED',
   IN_PROGRESS: 'IN_PROGRESS',
-  MANUAL: 'MANUAL',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
   CANCELLED: 'CANCELLED'
@@ -18,8 +17,7 @@ export const WorkflowStepStatusEnum = {
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
   SKIPPED: 'SKIPPED',
-  QUEUED: 'QUEUED',
-  CANCELLED: 'CANCELLED'
+  QUEUED: 'QUEUED'
 } as const satisfies Record<WorkflowStepStatus, WorkflowStepStatus> & {
   [K in WorkflowStepStatus]: K;
 };
