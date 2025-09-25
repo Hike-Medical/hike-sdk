@@ -78,6 +78,9 @@ export interface CompanyPreferences {
   ui?: {
     theme?: CompanyTheme;
   };
+  compliance?: {
+    fromFaxNumber?: string;
+  };
   auth?: {
     benefitsWhiteList?: string[];
     oidc?: {
