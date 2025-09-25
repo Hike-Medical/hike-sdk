@@ -224,6 +224,7 @@ export * from './dto/workflow/Attachment';
 export * from './dto/workflow/SearchWorkflowsParams';
 export * from './dto/workflow/WorkflowDto';
 export * from './dto/workflow/WorkflowError';
+export * from './dto/workflow/WorkflowFactsResult';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
 export * from './entities/AssetExtended';
