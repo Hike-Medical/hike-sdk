@@ -242,3 +242,6 @@ export * from './hooks/workbenches/useWorkbenchSummary';
 export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowFacts';
 export * from './hooks/workflows/useWorkflows';
+export * from './hooks/workflows/useUpdateWorkflowFacts';
+export * from './hooks/workflows/useWorkflowAttachments';
+export * from './hooks/workflows/useAttachmentPresignedUrl';
