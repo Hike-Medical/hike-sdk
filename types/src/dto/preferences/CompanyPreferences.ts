@@ -32,7 +32,7 @@ export interface CompanyPreferences {
   slicerProfile?: string;
   supplierId?: string;
   pricing?: {
-    supplierPricingMultiplierPercentage?: Record<string, number>;
+    supplierMarkupPercentage?: Record<string, number>;
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
   };
@@ -61,6 +61,7 @@ export interface CompanyPreferences {
     showDirectedTips?: boolean;
     globalSearchAssignedOnly?: boolean;
     canModifyFlowTypeOnWorkbench?: boolean;
+    autoAttachFormSchemaIds?: string[];
   };
   webhook?: {
     url: string;
