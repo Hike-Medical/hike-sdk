@@ -30,9 +30,9 @@ export interface CompanyPreferences {
     };
   };
   slicerProfile?: string;
-  vendorId?: string;
+  supplierId?: string;
   pricing?: {
-    orthoFeetPricingMultiplierPercentage?: number;
+    supplierPricingMultiplierPercentage?: Record<string, number>;
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
   };

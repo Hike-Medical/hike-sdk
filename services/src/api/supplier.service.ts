@@ -4,7 +4,7 @@ import { backendApi } from '../utils/backendApi';
 
 export const fetchOrthofeetInventoryBySkus = async (skus: string[]): Promise<GetOrthofeetInventoryResponse> => {
   try {
-    const response = await backendApi.get(`vendor/orthofeet/inventory`, {
+    const response = await backendApi.get(`supplier/orthofeet/inventory`, {
       params: {
         skus
       }
@@ -17,7 +17,7 @@ export const fetchOrthofeetInventoryBySkus = async (skus: string[]): Promise<Get
 
 export const fetchOrthofeetInventoryBySku = async (sku: string): Promise<GetOrthofeetInventoryResponse> => {
   try {
-    const response = await backendApi.get(`vendor/orthofeet/inventory/sku/${encodeURIComponent(sku)}`);
+    const response = await backendApi.get(`supplier/orthofeet/inventory/sku/${encodeURIComponent(sku)}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -26,7 +26,7 @@ export const fetchOrthofeetInventoryBySku = async (sku: string): Promise<GetOrth
 
 export const fetchOrthofeetInventoryByProduct = async (productId: string): Promise<GetOrthofeetInventoryResponse> => {
   try {
-    const response = await backendApi.get(`vendor/orthofeet/inventory/product/${encodeURIComponent(productId)}`);
+    const response = await backendApi.get(`supplier/orthofeet/inventory/product/${encodeURIComponent(productId)}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
