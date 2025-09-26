@@ -58,7 +58,7 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
   'prescriber.role': {
     displayName: 'Prescriber Role',
-    description: "Prescribing practitioner's role (MD, DO, DPM, PA, NP, CNS)",
+    description: "Prescribing practitioner's role",
     category: 'Prescriber Information',
     required: true
   },
@@ -156,7 +156,7 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
   'foot_exam.examiner.role': {
     displayName: 'Foot Exam Examiner Role',
-    description: 'Role of the practitioner who performed the foot exam (MD, DO, DPM, PA, NP, CNS)',
+    description: 'Role of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true
   },
