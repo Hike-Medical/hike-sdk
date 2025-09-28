@@ -1,6 +1,11 @@
-import type { SearchWorkflowsParams, WorkflowDto, WorkflowSearchResult } from '@hike/types';
-import type { AttachmentPresignedUrl, WorkflowAttachment } from '@hike/types/src/dto/workflow/WorkflowAttachment';
-import type { WorkflowFactsResult } from '@hike/types/src/dto/workflow/WorkflowFactsResult';
+import type {
+  AttachmentPresignedUrl,
+  SearchWorkflowsParams,
+  WorkflowAttachment,
+  WorkflowDto,
+  WorkflowFactsResult,
+  WorkflowSearchResult
+} from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
