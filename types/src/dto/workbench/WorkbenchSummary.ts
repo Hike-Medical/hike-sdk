@@ -1,5 +1,5 @@
-import { RenderType } from 'dto/manufacturing/RenderType';
 import { OrderStatus, ShippingTrackingStatus, WorkbenchCreatedReason } from '../../../prisma';
+import { RenderType } from '../manufacturing/RenderType';
 
 export interface WorkbenchSummary {
   id: string;

@@ -1,5 +1,5 @@
-import { CustomizationResponse } from 'dto/workbench/CustomizationResponse';
 import type { Asset, Evaluation, Product, Workbench, WorkbenchNotes } from '../../prisma';
+import { WorkbenchCustomization } from '../dto/workbench/WorkbenchCustomization';
 import { FormSubmissionExtended } from '../forms/FormSubmissionExtended';
 import { EvaluationExtended } from './EvaluationExtended';
 import { OrderWithShippingLabel } from './OrderWithShippingLabel';
@@ -19,5 +19,5 @@ export type WorkbenchExtended = Workbench & {
   assets: Asset[];
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
-  customization: CustomizationResponse;
+  customization: WorkbenchCustomization | null;
 } & WorkbenchPdfUrls;
