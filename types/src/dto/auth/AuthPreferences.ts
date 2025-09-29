@@ -1,5 +1,5 @@
-import { CompanyPreferences } from 'dto/preferences/CompanyPreferences';
 import { Company } from '../../../prisma';
+import { CompanyPreferences } from '../preferences/CompanyPreferences';
 
 export type AuthPreferences = CompanyPreferences['auth'] & {
   slug: Company['slug'];
