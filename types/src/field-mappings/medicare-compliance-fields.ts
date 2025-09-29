@@ -30,6 +30,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     category: 'Patient Information',
     required: true
   },
+  'patient.medicare_mbi': {
+    displayName: 'Medicare MBI',
+    description: "Patient's Medicare Beneficiary Identifier",
+    category: 'Patient Information',
+    required: true
+  },
 
   // Prescriber Information
   'prescriber.first_name': {
@@ -316,6 +322,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
 
   // Diagnosis Information
+  'dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Diagnosis Information',
+    required: true
+  },
   'dx.diabetes.code': {
     displayName: 'Diabetes ICD-10 Code',
     description: 'ICD-10 code for diabetes diagnosis (E08-E13)',
@@ -325,6 +337,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   'dx.qualifying_condition.list': {
     displayName: 'Qualifying Conditions',
     description: 'List of qualifying foot-risk conditions',
+    category: 'Diagnosis Information',
+    required: false
+  },
+  'dx.qualifying_condition.details': {
+    displayName: 'Qualifying Condition Details',
+    description: 'Detailed description of qualifying foot-risk conditions',
     category: 'Diagnosis Information',
     required: false
   },
