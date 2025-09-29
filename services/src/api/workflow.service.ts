@@ -41,7 +41,7 @@ export const updateWorkflowFacts = async (
   facts: { key: string; value: any; source?: string }[]
 ) => {
   try {
-    const response = await backendApi.post(`workflow/${workflowId}/state`, {
+    const response = await backendApi.patch(`workflow/${workflowId}/state`, {
       facts: facts.map((fact) => ({
         key: fact.key,
         value: fact.value,
