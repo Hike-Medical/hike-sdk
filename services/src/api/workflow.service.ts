@@ -71,3 +71,12 @@ export const getAttachmentPresignedUrl = async (attachmentId: string): Promise<A
     throw toHikeError(error);
   }
 };
+
+export const getFactHistory = async (workflowId: string, factKey: string) => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/facts/${encodeURIComponent(factKey)}/history`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
