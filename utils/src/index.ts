@@ -22,7 +22,6 @@ export * from './geography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
 export * from './helpers/colorMapper';
-export * from './helpers/convertRenderTypeToValue';
 export * from './helpers/currentPaginatedPage';
 export * from './helpers/currentUrl';
 export * from './helpers/dayjsBusinessAdd';
