@@ -24,6 +24,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     category: 'Patient Information',
     required: true
   },
+  'patient.phone': {
+    displayName: 'Phone Number',
+    description: "Patient's phone number",
+    category: 'Patient Information',
+    required: true
+  },
   'patient.dob': {
     displayName: 'Date of Birth',
     description: "Patient's date of birth",
@@ -47,6 +53,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   'prescriber.last_name': {
     displayName: 'Prescriber Last Name',
     description: "Prescribing practitioner's last name",
+    category: 'Prescriber Information',
+    required: true
+  },
+  'prescriber.phone': {
+    displayName: 'Prescriber Phone',
+    description: "Prescribing practitioner's phone number",
     category: 'Prescriber Information',
     required: true
   },
