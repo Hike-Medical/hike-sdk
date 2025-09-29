@@ -361,6 +361,40 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     description: 'Records of outbound notifications sent',
     category: 'Notifications',
     required: false
+  },
+
+  // Payer information
+  'payer.primary.name': {
+    displayName: 'Primary Payer Name',
+    description: 'Name of the primary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.primary.member_id': {
+    displayName: 'Primary Payer Member ID',
+    description: 'Member ID for the primary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.secondary.name': {
+    displayName: 'Secondary Payer Name',
+    description: 'Name of the secondary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.secondary.member_id': {
+    displayName: 'Secondary Payer Member ID',
+    description: 'Member ID for the secondary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+
+  // Other
+  'fitter.clinic_name': {
+    displayName: 'Fitter Clinic Name',
+    description: 'Name of the clinic where the footwear was fitted',
+    category: 'Other',
+    required: false
   }
 };
 
