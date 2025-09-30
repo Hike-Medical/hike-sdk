@@ -11,15 +11,16 @@ export interface WorkflowStepDto {
     numRetries: number;
     jobId: string;
     workflowStateDto?: {
-      facts: Array<{
+      facts: {
         key: string;
         value: any;
         source: string;
         sourceAttachmentId?: string;
         metadata?: any;
-        version: number;
-      }>;
-      attachments: Array<{
+        acquiredAt: string;
+        updatedAt: string;
+      }[];
+      attachments: {
         id: string;
         name: string;
         bucket: string;
@@ -31,8 +32,8 @@ export interface WorkflowStepDto {
         statusReason?: string;
         companyId: string;
         metadata?: any;
-      }>;
-      dataErrors: Array<{
+      }[];
+      dataErrors: {
         factKey: string;
         factValue?: string;
         errorType: string;
@@ -41,7 +42,7 @@ export interface WorkflowStepDto {
         resolved: boolean;
         message?: string;
         metadata?: any;
-      }>;
+      }[];
     };
   };
 }
@@ -53,15 +54,17 @@ export interface WorkflowStatusUpdateDto {
 }
 
 export interface WorkflowStateDto {
-  facts: Array<{
+  facts: {
     key: string;
     value: any;
     source: string;
     sourceAttachmentId?: string;
     metadata?: any;
     version: number;
-  }>;
-  attachments: Array<{
+    acquiredAt: string;
+    updatedAt: string;
+  }[];
+  attachments: {
     id: string;
     name: string;
     bucket: string;
@@ -73,7 +76,7 @@ export interface WorkflowStateDto {
     statusReason?: string;
     companyId: string;
     metadata?: any;
-  }>;
+  }[];
 }
 
 export interface WorkflowDto {
@@ -88,17 +91,18 @@ export interface WorkflowDto {
   statusUpdates: WorkflowStatusUpdateDto[];
   parentWorkflowId?: string;
   childWorkflowIds: string[];
-  dataErrors: Array<{
+  dataErrors: {
     errorType: string;
-    facts: Array<{
+    facts: {
       key: string;
       value: any;
       source: string;
       sourceAttachmentId?: string;
       metadata?: any;
-      version: number;
       active: boolean;
-    }>;
+      acquiredAt: string;
+      updatedAt: string;
+    }[];
     message: string;
-  }>;
+  }[];
 }
