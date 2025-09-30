@@ -142,7 +142,7 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
-    description: 'Whether the visit was conducted in-person (telehealth not allowed)',
+    description: 'Whether the visit was conducted in-person',
     category: 'Certifier Notes',
     required: true
   },
