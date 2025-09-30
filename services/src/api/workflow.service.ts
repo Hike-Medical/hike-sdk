@@ -41,7 +41,7 @@ export const updateWorkflowFacts = async (
   facts: { key: string; value: any; source?: string }[]
 ) => {
   try {
-    const response = await backendApi.post(`workflow/${workflowId}/state`, {
+    const response = await backendApi.patch(`workflow/${workflowId}/state`, {
       facts: facts.map((fact) => ({
         key: fact.key,
         value: fact.value,
@@ -66,6 +66,15 @@ export const getWorkflowAttachments = async (workflowId: string): Promise<Workfl
 export const getAttachmentPresignedUrl = async (attachmentId: string): Promise<AttachmentPresignedUrl> => {
   try {
     const response = await backendApi.get(`workflow/attachment/${attachmentId}/presigned-url`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getFactHistory = async (workflowId: string, factKey: string) => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/facts/${encodeURIComponent(factKey)}/history`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

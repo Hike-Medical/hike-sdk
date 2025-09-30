@@ -24,9 +24,21 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     category: 'Patient Information',
     required: true
   },
+  'patient.phone': {
+    displayName: 'Phone Number',
+    description: "Patient's phone number",
+    category: 'Patient Information',
+    required: true
+  },
   'patient.dob': {
     displayName: 'Date of Birth',
     description: "Patient's date of birth",
+    category: 'Patient Information',
+    required: true
+  },
+  'patient.medicare_mbi': {
+    displayName: 'Medicare MBI',
+    description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true
   },
@@ -41,6 +53,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   'prescriber.last_name': {
     displayName: 'Prescriber Last Name',
     description: "Prescribing practitioner's last name",
+    category: 'Prescriber Information',
+    required: true
+  },
+  'prescriber.phone': {
+    displayName: 'Prescriber Phone',
+    description: "Prescribing practitioner's phone number",
     category: 'Prescriber Information',
     required: true
   },
@@ -124,7 +142,7 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
-    description: 'Whether the visit was conducted in-person (telehealth not allowed)',
+    description: 'Whether the visit was conducted in-person',
     category: 'Certifier Notes',
     required: true
   },
@@ -316,6 +334,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   },
 
   // Diagnosis Information
+  'dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Diagnosis Information',
+    required: true
+  },
   'dx.diabetes.code': {
     displayName: 'Diabetes ICD-10 Code',
     description: 'ICD-10 code for diabetes diagnosis (E08-E13)',
@@ -325,6 +349,12 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
   'dx.qualifying_condition.list': {
     displayName: 'Qualifying Conditions',
     description: 'List of qualifying foot-risk conditions',
+    category: 'Diagnosis Information',
+    required: false
+  },
+  'dx.qualifying_condition.details': {
+    displayName: 'Qualifying Condition Details',
+    description: 'Detailed description of qualifying foot-risk conditions',
     category: 'Diagnosis Information',
     required: false
   },
@@ -342,6 +372,40 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     displayName: 'Outbound Notifications',
     description: 'Records of outbound notifications sent',
     category: 'Notifications',
+    required: false
+  },
+
+  // Payer information
+  'payer.primary.name': {
+    displayName: 'Primary Payer Name',
+    description: 'Name of the primary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.primary.member_id': {
+    displayName: 'Primary Payer Member ID',
+    description: 'Member ID for the primary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.secondary.name': {
+    displayName: 'Secondary Payer Name',
+    description: 'Name of the secondary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+  'payer.secondary.member_id': {
+    displayName: 'Secondary Payer Member ID',
+    description: 'Member ID for the secondary insurance payer',
+    category: 'Payer Information',
+    required: false
+  },
+
+  // Other
+  'fitter.clinic_name': {
+    displayName: 'Fitter Clinic Name',
+    description: 'Name of the clinic where the footwear was fitted',
+    category: 'Other',
     required: false
   }
 };
