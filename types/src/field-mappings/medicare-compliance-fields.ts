@@ -375,6 +375,14 @@ export const MEDICARE_COMPLIANCE_FIELD_MAPPINGS: Record<string, FieldMapping> = 
     required: false
   },
 
+  // Workflow Information
+  'internal.workflow.compliance': {
+    displayName: 'Merged Workflow Information',
+    description: 'Merged Workflow Information',
+    category: 'Workflow Information',
+    required: false
+  },
+
   // Payer information
   'payer.primary.name': {
     displayName: 'Primary Payer Name',
