@@ -32,9 +32,9 @@ export interface CompanyPreferences {
   slicerProfile?: string;
   supplierId?: string;
   pricing?: {
-    supplierMarkupPercentage?: Record<string, number>;
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
+    supplierMarkupPercentage?: Record<string, number>;
   };
   noAuthNeeded?: boolean;
   skipExternalIdVerification?: boolean;

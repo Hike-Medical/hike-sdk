@@ -2,7 +2,7 @@ import type { PaginationState } from '@hike/types';
 
 export const Constants = {
   AUTH_COOKIE_NAME: 'hike.session-token',
-  HIKE_SUPPORT_EMAIL: "support@hikemedical.com",
+  HIKE_SUPPORT_EMAIL: 'support@hikemedical.com',
   MIN_PIN_LENGTH: 8,
   COMPANY_INVITATION_EXPIRATION_MINUTES: 14 * 24 * 60, // 14 days
   DEFAULT_QUERY_LIMIT: 1000,
