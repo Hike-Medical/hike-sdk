@@ -7,7 +7,6 @@ export interface WorkflowFactsResult {
     string,
     {
       value: any;
-      version: number;
     }
   >;
 }
