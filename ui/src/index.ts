@@ -1,5 +1,6 @@
 export { default as CompanyProvider } from './contexts/CompanyProvider';
 export { CompanyContext } from './contexts/CompanyProviderClient';
+
 export * from './contexts/HikeProvider';
 export * from './contexts/InAppNotificationsProvider';
 export * from './contexts/SessionProvider';
@@ -56,7 +57,6 @@ export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogProducts';
 export * from './hooks/catalog/useProductById';
 export * from './hooks/catalog/useProductBySku';
-export * from './hooks/catalog/useSuppliers';
 export * from './hooks/clinician/useAssignClinician';
 export * from './hooks/clinician/useClinicians';
 export * from './hooks/clinician/useCreateClinician';
@@ -196,6 +196,7 @@ export * from './hooks/shipping/useVoidLabel';
 export * from './hooks/suppliers/useOrthofeetInventoryByProduct';
 export * from './hooks/suppliers/useOrthofeetInventoryBySku';
 export * from './hooks/suppliers/useOrthofeetInventoryBySkus';
+export * from './hooks/suppliers/useSuppliers';
 export * from './hooks/tag/useTags';
 export * from './hooks/tag/useTagsByEntity';
 export * from './hooks/terms/useAcceptTerms';

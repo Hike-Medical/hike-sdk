@@ -1,10 +1,8 @@
 import type {
   CatalogCategory,
   CatalogProductExtended,
-  CatalogSupplier,
   GetCategoriesParams,
   GetProductsParams,
-  GetSuppliersParams,
   PagedResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -49,15 +47,6 @@ export const fetchProducts = async (params?: GetProductsParams): Promise<PagedRe
 export const fetchCategories = async (params?: GetCategoriesParams): Promise<PagedResponse<CatalogCategory[]>> => {
   try {
     const response = await backendApi.get('catalog/category', { params });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const fetchSuppliers = async (params?: GetSuppliersParams): Promise<PagedResponse<CatalogSupplier[]>> => {
-  try {
-    const response = await backendApi.get('catalog/supplier', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
