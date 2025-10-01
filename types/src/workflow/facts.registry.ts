@@ -3,6 +3,13 @@
  * Maps technical field keys to user-friendly display names and descriptions
  */
 import { z } from 'zod';
+import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
+
+type Registry = typeof FactRegistry;
+
+export type FactKey = keyof Registry;
+
+export type FactValueOf<K extends FactKey> = z.infer<Registry[K]['schema']>;
 
 interface FactsRegistryEntry {
   schema: z.ZodType;
@@ -11,12 +18,14 @@ interface FactsRegistryEntry {
   category: string;
   required: boolean;
   hideInUX?: boolean;
+  transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
 }
 
 const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
 const icd10Code = z.string().regex(/^[A-TV-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$/, 'ICD-10 code');
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
+const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
 
 export const FactRegistry: Record<string, FactsRegistryEntry> = {
   // Patient Information
@@ -39,7 +48,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Patient's phone number",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1)
+    schema: usOrCAPhoneNumber,
+    transform: formatPhoneNumber
   },
   'patient.dob': {
     displayName: 'Date of Birth',
@@ -104,7 +114,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Prescribing practitioner's phone number",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: usOrCAPhoneNumber,
+    transform: formatPhoneNumber
   },
   'prescriber.npi': {
     displayName: 'Prescriber NPI',
@@ -118,7 +129,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Prescribing practitioner's fax number",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: usOrCAPhoneNumber,
+    transform: formatPhoneNumber
   },
   'prescriber.role': {
     displayName: 'Prescriber Role',
@@ -155,7 +167,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Certifying physician's fax number",
     category: 'Certifying Physician',
     required: true,
-    schema: z.string().min(1)
+    schema: usOrCAPhoneNumber,
+    transform: formatPhoneNumber
   },
   'cert.physician.role': {
     displayName: 'Certifying Physician Role',
@@ -183,7 +196,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: 'Phone number of the certifying physician',
     category: 'Certifying Physician',
     required: false,
-    schema: z.string().min(1)
+    schema: usOrCAPhoneNumber,
+    transform: formatPhoneNumber
   },
 
   // Prescriber Notes
