@@ -10,6 +10,7 @@ interface FactsRegistryEntry {
   description: string;
   category: string;
   required: boolean;
+  hideInUX?: boolean;
 }
 
 const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
@@ -587,7 +588,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
         historyId: z.string().min(1),
         jobId: z.string().min(1)
       })
-    )
+    ),
+    hideInUX: true
   },
 
   // Workflow Information
@@ -601,7 +603,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
       id: z.string().min(1).optional(),
       merged: z.boolean(),
       createNew: z.boolean()
-    })
+    }),
+    hideInUX: true
   },
 
   // Payer information
