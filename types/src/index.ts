@@ -229,7 +229,6 @@ export * from './dto/workflow/WorkflowStatus';
 export * from './entities/AssetExtended';
 export * from './entities/AugmentExtended';
 export * from './entities/CatalogProductExtended';
-export * from './entities/CatalogProductVariantExtended';
 export * from './entities/ClinicianExtended';
 export * from './entities/CompanyExtended';
 export * from './entities/CompanyPatientExtended';

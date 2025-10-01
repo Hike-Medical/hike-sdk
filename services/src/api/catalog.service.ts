@@ -1,7 +1,6 @@
 import type {
   CatalogCategory,
   CatalogProductExtended,
-  CatalogProductVariantExtended,
   CatalogSupplier,
   GetCategoriesParams,
   GetProductsParams,
@@ -29,7 +28,7 @@ export const findProductBySku = async (sku: string): Promise<CatalogProductExten
   }
 };
 
-export const findProductByBarcode = async (barcode: string): Promise<CatalogProductVariantExtended> => {
+export const findProductByBarcode = async (barcode: string): Promise<CatalogProductExtended> => {
   try {
     const response = await backendApi.get(`catalog/product/barcode/${encodeURIComponent(barcode)}`);
     return response.data;
