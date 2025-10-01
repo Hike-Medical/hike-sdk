@@ -4,6 +4,7 @@ import type { PagedParams } from '../PagedParams';
 export interface GetProductsParams extends PagedParams {
   term?: string;
   categoryId?: string;
+  manufacturerId?: string;
   supplierId?: string;
   deviceTypeId?: string;
   billingCode?: string;
