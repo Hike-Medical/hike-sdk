@@ -1,4 +1,10 @@
-import type { CatalogCategory, CatalogProduct, CatalogProductAttribute, CatalogSupplier } from '../../prisma';
+import type {
+  CatalogCategory,
+  CatalogManufacturer,
+  CatalogProduct,
+  CatalogProductAttribute,
+  CatalogSupplier
+} from '../../prisma';
 
 export type CatalogProductExtended = CatalogProduct & {
   attributes: CatalogProductAttribute[];
@@ -6,4 +12,5 @@ export type CatalogProductExtended = CatalogProduct & {
   children: CatalogProduct[];
   categories: CatalogCategory[];
   suppliers: CatalogSupplier[];
+  manufacturer: CatalogManufacturer | null;
 };

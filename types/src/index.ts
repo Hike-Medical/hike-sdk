@@ -55,6 +55,7 @@ export * from './dto/billingCode/BillingCodeResult';
 export * from './dto/billingCode/GetBillingCodesParams';
 export * from './dto/billingCode/SearchBillingCodesParams';
 export * from './dto/catalog/GetCategoriesParams';
+export * from './dto/catalog/GetManufacturersParams';
 export * from './dto/catalog/GetProductsParams';
 export * from './dto/clinician/AssignClinicianParams';
 export * from './dto/clinician/CreateClinicianParams';

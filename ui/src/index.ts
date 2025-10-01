@@ -55,6 +55,7 @@ export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
 export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogProducts';
+export * from './hooks/catalog/useManufacturers';
 export * from './hooks/catalog/useProductById';
 export * from './hooks/catalog/useProductBySku';
 export * from './hooks/clinician/useAssignClinician';
