@@ -90,4 +90,5 @@ export interface CompanyPreferences {
       facilityType?: FacilityType;
     };
   };
+  supplierPricing?: Record<string, number>;
 }

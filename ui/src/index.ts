@@ -56,6 +56,7 @@ export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogProducts';
 export * from './hooks/catalog/useProductById';
 export * from './hooks/catalog/useProductBySku';
+export * from './hooks/catalog/useSuppliers';
 export * from './hooks/catalog/useVendors';
 export * from './hooks/clinician/useAssignClinician';
 export * from './hooks/clinician/useClinicians';

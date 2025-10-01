@@ -2,6 +2,7 @@ import type {
   CatalogCategory,
   CatalogProductExtended,
   CatalogProductVariantExtended,
+  CatalogSupplier,
   CatalogVendor,
   GetCategoriesParams,
   GetProductsParams,
@@ -59,6 +60,15 @@ export const fetchCategories = async (params?: GetCategoriesParams): Promise<Pag
 export const fetchVendors = async (params?: GetVendorsParams): Promise<PagedResponse<CatalogVendor[]>> => {
   try {
     const response = await backendApi.get('catalog/vendor', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchSuppliers = async (): Promise<CatalogSupplier[]> => {
+  try {
+    const response = await backendApi.get('catalog/supplier');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
