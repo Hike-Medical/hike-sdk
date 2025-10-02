@@ -43,6 +43,7 @@ export * from './api/twofa.service';
 export * from './api/user.service';
 export * from './api/vendor.service';
 export * from './api/workbench.service';
+export * from './api/workflow-facts.service';
 export * from './api/workflow.service';
 export * from './configure';
 export * from './errors/toErrorCode';
