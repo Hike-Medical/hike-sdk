@@ -30,11 +30,11 @@ export interface CompanyPreferences {
     };
   };
   slicerProfile?: string;
-  vendorId?: string;
+  supplierId?: string;
   pricing?: {
-    orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
+    supplierMarkupPercentage?: Record<string, number>;
   };
   noAuthNeeded?: boolean;
   skipExternalIdVerification?: boolean;
@@ -61,6 +61,7 @@ export interface CompanyPreferences {
     showDirectedTips?: boolean;
     globalSearchAssignedOnly?: boolean;
     canModifyFlowTypeOnWorkbench?: boolean;
+    autoAttachFormSchemaIds?: string[];
   };
   webhook?: {
     url: string;

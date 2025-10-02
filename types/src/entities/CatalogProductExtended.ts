@@ -1,14 +1,16 @@
 import type {
   CatalogCategory,
+  CatalogManufacturer,
   CatalogProduct,
   CatalogProductAttribute,
-  CatalogProductVariant,
-  CatalogVendor
+  CatalogSupplier
 } from '../../prisma';
 
 export type CatalogProductExtended = CatalogProduct & {
   attributes: CatalogProductAttribute[];
-  variants: CatalogProductVariant[];
+  parent: CatalogProduct | null;
+  children: CatalogProduct[];
   categories: CatalogCategory[];
-  vendors: CatalogVendor[];
+  suppliers: CatalogSupplier[];
+  manufacturer: CatalogManufacturer | null;
 };

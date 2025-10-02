@@ -30,7 +30,6 @@ export const TokenRefresher = () => {
     try {
       const payload = decodeJwt(token);
       const exp = typeof payload.exp === 'number' ? payload.exp * 1000 : null;
-      logger.debug('Token expiry calculated', { exp, now: Date.now() });
       return exp;
     } catch (error) {
       logger.error('Failed to decode token', { error });
@@ -42,26 +41,14 @@ export const TokenRefresher = () => {
     const exp = lastExpRef.current;
     const now = Date.now();
 
-    logger.debug('Checking token refresh', {
-      now,
-      exp,
-      timeLeft: exp ? exp - now : null,
-      lastActivity: lastActivityRef.current,
-      warningShown
-    });
-
     if (!exp) {
-      logger.debug('No expiry time available, skipping refresh check');
       return;
     }
 
     const isUserActive = now - lastActivityRef.current < REFRESH_THRESHOLD;
     const timeLeft = exp - now;
 
-    logger.debug('Token check', { isUserActive, timeLeft });
-
     if (!isUserActive && timeLeft <= 0) {
-      logger.debug('Token expired and user inactive, logging out...');
       await logout();
       const query = new URLSearchParams({ redirect: window.location.href });
       router.replace(`${slugPath}/login?${query}`);
@@ -69,16 +56,12 @@ export const TokenRefresher = () => {
     }
 
     if (timeLeft > REFRESH_THRESHOLD) {
-      logger.debug('Session is not expiring soon, skipping refresh');
       return;
     }
 
     if (isUserActive) {
-      update()
-        .then(() => logger.debug('Token update request completed'))
-        .catch((error) => logger.error('Token refresh failed', { error }));
+      update().catch((error) => logger.error('Token refresh failed', { error }));
     } else if (!warningShown) {
-      logger.debug('Session nearing expiry with no activity, showing warning');
       setWarningShown(true);
     }
   }, [logout, update, router, slugPath, warningShown]);
@@ -87,7 +70,6 @@ export const TokenRefresher = () => {
   useEffect(() => {
     lastExpRef.current = getTokenExpiry(accessToken);
     setWarningShown(false);
-    logger.debug('Access token changed', { newExpiry: lastExpRef.current });
   }, [accessToken, getTokenExpiry]);
 
   // Listen for user activity to refresh the token
@@ -101,7 +83,6 @@ export const TokenRefresher = () => {
     const events = ['mousemove', 'keydown', 'scroll', 'touchstart'];
     events.forEach((event) => window.addEventListener(event, handleActivity));
     const interval = setInterval(() => refreshIfNeeded(), CHECK_INTERVAL);
-    logger.debug('Token refresher initialized with interval', { CHECK_INTERVAL });
 
     return () => {
       events.forEach((event) => window.removeEventListener(event, handleActivity));
