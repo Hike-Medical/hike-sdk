@@ -2,7 +2,7 @@ import { HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UploadVideoParams {
-  video: File | Buffer | Blob;
+  video: File | Blob;
   s3Url: string;
   tagSet?: Record<string, string>;
   onProgress?: (progress: number) => void;
@@ -57,7 +57,7 @@ export const useUploadVideoToS3 = (
             } else if (timeDelta > 0) {
               const speed = loadDelta / timeDelta;
               console.log('Upload speed:', speed.toFixed(2), 'bytes/ms');
-              const estimatedTotal = video instanceof File ? video.size : (video as Blob).size;
+              const estimatedTotal = video instanceof File ? video.size : video.size;
               const estimatedProgress = Math.min((event.loaded / estimatedTotal) * 100, 99);
               console.log('Estimated progress:', `${estimatedProgress.toFixed(2)}%`);
               onProgress(estimatedProgress);
@@ -110,7 +110,7 @@ export const useUploadVideoToS3 = (
           console.log('x-amz-tagging header set');
         }
 
-        console.log('Sending video. Size:', video instanceof File ? video.size : (video as Blob).size, 'bytes');
+        console.log('Sending video. Size:', video instanceof File ? video.size : video.size, 'bytes');
         xhr.send(video);
       });
     },
