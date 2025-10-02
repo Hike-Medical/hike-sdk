@@ -1,5 +1,5 @@
 /**
- * Returns custom UTM parameters from the current URL or a provided URL string.
+ * Returns custom UTM parameters to load into posthog campaign tracking.
  *
  * Custom UTM parameters tracked:
  * - utm_format: Format of the campaign (e.g., email, sms, banner)
