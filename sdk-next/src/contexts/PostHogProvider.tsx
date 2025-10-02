@@ -1,6 +1,6 @@
 'use client';
 
-import { configureFingerprint } from '@hike/sdk';
+import { configureFingerprint, marketingUtmParams } from '@hike/sdk';
 import { SessionContext } from '@hike/ui';
 import dynamic from 'next/dynamic';
 import posthog from 'posthog-js'; // eslint-disable-line import/no-named-as-default
@@ -36,7 +36,8 @@ export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogPr
       disable_surveys: true,
       loaded: (instance) => {
         configureFingerprint(instance.get_distinct_id());
-      }
+      },
+      custom_campaign_params: [...marketingUtmParams]
     });
 
     setIsInitialized(true);
