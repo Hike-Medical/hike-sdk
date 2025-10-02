@@ -1,11 +1,10 @@
 import type {
   CatalogCategory,
+  CatalogManufacturer,
   CatalogProductExtended,
-  CatalogProductVariantExtended,
-  CatalogVendor,
   GetCategoriesParams,
+  GetManufacturersParams,
   GetProductsParams,
-  GetVendorsParams,
   PagedResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -29,7 +28,7 @@ export const findProductBySku = async (sku: string): Promise<CatalogProductExten
   }
 };
 
-export const findProductByBarcode = async (barcode: string): Promise<CatalogProductVariantExtended> => {
+export const findProductByBarcode = async (barcode: string): Promise<CatalogProductExtended> => {
   try {
     const response = await backendApi.get(`catalog/product/barcode/${encodeURIComponent(barcode)}`);
     return response.data;
@@ -56,9 +55,11 @@ export const fetchCategories = async (params?: GetCategoriesParams): Promise<Pag
   }
 };
 
-export const fetchVendors = async (params?: GetVendorsParams): Promise<PagedResponse<CatalogVendor[]>> => {
+export const fetchManufacturers = async (
+  params?: GetManufacturersParams
+): Promise<PagedResponse<CatalogManufacturer[]>> => {
   try {
-    const response = await backendApi.get('catalog/vendor', { params });
+    const response = await backendApi.get('catalog/manufacturer', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
