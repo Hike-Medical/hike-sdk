@@ -1,6 +1,7 @@
 export * from './constants';
 export * from './constants/autoSlicerProfiles';
 export * from './constants/SolemateStatuses';
+export * from './constants/marketingUtmParams';
 export * from './converters/flattenObject';
 export * from './converters/formatCamelCase';
 export * from './converters/formatConstant';
