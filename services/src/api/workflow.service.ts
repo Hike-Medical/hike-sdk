@@ -54,6 +54,28 @@ export const updateWorkflowFacts = async (
   }
 };
 
+export const updateWorkflowState = async (
+  workflowId: string,
+  stateUpdate: {
+    facts?: { key: string; value: any; source?: string }[];
+    resolvedFactIds?: string[];
+  }
+) => {
+  try {
+    const response = await backendApi.patch(`workflow/${workflowId}/state`, {
+      facts: stateUpdate.facts?.map((fact) => ({
+        key: fact.key,
+        value: fact.value,
+        source: fact.source || 'manual'
+      })),
+      resolvedFactIds: stateUpdate.resolvedFactIds
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getWorkflowAttachments = async (workflowId: string): Promise<WorkflowAttachment[]> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/attachments`);

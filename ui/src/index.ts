@@ -243,6 +243,7 @@ export * from './hooks/workflows/useAttachmentPresignedUrl';
 export * from './hooks/workflows/useFactHistory';
 export * from './hooks/workflows/useFactsByIds';
 export * from './hooks/workflows/useUpdateWorkflowFacts';
+export * from './hooks/workflows/useUpdateWorkflowState';
 export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowFacts';
