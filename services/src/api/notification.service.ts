@@ -300,3 +300,18 @@ export const updateNotification = async (
     throw toHikeError(error);
   }
 };
+
+export const exportNotificationHistory = async (
+  notificationId: string,
+  params?: GetNotificationHistoryParams
+): Promise<Blob> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/history/export`, {
+      params,
+      responseType: 'arraybuffer'
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

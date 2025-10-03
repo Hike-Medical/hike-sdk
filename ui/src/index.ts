@@ -128,6 +128,7 @@ export * from './hooks/notification/useDeleteNotificationJob';
 export * from './hooks/notification/useDeleteNotificationJobs';
 export * from './hooks/notification/useDeleteNotificationMessage';
 export * from './hooks/notification/useEnrollPatientsToNotification';
+export * from './hooks/notification/useExportNotificationHistory';
 export * from './hooks/notification/useGetEnrollPatientsNotificationJobs';
 export * from './hooks/notification/useGetEnrollPatientsNotificationJobsByPatient';
 export * from './hooks/notification/useGetInAppNotifications';
