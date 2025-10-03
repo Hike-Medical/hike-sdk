@@ -5,6 +5,7 @@ export interface NotificationStats {
   name: string;
   total: number;
   sent: number;
+  pending: number;
   clicked: number;
   opened: number;
   unsubscribed: number;
