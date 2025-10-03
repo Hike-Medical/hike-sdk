@@ -600,7 +600,8 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
         contact: z.string().min(1),
         senderStatus: z.enum(['SENT', 'UNDELIVERED', 'DELIVERED']).optional(),
         historyId: z.string().min(1),
-        jobId: z.string().min(1)
+        jobId: z.string().min(1),
+        stepName: z.string().min(1)
       })
     ),
     hideInUX: true
@@ -618,6 +619,15 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
       merged: z.boolean(),
       createNew: z.boolean()
     }),
+    hideInUX: true
+  },
+
+  'internal.no_response_fax': {
+    displayName: 'No Response Fax Information',
+    description: 'No Response Fax Information',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.boolean(),
     hideInUX: true
   },
 
