@@ -79,6 +79,22 @@ export interface WorkflowStateDto {
   }[];
 }
 
+export interface WorkflowErrorDto {
+  errorType: string;
+  facts: {
+    id: string;
+    key: string;
+    value: any;
+    source: string;
+    sourceAttachmentId?: string;
+    metadata?: any;
+    active: boolean;
+    acquiredAt: string;
+    updatedAt: string;
+  }[];
+  message: string;
+}
+
 export interface WorkflowDto {
   workflowId: string;
   workflowName: string;
@@ -91,18 +107,5 @@ export interface WorkflowDto {
   statusUpdates: WorkflowStatusUpdateDto[];
   parentWorkflowId?: string;
   childWorkflowIds: string[];
-  dataErrors: {
-    errorType: string;
-    facts: {
-      key: string;
-      value: any;
-      source: string;
-      sourceAttachmentId?: string;
-      metadata?: any;
-      active: boolean;
-      acquiredAt: string;
-      updatedAt: string;
-    }[];
-    message: string;
-  }[];
+  dataErrors: WorkflowErrorDto[];
 }
