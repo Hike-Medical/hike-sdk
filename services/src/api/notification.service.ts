@@ -4,6 +4,7 @@ import type {
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
+  GetEnrollPatientsNotificationJobsParams,
   GetNotificationHistoryParams,
   GetNotificationsParams,
   JobQueueTask,
@@ -74,9 +75,11 @@ export const fetchNotificationById = async (notificationId: string): Promise<Not
   }
 };
 
-export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTask<EnrollPatientsJobData, void>[]> => {
+export const fetchEnrollPatientsNotificationJobs = async (
+  params?: GetEnrollPatientsNotificationJobsParams
+): Promise<PagedResponse<JobQueueTask<EnrollPatientsJobData, void>[]>> => {
   try {
-    const response = await backendApi.get('notification/enroll-patients-job');
+    const response = await backendApi.get('notification/enroll-patients-job', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
