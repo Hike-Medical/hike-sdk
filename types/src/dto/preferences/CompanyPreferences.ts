@@ -1,4 +1,4 @@
-import { NotificationType, ProductType } from '../../../prisma';
+import { FacilityType, NotificationType, ProductType } from '../../../prisma';
 import { AppointmentCsvRecord } from '../appointment/AppointmentCsvRecord';
 import { RoasterPatientCsvRecord } from '../roster/RoasterPatientCsvRecord';
 import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
@@ -20,6 +20,7 @@ export interface CompanyPreferences {
   preferredWalkInDeliveryReceiptEmailAddress?: string;
   preSubmissionAuth?: boolean;
   requiredSnapshotReview?: boolean;
+  consumerSubmitRedirectUrl?: string;
   taikaCustomizations?: {
     orderForm?: CreateCustomizationsTaikaParams;
     setTaikaIdAsPONumber?: boolean;
@@ -29,13 +30,14 @@ export interface CompanyPreferences {
     };
   };
   slicerProfile?: string;
-  vendorId?: string;
+  supplierId?: string;
   pricing?: {
-    orthoFeetPricingMultiplierPercentage?: number;
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
+    supplierMarkupPercentage?: Record<string, number>;
   };
   noAuthNeeded?: boolean;
+  skipExternalIdVerification?: boolean;
   blockAll?: boolean;
   freeTrialOrders?: number;
   toWordDocx?: boolean;
@@ -59,6 +61,7 @@ export interface CompanyPreferences {
     showDirectedTips?: boolean;
     globalSearchAssignedOnly?: boolean;
     canModifyFlowTypeOnWorkbench?: boolean;
+    autoAttachFormSchemaIds?: string[];
   };
   webhook?: {
     url: string;
@@ -76,5 +79,16 @@ export interface CompanyPreferences {
   ui?: {
     theme?: CompanyTheme;
   };
-  benefitsWhiteList?: string[];
+  compliance?: {
+    fromFaxNumber?: string;
+  };
+  auth?: {
+    benefitsWhiteList?: string[];
+    oidc?: {
+      enabled?: boolean;
+      color?: string;
+      facilityWhitelistRequired?: boolean;
+      facilityType?: FacilityType;
+    };
+  };
 }

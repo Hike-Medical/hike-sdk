@@ -4,6 +4,7 @@ import type {
   CreateNotificationParams,
   EnrollPatientsJobData,
   EnrollPatientsParams,
+  GetEnrollPatientsNotificationJobsParams,
   GetNotificationHistoryParams,
   GetNotificationsParams,
   JobQueueTask,
@@ -74,9 +75,11 @@ export const fetchNotificationById = async (notificationId: string): Promise<Not
   }
 };
 
-export const fetchEnrollPatientsNotificationJobs = async (): Promise<JobQueueTask<EnrollPatientsJobData, void>[]> => {
+export const fetchEnrollPatientsNotificationJobs = async (
+  params?: GetEnrollPatientsNotificationJobsParams
+): Promise<PagedResponse<JobQueueTask<EnrollPatientsJobData, void>[]>> => {
   try {
-    const response = await backendApi.get('notification/enroll-patients-job');
+    const response = await backendApi.get('notification/enroll-patients-job', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -295,6 +298,21 @@ export const updateNotification = async (
 ): Promise<Notification> => {
   try {
     const response = await backendApi.patch(`notification/${notificationId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const exportNotificationHistory = async (
+  notificationId: string,
+  params?: GetNotificationHistoryParams
+): Promise<Blob> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/history/export`, {
+      params,
+      responseType: 'arraybuffer'
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

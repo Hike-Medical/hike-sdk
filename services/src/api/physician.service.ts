@@ -31,11 +31,3 @@ export const upsertPrimaryPhysician = async (
     throw toHikeError(error);
   }
 };
-
-export const sendComplianceFax = async (patientId: string): Promise<void> => {
-  try {
-    await backendApi.post(`physician/${patientId}/fax`);
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
