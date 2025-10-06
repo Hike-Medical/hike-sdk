@@ -7,12 +7,26 @@ interface UseUpdateWorkflowStateParams {
   onError?: (error: Error) => void;
 }
 
+export interface UpdateWorkflowStateInput {
+  facts?: { key: string; value: any; source?: string }[];
+  attachmentFacts?: {
+    attachment: {
+      name: string;
+      bucket: string;
+      key: string;
+      region: string;
+      types: string[];
+    };
+    facts?: { key: string; value: any; source?: string }[];
+  }[];
+  resolvedFactIds?: string[];
+}
+
 export const useUpdateWorkflowState = ({ workflowId, onSuccess, onError }: UseUpdateWorkflowStateParams) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (stateUpdate: { facts?: { key: string; value: any; source?: string }[]; resolvedFactIds?: string[] }) =>
-      updateWorkflowState(workflowId, stateUpdate),
+    mutationFn: (stateUpdate: UpdateWorkflowStateInput) => updateWorkflowState(workflowId, stateUpdate),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['workflow', workflowId] });
       queryClient.invalidateQueries({ queryKey: ['workflowFactsByIds', workflowId] });
