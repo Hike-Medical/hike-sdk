@@ -129,3 +129,38 @@ export const generateWorkflowDocumentUploadUrl = async (
     throw toHikeError(error);
   }
 };
+
+export const generateFileUploadUrl = async (
+  fileName: string,
+  contentType?: string
+): Promise<{ presignedUrl: string; key: string; bucket: string; region: string }> => {
+  try {
+    const response = await backendApi.post('workflow/file-upload-url', {
+      fileName,
+      contentType
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createWorkflowWithFile = async (data: {
+  workflowName: string;
+  attachment: {
+    name: string;
+    bucket: string;
+    key: string;
+    region: string;
+    types: string[];
+  };
+  externalPatientId?: string;
+  externalEvaluationId?: string;
+}): Promise<WorkflowDto> => {
+  try {
+    const response = await backendApi.post('workflow/create-with-file', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
