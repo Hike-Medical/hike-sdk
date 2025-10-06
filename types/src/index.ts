@@ -225,6 +225,7 @@ export * from './dto/workflow/Attachment';
 export * from './dto/workflow/SearchWorkflowsParams';
 export * from './dto/workflow/WorkflowAttachment';
 export * from './dto/workflow/WorkflowDto';
+export type { WorkflowFactDto } from './dto/workflow/WorkflowDto';
 export * from './dto/workflow/WorkflowFactsResult';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
