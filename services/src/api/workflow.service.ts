@@ -1,5 +1,6 @@
 import type {
   AttachmentPresignedUrl,
+  EvaluationAttachmentType,
   SearchWorkflowsParams,
   WorkflowAttachment,
   WorkflowDto,
@@ -152,7 +153,7 @@ export const createWorkflowWithFile = async (data: {
     bucket: string;
     key: string;
     region: string;
-    types: string[];
+    types: EvaluationAttachmentType[];
   };
   externalPatientId?: string;
   externalEvaluationId?: string;
