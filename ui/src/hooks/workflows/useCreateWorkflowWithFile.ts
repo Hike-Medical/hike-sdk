@@ -1,5 +1,5 @@
 import { createWorkflowWithFile } from '@hike/services';
-import { HikeError, WorkflowDto } from '@hike/types';
+import { EvaluationAttachmentType, HikeError, WorkflowDto } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 interface CreateWorkflowWithFileParams {
@@ -9,7 +9,7 @@ interface CreateWorkflowWithFileParams {
     bucket: string;
     key: string;
     region: string;
-    types: string[];
+    types: EvaluationAttachmentType[];
   };
   externalPatientId?: string;
   externalEvaluationId?: string;
