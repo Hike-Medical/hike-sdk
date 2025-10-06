@@ -11,4 +11,6 @@ export interface WorkflowLogDto {
   comment?: string;
   createdAt: Date;
   user?: WorkflowLogUserDto;
+  interpretedAction?: string;
+  interpretedDescription?: string;
 }
