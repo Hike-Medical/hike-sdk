@@ -1,15 +1,6 @@
 'use client';
 
-import {
-  ActionIcon,
-  Group,
-  GroupProps,
-  CopyButton as MantineCopyButton,
-  rem,
-  Text,
-  TextProps,
-  Tooltip
-} from '@mantine/core';
+import { Box, Group, GroupProps, CopyButton as MantineCopyButton, rem, Text, TextProps, Tooltip } from '@mantine/core';
 import { IconCheck, IconCopy } from '@tabler/icons-react';
 
 interface CopyButtonProps extends GroupProps {
@@ -35,9 +26,18 @@ export const CopyButton = ({ value, label, textProps, ...rest }: CopyButtonProps
             <Text inherit {...textProps}>
               {label ?? value}
             </Text>
-            <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle">
+            <Box
+              component="span"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: copied ? 'var(--mantine-color-teal-6)' : 'var(--mantine-color-gray-6)',
+                transition: 'color 0.2s ease'
+              }}
+            >
               {copied ? <IconCheck style={{ width: rem(16) }} /> : <IconCopy style={{ width: rem(16) }} />}
-            </ActionIcon>
+            </Box>
           </Group>
         </Tooltip>
       )}
