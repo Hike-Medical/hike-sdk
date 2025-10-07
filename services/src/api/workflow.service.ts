@@ -5,6 +5,7 @@ import type {
   WorkflowAttachment,
   WorkflowDto,
   WorkflowFactsResult,
+  WorkflowLogDto,
   WorkflowSearchResult
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -160,6 +161,15 @@ export const createWorkflowWithFile = async (data: {
 }): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.post('workflow/create-with-file', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowLogs = async (workflowId: string): Promise<WorkflowLogDto[]> => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/logs`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

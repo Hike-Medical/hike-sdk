@@ -30,6 +30,7 @@ export const useUpdateWorkflowState = ({ workflowId, onSuccess, onError }: UseUp
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['workflow', workflowId] });
       queryClient.invalidateQueries({ queryKey: ['workflowFactsByIds', workflowId] });
+      queryClient.invalidateQueries({ queryKey: ['workflow-logs', workflowId] });
       onSuccess?.();
     },
     onError: (error: Error) => {
