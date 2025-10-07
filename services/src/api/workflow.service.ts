@@ -1,9 +1,11 @@
 import type {
   AttachmentPresignedUrl,
+  EvaluationAttachmentType,
   SearchWorkflowsParams,
   WorkflowAttachment,
   WorkflowDto,
   WorkflowFactsResult,
+  WorkflowLogDto,
   WorkflowSearchResult
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -58,6 +60,16 @@ export const updateWorkflowState = async (
   workflowId: string,
   stateUpdate: {
     facts?: { key: string; value: any; source?: string }[];
+    attachmentFacts?: {
+      attachment: {
+        name: string;
+        bucket: string;
+        key: string;
+        region: string;
+        types: string[];
+      };
+      facts?: { key: string; value: any; source?: string }[];
+    }[];
     resolvedFactIds?: string[];
   }
 ) => {
@@ -68,6 +80,7 @@ export const updateWorkflowState = async (
         value: fact.value,
         source: fact.source || 'manual'
       })),
+      attachmentFacts: stateUpdate.attachmentFacts,
       resolvedFactIds: stateUpdate.resolvedFactIds
     });
     return response.data;
@@ -97,6 +110,66 @@ export const getAttachmentPresignedUrl = async (attachmentId: string): Promise<A
 export const getFactHistory = async (workflowId: string, factKey: string) => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/facts/${encodeURIComponent(factKey)}/history`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateWorkflowDocumentUploadUrl = async (
+  workflowId: string,
+  fileName: string,
+  contentType?: string
+): Promise<{ presignedUrl: string; key: string; bucket: string; region: string }> => {
+  try {
+    const response = await backendApi.post(`workflow/attachment/${workflowId}/upload`, {
+      fileName,
+      contentType
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateFileUploadUrl = async (
+  fileName: string,
+  contentType?: string
+): Promise<{ presignedUrl: string; key: string; bucket: string; region: string }> => {
+  try {
+    const response = await backendApi.post('workflow/file-upload-url', {
+      fileName,
+      contentType
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createWorkflowWithFile = async (data: {
+  workflowName: string;
+  attachment: {
+    name: string;
+    bucket: string;
+    key: string;
+    region: string;
+    types: EvaluationAttachmentType[];
+  };
+  externalPatientId?: string;
+  externalEvaluationId?: string;
+}): Promise<WorkflowDto> => {
+  try {
+    const response = await backendApi.post('workflow/create-with-file', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowLogs = async (workflowId: string): Promise<WorkflowLogDto[]> => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/logs`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

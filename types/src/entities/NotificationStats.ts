@@ -4,7 +4,7 @@ export interface NotificationStats {
   id: string;
   name: string;
   total: number;
-  sent: number;
+  dispatched: number;
   pending: number;
   clicked: number;
   opened: number;
