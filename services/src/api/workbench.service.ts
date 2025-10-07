@@ -262,10 +262,13 @@ export const getFilesFromWorkbenches = async (
 
 export const generateWorkbenchPdf = async (
   workbenchId: string,
-  body: GenerateWorkbenchPdfParams
+  body: GenerateWorkbenchPdfParams,
+  companyIds?: string[]
 ): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body);
+    const response = await backendApi.post(`workbench/${workbenchId}/generate-pdf`, body, {
+      headers: addHeaders(companyIds)
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
