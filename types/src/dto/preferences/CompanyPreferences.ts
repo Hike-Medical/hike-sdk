@@ -9,7 +9,8 @@ import { PaymentResponsibility } from './PaymentResponsibility';
 
 export interface CompanyPreferences {
   carrierServiceCode?: string;
-  carrierPreferenceId?: string;
+  unitedStatesCarrierShippingPreferenceId?: string;
+  intlCarrierPreferenceId?: string;
   emailToUser?: boolean;
   emailPackingSlips?: string[];
   distributionEmailAddress?: string;
