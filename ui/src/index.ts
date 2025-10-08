@@ -222,6 +222,7 @@ export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useContinueWorkbench';
 export * from './hooks/workbenches/useFailWorkbench';
 export * from './hooks/workbenches/useGenerateWorkbenchForm';
+export * from './hooks/workbenches/useGenerateWorkbenchPdf';
 export * from './hooks/workbenches/useGetCompleteWorkbench';
 export * from './hooks/workbenches/useGetCompleteWorkbenchMutation';
 export * from './hooks/workbenches/useGetDetectionStatus';
