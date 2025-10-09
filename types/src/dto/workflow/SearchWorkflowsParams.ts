@@ -6,4 +6,5 @@ export interface SearchWorkflowsParams {
   factKey?: string;
   factValue?: string;
   errorsOnly?: boolean;
+  includeErrorCount?: boolean;
 }
