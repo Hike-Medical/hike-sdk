@@ -81,6 +81,7 @@ export interface CompanyPreferences {
   };
   compliance?: {
     fromFaxNumber?: string;
+    forwardFaxNumber?: string;
   };
   auth?: {
     benefitsWhiteList?: string[];
