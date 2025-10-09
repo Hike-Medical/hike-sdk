@@ -13,6 +13,7 @@ import type {
   NotificationHistoryExtended,
   NotificationHistoryMessageExtended,
   NotificationMessage,
+  NotificationProgress,
   NotificationStats,
   PagedResponse,
   PresignedFile,
@@ -199,6 +200,15 @@ export const statsForNotificationById = async (
 ): Promise<NotificationStats> => {
   try {
     const response = await backendApi.get(`notification/${notificationId}/stats`, { headers: addHeaders(companyIds) });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getNotificationProgress = async (notificationId: string): Promise<NotificationProgress[]> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/progress`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

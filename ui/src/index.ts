@@ -140,6 +140,7 @@ export * from './hooks/notification/useGetNotificationHistory';
 export * from './hooks/notification/useGetNotificationHistoryByPatient';
 export * from './hooks/notification/useGetNotificationHistoryJob';
 export * from './hooks/notification/useGetNotificationJobById';
+export * from './hooks/notification/useGetNotificationProgress';
 export * from './hooks/notification/useGetNotifications';
 export * from './hooks/notification/useGetNotificationStats';
 export * from './hooks/notification/useGetNotificationStatsById';
