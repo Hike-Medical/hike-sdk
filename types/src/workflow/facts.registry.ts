@@ -622,6 +622,18 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     hideInUX: true
   },
 
+  'internal.prescription.forwarded': {
+    displayName: 'Initial Prescription Forwarded',
+    description: 'Initial Prescription Forwarded',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      needsForwarding: z.boolean(),
+      forwarded: z.boolean()
+    }),
+    hideInUX: true
+  },
+
   'internal.no_response_fax': {
     displayName: 'No Response Fax Information',
     description: 'No Response Fax Information',
