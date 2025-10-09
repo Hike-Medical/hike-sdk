@@ -5,4 +5,5 @@ export interface SearchWorkflowsParams {
   status?: WorkflowStatus[];
   factKey?: string;
   factValue?: string;
+  errorsOnly?: boolean;
 }
