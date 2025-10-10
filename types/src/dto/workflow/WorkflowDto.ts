@@ -6,6 +6,7 @@ export interface WorkflowStepDto {
   startTime?: string;
   endTime?: string;
   status: string;
+  isAwaitingResponse?: boolean;
   metadata?: {
     numCycles: number;
     numRetries: number;
