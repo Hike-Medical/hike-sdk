@@ -1,5 +1,5 @@
 export interface NotificationProgress {
-  parentJobId: string;
+  rootJobId: string;
   messageId: string;
   totalPatients: number;
   processed: number;
@@ -8,6 +8,7 @@ export interface NotificationProgress {
   totalBatches: number;
   completedBatches: number;
   remainingBatches: number;
+  failedBatches: number;
   currentBatch?: {
     batchIndex: number;
     batchOffset: number;

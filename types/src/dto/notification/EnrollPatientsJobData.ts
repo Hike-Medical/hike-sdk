@@ -13,7 +13,7 @@ export interface EnrollPatientsJobData {
 
 export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   messageId: string;
-  messageJobId: string;
+  rootJobId: string;
   delayMs?: number;
   batchOffset: number;
   batchIndex: number;
