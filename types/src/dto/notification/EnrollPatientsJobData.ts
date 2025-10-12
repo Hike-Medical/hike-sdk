@@ -3,13 +3,21 @@ import { AppId } from '../../config/AppId';
 import { EnrollPatientsParams } from './EnrollPatientsParams';
 
 export interface EnrollPatientsJobData {
-  messageId: string;
   params: EnrollPatientsParams;
+  notificationId: string;
   workbenchId?: string;
   companyId: string;
   appId: AppId;
   role?: CompanyRole;
-  batchOffset?: number;
-  totalPatients?: number;
-  parentJobId?: string;
+}
+
+export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
+  messageId: string;
+  messageJobId: string;
+  delayMs?: number;
+  batchOffset: number;
+  batchIndex: number;
+  batchSize: number;
+  totalBatches: number;
+  totalPatients: number;
 }
