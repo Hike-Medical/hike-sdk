@@ -15,6 +15,7 @@ export interface NotificationProgress {
     patientsInBatch: number;
     isProcessing: boolean;
     state: string;
+    startsAt?: number; // Unix timestamp (ms) when delayed batch will start
   };
   startedAt?: number | null;
   finishedAt?: number | null;
