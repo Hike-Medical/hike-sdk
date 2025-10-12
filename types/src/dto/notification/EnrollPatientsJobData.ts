@@ -20,4 +20,5 @@ export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   batchSize: number;
   totalBatches: number;
   totalPatients: number;
+  batchJobIds?: string[]; // All descendant batch job IDs (stored only in root message job)
 }
