@@ -10,4 +10,5 @@ export interface WorkflowSearchResult {
     status: WorkflowStatus;
     updatedAt: Date;
   }[];
+  errorCount: number;
 }
