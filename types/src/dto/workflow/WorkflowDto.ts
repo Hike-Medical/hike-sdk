@@ -64,6 +64,7 @@ export interface WorkflowStatusUpdateDto {
 
 export interface WorkflowStateDto {
   facts: {
+    id: string;
     key: string;
     value: any;
     source: string;
