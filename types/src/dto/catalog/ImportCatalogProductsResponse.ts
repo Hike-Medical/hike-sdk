@@ -1,7 +1,13 @@
 export interface ImportCatalogProductsResponse {
-  parsed: number;
+  productsParsed: number;
   productsProcessed: number;
-  skipped: number;
+  productsSkipped: number;
+  variantsParsed: number;
+  variantsProcessed: number;
+  variantsSkipped: number;
+  attributesParsed: number;
+  attributesProcessed: number;
+  attributesSkipped: number;
   manufacturersCreated: string[];
   parsingErrors: string[];
   processingErrors: string[];
