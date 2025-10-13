@@ -277,15 +277,6 @@ export const deleteNotificationJob = async (jobId: string): Promise<void> => {
   }
 };
 
-export const deleteNotificationJobs = async (notificationId: string): Promise<{ count: number }> => {
-  try {
-    const response = await backendApi.delete(`notification/${notificationId}/job`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
 export const sendNotificationTest = async (messageId: string, params: SendTestParams): Promise<void> => {
   try {
     await backendApi.post(`notification/message/${messageId}/test`, params);

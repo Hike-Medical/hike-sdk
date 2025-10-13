@@ -11,6 +11,14 @@ export interface EnrollPatientsJobData {
   role?: CompanyRole;
 }
 
+export interface EnrollPatientsMessageRootJobData extends EnrollPatientsJobData {
+  messageId: string;
+  batchSize: number;
+  totalBatches: number;
+  totalPatients: number;
+  batchJobIds?: string[]; // All descendant batch job IDs
+}
+
 export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   messageId: string;
   rootJobId: string;
@@ -20,5 +28,4 @@ export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   batchSize: number;
   totalBatches: number;
   totalPatients: number;
-  batchJobIds?: string[]; // All descendant batch job IDs (stored only in root message job)
 }
