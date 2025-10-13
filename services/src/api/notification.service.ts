@@ -13,6 +13,7 @@ import type {
   NotificationHistoryExtended,
   NotificationHistoryMessageExtended,
   NotificationMessage,
+  NotificationProgress,
   NotificationStats,
   PagedResponse,
   PresignedFile,
@@ -205,6 +206,15 @@ export const statsForNotificationById = async (
   }
 };
 
+export const getNotificationProgress = async (notificationId: string): Promise<NotificationProgress[]> => {
+  try {
+    const response = await backendApi.get(`notification/${notificationId}/progress`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const statsForEnrollNotification = async (
   notificationId: string,
   params: EnrollPatientsParams
@@ -262,15 +272,6 @@ export const deleteNotificationMessage = async (messageId: string): Promise<void
 export const deleteNotificationJob = async (jobId: string): Promise<void> => {
   try {
     await backendApi.delete(`notification/job/${jobId}`);
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const deleteNotificationJobs = async (notificationId: string): Promise<{ count: number }> => {
-  try {
-    const response = await backendApi.delete(`notification/${notificationId}/job`);
-    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }

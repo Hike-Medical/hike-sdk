@@ -116,6 +116,7 @@ export * from './dto/notification/EnrollPatientsParams';
 export * from './dto/notification/GetEnrollPatientsNotificationJobsParams';
 export * from './dto/notification/GetNotificationHistoryParams';
 export * from './dto/notification/GetNotificationsParams';
+export * from './dto/notification/NotificationProgress';
 export * from './dto/notification/SendTestParams';
 export * from './dto/notification/TrackNotificationAction';
 export * from './dto/notification/UpdateNotificationMessageParams';

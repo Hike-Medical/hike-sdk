@@ -12,6 +12,10 @@ export const Constants = {
     pageSize: 25,
     limit: 10
   } satisfies PaginationState,
+  NOTIFICATION: {
+    DEFAULT_STAGGERED_BATCH_SIZE: 2000,
+    DEFAULT_STAGGERED_BATCH_DELAY_MINUTES: 10
+  },
   TRACKING: {
     CLICK_PARAM: 'xcid',
     OPEN_PARAM: 'xoid'
