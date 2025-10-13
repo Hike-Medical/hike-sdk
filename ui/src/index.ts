@@ -14,6 +14,7 @@ export * from './hooks/api-key/useCreateApiKey';
 export * from './hooks/api-key/useDeleteApiKey';
 export * from './hooks/api-key/useUpdateApiKey';
 export * from './hooks/appointment/useAppointmentsImportJob';
+export * from './hooks/catalog/useCatalogImportJob';
 export * from './hooks/appointment/useParseAppointmentColumns';
 export * from './hooks/assets/useAssets';
 export * from './hooks/assets/useAssetStats';
