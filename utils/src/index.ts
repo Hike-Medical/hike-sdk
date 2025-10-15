@@ -1,6 +1,7 @@
 export * from './audit-log-interpreter';
 export * from './constants';
 export * from './constants/autoSlicerProfiles';
+export * from './constants/company';
 export * from './constants/marketingUtmParams';
 export * from './constants/SolemateStatuses';
 export * from './converters/flattenObject';
