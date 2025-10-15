@@ -22,4 +22,5 @@ export interface WorkbenchDevSummary {
   orderShoeSize: string | null;
   orderGender: string | null;
   orderSide: number | null;
+  isOutsideClinic?: boolean;
 }
