@@ -1,3 +1,5 @@
+import { CompanyPreferences } from '@hike/types';
+
 /**
  * Internal company slugs that are considered "inside clinic" orders
  * Orders from these companies are not considered "outside clinic"
@@ -12,7 +14,7 @@ export const INTERNAL_COMPANY_SLUGS = new Set(['cpo', 'hike']);
  * @param companyPreferences - The company preferences JSON object
  * @returns true if the company is outside clinic (has clinicalCustomization preference)
  */
-export const isOutsideClinic = (companySlug?: string | null, companyPreferences?: any): boolean => {
+export const isOutsideClinic = (companySlug?: string | null, companyPreferences?: CompanyPreferences): boolean => {
   // If no company slug, not outside clinic
   if (!companySlug) {
     return false;
