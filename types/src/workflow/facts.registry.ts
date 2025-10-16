@@ -5,20 +5,14 @@
 import { z } from 'zod';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
 
-type Registry = typeof FactRegistry;
-
-export type FactKey = keyof Registry;
-
-export type FactValueOf<K extends FactKey> = z.infer<Registry[K]['schema']>;
-
 interface FactsRegistryEntry {
-  schema: z.ZodType;
-  displayName: string;
-  description: string;
-  category: string;
-  required: boolean;
-  hideInUX?: boolean;
-  transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
+  readonly schema: z.ZodType;
+  readonly displayName: string;
+  readonly description: string;
+  readonly category: string;
+  readonly required: boolean;
+  readonly hideInUX?: boolean;
+  readonly transform?: (value: any) => any;
 }
 
 const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
@@ -27,7 +21,7 @@ const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
 
-export const FactRegistry: Record<string, FactsRegistryEntry> = {
+export const FactRegistry = {
   // Patient Information
   'patient.first_name': {
     displayName: 'First Name',
@@ -602,13 +596,22 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: false,
     schema: z.string().min(1)
   }
-};
+} as const;
+
+type Registry = typeof FactRegistry;
+
+export type FactKey = keyof Registry;
+
+export type FactValueOf<K extends FactKey> = z.infer<Registry[K]['schema']>;
+
+// Union of all possible fact values
+export type AnyFactValue = FactValueOf<FactKey>;
 
 /**
  * Get human-readable field information for a given field key
  */
 export function getFieldMapping(fieldKey: string): FactsRegistryEntry | undefined {
-  return FactRegistry[fieldKey];
+  return FactRegistry[fieldKey as FactKey] as FactsRegistryEntry | undefined;
 }
 
 /**
@@ -621,7 +624,7 @@ export function getFieldMappingsByCategory(): Record<string, { key: string; mapp
     if (!categories[mapping.category]) {
       categories[mapping.category] = [];
     }
-    categories[mapping.category]?.push({ key, mapping });
+    categories[mapping.category]?.push({ key, mapping: mapping as FactsRegistryEntry });
   });
 
   return categories;
