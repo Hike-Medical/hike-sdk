@@ -6,13 +6,13 @@ import { z } from 'zod';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
 
 interface FactsRegistryEntry {
-  readonly schema: z.ZodType;
-  readonly displayName: string;
-  readonly description: string;
-  readonly category: string;
-  readonly required: boolean;
-  readonly hideInUX?: boolean;
-  readonly transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
+  schema: z.ZodType;
+  displayName: string;
+  description: string;
+  category: string;
+  required: boolean;
+  hideInUX?: boolean;
+  transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
 }
 
 const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
