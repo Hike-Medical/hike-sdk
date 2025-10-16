@@ -1,6 +1,6 @@
+import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
 import { OrderAuthorizationStatus, OrderStatus, Prisma, ProductType } from '../../../prisma';
-import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 import { WorkbenchPdfUrls } from '../../entities/WorkbenchExtended';
 
 export interface StationWorkbench extends WorkbenchPdfUrls {
@@ -79,4 +79,3 @@ export type StationWorkbenchOrderBy =
   | 'addonCompletedAt';
 
 export type WorkbenchSubmissionsFilter = [string, string] | [string, string[]];
-
