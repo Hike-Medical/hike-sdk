@@ -243,6 +243,7 @@ export * from './hooks/workbenches/useUpdateRenderType';
 export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
+export * from './hooks/workbenches/usePastTenseStations';
 export * from './hooks/workflows/useAttachmentPresignedUrl';
 export * from './hooks/workflows/useCreateWorkflowWithFile';
 export * from './hooks/workflows/useFactHistory';

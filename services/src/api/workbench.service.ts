@@ -244,6 +244,25 @@ export const getStationWorkbenches = async (
   }
 };
 
+export const getPastTenseStations = async (
+  params: {
+    previousStatus: string;
+    offset?: number;
+    limit?: number;
+  },
+  companyIds?: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/past-tense-stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getFilesFromWorkbenches = async (
   params: ActionMultipleWorkbenchIdsParams,
   companyIds?: string[]
