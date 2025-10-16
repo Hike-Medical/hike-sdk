@@ -222,6 +222,8 @@ export * from './dto/workbench/SubmitOrderParams';
 export * from './dto/workbench/UpdateInactiveFootBody';
 export * from './dto/workbench/WorkbenchCustomization';
 export * from './dto/workbench/WorkbenchDevSummary';
+export * from './dto/workbench/WorkbenchPdfs';
+export * from './dto/workbench/WorkbenchPdfType';
 export * from './dto/workbench/WorkbenchSummary';
 export * from './dto/workflow/Attachment';
 export * from './dto/workflow/SearchWorkflowsParams';

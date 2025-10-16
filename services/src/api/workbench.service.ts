@@ -29,6 +29,8 @@ import {
   Workbench,
   WorkbenchDevSummary,
   WorkbenchExtended,
+  WorkbenchPdfs,
+  WorkbenchPdfType,
   WorkbenchStatus,
   WorkbenchSummary
 } from '@hike/types';
@@ -268,6 +270,22 @@ export const getCompletedStation = async (
   try {
     const response = await backendApi.get('workbench/completed-station', {
       params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchPdfs = async (
+  workbenchId: string,
+  companyIds: string[],
+  pdfType?: WorkbenchPdfType
+): Promise<WorkbenchPdfs> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/pdfs`, {
+      params: pdfType ? { type: pdfType } : undefined,
       headers: addHeaders(companyIds)
     });
     return response.data;
