@@ -197,7 +197,7 @@ export const FactRegistry = {
   // Prescriber Notes
   'prescriber.notes.diagnosis_visit_date': {
     displayName: 'Diagnosis Visit Date',
-    description: 'Date of the visit where diabetes was diagnosed',
+    description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
     schema: dateISO
