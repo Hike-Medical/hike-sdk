@@ -483,7 +483,14 @@ export const FactRegistry = {
     description: 'Quantity for each HCPCS code in the order',
     category: 'Statement of Work Order',
     required: true,
-    schema: z.record(hcpcsCode, z.number().int().min(0))
+    schema: z
+      .array(
+        z.object({
+          code: hcpcsCode,
+          quantity: z.number().int().min(0)
+        })
+      )
+      .min(1)
   },
 
   // Diagnosis Information
