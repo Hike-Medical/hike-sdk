@@ -12,7 +12,7 @@ interface FactsRegistryEntry {
   readonly category: string;
   readonly required: boolean;
   readonly hideInUX?: boolean;
-  readonly transform?: (value: any) => any;
+  readonly transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
 }
 
 const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
