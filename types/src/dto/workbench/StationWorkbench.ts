@@ -32,6 +32,9 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   finishingCompletedBy?: string | null;
   shippingCompletedAt?: Date | null;
   shippingCompletedBy?: string | null;
+  rushedAt?: Date | null;
+  isOutsideClinic?: boolean;
+  isRejected?: boolean;
   formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 }
 
