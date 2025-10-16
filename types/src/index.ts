@@ -205,6 +205,7 @@ export * from './dto/workbench/GetAggregatedParams';
 export * from './dto/workbench/GetCompletedStationParams';
 export * from './dto/workbench/GetManufacturingWorkbenchParams';
 export * from './dto/workbench/GetNeedsValidationWorkbenchParams';
+export * from './dto/workbench/GetPastTenseStationsParams';
 export * from './dto/workbench/GetPrintFarmWorkbenchParams';
 export * from './dto/workbench/GetStationsParams';
 export * from './dto/workbench/GetWorkbenchDevSummaryParams';

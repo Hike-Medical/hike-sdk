@@ -8,6 +8,7 @@ import {
   GetAggregatedParams,
   GetCompletedStationParams,
   GetManufacturingWorkbenchParams,
+  GetPastTenseStationsParams,
   GetPrintFarmWorkbenchParams,
   GetStationsParams,
   GetWorkbenchDevSummaryParams,
@@ -246,11 +247,7 @@ export const getStationWorkbenches = async (
 };
 
 export const getPastTenseStations = async (
-  params: {
-    previousStatus: string;
-    offset?: number;
-    limit?: number;
-  },
+  params: GetPastTenseStationsParams,
   companyIds?: string[]
 ): Promise<PagedResponse<StationWorkbench[]>> => {
   try {
