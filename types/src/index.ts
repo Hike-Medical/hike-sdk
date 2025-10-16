@@ -202,6 +202,7 @@ export * from './dto/workbench/DetectionStatusReponse';
 export * from './dto/workbench/FlattenedWorkbench';
 export * from './dto/workbench/GenerateWorkbenchPdfParams';
 export * from './dto/workbench/GetAggregatedParams';
+export * from './dto/workbench/GetCompletedStationParams';
 export * from './dto/workbench/GetManufacturingWorkbenchParams';
 export * from './dto/workbench/GetNeedsValidationWorkbenchParams';
 export * from './dto/workbench/GetPrintFarmWorkbenchParams';

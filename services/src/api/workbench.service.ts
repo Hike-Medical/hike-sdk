@@ -6,6 +6,7 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetCompletedStationParams,
   GetManufacturingWorkbenchParams,
   GetPrintFarmWorkbenchParams,
   GetStationsParams,
@@ -254,6 +255,21 @@ export const getPastTenseStations = async (
 ): Promise<PagedResponse<StationWorkbench[]>> => {
   try {
     const response = await backendApi.get('workbench/past-tense-stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCompletedStation = async (
+  params: GetCompletedStationParams,
+  companyIds: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/completed-station', {
       params,
       headers: addHeaders(companyIds)
     });
