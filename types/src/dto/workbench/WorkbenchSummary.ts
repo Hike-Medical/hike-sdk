@@ -24,4 +24,5 @@ export interface WorkbenchSummary {
   createdReason: WorkbenchCreatedReason | null;
   orderShoeSize: string | null;
   rushedAt?: Date | null;
+  isOutsideClinic?: boolean;
 }
