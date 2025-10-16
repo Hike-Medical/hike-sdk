@@ -238,6 +238,20 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
+  'cert.notes.manages_diabetes': {
+    displayName: 'Manages Diabetes',
+    description: "Certifier attests to managing the patient's diabetes",
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.boolean()
+  },
+  'cert.notes.patient_needs_diabetic_footwear': {
+    displayName: 'Patient Needs Diabetic Footwear',
+    description: 'Certifier attests that patient needs therapeutic footwear',
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.boolean()
+  },
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
     description: 'Whether the visit was conducted in-person',
@@ -258,6 +272,31 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     category: 'Certifier Notes',
     required: true,
     schema: dateISO
+  },
+  'cert.notes.qualifying_condition.list': {
+    displayName: 'Qualifying Conditions',
+    description: 'List of qualifying foot-risk conditions',
+    category: 'Diagnosis Information',
+    required: false,
+    schema: z
+      .array(
+        z.enum([
+          'amputation_history',
+          'previous_foot_ulcer',
+          'pre_ulcerative_callus',
+          'peripheral_neuropathy_with_callus',
+          'foot_deformity',
+          'poor_circulation'
+        ])
+      )
+      .min(1)
+  },
+  'cert.notes.qualifying_condition.details': {
+    displayName: 'Qualifying Condition Details',
+    description: 'Detailed description of qualifying foot-risk conditions',
+    category: 'Certifier Notes',
+    required: false,
+    schema: z.string().min(1)
   },
 
   // Foot Exam Information
@@ -296,126 +335,27 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
-  'foot_exam.neuropathy': {
-    displayName: 'Neuropathy',
-    description: 'Presence of neuropathy in the foot exam',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.deformity.details': {
-    displayName: 'Foot Deformity Details',
-    description: 'Detailed description of the foot deformity',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.array(z.string().min(1)).min(1)
-  },
-  'foot_exam.poor_circulation.findings': {
-    displayName: 'Poor Circulation Findings',
-    description: 'Detailed findings indicating poor circulation',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.array(z.string().min(1)).min(1)
-  },
-  'foot_exam.amputation_details': {
-    displayName: 'Amputation Details',
-    description: 'Details of previous foot or leg amputation',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.string().min(1)
-  },
-  'foot_exam.ulcer_details': {
-    displayName: 'Ulcer Details',
-    description: 'Details of previous or existing ulcer',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.string().min(1)
-  },
-  'foot_exam.callus_locations': {
-    displayName: 'Callus Locations',
-    description: 'Locations of pre-ulcerative calluses',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.array(z.string().min(1)).min(1)
-  },
-  'foot_exam.sensation_test': {
-    displayName: 'Sensation Test Type',
-    description: 'Type of sensation test performed',
-    category: 'Foot Examination',
-    required: false,
-    schema: z.enum(['monofilament', 'vibration', 'pinprick', 'other', 'not_documented'])
-  },
-  'foot_exam.sensation_result': {
-    displayName: 'Sensation Test Result',
-    description: 'Result of the foot sensation test',
-    category: 'Foot Examination',
-    required: false,
-    schema: z.string().min(1)
-  },
-  'foot_exam.shoe_size_width': {
-    displayName: 'Shoe Size and Width',
-    description: "Patient's shoe size and width",
-    category: 'Foot Examination',
-    required: false,
-    schema: z.string().min(1)
-  },
-  'foot_exam.orthotic_need_note': {
-    displayName: 'Orthotic Need Note',
-    description: 'Notes describing the need for orthotic footwear',
-    category: 'Foot Examination',
-    required: false,
-    schema: z.string().min(1)
-  },
-  'foot_exam.certifying_agreement.note': {
-    displayName: 'Certifying Agreement Note',
-    description: 'Notes from certifying physician regarding the foot exam agreement',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: z.string().min(1)
-  },
 
-  // Foot Exam Risk Factors
-  'foot_exam.neuropathy_with_callus': {
-    displayName: 'Neuropathy with Callus',
-    description: 'Presence of neuropathy with callus formation',
-    category: 'Foot Exam Risk Factors',
+  'foot_exam.examiner.qualifying_condition.list': {
+    displayName: 'Foot Exam Examiner Qualifying Conditions',
+    description: 'List of qualifying foot-risk conditions found during foot exam',
+    category: 'Diagnosis Information',
     required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.pre_ulcerative_callus': {
-    displayName: 'Pre-Ulcerative Callus',
-    description: 'Presence of pre-ulcerative callus',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.previous_ulcer': {
-    displayName: 'Previous Ulcer',
-    description: 'History of previous foot ulcer',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.deformity': {
-    displayName: 'Foot Deformity',
-    description: 'Presence of foot deformity',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.amputation_history': {
-    displayName: 'Amputation History',
-    description: 'History of foot or leg amputation',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.poor_circulation': {
-    displayName: 'Poor Circulation',
-    description: 'Evidence of poor circulation in the feet',
-    category: 'Foot Exam Risk Factors',
-    required: false,
-    schema: z.boolean()
+    schema: z
+      .array(
+        z.object({
+          condition: z.enum([
+            'amputation_history',
+            'previous_foot_ulcer',
+            'pre_ulcerative_callus',
+            'peripheral_neuropathy_with_callus',
+            'foot_deformity',
+            'poor_circulation'
+          ]),
+          details: z.string().min(1)
+        })
+      )
+      .min(1)
   },
 
   // Certifying Agreement
@@ -434,6 +374,14 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     schema: dateISO
   },
 
+  'foot_exam.certifying_agreement.note': {
+    displayName: 'Certifying Agreement Note',
+    description: 'Notes from certifying physician regarding the foot exam agreement',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.string().min(1)
+  },
+
   // Certifying Statement
   'cert.statement.signature': {
     displayName: 'Certifying Statement Signature',
@@ -449,19 +397,24 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
-  'cert.statement.manages_diabetes': {
-    displayName: 'Manages Diabetes',
-    description: "Certifier attests to managing the patient's diabetes",
+
+  'cert.statement.qualifying_condition.list': {
+    displayName: 'Qualifying Conditions',
+    description: 'List of qualifying foot-risk conditions',
     category: 'Certifying Statement',
-    required: true,
-    schema: z.boolean()
-  },
-  'cert.statement.patient_needs_diabetic_footwear': {
-    displayName: 'Patient Needs Diabetic Footwear',
-    description: 'Certifier attests that patient needs therapeutic footwear',
-    category: 'Certifying Statement',
-    required: true,
-    schema: z.boolean()
+    required: false,
+    schema: z
+      .array(
+        z.enum([
+          'amputation_history',
+          'previous_foot_ulcer',
+          'pre_ulcerative_callus',
+          'peripheral_neuropathy_with_callus',
+          'foot_deformity',
+          'poor_circulation'
+        ])
+      )
+      .min(1)
   },
 
   // Initial Prescription
@@ -476,6 +429,13 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     displayName: 'Initial Rx Order Description',
     description: 'Description of the initial prescription order',
     category: 'Initial Prescription',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'rx.diagnosis.description': {
+    displayName: 'Diagnosis Description',
+    description: 'Description of the diagnosis',
+    category: 'Diagnosis Information',
     required: true,
     schema: z.string().min(1)
   },
@@ -523,26 +483,13 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: z.string().min(1)
   },
-  'swo.hcpcs': {
-    displayName: 'SWO HCPCS Codes',
-    description: 'HCPCS for SWO',
-    category: 'Statement of Work Order',
-    required: true,
-    schema: z.array(hcpcsCode).min(1)
-  },
+
   'swo.quantity_each_hcpcs': {
     displayName: 'SWO Quantity for Each HCPCS',
     description: 'Quantity for each HCPCS code in the order',
     category: 'Statement of Work Order',
     required: true,
     schema: z.record(hcpcsCode, z.number().int().min(0))
-  },
-  'swo.options_accessories': {
-    displayName: 'SWO Options and Accessories',
-    description: 'Options and accessories associated with the SWO',
-    category: 'Statement of Work Order',
-    required: false,
-    schema: z.array(z.string().min(1)).min(1)
   },
 
   // Diagnosis Information
@@ -552,32 +499,6 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1)
-  },
-
-  'dx.qualifying_condition.list': {
-    displayName: 'Qualifying Conditions',
-    description: 'List of qualifying foot-risk conditions',
-    category: 'Diagnosis Information',
-    required: false,
-    schema: z
-      .array(
-        z.enum([
-          'amputation_history',
-          'previous_foot_ulcer',
-          'pre_ulcerative_callus',
-          'peripheral_neuropathy_with_callus',
-          'foot_deformity',
-          'poor_circulation'
-        ])
-      )
-      .min(1)
-  },
-  'dx.qualifying_condition.details': {
-    displayName: 'Qualifying Condition Details',
-    description: 'Detailed description of qualifying foot-risk conditions',
-    category: 'Diagnosis Information',
-    required: false,
-    schema: z.string().min(1)
   },
 
   // Operations
