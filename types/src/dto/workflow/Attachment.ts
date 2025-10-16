@@ -10,7 +10,8 @@ const EvaluationAttachmentTypeEnum = {
   PRESCRIBER_NOTES: 'PRESCRIBER_NOTES',
   STANDARD_WORK_ORDER: 'STANDARD_WORK_ORDER',
   CERTIFIER_NOTES: 'CERTIFIER_NOTES',
-  COSIGNED_NOTES: 'COSIGNED_NOTES'
+  COSIGNED_NOTES: 'COSIGNED_NOTES',
+  UNCERTAIN: 'UNCERTAIN'
 } as const satisfies Record<EvaluationAttachmentType, EvaluationAttachmentType> & {
   [K in EvaluationAttachmentType]: K;
 };
