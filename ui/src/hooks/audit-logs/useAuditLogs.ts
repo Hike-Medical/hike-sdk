@@ -1,17 +1,17 @@
 import { fetchAuditLogs } from '@hike/services';
-import type { AuditLog, GetAuditLogsParams, HikeError, PagedResponse } from '@hike/types';
+import { AuditLogWithUser, GetAuditLogsParams, HikeError, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseAuditLogsOptions
-  extends Omit<UseQueryOptions<PagedResponse<AuditLog[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<AuditLogWithUser[]>, HikeError<null>>, 'queryFn' | 'queryKey'> {
   companyIds?: string[];
   params?: GetAuditLogsParams;
   queryKey?: QueryKey;
 }
 
 export const useAuditLogs = ({ companyIds, params, queryKey = [], ...options }: UseAuditLogsOptions = {}) =>
-  useQuery({
-    queryKey: ['auditLogs', companyIds, params, queryKey],
+  useQuery<PagedResponse<AuditLogWithUser[]>, HikeError<null>>({
+    queryKey: ['useAuditLogs', companyIds, params, queryKey],
     queryFn: async () => await fetchAuditLogs(companyIds, params),
     ...options
   });
