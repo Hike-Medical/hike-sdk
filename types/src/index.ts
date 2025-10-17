@@ -234,6 +234,7 @@ export * from './dto/workflow/WorkflowLogDto';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
 export * from './entities/AssetExtended';
+export * from './entities/AuditLogWithUser';
 export * from './entities/AugmentExtended';
 export * from './entities/CatalogProductExtended';
 export * from './entities/ClinicianExtended';
