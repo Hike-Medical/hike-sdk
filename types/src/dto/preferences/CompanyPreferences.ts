@@ -84,11 +84,16 @@ export interface CompanyPreferences {
     forwardFaxNumber?: string;
   };
   auth?: {
-    benefitsWhiteList?: string[];
+    allowlist?: {
+      domains?: string[];
+      emails?: string[];
+      phones?: string[];
+      rosterOnly?: boolean;
+    };
     oidc?: {
       enabled?: boolean;
       color?: string;
-      facilityWhitelistRequired?: boolean;
+      facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
   };
