@@ -1,4 +1,4 @@
-import { normalizeGeography } from '../src/geography';
+import { normalizeGeography } from '../src/geography/utils/normalizeGeography';
 
 describe('normalizeGeography', () => {
   describe('country normalization', () => {

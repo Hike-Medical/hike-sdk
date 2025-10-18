@@ -1,4 +1,4 @@
-import { countries, COUNTRY_VARIATIONS } from '../countries';
+import { COUNTRY_VARIATIONS, geography } from '../countries';
 
 export interface GeographyInput {
   stateOrProvince?: string | null;
@@ -20,7 +20,7 @@ const normalizeCountry = (country?: string | null): string =>
  * Normalizes a state/province name or abbreviation to its standard abbreviation
  */
 const normalizeState = (state: string, countryCode: string): string => {
-  const statesData = countries[countryCode] as Record<string, string> | undefined;
+  const statesData = geography[countryCode] as Record<string, string> | undefined;
 
   if (!statesData) {
     return state;

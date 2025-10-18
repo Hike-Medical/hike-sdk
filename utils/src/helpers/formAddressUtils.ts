@@ -1,5 +1,5 @@
 import { ContactAddress, isEmpty } from '@hike/types';
-import { normalizeGeography } from '../geography';
+import { normalizeGeography } from '../geography/utils/normalizeGeography';
 
 /**
  * Validates if all required address fields for a given type are non-empty strings.

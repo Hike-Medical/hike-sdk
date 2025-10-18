@@ -23,6 +23,6 @@ export const COUNTRY_VARIATIONS: Record<string, string> = {
  * Geography data indexed by ISO 3166-1 alpha-2 country codes
  * Maps country code → state/province name → abbreviation
  */
-export const countries = {
+export const geography = {
   US: US_STATES
 };

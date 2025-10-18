@@ -1,5 +1,5 @@
 import { TransformedContact } from '@hike/types';
-import { normalizeGeography } from '../geography';
+import { normalizeGeography } from '../geography/utils/normalizeGeography';
 
 export const toContact = (
   addressLine1: string | null,
