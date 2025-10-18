@@ -19,22 +19,22 @@ const normalizeCountry = (country?: string | null): string =>
 /**
  * Normalizes a state/province name or abbreviation to its standard abbreviation
  */
-const normalizeState = (state: string, countryCode: string): string => {
-  const statesData = geography[countryCode] as Record<string, string> | undefined;
+const normalizeStateOrProvince = (stateOrProvince: string, countryCode: string): string => {
+  const data = geography[countryCode] as Record<string, string> | undefined;
 
-  if (!statesData) {
-    return state;
+  if (!data) {
+    return stateOrProvince;
   }
 
-  const sanitized = state.toLowerCase().replace(/\./g, '').trim();
+  const sanitized = stateOrProvince.toLowerCase().replace(/\./g, '').trim();
 
   // Find by full name or return abbreviation if already abbreviated
   return (
-    Object.entries(statesData).find(([name]) => name.toLowerCase() === sanitized)?.[1] ??
-    Object.values(statesData)
+    Object.entries(data).find(([name]) => name.toLowerCase() === sanitized)?.[1] ??
+    Object.values(data)
       .find((abbr) => abbr.toLowerCase() === sanitized)
       ?.toUpperCase() ??
-    state
+    stateOrProvince
   );
 };
 
@@ -56,10 +56,10 @@ const normalizeState = (state: string, countryCode: string): string => {
  */
 export const normalizeGeography = ({ stateOrProvince, country }: GeographyInput): NormalizedGeography => {
   const normalizedCountry = normalizeCountry(country);
-  const normalizedState = stateOrProvince?.trim() ? normalizeState(stateOrProvince.trim(), normalizedCountry) : '';
+  const normalizedStateOrProvince = normalizeStateOrProvince(stateOrProvince ?? '', normalizedCountry);
 
   return {
-    stateOrProvince: normalizedState,
+    stateOrProvince: normalizedStateOrProvince,
     country: normalizedCountry
   };
 };
