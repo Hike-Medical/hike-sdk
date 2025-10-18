@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { use, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { logger } from '../../utils/logger';
 
-const REFRESH_THRESHOLD = 2 * 60 * 1000; // 2 minutes
+const REFRESH_THRESHOLD = 5 * 60 * 1000; // 5 minutes
 const CHECK_INTERVAL = 60 * 1000; // 1 minute
 
 export const TokenRefresher = () => {
@@ -80,12 +80,40 @@ export const TokenRefresher = () => {
       refreshIfNeeded();
     };
 
-    const events = ['mousemove', 'keydown', 'scroll', 'touchstart'];
-    events.forEach((event) => window.addEventListener(event, handleActivity));
+    // Comprehensive event list to detect activity across all devices
+    const events = [
+      'touchstart', // Initial touch on mobile/tablet
+      'touchmove', // Continuous touch interaction (scrolling, dragging)
+      'touchend', // Touch completion
+      'click', // Taps and clicks
+      'mousemove', // Mouse movement on desktop
+      'mousedown', // Mouse clicks
+      'keydown', // Keyboard input
+      'scroll', // Scrolling (backup for touch scrolling)
+      'wheel' // Mouse wheel / trackpad scrolling
+    ];
+
+    events.forEach((event) =>
+      window.addEventListener(event, handleActivity, {
+        // Passive listeners improve scroll performance by not blocking browser's default behavior
+        passive: true
+      })
+    );
+
+    // Handle visibility changes when user returns to app after switching away
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        handleActivity();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     const interval = setInterval(() => refreshIfNeeded(), CHECK_INTERVAL);
 
     return () => {
       events.forEach((event) => window.removeEventListener(event, handleActivity));
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       clearInterval(interval);
     };
   }, [refreshIfNeeded]);

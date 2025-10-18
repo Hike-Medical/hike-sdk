@@ -544,6 +544,15 @@ export const FactRegistry = {
     hideInUX: true
   },
 
+  'internal.workflow.resolved': {
+    displayName: 'Workflow Resolved',
+    description: 'Indicates if the workflow has been marked as resolved',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.boolean(),
+    hideInUX: true
+  },
+
   'internal.prescription.forwarded': {
     displayName: 'Initial Prescription Forwarded',
     description: 'Initial Prescription Forwarded',
