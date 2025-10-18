@@ -1,4 +1,5 @@
 import { ContactAddress, isEmpty } from '@hike/types';
+import { normalizeGeography } from '../geography/utils/normalizeGeography';
 
 /**
  * Validates if all required address fields for a given type are non-empty strings.
@@ -23,6 +24,7 @@ export const fromAddressField = (name: string, state: Record<string, unknown>): 
 
 /**
  * Extracts and formats address components from Google Places into a structured `ContactAddress` object.
+ * Automatically normalizes state/province to abbreviated form.
  */
 export const fromGoogleAddress = (
   addressComponents: { long_name: string; short_name: string; types: string[] }[]
@@ -37,6 +39,7 @@ export const fromGoogleAddress = (
 
   let streetNumber = '';
   let route = '';
+  let countryCode = 'US';
 
   addressComponents.forEach((component) => {
     const { long_name, short_name, types } = component;
@@ -64,10 +67,22 @@ export const fromGoogleAddress = (
     if (types.includes('postal_code')) {
       address.postalCode = long_name;
     }
+
+    if (types.includes('country')) {
+      countryCode = short_name;
+    }
   });
 
   // Ensure street_number is before route in addressLine1
   address.addressLine1 = `${streetNumber} ${route}`.trim();
+
+  // Normalize the state/province and country (Google already provides short_name, but ensure consistency)
+  const normalized = normalizeGeography({
+    stateOrProvince: address.stateOrProvince,
+    country: countryCode
+  });
+
+  address.stateOrProvince = normalized.stateOrProvince;
 
   return address;
 };
