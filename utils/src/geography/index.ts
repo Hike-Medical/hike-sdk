@@ -1,4 +1,4 @@
-import { STATES_OR_PROVINCES as US_STATES } from './US';
+import { STATES_OR_PROVINCES as US_STATES } from './countries/US';
 
 /**
  * Country name variations mapped to ISO 3166-1 alpha-2 codes

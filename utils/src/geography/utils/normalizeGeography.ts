@@ -1,4 +1,4 @@
-import { COUNTRY_VARIATIONS, geography } from '../countries';
+import { COUNTRY_VARIATIONS, geography } from '..';
 
 export interface GeographyInput {
   stateOrProvince?: string | null;

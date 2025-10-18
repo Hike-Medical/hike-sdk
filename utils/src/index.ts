@@ -20,7 +20,7 @@ export * from './converters/toJobQueueTask';
 export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './converters/toUTC';
-export * from './geography/countries';
+export * from './geography';
 export * from './geography/utils/normalizeGeography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
