@@ -103,7 +103,14 @@ export default {
         waitMessage: 'Wait {seconds} seconds before we can send the code again',
         resendButton: 'Resend code',
         error: {
-          couldNotSend: 'Failed to send OTP. Please try again.'
+          couldNotSend: 'Failed to send OTP. Please try again.',
+          notAllowed: {
+            title: 'Access Not Available',
+            description:
+              'We are unable to process your signup at this time. This contact information is not currently eligible for registration.',
+            suggestion: 'If you believe this is an error, please contact support for assistance.',
+            goBack: 'Go Back'
+          }
         }
       },
       tokenRefresher: {
