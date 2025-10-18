@@ -1,4 +1,5 @@
 import { TransformedContact } from '@hike/types';
+import { normalizeGeography } from '../geography';
 
 export const toContact = (
   addressLine1: string | null,
@@ -12,12 +13,17 @@ export const toContact = (
     return undefined;
   }
 
+  const normalized = normalizeGeography({
+    stateOrProvince,
+    country: countryCode
+  });
+
   return {
     addressLine1,
     addressLine2,
     city,
-    stateOrProvince,
+    stateOrProvince: normalized.stateOrProvince,
     postalCode,
-    countryCode
+    countryCode: normalized.country
   };
 };

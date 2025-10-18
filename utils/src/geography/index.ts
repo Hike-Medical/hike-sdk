@@ -1,5 +1,7 @@
-import * as US from './US';
+import { countries } from './countries';
 
-export const geography = {
-  US
-};
+export * from './countries';
+export * from './utils';
+
+// Re-export countries as geography for backward compatibility
+export const geography = countries;
