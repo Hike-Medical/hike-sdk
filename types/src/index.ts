@@ -69,6 +69,7 @@ export * from './dto/catalog/ParseCatalogColumnsResponse';
 export * from './dto/catalog/TransformedCatalogAttribute';
 export * from './dto/catalog/TransformedCatalogProduct';
 export * from './dto/catalog/TransformedCatalogProductVariant';
+export * from './dto/catalog/UpdateProductParams';
 export * from './dto/clinician/AssignClinicianParams';
 export * from './dto/clinician/CreateClinicianParams';
 export * from './dto/clinician/GetCliniciansParams';
