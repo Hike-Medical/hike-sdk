@@ -13,4 +13,6 @@ export interface CatalogProductCsvRecord {
   Active?: string | null;
   Favorite?: string | null;
   Manufacturer?: string | null;
+  'Created At'?: string | null;
+  'Updated At'?: string | null;
 }

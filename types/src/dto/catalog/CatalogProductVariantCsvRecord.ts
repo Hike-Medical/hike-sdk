@@ -8,9 +8,11 @@ export interface CatalogProductVariantCsvRecord {
   Name: string;
   Description?: string | null;
   Caption?: string | null;
+  Barcode?: string | null;
   Image?: string | null;
+  Price?: string | null;
+  Active?: string | null;
   Manufacturer?: string | null;
-  'Children External IDs'?: string | null;
   'Created At'?: string | null;
   'Updated At'?: string | null;
 }
