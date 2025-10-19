@@ -1,6 +1,9 @@
+/**
+ * Represents a CSV record for a catalog product attribute import.
+ */
 export interface CatalogProductAttributeCsvRecord {
-  externalId: string;
-  type: string;
-  key: string;
-  value: string;
+  'External ID': string;
+  Type: string;
+  Key?: string | null;
+  Value: string;
 }
