@@ -36,4 +36,5 @@ export interface ManufacturingWorkbench {
   gluingCompletedBy: string | null;
   addonCompletedAt: Date | null;
   addonCompletedBy: string | null;
+  isOutsideClinic?: boolean;
 }

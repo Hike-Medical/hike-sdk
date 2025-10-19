@@ -1,6 +1,7 @@
 export * from './audit-log-interpreter';
 export * from './constants';
 export * from './constants/autoSlicerProfiles';
+export * from './constants/company';
 export * from './constants/marketingUtmParams';
 export * from './constants/SolemateStatuses';
 export * from './converters/flattenObject';
@@ -20,6 +21,7 @@ export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './converters/toUTC';
 export * from './geography';
+export * from './geography/utils/normalizeGeography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
 export * from './helpers/colorMapper';
