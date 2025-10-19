@@ -8,6 +8,8 @@ export interface GetProductsParams extends PagedParams {
   includeVariants?: boolean;
   filter?: Partial<
     Record<
+      | 'id'
+      | 'externalId'
       | 'name'
       | 'sku'
       | 'categoryId'
