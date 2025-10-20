@@ -2,10 +2,16 @@ import type {
   CatalogCategory,
   CatalogManufacturer,
   CatalogProductExtended,
+  GenerateCatalogUploadLinkParams,
   GetCategoriesParams,
   GetManufacturersParams,
   GetProductsParams,
-  PagedResponse
+  ImportCatalogProductsParams,
+  ImportCatalogProductsResponse,
+  PagedResponse,
+  ParseCatalogColumnsParams,
+  ParseCatalogColumnsResponse,
+  UpdateProductParams
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -60,6 +66,58 @@ export const fetchManufacturers = async (
 ): Promise<PagedResponse<CatalogManufacturer[]>> => {
   try {
     const response = await backendApi.get('catalog/manufacturer', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateProduct = async (
+  productId: string,
+  params: UpdateProductParams
+): Promise<CatalogProductExtended> => {
+  try {
+    const response = await backendApi.patch(`catalog/product/${productId}`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const importCatalogProducts = async (data: ImportCatalogProductsParams): Promise<{ jobId?: string }> => {
+  try {
+    const response = await backendApi.post('catalog/import', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchCatalogImportStatus = async (
+  jobId: string
+): Promise<{ progress: number; data?: ImportCatalogProductsResponse }> => {
+  try {
+    const response = await backendApi.get(`catalog/import/${jobId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const generateCatalogUploadLink = async (
+  data: GenerateCatalogUploadLinkParams
+): Promise<{ key: string; presignedUrl: string }> => {
+  try {
+    const response = await backendApi.post('catalog/import/upload-link', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const parseCatalogColumns = async (data: ParseCatalogColumnsParams): Promise<ParseCatalogColumnsResponse> => {
+  try {
+    const response = await backendApi.post('catalog/import/columns', data);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

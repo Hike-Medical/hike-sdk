@@ -26,4 +26,5 @@ export interface PrintFarmWorkbench {
   orderGender: string;
   orderSide: number | null;
   slicerProfile?: string | null;
+  isOutsideClinic?: boolean;
 }

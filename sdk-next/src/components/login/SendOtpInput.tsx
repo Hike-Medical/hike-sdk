@@ -1,29 +1,39 @@
 'use client';
 
-import { ContactType, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
+import { ContactType, HikeErrorCode, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
 import { useSendOtp, useVerifyInvitation } from '@hike/ui';
-import { Button, PinInput, Text } from '@mantine/core';
+import { Alert, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
+import { IconExclamationCircleFilled } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { ComponentType, PropsWithChildren, ReactNode, useEffect, useRef, useState } from 'react';
 
-interface SendOtpInputProps {
+export interface SendOtpInputProps {
   contact: string;
   contactType: ContactType;
   onVerified: (response: VerifyInvitationResponse, token: string) => Promise<void>;
   onSkipped?: () => void;
+  onGoBack?: () => void;
   HikeShell: {
     Main: ComponentType<PropsWithChildren<{ title: string; description: ReactNode }>>;
     Footer: ComponentType<PropsWithChildren<{ vertical?: boolean }>>;
   };
 }
 
-export const SendOtpInput = ({ contact, contactType, onVerified, onSkipped, HikeShell }: SendOtpInputProps) => {
+export const SendOtpInput = ({
+  contact,
+  contactType,
+  onVerified,
+  onSkipped,
+  onGoBack,
+  HikeShell
+}: SendOtpInputProps) => {
   const [inputOtp, setInputOtp] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(0);
   const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [isInvalidOtp, setIsInvalidOtp] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+  const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(null);
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.otp');
@@ -36,9 +46,16 @@ export const SendOtpInput = ({ contact, contactType, onVerified, onSkipped, Hike
       setCountdown(30);
     },
     onError: (error) => {
-      const message = toErrorMessage(error, t('error.couldNotSend'));
-      showNotification({ title: tShared('error.title'), message, color: 'red' });
-      setIsInvalidOtp(true);
+      switch (error.errorCode) {
+        case HikeErrorCode.ERR_PATIENT_SIGNUP_NOT_ALLOWED:
+          setUnrecoverableError(error.errorCode);
+          return;
+        default: {
+          const message = toErrorMessage(error, t('error.couldNotSend'));
+          showNotification({ title: tShared('error.title'), message, color: 'red' });
+          setIsInvalidOtp(true);
+        }
+      }
     }
   });
 
@@ -71,6 +88,44 @@ export const SendOtpInput = ({ contact, contactType, onVerified, onSkipped, Hike
     // Must execute on next runloop or stuck in pending state
     setTimeout(() => sendOtp({ contact, contactType }), 0);
   }, [contact, contactType, sendOtp]);
+
+  switch (unrecoverableError) {
+    case HikeErrorCode.ERR_PATIENT_SIGNUP_NOT_ALLOWED:
+      return (
+        <>
+          <HikeShell.Main
+            title={t('error.notAllowed.title')}
+            description={
+              <Stack gap="md" align="center">
+                <ThemeIcon variant="light" color="red" size={80} radius="xl">
+                  <IconExclamationCircleFilled size={50} />
+                </ThemeIcon>
+              </Stack>
+            }
+          >
+            <Stack gap="lg" align="center">
+              <Text size="md" ta="center" c="hike-dimmed">
+                {t('error.notAllowed.description')}
+              </Text>
+              <Alert color="orange" variant="light" w="100%">
+                <Text size="sm" ta="center">
+                  {t('error.notAllowed.suggestion')}
+                </Text>
+              </Alert>
+            </Stack>
+          </HikeShell.Main>
+          {onGoBack && (
+            <HikeShell.Footer>
+              <Button variant="footer" onClick={onGoBack} fullWidth>
+                {t('error.notAllowed.goBack')}
+              </Button>
+            </HikeShell.Footer>
+          )}
+        </>
+      );
+    default:
+      break;
+  }
 
   return (
     <>
