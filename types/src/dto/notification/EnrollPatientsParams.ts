@@ -5,4 +5,6 @@ export interface EnrollPatientsParams {
   onlyExternalId?: boolean;
   allowResend?: boolean;
   search?: string;
+  staggeredBatchSize?: number;
+  staggeredBatchDelayMinutes?: number;
 }
