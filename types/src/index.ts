@@ -192,6 +192,8 @@ export * from './dto/shipping/GetShipengineShippingResponse';
 export * from './dto/shipping/GetShippingLabelLegacyResponse';
 export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/ValidateAddressBody';
+export * from './dto/supplier/GetOrthofeetStyleProductsParams';
+export * from './dto/supplier/GetOrthofeetStyleVariantsParams';
 export * from './dto/supplier/GetSuppliersParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryResponse';

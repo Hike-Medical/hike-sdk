@@ -197,6 +197,8 @@ export * from './hooks/shipping/useShipments';
 export * from './hooks/shipping/useUpdateTrackingInfo';
 export * from './hooks/shipping/useValidateShippingAddress';
 export * from './hooks/shipping/useVoidLabel';
+export * from './hooks/supplier/useOrthofeetStyleProducts';
+export * from './hooks/supplier/useOrthofeetStyleVariants';
 export * from './hooks/suppliers/useOrthofeetInventoryByProduct';
 export * from './hooks/suppliers/useOrthofeetInventoryBySku';
 export * from './hooks/suppliers/useOrthofeetInventoryBySkus';

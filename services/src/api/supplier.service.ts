@@ -1,4 +1,11 @@
-import type { CatalogSupplier, GetSuppliersParams, PagedResponse } from '@hike/types';
+import type {
+  CatalogProductExtended,
+  CatalogSupplier,
+  GetOrthofeetStyleProductsParams,
+  GetOrthofeetStyleVariantsParams,
+  GetSuppliersParams,
+  PagedResponse
+} from '@hike/types';
 import { GetOrthofeetInventoryResponse } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -37,6 +44,28 @@ export const fetchOrthofeetInventoryByProduct = async (productId: string): Promi
 export const fetchSuppliers = async (params?: GetSuppliersParams): Promise<PagedResponse<CatalogSupplier[]>> => {
   try {
     const response = await backendApi.get('supplier', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchOrthofeetStyleProducts = async (
+  params: GetOrthofeetStyleProductsParams
+): Promise<PagedResponse<CatalogProductExtended[]>> => {
+  try {
+    const response = await backendApi.get('supplier/orthofeet/style-products', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchOrthofeetStyleVariants = async (
+  params: GetOrthofeetStyleVariantsParams
+): Promise<CatalogProductExtended[]> => {
+  try {
+    const response = await backendApi.get('supplier/orthofeet/style-variants', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
