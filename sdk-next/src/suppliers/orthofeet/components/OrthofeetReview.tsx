@@ -1,0 +1,96 @@
+'use client';
+
+import { formatCurrency } from '@hike/sdk';
+import { useCatalogProducts } from '@hike/ui';
+import { Alert, Badge, Group, Loader, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
+import Image from 'next/image';
+import { ORTHOFEET_ATTRIBUTES, getProductAttributeValue } from '../utils/attributeHelpers';
+
+export interface OrthofeetReviewProps {
+  sku: string;
+  supplierId: string;
+  multiplier?: number;
+}
+
+export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetReviewProps) {
+  const theme = useMantineTheme();
+
+  const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
+    params: {
+      term: sku,
+      includeVariants: true,
+      filter: {
+        supplierId
+      }
+    },
+    enabled: !!supplierId && !!sku
+  });
+
+  if (isOrthofeetProductPending) {
+    return <Loader />;
+  }
+
+  // Find the variant - it could be directly in the results or in a parent's children array
+  const selectedVariant = orthofeetProduct?.data?.find((product) => product.sku === sku);
+
+  // Find the parent product - either it has children or we need to find by parentId
+  const selectedProduct = selectedVariant?.parentId
+    ? orthofeetProduct?.data?.find((product) => product.id === selectedVariant.parentId)
+    : orthofeetProduct?.data?.find((product) => product.children?.some((variant) => variant.sku === sku));
+
+  const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
+
+  if (!selectedProduct || !selectedVariant) {
+    return (
+      <Alert title="Orthofeet product not found">
+        The Orthofeet product with SKU <strong>{sku}</strong> was not found. Please contact support.
+      </Alert>
+    );
+  }
+
+  // Extract attributes from the variant
+  const color = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.COLOR);
+  const size = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.SIZE);
+  const width = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.WIDTH);
+
+  return (
+    <Paper p="md" withBorder>
+      <Stack gap="xs">
+        <Image
+          src={selectedProduct?.image || ''}
+          alt={selectedProduct.name}
+          width={600}
+          height={400}
+          style={{
+            backgroundColor: theme.colors.gray[3],
+            borderRadius: theme.radius.lg,
+            objectFit: 'cover'
+          }}
+        />
+        <Text size="md" fw="500">
+          {selectedProduct.name}
+        </Text>
+        <Text size="md" fw="600">
+          Price: {formatCurrency(calculatePrice(selectedProduct.price ?? selectedProduct.parent?.price ?? 0))}
+        </Text>
+        <Group>
+          {size && (
+            <Badge variant="light" color="dark">
+              Size: {size}
+            </Badge>
+          )}
+          {color && (
+            <Badge variant="light" color="dark">
+              Color: {color}
+            </Badge>
+          )}
+          {width && (
+            <Badge variant="light" color="dark">
+              Width: {width}
+            </Badge>
+          )}
+        </Group>
+      </Stack>
+    </Paper>
+  );
+}
