@@ -11,7 +11,7 @@ export interface CatalogProductCsvRecord {
   Image?: string | null;
   Price?: string | null;
   Active?: string | null;
-  Favorite?: string | null;
+  Featured?: string | null;
   Manufacturer?: string | null;
   'Created At'?: string | null;
   'Updated At'?: string | null;
