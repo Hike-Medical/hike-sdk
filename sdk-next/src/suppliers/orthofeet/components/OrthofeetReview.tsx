@@ -4,7 +4,7 @@ import { formatCurrency } from '@hike/sdk';
 import { useCatalogProducts } from '@hike/ui';
 import { Alert, Badge, Group, Loader, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import Image from 'next/image';
-import { ORTHOFEET_ATTRIBUTES, getProductAttributeValue } from '../utils/attributeHelpers';
+import { ORTHOFEET_ATTRIBUTES, getProductAttributeDisplay } from '../utils/attributeHelpers';
 
 export interface OrthofeetReviewProps {
   sku: string;
@@ -48,10 +48,10 @@ export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetRe
     );
   }
 
-  // Extract attributes from the variant
-  const color = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.COLOR);
-  const size = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.SIZE);
-  const width = getProductAttributeValue(selectedVariant, ORTHOFEET_ATTRIBUTES.WIDTH);
+  // Extract attributes from the variant (with description fallback to value)
+  const color = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.COLOR);
+  const size = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.SIZE);
+  const width = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.WIDTH);
 
   return (
     <Paper p="md" withBorder>

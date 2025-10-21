@@ -5,7 +5,7 @@ import { useOrthofeetStyleProducts } from '@hike/ui';
 import { Alert, Box, Button, Group, LoadingOverlay, ScrollArea, Stack, Tabs, Text, TextInput } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useState } from 'react';
-import { ORTHOFEET_ATTRIBUTES, getProductAttributeValue } from '../utils/attributeHelpers';
+import { ORTHOFEET_ATTRIBUTES, getProductAttributeLabel, getProductAttributeValue } from '../utils/attributeHelpers';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
@@ -42,7 +42,7 @@ export function OrthofeetCatalog({
   const [selectedProduct, setSelectedProduct] = useState<CatalogProductExtended | undefined>();
   const [detailOpened, setDetailOpened] = useState(false);
 
-  // Fetch all products to get unique categories
+  // Fetch all products to get unique categories and genders
   const { data: allProducts } = useOrthofeetStyleProducts({
     params: {
       supplierId,
@@ -51,15 +51,40 @@ export function OrthofeetCatalog({
     staleTime: Infinity
   });
 
-  // Get unique categories from all products
+  // Get unique categories from all products with their labels
   const categories = allProducts?.data
     ? Array.from(
-        new Set(
+        new Map(
           allProducts.data
-            .map((p) => getProductAttributeValue(p, ORTHOFEET_ATTRIBUTES.CLASS))
-            .filter((c): c is string => !!c)
-        )
-      ).sort()
+            .map((p) => {
+              const value = getProductAttributeValue(p, ORTHOFEET_ATTRIBUTES.CLASS);
+              const label = getProductAttributeLabel(p, ORTHOFEET_ATTRIBUTES.CLASS);
+              return value ? [value, label || value] : null;
+            })
+            .filter((entry): entry is [string, string] => entry !== null)
+        ).entries()
+      )
+        .map(([value, label]) => ({ value, label }))
+        .sort((a, b) => a.label.localeCompare(b.label))
+    : [];
+
+  // Get unique genders from all products with their labels
+  // Need to check children too since gender attribute lives on variants
+  const genders = allProducts?.data
+    ? Array.from(
+        new Map(
+          allProducts.data
+            .flatMap((p) => [p, ...((p.children || []) as CatalogProductExtended[])])
+            .map((p) => {
+              const value = getProductAttributeValue(p, ORTHOFEET_ATTRIBUTES.GENDER);
+              const label = getProductAttributeLabel(p, ORTHOFEET_ATTRIBUTES.GENDER);
+              return value ? [value, label || value] : null;
+            })
+            .filter((entry): entry is [string, string] => entry !== null)
+        ).entries()
+      )
+        .map(([value, label]) => ({ value, label }))
+        .sort((a, b) => a.label.localeCompare(b.label))
     : [];
 
   // Fetch filtered products
@@ -90,8 +115,8 @@ export function OrthofeetCatalog({
     setDetailOpened(false);
   };
 
-  const toggleGenderFilter = (gender: string) => {
-    setSelectedGender((current) => (current === gender ? undefined : gender));
+  const toggleGenderFilter = (genderValue: string) => {
+    setSelectedGender((current) => (current === genderValue ? undefined : genderValue));
   };
 
   const toggleMaxPrice = () => {
@@ -124,20 +149,16 @@ export function OrthofeetCatalog({
           <Button size="compact-sm" variant={maxPrice ? 'filled' : 'light'} color="indigo" onClick={toggleMaxPrice}>
             {maxPrice ? 'Viewing Shoes Under $60' : 'View All Prices'}
           </Button>
-          <Button
-            size="compact-sm"
-            variant={selectedGender === 'men' ? 'filled' : 'light'}
-            onClick={() => toggleGenderFilter('men')}
-          >
-            Men&apos;s
-          </Button>
-          <Button
-            size="compact-sm"
-            variant={selectedGender === 'women' ? 'filled' : 'light'}
-            onClick={() => toggleGenderFilter('women')}
-          >
-            Women&apos;s
-          </Button>
+          {genders.map((gender) => (
+            <Button
+              key={gender.value}
+              size="compact-sm"
+              variant={selectedGender === gender.value ? 'filled' : 'light'}
+              onClick={() => toggleGenderFilter(gender.value)}
+            >
+              {gender.label}
+            </Button>
+          ))}
         </Group>
 
         {/* Category Tabs */}
@@ -150,8 +171,8 @@ export function OrthofeetCatalog({
               <Tabs.List style={{ flexWrap: 'nowrap' }}>
                 <Tabs.Tab value="all">All Categories</Tabs.Tab>
                 {categories.map((category) => (
-                  <Tabs.Tab key={category} value={category}>
-                    {category}
+                  <Tabs.Tab key={category.value} value={category.value}>
+                    {category.label}
                   </Tabs.Tab>
                 ))}
               </Tabs.List>

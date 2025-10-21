@@ -21,7 +21,8 @@ export const getProductAttributeValue = (product: CatalogProductExtended, attrib
 };
 
 /**
- * Get the display label for an attribute (description or key as fallback)
+ * Get the display label for an attribute (description only, or undefined)
+ * Caller should fallback to value if this returns undefined
  */
 export const getProductAttributeLabel = (product: CatalogProductExtended, attributeKey: string): string | undefined => {
   const attr = product.attributes?.find(
@@ -33,9 +34,20 @@ export const getProductAttributeLabel = (product: CatalogProductExtended, attrib
   }
 
   const description = attr.description?.trim();
-  const key = attr.key?.trim();
+  return description || undefined;
+};
 
-  return description || key;
+/**
+ * Get the display text for an attribute (description with fallback to value)
+ * This is the primary function to use for displaying attributes in UI
+ */
+export const getProductAttributeDisplay = (
+  product: CatalogProductExtended,
+  attributeKey: string
+): string | undefined => {
+  const value = getProductAttributeValue(product, attributeKey);
+  const label = getProductAttributeLabel(product, attributeKey);
+  return label || value;
 };
 
 /**
