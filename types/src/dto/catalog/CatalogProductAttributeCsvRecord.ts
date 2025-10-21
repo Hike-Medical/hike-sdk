@@ -4,6 +4,7 @@
 export interface CatalogProductAttributeCsvRecord {
   'External ID': string;
   Type: string;
-  Key?: string | null;
   Value: string;
+  Key?: string | null;
+  Description?: string | null;
 }
