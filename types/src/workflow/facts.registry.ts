@@ -137,7 +137,7 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Prescribing practitioner's role",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
 
   // Certifying Physician Information
@@ -175,7 +175,7 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: "Certifying physician's role (must be MD or DO)",
     category: 'Certifying Physician',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO'])
   },
   'cert.physician.address': {
     displayName: 'Certifying Physician Address',
@@ -208,6 +208,27 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
+  'prescriber.notes.examiner.first_name': {
+    displayName: 'Prescriber Notes Examiner First Name',
+    description: 'First name of the practitioner who performed the foot exam',
+    category: 'Prescriber Notes',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'prescriber.notes.examiner.last_name': {
+    displayName: 'Prescriber Notes Examiner Last Name',
+    description: 'Last name of the practitioner who performed the foot exam',
+    category: 'Prescriber Notes',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'prescriber.notes.examiner.role': {
+    displayName: 'Prescriber Notes Examiner Role',
+    description: 'Role of the practitioner who performed the foot exam',
+    category: 'Prescriber Notes',
+    required: true,
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+  },
   'prescriber.notes.signature': {
     displayName: 'Prescriber Notes Signature',
     description: 'Digital signature on prescriber notes',
@@ -230,7 +251,51 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     schema: z.string().min(1)
   },
 
+  'prescriber.notes.certifying_agreement.signature': {
+    displayName: 'Certifying Agreement Signature',
+    description: 'Signature of certifying physician agreeing with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.boolean()
+  },
+  'prescriber.notes.certifying_agreement.date': {
+    displayName: 'Certifying Agreement Date',
+    description: 'Date when certifying physician agreed with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: dateISO
+  },
+
+  'prescriber.notes.certifying_agreement.note': {
+    displayName: 'Certifying Agreement Note',
+    description: 'Notes from certifying physician regarding the foot exam agreement',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.string().min(1)
+  },
+
   // Certifier Notes
+  'cert.notes.examiner.first_name': {
+    displayName: 'Certifier Notes Examiner First Name',
+    description: 'First name of the practitioner who performed the foot exam',
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'cert.notes.examiner.last_name': {
+    displayName: 'Certifier Notes Examiner Last Name',
+    description: 'Last name of the practitioner who performed the foot exam',
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'cert.notes.examiner.role': {
+    displayName: 'Certifier Notes Examiner Role',
+    description: 'Role of the practitioner who performed the foot exam',
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+  },
   'cert.notes.last_dm_visit_date': {
     displayName: 'Last Diabetes Management Visit',
     description: 'Date of the last diabetes management visit',
@@ -259,6 +324,27 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
+  'cert.notes.certifying_agreement.signature': {
+    displayName: 'Certifying Agreement Signature',
+    description: 'Signature of certifying physician agreeing with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.boolean()
+  },
+  'cert.notes.certifying_agreement.date': {
+    displayName: 'Certifying Agreement Date',
+    description: 'Date when certifying physician agreed with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: dateISO
+  },
+  'cert.notes.certifying_agreement.note': {
+    displayName: 'Certifying Agreement Note',
+    description: 'Notes from certifying physician regarding the foot exam agreement',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.string().min(1)
+  },
 
   // Foot Exam Information
   'foot_exam.date': {
@@ -268,9 +354,16 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     required: true,
     schema: dateISO
   },
-  'foot_exam.examiner.name': {
-    displayName: 'Foot Exam Examiner Name',
-    description: 'Name of the practitioner who performed the foot exam',
+  'foot_exam.examiner.first_name': {
+    displayName: 'Foot Exam Examiner First Name',
+    description: 'First name of the practitioner who performed the foot exam',
+    category: 'Foot Examination',
+    required: true,
+    schema: z.string().min(1)
+  },
+  'foot_exam.examiner.last_name': {
+    displayName: 'Foot Exam Examiner Last Name',
+    description: 'Last name of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
     schema: z.string().min(1)
@@ -280,7 +373,7 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
   'foot_exam.examiner.signature': {
     displayName: 'Foot Exam Examiner Signature',
@@ -418,22 +511,6 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     schema: z.boolean()
   },
 
-  // Certifying Agreement
-  'foot_exam.certifying_agreement.signature': {
-    displayName: 'Certifying Agreement Signature',
-    description: 'Signature of certifying physician agreeing with foot exam findings',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: z.boolean()
-  },
-  'foot_exam.certifying_agreement.date': {
-    displayName: 'Certifying Agreement Date',
-    description: 'Date when certifying physician agreed with foot exam findings',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: dateISO
-  },
-
   // Certifying Statement
   'cert.statement.signature': {
     displayName: 'Certifying Statement Signature',
@@ -462,6 +539,27 @@ export const FactRegistry: Record<string, FactsRegistryEntry> = {
     category: 'Certifying Statement',
     required: true,
     schema: z.boolean()
+  },
+  'cert.statement.certifying_agreement.signature': {
+    displayName: 'Certifying Agreement Signature',
+    description: 'Signature of certifying physician agreeing with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.boolean()
+  },
+  'cert.statement.certifying_agreement.date': {
+    displayName: 'Certifying Agreement Date',
+    description: 'Date when certifying physician agreed with foot exam findings',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: dateISO
+  },
+  'cert.statement.certifying_agreement.note': {
+    displayName: 'Certifying Agreement Note',
+    description: 'Notes from certifying physician regarding the foot exam agreement',
+    category: 'Certifying Agreement',
+    required: false,
+    schema: z.string().min(1)
   },
 
   // Initial Prescription
