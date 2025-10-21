@@ -1,4 +1,4 @@
 export interface UpdateProductParams {
   active?: boolean;
-  favorite?: boolean;
+  featured?: boolean;
 }

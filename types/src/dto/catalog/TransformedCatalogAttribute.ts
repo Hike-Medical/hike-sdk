@@ -7,5 +7,6 @@ export interface TransformedCatalogAttribute {
   productId: string;
   type: ProductAttributeType;
   value: string;
+  key?: string;
   description?: string;
 }

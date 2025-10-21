@@ -18,10 +18,10 @@ export interface GetProductsParams extends PagedParams {
       | 'deviceTypeId'
       | 'billingCode'
       | 'active'
-      | 'favorite',
+      | 'featured',
       string
     >
   >;
-  sortBy?: 'name' | 'sku' | 'price' | 'favorite' | 'createdAt' | 'updatedAt';
+  sortBy?: 'name' | 'sku' | 'price' | 'featured' | 'createdAt' | 'updatedAt';
   sortOrder?: Prisma.SortOrder;
 }
