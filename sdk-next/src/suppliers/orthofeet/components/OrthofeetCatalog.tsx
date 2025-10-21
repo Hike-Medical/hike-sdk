@@ -48,9 +48,11 @@ export function OrthofeetCatalog({
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
 
-  // Pagination
+  // Pagination - use page size that fills grid at all breakpoints
+  // Grid cols: base=1, sm=2, md=3, lg=4 → LCM=12
+  // 48 items = 48 rows (mobile), 24 rows (sm), 16 rows (md), 12 rows (lg)
   const [page, setPage] = useState(0);
-  const pageSize = 50;
+  const pageSize = 48; // Divisible by 1, 2, 3, 4
 
   // Reset page when search term changes
   const [prevSearchTerm, setPrevSearchTerm] = useState(debouncedSearchTerm);

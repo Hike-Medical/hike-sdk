@@ -25,7 +25,7 @@ export function OrthofeetProductGrid({ products, isLoading, multiplier, onProduc
         spacing="md"
         verticalSpacing="md"
       >
-        {Array.from({ length: 8 }, (_, index) => (
+        {Array.from({ length: 12 }, (_, index) => (
           <Skeleton key={`skeleton-${index}`} w="100%" height={250} />
         ))}
       </SimpleGrid>
