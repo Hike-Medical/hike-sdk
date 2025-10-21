@@ -1,12 +1,14 @@
+import type { SupplierConfig } from '../types';
+
 export interface OrthofeetFormFieldMappings {
   sku: string;
   description: string;
   heading: string;
   prefabQuantity?: string;
+  [key: string]: string | undefined;
 }
 
-export interface OrthofeetConfig {
-  supplierId: string;
+export interface OrthofeetConfig extends Omit<SupplierConfig, 'formFieldMappings'> {
   inventoryBuffer: number;
   formFieldMappings: OrthofeetFormFieldMappings;
 }
