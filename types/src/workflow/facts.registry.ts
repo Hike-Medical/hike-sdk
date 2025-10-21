@@ -131,7 +131,7 @@ export const FactRegistry = {
     description: "Prescribing practitioner's role",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
 
   // Certifying Physician Information
@@ -169,7 +169,7 @@ export const FactRegistry = {
     description: "Certifying physician's role (must be MD or DO)",
     category: 'Certifying Physician',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO'])
   },
   'cert.physician.address': {
     displayName: 'Certifying Physician Address',
@@ -221,7 +221,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
   'prescriber.notes.signature': {
     displayName: 'Prescriber Notes Signature',
@@ -288,7 +288,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Certifier Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
   'cert.notes.last_dm_visit_date': {
     displayName: 'Last Diabetes Management Visit',
@@ -381,7 +381,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.string().min(1)
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
   },
   'foot_exam.examiner.signature': {
     displayName: 'Foot Exam Examiner Signature',
