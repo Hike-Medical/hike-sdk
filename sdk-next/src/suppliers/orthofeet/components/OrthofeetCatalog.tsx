@@ -1,11 +1,22 @@
 'use client';
 
 import { CatalogProductExtended } from '@hike/sdk';
-import { useOrthofeetStyleProducts } from '@hike/ui';
-import { Alert, Box, Button, Group, LoadingOverlay, ScrollArea, Stack, Tabs, Text, TextInput } from '@mantine/core';
+import { useOrthofeetFilters, useOrthofeetStyleProducts } from '@hike/ui';
+import {
+  Alert,
+  Box,
+  Button,
+  Group,
+  LoadingOverlay,
+  Pagination,
+  ScrollArea,
+  Stack,
+  Tabs,
+  Text,
+  TextInput
+} from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useState } from 'react';
-import { ORTHOFEET_ATTRIBUTES, getProductAttributeLabel, getProductAttributeValue } from '../utils/attributeHelpers';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
@@ -37,55 +48,29 @@ export function OrthofeetCatalog({
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
 
+  // Pagination
+  const [page, setPage] = useState(0);
+  const pageSize = 50;
+
+  // Reset page when search term changes
+  const [prevSearchTerm, setPrevSearchTerm] = useState(debouncedSearchTerm);
+  if (prevSearchTerm !== debouncedSearchTerm) {
+    setPrevSearchTerm(debouncedSearchTerm);
+    setPage(0);
+  }
+
   // Detail drawer state
   const [selectedStyleName, setSelectedStyleName] = useState<string | undefined>();
   const [selectedProduct, setSelectedProduct] = useState<CatalogProductExtended | undefined>();
   const [detailOpened, setDetailOpened] = useState(false);
 
-  // Fetch all products to get unique categories and genders
-  const { data: allProducts } = useOrthofeetStyleProducts({
-    params: {
-      supplierId,
-      sortOrder: 'desc'
-    },
-    staleTime: Infinity
+  // Fetch filter options efficiently (categories and genders)
+  const { data: filters } = useOrthofeetFilters({
+    params: { supplierId }
   });
 
-  // Get unique categories from all products with their labels
-  const categories = allProducts?.data
-    ? Array.from(
-        new Map(
-          allProducts.data
-            .map((p) => {
-              const value = getProductAttributeValue(p, ORTHOFEET_ATTRIBUTES.CLASS);
-              const label = getProductAttributeLabel(p, ORTHOFEET_ATTRIBUTES.CLASS);
-              return value ? [value, label || value] : null;
-            })
-            .filter((entry): entry is [string, string] => entry !== null)
-        ).entries()
-      )
-        .map(([value, label]) => ({ value, label }))
-        .sort((a, b) => a.label.localeCompare(b.label))
-    : [];
-
-  // Get unique genders from all products with their labels
-  // Need to check children too since gender attribute lives on variants
-  const genders = allProducts?.data
-    ? Array.from(
-        new Map(
-          allProducts.data
-            .flatMap((p) => [p, ...((p.children || []) as CatalogProductExtended[])])
-            .map((p) => {
-              const value = getProductAttributeValue(p, ORTHOFEET_ATTRIBUTES.GENDER);
-              const label = getProductAttributeLabel(p, ORTHOFEET_ATTRIBUTES.GENDER);
-              return value ? [value, label || value] : null;
-            })
-            .filter((entry): entry is [string, string] => entry !== null)
-        ).entries()
-      )
-        .map(([value, label]) => ({ value, label }))
-        .sort((a, b) => a.label.localeCompare(b.label))
-    : [];
+  const categories = filters?.categories || [];
+  const genders = filters?.genders || [];
 
   // Fetch filtered products
   const {
@@ -99,10 +84,14 @@ export function OrthofeetCatalog({
       categoryAttributeValue: selectedCategory,
       term: debouncedSearchTerm || undefined,
       maxPrice,
-      sortOrder: 'desc'
+      sortOrder: 'desc',
+      offset: page * pageSize,
+      limit: pageSize
     },
     staleTime: Infinity
   });
+
+  const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
   const handleProductSelect = (styleNameValue: string, product: CatalogProductExtended) => {
     setSelectedStyleName(styleNameValue);
@@ -117,10 +106,17 @@ export function OrthofeetCatalog({
 
   const toggleGenderFilter = (genderValue: string) => {
     setSelectedGender((current) => (current === genderValue ? undefined : genderValue));
+    setPage(0); // Reset to first page when filter changes
   };
 
   const toggleMaxPrice = () => {
     setMaxPrice((current) => (current ? undefined : 60));
+    setPage(0); // Reset to first page when filter changes
+  };
+
+  const handleCategoryChange = (value: string | null) => {
+    setSelectedCategory(value === 'all' ? undefined : value || undefined);
+    setPage(0); // Reset to first page when category changes
   };
 
   if (productsError) {
@@ -156,7 +152,7 @@ export function OrthofeetCatalog({
               variant={selectedGender === gender.value ? 'filled' : 'light'}
               onClick={() => toggleGenderFilter(gender.value)}
             >
-              {gender.label}
+              {gender.description || gender.value}
             </Button>
           ))}
         </Group>
@@ -164,15 +160,12 @@ export function OrthofeetCatalog({
         {/* Category Tabs */}
         {categories.length > 0 && (
           <ScrollArea type="auto">
-            <Tabs
-              value={selectedCategory || 'all'}
-              onChange={(value) => setSelectedCategory(value === 'all' ? undefined : value || undefined)}
-            >
+            <Tabs value={selectedCategory || 'all'} onChange={handleCategoryChange}>
               <Tabs.List style={{ flexWrap: 'nowrap' }}>
                 <Tabs.Tab value="all">All Categories</Tabs.Tab>
                 {categories.map((category) => (
                   <Tabs.Tab key={category.value} value={category.value}>
-                    {category.label}
+                    {category.description || category.value}
                   </Tabs.Tab>
                 ))}
               </Tabs.List>
@@ -192,6 +185,13 @@ export function OrthofeetCatalog({
           <Text size="sm" ta="center" w="100%" c="gray.6" mt="xl">
             No products found
           </Text>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <Group justify="center" mt="xl">
+            <Pagination total={totalPages} value={page + 1} onChange={(newPage) => setPage(newPage - 1)} />
+          </Group>
         )}
       </Stack>
 

@@ -1,9 +1,11 @@
 import type {
   CatalogProductExtended,
   CatalogSupplier,
+  GetOrthofeetFiltersParams,
   GetOrthofeetStyleProductsParams,
   GetOrthofeetStyleVariantsParams,
   GetSuppliersParams,
+  OrthofeetFiltersResponse,
   PagedResponse
 } from '@hike/types';
 import { GetOrthofeetInventoryResponse } from '@hike/types';
@@ -44,6 +46,15 @@ export const fetchOrthofeetInventoryByProduct = async (productId: string): Promi
 export const fetchSuppliers = async (params?: GetSuppliersParams): Promise<PagedResponse<CatalogSupplier[]>> => {
   try {
     const response = await backendApi.get('supplier', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchOrthofeetFilters = async (params: GetOrthofeetFiltersParams): Promise<OrthofeetFiltersResponse> => {
+  try {
+    const response = await backendApi.get('supplier/orthofeet/filters', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
