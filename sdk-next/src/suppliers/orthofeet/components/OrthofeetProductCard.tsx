@@ -6,7 +6,6 @@ import Image from 'next/image';
 
 interface OrthofeetProductCardProps {
   productStyle: OrthofeetProductStyle;
-  multiplier: number;
   onSelect: () => void;
 }
 
@@ -19,10 +18,8 @@ const getColorForName = (colorName: string): string => {
   return colors[hash % colors.length] || 'gray';
 };
 
-export const OrthofeetProductCard = ({ productStyle, multiplier, onSelect }: OrthofeetProductCardProps) => {
+export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProductCardProps) => {
   const theme = useMantineTheme();
-
-  const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
 
   const imageUrl = productStyle.image || DEFAULT_IMAGE_URL;
   const price = productStyle.price ?? 0;
@@ -56,14 +53,14 @@ export const OrthofeetProductCard = ({ productStyle, multiplier, onSelect }: Ort
             {productStyle.name}
           </Text>
           <Text size="md" fw="600">
-            {price > 0 ? formatCurrency(calculatePrice(price)) : '—'}
+            {price > 0 ? formatCurrency(price) : '—'}
           </Text>
         </Stack>
 
         {/* Gender and Color Badges */}
         <Group gap="xs" align="center">
           {productStyle.genders.map((gender) => (
-            <Badge key={gender} size="xs" variant="light" color="blue">
+            <Badge key={gender} size="sm" variant="light" color="blue">
               {gender}
             </Badge>
           ))}

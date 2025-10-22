@@ -6,17 +6,11 @@ import { OrthofeetProductCard } from './OrthofeetProductCard';
 
 export interface OrthofeetProductGridProps {
   products: OrthofeetProductStyle[];
-  multiplier: number;
   isLoading: boolean;
   onProductSelect: (productStyle: OrthofeetProductStyle) => void;
 }
 
-export const OrthofeetProductGrid = ({
-  products,
-  multiplier,
-  isLoading,
-  onProductSelect
-}: OrthofeetProductGridProps) =>
+export const OrthofeetProductGrid = ({ products, isLoading, onProductSelect }: OrthofeetProductGridProps) =>
   isLoading ? (
     <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md" verticalSpacing="md">
       {Array.from({ length: 12 }, (_, index) => (
@@ -29,7 +23,6 @@ export const OrthofeetProductGrid = ({
         <OrthofeetProductCard
           key={productStyle.value}
           productStyle={productStyle}
-          multiplier={multiplier}
           onSelect={() => onProductSelect(productStyle)}
         />
       ))}
