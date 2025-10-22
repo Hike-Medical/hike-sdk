@@ -7,5 +7,6 @@ export interface GetOrthofeetStyleProductsParams extends PagedParams {
   categoryAttributeValue?: string;
   genderAttributeValue?: string;
   maxPrice?: number;
+  sortBy?: 'name' | 'price' | 'featured' | 'createdAt' | 'updatedAt';
   sortOrder?: Prisma.SortOrder;
 }
