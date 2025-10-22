@@ -36,6 +36,7 @@ export interface CompanyPreferences {
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
     supplierMarkupPercentage?: Record<string, number>;
+    consumerReorderDiscount?: number;
   };
   noAuthNeeded?: boolean;
   skipExternalIdVerification?: boolean;
