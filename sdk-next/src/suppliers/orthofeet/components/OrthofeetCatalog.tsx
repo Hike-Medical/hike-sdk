@@ -23,7 +23,6 @@ import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 export interface OrthofeetCatalogProps {
   price?: number;
   quantity?: string;
-  multiplier?: number;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   isLoading?: boolean;
@@ -33,7 +32,6 @@ export interface OrthofeetCatalogProps {
 export const OrthofeetCatalog = ({
   price,
   quantity,
-  multiplier = 0,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   isLoading = false,
@@ -196,7 +194,6 @@ export const OrthofeetCatalog = ({
           enableInventoryCheck={enableInventoryCheck}
           price={price}
           quantity={quantity}
-          multiplier={multiplier}
           opened={detailOpened}
           onAddToCart={handleAddToCart}
           onClose={() => setDetailOpened(false)}

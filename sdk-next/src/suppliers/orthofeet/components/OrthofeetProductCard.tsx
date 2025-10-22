@@ -17,7 +17,6 @@ const getColorForName = (colorName: string): string => {
 
 export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProductCardProps) => {
   const theme = useMantineTheme();
-
   const imageUrl = productStyle.image || '/images/shoe-placeholder.png';
   const price = productStyle.price ?? 0;
 

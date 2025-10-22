@@ -12,7 +12,6 @@ export interface SupplierConfig {
 export interface SupplierCatalogProps {
   supplierId: string;
   onAddToCart: (sku: string, name: string, metadata?: Record<string, unknown>) => void;
-  multiplier?: number;
   isLoading?: boolean;
 }
 
@@ -22,7 +21,6 @@ export interface SupplierCatalogProps {
 export interface SupplierReviewProps {
   sku: string;
   supplierId: string;
-  multiplier?: number;
 }
 
 /**

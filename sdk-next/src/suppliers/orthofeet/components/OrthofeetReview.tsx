@@ -9,10 +9,9 @@ import { ORTHOFEET_ATTRIBUTES, getProductAttributeDisplay } from '../utils/attri
 export interface OrthofeetReviewProps {
   sku: string;
   supplierId: string;
-  multiplier?: number;
 }
 
-export const OrthofeetReview = ({ sku, supplierId, multiplier = 0 }: OrthofeetReviewProps) => {
+export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
 
   const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
@@ -31,8 +30,6 @@ export const OrthofeetReview = ({ sku, supplierId, multiplier = 0 }: OrthofeetRe
   const selectedProduct = selectedVariant?.parentId
     ? orthofeetProduct?.data?.find((product) => product.id === selectedVariant.parentId)
     : orthofeetProduct?.data?.find((product) => product.children?.some((variant) => variant.sku === sku));
-
-  const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
 
   if (isOrthofeetProductPending) {
     return <Loader />;
@@ -69,7 +66,7 @@ export const OrthofeetReview = ({ sku, supplierId, multiplier = 0 }: OrthofeetRe
           {selectedProduct.name}
         </Text>
         <Text size="md" fw="600">
-          Price: {formatCurrency(calculatePrice(selectedProduct.price ?? selectedProduct.parent?.price ?? 0))}
+          Price: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
         </Text>
         <Group>
           {size && (

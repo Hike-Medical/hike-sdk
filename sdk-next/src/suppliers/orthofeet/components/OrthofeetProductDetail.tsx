@@ -11,7 +11,6 @@ interface OrthofeetProductDetailProps {
   style: string;
   price?: number;
   quantity?: string;
-  multiplier: number;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
@@ -44,7 +43,6 @@ export const OrthofeetProductDetail = ({
   style,
   price,
   quantity,
-  multiplier,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   opened,
@@ -123,8 +121,6 @@ export const OrthofeetProductDetail = ({
   const inventoryQuantity = inventory?.products[currentVariantSku]?.quantity ?? 0;
   const isInStock = inventoryQuantity > inventoryBuffer;
 
-  const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
-
   const handleColorChange = (value: string) => {
     setSelectedColor(value);
     setSelectedWidth(undefined);
@@ -202,19 +198,18 @@ export const OrthofeetProductDetail = ({
                 {selectedInsertQuantity && price ? (
                   <Stack gap="xs">
                     <Text size="sm" fw="500">
-                      Shoe Price: {formatCurrency(calculatePrice(productPrice))}
+                      Shoe Price: {formatCurrency(productPrice)}
                     </Text>
                     <Text size="sm" fw="500">
                       Insert Price: {formatCurrency((price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                     <Text size="md" fw="600">
-                      Total Price:{' '}
-                      {formatCurrency(calculatePrice(productPrice) + (price / 100) * Number(selectedInsertQuantity))}
+                      Total Price: {formatCurrency(productPrice + (price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                   </Stack>
                 ) : (
                   <Text size="md" fw="600">
-                    {formatCurrency(calculatePrice(productPrice))}
+                    {formatCurrency(productPrice)}
                   </Text>
                 )}
               </DrawerSection>
