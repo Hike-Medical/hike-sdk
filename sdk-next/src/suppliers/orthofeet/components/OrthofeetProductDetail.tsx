@@ -1,6 +1,6 @@
 'use client';
 
-import { OrthofeetProductStyle, formatCurrency, getColorHex } from '@hike/sdk';
+import { formatCurrency, getColorHex } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
 import { Badge, Box, Button, Chip, ColorSwatch, Divider, Drawer, Group, Stack, Text, Title, rem } from '@mantine/core';
 import { modals } from '@mantine/modals';
@@ -10,15 +10,14 @@ import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeVal
 interface OrthofeetProductDetailProps {
   styleNameValue: string;
   supplierId: string;
-  orthofeetSupplierId?: string;
-  orthofeetInventoryBuffer?: number;
+  inventoryBuffer?: number;
+  enableInventoryCheck?: boolean;
   opened: boolean;
   onClose: () => void;
   onAddToCart: (variantSku: string, prefabQuantity?: string) => void;
   prefabPrice?: number;
   formSubmissionPrefabQuantity?: string;
   multiplier: number;
-  parentProduct?: OrthofeetProductStyle;
 }
 
 // Internal drawer section component
@@ -45,23 +44,23 @@ const DrawerSection = ({
 export const OrthofeetProductDetail = ({
   styleNameValue,
   supplierId,
-  orthofeetSupplierId,
-  orthofeetInventoryBuffer = 0,
+  inventoryBuffer = 0,
+  enableInventoryCheck = false,
   opened,
   onClose,
   onAddToCart,
   prefabPrice,
   formSubmissionPrefabQuantity,
-  multiplier,
-  parentProduct
+  multiplier
 }: OrthofeetProductDetailProps) => {
   const { data: allProducts } = useOrthofeetProductStyleVariants({
     params: { styleNameValue, supplierId },
     enabled: opened && !!styleNameValue
   });
 
-  // Separate variants (products with parentId)
+  // Separate variants (products with parentId) and parent
   const variants = useMemo(() => allProducts?.filter((p) => p.parentId) || [], [allProducts]);
+  const parentProduct = useMemo(() => allProducts?.find((p) => !p.parentId), [allProducts]);
 
   // State for selections
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
@@ -115,18 +114,18 @@ export const OrthofeetProductDetail = ({
 
   const currentVariantSku = currentVariant?.sku || '';
 
-  // Check inventory for current variant (only if orthofeetSupplierId is provided)
+  // Check inventory for current variant (only if enableInventoryCheck is true)
   const {
     data: inventory,
     isLoading: inventoryLoading,
     isError: inventoryError
   } = useOrthofeetInventoryBySku({
     sku: currentVariantSku,
-    enabled: !!currentVariantSku && !!orthofeetSupplierId && supplierId === orthofeetSupplierId
+    enabled: !!currentVariantSku && enableInventoryCheck
   });
 
   const inventoryQuantity = inventory?.products[currentVariantSku]?.quantity ?? 0;
-  const isInStock = inventoryQuantity > orthofeetInventoryBuffer;
+  const isInStock = inventoryQuantity > inventoryBuffer;
 
   const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
 
@@ -166,8 +165,7 @@ export const OrthofeetProductDetail = ({
 
   const productPrice = parentProduct?.price ?? currentVariant?.price ?? 0;
   const canAddToCart =
-    !!currentVariantSku &&
-    (inventoryLoading || inventoryError || isInStock || !orthofeetSupplierId || supplierId !== orthofeetSupplierId);
+    !!currentVariantSku && (!enableInventoryCheck || inventoryLoading || inventoryError || isInStock);
 
   return (
     <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>

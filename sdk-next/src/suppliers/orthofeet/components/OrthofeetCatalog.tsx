@@ -22,22 +22,22 @@ import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
 export interface OrthofeetCatalogProps {
   supplierId: string;
-  orthofeetSupplierId?: string;
-  orthofeetInventoryBuffer?: number;
   onAddToCart: (variantSku: string, variantName: string, prefabQuantity?: string) => void;
-  prefabPrice?: number;
   multiplier?: number;
+  prefabPrice?: number;
+  inventoryBuffer?: number;
+  enableInventoryCheck?: boolean;
   formSubmissionPrefabQuantity?: string;
   isLoading?: boolean;
 }
 
 export const OrthofeetCatalog = ({
   supplierId,
-  orthofeetSupplierId,
-  orthofeetInventoryBuffer,
   onAddToCart,
-  prefabPrice,
   multiplier = 0,
+  prefabPrice,
+  inventoryBuffer = 0,
+  enableInventoryCheck = false,
   formSubmissionPrefabQuantity,
   isLoading = false
 }: OrthofeetCatalogProps) => {
@@ -200,15 +200,14 @@ export const OrthofeetCatalog = ({
         <OrthofeetProductDetail
           styleNameValue={selectedStyleName}
           supplierId={supplierId}
-          orthofeetSupplierId={orthofeetSupplierId}
-          orthofeetInventoryBuffer={orthofeetInventoryBuffer}
+          inventoryBuffer={inventoryBuffer}
+          enableInventoryCheck={enableInventoryCheck}
           opened={detailOpened}
           onClose={() => setDetailOpened(false)}
           onAddToCart={handleAddToCart}
           prefabPrice={prefabPrice}
           formSubmissionPrefabQuantity={formSubmissionPrefabQuantity}
           multiplier={multiplier}
-          parentProduct={selectedProduct}
         />
       )}
     </Box>
