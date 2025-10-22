@@ -73,7 +73,9 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
   const variantWidth = getAttribute(ORTHOFEET_ATTRIBUTES.WIDTH);
 
   // Calculate prices
-  const productPrice = parentProduct.price ?? selectedVariant.price ?? 0;
+  const productName = selectedVariant.name || parentProduct.name;
+  const productImage = selectedVariant.image || parentProduct.image;
+  const productPrice = selectedVariant.price ?? parentProduct.price ?? 0;
   const insertPrice = price && quantity ? (price / 100) * Number(quantity) : 0;
   const totalPrice = productPrice + insertPrice;
 
@@ -83,7 +85,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
       centered: true,
       children: (
         <Text size="sm">
-          Are you sure you want to remove <strong>{parentProduct.name}</strong> from the order?
+          Are you sure you want to remove <strong>{productName}</strong> from the order?
         </Text>
       ),
       labels: { cancel: 'Cancel', confirm: 'Remove' },
@@ -98,8 +100,8 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
       <Paper p="md" withBorder>
         <Group align="flex-start" wrap="nowrap">
           <Image
-            src={parentProduct.image || selectedVariant.image}
-            alt={parentProduct.name}
+            src={productImage}
+            alt={productName}
             w={200}
             h={200}
             fit="contain"
@@ -110,7 +112,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
           />
           <Stack flex={1} gap="xs">
             <Text size="lg" fw="600">
-              {parentProduct.name}
+              {productName}
             </Text>
 
             {insertPrice > 0 ? (

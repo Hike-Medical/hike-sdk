@@ -76,8 +76,8 @@ export const OrthofeetCatalog = ({
 
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
-  const handleAddToCart = (variantSku: string, insertQuantity?: string) => {
-    onAddToCart(variantSku, '', insertQuantity);
+  const handleAddToCart = (variantSku: string, productName: string, insertQuantity?: string) => {
+    onAddToCart(variantSku, productName, insertQuantity);
     closeDrawer();
   };
 

@@ -14,7 +14,7 @@ interface OrthofeetProductDetailProps {
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
-  onAddToCart: (variantSku: string, quantity?: string) => void;
+  onAddToCart: (variantSku: string, productName: string, quantity?: string) => void;
   onClose: () => void;
 }
 
@@ -198,8 +198,10 @@ export const OrthofeetProductDetail = ({
       return;
     }
 
+    const productName = currentVariant.name || parentProduct?.name || '';
     const insertQuantity = price ? selectedInsertQuantity : undefined;
-    onAddToCart(variantSku, insertQuantity);
+
+    onAddToCart(variantSku, productName, insertQuantity);
     onClose();
   };
 
