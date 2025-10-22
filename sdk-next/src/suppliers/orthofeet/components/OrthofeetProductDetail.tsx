@@ -55,7 +55,7 @@ export const OrthofeetProductDetail = ({
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
   const [selectedInsertQuantity, setSelectedInsertQuantity] = useState<string | undefined>(quantity || undefined);
-  const tShared = useTranslations('shared.action');
+  const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.productDetail');
 
   const { data: allProducts } = useOrthofeetProductStyleVariants({
@@ -189,7 +189,7 @@ export const OrthofeetProductDetail = ({
         children: <Text size="sm">{t('missingInfoMessage')}</Text>,
         labels: {
           confirm: 'OK',
-          cancel: tShared('cancel')
+          cancel: tShared('action.cancel')
         }
       });
       return;
@@ -251,7 +251,7 @@ export const OrthofeetProductDetail = ({
           <Stack>
             {/* Price Display - Only show when variant is fully selected */}
             {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
-              <DrawerSection title={t('priceLabel')}>
+              <DrawerSection title={tShared('label.price')}>
                 {selectedInsertQuantity && price ? (
                   <Stack gap="xs">
                     <Text size="sm" fw="500">
@@ -274,7 +274,7 @@ export const OrthofeetProductDetail = ({
 
             {/* Gender Selector - Only show if multiple genders available */}
             {showGenderSelector && (
-              <DrawerSection title={t('gender')}>
+              <DrawerSection title={tShared('label.gender')}>
                 <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
                   <Group justify="flex-start" gap="sm">
                     {genders.map((gender) => (
@@ -288,7 +288,7 @@ export const OrthofeetProductDetail = ({
             )}
 
             {/* Color Selector */}
-            <DrawerSection title={t('color')}>
+            <DrawerSection title={tShared('label.color')}>
               {!showGenderSelector || selectedGender ? (
                 <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
                   <Group justify="flex-start" gap="sm">
@@ -315,7 +315,7 @@ export const OrthofeetProductDetail = ({
             </DrawerSection>
 
             {/* Width Selector */}
-            <DrawerSection title={t('width')}>
+            <DrawerSection title={tShared('label.width')}>
               {selectedColor ? (
                 <Chip.Group key={selectedColor} multiple={false} value={selectedWidth} onChange={handleWidthChange}>
                   <Group justify="flex-start" gap="sm">
@@ -334,7 +334,7 @@ export const OrthofeetProductDetail = ({
             </DrawerSection>
 
             {/* Size Selector */}
-            <DrawerSection title={t('size')} hideDivider>
+            <DrawerSection title={t('shoeSizes')} hideDivider>
               {selectedWidth ? (
                 <Chip.Group
                   key={`${selectedColor}-${selectedWidth}`}

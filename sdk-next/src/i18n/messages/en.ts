@@ -45,6 +45,13 @@ export default {
       cancel: 'Cancel',
       remove: 'Remove'
     },
+    label: {
+      price: 'Price',
+      size: 'Size',
+      color: 'Color',
+      width: 'Width',
+      gender: 'Gender'
+    },
     error: {
       title: 'Error',
       message: 'An error occurred for your request.',
@@ -152,10 +159,7 @@ export default {
       },
       productDetail: {
         title: 'Select Footwear',
-        gender: 'Gender',
-        color: 'Color',
-        width: 'Width',
-        size: 'Shoe Sizes (US)',
+        shoeSizes: 'Shoe Sizes (US)',
         selectGender: 'Please select a gender first',
         selectColor: 'Please select a color first',
         selectWidth: 'Please select a width first',
@@ -165,7 +169,6 @@ export default {
         prefabSelectQuantity: 'Please select a quantity',
         outOfStock: 'Out of Stock',
         outOfStockMessage: 'This item is currently out of stock. Please select a different option.',
-        priceLabel: 'Price',
         totalPrice: 'Total Price',
         addToOrder: 'Add to Order',
         missingInfoTitle: 'Missing Information',
@@ -179,13 +182,9 @@ export default {
         notFoundMessage: 'The selected product could not be found. Please select another product.',
         variantNotFoundTitle: 'Product variant not found',
         variantNotFoundMessage: 'Could not load details for this product variant. The SKU may be invalid.',
-        priceLabel: 'Price',
         shoePrice: 'Shoe Price',
         insertPrice: 'Insert Price',
         totalPrice: 'Total Price',
-        sizeLabel: 'Size',
-        colorLabel: 'Color',
-        widthLabel: 'Width',
         prefabQuantityLabel: 'Prefab Insert Quantity',
         editPair: 'Edit Pair',
         removeConfirmTitle: 'Remove product from order',
@@ -193,11 +192,7 @@ export default {
       },
       review: {
         notFoundTitle: 'Orthofeet product not found',
-        notFoundMessage: 'The Orthofeet product with SKU <b>{sku}</b> was not found. Please contact support.',
-        priceLabel: 'Price',
-        sizeLabel: 'Size',
-        colorLabel: 'Color',
-        widthLabel: 'Width'
+        notFoundMessage: 'The Orthofeet product with SKU <b>{sku}</b> was not found. Please contact support.'
       }
     }
   }

@@ -14,6 +14,7 @@ export interface OrthofeetReviewProps {
 
 export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
+  const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.review');
 
   const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
@@ -71,22 +72,22 @@ export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
           {selectedProduct.name}
         </Text>
         <Text size="md" fw="600">
-          {t('priceLabel')}: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
+          {tShared('label.price')}: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
         </Text>
         <Group>
           {size && (
             <Badge variant="light" color="dark">
-              {t('sizeLabel')}: {size}
+              {tShared('label.size')}: {size}
             </Badge>
           )}
           {color && (
             <Badge variant="light" color="dark">
-              {t('colorLabel')}: {color}
+              {tShared('label.color')}: {color}
             </Badge>
           )}
           {width && (
             <Badge variant="light" color="dark">
-              {t('widthLabel')}: {width}
+              {tShared('label.width')}: {width}
             </Badge>
           )}
         </Group>

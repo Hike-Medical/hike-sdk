@@ -17,7 +17,7 @@ export interface OrthofeetSelectedProductProps {
 
 export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemove }: OrthofeetSelectedProductProps) => {
   const theme = useMantineTheme();
-  const tShared = useTranslations('shared.action');
+  const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.selectedProduct');
 
   const {
@@ -94,7 +94,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
           })}
         </Text>
       ),
-      labels: { cancel: tShared('cancel'), confirm: tShared('remove') },
+      labels: { cancel: tShared('action.cancel'), confirm: tShared('action.remove') },
       confirmProps: { color: 'red' },
       onConfirm: onRemove
     });
@@ -135,24 +135,24 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
               </Stack>
             ) : (
               <Text size="md" fw="600">
-                {t('priceLabel')}: {formatCurrency(productPrice)}
+                {tShared('label.price')}: {formatCurrency(productPrice)}
               </Text>
             )}
 
             <Group gap="xs">
               {!!variantSize && (
                 <Badge variant="light" color="dark">
-                  {t('sizeLabel')}: {variantSize}
+                  {tShared('label.size')}: {variantSize}
                 </Badge>
               )}
               {!!variantColor && (
                 <Badge variant="light" color="dark">
-                  {t('colorLabel')}: {variantColor}
+                  {tShared('label.color')}: {variantColor}
                 </Badge>
               )}
               {!!variantWidth && (
                 <Badge variant="light" color="dark">
-                  {t('widthLabel')}: {variantWidth}
+                  {tShared('label.width')}: {variantWidth}
                 </Badge>
               )}
               {!!quantity && (
@@ -167,7 +167,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
                 {t('editPair')}
               </Button>
               <Button color="red" variant="light" onClick={handleRemoveClick}>
-                {tShared('remove')}
+                {tShared('action.remove')}
               </Button>
             </Group>
           </Stack>
