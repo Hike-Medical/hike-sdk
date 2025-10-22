@@ -9,9 +9,6 @@ interface OrthofeetProductCardProps {
   onSelect: () => void;
 }
 
-const DEFAULT_IMAGE_URL =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl2l40-UIpiaxFDjKB21gCihugoPL8gQZi0ODatgOFKGNQFchF1i91n6k771D6np1DUQI&usqp=CAU';
-
 const getColorForName = (colorName: string): string => {
   const colors = ['blue', 'red', 'green', 'yellow', 'purple', 'orange', 'pink', 'cyan', 'teal', 'lime', 'indigo'];
   const hash = colorName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -21,7 +18,7 @@ const getColorForName = (colorName: string): string => {
 export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProductCardProps) => {
   const theme = useMantineTheme();
 
-  const imageUrl = productStyle.image || DEFAULT_IMAGE_URL;
+  const imageUrl = productStyle.image || '/images/shoe-placeholder.png';
   const price = productStyle.price ?? 0;
 
   return (
