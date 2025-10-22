@@ -1,7 +1,6 @@
 import type {
   CatalogProductExtended,
   CatalogSupplier,
-  GetOrthofeetFiltersParams,
   GetOrthofeetProductStylesParams,
   GetOrthofeetProductStyleVariantsParams,
   GetSuppliersParams,
@@ -51,9 +50,9 @@ export const fetchOrthofeetInventoryByProduct = async (productId: string): Promi
   }
 };
 
-export const fetchOrthofeetFilters = async (params: GetOrthofeetFiltersParams): Promise<OrthofeetFiltersResponse> => {
+export const fetchOrthofeetFilters = async (): Promise<OrthofeetFiltersResponse> => {
   try {
-    const response = await backendApi.get('supplier/orthofeet/filters', { params });
+    const response = await backendApi.get('supplier/orthofeet/filters');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -75,11 +74,7 @@ export const fetchOrthofeetProductStyleVariants = async (
   params: GetOrthofeetProductStyleVariantsParams
 ): Promise<CatalogProductExtended[]> => {
   try {
-    const response = await backendApi.get(`supplier/orthofeet/product/style/${encodeURIComponent(params.style)}`, {
-      params: {
-        supplierId: params.supplierId
-      }
-    });
+    const response = await backendApi.get(`supplier/orthofeet/product/style/${encodeURIComponent(params.style)}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

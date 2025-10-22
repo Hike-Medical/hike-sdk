@@ -21,10 +21,9 @@ import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
 export interface OrthofeetCatalogProps {
-  supplierId: string;
-  multiplier?: number;
   price?: number;
   quantity?: string;
+  multiplier?: number;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   isLoading?: boolean;
@@ -32,10 +31,9 @@ export interface OrthofeetCatalogProps {
 }
 
 export const OrthofeetCatalog = ({
-  supplierId,
-  multiplier = 0,
   price,
   quantity,
+  multiplier = 0,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   isLoading = false,
@@ -54,9 +52,7 @@ export const OrthofeetCatalog = ({
   const pageSize = 48; // Always fills grid since divisible by 1-4
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const { data: filters } = useOrthofeetFilters({
-    params: { supplierId }
-  });
+  const { data: filters } = useOrthofeetFilters();
 
   // Fetch filtered products
   const {
@@ -65,10 +61,9 @@ export const OrthofeetCatalog = ({
     isError: productsError
   } = useOrthofeetProductStyles({
     params: {
-      supplierId,
+      term: debouncedSearchTerm || undefined,
       genderValue: selectedGender,
       categoryValue: selectedCategory,
-      term: debouncedSearchTerm || undefined,
       maxPrice,
       sortOrder: 'desc',
       offset: page * pageSize,
@@ -85,16 +80,16 @@ export const OrthofeetCatalog = ({
     setDetailOpened(true);
   };
 
+  const handleCategoryChange = (value: string | null) => {
+    setSelectedCategory(value === 'all' ? undefined : value || undefined);
+    setPage(0);
+  };
 
   const toggleGenderFilter = (genderValue: string) => {
     setSelectedGender((current) => (current === genderValue ? undefined : genderValue));
     setPage(0);
   };
 
-  const handleCategoryChange = (value: string | null) => {
-    setSelectedCategory(value === 'all' ? undefined : value || undefined);
-    setPage(0);
-  };
   const toggleMaxPrice = () => {
     setMaxPrice((current) => (current ? undefined : 60));
     setPage(0);
@@ -199,7 +194,6 @@ export const OrthofeetCatalog = ({
       {selectedProductStyle && (
         <OrthofeetProductDetail
           style={selectedProductStyle}
-          supplierId={supplierId}
           inventoryBuffer={inventoryBuffer}
           enableInventoryCheck={enableInventoryCheck}
           price={price}

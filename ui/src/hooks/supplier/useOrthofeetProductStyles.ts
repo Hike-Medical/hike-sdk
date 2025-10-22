@@ -11,7 +11,7 @@ interface UseOrthofeetProductStylesOptions
 
 export const useOrthofeetProductStyles = ({ params, queryKey = [], ...options }: UseOrthofeetProductStylesOptions) =>
   useQuery({
-    queryKey: ['orthofeet-product-styles', params, queryKey],
+    queryKey: ['orthofeetProductStyles', params, queryKey],
     queryFn: async () => await fetchOrthofeetProductStyles(params),
     ...options
   });

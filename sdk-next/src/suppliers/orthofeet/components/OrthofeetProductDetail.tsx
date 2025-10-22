@@ -9,10 +9,9 @@ import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeVal
 
 interface OrthofeetProductDetailProps {
   style: string;
-  supplierId: string;
-  multiplier: number;
   price?: number;
   quantity?: string;
+  multiplier: number;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
@@ -43,10 +42,9 @@ const DrawerSection = ({
 
 export const OrthofeetProductDetail = ({
   style,
-  supplierId,
-  multiplier,
   price,
   quantity,
+  multiplier,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   opened,
@@ -54,7 +52,7 @@ export const OrthofeetProductDetail = ({
   onAddToCart
 }: OrthofeetProductDetailProps) => {
   const { data: allProducts } = useOrthofeetProductStyleVariants({
-    params: { supplierId, style },
+    params: { style },
     enabled: opened && !!style
   });
 
