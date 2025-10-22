@@ -41,7 +41,9 @@ export default {
       register: 'Register',
       select: 'Select',
       back: 'Back',
-      skip: 'Skip'
+      skip: 'Skip',
+      cancel: 'Cancel',
+      remove: 'Remove'
     },
     error: {
       title: 'Error',
@@ -135,6 +137,60 @@ export default {
       placeholder: 'Search for a company',
       noResults: 'No results found',
       minSearchLength: 'Type at least {length} characters'
+    },
+    orthofeet: {
+      catalog: {
+        searchPlaceholder: 'Search for a product',
+        viewAllPrices: 'View All Prices',
+        viewingUnder: 'Viewing Shoes Under {price}',
+        allCategories: 'All Categories',
+        noProducts: 'No products found'
+      },
+      productCard: {
+        addPair: 'Add Pair',
+        bestSeller: 'BEST SELLER'
+      },
+      productDetail: {
+        title: 'Select Footwear',
+        gender: 'Gender',
+        color: 'Color',
+        width: 'Width',
+        size: 'Shoe Sizes (US)',
+        selectGender: 'Please select a gender first',
+        selectColor: 'Please select a color first',
+        selectWidth: 'Please select a width first',
+        prefabInsert: 'Prefab Insert',
+        prefabInsertDescription: 'Add a prefab insert to your order for an additional {price}',
+        prefabQuantity: 'Quantity',
+        prefabSelectQuantity: 'Please select a quantity',
+        outOfStock: 'Out of Stock',
+        outOfStockMessage: 'This item is currently out of stock. Please select a different option.',
+        priceLabel: 'Price',
+        totalPrice: 'Total Price',
+        addToOrder: 'Add to Order',
+        missingInfoTitle: 'Missing Information',
+        missingInfoMessage: 'Please ensure you have selected all the required options.'
+      },
+      selectedProduct: {
+        addedTitle: 'Product added to order',
+        errorLoadingTitle: 'Error loading product',
+        errorLoadingMessage: 'Could not load product details. Please try again.',
+        notFoundTitle: 'Product not found',
+        notFoundMessage: 'The selected product could not be found. Please select another product.',
+        variantNotFoundTitle: 'Product variant not found',
+        variantNotFoundMessage: 'Could not load details for this product variant. The SKU may be invalid.',
+        priceLabel: 'Price',
+        shoePrice: 'Shoe Price',
+        insertPrice: 'Insert Price',
+        totalPrice: 'Total Price',
+        sizeLabel: 'Size',
+        colorLabel: 'Color',
+        widthLabel: 'Width',
+        prefabQuantityLabel: 'Prefab Insert Quantity',
+        editPair: 'Edit Pair',
+        removeConfirmTitle: 'Remove product from order',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
+      }
     }
   }
 } as const;

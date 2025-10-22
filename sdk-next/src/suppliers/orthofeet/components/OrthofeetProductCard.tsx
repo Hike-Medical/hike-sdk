@@ -2,6 +2,7 @@
 
 import { OrthofeetProductStyle, formatCurrency } from '@hike/sdk';
 import { Avatar, Badge, Button, Group, Paper, Stack, Text, Tooltip, rem, useMantineTheme } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 interface OrthofeetProductCardProps {
@@ -19,12 +20,13 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
   const theme = useMantineTheme();
   const imageUrl = productStyle.image || '/images/shoe-placeholder.png';
   const price = productStyle.price ?? 0;
+  const t = useTranslations('components.orthofeet.productCard');
 
   return (
     <Paper flex={1} bg="gray.1" p="md" mih={rem(250)} pos="relative">
       {productStyle.featured && (
         <Badge variant="filled" color="green" size="xs" pos="absolute" top={rem(8)} left={rem(8)} style={{ zIndex: 1 }}>
-          BEST SELLER
+          {t('bestSeller')}
         </Badge>
       )}
 
@@ -83,7 +85,7 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
       </Stack>
 
       <Button onClick={onSelect} h={rem(50)} size="compact-sm" fullWidth mt="md" variant="light">
-        Add Pair
+        {t('addPair')}
       </Button>
     </Paper>
   );

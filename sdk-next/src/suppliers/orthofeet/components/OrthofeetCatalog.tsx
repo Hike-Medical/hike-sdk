@@ -16,6 +16,7 @@ import {
   TextInput
 } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
@@ -54,6 +55,7 @@ export const OrthofeetCatalog = ({
   const pageSize = 48; // Divisible by 1-4 for responsive grid
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hasSelectedSku = !!selectedSku?.trim();
+  const t = useTranslations('components.orthofeet.catalog');
 
   const { data: filters } = useOrthofeetFilters();
 
@@ -139,7 +141,7 @@ export const OrthofeetCatalog = ({
           <>
             {/* Search Input */}
             <TextInput
-              placeholder="Search for a product"
+              placeholder={t('searchPlaceholder')}
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.currentTarget.value)}
               size="md"
@@ -153,7 +155,7 @@ export const OrthofeetCatalog = ({
                 color="indigo"
                 onClick={() => setMaxPrice((current) => toggleFilter(current, 60))}
               >
-                {maxPrice ? 'Viewing Shoes Under $60' : 'View All Prices'}
+                {maxPrice ? t('viewingUnder', { price: '$60' }) : t('viewAllPrices')}
               </Button>
               {filters?.genders?.map((gender) => (
                 <Button
@@ -178,7 +180,7 @@ export const OrthofeetCatalog = ({
                   }}
                 >
                   <Tabs.List style={{ flexWrap: 'nowrap' }}>
-                    <Tabs.Tab value="all">All Categories</Tabs.Tab>
+                    <Tabs.Tab value="all">{t('allCategories')}</Tabs.Tab>
                     {filters.categories.map((category) => (
                       <Tabs.Tab key={category.value} value={category.value}>
                         {category.description || category.value}
@@ -198,7 +200,7 @@ export const OrthofeetCatalog = ({
 
             {!productsLoading && (!products?.data || products.data.length === 0) && (
               <Text size="sm" ta="center" w="100%" c="gray.6" mt="xl">
-                No shoes found
+                {t('noProducts')}
               </Text>
             )}
 

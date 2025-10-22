@@ -4,6 +4,7 @@ import { formatCurrency, getColorHex } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
 import { Badge, Box, Button, Chip, ColorSwatch, Divider, Drawer, Group, Stack, Text, Title, rem } from '@mantine/core';
 import { modals } from '@mantine/modals';
+import { useTranslations } from 'next-intl';
 import { ReactNode, useMemo, useState } from 'react';
 import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeValues } from '../utils/attributeHelpers';
 
@@ -54,6 +55,8 @@ export const OrthofeetProductDetail = ({
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
   const [selectedInsertQuantity, setSelectedInsertQuantity] = useState<string | undefined>(quantity || undefined);
+  const tShared = useTranslations('shared.action');
+  const t = useTranslations('components.orthofeet.productDetail');
 
   const { data: allProducts } = useOrthofeetProductStyleVariants({
     params: { style },
@@ -182,11 +185,11 @@ export const OrthofeetProductDetail = ({
 
     if (!currentVariant || !requiredFieldsSelected) {
       modals.openConfirmModal({
-        title: 'Missing Information',
-        children: <Text size="sm">Please ensure you have selected all the required options.</Text>,
+        title: t('missingInfoTitle'),
+        children: <Text size="sm">{t('missingInfoMessage')}</Text>,
         labels: {
           confirm: 'OK',
-          cancel: 'Cancel'
+          cancel: tShared('cancel')
         }
       });
       return;
@@ -227,7 +230,7 @@ export const OrthofeetProductDetail = ({
             </Drawer.Title>
             {showOutOfStock ? (
               <Badge variant="light" color="red">
-                Out of stock
+                {t('outOfStock')}
               </Badge>
             ) : (
               <Button
@@ -238,7 +241,7 @@ export const OrthofeetProductDetail = ({
                 loading={inventoryLoading}
                 disabled={isButtonDisabled || inventoryLoading}
               >
-                Add Pair
+                {t('addToOrder')}
               </Button>
             )}
           </Group>
@@ -248,17 +251,17 @@ export const OrthofeetProductDetail = ({
           <Stack>
             {/* Price Display - Only show when variant is fully selected */}
             {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
-              <DrawerSection title="Price">
+              <DrawerSection title={t('priceLabel')}>
                 {selectedInsertQuantity && price ? (
                   <Stack gap="xs">
                     <Text size="sm" fw="500">
-                      Shoe Price: {formatCurrency(productPrice)}
+                      {t('shoePrice')}: {formatCurrency(productPrice)}
                     </Text>
                     <Text size="sm" fw="500">
-                      Insert Price: {formatCurrency((price / 100) * Number(selectedInsertQuantity))}
+                      {t('insertPrice')}: {formatCurrency((price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                     <Text size="md" fw="600">
-                      Total Price: {formatCurrency(productPrice + (price / 100) * Number(selectedInsertQuantity))}
+                      {t('totalPrice')}: {formatCurrency(productPrice + (price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                   </Stack>
                 ) : (
@@ -271,7 +274,7 @@ export const OrthofeetProductDetail = ({
 
             {/* Gender Selector - Only show if multiple genders available */}
             {showGenderSelector && (
-              <DrawerSection title="Gender">
+              <DrawerSection title={t('gender')}>
                 <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
                   <Group justify="flex-start" gap="sm">
                     {genders.map((gender) => (
@@ -285,7 +288,7 @@ export const OrthofeetProductDetail = ({
             )}
 
             {/* Color Selector */}
-            <DrawerSection title="Color">
+            <DrawerSection title={t('color')}>
               {!showGenderSelector || selectedGender ? (
                 <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
                   <Group justify="flex-start" gap="sm">
@@ -306,13 +309,13 @@ export const OrthofeetProductDetail = ({
                 </Chip.Group>
               ) : (
                 <Text size="sm" c="dimmed">
-                  Please select a gender first
+                  {t('selectGender')}
                 </Text>
               )}
             </DrawerSection>
 
             {/* Width Selector */}
-            <DrawerSection title="Width">
+            <DrawerSection title={t('width')}>
               {selectedColor ? (
                 <Chip.Group key={selectedColor} multiple={false} value={selectedWidth} onChange={handleWidthChange}>
                   <Group justify="flex-start" gap="sm">
@@ -325,13 +328,13 @@ export const OrthofeetProductDetail = ({
                 </Chip.Group>
               ) : (
                 <Text size="sm" c="dimmed">
-                  Please select a color first
+                  {t('selectColor')}
                 </Text>
               )}
             </DrawerSection>
 
             {/* Size Selector */}
-            <DrawerSection title="Shoe Sizes (US)" hideDivider>
+            <DrawerSection title={t('size')} hideDivider>
               {selectedWidth ? (
                 <Chip.Group
                   key={`${selectedColor}-${selectedWidth}`}
@@ -351,14 +354,14 @@ export const OrthofeetProductDetail = ({
                 </Chip.Group>
               ) : (
                 <Text size="sm" c="dimmed">
-                  Please select width first
+                  {t('selectWidth')}
                 </Text>
               )}
             </DrawerSection>
 
             {/* Insert Quantity Selector */}
             {!!price && (
-              <DrawerSection title="Prefab Insert Quantity">
+              <DrawerSection title={t('prefabQuantity')}>
                 <Chip.Group
                   multiple={false}
                   value={selectedInsertQuantity?.toString() ?? ''}

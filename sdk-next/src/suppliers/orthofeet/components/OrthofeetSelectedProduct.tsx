@@ -4,6 +4,7 @@ import { formatCurrency } from '@hike/sdk';
 import { useOrthofeetProductStyleVariants } from '@hike/ui';
 import { Alert, Badge, Button, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
+import { useTranslations } from 'next-intl';
 import { getProductAttributeDisplay, ORTHOFEET_ATTRIBUTES } from '../utils/attributeHelpers';
 
 export interface OrthofeetSelectedProductProps {
@@ -16,6 +17,8 @@ export interface OrthofeetSelectedProductProps {
 
 export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemove }: OrthofeetSelectedProductProps) => {
   const theme = useMantineTheme();
+  const tShared = useTranslations('shared.action');
+  const t = useTranslations('components.orthofeet.selectedProduct');
 
   const {
     data: productVariants,
@@ -40,16 +43,16 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
 
   if (isError) {
     return (
-      <Alert color="red" title="Error loading product">
-        Could not load shoe details. Please try again.
+      <Alert color="red" title={t('errorLoadingTitle')}>
+        {t('errorLoadingMessage')}
       </Alert>
     );
   }
 
   if (!productVariants?.length) {
     return (
-      <Alert color="yellow" title="Product not found">
-        The selected shoe could not be found. Please select another shoe.
+      <Alert color="yellow" title={t('notFoundTitle')}>
+        {t('notFoundMessage')}
       </Alert>
     );
   }
@@ -59,8 +62,8 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
 
   if (!parentProduct || !selectedVariant) {
     return (
-      <Alert color="yellow" title="Product variant not found">
-        Could not load details for this shoe variant. The SKU may be invalid.
+      <Alert color="yellow" title={t('variantNotFoundTitle')}>
+        {t('variantNotFoundMessage')}
       </Alert>
     );
   }
@@ -81,14 +84,17 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
 
   const handleRemoveClick = () => {
     modals.openConfirmModal({
-      title: 'Remove shoe from order',
+      title: t('removeConfirmTitle'),
       centered: true,
       children: (
         <Text size="sm">
-          Are you sure you want to remove <strong>{productName}</strong> from the order?
+          {t.rich('removeConfirmMessage', {
+            productName,
+            b: (chunks) => <strong>{chunks}</strong>
+          })}
         </Text>
       ),
-      labels: { cancel: 'Cancel', confirm: 'Remove' },
+      labels: { cancel: tShared('cancel'), confirm: tShared('remove') },
       confirmProps: { color: 'red' },
       onConfirm: onRemove
     });
@@ -96,7 +102,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
 
   return (
     <Stack gap="md">
-      <Alert color="green" title="Shoe added to order" />
+      <Alert color="green" title={t('addedTitle')} />
       <Paper p="md" withBorder>
         <Group align="flex-start" wrap="nowrap">
           <Image
@@ -118,50 +124,50 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
             {insertPrice > 0 ? (
               <Stack gap="xs">
                 <Text size="sm" fw="500">
-                  Shoe Price: {formatCurrency(productPrice)}
+                  {t('shoePrice')}: {formatCurrency(productPrice)}
                 </Text>
                 <Text size="sm" fw="500">
-                  Insert Price: {formatCurrency(insertPrice)}
+                  {t('insertPrice')}: {formatCurrency(insertPrice)}
                 </Text>
                 <Text size="md" fw="600">
-                  Total Price: {formatCurrency(totalPrice)}
+                  {t('totalPrice')}: {formatCurrency(totalPrice)}
                 </Text>
               </Stack>
             ) : (
               <Text size="md" fw="600">
-                Price: {formatCurrency(productPrice)}
+                {t('priceLabel')}: {formatCurrency(productPrice)}
               </Text>
             )}
 
             <Group gap="xs">
               {!!variantSize && (
                 <Badge variant="light" color="dark">
-                  Size: {variantSize}
+                  {t('sizeLabel')}: {variantSize}
                 </Badge>
               )}
               {!!variantColor && (
                 <Badge variant="light" color="dark">
-                  Color: {variantColor}
+                  {t('colorLabel')}: {variantColor}
                 </Badge>
               )}
               {!!variantWidth && (
                 <Badge variant="light" color="dark">
-                  Width: {variantWidth}
+                  {t('widthLabel')}: {variantWidth}
                 </Badge>
               )}
               {!!quantity && (
                 <Badge variant="light" color="dark">
-                  Prefab Insert Quantity: {quantity}
+                  {t('prefabQuantityLabel')}: {quantity}
                 </Badge>
               )}
             </Group>
 
             <Group pt="md">
               <Button onClick={() => styleName && onEdit(styleName)} variant="light">
-                Edit Pair
+                {t('editPair')}
               </Button>
               <Button color="red" variant="light" onClick={handleRemoveClick}>
-                Remove
+                {tShared('remove')}
               </Button>
             </Group>
           </Stack>
