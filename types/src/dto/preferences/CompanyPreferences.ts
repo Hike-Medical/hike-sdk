@@ -1,5 +1,6 @@
 import { FacilityType, NotificationType, ProductType } from '../../../prisma';
 import { AppointmentCsvRecord } from '../appointment/AppointmentCsvRecord';
+import { CatalogProductCsvRecord } from '../catalog/CatalogProductCsvRecord';
 import { RoasterPatientCsvRecord } from '../roster/RoasterPatientCsvRecord';
 import { CreateCustomizationsTaikaParams } from '../taika/CreateCustomizationsTaikaParams';
 import { ClinicalFlowType } from './ClinicalFlowType';
@@ -48,6 +49,9 @@ export interface CompanyPreferences {
     columnMapping: Partial<Record<keyof AppointmentCsvRecord, string[]>>;
     timeZone?: string;
   };
+  catalog?: {
+    columnMapping: Record<string, Partial<Record<keyof CatalogProductCsvRecord, string[]>>>;
+  };
   rushAll?: boolean;
   hideInEnrollList?: boolean;
   productType?: ProductType;
@@ -84,11 +88,16 @@ export interface CompanyPreferences {
     forwardFaxNumber?: string;
   };
   auth?: {
-    benefitsWhiteList?: string[];
+    allowlist?: {
+      domains?: string[];
+      emails?: string[];
+      phones?: string[];
+      rosterOnly?: boolean;
+    };
     oidc?: {
       enabled?: boolean;
       color?: string;
-      facilityWhitelistRequired?: boolean;
+      facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
   };
