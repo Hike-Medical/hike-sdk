@@ -28,8 +28,8 @@ const DrawerSection = ({
   children: ReactNode;
   hideDivider?: boolean;
 }) => (
-  <Stack>
-    <Box px="md" w="100%">
+  <Stack gap="sm">
+    <Box px={{ base: 'sm', sm: 'md' }} w="100%">
       <Title size="md" mb="sm">
         {title}
       </Title>
@@ -163,34 +163,37 @@ export const OrthofeetProductDetail = ({
     <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
       <Drawer.Overlay />
       <Drawer.Content>
-        <Stack px="lg" py="lg">
-          <Group justify="center">
+        <Stack px={{ base: 'sm', sm: 'lg' }} py={{ base: 'sm', sm: 'lg' }} gap="sm">
+          <Group justify="space-between" wrap="nowrap">
             <Drawer.CloseButton size="lg" />
-            <Group w="100%" justify="space-between" align="center" flex={1}>
-              <Drawer.Title ta="center" fw="600" c="gray.8">
-                {parentProduct?.name || 'Shoe Specifications'}
-              </Drawer.Title>
-              {canAddToCart ? (
-                <Button
-                  size="sm"
-                  color="blue"
-                  variant="outline"
-                  onClick={addShoeToOrder}
-                  loading={inventoryLoading}
-                  disabled={inventoryLoading}
-                >
-                  Add Pair
-                </Button>
-              ) : (
-                <Badge variant="light" color="red">
-                  Out of stock
-                </Badge>
-              )}
-            </Group>
+            <Drawer.Title
+              ta="center"
+              fw="600"
+              c="gray.8"
+              style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+            >
+              {parentProduct?.name || 'Shoe Specifications'}
+            </Drawer.Title>
+            {canAddToCart ? (
+              <Button
+                size="sm"
+                color="blue"
+                variant="outline"
+                onClick={addShoeToOrder}
+                loading={inventoryLoading}
+                disabled={inventoryLoading}
+              >
+                Add Pair
+              </Button>
+            ) : (
+              <Badge variant="light" color="red">
+                Out of stock
+              </Badge>
+            )}
           </Group>
           <Divider color="gray.3" />
         </Stack>
-        <Drawer.Body p="0">
+        <Drawer.Body p="0" pb={{ base: 'xl', sm: '0' }}>
           <Stack>
             {/* Price Display - Only show when variant is fully selected */}
             {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
@@ -218,14 +221,14 @@ export const OrthofeetProductDetail = ({
             {/* Color Selector */}
             <DrawerSection title="Color">
               <Chip.Group multiple={false} value={selectedColor?.toLowerCase()} onChange={handleColorChange}>
-                <Group justify="flex-start">
+                <Group justify="flex-start" gap="sm">
                   {colors.map((color) => {
                     const colorHex = getColorHex(color);
                     const swatchColor = colorHex || color || 'gray';
 
                     return (
                       <Chip key={color} value={color.toLowerCase()} style={{ textTransform: 'capitalize' }}>
-                        <Group>
+                        <Group gap="xs">
                           <ColorSwatch size={rem(15)} color={swatchColor} />
                           {color}
                         </Group>
@@ -240,7 +243,7 @@ export const OrthofeetProductDetail = ({
             <DrawerSection title="Width">
               {selectedColor ? (
                 <Chip.Group multiple={false} value={selectedWidth?.toLowerCase()} onChange={handleWidthChange}>
-                  <Group justify="flex-start">
+                  <Group justify="flex-start" gap="sm">
                     {widths.map((width) => (
                       <Chip key={width} value={width.toLowerCase()} style={{ textTransform: 'capitalize' }}>
                         {width}
@@ -259,7 +262,7 @@ export const OrthofeetProductDetail = ({
             <DrawerSection title="Shoe Sizes (US)" hideDivider>
               {selectedWidth ? (
                 <Chip.Group multiple={false} value={selectedSize?.toLowerCase()} onChange={setSelectedSize}>
-                  <Group justify="flex-start">
+                  <Group justify="flex-start" gap="sm">
                     {sizes
                       .sort((a, b) => parseFloat(a) - parseFloat(b))
                       .map((size) => (
@@ -286,7 +289,7 @@ export const OrthofeetProductDetail = ({
                     setSelectedInsertQuantity(value === selectedInsertQuantity ? undefined : value);
                   }}
                 >
-                  <Group justify="flex-start">
+                  <Group justify="flex-start" gap="sm">
                     {[1, 2, 3].map((qty) => (
                       <Chip key={qty} value={qty.toString()}>
                         {qty}
