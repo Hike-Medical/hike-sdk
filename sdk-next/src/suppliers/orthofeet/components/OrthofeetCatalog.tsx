@@ -16,7 +16,7 @@ import {
   TextInput
 } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
@@ -31,7 +31,7 @@ export interface OrthofeetCatalogProps {
   isLoading?: boolean;
 }
 
-export function OrthofeetCatalog({
+export const OrthofeetCatalog = ({
   supplierId,
   orthofeetSupplierId,
   orthofeetInventoryBuffer,
@@ -40,39 +40,23 @@ export function OrthofeetCatalog({
   multiplier = 0,
   formSubmissionPrefabQuantity,
   isLoading = false
-}: OrthofeetCatalogProps) {
-  // Filters
-  const [searchTerm, setSearchTerm] = useState('');
-  const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 300);
+}: OrthofeetCatalogProps) => {
   const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
-  const [maxPrice, setMaxPrice] = useState<number | undefined>();
-
-  // Pagination - use page size that fills grid at all breakpoints
-  // Grid cols: base=1, sm=2, md=3, lg=4 → LCM=12
-  // 48 items = 48 rows (mobile), 24 rows (sm), 16 rows (md), 12 rows (lg)
-  const [page, setPage] = useState(0);
-  const pageSize = 48; // Divisible by 1, 2, 3, 4
-
-  // Reset page when search term changes
-  const [prevSearchTerm, setPrevSearchTerm] = useState(debouncedSearchTerm);
-  if (prevSearchTerm !== debouncedSearchTerm) {
-    setPrevSearchTerm(debouncedSearchTerm);
-    setPage(0);
-  }
-
-  // Detail drawer state
   const [selectedStyleName, setSelectedStyleName] = useState<string | undefined>();
   const [selectedProduct, setSelectedProduct] = useState<CatalogProductExtended | undefined>();
   const [detailOpened, setDetailOpened] = useState(false);
+  const [maxPrice, setMaxPrice] = useState<number | undefined>();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 300);
+  const [prevSearchTerm, setPrevSearchTerm] = useState(debouncedSearchTerm);
+  const [page, setPage] = useState(0);
+  const pageSize = 48; // Always fills grid since divisible by 1-4
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Fetch filter options efficiently (categories and genders)
   const { data: filters } = useOrthofeetFilters({
     params: { supplierId }
   });
-
-  const categories = filters?.categories || [];
-  const genders = filters?.genders || [];
 
   // Fetch filtered products
   const {
@@ -108,18 +92,29 @@ export function OrthofeetCatalog({
 
   const toggleGenderFilter = (genderValue: string) => {
     setSelectedGender((current) => (current === genderValue ? undefined : genderValue));
-    setPage(0); // Reset to first page when filter changes
+    setPage(0);
   };
 
   const toggleMaxPrice = () => {
     setMaxPrice((current) => (current ? undefined : 60));
-    setPage(0); // Reset to first page when filter changes
+    setPage(0);
   };
 
   const handleCategoryChange = (value: string | null) => {
     setSelectedCategory(value === 'all' ? undefined : value || undefined);
-    setPage(0); // Reset to first page when category changes
+    setPage(0);
   };
+
+  // Reset page when search term changes
+  if (prevSearchTerm !== debouncedSearchTerm) {
+    setPrevSearchTerm(debouncedSearchTerm);
+    setPage(0);
+  }
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    scrollContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [page]);
 
   if (productsError) {
     return (
@@ -134,6 +129,9 @@ export function OrthofeetCatalog({
       <LoadingOverlay visible={isLoading} />
 
       <Stack gap="md">
+        {/* Scroll anchor for pagination */}
+        <div ref={scrollContainerRef} />
+
         {/* Search Input */}
         <TextInput
           placeholder="Search for a product"
@@ -147,7 +145,7 @@ export function OrthofeetCatalog({
           <Button size="compact-sm" variant={maxPrice ? 'filled' : 'light'} color="indigo" onClick={toggleMaxPrice}>
             {maxPrice ? 'Viewing Shoes Under $60' : 'View All Prices'}
           </Button>
-          {genders.map((gender) => (
+          {filters?.genders?.map((gender) => (
             <Button
               key={gender.value}
               size="compact-sm"
@@ -160,12 +158,12 @@ export function OrthofeetCatalog({
         </Group>
 
         {/* Category Tabs */}
-        {categories.length > 0 && (
+        {!!filters?.categories?.length && (
           <ScrollArea type="auto">
             <Tabs value={selectedCategory || 'all'} onChange={handleCategoryChange}>
               <Tabs.List style={{ flexWrap: 'nowrap' }}>
                 <Tabs.Tab value="all">All Categories</Tabs.Tab>
-                {categories.map((category) => (
+                {filters.categories.map((category) => (
                   <Tabs.Tab key={category.value} value={category.value}>
                     {category.description || category.value}
                   </Tabs.Tab>
@@ -215,4 +213,4 @@ export function OrthofeetCatalog({
       )}
     </Box>
   );
-}
+};

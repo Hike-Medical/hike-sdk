@@ -14,7 +14,7 @@ interface OrthofeetProductCardProps {
 const DEFAULT_IMAGE_URL =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl2l40-UIpiaxFDjKB21gCihugoPL8gQZi0ODatgOFKGNQFchF1i91n6k771D6np1DUQI&usqp=CAU';
 
-export function OrthofeetProductCard({ product, multiplier, onSelect }: OrthofeetProductCardProps) {
+export const OrthofeetProductCard = ({ product, multiplier, onSelect }: OrthofeetProductCardProps) => {
   const theme = useMantineTheme();
 
   const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
@@ -101,4 +101,4 @@ export function OrthofeetProductCard({ product, multiplier, onSelect }: Orthofee
       </Button>
     </Paper>
   );
-}
+};

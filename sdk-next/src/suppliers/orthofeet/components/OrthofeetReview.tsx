@@ -12,7 +12,7 @@ export interface OrthofeetReviewProps {
   multiplier?: number;
 }
 
-export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetReviewProps) {
+export const OrthofeetReview = ({ sku, supplierId, multiplier = 0 }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
 
   const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
@@ -26,10 +26,6 @@ export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetRe
     enabled: !!supplierId && !!sku
   });
 
-  if (isOrthofeetProductPending) {
-    return <Loader />;
-  }
-
   // Find the variant - it could be directly in the results or in a parent's children array
   const selectedVariant = orthofeetProduct?.data?.find((product) => product.sku === sku);
 
@@ -39,6 +35,10 @@ export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetRe
     : orthofeetProduct?.data?.find((product) => product.children?.some((variant) => variant.sku === sku));
 
   const calculatePrice = (value: number): number => value * (1 + multiplier / 100);
+
+  if (isOrthofeetProductPending) {
+    return <Loader />;
+  }
 
   if (!selectedProduct || !selectedVariant) {
     return (
@@ -93,4 +93,4 @@ export function OrthofeetReview({ sku, supplierId, multiplier = 0 }: OrthofeetRe
       </Stack>
     </Paper>
   );
-}
+};

@@ -22,7 +22,7 @@ interface OrthofeetProductDetailProps {
 }
 
 // Internal drawer section component
-function DrawerSection({
+const DrawerSection = ({
   title,
   children,
   hideDivider = false
@@ -30,21 +30,19 @@ function DrawerSection({
   title: string;
   children: ReactNode;
   hideDivider?: boolean;
-}) {
-  return (
-    <Stack>
-      <Box px="md" w="100%">
-        <Title size="md" mb="sm">
-          {title}
-        </Title>
-        {children}
-      </Box>
-      {!hideDivider && <Divider />}
-    </Stack>
-  );
-}
+}) => (
+  <Stack>
+    <Box px="md" w="100%">
+      <Title size="md" mb="sm">
+        {title}
+      </Title>
+      {children}
+    </Box>
+    {!hideDivider && <Divider />}
+  </Stack>
+);
 
-export function OrthofeetProductDetail({
+export const OrthofeetProductDetail = ({
   styleNameValue,
   supplierId,
   orthofeetSupplierId,
@@ -56,7 +54,7 @@ export function OrthofeetProductDetail({
   formSubmissionPrefabQuantity,
   multiplier,
   parentProduct
-}: OrthofeetProductDetailProps) {
+}: OrthofeetProductDetailProps) => {
   const { data: allProducts } = useOrthofeetStyleVariants({
     params: { styleNameValue, supplierId },
     enabled: opened && !!styleNameValue
@@ -316,4 +314,4 @@ export function OrthofeetProductDetail({
       </Drawer.Content>
     </Drawer.Root>
   );
-}
+};
