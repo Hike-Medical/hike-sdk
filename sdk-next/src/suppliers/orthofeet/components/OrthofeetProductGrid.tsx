@@ -1,15 +1,14 @@
 'use client';
 
-import { CatalogProductExtended } from '@hike/sdk';
+import { OrthofeetProductStyle } from '@hike/sdk';
 import { SimpleGrid, Skeleton } from '@mantine/core';
-import { ORTHOFEET_ATTRIBUTES, getProductAttributeValue } from '../utils/attributeHelpers';
 import { OrthofeetProductCard } from './OrthofeetProductCard';
 
 export interface OrthofeetProductGridProps {
-  products: CatalogProductExtended[];
+  products: OrthofeetProductStyle[];
   isLoading: boolean;
   multiplier: number;
-  onProductSelect: (styleNameValue: string, product: CatalogProductExtended) => void;
+  onProductSelect: (productStyle: OrthofeetProductStyle) => void;
 }
 
 export const OrthofeetProductGrid = ({
@@ -26,19 +25,13 @@ export const OrthofeetProductGrid = ({
     </SimpleGrid>
   ) : (
     <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md" verticalSpacing="md">
-      {products.map((product) => {
-        const styleNameValue = getProductAttributeValue(product, ORTHOFEET_ATTRIBUTES.STYLE_NAME);
-
-        return (
-          !!styleNameValue && (
-            <OrthofeetProductCard
-              key={product.id}
-              product={product}
-              multiplier={multiplier}
-              onSelect={() => onProductSelect(styleNameValue, product)}
-            />
-          )
-        );
-      })}
+      {products.map((productStyle) => (
+        <OrthofeetProductCard
+          key={productStyle.value}
+          productStyle={productStyle}
+          multiplier={multiplier}
+          onSelect={() => onProductSelect(productStyle)}
+        />
+      ))}
     </SimpleGrid>
   );

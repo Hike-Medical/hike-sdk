@@ -1,7 +1,7 @@
 'use client';
 
-import { CatalogProductExtended, formatCurrency, getColorHex } from '@hike/sdk';
-import { useOrthofeetInventoryBySku, useOrthofeetStyleVariants } from '@hike/ui';
+import { OrthofeetProductStyle, formatCurrency, getColorHex } from '@hike/sdk';
+import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
 import { Badge, Box, Button, Chip, ColorSwatch, Divider, Drawer, Group, Stack, Text, Title, rem } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { ReactNode, useMemo, useState } from 'react';
@@ -18,7 +18,7 @@ interface OrthofeetProductDetailProps {
   prefabPrice?: number;
   formSubmissionPrefabQuantity?: string;
   multiplier: number;
-  parentProduct?: CatalogProductExtended;
+  parentProduct?: OrthofeetProductStyle;
 }
 
 // Internal drawer section component
@@ -55,7 +55,7 @@ export const OrthofeetProductDetail = ({
   multiplier,
   parentProduct
 }: OrthofeetProductDetailProps) => {
-  const { data: allProducts } = useOrthofeetStyleVariants({
+  const { data: allProducts } = useOrthofeetProductStyleVariants({
     params: { styleNameValue, supplierId },
     enabled: opened && !!styleNameValue
   });

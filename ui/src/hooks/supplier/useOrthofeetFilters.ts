@@ -1,18 +1,18 @@
 import { fetchOrthofeetFilters } from '@hike/services';
 import type { GetOrthofeetFiltersParams, OrthofeetFiltersResponse } from '@hike/types';
-import type { UseQueryOptions } from '@tanstack/react-query';
-import { useQuery } from '@tanstack/react-query';
+import { HikeError } from '@hike/types';
+import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
-export const useOrthofeetFilters = (
-  options: Omit<UseQueryOptions<OrthofeetFiltersResponse>, 'queryKey' | 'queryFn'> & {
-    params: GetOrthofeetFiltersParams;
-  }
-) => {
-  return useQuery({
-    queryKey: ['orthofeet-filters', options.params.supplierId],
-    queryFn: () => fetchOrthofeetFilters(options.params),
-    enabled: !!options.params.supplierId,
+interface UseOrthofeetFiltersOptions
+  extends Omit<UseQueryOptions<OrthofeetFiltersResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  params: GetOrthofeetFiltersParams;
+  queryKey?: QueryKey;
+}
+
+export const useOrthofeetFilters = ({ params, queryKey = [], ...options }: UseOrthofeetFiltersOptions) =>
+  useQuery({
+    queryKey: ['orthofeet-filters', params.supplierId, queryKey],
+    queryFn: async () => await fetchOrthofeetFilters(params),
     staleTime: Infinity, // Filters don't change often
     ...options
   });
-};

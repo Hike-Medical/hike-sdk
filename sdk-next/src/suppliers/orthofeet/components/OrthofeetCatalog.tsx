@@ -1,7 +1,7 @@
 'use client';
 
-import { CatalogProductExtended } from '@hike/sdk';
-import { useOrthofeetFilters, useOrthofeetStyleProducts } from '@hike/ui';
+import { OrthofeetProductStyle } from '@hike/sdk';
+import { useOrthofeetFilters, useOrthofeetProductStyles } from '@hike/ui';
 import {
   Alert,
   Box,
@@ -44,7 +44,7 @@ export const OrthofeetCatalog = ({
   const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
   const [selectedStyleName, setSelectedStyleName] = useState<string | undefined>();
-  const [selectedProduct, setSelectedProduct] = useState<CatalogProductExtended | undefined>();
+  const [selectedProduct, setSelectedProduct] = useState<OrthofeetProductStyle | undefined>();
   const [detailOpened, setDetailOpened] = useState(false);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
   const [searchTerm, setSearchTerm] = useState('');
@@ -63,7 +63,7 @@ export const OrthofeetCatalog = ({
     data: products,
     isLoading: productsLoading,
     isError: productsError
-  } = useOrthofeetStyleProducts({
+  } = useOrthofeetProductStyles({
     params: {
       supplierId,
       genderAttributeValue: selectedGender,
@@ -79,9 +79,9 @@ export const OrthofeetCatalog = ({
 
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
-  const handleProductSelect = (styleNameValue: string, product: CatalogProductExtended) => {
-    setSelectedStyleName(styleNameValue);
-    setSelectedProduct(product);
+  const handleProductSelect = (productStyle: OrthofeetProductStyle) => {
+    setSelectedStyleName(productStyle.value);
+    setSelectedProduct(productStyle);
     setDetailOpened(true);
   };
 
