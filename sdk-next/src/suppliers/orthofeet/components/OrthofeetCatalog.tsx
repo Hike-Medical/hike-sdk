@@ -42,7 +42,6 @@ export const OrthofeetCatalog = ({
   onAddToCart,
   onRemove
 }: OrthofeetCatalogProps) => {
-  // Filter and pagination state
   const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
   const [drawerProductStyle, setDrawerProductStyle] = useState<string | undefined>();
@@ -52,9 +51,9 @@ export const OrthofeetCatalog = ({
   const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 300);
   const [prevSearchTerm, setPrevSearchTerm] = useState(debouncedSearchTerm);
   const [page, setPage] = useState(0);
-  const pageSize = 48; // Always fills grid since divisible by 1-4
+  const pageSize = 48; // Divisible by 1-4 for responsive grid
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const hasSelectedSku = !!(selectedSku && selectedSku.trim());
+  const hasSelectedSku = !!selectedSku?.trim();
 
   const { data: filters } = useOrthofeetFilters();
 
@@ -78,19 +77,23 @@ export const OrthofeetCatalog = ({
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
   const handleAddToCart = (variantSku: string, insertQuantity?: string) => {
-    // Product name will be fetched by the parent when displaying in OrthofeetSelectedProduct
     onAddToCart(variantSku, '', insertQuantity);
     closeDrawer();
   };
 
   const openProductDrawer = (productStyle: OrthofeetProductStyle) => {
     setDrawerProductStyle(productStyle.value);
-    setTimeout(() => setDrawerOpened(true), 0); // Allow component to mount before opening
+    setTimeout(() => setDrawerOpened(true), 0);
   };
 
   const closeDrawer = () => {
     setDrawerOpened(false);
-    setTimeout(() => setDrawerProductStyle(undefined), 300); // Delay for animation to complete
+    setTimeout(() => setDrawerProductStyle(undefined), 300);
+  };
+
+  const toggleFilter = <T,>(currentValue: T | undefined, newValue: T) => {
+    setPage(0);
+    return currentValue === newValue ? undefined : newValue;
   };
 
   // Reset page when search changes
@@ -148,10 +151,7 @@ export const OrthofeetCatalog = ({
                 size="compact-sm"
                 variant={maxPrice ? 'filled' : 'light'}
                 color="indigo"
-                onClick={() => {
-                  setMaxPrice((current) => (current ? undefined : 60));
-                  setPage(0);
-                }}
+                onClick={() => setMaxPrice((current) => toggleFilter(current, 60))}
               >
                 {maxPrice ? 'Viewing Shoes Under $60' : 'View All Prices'}
               </Button>
@@ -160,10 +160,7 @@ export const OrthofeetCatalog = ({
                   key={gender.value}
                   size="compact-sm"
                   variant={selectedGender === gender.value ? 'filled' : 'light'}
-                  onClick={() => {
-                    setSelectedGender((current) => (current === gender.value ? undefined : gender.value));
-                    setPage(0);
-                  }}
+                  onClick={() => setSelectedGender((current) => toggleFilter(current, gender.value))}
                 >
                   {gender.description || gender.value}
                 </Button>
@@ -201,7 +198,7 @@ export const OrthofeetCatalog = ({
 
             {!productsLoading && (!products?.data || products.data.length === 0) && (
               <Text size="sm" ta="center" w="100%" c="gray.6" mt="xl">
-                No products found
+                No shoes found
               </Text>
             )}
 

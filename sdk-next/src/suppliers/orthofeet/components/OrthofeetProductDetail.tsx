@@ -145,26 +145,35 @@ export const OrthofeetProductDetail = ({
   const inventoryQuantity = inventory?.products[currentVariantSku]?.quantity ?? 0;
   const isInStock = inventoryQuantity > inventoryBuffer;
 
-  const handleGenderChange = (value: string) => {
-    setSelectedGender(value);
+  // Reset downstream selections when upstream filters change
+  const resetFromGender = () => {
     setSelectedColor(undefined);
     setSelectedWidth(undefined);
     setSelectedSize(undefined);
   };
 
-  const handleColorChange = (value: string) => {
-    setSelectedColor(value);
+  const resetFromColor = () => {
     setSelectedWidth(undefined);
     setSelectedSize(undefined);
   };
 
-  const handleWidthChange = (value: string) => {
-    setSelectedWidth(value);
+  const resetFromWidth = () => {
     setSelectedSize(undefined);
   };
 
-  const handleSizeChange = (value: string) => {
-    setSelectedSize(value);
+  const handleGenderChange = (value: string) => {
+    setSelectedGender(value);
+    resetFromGender();
+  };
+
+  const handleColorChange = (value: string) => {
+    setSelectedColor(value);
+    resetFromColor();
+  };
+
+  const handleWidthChange = (value: string) => {
+    setSelectedWidth(value);
+    resetFromWidth();
   };
 
   const addShoeToOrder = () => {
@@ -326,7 +335,7 @@ export const OrthofeetProductDetail = ({
                   key={`${selectedColor}-${selectedWidth}`}
                   multiple={false}
                   value={selectedSize}
-                  onChange={handleSizeChange}
+                  onChange={(value) => value && setSelectedSize(value)}
                 >
                   <Group justify="flex-start" gap="sm">
                     {sizes

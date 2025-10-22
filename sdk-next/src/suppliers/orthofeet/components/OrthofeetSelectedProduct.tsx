@@ -2,9 +2,8 @@
 
 import { formatCurrency } from '@hike/sdk';
 import { useOrthofeetProductStyleVariants } from '@hike/ui';
-import { Alert, Badge, Button, Group, Image, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
+import { Alert, Badge, Button, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
-import { useMemo } from 'react';
 import { getProductAttributeDisplay, ORTHOFEET_ATTRIBUTES } from '../utils/attributeHelpers';
 
 export interface OrthofeetSelectedProductProps {
@@ -18,54 +17,84 @@ export interface OrthofeetSelectedProductProps {
 export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemove }: OrthofeetSelectedProductProps) => {
   const theme = useMantineTheme();
 
-  const { data: productVariants, isLoading } = useOrthofeetProductStyleVariants({
+  const {
+    data: productVariants,
+    isLoading,
+    isFetching,
+    isError
+  } = useOrthofeetProductStyleVariants({
     params: { sku },
-    enabled: !!sku
+    enabled: !!sku,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 2
   });
 
-  const parentProduct = useMemo(() => productVariants?.find((p) => !p.parentId), [productVariants]);
-  const selectedVariant = useMemo(() => productVariants?.find((p) => p.sku === sku), [productVariants, sku]);
-  const productPrice = parentProduct?.price ?? selectedVariant?.price ?? 0;
-  const totalPrice = price && quantity ? productPrice + (price / 100) * Number(quantity) : productPrice;
+  // Show loading during initial fetch or when refetching without data
+  if (isLoading || (isFetching && !productVariants)) {
+    return (
+      <Stack gap="md" pos="relative" mih={200}>
+        <LoadingOverlay visible />
+      </Stack>
+    );
+  }
 
-  // Extract variant attributes
-  const variantColor = selectedVariant
-    ? getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.COLOR)
-    : undefined;
-  const variantSize = selectedVariant
-    ? getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.SIZE)
-    : undefined;
-  const variantWidth = selectedVariant
-    ? getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.WIDTH)
-    : undefined;
-  const styleName = selectedVariant
-    ? getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.STYLE_NAME)
-    : undefined;
+  if (isError) {
+    return (
+      <Alert color="red" title="Error loading product">
+        Could not load shoe details. Please try again.
+      </Alert>
+    );
+  }
 
-  const handleEditClick = () => {
-    if (styleName) {
-      onEdit(styleName);
-    }
-  };
+  if (!productVariants?.length) {
+    return (
+      <Alert color="yellow" title="Product not found">
+        The selected shoe could not be found. Please select another shoe.
+      </Alert>
+    );
+  }
+
+  const parentProduct = productVariants.find((p) => !p.parentId);
+  const selectedVariant = productVariants.find((p) => p.sku === sku);
+
+  if (!parentProduct || !selectedVariant) {
+    return (
+      <Alert color="yellow" title="Product variant not found">
+        Could not load details for this shoe variant. The SKU may be invalid.
+      </Alert>
+    );
+  }
+
+  // Extract attributes
+  const getAttribute = (key: string) => getProductAttributeDisplay(selectedVariant, key);
+  const styleName = getAttribute(ORTHOFEET_ATTRIBUTES.STYLE_NAME);
+  const variantColor = getAttribute(ORTHOFEET_ATTRIBUTES.COLOR);
+  const variantSize = getAttribute(ORTHOFEET_ATTRIBUTES.SIZE);
+  const variantWidth = getAttribute(ORTHOFEET_ATTRIBUTES.WIDTH);
+
+  // Calculate prices
+  const productPrice = parentProduct.price ?? selectedVariant.price ?? 0;
+  const insertPrice = price && quantity ? (price / 100) * Number(quantity) : 0;
+  const totalPrice = productPrice + insertPrice;
 
   const handleRemoveClick = () => {
     modals.openConfirmModal({
-      title: 'Remove product from order',
+      title: 'Remove shoe from order',
       centered: true,
-      children: <Text size="sm">Are you sure you want to remove {parentProduct?.name} from the order?</Text>,
+      children: (
+        <Text size="sm">
+          Are you sure you want to remove <strong>{parentProduct.name}</strong> from the order?
+        </Text>
+      ),
       labels: { cancel: 'Cancel', confirm: 'Remove' },
       confirmProps: { color: 'red' },
       onConfirm: onRemove
     });
   };
 
-  if (isLoading || !parentProduct || !selectedVariant) {
-    return null;
-  }
-
   return (
     <Stack gap="md">
-      <Alert color="green" title="Product added to order" />
+      <Alert color="green" title="Shoe added to order" />
       <Paper p="md" withBorder>
         <Group align="flex-start" wrap="nowrap">
           <Image
@@ -84,13 +113,13 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
               {parentProduct.name}
             </Text>
 
-            {quantity && price ? (
+            {insertPrice > 0 ? (
               <Stack gap="xs">
                 <Text size="sm" fw="500">
                   Shoe Price: {formatCurrency(productPrice)}
                 </Text>
                 <Text size="sm" fw="500">
-                  Insert Price: {formatCurrency((price / 100) * Number(quantity))}
+                  Insert Price: {formatCurrency(insertPrice)}
                 </Text>
                 <Text size="md" fw="600">
                   Total Price: {formatCurrency(totalPrice)}
@@ -103,22 +132,22 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
             )}
 
             <Group gap="xs">
-              {variantSize && (
+              {!!variantSize && (
                 <Badge variant="light" color="dark">
                   Size: {variantSize}
                 </Badge>
               )}
-              {variantColor && (
+              {!!variantColor && (
                 <Badge variant="light" color="dark">
                   Color: {variantColor}
                 </Badge>
               )}
-              {variantWidth && (
+              {!!variantWidth && (
                 <Badge variant="light" color="dark">
                   Width: {variantWidth}
                 </Badge>
               )}
-              {quantity && price && (
+              {!!quantity && (
                 <Badge variant="light" color="dark">
                   Prefab Insert Quantity: {quantity}
                 </Badge>
@@ -126,7 +155,7 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
             </Group>
 
             <Group pt="md">
-              <Button onClick={handleEditClick} variant="light">
+              <Button onClick={() => styleName && onEdit(styleName)} variant="light">
                 Edit Pair
               </Button>
               <Button color="red" variant="light" onClick={handleRemoveClick}>
