@@ -49,22 +49,18 @@ export const OrthofeetProductDetail = ({
   onClose,
   onAddToCart
 }: OrthofeetProductDetailProps) => {
-  const { data: allProducts } = useOrthofeetProductStyleVariants({
-    params: { style },
-    enabled: opened && !!style
-  });
-
-  // Separate variants (products with parentId) and parent
-  const variants = useMemo(() => allProducts?.filter((p) => p.parentId) || [], [allProducts]);
-  const parentProduct = useMemo(() => allProducts?.find((p) => !p.parentId), [allProducts]);
-
-  // State for selections
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
   const [selectedInsertQuantity, setSelectedInsertQuantity] = useState<string | undefined>(quantity || undefined);
 
-  // Get available colors from all variants
+  const { data: allProducts } = useOrthofeetProductStyleVariants({
+    params: { style },
+    enabled: opened && !!style
+  });
+
+  const parentProduct = useMemo(() => allProducts?.find((p) => !p.parentId), [allProducts]);
+  const variants = useMemo(() => allProducts?.filter((p) => p.parentId) || [], [allProducts]);
   const colors = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.COLOR), [variants]);
 
   // Filter variants based on color selection
@@ -74,12 +70,6 @@ export const OrthofeetProductDetail = ({
     [variants, selectedColor]
   );
 
-  // Get available widths from color-filtered variants
-  const widths = useMemo(
-    () => getUniqueAttributeValues(filteredByColor, ORTHOFEET_ATTRIBUTES.WIDTH),
-    [filteredByColor]
-  );
-
   // Filter variants based on color and width
   const filteredByColorWidth = useMemo(
     () =>
@@ -87,6 +77,12 @@ export const OrthofeetProductDetail = ({
         ? filterProductsByAttributes(filteredByColor, { [ORTHOFEET_ATTRIBUTES.WIDTH]: selectedWidth })
         : filteredByColor,
     [filteredByColor, selectedWidth]
+  );
+
+  // Get available widths from color-filtered variants
+  const widths = useMemo(
+    () => getUniqueAttributeValues(filteredByColor, ORTHOFEET_ATTRIBUTES.WIDTH),
+    [filteredByColor]
   );
 
   // Get available sizes from color+width-filtered variants
@@ -111,7 +107,6 @@ export const OrthofeetProductDetail = ({
   // Only check inventory when all selections are complete
   const isFullySelected = !!(selectedColor && selectedWidth && selectedSize);
 
-  // Check inventory for current variant (only if enableInventoryCheck is true and all selections are complete)
   const {
     data: inventory,
     isLoading: inventoryLoading,
@@ -163,10 +158,9 @@ export const OrthofeetProductDetail = ({
   };
 
   const productPrice = parentProduct?.price ?? currentVariant?.price ?? 0;
-
-  // Determine button state based on selections and inventory
-  const isOutOfStock = enableInventoryCheck && isFullySelected && !inventoryLoading && !inventoryError && !isInStock;
-  const canAddToCart = isFullySelected && (!enableInventoryCheck || inventoryLoading || inventoryError || isInStock);
+  const showOutOfStock = enableInventoryCheck && isFullySelected && !inventoryLoading && !inventoryError && !isInStock;
+  const isButtonDisabled =
+    !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
 
   return (
     <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
@@ -183,7 +177,7 @@ export const OrthofeetProductDetail = ({
             >
               {parentProduct?.name || 'Shoe Specifications'}
             </Drawer.Title>
-            {isOutOfStock ? (
+            {showOutOfStock ? (
               <Badge variant="light" color="red">
                 Out of stock
               </Badge>
@@ -194,7 +188,7 @@ export const OrthofeetProductDetail = ({
                 variant="outline"
                 onClick={addShoeToOrder}
                 loading={inventoryLoading}
-                disabled={!canAddToCart || inventoryLoading}
+                disabled={isButtonDisabled || inventoryLoading}
               >
                 Add Pair
               </Button>
