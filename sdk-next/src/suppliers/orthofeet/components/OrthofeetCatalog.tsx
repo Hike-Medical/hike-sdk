@@ -54,6 +54,9 @@ export const OrthofeetCatalog = ({
 
   const { data: filters } = useOrthofeetFilters();
 
+  // Calculate base maxPrice by reversing the multiplier (so backend filters on base price)
+  const baseMaxPrice = maxPrice ? Math.floor(maxPrice / (1 + multiplier / 100)) : undefined;
+
   // Fetch filtered products
   const {
     data: products,
@@ -64,7 +67,7 @@ export const OrthofeetCatalog = ({
       term: debouncedSearchTerm || undefined,
       genderValue: selectedGender,
       categoryValue: selectedCategory,
-      maxPrice,
+      maxPrice: baseMaxPrice,
       sortOrder: 'desc',
       offset: page * pageSize,
       limit: pageSize
