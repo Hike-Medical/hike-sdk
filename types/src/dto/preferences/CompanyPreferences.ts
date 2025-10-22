@@ -32,6 +32,9 @@ export interface CompanyPreferences {
   };
   slicerProfile?: string;
   supplierId?: string;
+  outboundNotifications?: {
+    removeFSAFooter?: boolean;
+  };
   pricing?: {
     billWhenShipped?: boolean;
     paymentResponsibility?: PaymentResponsibility;
