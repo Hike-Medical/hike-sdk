@@ -22,28 +22,28 @@ import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 
 export interface OrthofeetCatalogProps {
   supplierId: string;
-  onAddToCart: (variantSku: string, variantName: string, prefabQuantity?: string) => void;
   multiplier?: number;
   prefabPrice?: number;
+  formSubmissionPrefabQuantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
-  formSubmissionPrefabQuantity?: string;
   isLoading?: boolean;
+  onAddToCart: (variantSku: string, variantName: string, prefabQuantity?: string) => void;
 }
 
 export const OrthofeetCatalog = ({
   supplierId,
-  onAddToCart,
   multiplier = 0,
   prefabPrice,
+  formSubmissionPrefabQuantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
-  formSubmissionPrefabQuantity,
-  isLoading = false
+  isLoading = false,
+  onAddToCart
 }: OrthofeetCatalogProps) => {
   const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
-  const [selectedStyleName, setSelectedStyleName] = useState<string | undefined>();
+  const [selectedProductStyle, setSelectedProductStyle] = useState<string | undefined>();
   const [selectedProduct, setSelectedProduct] = useState<OrthofeetProductStyle | undefined>();
   const [detailOpened, setDetailOpened] = useState(false);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
@@ -66,8 +66,8 @@ export const OrthofeetCatalog = ({
   } = useOrthofeetProductStyles({
     params: {
       supplierId,
-      genderAttributeValue: selectedGender,
-      categoryAttributeValue: selectedCategory,
+      genderValue: selectedGender,
+      categoryValue: selectedCategory,
       term: debouncedSearchTerm || undefined,
       maxPrice,
       sortOrder: 'desc',
@@ -80,7 +80,7 @@ export const OrthofeetCatalog = ({
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
   const handleProductSelect = (productStyle: OrthofeetProductStyle) => {
-    setSelectedStyleName(productStyle.value);
+    setSelectedProductStyle(productStyle.value);
     setSelectedProduct(productStyle);
     setDetailOpened(true);
   };
@@ -196,18 +196,18 @@ export const OrthofeetCatalog = ({
       </Stack>
 
       {/* Product Detail Drawer */}
-      {selectedStyleName && (
+      {selectedProductStyle && (
         <OrthofeetProductDetail
-          styleNameValue={selectedStyleName}
+          style={selectedProductStyle}
           supplierId={supplierId}
           inventoryBuffer={inventoryBuffer}
           enableInventoryCheck={enableInventoryCheck}
-          opened={detailOpened}
-          onClose={() => setDetailOpened(false)}
-          onAddToCart={handleAddToCart}
           prefabPrice={prefabPrice}
           formSubmissionPrefabQuantity={formSubmissionPrefabQuantity}
           multiplier={multiplier}
+          opened={detailOpened}
+          onAddToCart={handleAddToCart}
+          onClose={() => setDetailOpened(false)}
         />
       )}
     </Box>

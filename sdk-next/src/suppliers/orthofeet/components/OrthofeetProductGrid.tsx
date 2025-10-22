@@ -6,15 +6,15 @@ import { OrthofeetProductCard } from './OrthofeetProductCard';
 
 export interface OrthofeetProductGridProps {
   products: OrthofeetProductStyle[];
-  isLoading: boolean;
   multiplier: number;
+  isLoading: boolean;
   onProductSelect: (productStyle: OrthofeetProductStyle) => void;
 }
 
 export const OrthofeetProductGrid = ({
   products,
-  isLoading,
   multiplier,
+  isLoading,
   onProductSelect
 }: OrthofeetProductGridProps) =>
   isLoading ? (

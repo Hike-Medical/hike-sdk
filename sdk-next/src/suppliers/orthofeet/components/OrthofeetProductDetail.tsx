@@ -8,16 +8,16 @@ import { ReactNode, useMemo, useState } from 'react';
 import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeValues } from '../utils/attributeHelpers';
 
 interface OrthofeetProductDetailProps {
-  styleNameValue: string;
+  style: string;
   supplierId: string;
+  multiplier: number;
+  prefabPrice?: number;
+  formSubmissionPrefabQuantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
-  onClose: () => void;
   onAddToCart: (variantSku: string, prefabQuantity?: string) => void;
-  prefabPrice?: number;
-  formSubmissionPrefabQuantity?: string;
-  multiplier: number;
+  onClose: () => void;
 }
 
 // Internal drawer section component
@@ -42,20 +42,20 @@ const DrawerSection = ({
 );
 
 export const OrthofeetProductDetail = ({
-  styleNameValue,
+  style,
   supplierId,
+  multiplier,
+  prefabPrice,
+  formSubmissionPrefabQuantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   opened,
   onClose,
-  onAddToCart,
-  prefabPrice,
-  formSubmissionPrefabQuantity,
-  multiplier
+  onAddToCart
 }: OrthofeetProductDetailProps) => {
   const { data: allProducts } = useOrthofeetProductStyleVariants({
-    params: { styleNameValue, supplierId },
-    enabled: opened && !!styleNameValue
+    params: { supplierId, style },
+    enabled: opened && !!style
   });
 
   // Separate variants (products with parentId) and parent

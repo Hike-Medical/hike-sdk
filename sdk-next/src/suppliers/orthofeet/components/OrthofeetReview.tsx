@@ -19,9 +19,7 @@ export const OrthofeetReview = ({ sku, supplierId, multiplier = 0 }: OrthofeetRe
     params: {
       term: sku,
       includeVariants: true,
-      filter: {
-        supplierId
-      }
+      filter: { supplierId }
     },
     enabled: !!supplierId && !!sku
   });
