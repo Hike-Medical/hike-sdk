@@ -190,6 +190,14 @@ export default {
         editPair: 'Edit Pair',
         removeConfirmTitle: 'Remove product from order',
         removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
+      },
+      review: {
+        notFoundTitle: 'Orthofeet product not found',
+        notFoundMessage: 'The Orthofeet product with SKU <b>{sku}</b> was not found. Please contact support.',
+        priceLabel: 'Price',
+        sizeLabel: 'Size',
+        colorLabel: 'Color',
+        widthLabel: 'Width'
       }
     }
   }

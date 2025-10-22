@@ -3,6 +3,7 @@
 import { formatCurrency } from '@hike/sdk';
 import { useCatalogProducts } from '@hike/ui';
 import { Alert, Badge, Group, Loader, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ORTHOFEET_ATTRIBUTES, getProductAttributeDisplay } from '../utils/attributeHelpers';
 
@@ -13,6 +14,7 @@ export interface OrthofeetReviewProps {
 
 export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
+  const t = useTranslations('components.orthofeet.review');
 
   const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
     params: {
@@ -37,8 +39,11 @@ export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
 
   if (!selectedProduct || !selectedVariant) {
     return (
-      <Alert title="Orthofeet product not found">
-        The Orthofeet product with SKU <strong>{sku}</strong> was not found. Please contact support.
+      <Alert title={t('notFoundTitle')}>
+        {t.rich('notFoundMessage', {
+          sku,
+          b: (chunks) => <strong>{chunks}</strong>
+        })}
       </Alert>
     );
   }
@@ -66,22 +71,22 @@ export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
           {selectedProduct.name}
         </Text>
         <Text size="md" fw="600">
-          Price: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
+          {t('priceLabel')}: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
         </Text>
         <Group>
           {size && (
             <Badge variant="light" color="dark">
-              Size: {size}
+              {t('sizeLabel')}: {size}
             </Badge>
           )}
           {color && (
             <Badge variant="light" color="dark">
-              Color: {color}
+              {t('colorLabel')}: {color}
             </Badge>
           )}
           {width && (
             <Badge variant="light" color="dark">
-              Width: {width}
+              {t('widthLabel')}: {width}
             </Badge>
           )}
         </Group>
