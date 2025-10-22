@@ -23,19 +23,19 @@ import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 export interface OrthofeetCatalogProps {
   supplierId: string;
   multiplier?: number;
-  prefabPrice?: number;
-  formSubmissionPrefabQuantity?: string;
+  price?: number;
+  quantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   isLoading?: boolean;
-  onAddToCart: (variantSku: string, variantName: string, prefabQuantity?: string) => void;
+  onAddToCart: (variantSku: string, variantName: string, quantity?: string) => void;
 }
 
 export const OrthofeetCatalog = ({
   supplierId,
   multiplier = 0,
-  prefabPrice,
-  formSubmissionPrefabQuantity,
+  price,
+  quantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   isLoading = false,
@@ -85,24 +85,24 @@ export const OrthofeetCatalog = ({
     setDetailOpened(true);
   };
 
-  const handleAddToCart = (variantSku: string, prefabQuantity?: string) => {
-    onAddToCart(variantSku, selectedProduct?.name || '', prefabQuantity);
-    setDetailOpened(false);
-  };
 
   const toggleGenderFilter = (genderValue: string) => {
     setSelectedGender((current) => (current === genderValue ? undefined : genderValue));
     setPage(0);
   };
 
+  const handleCategoryChange = (value: string | null) => {
+    setSelectedCategory(value === 'all' ? undefined : value || undefined);
+    setPage(0);
+  };
   const toggleMaxPrice = () => {
     setMaxPrice((current) => (current ? undefined : 60));
     setPage(0);
   };
 
-  const handleCategoryChange = (value: string | null) => {
-    setSelectedCategory(value === 'all' ? undefined : value || undefined);
-    setPage(0);
+  const handleAddToCart = (variantSku: string, insertQuantity?: string) => {
+    onAddToCart(variantSku, selectedProduct?.name || '', insertQuantity);
+    setDetailOpened(false);
   };
 
   // Reset page when search term changes
@@ -202,8 +202,8 @@ export const OrthofeetCatalog = ({
           supplierId={supplierId}
           inventoryBuffer={inventoryBuffer}
           enableInventoryCheck={enableInventoryCheck}
-          prefabPrice={prefabPrice}
-          formSubmissionPrefabQuantity={formSubmissionPrefabQuantity}
+          price={price}
+          quantity={quantity}
           multiplier={multiplier}
           opened={detailOpened}
           onAddToCart={handleAddToCart}

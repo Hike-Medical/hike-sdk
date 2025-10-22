@@ -11,12 +11,12 @@ interface OrthofeetProductDetailProps {
   style: string;
   supplierId: string;
   multiplier: number;
-  prefabPrice?: number;
-  formSubmissionPrefabQuantity?: string;
+  price?: number;
+  quantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
-  onAddToCart: (variantSku: string, prefabQuantity?: string) => void;
+  onAddToCart: (variantSku: string, quantity?: string) => void;
   onClose: () => void;
 }
 
@@ -45,8 +45,8 @@ export const OrthofeetProductDetail = ({
   style,
   supplierId,
   multiplier,
-  prefabPrice,
-  formSubmissionPrefabQuantity,
+  price,
+  quantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   opened,
@@ -66,9 +66,7 @@ export const OrthofeetProductDetail = ({
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
-  const [selectedPrefabInsertQuantity, setSelectedPrefabInsertQuantity] = useState<string | undefined>(
-    formSubmissionPrefabQuantity || undefined
-  );
+  const [selectedInsertQuantity, setSelectedInsertQuantity] = useState<string | undefined>(quantity || undefined);
 
   // Get available colors from all variants
   const colors = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.COLOR), [variants]);
@@ -158,8 +156,8 @@ export const OrthofeetProductDetail = ({
       return;
     }
 
-    const prefabQuantity = prefabPrice ? selectedPrefabInsertQuantity : undefined;
-    onAddToCart(variantSku, prefabQuantity);
+    const insertQuantity = price ? selectedInsertQuantity : undefined;
+    onAddToCart(variantSku, insertQuantity);
     onClose();
   };
 
@@ -203,19 +201,17 @@ export const OrthofeetProductDetail = ({
             {/* Price Display - Only show when variant is fully selected */}
             {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
               <DrawerSection title="Price">
-                {selectedPrefabInsertQuantity && prefabPrice ? (
+                {selectedInsertQuantity && price ? (
                   <Stack gap="xs">
                     <Text size="sm" fw="500">
                       Shoe Price: {formatCurrency(calculatePrice(productPrice))}
                     </Text>
                     <Text size="sm" fw="500">
-                      Insert Price: {formatCurrency((prefabPrice / 100) * Number(selectedPrefabInsertQuantity))}
+                      Insert Price: {formatCurrency((price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                     <Text size="md" fw="600">
                       Total Price:{' '}
-                      {formatCurrency(
-                        calculatePrice(productPrice) + (prefabPrice / 100) * Number(selectedPrefabInsertQuantity)
-                      )}
+                      {formatCurrency(calculatePrice(productPrice) + (price / 100) * Number(selectedInsertQuantity))}
                     </Text>
                   </Stack>
                 ) : (
@@ -287,14 +283,14 @@ export const OrthofeetProductDetail = ({
               )}
             </DrawerSection>
 
-            {/* Prefab Insert Quantity Selector */}
-            {!!prefabPrice && (
+            {/* Insert Quantity Selector */}
+            {!!price && (
               <DrawerSection title="Prefab Insert Quantity">
                 <Chip.Group
                   multiple={false}
-                  value={selectedPrefabInsertQuantity?.toString() ?? ''}
+                  value={selectedInsertQuantity?.toString() ?? ''}
                   onChange={(value) => {
-                    setSelectedPrefabInsertQuantity(value === selectedPrefabInsertQuantity ? undefined : value);
+                    setSelectedInsertQuantity(value === selectedInsertQuantity ? undefined : value);
                   }}
                 >
                   <Group justify="flex-start">

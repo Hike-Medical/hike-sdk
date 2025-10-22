@@ -26,11 +26,7 @@ export const fetchSuppliers = async (params?: GetSuppliersParams): Promise<Paged
 
 export const fetchOrthofeetInventoryBySkus = async (skus: string[]): Promise<GetOrthofeetInventoryResponse> => {
   try {
-    const response = await backendApi.get(`supplier/orthofeet/inventory`, {
-      params: {
-        skus
-      }
-    });
+    const response = await backendApi.get(`supplier/orthofeet/inventory`, { params: { skus } });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
