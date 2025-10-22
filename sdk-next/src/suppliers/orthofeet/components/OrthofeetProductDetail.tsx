@@ -49,6 +49,7 @@ export const OrthofeetProductDetail = ({
   onClose,
   onAddToCart
 }: OrthofeetProductDetailProps) => {
+  const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
@@ -61,13 +62,32 @@ export const OrthofeetProductDetail = ({
 
   const parentProduct = useMemo(() => allProducts?.find((p) => !p.parentId), [allProducts]);
   const variants = useMemo(() => allProducts?.filter((p) => p.parentId) || [], [allProducts]);
-  const colors = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.COLOR), [variants]);
 
-  // Filter variants based on color selection
+  // Get all unique genders
+  const genders = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.GENDER), [variants]);
+  const showGenderSelector = genders.length > 1;
+
+  // Filter variants by gender if selected
+  const filteredByGender = useMemo(
+    () =>
+      selectedGender
+        ? filterProductsByAttributes(variants, { [ORTHOFEET_ATTRIBUTES.GENDER]: selectedGender })
+        : variants,
+    [variants, selectedGender]
+  );
+
+  const colors = useMemo(
+    () => getUniqueAttributeValues(filteredByGender, ORTHOFEET_ATTRIBUTES.COLOR),
+    [filteredByGender]
+  );
+
+  // Filter variants based on gender and color selection
   const filteredByColor = useMemo(
     () =>
-      selectedColor ? filterProductsByAttributes(variants, { [ORTHOFEET_ATTRIBUTES.COLOR]: selectedColor }) : variants,
-    [variants, selectedColor]
+      selectedColor
+        ? filterProductsByAttributes(filteredByGender, { [ORTHOFEET_ATTRIBUTES.COLOR]: selectedColor })
+        : filteredByGender,
+    [filteredByGender, selectedColor]
   );
 
   // Filter variants based on color and width
@@ -95,17 +115,23 @@ export const OrthofeetProductDetail = ({
   const currentVariant = useMemo(
     () =>
       filterProductsByAttributes(variants, {
+        [ORTHOFEET_ATTRIBUTES.GENDER]: selectedGender,
         [ORTHOFEET_ATTRIBUTES.COLOR]: selectedColor,
         [ORTHOFEET_ATTRIBUTES.WIDTH]: selectedWidth,
         [ORTHOFEET_ATTRIBUTES.SIZE]: selectedSize
       })[0],
-    [variants, selectedColor, selectedWidth, selectedSize]
+    [variants, selectedGender, selectedColor, selectedWidth, selectedSize]
   );
 
   const currentVariantSku = currentVariant?.sku || '';
 
   // Only check inventory when all selections are complete
-  const isFullySelected = !!(selectedColor && selectedWidth && selectedSize);
+  const isFullySelected = !!(
+    (showGenderSelector ? selectedGender : true) &&
+    selectedColor &&
+    selectedWidth &&
+    selectedSize
+  );
 
   const {
     data: inventory,
@@ -118,6 +144,13 @@ export const OrthofeetProductDetail = ({
 
   const inventoryQuantity = inventory?.products[currentVariantSku]?.quantity ?? 0;
   const isInStock = inventoryQuantity > inventoryBuffer;
+
+  const handleGenderChange = (value: string) => {
+    setSelectedGender(value);
+    setSelectedColor(undefined);
+    setSelectedWidth(undefined);
+    setSelectedSize(undefined);
+  };
 
   const handleColorChange = (value: string) => {
     setSelectedColor(value);
@@ -135,7 +168,10 @@ export const OrthofeetProductDetail = ({
   };
 
   const addShoeToOrder = () => {
-    if (!currentVariant || !selectedColor || !selectedWidth || !selectedSize) {
+    const requiredFieldsSelected =
+      (showGenderSelector ? selectedGender : true) && selectedColor && selectedWidth && selectedSize;
+
+    if (!currentVariant || !requiredFieldsSelected) {
       modals.openConfirmModal({
         title: 'Missing Information',
         children: <Text size="sm">Please ensure you have selected all the required options.</Text>,
@@ -148,6 +184,7 @@ export const OrthofeetProductDetail = ({
     }
 
     const variantSku = currentVariant.sku;
+
     if (!variantSku) {
       return;
     }
@@ -221,25 +258,46 @@ export const OrthofeetProductDetail = ({
               </DrawerSection>
             )}
 
+            {/* Gender Selector - Only show if multiple genders available */}
+            {showGenderSelector && (
+              <DrawerSection title="Gender">
+                <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
+                  <Group justify="flex-start" gap="sm">
+                    {genders.map((gender) => (
+                      <Chip key={gender} value={gender}>
+                        {gender}
+                      </Chip>
+                    ))}
+                  </Group>
+                </Chip.Group>
+              </DrawerSection>
+            )}
+
             {/* Color Selector */}
             <DrawerSection title="Color">
-              <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
-                <Group justify="flex-start" gap="sm">
-                  {colors.map((color) => {
-                    const colorHex = getColorHex(color);
-                    const swatchColor = colorHex || color || 'gray';
+              {!showGenderSelector || selectedGender ? (
+                <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
+                  <Group justify="flex-start" gap="sm">
+                    {colors.map((color) => {
+                      const colorHex = getColorHex(color);
+                      const swatchColor = colorHex || color || 'gray';
 
-                    return (
-                      <Chip key={color} value={color}>
-                        <Group gap="xs">
-                          <ColorSwatch size={rem(15)} color={swatchColor} />
-                          {color}
-                        </Group>
-                      </Chip>
-                    );
-                  })}
-                </Group>
-              </Chip.Group>
+                      return (
+                        <Chip key={color} value={color}>
+                          <Group gap="xs">
+                            <ColorSwatch size={rem(15)} color={swatchColor} />
+                            {color}
+                          </Group>
+                        </Chip>
+                      );
+                    })}
+                  </Group>
+                </Chip.Group>
+              ) : (
+                <Text size="sm" c="dimmed">
+                  Please select a gender first
+                </Text>
+              )}
             </DrawerSection>
 
             {/* Width Selector */}

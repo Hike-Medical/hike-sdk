@@ -74,7 +74,7 @@ export const fetchOrthofeetProductStyleVariants = async (
   params: GetOrthofeetProductStyleVariantsParams
 ): Promise<CatalogProductExtended[]> => {
   try {
-    const response = await backendApi.get(`supplier/orthofeet/product/style/${encodeURIComponent(params.style)}`);
+    const response = await backendApi.get('supplier/orthofeet/product/style/variants', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
