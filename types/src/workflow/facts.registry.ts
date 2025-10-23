@@ -202,6 +202,13 @@ export const FactRegistry = {
     required: true,
     schema: dateISO
   },
+  'prescriber.notes.patient_needs_diabetic_footwear': {
+    displayName: 'Patient Needs Diabetic Footwear',
+    description: 'Prescriber attests that patient needs therapeutic footwear',
+    category: 'Prescriber Notes',
+    required: true,
+    schema: z.boolean()
+  },
   'prescriber.notes.examiner.first_name': {
     displayName: 'Prescriber Notes Examiner First Name',
     description: 'First name of the practitioner who performed the foot exam',
@@ -300,13 +307,6 @@ export const FactRegistry = {
   'cert.notes.manages_diabetes': {
     displayName: 'Manages Diabetes',
     description: "Certifier attests to managing the patient's diabetes",
-    category: 'Certifier Notes',
-    required: true,
-    schema: z.boolean()
-  },
-  'cert.notes.patient_needs_diabetic_footwear': {
-    displayName: 'Patient Needs Diabetic Footwear',
-    description: 'Certifier attests that patient needs therapeutic footwear',
     category: 'Certifier Notes',
     required: true,
     schema: z.boolean()
