@@ -10,12 +10,12 @@ import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeVal
 
 interface OrthofeetProductDetailProps {
   style: string;
-  price?: number;
-  quantity?: string;
+  prefabInsertPrice?: number;
+  prefabInsertQuantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   opened: boolean;
-  onAddToCart: (variantSku: string, productName: string, quantity?: string) => void;
+  onAddToCart: (variantSku: string, productName: string, prefabInsertQuantity?: string) => void;
   onClose: () => void;
 }
 
@@ -42,8 +42,8 @@ const DrawerSection = ({
 
 export const OrthofeetProductDetail = ({
   style,
-  price,
-  quantity,
+  prefabInsertPrice,
+  prefabInsertQuantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   opened,
@@ -54,7 +54,9 @@ export const OrthofeetProductDetail = ({
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
-  const [selectedInsertQuantity, setSelectedInsertQuantity] = useState<string | undefined>(quantity || undefined);
+  const [selectedPrefabInsertQuantity, setSelectedPrefabInsertQuantity] = useState<string | undefined>(
+    prefabInsertQuantity || undefined
+  );
   const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.productDetail');
 
@@ -202,9 +204,9 @@ export const OrthofeetProductDetail = ({
     }
 
     const productName = currentVariant.name || parentProduct?.name || '';
-    const insertQuantity = price ? selectedInsertQuantity : undefined;
+    const prefabQuantity = prefabInsertPrice ? selectedPrefabInsertQuantity : undefined;
 
-    onAddToCart(variantSku, productName, insertQuantity);
+    onAddToCart(variantSku, productName, prefabQuantity);
     onClose();
   };
 
@@ -252,16 +254,18 @@ export const OrthofeetProductDetail = ({
             {/* Price Display - Only show when variant is fully selected */}
             {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
               <DrawerSection title={tShared('label.price')}>
-                {selectedInsertQuantity && price ? (
+                {selectedPrefabInsertQuantity && prefabInsertPrice ? (
                   <Stack gap="xs">
                     <Text size="sm" fw="500">
                       {t('shoePrice')}: {formatCurrency(productPrice)}
                     </Text>
                     <Text size="sm" fw="500">
-                      {t('insertPrice')}: {formatCurrency((price / 100) * Number(selectedInsertQuantity))}
+                      {t('insertPrice')}:{' '}
+                      {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
                     </Text>
                     <Text size="md" fw="600">
-                      {t('totalPrice')}: {formatCurrency(productPrice + (price / 100) * Number(selectedInsertQuantity))}
+                      {t('totalPrice')}:{' '}
+                      {formatCurrency(productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
                     </Text>
                   </Stack>
                 ) : (
@@ -359,14 +363,14 @@ export const OrthofeetProductDetail = ({
               )}
             </DrawerSection>
 
-            {/* Insert Quantity Selector */}
-            {!!price && (
+            {/* Prefab Insert Quantity Selector */}
+            {!!prefabInsertPrice && (
               <DrawerSection title={t('prefabQuantity')}>
                 <Chip.Group
                   multiple={false}
-                  value={selectedInsertQuantity?.toString() ?? ''}
+                  value={selectedPrefabInsertQuantity?.toString() ?? ''}
                   onChange={(value) => {
-                    setSelectedInsertQuantity(value === selectedInsertQuantity ? undefined : value);
+                    setSelectedPrefabInsertQuantity(value === selectedPrefabInsertQuantity ? undefined : value);
                   }}
                 >
                   <Group justify="flex-start" gap="sm">

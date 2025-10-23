@@ -1,22 +1,24 @@
+import { ReactElement } from 'react';
+
 /**
- * Generic supplier configuration interface that all suppliers should implement
+ * Base configuration that all supplier configs should extend
  */
-export interface SupplierConfig {
+export interface BaseSupplierConfig {
   supplierId: string;
-  formFieldMappings: Record<string, string>;
 }
 
 /**
- * Standard supplier catalog props
+ * Standard supplier catalog component props
  */
 export interface SupplierCatalogProps {
-  supplierId: string;
-  onAddToCart: (sku: string, name: string, metadata?: Record<string, unknown>) => void;
+  selectedSku?: string;
   isLoading?: boolean;
+  onAddToCart: (sku: string, name: string, metadata?: Record<string, unknown>) => void;
+  onRemove?: () => void;
 }
 
 /**
- * Standard supplier review props
+ * Standard supplier review component props
  */
 export interface SupplierReviewProps {
   sku: string;
@@ -32,4 +34,49 @@ export interface SupplierProduct {
   name?: string;
   image?: string;
   price?: number;
+}
+
+/**
+ * Supplier adapter return type - provides everything needed to integrate a supplier
+ */
+export interface SupplierAdapter {
+  /**
+   * Supplier configuration
+   */
+  config: {
+    supplierId: string;
+    formFieldMappings: Record<string, string>;
+  };
+
+  /**
+   * Pre-configured catalog component ready to render
+   */
+  catalog: ReactElement | null;
+
+  /**
+   * Handlers for cart operations
+   */
+  handlers: {
+    onAddToCart: (variantSku: string, variantName: string, metadata?: Record<string, unknown>) => void;
+    onRemove: () => void;
+  };
+
+  /**
+   * Loading state for supplier-specific operations
+   */
+  isLoading: boolean;
+
+  /**
+   * Error state
+   */
+  error?: Error | null;
+}
+
+/**
+ * Parameters for supplier adapters
+ */
+export interface SupplierAdapterParams {
+  supplierId: string;
+  workbenchId: string;
+  schemaId: string;
 }

@@ -53,6 +53,7 @@ export * from './hooks/auth/useVerifyInvitation';
 export * from './hooks/auto-slicer/useRunSlicerForSide';
 export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
+export * from './hooks/billing/useFetchPricingByProductType';
 export * from './hooks/catalog/useCatalogCategories';
 export * from './hooks/catalog/useCatalogImportJob';
 export * from './hooks/catalog/useCatalogProducts';

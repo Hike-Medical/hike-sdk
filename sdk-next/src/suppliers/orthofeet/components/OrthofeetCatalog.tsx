@@ -23,19 +23,19 @@ import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 import { OrthofeetSelectedProduct } from './OrthofeetSelectedProduct';
 
 export interface OrthofeetCatalogProps {
-  price?: number;
-  quantity?: string;
+  prefabInsertPrice?: number;
+  prefabInsertQuantity?: string;
   inventoryBuffer?: number;
   enableInventoryCheck?: boolean;
   isLoading?: boolean;
   selectedSku?: string;
-  onAddToCart: (variantSku: string, variantName: string, quantity?: string) => void;
+  onAddToCart: (variantSku: string, variantName: string, prefabInsertQuantity?: string) => void;
   onRemove?: () => void;
 }
 
 export const OrthofeetCatalog = ({
-  price,
-  quantity,
+  prefabInsertPrice,
+  prefabInsertQuantity,
   inventoryBuffer = 0,
   enableInventoryCheck = false,
   isLoading = false,
@@ -78,8 +78,8 @@ export const OrthofeetCatalog = ({
 
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
-  const handleAddToCart = (variantSku: string, productName: string, insertQuantity?: string) => {
-    onAddToCart(variantSku, productName, insertQuantity);
+  const handleAddToCart = (variantSku: string, productName: string, selectedPrefabQuantity?: string) => {
+    onAddToCart(variantSku, productName, selectedPrefabQuantity);
     closeDrawer();
   };
 
@@ -129,8 +129,8 @@ export const OrthofeetCatalog = ({
         {hasSelectedSku && selectedSku ? (
           <OrthofeetSelectedProduct
             sku={selectedSku}
-            price={price}
-            quantity={quantity}
+            prefabInsertPrice={prefabInsertPrice}
+            prefabInsertQuantity={prefabInsertQuantity}
             onEdit={(styleName) => {
               setDrawerProductStyle(styleName);
               setTimeout(() => setDrawerOpened(true), 0);
@@ -218,8 +218,8 @@ export const OrthofeetCatalog = ({
       {drawerProductStyle && (
         <OrthofeetProductDetail
           style={drawerProductStyle}
-          price={price}
-          quantity={quantity}
+          prefabInsertPrice={prefabInsertPrice}
+          prefabInsertQuantity={prefabInsertQuantity}
           inventoryBuffer={inventoryBuffer}
           enableInventoryCheck={enableInventoryCheck}
           opened={drawerOpened}

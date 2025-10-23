@@ -9,13 +9,19 @@ import { getProductAttributeDisplay, ORTHOFEET_ATTRIBUTES } from '../utils/attri
 
 export interface OrthofeetSelectedProductProps {
   sku: string;
-  price?: number;
-  quantity?: string;
+  prefabInsertPrice?: number;
+  prefabInsertQuantity?: string;
   onEdit: (styleName: string) => void;
   onRemove: () => void;
 }
 
-export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemove }: OrthofeetSelectedProductProps) => {
+export const OrthofeetSelectedProduct = ({
+  sku,
+  prefabInsertPrice,
+  prefabInsertQuantity,
+  onEdit,
+  onRemove
+}: OrthofeetSelectedProductProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.selectedProduct');
@@ -79,7 +85,8 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
   const productName = selectedVariant.name || parentProduct.name;
   const productImage = selectedVariant.image || parentProduct.image;
   const productPrice = selectedVariant.price ?? parentProduct.price ?? 0;
-  const insertPrice = price && quantity ? (price / 100) * Number(quantity) : 0;
+  const insertPrice =
+    prefabInsertPrice && prefabInsertQuantity ? (prefabInsertPrice / 100) * Number(prefabInsertQuantity) : 0;
   const totalPrice = productPrice + insertPrice;
 
   const handleRemoveClick = () => {
@@ -155,9 +162,9 @@ export const OrthofeetSelectedProduct = ({ sku, price, quantity, onEdit, onRemov
                   {tShared('label.width')}: {variantWidth}
                 </Badge>
               )}
-              {!!quantity && (
+              {!!prefabInsertQuantity && (
                 <Badge variant="light" color="dark">
-                  {t('prefabQuantityLabel')}: {quantity}
+                  {t('prefabQuantityLabel')}: {prefabInsertQuantity}
                 </Badge>
               )}
             </Group>
