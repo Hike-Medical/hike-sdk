@@ -5,7 +5,7 @@ import { useOrthofeetProductStyleVariants } from '@hike/ui';
 import { Alert, Badge, Button, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
-import { getProductAttributeDisplay, ORTHOFEET_ATTRIBUTES } from '../utils/attributeHelpers';
+import { productBuilder } from '../utils/productBuilder';
 
 export interface OrthofeetSelectedProductProps {
   sku: string;
@@ -63,10 +63,10 @@ export const OrthofeetSelectedProduct = ({
     );
   }
 
-  const parentProduct = productVariants.find((p) => !p.parentId);
-  const selectedVariant = productVariants.find((p) => p.sku === sku);
+  // Extract product data
+  const product = productBuilder(productVariants, sku);
 
-  if (!parentProduct || !selectedVariant) {
+  if (!product) {
     return (
       <Alert color="yellow" title={t('variantNotFoundTitle')}>
         {t('variantNotFoundMessage')}
@@ -74,17 +74,11 @@ export const OrthofeetSelectedProduct = ({
     );
   }
 
-  // Extract attributes
-  const getAttribute = (key: string) => getProductAttributeDisplay(selectedVariant, key);
-  const styleName = getAttribute(ORTHOFEET_ATTRIBUTES.STYLE_NAME);
-  const variantColor = getAttribute(ORTHOFEET_ATTRIBUTES.COLOR);
-  const variantSize = getAttribute(ORTHOFEET_ATTRIBUTES.SIZE);
-  const variantWidth = getAttribute(ORTHOFEET_ATTRIBUTES.WIDTH);
+  // Destructure product data
+  const { name: productName, image: productImage, price: productPrice, attributes } = product;
+  const { style: styleName, size: variantSize, color: variantColor, width: variantWidth } = attributes;
 
   // Calculate prices
-  const productName = selectedVariant.name || parentProduct.name;
-  const productImage = selectedVariant.image || parentProduct.image;
-  const productPrice = selectedVariant.price ?? parentProduct.price ?? 0;
   const insertPrice =
     prefabInsertPrice && prefabInsertQuantity ? (prefabInsertPrice / 100) * Number(prefabInsertQuantity) : 0;
   const totalPrice = productPrice + insertPrice;

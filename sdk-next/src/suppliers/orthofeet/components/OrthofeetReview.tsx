@@ -1,46 +1,54 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
-import { useCatalogProducts } from '@hike/ui';
-import { Alert, Badge, Group, Loader, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
+import { useOrthofeetProductStyleVariants } from '@hike/ui';
+import { Alert, Badge, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { ORTHOFEET_ATTRIBUTES, getProductAttributeDisplay } from '../utils/attributeHelpers';
+import { productBuilder } from '../utils/productBuilder';
 
 export interface OrthofeetReviewProps {
   sku: string;
-  supplierId: string;
 }
 
-export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
+export const OrthofeetReview = ({ sku }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.review');
 
-  const { data: orthofeetProduct, isPending: isOrthofeetProductPending } = useCatalogProducts({
-    params: {
-      term: sku,
-      includeVariants: true,
-      filter: { supplierId }
-    },
-    enabled: !!supplierId && !!sku
+  const {
+    data: productVariants,
+    isLoading,
+    isFetching,
+    isError
+  } = useOrthofeetProductStyleVariants({
+    params: { sku },
+    enabled: !!sku,
+    staleTime: 5 * 60 * 1000,
+    retry: 2
   });
 
-  // Find the variant - it could be directly in the results or in a parent's children array
-  const selectedVariant = orthofeetProduct?.data?.find((product) => product.sku === sku);
-
-  // Find the parent product - either it has children or we need to find by parentId
-  const selectedProduct = selectedVariant?.parentId
-    ? orthofeetProduct?.data?.find((product) => product.id === selectedVariant.parentId)
-    : orthofeetProduct?.data?.find((product) => product.children?.some((variant) => variant.sku === sku));
-
-  if (isOrthofeetProductPending) {
-    return <Loader />;
+  // Show loading
+  if (isLoading || (isFetching && !productVariants)) {
+    return (
+      <Stack gap="md" pos="relative" mih={200}>
+        <LoadingOverlay visible />
+      </Stack>
+    );
   }
 
-  if (!selectedProduct || !selectedVariant) {
+  // Show error
+  if (isError) {
     return (
-      <Alert title={t('notFoundTitle')}>
+      <Alert color="red" title={t('errorLoadingTitle')}>
+        {t('errorLoadingMessage')}
+      </Alert>
+    );
+  }
+
+  // Show not found
+  if (!productVariants || productVariants.length === 0) {
+    return (
+      <Alert color="yellow" title={t('notFoundTitle')}>
         {t.rich('notFoundMessage', {
           sku,
           b: (chunks) => <strong>{chunks}</strong>
@@ -49,48 +57,60 @@ export const OrthofeetReview = ({ sku, supplierId }: OrthofeetReviewProps) => {
     );
   }
 
-  // Extract attributes from the variant (with description fallback to value)
-  const color = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.COLOR);
-  const size = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.SIZE);
-  const width = getProductAttributeDisplay(selectedVariant, ORTHOFEET_ATTRIBUTES.WIDTH);
+  // Extract product data
+  const product = productBuilder(productVariants, sku);
+
+  if (!product) {
+    return (
+      <Alert color="yellow" title={t('variantNotFoundTitle')}>
+        {t('variantNotFoundMessage')}
+      </Alert>
+    );
+  }
+
+  // Destructure product data
+  const { name: productName, image: productImage, price: productPrice, attributes } = product;
+  const { size: variantSize, color: variantColor, width: variantWidth } = attributes;
+
+  // Helper to render badges
+  const renderBadge = (label: string, value: string) => (
+    <Badge key={label} variant="light" color="dark">
+      {label}: {value}
+    </Badge>
+  );
 
   return (
-    <Paper p="md" withBorder>
-      <Stack gap="xs">
-        <Image
-          src={selectedProduct?.image || ''}
-          alt={selectedProduct.name}
-          width={600}
-          height={400}
-          style={{
-            backgroundColor: theme.colors.gray[3],
-            borderRadius: theme.radius.lg,
-            objectFit: 'cover'
-          }}
-        />
-        <Text size="md" fw="500">
-          {selectedProduct.name}
+    <Paper p="md" withBorder radius="md" maw={400}>
+      <Stack gap="sm">
+        {/* Product Image */}
+        {productImage && (
+          <Image
+            src={productImage}
+            alt={productName}
+            radius="sm"
+            h={200}
+            w="100%"
+            fit="contain"
+            style={{ backgroundColor: theme.colors.gray[0] }}
+          />
+        )}
+
+        {/* Product Name */}
+        <Text size="md" fw={600} lineClamp={2}>
+          {productName}
         </Text>
-        <Text size="md" fw="600">
-          {tShared('label.price')}: {formatCurrency(selectedProduct.price ?? selectedProduct.parent?.price ?? 0)}
-        </Text>
-        <Group>
-          {size && (
-            <Badge variant="light" color="dark">
-              {tShared('label.size')}: {size}
-            </Badge>
-          )}
-          {color && (
-            <Badge variant="light" color="dark">
-              {tShared('label.color')}: {color}
-            </Badge>
-          )}
-          {width && (
-            <Badge variant="light" color="dark">
-              {tShared('label.width')}: {width}
-            </Badge>
-          )}
+
+        {/* Variant Attributes */}
+        <Group gap="xs" wrap="wrap">
+          {variantSize && renderBadge(tShared('label.size'), variantSize)}
+          {variantColor && renderBadge(tShared('label.color'), variantColor)}
+          {variantWidth && renderBadge(tShared('label.width'), variantWidth)}
         </Group>
+
+        {/* Price */}
+        <Text size="md" fw={600} c="blue">
+          {formatCurrency(productPrice)}
+        </Text>
       </Stack>
     </Paper>
   );
