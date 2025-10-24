@@ -1,7 +1,7 @@
 'use client';
 
 import { OrthofeetProductStyle } from '@hike/sdk';
-import { useOrthofeetFilters, useOrthofeetProductStyles } from '@hike/ui';
+import { useOrthofeetFilters, useOrthofeetProductStyles, useOrthofeetProductStyleVariants } from '@hike/ui';
 import {
   Alert,
   Box,
@@ -17,7 +17,8 @@ import {
 } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { productBuilder } from '../utils/productBuilder';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 import { OrthofeetSelectedProduct } from './OrthofeetSelectedProduct';
@@ -78,6 +79,19 @@ export const OrthofeetCatalog = ({
 
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
 
+  // Fetch selected product variants to build product object
+  const { data: selectedProductVariants } = useOrthofeetProductStyleVariants({
+    params: { sku: selectedSku || '' },
+    enabled: hasSelectedSku,
+    staleTime: 5 * 60 * 1000
+  });
+
+  // Build selected product once
+  const selectedProduct = useMemo(
+    () => (selectedProductVariants && selectedSku ? productBuilder(selectedProductVariants, selectedSku) : null),
+    [selectedProductVariants, selectedSku]
+  );
+
   const handleAddToCart = (variantSku: string, productName: string, selectedPrefabQuantity?: string) => {
     onAddToCart(variantSku, productName, selectedPrefabQuantity);
     closeDrawer();
@@ -126,13 +140,13 @@ export const OrthofeetCatalog = ({
         <div ref={scrollContainerRef} />
 
         {/* Show selected product if a valid SKU is provided */}
-        {hasSelectedSku && selectedSku ? (
+        {selectedProduct ? (
           <OrthofeetSelectedProduct
-            sku={selectedSku}
+            product={selectedProduct}
             prefabInsertPrice={prefabInsertPrice}
             prefabInsertQuantity={prefabInsertQuantity}
-            onEdit={(styleName) => {
-              setDrawerProductStyle(styleName);
+            onEdit={() => {
+              // Open drawer for editing - will use editingSku to fetch and pre-populate
               setTimeout(() => setDrawerOpened(true), 0);
             }}
             onRemove={onRemove!}
@@ -215,9 +229,10 @@ export const OrthofeetCatalog = ({
       </Stack>
 
       {/* Product Detail Drawer */}
-      {drawerProductStyle && (
+      {(drawerProductStyle || (drawerOpened && hasSelectedSku)) && (
         <OrthofeetProductDetail
           style={drawerProductStyle}
+          editingSku={drawerOpened && hasSelectedSku ? selectedSku : undefined}
           prefabInsertPrice={prefabInsertPrice}
           prefabInsertQuantity={prefabInsertQuantity}
           inventoryBuffer={inventoryBuffer}

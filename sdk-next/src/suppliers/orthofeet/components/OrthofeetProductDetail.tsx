@@ -2,14 +2,29 @@
 
 import { formatCurrency, getColorHex } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
-import { Badge, Box, Button, Chip, ColorSwatch, Divider, Drawer, Group, Stack, Text, Title, rem } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Button,
+  Chip,
+  ColorSwatch,
+  Divider,
+  Drawer,
+  Group,
+  Image,
+  Stack,
+  Text,
+  Title,
+  rem
+} from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useMemo, useState } from 'react';
 import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeValues } from '../utils/attributeHelpers';
 
 interface OrthofeetProductDetailProps {
-  style: string;
+  style?: string;
+  editingSku?: string;
   prefabInsertPrice?: number;
   prefabInsertQuantity?: string;
   inventoryBuffer?: number;
@@ -42,6 +57,7 @@ const DrawerSection = ({
 
 export const OrthofeetProductDetail = ({
   style,
+  editingSku,
   prefabInsertPrice,
   prefabInsertQuantity,
   inventoryBuffer = 0,
@@ -50,23 +66,43 @@ export const OrthofeetProductDetail = ({
   onClose,
   onAddToCart
 }: OrthofeetProductDetailProps) => {
-  const [selectedGender, setSelectedGender] = useState<string | undefined>();
-  const [selectedColor, setSelectedColor] = useState<string | undefined>();
-  const [selectedWidth, setSelectedWidth] = useState<string | undefined>();
-  const [selectedSize, setSelectedSize] = useState<string | undefined>();
-  const [selectedPrefabInsertQuantity, setSelectedPrefabInsertQuantity] = useState<string | undefined>(
-    prefabInsertQuantity || undefined
-  );
   const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.productDetail');
 
+  // Fetch by style or by SKU
   const { data: allProducts } = useOrthofeetProductStyleVariants({
-    params: { style },
-    enabled: opened && !!style
+    params: style ? { style } : editingSku ? { sku: editingSku } : {},
+    enabled: opened && (!!style || !!editingSku)
   });
 
   const parentProduct = useMemo(() => allProducts?.find((p) => !p.parentId), [allProducts]);
   const variants = useMemo(() => allProducts?.filter((p) => p.parentId) || [], [allProducts]);
+
+  // Find editing variant to pre-populate selections
+  const editingVariant = useMemo(
+    () => (editingSku ? variants.find((v) => v.sku === editingSku) : undefined),
+    [editingSku, variants]
+  );
+
+  // Get attributes helper
+  const getAttribute = (product: typeof editingVariant, key: string) =>
+    product?.attributes?.find((a) => a.key === key)?.value;
+
+  const [selectedGender, setSelectedGender] = useState<string | undefined>(
+    editingVariant ? getAttribute(editingVariant, ORTHOFEET_ATTRIBUTES.GENDER) : undefined
+  );
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    editingVariant ? getAttribute(editingVariant, ORTHOFEET_ATTRIBUTES.COLOR) : undefined
+  );
+  const [selectedWidth, setSelectedWidth] = useState<string | undefined>(
+    editingVariant ? getAttribute(editingVariant, ORTHOFEET_ATTRIBUTES.WIDTH) : undefined
+  );
+  const [selectedSize, setSelectedSize] = useState<string | undefined>(
+    editingVariant ? getAttribute(editingVariant, ORTHOFEET_ATTRIBUTES.SIZE) : undefined
+  );
+  const [selectedPrefabInsertQuantity, setSelectedPrefabInsertQuantity] = useState<string | undefined>(
+    prefabInsertQuantity || undefined
+  );
 
   // Get all unique genders
   const genders = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.GENDER), [variants]);
@@ -215,13 +251,19 @@ export const OrthofeetProductDetail = ({
   const isButtonDisabled =
     !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
 
+  // Get current product image (variant image or fallback to parent)
+  const currentImage = currentVariant?.image || parentProduct?.image;
+
   return (
     <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
       <Drawer.Overlay />
       <Drawer.Content>
         <Stack px={{ base: 'sm', sm: 'lg' }} py={{ base: 'sm', sm: 'lg' }} gap="sm">
-          <Group justify="space-between" wrap="nowrap">
+          <Group justify="space-between" wrap="nowrap" gap="md">
             <Drawer.CloseButton size="lg" />
+            {currentImage && (
+              <Image src={currentImage} alt={parentProduct?.name || ''} w={50} h={50} fit="contain" radius="sm" />
+            )}
             <Drawer.Title
               ta="center"
               fw="600"

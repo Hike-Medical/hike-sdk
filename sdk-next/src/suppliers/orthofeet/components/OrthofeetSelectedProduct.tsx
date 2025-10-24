@@ -1,22 +1,21 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
-import { useOrthofeetProductStyleVariants } from '@hike/ui';
-import { Alert, Badge, Button, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
+import { Alert, Badge, Button, Group, Image, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
-import { productBuilder } from '../utils/productBuilder';
+import type { OrthofeetProduct } from '../utils/productBuilder';
 
 export interface OrthofeetSelectedProductProps {
-  sku: string;
+  product: OrthofeetProduct;
   prefabInsertPrice?: number;
   prefabInsertQuantity?: string;
-  onEdit: (styleName: string) => void;
+  onEdit: () => void;
   onRemove: () => void;
 }
 
 export const OrthofeetSelectedProduct = ({
-  sku,
+  product,
   prefabInsertPrice,
   prefabInsertQuantity,
   onEdit,
@@ -26,57 +25,9 @@ export const OrthofeetSelectedProduct = ({
   const tShared = useTranslations('shared');
   const t = useTranslations('components.orthofeet.selectedProduct');
 
-  const {
-    data: productVariants,
-    isLoading,
-    isFetching,
-    isError
-  } = useOrthofeetProductStyleVariants({
-    params: { sku },
-    enabled: !!sku,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    retry: 2
-  });
-
-  // Show loading during initial fetch or when refetching without data
-  if (isLoading || (isFetching && !productVariants)) {
-    return (
-      <Stack gap="md" pos="relative" mih={200}>
-        <LoadingOverlay visible />
-      </Stack>
-    );
-  }
-
-  if (isError) {
-    return (
-      <Alert color="red" title={t('errorLoadingTitle')}>
-        {t('errorLoadingMessage')}
-      </Alert>
-    );
-  }
-
-  if (!productVariants?.length) {
-    return (
-      <Alert color="yellow" title={t('notFoundTitle')}>
-        {t('notFoundMessage')}
-      </Alert>
-    );
-  }
-
-  // Extract product data
-  const product = productBuilder(productVariants, sku);
-
-  if (!product) {
-    return (
-      <Alert color="yellow" title={t('variantNotFoundTitle')}>
-        {t('variantNotFoundMessage')}
-      </Alert>
-    );
-  }
-
   // Destructure product data
   const { name: productName, image: productImage, price: productPrice, attributes } = product;
-  const { style: styleName, size: variantSize, color: variantColor, width: variantWidth } = attributes;
+  const { size: variantSize, color: variantColor, width: variantWidth } = attributes;
 
   // Calculate prices
   const insertPrice =
@@ -164,7 +115,7 @@ export const OrthofeetSelectedProduct = ({
             </Group>
 
             <Group pt="md">
-              <Button onClick={() => styleName && onEdit(styleName)} variant="light">
+              <Button onClick={onEdit} variant="light">
                 {t('editPair')}
               </Button>
               <Button color="red" variant="light" onClick={handleRemoveClick}>
