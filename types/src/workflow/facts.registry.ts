@@ -679,7 +679,7 @@ export const FactRegistry = {
   },
 
   // Calculations
-  'calculations.foot.exam.expiration.date': {
+  'calculations.expiration.foot_exam.date': {
     displayName: 'Foot Exam Expiration Date',
     description: 'Date when the foot examination expires',
     category: 'Calculations',
@@ -687,7 +687,7 @@ export const FactRegistry = {
     schema: dateISO
   },
 
-  'calculations.dm.visit.expiration.date': {
+  'calculations.expiration.cert.notes.last_dm_visit_date': {
     displayName: 'Diabetes Management Visit Expiration Date',
     description: 'Date when the diabetes management visit expires',
     category: 'Calculations',
@@ -695,7 +695,7 @@ export const FactRegistry = {
     schema: dateISO
   },
 
-  'calculations.certifying.statement.expiration.date': {
+  'calculations.expiration.cert.statement.signature_date': {
     displayName: 'Certifying Statement Expiration Date',
     description: 'Date when the certifying statement expires',
     category: 'Calculations',
@@ -703,9 +703,16 @@ export const FactRegistry = {
     schema: dateISO
   },
 
-  'calculations.certifying.statement.hard.expiration.date': {
-    displayName: 'Certifying Statement Hard Expiration Date',
-    description: 'Date when the certifying statement hard expires',
+  'calculations.expiration.prescriber.notes.certifying_agreement.date': {
+    displayName: 'Prescriber Notes Certifying Agreement Expiration Date',
+    description: 'Date when the prescriber notes certifying agreement expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO
+  },
+  'calculations.expiration.earliest_date': {
+    displayName: 'Earliest Expiration Date',
+    description: 'Date when the earliest expiration date expires',
     category: 'Calculations',
     required: false,
     schema: dateISO
