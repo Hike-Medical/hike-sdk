@@ -676,6 +676,39 @@ export const FactRegistry = {
     category: 'Other',
     required: false,
     schema: z.string().min(1)
+  },
+
+  // Calculations
+  'calculations.foot.exam.expiration.date': {
+    displayName: 'Foot Exam Expiration Date',
+    description: 'Date when the foot examination expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO
+  },
+
+  'calculations.dm.visit.expiration.date': {
+    displayName: 'Diabetes Management Visit Expiration Date',
+    description: 'Date when the diabetes management visit expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO
+  },
+
+  'calculations.certifying.statement.expiration.date': {
+    displayName: 'Certifying Statement Expiration Date',
+    description: 'Date when the certifying statement expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO
+  },
+
+  'calculations.certifying.statement.hard.expiration.date': {
+    displayName: 'Certifying Statement Hard Expiration Date',
+    description: 'Date when the certifying statement hard expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO
   }
 } as const;
 
