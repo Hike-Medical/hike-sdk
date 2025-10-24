@@ -2,6 +2,7 @@
 
 import { useFlattenedSubmission, useFormSubmission, useUpsertSubmission } from '@hike/ui';
 import { notifications } from '@mantine/notifications';
+import { useQueryClient } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
 import type { SupplierAdapterParams } from '../types';
@@ -46,6 +47,7 @@ export interface UseSupplierAdapterResult {
  */
 export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAdapterResult => {
   const { supplierId, workbenchId, schemaId } = params;
+  const queryClient = useQueryClient();
 
   // Fetch form submission data (always called - stable hook order)
   const { data: formSubmissionData, isPending: isFormSubmissionPending } = useFormSubmission({
@@ -64,7 +66,9 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
   // Setup upsert mutation (always called - stable hook order)
   const { mutate: upsertSubmission, isPending: isUpsertSubmissionPending } = useUpsertSubmission({
     onSuccess: () => {
-      // Queries will auto-refetch due to cache invalidation
+      // Invalidate form queries to trigger refetch and update UI
+      queryClient.invalidateQueries({ queryKey: ['formSubmission', schemaId, workbenchId] });
+      queryClient.invalidateQueries({ queryKey: ['flattenedSubmission', workbenchId] });
     },
     onError: () => {
       notifications.show({
