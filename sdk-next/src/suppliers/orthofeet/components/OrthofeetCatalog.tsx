@@ -46,7 +46,8 @@ export const OrthofeetCatalog = ({
 }: OrthofeetCatalogProps) => {
   const [selectedGender, setSelectedGender] = useState<string | undefined>();
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
-  const [drawerProductStyle, setDrawerProductStyle] = useState<string | undefined>();
+  const [drawerStyle, setDrawerStyle] = useState<string | undefined>();
+  const [drawerEditingSku, setDrawerEditingSku] = useState<string | undefined>();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
   const [searchTerm, setSearchTerm] = useState('');
@@ -98,13 +99,23 @@ export const OrthofeetCatalog = ({
   };
 
   const openProductDrawer = (productStyle: OrthofeetProductStyle) => {
-    setDrawerProductStyle(productStyle.value);
+    setDrawerStyle(productStyle.value);
+    setDrawerEditingSku(undefined);
+    setTimeout(() => setDrawerOpened(true), 0);
+  };
+
+  const openEditDrawer = () => {
+    setDrawerStyle(undefined);
+    setDrawerEditingSku(selectedSku);
     setTimeout(() => setDrawerOpened(true), 0);
   };
 
   const closeDrawer = () => {
     setDrawerOpened(false);
-    setTimeout(() => setDrawerProductStyle(undefined), 300);
+    setTimeout(() => {
+      setDrawerStyle(undefined);
+      setDrawerEditingSku(undefined);
+    }, 300);
   };
 
   const toggleFilter = <T,>(currentValue: T | undefined, newValue: T) => {
@@ -145,10 +156,7 @@ export const OrthofeetCatalog = ({
             product={selectedProduct}
             prefabInsertPrice={prefabInsertPrice}
             prefabInsertQuantity={prefabInsertQuantity}
-            onEdit={() => {
-              // Open drawer for editing - will use editingSku to fetch and pre-populate
-              setTimeout(() => setDrawerOpened(true), 0);
-            }}
+            onEdit={openEditDrawer}
             onRemove={onRemove!}
           />
         ) : (
@@ -229,10 +237,10 @@ export const OrthofeetCatalog = ({
       </Stack>
 
       {/* Product Detail Drawer */}
-      {(drawerProductStyle || (drawerOpened && hasSelectedSku)) && (
+      {(drawerStyle || drawerEditingSku) && (
         <OrthofeetProductDetail
-          style={drawerProductStyle}
-          editingSku={drawerOpened && hasSelectedSku ? selectedSku : undefined}
+          style={drawerStyle}
+          editingSku={drawerEditingSku}
           prefabInsertPrice={prefabInsertPrice}
           prefabInsertQuantity={prefabInsertQuantity}
           inventoryBuffer={inventoryBuffer}
