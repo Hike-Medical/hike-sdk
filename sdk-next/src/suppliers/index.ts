@@ -13,6 +13,7 @@ export { SUPPLIER_ADAPTERS, getSupportedSupplierIds, isSupplierSupported } from 
 
 // Hooks
 export { useSupplierAdapter } from './hooks/useSupplierAdapter';
+export type { UseSupplierAdapterResult } from './hooks/useSupplierAdapter';
 
 // Orthofeet exports
 export * from './orthofeet';

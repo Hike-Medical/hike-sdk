@@ -2,8 +2,9 @@
 
 import { useFlattenedSubmission, useFormSubmission, useUpsertSubmission } from '@hike/ui';
 import { notifications } from '@mantine/notifications';
+import { useMemo } from 'react';
 import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
-import type { SupplierAdapter, SupplierAdapterParams } from '../types';
+import type { SupplierAdapterParams } from '../types';
 
 /**
  * Internal parameters passed to supplier-specific adapters
@@ -16,40 +17,51 @@ export interface InternalSupplierAdapterParams extends SupplierAdapterParams {
 }
 
 /**
+ * Return type for useSupplierAdapter hook
+ */
+export interface UseSupplierAdapterResult {
+  catalog: React.ReactNode | null;
+  isLoading: boolean;
+  isSupported: boolean;
+}
+
+/**
  * Central hook that returns supplier-specific adapter
  *
  * @param params - Supplier adapter parameters (workbenchId, schemaId, supplierId)
- * @returns Supplier adapter with config, catalog component, and handlers
+ * @returns Object with catalog component, loading state, and support status
  *
  * @example
  * ```tsx
- * const adapter = useSupplierAdapter({
+ * const { catalog, isLoading, isSupported } = useSupplierAdapter({
  *   supplierId: 'orthofeet-id',
  *   workbenchId: '123',
  *   schemaId: '456'
  * });
  *
- * return adapter?.catalog;
+ * if (!isSupported) return <Alert>Not supported</Alert>;
+ * if (isLoading) return <LoadingOverlay />;
+ * return catalog;
  * ```
  */
-export const useSupplierAdapter = (params: SupplierAdapterParams): SupplierAdapter | null => {
+export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAdapterResult => {
   const { supplierId, workbenchId, schemaId } = params;
 
-  // Fetch form submission data
+  // Fetch form submission data (always called - stable hook order)
   const { data: formSubmissionData, isPending: isFormSubmissionPending } = useFormSubmission({
     schemaId,
     workbenchId,
     enabled: !!schemaId && !!workbenchId
   });
 
-  // Fetch flattened form submission data
+  // Fetch flattened form submission data (always called - stable hook order)
   const { data: formSubmissionFlattenedData, isPending: isFormSubmissionFlattenedPending } = useFlattenedSubmission({
     refetchOnMount: true,
     workbenchId,
     enabled: !!schemaId && !!workbenchId
   });
 
-  // Setup upsert mutation with auto-refetch
+  // Setup upsert mutation (always called - stable hook order)
   const { mutate: upsertSubmission, isPending: isUpsertSubmissionPending } = useUpsertSubmission({
     onSuccess: () => {
       // Queries will auto-refetch due to cache invalidation
@@ -66,30 +78,30 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): SupplierAdapt
   const isPreFabOrHeatMoldable = formSubmissionFlattenedData?.isPreFabOrHeatMoldable === 'Yes';
   const isFormLoading = isUpsertSubmissionPending || isFormSubmissionPending || isFormSubmissionFlattenedPending;
 
-  // Return null for unsupported suppliers
-  if (!isSupplierSupported(supplierId)) {
-    return null;
-  }
+  // Check if supplier is supported
+  const isSupported = isSupplierSupported(supplierId);
+  const adapterHook = isSupported ? SUPPLIER_ADAPTERS[supplierId] : null;
 
-  // Get the appropriate adapter hook and call it with internal params
-  const adapterHook = SUPPLIER_ADAPTERS[supplierId];
-  if (!adapterHook) {
-    return null;
-  }
+  // Prepare internal params
+  const internalParams: InternalSupplierAdapterParams = useMemo(
+    () => ({
+      ...params,
+      formSubmissionData: formSubmissionData?.data,
+      upsertSubmission,
+      isPreFabOrHeatMoldable,
+      isFormLoading
+    }),
+    [params, formSubmissionData?.data, upsertSubmission, isPreFabOrHeatMoldable, isFormLoading]
+  );
 
-  const internalParams: InternalSupplierAdapterParams = {
-    ...params,
-    formSubmissionData: formSubmissionData?.data,
-    upsertSubmission,
-    isPreFabOrHeatMoldable,
-    isFormLoading
-  };
+  // Call adapter hook unconditionally (stable hook order - React Compiler ready)
+  // All registered adapters MUST have stable hook implementations
+  const adapter = adapterHook?.(internalParams) ?? null;
 
-  const adapter = adapterHook(internalParams);
-
-  // Merge form loading state with adapter loading state
+  // Return idiomatic destructurable object
   return {
-    ...adapter,
-    isLoading: isFormLoading || adapter.isLoading
+    catalog: adapter?.catalog ?? null,
+    isLoading: isFormLoading || (adapter?.isLoading ?? false),
+    isSupported
   };
 };
