@@ -3,13 +3,25 @@ import type { PagedParams } from '../PagedParams';
 
 export interface GetProductsParams extends PagedParams {
   term?: string;
-  categoryId?: string;
-  manufacturerId?: string;
-  supplierId?: string;
-  deviceTypeId?: string;
-  billingCode?: string;
   minPrice?: number;
   maxPrice?: number;
-  sortBy?: 'name' | 'createdAt' | 'updatedAt' | 'favorite';
+  includeVariants?: boolean;
+  filter?: Partial<
+    Record<
+      | 'id'
+      | 'externalId'
+      | 'name'
+      | 'sku'
+      | 'categoryId'
+      | 'manufacturerId'
+      | 'supplierId'
+      | 'deviceTypeId'
+      | 'billingCode'
+      | 'active'
+      | 'featured',
+      string
+    >
+  >;
+  sortBy?: 'name' | 'sku' | 'price' | 'featured' | 'createdAt' | 'updatedAt';
   sortOrder?: Prisma.SortOrder;
 }

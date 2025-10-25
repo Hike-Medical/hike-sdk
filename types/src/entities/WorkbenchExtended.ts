@@ -6,6 +6,7 @@ import { OrderWithShippingLabel } from './OrderWithShippingLabel';
 import { PatientExtended } from './PatientExtended';
 
 export interface WorkbenchPdfUrls {
+  orderFormExists?: boolean;
   orderFormPdfUrl?: string;
   patientFormPdfUrl?: string;
   deliveryReceiptPdfUrl?: string;

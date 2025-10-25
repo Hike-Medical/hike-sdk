@@ -158,6 +158,7 @@ export const createWorkflowWithFile = async (data: {
   };
   externalPatientId?: string;
   externalEvaluationId?: string;
+  parentWorkflowId?: string;
 }): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.post('workflow/create-with-file', data);

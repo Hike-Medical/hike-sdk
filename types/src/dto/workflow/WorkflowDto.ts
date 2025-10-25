@@ -87,6 +87,13 @@ export interface WorkflowStateDto {
     companyId: string;
     metadata?: any;
   }[];
+  calculations?: {
+    key: string;
+    value: any;
+    sourceAttachments: string[];
+    sourceFactsIds: string[];
+    evaluatedAt: string;
+  }[];
 }
 
 export interface WorkflowFactDto {

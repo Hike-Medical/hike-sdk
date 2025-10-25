@@ -1,6 +1,6 @@
+import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 import { FormSubmissionTyped } from 'forms/FormSubmissionTyped';
 import { OrderAuthorizationStatus, OrderStatus, Prisma, ProductType } from '../../../prisma';
-import { FormSchemaTyped } from 'forms/FormSchemaTyped';
 import { WorkbenchPdfUrls } from '../../entities/WorkbenchExtended';
 
 export interface StationWorkbench extends WorkbenchPdfUrls {
@@ -32,6 +32,9 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   finishingCompletedBy?: string | null;
   shippingCompletedAt?: Date | null;
   shippingCompletedBy?: string | null;
+  rushedAt?: Date | null;
+  isOutsideClinic?: boolean;
+  isRejected?: boolean;
   formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 }
 
@@ -76,4 +79,3 @@ export type StationWorkbenchOrderBy =
   | 'addonCompletedAt';
 
 export type WorkbenchSubmissionsFilter = [string, string] | [string, string[]];
-

@@ -11,7 +11,7 @@ export interface TransformedCatalogProduct {
   image?: string;
   price?: number;
   active?: boolean;
-  favorite?: boolean;
+  featured?: boolean;
   manufacturer?: string;
   createdAt?: Date;
   updatedAt?: Date;

@@ -6,7 +6,9 @@ import {
   Foot,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
+  GetCompletedStationParams,
   GetManufacturingWorkbenchParams,
+  GetPastTenseStationsParams,
   GetPrintFarmWorkbenchParams,
   GetStationsParams,
   GetWorkbenchDevSummaryParams,
@@ -27,6 +29,8 @@ import {
   Workbench,
   WorkbenchDevSummary,
   WorkbenchExtended,
+  WorkbenchPdfs,
+  WorkbenchPdfType,
   WorkbenchStatus,
   WorkbenchSummary
 } from '@hike/types';
@@ -236,6 +240,52 @@ export const getStationWorkbenches = async (
   try {
     const response = await backendApi.get('workbench/stations', {
       params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getPastTenseStations = async (
+  params: GetPastTenseStationsParams,
+  companyIds?: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/past-tense-stations', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCompletedStation = async (
+  params: GetCompletedStationParams,
+  companyIds: string[]
+): Promise<PagedResponse<StationWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/completed-station', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkbenchPdfs = async (
+  workbenchId: string,
+  companyIds: string[],
+  pdfType?: WorkbenchPdfType
+): Promise<WorkbenchPdfs> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/pdfs`, {
+      params: pdfType ? { type: pdfType } : undefined,
       headers: addHeaders(companyIds)
     });
     return response.data;
