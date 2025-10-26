@@ -13,6 +13,7 @@ interface CreateWorkflowWithFileParams {
   };
   externalPatientId?: string;
   externalEvaluationId?: string;
+  parentWorkflowId?: string;
 }
 
 export const useCreateWorkflowWithFile = (
