@@ -25,7 +25,7 @@ interface InterpretedAuditLog extends WorkflowLogDto {
  */
 export const interpretAuditLog = (log: WorkflowLogDto): InterpretedAuditLog => {
   const logWithUser = log;
-  if (log.user === null) {
+  if (log.user === null || log.user === undefined) {
     logWithUser.user = {
       id: 'system',
       email: 'system@hike.com',
