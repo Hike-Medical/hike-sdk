@@ -669,15 +669,6 @@ export const FactRegistry = {
     schema: z.string().min(1)
   },
 
-  // Other
-  'fitter.clinic_name': {
-    displayName: 'Fitter Clinic Name',
-    description: 'Name of the clinic where the footwear was fitted',
-    category: 'Other',
-    required: false,
-    schema: z.string().min(1)
-  },
-
   // Calculations
   'calculations.expiration.foot_exam.date': {
     displayName: 'Foot Exam Expiration Date',
