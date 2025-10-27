@@ -1,16 +1,4 @@
-import { WorkflowStatus, WorkflowStepStatus } from '../../../prisma';
-
-export const WorkflowStatusEnum = {
-  CREATED: 'CREATED',
-  IN_PROGRESS: 'IN_PROGRESS',
-  SUCCEEDED: 'SUCCEEDED',
-  FAILED: 'FAILED',
-  CANCELLED: 'CANCELLED'
-} as const satisfies Record<WorkflowStatus, WorkflowStatus> & {
-  [K in WorkflowStatus]: K;
-};
-
-export const WorkflowStatusList = Object.values(WorkflowStatusEnum);
+import { WorkflowStepStatus } from '../../../prisma';
 
 export const WorkflowStepStatusEnum = {
   IN_PROGRESS: 'IN_PROGRESS',
