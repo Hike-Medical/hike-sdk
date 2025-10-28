@@ -88,10 +88,10 @@ export const OrthofeetReview = ({ sku }: OrthofeetReviewProps) => {
             src={productImage}
             alt={productName}
             radius="sm"
-            h={200}
+            h="auto"
             w="100%"
             fit="contain"
-            style={{ backgroundColor: theme.colors.gray[0] }}
+            style={{ backgroundColor: theme.colors.gray[0], maxHeight: 200 }}
           />
         )}
 

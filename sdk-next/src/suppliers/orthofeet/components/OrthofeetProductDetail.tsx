@@ -1,6 +1,6 @@
 'use client';
 
-import { formatCurrency, getColorHex } from '@hike/sdk';
+import { formatCurrency } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
 import {
   Badge,
@@ -13,6 +13,7 @@ import {
   Group,
   Image,
   Stack,
+  Table,
   Text,
   Title,
   rem
@@ -20,7 +21,13 @@ import {
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useMemo, useState } from 'react';
-import { ORTHOFEET_ATTRIBUTES, filterProductsByAttributes, getUniqueAttributeValues } from '../utils/attributeHelpers';
+import {
+  ORTHOFEET_ATTRIBUTES,
+  filterProductsByAttributes,
+  getProductAttributeDisplay,
+  getUniqueAttributeOptions
+} from '../utils/attributeHelpers';
+import { getOrthofeetColorHex } from '../utils/colorMap';
 
 interface OrthofeetProductDetailProps {
   style?: string;
@@ -104,9 +111,9 @@ export const OrthofeetProductDetail = ({
     prefabInsertQuantity || undefined
   );
 
-  // Get all unique genders
-  const genders = useMemo(() => getUniqueAttributeValues(variants, ORTHOFEET_ATTRIBUTES.GENDER), [variants]);
-  const showGenderSelector = genders.length > 1;
+  // Get all unique genders with display labels
+  const genderOptions = useMemo(() => getUniqueAttributeOptions(variants, ORTHOFEET_ATTRIBUTES.GENDER), [variants]);
+  const showGenderSelector = genderOptions.length > 1;
 
   // Filter variants by gender if selected
   const filteredByGender = useMemo(
@@ -117,8 +124,8 @@ export const OrthofeetProductDetail = ({
     [variants, selectedGender]
   );
 
-  const colors = useMemo(
-    () => getUniqueAttributeValues(filteredByGender, ORTHOFEET_ATTRIBUTES.COLOR),
+  const colorOptions = useMemo(
+    () => getUniqueAttributeOptions(filteredByGender, ORTHOFEET_ATTRIBUTES.COLOR),
     [filteredByGender]
   );
 
@@ -141,14 +148,14 @@ export const OrthofeetProductDetail = ({
   );
 
   // Get available widths from color-filtered variants
-  const widths = useMemo(
-    () => getUniqueAttributeValues(filteredByColor, ORTHOFEET_ATTRIBUTES.WIDTH),
+  const widthOptions = useMemo(
+    () => getUniqueAttributeOptions(filteredByColor, ORTHOFEET_ATTRIBUTES.WIDTH),
     [filteredByColor]
   );
 
   // Get available sizes from color+width-filtered variants
-  const sizes = useMemo(
-    () => getUniqueAttributeValues(filteredByColorWidth, ORTHOFEET_ATTRIBUTES.SIZE),
+  const sizeOptions = useMemo(
+    () => getUniqueAttributeOptions(filteredByColorWidth, ORTHOFEET_ATTRIBUTES.SIZE),
     [filteredByColorWidth]
   );
 
@@ -246,13 +253,11 @@ export const OrthofeetProductDetail = ({
     onClose();
   };
 
+  const currentImage = currentVariant?.image || parentProduct?.image;
   const productPrice = parentProduct?.price ?? currentVariant?.price ?? 0;
   const showOutOfStock = enableInventoryCheck && isFullySelected && !inventoryLoading && !inventoryError && !isInStock;
   const isButtonDisabled =
     !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
-
-  // Get current product image (variant image or fallback to parent)
-  const currentImage = currentVariant?.image || parentProduct?.image;
 
   return (
     <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
@@ -261,9 +266,6 @@ export const OrthofeetProductDetail = ({
         <Stack px={{ base: 'sm', sm: 'lg' }} py={{ base: 'sm', sm: 'lg' }} gap="sm">
           <Group justify="space-between" wrap="nowrap" gap="md">
             <Drawer.CloseButton size="lg" />
-            {currentImage && (
-              <Image src={currentImage} alt={parentProduct?.name || ''} w={50} h={50} fit="contain" radius="sm" />
-            )}
             <Drawer.Title
               ta="center"
               fw="600"
@@ -293,39 +295,77 @@ export const OrthofeetProductDetail = ({
         </Stack>
         <Drawer.Body p="0" pb={{ base: 'xl', sm: '0' }}>
           <Stack>
-            {/* Price Display - Only show when variant is fully selected */}
-            {currentVariantSku && selectedColor && selectedWidth && selectedSize && (
-              <DrawerSection title={tShared('label.price')}>
-                {selectedPrefabInsertQuantity && prefabInsertPrice ? (
-                  <Stack gap="xs">
-                    <Text size="sm" fw="500">
-                      {t('shoePrice')}: {formatCurrency(productPrice)}
-                    </Text>
-                    <Text size="sm" fw="500">
-                      {t('insertPrice')}:{' '}
-                      {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
-                    </Text>
-                    <Text size="md" fw="600">
-                      {t('totalPrice')}:{' '}
-                      {formatCurrency(productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
-                    </Text>
+            {/* Price Display - Always show */}
+            <DrawerSection title={tShared('label.price')}>
+              {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
+                <Stack gap="md">
+                  {/* Product Image */}
+                  {currentImage && (
+                    <Box style={{ flexShrink: 0 }}>
+                      <Image
+                        src={currentImage}
+                        alt={parentProduct?.name || currentVariant?.name || ''}
+                        w={60}
+                        h="auto"
+                        fit="contain"
+                        radius="sm"
+                      />
+                    </Box>
+                  )}
+
+                  {/* Price Info */}
+                  <Stack gap={4} style={{ flex: 1 }}>
+                    {selectedPrefabInsertQuantity && prefabInsertPrice ? (
+                      <>
+                        <Group justify="space-between" wrap="nowrap">
+                          <Text size="sm" c="dimmed">
+                            {t('shoePrice')}
+                          </Text>
+                          <Text size="sm" fw="500">
+                            {formatCurrency(productPrice)}
+                          </Text>
+                        </Group>
+                        <Group justify="space-between" wrap="nowrap">
+                          <Text size="sm" c="dimmed">
+                            {t('insertPrice')}
+                          </Text>
+                          <Text size="sm" fw="500">
+                            {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
+                          </Text>
+                        </Group>
+                        <Group justify="space-between" wrap="nowrap">
+                          <Text size="md" fw="600">
+                            {t('totalPrice')}
+                          </Text>
+                          <Text size="md" fw="600">
+                            {formatCurrency(
+                              productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity)
+                            )}
+                          </Text>
+                        </Group>
+                      </>
+                    ) : (
+                      <Text size="md" fw="600">
+                        {formatCurrency(productPrice)}
+                      </Text>
+                    )}
                   </Stack>
-                ) : (
-                  <Text size="md" fw="600">
-                    {formatCurrency(productPrice)}
-                  </Text>
-                )}
-              </DrawerSection>
-            )}
+                </Stack>
+              ) : (
+                <Text size="sm" c="dimmed">
+                  {t('selectAllOptions') || 'Select all options to view price'}
+                </Text>
+              )}
+            </DrawerSection>
 
             {/* Gender Selector - Only show if multiple genders available */}
             {showGenderSelector && (
               <DrawerSection title={tShared('label.gender')}>
                 <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
                   <Group justify="flex-start" gap="sm">
-                    {genders.map((gender) => (
-                      <Chip key={gender} value={gender}>
-                        {gender}
+                    {genderOptions.map((option) => (
+                      <Chip key={option.value} value={option.value}>
+                        {option.label}
                       </Chip>
                     ))}
                   </Group>
@@ -338,15 +378,15 @@ export const OrthofeetProductDetail = ({
               {!showGenderSelector || selectedGender ? (
                 <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
                   <Group justify="flex-start" gap="sm">
-                    {colors.map((color) => {
-                      const colorHex = getColorHex(color);
-                      const swatchColor = colorHex || color || 'gray';
+                    {colorOptions.map((option) => {
+                      const colorHex = getOrthofeetColorHex(option.label);
+                      const swatchColor = colorHex || 'gray';
 
                       return (
-                        <Chip key={color} value={color}>
+                        <Chip key={option.value} value={option.value}>
                           <Group gap="xs">
                             <ColorSwatch size={rem(15)} color={swatchColor} />
-                            {color}
+                            {option.label}
                           </Group>
                         </Chip>
                       );
@@ -365,9 +405,9 @@ export const OrthofeetProductDetail = ({
               {selectedColor ? (
                 <Chip.Group key={selectedColor} multiple={false} value={selectedWidth} onChange={handleWidthChange}>
                   <Group justify="flex-start" gap="sm">
-                    {widths.map((width) => (
-                      <Chip key={width} value={width}>
-                        {width}
+                    {widthOptions.map((option) => (
+                      <Chip key={option.value} value={option.value}>
+                        {option.label}
                       </Chip>
                     ))}
                   </Group>
@@ -380,7 +420,7 @@ export const OrthofeetProductDetail = ({
             </DrawerSection>
 
             {/* Size Selector */}
-            <DrawerSection title={t('shoeSizes')} hideDivider>
+            <DrawerSection title={t('shoeSizes')}>
               {selectedWidth ? (
                 <Chip.Group
                   key={`${selectedColor}-${selectedWidth}`}
@@ -389,11 +429,11 @@ export const OrthofeetProductDetail = ({
                   onChange={(value) => value && setSelectedSize(value)}
                 >
                   <Group justify="flex-start" gap="sm">
-                    {sizes
-                      .sort((a, b) => parseFloat(a) - parseFloat(b))
-                      .map((size) => (
-                        <Chip key={size} value={size}>
-                          {size}
+                    {sizeOptions
+                      .sort((a, b) => parseFloat(a.value) - parseFloat(b.value))
+                      .map((option) => (
+                        <Chip key={option.value} value={option.value}>
+                          {option.label}
                         </Chip>
                       ))}
                   </Group>
@@ -423,6 +463,68 @@ export const OrthofeetProductDetail = ({
                     ))}
                   </Group>
                 </Chip.Group>
+              </DrawerSection>
+            )}
+
+            {/* Product Attributes Table - Show when variant is selected */}
+            {currentVariant && (
+              <DrawerSection title="Attributes" hideDivider>
+                <Table striped withRowBorders={false} horizontalSpacing="xs" verticalSpacing="xs">
+                  <Table.Tbody>
+                    {[
+                      { key: ORTHOFEET_ATTRIBUTES.CLASS, label: 'Class' },
+                      { key: ORTHOFEET_ATTRIBUTES.STYLE_NAME, label: 'Style' },
+                      { key: ORTHOFEET_ATTRIBUTES.GENDER, label: 'Gender' },
+                      { key: ORTHOFEET_ATTRIBUTES.MATERIAL, label: 'Material' },
+                      { key: ORTHOFEET_ATTRIBUTES.CLOSURE, label: 'Closure' }
+                    ].map(({ key, label }) => {
+                      // Get value from variant first, fallback to parent
+                      const value =
+                        getProductAttributeDisplay(currentVariant, key) ||
+                        (parentProduct && getProductAttributeDisplay(parentProduct, key));
+                      return value ? (
+                        <Table.Tr key={key}>
+                          <Table.Td w="35%" c="dimmed" fz="xs" fw={500}>
+                            {label}
+                          </Table.Td>
+                          <Table.Td fz="xs">{value}</Table.Td>
+                        </Table.Tr>
+                      ) : null;
+                    })}
+                    {/* Features - can have multiple values */}
+                    {(() => {
+                      const variantFeatures = currentVariant.attributes?.filter(
+                        (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
+                      );
+                      const parentFeatures = parentProduct?.attributes?.filter(
+                        (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
+                      );
+                      // Combine and deduplicate by value
+                      const allFeatures = [...(variantFeatures || []), ...(parentFeatures || [])];
+                      const uniqueFeatures = Array.from(new Map(allFeatures.map((f) => [f.value, f])).values());
+
+                      return uniqueFeatures.length > 0 ? (
+                        <Table.Tr>
+                          <Table.Td w="35%" c="dimmed" fz="xs" fw={500} style={{ verticalAlign: 'top' }}>
+                            Features
+                          </Table.Td>
+                          <Table.Td fz="xs">
+                            <Group gap="xs" wrap="wrap">
+                              {uniqueFeatures.map((attr) => {
+                                const display = attr.description?.trim() || attr.value;
+                                return (
+                                  <Badge key={`feature-${attr.value}`} size="xs" variant="light" color="blue">
+                                    {display}
+                                  </Badge>
+                                );
+                              })}
+                            </Group>
+                          </Table.Td>
+                        </Table.Tr>
+                      ) : null;
+                    })()}
+                  </Table.Tbody>
+                </Table>
               </DrawerSection>
             )}
           </Stack>

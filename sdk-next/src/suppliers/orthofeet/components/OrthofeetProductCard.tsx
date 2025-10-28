@@ -1,20 +1,15 @@
 'use client';
 
 import { OrthofeetProductStyle, formatCurrency } from '@hike/sdk';
-import { Avatar, Badge, Button, Group, Paper, Stack, Text, Tooltip, rem, useMantineTheme } from '@mantine/core';
+import { Avatar, Badge, Box, Button, Group, Paper, Stack, Text, Tooltip, rem, useMantineTheme } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { getOrthofeetColorHex } from '../utils/colorMap';
 
 interface OrthofeetProductCardProps {
   productStyle: OrthofeetProductStyle;
   onSelect: () => void;
 }
-
-const getColorForName = (colorName: string): string => {
-  const colors = ['blue', 'red', 'green', 'yellow', 'purple', 'orange', 'pink', 'cyan', 'teal', 'lime', 'indigo'];
-  const hash = colorName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  return colors[hash % colors.length] || 'gray';
-};
 
 export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProductCardProps) => {
   const theme = useMantineTheme();
@@ -30,20 +25,26 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
         </Badge>
       )}
 
-      <Image
-        src={imageUrl}
-        alt={productStyle.name}
-        width={300}
-        height={180}
+      <Box
         style={{
+          position: 'relative',
+          width: '100%',
+          height: rem(180),
           backgroundColor: theme.colors.gray[3],
           borderRadius: theme.radius.lg,
-          objectFit: 'contain',
-          overflow: 'hidden',
-          width: '100%',
-          maxHeight: rem(180)
+          overflow: 'hidden'
         }}
-      />
+      >
+        <Image
+          src={imageUrl}
+          alt={productStyle.name}
+          fill
+          unoptimized
+          style={{
+            objectFit: 'contain'
+          }}
+        />
+      </Box>
 
       <Stack pt="sm" gap="xs">
         <Stack justify="space-between" gap="xs">
@@ -70,11 +71,16 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
               disabled={productStyle.colors.length <= 4}
             >
               <Avatar.Group spacing="xs">
-                {productStyle.colors.slice(0, 4).map((color) => (
-                  <Avatar key={color} size="sm" color={getColorForName(color)} radius="xl">
-                    {color.substring(0, 1).toUpperCase()}
-                  </Avatar>
-                ))}
+                {productStyle.colors.slice(0, 4).map((color) => {
+                  const colorHex = getOrthofeetColorHex(color);
+                  return colorHex ? (
+                    <Avatar key={color} size="sm" radius="xl" style={{ backgroundColor: colorHex }} />
+                  ) : (
+                    <Avatar key={color} size="sm" radius="xl">
+                      {color.substring(0, 1).toUpperCase()}
+                    </Avatar>
+                  );
+                })}
                 {productStyle.colors.length > 4 && (
                   <Avatar size="sm" radius="xl">{`+${productStyle.colors.length - 4}`}</Avatar>
                 )}

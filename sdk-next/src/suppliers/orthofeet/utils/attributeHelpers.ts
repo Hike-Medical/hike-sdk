@@ -7,7 +7,10 @@ export const ORTHOFEET_ATTRIBUTES = {
   GENDER: 'gender',
   COLOR: 'color',
   SIZE: 'size',
-  WIDTH: 'width'
+  WIDTH: 'width',
+  FEATURE: 'feature',
+  MATERIAL: 'material',
+  CLOSURE: 'closure'
 } as const;
 
 /**
@@ -51,6 +54,14 @@ export const getProductAttributeDisplay = (
 };
 
 /**
+ * Represents an attribute option with both value and display label
+ */
+export interface AttributeOption {
+  value: string;
+  label: string;
+}
+
+/**
  * Get unique attribute values across multiple products
  */
 export const getUniqueAttributeValues = (products: CatalogProductExtended[], attributeKey: string): string[] => {
@@ -64,6 +75,30 @@ export const getUniqueAttributeValues = (products: CatalogProductExtended[], att
   });
 
   return Array.from(values).sort();
+};
+
+/**
+ * Get unique attribute options (value + label) across multiple products
+ * Returns options with display labels (description with fallback to value)
+ */
+export const getUniqueAttributeOptions = (
+  products: CatalogProductExtended[],
+  attributeKey: string
+): AttributeOption[] => {
+  const optionsMap = new Map<string, string>();
+
+  products.forEach((product) => {
+    const value = getProductAttributeValue(product, attributeKey);
+    if (value && !optionsMap.has(value)) {
+      const display = getProductAttributeDisplay(product, attributeKey) || value;
+      optionsMap.set(value, display);
+    }
+  });
+
+  // Convert to array and sort by label
+  return Array.from(optionsMap.entries())
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 };
 
 /**

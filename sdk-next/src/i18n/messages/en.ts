@@ -163,6 +163,7 @@ export default {
         selectGender: 'Please select a gender first',
         selectColor: 'Please select a color first',
         selectWidth: 'Please select a width first',
+        selectAllOptions: 'Select all options to view price',
         prefabInsert: 'Prefab Insert',
         prefabInsertDescription: 'Add a prefab insert to your order for an additional {price}',
         prefabQuantity: 'Quantity',
