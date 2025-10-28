@@ -568,9 +568,9 @@ export const FactRegistry = {
   },
 
   // Operations
-  'fitter.delivery.date': {
-    displayName: 'Delivery Date',
-    description: 'Date when the diabetic footwear was delivered',
+  'fitter.billing.date': {
+    displayName: 'Billing Date',
+    description: 'Date when the diabetic footwear should be billed',
     category: 'Operations',
     required: false,
     schema: dateISO
