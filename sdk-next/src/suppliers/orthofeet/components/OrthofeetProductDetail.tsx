@@ -270,7 +270,15 @@ export const OrthofeetProductDetail = ({
               ta="center"
               fw="600"
               c="gray.8"
-              style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+              lh={1.4}
+              style={{
+                flex: 1,
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden'
+              }}
             >
               {parentProduct?.name || 'Shoe Specifications'}
             </Drawer.Title>

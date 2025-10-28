@@ -74,7 +74,13 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
                 {productStyle.colors.slice(0, 4).map((color) => {
                   const colorHex = getOrthofeetColorHex(color);
                   return colorHex ? (
-                    <Avatar key={color} size="sm" radius="xl" style={{ backgroundColor: colorHex }} />
+                    <Avatar
+                      key={color}
+                      size="sm"
+                      radius="xl"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style={{ backgroundColor: colorHex }}
+                    />
                   ) : (
                     <Avatar key={color} size="sm" radius="xl">
                       {color.substring(0, 1).toUpperCase()}
