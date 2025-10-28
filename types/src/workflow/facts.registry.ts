@@ -6,9 +6,10 @@ import { z } from 'zod';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
 
 interface FactsRegistryEntry {
-  schema: z.ZodType;
+  schema: z.ZodTypeAny;
   displayName: string;
   description: string;
+  metadata: z.ZodTypeAny;
   category: string;
   required: boolean;
   hideInUX?: boolean;
@@ -21,6 +22,10 @@ const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
 
+const defaultMetadataSchema = z.object({
+  sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
+});
+
 export const FactRegistry = {
   // Patient Information
   'patient.first_name': {
@@ -28,14 +33,16 @@ export const FactRegistry = {
     description: "Patient's first name",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'patient.last_name': {
     displayName: 'Last Name',
     description: "Patient's last name",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'patient.phone': {
     displayName: 'Phone Number',
@@ -43,49 +50,56 @@ export const FactRegistry = {
     category: 'Patient Information',
     required: true,
     schema: usOrCAPhoneNumber,
-    transform: formatPhoneNumber
+    transform: formatPhoneNumber,
+    metadata: defaultMetadataSchema
   },
   'patient.dob': {
     displayName: 'Date of Birth',
     description: "Patient's date of birth",
     category: 'Patient Information',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'patient.medicare_mbi': {
     displayName: 'Medicare MBI',
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
     description: 'External identifier for the patient',
     category: 'Patient Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'patient.external_evaluation_id': {
     displayName: 'External Evaluation ID',
     description: 'External identifier for the patient evaluation',
     category: 'Patient Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'patient.sex': {
     displayName: 'Sex',
     description: "Patient's sex (M, F, X, or unknown)",
     category: 'Patient Information',
     required: false,
-    schema: z.enum(['M', 'F', 'X', 'unknown'])
+    schema: z.enum(['M', 'F', 'X', 'unknown']),
+    metadata: defaultMetadataSchema
   },
   'patient.address': {
     displayName: 'Address',
     description: "Patient's address",
     category: 'Patient Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
 
   // Prescriber Information
@@ -94,14 +108,16 @@ export const FactRegistry = {
     description: "Prescribing practitioner's first name",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'prescriber.last_name': {
     displayName: 'Prescriber Last Name',
     description: "Prescribing practitioner's last name",
     category: 'Prescriber Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'prescriber.phone': {
     displayName: 'Prescriber Phone',
@@ -109,14 +125,16 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: usOrCAPhoneNumber,
-    transform: formatPhoneNumber
+    transform: formatPhoneNumber,
+    metadata: defaultMetadataSchema
   },
   'prescriber.npi': {
     displayName: 'Prescriber NPI',
     description: "Prescribing practitioner's National Provider Identifier",
     category: 'Prescriber Information',
     required: true,
-    schema: npi10
+    schema: npi10,
+    metadata: defaultMetadataSchema
   },
   'prescriber.fax': {
     displayName: 'Prescriber Fax',
@@ -124,14 +142,16 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: usOrCAPhoneNumber,
-    transform: formatPhoneNumber
+    transform: formatPhoneNumber,
+    metadata: defaultMetadataSchema
   },
   'prescriber.role': {
     displayName: 'Prescriber Role',
     description: "Prescribing practitioner's role",
     category: 'Prescriber Information',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    metadata: defaultMetadataSchema
   },
 
   // Certifying Physician Information
@@ -140,21 +160,24 @@ export const FactRegistry = {
     description: "Certifying physician's first name",
     category: 'Certifying Physician',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.physician.last_name': {
     displayName: 'Certifying Physician Last Name',
     description: "Certifying physician's last name",
     category: 'Certifying Physician',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.physician.npi': {
     displayName: 'Certifying Physician NPI',
     description: "Certifying physician's National Provider Identifier",
     category: 'Certifying Physician',
     required: true,
-    schema: npi10
+    schema: npi10,
+    metadata: defaultMetadataSchema
   },
   'cert.physician.fax': {
     displayName: 'Certifying Physician Fax',
@@ -162,28 +185,32 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: true,
     schema: usOrCAPhoneNumber,
-    transform: formatPhoneNumber
+    transform: formatPhoneNumber,
+    metadata: defaultMetadataSchema
   },
   'cert.physician.role': {
     displayName: 'Certifying Physician Role',
     description: "Certifying physician's role (must be MD or DO)",
     category: 'Certifying Physician',
     required: true,
-    schema: z.enum(['MD', 'DO'])
+    schema: z.enum(['MD', 'DO']),
+    metadata: defaultMetadataSchema
   },
   'cert.physician.address': {
     displayName: 'Certifying Physician Address',
     description: 'Mailing address of the certifying physician',
     category: 'Certifying Physician',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.physician.clinic_name': {
     displayName: 'Certifying Physician Clinic Name',
     description: 'Clinic name of the certifying physician',
     category: 'Certifying Physician',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.physician.phone': {
     displayName: 'Certifying Physician Phone',
@@ -191,7 +218,8 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: false,
     schema: usOrCAPhoneNumber,
-    transform: formatPhoneNumber
+    transform: formatPhoneNumber,
+    metadata: defaultMetadataSchema
   },
 
   // Prescriber Notes
@@ -200,56 +228,64 @@ export const FactRegistry = {
     description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.patient_needs_diabetic_footwear': {
     displayName: 'Patient Needs Diabetic Footwear',
     description: 'Prescriber attests that patient needs therapeutic footwear',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.examiner.first_name': {
     displayName: 'Prescriber Notes Examiner First Name',
     description: 'First name of the practitioner who performed the foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.examiner.last_name': {
     displayName: 'Prescriber Notes Examiner Last Name',
     description: 'Last name of the practitioner who performed the foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.examiner.role': {
     displayName: 'Prescriber Notes Examiner Role',
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature': {
     displayName: 'Prescriber Notes Signature',
     description: 'Digital signature on prescriber notes',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature_date': {
     displayName: 'Prescriber Notes Signature Date',
     description: 'Date when prescriber notes were signed',
     category: 'Prescriber Notes',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'prescriber.clinic_name': {
     displayName: 'Prescriber Clinic Name',
     description: 'Clinic name of the prescribing practitioner',
     category: 'Prescriber Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
 
   'prescriber.notes.certifying_agreement.signature': {
@@ -257,22 +293,20 @@ export const FactRegistry = {
     description: 'Signature of certifying physician agreeing with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        certifying_agreement_note: z.string().min(1)
+      })
+    )
   },
   'prescriber.notes.certifying_agreement.date': {
     displayName: 'Certifying Agreement Date',
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO
-  },
-
-  'prescriber.notes.certifying_agreement.note': {
-    displayName: 'Certifying Agreement Note',
-    description: 'Notes from certifying physician regarding the foot exam agreement',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: z.string().min(1)
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   // Certifier Notes
@@ -281,77 +315,82 @@ export const FactRegistry = {
     description: 'First name of the practitioner who performed the foot exam',
     category: 'Certifier Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.examiner.last_name': {
     displayName: 'Certifier Notes Examiner Last Name',
     description: 'Last name of the practitioner who performed the foot exam',
     category: 'Certifier Notes',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.examiner.role': {
     displayName: 'Certifier Notes Examiner Role',
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Certifier Notes',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.last_dm_visit_date': {
     displayName: 'Last Diabetes Management Visit',
     description: 'Date of the last diabetes management visit',
     category: 'Certifier Notes',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'cert.notes.manages_diabetes': {
     displayName: 'Manages Diabetes',
     description: "Certifier attests to managing the patient's diabetes",
     category: 'Certifier Notes',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
     description: 'Whether the visit was conducted in-person',
     category: 'Certifier Notes',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.signature': {
     displayName: 'Certifier Notes Signature',
     description: 'Digital signature on certifier notes',
     category: 'Certifier Notes',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'cert.notes.signature_date': {
     displayName: 'Certifier Notes Signature Date',
     description: 'Date when certifier notes were signed',
     category: 'Certifier Notes',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'cert.notes.certifying_agreement.signature': {
     displayName: 'Certifying Agreement Signature',
     description: 'Signature of certifying physician agreeing with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(z.object({
+      'cert.notes.certifying_agreement.note': z.string().min(1)
+    }))
   },
   'cert.notes.certifying_agreement.date': {
     displayName: 'Certifying Agreement Date',
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO
-  },
-  'cert.notes.certifying_agreement.note': {
-    displayName: 'Certifying Agreement Note',
-    description: 'Notes from certifying physician regarding the foot exam agreement',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: z.string().min(1)
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   // Foot Exam Information
@@ -360,42 +399,48 @@ export const FactRegistry = {
     description: 'Date when the foot examination was performed',
     category: 'Foot Examination',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.first_name': {
     displayName: 'Foot Exam Examiner First Name',
     description: 'First name of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.last_name': {
     displayName: 'Foot Exam Examiner Last Name',
     description: 'Last name of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.role': {
     displayName: 'Foot Exam Examiner Role',
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN'])
+    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature': {
     displayName: 'Foot Exam Examiner Signature',
     description: 'Digital signature of the foot exam examiner',
     category: 'Foot Examination',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature_date': {
     displayName: 'Foot Exam Examiner Signature Date',
     description: 'Date when the foot exam was signed by the examiner',
     category: 'Foot Examination',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   'foot_exam.examiner.qualifying_condition.list': {
@@ -405,6 +450,18 @@ export const FactRegistry = {
     required: false,
     schema: z
       .array(
+        z.enum([
+          'amputation_history',
+          'previous_foot_ulcer',
+          'pre_ulcerative_callus',
+          'peripheral_neuropathy_with_callus',
+          'foot_deformity',
+          'poor_circulation'
+        ])
+      )
+      .min(1),
+    metadata: defaultMetadataSchema.merge(z.object({
+      details: z.array(
         z.object({
           condition: z.enum([
             'amputation_history',
@@ -417,7 +474,7 @@ export const FactRegistry = {
           details: z.string().min(1)
         })
       )
-      .min(1)
+    }))
   },
 
   // Certifying Statement
@@ -426,14 +483,16 @@ export const FactRegistry = {
     description: 'Digital signature on the certifying statement',
     category: 'Certifying Statement',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'cert.statement.signature_date': {
     displayName: 'Certifying Statement Signature Date',
     description: 'Date when the certifying statement was signed',
     category: 'Certifying Statement',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   'cert.statement.qualifying_condition.list': {
@@ -452,28 +511,26 @@ export const FactRegistry = {
           'poor_circulation'
         ])
       )
-      .min(1)
+      .min(1),
+    metadata: defaultMetadataSchema
   },
   'cert.statement.certifying_agreement.signature': {
     displayName: 'Certifying Agreement Signature',
     description: 'Signature of certifying physician agreeing with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(z.object({
+      'cert.statement.certifying_agreement.note': z.string().min(1)
+    }))
   },
   'cert.statement.certifying_agreement.date': {
     displayName: 'Certifying Agreement Date',
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO
-  },
-  'cert.statement.certifying_agreement.note': {
-    displayName: 'Certifying Agreement Note',
-    description: 'Notes from certifying physician regarding the foot exam agreement',
-    category: 'Certifying Agreement',
-    required: false,
-    schema: z.string().min(1)
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   // Initial Prescription
@@ -482,35 +539,44 @@ export const FactRegistry = {
     description: 'Date when the initial prescription was ordered',
     category: 'Initial Prescription',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
-  'rx.initial.order_description': {
+  'rx.order_specifies_diabetic_footwear': {
     displayName: 'Initial Rx Order Description',
     description: 'Description of the initial prescription order',
     category: 'Initial Prescription',
     required: true,
-    schema: z.string().min(1)
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(z.object({
+      initial_rx_order_description: z.string().min(1)
+    }))
   },
-  'rx.diagnosis.description': {
+  'rx.has_diagnosis': {
     displayName: 'Diagnosis Description',
     description: 'Description of the diagnosis',
     category: 'Diagnosis Information',
     required: true,
-    schema: z.string().min(1)
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(z.object({
+      diagnosis_description: z.string().min(1)
+    }))
   },
   'rx.initial.signature': {
     displayName: 'Initial Rx Signature',
     description: 'Digital signature on the initial prescription',
     category: 'Initial Prescription',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'rx.initial.signature_date': {
     displayName: 'Initial Rx Signature Date',
     description: 'Date when the initial prescription was signed',
     category: 'Initial Prescription',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   // Statement of Work Order (SWO)
@@ -519,28 +585,34 @@ export const FactRegistry = {
     description: 'Digital signature of the treating practitioner on the SWO',
     category: 'Statement of Work Order',
     required: true,
-    schema: z.boolean()
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
   },
   'swo.treating_practitioner.signature_date': {
     displayName: 'SWO Treating Practitioner Signature Date',
     description: 'Date when the SWO was signed by the treating practitioner',
     category: 'Statement of Work Order',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'swo.order_date': {
     displayName: 'SWO Order Date',
     description: 'Date when the statement of work order was created',
     category: 'Statement of Work Order',
     required: true,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
-  'swo.general_description': {
+  'swo.specifies_diabetic_footwear': {
     displayName: 'SWO General Description',
     description: 'General description of the work order',
     category: 'Statement of Work Order',
     required: true,
-    schema: z.string().min(1)
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema.merge(z.object({
+      description: z.string().min(1)
+    }))
   },
 
   'swo.quantity_each_hcpcs': {
@@ -555,7 +627,8 @@ export const FactRegistry = {
           quantity: z.number().int().min(0)
         })
       )
-      .min(1)
+      .min(1),
+    metadata: defaultMetadataSchema
   },
 
   // Diagnosis Information
@@ -564,7 +637,8 @@ export const FactRegistry = {
     description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Diagnosis Information',
     required: true,
-    schema: z.array(icd10Code).min(1)
+    schema: z.array(icd10Code).min(1),
+    metadata: defaultMetadataSchema
   },
 
   // Operations
@@ -573,7 +647,8 @@ export const FactRegistry = {
     description: 'Date when the diabetic footwear was delivered',
     category: 'Operations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   // Notifications
@@ -591,7 +666,8 @@ export const FactRegistry = {
         stepName: z.string().min(1)
       })
     ),
-    hideInUX: true
+    hideInUX: true,
+    metadata: defaultMetadataSchema
   },
 
   // Workflow Information
@@ -606,7 +682,8 @@ export const FactRegistry = {
       merged: z.boolean(),
       createNew: z.boolean()
     }),
-    hideInUX: true
+    hideInUX: true,
+    metadata: defaultMetadataSchema
   },
 
   'internal.workflow.resolved': {
@@ -615,7 +692,8 @@ export const FactRegistry = {
     category: 'Workflow Information',
     required: false,
     schema: z.boolean(),
-    hideInUX: true
+    hideInUX: true,
+    metadata: defaultMetadataSchema
   },
 
   'internal.prescription.forwarded': {
@@ -627,7 +705,8 @@ export const FactRegistry = {
       needsForwarding: z.boolean(),
       forwarded: z.boolean()
     }),
-    hideInUX: true
+    hideInUX: true,
+    metadata: defaultMetadataSchema
   },
 
   'internal.no_response_fax': {
@@ -636,7 +715,8 @@ export const FactRegistry = {
     category: 'Workflow Information',
     required: false,
     schema: z.boolean(),
-    hideInUX: true
+    hideInUX: true,
+    metadata: defaultMetadataSchema
   },
 
   // Payer information
@@ -645,28 +725,32 @@ export const FactRegistry = {
     description: 'Name of the primary insurance payer',
     category: 'Payer Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'payer.primary.member_id': {
     displayName: 'Primary Payer Member ID',
     description: 'Member ID for the primary insurance payer',
     category: 'Payer Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'payer.secondary.name': {
     displayName: 'Secondary Payer Name',
     description: 'Name of the secondary insurance payer',
     category: 'Payer Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
   'payer.secondary.member_id': {
     displayName: 'Secondary Payer Member ID',
     description: 'Member ID for the secondary insurance payer',
     category: 'Payer Information',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
 
   // Other
@@ -675,7 +759,8 @@ export const FactRegistry = {
     description: 'Name of the clinic where the footwear was fitted',
     category: 'Other',
     required: false,
-    schema: z.string().min(1)
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
   },
 
   // Calculations
@@ -684,7 +769,8 @@ export const FactRegistry = {
     description: 'Date when the foot examination expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   'calculations.expiration.cert.notes.last_dm_visit_date': {
@@ -692,7 +778,8 @@ export const FactRegistry = {
     description: 'Date when the diabetes management visit expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   'calculations.expiration.cert.statement.signature_date': {
@@ -700,7 +787,8 @@ export const FactRegistry = {
     description: 'Date when the certifying statement expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
 
   'calculations.expiration.prescriber.notes.certifying_agreement.date': {
@@ -708,14 +796,16 @@ export const FactRegistry = {
     description: 'Date when the prescriber notes certifying agreement expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   },
   'calculations.expiration.earliest_date': {
     displayName: 'Earliest Expiration Date',
     description: 'Date when the earliest expiration date expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO
+    schema: dateISO,
+    metadata: defaultMetadataSchema
   }
 } as const;
 
@@ -724,6 +814,7 @@ type Registry = typeof FactRegistry;
 export type FactKey = keyof Registry;
 
 export type FactValueOf<K extends FactKey> = z.infer<Registry[K]['schema']>;
+export type FactMetadataOf<K extends FactKey> = z.infer<Registry[K]['metadata']>;
 
 // Union of all possible fact values
 export type AnyFactValue = FactValueOf<FactKey>;
