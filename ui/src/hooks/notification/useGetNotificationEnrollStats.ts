@@ -1,11 +1,11 @@
 import { statsForEnrollNotification } from '@hike/services';
-import { EnrollPatientsParams, HikeError } from '@hike/types';
+import { HikeError, PreviewEnrollPatientsParams } from '@hike/types';
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetNotificationEnrollStatsOptions
   extends Omit<UseQueryOptions<{ count: number }, HikeError<null>>, 'queryKey' | 'queryFn'> {
   notificationId: string;
-  params: EnrollPatientsParams;
+  params: PreviewEnrollPatientsParams;
   queryKey?: QueryKey;
 }
 
