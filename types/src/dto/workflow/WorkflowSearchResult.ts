@@ -1,5 +1,3 @@
-import { WorkflowStatus } from '../../../prisma';
-
 export interface WorkflowSearchResult {
   id: string;
   name: string;
@@ -7,7 +5,7 @@ export interface WorkflowSearchResult {
   createdAt: Date;
   updatedAt: Date;
   statusUpdates: {
-    status: WorkflowStatus;
+    status: string;
     updatedAt: Date;
   }[];
   errorCount: number;

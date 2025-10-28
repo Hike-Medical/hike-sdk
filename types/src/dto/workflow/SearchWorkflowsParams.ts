@@ -1,8 +1,6 @@
-import { WorkflowStatus } from '../../../prisma';
-
 export interface SearchWorkflowsParams {
   workflowNames?: string[];
-  status?: WorkflowStatus[];
+  status?: string[];
   factKey?: string;
   factValue?: string;
   errorsOnly?: boolean;
