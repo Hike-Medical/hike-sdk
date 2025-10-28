@@ -16,3 +16,8 @@ export interface EnrollPatientsParams {
   staggeredBatchDelayMinutes?: number;
   sendTimeWindow?: SendTimeWindow;
 }
+
+export type PreviewEnrollPatientsParams = Omit<
+  EnrollPatientsParams,
+  'staggeredBatchSize' | 'staggeredBatchDelayMinutes' | 'sendTimeWindow'
+>;
