@@ -90,7 +90,6 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
-    procurementOnly?: boolean;
   };
   auth?: {
     allowlist?: {
