@@ -20,13 +20,9 @@ export const SUPPLIER_ADAPTERS: Record<string, SupplierAdapterHook> = {
 /**
  * Get list of supported supplier IDs
  */
-export const getSupportedSupplierIds = (): string[] => {
-  return Object.keys(SUPPLIER_ADAPTERS);
-};
+export const getSupportedSupplierIds = (): string[] => Object.keys(SUPPLIER_ADAPTERS);
 
 /**
  * Check if a supplier ID is supported
  */
-export const isSupplierSupported = (supplierId: string): boolean => {
-  return supplierId in SUPPLIER_ADAPTERS;
-};
+export const isSupplierSupported = (supplierId: string): boolean => supplierId in SUPPLIER_ADAPTERS;
