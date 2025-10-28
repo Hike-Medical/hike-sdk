@@ -9,6 +9,11 @@ export const ORTHOFEET_SUPPLIER_ID = '4ec6c88f-1804-4008-9fab-846e390f27fc';
 export const ORTHOFEET_INVENTORY_BUFFER = 5;
 
 /**
+ * Maximum price filter for catalog view
+ */
+export const ORTHOFEET_MAX_PRICE_FILTER = 60;
+
+/**
  * Form field keys used in form submissions.
  * These map to the actual field names in the form schema.
  */

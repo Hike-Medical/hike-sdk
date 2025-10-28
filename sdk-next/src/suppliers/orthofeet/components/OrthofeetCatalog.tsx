@@ -1,6 +1,6 @@
 'use client';
 
-import { OrthofeetProductStyle } from '@hike/sdk';
+import { formatCurrency, OrthofeetProductStyle } from '@hike/sdk';
 import { useOrthofeetFilters, useOrthofeetProductStyles, useOrthofeetProductStyleVariants } from '@hike/ui';
 import {
   Alert,
@@ -18,6 +18,7 @@ import {
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { ORTHOFEET_MAX_PRICE_FILTER } from '../config';
 import { productBuilder } from '../utils/productBuilder';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
 import { OrthofeetProductGrid } from './OrthofeetProductGrid';
@@ -175,9 +176,11 @@ export const OrthofeetCatalog = ({
                 size="compact-sm"
                 variant={maxPrice ? 'filled' : 'light'}
                 color="indigo"
-                onClick={() => setMaxPrice((current) => toggleFilter(current, 60))}
+                onClick={() => setMaxPrice((current) => toggleFilter(current, ORTHOFEET_MAX_PRICE_FILTER))}
               >
-                {maxPrice ? t('viewingUnder', { price: '$60' }) : t('viewAllPrices')}
+                {maxPrice
+                  ? t('viewingUnder', { price: formatCurrency(ORTHOFEET_MAX_PRICE_FILTER, 'USD', true) })
+                  : t('viewAllPrices')}
               </Button>
               {filters?.genders?.map((gender) => (
                 <Button
