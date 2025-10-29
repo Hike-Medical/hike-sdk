@@ -15,9 +15,11 @@ export { getSupportedSupplierIds, isSupplierSupported, SUPPLIER_ADAPTERS } from 
 export { useSupplierAdapter } from './hooks/useSupplierAdapter';
 export type { UseSupplierAdapterParams, UseSupplierAdapterResult } from './hooks/useSupplierAdapter';
 
-// Generic components
-export { SupplierCatalogSelector } from './components/SupplierCatalogSelector';
-export { SupplierReview } from './components/SupplierReview';
+// Shared catalog components
+export * from './components';
+
+// Generic adapter (fallback for unsupported suppliers)
+export * from './generic';
 
 // Orthofeet exports
 export * from './orthofeet';

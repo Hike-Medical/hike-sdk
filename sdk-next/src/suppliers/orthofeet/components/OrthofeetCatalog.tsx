@@ -59,7 +59,8 @@ export const OrthofeetCatalog = ({
   const pageSize = 48; // Divisible by 1-4 for responsive grid
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hasSelectedSku = !!selectedSku?.trim();
-  const t = useTranslations('components.orthofeet.catalog');
+  const t = useTranslations('suppliers.orthofeet.catalog');
+  const tSuppliers = useTranslations('suppliers');
 
   const { data: filters } = useOrthofeetFilters();
 
@@ -138,8 +139,8 @@ export const OrthofeetCatalog = ({
 
   if (productsError) {
     return (
-      <Alert color="red" title="Error loading catalog">
-        There was an error loading the catalog. Please try again later.
+      <Alert color="red" title={tSuppliers('errorLoadingCatalogTitle')}>
+        {tSuppliers('errorLoadingCatalogMessage')}
       </Alert>
     );
   }
@@ -210,7 +211,7 @@ export const OrthofeetCatalog = ({
                   }}
                 >
                   <Tabs.List style={{ flexWrap: 'nowrap' }}>
-                    <Tabs.Tab value="all">{t('allCategories')}</Tabs.Tab>
+                    <Tabs.Tab value="all">{tSuppliers('allCategories')}</Tabs.Tab>
                     {filters.categories.map((category) => (
                       <Tabs.Tab key={category.value} value={category.value}>
                         {category.description || category.value}
@@ -230,7 +231,7 @@ export const OrthofeetCatalog = ({
 
             {!productsLoading && (!products?.data || products.data.length === 0) && (
               <Text size="sm" ta="center" w="100%" c="gray.6" mt="xl">
-                {t('noProducts')}
+                {tSuppliers('noProductsFound')}
               </Text>
             )}
 

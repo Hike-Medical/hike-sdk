@@ -5,7 +5,8 @@ export interface GetProductsParams extends PagedParams {
   term?: string;
   minPrice?: number;
   maxPrice?: number;
-  includeVariants?: boolean;
+  parentsOnly?: boolean;
+  includeChildren?: boolean;
   filter?: Partial<
     Record<
       | 'id'

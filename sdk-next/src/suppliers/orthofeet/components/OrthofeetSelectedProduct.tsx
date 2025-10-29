@@ -23,7 +23,7 @@ export const OrthofeetSelectedProduct = ({
 }: OrthofeetSelectedProductProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
-  const t = useTranslations('components.orthofeet.selectedProduct');
+  const t = useTranslations('suppliers.orthofeet.selectedProduct');
 
   // Destructure product data
   const { name: productName, image: productImage, price: productPrice, attributes } = product;

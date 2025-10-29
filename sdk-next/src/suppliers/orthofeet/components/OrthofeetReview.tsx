@@ -13,7 +13,7 @@ export interface OrthofeetReviewProps {
 export const OrthofeetReview = ({ sku }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
-  const t = useTranslations('components.orthofeet.review');
+  const t = useTranslations('suppliers.orthofeet.review');
 
   const {
     data: productVariants,

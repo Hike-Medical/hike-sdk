@@ -15,7 +15,7 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
   const theme = useMantineTheme();
   const imageUrl = productStyle.image || '/images/shoe-placeholder.png';
   const price = productStyle.price ?? 0;
-  const t = useTranslations('components.orthofeet.productCard');
+  const t = useTranslations('suppliers.orthofeet.productCard');
 
   return (
     <Paper flex={1} bg="gray.1" p="md" mih={rem(250)} pos="relative">

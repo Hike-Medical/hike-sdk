@@ -3,7 +3,9 @@
 import { useFlattenedSubmission, useFormSubmission, useUpsertSubmission } from '@hike/ui';
 import { notifications } from '@mantine/notifications';
 import { useQueryClient } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
+import { useGenericAdapter } from '../generic';
 import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
 import type { SupplierAdapterParams } from '../types';
 
@@ -18,6 +20,7 @@ export interface UseSupplierAdapterResult {
   catalog: React.ReactNode | null;
   isLoading: boolean;
   isSupported: boolean;
+  isCustomAdapter: boolean;
 }
 
 /**
@@ -27,6 +30,7 @@ export interface UseSupplierAdapterResult {
 export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAdapterResult => {
   const { supplierId, workbenchId, schemaId } = params;
   const queryClient = useQueryClient();
+  const t = useTranslations('suppliers');
 
   const { data: formSubmissionData, isPending: isFormSubmissionPending } = useFormSubmission({
     schemaId,
@@ -47,8 +51,8 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
     },
     onError: () => {
       notifications.show({
-        title: 'Error adding product to order',
-        message: 'There was an error adding the product to the order. Please try again later.',
+        title: t('errorAddingProductTitle'),
+        message: t('errorAddingProductMessage'),
         color: 'red'
       });
     }
@@ -56,10 +60,7 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
 
   const isPreFabOrHeatMoldable = formSubmissionFlattenedData?.isPreFabOrHeatMoldable === 'Yes';
   const isFormLoading = isUpsertSubmissionPending || isFormSubmissionPending || isFormSubmissionFlattenedPending;
-
-  // Check if supplier is supported
-  const isSupported = isSupplierSupported(supplierId);
-  const adapterHook = isSupported ? SUPPLIER_ADAPTERS[supplierId] : null;
+  const hasCustomAdapter = isSupplierSupported(supplierId);
 
   const internalParams: UseSupplierAdapterParams = useMemo(
     () => ({
@@ -72,7 +73,6 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
     [params, formSubmissionData?.data, upsertSubmission, isPreFabOrHeatMoldable, isFormLoading]
   );
 
-  const adapter = adapterHook?.(internalParams) ?? null;
   // Use custom adapter if available, otherwise use generic adapter
   const adapterHook = SUPPLIER_ADAPTERS[supplierId] || useGenericAdapter;
   const adapter = adapterHook(internalParams);
@@ -80,6 +80,7 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
   return {
     catalog: adapter?.catalog ?? null,
     isLoading: isFormLoading || (adapter?.isLoading ?? false),
-    isSupported
+    isSupported: true, // Always supported now (either custom or generic)
+    isCustomAdapter: hasCustomAdapter
   };
 };

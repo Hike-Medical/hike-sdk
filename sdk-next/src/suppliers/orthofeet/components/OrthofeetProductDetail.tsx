@@ -74,7 +74,7 @@ export const OrthofeetProductDetail = ({
   onAddToCart
 }: OrthofeetProductDetailProps) => {
   const tShared = useTranslations('shared');
-  const t = useTranslations('components.orthofeet.productDetail');
+  const t = useTranslations('suppliers.orthofeet.productDetail');
 
   // Fetch by style or by SKU
   const { data: allProducts } = useOrthofeetProductStyleVariants({

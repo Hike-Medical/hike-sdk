@@ -48,6 +48,7 @@ export default {
     label: {
       price: 'Price',
       size: 'Size',
+      info: 'Information',
       color: 'Color',
       width: 'Width',
       gender: 'Gender'
@@ -144,14 +145,28 @@ export default {
       placeholder: 'Search for a company',
       noResults: 'No results found',
       minSearchLength: 'Type at least {length} characters'
-    },
+    }
+  },
+  suppliers: {
+    allCategories: 'All Categories',
+    product: 'Product',
+    noProductsFound: 'No products found',
+    searchPlaceholder: 'Search products',
+    addToOrder: 'Add to Order',
+    featured: 'Featured',
+    edit: 'Edit',
+    remove: 'Remove',
+    errorLoadingCatalogTitle: 'Error loading catalog',
+    errorLoadingCatalogMessage: 'There was an error loading the catalog. Please try again later.',
+    errorAddingProductTitle: 'Error adding product to order',
+    errorAddingProductMessage: 'There was an error adding the product to the order. Please try again later.',
+    noSuppliersAvailableTitle: 'No suppliers available',
+    noSuppliersAvailableMessage: 'No supplier catalogs are available for this form. Please contact support.',
     orthofeet: {
       catalog: {
         searchPlaceholder: 'Search for a product',
         viewAllPrices: 'View All Prices',
-        viewingUnder: 'Viewing Shoes Under {price}',
-        allCategories: 'All Categories',
-        noProducts: 'No products found'
+        viewingUnder: 'Viewing Shoes Under {price}'
       },
       productCard: {
         addPair: 'Add Pair',
@@ -196,6 +211,28 @@ export default {
       review: {
         notFoundTitle: 'Orthofeet product not found',
         notFoundMessage: 'The Orthofeet product with SKU <b>{sku}</b> was not found. Please contact support.'
+      }
+    },
+    generic: {
+      productCard: {
+        variantCount: '{count} options',
+        variantCountSingular: '{count} option'
+      },
+      productDetail: {
+        selectVariant: 'Select Variant',
+        selectVariantPlaceholder: 'Choose a variant...',
+        selectVariantHint: 'Please select a variant to continue',
+        variantSelected: 'Variant Selected',
+        attributes: 'Attributes',
+        noVariantsAvailable: 'No variants available for this product.',
+        addToOrder: 'Add to Order',
+        updateProduct: 'Update Product'
+      },
+      selectedProduct: {
+        addedTitle: 'Product added to order',
+        editProduct: 'Edit Product',
+        removeConfirmTitle: 'Remove product from order',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
       }
     }
   }

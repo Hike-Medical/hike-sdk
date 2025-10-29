@@ -3,6 +3,7 @@
 import { useSuppliers } from '@hike/ui';
 import { Alert, LoadingOverlay, Select, Stack } from '@mantine/core';
 import { IconBuilding } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useSupplierAdapter } from '../hooks/useSupplierAdapter';
@@ -39,6 +40,7 @@ const SupplierCatalogRenderer = ({ supplierId, workbenchId, schemaId }: Supplier
 };
 
 export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelectorProps) => {
+  const t = useTranslations('suppliers');
   const params = useParams<{
     slug: string;
     patientId: string;
@@ -70,8 +72,8 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
 
   if (filteredSuppliers.length === 0) {
     return (
-      <Alert color="yellow" title="No suppliers available">
-        No supplier catalogs are available for this form. Please contact support.
+      <Alert color="yellow" title={t('noSuppliersAvailableTitle')}>
+        {t('noSuppliersAvailableMessage')}
       </Alert>
     );
   }
