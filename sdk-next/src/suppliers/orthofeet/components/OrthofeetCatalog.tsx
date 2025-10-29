@@ -16,6 +16,7 @@ import {
   TextInput
 } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
+import { IconSearch, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ORTHOFEET_MAX_PRICE_FILTER } from '../config';
@@ -168,6 +169,10 @@ export const OrthofeetCatalog = ({
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.currentTarget.value)}
               size="md"
+              leftSection={<IconSearch size={18} />}
+              rightSection={
+                searchTerm && <IconX size="16" style={{ cursor: 'pointer' }} onClick={() => setSearchTerm('')} />
+              }
             />
 
             {/* Filter Buttons */}
