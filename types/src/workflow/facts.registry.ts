@@ -4,6 +4,7 @@
  */
 import { z } from 'zod';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
+import { removeTitleFromName } from '../utils/converters/removeTitleFromName';
 
 interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
@@ -42,7 +43,8 @@ export const FactRegistry = {
     category: 'Patient Information',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'patient.phone': {
     displayName: 'Phone Number',
@@ -117,7 +119,8 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'prescriber.phone': {
     displayName: 'Prescriber Phone',
@@ -169,7 +172,8 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'cert.physician.npi': {
     displayName: 'Certifying Physician NPI',
@@ -253,7 +257,8 @@ export const FactRegistry = {
     category: 'Prescriber Notes',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'prescriber.notes.examiner.role': {
     displayName: 'Prescriber Notes Examiner Role',
@@ -324,7 +329,8 @@ export const FactRegistry = {
     category: 'Certifier Notes',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'cert.notes.examiner.role': {
     displayName: 'Certifier Notes Examiner Role',
@@ -416,7 +422,8 @@ export const FactRegistry = {
     category: 'Foot Examination',
     required: true,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: removeTitleFromName
   },
   'foot_exam.examiner.role': {
     displayName: 'Foot Exam Examiner Role',
