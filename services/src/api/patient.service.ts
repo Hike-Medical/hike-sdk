@@ -1,4 +1,6 @@
 import type {
+  CheckExistingAccountParams,
+  CheckExistingAccountResponse,
   CompanyUser,
   CreatePatientParams,
   GetPatientsParams,
@@ -127,3 +129,14 @@ export const approvePatient = async (patientId: string) => {
 };
 
 export const isPatientApproved = (user: CompanyUser | undefined): boolean => !!user?.role && user.active;
+
+export const checkExistingAccount = async (
+  params: CheckExistingAccountParams
+): Promise<CheckExistingAccountResponse> => {
+  try {
+    const response = await backendApi.get('patient/check-existing', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};

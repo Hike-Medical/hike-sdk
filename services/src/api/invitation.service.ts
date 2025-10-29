@@ -1,6 +1,7 @@
 import {
   AccountVerification,
   ApprovePatientParams,
+  ConsolidationPreview,
   CreateInvitationParams,
   FindInvitationsParams,
   PagedResponse,
@@ -53,6 +54,15 @@ export const approveInvitation = async (patientId: string, params?: ApprovePatie
 export const revokeInvitations = async (params: RevokeInvitationsParams): Promise<{ count: number }> => {
   try {
     const response = await backendApi.patch(`invitation/revoke`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getConsolidationPreview = async (patientId: string): Promise<ConsolidationPreview | null> => {
+  try {
+    const response = await backendApi.get(`invitation/consolidate/preview/${patientId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
