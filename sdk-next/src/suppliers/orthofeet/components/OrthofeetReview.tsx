@@ -8,9 +8,10 @@ import { productBuilder } from '../utils/productBuilder';
 
 export interface OrthofeetReviewProps {
   sku: string;
+  metadata?: Record<string, string>;
 }
 
-export const OrthofeetReview = ({ sku }: OrthofeetReviewProps) => {
+export const OrthofeetReview = ({ sku, metadata }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.review');
@@ -105,6 +106,7 @@ export const OrthofeetReview = ({ sku }: OrthofeetReviewProps) => {
           {variantSize && renderBadge(tShared('label.size'), variantSize)}
           {variantColor && renderBadge(tShared('label.color'), variantColor)}
           {variantWidth && renderBadge(tShared('label.width'), variantWidth)}
+          {metadata && Object.entries(metadata).map(([key, value]) => renderBadge(key, value))}
         </Group>
 
         {/* Price */}

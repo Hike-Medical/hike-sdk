@@ -34,6 +34,7 @@ export interface SupplierProduct {
   name?: string;
   image?: string;
   price?: number;
+  metadata?: Record<string, string>;
 }
 
 /**

@@ -10,10 +10,11 @@ import Image from 'next/image';
 
 export interface GenericReviewProps {
   sku: string;
+  metadata?: Record<string, string>;
   onRemove?: () => void;
 }
 
-export const GenericReview = ({ sku, onRemove }: GenericReviewProps) => {
+export const GenericReview = ({ sku, metadata, onRemove }: GenericReviewProps) => {
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.generic.review');
 
@@ -112,7 +113,7 @@ export const GenericReview = ({ sku, onRemove }: GenericReviewProps) => {
         </Group>
 
         {/* Attributes */}
-        {attributes.length > 0 && (
+        {(attributes.length > 0 || (metadata && Object.keys(metadata).length > 0)) && (
           <Stack gap="xs">
             <Text size="sm" fw="600" c="dimmed">
               {t('specifications')}
@@ -123,6 +124,12 @@ export const GenericReview = ({ sku, onRemove }: GenericReviewProps) => {
                   {attr.label}: {attr.value}
                 </Badge>
               ))}
+              {metadata &&
+                Object.entries(metadata).map(([key, value]) => (
+                  <Badge key={`metadata-${key}`} variant="light" size="md">
+                    {key}: {value}
+                  </Badge>
+                ))}
             </Group>
           </Stack>
         )}

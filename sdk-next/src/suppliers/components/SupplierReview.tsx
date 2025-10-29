@@ -20,9 +20,9 @@ export const SupplierReview = ({ products }: SupplierReviewProps) => {
       {products.map((product) => {
         switch (product.supplierId) {
           case ORTHOFEET_SUPPLIER_ID:
-            return <OrthofeetReview key={product.sku} sku={product.sku} />;
+            return <OrthofeetReview key={product.sku} sku={product.sku} metadata={product.metadata} />;
           default:
-            return <GenericReview key={product.sku} sku={product.sku} />;
+            return <GenericReview key={product.sku} sku={product.sku} metadata={product.metadata} />;
         }
       })}
     </Stack>
