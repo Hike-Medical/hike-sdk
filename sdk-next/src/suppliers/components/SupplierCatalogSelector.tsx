@@ -1,7 +1,8 @@
 'use client';
 
 import { useSuppliers } from '@hike/ui';
-import { Alert, Box, LoadingOverlay, Select } from '@mantine/core';
+import { Alert, LoadingOverlay, Select, Stack } from '@mantine/core';
+import { IconBuilding } from '@tabler/icons-react';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useSupplierAdapter } from '../hooks/useSupplierAdapter';
@@ -13,6 +14,30 @@ interface SupplierCatalogSelectorProps {
   }[];
 }
 
+interface SupplierCatalogRendererProps {
+  supplierId: string;
+  workbenchId: string;
+  schemaId: string;
+}
+
+/**
+ * Inner component that calls useSupplierAdapter
+ * Remounts when supplierId changes via key prop to maintain stable hook order
+ */
+const SupplierCatalogRenderer = ({ supplierId, workbenchId, schemaId }: SupplierCatalogRendererProps) => {
+  const { catalog, isLoading } = useSupplierAdapter({
+    supplierId,
+    workbenchId,
+    schemaId
+  });
+
+  if (isLoading) {
+    return <LoadingOverlay visible />;
+  }
+
+  return catalog;
+};
+
 export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelectorProps) => {
   const params = useParams<{
     slug: string;
@@ -21,12 +46,9 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
     schemaId: string;
   }>();
 
-  // Filter suppliers based on excluded slugs (React Compiler will memoize)
   const filteredSuppliers = suppliers.filter((supplier) => !(supplier.excludedSlugs?.includes(params.slug) ?? false));
-
   const [activeSupplierId, setActiveSupplier] = useState<string | null>(filteredSuppliers[0]?.id ?? null);
 
-  // Update active supplier if filtered list changes and current selection is invalid
   useEffect(() => {
     const firstSupplier = filteredSuppliers[0];
     if (firstSupplier && !activeSupplierId) {
@@ -34,28 +56,18 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
     }
   }, [filteredSuppliers, activeSupplierId]);
 
-  // Fetch supplier details by IDs (React Compiler will memoize)
   const supplierIds = filteredSuppliers.map((s) => s.id);
   const { data: suppliersResponse, isPending: isSuppliersLoading } = useSuppliers({
     params: { ids: supplierIds, limit: 100 },
     enabled: supplierIds.length > 0
   });
 
-  // Prepare supplier options for Select (React Compiler will memoize)
   const supplierOptions =
     suppliersResponse?.data.map((supplier) => ({
       value: supplier.id,
       label: supplier.name
     })) ?? [];
 
-  // Use idiomatic destructuring pattern
-  const { catalog, isLoading, isSupported } = useSupplierAdapter({
-    supplierId: activeSupplierId || '',
-    workbenchId: params.workbenchId,
-    schemaId: params.schemaId
-  });
-
-  // Show error if no suppliers are available
   if (filteredSuppliers.length === 0) {
     return (
       <Alert color="yellow" title="No suppliers available">
@@ -64,34 +76,36 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
     );
   }
 
-  // Show loading while waiting for data
-  if (!activeSupplierId || isSuppliersLoading || isLoading) {
+  if (!activeSupplierId || isSuppliersLoading) {
     return <LoadingOverlay visible />;
   }
 
-  // Show error if supplier is not supported
-  if (!isSupported) {
-    return (
-      <Alert color="yellow" title="Supplier catalog not implemented">
-        This supplier does not have a catalog implementation yet. Please contact support.
-      </Alert>
-    );
-  }
-
   return (
-    <Box>
+    <Stack gap="0">
       {supplierOptions.length > 1 && (
         <Select
           data={supplierOptions}
           value={activeSupplierId}
-          label="Select Brand"
           onChange={setActiveSupplier}
-          size="sm"
-          maw={250}
-          mb="md"
+          label="Select Brand"
+          placeholder="Choose a supplier"
+          leftSection={<IconBuilding size={18} />}
+          size="md"
+          flex={1}
+          searchable
+          styles={{
+            input: {
+              fontWeight: 500
+            }
+          }}
         />
       )}
-      {catalog}
-    </Box>
+      <SupplierCatalogRenderer
+        key={activeSupplierId}
+        supplierId={activeSupplierId}
+        workbenchId={params.workbenchId}
+        schemaId={params.schemaId}
+      />
+    </Stack>
   );
 };
