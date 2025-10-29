@@ -27,12 +27,13 @@ export const useOrthofeetAdapter = (params: InternalSupplierAdapterParams): Supp
       ...(formSubmissionData || {}),
       [ORTHOFEET_FORM_FIELDS.sku]: variantSku,
       [ORTHOFEET_FORM_FIELDS.description]: variantName,
-      [ORTHOFEET_FORM_FIELDS.heading]: 'Brand: Orthofeet'
+      [ORTHOFEET_FORM_FIELDS.heading]: 'Brand: Orthofeet',
+      ...(isPreFabOrHeatMoldable &&
+        prefabInsertPricing?.amount &&
+        prefabQuantity && {
+          [ORTHOFEET_FORM_FIELDS.prefabQuantity]: prefabQuantity
+        })
     };
-
-    // Always set prefab quantity field (either with value or empty string)
-    submissionData[ORTHOFEET_FORM_FIELDS.prefabQuantity] =
-      isPreFabOrHeatMoldable && prefabInsertPricing?.amount && prefabQuantity ? prefabQuantity : '';
 
     upsertSubmission({
       workbenchId,
