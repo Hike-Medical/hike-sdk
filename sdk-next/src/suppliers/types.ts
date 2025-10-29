@@ -62,6 +62,11 @@ export interface SupplierAdapter {
   };
 
   /**
+   * Whether a product is currently selected
+   */
+  isProductSelected: boolean;
+
+  /**
    * Loading state for supplier-specific operations
    */
   isLoading: boolean;

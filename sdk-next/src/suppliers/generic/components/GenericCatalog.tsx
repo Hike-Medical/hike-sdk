@@ -92,8 +92,11 @@ export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove 
   };
 
   const openEditDrawer = () => {
-    if (!selectedProduct) return;
-    setDrawerProductId(undefined);
+    if (!selectedProduct) {
+      return;
+    }
+
+    setDrawerProductId(selectedProduct.parentId || selectedProduct.id);
     setDrawerEditingProductId(selectedProduct.id);
     setTimeout(() => setDrawerOpened(true), 0);
   };

@@ -76,6 +76,7 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
       onAddToCart: handleAddToCart,
       onRemove: handleRemove
     },
+    isProductSelected: !!selectedSku,
     isLoading: isSupplierLoading,
     error: null
   };

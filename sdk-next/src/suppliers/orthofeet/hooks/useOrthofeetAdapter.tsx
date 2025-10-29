@@ -88,6 +88,7 @@ export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierA
       onAddToCart: handleAddToCart,
       onRemove: handleRemove
     },
+    isProductSelected: !!selectedSku,
     isLoading: isPrefabInsertPricingLoading,
     error: null
   };

@@ -58,15 +58,14 @@ export const GenericProductDetail = ({
 }: GenericProductDetailProps) => {
   const theme = useMantineTheme();
   const t = useTranslations('suppliers.generic.productDetail');
-  const activeProductId = productId || editingProductId;
 
   const { data: productsResponse } = useCatalogProducts({
     params: {
-      filter: { id: activeProductId || '' },
+      filter: { id: productId || '' },
       parentsOnly: false,
       includeChildren: true
     },
-    enabled: opened && !!activeProductId
+    enabled: opened && !!productId
   });
 
   const parentProduct = useMemo(() => productsResponse?.data?.[0], [productsResponse]);

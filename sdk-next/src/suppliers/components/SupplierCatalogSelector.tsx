@@ -19,15 +19,23 @@ interface SupplierCatalogRendererProps {
   supplierId: string;
   workbenchId: string;
   schemaId: string;
+  supplierOptions: { value: string; label: string }[];
 }
 
 /**
  * Inner component that calls useSupplierAdapter
  * Remounts when supplierId changes via key prop to maintain stable hook order
  */
-const SupplierCatalogRenderer = ({ supplierId, workbenchId, schemaId }: SupplierCatalogRendererProps) => {
-  const { catalog, isLoading } = useSupplierAdapter({
-    supplierId,
+const SupplierCatalogRenderer = ({
+  supplierId,
+  workbenchId,
+  schemaId,
+  supplierOptions
+}: SupplierCatalogRendererProps) => {
+  const [activeSupplierId, setActiveSupplierId] = useState(supplierId);
+
+  const { catalog, isLoading, isProductSelected } = useSupplierAdapter({
+    supplierId: activeSupplierId,
     workbenchId,
     schemaId
   });
@@ -36,11 +44,34 @@ const SupplierCatalogRenderer = ({ supplierId, workbenchId, schemaId }: Supplier
     return <LoadingOverlay visible />;
   }
 
-  return catalog;
+  return (
+    <Stack gap="0">
+      {supplierOptions.length > 1 && !isProductSelected && (
+        <Select
+          data={supplierOptions}
+          value={activeSupplierId}
+          onChange={(value) => setActiveSupplierId(value!)}
+          label="Select Brand"
+          placeholder="Choose a supplier"
+          leftSection={<IconBuilding size={18} />}
+          size="md"
+          flex={1}
+          searchable
+          styles={{
+            input: {
+              fontWeight: 500
+            }
+          }}
+        />
+      )}
+      {catalog}
+    </Stack>
+  );
 };
 
 export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelectorProps) => {
   const t = useTranslations('suppliers');
+
   const params = useParams<{
     slug: string;
     patientId: string;
@@ -59,6 +90,7 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
   }, [filteredSuppliers, activeSupplierId]);
 
   const supplierIds = filteredSuppliers.map((s) => s.id);
+
   const { data: suppliersResponse, isPending: isSuppliersLoading } = useSuppliers({
     params: { ids: supplierIds, limit: 100 },
     enabled: supplierIds.length > 0
@@ -83,31 +115,12 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
   }
 
   return (
-    <Stack gap="0">
-      {supplierOptions.length > 1 && (
-        <Select
-          data={supplierOptions}
-          value={activeSupplierId}
-          onChange={setActiveSupplier}
-          label="Select Brand"
-          placeholder="Choose a supplier"
-          leftSection={<IconBuilding size={18} />}
-          size="md"
-          flex={1}
-          searchable
-          styles={{
-            input: {
-              fontWeight: 500
-            }
-          }}
-        />
-      )}
-      <SupplierCatalogRenderer
-        key={activeSupplierId}
-        supplierId={activeSupplierId}
-        workbenchId={params.workbenchId}
-        schemaId={params.schemaId}
-      />
-    </Stack>
+    <SupplierCatalogRenderer
+      key={activeSupplierId}
+      supplierId={activeSupplierId}
+      workbenchId={params.workbenchId}
+      schemaId={params.schemaId}
+      supplierOptions={supplierOptions}
+    />
   );
 };

@@ -18,6 +18,7 @@ export interface UseSupplierAdapterParams extends SupplierAdapterParams {
 
 export interface UseSupplierAdapterResult {
   catalog: React.ReactNode | null;
+  isProductSelected: boolean;
   isLoading: boolean;
 }
 
@@ -76,6 +77,7 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
 
   return {
     catalog: adapter?.catalog ?? null,
+    isProductSelected: adapter?.isProductSelected ?? false,
     isLoading: isFormLoading || (adapter?.isLoading ?? false)
   };
 };
