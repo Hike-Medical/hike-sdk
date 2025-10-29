@@ -170,6 +170,8 @@ export default {
         prefabSelectQuantity: 'Please select a quantity',
         outOfStock: 'Out of Stock',
         outOfStockMessage: 'This item is currently out of stock. Please select a different option.',
+        shoePrice: 'Shoe Price',
+        insertPrice: 'Insert Price',
         totalPrice: 'Total Price',
         addToOrder: 'Add to Order',
         missingInfoTitle: 'Missing Information',
