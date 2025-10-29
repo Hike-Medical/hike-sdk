@@ -17,6 +17,7 @@ export * from './converters/parsePersonName';
 export * from './converters/toBoolean';
 export * from './converters/toContact';
 export * from './converters/toJobQueueTask';
+export * from './converters/toNumber';
 export * from './converters/toTitleCase';
 export * from './converters/toURL';
 export * from './converters/toUTC';

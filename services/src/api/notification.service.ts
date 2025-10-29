@@ -17,6 +17,7 @@ import type {
   NotificationStats,
   PagedResponse,
   PresignedFile,
+  PreviewEnrollPatientsParams,
   SendTestParams,
   UpdateNotificationMessageParams
 } from '@hike/types';
@@ -141,7 +142,7 @@ export const fetchNotificationHistoryByPatient = async (
 
 export const fetchNotificationEnrollPatients = async (
   notificationId: string,
-  params: EnrollPatientsParams,
+  params: PreviewEnrollPatientsParams,
   limit: number
 ): Promise<CompanyPatientExtended[]> => {
   const response = await backendApi.get(`notification/${notificationId}/enroll/patient/${limit}`, { params });
@@ -217,7 +218,7 @@ export const getNotificationProgress = async (notificationId: string): Promise<N
 
 export const statsForEnrollNotification = async (
   notificationId: string,
-  params: EnrollPatientsParams
+  params: PreviewEnrollPatientsParams
 ): Promise<{ count: number }> => {
   try {
     const response = await backendApi.get(`notification/${notificationId}/enroll/stats`, { params });
