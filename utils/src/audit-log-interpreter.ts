@@ -1,17 +1,17 @@
-import type { WorkflowLogDto } from '@hike/types';
+import type { ConflictResolutionOutcome, WorkflowLogDto } from '@hike/types';
 
 interface UpdateWorkflowStateDto {
-  attachmentFacts?: Array<{
+  attachmentFacts?: {
     attachmentId: string;
-    facts: Array<{
+    facts: {
       key: string;
       value: any;
-    }>;
-  }>;
-  facts?: Array<{
+    }[];
+  }[];
+  facts?: {
     key: string;
     value: any;
-  }>;
+  }[];
   resolvedFactIds?: string[];
 }
 
@@ -24,30 +24,50 @@ interface InterpretedAuditLog extends WorkflowLogDto {
  * Interprets audit log context to provide more readable descriptions
  */
 export const interpretAuditLog = (log: WorkflowLogDto): InterpretedAuditLog => {
+  const logWithUser = log;
+  if (log.user === null || log.user === undefined) {
+    logWithUser.user = {
+      id: 'system',
+      email: 'system@hike.com',
+      name: 'System'
+    };
+  }
   // Early return if no context
-  if (!log.context) {
-    return log;
+  if (!logWithUser.context) {
+    return logWithUser;
   }
 
-  const context = log.context as Record<string, unknown>;
+  const { context } = logWithUser;
   const newStateDto = context?.newStateDto as UpdateWorkflowStateDto;
+
+  if (context.resolvedConflict !== undefined) {
+    const resolvedConflicts = context.resolvedConflict as Record<string, ConflictResolutionOutcome>;
+    const factKeys = Object.values(resolvedConflicts)
+      .map((f: ConflictResolutionOutcome) => f.key)
+      .join(', ');
+    return {
+      ...logWithUser,
+      interpretedAction: 'Auto-Resolved Conflicts',
+      interpretedDescription: `Automatically resolved conflicts with facts: ${factKeys}`
+    };
+  }
 
   // Early return if no newStateDto
   if (!newStateDto) {
-    return log;
+    return logWithUser;
   }
 
   const { attachmentFacts, facts, resolvedFactIds } = newStateDto;
 
   // Early return if all are empty/undefined
   if (!resolvedFactIds?.length && !facts?.length && !attachmentFacts?.length) {
-    return log;
+    return logWithUser;
   }
 
   // Case 1: Just resolvedFactIds - user resolved some facts
   if (resolvedFactIds && resolvedFactIds?.length > 0 && !facts?.length && !attachmentFacts?.length) {
     return {
-      ...log,
+      ...logWithUser,
       interpretedAction: 'Resolved Facts',
       interpretedDescription: `Resolved ${resolvedFactIds.length} fact${resolvedFactIds.length > 1 ? 's' : ''}`
     };
@@ -57,7 +77,7 @@ export const interpretAuditLog = (log: WorkflowLogDto): InterpretedAuditLog => {
   if (facts && facts?.length > 0 && !attachmentFacts?.length && !resolvedFactIds?.length) {
     const factKeys = facts.map((f) => f.key).join(', ');
     return {
-      ...log,
+      ...logWithUser,
       interpretedAction: 'Updated Facts',
       interpretedDescription: `Updated facts: ${factKeys}`
     };
@@ -68,7 +88,7 @@ export const interpretAuditLog = (log: WorkflowLogDto): InterpretedAuditLog => {
     const attachmentCount = attachmentFacts.length;
     const totalFacts = attachmentFacts.reduce((sum, af) => sum + (af.facts?.length || 0), 0);
     return {
-      ...log,
+      ...logWithUser,
       interpretedAction: 'Attached Files',
       interpretedDescription: `Attached ${attachmentCount} file${attachmentCount > 1 ? 's' : ''} with ${totalFacts} fact${totalFacts > 1 ? 's' : ''}`
     };
@@ -89,13 +109,13 @@ export const interpretAuditLog = (log: WorkflowLogDto): InterpretedAuditLog => {
 
   if (actions.length > 0) {
     return {
-      ...log,
+      ...logWithUser,
       interpretedAction: 'Multiple Actions',
       interpretedDescription: `User ${actions.join(', ')}`
     };
   }
 
-  return log;
+  return logWithUser;
 };
 
 /**
