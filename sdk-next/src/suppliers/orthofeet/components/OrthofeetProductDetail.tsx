@@ -236,9 +236,9 @@ export const OrthofeetProductDetail = ({
 
   return (
     <ProductDetailDrawer
+      title={parentProduct?.name || t('title')}
       opened={opened}
       onClose={onClose}
-      title={parentProduct?.name || t('title')}
       onAddToCart={addShoeToOrder}
       isAddDisabled={isButtonDisabled}
       showOutOfStock={showOutOfStock}

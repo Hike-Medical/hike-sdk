@@ -6,7 +6,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { useGenericAdapter } from '../generic/hooks/useGenericAdapter';
-import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
+import { SUPPLIER_ADAPTERS } from '../registry';
 import type { SupplierAdapterParams } from '../types';
 
 export interface UseSupplierAdapterParams extends SupplierAdapterParams {
@@ -19,8 +19,6 @@ export interface UseSupplierAdapterParams extends SupplierAdapterParams {
 export interface UseSupplierAdapterResult {
   catalog: React.ReactNode | null;
   isLoading: boolean;
-  isSupported: boolean;
-  isCustomAdapter: boolean;
 }
 
 /**
@@ -60,7 +58,6 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
 
   const isPreFabOrHeatMoldable = formSubmissionFlattenedData?.isPreFabOrHeatMoldable === 'Yes';
   const isFormLoading = isUpsertSubmissionPending || isFormSubmissionPending || isFormSubmissionFlattenedPending;
-  const hasCustomAdapter = isSupplierSupported(supplierId);
 
   const internalParams: UseSupplierAdapterParams = useMemo(
     () => ({
@@ -79,8 +76,6 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
 
   return {
     catalog: adapter?.catalog ?? null,
-    isLoading: isFormLoading || (adapter?.isLoading ?? false),
-    isSupported: true, // Always supported now (either custom or generic)
-    isCustomAdapter: hasCustomAdapter
+    isLoading: isFormLoading || (adapter?.isLoading ?? false)
   };
 };

@@ -98,9 +98,9 @@ export const GenericProductDetail = ({
 
   return (
     <ProductDetailDrawer
+      title={parentProduct?.name || 'Product Details'}
       opened={opened}
       onClose={onClose}
-      title={parentProduct?.name || 'Product Details'}
       onAddToCart={handleAddToOrder}
       isAddDisabled={isAddDisabled}
       addButtonText={editingProductId ? t('updateProduct') : t('addToOrder')}

@@ -1,42 +1,32 @@
 'use client';
 
 import { useSuppliers } from '@hike/ui';
-import { useMemo } from 'react';
 import type { UseSupplierAdapterParams } from '../../hooks/useSupplierAdapter';
 import type { SupplierAdapter } from '../../types';
 import { GenericCatalog } from '../components/GenericCatalog';
-
-/**
- * Form field keys for generic catalog products.
- * Can be overridden per supplier if needed.
- */
-const getFormFieldKeys = (supplierId: string) => ({
-  sku: `order${supplierId}SKU`,
-  description: `order${supplierId}Description`,
-  heading: `order${supplierId}Heading`
-});
 
 /**
  * Generic adapter for suppliers without custom implementations.
  * Provides a simple catalog interface using the standard catalog products API.
  */
 export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAdapter => {
+  // TODO: Migrate legacy implementation to supplier-specific form fields
+  const formFields = {
+    sku: 'orderOrthofeetFootwearSKU',
+    description: 'orderOrthofeetFootwearDescription',
+    heading: 'orderOrthofeetFootwearHeading'
+  };
+
   const { formSubmissionData, upsertSubmission, workbenchId, schemaId, supplierId } = params;
 
-  // Fetch supplier info for display name
   const { data: suppliersResponse, isLoading: isSupplierLoading } = useSuppliers({
     params: { ids: [supplierId], limit: 1 },
     enabled: !!supplierId
   });
 
-  const supplier = useMemo(() => suppliersResponse?.data?.[0], [suppliersResponse]);
-
-  const formFields = getFormFieldKeys(supplierId);
-
-  // Extract current selection from form
+  const supplier = suppliersResponse?.data?.[0];
   const selectedSku = formSubmissionData?.[formFields.sku] as string | undefined;
 
-  // Handler for adding product to cart
   const handleAddToCart = (variantSku: string, variantName: string) => {
     window.scrollTo(0, 0);
 
@@ -54,7 +44,6 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
     });
   };
 
-  // Handler for removing product from cart
   const handleRemove = () => {
     const submissionData: Record<string, unknown> = {
       ...(formSubmissionData || {}),
