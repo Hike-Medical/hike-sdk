@@ -6,7 +6,7 @@ import { Badge, Box, Chip, ColorSwatch, Group, Image, Stack, Table, Text, Title,
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useMemo, useState } from 'react';
-import { ProductDetailDrawer } from '../../components';
+import { ProductDetailDrawer } from '../../components/ProductDetailDrawer';
 import {
   ORTHOFEET_ATTRIBUTES,
   filterProductsByAttributes,

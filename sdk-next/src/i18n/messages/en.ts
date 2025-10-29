@@ -151,7 +151,7 @@ export default {
     allCategories: 'All Categories',
     product: 'Product',
     noProductsFound: 'No products found',
-    searchPlaceholder: 'SSearch for a product',
+    searchPlaceholder: 'Search for a product',
     addToOrder: 'Add to Order',
     featured: 'Featured',
     edit: 'Edit',

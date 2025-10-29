@@ -5,7 +5,6 @@ import { Text } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
 import { SelectedProductCard } from '../../components/SelectedProductCard';
-import { getVariantAttributes } from '../utils/productHelpers';
 
 export interface GenericSelectedProductProps {
   product: CatalogProductExtended;
@@ -17,10 +16,13 @@ export const GenericSelectedProduct = ({ product, onEdit, onRemove }: GenericSel
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.generic.selectedProduct');
 
-  const attributes = getVariantAttributes(product).map((attr) => ({
-    label: attr.description || attr.key,
-    value: attr.value
-  }));
+  const attributes =
+    product.attributes
+      ?.filter((attr) => attr.type === 'TEXT' && attr.value)
+      .map((attr) => ({
+        label: attr.description || attr.key || 'Attribute',
+        value: attr.value || ''
+      })) || [];
 
   const handleRemoveClick = () => {
     modals.openConfirmModal({

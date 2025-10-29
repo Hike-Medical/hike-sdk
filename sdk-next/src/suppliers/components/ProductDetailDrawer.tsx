@@ -3,29 +3,29 @@
 import { Badge, Button, Divider, Drawer, Group, Stack } from '@mantine/core';
 import { ReactNode } from 'react';
 
-export interface ProductDetailDrawerProps {
+interface ProductDetailDrawerProps {
   title: string;
+  opened: boolean;
+  onClose: () => void;
+  onAddToCart?: () => void;
   isAddDisabled?: boolean;
   showOutOfStock?: boolean;
   outOfStockText?: string;
   addButtonText?: string;
   addButtonLoading?: boolean;
-  onAddToCart?: () => void;
-  opened: boolean;
-  onClose: () => void;
   children: ReactNode;
 }
 
 export const ProductDetailDrawer = ({
   title,
-  showOutOfStock = false,
-  outOfStockText = 'Out of stock',
-  isAddDisabled = false,
-  addButtonText = 'Add to Order',
-  addButtonLoading = false,
-  onAddToCart,
   opened,
   onClose,
+  onAddToCart,
+  isAddDisabled = false,
+  showOutOfStock = false,
+  outOfStockText,
+  addButtonText,
+  addButtonLoading = false,
   children
 }: ProductDetailDrawerProps) => (
   <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
@@ -50,12 +50,13 @@ export const ProductDetailDrawer = ({
           >
             {title}
           </Drawer.Title>
-          {showOutOfStock ? (
+          {showOutOfStock && outOfStockText ? (
             <Badge variant="light" color="red">
               {outOfStockText}
             </Badge>
           ) : (
-            onAddToCart && (
+            onAddToCart &&
+            addButtonText && (
               <Button
                 size="sm"
                 color="blue"

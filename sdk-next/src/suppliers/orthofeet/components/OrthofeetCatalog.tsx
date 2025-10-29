@@ -6,7 +6,9 @@ import { Alert, Box, Button, Group, LoadingOverlay, Stack, Text } from '@mantine
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { CatalogPagination, CatalogSearchBar, CategoryNavigation } from '../../components';
+import { CatalogPagination } from '../../components/CatalogPagination';
+import { CatalogSearchBar } from '../../components/CatalogSearchBar';
+import { CategoryNavigation } from '../../components/CategoryNavigation';
 import { ORTHOFEET_MAX_PRICE_FILTER } from '../config';
 import { productBuilder } from '../utils/productBuilder';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';

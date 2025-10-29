@@ -4,7 +4,7 @@ import { TextInput } from '@mantine/core';
 import { IconSearch, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
-export interface CatalogSearchBarProps {
+interface CatalogSearchBarProps {
   value: string;
   onChange: (value: string) => void;
 }

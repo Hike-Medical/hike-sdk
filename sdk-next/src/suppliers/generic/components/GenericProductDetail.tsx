@@ -21,7 +21,6 @@ import { IconCheck } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import { ProductDetailDrawer } from '../../components/ProductDetailDrawer';
-import { getVariantAttributes } from '../utils/productHelpers';
 
 export interface GenericProductDetailProps {
   productId?: string;
@@ -189,7 +188,9 @@ export const GenericProductDetail = ({
                   {variants.map((variant) => {
                     const isSelected = selectedVariantId === variant.id;
                     const variantPrice = variant.price ?? parentProduct?.price ?? 0;
-                    const attributes = getVariantAttributes(variant as any);
+                    const attributes = ((variant as any).attributes || [])
+                      .filter((attr: any) => attr.type === 'TEXT' && attr.value)
+                      .map((attr: any) => ({ key: attr.key, value: attr.value }));
 
                     return (
                       <Radio.Card

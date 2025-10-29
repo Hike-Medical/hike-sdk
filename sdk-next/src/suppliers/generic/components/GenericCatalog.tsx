@@ -159,7 +159,6 @@ export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove 
               renderCard={(product: any, onSelect: () => void) => (
                 <GenericProductCard product={product} onSelect={onSelect} />
               )}
-              emptyMessage={t('noProductsFound')}
             />
 
             {/* Pagination */}

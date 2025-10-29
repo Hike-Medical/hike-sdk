@@ -5,7 +5,7 @@ import { notifications } from '@mantine/notifications';
 import { useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
-import { useGenericAdapter } from '../generic';
+import { useGenericAdapter } from '../generic/hooks/useGenericAdapter';
 import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
 import type { SupplierAdapterParams } from '../types';
 

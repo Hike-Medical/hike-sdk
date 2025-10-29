@@ -4,12 +4,12 @@ import { formatCurrency } from '@hike/sdk';
 import { Alert, Badge, Button, Group, Image, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { ReactNode } from 'react';
 
-export interface SelectedProductCardAttribute {
+interface SelectedProductCardAttribute {
   label: string;
   value: string;
 }
 
-export interface SelectedProductCardProps {
+interface SelectedProductCardProps {
   productName: string;
   productImage?: string;
   productPrice: number;
@@ -17,9 +17,9 @@ export interface SelectedProductCardProps {
   additionalInfo?: ReactNode;
   onEdit: () => void;
   onRemove: () => void;
-  alertTitle?: string;
-  editButtonText?: string;
-  removeButtonText?: string;
+  alertTitle: string;
+  editButtonText: string;
+  removeButtonText: string;
 }
 
 export const SelectedProductCard = ({
@@ -30,9 +30,9 @@ export const SelectedProductCard = ({
   additionalInfo,
   onEdit,
   onRemove,
-  alertTitle = 'Product added to order',
-  editButtonText = 'Edit',
-  removeButtonText = 'Remove'
+  alertTitle,
+  editButtonText,
+  removeButtonText
 }: SelectedProductCardProps) => {
   const theme = useMantineTheme();
 
