@@ -7,6 +7,7 @@ import { ReactNode } from 'react';
 interface ProductCardGridProps<T> {
   products: T[];
   renderCard: (product: T, onSelect: () => void) => ReactNode;
+  getKey: (product: T) => string | number;
   isLoading?: boolean;
   onProductSelect?: (product: T) => void;
 }
@@ -14,6 +15,7 @@ interface ProductCardGridProps<T> {
 export const ProductCardGrid = <T,>({
   products,
   renderCard,
+  getKey,
   isLoading = false,
   onProductSelect
 }: ProductCardGridProps<T>) => {
@@ -21,7 +23,7 @@ export const ProductCardGrid = <T,>({
 
   if (isLoading && products.length === 0) {
     return (
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
         {Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} height={250} />
         ))}
@@ -38,9 +40,9 @@ export const ProductCardGrid = <T,>({
   }
 
   return (
-    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
-      {products.map((product, index) => (
-        <div key={index}>{renderCard(product, () => onProductSelect?.(product))}</div>
+    <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
+      {products.map((product) => (
+        <div key={getKey(product)}>{renderCard(product, () => onProductSelect?.(product))}</div>
       ))}
     </SimpleGrid>
   );

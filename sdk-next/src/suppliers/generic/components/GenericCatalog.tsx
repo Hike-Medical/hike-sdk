@@ -1,6 +1,6 @@
 'use client';
 
-import { useCatalogCategories, useCatalogProducts } from '@hike/ui';
+import { useCatalogCategories, useCatalogProducts, useProductBySku } from '@hike/ui';
 import { Alert, Box, LoadingOverlay, Stack } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
@@ -73,19 +73,11 @@ export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove 
   const products = useMemo(() => productsResponse?.data ?? [], [productsResponse?.data]);
   const totalPages = productsResponse ? Math.ceil(productsResponse.total / pageSize) : 0;
 
-  const selectedProduct = useMemo(() => {
-    if (!selectedSku) {
-      return undefined;
-    }
-
-    const foundProduct = products.find((p) => p.sku === selectedSku);
-
-    if (foundProduct) {
-      return foundProduct;
-    }
-
-    return products.flatMap((p) => p.children || []).find((c) => c.sku === selectedSku);
-  }, [selectedSku, products]);
+  const { data: selectedProduct } = useProductBySku({
+    sku: selectedSku || '',
+    enabled: !!selectedSku,
+    staleTime: 5 * 60 * 1000
+  });
 
   // Reset page when search or category changes
   if (prevSearchTerm !== debouncedSearchTerm) {
@@ -129,9 +121,9 @@ export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove 
       <Stack gap="md">
         <div ref={scrollContainerRef} />
 
-        {/* Show selected product */}
+        {/* Show selected product or catalog */}
         {selectedProduct ? (
-          <GenericSelectedProduct product={selectedProduct as any} onEdit={openEditDrawer} onRemove={onRemove!} />
+          <GenericSelectedProduct product={selectedProduct} onEdit={openEditDrawer} onRemove={onRemove!} />
         ) : (
           <>
             {/* Search Bar */}
@@ -154,8 +146,9 @@ export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove 
             {/* Product Grid */}
             <ProductCardGrid
               products={products}
+              getKey={(product) => product.id}
               isLoading={productsLoading}
-              onProductSelect={(product: any) => openProductDrawer(product.id)}
+              onProductSelect={(product) => openProductDrawer(product.id)}
               renderCard={(product: any, onSelect: () => void) => (
                 <GenericProductCard product={product} onSelect={onSelect} />
               )}

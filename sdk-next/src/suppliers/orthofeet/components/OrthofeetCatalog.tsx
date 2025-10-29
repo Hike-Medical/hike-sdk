@@ -2,17 +2,18 @@
 
 import { formatCurrency, OrthofeetProductStyle } from '@hike/sdk';
 import { useOrthofeetFilters, useOrthofeetProductStyles, useOrthofeetProductStyleVariants } from '@hike/ui';
-import { Alert, Box, Button, Group, LoadingOverlay, Stack, Text } from '@mantine/core';
+import { Alert, Box, Button, Group, LoadingOverlay, Stack } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CatalogPagination } from '../../components/CatalogPagination';
 import { CatalogSearchBar } from '../../components/CatalogSearchBar';
 import { CategoryNavigation } from '../../components/CategoryNavigation';
+import { ProductCardGrid } from '../../components/ProductCardGrid';
 import { ORTHOFEET_MAX_PRICE_FILTER } from '../config';
 import { productBuilder } from '../utils/productBuilder';
+import { OrthofeetProductCard } from './OrthofeetProductCard';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
-import { OrthofeetProductGrid } from './OrthofeetProductGrid';
 import { OrthofeetSelectedProduct } from './OrthofeetSelectedProduct';
 
 export interface OrthofeetCatalogProps {
@@ -199,17 +200,13 @@ export const OrthofeetCatalog = ({
             )}
 
             {/* Product Grid */}
-            <OrthofeetProductGrid
+            <ProductCardGrid
               products={products?.data || []}
+              getKey={(product) => product.value}
               isLoading={productsLoading}
               onProductSelect={openProductDrawer}
+              renderCard={(product, onSelect) => <OrthofeetProductCard productStyle={product} onSelect={onSelect} />}
             />
-
-            {!productsLoading && (!products?.data || products.data.length === 0) && (
-              <Text size="sm" ta="center" w="100%" c="gray.6" mt="xl">
-                {tSuppliers('noProductsFound')}
-              </Text>
-            )}
 
             {/* Pagination */}
             <CatalogPagination

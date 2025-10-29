@@ -51,7 +51,8 @@ export default {
       info: 'Information',
       color: 'Color',
       width: 'Width',
-      gender: 'Gender'
+      gender: 'Gender',
+      sku: 'SKU'
     },
     error: {
       title: 'Error',
@@ -232,6 +233,14 @@ export default {
         editProduct: 'Edit Product',
         removeConfirmTitle: 'Remove product from order',
         removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
+      },
+      review: {
+        errorLoadingTitle: 'Error Loading Product',
+        errorLoadingMessage: 'There was an error loading the product details. Please try again later.',
+        unknownProduct: 'Unknown Product',
+        specifications: 'Specifications',
+        removeConfirmTitle: 'Remove Product',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from your order?'
       }
     }
   }
