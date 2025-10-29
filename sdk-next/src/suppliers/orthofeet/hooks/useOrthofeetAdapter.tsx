@@ -28,6 +28,7 @@ export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierA
       [ORTHOFEET_FORM_FIELDS.sku]: variantSku,
       [ORTHOFEET_FORM_FIELDS.description]: variantName,
       [ORTHOFEET_FORM_FIELDS.heading]: 'Brand: Orthofeet',
+      [ORTHOFEET_FORM_FIELDS.supplierId]: ORTHOFEET_SUPPLIER_ID,
       ...(isPreFabOrHeatMoldable &&
         prefabInsertPricing?.amount &&
         prefabQuantity && {
@@ -55,7 +56,8 @@ export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierA
       [ORTHOFEET_FORM_FIELDS.sku]: '',
       [ORTHOFEET_FORM_FIELDS.description]: '',
       [ORTHOFEET_FORM_FIELDS.heading]: '',
-      [ORTHOFEET_FORM_FIELDS.prefabQuantity]: ''
+      [ORTHOFEET_FORM_FIELDS.prefabQuantity]: '',
+      [ORTHOFEET_FORM_FIELDS.supplierId]: ''
     };
 
     upsertSubmission({

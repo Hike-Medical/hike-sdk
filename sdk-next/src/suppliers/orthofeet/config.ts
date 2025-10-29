@@ -21,7 +21,8 @@ export const ORTHOFEET_FORM_FIELDS = {
   sku: 'orderOrthofeetFootwearSKU',
   description: 'orderOrthofeetFootwearDescription',
   heading: 'orderOrthofeetFootwearHeading',
-  prefabQuantity: 'orderOrthofeetPrefabQuantity'
+  prefabQuantity: 'orderOrthofeetPrefabQuantity',
+  supplierId: 'orderOrthofeetFootwearSupplierId'
 } as const;
 
 export type OrthofeetFormFields = typeof ORTHOFEET_FORM_FIELDS;

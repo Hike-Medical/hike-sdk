@@ -14,7 +14,8 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
   const formFields = {
     sku: 'orderOrthofeetFootwearSKU',
     description: 'orderOrthofeetFootwearDescription',
-    heading: 'orderOrthofeetFootwearHeading'
+    heading: 'orderOrthofeetFootwearHeading',
+    supplierId: 'orderOrthofeetFootwearSupplierId'
   };
 
   const { formSubmissionData, upsertSubmission, workbenchId, schemaId, supplierId } = params;
@@ -34,7 +35,8 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
       ...(formSubmissionData || {}),
       [formFields.sku]: variantSku,
       [formFields.description]: variantName,
-      [formFields.heading]: `Brand: ${supplier?.name || 'Supplier'}`
+      [formFields.heading]: `Brand: ${supplier?.name || 'Supplier'}`,
+      [formFields.supplierId]: supplierId
     };
 
     upsertSubmission({
@@ -49,7 +51,8 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
       ...(formSubmissionData || {}),
       [formFields.sku]: '',
       [formFields.description]: '',
-      [formFields.heading]: ''
+      [formFields.heading]: '',
+      [formFields.supplierId]: ''
     };
 
     upsertSubmission({
