@@ -1,6 +1,7 @@
 'use client';
 
 import { SimpleGrid, Skeleton, Text } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';
 
 export interface ProductCardGridProps<T> {
@@ -17,11 +18,13 @@ export const ProductCardGrid = <T,>({
   products,
   columns = { base: 1, sm: 2, md: 3 },
   renderCard,
-  emptyMessage = 'No products found',
+  emptyMessage,
   loadingSkeletonCount = 6,
   isLoading = false,
   onProductSelect
 }: ProductCardGridProps<T>) => {
+  const t = useTranslations('suppliers');
+
   if (isLoading && products.length === 0) {
     return (
       <SimpleGrid cols={columns} spacing="md">
@@ -35,7 +38,7 @@ export const ProductCardGrid = <T,>({
   if (products.length === 0) {
     return (
       <Text size="sm" ta="center" w="100%" c="gray.6" py="xl">
-        {emptyMessage}
+        {emptyMessage ?? t('noProductsFound')}
       </Text>
     );
   }

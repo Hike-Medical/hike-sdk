@@ -2,25 +2,11 @@
 
 import { formatCurrency } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
-import {
-  Badge,
-  Box,
-  Button,
-  Chip,
-  ColorSwatch,
-  Divider,
-  Drawer,
-  Group,
-  Image,
-  Stack,
-  Table,
-  Text,
-  Title,
-  rem
-} from '@mantine/core';
+import { Badge, Box, Chip, ColorSwatch, Group, Image, Stack, Table, Text, Title, rem } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useMemo, useState } from 'react';
+import { ProductDetailDrawer } from '../../components';
 import {
   ORTHOFEET_ATTRIBUTES,
   filterProductsByAttributes,
@@ -41,25 +27,14 @@ interface OrthofeetProductDetailProps {
   onClose: () => void;
 }
 
-// Internal drawer section component
-const DrawerSection = ({
-  title,
-  children,
-  hideDivider = false
-}: {
-  title: string;
-  children: ReactNode;
-  hideDivider?: boolean;
-}) => (
-  <Stack gap="sm">
-    <Box px={{ base: 'sm', sm: 'md' }} w="100%">
-      <Title size="md" mb="sm">
-        {title}
-      </Title>
-      {children}
-    </Box>
-    {!hideDivider && <Divider />}
-  </Stack>
+// Internal drawer section component for organizing content
+const DrawerSection = ({ title, children }: { title: string; children: ReactNode }) => (
+  <Box px={{ base: 'sm', sm: 'md' }} py="md" w="100%">
+    <Title size="md" mb="sm">
+      {title}
+    </Title>
+    {children}
+  </Box>
 );
 
 export const OrthofeetProductDetail = ({
@@ -260,284 +235,251 @@ export const OrthofeetProductDetail = ({
     !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
 
   return (
-    <Drawer.Root position="bottom" size="90dvh" opened={opened} onClose={onClose}>
-      <Drawer.Overlay />
-      <Drawer.Content>
-        <Stack px={{ base: 'sm', sm: 'lg' }} py={{ base: 'sm', sm: 'lg' }} gap="sm">
-          <Group justify="space-between" wrap="nowrap" gap="md">
-            <Drawer.CloseButton size="lg" />
-            <Drawer.Title
-              ta="center"
-              fw="600"
-              c="gray.8"
-              lh={1.4}
-              style={{
-                flex: 1,
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden'
-              }}
-            >
-              {parentProduct?.name || 'Shoe Specifications'}
-            </Drawer.Title>
-            {showOutOfStock ? (
-              <Badge variant="light" color="red">
-                {t('outOfStock')}
-              </Badge>
-            ) : (
-              <Button
-                size="sm"
-                color="blue"
-                variant="outline"
-                onClick={addShoeToOrder}
-                loading={inventoryLoading}
-                disabled={isButtonDisabled || inventoryLoading}
-              >
-                {t('addToOrder')}
-              </Button>
-            )}
-          </Group>
-          <Divider color="gray.3" />
-        </Stack>
-        <Drawer.Body p="0" pb={{ base: 'xl', sm: '0' }}>
-          <Stack>
-            {/* Price Display - Always show */}
-            <DrawerSection title={tShared('label.price')}>
-              {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
-                <Stack gap="md">
-                  {/* Product Image */}
-                  {currentImage && (
-                    <Box style={{ flexShrink: 0 }}>
-                      <Image
-                        src={currentImage}
-                        alt={parentProduct?.name || currentVariant?.name || ''}
-                        w={60}
-                        h="auto"
-                        fit="contain"
-                        radius="sm"
-                      />
-                    </Box>
-                  )}
+    <ProductDetailDrawer
+      opened={opened}
+      onClose={onClose}
+      title={parentProduct?.name || t('title')}
+      onAddToCart={addShoeToOrder}
+      isAddDisabled={isButtonDisabled}
+      showOutOfStock={showOutOfStock}
+      outOfStockText={t('outOfStock')}
+      addButtonText={t('addToOrder')}
+      addButtonLoading={inventoryLoading}
+    >
+      <Stack>
+        {/* Price Display - Always show */}
+        <DrawerSection title={tShared('label.price')}>
+          {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
+            <Stack gap="md">
+              {/* Product Image */}
+              {currentImage && (
+                <Box style={{ flexShrink: 0 }}>
+                  <Image
+                    src={currentImage}
+                    alt={parentProduct?.name || currentVariant?.name || ''}
+                    w={60}
+                    h="auto"
+                    fit="contain"
+                    radius="sm"
+                  />
+                </Box>
+              )}
 
-                  {/* Price Info */}
-                  <Stack gap={4} style={{ flex: 1 }}>
-                    {selectedPrefabInsertQuantity && prefabInsertPrice ? (
-                      <>
-                        <Group justify="space-between" wrap="nowrap">
-                          <Text size="sm" c="dimmed">
-                            {t('shoePrice')}
-                          </Text>
-                          <Text size="sm" fw="500">
-                            {formatCurrency(productPrice)}
-                          </Text>
-                        </Group>
-                        <Group justify="space-between" wrap="nowrap">
-                          <Text size="sm" c="dimmed">
-                            {t('insertPrice')}
-                          </Text>
-                          <Text size="sm" fw="500">
-                            {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
-                          </Text>
-                        </Group>
-                        <Group justify="space-between" wrap="nowrap">
-                          <Text size="md" fw="600">
-                            {t('totalPrice')}
-                          </Text>
-                          <Text size="md" fw="600">
-                            {formatCurrency(
-                              productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity)
-                            )}
-                          </Text>
-                        </Group>
-                      </>
-                    ) : (
-                      <Text size="md" fw="600">
+              {/* Price Info */}
+              <Stack gap={4} style={{ flex: 1 }}>
+                {selectedPrefabInsertQuantity && prefabInsertPrice ? (
+                  <>
+                    <Group justify="space-between" wrap="nowrap">
+                      <Text size="sm" c="dimmed">
+                        {t('shoePrice')}
+                      </Text>
+                      <Text size="sm" fw="500">
                         {formatCurrency(productPrice)}
                       </Text>
-                    )}
-                  </Stack>
-                </Stack>
-              ) : (
-                <Text size="sm" c="dimmed">
-                  {t('selectAllOptions') || 'Select all options to view price'}
-                </Text>
-              )}
-            </DrawerSection>
+                    </Group>
+                    <Group justify="space-between" wrap="nowrap">
+                      <Text size="sm" c="dimmed">
+                        {t('insertPrice')}
+                      </Text>
+                      <Text size="sm" fw="500">
+                        {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
+                      </Text>
+                    </Group>
+                    <Group justify="space-between" wrap="nowrap">
+                      <Text size="md" fw="600">
+                        {t('totalPrice')}
+                      </Text>
+                      <Text size="md" fw="600">
+                        {formatCurrency(
+                          productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity)
+                        )}
+                      </Text>
+                    </Group>
+                  </>
+                ) : (
+                  <Text size="md" fw="600">
+                    {formatCurrency(productPrice)}
+                  </Text>
+                )}
+              </Stack>
+            </Stack>
+          ) : (
+            <Text size="sm" c="dimmed">
+              {t('selectAllOptions') || 'Select all options to view price'}
+            </Text>
+          )}
+        </DrawerSection>
 
-            {/* Gender Selector - Only show if multiple genders available */}
-            {showGenderSelector && (
-              <DrawerSection title={tShared('label.gender')}>
-                <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
-                  <Group justify="flex-start" gap="sm">
-                    {genderOptions.map((option) => (
-                      <Chip key={option.value} value={option.value}>
+        {/* Gender Selector - Only show if multiple genders available */}
+        {showGenderSelector && (
+          <DrawerSection title={tShared('label.gender')}>
+            <Chip.Group multiple={false} value={selectedGender} onChange={handleGenderChange}>
+              <Group justify="flex-start" gap="sm">
+                {genderOptions.map((option) => (
+                  <Chip key={option.value} value={option.value}>
+                    {option.label}
+                  </Chip>
+                ))}
+              </Group>
+            </Chip.Group>
+          </DrawerSection>
+        )}
+
+        {/* Color Selector */}
+        <DrawerSection title={tShared('label.color')}>
+          {!showGenderSelector || selectedGender ? (
+            <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
+              <Group justify="flex-start" gap="sm">
+                {colorOptions.map((option) => {
+                  const colorHex = getOrthofeetColorHex(option.label);
+                  const swatchColor = colorHex || 'gray';
+
+                  return (
+                    <Chip key={option.value} value={option.value}>
+                      <Group gap="xs">
+                        <ColorSwatch size={rem(15)} color={swatchColor} />
                         {option.label}
-                      </Chip>
-                    ))}
-                  </Group>
-                </Chip.Group>
-              </DrawerSection>
-            )}
+                      </Group>
+                    </Chip>
+                  );
+                })}
+              </Group>
+            </Chip.Group>
+          ) : (
+            <Text size="sm" c="dimmed">
+              {t('selectGender')}
+            </Text>
+          )}
+        </DrawerSection>
 
-            {/* Color Selector */}
-            <DrawerSection title={tShared('label.color')}>
-              {!showGenderSelector || selectedGender ? (
-                <Chip.Group multiple={false} value={selectedColor} onChange={handleColorChange}>
-                  <Group justify="flex-start" gap="sm">
-                    {colorOptions.map((option) => {
-                      const colorHex = getOrthofeetColorHex(option.label);
-                      const swatchColor = colorHex || 'gray';
+        {/* Width Selector */}
+        <DrawerSection title={tShared('label.width')}>
+          {selectedColor ? (
+            <Chip.Group key={selectedColor} multiple={false} value={selectedWidth} onChange={handleWidthChange}>
+              <Group justify="flex-start" gap="sm">
+                {widthOptions.map((option) => (
+                  <Chip key={option.value} value={option.value}>
+                    {option.label}
+                  </Chip>
+                ))}
+              </Group>
+            </Chip.Group>
+          ) : (
+            <Text size="sm" c="dimmed">
+              {t('selectColor')}
+            </Text>
+          )}
+        </DrawerSection>
 
-                      return (
-                        <Chip key={option.value} value={option.value}>
-                          <Group gap="xs">
-                            <ColorSwatch size={rem(15)} color={swatchColor} />
-                            {option.label}
-                          </Group>
-                        </Chip>
-                      );
-                    })}
-                  </Group>
-                </Chip.Group>
-              ) : (
-                <Text size="sm" c="dimmed">
-                  {t('selectGender')}
-                </Text>
-              )}
-            </DrawerSection>
+        {/* Size Selector */}
+        <DrawerSection title={t('shoeSizes')}>
+          {selectedWidth ? (
+            <Chip.Group
+              key={`${selectedColor}-${selectedWidth}`}
+              multiple={false}
+              value={selectedSize}
+              onChange={(value) => value && setSelectedSize(value)}
+            >
+              <Group justify="flex-start" gap="sm">
+                {sizeOptions
+                  .sort((a, b) => parseFloat(a.value) - parseFloat(b.value))
+                  .map((option) => (
+                    <Chip key={option.value} value={option.value}>
+                      {option.label}
+                    </Chip>
+                  ))}
+              </Group>
+            </Chip.Group>
+          ) : (
+            <Text size="sm" c="dimmed">
+              {t('selectWidth')}
+            </Text>
+          )}
+        </DrawerSection>
 
-            {/* Width Selector */}
-            <DrawerSection title={tShared('label.width')}>
-              {selectedColor ? (
-                <Chip.Group key={selectedColor} multiple={false} value={selectedWidth} onChange={handleWidthChange}>
-                  <Group justify="flex-start" gap="sm">
-                    {widthOptions.map((option) => (
-                      <Chip key={option.value} value={option.value}>
-                        {option.label}
-                      </Chip>
-                    ))}
-                  </Group>
-                </Chip.Group>
-              ) : (
-                <Text size="sm" c="dimmed">
-                  {t('selectColor')}
-                </Text>
-              )}
-            </DrawerSection>
+        {/* Prefab Insert Quantity Selector */}
+        {!!prefabInsertPrice && (
+          <DrawerSection title={t('prefabQuantity')}>
+            <Chip.Group
+              multiple={false}
+              value={selectedPrefabInsertQuantity?.toString() ?? ''}
+              onChange={(value) => {
+                setSelectedPrefabInsertQuantity(value === selectedPrefabInsertQuantity ? undefined : value);
+              }}
+            >
+              <Group justify="flex-start" gap="sm">
+                {[1, 2, 3].map((qty) => (
+                  <Chip key={qty} value={qty.toString()}>
+                    {qty}
+                  </Chip>
+                ))}
+              </Group>
+            </Chip.Group>
+          </DrawerSection>
+        )}
 
-            {/* Size Selector */}
-            <DrawerSection title={t('shoeSizes')}>
-              {selectedWidth ? (
-                <Chip.Group
-                  key={`${selectedColor}-${selectedWidth}`}
-                  multiple={false}
-                  value={selectedSize}
-                  onChange={(value) => value && setSelectedSize(value)}
-                >
-                  <Group justify="flex-start" gap="sm">
-                    {sizeOptions
-                      .sort((a, b) => parseFloat(a.value) - parseFloat(b.value))
-                      .map((option) => (
-                        <Chip key={option.value} value={option.value}>
-                          {option.label}
-                        </Chip>
-                      ))}
-                  </Group>
-                </Chip.Group>
-              ) : (
-                <Text size="sm" c="dimmed">
-                  {t('selectWidth')}
-                </Text>
-              )}
-            </DrawerSection>
+        {/* Product Attributes Table - Show when variant is selected */}
+        {currentVariant && (
+          <DrawerSection title="Attributes">
+            <Table striped withRowBorders={false} horizontalSpacing="xs" verticalSpacing="xs">
+              <Table.Tbody>
+                {[
+                  { key: ORTHOFEET_ATTRIBUTES.CLASS, label: 'Class' },
+                  { key: ORTHOFEET_ATTRIBUTES.STYLE_NAME, label: 'Style' },
+                  { key: ORTHOFEET_ATTRIBUTES.GENDER, label: 'Gender' },
+                  { key: ORTHOFEET_ATTRIBUTES.MATERIAL, label: 'Material' },
+                  { key: ORTHOFEET_ATTRIBUTES.CLOSURE, label: 'Closure' }
+                ].map(({ key, label }) => {
+                  // Get value from variant first, fallback to parent
+                  const value =
+                    getProductAttributeDisplay(currentVariant, key) ||
+                    (parentProduct && getProductAttributeDisplay(parentProduct, key));
+                  return value ? (
+                    <Table.Tr key={key}>
+                      <Table.Td w="35%" c="dimmed" fz="xs" fw={500}>
+                        {label}
+                      </Table.Td>
+                      <Table.Td fz="xs">{value}</Table.Td>
+                    </Table.Tr>
+                  ) : null;
+                })}
+                {/* Features - can have multiple values */}
+                {(() => {
+                  const variantFeatures = currentVariant.attributes?.filter(
+                    (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
+                  );
+                  const parentFeatures = parentProduct?.attributes?.filter(
+                    (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
+                  );
+                  // Combine and deduplicate by value
+                  const allFeatures = [...(variantFeatures || []), ...(parentFeatures || [])];
+                  const uniqueFeatures = Array.from(new Map(allFeatures.map((f) => [f.value, f])).values());
 
-            {/* Prefab Insert Quantity Selector */}
-            {!!prefabInsertPrice && (
-              <DrawerSection title={t('prefabQuantity')}>
-                <Chip.Group
-                  multiple={false}
-                  value={selectedPrefabInsertQuantity?.toString() ?? ''}
-                  onChange={(value) => {
-                    setSelectedPrefabInsertQuantity(value === selectedPrefabInsertQuantity ? undefined : value);
-                  }}
-                >
-                  <Group justify="flex-start" gap="sm">
-                    {[1, 2, 3].map((qty) => (
-                      <Chip key={qty} value={qty.toString()}>
-                        {qty}
-                      </Chip>
-                    ))}
-                  </Group>
-                </Chip.Group>
-              </DrawerSection>
-            )}
-
-            {/* Product Attributes Table - Show when variant is selected */}
-            {currentVariant && (
-              <DrawerSection title="Attributes" hideDivider>
-                <Table striped withRowBorders={false} horizontalSpacing="xs" verticalSpacing="xs">
-                  <Table.Tbody>
-                    {[
-                      { key: ORTHOFEET_ATTRIBUTES.CLASS, label: 'Class' },
-                      { key: ORTHOFEET_ATTRIBUTES.STYLE_NAME, label: 'Style' },
-                      { key: ORTHOFEET_ATTRIBUTES.GENDER, label: 'Gender' },
-                      { key: ORTHOFEET_ATTRIBUTES.MATERIAL, label: 'Material' },
-                      { key: ORTHOFEET_ATTRIBUTES.CLOSURE, label: 'Closure' }
-                    ].map(({ key, label }) => {
-                      // Get value from variant first, fallback to parent
-                      const value =
-                        getProductAttributeDisplay(currentVariant, key) ||
-                        (parentProduct && getProductAttributeDisplay(parentProduct, key));
-                      return value ? (
-                        <Table.Tr key={key}>
-                          <Table.Td w="35%" c="dimmed" fz="xs" fw={500}>
-                            {label}
-                          </Table.Td>
-                          <Table.Td fz="xs">{value}</Table.Td>
-                        </Table.Tr>
-                      ) : null;
-                    })}
-                    {/* Features - can have multiple values */}
-                    {(() => {
-                      const variantFeatures = currentVariant.attributes?.filter(
-                        (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
-                      );
-                      const parentFeatures = parentProduct?.attributes?.filter(
-                        (attr) => attr.key === ORTHOFEET_ATTRIBUTES.FEATURE && attr.value
-                      );
-                      // Combine and deduplicate by value
-                      const allFeatures = [...(variantFeatures || []), ...(parentFeatures || [])];
-                      const uniqueFeatures = Array.from(new Map(allFeatures.map((f) => [f.value, f])).values());
-
-                      return uniqueFeatures.length > 0 ? (
-                        <Table.Tr>
-                          <Table.Td w="35%" c="dimmed" fz="xs" fw={500} style={{ verticalAlign: 'top' }}>
-                            Features
-                          </Table.Td>
-                          <Table.Td fz="xs">
-                            <Group gap="xs" wrap="wrap">
-                              {uniqueFeatures.map((attr) => {
-                                const display = attr.description?.trim() || attr.value;
-                                return (
-                                  <Badge key={`feature-${attr.value}`} size="xs" variant="light" color="blue">
-                                    {display}
-                                  </Badge>
-                                );
-                              })}
-                            </Group>
-                          </Table.Td>
-                        </Table.Tr>
-                      ) : null;
-                    })()}
-                  </Table.Tbody>
-                </Table>
-              </DrawerSection>
-            )}
-          </Stack>
-        </Drawer.Body>
-      </Drawer.Content>
-    </Drawer.Root>
+                  return uniqueFeatures.length > 0 ? (
+                    <Table.Tr>
+                      <Table.Td w="35%" c="dimmed" fz="xs" fw={500} style={{ verticalAlign: 'top' }}>
+                        Features
+                      </Table.Td>
+                      <Table.Td fz="xs">
+                        <Group gap="xs" wrap="wrap">
+                          {uniqueFeatures.map((attr) => {
+                            const display = attr.description?.trim() || attr.value;
+                            return (
+                              <Badge key={`feature-${attr.value}`} size="xs" variant="light" color="blue">
+                                {display}
+                              </Badge>
+                            );
+                          })}
+                        </Group>
+                      </Table.Td>
+                    </Table.Tr>
+                  ) : null;
+                })()}
+              </Table.Tbody>
+            </Table>
+          </DrawerSection>
+        )}
+      </Stack>
+    </ProductDetailDrawer>
   );
 };

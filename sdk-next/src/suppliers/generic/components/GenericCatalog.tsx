@@ -15,19 +15,12 @@ import { GenericSelectedProduct } from './GenericSelectedProduct';
 
 export interface GenericCatalogProps {
   supplierId: string;
-  supplierName?: string;
   selectedSku?: string;
   onAddToCart: (variantSku: string, variantName: string) => void;
   onRemove?: () => void;
 }
 
-export const GenericCatalog = ({
-  supplierId,
-  supplierName = 'Supplier',
-  selectedSku,
-  onAddToCart,
-  onRemove
-}: GenericCatalogProps) => {
+export const GenericCatalog = ({ supplierId, selectedSku, onAddToCart, onRemove }: GenericCatalogProps) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | undefined>();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 300);
@@ -142,11 +135,7 @@ export const GenericCatalog = ({
         ) : (
           <>
             {/* Search Bar */}
-            <CatalogSearchBar
-              value={searchTerm}
-              onChange={setSearchTerm}
-              placeholder={`Search ${supplierName} products...`}
-            />
+            <CatalogSearchBar value={searchTerm} onChange={setSearchTerm} />
 
             {/* Category Navigation */}
             {categories.length > 0 && (

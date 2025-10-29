@@ -3,9 +3,7 @@ import { formatCurrency, type CatalogProductAttribute, type CatalogProductExtend
 /**
  * Get the count of child variants for a product
  */
-export const getVariantCount = (product: CatalogProductExtended): number => {
-  return product.children?.length ?? 0;
-};
+export const getVariantCount = (product: CatalogProductExtended): number => product.children?.length ?? 0;
 
 /**
  * Format a variant for display in a Select dropdown
@@ -33,7 +31,7 @@ export const formatVariantOption = (
  */
 export const getVariantAttributes = (
   variant: CatalogProductExtended
-): Array<{ key: string; value: string; description?: string }> => {
+): { key: string; value: string; description?: string }[] => {
   if (!variant.attributes || variant.attributes.length === 0) {
     return [];
   }
@@ -50,12 +48,10 @@ export const getVariantAttributes = (
 /**
  * Get attribute value by key
  */
-export const getAttributeValue = (product: CatalogProductExtended, attributeKey: string): string | undefined => {
-  const attr = product.attributes?.find(
-    (a: CatalogProductAttribute) => a.type === 'TEXT' && a.key?.toLowerCase() === attributeKey.toLowerCase()
-  );
-  return attr?.value?.trim();
-};
+export const getAttributeValue = (product: CatalogProductExtended, attributeKey: string): string | undefined =>
+  product.attributes
+    ?.find((a: CatalogProductAttribute) => a.type === 'TEXT' && a.key?.toLowerCase() === attributeKey.toLowerCase())
+    ?.value?.trim();
 
 /**
  * Get attribute display text (description with fallback to value)

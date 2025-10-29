@@ -151,7 +151,7 @@ export default {
     allCategories: 'All Categories',
     product: 'Product',
     noProductsFound: 'No products found',
-    searchPlaceholder: 'Search products',
+    searchPlaceholder: 'SSearch for a product',
     addToOrder: 'Add to Order',
     featured: 'Featured',
     edit: 'Edit',
@@ -164,7 +164,6 @@ export default {
     noSuppliersAvailableMessage: 'No supplier catalogs are available for this form. Please contact support.',
     orthofeet: {
       catalog: {
-        searchPlaceholder: 'Search for a product',
         viewAllPrices: 'View All Prices',
         viewingUnder: 'Viewing Shoes Under {price}'
       },

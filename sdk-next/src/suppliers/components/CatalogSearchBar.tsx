@@ -2,39 +2,24 @@
 
 import { TextInput } from '@mantine/core';
 import { IconSearch, IconX } from '@tabler/icons-react';
-import { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 
 export interface CatalogSearchBarProps {
   value: string;
-  placeholder?: string;
-  leftSection?: ReactNode;
-  rightSection?: ReactNode;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   onChange: (value: string) => void;
 }
 
-export const CatalogSearchBar = ({
-  value,
-  onChange,
-  placeholder = 'Search products...',
-  leftSection,
-  rightSection,
-  size = 'md'
-}: CatalogSearchBarProps) => {
-  const handleClear = () => onChange('');
-
-  const defaultLeftSection = leftSection ?? <IconSearch size={18} />;
-  const defaultRightSection =
-    rightSection ?? (value ? <IconX size={16} style={{ cursor: 'pointer' }} onClick={handleClear} /> : null);
+export const CatalogSearchBar = ({ value, onChange }: CatalogSearchBarProps) => {
+  const t = useTranslations('suppliers');
 
   return (
     <TextInput
-      placeholder={placeholder}
+      placeholder={t('searchPlaceholder')}
       value={value}
       onChange={(event) => onChange(event.currentTarget.value)}
-      size={size}
-      leftSection={defaultLeftSection}
-      rightSection={defaultRightSection}
+      size="md"
+      leftSection={<IconSearch size={18} />}
+      rightSection={value ? <IconX size={16} style={{ cursor: 'pointer' }} onClick={() => onChange('')} /> : null}
     />
   );
 };

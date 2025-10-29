@@ -78,7 +78,6 @@ export const useGenericAdapter = (params: UseSupplierAdapterParams): SupplierAda
     catalog: (
       <GenericCatalog
         supplierId={supplierId}
-        supplierName={supplier?.name}
         selectedSku={selectedSku}
         onAddToCart={handleAddToCart}
         onRemove={handleRemove}

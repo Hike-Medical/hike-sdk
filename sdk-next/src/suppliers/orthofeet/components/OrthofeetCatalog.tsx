@@ -2,23 +2,11 @@
 
 import { formatCurrency, OrthofeetProductStyle } from '@hike/sdk';
 import { useOrthofeetFilters, useOrthofeetProductStyles, useOrthofeetProductStyleVariants } from '@hike/ui';
-import {
-  Alert,
-  Box,
-  Button,
-  Group,
-  LoadingOverlay,
-  Pagination,
-  ScrollArea,
-  Stack,
-  Tabs,
-  Text,
-  TextInput
-} from '@mantine/core';
+import { Alert, Box, Button, Group, LoadingOverlay, Stack, Text } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
-import { IconSearch, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { CatalogPagination, CatalogSearchBar, CategoryNavigation } from '../../components';
 import { ORTHOFEET_MAX_PRICE_FILTER } from '../config';
 import { productBuilder } from '../utils/productBuilder';
 import { OrthofeetProductDetail } from './OrthofeetProductDetail';
@@ -165,16 +153,7 @@ export const OrthofeetCatalog = ({
         ) : (
           <>
             {/* Search Input */}
-            <TextInput
-              placeholder={t('searchPlaceholder')}
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.currentTarget.value)}
-              size="md"
-              leftSection={<IconSearch size={18} />}
-              rightSection={
-                searchTerm && <IconX size="16" style={{ cursor: 'pointer' }} onClick={() => setSearchTerm('')} />
-              }
-            />
+            <CatalogSearchBar value={searchTerm} onChange={setSearchTerm} />
 
             {/* Filter Buttons */}
             <Group gap="xs" wrap="wrap">
@@ -202,24 +181,19 @@ export const OrthofeetCatalog = ({
 
             {/* Category Tabs */}
             {!!filters?.categories?.length && (
-              <ScrollArea type="auto">
-                <Tabs
-                  value={selectedCategory || 'all'}
-                  onChange={(value) => {
-                    setSelectedCategory(value === 'all' ? undefined : value || undefined);
-                    setPage(0);
-                  }}
-                >
-                  <Tabs.List style={{ flexWrap: 'nowrap' }}>
-                    <Tabs.Tab value="all">{tSuppliers('allCategories')}</Tabs.Tab>
-                    {filters.categories.map((category) => (
-                      <Tabs.Tab key={category.value} value={category.value}>
-                        {category.description || category.value}
-                      </Tabs.Tab>
-                    ))}
-                  </Tabs.List>
-                </Tabs>
-              </ScrollArea>
+              <CategoryNavigation
+                categories={filters.categories.map((cat) => ({
+                  value: cat.value,
+                  label: cat.description || cat.value
+                }))}
+                selectedCategory={selectedCategory}
+                onCategoryChange={(value) => {
+                  setSelectedCategory(value);
+                  setPage(0);
+                }}
+                showAll
+                allLabel={tSuppliers('allCategories')}
+              />
             )}
 
             {/* Product Grid */}
@@ -236,11 +210,12 @@ export const OrthofeetCatalog = ({
             )}
 
             {/* Pagination */}
-            {totalPages > 1 && (
-              <Group justify="center" mt="xl">
-                <Pagination total={totalPages} value={page + 1} onChange={(newPage) => setPage(newPage - 1)} />
-              </Group>
-            )}
+            <CatalogPagination
+              totalPages={totalPages}
+              currentPage={page}
+              onPageChange={setPage}
+              scrollRef={scrollContainerRef}
+            />
           </>
         )}
       </Stack>
