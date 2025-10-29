@@ -227,6 +227,15 @@ export const FactRegistry = {
   },
 
   // Prescriber Notes
+  'prescriber.notes.dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Prescriber Notes',
+    required: true,
+    schema: z.array(icd10Code).min(1),
+    metadata: defaultMetadataSchema
+  },
+
   'prescriber.notes.diagnosis_visit_date': {
     displayName: 'Diagnosis Visit Date',
     description: 'Date of the visit where prescriber foot exam',
@@ -315,6 +324,14 @@ export const FactRegistry = {
   },
 
   // Certifier Notes
+  'certifier.notes.dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Certifier Notes',
+    required: true,
+    schema: z.array(icd10Code).min(1),
+    metadata: defaultMetadataSchema
+  },
   'cert.notes.examiner.first_name': {
     displayName: 'Certifier Notes Examiner First Name',
     description: 'First name of the practitioner who performed the foot exam',
@@ -386,9 +403,11 @@ export const FactRegistry = {
     category: 'Certifying Agreement',
     required: false,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema.merge(z.object({
-      'cert.notes.certifying_agreement.note': z.string().min(1)
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        'cert.notes.certifying_agreement.note': z.string().min(1)
+      })
+    )
   },
   'cert.notes.certifying_agreement.date': {
     displayName: 'Certifying Agreement Date',
@@ -467,21 +486,23 @@ export const FactRegistry = {
         ])
       )
       .min(1),
-    metadata: defaultMetadataSchema.merge(z.object({
-      details: z.array(
-        z.object({
-          condition: z.enum([
-            'amputation_history',
-            'previous_foot_ulcer',
-            'pre_ulcerative_callus',
-            'peripheral_neuropathy_with_callus',
-            'foot_deformity',
-            'poor_circulation'
-          ]),
-          details: z.string().min(1)
-        })
-      )
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        details: z.array(
+          z.object({
+            condition: z.enum([
+              'amputation_history',
+              'previous_foot_ulcer',
+              'pre_ulcerative_callus',
+              'peripheral_neuropathy_with_callus',
+              'foot_deformity',
+              'poor_circulation'
+            ]),
+            details: z.string().min(1)
+          })
+        )
+      })
+    )
   },
 
   // Certifying Statement
@@ -527,9 +548,11 @@ export const FactRegistry = {
     category: 'Certifying Agreement',
     required: false,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema.merge(z.object({
-      'cert.statement.certifying_agreement.note': z.string().min(1)
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        'cert.statement.certifying_agreement.note': z.string().min(1)
+      })
+    )
   },
   'cert.statement.certifying_agreement.date': {
     displayName: 'Certifying Agreement Date',
@@ -555,9 +578,11 @@ export const FactRegistry = {
     category: 'Initial Prescription',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema.merge(z.object({
-      initial_rx_order_description: z.string().min(1)
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        initial_rx_order_description: z.string().min(1)
+      })
+    )
   },
   'rx.has_diagnosis': {
     displayName: 'Diagnosis Description',
@@ -565,9 +590,19 @@ export const FactRegistry = {
     category: 'Diagnosis Information',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema.merge(z.object({
-      diagnosis_description: z.string().min(1)
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        diagnosis_description: z.string().min(1)
+      })
+    )
+  },
+  'rx.dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Initial Prescription',
+    required: true,
+    schema: z.array(icd10Code).min(1),
+    metadata: defaultMetadataSchema
   },
   'rx.initial.signature': {
     displayName: 'Initial Rx Signature',
@@ -617,9 +652,11 @@ export const FactRegistry = {
     category: 'Statement of Work Order',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema.merge(z.object({
-      description: z.string().min(1)
-    }))
+    metadata: defaultMetadataSchema.merge(
+      z.object({
+        description: z.string().min(1)
+      })
+    )
   },
 
   'swo.quantity_each_hcpcs': {
@@ -639,6 +676,7 @@ export const FactRegistry = {
   },
 
   // Diagnosis Information
+  // DEPRECATED - USE calculations.dx.icd_codes instead
   'dx.icd_codes': {
     displayName: 'ICD-10 Codes',
     description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
@@ -771,6 +809,15 @@ export const FactRegistry = {
   },
 
   // Calculations
+  'calculations.dx.icd_codes': {
+    displayName: 'ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    category: 'Diagnosis Information',
+    required: true,
+    schema: z.array(icd10Code).min(1),
+    metadata: defaultMetadataSchema
+  },
+
   'calculations.expiration.foot_exam.date': {
     displayName: 'Foot Exam Expiration Date',
     description: 'Date when the foot examination expires',
