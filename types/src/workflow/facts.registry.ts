@@ -5,6 +5,7 @@
 import { z } from 'zod';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
 import { removeTitleFromName } from '../utils/converters/removeTitleFromName';
+import { PROVIDER_TITLE_VALUES } from '../entities/HealthcareProviders';
 
 interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
@@ -22,6 +23,7 @@ const icd10Code = z.string().regex(/^[A-TV-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
+const providerTitle = z.enum(PROVIDER_TITLE_VALUES);
 
 const defaultMetadataSchema = z.object({
   sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
@@ -153,7 +155,7 @@ export const FactRegistry = {
     description: "Prescribing practitioner's role",
     category: 'Prescriber Information',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    schema: providerTitle,
     metadata: defaultMetadataSchema
   },
 
@@ -274,7 +276,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    schema: providerTitle,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature': {
@@ -354,7 +356,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Certifier Notes',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    schema: providerTitle,
     metadata: defaultMetadataSchema
   },
   'cert.notes.last_dm_visit_date': {
@@ -449,7 +451,7 @@ export const FactRegistry = {
     description: 'Role of the practitioner who performed the foot exam',
     category: 'Foot Examination',
     required: true,
-    schema: z.enum(['MD', 'DO', 'DPM', 'PA', 'NP', 'CNS', 'APRN', 'ARPN']),
+    schema: providerTitle,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature': {

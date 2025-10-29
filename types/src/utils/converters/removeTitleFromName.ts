@@ -1,29 +1,4 @@
-const PROVIDER_TITLES = new Set([
-  'MD',
-  'DO',
-  'RN',
-  'APRN',
-  'DPM',
-  'PA',
-  'PAC',
-  'NP',
-  'CNP',
-  'FNP',
-  'PNP',
-  'CRNP',
-  'CRNA',
-  'CNM',
-  'LPN',
-  'LVN',
-  'DNP',
-  'DDS',
-  'DMD',
-  'OD',
-  'DC',
-  'PHARMD',
-  'PHD',
-  'FACP'
-]);
+import { PROVIDER_TITLES } from '../../entities/HealthcareProviders';
 
 export const removeTitleFromName = (name: string) => {
   const trimmed = name.trim();
