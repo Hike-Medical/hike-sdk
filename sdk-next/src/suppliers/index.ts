@@ -9,11 +9,11 @@ export type {
 } from './types';
 
 // Registry
-export { SUPPLIER_ADAPTERS, getSupportedSupplierIds, isSupplierSupported } from './registry';
+export { getSupportedSupplierIds, isSupplierSupported, SUPPLIER_ADAPTERS } from './registry';
 
 // Hooks
 export { useSupplierAdapter } from './hooks/useSupplierAdapter';
-export type { UseSupplierAdapterResult } from './hooks/useSupplierAdapter';
+export type { UseSupplierAdapterParams, UseSupplierAdapterResult } from './hooks/useSupplierAdapter';
 
 // Generic components
 export { SupplierCatalogSelector } from './components/SupplierCatalogSelector';

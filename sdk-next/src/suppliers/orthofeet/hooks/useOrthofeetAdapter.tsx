@@ -1,12 +1,12 @@
 'use client';
 
 import { useFetchPricingByProductType } from '@hike/ui';
-import type { InternalSupplierAdapterParams } from '../../hooks/useSupplierAdapter';
+import type { UseSupplierAdapterParams } from '../../hooks/useSupplierAdapter';
 import type { SupplierAdapter } from '../../types';
 import { OrthofeetCatalog } from '../components/OrthofeetCatalog';
 import { ORTHOFEET_FORM_FIELDS, ORTHOFEET_INVENTORY_BUFFER, ORTHOFEET_SUPPLIER_ID } from '../config';
 
-export const useOrthofeetAdapter = (params: InternalSupplierAdapterParams): SupplierAdapter => {
+export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierAdapter => {
   const { formSubmissionData, upsertSubmission, workbenchId, schemaId, isPreFabOrHeatMoldable } = params;
 
   // Fetch prefab insert pricing if applicable

@@ -7,19 +7,13 @@ import { useMemo } from 'react';
 import { SUPPLIER_ADAPTERS, isSupplierSupported } from '../registry';
 import type { SupplierAdapterParams } from '../types';
 
-/**
- * Internal parameters passed to supplier-specific adapters
- */
-export interface InternalSupplierAdapterParams extends SupplierAdapterParams {
+export interface UseSupplierAdapterParams extends SupplierAdapterParams {
   formSubmissionData: Record<string, unknown> | undefined;
   upsertSubmission: (data: { workbenchId: string; schemaId: string; data: Record<string, unknown> }) => void;
   isPreFabOrHeatMoldable: boolean;
   isFormLoading: boolean;
 }
 
-/**
- * Return type for useSupplierAdapter hook
- */
 export interface UseSupplierAdapterResult {
   catalog: React.ReactNode | null;
   isLoading: boolean;
@@ -27,46 +21,27 @@ export interface UseSupplierAdapterResult {
 }
 
 /**
- * Central hook that returns supplier-specific adapter
- *
- * @param params - Supplier adapter parameters (workbenchId, schemaId, supplierId)
- * @returns Object with catalog component, loading state, and support status
- *
- * @example
- * ```tsx
- * const { catalog, isLoading, isSupported } = useSupplierAdapter({
- *   supplierId: 'orthofeet-id',
- *   workbenchId: '123',
- *   schemaId: '456'
- * });
- *
- * if (!isSupported) return <Alert>Not supported</Alert>;
- * if (isLoading) return <LoadingOverlay />;
- * return catalog;
- * ```
+ * Central hook that returns supplier-specific adapter.
+ * Falls back to generic adapter for unsupported suppliers.
  */
 export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAdapterResult => {
   const { supplierId, workbenchId, schemaId } = params;
   const queryClient = useQueryClient();
 
-  // Fetch form submission data (always called - stable hook order)
   const { data: formSubmissionData, isPending: isFormSubmissionPending } = useFormSubmission({
     schemaId,
     workbenchId,
     enabled: !!schemaId && !!workbenchId
   });
 
-  // Fetch flattened form submission data (always called - stable hook order)
   const { data: formSubmissionFlattenedData, isPending: isFormSubmissionFlattenedPending } = useFlattenedSubmission({
     refetchOnMount: true,
     workbenchId,
     enabled: !!schemaId && !!workbenchId
   });
 
-  // Setup upsert mutation (always called - stable hook order)
   const { mutate: upsertSubmission, isPending: isUpsertSubmissionPending } = useUpsertSubmission({
     onSuccess: () => {
-      // Invalidate form queries to trigger refetch and update UI
       queryClient.invalidateQueries({ queryKey: ['formSubmission', schemaId, workbenchId] });
       queryClient.invalidateQueries({ queryKey: ['flattenedSubmission', workbenchId] });
     },
@@ -86,8 +61,7 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
   const isSupported = isSupplierSupported(supplierId);
   const adapterHook = isSupported ? SUPPLIER_ADAPTERS[supplierId] : null;
 
-  // Prepare internal params
-  const internalParams: InternalSupplierAdapterParams = useMemo(
+  const internalParams: UseSupplierAdapterParams = useMemo(
     () => ({
       ...params,
       formSubmissionData: formSubmissionData?.data,
@@ -98,11 +72,11 @@ export const useSupplierAdapter = (params: SupplierAdapterParams): UseSupplierAd
     [params, formSubmissionData?.data, upsertSubmission, isPreFabOrHeatMoldable, isFormLoading]
   );
 
-  // Call adapter hook unconditionally (stable hook order - React Compiler ready)
-  // All registered adapters MUST have stable hook implementations
   const adapter = adapterHook?.(internalParams) ?? null;
+  // Use custom adapter if available, otherwise use generic adapter
+  const adapterHook = SUPPLIER_ADAPTERS[supplierId] || useGenericAdapter;
+  const adapter = adapterHook(internalParams);
 
-  // Return idiomatic destructurable object
   return {
     catalog: adapter?.catalog ?? null,
     isLoading: isFormLoading || (adapter?.isLoading ?? false),

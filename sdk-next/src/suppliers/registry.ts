@@ -1,4 +1,4 @@
-import type { InternalSupplierAdapterParams } from './hooks/useSupplierAdapter';
+import type { UseSupplierAdapterParams } from './hooks/useSupplierAdapter';
 import { ORTHOFEET_SUPPLIER_ID } from './orthofeet/config';
 import { useOrthofeetAdapter } from './orthofeet/hooks/useOrthofeetAdapter';
 import type { SupplierAdapter } from './types';
@@ -6,7 +6,7 @@ import type { SupplierAdapter } from './types';
 /**
  * Type for supplier adapter hooks
  */
-type SupplierAdapterHook = (params: InternalSupplierAdapterParams) => SupplierAdapter;
+type SupplierAdapterHook = (params: UseSupplierAdapterParams) => SupplierAdapter;
 
 /**
  * Registry mapping supplier IDs to their adapter hooks
