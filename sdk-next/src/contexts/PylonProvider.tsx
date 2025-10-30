@@ -11,6 +11,7 @@ interface PylonState {
   showPylon: () => void;
   hidePylon: () => void;
   isPylonVisible: boolean;
+  hasValidEmail: boolean;
 }
 
 interface PylonProviderProps {
@@ -37,33 +38,42 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
     enabled: status === 'AUTHENTICATED'
   });
 
+  // Track whether we have a valid email for Pylon chat
+  const [hasValidEmail, setHasValidEmail] = useState(false);
+
   useEffect(() => {
     if (typeof window !== 'undefined' && pylonId) {
       // Determine user info based on authentication status
       let userInfo: { email: string; name: string; email_hash?: string } | null = null;
+      let isValidEmail = false;
 
       if (status === 'AUTHENTICATED') {
         if (data) {
           // Consumer-web: use patient data
+          const email = data.companyPatient?.email ?? data.companyUser.user?.email;
+          isValidEmail = Boolean(email);
+
           userInfo = {
-            email:
-              (data.companyPatient?.email ??
-              data.companyUser.user?.email) as string,
+            email: email || `no-reply+${randomString(10)}@hikemedical.com`,
             name: user?.clinician?.name || data.companyPatient.patient.firstName || data.companyUser.userId
           };
         } else if (user) {
           // Other apps (insoles-web, admin-web): use authenticated user data
+          isValidEmail = Boolean(user.email);
+
           userInfo = {
             email: user.email ?? `user-${user.id}@hikemedical.com`,
             name: user.clinician?.name || `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.id
           };
         }
 
-        // Add email hash for identity verification if available
-        if (userInfo && pylonHashData?.emailHash) {
+        // Add email hash for identity verification if available and email is valid
+        if (userInfo && pylonHashData?.emailHash && isValidEmail) {
           userInfo.email_hash = pylonHashData.emailHash;
         }
       }
+
+      setHasValidEmail(isValidEmail);
 
       (window as any).pylon = {
         chat_settings: {
@@ -100,7 +110,8 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
             (window as any).Pylon('hide');
           }
         },
-        isPylonVisible
+        isPylonVisible,
+        hasValidEmail
       }}
     >
       {pylonId ? (
