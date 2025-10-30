@@ -47,16 +47,14 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
           // Consumer-web: use patient data
           userInfo = {
             email:
-              data.companyPatient.email ??
-              data.companyUser.user.email ??
-              data.companyPatient.phone ??
-              data.companyUser.user.phone,
+              (data.companyPatient?.email ??
+              data.companyUser.user?.email) as string,
             name: user?.clinician?.name || data.companyPatient.patient.firstName || data.companyUser.userId
           };
         } else if (user) {
           // Other apps (insoles-web, admin-web): use authenticated user data
           userInfo = {
-            email: user.email ?? user.phone ?? `user-${user.id}@hikemedical.com`,
+            email: user.email ?? `user-${user.id}@hikemedical.com`,
             name: user.clinician?.name || `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.id
           };
         }
