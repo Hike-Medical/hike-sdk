@@ -2,7 +2,7 @@
 
 import { ContactType, HikeErrorCode, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
 import { useSendOtp, useVerifyInvitation } from '@hike/ui';
-import { Alert, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
+import { Alert, Anchor, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { IconExclamationCircleFilled } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -35,9 +35,7 @@ export const SendOtpInput = ({
   const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [isInvalidOtp, setIsInvalidOtp] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(
-    null
-  );
+  const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(null);
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.otp');
@@ -114,18 +112,7 @@ export const SendOtpInput = ({
               <Alert color="orange" variant="light" w="100%">
                 {onContactSupport ? (
                   <Text size="sm" ta="center">
-                    Please{' '}
-                    <Text
-                      component="span"
-                      size="sm"
-                      c="blue"
-                      td="underline"
-                      style={{ cursor: 'pointer' }}
-                      onClick={onContactSupport}
-                    >
-                      click here
-                    </Text>{' '}
-                    to contact support for assistance.
+                    Please <Anchor onClick={onContactSupport}>click here</Anchor> to contact support for assistance.
                   </Text>
                 ) : (
                   <Text size="sm" ta="center">
