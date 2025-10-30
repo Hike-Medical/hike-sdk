@@ -265,6 +265,7 @@ export * from './entities/ContactAddress';
 export * from './entities/EmailTemplateExtended';
 export * from './entities/EvaluationExtended';
 export * from './entities/FacilityExtended';
+export * from './entities/HealthcareProviders';
 export * from './entities/JobQueueTask';
 export * from './entities/NotificationExtended';
 export * from './entities/NotificationHistoryExtended';
