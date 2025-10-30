@@ -14,6 +14,7 @@ export interface SendOtpInputProps {
   onVerified: (response: VerifyInvitationResponse, token: string) => Promise<void>;
   onSkipped?: () => void;
   onGoBack?: () => void;
+  onContactSupport?: () => void;
   HikeShell: {
     Main: ComponentType<PropsWithChildren<{ title: string; description: ReactNode }>>;
     Footer: ComponentType<PropsWithChildren<{ vertical?: boolean }>>;
@@ -26,6 +27,7 @@ export const SendOtpInput = ({
   onVerified,
   onSkipped,
   onGoBack,
+  onContactSupport,
   HikeShell
 }: SendOtpInputProps) => {
   const [inputOtp, setInputOtp] = useState<string | null>(null);
@@ -33,7 +35,9 @@ export const SendOtpInput = ({
   const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [isInvalidOtp, setIsInvalidOtp] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(null);
+  const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(
+    HikeErrorCode.ERR_PATIENT_SIGNUP_NOT_ALLOWED
+  );
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.otp');
@@ -108,9 +112,26 @@ export const SendOtpInput = ({
                 {t('error.notAllowed.description')}
               </Text>
               <Alert color="orange" variant="light" w="100%">
-                <Text size="sm" ta="center">
-                  {t('error.notAllowed.suggestion')}
-                </Text>
+                {onContactSupport ? (
+                  <Text size="sm" ta="center">
+                    Please{' '}
+                    <Text
+                      component="span"
+                      size="sm"
+                      c="blue"
+                      td="underline"
+                      style={{ cursor: 'pointer' }}
+                      onClick={onContactSupport}
+                    >
+                      click here
+                    </Text>{' '}
+                    to contact support for assistance.
+                  </Text>
+                ) : (
+                  <Text size="sm" ta="center">
+                    {t('error.notAllowed.suggestion')}
+                  </Text>
+                )}
               </Alert>
             </Stack>
           </HikeShell.Main>
