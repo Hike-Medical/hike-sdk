@@ -15,7 +15,9 @@ export interface WorkbenchPdfUrls {
 export type WorkbenchExtended = Workbench & {
   patient: PatientExtended;
   product: Product;
-  evaluation: Pick<EvaluationExtended, 'clinicians'> & Evaluation;
+  evaluation: Pick<EvaluationExtended, 'clinicians'> & Evaluation & {
+    company: { slug: string | null };
+  };
   orders?: OrderWithShippingLabel[];
   assets: Asset[];
   formSubmissions: FormSubmissionExtended[];

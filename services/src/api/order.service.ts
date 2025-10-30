@@ -2,6 +2,7 @@ import type {
   CreateOrderParams,
   DeliverOrderParams,
   GetOrdersByTypeParams,
+  GetOrdersExtendedParams,
   GetOrdersParams,
   ModifyOrderAuthorizationParams,
   Order,
@@ -122,6 +123,22 @@ export const modifyOrderAuthorization = async ({
 export const deliverOrder = async (params: DeliverOrderParams): Promise<Order> => {
   try {
     const response = await backendApi.post('order/deliver', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Fetches orders with full extended data using optimized direct Prisma queries.
+ * Includes statusEvents timeline data.
+ */
+export const getOrdersExtended = async (
+  params?: GetOrdersExtendedParams,
+  companyIds?: string[]
+): Promise<PagedResponse<OrderExtended[]>> => {
+  try {
+    const response = await backendApi.get('order/extended', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
