@@ -42,6 +42,7 @@ export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
 export * from './hooks/auth/useGetIsCompanyVoluntary';
 export * from './hooks/auth/useGetPinStatus';
+export * from './hooks/auth/usePylonEmailHash';
 export * from './hooks/auth/useResetPassword';
 export * from './hooks/auth/useSendOtp';
 export * from './hooks/auth/useSignIn';

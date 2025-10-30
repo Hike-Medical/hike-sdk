@@ -1,7 +1,7 @@
 'use client';
 
 import { AppId, randomString } from '@hike/sdk';
-import { SessionContext, useCurrentPatient } from '@hike/ui';
+import { SessionContext, useCurrentPatient, usePylonEmailHash } from '@hike/ui';
 import { Overlay } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import Script from 'next/script';
@@ -32,26 +32,49 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
     enabled: appId === '@hike/consumer-web' && status === 'AUTHENTICATED' && !!params.slug
   });
 
+  // Fetch Pylon email hash for identity verification
+  const { data: pylonHashData } = usePylonEmailHash({
+    enabled: status === 'AUTHENTICATED'
+  });
+
   useEffect(() => {
     if (typeof window !== 'undefined' && pylonId) {
+      // Determine user info based on authentication status
+      let userInfo: { email: string; name: string; email_hash?: string } | null = null;
+
+      if (status === 'AUTHENTICATED') {
+        if (data) {
+          // Consumer-web: use patient data
+          userInfo = {
+            email:
+              data.companyPatient.email ??
+              data.companyUser.user.email ??
+              data.companyPatient.phone ??
+              data.companyUser.user.phone,
+            name: user?.clinician?.name || data.companyPatient.patient.firstName || data.companyUser.userId
+          };
+        } else if (user) {
+          // Other apps (insoles-web, admin-web): use authenticated user data
+          userInfo = {
+            email: user.email ?? user.phone ?? `user-${user.id}@hikemedical.com`,
+            name: user.clinician?.name || `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.id
+          };
+        }
+
+        // Add email hash for identity verification if available
+        if (userInfo && pylonHashData?.emailHash) {
+          userInfo.email_hash = pylonHashData.emailHash;
+        }
+      }
+
       (window as any).pylon = {
         chat_settings: {
           app_id: pylonId,
-          ...(data
-            ? {
-                // TODO: Ask Pylon if we have to use email or can we use user ID (PII concerns)
-                email:
-                  data.companyPatient.email ??
-                  data.companyUser.user.email ??
-                  data.companyPatient.phone ??
-                  data.companyUser.user.phone,
-                name: user?.clinician?.name || data.companyPatient.patient.firstName || data.companyUser.userId
-              }
-            : {
-                // TODO: Ask Pylon if we can support anonymous users
-                email: `no-reply+${randomString(10)}@hikemedical.com`,
-                name: `Hike Medical - ${appId}`
-              })
+          ...(userInfo || {
+            // Unauthenticated: use anonymous identifier
+            email: `no-reply+${randomString(10)}@hikemedical.com`,
+            name: `Hike Medical - ${appId}`
+          })
         }
       };
 
@@ -63,7 +86,7 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
         setIsPylonVisible(false);
       });
     }
-  }, [status, data, pylonId, user?.clinician?.name, appId]);
+  }, [status, data, pylonId, user, appId, pylonHashData]);
 
   return (
     <PylonContext
