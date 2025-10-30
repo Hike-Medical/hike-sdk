@@ -3,9 +3,9 @@
  * Maps technical field keys to user-friendly display names and descriptions
  */
 import { z } from 'zod';
+import { PROVIDER_TITLE_VALUES } from '../entities/HealthcareProviders';
 import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
 import { removeTitleFromName } from '../utils/converters/removeTitleFromName';
-import { PROVIDER_TITLE_VALUES } from '../entities/HealthcareProviders';
 
 interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
@@ -230,8 +230,8 @@ export const FactRegistry = {
 
   // Prescriber Notes
   'prescriber.notes.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Prescriber NotesICD-10 Codes',
+    description: 'Prescriber Notes ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Prescriber Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -327,8 +327,8 @@ export const FactRegistry = {
 
   // Certifier Notes
   'certifier.notes.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Certifier Notes ICD-10 Codes',
+    description: 'Certifier Notes ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Certifier Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -599,8 +599,8 @@ export const FactRegistry = {
     )
   },
   'rx.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Initial Prescription ICD-10 Codes',
+    description: 'Initial Prescription ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Initial Prescription',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -680,8 +680,8 @@ export const FactRegistry = {
   // Diagnosis Information
   // DEPRECATED - USE calculations.dx.icd_codes instead
   'dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'ICD-10 Codes (deprecated)',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13) (deprecated)',
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -812,8 +812,8 @@ export const FactRegistry = {
 
   // Calculations
   'calculations.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Combined ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes from all documents (must include diabetes E08-E13)',
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
