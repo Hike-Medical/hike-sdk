@@ -8,7 +8,8 @@ export const GetOrdersExtendedFilter = [
   'workbench.patient.firstName',
   'workbench.product.type',
   'status',
-  'workbench.createdReason'
+  'workbench.createdReason',
+  'workbench.evaluation.facilityId'
 ] as const;
 
 export type GetOrdersExtendedFilter = (typeof GetOrdersExtendedFilter)[number];
