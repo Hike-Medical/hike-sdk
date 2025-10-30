@@ -6,7 +6,6 @@ export type TaskSortOrder = 'asc' | 'desc';
 export interface SearchTasksParams {
   assignedUserId?: string;
   assignedTeamId?: string;
-  companyId?: string;
   status?: TaskStatus;
   workflowId?: string;
   sortBy?: TaskSortBy;
