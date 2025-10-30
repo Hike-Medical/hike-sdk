@@ -206,6 +206,10 @@ export * from './dto/taika/CustomizationOrderTaikaParams';
 export * from './dto/taika/FootTaikaParams';
 export * from './dto/taika/InsoleMeasurements';
 export * from './dto/taika/PatientInformationTaikaParams';
+export * from './dto/task/CreateTask';
+export * from './dto/task/SearchTasks';
+export * from './dto/task/TaskWithUpdates';
+export * from './dto/task/UpdateTask';
 export * from './dto/terms/AcceptTermsParams';
 export * from './dto/twofa/TwoFaSetupResponse';
 export * from './dto/twofa/TwoFaToggleParams';
@@ -305,3 +309,4 @@ export * from './guards/isString';
 export * from './guards/isTruthy';
 export * from './utils/converters/formatPhoneNumber';
 export * from './workflow/facts.registry';
+
