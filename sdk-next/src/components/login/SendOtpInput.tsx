@@ -36,7 +36,7 @@ export const SendOtpInput = ({
   const [isInvalidOtp, setIsInvalidOtp] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(
-    HikeErrorCode.ERR_PATIENT_SIGNUP_NOT_ALLOWED
+    null
   );
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
