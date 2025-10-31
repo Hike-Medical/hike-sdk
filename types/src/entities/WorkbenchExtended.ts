@@ -1,4 +1,4 @@
-import type { Asset, Evaluation, Product, Workbench, WorkbenchNotes } from '../../prisma';
+import type { Asset, Evaluation, Product, Workbench, WorkbenchNotes, WorkbenchStatusEvent } from '../../prisma';
 import { WorkbenchCustomization } from '../dto/workbench/WorkbenchCustomization';
 import { FormSubmissionExtended } from '../forms/FormSubmissionExtended';
 import { EvaluationExtended } from './EvaluationExtended';
@@ -21,4 +21,5 @@ export type WorkbenchExtended = Workbench & {
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
   customization: WorkbenchCustomization | null;
+  statusEvents?: WorkbenchStatusEvent[];
 } & WorkbenchPdfUrls;
