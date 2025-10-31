@@ -174,6 +174,7 @@ export * from './dto/roster/ParseRosterColumnsResponse';
 export * from './dto/roster/RoasterPatientCsvRecord';
 export * from './dto/roster/TransformedPatient';
 export * from './dto/s3/PresignedFile';
+export * from './dto/s3/S3Object';
 export * from './dto/scan/CreateMultipartUrls';
 export * from './dto/scan/SubmitRenderParams';
 export * from './dto/schema/ColumnInfo';
