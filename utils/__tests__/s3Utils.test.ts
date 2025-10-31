@@ -99,11 +99,11 @@ describe('toS3Object', () => {
       expect(toS3Object('https://s3.us-east-1.amazonaws.com')).toBeNull();
     });
 
-    it('should handle keys with special characters', () => {
+    it('should decode URL-encoded characters in keys', () => {
       const result = toS3Object('https://my-bucket.s3.us-west-1.amazonaws.com/path/file%20with%20spaces.pdf');
       expect(result).toEqual({
         bucket: 'my-bucket',
-        key: 'path/file%20with%20spaces.pdf',
+        key: 'path/file with spaces.pdf', // Decoded
         region: 'us-west-1'
       });
     });

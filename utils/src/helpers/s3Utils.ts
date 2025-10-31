@@ -54,7 +54,7 @@ export const toS3Object = (url: string): S3Object | null => {
   if (virtualHostedMatch) {
     const bucket = virtualHostedMatch[1];
     const region = virtualHostedMatch[2];
-    const key = parsed.pathname.slice(1); // Remove leading slash
+    const key = decodeURIComponent(parsed.pathname.slice(1)); // Decode URL-encoded characters
     return bucket && key && region ? { bucket, key, region } : null;
   }
 
@@ -63,7 +63,8 @@ export const toS3Object = (url: string): S3Object | null => {
 
   if (pathStyleMatch) {
     const region = pathStyleMatch[1];
-    const pathParts = parsed.pathname.slice(1).split('/');
+    const decodedPath = decodeURIComponent(parsed.pathname.slice(1)); // Decode URL-encoded characters
+    const pathParts = decodedPath.split('/');
     const bucket = pathParts[0];
     const key = pathParts.slice(1).join('/');
     return bucket && key && region ? { bucket, key, region } : null;
