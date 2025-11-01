@@ -41,7 +41,18 @@ export default {
       register: 'Register',
       select: 'Select',
       back: 'Back',
-      skip: 'Skip'
+      skip: 'Skip',
+      cancel: 'Cancel',
+      remove: 'Remove'
+    },
+    label: {
+      price: 'Price',
+      size: 'Size',
+      info: 'Information',
+      color: 'Color',
+      width: 'Width',
+      gender: 'Gender',
+      sku: 'SKU'
     },
     error: {
       title: 'Error',
@@ -135,6 +146,102 @@ export default {
       placeholder: 'Search for a company',
       noResults: 'No results found',
       minSearchLength: 'Type at least {length} characters'
+    }
+  },
+  suppliers: {
+    allCategories: 'All Categories',
+    product: 'Product',
+    noProductsFound: 'No products found',
+    searchPlaceholder: 'Search for a product',
+    addToOrder: 'Add to Order',
+    featured: 'Featured',
+    edit: 'Edit',
+    remove: 'Remove',
+    errorLoadingCatalogTitle: 'Error loading catalog',
+    errorLoadingCatalogMessage: 'There was an error loading the catalog. Please try again later.',
+    errorAddingProductTitle: 'Error adding product to order',
+    errorAddingProductMessage: 'There was an error adding the product to the order. Please try again later.',
+    noSuppliersAvailableTitle: 'No suppliers available',
+    noSuppliersAvailableMessage: 'No supplier catalogs are available for this form. Please contact support.',
+    orthofeet: {
+      catalog: {
+        viewAllPrices: 'View All Prices',
+        viewingUnder: 'Viewing Shoes Under {price}'
+      },
+      productCard: {
+        addPair: 'Add Pair',
+        bestSeller: 'BEST SELLER'
+      },
+      productDetail: {
+        title: 'Select Footwear',
+        shoeSizes: 'Shoe Sizes (US)',
+        selectGender: 'Please select a gender first',
+        selectColor: 'Please select a color first',
+        selectWidth: 'Please select a width first',
+        selectAllOptions: 'Select all options to view price',
+        prefabInsert: 'Prefab Insert',
+        prefabInsertDescription: 'Add a prefab insert to your order for an additional {price}',
+        prefabQuantity: 'Quantity',
+        prefabSelectQuantity: 'Please select a quantity',
+        outOfStock: 'Out of Stock',
+        outOfStockMessage: 'This item is currently out of stock. Please select a different option.',
+        shoePrice: 'Shoe Price',
+        insertPrice: 'Insert Price',
+        totalPrice: 'Total Price',
+        addToOrder: 'Add to Order',
+        missingInfoTitle: 'Missing Information',
+        missingInfoMessage: 'Please ensure you have selected all the required options.'
+      },
+      selectedProduct: {
+        addedTitle: 'Product added to order',
+        errorLoadingTitle: 'Error loading product',
+        errorLoadingMessage: 'Could not load product details. Please try again.',
+        notFoundTitle: 'Product not found',
+        notFoundMessage: 'The selected product could not be found. Please select another product.',
+        variantNotFoundTitle: 'Product variant not found',
+        variantNotFoundMessage: 'Could not load details for this product variant. The SKU may be invalid.',
+        shoePrice: 'Shoe Price',
+        insertPrice: 'Insert Price',
+        totalPrice: 'Total Price',
+        prefabQuantityLabel: 'Prefab Insert Quantity',
+        editPair: 'Edit Pair',
+        removeConfirmTitle: 'Remove product from order',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
+      },
+      review: {
+        notFoundTitle: 'Orthofeet product not found',
+        notFoundMessage: 'The Orthofeet product with SKU <b>{sku}</b> was not found. Please contact support.'
+      }
+    },
+    generic: {
+      productCard: {
+        variantCount: '{count} options',
+        variantCountSingular: '{count} option'
+      },
+      productDetail: {
+        selectVariant: 'Select Variant',
+        selectVariantPlaceholder: 'Choose a variant...',
+        selectVariantHint: 'Please select a variant to continue',
+        variantSelected: 'Variant Selected',
+        attributes: 'Attributes',
+        noVariantsAvailable: 'No variants available for this product.',
+        addToOrder: 'Add to Order',
+        updateProduct: 'Update Product'
+      },
+      selectedProduct: {
+        addedTitle: 'Product added to order',
+        editProduct: 'Edit Product',
+        removeConfirmTitle: 'Remove product from order',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from the order?'
+      },
+      review: {
+        errorLoadingTitle: 'Error Loading Product',
+        errorLoadingMessage: 'There was an error loading the product details. Please try again later.',
+        unknownProduct: 'Unknown Product',
+        specifications: 'Specifications',
+        removeConfirmTitle: 'Remove Product',
+        removeConfirmMessage: 'Are you sure you want to remove <b>{productName}</b> from your order?'
+      }
     }
   }
 } as const;

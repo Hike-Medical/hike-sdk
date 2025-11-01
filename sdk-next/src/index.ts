@@ -24,6 +24,7 @@ export * from './hooks/useMobilePlatform';
 export * from './i18n/userLocale';
 export * from './media/camera';
 export * from './media/getBestSupportedVideoFormat';
+export * from './suppliers';
 export * from './themes/createTheme';
 export * from './themes/themeIconColor';
 export * from './themes/types/ThemeColors';
