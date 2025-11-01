@@ -229,7 +229,7 @@ export const OrthofeetProductDetail = ({
   };
 
   const currentImage = currentVariant?.image || parentProduct?.image;
-  const productPrice = parentProduct?.price ?? currentVariant?.price ?? 0;
+  const productPrice = parentProduct?.price || currentVariant?.price || 0;
   const showOutOfStock = enableInventoryCheck && isFullySelected && !inventoryLoading && !inventoryError && !isInStock;
   const isButtonDisabled =
     !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
