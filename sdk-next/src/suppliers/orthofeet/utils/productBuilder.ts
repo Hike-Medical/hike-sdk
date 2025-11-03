@@ -42,7 +42,7 @@ export const productBuilder = (productVariants: CatalogProductExtended[], sku: s
   return {
     name: variant.name || parent.name,
     image: variant.image || parent.image,
-    price: variant.price ?? parent.price ?? 0,
+    price: variant.price || parent.price || 0,
     sku: variant.sku || '',
     attributes: getAttributes(variant)
   };

@@ -2,7 +2,7 @@
 
 import { ContactType, HikeErrorCode, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
 import { useSendOtp, useVerifyInvitation } from '@hike/ui';
-import { Alert, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
+import { Alert, Anchor, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { IconExclamationCircleFilled } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -14,6 +14,7 @@ export interface SendOtpInputProps {
   onVerified: (response: VerifyInvitationResponse, token: string) => Promise<void>;
   onSkipped?: () => void;
   onGoBack?: () => void;
+  onContactSupport?: () => void;
   HikeShell: {
     Main: ComponentType<PropsWithChildren<{ title: string; description: ReactNode }>>;
     Footer: ComponentType<PropsWithChildren<{ vertical?: boolean }>>;
@@ -26,6 +27,7 @@ export const SendOtpInput = ({
   onVerified,
   onSkipped,
   onGoBack,
+  onContactSupport,
   HikeShell
 }: SendOtpInputProps) => {
   const [inputOtp, setInputOtp] = useState<string | null>(null);
@@ -108,9 +110,15 @@ export const SendOtpInput = ({
                 {t('error.notAllowed.description')}
               </Text>
               <Alert color="orange" variant="light" w="100%">
-                <Text size="sm" ta="center">
-                  {t('error.notAllowed.suggestion')}
-                </Text>
+                {onContactSupport ? (
+                  <Text size="sm" ta="center">
+                    Please <Anchor onClick={onContactSupport}>click here</Anchor> to contact support for assistance.
+                  </Text>
+                ) : (
+                  <Text size="sm" ta="center">
+                    {t('error.notAllowed.suggestion')}
+                  </Text>
+                )}
               </Alert>
             </Stack>
           </HikeShell.Main>
