@@ -1,0 +1,49 @@
+{
+  "name": "@hike/sdk-stedi",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Hike SDK for Stedi Healthcare API - insurance eligibility verification and claims management",
+  "keywords": [
+    "stedi",
+    "healthcare",
+    "insurance",
+    "eligibility",
+    "medicare",
+    "edi"
+  ],
+  "author": "support@hikemedical.com",
+  "license": "Apache-2.0",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./ui": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/cjs/hooks/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build && tsc --project tsconfig.cjs.json",
+    "dev": "tsc --watch",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format": "npx prettier --check . --ignore-path ../../../.gitignore",
+    "clean": "rm -rf node_modules dist"
+  },
+  "dependencies": {
+    "@hike/sdk": "workspace:*",
+    "axios": "^1.13.1",
+    "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
+    "@hike/config": "workspace:*",
+    "eslint": "^9.26.0",
+    "typescript": "^5"
+  }
+}

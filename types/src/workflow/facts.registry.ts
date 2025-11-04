@@ -800,6 +800,73 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  // Insurance Eligibility (Stedi)
+  'insurance.eligibility.is_eligible': {
+    displayName: 'Insurance Eligibility Status',
+    description: 'Whether the patient is eligible for insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.active_coverage': {
+    displayName: 'Active Coverage Status',
+    description: 'Whether the patient has active insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.summary': {
+    displayName: 'Eligibility Summary',
+    description: 'Human-readable summary of eligibility check result',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.insurance_types': {
+    displayName: 'Insurance Types',
+    description: 'Types of insurance coverage (e.g., Medicare Part A, Part B)',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().optional(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.plan_number': {
+    displayName: 'Plan Number',
+    description: 'Insurance plan number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().optional(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.group_number': {
+    displayName: 'Group Number',
+    description: 'Insurance group number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().optional(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.checked_at': {
+    displayName: 'Eligibility Check Timestamp',
+    description: 'When the eligibility check was performed',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().datetime(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.raw_response': {
+    displayName: 'Raw Eligibility Response',
+    description: 'Complete response from Stedi eligibility check (for audit)',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.any().optional(),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
   // Other
   'fitter.clinic_name': {
     displayName: 'Fitter Clinic Name',
