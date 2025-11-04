@@ -1,9 +1,4 @@
-export * from './audit-log-interpreter';
 export * from './constants';
-export * from './constants/autoSlicerProfiles';
-export * from './constants/company';
-export * from './constants/marketingUtmParams';
-export * from './constants/SolemateStatuses';
 export * from './converters/flattenObject';
 export * from './converters/formatCamelCase';
 export * from './converters/formatConstant';
@@ -26,6 +21,7 @@ export * from './geography/utils/normalizeGeography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
 export * from './helpers/colorMapper';
+export * from './helpers/companyUtils';
 export * from './helpers/currentPaginatedPage';
 export * from './helpers/currentUrl';
 export * from './helpers/dayjsBusinessAdd';
