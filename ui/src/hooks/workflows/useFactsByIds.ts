@@ -1,5 +1,5 @@
-import { getFactsByIds, type FactWithAttachment } from '@hike/services';
-import type { HikeError } from '@hike/types';
+import { getFactsByIds } from '@hike/services';
+import type { FactWithAttachment, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseFactsByIdsOptions

@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@hike/sdk": "workspace:*",
-    "dayjs": "^1.11.13",
+    "dayjs": "^1",
     "stripe": "^16.2.0"
   },
   "devDependencies": {
