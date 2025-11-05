@@ -36,7 +36,8 @@
   "dependencies": {
     "@hike/types": "workspace:*",
     "@hike/utils": "workspace:*",
-    "axios": "^1.8.4"
+    "axios": "^1.8.4",
+    "zod": "^3"
   },
   "devDependencies": {
     "@hike/config": "workspace:*",

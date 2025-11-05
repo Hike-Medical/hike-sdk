@@ -1,9 +1,9 @@
 import { createFacility } from '@hike/services';
-import { CreateFacilityParams, FacilityExtended, HikeError } from '@hike/types';
+import { CreateFacilityParams, Facility, HikeError } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useCreateFacility = (
-  options?: UseMutationOptions<FacilityExtended, HikeError<null>, CreateFacilityParams>
+  options?: Omit<UseMutationOptions<Facility, HikeError<null>, CreateFacilityParams>, 'mutationFn'>
 ) =>
   useMutation({
     mutationKey: ['createFacility'],

@@ -5,11 +5,11 @@ import type {
   WorkflowAttachment,
   WorkflowDto,
   WorkflowFactsResult,
-  WorkflowLogDto,
   WorkflowSearchResult
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
+import { WorkflowLogDto } from './workflow.types';
 
 export const searchWorkflows = async (params: SearchWorkflowsParams): Promise<WorkflowSearchResult[]> => {
   try {

@@ -9,4 +9,5 @@ export interface WorkflowSearchResult {
     updatedAt: Date;
   }[];
   errorCount: number;
+  errorTypes: string[];
 }
