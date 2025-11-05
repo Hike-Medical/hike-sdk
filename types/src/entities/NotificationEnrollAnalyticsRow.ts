@@ -6,5 +6,6 @@ export interface NotificationEnrollAnalyticsRow {
   lastName: string;
   email: string | null;
   phone: string | null;
+  shippingAddress: string | null;
   status: 'ACTIVE' | 'INACTIVE';
 }
