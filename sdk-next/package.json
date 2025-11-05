@@ -38,6 +38,7 @@
   },
   "peerDependencies": {
     "@mantine/core": "^7",
+    "@mantine/emotion": "^7",
     "@mantine/dates": "^7",
     "@mantine/hooks": "^7",
     "@mantine/form": "^7",
