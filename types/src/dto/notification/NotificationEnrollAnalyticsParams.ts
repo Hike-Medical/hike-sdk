@@ -4,6 +4,7 @@ export interface NotificationEnrollAnalyticsParams extends PagedParams {
   status: 'ACTIVE' | 'INACTIVE';
   search?: string;
   opened?: 'opened' | 'unopened' | 'undefined';
+  notificationId?: string;
 }
 
 export interface ExportNotificationEnrollAnalyticsParams {
@@ -11,4 +12,5 @@ export interface ExportNotificationEnrollAnalyticsParams {
   search?: string;
   patientIds?: string[];
   opened?: 'opened' | 'unopened' | 'undefined';
+  notificationId?: string;
 }
