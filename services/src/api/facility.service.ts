@@ -1,5 +1,6 @@
 import {
   CreateFacilityParams,
+  Facility,
   FacilityExtended,
   GetFacilitiesParams,
   PagedResponse,
@@ -10,7 +11,7 @@ import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchCompanyFacilitiesAndAddresses = async (params?: GetFacilitiesParams): Promise<FacilityExtended[]> => {
+export const fetchFacilities = async (params?: GetFacilitiesParams): Promise<FacilityExtended[]> => {
   try {
     const response = await backendApi.get('facility', { params });
     return response.data;
@@ -19,7 +20,7 @@ export const fetchCompanyFacilitiesAndAddresses = async (params?: GetFacilitiesP
   }
 };
 
-export const searchCompanyFacilityAndAddresses = async (
+export const searchFacilities = async (
   params: SearchFacilityParams,
   companyIds?: string[]
 ): Promise<PagedResponse<FacilityExtended[]>> => {
@@ -40,7 +41,7 @@ export const getFacilityById = async (facilityId: string): Promise<FacilityExten
   }
 };
 
-export const createFacility = async (facility: CreateFacilityParams): Promise<FacilityExtended> => {
+export const createFacility = async (facility: CreateFacilityParams): Promise<Facility> => {
   try {
     const response = await backendApi.post('facility', facility);
     return response.data;
@@ -69,6 +70,14 @@ export const activateFacility = async (facilityId: string): Promise<void> => {
 export const deactivateFacility = async (facilityId: string): Promise<void> => {
   try {
     await backendApi.post(`facility/${facilityId}/deactivate`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteFacility = async (facilityId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`facility/${facilityId}`);
   } catch (error) {
     throw toHikeError(error);
   }
