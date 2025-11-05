@@ -1,11 +1,6 @@
-/**
- * Human-readable field mappings for Medicare Diabetic Compliance workflow
- * Maps technical field keys to user-friendly display names and descriptions
- */
+import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
+import { formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
-import { PROVIDER_TITLE_VALUES } from '../entities/HealthcareProviders';
-import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
-import { removeTitleFromName } from '../utils/converters/removeTitleFromName';
 
 interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
@@ -23,7 +18,7 @@ const icd10Code = z.string().regex(/^[A-TV-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
-const providerTitle = z.enum(PROVIDER_TITLE_VALUES);
+const providerTitle = z.enum(HEALTHCARE_CREDENTIAL_VALUES);
 
 const defaultMetadataSchema = z.object({
   sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
@@ -46,7 +41,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'patient.phone': {
     displayName: 'Phone Number',
@@ -122,7 +117,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'prescriber.phone': {
     displayName: 'Prescriber Phone',
@@ -175,7 +170,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'cert.physician.npi': {
     displayName: 'Certifying Physician NPI',
@@ -269,7 +264,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'prescriber.notes.examiner.role': {
     displayName: 'Prescriber Notes Examiner Role',
@@ -349,7 +344,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'cert.notes.examiner.role': {
     displayName: 'Certifier Notes Examiner Role',
@@ -444,7 +439,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'foot_exam.examiner.role': {
     displayName: 'Foot Exam Examiner Role',
