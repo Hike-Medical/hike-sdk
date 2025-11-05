@@ -73,6 +73,7 @@ export * from './hooks/company/useCompaniesByName';
 export * from './hooks/company/useGetCompany';
 export * from './hooks/company/useGetCompanyWorkbenchWebhooks';
 export * from './hooks/company/useUpdateCompany';
+export * from './hooks/departments/useDepartments';
 export * from './hooks/email-template/useDeleteEmailTemplate';
 export * from './hooks/email-template/useGetEmailTemplate';
 export * from './hooks/email-template/useGetEmailTemplates';
