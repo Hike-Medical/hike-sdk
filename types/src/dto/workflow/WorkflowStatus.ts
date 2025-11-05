@@ -11,3 +11,11 @@ export const WorkflowStepStatusEnum = {
 };
 
 export const WorkflowStepStatusList = Object.values(WorkflowStepStatusEnum);
+
+export const WorkflowStatusEnum = {
+  CREATED: 'CREATED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  SUCCEEDED: 'SUCCEEDED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+};
