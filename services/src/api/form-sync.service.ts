@@ -114,7 +114,7 @@ export const formSubmissionToWorkbenchReason = async (
   formState: Record<string, FormFieldValue>
 ) => {
   if (formState.loveInsoles !== undefined) {
-    const createdReason = formState.loveInsoles === 'yes' ? 'DUPLICATE' : 'ADJUSTMENT';
+    const createdReason = formState.loveInsoles === 'true' ? 'DUPLICATE' : 'ADJUSTMENT';
     await setWorkbenchCreatedReason(workbenchId, createdReason);
   }
 };
