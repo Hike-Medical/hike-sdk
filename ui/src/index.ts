@@ -37,6 +37,7 @@ export * from './hooks/auth/useAcceptInvitationCompany';
 export * from './hooks/auth/useAccountRecovery';
 export * from './hooks/auth/useApproveInvitation';
 export * from './hooks/auth/useAuthPreferences';
+export * from './hooks/auth/useAuthPreferencesBySlug';
 export * from './hooks/auth/useCompaniesBySession';
 export * from './hooks/auth/useCreatePin';
 export * from './hooks/auth/useDeletePin';
@@ -144,9 +145,9 @@ export * from './hooks/notification/useGetEnrollPatientsNotificationJobsByPatien
 export * from './hooks/notification/useGetInAppNotifications';
 export * from './hooks/notification/useGetNotificationById';
 export * from './hooks/notification/useGetNotificationContent';
-export * from './hooks/notification/useGetNotificationEnrollPatients';
 export * from './hooks/notification/useGetNotificationEnrollAnalytics';
 export * from './hooks/notification/useGetNotificationEnrollAnalyticsStats';
+export * from './hooks/notification/useGetNotificationEnrollPatients';
 export * from './hooks/notification/useGetNotificationEnrollStats';
 export * from './hooks/notification/useGetNotificationHistory';
 export * from './hooks/notification/useGetNotificationHistoryByPatient';
