@@ -1,6 +1,7 @@
 import type {
   AttachmentPresignedUrl,
   EvaluationAttachmentType,
+  PagedResponse,
   SearchWorkflowsParams,
   WorkflowAttachment,
   WorkflowDto,
@@ -11,7 +12,9 @@ import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 import { WorkflowLogDto } from './workflow.types';
 
-export const searchWorkflows = async (params: SearchWorkflowsParams): Promise<WorkflowSearchResult[]> => {
+export const searchWorkflows = async (
+  params: SearchWorkflowsParams
+): Promise<PagedResponse<WorkflowSearchResult[]>> => {
   try {
     const response = await backendApi.post('workflow/search', params);
     return response.data;

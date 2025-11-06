@@ -4,10 +4,12 @@ export interface WorkflowSearchResult {
   companyId: string;
   createdAt: Date;
   updatedAt: Date;
+  endTime?: Date;
   statusUpdates: {
     status: string;
     updatedAt: Date;
   }[];
   errorCount: number;
   errorTypes: string[];
+  facts?: Record<string, { value: unknown }>;
 }
