@@ -12,7 +12,7 @@ import { formatConstant, parseDate, toBoolean } from '@hike/utils';
 import { updateEvaluation } from './evaluation.service';
 import { updateFootByWorkbenchId } from './foot.service';
 import { updatePatient, upsertContact } from './patient.service';
-import { updateInactiveFootInWorkbench } from './workbench.service';
+import { setWorkbenchCreatedReason, updateInactiveFootInWorkbench } from './workbench.service';
 /**
  * Updates patients with form submission.
  */
@@ -104,6 +104,19 @@ export const formSubmissionToFoot = async (workbenchId: string, formState: Recor
     isPreFabOrHeatMoldable,
     patientAmputation
   });
+};
+
+/**
+ * Sets workbench createdReason based on loveInsoles response and copies data if DUPLICATE
+ */
+export const formSubmissionToWorkbenchReason = async (
+  workbenchId: string,
+  formState: Record<string, FormFieldValue>
+) => {
+  if (formState.loveInsoles !== undefined) {
+    const createdReason = formState.loveInsoles === 'yes' ? 'DUPLICATE' : 'ADJUSTMENT';
+    await setWorkbenchCreatedReason(workbenchId, createdReason);
+  }
 };
 
 /**
