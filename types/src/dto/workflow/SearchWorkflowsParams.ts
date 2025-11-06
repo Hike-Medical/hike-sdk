@@ -6,12 +6,22 @@ export enum WorkflowSortBy {
   EXPIRES_AT = 'expiresAt'
 }
 
-export interface SearchWorkflowsParams extends PagedParams {
+export interface FactFilter {
+  factName: string;
+  factValue: string;
+}
+
+export interface SearchWorkflowFilter {
   workflowNames?: string[];
   status?: string[];
-  factKey?: string;
-  factValue?: string;
-  errorsOnly?: boolean;
+  hasErrors?: boolean;
+  errorTypes?: string[];
+  facts?: FactFilter[];
+}
+
+export interface SearchWorkflowsParams extends PagedParams {
+  filter?: SearchWorkflowFilter;
   sortBy?: WorkflowSortBy;
-  includeFacts?: string[];
+  sortOrder?: 'asc' | 'desc';
+  factsToInclude?: string[];
 }

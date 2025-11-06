@@ -272,6 +272,5 @@ export * from './hooks/workflows/useUpdateWorkflowFacts';
 export * from './hooks/workflows/useUpdateWorkflowState';
 export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowAttachments';
-export * from './hooks/workflows/useWorkflowFacts';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';

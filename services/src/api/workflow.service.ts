@@ -5,7 +5,6 @@ import type {
   SearchWorkflowsParams,
   WorkflowAttachment,
   WorkflowDto,
-  WorkflowFactsResult,
   WorkflowSearchResult
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -26,15 +25,6 @@ export const searchWorkflows = async (
 export const getWorkflow = async (workflowId: string): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getWorkflowFacts = async (params: SearchWorkflowsParams): Promise<WorkflowFactsResult[]> => {
-  try {
-    const response = await backendApi.post('workflow/facts', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
