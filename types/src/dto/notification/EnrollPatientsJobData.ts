@@ -16,6 +16,7 @@ export interface EnrollPatientsMessageRootJobData extends EnrollPatientsJobData 
   batchSize: number;
   totalBatches: number;
   totalPatients: number;
+  totalProcessed?: number;
   batchJobIds?: string[]; // All descendant batch job IDs
 }
 
@@ -23,9 +24,8 @@ export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   messageId: string;
   rootJobId: string;
   delayMs?: number;
-  batchOffset: number;
   batchIndex: number;
   batchSize: number;
   totalBatches: number;
-  totalPatients: number;
+  totalPatients?: number; // Initial estimate
 }
