@@ -11,9 +11,7 @@ export interface NotificationProgress {
   failedBatches: number;
   currentBatch?: {
     batchIndex: number;
-    batchOffset: number;
     batchSize: number;
-    patientsInBatch: number;
     isProcessing: boolean;
     state: string;
     startsAt?: number; // Unix timestamp (ms) when delayed batch will start
