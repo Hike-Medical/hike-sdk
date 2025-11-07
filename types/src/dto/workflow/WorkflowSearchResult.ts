@@ -2,10 +2,10 @@ export interface WorkflowSearchResult {
   id: string;
   name: string;
   companyId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  startTime: Date;
+  updatedTime: Date;
   endTime?: Date;
-  expiresAt?: Date;
+  expirationTime?: Date;
   status: string;
   statusReason?: string;
   statusUpdates: {
