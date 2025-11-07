@@ -5,6 +5,7 @@ export interface WorkflowSearchResult {
   createdAt: Date;
   updatedAt: Date;
   endTime?: Date;
+  expiresAt?: Date;
   status: string;
   statusReason?: string;
   statusUpdates: {

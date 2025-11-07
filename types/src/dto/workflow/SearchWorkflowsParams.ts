@@ -3,7 +3,8 @@ import { PagedParams } from '../PagedParams';
 export enum WorkflowSortBy {
   CREATED_AT = 'createdAt',
   UPDATED_AT = 'updatedAt',
-  EXPIRES_AT = 'expiresAt'
+  EXPIRES_AT = 'expiresAt',
+  ENDED_AT = 'endedAt'
 }
 
 export interface FactFilter {
