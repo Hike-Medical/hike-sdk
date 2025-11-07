@@ -177,6 +177,7 @@ export const SendOtpInput = ({
         title={t('title')}
         description={t.rich('description', {
           contact,
+          type: contactType,
           strong: (chunks) => (
             <Text component="span" fw="bold" c="hike-dimmed" inherit>
               {chunks}
