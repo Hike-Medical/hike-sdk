@@ -18,6 +18,7 @@ export interface EnrollPatientsMessageRootJobData extends EnrollPatientsJobData 
   totalPatients: number;
   totalProcessed?: number;
   batchJobIds?: string[]; // All descendant batch job IDs
+  tagCursor?: string | null; // Current cursor position for tag-based enrollment pagination
 }
 
 export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
