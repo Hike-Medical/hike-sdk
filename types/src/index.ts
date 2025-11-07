@@ -258,7 +258,6 @@ export { WorkflowSortBy } from './dto/workflow/SearchWorkflowsParams';
 export type { SearchWorkflowsParams } from './dto/workflow/SearchWorkflowsParams';
 export * from './dto/workflow/WorkflowAttachment';
 export * from './dto/workflow/WorkflowDto';
-export * from './dto/workflow/WorkflowFactsResult';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
 export * from './entities/AssetExtended';
