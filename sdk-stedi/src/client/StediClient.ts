@@ -1,15 +1,19 @@
+import { Logger } from '@hike/sdk';
 import axios, { AxiosInstance } from 'axios';
+
 import { EligibilityClient } from './EligibilityClient';
 
 export interface StediClientConfig {
   apiKey: string;
   baseURL?: string;
   timeout?: number;
+  logger?: Logger;
 }
 
 export class StediClient {
   protected readonly apiKey: string;
   protected readonly axiosInstance: AxiosInstance;
+  protected readonly logger?: Logger;
 
   public readonly eligibility: EligibilityClient;
 
@@ -19,6 +23,7 @@ export class StediClient {
     }
 
     this.apiKey = config.apiKey;
+    this.logger = config.logger;
 
     this.axiosInstance = axios.create({
       baseURL: config.baseURL || 'https://healthcare.us.stedi.com',
@@ -30,6 +35,6 @@ export class StediClient {
     });
 
     // Initialize sub-clients
-    this.eligibility = new EligibilityClient(this.axiosInstance);
+    this.eligibility = new EligibilityClient(this.axiosInstance, this.logger);
   }
 }

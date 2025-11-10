@@ -1,6 +1,10 @@
+import { Logger } from '@hike/sdk';
 import { AxiosInstance } from 'axios';
+
+import { fromStediError } from '../errors';
 import type {
   EligibilityCheckOptions,
+  EligibilityCheckResult,
   EligibilityInterpretation,
   EligibilityRequest,
   EligibilityResponse
@@ -12,88 +16,45 @@ import { formatDateForStedi } from '../utils/date';
 const ELIGIBILITY_ENDPOINT = '/2024-04-01/change/medicalnetwork/eligibility/v3';
 
 export class EligibilityClient {
-  constructor(private readonly axiosInstance: AxiosInstance) {}
+  constructor(
+    private readonly axiosInstance: AxiosInstance,
+    private readonly logger?: Logger
+  ) {}
 
   /**
    * Check eligibility for a patient
+   * @throws {HikeError} with formatted Stedi error details
    */
   async check(
     patient: PatientInput,
     provider: Provider,
     options?: EligibilityCheckOptions
-  ): Promise<{
-    success: boolean;
-    data?: {
-      raw: EligibilityResponse;
-      interpretation: EligibilityInterpretation;
-    };
-    error?: string;
-    errorDetails?: any;
-  }> {
+  ): Promise<EligibilityCheckResult> {
     try {
       const request = this.buildRequest(patient, provider, options);
+      this.logger?.log('Stedi eligibility check initiated');
+
       const response = await this.axiosInstance.post<EligibilityResponse>(ELIGIBILITY_ENDPOINT, request);
       const interpretation = this.interpretResponse(response.data);
 
-      return {
-        success: true,
-        data: {
-          raw: response.data,
-          interpretation
-        }
-      };
-    } catch (error: any) {
-      // Check Axios error from response data
-      if (error.response?.data) {
-        const errorData = error.response.data;
-
-        // Extract error details from Stedi response
-        if (errorData.errors && errorData.errors.length > 0) {
-          const stediErrors = errorData.errors.map((e: any) => ({
-            code: e.followupAction || e.code || 'UNKNOWN',
-            description: e.description || e.message || 'Unknown error'
-          }));
-
-          return {
-            success: false,
-            error: 'STEDI_ERROR',
-            errorDetails: {
-              status: error.response.status,
-              errors: stediErrors
-            }
-          };
-        }
-
-        // Handle other error formats
-        if (errorData.message) {
-          return {
-            success: false,
-            error: 'API_ERROR',
-            errorDetails: {
-              status: error.response.status,
-              message: errorData.message,
-              code: errorData.code
-            }
-          };
-        }
-
-        return {
-          success: false,
-          error: `API error: ${error.response.status}`
-        };
-      }
-
-      if (error instanceof Error) {
-        return {
-          success: false,
-          error: error.message
-        };
-      }
+      this.logger?.log('Stedi eligibility check success', {
+        isEligible: interpretation.isEligible,
+        hasActiveCoverage: interpretation.hasActiveCoverage
+      });
 
       return {
-        success: false,
-        error: String(error)
+        raw: response.data,
+        interpretation
       };
+    } catch (error: unknown) {
+      const hikeError = fromStediError(error);
+      this.logger?.error('Stedi eligibility check failed', {
+        message: hikeError.message,
+        errorCode: hikeError.errorCode,
+        statusCode: hikeError.statusCode,
+        formattedErrors: hikeError.data
+      });
+      throw hikeError;
     }
   }
 
@@ -228,7 +189,7 @@ export class EligibilityClient {
   /**
    * Generate a unique control number for tracking requests
    */
-  private generateControlNumber(prefix: string = 'REQ'): string {
+  private generateControlNumber(prefix = 'REQ'): string {
     return `${prefix}${Date.now()}${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
   }
 }

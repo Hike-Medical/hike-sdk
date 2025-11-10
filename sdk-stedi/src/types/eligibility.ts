@@ -111,3 +111,11 @@ export interface EligibilityInterpretation {
     errors?: StediError[];
   };
 }
+
+/**
+ * Result from eligibility check
+ */
+export interface EligibilityCheckResult {
+  raw: EligibilityResponse;
+  interpretation: EligibilityInterpretation;
+}
