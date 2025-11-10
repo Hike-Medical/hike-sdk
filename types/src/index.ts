@@ -260,6 +260,7 @@ export * from './dto/workflow/WorkflowAttachment';
 export * from './dto/workflow/WorkflowDto';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
+export * from './dto/workflow/WorkflowTimeSaved';
 export * from './entities/AssetExtended';
 export * from './entities/AuditLogWithUser';
 export * from './entities/AugmentExtended';
