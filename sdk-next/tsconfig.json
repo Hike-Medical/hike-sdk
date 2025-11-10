@@ -5,7 +5,6 @@
     "outDir": "./dist",
     "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "bundler",
-    "isolatedModules": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,

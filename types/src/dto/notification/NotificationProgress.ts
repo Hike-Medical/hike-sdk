@@ -1,3 +1,5 @@
+import { EnrollPatientsParams } from './EnrollPatientsParams';
+
 export interface NotificationProgress {
   rootJobId: string;
   messageId: string;
@@ -9,11 +11,10 @@ export interface NotificationProgress {
   completedBatches: number;
   remainingBatches: number;
   failedBatches: number;
+  params: EnrollPatientsParams;
   currentBatch?: {
     batchIndex: number;
-    batchOffset: number;
     batchSize: number;
-    patientsInBatch: number;
     isProcessing: boolean;
     state: string;
     startsAt?: number; // Unix timestamp (ms) when delayed batch will start

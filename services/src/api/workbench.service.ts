@@ -27,6 +27,7 @@ import {
   SubmitOrderParams,
   UpdateInactiveFootBody,
   Workbench,
+  WorkbenchCreatedReason,
   WorkbenchDevSummary,
   WorkbenchExtended,
   WorkbenchPdfs,
@@ -215,6 +216,19 @@ export const updateInactiveFootInWorkbench = async (
 ): Promise<Workbench> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/set-inactive-foot`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const setWorkbenchCreatedReason = async (
+  workbenchId: string,
+
+  createdReason: WorkbenchCreatedReason
+): Promise<Workbench> => {
+  try {
+    const response = await backendApi.post(`workbench/${workbenchId}/set-created-reason/${createdReason}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

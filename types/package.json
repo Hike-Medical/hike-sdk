@@ -31,49 +31,10 @@
     "dev": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "format": "npx prettier --check . --ignore-path ./.prettierignore --ignore-path ../../../.gitignore",
-    "clean": "rm -rf node_modules dist",
-    "test": "jest"
+    "clean": "rm -rf node_modules dist"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.2",
     "@hike/config": "workspace:*",
-    "eslint": "^9.26.0",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.1.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "testRegex": ".*(\\.e2e\\.spec|\\.int\\.test|\\.test)\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": ["ts-jest", {
-        "isolatedModules": true,
-        "diagnostics": false
-      }]
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jose)/)"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.(t|j)s",
-      "!src/**/*.(test|d).ts"
-    ],
-    "coverageDirectory": "../../coverage",
-    "testEnvironment": "node",
-    "setupFiles": [
-      "reflect-metadata"
-    ],
-    "moduleNameMapper": {
-      "^src/(.*)": "<rootDir>/src/$1",
-      "^@/(.*)": "<rootDir>/src/$1"
-    },
-    "silent": true
-  },
-  "coverageReporters": [
-    "json",
-    "html"
-  ]
+    "eslint": "^9.26.0"
+  }
 }
