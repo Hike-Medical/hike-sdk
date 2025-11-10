@@ -851,6 +851,15 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  'calculations.expiration.rx.initial.order_date': {
+    displayName: 'Initial Rx Order Expiration Date',
+    description: 'Date when the initial prescription order expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO,
+    metadata: defaultMetadataSchema
+  },
+
   'calculations.expiration.prescriber.notes.certifying_agreement.date': {
     displayName: 'Prescriber Notes Certifying Agreement Expiration Date',
     description: 'Date when the prescriber notes certifying agreement expires',
