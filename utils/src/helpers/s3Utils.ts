@@ -32,7 +32,7 @@ export const getAwsS3Url = ({ bucket, key, region }: S3Object, baseUrl?: string)
  * Supports virtual-hosted-style, path-style URLs with region, and s3:// protocol URIs.
  *
  * @param url - The S3 URL or URI to parse
- * @param defaultRegion - The default region to use for s3:// URIs (defaults to 'us-east-1')
+ * @param defaultRegion - The default region to use for s3:// URIs (defaults to 'us-east-2')
  *
  * @example
  * ```ts
