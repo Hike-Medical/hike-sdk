@@ -1,4 +1,5 @@
 import type { S3Object } from '@hike/types';
+import { Constants } from '../constants';
 import { toURL } from '../converters/toURL';
 
 /**
@@ -28,7 +29,10 @@ export const getAwsS3Url = ({ bucket, key, region }: S3Object, baseUrl?: string)
 
 /**
  * Extract S3 bucket and key from AWS S3 URLs.
- * Supports virtual-hosted-style and path-style URLs with region.
+ * Supports virtual-hosted-style, path-style URLs with region, and s3:// protocol URIs.
+ *
+ * @param url - The S3 URL or URI to parse
+ * @param defaultRegion - The default region to use for s3:// URIs (defaults to 'us-east-1')
  *
  * @example
  * ```ts
@@ -39,12 +43,32 @@ export const getAwsS3Url = ({ bucket, key, region }: S3Object, baseUrl?: string)
  * // Path-style
  * toS3Object('https://s3.us-west-1.amazonaws.com/bucket/key')
  * // { bucket: 'bucket', key: 'key', region: 'us-west-1' }
+ *
+ * // s3:// protocol (uses default region)
+ * toS3Object('s3://bucket/key')
+ * // { bucket: 'bucket', key: 'key', region: 'us-east-2' }
+ *
+ * // s3:// protocol with custom default region
+ * toS3Object('s3://bucket/key', 'eu-west-1')
+ * // { bucket: 'bucket', key: 'key', region: 'eu-west-1' }
  * ```
  */
-export const toS3Object = (url: string): S3Object | null => {
+export const toS3Object = (url: string, defaultRegion: string = Constants.DEFAULT_AWS_REGION): S3Object | null => {
   const parsed = toURL(url);
 
-  if (!parsed || parsed.protocol !== 'https:') {
+  if (!parsed) {
+    return null;
+  }
+
+  // Handle s3:// protocol
+  if (parsed.protocol === 's3:') {
+    const bucket = parsed.hostname;
+    const key = decodeURIComponent(parsed.pathname.slice(1)); // Remove leading slash and decode
+    return bucket && key ? { bucket, key, region: defaultRegion } : null;
+  }
+
+  // Only handle HTTPS for AWS URLs
+  if (parsed.protocol !== 'https:') {
     return null;
   }
 
