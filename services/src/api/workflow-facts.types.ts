@@ -848,6 +848,22 @@ export const FactRegistry = {
     schema: z.string().date(),
     metadata: defaultMetadataSchema
   },
+  'insurance.eligibility.provider.npi': {
+    displayName: 'Provider NPI',
+    description: 'NPI of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.provider.organization_name': {
+    displayName: 'Provider Organization Name',
+    description: 'Organization name of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
 
   // Other
   'fitter.selection.visit.date': {
