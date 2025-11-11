@@ -107,4 +107,8 @@ export interface CompanyPreferences {
       facilityType?: FacilityType;
     };
   };
+  npi?: {
+    name: string;
+    value: string;
+  };
 }
