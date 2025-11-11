@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+import { Constants } from '../src/constants';
 import { toS3Object } from '../src/helpers/s3Utils';
 
 describe('toS3Object', () => {
@@ -65,6 +66,94 @@ describe('toS3Object', () => {
         bucket: 'my-bucket',
         key: 'deep/nested/path/file.pdf',
         region: 'us-west-1'
+      });
+    });
+  });
+
+  describe('s3:// protocol URIs', () => {
+    it('should parse basic s3:// URI with default region', () => {
+      const result = toS3Object('s3://my-bucket/file.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'file.pdf',
+        region: Constants.DEFAULT_AWS_REGION // default region
+      });
+    });
+
+    it('should parse s3:// URI with nested path', () => {
+      const result = toS3Object('s3://my-bucket/path/to/file.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'path/to/file.pdf',
+        region: Constants.DEFAULT_AWS_REGION
+      });
+    });
+
+    it('should parse s3:// URI with deep nested path', () => {
+      const result = toS3Object('s3://my-bucket/deep/nested/path/to/file.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'deep/nested/path/to/file.pdf',
+        region: Constants.DEFAULT_AWS_REGION
+      });
+    });
+
+    it('should parse s3:// URI with custom default region', () => {
+      const result = toS3Object('s3://my-bucket/file.pdf', 'eu-west-1');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'file.pdf',
+        region: 'eu-west-1'
+      });
+    });
+
+    it('should parse s3:// URI with URL-encoded characters', () => {
+      const result = toS3Object('s3://my-bucket/path/file%20with%20spaces.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'path/file with spaces.pdf', // Decoded
+        region: Constants.DEFAULT_AWS_REGION
+      });
+    });
+
+    it('should parse s3:// URI with special characters in key', () => {
+      const result = toS3Object('s3://my-bucket/path/to/file%2Bspecial%40chars.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket',
+        key: 'path/to/file+special@chars.pdf',
+        region: Constants.DEFAULT_AWS_REGION
+      });
+    });
+
+    it('should handle bucket names with hyphens and numbers', () => {
+      const result = toS3Object('s3://my-bucket-123/file.pdf');
+      expect(result).toEqual({
+        bucket: 'my-bucket-123',
+        key: 'file.pdf',
+        region: Constants.DEFAULT_AWS_REGION
+      });
+    });
+
+    it('should return null for s3:// URI without key', () => {
+      expect(toS3Object('s3://my-bucket/')).toBeNull();
+      expect(toS3Object('s3://my-bucket')).toBeNull();
+    });
+
+    it('should return null for s3:// URI without bucket', () => {
+      expect(toS3Object('s3:///file.pdf')).toBeNull();
+      expect(toS3Object('s3://')).toBeNull();
+    });
+
+    it('should handle various AWS regions as default', () => {
+      const regions = ['us-east-1', 'us-east-2', 'us-west-2', 'eu-west-1', 'ap-southeast-1', 'ap-northeast-1'];
+
+      regions.forEach((region) => {
+        const result = toS3Object('s3://my-bucket/file.pdf', region);
+        expect(result).toEqual({
+          bucket: 'my-bucket',
+          key: 'file.pdf',
+          region
+        });
       });
     });
   });

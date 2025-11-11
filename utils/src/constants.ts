@@ -12,6 +12,7 @@ export const Constants = {
     pageSize: 25,
     limit: 10
   } satisfies PaginationState,
+  DEFAULT_AWS_REGION: 'us-east-2',
   NOTIFICATION: {
     DEFAULT_STAGGERED_BATCH_SIZE: 2000,
     DEFAULT_STAGGERED_BATCH_DELAY_MINUTES: 5,

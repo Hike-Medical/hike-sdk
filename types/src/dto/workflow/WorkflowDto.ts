@@ -1,4 +1,4 @@
-import { NotificationHistory, WorkflowStatus } from '../../../prisma';
+import { NotificationHistory } from '../../../prisma';
 
 export interface OutboundNotificationDto {
   contact: string;
@@ -57,7 +57,7 @@ export interface WorkflowStepDto {
 }
 
 export interface WorkflowStatusUpdateDto {
-  status: WorkflowStatus;
+  status: string;
   reason?: string;
   updatedAt: string;
 }

@@ -684,9 +684,9 @@ export const FactRegistry = {
   },
 
   // Operations
-  'ops.delivery.date': {
-    displayName: 'Delivery Date',
-    description: 'Date when the diabetic footwear was delivered',
+  'fitter.billing.date': {
+    displayName: 'Billing Date',
+    description: 'Date when the diabetic footwear should be billed',
     category: 'Operations',
     required: false,
     schema: dateISO,
@@ -796,12 +796,21 @@ export const FactRegistry = {
   },
 
   // Other
-  'fitter.clinic_name': {
-    displayName: 'Fitter Clinic Name',
-    description: 'Name of the clinic where the footwear was fitted',
+  'fitter.selection.visit.date': {
+    displayName: 'Fitter Selection Visit Date',
+    description: 'Date of the visit where the footwear was selected',
     category: 'Other',
     required: false,
-    schema: z.string().min(1),
+    schema: dateISO,
+    metadata: defaultMetadataSchema
+  },
+
+  'fitter.delivery.visit.date': {
+    displayName: 'Fitter Delivery Visit Date',
+    description: 'Date of the visit where the footwear was delivered',
+    category: 'Other',
+    required: false,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -836,6 +845,15 @@ export const FactRegistry = {
   'calculations.expiration.cert.statement.signature_date': {
     displayName: 'Certifying Statement Expiration Date',
     description: 'Date when the certifying statement expires',
+    category: 'Calculations',
+    required: false,
+    schema: dateISO,
+    metadata: defaultMetadataSchema
+  },
+
+  'calculations.expiration.rx.initial.order_date': {
+    displayName: 'Initial Rx Order Expiration Date',
+    description: 'Date when the initial prescription order expires',
     category: 'Calculations',
     required: false,
     schema: dateISO,
