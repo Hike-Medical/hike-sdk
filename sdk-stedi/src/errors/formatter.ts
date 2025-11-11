@@ -1,12 +1,12 @@
 import { HikeError, HikeErrorCode } from '@hike/sdk';
-
-import { formatErrorForDisplay, getErrorInfo } from './errorCodes';
+import { isAxiosError } from 'axios';
+import { formatErrorForDisplay, getErrorInfo, type ErrorInput } from './errorCodes';
 import type { FormattedStediError } from './types';
 
 /**
  * Convert a caught error from Stedi API into a HikeError with formatted details
  */
-export function fromStediError(error: unknown): HikeError<FormattedStediError[]> {
+export const fromStediError = (error: unknown): HikeError<FormattedStediError[]> => {
   const statusCode = getStatusCode(error);
   let formattedErrors: FormattedStediError[] = [];
   let errorCode = HikeErrorCode.ERR_STEDI_API_ERROR;
@@ -18,11 +18,11 @@ export function fromStediError(error: unknown): HikeError<FormattedStediError[]>
 
     // Extract and format error details from Stedi response
     if (errorData.errors && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
-      formattedErrors = errorData.errors.map((e: unknown) => {
-        const formatted = formatErrorForDisplay(e);
+      formattedErrors = errorData.errors.map((item: unknown) => {
+        const formatted = formatErrorForDisplay(item as ErrorInput);
         return {
           ...formatted,
-          rawError: e
+          rawError: item
         };
       });
 
@@ -74,43 +74,18 @@ export function fromStediError(error: unknown): HikeError<FormattedStediError[]>
     errorCode,
     data: formattedErrors
   });
-}
-
-/**
- * Type guard to check if error is an Axios error
- */
-function isAxiosError(error: unknown): error is {
-  response?: {
-    status: number;
-    data: {
-      errors?: unknown[];
-      message?: string;
-      code?: string;
-    };
-  };
-} {
-  return (
-    typeof error === 'object' &&
-    error !== null &&
-    'response' in error &&
-    typeof (error as { response?: unknown }).response === 'object'
-  );
-}
+};
 
 /**
  * Extract status code from error
  */
-function getStatusCode(error: unknown): number {
-  if (isAxiosError(error) && error.response?.status) {
-    return error.response.status;
-  }
-  return 500;
-}
+const getStatusCode = (error: unknown): number =>
+  isAxiosError(error) && error.response?.status ? error.response.status : 500;
 
 /**
  * Map error category to HikeErrorCode and message prefix
  */
-function getCategoryMapping(category: string): { code: HikeErrorCode; prefix: string } {
+const getCategoryMapping = (category: string): { code: HikeErrorCode; prefix: string } => {
   switch (category) {
     case 'payer_connectivity':
       return { code: HikeErrorCode.ERR_STEDI_PAYER_CONNECTIVITY, prefix: 'Payer connectivity issue' };
@@ -123,4 +98,4 @@ function getCategoryMapping(category: string): { code: HikeErrorCode; prefix: st
     default:
       return { code: HikeErrorCode.ERR_STEDI_ELIGIBILITY_CHECK_FAILED, prefix: 'Eligibility check failed' };
   }
-}
+};

@@ -20,10 +20,6 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.js"
-    },
-    "./ui": {
-      "import": "./dist/hooks/index.js",
-      "require": "./dist/cjs/hooks/index.js"
     }
   },
   "files": [

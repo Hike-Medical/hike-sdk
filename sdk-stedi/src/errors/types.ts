@@ -1,3 +1,10 @@
+export interface StediError {
+  code?: string;
+  description?: string;
+  message?: string;
+  followupAction?: string;
+}
+
 /**
  * Formatted Stedi error with actionable information
  */
@@ -10,4 +17,3 @@ export interface FormattedStediError {
   retryable: boolean;
   rawError?: unknown;
 }
-

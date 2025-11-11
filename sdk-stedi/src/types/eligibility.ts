@@ -1,12 +1,13 @@
-import { StediError } from './error';
+import type { StediError } from '../errors/types';
 import type { Dependent, Subscriber } from './patient';
 import type { Provider } from './provider';
+import type { ServiceTypeCodeValue } from './serviceTypes';
 
 export interface Encounter {
   beginningDateOfService?: string; // Format: YYYYMMDD
   endDateOfService?: string; // Format: YYYYMMDD
   dateOfService?: string; // Format: YYYYMMDD
-  serviceTypeCodes?: string[];
+  serviceTypeCodes?: ServiceTypeCodeValue[];
   priorAuthorizationOrReferralNumber?: string;
   referenceIdentificationQualifier?: string;
   industryCode?: string;
@@ -33,7 +34,7 @@ export interface EligibilityRequest {
 }
 
 export interface Benefit {
-  serviceTypeCodes?: string[];
+  serviceTypeCodes?: ServiceTypeCodeValue[];
   coverageLevel?: string;
   insuranceType?: string;
   planCoverage?: string;
@@ -80,42 +81,59 @@ export interface EligibilityResponse {
     eligibility?: string;
     eligibilityBegin?: string;
   };
-  benefitsInformation?: any[];
-  planStatus?: any[];
+  benefitsInformation?: BenefitInformation[];
+  planStatus?: PlanStatus[];
+}
+
+export interface BenefitInformation {
+  serviceTypeCodes?: ServiceTypeCodeValue[];
+  coverageLevel?: string;
+  insuranceType?: string;
+  planCoverage?: string;
+  benefitAmount?: string;
+  benefitPercent?: string;
+  benefitDescription?: string;
+}
+
+export interface PlanStatus {
+  statusCode?: string;
+  status?: string;
+  planDetails?: string;
+  effectiveDate?: string;
+  terminationDate?: string;
 }
 
 export interface EligibilityCheckOptions {
-  serviceTypeCodes?: string[];
+  serviceTypeCodes?: ServiceTypeCodeValue[];
   encounterDate?: string; // Format: YYYY-MM-DD
   icd10Codes?: string[];
   tradingPartner?: string; // e.g., 'CMS', 'CIGNA', 'AETNA'
 }
 
-export interface EligibilityInterpretation {
+export interface EligibilityCheckResponse {
   isEligible: boolean;
   hasActiveCoverage: boolean;
   summary: string;
-  details: {
-    subscriber?: {
-      memberId: string;
-      firstName: string;
-      lastName: string;
-      dateOfBirth: string;
-      planNumber?: string;
-      groupNumber?: string;
-    };
-    benefits?: Benefit[];
-    insuranceTypes?: string;
+  controlNumber: string;
+  eligibilitySearchId?: string;
+  subscriber?: {
+    memberId: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
     planNumber?: string;
     groupNumber?: string;
-    errors?: StediError[];
   };
+  benefits?: Benefit[];
+  insuranceTypes?: string;
+  planNumber?: string;
+  groupNumber?: string;
+  errors?: StediError[];
 }
 
 /**
  * Result from eligibility check
  */
 export interface EligibilityCheckResult {
-  raw: EligibilityResponse;
-  interpretation: EligibilityInterpretation;
+  response: EligibilityCheckResponse;
 }

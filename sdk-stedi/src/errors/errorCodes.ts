@@ -166,7 +166,7 @@ export const AAA_ERROR_CODES: Record<string, ErrorCodeInfo> = {
 /**
  * Get error information for a given AAA error code
  */
-export function getErrorInfo(errorCode: string): ErrorCodeInfo {
+export const getErrorInfo = (errorCode: string): ErrorCodeInfo => {
   const code = errorCode.trim();
 
   // Check for exact match
@@ -194,42 +194,60 @@ export function getErrorInfo(errorCode: string): ErrorCodeInfo {
       'Contact Stedi support for assistance'
     ]
   };
+};
+
+export interface ErrorInput {
+  code?: string;
+  description?: string;
+  message?: string;
+  followupAction?: string;
+  possibleResolutions?: string;
 }
 
-/**
- * Format error information for display
- */
-export function formatErrorForDisplay(error: any): {
+export interface FormattedErrorDisplay {
   code: string;
   title: string;
   description: string;
   action: string;
   resolutions: string[];
   retryable: boolean;
-} {
+}
+
+/**
+ * Format error information for display
+ */
+export const formatErrorForDisplay = (error: ErrorInput): FormattedErrorDisplay => {
   // Stedi errors can have 'code' field or be embedded in description
   // Error format: { followupAction: "Resubmission Allowed", code: "42", description: "..." }
   // Or: { followupAction: "...", description: "Unable to Respond at Current Time" }
-
   let errorCode = error.code || 'UNKNOWN';
 
-  // If no code, try to extract from description
+  // Try to extract from description if no code is provided
   if (errorCode === 'UNKNOWN' && error.description) {
     // Map common error descriptions to codes
     const descriptionLower = error.description.toLowerCase();
-    if (descriptionLower.includes('unable to respond')) errorCode = '42';
-    else if (descriptionLower.includes('invalid') && descriptionLower.includes('provider')) errorCode = '43';
-    else if (
+
+    if (descriptionLower.includes('unable to respond')) {
+      errorCode = '42';
+    } else if (descriptionLower.includes('invalid') && descriptionLower.includes('provider')) {
+      errorCode = '43';
+    } else if (
       descriptionLower.includes('invalid') &&
       descriptionLower.includes('subscriber') &&
       descriptionLower.includes('id')
-    )
+    ) {
       errorCode = '72';
-    else if (descriptionLower.includes('invalid') && descriptionLower.includes('name')) errorCode = '73';
-    else if (descriptionLower.includes('subscriber') && descriptionLower.includes('not found')) errorCode = '75';
-    else if (descriptionLower.includes('patient') && descriptionLower.includes('not found')) errorCode = '67';
-    else if (descriptionLower.includes('invalid participant')) errorCode = '79';
-    else if (descriptionLower.includes('no response')) errorCode = '80';
+    } else if (descriptionLower.includes('invalid') && descriptionLower.includes('name')) {
+      errorCode = '73';
+    } else if (descriptionLower.includes('subscriber') && descriptionLower.includes('not found')) {
+      errorCode = '75';
+    } else if (descriptionLower.includes('patient') && descriptionLower.includes('not found')) {
+      errorCode = '67';
+    } else if (descriptionLower.includes('invalid participant')) {
+      errorCode = '79';
+    } else if (descriptionLower.includes('no response')) {
+      errorCode = '80';
+    }
   }
 
   const errorInfo = getErrorInfo(errorCode);
@@ -242,25 +260,24 @@ export function formatErrorForDisplay(error: any): {
     resolutions: error.possibleResolutions ? [error.possibleResolutions] : errorInfo.resolutions,
     retryable: errorInfo.retryable
   };
-}
+};
 
 /**
  * Determine if an error is retryable based on category and code
  */
-export function isRetryableError(errorCode: string): boolean {
-  const errorInfo = getErrorInfo(errorCode);
-  return errorInfo.retryable;
-}
+export const isRetryableError = (errorCode: string): boolean => getErrorInfo(errorCode).retryable;
 
 /**
  * Get retry strategy recommendation based on error
  */
-export function getRetryStrategy(errorCode: string): {
+export const getRetryStrategy = (
+  errorCode: string
+): {
   shouldRetry: boolean;
   strategy: string;
   maxRetries?: number;
   backoffMinutes?: number[];
-} {
+} => {
   const errorInfo = getErrorInfo(errorCode);
 
   if (!errorInfo.retryable) {
@@ -294,24 +311,26 @@ export function getRetryStrategy(errorCode: string): {
     shouldRetry: false,
     strategy: 'Unknown retry pattern'
   };
+};
+
+export interface CategorizedErrors {
+  connectivity: ErrorInput[];
+  dataIssues: ErrorInput[];
+  notFound: ErrorInput[];
+  providerIssues: ErrorInput[];
+  unknown: ErrorInput[];
 }
 
 /**
  * Categorize errors by type for batch analysis
  */
-export function categorizeErrors(errors: any[]): {
-  connectivity: any[];
-  dataIssues: any[];
-  notFound: any[];
-  providerIssues: any[];
-  unknown: any[];
-} {
-  const categorized = {
-    connectivity: [] as any[],
-    dataIssues: [] as any[],
-    notFound: [] as any[],
-    providerIssues: [] as any[],
-    unknown: [] as any[]
+export const categorizeErrors = (errors: ErrorInput[]): CategorizedErrors => {
+  const categorized: CategorizedErrors = {
+    connectivity: [],
+    dataIssues: [],
+    notFound: [],
+    providerIssues: [],
+    unknown: []
   };
 
   errors.forEach((error) => {
@@ -338,4 +357,4 @@ export function categorizeErrors(errors: any[]): {
   });
 
   return categorized;
-}
+};

@@ -810,22 +810,18 @@ export const FactRegistry = {
     category: 'Insurance Eligibility',
     required: false,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema
-  },
-  'insurance.eligibility.summary': {
-    displayName: 'Eligibility Summary',
-    description: 'Human-readable summary of eligibility check result',
-    category: 'Insurance Eligibility',
-    required: false,
-    schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: z.object({
+      summary: z.string().optional(),
+      rawResponse: z.any().optional(),
+      ...defaultMetadataSchema.shape
+    })
   },
   'insurance.eligibility.insurance_types': {
     displayName: 'Insurance Types',
     description: 'Types of insurance coverage (e.g., Medicare Part A, Part B)',
     category: 'Insurance Eligibility',
     required: false,
-    schema: z.string().optional(),
+    schema: z.string(),
     metadata: defaultMetadataSchema
   },
   'insurance.eligibility.plan_number': {
@@ -833,7 +829,7 @@ export const FactRegistry = {
     description: 'Insurance plan number',
     category: 'Insurance Eligibility',
     required: false,
-    schema: z.string().optional(),
+    schema: z.string(),
     metadata: defaultMetadataSchema
   },
   'insurance.eligibility.group_number': {
@@ -841,24 +837,15 @@ export const FactRegistry = {
     description: 'Insurance group number',
     category: 'Insurance Eligibility',
     required: false,
-    schema: z.string().optional(),
+    schema: z.string(),
     metadata: defaultMetadataSchema
   },
   'insurance.eligibility.checked_at': {
-    displayName: 'Eligibility Check Timestamp',
+    displayName: 'Eligibility Check Date',
     description: 'When the eligibility check was performed',
     category: 'Insurance Eligibility',
     required: false,
-    schema: z.string().datetime(),
-    metadata: defaultMetadataSchema
-  },
-  'insurance.eligibility.raw_response': {
-    displayName: 'Raw Eligibility Response',
-    description: 'Complete response from Stedi eligibility check (for audit)',
-    category: 'Insurance Eligibility',
-    required: false,
-    schema: z.any().optional(),
-    hideInUX: true,
+    schema: z.string().date(),
     metadata: defaultMetadataSchema
   },
 

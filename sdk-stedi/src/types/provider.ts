@@ -1,3 +1,5 @@
+import type { Address } from './address';
+
 export interface Provider {
   npi: string;
   organizationName?: string;
@@ -7,12 +9,7 @@ export interface Provider {
 }
 
 export interface ProviderInfo extends Provider {
-  address?: {
-    address1?: string;
-    city?: string;
-    state?: string;
-    postalCode?: string;
-  };
+  address?: Address;
   phone?: string;
   fax?: string;
 }

@@ -1,5 +1,6 @@
 import { Address } from './address';
-import { Gender } from './gender';
+
+type Gender = 'M' | 'F' | 'U';
 
 export interface Subscriber {
   memberId?: string;
