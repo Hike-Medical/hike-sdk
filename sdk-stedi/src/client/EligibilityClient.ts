@@ -1,7 +1,6 @@
 import { Logger } from '@hike/sdk';
 import { AxiosInstance } from 'axios';
-
-import { fromStediError } from '../errors';
+import { fromStediError } from '../errors/formatter';
 import type {
   EligibilityCheckOptions,
   EligibilityCheckResult,
