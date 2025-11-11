@@ -33,14 +33,10 @@
     "@hike/utils": "workspace:*"
   },
   "peerDependencies": {
-    "next": "^15",
-    "react": "~19.1.0",
-    "react-dom": "~19.1.0"
+    "next": "^15"
   },
   "devDependencies": {
     "@hike/config": "workspace:*",
-    "@types/react": "~19.1.17",
-    "@types/react-dom": "^19",
     "eslint": "^9.26.0",
     "typescript": "^5"
   }
