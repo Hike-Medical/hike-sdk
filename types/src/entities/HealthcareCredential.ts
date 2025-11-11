@@ -1,4 +1,4 @@
-export const PROVIDER_TITLE_VALUES = [
+export const HEALTHCARE_CREDENTIAL_VALUES = [
   'APRN',
   'ARNP',
   'CNM',
@@ -26,4 +26,4 @@ export const PROVIDER_TITLE_VALUES = [
   'RN'
 ] as const satisfies readonly [string, ...string[]];
 
-export const PROVIDER_TITLES = new Set<string>([...PROVIDER_TITLE_VALUES]);
+export const HEALTHCARE_CREDENTIAL = new Set<string>([...HEALTHCARE_CREDENTIAL_VALUES]);

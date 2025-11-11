@@ -50,7 +50,10 @@ export const SendOtpInput = ({
     onError: (error) => {
       switch (error.errorCode) {
         case HikeErrorCode.ERR_PATIENT_SIGNUP_NOT_ALLOWED:
-          setUnrecoverableError(error.errorCode);
+        case HikeErrorCode.ERR_AUTH_FORBIDDEN:
+          if (error.errorCode) {
+            setUnrecoverableError(error.errorCode);
+          }
           return;
         default: {
           const message = toErrorMessage(error, t('error.couldNotSend'));
@@ -131,6 +134,39 @@ export const SendOtpInput = ({
           )}
         </>
       );
+    case HikeErrorCode.ERR_AUTH_FORBIDDEN:
+      return (
+        <>
+          <HikeShell.Main
+            title={t('error.oidcRequired.title')}
+            description={
+              <Stack gap="md" align="center">
+                <ThemeIcon variant="light" color="orange" size={80} radius="xl">
+                  <IconExclamationCircleFilled size={50} />
+                </ThemeIcon>
+              </Stack>
+            }
+          >
+            <Stack gap="lg" align="center">
+              <Text size="md" ta="center" c="hike-dimmed">
+                {t('error.oidcRequired.description')}
+              </Text>
+              <Alert color="blue" variant="light" w="100%">
+                <Text size="sm" ta="center">
+                  {t('error.oidcRequired.suggestion')}
+                </Text>
+              </Alert>
+            </Stack>
+          </HikeShell.Main>
+          {onGoBack && (
+            <HikeShell.Footer>
+              <Button variant="footer" onClick={onGoBack} fullWidth>
+                {t('error.oidcRequired.goBack')}
+              </Button>
+            </HikeShell.Footer>
+          )}
+        </>
+      );
     default:
       break;
   }
@@ -141,6 +177,7 @@ export const SendOtpInput = ({
         title={t('title')}
         description={t.rich('description', {
           contact,
+          type: contactType.toLowerCase(),
           strong: (chunks) => (
             <Text component="span" fw="bold" c="hike-dimmed" inherit>
               {chunks}
