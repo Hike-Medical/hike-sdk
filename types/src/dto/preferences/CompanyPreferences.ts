@@ -92,6 +92,10 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    npi?: {
+      name: string;
+      value: string;
+    };
   };
   auth?: {
     allowlist?: {
@@ -106,9 +110,5 @@ export interface CompanyPreferences {
       facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
-  };
-  npi?: {
-    name: string;
-    value: string;
   };
 }
