@@ -92,6 +92,10 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    npi?: {
+      name: string;
+      value: string;
+    };
   };
   auth?: {
     allowlist?: {

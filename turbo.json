@@ -1,5 +1,4 @@
 {
-  "extends": ["//"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "lint"],
