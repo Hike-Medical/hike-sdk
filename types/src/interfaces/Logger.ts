@@ -2,7 +2,7 @@
  * Logger interface for dependency injection.
  */
 export interface Logger {
-  verbose?(message: string, ...args: unknown[]): void;
+  verbose(message: string, ...args: unknown[]): void;
   debug(message: string, ...args: unknown[]): void;
   log(message: string, ...args: unknown[]): void;
   warn(message: string, ...args: unknown[]): void;
