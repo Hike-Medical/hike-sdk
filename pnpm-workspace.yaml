@@ -4,6 +4,7 @@ packages:
   - 'sdk'
   - 'sdk-next'
   - 'sdk-next-edge'
+  - 'sdk-stedi'
   - 'sdk-stripe'
   - 'services'
   - 'types'
