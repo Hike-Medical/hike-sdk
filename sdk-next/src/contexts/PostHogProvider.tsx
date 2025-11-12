@@ -54,6 +54,7 @@ export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogPr
       userId: user?.id,
       patientId: params.patientId || null,
       companies: JSON.stringify(user?.companies),
+      slugs: JSON.stringify(user?.slugs),
       networkSpeed: speed
     });
   }, [user, params.patientId, speed, isInitialized]);
