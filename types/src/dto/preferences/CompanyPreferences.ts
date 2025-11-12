@@ -48,6 +48,8 @@ export interface CompanyPreferences {
   toWordDocx?: boolean;
   roster?: {
     columnMapping: Partial<Record<keyof RoasterPatientCsvRecord, string[]>>;
+    dateFormat?: string;
+    performDeactivations?: boolean;
   };
   appointments?: {
     columnMapping: Partial<Record<keyof AppointmentCsvRecord, string[]>>;
@@ -90,6 +92,10 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    npi?: {
+      name: string;
+      value: string;
+    };
   };
   auth?: {
     allowlist?: {

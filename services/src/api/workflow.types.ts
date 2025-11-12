@@ -1,4 +1,4 @@
-import { FactKey, FactValueOf } from '../../workflow/facts.registry';
+import { FactKey, FactValueOf } from './workflow-facts.types';
 
 export interface ConflictResolutionOutcome {
   selected: boolean;

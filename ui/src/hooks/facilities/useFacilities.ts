@@ -1,4 +1,4 @@
-import { fetchCompanyFacilitiesAndAddresses } from '@hike/services';
+import { fetchFacilities } from '@hike/services';
 import { FacilityExtended, GetFacilitiesParams, HikeError } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
@@ -11,6 +11,6 @@ interface UseFacilitiesOptions
 export const useFacilities = ({ params, queryKey = [], ...options }: UseFacilitiesOptions = {}) =>
   useQuery({
     queryKey: ['facilities', params, queryKey],
-    queryFn: async () => await fetchCompanyFacilitiesAndAddresses(params),
+    queryFn: async () => await fetchFacilities(params),
     ...options
   });

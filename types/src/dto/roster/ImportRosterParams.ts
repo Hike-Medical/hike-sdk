@@ -7,4 +7,5 @@ export interface ImportRosterParams {
   dateFormat?: string;
   tag?: string;
   onlyTagCreated?: boolean;
+  performDeactivations?: boolean;
 }
