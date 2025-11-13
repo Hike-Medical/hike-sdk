@@ -18,6 +18,10 @@ export interface SearchWorkflowFilter {
   hasErrors?: boolean;
   errorTypes?: string[];
   facts?: FactFilter[];
+  fromStartTime?: Date;
+  toStartTime?: Date;
+  fromEndTime?: Date;
+  toEndTime?: Date;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
