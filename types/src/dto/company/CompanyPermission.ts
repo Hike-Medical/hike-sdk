@@ -4,5 +4,6 @@ export const CompanyPermissionList = [
   'MANUFACTURING',
   'PRINT_FARM',
   'SHIPPING',
-  'STATIONS'
+  'STATIONS',
+  'VIEW_PII'
 ] satisfies CompanyPermission[];
