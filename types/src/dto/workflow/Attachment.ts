@@ -14,7 +14,8 @@ const EvaluationAttachmentTypeEnum = {
   UNCERTAIN: 'UNCERTAIN',
   PATIENT_FORM: 'PATIENT_FORM',
   ORDER_FORM: 'ORDER_FORM',
-  DELIVERY_FORM: 'DELIVERY_FORM'
+  DELIVERY_FORM: 'DELIVERY_FORM',
+  CALL_REPORT: 'CALL_REPORT'
 } as const satisfies Record<EvaluationAttachmentType, EvaluationAttachmentType> & {
   [K in EvaluationAttachmentType]: K;
 };
