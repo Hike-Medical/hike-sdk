@@ -24,6 +24,35 @@ const defaultMetadataSchema = z.object({
   sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
 });
 
+const blandCitedUtteranceSchema = z.object({
+  id: z.string(),
+  idx: z.number(),
+  startTime: z.number(),
+  endTime: z.number(),
+  confidence: z.number(),
+  channel: z.number(),
+  transcript: z.string(),
+  speakerId: z.string(),
+  speakerName: z.string(),
+  speakerDescription: z.string(),
+  topics: z.array(z.string()),
+  topicsMeta: z.string(),
+  utteranceType: z.string()
+});
+
+const blandCitationMetadataSchema = z.object({
+  citations: z.array(
+    z.object({
+      callId: z.string(),
+      variableName: z.string(),
+      variableType: z.string(),
+      value: z.any(),
+      citedUtterances: z.array(blandCitedUtteranceSchema),
+      schemaId: z.string()
+    })
+  )
+});
+
 export const FactRegistry = {
   // Patient Information
   'patient.first_name': {
@@ -882,6 +911,61 @@ export const FactRegistry = {
     required: false,
     schema: dateISO,
     metadata: defaultMetadataSchema
+  },
+
+  // diabetic interview
+  'diabetic_interview.received_shoes_this_year': {
+    displayName: 'Received Shoes This Year',
+    description: 'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.boolean(),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.patient_has_medicare': {
+    displayName: 'Patient Has Medicare',
+    description: 'During the diabetic interview, did the patient say that they have Medicare?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.boolean(),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.managing_physician': {
+    displayName: 'Managing Physician',
+    description: 'During the diabetic interview, what did the patient say was the name of the managing physician?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.foot_examiner': {
+    displayName: 'Foot Examiner',
+    description: 'During the diabetic interview, what did the patient say was the name of the foot examiner?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.last_foot_exam_approximate_date': {
+    displayName: 'Last Foot Exam Date',
+    description: 'During the diabetic interview, what did the patient say was the date of the last foot exam?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.managing_physician_approximate_last_visit_date': {
+    displayName: 'Managing Physician Last Visit Date',
+    description: 'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
   },
 
   // Calculations
