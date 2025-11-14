@@ -795,6 +795,76 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  // Insurance Eligibility (Stedi)
+  'insurance.eligibility.is_eligible': {
+    displayName: 'Insurance Eligibility Status',
+    description: 'Whether the patient is eligible for insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.active_coverage': {
+    displayName: 'Active Coverage Status',
+    description: 'Whether the patient has active insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: z.object({
+      summary: z.string().optional(),
+      rawResponse: z.any().optional(),
+      ...defaultMetadataSchema.shape
+    })
+  },
+  'insurance.eligibility.insurance_types': {
+    displayName: 'Insurance Types',
+    description: 'Types of insurance coverage (e.g., Medicare Part A, Part B)',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.plan_number': {
+    displayName: 'Plan Number',
+    description: 'Insurance plan number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.group_number': {
+    displayName: 'Group Number',
+    description: 'Insurance group number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.checked_at': {
+    displayName: 'Eligibility Check Date',
+    description: 'When the eligibility check was performed',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().date(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.provider.npi': {
+    displayName: 'Provider NPI',
+    description: 'NPI of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.provider.organization_name': {
+    displayName: 'Provider Organization Name',
+    description: 'Organization name of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+
   // Other
   'fitter.selection.visit.date': {
     displayName: 'Fitter Selection Visit Date',
