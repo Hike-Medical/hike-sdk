@@ -968,6 +968,24 @@ export const FactRegistry = {
     metadata: blandCitationMetadataSchema
   },
 
+  'diabetic_interview.patient.dob': {
+    displayName: 'Date of Birth',
+    description: "Patient's date of birth",
+    category: 'Diabetic Interview',
+    required: true,
+    schema: dateISO,
+    metadata: defaultMetadataSchema
+  },
+
+  'diabetic_interview.patient.address': {
+    displayName: 'Address',
+    description: "Patient's address",
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+
   // Calculations
   'calculations.dx.icd_codes': {
     displayName: 'Combined ICD-10 Codes',
