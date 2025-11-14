@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@hike/types": "workspace:*",
-    "dayjs": "^1.11.13"
+    "dayjs": "^1.11.19"
   },
   "devDependencies": {
     "@hike/config": "workspace:*",
