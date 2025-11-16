@@ -13,6 +13,7 @@ export interface EnrollPatientsJobData {
 
 export interface EnrollPatientsMessageRootJobData extends EnrollPatientsJobData {
   messageId: string;
+  sequence?: number; // Message sequence number for nested chaining
   batchSize: number;
   totalBatches: number;
   totalPatients: number;
@@ -23,6 +24,7 @@ export interface EnrollPatientsMessageRootJobData extends EnrollPatientsJobData 
 
 export interface EnrollPatientsMessageJobData extends EnrollPatientsJobData {
   messageId: string;
+  sequence?: number; // Message sequence number, copied from root for display/sorting
   rootJobId: string;
   delayMs?: number;
   batchIndex: number;
