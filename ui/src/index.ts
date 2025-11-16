@@ -216,6 +216,7 @@ export * from './hooks/suppliers/useOrthofeetInventoryByProduct';
 export * from './hooks/suppliers/useOrthofeetInventoryBySku';
 export * from './hooks/suppliers/useOrthofeetInventoryBySkus';
 export * from './hooks/suppliers/useSuppliers';
+export * from './hooks/tag/useBulkTagPatients';
 export * from './hooks/tag/useTags';
 export * from './hooks/tag/useTagsByEntity';
 export * from './hooks/terms/useAcceptTerms';
