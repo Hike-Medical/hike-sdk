@@ -3,6 +3,7 @@ import { EnrollPatientsParams } from './EnrollPatientsParams';
 export interface NotificationProgress {
   rootJobId: string;
   messageId: string;
+  sequence?: number;
   totalPatients: number;
   processed: number;
   isActive: boolean;
@@ -17,7 +18,7 @@ export interface NotificationProgress {
     batchSize: number;
     isProcessing: boolean;
     state: string;
-    startsAt?: number; // Unix timestamp (ms) when delayed batch will start
+    startsAt?: number;
   };
   startedAt?: number | null;
   finishedAt?: number | null;
