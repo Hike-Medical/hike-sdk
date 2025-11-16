@@ -722,25 +722,6 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
-  // Notifications
-  'notification.outbound': {
-    displayName: 'Outbound Notifications',
-    description: 'Records of outbound notifications sent',
-    category: 'Notifications',
-    required: false,
-    schema: z.array(
-      z.object({
-        contact: z.string().min(1),
-        senderStatus: z.enum(['SENT', 'UNDELIVERED', 'DELIVERED']).optional(),
-        historyId: z.string().min(1),
-        jobId: z.string().min(1),
-        stepName: z.string().min(1)
-      })
-    ),
-    hideInUX: true,
-    metadata: defaultMetadataSchema
-  },
-
   // Workflow Information
   'internal.workflow.compliance': {
     displayName: 'Merged Workflow Information',
