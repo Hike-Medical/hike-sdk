@@ -208,6 +208,7 @@ export * from './dto/supplier/orthofeet/GetOrthofeetProductStylesParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetProductStyleVariantsParams';
 export * from './dto/supplier/orthofeet/OrthofeetFiltersResponse';
 export * from './dto/supplier/orthofeet/OrthofeetProductStyle';
+export * from './dto/tag/BulkTagPatientsParams';
 export * from './dto/tag/UpsertTagParams';
 export * from './dto/taika/CreateCustomizationsTaikaParams';
 export * from './dto/taika/CustomizationOrderTaikaParams';
