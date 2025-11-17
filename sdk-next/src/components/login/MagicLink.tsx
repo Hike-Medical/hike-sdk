@@ -2,7 +2,8 @@
 
 import { toErrorMessage, validateEmail, validatePhone } from '@hike/sdk';
 import { CompanyContext, SessionContext, useAccountRecovery, useSignInWithToken } from '@hike/ui';
-import { Button, Center, Paper, Stack, Text, TextInput } from '@mantine/core';
+import { Button, Container, Loader, Stack, Text, TextInput, Title } from '@mantine/core';
+import { IconArrowRight, IconCheck } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
@@ -85,41 +86,56 @@ export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
   }, [contact, redirectUrl, router, signInWithToken, slugPath, status, token]);
 
   return (
-    <Center p="xl">
-      <Paper radius="md" p="xl" miw={300} maw={400} withBorder>
-        <Text size="lg" fw={500}>
-          {t('title')}
-        </Text>
-        {!tokenValid ? (
-          <TokenInvalid />
-        ) : submitted ? (
-          <Stack align="center" gap="md">
-            <Text ta="center">{t('sentDescription')}</Text>
-            <Text ta="center" size="sm" c="dimmed">
-              {t('sentGoToLogin')}
-            </Text>
-          </Stack>
-        ) : !token ? (
-          <form onSubmit={form.onSubmit(handleSubmit)} noValidate>
-            <Stack>
+    <Container size={460} my={100}>
+      {!tokenValid ? (
+        <TokenInvalid />
+      ) : submitted ? (
+        <Stack align="center" gap="xl">
+          <IconCheck size={80} stroke={1.5} color="var(--mantine-color-green-6)" />
+          <Title ta="center" order={1}>
+            {t('sentDescription')}
+          </Title>
+          <Text c="dimmed" size="lg" ta="center">
+            {t('sentGoToLogin')}
+          </Text>
+          <Button
+            variant="subtle"
+            size="sm"
+            rightSection={<IconArrowRight size={18} />}
+            onClick={() => router.push(`${slugPath}/login${redirectUrl ? `?redirect=${redirectUrl}` : ''}`)}
+          >
+            Go to login
+          </Button>
+        </Stack>
+      ) : !token ? (
+        <Stack align="center" gap="xl">
+          <Title ta="center" order={1}>
+            {t('title')}
+          </Title>
+          <form onSubmit={form.onSubmit(handleSubmit)} noValidate style={{ width: '100%', maxWidth: '400px' }}>
+            <Stack gap="md">
               <TextInput
                 {...form.getInputProps('emailOrPhone')}
-                label={tShared('fields.emailOrPhone')}
+                placeholder={tShared('fields.emailOrPhone')}
                 autoCapitalize="none"
                 autoCorrect="off"
+                size="md"
                 required
               />
-              <Button type="submit" radius="md" loading={isAccountRecoveryLoading || isSignInWithTokenLoading}>
+              <Button type="submit" size="md" fullWidth loading={isAccountRecoveryLoading || isSignInWithTokenLoading}>
                 {t('actionButton')}
               </Button>
             </Stack>
           </form>
-        ) : (
-          <Text ta="center" size="sm" c="dimmed">
-            {t('sentLoading')}
+        </Stack>
+      ) : (
+        <Stack align="center" gap="xl">
+          <Loader size="xl" />
+          <Text c="dimmed" size="lg" ta="center">
+            Logging you in...
           </Text>
-        )}
-      </Paper>
-    </Center>
+        </Stack>
+      )}
+    </Container>
   );
 };
