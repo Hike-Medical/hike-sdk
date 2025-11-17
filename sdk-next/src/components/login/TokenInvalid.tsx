@@ -1,7 +1,8 @@
 'use client';
 
 import { CompanyContext } from '@hike/ui';
-import { Button, Stack, Text } from '@mantine/core';
+import { Button, Stack, Text, Title } from '@mantine/core';
+import { IconAlertTriangle } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useSearchParams } from 'next/navigation';
@@ -26,14 +27,15 @@ export const TokenInvalid = () => {
   };
 
   return (
-    <Stack align="center" gap="md">
-      <Text ta="center" c="red">
+    <Stack align="center" gap="xl">
+      <IconAlertTriangle size={80} stroke={1.5} color="var(--mantine-color-red-6)" />
+      <Title ta="center" order={1}>
         {t('title')}
-      </Text>
-      <Text ta="center" size="sm" c="dimmed">
+      </Title>
+      <Text c="dimmed" size="lg" ta="center" maw={400}>
         {t('description')}
       </Text>
-      <Button onClick={handleSubmit} radius="md">
+      <Button onClick={handleSubmit} size="sm">
         {t('actionButton')}
       </Button>
     </Stack>
