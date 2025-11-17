@@ -20,8 +20,15 @@ const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
 const providerTitle = z.enum(HEALTHCARE_CREDENTIAL_VALUES);
 
+const errorMetadataSchema = z.object({
+  errorMessage: z.string(),
+  errorTimestamp: z.string(),
+  ignore: z.boolean()
+});
+
 const defaultMetadataSchema = z.object({
-  sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
+  sources: z.array(z.object({ page: z.number().int().min(1) })).min(1),
+  error: errorMetadataSchema.optional()
 });
 
 const blandCitedUtteranceSchema = z.object({
@@ -916,7 +923,8 @@ export const FactRegistry = {
   // diabetic interview
   'diabetic_interview.received_shoes_this_year': {
     displayName: 'Received Shoes This Year',
-    description: 'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
+    description:
+      'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
     category: 'Diabetic Interview',
     required: false,
     schema: z.boolean(),
@@ -961,7 +969,8 @@ export const FactRegistry = {
 
   'diabetic_interview.managing_physician_approximate_last_visit_date': {
     displayName: 'Managing Physician Last Visit Date',
-    description: 'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
+    description:
+      'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
     category: 'Diabetic Interview',
     required: false,
     schema: z.string().min(1),
