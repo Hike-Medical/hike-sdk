@@ -275,3 +275,5 @@ export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';
+export * from './hooks/workflows/useWorkflowTimeSaved';
+
