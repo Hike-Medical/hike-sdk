@@ -26,6 +26,7 @@ export interface FormFieldOption {
   description?: string;
   icon?: string;
   alias?: Record<string, FormFieldValue>;
+  meta?: Record<string, FormFieldValue>;
 }
 
 export type FormField =
