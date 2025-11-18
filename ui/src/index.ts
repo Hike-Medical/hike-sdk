@@ -220,6 +220,7 @@ export * from './hooks/suppliers/useOrthofeetInventoryByProduct';
 export * from './hooks/suppliers/useOrthofeetInventoryBySku';
 export * from './hooks/suppliers/useOrthofeetInventoryBySkus';
 export * from './hooks/suppliers/useSuppliers';
+export * from './hooks/tag/useBulkTagPatients';
 export * from './hooks/tag/useTags';
 export * from './hooks/tag/useTagsByEntity';
 export * from './hooks/terms/useAcceptTerms';
@@ -278,3 +279,5 @@ export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';
+export * from './hooks/workflows/useWorkflowTimeSaved';
+

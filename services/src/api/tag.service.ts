@@ -1,4 +1,4 @@
-import { EntityType, Tag, TagResult, UpsertTagParams } from '@hike/types';
+import { BulkTagPatientsParams, EntityType, Tag, TagResult, UpsertTagParams } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -69,6 +69,15 @@ export const deleteTag = async (name: string): Promise<number> => {
 export const statsForTagEntity = async (type: EntityType): Promise<Record<string, number>> => {
   try {
     const response = await backendApi.get('tag/entity/stats', { params: { type } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const bulkTagPatients = async (params: BulkTagPatientsParams): Promise<{ count: number }> => {
+  try {
+    const response = await backendApi.post('tag/bulk/patients', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
