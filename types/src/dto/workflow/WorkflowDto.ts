@@ -1,14 +1,5 @@
 import { NotificationHistory } from '../../../prisma';
 
-export interface OutboundNotificationDto {
-  contact: string;
-  senderStatus?: 'SENT' | 'UNDELIVERED' | 'DELIVERED';
-  historyId: string;
-  jobId: string;
-  stepName: string;
-  history: NotificationHistory | null;
-}
-
 export interface WorkflowStepDto {
   id: string;
   stepName: string;
@@ -94,6 +85,7 @@ export interface WorkflowStateDto {
     sourceFactsIds: string[];
     evaluatedAt: string;
   }[];
+  notificationHistory?: NotificationHistory[];
 }
 
 export interface WorkflowFactDto {
@@ -127,5 +119,4 @@ export interface WorkflowDto {
   parentWorkflowId?: string;
   childWorkflowIds: string[];
   dataErrors: WorkflowErrorDto[];
-  outboundHistory: OutboundNotificationDto[];
 }
