@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatMBI, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 
 interface FactsRegistryEntry {
@@ -94,8 +94,9 @@ export const FactRegistry = {
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    schema: z.string().length(11),
+    metadata: defaultMetadataSchema,
+    transform: formatMBI
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',

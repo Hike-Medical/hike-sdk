@@ -4,6 +4,7 @@ export * from './converters/formatCamelCase';
 export * from './converters/formatConstant';
 export * from './converters/formatCurrency';
 export * from './converters/formatDate';
+export * from './converters/formatMBI';
 export * from './converters/formatPhoneNumber';
 export * from './converters/formatRenderType';
 export * from './converters/parseCityStateZip';
