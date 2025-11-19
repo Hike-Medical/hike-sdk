@@ -94,7 +94,7 @@ export const FactRegistry = {
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().length(11),
+    schema: z.string().min(11),
     metadata: defaultMetadataSchema,
     transform: formatMBI
   },
