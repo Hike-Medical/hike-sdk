@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatMBI, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 
 interface FactsRegistryEntry {
@@ -96,7 +96,8 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(11),
     metadata: defaultMetadataSchema,
-    transform: formatMBI
+    // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally:
+    transform: (input: string) => input.replace(/-/g, '').trim()
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
@@ -898,7 +899,8 @@ export const FactRegistry = {
   // diabetic interview
   'diabetic_interview.received_shoes_this_year': {
     displayName: 'Received Shoes This Year',
-    description: 'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
+    description:
+      'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
     category: 'Diabetic Interview',
     required: false,
     schema: z.boolean(),
@@ -943,7 +945,8 @@ export const FactRegistry = {
 
   'diabetic_interview.managing_physician_approximate_last_visit_date': {
     displayName: 'Managing Physician Last Visit Date',
-    description: 'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
+    description:
+      'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
     category: 'Diabetic Interview',
     required: false,
     schema: z.string().min(1),
