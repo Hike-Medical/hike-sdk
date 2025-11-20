@@ -26,6 +26,7 @@ export interface SearchWorkflowFilter {
 
 export interface SearchWorkflowsParams extends PagedParams {
   filter?: SearchWorkflowFilter;
+  searchQuery?: string;
   sortBy?: WorkflowSortBy;
   sortOrder?: 'asc' | 'desc';
   factsToInclude?: string[];
