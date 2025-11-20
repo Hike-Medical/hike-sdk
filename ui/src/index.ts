@@ -85,6 +85,9 @@ export * from './hooks/email-template/useGetEmailTemplates';
 export * from './hooks/email-template/useSendEmailTemplate';
 export * from './hooks/email-template/useToggleEmailTemplate';
 export * from './hooks/email-template/useUpsertEmailTemplate';
+export * from './hooks/enrollment/useConfirmMerge';
+export * from './hooks/enrollment/useCreatePatient';
+export * from './hooks/enrollment/useEnrollmentStatus';
 export * from './hooks/evaluations/useActionEvaluation';
 export * from './hooks/evaluations/useCancelEvaluation';
 export * from './hooks/evaluations/useCreateEvaluationByProduct';
@@ -280,4 +283,3 @@ export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';
 export * from './hooks/workflows/useWorkflowTimeSaved';
-
