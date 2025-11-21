@@ -33,4 +33,9 @@ describe('stripHealthcareCredentials (end-only)', () => {
   it('normalizes extra whitespace', () => {
     expect(stripHealthcareCredentials('   John   Smith   MD   ')).toBe('John Smith');
   });
+
+  it('normalize comma and titles', () => {
+    expect(stripHealthcareCredentials('Doe, MD')).toBe('Doe');
+    expect(stripHealthcareCredentials('Doe,MD')).toBe('Doe');
+  });
 });
