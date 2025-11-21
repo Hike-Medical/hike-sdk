@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatHealthcareCredential, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 
 interface FactsRegistryEntry {
@@ -182,6 +182,7 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
 
@@ -226,6 +227,7 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: true,
     schema: z.enum(['MD', 'DO']),
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.physician.address': {
@@ -303,6 +305,7 @@ export const FactRegistry = {
     category: 'Prescriber Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature': {
@@ -383,6 +386,7 @@ export const FactRegistry = {
     category: 'Certifier Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.notes.last_dm_visit_date': {
@@ -478,6 +482,7 @@ export const FactRegistry = {
     category: 'Foot Examination',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature': {
