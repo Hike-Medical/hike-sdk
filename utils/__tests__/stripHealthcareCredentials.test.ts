@@ -38,4 +38,8 @@ describe('stripHealthcareCredentials (end-only)', () => {
     expect(stripHealthcareCredentials('Doe, MD')).toBe('Doe');
     expect(stripHealthcareCredentials('Doe,MD')).toBe('Doe');
   });
+
+  it('handle PA-C titles', () => {
+    expect(stripHealthcareCredentials('Doe, PA-C')).toBe('Doe');
+  });
 });
