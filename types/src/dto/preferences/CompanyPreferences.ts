@@ -111,4 +111,5 @@ export interface CompanyPreferences {
       facilityType?: FacilityType;
     };
   };
+  hideConsumerExternalId?: boolean;
 }
