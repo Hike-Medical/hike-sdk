@@ -19,6 +19,7 @@ export const HEALTHCARE_CREDENTIAL_VALUES = [
   'NP',
   'OD',
   'PA',
+  'PA-C',
   'PAC',
   'PHARMD',
   'PHD',
