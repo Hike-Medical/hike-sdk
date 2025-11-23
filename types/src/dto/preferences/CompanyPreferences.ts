@@ -110,6 +110,7 @@ export interface CompanyPreferences {
       facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
+    showLogo?: boolean;
   };
   hideConsumerExternalId?: boolean;
 }
