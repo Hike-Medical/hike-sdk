@@ -6,7 +6,7 @@ import { HEALTHCARE_CREDENTIAL } from '@hike/types';
 export const stripHealthcareCredentials = (name: string) =>
   name
     .trim()
-    .split(/\s+/)
+    .split(/[\s,]+/)
     .filter((token, index) => {
       if (index === 0) return true;
       const normalized = token.replace(/^[.,;:()]+|[.,;:()]+$/g, '').toUpperCase();
