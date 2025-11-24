@@ -1,8 +1,8 @@
 {
-  "name": "@hike/sdk-next",
+  "name": "@hike/sdk-next-mantine",
   "private": true,
   "version": "1.0.0",
-  "description": "Hike SDK for Next.js enables using our services for manufacturing prosthetics and orthotics medical devices with our AI and 3D printing technology.",
+  "description": "Hike SDK for Next.js with Mantine UI components for authentication and more.",
   "keywords": [
     "insoles",
     "medical",
@@ -10,7 +10,9 @@
     "health",
     "orthotics",
     "prosthetics",
-    "healthcare"
+    "healthcare",
+    "mantine",
+    "ui"
   ],
   "author": "support@hikemedical.com",
   "license": "Apache-2.0",
@@ -29,14 +31,21 @@
     "test": "jest"
   },
   "dependencies": {
-    "@datadog/browser-logs": "^6.6.3",
     "@hike/sdk": "workspace:*",
+    "@hike/sdk-next": "workspace:*",
     "@hike/ui": "workspace:*",
     "lodash": "^4.17.21",
-    "posthog-js": "^1.236.5",
     "qrcode": "^1.5.4"
   },
   "peerDependencies": {
+    "@mantine/core": "^7",
+    "@mantine/emotion": "^7",
+    "@mantine/dates": "^7",
+    "@mantine/hooks": "^7",
+    "@mantine/form": "^7",
+    "@mantine/modals": "^7",
+    "@mantine/notifications": "^7",
+    "@tabler/icons-react": "^3",
     "next": "^15",
     "next-intl": "^4",
     "next-view-transitions": "^0.3",

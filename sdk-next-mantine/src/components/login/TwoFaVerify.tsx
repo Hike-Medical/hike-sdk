@@ -1,15 +1,14 @@
 'use client';
 
-import { SessionContext, useSignInWith2fa } from '@hike/ui';
+import { useTwoFaVerify } from '@hike/sdk-next';
+import { SessionContext } from '@hike/ui';
 import { Center, Paper, PinInput, Stack, Text } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useParams, useSearchParams } from 'next/navigation';
-import { use, useState } from 'react';
+import { use } from 'react';
 
 export const TwoFaVerify = () => {
-  const [input2fa, setInput2fa] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const { update } = use(SessionContext);
   const router = useTransitionRouter();
   const { slug } = useParams<{ slug: string }>();
@@ -17,14 +16,13 @@ export const TwoFaVerify = () => {
   const slugPath = slug ? `/${slug}` : '';
   const redirectUrl = searchParams.get('redirect');
 
-  const { mutate: signInWith2fa, isPending } = useSignInWith2fa({
-    onSuccess: async (data) => {
-      await update(data.tokens); // Refresh with verified session
+  const { handleCodeChange, handleCodeComplete, isPending, error, code } = useTwoFaVerify({
+    onSuccess: async () => {
+      await update();
       router.replace(redirectUrl || `${slugPath}/`);
     },
     onError: (err) => {
       showNotification({ title: 'Error', message: err.message, color: 'red' });
-      setError('Invalid code, please try again');
     }
   });
 
@@ -39,14 +37,10 @@ export const TwoFaVerify = () => {
         </Text>
         <Stack ta="center" mt="lg">
           <PinInput
-            value={input2fa ?? ''}
+            value={code ?? ''}
             onChange={(value) => {
-              setError(null);
-              setInput2fa(value);
-
-              if (value.length === 6) {
-                signInWith2fa(value);
-              }
+              handleCodeChange(value);
+              handleCodeComplete(value);
             }}
             length={6}
             inputMode="numeric"

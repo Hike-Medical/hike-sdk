@@ -1,34 +1,39 @@
-export * from './components/CompanyDisabled';
-export * from './components/CopyButton';
-export * from './components/login/AccountRecovery';
-export * from './components/login/Login';
-export * from './components/login/MagicLink';
-export * from './components/login/PasswordCriteria';
-export * from './components/login/ResetPassword';
-export * from './components/login/SendOtpInput';
-export * from './components/login/TokenInvalid';
-export * from './components/login/TokenRefresher';
-export * from './components/login/TwoFaSetup';
-export * from './components/login/TwoFaVerify';
-export * from './components/login/UpdatePassword';
-export * from './components/SelectCompany';
-export * from './components/SubmitButton';
-export * from './components/UserProfile';
+// Auth business logic (headless)
+export * from './auth';
+
+// Contexts (headless)
 export * from './contexts/DataDogProvider';
 export * from './contexts/NetworkProvider';
 export * from './contexts/PostHogProvider';
 export * from './contexts/PylonProvider';
 export * from './contexts/ScanProvider';
+
+// Hooks (headless)
 export * from './hooks/useIsMobile';
 export * from './hooks/useMobilePlatform';
+export * from './hooks/useNetwork';
+
+// i18n (headless)
 export * from './i18n/userLocale';
+
+// Media utilities (headless)
 export * from './media/camera';
 export * from './media/getBestSupportedVideoFormat';
-export * from './suppliers';
-export * from './themes/createTheme';
-export * from './themes/themeIconColor';
-export * from './themes/types/ThemeColors';
-export * from './themes/types/ThemeComponent';
+
+// Supplier adapters and logic (headless - UI components moved to sdk-next-mantine)
+export * from './suppliers/generic/hooks/useGenericAdapter';
+export * from './suppliers/hooks/useSupplierAdapter';
+export * from './suppliers/orthofeet/config';
+export * from './suppliers/orthofeet/hooks/useOrthofeetAdapter';
+export * from './suppliers/orthofeet/utils/attributeHelpers';
+export * from './suppliers/orthofeet/utils/colorMap';
+export * from './suppliers/orthofeet/utils/productBuilder';
+export * from './suppliers/registry';
+export * from './suppliers/types';
+
+// Types
 export * from './types/TablerIconComponent';
+
+// Utils (headless)
 export * from './utils/analytics';
 export * from './utils/logger';

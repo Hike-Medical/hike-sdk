@@ -1,14 +1,14 @@
 'use client';
 
 import { toErrorMessage, validateEmail } from '@hike/sdk';
-import { useAccountRecovery } from '@hike/ui';
+import { useAccountRecovery } from '@hike/sdk-next';
 import { Button, Center, Paper, Stack, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { IconCheck } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
-import { use, useState } from 'react';
+import { use } from 'react';
 import { SubmitButton } from '../SubmitButton';
 
 export interface AccountRecoveryProps {
@@ -16,12 +16,18 @@ export interface AccountRecoveryProps {
 }
 
 export const AccountRecovery = ({ params }: AccountRecoveryProps) => {
-  const [submitted, setSubmitted] = useState(false);
   const router = useTransitionRouter();
   const { slug } = use(params);
   const slugPath = slug ? `/${slug}` : '';
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.accountRecovery');
+
+  const { handleSubmit: handleRecoverySubmit, isPending, submitted } = useAccountRecovery({
+    onError: (error) => {
+      const message = toErrorMessage(error, t('sentError'));
+      showNotification({ title: tShared('error.title'), message, color: 'red' });
+    }
+  });
 
   const form = useForm({
     initialValues: {
@@ -32,22 +38,8 @@ export const AccountRecovery = ({ params }: AccountRecoveryProps) => {
     }
   });
 
-  const { mutate: accountRecovery, isPending: isAccountRecoveryLoading } = useAccountRecovery({
-    onSuccess: () => setSubmitted(true),
-    onError: (error) => {
-      const message = toErrorMessage(error, t('sentError'));
-      showNotification({ title: tShared('error.title'), message, color: 'red' });
-    }
-  });
-
   const handleSubmit = async (values: typeof form.values) => {
-    accountRecovery({
-      params: {
-        contact: values.email,
-        contactType: 'EMAIL',
-        type: 'RESET_PASSWORD'
-      }
-    });
+    handleRecoverySubmit(values);
   };
 
   return (
@@ -80,7 +72,7 @@ export const AccountRecovery = ({ params }: AccountRecoveryProps) => {
                 autoCorrect="off"
                 required
               />
-              <SubmitButton label={t('actionButton')} loading={isAccountRecoveryLoading} />
+              <SubmitButton label={t('actionButton')} loading={isPending} />
             </Stack>
           </form>
         )}

@@ -1,13 +1,13 @@
 'use client';
 
 import { toErrorMessage, validatePassword } from '@hike/sdk';
-import { useResetPassword } from '@hike/ui';
+import { useResetPassword } from '@hike/sdk-next';
 import { Button, Center, Paper, PasswordInput, Stack, Text } from '@mantine/core';
-import { matchesField, useForm } from '@mantine/form';
+import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
-import { use, useEffect, useState } from 'react';
+import { use } from 'react';
 import { SubmitButton } from '../SubmitButton';
 import { PasswordCriteria } from './PasswordCriteria';
 import { TokenInvalid } from './TokenInvalid';
@@ -18,8 +18,6 @@ export interface ResetPasswordProps {
 }
 
 export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [tokenValid, setTokenValid] = useState(true);
   const router = useTransitionRouter();
   const { slug } = use(params);
   const { token } = use(searchParams);
@@ -27,28 +25,23 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.resetPassword');
 
-  const form = useForm({
-    initialValues: {
-      password: '',
-      confirmPassword: ''
-    },
-    validate: {
-      password: validatePassword,
-      confirmPassword: matchesField('password', tShared('fields.passwordMismatch'))
-    }
-  });
-
-  const { mutate: resetPassword, isPending: isResetPasswordLoading } = useResetPassword({
-    onSuccess: () => setSubmitted(true),
+  const { handleSubmit: handleResetSubmit, isPending, submitted, tokenValid } = useResetPassword({
+    token,
     onError: (error) => {
       const message = toErrorMessage(error, t('sentError'));
       showNotification({ title: tShared('error.title'), message, color: 'red' });
     }
   });
 
-  const { mutate: verifyToken, isPending: isVerifyTokenLoading } = useResetPassword({
-    onSuccess: () => setTokenValid(true),
-    onError: () => setTokenValid(false)
+  const form = useForm({
+    initialValues: {
+      password: '',
+      confirmPassword: ''
+    },
+    validate: {
+      password: (value) => validatePassword(value),
+      confirmPassword: (value) => (value === form.values.password ? null : tShared('fields.passwordMismatch'))
+    }
   });
 
   const handleSubmit = async (values: typeof form.values) => {
@@ -61,17 +54,8 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
       return;
     }
 
-    resetPassword({ token, password: values.password });
+    handleResetSubmit(values);
   };
-
-  // Check if token is valid on first load
-  useEffect(() => {
-    if (!token) {
-      return;
-    }
-
-    verifyToken({ token });
-  }, [token, verifyToken]);
 
   return (
     <Center p="xl">
@@ -111,7 +95,7 @@ export const ResetPassword = ({ params, searchParams }: ResetPasswordProps) => {
                 required
               />
               <PasswordCriteria form={form} />
-              <SubmitButton label={t('actionButton')} loading={isResetPasswordLoading || isVerifyTokenLoading} />
+              <SubmitButton label={t('actionButton')} loading={isPending} />
             </Stack>
           </form>
         )}

@@ -1,14 +1,15 @@
 'use client';
 
 import { toErrorMessage, validateEmail, validatePhone } from '@hike/sdk';
-import { CompanyContext, SessionContext, useAccountRecovery, useSignInWithToken } from '@hike/ui';
+import { useMagicLink } from '@hike/sdk-next';
+import { CompanyContext, SessionContext } from '@hike/ui';
 import { Button, Container, Loader, Stack, Text, TextInput, Title } from '@mantine/core';
 import { IconArrowRight, IconCheck } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
-import { use, useEffect, useState } from 'react';
+import { use } from 'react';
 import { TokenInvalid } from './TokenInvalid';
 
 export interface MagicLinkProps {
@@ -21,8 +22,6 @@ export interface MagicLinkProps {
 }
 
 export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [tokenValid, setTokenValid] = useState(true);
   const { update, status } = use(SessionContext);
   const company = use(CompanyContext);
   const router = useTransitionRouter();
@@ -32,58 +31,34 @@ export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.magicLink');
 
-  const form = useForm({
-    initialValues: {
-      emailOrPhone: contact ?? ''
+  const { handleSubmit: handleMagicLinkSubmit, isPending, submitted, tokenValid } = useMagicLink({
+    token,
+    contact,
+    companyId: company?.id,
+    redirectUrl,
+    isAuthenticated: status === 'AUTHENTICATED',
+    onSuccess: async () => {
+      await update();
+      router.replace(redirectUrl || `${slugPath}/`);
     },
-    validate: {
-      emailOrPhone: (value) =>
-        validateEmail(value) || validatePhone(value) ? null : tShared('fields.emailOrPhoneInvalid')
-    }
-  });
-
-  const { mutate: accountRecovery, isPending: isAccountRecoveryLoading } = useAccountRecovery({
-    onSuccess: () => setSubmitted(true),
     onError: (error) => {
       const message = toErrorMessage(error, t('sentError'));
       showNotification({ title: tShared('error.title'), message, color: 'red' });
     }
   });
 
-  const { mutate: signInWithToken, isPending: isSignInWithTokenLoading } = useSignInWithToken({
-    onSuccess: async () => {
-      await update();
-      setTokenValid(true);
-      router.replace(redirectUrl || `${slugPath}/`);
+  const form = useForm({
+    initialValues: {
+      emailOrPhone: contact ?? ''
     },
-    onError: () => setTokenValid(false)
+    validate: {
+      emailOrPhone: (value) => (validateEmail(value) || validatePhone(value) ? null : tShared('fields.emailOrPhoneInvalid'))
+    }
   });
 
   const handleSubmit = async (values: typeof form.values) => {
-    accountRecovery({
-      params: {
-        contact: values.emailOrPhone,
-        contactType: values.emailOrPhone.includes('@') ? 'EMAIL' : 'SMS',
-        type: 'INVITATION',
-        redirectUrl: redirectUrl ?? undefined
-      },
-      companyId: company?.id
-    });
+    handleMagicLinkSubmit(values);
   };
-
-  // Check if token is valid on first load
-  useEffect(() => {
-    if (!token || !contact || status === 'LOADING') {
-      return;
-    }
-
-    if (status === 'AUTHENTICATED') {
-      router.replace(redirectUrl || `${slugPath}/`);
-      return;
-    }
-
-    signInWithToken({ contact, token });
-  }, [contact, redirectUrl, router, signInWithToken, slugPath, status, token]);
 
   return (
     <Container size={460} my={100}>
@@ -122,7 +97,7 @@ export const MagicLink = ({ params, searchParams }: MagicLinkProps) => {
                 size="md"
                 required
               />
-              <Button type="submit" size="md" fullWidth loading={isAccountRecoveryLoading || isSignInWithTokenLoading}>
+              <Button type="submit" size="md" fullWidth loading={isPending}>
                 {t('actionButton')}
               </Button>
             </Stack>

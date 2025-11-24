@@ -1,8 +1,7 @@
-import { backendApi, currentUrl } from '@hike/sdk';
+import { useGoogleLoginUrl } from '@hike/sdk-next';
 import { Button } from '@mantine/core';
 import { IconBrandGoogle } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 interface GoogleLoginButtonParams {
   company: {
@@ -12,22 +11,14 @@ interface GoogleLoginButtonParams {
 }
 
 export const GoogleLoginButton = ({ company }: GoogleLoginButtonParams) => {
-  const [signInUrl, setSignInUrl] = useState('');
   const searchParams = useSearchParams();
   const redirectParam = searchParams.get('redirect');
 
-  useEffect(() => {
-    const url = currentUrl();
-
-    if (!url) {
-      return;
-    }
-
-    const redirectUrl = redirectParam || `${url.protocol}//${url.host}/${company.slug}`;
-    setSignInUrl(
-      `${backendApi.getUri()}/auth/google?redirect=${encodeURIComponent(redirectUrl)}&company=${company.id}`
-    );
-  }, [company, redirectParam]);
+  const signInUrl = useGoogleLoginUrl({
+    companyId: company.id,
+    companySlug: company.slug,
+    redirectParam
+  });
 
   return (
     <Button component="a" href={signInUrl} leftSection={<IconBrandGoogle />} variant="default" radius="xl">
