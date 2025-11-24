@@ -1,9 +1,9 @@
 'use client';
 
 import { validatePassword } from '@hike/sdk';
-import { useUpdateUserPassword } from '@hike/ui';
+import { useUpdatePassword } from '@hike/sdk-next';
 import { Button, PasswordInput, Stack } from '@mantine/core';
-import { matchesField, useForm } from '@mantine/form';
+import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useTranslations } from 'next-intl';
 import { PasswordCriteria } from './PasswordCriteria';
@@ -15,18 +15,7 @@ interface UpdatePasswordProps {
 export const UpdatePassword = ({ onSuccess }: UpdatePasswordProps) => {
   const tShared = useTranslations('shared');
 
-  const form = useForm({
-    initialValues: {
-      password: '',
-      confirmPassword: ''
-    },
-    validate: {
-      password: validatePassword,
-      confirmPassword: matchesField('password', tShared('fields.passwordMismatch'))
-    }
-  });
-
-  const { mutate: updatePassword, isPending } = useUpdateUserPassword({
+  const { handleSubmit: handlePasswordUpdate, isPending } = useUpdatePassword({
     onSuccess: async () => {
       notifications.show({
         title: 'Success!',
@@ -40,8 +29,19 @@ export const UpdatePassword = ({ onSuccess }: UpdatePasswordProps) => {
     onError: (error) => notifications.show({ title: 'Failed to update password', message: error.message, color: 'red' })
   });
 
+  const form = useForm({
+    initialValues: {
+      password: '',
+      confirmPassword: ''
+    },
+    validate: {
+      password: (value) => validatePassword(value),
+      confirmPassword: (value) => (value === form.values.password ? null : tShared('fields.passwordMismatch'))
+    }
+  });
+
   return (
-    <form onSubmit={form.onSubmit((values) => updatePassword({ password: values.password }))} noValidate>
+    <form onSubmit={form.onSubmit((values) => handlePasswordUpdate(values))} noValidate>
       <Stack>
         <PasswordInput
           {...form.getInputProps('password')}

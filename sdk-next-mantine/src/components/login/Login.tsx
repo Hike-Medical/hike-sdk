@@ -1,7 +1,8 @@
 'use client';
 
 import { AppId, appName, validateEmail } from '@hike/sdk';
-import { SessionContext, useSignIn } from '@hike/ui';
+import { useLogin } from '@hike/sdk-next';
+import { SessionContext } from '@hike/ui';
 import {
   Anchor,
   Box,
@@ -47,32 +48,20 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
   const tShared = useTranslations('shared');
   const t = useTranslations('shared.login.page');
 
-  const form = useForm({
-    mode: 'controlled',
-    initialValues: {
-      email: '',
-      password: ''
-    },
-    validate: {
-      email: (value) => (validateEmail(value) ? null : tShared('fields.emailInvalid')),
-      password: isNotEmpty(tShared('fields.passwordRequired'))
-    }
-  });
-
-  const { mutate: signIn, isPending } = useSignIn({
+  const { handleSubmit: handleLoginSubmit, isPending } = useLogin({
+    appId,
     onSuccess: async () => {
       await update();
       router.replace(redirectUrl || `${slugPath}/`);
     },
-    onError: (error) => {
-      if (error.statusCode === 429) {
+    onError: (error, statusCode) => {
+      if (statusCode === 429) {
         showNotification({
           variant: 'error',
           title: tShared('error.title'),
           message: tShared('error.tooManyRequests'),
           color: 'red'
         });
-
         return;
       }
 
@@ -85,8 +74,20 @@ export const Login = ({ company, registerPath, enableSocial, appId = '@hike/admi
     }
   });
 
+  const form = useForm({
+    mode: 'controlled',
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validate: {
+      email: (value) => (validateEmail(value) ? null : tShared('fields.emailInvalid')),
+      password: isNotEmpty(tShared('fields.passwordRequired'))
+    }
+  });
+
   const handleSubmit = async (values: typeof form.values) => {
-    signIn({ credentials: values });
+    handleLoginSubmit(values);
   };
 
   const handleMagicLinkLogin = () => {
