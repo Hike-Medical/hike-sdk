@@ -774,7 +774,7 @@ export const FactRegistry = {
   },
 
   // Payer information
-  'payer.primary.name': {
+  'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
     description: 'Name of the primary insurance payer',
     category: 'Payer Information',
@@ -782,7 +782,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.primary.member_id': {
+  'payer_info.payer.primary.member_id': {
     displayName: 'Primary Payer Member ID',
     description: 'Member ID for the primary insurance payer',
     category: 'Payer Information',
@@ -790,7 +790,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.name': {
+  'payer_info.payer.secondary.name': {
     displayName: 'Secondary Payer Name',
     description: 'Name of the secondary insurance payer',
     category: 'Payer Information',
@@ -798,7 +798,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.member_id': {
+  'payer_info.payer.secondary.member_id': {
     displayName: 'Secondary Payer Member ID',
     description: 'Member ID for the secondary insurance payer',
     category: 'Payer Information',
