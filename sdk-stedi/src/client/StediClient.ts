@@ -2,6 +2,7 @@ import { Logger } from '@hike/sdk';
 import axios, { AxiosError, AxiosInstance } from 'axios';
 import { EligibilityClient } from './EligibilityClient';
 import { MbiLookupClient } from './MbiLookupClient';
+import { PayerClient } from './PayerClient';
 
 export interface StediClientConfig {
   apiKey: string;
@@ -17,6 +18,7 @@ export class StediClient {
 
   public readonly eligibility: EligibilityClient;
   public readonly mbiLookup: MbiLookupClient;
+  public readonly payer: PayerClient;
 
   constructor(config: StediClientConfig) {
     if (!config.apiKey) {
@@ -41,6 +43,7 @@ export class StediClient {
     // Initialize sub-clients
     this.eligibility = new EligibilityClient(this.axiosInstance, this.logger);
     this.mbiLookup = new MbiLookupClient(this.axiosInstance, this.logger);
+    this.payer = new PayerClient(this.axiosInstance, this.logger);
   }
 
   private setupRetryInterceptor(): void {
