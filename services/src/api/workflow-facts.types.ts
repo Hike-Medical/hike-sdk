@@ -94,8 +94,10 @@ export const FactRegistry = {
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    schema: z.string().min(11),
+    metadata: defaultMetadataSchema,
+    // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally:
+    transform: (input: string) => input.replace(/-/g, '').trim()
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
