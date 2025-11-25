@@ -7,6 +7,8 @@ export const appName = (appId: AppId): string => {
   switch (appId) {
     case '@hike/insoles-web':
       return 'Insoles.ai';
+    case '@hike/stepzero-web':
+      return 'Step Zero';
     default:
       return 'Hike';
   }
@@ -27,6 +29,13 @@ export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
           return 'https://api-staging.insoles.ai';
         default:
           return 'https://api.insoles.ai';
+      }
+    case '@hike/stepzero-web':
+      switch (environment) {
+        case 'staging':
+          return 'https://api-staging.step-zero.dev';
+        default:
+          return 'https://api.stepzero.ai';
       }
     default:
       switch (environment) {
@@ -60,6 +69,15 @@ export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
           return 'https://app-staging.hike-medical-server.com';
         default:
           return 'https://app.hikemedical.com';
+      }
+    case '@hike/stepzero-web':
+      switch (environment) {
+        case 'development':
+          return 'http://localhost:3012';
+        case 'staging':
+          return 'https://app-staging.step-zero.dev';
+        default:
+          return 'https://app.stepzero.ai';
       }
     case '@hike/backend':
       switch (environment) {

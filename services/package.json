@@ -29,6 +29,7 @@
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json",
     "dev": "tsc --watch",
+    "test": "jest",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "format": "npx prettier --check . --ignore-path ../../../.gitignore",
     "clean": "rm -rf node_modules dist"
@@ -48,6 +49,10 @@
   },
   "jest": {
     "testRegex": ".+\\.test\\.ts$",
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "^@hike/types$": "<rootDir>/../types/src/index.ts",
+      "^@hike/utils$": "<rootDir>/../utils/src/index.ts"
+    }
   }
 }
