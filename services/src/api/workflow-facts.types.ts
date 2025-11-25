@@ -1012,7 +1012,7 @@ export const FactRegistry = {
     description: "Patient's date of birth",
     category: 'Diabetic Interview',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dobISOSchema,
     metadata: defaultMetadataSchema
   },
 
