@@ -5,4 +5,5 @@ export * from './api/fetchSessionUser';
 export * from './api/trackNotification';
 export * from './utils/extractToken';
 export * from './utils/getSessionCookieName';
+export * from './utils/isFactoryUser';
 export * from './utils/verifyToken';

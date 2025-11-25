@@ -219,6 +219,7 @@ export * from './dto/terms/AcceptTermsParams';
 export * from './dto/twofa/TwoFaSetupResponse';
 export * from './dto/twofa/TwoFaToggleParams';
 export * from './dto/twofa/TwoFaVerifyParams';
+export * from './dto/user/CreateUserParams';
 export * from './dto/user/GetUsersParams';
 export * from './dto/user/UpdateUserParams';
 export * from './dto/user/UpdateUserPasswordParams';

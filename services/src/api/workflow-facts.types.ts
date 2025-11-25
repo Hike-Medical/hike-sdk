@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatHealthcareCredential, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 
 interface FactsRegistryEntry {
@@ -19,6 +19,34 @@ const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
 const providerTitle = z.enum(HEALTHCARE_CREDENTIAL_VALUES);
+
+/**
+ * Medicare Beneficiary Identifier (MBI) validation schema per CMS specifications.
+ *
+ * Format: 11 characters with specific position rules:
+ * - Position 1: Numeric 1-9
+ * - Position 2: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 3: Alphanumeric (0-9 or alphabetic excluding S, L, O, I, B, Z)
+ * - Position 4: Numeric 0-9
+ * - Position 5: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 6: Alphanumeric (0-9 or alphabetic excluding S, L, O, I, B, Z)
+ * - Position 7: Numeric 0-9
+ * - Position 8: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 9: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 10: Numeric 0-9
+ * - Position 11: Numeric 0-9
+ *
+ * Example: 1EG4TE5MK73
+ *
+ * Note: Dashes are not part of the MBI format and should be removed before validation.
+ * Lowercase letters are automatically converted to uppercase.
+ */
+export const medicareMBI = z
+  .string()
+  .regex(
+    /^[1-9][ACDEFGHJKMNPQRTUVWXY][0-9ACDEFGHJKMNPQRTUVWXY][0-9][ACDEFGHJKMNPQRTUVWXY][0-9ACDEFGHJKMNPQRTUVWXY][0-9][ACDEFGHJKMNPQRTUVWXY]{2}[0-9]{2}$/,
+    'Valid Medicare Beneficiary Identifier (MBI) format'
+  );
 
 const defaultMetadataSchema = z.object({
   sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
@@ -94,10 +122,11 @@ export const FactRegistry = {
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(11),
+    schema: medicareMBI,
     metadata: defaultMetadataSchema,
-    // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally:
-    transform: (input: string) => input.replace(/-/g, '').trim()
+    // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally.
+    // Lowercase letters are converted to uppercase per CMS specifications.
+    transform: (input: string) => input.replace(/-/g, '').trim().toUpperCase()
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
@@ -182,6 +211,7 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
 
@@ -226,6 +256,7 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: true,
     schema: z.enum(['MD', 'DO']),
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.physician.address': {
@@ -303,6 +334,7 @@ export const FactRegistry = {
     category: 'Prescriber Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature': {
@@ -383,6 +415,7 @@ export const FactRegistry = {
     category: 'Certifier Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.notes.last_dm_visit_date': {
@@ -478,6 +511,7 @@ export const FactRegistry = {
     category: 'Foot Examination',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature': {
@@ -774,7 +808,7 @@ export const FactRegistry = {
   },
 
   // Payer information
-  'payer.primary.name': {
+  'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
     description: 'Name of the primary insurance payer',
     category: 'Payer Information',
@@ -782,7 +816,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.primary.member_id': {
+  'payer_info.payer.primary.member_id': {
     displayName: 'Primary Payer Member ID',
     description: 'Member ID for the primary insurance payer',
     category: 'Payer Information',
@@ -790,7 +824,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.name': {
+  'payer_info.payer.secondary.name': {
     displayName: 'Secondary Payer Name',
     description: 'Name of the secondary insurance payer',
     category: 'Payer Information',
@@ -798,7 +832,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.member_id': {
+  'payer_info.payer.secondary.member_id': {
     displayName: 'Secondary Payer Member ID',
     description: 'Member ID for the secondary insurance payer',
     category: 'Payer Information',
@@ -871,6 +905,14 @@ export const FactRegistry = {
   'insurance.eligibility.provider.organization_name': {
     displayName: 'Provider Organization Name',
     description: 'Organization name of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.trading_partner': {
+    displayName: 'Trading Partner ID',
+    description: 'Stedi trading partner ID (payer ID) used for eligibility check',
     category: 'Insurance Eligibility',
     required: false,
     schema: z.string(),
