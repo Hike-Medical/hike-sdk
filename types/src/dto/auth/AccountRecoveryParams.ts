@@ -5,4 +5,6 @@ export interface AccountRecoveryParams {
   contact: string;
   contactType: ContactType;
   redirectUrl?: string;
+  body?: string;
+  label?: string;
 }
