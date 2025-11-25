@@ -16,10 +16,11 @@ export interface EnrollPatientsParams {
   search?: string;
   staggeredBatchSize?: number;
   staggeredBatchDelayMinutes?: number;
+  startTime?: Date;
   sendTimeWindow?: SendTimeWindow;
 }
 
 export type PreviewEnrollPatientsParams = Omit<
   EnrollPatientsParams,
-  'staggeredBatchSize' | 'staggeredBatchDelayMinutes' | 'sendTimeWindow'
+  'staggeredBatchSize' | 'staggeredBatchDelayMinutes' | 'startTime' | 'sendTimeWindow'
 >;
