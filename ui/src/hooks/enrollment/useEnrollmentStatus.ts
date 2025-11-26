@@ -1,4 +1,4 @@
-import { getEnrollmentStatus } from '@hike/services';
+import { fetchEnrollmentStatus } from '@hike/services';
 import type { EnrollmentStatus, EnrollmentStatusParams, HikeError } from '@hike/types';
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
@@ -8,6 +8,6 @@ export const useEnrollmentStatus = (
 ) =>
   useQuery({
     queryKey: ['enrollmentStatus', params],
-    queryFn: () => getEnrollmentStatus(params),
+    queryFn: () => fetchEnrollmentStatus(params),
     ...options
   });
