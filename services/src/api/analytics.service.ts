@@ -1,4 +1,11 @@
-import { DateFilter, HourlyOptions, OrderMetricsOptions, OrderMetricsResponse } from '@hike/types';
+import {
+  DateFilter,
+  EmployerDashboardStatsOptions,
+  EmployerDashboardStatus,
+  HourlyOptions,
+  OrderMetricsOptions,
+  OrderMetricsResponse
+} from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -78,6 +85,17 @@ export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: st
       }
     );
 
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getEmployerDashboardStats = async (
+  params?: EmployerDashboardStatsOptions
+): Promise<Record<EmployerDashboardStatus, number>> => {
+  try {
+    const response = await backendApi.get('analytics/employer-dashboard-stats', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
