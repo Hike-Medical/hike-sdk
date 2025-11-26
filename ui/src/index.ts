@@ -5,6 +5,7 @@ export * from './contexts/HikeProvider';
 export * from './contexts/InAppNotificationsProvider';
 export * from './contexts/SessionProvider';
 export * from './hooks/analytics/useGetCompanyTurnaroundStats';
+export * from './hooks/analytics/useGetEmployerDashboardStats';
 export * from './hooks/analytics/useGetOrderMetrics';
 export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
