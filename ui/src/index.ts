@@ -234,6 +234,7 @@ export * from './hooks/useDeviceTypes';
 export * from './hooks/useDiagnoses';
 export * from './hooks/useGetHealth';
 export * from './hooks/usePhysicians';
+export * from './hooks/users/useCreateUser';
 export * from './hooks/users/useCurrentUser';
 export * from './hooks/users/useRemoveUserPermissions';
 export * from './hooks/users/useToggleUser';
