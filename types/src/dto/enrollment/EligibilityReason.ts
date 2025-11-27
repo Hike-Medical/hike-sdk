@@ -1,9 +1,0 @@
-export type EligibilityReason =
-  | 'HAS_PATIENT_ROLE'
-  | 'ROSTER_EMAIL_MATCH'
-  | 'ROSTER_PHONE_MATCH'
-  | 'EXTERNAL_ID_MATCH'
-  | 'NO_AUTH_NEEDED'
-  | 'NOT_IN_ROSTER'
-  | 'NO_USER'
-  | 'PRE_APPROVED_INVITATION';
