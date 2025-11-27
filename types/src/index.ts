@@ -145,6 +145,7 @@ export * from './dto/notification/UpdateNotificationMessageParams';
 export * from './dto/order/CreateOrderParams';
 export * from './dto/order/DeliverOrderParams';
 export * from './dto/order/GetOrdersByTypeParams';
+export * from './dto/order/GetOrdersExtendedParams';
 export * from './dto/order/GetOrdersParams';
 export * from './dto/order/ModifyOrderAuthorizationParams';
 export * from './dto/order/OrderFormParams';

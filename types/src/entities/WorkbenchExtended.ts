@@ -1,4 +1,4 @@
-import type { Asset, Evaluation, Product, Workbench, WorkbenchNotes } from '../../prisma';
+import type { Asset, Evaluation, Product, Workbench, WorkbenchNotes, WorkbenchStatusEvent } from '../../prisma';
 import { WorkbenchCustomization } from '../dto/workbench/WorkbenchCustomization';
 import { FormSubmissionExtended } from '../forms/FormSubmissionExtended';
 import { EvaluationExtended } from './EvaluationExtended';
@@ -15,10 +15,13 @@ export interface WorkbenchPdfUrls {
 export type WorkbenchExtended = Workbench & {
   patient: PatientExtended;
   product: Product;
-  evaluation: Pick<EvaluationExtended, 'clinicians'> & Evaluation;
+  evaluation: Pick<EvaluationExtended, 'clinicians'> & Evaluation & {
+    company: { slug: string | null };
+  };
   orders?: OrderWithShippingLabel[];
   assets: Asset[];
   formSubmissions: FormSubmissionExtended[];
   notes: WorkbenchNotes[];
   customization: WorkbenchCustomization | null;
+  statusEvents?: WorkbenchStatusEvent[];
 } & WorkbenchPdfUrls;

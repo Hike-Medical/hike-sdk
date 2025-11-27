@@ -168,6 +168,7 @@ export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';
 export * from './hooks/orders/useOrdersByLabelId';
 export * from './hooks/orders/useOrdersByType';
+export * from './hooks/orders/useOrdersExtended';
 export * from './hooks/orders/useOrdersStats';
 export * from './hooks/orders/useOrderUpdate';
 export * from './hooks/orders/useSubmitClinicalOrder';
