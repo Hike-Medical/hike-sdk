@@ -1,21 +1,19 @@
-import type { CreateEnrollmentPatientParams, EnrollmentStep } from '@hike/types';
+import type { CheckEnrollmentEligibilityResponse, SaveEnrollmentDetailsParams } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchEnrollmentStep = async (): Promise<EnrollmentStep> => {
+export const saveEnrollmentDetails = async (params: SaveEnrollmentDetailsParams): Promise<{ patientId: string }> => {
   try {
-    const response = await backendApi.get('/enrollment/step');
+    const response = await backendApi.post('/enrollment/details', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
 };
 
-export const createEnrollmentPatient = async (
-  params: CreateEnrollmentPatientParams
-): Promise<{ patientId: string }> => {
+export const checkEnrollmentEligibility = async (patientId: string): Promise<CheckEnrollmentEligibilityResponse> => {
   try {
-    const response = await backendApi.post('/enrollment/patient', params);
+    const response = await backendApi.post(`/enrollment/eligibility/${patientId}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

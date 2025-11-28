@@ -4,9 +4,13 @@ export interface AcceptInvitationParams {
   firstName?: string;
   lastName?: string;
   birthDate?: Date;
-  /**
-   * Skip automatic approval and consolidation logic
-   * Use for v2 enrollment flow where these are handled explicitly
-   */
-  skipApproval?: boolean;
+}
+
+/**
+ * V2: Accept invitation without patient creation
+ * Will replace AcceptInvitationParams in the future
+ */
+export interface AcceptInvitationV2Params {
+  token: string;
+  password?: string;
 }

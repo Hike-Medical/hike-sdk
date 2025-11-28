@@ -5,6 +5,7 @@ import {
   PagedResponse,
   SafeUser,
   SafeUserExtended,
+  UpdateContactParams,
   UpdateUserParams,
   UpdateUserPasswordParams,
   UpsertPermissionsParams
@@ -42,6 +43,18 @@ export const fetchCurrentUser = async (): Promise<SafeUser> => {
 export const updateUser = async (params: UpdateUserParams): Promise<SafeUser> => {
   try {
     const response = await backendApi.patch('auth/user', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Update user contact using OTP to verify ownership of new contact.
+ */
+export const updateUserContact = async (params: UpdateContactParams): Promise<SafeUser> => {
+  try {
+    const response = await backendApi.put(`user/contact/${params.token}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
