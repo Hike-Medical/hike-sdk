@@ -1,4 +1,4 @@
 export interface EmployerDashboardStatsOptions {
   departmentId?: string;
-  hasDepartment?: boolean;
+  facilityId?: string;
 }
