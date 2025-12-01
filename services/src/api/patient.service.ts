@@ -140,12 +140,12 @@ export const checkPatientDuplicates = async (patientId: string): Promise<Patient
   }
 };
 
-export const consolidatePatient = async (
+export const mergePatient = async (
   patientId: string,
   candidatePatientId: string
 ): Promise<PatientConsolidationResponse> => {
   try {
-    const response = await backendApi.post(`patient/consolidation/${patientId}/execute`, { candidatePatientId });
+    const response = await backendApi.post(`patient/consolidation/${patientId}/merge`, { candidatePatientId });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -157,18 +157,6 @@ export const getPendingPatientConsolidation = async (
 ): Promise<PatientConsolidationCandidate | null> => {
   try {
     const response = await backendApi.get(`patient/consolidation/${patientId}/pending`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const adminMergePatients = async (
-  patientId: string,
-  candidatePatientId: string
-): Promise<PatientConsolidationResponse> => {
-  try {
-    const response = await backendApi.post(`patient/consolidation/${patientId}/admin/merge`, { candidatePatientId });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
