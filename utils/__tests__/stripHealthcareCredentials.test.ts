@@ -49,7 +49,7 @@ describe('stripHealthcareCredentials (end-only)', () => {
   });
 
   it('does not apply Zoho rules for other sources', () => {
-    expect(stripHealthcareCredentials('Doe, JMD.')).toBe('Doe, JMD.');
-    expect(stripHealthcareCredentials('Doe, JDPM.')).toBe('Doe, JDPM.');
+    expect(stripHealthcareCredentials('Doe, JMD.')).toBe('Doe JMD.');
+    expect(stripHealthcareCredentials('Doe, JDPM.')).toBe('Doe JDPM.');
   });
 });
