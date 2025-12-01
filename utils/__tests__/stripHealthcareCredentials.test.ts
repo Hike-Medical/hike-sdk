@@ -42,4 +42,14 @@ describe('stripHealthcareCredentials (end-only)', () => {
   it('handle PA-C titles', () => {
     expect(stripHealthcareCredentials('Doe, PA-C')).toBe('Doe');
   });
+
+  it('handles Zoho data errors', () => {
+    expect(stripHealthcareCredentials('Doe, JMD.', "ZOHO")).toBe('Doe');
+    expect(stripHealthcareCredentials('Doe, JDPM.', "ZOHO")).toBe('Doe');
+  });
+
+  it('does not apply Zoho rules for other sources', () => {
+    expect(stripHealthcareCredentials('Doe, JMD.')).toBe('Doe, JMD.');
+    expect(stripHealthcareCredentials('Doe, JDPM.')).toBe('Doe, JDPM.');
+  });
 });
