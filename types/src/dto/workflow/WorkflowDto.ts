@@ -119,4 +119,15 @@ export interface WorkflowDto {
   parentWorkflowId?: string;
   childWorkflowIds: string[];
   dataErrors: WorkflowErrorDto[];
+  exitConditionStatus?: {
+    condition: string;
+    result: {
+      passed: boolean;
+      predicates: {
+        name: string;
+        passed: boolean;
+        explanation: string;
+      }[];
+    };
+  }[];
 }
