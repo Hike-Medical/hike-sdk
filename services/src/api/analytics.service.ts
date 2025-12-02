@@ -1,4 +1,5 @@
 import {
+  AnalyticsRefreshSchedule,
   DateFilter,
   EmployerDashboardStatsOptions,
   EmployerDashboardStatus,
@@ -96,6 +97,19 @@ export const getEmployerDashboardStats = async (
 ): Promise<Record<EmployerDashboardStatus, number>> => {
   try {
     const response = await backendApi.get('analytics/employer-dashboard-stats', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Get the analytics data refresh schedule.
+ * Shows when data was last refreshed and when the next refresh is scheduled.
+ */
+export const getAnalyticsRefreshSchedule = async (): Promise<AnalyticsRefreshSchedule> => {
+  try {
+    const response = await backendApi.get('analytics/refresh-schedule');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
