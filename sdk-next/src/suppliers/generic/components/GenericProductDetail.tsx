@@ -81,7 +81,7 @@ export const GenericProductDetail = ({
   );
 
   const currentImage = selectedVariant?.image || parentProduct?.image;
-  const productPrice = selectedVariant?.price ?? parentProduct?.price ?? 0;
+  const productPrice = selectedVariant?.price || parentProduct?.price || 0;
 
   const handleAddToOrder = () => {
     if (!selectedVariant) return;
@@ -186,7 +186,7 @@ export const GenericProductDetail = ({
                 <Stack gap="xs">
                   {variants.map((variant) => {
                     const isSelected = selectedVariantId === variant.id;
-                    const variantPrice = variant.price ?? parentProduct?.price ?? 0;
+                    const variantPrice = variant.price || parentProduct?.price || 0;
                     const attributes = ((variant as any).attributes || [])
                       .filter((attr: any) => attr.type === 'TEXT' && attr.value)
                       .map((attr: any) => ({ key: attr.key, value: attr.value }));

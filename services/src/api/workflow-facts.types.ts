@@ -1,11 +1,7 @@
-/**
- * Human-readable field mappings for Medicare Diabetic Compliance workflow
- * Maps technical field keys to user-friendly display names and descriptions
- */
+import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
+import { formatHealthcareCredential, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
-import { formatPhoneNumber } from '../utils/converters/formatPhoneNumber';
-import { removeTitleFromName } from '../utils/converters/removeTitleFromName';
-import { PROVIDER_TITLE_VALUES } from '../entities/HealthcareProviders';
+import dayjs from 'dayjs';
 
 interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
@@ -15,18 +11,86 @@ interface FactsRegistryEntry {
   category: string;
   required: boolean;
   hideInUX?: boolean;
-  transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
+  transform?: (value: FactValueOf<FactKey>, source?: string) => FactValueOf<FactKey>;
 }
 
-const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
+const rxOrVisitDateISOSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+  .refine((val) => dayjs(val).isValid() && dayjs(val).isAfter(dayjs('2025-01-01')), {
+    message: 'Date of birth must be after 2025-01-01'
+  });
+const dobISOSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+  .refine((val) => dayjs(val).isValid() && dayjs(val).isBefore(dayjs('2020-01-01')), {
+    message: 'Date of birth must be before 2020-01-01'
+  });
 const icd10Code = z.string().regex(/^[A-TV-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$/, 'ICD-10 code');
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
-const providerTitle = z.enum(PROVIDER_TITLE_VALUES);
+const providerTitle = z.enum(HEALTHCARE_CREDENTIAL_VALUES);
+
+/**
+ * Medicare Beneficiary Identifier (MBI) validation schema per CMS specifications.
+ *
+ * Format: 11 characters with specific position rules:
+ * - Position 1: Numeric 1-9
+ * - Position 2: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 3: Alphanumeric (0-9 or alphabetic excluding S, L, O, I, B, Z)
+ * - Position 4: Numeric 0-9
+ * - Position 5: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 6: Alphanumeric (0-9 or alphabetic excluding S, L, O, I, B, Z)
+ * - Position 7: Numeric 0-9
+ * - Position 8: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 9: Alphabetic (excluding S, L, O, I, B, Z)
+ * - Position 10: Numeric 0-9
+ * - Position 11: Numeric 0-9
+ *
+ * Example: 1EG4TE5MK73
+ *
+ * Note: Dashes are not part of the MBI format and should be removed before validation.
+ * Lowercase letters are automatically converted to uppercase.
+ */
+export const medicareMBI = z
+  .string()
+  .regex(
+    /^[1-9][ACDEFGHJKMNPQRTUVWXY][0-9ACDEFGHJKMNPQRTUVWXY][0-9][ACDEFGHJKMNPQRTUVWXY][0-9ACDEFGHJKMNPQRTUVWXY][0-9][ACDEFGHJKMNPQRTUVWXY]{2}[0-9]{2}$/,
+    'Valid Medicare Beneficiary Identifier (MBI) format'
+  );
 
 const defaultMetadataSchema = z.object({
   sources: z.array(z.object({ page: z.number().int().min(1) })).min(1)
+});
+
+const blandCitedUtteranceSchema = z.object({
+  id: z.string(),
+  idx: z.number(),
+  startTime: z.number(),
+  endTime: z.number(),
+  confidence: z.number(),
+  channel: z.number(),
+  transcript: z.string(),
+  speakerId: z.string(),
+  speakerName: z.string(),
+  speakerDescription: z.string(),
+  topics: z.array(z.string()),
+  topicsMeta: z.string(),
+  utteranceType: z.string()
+});
+
+const blandCitationMetadataSchema = z.object({
+  citations: z.array(
+    z.object({
+      callId: z.string(),
+      variableName: z.string(),
+      variableType: z.string(),
+      value: z.any(),
+      citedUtterances: z.array(blandCitedUtteranceSchema),
+      schemaId: z.string()
+    })
+  )
 });
 
 export const FactRegistry = {
@@ -46,7 +110,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'patient.phone': {
     displayName: 'Phone Number',
@@ -62,7 +126,7 @@ export const FactRegistry = {
     description: "Patient's date of birth",
     category: 'Patient Information',
     required: true,
-    schema: dateISO,
+    schema: dobISOSchema,
     metadata: defaultMetadataSchema
   },
   'patient.medicare_mbi': {
@@ -70,8 +134,11 @@ export const FactRegistry = {
     description: "Patient's Medicare Beneficiary Identifier",
     category: 'Patient Information',
     required: true,
-    schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    schema: medicareMBI,
+    metadata: defaultMetadataSchema,
+    // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally.
+    // Lowercase letters are converted to uppercase per CMS specifications.
+    transform: (input: string) => input.replace(/-/g, '').trim().toUpperCase()
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
@@ -122,7 +189,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'prescriber.phone': {
     displayName: 'Prescriber Phone',
@@ -156,6 +223,7 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
 
@@ -175,7 +243,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'cert.physician.npi': {
     displayName: 'Certifying Physician NPI',
@@ -200,6 +268,7 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: true,
     schema: z.enum(['MD', 'DO']),
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.physician.address': {
@@ -230,8 +299,8 @@ export const FactRegistry = {
 
   // Prescriber Notes
   'prescriber.notes.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Prescriber NotesICD-10 Codes',
+    description: 'Prescriber Notes ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Prescriber Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -243,7 +312,7 @@ export const FactRegistry = {
     description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.patient_needs_diabetic_footwear': {
@@ -269,7 +338,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'prescriber.notes.examiner.role': {
     displayName: 'Prescriber Notes Examiner Role',
@@ -277,6 +346,7 @@ export const FactRegistry = {
     category: 'Prescriber Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.signature': {
@@ -292,7 +362,7 @@ export const FactRegistry = {
     description: 'Date when prescriber notes were signed',
     category: 'Prescriber Notes',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'prescriber.clinic_name': {
@@ -321,14 +391,14 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
   // Certifier Notes
   'certifier.notes.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Certifier Notes ICD-10 Codes',
+    description: 'Certifier Notes ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Certifier Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -349,7 +419,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'cert.notes.examiner.role': {
     displayName: 'Certifier Notes Examiner Role',
@@ -357,6 +427,7 @@ export const FactRegistry = {
     category: 'Certifier Notes',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'cert.notes.last_dm_visit_date': {
@@ -364,7 +435,7 @@ export const FactRegistry = {
     description: 'Date of the last diabetes management visit',
     category: 'Certifier Notes',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'cert.notes.manages_diabetes': {
@@ -396,7 +467,7 @@ export const FactRegistry = {
     description: 'Date when certifier notes were signed',
     category: 'Certifier Notes',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'cert.notes.certifying_agreement.signature': {
@@ -416,7 +487,7 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -426,7 +497,7 @@ export const FactRegistry = {
     description: 'Date when the foot examination was performed',
     category: 'Foot Examination',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.first_name': {
@@ -444,7 +515,7 @@ export const FactRegistry = {
     required: true,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema,
-    transform: removeTitleFromName
+    transform: stripHealthcareCredentials
   },
   'foot_exam.examiner.role': {
     displayName: 'Foot Exam Examiner Role',
@@ -452,6 +523,7 @@ export const FactRegistry = {
     category: 'Foot Examination',
     required: true,
     schema: providerTitle,
+    transform: formatHealthcareCredential,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.signature': {
@@ -467,7 +539,7 @@ export const FactRegistry = {
     description: 'Date when the foot exam was signed by the examiner',
     category: 'Foot Examination',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -521,7 +593,7 @@ export const FactRegistry = {
     description: 'Date when the certifying statement was signed',
     category: 'Certifying Statement',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -561,7 +633,7 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -571,7 +643,7 @@ export const FactRegistry = {
     description: 'Date when the initial prescription was ordered',
     category: 'Initial Prescription',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'rx.order_specifies_diabetic_footwear': {
@@ -599,8 +671,8 @@ export const FactRegistry = {
     )
   },
   'rx.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Initial Prescription ICD-10 Codes',
+    description: 'Initial Prescription ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Initial Prescription',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -619,7 +691,7 @@ export const FactRegistry = {
     description: 'Date when the initial prescription was signed',
     category: 'Initial Prescription',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -637,7 +709,7 @@ export const FactRegistry = {
     description: 'Date when the SWO was signed by the treating practitioner',
     category: 'Statement of Work Order',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'swo.order_date': {
@@ -645,7 +717,7 @@ export const FactRegistry = {
     description: 'Date when the statement of work order was created',
     category: 'Statement of Work Order',
     required: true,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'swo.specifies_diabetic_footwear': {
@@ -680,8 +752,8 @@ export const FactRegistry = {
   // Diagnosis Information
   // DEPRECATED - USE calculations.dx.icd_codes instead
   'dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'ICD-10 Codes (deprecated)',
+    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13) (deprecated)',
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -689,31 +761,12 @@ export const FactRegistry = {
   },
 
   // Operations
-  'ops.delivery.date': {
-    displayName: 'Delivery Date',
-    description: 'Date when the diabetic footwear was delivered',
+  'fitter.billing.date': {
+    displayName: 'Billing Date',
+    description: 'Date when the diabetic footwear should be billed',
     category: 'Operations',
     required: false,
-    schema: dateISO,
-    metadata: defaultMetadataSchema
-  },
-
-  // Notifications
-  'notification.outbound': {
-    displayName: 'Outbound Notifications',
-    description: 'Records of outbound notifications sent',
-    category: 'Notifications',
-    required: false,
-    schema: z.array(
-      z.object({
-        contact: z.string().min(1),
-        senderStatus: z.enum(['SENT', 'UNDELIVERED', 'DELIVERED']).optional(),
-        historyId: z.string().min(1),
-        jobId: z.string().min(1),
-        stepName: z.string().min(1)
-      })
-    ),
-    hideInUX: true,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -767,7 +820,7 @@ export const FactRegistry = {
   },
 
   // Payer information
-  'payer.primary.name': {
+  'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
     description: 'Name of the primary insurance payer',
     category: 'Payer Information',
@@ -775,7 +828,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.primary.member_id': {
+  'payer_info.payer.primary.member_id': {
     displayName: 'Primary Payer Member ID',
     description: 'Member ID for the primary insurance payer',
     category: 'Payer Information',
@@ -783,7 +836,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.name': {
+  'payer_info.payer.secondary.name': {
     displayName: 'Secondary Payer Name',
     description: 'Name of the secondary insurance payer',
     category: 'Payer Information',
@@ -791,7 +844,7 @@ export const FactRegistry = {
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
   },
-  'payer.secondary.member_id': {
+  'payer_info.payer.secondary.member_id': {
     displayName: 'Secondary Payer Member ID',
     description: 'Member ID for the secondary insurance payer',
     category: 'Payer Information',
@@ -800,11 +853,173 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  // Insurance Eligibility (Stedi)
+  'insurance.eligibility.is_eligible': {
+    displayName: 'Insurance Eligibility Status',
+    description: 'Whether the patient is eligible for insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.active_coverage': {
+    displayName: 'Active Coverage Status',
+    description: 'Whether the patient has active insurance coverage',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.boolean(),
+    metadata: z.object({
+      summary: z.string().optional(),
+      rawResponse: z.any().optional(),
+      ...defaultMetadataSchema.shape
+    })
+  },
+  'insurance.eligibility.insurance_types': {
+    displayName: 'Insurance Types',
+    description: 'Types of insurance coverage (e.g., Medicare Part A, Part B)',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.plan_number': {
+    displayName: 'Plan Number',
+    description: 'Insurance plan number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.group_number': {
+    displayName: 'Group Number',
+    description: 'Insurance group number',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.checked_at': {
+    displayName: 'Eligibility Check Date',
+    description: 'When the eligibility check was performed',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string().date(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.provider.npi': {
+    displayName: 'Provider NPI',
+    description: 'NPI of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.provider.organization_name': {
+    displayName: 'Provider Organization Name',
+    description: 'Organization name of the provider used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+  'insurance.eligibility.trading_partner': {
+    displayName: 'Trading Partner ID',
+    description: 'Stedi trading partner ID (payer ID) used for eligibility check',
+    category: 'Insurance Eligibility',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+
   // Other
-  'fitter.clinic_name': {
-    displayName: 'Fitter Clinic Name',
-    description: 'Name of the clinic where the footwear was fitted',
+  'fitter.selection.visit.date': {
+    displayName: 'Fitter Selection Visit Date',
+    description: 'Date of the visit where the footwear was selected',
     category: 'Other',
+    required: false,
+    schema: rxOrVisitDateISOSchema,
+    metadata: defaultMetadataSchema
+  },
+
+  'fitter.delivery.visit.date': {
+    displayName: 'Fitter Delivery Visit Date',
+    description: 'Date of the visit where the footwear was delivered',
+    category: 'Other',
+    required: false,
+    schema: rxOrVisitDateISOSchema,
+    metadata: defaultMetadataSchema
+  },
+
+  // diabetic interview
+  'diabetic_interview.received_shoes_this_year': {
+    displayName: 'Received Shoes This Year',
+    description:
+      'During the diabetic interview, did the patient say that they receive diabetic shoes and inserts this year?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.boolean(),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.patient_has_medicare': {
+    displayName: 'Patient Has Medicare',
+    description: 'During the diabetic interview, did the patient say that they have Medicare?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.boolean(),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.managing_physician': {
+    displayName: 'Managing Physician',
+    description: 'During the diabetic interview, what did the patient say was the name of the managing physician?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.foot_examiner': {
+    displayName: 'Foot Examiner',
+    description: 'During the diabetic interview, what did the patient say was the name of the foot examiner?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.last_foot_exam_approximate_date': {
+    displayName: 'Last Foot Exam Date',
+    description: 'During the diabetic interview, what did the patient say was the date of the last foot exam?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.managing_physician_approximate_last_visit_date': {
+    displayName: 'Managing Physician Last Visit Date',
+    description:
+      'During the diabetic interview, what did the patient say was the date of the last visit to the managing physician?',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string().min(1),
+    metadata: blandCitationMetadataSchema
+  },
+
+  'diabetic_interview.patient.dob': {
+    displayName: 'Date of Birth',
+    description: "Patient's date of birth",
+    category: 'Diabetic Interview',
+    required: true,
+    schema: dobISOSchema,
+    metadata: defaultMetadataSchema
+  },
+
+  'diabetic_interview.patient.address': {
+    displayName: 'Address',
+    description: "Patient's address",
+    category: 'Diabetic Interview',
     required: false,
     schema: z.string().min(1),
     metadata: defaultMetadataSchema
@@ -812,8 +1027,8 @@ export const FactRegistry = {
 
   // Calculations
   'calculations.dx.icd_codes': {
-    displayName: 'ICD-10 Codes',
-    description: 'ICD-10 diagnosis codes (must include diabetes E08-E13)',
+    displayName: 'Combined ICD-10 Codes',
+    description: 'ICD-10 diagnosis codes from all documents (must include diabetes E08-E13)',
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
@@ -825,7 +1040,7 @@ export const FactRegistry = {
     description: 'Date when the foot examination expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -834,7 +1049,7 @@ export const FactRegistry = {
     description: 'Date when the diabetes management visit expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -843,7 +1058,16 @@ export const FactRegistry = {
     description: 'Date when the certifying statement expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
+    metadata: defaultMetadataSchema
+  },
+
+  'calculations.expiration.rx.initial.order_date': {
+    displayName: 'Initial Rx Order Expiration Date',
+    description: 'Date when the initial prescription order expires',
+    category: 'Calculations',
+    required: false,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
 
@@ -852,7 +1076,7 @@ export const FactRegistry = {
     description: 'Date when the prescriber notes certifying agreement expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   },
   'calculations.expiration.earliest_date': {
@@ -860,7 +1084,7 @@ export const FactRegistry = {
     description: 'Date when the earliest expiration date expires',
     category: 'Calculations',
     required: false,
-    schema: dateISO,
+    schema: rxOrVisitDateISOSchema,
     metadata: defaultMetadataSchema
   }
 } as const;

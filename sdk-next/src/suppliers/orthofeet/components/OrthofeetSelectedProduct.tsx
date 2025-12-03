@@ -4,6 +4,7 @@ import { formatCurrency } from '@hike/sdk';
 import { Alert, Badge, Button, Group, Image, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import type { OrthofeetProduct } from '../utils/productBuilder';
 
 export interface OrthofeetSelectedProductProps {
@@ -21,6 +22,7 @@ export const OrthofeetSelectedProduct = ({
   onEdit,
   onRemove
 }: OrthofeetSelectedProductProps) => {
+  const [isRemoving, setIsRemoving] = useState(false);
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.selectedProduct');
@@ -48,7 +50,10 @@ export const OrthofeetSelectedProduct = ({
       ),
       labels: { cancel: tShared('action.cancel'), confirm: tShared('action.remove') },
       confirmProps: { color: 'red' },
-      onConfirm: onRemove
+      onConfirm: () => {
+        setIsRemoving(true);
+        onRemove();
+      }
     });
   };
 
@@ -115,10 +120,10 @@ export const OrthofeetSelectedProduct = ({
             </Group>
 
             <Group pt="md">
-              <Button onClick={onEdit} variant="light">
+              <Button onClick={onEdit} variant="light" disabled={isRemoving}>
                 {t('editPair')}
               </Button>
-              <Button color="red" variant="light" onClick={handleRemoveClick}>
+              <Button color="red" variant="light" onClick={handleRemoveClick} loading={isRemoving}>
                 {tShared('action.remove')}
               </Button>
             </Group>

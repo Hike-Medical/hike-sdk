@@ -5,6 +5,7 @@ import type {
   AuthPreferences,
   AuthSession,
   OIDCResponse,
+  PylonEmailHashResponse,
   SafeCompany,
   SendOtpParams,
   UserExtended,
@@ -236,9 +237,24 @@ export const oidcExchangeAuthCode = async (data: {
   }
 };
 
-export const findAuthPreferences = async (): Promise<AuthPreferences> => {
+export const findAuthPreferences = async (companyId?: string): Promise<AuthPreferences> => {
   try {
-    const response = await backendApi.get('auth/preferences');
+    const response = await backendApi.get('auth/preferences', {
+      headers: companyId ? { 'x-company-id': companyId } : undefined
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Gets the Pylon identity verification email hash for the authenticated user.
+ * @see https://docs.usepylon.com/pylon-docs/chat-widget/identity-verification
+ */
+export const getPylonEmailHash = async (): Promise<PylonEmailHashResponse> => {
+  try {
+    const response = await backendApi.get('auth/pylon/email-hash');
     return response.data;
   } catch (error) {
     throw toHikeError(error);

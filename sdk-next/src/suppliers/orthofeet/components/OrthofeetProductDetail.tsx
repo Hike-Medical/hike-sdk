@@ -2,10 +2,23 @@
 
 import { formatCurrency } from '@hike/sdk';
 import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
-import { Badge, Box, Chip, ColorSwatch, Group, Image, Stack, Table, Text, Title, rem } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Chip,
+  ColorSwatch,
+  Group,
+  Image,
+  LoadingOverlay,
+  Stack,
+  Table,
+  Text,
+  Title,
+  rem
+} from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { ProductDetailDrawer } from '../../components/ProductDetailDrawer';
 import {
   ORTHOFEET_ATTRIBUTES,
@@ -48,11 +61,12 @@ export const OrthofeetProductDetail = ({
   onClose,
   onAddToCart
 }: OrthofeetProductDetailProps) => {
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.productDetail');
 
   // Fetch by style or by SKU
-  const { data: allProducts } = useOrthofeetProductStyleVariants({
+  const { data: allProducts, isLoading: isLoadingVariants } = useOrthofeetProductStyleVariants({
     params: style ? { style } : editingSku ? { sku: editingSku } : {},
     enabled: opened && (!!style || !!editingSku)
   });
@@ -85,6 +99,13 @@ export const OrthofeetProductDetail = ({
   const [selectedPrefabInsertQuantity, setSelectedPrefabInsertQuantity] = useState<string | undefined>(
     prefabInsertQuantity || undefined
   );
+
+  // Reset states when drawer closes
+  useEffect(() => {
+    if (!opened) {
+      setIsAddingToCart(false);
+    }
+  }, [opened]);
 
   // Get all unique genders with display labels
   const genderOptions = useMemo(() => getUniqueAttributeOptions(variants, ORTHOFEET_ATTRIBUTES.GENDER), [variants]);
@@ -224,15 +245,19 @@ export const OrthofeetProductDetail = ({
     const productName = currentVariant.name || parentProduct?.name || '';
     const prefabQuantity = prefabInsertPrice ? selectedPrefabInsertQuantity : undefined;
 
+    setIsAddingToCart(true);
     onAddToCart(variantSku, productName, prefabQuantity);
     onClose();
   };
 
   const currentImage = currentVariant?.image || parentProduct?.image;
-  const productPrice = parentProduct?.price ?? currentVariant?.price ?? 0;
+  const productPrice = parentProduct?.price || currentVariant?.price || 0;
   const showOutOfStock = enableInventoryCheck && isFullySelected && !inventoryLoading && !inventoryError && !isInStock;
   const isButtonDisabled =
-    !isFullySelected || (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
+    isLoadingVariants ||
+    isAddingToCart ||
+    !isFullySelected ||
+    (enableInventoryCheck && isFullySelected && !inventoryLoading && !isInStock);
 
   return (
     <ProductDetailDrawer
@@ -244,9 +269,11 @@ export const OrthofeetProductDetail = ({
       showOutOfStock={showOutOfStock}
       outOfStockText={t('outOfStock')}
       addButtonText={t('addToOrder')}
-      addButtonLoading={inventoryLoading}
+      addButtonLoading={inventoryLoading || isAddingToCart}
     >
       <Stack>
+        <LoadingOverlay visible={isLoadingVariants} />
+
         {/* Price Display - Always show */}
         <DrawerSection title={tShared('label.price')}>
           {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
