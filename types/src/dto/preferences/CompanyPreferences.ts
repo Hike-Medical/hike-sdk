@@ -16,6 +16,7 @@ export interface CompanyPreferences {
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredConsumerSubmittedEmail?: string;
+  preferredStepZeroEmail?: string;
   preferredVeteranEmailAddress?: string;
   preferredHospitalDeliveryReceiptEmailAddress?: string;
   preferredWalkInDeliveryReceiptEmailAddress?: string;

@@ -11,7 +11,7 @@ interface FactsRegistryEntry {
   category: string;
   required: boolean;
   hideInUX?: boolean;
-  transform?: (value: FactValueOf<FactKey>) => FactValueOf<FactKey>;
+  transform?: (value: FactValueOf<FactKey>, source?: string) => FactValueOf<FactKey>;
 }
 
 const rxOrVisitDateISOSchema = z
