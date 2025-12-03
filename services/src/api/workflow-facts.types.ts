@@ -1145,3 +1145,10 @@ export function getFieldCategory(fieldKey: string): string {
   const mapping = getFieldMapping(fieldKey);
   return mapping?.category || 'Other';
 }
+
+export const ZOHO_SOURCE = 'ZOHO';
+export const NPI_LOOKUP_SOURCE = 'NPI_LOOKUP';
+export const MANUAL_SOURCE = 'manual';
+export const SYSTEM_GENERATED_SOURCE = 'system-generated';
+export const STEDI_API_SOURCE = 'stedi-api';
+export const BLAND_SOURCE = 'bland';
