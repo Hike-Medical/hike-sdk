@@ -819,6 +819,19 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  'internal.extraction.parsed': {
+    displayName: 'Extraction Results Parsed',
+    description: 'Extraction results have been parsed and facts have been added to the workflow',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      parsed: z.boolean(),
+      parsedWorkflowId: z.string().min(1).optional()
+    }),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
   // Payer information
   'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
