@@ -11,4 +11,5 @@ export interface AttachmentPresignedUrl {
   id: string;
   name: string;
   presignedUrl: string;
+  contentType: string;
 }

@@ -4,7 +4,6 @@
     "baseUrl": "./src",
     "outDir": "./dist",
     "moduleResolution": "bundler",
-    "isolatedModules": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,

@@ -3,6 +3,7 @@
 import { configureFingerprint, marketingUtmParams } from '@hike/sdk';
 import { SessionContext } from '@hike/ui';
 import dynamic from 'next/dynamic';
+import { useParams } from 'next/navigation';
 import posthog from 'posthog-js'; // eslint-disable-line import/no-named-as-default
 import { PostHogProvider as PHProvider } from 'posthog-js/react';
 import { ReactNode, use, useEffect, useState } from 'react';
@@ -22,6 +23,7 @@ export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogPr
   const [isInitialized, setIsInitialized] = useState(false);
   const { user } = use(SessionContext);
   const { speed } = use(NetworkContext);
+  const params = useParams<{ patientId: string }>();
 
   useEffect(() => {
     if (!postHogKey || !postHogHost || isInitialized) {
@@ -50,10 +52,12 @@ export const PostHogProvider = ({ postHogKey, postHogHost, children }: PostHogPr
 
     posthog.identify(user?.id, {
       userId: user?.id,
+      patientId: params.patientId || null,
       companies: JSON.stringify(user?.companies),
+      slugs: JSON.stringify(user?.slugs),
       networkSpeed: speed
     });
-  }, [user, speed, isInitialized]);
+  }, [user, params.patientId, speed, isInitialized]);
 
   return (
     <PHProvider client={posthog}>

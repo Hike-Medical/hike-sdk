@@ -237,9 +237,11 @@ export const oidcExchangeAuthCode = async (data: {
   }
 };
 
-export const findAuthPreferences = async (): Promise<AuthPreferences> => {
+export const findAuthPreferences = async (companyId?: string): Promise<AuthPreferences> => {
   try {
-    const response = await backendApi.get('auth/preferences');
+    const response = await backendApi.get('auth/preferences', {
+      headers: companyId ? { 'x-company-id': companyId } : undefined
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -1,5 +1,6 @@
 import {
   CompanyPermission,
+  CreateUserParams,
   GetUsersParams,
   PagedResponse,
   SafeUser,
@@ -10,6 +11,15 @@ import {
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
+
+export const createUser = async (params: CreateUserParams): Promise<SafeUserExtended> => {
+  try {
+    const response = await backendApi.post('user', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 
 export const fetchUsers = async (params?: GetUsersParams): Promise<PagedResponse<SafeUserExtended[]>> => {
   try {

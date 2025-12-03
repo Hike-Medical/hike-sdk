@@ -1,6 +1,5 @@
 import { getSolemateStats } from '@hike/services';
-import { HikeError } from '@hike/types';
-import { SolemateStatus } from '@hike/utils';
+import { HikeError, SolemateStatus } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 interface UseGetSolemateStatsOptions

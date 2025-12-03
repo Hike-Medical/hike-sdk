@@ -16,6 +16,7 @@ export interface CompanyPreferences {
   distributionEmailAddress?: string;
   preferredSubmittedOrderEmailAddress?: string;
   preferredConsumerSubmittedEmail?: string;
+  preferredStepZeroEmail?: string;
   preferredVeteranEmailAddress?: string;
   preferredHospitalDeliveryReceiptEmailAddress?: string;
   preferredWalkInDeliveryReceiptEmailAddress?: string;
@@ -48,6 +49,8 @@ export interface CompanyPreferences {
   toWordDocx?: boolean;
   roster?: {
     columnMapping: Partial<Record<keyof RoasterPatientCsvRecord, string[]>>;
+    dateFormat?: string;
+    performDeactivations?: boolean;
   };
   appointments?: {
     columnMapping: Partial<Record<keyof AppointmentCsvRecord, string[]>>;
@@ -90,6 +93,10 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    npi?: {
+      name: string;
+      value: string;
+    };
   };
   auth?: {
     allowlist?: {
@@ -104,5 +111,7 @@ export interface CompanyPreferences {
       facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
+    showLogo?: boolean;
   };
+  hideConsumerExternalId?: boolean;
 }
