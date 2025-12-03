@@ -7,6 +7,7 @@ export * from './auth/PylonEmailHash';
 export * from './config/AppId';
 export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
+export * from './dto/analytics/AnalyticsRefreshSchedule';
 export * from './dto/analytics/CompanyTurnaroundStats';
 export * from './dto/analytics/EmployerDashboardStatsOptions';
 export * from './dto/analytics/EmployerDashboardStatus';

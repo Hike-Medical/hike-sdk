@@ -4,6 +4,7 @@ export { CompanyContext } from './contexts/CompanyProviderClient';
 export * from './contexts/HikeProvider';
 export * from './contexts/InAppNotificationsProvider';
 export * from './contexts/SessionProvider';
+export * from './hooks/analytics/useGetAnalyticsRefreshSchedule';
 export * from './hooks/analytics/useGetCompanyTurnaroundStats';
 export * from './hooks/analytics/useGetEmployerDashboardStats';
 export * from './hooks/analytics/useGetOrderMetrics';
@@ -278,4 +279,3 @@ export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';
 export * from './hooks/workflows/useWorkflowTimeSaved';
-
