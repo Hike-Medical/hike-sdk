@@ -4,6 +4,8 @@ import type {
   GetPatientsParams,
   PagedParams,
   PagedResponse,
+  PatientConsolidationCandidate,
+  PatientConsolidationResponse,
   PatientUserResponse,
   SafeUser,
   SearchPatientsParams,
@@ -127,3 +129,36 @@ export const approvePatient = async (patientId: string) => {
 };
 
 export const isPatientApproved = (user: CompanyUser | undefined): boolean => !!user?.role && user.active;
+
+// Patient consolidation methods
+export const checkPatientDuplicates = async (patientId: string): Promise<PatientConsolidationCandidate[]> => {
+  try {
+    const response = await backendApi.get(`patient/consolidation/${patientId}/check`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const mergePatient = async (
+  patientId: string,
+  candidatePatientId: string
+): Promise<PatientConsolidationResponse> => {
+  try {
+    const response = await backendApi.post(`patient/consolidation/${patientId}/merge`, { candidatePatientId });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getPendingPatientConsolidation = async (
+  patientId: string
+): Promise<PatientConsolidationCandidate | null> => {
+  try {
+    const response = await backendApi.get(`patient/consolidation/${patientId}/pending`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
