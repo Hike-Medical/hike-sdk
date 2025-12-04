@@ -1,4 +1,5 @@
 export const HEALTHCARE_CREDENTIAL_VALUES = [
+  'ACNS',
   'APRN',
   'APRN-CNS',
   'APRN-CNP',
