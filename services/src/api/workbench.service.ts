@@ -10,6 +10,7 @@ import {
   GetManufacturingWorkbenchParams,
   GetPastTenseStationsParams,
   GetPrintFarmWorkbenchParams,
+  GetProjectMidnightHammerWorkbenchParams,
   GetStationsParams,
   GetWorkbenchDevSummaryParams,
   GetWorkbenchSummaryParams,
@@ -504,6 +505,32 @@ export const getManufacturingWorkbenches = async (
       headers: addHeaders(companyIds)
     });
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Fetches workbenches that have Project Midnight Hammer files available.
+ */
+export const getProjectMidnightHammerWorkbenches = async (
+  params?: GetProjectMidnightHammerWorkbenchParams,
+  companyIds?: string[]
+): Promise<PagedResponse<ManufacturingWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('workbench/midnight-hammer', {
+      params,
+      headers: addHeaders(companyIds)
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const printProjectMidnightHammer = async (workbenchId: string, companyIds?: string[]): Promise<void> => {
+  try {
+    await backendApi.post(`workbench/${workbenchId}/midnight-hammer/print`, {}, { headers: addHeaders(companyIds) });
   } catch (error) {
     throw toHikeError(error);
   }

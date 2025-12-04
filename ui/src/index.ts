@@ -251,6 +251,8 @@ export * from './hooks/workbenches/useGetMultipleWorkbenchFiles';
 export * from './hooks/workbenches/useGetWorkbench';
 export * from './hooks/workbenches/useManufacturingWorkbenches';
 export * from './hooks/workbenches/useNeedsValidationWorkbenches';
+export * from './hooks/workbenches/usePrintProjectMidnightHammer';
+export * from './hooks/workbenches/useProjectMidnightHammerWorkbenches';
 export * from './hooks/workbenches/usePastTenseStations';
 export * from './hooks/workbenches/usePatientWorkbenchInformation';
 export * from './hooks/workbenches/usePrintFarmWorkbench';
