@@ -18,6 +18,8 @@ export const HEALTHCARE_CREDENTIAL_VALUES = [
   'DPM',
   'FACP',
   'FNP',
+  'FNP-BC',
+  'FNP-C',
   'LPN',
   'LVN',
   'MD',
