@@ -114,4 +114,5 @@ export interface CompanyPreferences {
     showLogo?: boolean;
   };
   hideConsumerExternalId?: boolean;
+  eligibilityTradingPartner?: string;
 }
