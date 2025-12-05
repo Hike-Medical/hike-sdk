@@ -37,4 +37,6 @@ export interface ManufacturingWorkbench {
   addonCompletedAt: Date | null;
   addonCompletedBy: string | null;
   isOutsideClinic?: boolean;
+  leftFootAssetKey?: string | null;
+  rightFootAssetKey?: string | null;
 }
