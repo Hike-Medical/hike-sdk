@@ -819,6 +819,19 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  'internal.extraction.parsed': {
+    displayName: 'Extraction Results Parsed',
+    description: 'Extraction results have been parsed and facts have been added to the workflow',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      parsed: z.boolean(),
+      parsedWorkflowId: z.string().min(1).optional()
+    }),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
   // Payer information
   'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
@@ -1145,3 +1158,10 @@ export function getFieldCategory(fieldKey: string): string {
   const mapping = getFieldMapping(fieldKey);
   return mapping?.category || 'Other';
 }
+
+export const ZOHO_SOURCE = 'ZOHO';
+export const NPI_LOOKUP_SOURCE = 'NPI_LOOKUP';
+export const MANUAL_SOURCE = 'manual';
+export const SYSTEM_GENERATED_SOURCE = 'system-generated';
+export const STEDI_API_SOURCE = 'stedi-api';
+export const BLAND_SOURCE = 'bland';
