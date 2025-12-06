@@ -111,6 +111,12 @@ export interface CompanyPreferences {
       facilityRequired?: boolean;
       facilityType?: FacilityType;
     };
+    saml?: {
+      enabled?: boolean;
+      color?: string;
+      facilityRequired?: boolean;
+      facilityType?: FacilityType;
+    };
     showLogo?: boolean;
   };
   hideConsumerExternalId?: boolean;

@@ -237,6 +237,54 @@ export const oidcExchangeAuthCode = async (data: {
   }
 };
 
+/**
+ * SAML 2.0 SSO Functions
+ */
+
+/**
+ * Initiates SAML SSO flow - returns the IdP authorization URL
+ */
+export const startSamlConnect = async (): Promise<{ authorizationUrl: string }> => {
+  try {
+    const response = await backendApi.get('auth/saml/start');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Handles SAML ACS callback - processes the SAML response from IdP
+ * Note: This is typically called via form POST from the IdP, not directly from frontend.
+ * The frontend should redirect to the IdP and the IdP will POST to the ACS URL.
+ */
+export const samlCallback = async (samlResponse: string, relayState?: string): Promise<AuthSession> => {
+  try {
+    const response = await backendApi.post('auth/saml/acs', {
+      SAMLResponse: samlResponse,
+      RelayState: relayState
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Gets the SP metadata XML for configuring the IdP
+ */
+export const getSamlMetadata = async (companyId?: string): Promise<string> => {
+  try {
+    const response = await backendApi.get('auth/saml/metadata', {
+      headers: companyId ? { 'x-company-id': companyId } : undefined,
+      responseType: 'text'
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findAuthPreferences = async (companyId?: string): Promise<AuthPreferences> => {
   try {
     const response = await backendApi.get('auth/preferences', {
