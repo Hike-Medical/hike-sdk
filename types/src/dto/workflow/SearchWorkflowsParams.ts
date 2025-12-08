@@ -12,12 +12,18 @@ export interface FactFilter {
   factValue: string;
 }
 
+export enum FactMatchMode {
+  AND = 'AND',
+  OR = 'OR'
+}
+
 export interface SearchWorkflowFilter {
   workflowNames?: string[];
   status?: string[];
   hasErrors?: boolean;
   errorTypes?: string[];
   facts?: FactFilter[];
+  factNatchMode?: FactMatchMode;
   fromStartTime?: string;
   toStartTime?: string;
   fromEndTime?: string;
