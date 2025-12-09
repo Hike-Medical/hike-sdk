@@ -34,7 +34,8 @@ import {
   WorkbenchPdfs,
   WorkbenchPdfType,
   WorkbenchStatus,
-  WorkbenchSummary
+  WorkbenchSummary,
+  WorkbenchValidationResultsMap
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -531,6 +532,17 @@ export const getProjectMidnightHammerWorkbenches = async (
 export const printProjectMidnightHammer = async (workbenchId: string, companyIds?: string[]): Promise<void> => {
   try {
     await backendApi.post(`workbench/${workbenchId}/midnight-hammer/print`, {}, { headers: addHeaders(companyIds) });
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getValidationResults = async (workbenchIds: string[]): Promise<WorkbenchValidationResultsMap> => {
+  try {
+    const response = await backendApi.get('workbench/validation-results', {
+      params: { workbenchIds }
+    });
+    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }
