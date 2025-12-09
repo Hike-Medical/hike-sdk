@@ -258,6 +258,7 @@ export * from './dto/workbench/WorkbenchDevSummary';
 export * from './dto/workbench/WorkbenchPdfs';
 export * from './dto/workbench/WorkbenchPdfType';
 export * from './dto/workbench/WorkbenchSummary';
+export * from './dto/workbench/WorkbenchValidationResult';
 export * from './dto/workflow/Attachment';
 export * from './dto/workflow/FactWithAttachment';
 export * from './dto/workflow/SearchWorkflowsParams';
