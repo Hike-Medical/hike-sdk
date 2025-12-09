@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatHealthcareCredential, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatHealthcareCredential, formatMBI, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 import dayjs from 'dayjs';
 
@@ -133,7 +133,7 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema,
     // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally.
     // Lowercase letters are converted to uppercase per CMS specifications.
-    transform: (input: string) => input.replace(/-/g, '').trim().toUpperCase()
+    transform: formatMBI
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
