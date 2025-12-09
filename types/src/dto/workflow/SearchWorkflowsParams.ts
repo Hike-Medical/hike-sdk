@@ -4,7 +4,8 @@ export enum WorkflowSortBy {
   CREATED_AT = 'createdAt',
   UPDATED_AT = 'updatedAt',
   EXPIRES_AT = 'expiresAt',
-  ENDED_AT = 'endedAt'
+  ENDED_AT = 'endedAt',
+  BEST_FACT_MATCH = 'bestFactMatch'
 }
 
 export interface FactFilter {
