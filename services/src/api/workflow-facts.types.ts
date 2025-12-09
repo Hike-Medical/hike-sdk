@@ -307,7 +307,7 @@ export const FactRegistry = {
     description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: dobISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.patient_needs_diabetic_footwear': {
