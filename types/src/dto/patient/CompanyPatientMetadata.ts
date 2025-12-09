@@ -1,6 +1,5 @@
-export interface PatientConsolidationMetadata {
+export interface CompanyPatientMetadata {
   consolidation?: {
     candidatePatientId: string;
   };
 }
-
