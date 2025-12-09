@@ -24,7 +24,7 @@ export interface SearchWorkflowFilter {
   hasErrors?: boolean;
   errorTypes?: string[];
   facts?: FactFilter[];
-  factNatchMode?: FactMatchMode;
+  factMatchMode?: FactMatchMode;
   fromStartTime?: string;
   toStartTime?: string;
   fromEndTime?: string;
