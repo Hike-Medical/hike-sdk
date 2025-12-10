@@ -11,6 +11,7 @@ export interface ManufacturingWorkbench {
   evaluationId: string;
   patientId: string;
   orderId: string;
+  companyId: string;
   companySlug: string;
   productType: ProductType;
   poNumber: string | null;
