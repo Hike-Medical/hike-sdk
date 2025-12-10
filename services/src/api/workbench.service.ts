@@ -537,10 +537,14 @@ export const printProjectMidnightHammer = async (workbenchId: string, companyIds
   }
 };
 
-export const getValidationResults = async (workbenchIds: string[]): Promise<WorkbenchValidationResultsMap> => {
+export const getValidationResults = async (
+  workbenchIds: string[],
+  companyIds?: string[]
+): Promise<WorkbenchValidationResultsMap> => {
   try {
     const response = await backendApi.get('workbench/validation-results', {
-      params: { workbenchIds }
+      params: { workbenchIds },
+      headers: addHeaders(companyIds)
     });
     return response.data;
   } catch (error) {
