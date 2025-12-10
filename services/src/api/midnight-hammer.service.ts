@@ -5,7 +5,7 @@ export const midnightHammerService = {
   getAnalytics: async (
     params?: GetProjectMidnightHammerAnalyticsParams
   ): Promise<ProjectMidnightHammerAnalyticsResponse> => {
-    const response = await backendApi.get<ProjectMidnightHammerAnalyticsResponse>('/midnight-hammer/analytics', {
+    const response = await backendApi.get<ProjectMidnightHammerAnalyticsResponse>('midnight-hammer/analytics', {
       params
     });
     return response.data;
