@@ -4,12 +4,18 @@ export enum WorkflowSortBy {
   CREATED_AT = 'createdAt',
   UPDATED_AT = 'updatedAt',
   EXPIRES_AT = 'expiresAt',
-  ENDED_AT = 'endedAt'
+  ENDED_AT = 'endedAt',
+  BEST_FACT_MATCH = 'bestFactMatch'
 }
 
 export interface FactFilter {
   factName: string;
   factValue: string;
+}
+
+export enum FactMatchMode {
+  AND = 'AND',
+  OR = 'OR'
 }
 
 export interface SearchWorkflowFilter {
@@ -18,6 +24,7 @@ export interface SearchWorkflowFilter {
   hasErrors?: boolean;
   errorTypes?: string[];
   facts?: FactFilter[];
+  factMatchMode?: FactMatchMode;
   fromStartTime?: string;
   toStartTime?: string;
   fromEndTime?: string;
