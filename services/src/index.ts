@@ -25,6 +25,7 @@ export * from './api/health.service';
 export * from './api/incentive.service';
 export * from './api/invitation.service';
 export * from './api/kvs.service';
+export * from './api/midnight-hammer.service';
 export * from './api/notes.service';
 export * from './api/notification.service';
 export * from './api/order.service';
