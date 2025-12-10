@@ -1,5 +1,5 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
-import { formatHealthcareCredential, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
+import { formatHealthcareCredential, formatMBI, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
 import { z } from 'zod';
 import dayjs from 'dayjs';
 
@@ -14,12 +14,7 @@ interface FactsRegistryEntry {
   transform?: (value: FactValueOf<FactKey>, source?: string) => FactValueOf<FactKey>;
 }
 
-const rxOrVisitDateISOSchema = z
-  .string()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
-  .refine((val) => dayjs(val).isValid() && dayjs(val).isAfter(dayjs('2025-01-01')), {
-    message: 'Date of birth must be after 2025-01-01'
-  });
+const dateISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
 const dobISOSchema = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
@@ -138,7 +133,7 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema,
     // MBIs are sometimes displayed with dashes, but per CMS the dashes are never used internally.
     // Lowercase letters are converted to uppercase per CMS specifications.
-    transform: (input: string) => input.replace(/-/g, '').trim().toUpperCase()
+    transform: formatMBI
   },
   'patient.external_patient_id': {
     displayName: 'External Patient ID',
@@ -312,7 +307,7 @@ export const FactRegistry = {
     description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'prescriber.notes.patient_needs_diabetic_footwear': {
@@ -362,7 +357,7 @@ export const FactRegistry = {
     description: 'Date when prescriber notes were signed',
     category: 'Prescriber Notes',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'prescriber.clinic_name': {
@@ -391,7 +386,7 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -435,7 +430,7 @@ export const FactRegistry = {
     description: 'Date of the last diabetes management visit',
     category: 'Certifier Notes',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'cert.notes.manages_diabetes': {
@@ -467,7 +462,7 @@ export const FactRegistry = {
     description: 'Date when certifier notes were signed',
     category: 'Certifier Notes',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'cert.notes.certifying_agreement.signature': {
@@ -487,7 +482,7 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -497,7 +492,7 @@ export const FactRegistry = {
     description: 'Date when the foot examination was performed',
     category: 'Foot Examination',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'foot_exam.examiner.first_name': {
@@ -539,7 +534,7 @@ export const FactRegistry = {
     description: 'Date when the foot exam was signed by the examiner',
     category: 'Foot Examination',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -593,7 +588,7 @@ export const FactRegistry = {
     description: 'Date when the certifying statement was signed',
     category: 'Certifying Statement',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -633,7 +628,7 @@ export const FactRegistry = {
     description: 'Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -643,7 +638,7 @@ export const FactRegistry = {
     description: 'Date when the initial prescription was ordered',
     category: 'Initial Prescription',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'rx.order_specifies_diabetic_footwear': {
@@ -691,7 +686,7 @@ export const FactRegistry = {
     description: 'Date when the initial prescription was signed',
     category: 'Initial Prescription',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -709,7 +704,7 @@ export const FactRegistry = {
     description: 'Date when the SWO was signed by the treating practitioner',
     category: 'Statement of Work Order',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'swo.order_date': {
@@ -717,7 +712,7 @@ export const FactRegistry = {
     description: 'Date when the statement of work order was created',
     category: 'Statement of Work Order',
     required: true,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'swo.specifies_diabetic_footwear': {
@@ -766,7 +761,7 @@ export const FactRegistry = {
     description: 'Date when the diabetic footwear should be billed',
     category: 'Operations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -950,7 +945,7 @@ export const FactRegistry = {
     description: 'Date of the visit where the footwear was selected',
     category: 'Other',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -959,7 +954,7 @@ export const FactRegistry = {
     description: 'Date of the visit where the footwear was delivered',
     category: 'Other',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -1053,7 +1048,7 @@ export const FactRegistry = {
     description: 'Date when the foot examination expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -1062,7 +1057,7 @@ export const FactRegistry = {
     description: 'Date when the diabetes management visit expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -1071,7 +1066,7 @@ export const FactRegistry = {
     description: 'Date when the certifying statement expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -1080,7 +1075,7 @@ export const FactRegistry = {
     description: 'Date when the initial prescription order expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
 
@@ -1089,7 +1084,7 @@ export const FactRegistry = {
     description: 'Date when the prescriber notes certifying agreement expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   },
   'calculations.expiration.earliest_date': {
@@ -1097,7 +1092,7 @@ export const FactRegistry = {
     description: 'Date when the earliest expiration date expires',
     category: 'Calculations',
     required: false,
-    schema: rxOrVisitDateISOSchema,
+    schema: dateISO,
     metadata: defaultMetadataSchema
   }
 } as const;
