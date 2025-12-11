@@ -1,15 +1,4 @@
-import {
-  Configuration,
-  Lane,
-  Machine,
-  MachineStatus,
-  MachineType,
-  Order,
-  PrintJob,
-  PrintJobStatus,
-  Printer3D,
-  Workbench
-} from '../../prisma';
+import { Configuration, Lane, Machine, Order, PrintJob, Printer3D, Workbench } from '../../../prisma';
 
 export interface SoleforgePrintJob extends PrintJob {
   order: Order & {
@@ -49,6 +38,3 @@ export interface SoleforgeDashboard {
   unassignedMachines: SoleforgeMachine[];
   stats: SoleforgeDashboardStats;
 }
-
-// Re-export enums for convenience
-export { MachineStatus, MachineType, PrintJobStatus };
