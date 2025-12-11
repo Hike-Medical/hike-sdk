@@ -213,6 +213,7 @@ export * from './hooks/shipping/useValidateShippingAddress';
 export * from './hooks/shipping/useVoidLabel';
 export * from './hooks/soleforge/useLanes';
 export * from './hooks/soleforge/useMachines';
+export * from './hooks/soleforge/useQueuePrintJobs';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/supplier/useOrthofeetFilters';
 export * from './hooks/supplier/useOrthofeetProductStyles';
