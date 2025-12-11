@@ -129,6 +129,7 @@ export * from './hooks/invitation/useInvitations';
 export * from './hooks/invitation/useRevokeInvitations';
 export * from './hooks/kvs/useDeleteSignalingChannel';
 export * from './hooks/kvs/useGetSignalingChannel';
+export * from './hooks/midnight-hammer/useProjectMidnightHammerAnalytics';
 export * from './hooks/notes/useCreateNotes';
 export * from './hooks/notes/useDeleteNote';
 export * from './hooks/notes/useGetNote';

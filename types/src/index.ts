@@ -131,6 +131,8 @@ export * from './dto/kvs/SignalingChannelResponse';
 export * from './dto/kvs/StreamCompleteParams';
 export * from './dto/manufacturing/RenderType';
 export * from './dto/manufacturing/SolemateStatus';
+export * from './dto/midnight-hammer/GetProjectMidnightHammerAnalyticsParams';
+export * from './dto/midnight-hammer/ProjectMidnightHammerAnalyticsResponse';
 export * from './dto/notes/CreateNotes';
 export * from './dto/notes/Notes';
 export * from './dto/notes/UpdateNotes';
