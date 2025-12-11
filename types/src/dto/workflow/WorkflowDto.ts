@@ -20,19 +20,7 @@ export interface WorkflowStepDto {
         acquiredAt: string;
         updatedAt: string;
       }[];
-      attachments: {
-        id: string;
-        name: string;
-        bucket: string;
-        key: string;
-        region: string;
-        types: string[];
-        status: string;
-        statusUpdatedAt?: string;
-        statusReason?: string;
-        companyId: string;
-        metadata?: any;
-      }[];
+        attachments: WorkflowAttachmentDto[];
       dataErrors: {
         factKey: string;
         factValue?: string;
@@ -65,19 +53,7 @@ export interface WorkflowStateDto {
     acquiredAt: string;
     updatedAt: string;
   }[];
-  attachments: {
-    id: string;
-    name: string;
-    bucket: string;
-    key: string;
-    region: string;
-    types: string[];
-    status: string;
-    statusUpdatedAt?: string;
-    statusReason?: string;
-    companyId: string;
-    metadata?: any;
-  }[];
+  attachments: WorkflowAttachmentDto[];
   calculations?: {
     key: string;
     value: any;
@@ -100,9 +76,24 @@ export interface WorkflowFactDto {
   updatedAt: string;
 }
 
+export interface WorkflowAttachmentDto {
+  id: string;
+  name: string;
+  bucket: string;
+  key: string;
+  region: string;
+  types: string[];
+  status: string;
+  statusUpdatedAt?: string;
+  statusReason?: string;
+  companyId: string;
+  metadata?: any;
+}
+
 export interface WorkflowErrorDto {
   errorType: string;
   facts: WorkflowFactDto[];
+  attachments?: WorkflowAttachmentDto[];
   message: string;
 }
 
