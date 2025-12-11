@@ -93,7 +93,7 @@ export interface WorkflowAttachmentDto {
 export interface WorkflowErrorDto {
   errorType: string;
   facts: WorkflowFactDto[];
-  attachments?: WorkflowAttachmentDto[];
+  attachments: WorkflowAttachmentDto[];
   message: string;
 }
 
