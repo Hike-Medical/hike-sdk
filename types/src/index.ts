@@ -206,6 +206,8 @@ export * from './dto/shipping/GetShipengineShippingResponse';
 export * from './dto/shipping/GetShippingLabelLegacyResponse';
 export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/ValidateAddressBody';
+export * from './dto/soleforge/GetMachinesParams';
+export * from './dto/soleforge/ShippingStationConfiguration';
 export * from './dto/supplier/GetSuppliersParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryResponse';
