@@ -210,6 +210,7 @@ export * from './dto/soleforge/GetMachinesParams';
 export * from './dto/soleforge/QueuePrintJobsParams';
 export * from './dto/soleforge/RejectionQuantities';
 export * from './dto/soleforge/ShippingStationConfiguration';
+export * from './dto/soleforge/SoleforgeDashboard';
 export * from './dto/supplier/GetSuppliersParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryResponse';

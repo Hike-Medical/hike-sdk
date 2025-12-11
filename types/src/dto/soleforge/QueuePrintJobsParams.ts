@@ -5,4 +5,5 @@ export interface QueuePrintJobsParams {
   printerId?: string;
   laneId?: string;
   quantities?: RejectionQuantities;
+  isReprint?: boolean;
 }
