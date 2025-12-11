@@ -93,6 +93,7 @@ export * from './dto/department/GetDepartmentsParams';
 export * from './dto/department/UpdateDepartmentParams';
 export * from './dto/email-template/SendEmailTemplateParams';
 export * from './dto/email-template/UpsertEmailTemplateParams';
+export * from './dto/enrollment/CheckEnrollmentEligibilityParams';
 export * from './dto/enrollment/CheckEnrollmentEligibilityResponse';
 export * from './dto/enrollment/SaveEnrollmentDetailsParams';
 export * from './dto/evaluation/ActionEvaluationParams';

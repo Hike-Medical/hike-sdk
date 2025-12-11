@@ -1,20 +1,20 @@
 import { checkEnrollmentEligibility } from '@hike/services';
-import type { CheckEnrollmentEligibilityResponse, HikeError } from '@hike/types';
+import type { CheckEnrollmentEligibilityParams, CheckEnrollmentEligibilityResponse, HikeError } from '@hike/types';
 import { QueryKey, useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
 interface UseCheckEnrollmentEligibilityOptions
   extends Omit<UseQueryOptions<CheckEnrollmentEligibilityResponse, HikeError<null>>, 'queryKey' | 'queryFn'> {
-  patientId: string;
+  params: CheckEnrollmentEligibilityParams;
   queryKey?: QueryKey;
 }
 
 export const useCheckEnrollmentEligibility = ({
-  patientId,
+  params,
   queryKey = [],
   ...options
 }: UseCheckEnrollmentEligibilityOptions) =>
   useQuery({
-    queryKey: ['checkEnrollmentEligibility', patientId, queryKey],
-    queryFn: async () => await checkEnrollmentEligibility(patientId),
+    queryKey: ['checkEnrollmentEligibility', params.patientId, params.externalId, queryKey],
+    queryFn: async () => await checkEnrollmentEligibility(params),
     ...options
   });
