@@ -8,7 +8,7 @@ import { backendApi } from '../utils/backendApi';
 
 export const saveEnrollmentDetails = async (params: SaveEnrollmentDetailsParams): Promise<{ patientId: string }> => {
   try {
-    const response = await backendApi.post('/enrollment/details', params);
+    const response = await backendApi.post('enrollment/details', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -20,7 +20,7 @@ export const checkEnrollmentEligibility = async (
 ): Promise<CheckEnrollmentEligibilityResponse> => {
   try {
     const { patientId, externalId } = params;
-    const response = await backendApi.post(`/enrollment/eligibility/${patientId}`, { externalId });
+    const response = await backendApi.post(`enrollment/eligibility/${patientId}`, { externalId });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
