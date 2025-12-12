@@ -16,6 +16,7 @@ export * from './api/device-type.service';
 export * from './api/diagnosis.service';
 export * from './api/email-template.service';
 export * from './api/engagement.service';
+export * from './api/enrollment.service';
 export * from './api/evaluation.service';
 export * from './api/facility.service';
 export * from './api/foot.service';
