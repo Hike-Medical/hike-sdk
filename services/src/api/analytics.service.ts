@@ -4,7 +4,8 @@ import {
   EmployerDashboardStatus,
   HourlyOptions,
   OrderMetricsOptions,
-  OrderMetricsResponse
+  OrderMetricsResponse,
+  WorkflowDashboardStats
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -96,6 +97,15 @@ export const getEmployerDashboardStats = async (
 ): Promise<Record<EmployerDashboardStatus, number>> => {
   try {
     const response = await backendApi.get('analytics/employer-dashboard-stats', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowDashboardStats = async (): Promise<WorkflowDashboardStats> => {
+  try {
+    const response = await backendApi.get('analytics/workflows/dashboard-stats');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
