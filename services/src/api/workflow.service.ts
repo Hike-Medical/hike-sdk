@@ -3,6 +3,7 @@ import type {
   EvaluationAttachmentType,
   PagedResponse,
   SearchWorkflowsParams,
+  UpdateWorkflowAttachmentParams,
   WorkflowAttachment,
   WorkflowDto,
   WorkflowSearchResult,
@@ -86,6 +87,19 @@ export const updateWorkflowState = async (
 export const getWorkflowAttachments = async (workflowId: string): Promise<WorkflowAttachment[]> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/attachments`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateWorkflowAttachment = async (
+  workflowId: string,
+  attachmentId: string,
+  params: UpdateWorkflowAttachmentParams
+): Promise<WorkflowDto> => {
+  try {
+    const response = await backendApi.patch(`workflow/${workflowId}/attachments/${attachmentId}`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
