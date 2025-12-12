@@ -10,7 +10,8 @@ export const AuditEntity = {
   ACCOUNT: 'ACCOUNT',
   API_KEY: 'API_KEY',
   WORKFLOW: 'WORKFLOW',
-  CATALOG: 'CATALOG'
+  CATALOG: 'CATALOG',
+  PRINT_JOB: 'PRINT_JOB'
 } as const;
 
 export type AuditEntity = (typeof AuditEntity)[keyof typeof AuditEntity];

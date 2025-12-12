@@ -42,6 +42,7 @@ export * from './api/scan.service';
 export * from './api/schema.service';
 export * from './api/search.service';
 export * from './api/shipping.service';
+export * from './api/soleforge.service';
 export * from './api/supplier.service';
 export * from './api/tag.service';
 export * from './api/terms.service';
