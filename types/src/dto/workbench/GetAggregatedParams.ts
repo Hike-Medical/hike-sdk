@@ -12,6 +12,14 @@ export interface GetAggregatedParams extends PagedParams {
   prioritizeRushed?: boolean;
   authorizationStartDate?: string;
   authorizationEndDate?: string;
+  orderCreatedStartDate?: string;
+  orderCreatedEndDate?: string;
+  printingStartedStartDate?: string;
+  printingStartedEndDate?: string;
+  printingCompletedStartDate?: string;
+  printingCompletedEndDate?: string;
+  committedDeliveryStartDate?: string;
+  committedDeliveryEndDate?: string;
   searchQuery?: string;
   pastDue?: boolean;
   deliveryWithin?: number;
