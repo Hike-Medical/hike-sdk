@@ -1,3 +1,5 @@
+import { EvaluationAttachmentStatus, EvaluationAttachmentType } from '../../../prisma';
+
 export interface WorkflowAttachment {
   id: string;
   name: string;
@@ -12,4 +14,11 @@ export interface AttachmentPresignedUrl {
   name: string;
   presignedUrl: string;
   contentType: string;
+}
+
+export interface UpdateWorkflowAttachmentParams {
+  status?: EvaluationAttachmentStatus;
+  statusReason?: string;
+  types: EvaluationAttachmentType[];
+  metadata?: Record<string, unknown>;
 }
