@@ -36,4 +36,5 @@ export interface GetAggregatedParams extends PagedParams {
   nullFilter?: string[];
   notNullFilter?: string[];
   facilityId?: string;
+  laneId?: string | null;
 }
