@@ -21,7 +21,7 @@ const dobISOSchema = z
   .refine((val) => dayjs(val).isValid() && dayjs(val).isBefore(dayjs('2020-01-01')), {
     message: 'Date of birth must be before 2020-01-01'
   });
-const icd10Code = z.string().regex(/^[A-TV-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$/, 'ICD-10 code');
+const icd10Code = z.string().regex(/^[A-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$/, 'ICD-10 code');
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
@@ -577,7 +577,7 @@ export const FactRegistry = {
   // Certifying Statement
   'cert.statement.signature': {
     displayName: 'Certifying Statement Signature',
-    description: 'Digital signature on the certifying statement',
+    description: 'Signature on the certifying statement',
     category: 'Certifying Statement',
     required: true,
     schema: z.boolean(),
@@ -642,8 +642,8 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
   'rx.order_specifies_diabetic_footwear': {
-    displayName: 'Initial Rx Order Description',
-    description: 'Description of the initial prescription order',
+    displayName: 'RX specifies diabetic footwear',
+    description: 'Whether the initial prescription specifies diabetic footwear',
     category: 'Initial Prescription',
     required: true,
     schema: z.boolean(),
@@ -716,8 +716,8 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
   'swo.specifies_diabetic_footwear': {
-    displayName: 'SWO General Description',
-    description: 'General description of the work order',
+    displayName: 'SWO specifies diabetic footwear',
+    description: 'Whether the SWO specifies diabetic footwear.',
     category: 'Statement of Work Order',
     required: true,
     schema: z.boolean(),
