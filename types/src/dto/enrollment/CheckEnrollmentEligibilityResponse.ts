@@ -1,4 +1,6 @@
+import type { EligibilityReason } from './EligibilityReason';
+
 export interface CheckEnrollmentEligibilityResponse {
   isEligible: boolean;
-  reason: string;
+  reason: EligibilityReason;
 }

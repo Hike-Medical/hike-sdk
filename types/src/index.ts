@@ -95,6 +95,7 @@ export * from './dto/email-template/SendEmailTemplateParams';
 export * from './dto/email-template/UpsertEmailTemplateParams';
 export * from './dto/enrollment/CheckEnrollmentEligibilityParams';
 export * from './dto/enrollment/CheckEnrollmentEligibilityResponse';
+export * from './dto/enrollment/EligibilityReason';
 export * from './dto/enrollment/SaveEnrollmentDetailsParams';
 export * from './dto/evaluation/ActionEvaluationParams';
 export * from './dto/evaluation/CreateEvaluationByProductParams';
