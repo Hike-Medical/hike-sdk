@@ -2,9 +2,11 @@ import {
   DateFilter,
   EmployerDashboardStatsOptions,
   EmployerDashboardStatus,
+  GetWorkflowChartDataParams,
   HourlyOptions,
   OrderMetricsOptions,
   OrderMetricsResponse,
+  WorkflowChartData,
   WorkflowDashboardStats
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -106,6 +108,15 @@ export const getEmployerDashboardStats = async (
 export const getWorkflowDashboardStats = async (): Promise<WorkflowDashboardStats> => {
   try {
     const response = await backendApi.get('analytics/workflows/dashboard-stats');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowChartData = async (params: GetWorkflowChartDataParams): Promise<WorkflowChartData> => {
+  try {
+    const response = await backendApi.get('analytics/workflows/chart-data', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

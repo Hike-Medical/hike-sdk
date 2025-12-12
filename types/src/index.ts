@@ -16,6 +16,7 @@ export * from './dto/analytics/marketingUtmParams';
 export * from './dto/analytics/OrderMetricsOptions';
 export * from './dto/analytics/OrderMetricsResponse';
 export * from './dto/analytics/OrdersByCompanies';
+export * from './dto/analytics/WorkflowChartData';
 export * from './dto/analytics/WorkflowDashboardStats';
 export * from './dto/appointment/AppointmentCsvRecord';
 export * from './dto/appointment/GenerateAppointmentsUploadLinkParams';
