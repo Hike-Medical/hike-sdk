@@ -10,6 +10,7 @@ export * from './hooks/analytics/useGetOrderMetrics';
 export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
 export * from './hooks/analytics/useGetSolemateStats';
+export * from './hooks/analytics/useGetWorkflowDashboardStats';
 export * from './hooks/api-key/useApiKeys';
 export * from './hooks/api-key/useCreateApiKey';
 export * from './hooks/api-key/useDeleteApiKey';
