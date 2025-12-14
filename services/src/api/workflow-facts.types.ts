@@ -287,11 +287,12 @@ export const FactRegistry = {
 
   // Prescriber Notes
   'prescriber.notes.dx.icd_codes': {
-    displayName: 'Prescriber NotesICD-10 Codes',
+    displayName: 'Prescriber Notes ICD-10 Codes',
     description: 'Prescriber Notes ICD-10 diagnosis codes (must include diabetes E08-E13)',
     category: 'Prescriber Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
+    transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
 
@@ -390,6 +391,7 @@ export const FactRegistry = {
     category: 'Certifier Notes',
     required: true,
     schema: z.array(icd10Code).min(1),
+    transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
   'cert.notes.examiner.first_name': {
@@ -664,6 +666,7 @@ export const FactRegistry = {
     category: 'Initial Prescription',
     required: true,
     schema: z.array(icd10Code).min(1),
+    transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
   'rx.initial.signature': {
@@ -745,6 +748,7 @@ export const FactRegistry = {
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
+    transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
 
@@ -1020,6 +1024,7 @@ export const FactRegistry = {
     category: 'Diagnosis Information',
     required: true,
     schema: z.array(icd10Code).min(1),
+    transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
 
