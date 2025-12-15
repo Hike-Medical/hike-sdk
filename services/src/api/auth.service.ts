@@ -2,6 +2,7 @@ import type {
   AcceptInvitationCompanyParams,
   AcceptInvitationCompanyResponse,
   AcceptInvitationParams,
+  AcceptInvitationV2Params,
   AuthPreferences,
   AuthSession,
   OIDCResponse,
@@ -144,6 +145,19 @@ export const verifyInvitation = async (token: string): Promise<VerifyInvitationR
 export const acceptInvitation = async (params: AcceptInvitationParams): Promise<UserExtended> => {
   try {
     const response = await backendApi.post('auth/invitation', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * V2: Accept invitation without patient creation
+ * Will replace acceptInvitation in the future
+ */
+export const acceptInvitationV2 = async (params: AcceptInvitationV2Params): Promise<UserExtended> => {
+  try {
+    const response = await backendApi.post('auth/invitation/v2', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
