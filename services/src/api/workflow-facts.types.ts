@@ -545,6 +545,7 @@ export const FactRegistry = {
     description: 'List of qualifying foot-risk conditions found during foot exam',
     category: 'Diagnosis Information',
     required: false,
+    transform: (value: string[]) => value.sort(),
     schema: z
       .array(
         z.enum([
@@ -611,7 +612,8 @@ export const FactRegistry = {
         ])
       )
       .min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    transform: (value: string[]) => value.sort()
   },
   'cert.statement.certifying_agreement.signature': {
     displayName: 'Certifying Agreement Signature',

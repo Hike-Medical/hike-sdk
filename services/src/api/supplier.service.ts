@@ -23,27 +23,10 @@ export const fetchSuppliers = async (params?: GetSuppliersParams): Promise<Paged
 
 // Orthofeet
 
-export const fetchOrthofeetInventoryBySkus = async (skus: string[]): Promise<GetOrthofeetInventoryResponse> => {
+export const fetchOrthofeetInventory = async (sku: string | string[]): Promise<GetOrthofeetInventoryResponse> => {
   try {
+    const skus = Array.isArray(sku) ? sku : [sku];
     const response = await backendApi.get(`supplier/orthofeet/inventory`, { params: { skus } });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const fetchOrthofeetInventoryBySku = async (sku: string): Promise<GetOrthofeetInventoryResponse> => {
-  try {
-    const response = await backendApi.get(`supplier/orthofeet/inventory/sku/${encodeURIComponent(sku)}`);
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const fetchOrthofeetInventoryByProduct = async (productId: string): Promise<GetOrthofeetInventoryResponse> => {
-  try {
-    const response = await backendApi.get(`supplier/orthofeet/inventory/product/${encodeURIComponent(productId)}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

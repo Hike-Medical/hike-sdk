@@ -10,4 +10,5 @@ export interface HourlyOptions {
   dateFilters: DateFilter;
   removeWeekends?: boolean;
   showPairs?: boolean;
+  laneIds?: (string | null)[];
 }

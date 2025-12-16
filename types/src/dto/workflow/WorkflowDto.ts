@@ -97,6 +97,21 @@ export interface WorkflowErrorDto {
   message: string;
 }
 
+export interface StepPrerequisiteResultDto {
+  name: string;
+  passed: boolean;
+  explanation: string;
+}
+
+export interface WorkflowStepReportDto {
+  stepName: string;
+  description?: string;
+  runCount: number;
+  prerequisitesMet: boolean;
+  prerequisites: StepPrerequisiteResultDto[];
+  unmetExplanations: string[];
+}
+
 export interface WorkflowDto {
   workflowId: string;
   workflowName: string;
@@ -121,4 +136,5 @@ export interface WorkflowDto {
       }[];
     };
   }[];
+  stepReports?: WorkflowStepReportDto[];
 }

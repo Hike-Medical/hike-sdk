@@ -1,7 +1,7 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
-import { useOrthofeetInventoryBySku, useOrthofeetProductStyleVariants } from '@hike/ui';
+import { useOrthofeetInventory, useOrthofeetProductStyleVariants } from '@hike/ui';
 import {
   Badge,
   Box,
@@ -181,7 +181,7 @@ export const OrthofeetProductDetail = ({
     data: inventory,
     isLoading: inventoryLoading,
     isError: inventoryError
-  } = useOrthofeetInventoryBySku({
+  } = useOrthofeetInventory({
     sku: currentVariantSku,
     enabled: !!currentVariantSku && enableInventoryCheck && isFullySelected
   });

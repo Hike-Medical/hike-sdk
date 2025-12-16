@@ -3,7 +3,7 @@ import { WorkbenchWebhookStatus } from '../company/CompanyWorkbenchWebhook';
 export interface ShippedWebhookBody {
   status: 'SHIPPED';
   trackingNumber?: string;
-  labelId?: string;
+  labelId?: string | null;
   orders: (string | undefined)[];
   dispatchedAt: Date;
 }

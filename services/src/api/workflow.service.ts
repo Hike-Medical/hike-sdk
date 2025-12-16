@@ -35,14 +35,15 @@ export const getWorkflow = async (workflowId: string): Promise<WorkflowDto> => {
 
 export const updateWorkflowFacts = async (
   workflowId: string,
-  facts: { key: string; value: any; source?: string }[]
+  facts: { key: string; value: any; source?: string; active?: boolean }[]
 ) => {
   try {
     const response = await backendApi.patch(`workflow/${workflowId}/state`, {
       facts: facts.map((fact) => ({
         key: fact.key,
         value: fact.value,
-        source: fact.source || 'manual'
+        source: fact.source || 'manual',
+        ...(fact.active !== undefined && { active: fact.active })
       }))
     });
     return response.data;
@@ -54,7 +55,7 @@ export const updateWorkflowFacts = async (
 export const updateWorkflowState = async (
   workflowId: string,
   stateUpdate: {
-    facts?: { key: string; value: any; source?: string }[];
+    facts?: { key: string; value: any; source?: string; active?: boolean }[];
     attachmentFacts?: {
       attachment: {
         name: string;
@@ -63,7 +64,7 @@ export const updateWorkflowState = async (
         region: string;
         types: string[];
       };
-      facts?: { key: string; value: any; source?: string }[];
+      facts?: { key: string; value: any; source?: string; active?: boolean }[];
     }[];
     resolvedFactIds?: string[];
   }
@@ -73,7 +74,8 @@ export const updateWorkflowState = async (
       facts: stateUpdate.facts?.map((fact) => ({
         key: fact.key,
         value: fact.value,
-        source: fact.source || 'manual'
+        source: fact.source || 'manual',
+        ...(fact.active !== undefined && { active: fact.active })
       })),
       attachmentFacts: stateUpdate.attachmentFacts,
       resolvedFactIds: stateUpdate.resolvedFactIds

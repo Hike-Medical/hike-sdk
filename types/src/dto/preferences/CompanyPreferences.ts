@@ -42,6 +42,7 @@ export interface CompanyPreferences {
     supplierMarkupPercentage?: Record<string, number>;
     consumerReorderDiscount?: number;
   };
+  useHikeOrthofeetWarehouse?: boolean;
   noAuthNeeded?: boolean;
   skipExternalIdVerification?: boolean;
   blockAll?: boolean;
