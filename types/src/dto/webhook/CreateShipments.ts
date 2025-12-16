@@ -12,7 +12,7 @@ export interface ShippingAddress {
 }
 
 export interface ShipmentItem {
-  workbenchId: string;
+  poNumber: string;
   trackingNumber: string;
   trackingStatus?: ShippingTrackingStatus;
   address?: ShippingAddress;
@@ -25,7 +25,7 @@ export interface CreateShipmentsParams {
 
 export interface ShipmentResult {
   shippingLabelId?: string;
-  workbenchId: string;
+  poNumber: string;
   trackingNumber: string;
   success: boolean;
   error?: string;
