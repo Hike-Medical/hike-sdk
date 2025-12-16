@@ -16,7 +16,7 @@ export const useUpdateWorkflowFacts = ({ onSuccess, onError }: UseUpdateWorkflow
       facts
     }: {
       workflowId: string;
-      facts: Array<{ key: string; value: any; source?: string }>;
+      facts: { key: string; value: any; source?: string; active?: boolean }[];
     }) => updateWorkflowFacts(workflowId, facts),
     onSuccess: (_, { workflowId }) => {
       // Invalidate and refetch related queries
