@@ -284,6 +284,7 @@ export * from './hooks/workflows/useFactHistory';
 export * from './hooks/workflows/useFactsByIds';
 export * from './hooks/workflows/useGenerateFileUploadUrl';
 export * from './hooks/workflows/useGenerateWorkflowDocumentUploadUrl';
+export * from './hooks/workflows/useSearchWorkflows';
 export * from './hooks/workflows/useUpdateWorkflowAttachment';
 export * from './hooks/workflows/useUpdateWorkflowFacts';
 export * from './hooks/workflows/useUpdateWorkflowState';
