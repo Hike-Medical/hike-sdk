@@ -19,8 +19,8 @@ export interface SamlUser extends AuthUser {
  * Defines the settings needed to connect to a SAML Identity Provider.
  */
 export interface SamlProviderConfig {
-  /** IdP SSO URL - where to redirect users for authentication */
-  entryPoint: string;
+  /** IdP SSO URL - where to redirect users for authentication (optional for IdP-initiated only flows) */
+  entryPoint?: string;
   /** SP Entity ID - our identifier as the Service Provider */
   issuer: string;
   /** IdP X.509 Certificate (PEM format) for signature validation */
