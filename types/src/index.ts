@@ -236,6 +236,7 @@ export * from './dto/user/UpdateUserPasswordParams';
 export * from './dto/user/UpsertPermissionsParams';
 export * from './dto/webhook/NotifyWebhook';
 export * from './dto/webhook/SftpFileUploadParams';
+export * from './dto/webhook/CreateShipment';
 export * from './dto/workbench/ActionMultipleWorkbenchIdsParams';
 export * from './dto/workbench/DetectionStatusReponse';
 export * from './dto/workbench/FlattenedWorkbench';
