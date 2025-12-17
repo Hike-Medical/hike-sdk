@@ -88,6 +88,7 @@ export interface WorkflowAttachmentDto {
   statusReason?: string;
   companyId: string;
   metadata?: any;
+  isComplete?: boolean;
 }
 
 export interface WorkflowErrorDto {
