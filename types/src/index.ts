@@ -338,3 +338,4 @@ export * from './guards/isPrintableField';
 export * from './guards/isString';
 export * from './guards/isTruthy';
 export * from './interfaces/Logger';
+export * from './workflow-dataset.types';
