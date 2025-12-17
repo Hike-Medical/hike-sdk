@@ -22,4 +22,5 @@ export interface UpdateWorkflowAttachmentParams {
   statusReason?: string;
   types: EvaluationAttachmentType[];
   metadata?: Record<string, unknown>;
+  isComplete?: boolean;
 }
