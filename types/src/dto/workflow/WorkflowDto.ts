@@ -20,7 +20,7 @@ export interface WorkflowStepDto {
         acquiredAt: string;
         updatedAt: string;
       }[];
-        attachments: WorkflowAttachmentDto[];
+      attachments: WorkflowAttachmentDto[];
       dataErrors: {
         factKey: string;
         factValue?: string;
@@ -39,6 +39,8 @@ export interface WorkflowStatusUpdateDto {
   status: string;
   reason?: string;
   updatedAt: string;
+  userId?: string;
+  userName?: string;
 }
 
 export interface WorkflowStateDto {
