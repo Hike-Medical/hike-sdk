@@ -38,15 +38,35 @@ export class StripeService {
   async createPaymentIntent(
     amount: number,
     currency = 'usd',
-    metadata?: Stripe.MetadataParam
+    metadata?: Stripe.MetadataParam,
+    captureMethod: 'automatic' | 'manual' = 'automatic'
   ): Promise<Stripe.PaymentIntent> {
     try {
       const paymentIntent = await this.stripe.paymentIntents.create({
         amount,
         currency,
         metadata,
-        automatic_payment_methods: { enabled: true }
+        automatic_payment_methods: { enabled: true },
+        capture_method: captureMethod
       });
+      return paymentIntent;
+    } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async capturePaymentIntent(paymentIntentId: string): Promise<Stripe.PaymentIntent> {
+    try {
+      const paymentIntent = await this.stripe.paymentIntents.capture(paymentIntentId);
+      return paymentIntent;
+    } catch (error) {
+      throw this.handleStripeError(error);
+    }
+  }
+
+  async cancelPaymentIntent(paymentIntentId: string): Promise<Stripe.PaymentIntent> {
+    try {
+      const paymentIntent = await this.stripe.paymentIntents.cancel(paymentIntentId);
       return paymentIntent;
     } catch (error) {
       throw this.handleStripeError(error);
