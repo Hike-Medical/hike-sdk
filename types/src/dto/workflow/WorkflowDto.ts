@@ -122,6 +122,7 @@ export interface WorkflowDto {
   startTime: string;
   endTime?: string;
   status: string;
+  outcome?: string;
   workflowState: WorkflowStateDto;
   workflowSteps: WorkflowStepDto[];
   statusUpdates: WorkflowStatusUpdateDto[];
