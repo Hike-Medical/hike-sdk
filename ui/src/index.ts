@@ -219,6 +219,7 @@ export * from './hooks/soleforge/useMachines';
 export * from './hooks/soleforge/useQueuePrintJobs';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/soleforge/useSoleforgeDashboard';
+export * from './hooks/soleforge/useUpdateMachineStatus';
 export * from './hooks/supplier/useOrthofeetFilters';
 export * from './hooks/supplier/useOrthofeetProductStyles';
 export * from './hooks/supplier/useOrthofeetProductStyleVariants';

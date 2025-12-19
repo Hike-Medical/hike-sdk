@@ -1,11 +1,14 @@
 import {
   GetMachinesParams,
+  GetOeeMetricsParams,
   Lane,
   Machine,
+  OeeMetricsResponse,
   PrintJob,
   QueuePrintJobsParams,
   ShippingStationConfiguration,
-  SoleforgeDashboard
+  SoleforgeDashboard,
+  UpdateMachineStatusParams
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -49,6 +52,26 @@ export const getSoleforgeDashboard = async (): Promise<SoleforgeDashboard> => {
 export const queuePrintJobs = async (params: QueuePrintJobsParams): Promise<PrintJob | null> => {
   try {
     const response = await backendApi.post('soleforge/queue-print-jobs', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOeeMetrics = async (params: GetOeeMetricsParams): Promise<OeeMetricsResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/oee', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateMachineStatus = async (params: UpdateMachineStatusParams): Promise<Machine> => {
+  try {
+    const response = await backendApi.patch(`soleforge/machines/${params.machineId}/status`, {
+      status: params.status
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
