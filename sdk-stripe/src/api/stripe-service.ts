@@ -39,7 +39,7 @@ export class StripeService {
     amount: number,
     currency = 'usd',
     metadata?: Stripe.MetadataParam,
-    captureMethod: 'automatic' | 'manual' = 'automatic'
+    captureMethod?: Stripe.PaymentIntent.CaptureMethod
   ): Promise<Stripe.PaymentIntent> {
     try {
       const paymentIntent = await this.stripe.paymentIntents.create({

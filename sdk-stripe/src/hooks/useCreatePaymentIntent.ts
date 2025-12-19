@@ -6,7 +6,7 @@ import { createPaymentIntent } from '../api/billing.service';
 interface UseCreatePaymentIntentOptions
   extends Omit<UseQueryOptions<Stripe.PaymentIntent, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
-  captureMethod?: 'automatic' | 'manual';
+  captureMethod?: Stripe.PaymentIntent.CaptureMethod;
   queryKey?: QueryKey;
 }
 
