@@ -74,6 +74,15 @@ export const getOrderMetrics = async (params?: OrderMetricsOptions): Promise<Ord
   }
 };
 
+export const getOrderMetricsByWeek = async (params?: OrderMetricsOptions) => {
+  try {
+    const response = await backendApi.get('analytics/order/metrics/weekly', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: string[]) => {
   try {
     const response = await backendApi.post(
