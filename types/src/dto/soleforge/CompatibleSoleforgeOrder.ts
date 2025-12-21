@@ -6,6 +6,7 @@ export interface SoleforgeOrderPrintJob {
   assetId: string;
   status: PrintJobStatus;
   fileName: string | null;
+  laneId: string | null;
   laneName: string | null;
   printerName: string;
   printerId: string;
