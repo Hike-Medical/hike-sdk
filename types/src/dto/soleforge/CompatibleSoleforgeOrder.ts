@@ -22,6 +22,6 @@ export interface CompatibleSoleforgeOrder {
   companySlug: string;
   orderType: 'CLINICAL' | 'CONSUMER';
   orderStatus: OrderStatus;
-  isOrthofeet: boolean;
+
   printJobs: SoleforgeOrderPrintJob[];
 }
