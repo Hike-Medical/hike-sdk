@@ -20,7 +20,9 @@ export const WorkflowStatusEnum = {
   CANCELLED: 'CANCELLED',
   ACTIVE: 'ACTIVE',
   AWAITING_RESPONSE: 'AWAITING_RESPONSE',
-  IDLE: 'IDLE'
+  IDLE: 'IDLE',
+  COMPLETED: 'COMPLETED'
 } as const;
 
 export type WorkflowStatus = (typeof WorkflowStatusEnum)[keyof typeof WorkflowStatusEnum];
+export const WorkflowStatusList = Object.values(WorkflowStatusEnum);
