@@ -47,12 +47,7 @@ export class StripeService {
         currency,
         metadata,
         automatic_payment_methods: { enabled: true },
-        capture_method: captureMethod,
-        payment_method_options: {
-          card: {
-            request_extended_authorization: 'if_available'
-          }
-        }
+        capture_method: captureMethod
       });
       return paymentIntent;
     } catch (error) {
