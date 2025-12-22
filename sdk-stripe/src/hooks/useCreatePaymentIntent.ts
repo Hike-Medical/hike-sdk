@@ -6,12 +6,18 @@ import { createPaymentIntent } from '../api/billing.service';
 interface UseCreatePaymentIntentOptions
   extends Omit<UseQueryOptions<Stripe.PaymentIntent, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
+  captureMethod?: Stripe.PaymentIntent.CaptureMethod;
   queryKey?: QueryKey;
 }
 
-export const useCreatePaymentIntent = ({ queryKey = [], workbenchId, ...options }: UseCreatePaymentIntentOptions) =>
+export const useCreatePaymentIntent = ({
+  queryKey = [],
+  workbenchId,
+  captureMethod,
+  ...options
+}: UseCreatePaymentIntentOptions) =>
   useQuery({
-    queryKey: ['createPaymentIntent', workbenchId, queryKey],
-    queryFn: async () => await createPaymentIntent(workbenchId),
+    queryKey: ['createPaymentIntent', workbenchId, captureMethod, queryKey],
+    queryFn: async () => await createPaymentIntent(workbenchId, captureMethod),
     ...options
   });

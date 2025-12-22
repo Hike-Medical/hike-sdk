@@ -4,4 +4,5 @@ export interface CheckoutSessionInfo {
   employerOriginal: number;
   employerDiscounted: number;
   isReorder: boolean;
+  insuranceEligibility?: string;
 }
