@@ -16,7 +16,8 @@ const EvaluationAttachmentTypeEnum = {
   ORDER_FORM: 'ORDER_FORM',
   DELIVERY_FORM: 'DELIVERY_FORM',
   CALL_REPORT: 'CALL_REPORT',
-  OFFICE_NOTE: 'OFFICE_NOTE'
+  OFFICE_NOTE: 'OFFICE_NOTE',
+  ZOHO_INTAKE: 'ZOHO_INTAKE'
 } as const satisfies Record<EvaluationAttachmentType, EvaluationAttachmentType> & {
   [K in EvaluationAttachmentType]: K;
 };
