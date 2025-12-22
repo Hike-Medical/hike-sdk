@@ -278,6 +278,7 @@ export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
 export * from './hooks/workflows/useAttachmentPresignedUrl';
+export * from './hooks/workflows/useCreateWorkflowNote';
 export * from './hooks/workflows/useCreateWorkflowWithFile';
 export * from './hooks/workflows/useFactHistory';
 export * from './hooks/workflows/useFactsByIds';
@@ -292,6 +293,6 @@ export * from './hooks/workflows/useWorkflow';
 export * from './hooks/workflows/useWorkflowAttachments';
 export * from './hooks/workflows/useWorkflowDataset';
 export * from './hooks/workflows/useWorkflowLogs';
+export * from './hooks/workflows/useWorkflowNotes';
 export * from './hooks/workflows/useWorkflows';
 export * from './hooks/workflows/useWorkflowTimeSaved';
-

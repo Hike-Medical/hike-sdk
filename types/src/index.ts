@@ -283,6 +283,7 @@ export * from './dto/workflow/FactWithAttachment';
 export * from './dto/workflow/SearchWorkflowsParams';
 export * from './dto/workflow/WorkflowAttachment';
 export * from './dto/workflow/WorkflowDto';
+export * from './dto/workflow/WorkflowNote';
 export * from './dto/workflow/WorkflowSearchResult';
 export * from './dto/workflow/WorkflowStatus';
 export * from './dto/workflow/WorkflowTimeSaved';

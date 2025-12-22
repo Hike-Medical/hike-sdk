@@ -1,11 +1,13 @@
 import type {
   AttachmentPresignedUrl,
+  CreateWorkflowNoteParams,
   EvaluationAttachmentType,
   PagedResponse,
   SearchWorkflowsParams,
   UpdateWorkflowAttachmentParams,
   WorkflowAttachment,
   WorkflowDto,
+  WorkflowNote,
   WorkflowSearchResult,
   WorkflowStatus,
   WorkflowTimeSaved
@@ -215,6 +217,27 @@ export const updateWorkflowStatus = async (
 ): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.post(`workflow/${workflowId}/status`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createWorkflowNote = async (
+  workflowId: string,
+  params: CreateWorkflowNoteParams
+): Promise<WorkflowNote> => {
+  try {
+    const response = await backendApi.post(`workflow/${workflowId}/notes`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowNotes = async (workflowId: string): Promise<WorkflowNote[]> => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/notes`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
