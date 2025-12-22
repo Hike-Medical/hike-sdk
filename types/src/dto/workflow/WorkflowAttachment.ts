@@ -7,6 +7,7 @@ export interface WorkflowAttachment {
   status: string;
   createdAt: string;
   updatedAt: string;
+  isComplete?: boolean;
 }
 
 export interface AttachmentPresignedUrl {
@@ -21,4 +22,5 @@ export interface UpdateWorkflowAttachmentParams {
   statusReason?: string;
   types: EvaluationAttachmentType[];
   metadata?: Record<string, unknown>;
+  isComplete?: boolean;
 }

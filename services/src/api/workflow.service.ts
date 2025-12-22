@@ -7,6 +7,7 @@ import type {
   WorkflowAttachment,
   WorkflowDto,
   WorkflowSearchResult,
+  WorkflowStatus,
   WorkflowTimeSaved
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -190,6 +191,30 @@ export const getWorkflowLogs = async (workflowId: string): Promise<WorkflowLogDt
 export const getWorkflowTimeSaved = async (workflowId: string): Promise<WorkflowTimeSaved> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/time-saved`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowDataset = async (params: {
+  status: 'ACTIVE' | 'FINISHED' | 'NON_COMPLIANT';
+  perPage?: number;
+}) => {
+  try {
+    const response = await backendApi.get('workflow/dataset/by-status', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateWorkflowStatus = async (
+  workflowId: string,
+  params: { status: WorkflowStatus; reason?: string }
+): Promise<WorkflowDto> => {
+  try {
+    const response = await backendApi.post(`workflow/${workflowId}/status`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
