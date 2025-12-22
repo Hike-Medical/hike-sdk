@@ -16,6 +16,8 @@ export * from './dto/analytics/marketingUtmParams';
 export * from './dto/analytics/OrderMetricsByWeekResponse';
 export * from './dto/analytics/OrderMetricsOptions';
 export * from './dto/analytics/OrderMetricsResponse';
+export * from './dto/analytics/OrderMetricsWeekBreakdownOptions';
+export * from './dto/analytics/OrderMetricsWeekBreakdownResponse';
 export * from './dto/analytics/OrdersByCompanies';
 export * from './dto/analytics/WorkflowChartData';
 export * from './dto/analytics/WorkflowDashboardStats';

@@ -8,6 +8,7 @@ export * from './hooks/analytics/useGetCompanyTurnaroundStats';
 export * from './hooks/analytics/useGetEmployerDashboardStats';
 export * from './hooks/analytics/useGetOrderMetrics';
 export * from './hooks/analytics/useGetOrderMetricsByWeek';
+export * from './hooks/analytics/useGetOrderMetricsWeekBreakdown';
 export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
 export * from './hooks/analytics/useGetSolemateStats';

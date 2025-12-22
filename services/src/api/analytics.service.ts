@@ -6,6 +6,8 @@ import {
   HourlyOptions,
   OrderMetricsOptions,
   OrderMetricsResponse,
+  OrderMetricsWeekBreakdownOptions,
+  OrderMetricsWeekBreakdownResponse,
   WorkflowChartData,
   WorkflowDashboardStats
 } from '@hike/types';
@@ -77,6 +79,17 @@ export const getOrderMetrics = async (params?: OrderMetricsOptions): Promise<Ord
 export const getOrderMetricsByWeek = async (params?: OrderMetricsOptions) => {
   try {
     const response = await backendApi.get('analytics/order/metrics/weekly', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrderMetricsWeekBreakdown = async (
+  params: OrderMetricsWeekBreakdownOptions
+): Promise<OrderMetricsWeekBreakdownResponse[]> => {
+  try {
+    const response = await backendApi.get('analytics/order/metrics/week-breakdown', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
