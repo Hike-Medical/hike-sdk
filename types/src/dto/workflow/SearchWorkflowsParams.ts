@@ -29,11 +29,12 @@ export interface SearchWorkflowFilter {
   toStartTime?: string;
   fromEndTime?: string;
   toEndTime?: string;
+  tags?: string[];
+  searchQuery?: string;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
   filter?: SearchWorkflowFilter;
-  searchQuery?: string;
   sortBy?: WorkflowSortBy;
   sortOrder?: 'asc' | 'desc';
   factsToInclude?: string[];
