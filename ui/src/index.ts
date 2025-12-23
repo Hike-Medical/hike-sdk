@@ -240,8 +240,10 @@ export * from './hooks/supplier/useOrthofeetProductStyleVariants';
 export * from './hooks/suppliers/useOrthofeetInventory';
 export * from './hooks/suppliers/useSuppliers';
 export * from './hooks/tag/useBulkTagPatients';
+export * from './hooks/tag/useDeleteTagForEntity';
 export * from './hooks/tag/useTags';
 export * from './hooks/tag/useTagsByEntity';
+export * from './hooks/tag/useUpsertTag';
 export * from './hooks/terms/useAcceptTerms';
 export * from './hooks/twofa/useSetupTwoFa';
 export * from './hooks/twofa/useToggleTwoFa';
@@ -308,3 +310,4 @@ export * from './hooks/workflows/useWorkflowDataset';
 export * from './hooks/workflows/useWorkflowLogs';
 export * from './hooks/workflows/useWorkflows';
 export * from './hooks/workflows/useWorkflowTimeSaved';
+

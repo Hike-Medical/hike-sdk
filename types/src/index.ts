@@ -246,6 +246,7 @@ export * from './dto/supplier/orthofeet/OrthofeetOrderResponse';
 export * from './dto/supplier/orthofeet/OrthofeetProductStyle';
 export * from './dto/supplier/SupplierOrderResponse';
 export * from './dto/tag/BulkTagPatientsParams';
+export * from './dto/tag/EntityTypes';
 export * from './dto/tag/UpsertTagParams';
 export * from './dto/taika/CreateCustomizationsTaikaParams';
 export * from './dto/taika/CustomizationOrderTaikaParams';
