@@ -80,9 +80,9 @@ export const generateCheckoutSession = async (workbenchId: string, params: Check
   }
 };
 
-export const createPaymentIntent = async (workbenchId: string) => {
+export const createPaymentIntent = async (workbenchId: string, captureMethod?: Stripe.PaymentIntent.CaptureMethod) => {
   try {
-    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`);
+    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`, { captureMethod });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

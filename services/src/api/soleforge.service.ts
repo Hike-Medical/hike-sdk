@@ -1,11 +1,27 @@
 import {
+  AddLabelPrinterParams,
+  AddPrinter3DParams,
+  AssignMachineToLaneParams,
+  CompatiblePrinter,
+  CompatibleSoleforgeOrder,
+  Configuration,
+  CreateConfigurationParams,
+  CreateLaneParams,
+  GetCompatibleOrdersParams,
+  GetCompatiblePrintersParams,
   GetMachinesParams,
+  GetValidMachineStateTransitionsParams,
   Lane,
   Machine,
+  Printer3D,
   PrintJob,
   QueuePrintJobsParams,
   ShippingStationConfiguration,
-  SoleforgeDashboard
+  SoleforgeDashboard,
+  UpdateLaneParams,
+  UpdateMachineConfigurationParams,
+  UpdateMachineStatusParams,
+  ValidMachineStateTransitions
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -49,6 +65,132 @@ export const getSoleforgeDashboard = async (): Promise<SoleforgeDashboard> => {
 export const queuePrintJobs = async (params: QueuePrintJobsParams): Promise<PrintJob | null> => {
   try {
     const response = await backendApi.post('soleforge/queue-print-jobs', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getConfigurations = async (): Promise<Configuration[]> => {
+  try {
+    const response = await backendApi.get('soleforge/configurations');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createConfiguration = async (params: CreateConfigurationParams): Promise<Configuration> => {
+  try {
+    const response = await backendApi.post('soleforge/configurations', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createLane = async (params: CreateLaneParams): Promise<Lane> => {
+  try {
+    const response = await backendApi.post('soleforge/lanes', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateLane = async (params: UpdateLaneParams): Promise<Lane> => {
+  try {
+    const { laneId, ...body } = params;
+    const response = await backendApi.patch(`soleforge/lanes/${laneId}`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const deleteLane = async (laneId: string): Promise<void> => {
+  try {
+    await backendApi.delete(`soleforge/lanes/${laneId}`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const addPrinter3D = async (params: AddPrinter3DParams): Promise<Machine & { printer3Ds: Printer3D[] }> => {
+  try {
+    const response = await backendApi.post('soleforge/printers-3d', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const addLabelPrinter = async (params: AddLabelPrinterParams): Promise<Machine> => {
+  try {
+    const response = await backendApi.post('soleforge/label-printers', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const assignMachineToLane = async (params: AssignMachineToLaneParams): Promise<Machine> => {
+  try {
+    const { machineId, laneId } = params;
+    const response = await backendApi.patch(`soleforge/machines/${machineId}/lane`, { laneId });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateMachineConfiguration = async (params: UpdateMachineConfigurationParams): Promise<Machine> => {
+  try {
+    const { machineId, configurationId } = params;
+    const response = await backendApi.patch(`soleforge/machines/${machineId}/configuration`, { configurationId });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCompatibleOrders = async (params?: GetCompatibleOrdersParams): Promise<CompatibleSoleforgeOrder[]> => {
+  try {
+    const response = await backendApi.get('soleforge/compatible-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getCompatiblePrinters = async (params: GetCompatiblePrintersParams): Promise<CompatiblePrinter[]> => {
+  try {
+    const { orderId, ...queryParams } = params;
+    const response = await backendApi.get(`soleforge/orders/${orderId}/compatible-printers`, { params: queryParams });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getValidMachineStateTransitions = async (
+  params: GetValidMachineStateTransitionsParams
+): Promise<ValidMachineStateTransitions> => {
+  try {
+    const { machineId, ...queryParams } = params;
+    const response = await backendApi.get(`soleforge/machines/${machineId}/valid-state-transitions`, {
+      params: queryParams
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateMachineStatus = async (params: UpdateMachineStatusParams): Promise<Machine> => {
+  try {
+    const { machineId, status } = params;
+    const response = await backendApi.patch(`soleforge/machines/${machineId}/status`, { status });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
