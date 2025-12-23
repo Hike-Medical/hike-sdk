@@ -184,8 +184,9 @@ export const extractPatientResponsibility = (
   });
   const hasInNetworkBenefits = inNetworkBenefits.length > 0;
 
-  // Determine which network to use for benefit lookup (try in-network first if preferred)
-  const inNetwork = preferInNetwork;
+  // Determine which network to use for benefit lookup
+  // If we prefer in-network but no in-network benefits exist, fall back to out-of-network
+  const inNetwork = preferInNetwork && hasInNetworkBenefits;
 
   // Find co-pay (code B)
   // findBenefit internally falls back to general benefits (no STCs) if no specific match
