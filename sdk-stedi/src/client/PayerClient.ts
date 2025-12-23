@@ -176,8 +176,6 @@ export class PayerClient {
       })
       .join('&');
 
-    this.logger?.debug('Generated query string', { queryString });
-
     return queryString;
   }
 }

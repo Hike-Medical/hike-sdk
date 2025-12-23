@@ -42,12 +42,6 @@ export class MbiLookupClient {
 
       const result = this.convertResponse(response.data);
 
-      this.logger?.debug('MBI lookup response', {
-        controlNumber,
-        result,
-        raw: response.data
-      });
-
       this.logger?.log('MBI lookup success', {
         controlNumber,
         mbi: result.response.mbi,
