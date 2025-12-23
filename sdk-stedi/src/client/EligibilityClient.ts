@@ -8,6 +8,7 @@ import type { PatientInput } from '../types/patient';
 import type { Provider } from '../types/provider';
 import type { ServiceTypeCodeValue } from '../types/serviceTypes';
 import { formatDateForStedi } from '../utils/date';
+import { extractPatientResponsibility } from '../utils/patientResponsibility';
 
 const ELIGIBILITY_ENDPOINT = '/2024-04-01/change/medicalnetwork/eligibility/v3';
 
@@ -109,16 +110,11 @@ export class EligibilityClient {
 
       const result = this.convertResponse(response.data);
 
-      this.logger?.debug('Stedi eligibility check response', {
-        controlNumber,
-        result,
-        raw: response.data
-      });
-
       this.logger?.log('Stedi eligibility check success', {
         controlNumber,
         isEligible: result.response.isEligible,
-        hasActiveCoverage: result.response.hasActiveCoverage
+        hasActiveCoverage: result.response.hasActiveCoverage,
+        benefitsCount: result.response.benefits?.length ?? 0
       });
 
       return result;
@@ -182,7 +178,11 @@ export class EligibilityClient {
    * Convert raw API response to typed response
    */
   private convertResponse(raw: RawEligibilityResponse): EligibilityCheckResult {
-    const { benefits, errors, subscriber, planStatus, controlNumber, eligibilitySearchId } = raw;
+    const { errors, subscriber, planStatus, controlNumber, eligibilitySearchId, benefitsInformation } = raw;
+
+    // Stedi returns benefits in 'benefitsInformation' array, with 'benefits' as fallback
+    // Use benefitsInformation if available, otherwise fall back to benefits
+    const benefits = benefitsInformation?.length ? benefitsInformation : raw.benefits;
 
     // Check for errors first
     if (errors?.length) {
@@ -211,6 +211,9 @@ export class EligibilityClient {
             .filter((detail): detail is string => Boolean(detail))
             .join(', ') || 'Commercial insurance';
 
+        // Extract patient responsibility estimates from benefits
+        const patientResponsibility = extractPatientResponsibility(benefits);
+
         return {
           response: {
             isEligible: true,
@@ -220,7 +223,8 @@ export class EligibilityClient {
             eligibilitySearchId,
             subscriber,
             benefits,
-            insuranceTypes
+            insuranceTypes,
+            patientResponsibility
           }
         };
       }
@@ -262,6 +266,9 @@ export class EligibilityClient {
     // Patient is eligible if they have active benefits
     const isEligible = hasActiveBenefits && !!benefits.length;
 
+    // Extract patient responsibility estimates from benefits
+    const patientResponsibility = isEligible ? extractPatientResponsibility(benefits) : undefined;
+
     return {
       response: {
         isEligible,
@@ -273,7 +280,8 @@ export class EligibilityClient {
         benefits,
         insuranceTypes,
         planNumber: subscriber?.planNumber,
-        groupNumber: subscriber?.groupNumber
+        groupNumber: subscriber?.groupNumber,
+        patientResponsibility
       }
     };
   }
