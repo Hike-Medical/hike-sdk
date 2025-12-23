@@ -310,7 +310,6 @@ export interface EligibilityCheckResponse {
   planNumber?: string;
   groupNumber?: string;
   errors?: StediError[];
-  /** Patient responsibility estimate extracted from benefits */
   patientResponsibility?: PatientResponsibilityEstimate;
 }
 
