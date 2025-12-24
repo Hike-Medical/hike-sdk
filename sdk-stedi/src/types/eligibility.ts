@@ -60,6 +60,7 @@ export enum BenefitCode {
 
 /**
  * Time Qualifier Codes for benefit amounts
+ * @see https://www.stedi.com/blog/how-to-estimate-patient-responsibility-using-a-271-eligibility-response
  */
 export enum TimeQualifierCode {
   HOUR = '6',
@@ -71,8 +72,8 @@ export enum TimeQualifierCode {
   EPISODE = '25',
   SERVICE_YEAR = '26',
   ADMISSION = '27',
-  LIFETIME = '29',
-  REMAINING = '29', // Remaining Amount
+  LIFETIME = '28',
+  REMAINING = '29',
   MONTHS = '30',
   EXCEEDED = '31',
   NOT_EXCEEDED = '32',

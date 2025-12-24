@@ -126,6 +126,30 @@ const findBenefit = (benefits: Benefit[], filter: BenefitFilter): Benefit | unde
 };
 
 /**
+ * Find benefit with coverage level fallback: IND -> FAM -> no coverage level
+ * This handles cases where a plan provides family-level benefits but not individual
+ */
+const findBenefitWithCoverageFallback = (
+  benefits: Benefit[],
+  filter: Omit<BenefitFilter, 'coverageLevel'>
+): Benefit | undefined => {
+  // 1. Try Individual first
+  let result = findBenefit(benefits, { ...filter, coverageLevel: 'IND' });
+
+  // 2. Fall back to Family
+  if (!result) {
+    result = findBenefit(benefits, { ...filter, coverageLevel: 'FAM' });
+  }
+
+  // 3. Fall back to no coverage level
+  if (!result) {
+    result = findBenefit(benefits, filter);
+  }
+
+  return result;
+};
+
+/**
  * Extract patient responsibility estimates from eligibility benefits
  * @see https://www.stedi.com/blog/how-to-estimate-patient-responsibility-using-a-271-eligibility-response
  */
@@ -189,8 +213,8 @@ export const extractPatientResponsibility = (
   const inNetwork = preferInNetwork && hasInNetworkBenefits;
 
   // Find co-pay (code B)
-  // findBenefit internally falls back to general benefits (no STCs) if no specific match
-  const copayBenefit = findBenefit(benefits, {
+  // Use coverage fallback to prefer Individual over Family
+  const copayBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.COPAY,
     inNetwork,
     serviceTypeCodes
@@ -198,91 +222,59 @@ export const extractPatientResponsibility = (
   const copay = parseBenefitAmountToCents(copayBenefit?.benefitAmount);
 
   // Find co-insurance (code A) - patient's percentage
-  // findBenefit internally falls back to general benefits (no STCs) if no specific match
-  const coinsuranceBenefit = findBenefit(benefits, {
+  // Use coverage fallback to prefer Individual over Family
+  const coinsuranceBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.COINSURANCE,
     inNetwork,
     serviceTypeCodes
   });
   const coinsurancePercent = parseBenefitPercent(coinsuranceBenefit?.benefitPercent);
 
-  // Find individual deductible (code C)
-  // Try with coverage level IND first, then fallback
-  let deductibleBenefit = findBenefit(benefits, {
+  // Find deductible (code C)
+  // Try IND -> FAM -> no coverage level
+  const deductibleBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.DEDUCTIBLE,
     inNetwork,
-    serviceTypeCodes,
-    coverageLevel: 'IND'
+    serviceTypeCodes
   });
-  if (!deductibleBenefit) {
-    // Try without coverage level filter (some plans don't specify)
-    deductibleBenefit = findBenefit(benefits, {
-      code: BenefitCode.DEDUCTIBLE,
-      inNetwork,
-      serviceTypeCodes
-    });
-  }
   const deductible = parseBenefitAmountToCents(deductibleBenefit?.benefitAmount);
 
   // Find remaining deductible (code C with time qualifier 29 = remaining)
-  let deductibleRemainingBenefit = findBenefit(benefits, {
+  const deductibleRemainingBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.DEDUCTIBLE,
     inNetwork,
     serviceTypeCodes,
-    coverageLevel: 'IND',
     timeQualifier: '29'
   });
-  if (!deductibleRemainingBenefit) {
-    // Try without coverage level
-    deductibleRemainingBenefit = findBenefit(benefits, {
-      code: BenefitCode.DEDUCTIBLE,
-      inNetwork,
-      serviceTypeCodes,
-      timeQualifier: '29'
-    });
-  }
-  const deductibleRemaining = deductibleRemainingBenefit
-    ? parseBenefitAmountToCents(deductibleRemainingBenefit.benefitAmount)
-    : undefined;
+  // Only set remaining if benefit exists AND has an amount
+  // A benefit without amount means data is missing, not that remaining is $0
+  const deductibleRemaining =
+    deductibleRemainingBenefit?.benefitAmount !== undefined
+      ? parseBenefitAmountToCents(deductibleRemainingBenefit.benefitAmount)
+      : undefined;
 
   // Find out-of-pocket maximum (code G)
-  // OOP max often applies across all services, so fallback to general benefits is appropriate
-  let oopMaxBenefit = findBenefit(benefits, {
+  // Try IND -> FAM -> no coverage level
+  const oopMaxBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.OUT_OF_POCKET_MAX,
     inNetwork,
-    serviceTypeCodes,
-    coverageLevel: 'IND'
+    serviceTypeCodes
   });
-  if (!oopMaxBenefit) {
-    // Try without coverage level
-    oopMaxBenefit = findBenefit(benefits, {
-      code: BenefitCode.OUT_OF_POCKET_MAX,
-      inNetwork,
-      serviceTypeCodes
-    });
-  }
   const outOfPocketMax = parseBenefitAmountToCents(oopMaxBenefit?.benefitAmount);
 
   // Find remaining out-of-pocket (code G with time qualifier 29 = remaining)
-  let oopRemainingBenefit = findBenefit(benefits, {
+  const oopRemainingBenefit = findBenefitWithCoverageFallback(benefits, {
     code: BenefitCode.OUT_OF_POCKET_MAX,
     inNetwork,
     serviceTypeCodes,
-    coverageLevel: 'IND',
     timeQualifier: '29'
   });
-  if (!oopRemainingBenefit) {
-    // Try without coverage level
-    oopRemainingBenefit = findBenefit(benefits, {
-      code: BenefitCode.OUT_OF_POCKET_MAX,
-      inNetwork,
-      serviceTypeCodes,
-      timeQualifier: '29'
-    });
-  }
-  const outOfPocketRemaining = oopRemainingBenefit
-    ? parseBenefitAmountToCents(oopRemainingBenefit.benefitAmount)
-    : undefined;
+  // Only set remaining if benefit exists AND has an amount
+  // A benefit without amount means data is missing, not that remaining is $0
+  const outOfPocketRemaining =
+    oopRemainingBenefit?.benefitAmount !== undefined
+      ? parseBenefitAmountToCents(oopRemainingBenefit.benefitAmount)
+      : undefined;
 
   return {
     copay,
@@ -326,6 +318,22 @@ export const calculatePatientPayment = (
     };
   }
 
+  // Check if out-of-pocket max has been reached (remaining = 0)
+  // When remaining is explicitly 0, patient has hit their max and pays nothing
+  if (responsibility.outOfPocketRemaining === 0) {
+    return {
+      servicePrice,
+      insurancePays: servicePrice,
+      patientPays: 0,
+      breakdown: {
+        deductible: 0,
+        copay: 0,
+        coinsurance: 0
+      },
+      isEstimateAvailable: true
+    };
+  }
+
   // Use remaining amounts if available
   // If remaining is not provided, assume deductible is already met (0 remaining)
   // This is more patient-friendly than assuming full deductible applies
@@ -333,39 +341,47 @@ export const calculatePatientPayment = (
   const effectiveDeductible = responsibility.deductibleRemaining ?? 0;
   const effectiveOOP = responsibility.outOfPocketRemaining ?? responsibility.outOfPocketMax;
 
-  let remaining = servicePrice;
   let deductiblePortion = 0;
   let copayPortion = 0;
   let coinsurancePortion = 0;
 
+  // Calculate each component of patient responsibility
+  // Order per Stedi blog: deductible first, then coinsurance on remaining amount
+  // Copay is a flat fee added separately (doesn't reduce coinsurance base)
+
   // 1. Apply deductible first (patient pays up to deductible remaining)
-  if (effectiveDeductible > 0 && remaining > 0) {
-    deductiblePortion = Math.min(remaining, effectiveDeductible);
-    remaining -= deductiblePortion;
+  let amountAfterDeductible = servicePrice;
+  if (effectiveDeductible > 0) {
+    deductiblePortion = Math.min(servicePrice, effectiveDeductible);
+    amountAfterDeductible = servicePrice - deductiblePortion;
   }
 
-  // 2. Apply co-pay if applicable
-  if (responsibility.copay > 0 && remaining > 0) {
-    copayPortion = Math.min(remaining, responsibility.copay);
-    remaining -= copayPortion;
+  // 2. Apply co-insurance to amount after deductible
+  // This is the patient's percentage of the remaining covered amount
+  if (responsibility.coinsurancePercent > 0 && amountAfterDeductible > 0) {
+    coinsurancePortion = Math.round(amountAfterDeductible * (responsibility.coinsurancePercent / 100));
   }
 
-  // 3. Apply co-insurance to remaining amount
-  if (responsibility.coinsurancePercent > 0 && remaining > 0) {
-    coinsurancePortion = Math.round(remaining * (responsibility.coinsurancePercent / 100));
+  // 3. Add co-pay if applicable (flat fee, separate from coinsurance)
+  // Most DME/orthotics plans use coinsurance, not copay
+  if (responsibility.copay > 0) {
+    copayPortion = responsibility.copay;
   }
 
   // Total patient responsibility
-  let patientPays = deductiblePortion + copayPortion + coinsurancePortion;
+  let patientPays = deductiblePortion + coinsurancePortion + copayPortion;
 
   // 4. Cap at out-of-pocket maximum remaining
   if (effectiveOOP > 0 && patientPays > effectiveOOP) {
     patientPays = effectiveOOP;
-    // Redistribute the cap proportionally
-    const ratio = effectiveOOP / (deductiblePortion + copayPortion + coinsurancePortion);
-    deductiblePortion = Math.round(deductiblePortion * ratio);
-    copayPortion = Math.round(copayPortion * ratio);
-    coinsurancePortion = effectiveOOP - deductiblePortion - copayPortion;
+    // Redistribute the cap proportionally for breakdown accuracy
+    const total = deductiblePortion + coinsurancePortion + copayPortion;
+    if (total > 0) {
+      const ratio = effectiveOOP / total;
+      deductiblePortion = Math.round(deductiblePortion * ratio);
+      coinsurancePortion = Math.round(coinsurancePortion * ratio);
+      copayPortion = effectiveOOP - deductiblePortion - coinsurancePortion;
+    }
   }
 
   // Insurance pays the rest
