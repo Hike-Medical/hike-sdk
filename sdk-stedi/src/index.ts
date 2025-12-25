@@ -6,3 +6,4 @@ export * from './types/patient';
 export * from './types/payer';
 export * from './types/provider';
 export * from './types/serviceTypes';
+export * from './utils/patientResponsibility';
