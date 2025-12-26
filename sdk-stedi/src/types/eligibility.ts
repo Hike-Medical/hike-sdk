@@ -1,4 +1,5 @@
 import type { StediError } from '../errors/types';
+import type { Address } from './address';
 import type { Dependent, Subscriber } from './patient';
 import type { Provider } from './provider';
 import type { ServiceTypeCodeValue } from './serviceTypes';
@@ -194,6 +195,7 @@ export interface EligibilityResponse {
     dateOfBirth: string;
     planNumber?: string;
     groupNumber?: string;
+    address?: Address;
   };
   errors?: StediError[];
   status?: string;
@@ -305,11 +307,16 @@ export interface EligibilityCheckResponse {
     dateOfBirth: string;
     planNumber?: string;
     groupNumber?: string;
+    address?: Address;
   };
   benefits?: Benefit[];
   insuranceTypes?: string;
   planNumber?: string;
   groupNumber?: string;
+  planInformation?: {
+    groupNumber?: string;
+    groupDescription?: string;
+  };
   errors?: StediError[];
   patientResponsibility?: PatientResponsibilityEstimate;
 }

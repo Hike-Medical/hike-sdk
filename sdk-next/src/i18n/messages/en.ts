@@ -7,8 +7,10 @@ export default {
     termsPrivacy: 'By continuing, you understand and agree to our <terms>Terms & Conditions</terms>',
     fields: {
       firstName: 'First name',
+      firstNamePlaceholder: 'Your first name',
       firstNameError: 'First name is required',
       lastName: 'Last name',
+      lastNamePlaceholder: 'Your last name',
       lastNameError: 'Last name is required',
       email: 'Email address',
       emailPlaceholder: 'Your email address',
@@ -110,7 +112,7 @@ export default {
         title: 'We sent you a code',
         description:
           'To verify your contact information, please enter the six digit code that was sent to you at: <strong>{contact}</strong>',
-        invalidCode: 'The six digit code you entered is incorrect.',
+        invalidCode: 'The code you entered is incorrect, please try again.',
         waitMessage: 'Wait {seconds} seconds before we can send the code again',
         resendButton: 'Resend code',
         error: {
@@ -121,6 +123,13 @@ export default {
               'We are unable to process your signup at this time. This contact information is not currently eligible for registration.',
             suggestion: 'If you believe this is an error, please contact support for assistance.',
             goBack: 'Go Back'
+          },
+          oidcRequired: {
+            title: 'SSO Required',
+            description:
+              'This organization requires you to sign in using Single Sign-On (SSO). Email and SMS authentication are not available.',
+            suggestion: "Please return to the login page and use your organization's SSO to sign in.",
+            goBack: 'Return to Login'
           }
         }
       },
