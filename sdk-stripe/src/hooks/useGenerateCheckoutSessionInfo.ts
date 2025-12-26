@@ -14,7 +14,8 @@ export const useGenerateCheckoutSessionInfo = ({
   ...options
 }: UseGenerateCheckoutSessionInfoOptions) =>
   useQuery({
-    queryKey: ['generateCheckoutSessionInfo', queryKey],
+    queryKey: ['generateCheckoutSessionInfo', workbenchId, queryKey],
     queryFn: async () => await generateCheckoutSessionInfo(workbenchId),
+    staleTime: 15 * 60 * 1000, // 15 minutes - eligibility unlikely to change during scan flow
     ...options
   });
