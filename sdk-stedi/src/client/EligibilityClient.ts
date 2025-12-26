@@ -61,6 +61,13 @@ interface RawEligibilityResponse {
     dateOfBirth: string;
     planNumber?: string;
     groupNumber?: string;
+    address?: {
+      address1?: string;
+      address2?: string;
+      city?: string;
+      state?: string;
+      postalCode?: string;
+    };
   };
   errors?: StediError[];
   status?: string;
@@ -178,7 +185,8 @@ export class EligibilityClient {
    * Convert raw API response to typed response
    */
   private convertResponse(raw: RawEligibilityResponse): EligibilityCheckResult {
-    const { errors, subscriber, planStatus, controlNumber, eligibilitySearchId, benefitsInformation } = raw;
+    const { errors, subscriber, planStatus, controlNumber, eligibilitySearchId, benefitsInformation, planInformation } =
+      raw;
 
     // Stedi returns benefits in 'benefitsInformation' array, with 'benefits' as fallback
     // Use benefitsInformation if available, otherwise fall back to benefits
@@ -224,6 +232,7 @@ export class EligibilityClient {
             subscriber,
             benefits,
             insuranceTypes,
+            planInformation,
             patientResponsibility
           }
         };
@@ -281,6 +290,7 @@ export class EligibilityClient {
         insuranceTypes,
         planNumber: subscriber?.planNumber,
         groupNumber: subscriber?.groupNumber,
+        planInformation,
         patientResponsibility
       }
     };
