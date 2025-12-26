@@ -123,6 +123,7 @@ export interface CompanyPreferences {
   hideConsumerExternalId?: boolean;
   insuranceEligibility?: {
     tradingPartnerId: string;
+    tradingPartnerName: string;
     groupNumber?: string; // Eligibility fails when group numbers mismatch
   };
 }
