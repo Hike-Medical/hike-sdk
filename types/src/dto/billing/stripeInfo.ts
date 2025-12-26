@@ -14,10 +14,15 @@ export interface StripeFlaggedCoupon {
   couponId: string;
 }
 
+export interface ActivationSequenceCustomization {
+  amount: number;
+}
+
 export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
   tierUpgradeCount?: number;
   prePaidBalance?: number;
+  activationSequenceCustomization?: ActivationSequenceCustomization[];
 }
 
 export interface StripeProductPreferences {
