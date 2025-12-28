@@ -3,7 +3,7 @@ import { formatHealthcareCredential, formatMBI, formatPhoneNumber, stripHealthca
 import dayjs from 'dayjs';
 import { z } from 'zod';
 
-interface FactsRegistryEntry {
+export interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
   displayName: string;
   description: string;
