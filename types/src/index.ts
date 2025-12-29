@@ -54,6 +54,8 @@ export * from './dto/auth/SignInWithPinBody';
 export * from './dto/auth/SignInWithTokenParams';
 export * from './dto/auth/SignUpClinicianParams';
 export * from './dto/auto-slicer/RunScriptParams';
+export * from './dto/benefit/FindPatientBenefitsParams';
+export * from './dto/benefit/FindPatientBenefitsResponse';
 export * from './dto/billing/CheckoutProduct';
 export * from './dto/billing/CheckoutSessionParams';
 export * from './dto/billing/ConsumerBillingInfo';
