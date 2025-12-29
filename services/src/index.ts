@@ -6,6 +6,7 @@ export * from './api/audit-log.service';
 export * from './api/augment.service';
 export * from './api/auth.service';
 export * from './api/auto-slicer.service';
+export * from './api/benefit.service';
 export * from './api/billing-code.service';
 export * from './api/billing.service';
 export * from './api/catalog.service';
