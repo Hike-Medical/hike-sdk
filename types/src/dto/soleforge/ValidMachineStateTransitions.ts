@@ -13,3 +13,5 @@ export interface ValidMachineStateTransitions {
   currentStatus: MachineStatus;
   validTransitions: MachineStateTransition[];
 }
+
+

@@ -10,3 +10,5 @@ export const useCreateConfiguration = (
     mutationFn: async (params) => await createConfiguration(params),
     ...options
   });
+
+
