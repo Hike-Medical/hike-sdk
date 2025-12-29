@@ -4,6 +4,8 @@ import {
   EmployerDashboardStatus,
   GetWorkflowChartDataParams,
   HourlyOptions,
+  OrderMetricsBreakdownOptions,
+  OrderMetricsBreakdownResponse,
   OrderMetricsOptions,
   OrderMetricsResponse,
   WorkflowChartData,
@@ -77,6 +79,17 @@ export const getOrderMetrics = async (params?: OrderMetricsOptions): Promise<Ord
 export const getOrderMetricsByWeek = async (params?: OrderMetricsOptions) => {
   try {
     const response = await backendApi.get('analytics/order/metrics/weekly', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrderMetricsBreakdown = async (
+  params: OrderMetricsBreakdownOptions
+): Promise<OrderMetricsBreakdownResponse[]> => {
+  try {
+    const response = await backendApi.get('analytics/order/metrics/breakdown', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

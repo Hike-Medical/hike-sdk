@@ -8,5 +8,3 @@ export const useDeleteLane = (options?: UseMutationOptions<void, HikeError<null>
     mutationFn: async (laneId) => await deleteLane(laneId),
     ...options
   });
-
-

@@ -3,5 +3,3 @@ export interface CreateConfigurationParams {
   description: string;
   attributes: Record<string, unknown>;
 }
-
-

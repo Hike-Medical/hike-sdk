@@ -15,4 +15,5 @@ export interface WorkflowSearchResult {
   errorCount: number;
   errorTypes: string[];
   facts?: Record<string, { value: unknown }>;
+  tags?: string[];
 }
