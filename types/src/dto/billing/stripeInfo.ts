@@ -16,6 +16,8 @@ export interface StripeFlaggedCoupon {
 
 export interface ActivationSequenceCustomization {
   amount: number;
+  action: 'ADD' | 'SUBTRACT';
+  type: 'EMPLOYEE_PAY' | 'EMPLOYER_PAY';
 }
 
 export interface BillingPreferences {

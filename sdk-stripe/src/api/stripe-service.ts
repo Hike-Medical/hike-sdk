@@ -103,7 +103,7 @@ export class StripeService {
 
   async getFinalPrice(
     couponIds: string[],
-    priceId: string,
+    priceId?: string,
     amount?: number
   ): Promise<{ original: number; discounted: number }> {
     const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
@@ -111,8 +111,8 @@ export class StripeService {
 
     const coupon = couponId ? await this.stripe.coupons.retrieve(couponId) : null;
 
-    const price = await this.stripe.prices.retrieve(priceId);
-    const originalPrice = amount || price.unit_amount || 0;
+    const price = priceId ? await this.stripe.prices.retrieve(priceId) : null;
+    const originalPrice = amount || price?.unit_amount || 0;
     let finalPrice = originalPrice;
 
     if (coupon) {
