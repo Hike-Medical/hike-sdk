@@ -138,7 +138,7 @@ export class PayerClient {
   private buildSearchParams(query: string, options?: PayerSearchOptions): Record<string, unknown> {
     const params: Record<string, unknown> = {
       query,
-      pageSize: 1
+      pageSize: 10
     };
 
     if (options?.eligibilityCheck) {
