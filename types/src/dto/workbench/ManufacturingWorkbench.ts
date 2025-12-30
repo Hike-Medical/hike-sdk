@@ -40,4 +40,5 @@ export interface ManufacturingWorkbench {
   isOutsideClinic?: boolean;
   leftFootAssetS3Arn?: string | null;
   rightFootAssetS3Arn?: string | null;
+  laneId: string | null;
 }
