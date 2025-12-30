@@ -9,4 +9,5 @@ export interface CreateOrderParams {
   shippingAddressId?: string;
   parcelId?: string;
   isReprint?: boolean;
+  laneId?: string;
 }
