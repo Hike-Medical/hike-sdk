@@ -4,6 +4,8 @@ import { RejectionQuantities } from './RejectionQuantities';
 export interface QueuePrintJobsParams {
   orderId: string;
   printerId?: string;
+  /** Array of printer IDs for multi-printer selection. When provided, jobs are distributed across these printers. */
+  printerIds?: string[];
   laneId?: string;
   /** If true, returns null when printerId is missing or invalid */
   mustUsePrinter?: boolean;
