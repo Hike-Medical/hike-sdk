@@ -119,7 +119,18 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
           {`(function(){var e=window;var t=document;var n=function(){n.e(arguments)};n.q=[];n.e=function(e){n.q.push(e)};e.Pylon=n;var r=function(){var e=t.createElement("script");e.setAttribute("type","text/javascript");e.setAttribute("async","true");e.setAttribute("src","https://widget.usepylon.com/widget/${pylonId}");var n=t.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};if(t.readyState==="complete"){r()}else if(e.addEventListener){e.addEventListener("load",r,false)}})();`}
         </Script>
       ) : null}
-      {isPylonVisible && <Overlay color="#000" backgroundOpacity={0.8} />}
+      {isPylonVisible && (
+        <Overlay
+          color="#000"
+          backgroundOpacity={0.8}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            height: '100%',
+            width: '100%'
+          }}
+        />
+      )}
       {children}
     </PylonContext>
   );

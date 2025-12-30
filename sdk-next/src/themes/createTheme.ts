@@ -81,6 +81,19 @@ export const createColors = (colors?: {
           '#ff8480',
           '#ff7370',
           '#ff6060'
+        ],
+        // Scrubs (#18EAF3) as accent/cyan
+        'hike-accent': [
+          '#e6fdfe',
+          '#ccfbfd',
+          '#99f7fb',
+          '#66f3f9',
+          '#33eff7',
+          '#18EAF3',
+          '#14d2da',
+          '#10b9c2',
+          '#0ca1a9',
+          '#088891'
         ]
       },
       semantic: {

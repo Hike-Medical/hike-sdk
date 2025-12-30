@@ -15,6 +15,7 @@ export interface SendOtpInputProps {
   onSkipped?: () => void;
   onGoBack?: () => void;
   onContactSupport?: () => void;
+  translationKey?: 'otp' | 'otpV2';
   HikeShell: {
     Main: ComponentType<PropsWithChildren<{ title: string; description: ReactNode }>>;
     Footer: ComponentType<PropsWithChildren<{ vertical?: boolean }>>;
@@ -28,6 +29,7 @@ export const SendOtpInput = ({
   onSkipped,
   onGoBack,
   onContactSupport,
+  translationKey = 'otp',
   HikeShell
 }: SendOtpInputProps) => {
   const [inputOtp, setInputOtp] = useState<string | null>(null);
@@ -38,7 +40,7 @@ export const SendOtpInput = ({
   const [unrecoverableError, setUnrecoverableError] = useState<HikeErrorCode | null>(null);
   const hasSentInitialOtpRef = useRef(false);
   const tShared = useTranslations('shared');
-  const t = useTranslations('shared.login.otp');
+  const t = useTranslations(`shared.login.${translationKey}`);
 
   const { mutate: sendOtp, isPending: isSendingOtp } = useSendOtp({
     onMutate: () => setIsInvalidOtp(false),

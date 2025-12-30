@@ -1,9 +1,9 @@
 import { HEALTHCARE_CREDENTIAL_VALUES } from '@hike/types';
 import { formatHealthcareCredential, formatMBI, formatPhoneNumber, stripHealthcareCredentials } from '@hike/utils';
-import { z } from 'zod';
 import dayjs from 'dayjs';
+import { z } from 'zod';
 
-interface FactsRegistryEntry {
+export interface FactsRegistryEntry {
   schema: z.ZodTypeAny;
   displayName: string;
   description: string;
@@ -11,6 +11,7 @@ interface FactsRegistryEntry {
   category: string;
   required: boolean;
   hideInUX?: boolean;
+  deprecated?: boolean;
   transform?: (value: FactValueOf<FactKey>, source?: string) => FactValueOf<FactKey>;
 }
 
@@ -280,7 +281,8 @@ export const FactRegistry = {
     category: 'Certifying Physician',
     required: false,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
   'cert.physician.phone': {
     displayName: 'Certifying Physician Phone',
@@ -302,22 +304,25 @@ export const FactRegistry = {
     transform: (value: string[]) => value.sort(),
     metadata: defaultMetadataSchema
   },
-
+  // DEPRECATED - NO LONGER NEEDED FOR COMPLIANCE
   'prescriber.notes.diagnosis_visit_date': {
     displayName: 'Diagnosis Visit Date',
     description: 'Date of the visit where prescriber foot exam',
     category: 'Prescriber Notes',
     required: true,
     schema: dateISO,
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
+  // DEPRECATED - NO LONGER NEEDED FOR COMPLIANCE
   'prescriber.notes.patient_needs_diabetic_footwear': {
     displayName: 'Patient Needs Diabetic Footwear',
     description: 'Prescriber attests that patient needs therapeutic footwear',
     category: 'Prescriber Notes',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
   'prescriber.notes.examiner.first_name': {
     displayName: 'Prescriber Notes Examiner First Name',
@@ -367,7 +372,8 @@ export const FactRegistry = {
     category: 'Prescriber Information',
     required: false,
     schema: z.string().min(1),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
 
   'prescriber.notes.certifying_agreement.signature': {
@@ -758,7 +764,8 @@ export const FactRegistry = {
     required: true,
     schema: z.array(icd10Code).min(1),
     transform: (value: string[]) => value.sort(),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
 
   // Operations
@@ -1043,7 +1050,7 @@ export const FactRegistry = {
   'calculations.dx.icd_codes': {
     displayName: 'Combined ICD-10 Codes',
     description: 'ICD-10 diagnosis codes from all documents (must include diabetes E08-E13)',
-    category: 'Diagnosis Information',
+    category: 'Calculations',
     required: true,
     schema: z.array(icd10Code).min(1),
     transform: (value: string[]) => value.sort(),

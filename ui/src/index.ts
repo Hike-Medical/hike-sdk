@@ -57,6 +57,7 @@ export * from './hooks/auth/useSignInWithToken';
 export * from './hooks/auth/useSignUpClinician';
 export * from './hooks/auth/useVerifyInvitation';
 export * from './hooks/auto-slicer/useRunSlicerForSide';
+export * from './hooks/benefit/useFindPatientBenefits';
 export * from './hooks/billing-codes/useBillingCodes';
 export * from './hooks/billing-codes/useBillingCodesSearch';
 export * from './hooks/billing/useFetchPricingByProductType';

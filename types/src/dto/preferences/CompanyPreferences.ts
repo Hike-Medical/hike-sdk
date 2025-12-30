@@ -121,5 +121,9 @@ export interface CompanyPreferences {
     showLogo?: boolean;
   };
   hideConsumerExternalId?: boolean;
-  eligibilityTradingPartner?: string;
+  insuranceEligibility?: {
+    tradingPartnerId: string;
+    tradingPartnerName: string;
+    groupNumber?: string; // Eligibility fails when group numbers mismatch
+  };
 }

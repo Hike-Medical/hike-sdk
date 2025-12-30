@@ -101,14 +101,19 @@ export class StripeService {
     }
   }
 
-  async getFinalPrice(couponIds: string[], priceId: string): Promise<{ original: number; discounted: number }> {
+  async getFinalPrice(
+    couponIds: string[],
+    priceId?: string,
+    amount?: number
+  ): Promise<{ original: number; discounted: number }> {
     const bestCoupon = await this.validateAndFindBestCoupon(couponIds);
     const couponId = bestCoupon[0]?.coupon;
 
     const coupon = couponId ? await this.stripe.coupons.retrieve(couponId) : null;
 
-    const price = await this.stripe.prices.retrieve(priceId);
-    let finalPrice = price.unit_amount || 0;
+    const price = priceId ? await this.stripe.prices.retrieve(priceId) : null;
+    const originalPrice = amount || price?.unit_amount || 0;
+    let finalPrice = originalPrice;
 
     if (coupon) {
       if (coupon.percent_off) {
@@ -119,7 +124,7 @@ export class StripeService {
       }
     }
 
-    return { original: price.unit_amount || 0, discounted: Math.max(0, finalPrice) };
+    return { original: originalPrice, discounted: Math.max(0, finalPrice) };
   }
 
   async addCreditToCustomerBalance(customerId: string, addBalance: number): Promise<Stripe.Customer> {

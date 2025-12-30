@@ -14,10 +14,17 @@ export interface StripeFlaggedCoupon {
   couponId: string;
 }
 
+export interface ActivationSequenceCustomization {
+  amount: number;
+  action: 'ADD' | 'SUBTRACT';
+  type: 'EMPLOYEE_PAY' | 'EMPLOYER_PAY';
+}
+
 export interface BillingPreferences {
   flaggedCoupons?: StripeFlaggedCoupon[];
   tierUpgradeCount?: number;
   prePaidBalance?: number;
+  activationSequenceCustomization?: ActivationSequenceCustomization[];
 }
 
 export interface StripeProductPreferences {
