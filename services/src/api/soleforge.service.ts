@@ -2,6 +2,7 @@ import {
   AddLabelPrinterParams,
   AddPrinter3DParams,
   AssignMachineToLaneParams,
+  BulkAddPrinter3DParams,
   CompatiblePrinter,
   CompatibleSoleforgeOrder,
   Configuration,
@@ -119,6 +120,17 @@ export const deleteLane = async (laneId: string): Promise<void> => {
 export const addPrinter3D = async (params: AddPrinter3DParams): Promise<Machine & { printer3Ds: Printer3D[] }> => {
   try {
     const response = await backendApi.post('soleforge/printers-3d', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const bulkAddPrinter3D = async (
+  params: BulkAddPrinter3DParams
+): Promise<(Machine & { printer3Ds: Printer3D[] })[]> => {
+  try {
+    const response = await backendApi.post('soleforge/printers-3d/bulk', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

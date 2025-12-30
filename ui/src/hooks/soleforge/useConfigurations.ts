@@ -13,3 +13,4 @@ export const useConfigurations = ({ queryKey = [], ...options }: UseConfiguratio
     queryFn: async () => await getConfigurations(),
     ...options
   });
+

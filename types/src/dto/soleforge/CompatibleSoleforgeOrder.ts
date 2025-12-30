@@ -6,7 +6,6 @@ export interface SoleforgeOrderPrintJob {
   assetId: string;
   status: PrintJobStatus;
   fileName: string | null;
-  laneId: string | null;
   laneName: string | null;
   printerName: string;
   printerId: string;
@@ -23,6 +22,5 @@ export interface CompatibleSoleforgeOrder {
   companySlug: string;
   orderType: 'CLINICAL' | 'CONSUMER';
   orderStatus: OrderStatus;
-  isOrthofeet: boolean;
   printJobs: SoleforgeOrderPrintJob[];
 }
