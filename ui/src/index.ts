@@ -78,6 +78,7 @@ export * from './hooks/company/useCompanies';
 export * from './hooks/company/useCompaniesByName';
 export * from './hooks/company/useGetCompany';
 export * from './hooks/company/useGetCompanyWorkbenchWebhooks';
+export * from './hooks/company/useProcessSequenceRenewals';
 export * from './hooks/company/useUpdateCompany';
 export * from './hooks/departments/useCreateDepartment';
 export * from './hooks/departments/useDeleteDepartment';

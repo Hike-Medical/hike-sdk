@@ -87,3 +87,12 @@ export const findCompanyWorkbenchWebhooks = async (
     throw toHikeError(error);
   }
 };
+
+export const processSequenceRenewals = async (): Promise<{ updated: number }> => {
+  try {
+    const response = await backendApi.post('company/sequence/renewals');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
