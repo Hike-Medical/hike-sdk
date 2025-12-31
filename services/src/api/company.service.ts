@@ -11,6 +11,7 @@ import {
   SafeCompany,
   UpdateCompanyParams
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -88,9 +89,9 @@ export const findCompanyWorkbenchWebhooks = async (
   }
 };
 
-export const processSequenceRenewals = async (): Promise<{ updated: number }> => {
+export const processSequenceRenewals = async (companyIds: string[]): Promise<{ updated: number }> => {
   try {
-    const response = await backendApi.post('company/sequence/renewals');
+    const response = await backendApi.post('company/sequence/renewals', {}, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
