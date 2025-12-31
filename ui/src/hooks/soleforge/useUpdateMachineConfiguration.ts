@@ -10,3 +10,4 @@ export const useUpdateMachineConfiguration = (
     mutationFn: async (params) => await updateMachineConfiguration(params),
     ...options
   });
+
