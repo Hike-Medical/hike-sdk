@@ -5,4 +5,6 @@ export interface UpdateCompanyParams {
   url?: string;
   preferences?: CompanyPreferences;
   active?: boolean;
+  activationSequence?: number;
+  sequenceRenewsAt?: Date | string | null;
 }
