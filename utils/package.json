@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@hike/types": "workspace:*",
+    "axios": "^1.13.1",
     "dayjs": "^1.11.19"
   },
   "devDependencies": {
