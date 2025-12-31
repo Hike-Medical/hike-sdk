@@ -1,4 +1,4 @@
-import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus } from '../../../prisma';
+import { OrderAuthorizationStatus, OrderStatus, ShippingTrackingStatus, WorkbenchCreatedReason } from '../../../prisma';
 import { InsoleSideMeasurements } from '../taika/InsoleMeasurements';
 
 export interface PatientWorkbenchResponse {
@@ -24,4 +24,5 @@ export interface PatientWorkbenchResponse {
   orderFormPdfUrl?: string;
   patientFormPdfUrl?: string;
   deliveryReceiptPdfUrl?: string;
+  createdReason?: WorkbenchCreatedReason | null;
 }
