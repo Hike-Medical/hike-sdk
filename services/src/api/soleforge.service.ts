@@ -11,7 +11,6 @@ import {
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
   GetMachinesParams,
-  GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
   Lane,
   Machine,
@@ -20,7 +19,6 @@ import {
   QueuePrintJobsParams,
   ShippingStationConfiguration,
   SoleforgeDashboard,
-  SoleforgePrintJobWithAsset,
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
   UpdateMachineStatusParams,
@@ -205,16 +203,6 @@ export const updateMachineStatus = async (params: UpdateMachineStatusParams): Pr
   try {
     const { machineId, status } = params;
     const response = await backendApi.patch(`soleforge/machines/${machineId}/status`, { status });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getPrinterHistory = async (params: GetPrinterHistoryParams): Promise<SoleforgePrintJobWithAsset[]> => {
-  try {
-    const { printerId, ...queryParams } = params;
-    const response = await backendApi.get(`soleforge/printers/${printerId}/history`, { params: queryParams });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

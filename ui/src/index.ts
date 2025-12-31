@@ -230,7 +230,6 @@ export * from './hooks/soleforge/useCreateLane';
 export * from './hooks/soleforge/useDeleteLane';
 export * from './hooks/soleforge/useLanes';
 export * from './hooks/soleforge/useMachines';
-export * from './hooks/soleforge/usePrinterHistory';
 export * from './hooks/soleforge/useQueuePrintJobs';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/soleforge/useSoleforgeDashboard';
