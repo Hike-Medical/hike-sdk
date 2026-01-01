@@ -1,6 +1,6 @@
 'use client';
 
-import { ContactType, HikeErrorCode, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
+import { ContactType, HikeErrorCode, toErrorCode, toErrorMessage, VerifyInvitationResponse } from '@hike/sdk';
 import { useSendOtp, useVerifyInvitation } from '@hike/ui';
 import { Alert, Anchor, Button, PinInput, Stack, Text, ThemeIcon } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
@@ -72,7 +72,17 @@ export const SendOtpInput = ({
       setIsVerified(true);
       await onVerified(response, inputOtp ?? '');
     },
-    onError: () => setIsInvalidOtp(true)
+    onError: (error) => {
+      switch (toErrorCode(error)) {
+        case HikeErrorCode.ERR_DATA_NOT_FOUND: // Incorrect OTP
+          setIsInvalidOtp(true);
+          break;
+        default: {
+          const message = toErrorMessage(error);
+          showNotification({ title: tShared('error.title'), message, color: 'red' });
+        }
+      }
+    }
   });
 
   useEffect(() => {
