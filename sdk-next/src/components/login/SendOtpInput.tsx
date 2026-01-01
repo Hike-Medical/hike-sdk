@@ -60,7 +60,6 @@ export const SendOtpInput = ({
         default: {
           const message = toErrorMessage(error, t('error.couldNotSend'));
           showNotification({ title: tShared('error.title'), message, color: 'red' });
-          setIsInvalidOtp(true);
         }
       }
     }
