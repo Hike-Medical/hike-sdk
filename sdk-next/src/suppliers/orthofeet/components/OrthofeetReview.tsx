@@ -1,7 +1,7 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
-import { useOrthofeetProductStyleVariants } from '@hike/ui';
+import { useOrthofeetProductStyleVariants, usePreferences } from '@hike/ui';
 import { Alert, Badge, Group, Image, LoadingOverlay, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { productBuilder } from '../utils/productBuilder';
@@ -15,7 +15,7 @@ export const OrthofeetReview = ({ sku, metadata }: OrthofeetReviewProps) => {
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.review');
-
+  const { data: preferences } = usePreferences();
   const {
     data: productVariants,
     isLoading,
@@ -110,9 +110,11 @@ export const OrthofeetReview = ({ sku, metadata }: OrthofeetReviewProps) => {
         </Group>
 
         {/* Price */}
-        <Text size="md" fw={600} c="blue">
-          {formatCurrency(productPrice)}
-        </Text>
+        {!preferences?.pricing?.removeShoeCatalogPricing && (
+          <Text size="md" fw={600} c="blue">
+            {formatCurrency(productPrice)}
+          </Text>
+        )}
       </Stack>
     </Paper>
   );
