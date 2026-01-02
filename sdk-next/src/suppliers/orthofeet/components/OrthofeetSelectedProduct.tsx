@@ -1,6 +1,7 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
+import { usePreferences } from '@hike/ui';
 import { Alert, Badge, Button, Group, Image, Paper, Stack, Text, useMantineTheme } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useTranslations } from 'next-intl';
@@ -26,7 +27,7 @@ export const OrthofeetSelectedProduct = ({
   const theme = useMantineTheme();
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.selectedProduct');
-
+  const { data: preferences } = usePreferences();
   // Destructure product data
   const { name: productName, image: productImage, price: productPrice, attributes } = product;
   const { size: variantSize, color: variantColor, width: variantWidth } = attributes;
@@ -78,23 +79,24 @@ export const OrthofeetSelectedProduct = ({
               {productName}
             </Text>
 
-            {insertPrice > 0 ? (
-              <Stack gap="xs">
-                <Text size="sm" fw="500">
-                  {t('shoePrice')}: {formatCurrency(productPrice)}
-                </Text>
-                <Text size="sm" fw="500">
-                  {t('insertPrice')}: {formatCurrency(insertPrice)}
-                </Text>
+            {!preferences?.pricing?.removeShoeCatalogPricing &&
+              (insertPrice > 0 ? (
+                <Stack gap="xs">
+                  <Text size="sm" fw="500">
+                    {t('shoePrice')}: {formatCurrency(productPrice)}
+                  </Text>
+                  <Text size="sm" fw="500">
+                    {t('insertPrice')}: {formatCurrency(insertPrice)}
+                  </Text>
+                  <Text size="md" fw="600">
+                    {t('totalPrice')}: {formatCurrency(totalPrice)}
+                  </Text>
+                </Stack>
+              ) : (
                 <Text size="md" fw="600">
-                  {t('totalPrice')}: {formatCurrency(totalPrice)}
+                  {tShared('label.price')}: {formatCurrency(productPrice)}
                 </Text>
-              </Stack>
-            ) : (
-              <Text size="md" fw="600">
-                {tShared('label.price')}: {formatCurrency(productPrice)}
-              </Text>
-            )}
+              ))}
 
             <Group gap="xs">
               {!!variantSize && (

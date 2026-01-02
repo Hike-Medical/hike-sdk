@@ -1,7 +1,7 @@
 'use client';
 
 import { formatCurrency } from '@hike/sdk';
-import { useOrthofeetInventory, useOrthofeetProductStyleVariants } from '@hike/ui';
+import { useOrthofeetInventory, useOrthofeetProductStyleVariants, usePreferences } from '@hike/ui';
 import {
   Badge,
   Box,
@@ -27,7 +27,6 @@ import {
   getUniqueAttributeOptions
 } from '../utils/attributeHelpers';
 import { getOrthofeetColorHex } from '../utils/colorMap';
-
 interface OrthofeetProductDetailProps {
   style?: string;
   editingSku?: string;
@@ -64,7 +63,7 @@ export const OrthofeetProductDetail = ({
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const tShared = useTranslations('shared');
   const t = useTranslations('suppliers.orthofeet.productDetail');
-
+  const { data: preferences } = usePreferences();
   // Fetch by style or by SKU
   const { data: allProducts, isLoading: isLoadingVariants } = useOrthofeetProductStyleVariants({
     params: style ? { style } : editingSku ? { sku: editingSku } : {},
@@ -275,67 +274,69 @@ export const OrthofeetProductDetail = ({
         <LoadingOverlay visible={isLoadingVariants} />
 
         {/* Price Display - Always show */}
-        <DrawerSection title={tShared('label.price')}>
-          {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
-            <Stack gap="md">
-              {/* Product Image */}
-              {currentImage && (
-                <Box style={{ flexShrink: 0 }}>
-                  <Image
-                    src={currentImage}
-                    alt={parentProduct?.name || currentVariant?.name || ''}
-                    w={60}
-                    h="auto"
-                    fit="contain"
-                    radius="sm"
-                  />
-                </Box>
-              )}
-
-              {/* Price Info */}
-              <Stack gap={4} style={{ flex: 1 }}>
-                {selectedPrefabInsertQuantity && prefabInsertPrice ? (
-                  <>
-                    <Group justify="space-between" wrap="nowrap">
-                      <Text size="sm" c="dimmed">
-                        {t('shoePrice')}
-                      </Text>
-                      <Text size="sm" fw="500">
-                        {formatCurrency(productPrice)}
-                      </Text>
-                    </Group>
-                    <Group justify="space-between" wrap="nowrap">
-                      <Text size="sm" c="dimmed">
-                        {t('insertPrice')}
-                      </Text>
-                      <Text size="sm" fw="500">
-                        {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
-                      </Text>
-                    </Group>
-                    <Group justify="space-between" wrap="nowrap">
-                      <Text size="md" fw="600">
-                        {t('totalPrice')}
-                      </Text>
-                      <Text size="md" fw="600">
-                        {formatCurrency(
-                          productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity)
-                        )}
-                      </Text>
-                    </Group>
-                  </>
-                ) : (
-                  <Text size="md" fw="600">
-                    {formatCurrency(productPrice)}
-                  </Text>
+        {!preferences?.pricing?.removeShoeCatalogPricing && (
+          <DrawerSection title={tShared('label.price')}>
+            {currentVariantSku && selectedColor && selectedWidth && selectedSize ? (
+              <Stack gap="md">
+                {/* Product Image */}
+                {currentImage && (
+                  <Box style={{ flexShrink: 0 }}>
+                    <Image
+                      src={currentImage}
+                      alt={parentProduct?.name || currentVariant?.name || ''}
+                      w={60}
+                      h="auto"
+                      fit="contain"
+                      radius="sm"
+                    />
+                  </Box>
                 )}
+
+                {/* Price Info */}
+                <Stack gap={4} style={{ flex: 1 }}>
+                  {selectedPrefabInsertQuantity && prefabInsertPrice ? (
+                    <>
+                      <Group justify="space-between" wrap="nowrap">
+                        <Text size="sm" c="dimmed">
+                          {t('shoePrice')}
+                        </Text>
+                        <Text size="sm" fw="500">
+                          {formatCurrency(productPrice)}
+                        </Text>
+                      </Group>
+                      <Group justify="space-between" wrap="nowrap">
+                        <Text size="sm" c="dimmed">
+                          {t('insertPrice')}
+                        </Text>
+                        <Text size="sm" fw="500">
+                          {formatCurrency((prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity))}
+                        </Text>
+                      </Group>
+                      <Group justify="space-between" wrap="nowrap">
+                        <Text size="md" fw="600">
+                          {t('totalPrice')}
+                        </Text>
+                        <Text size="md" fw="600">
+                          {formatCurrency(
+                            productPrice + (prefabInsertPrice / 100) * Number(selectedPrefabInsertQuantity)
+                          )}
+                        </Text>
+                      </Group>
+                    </>
+                  ) : (
+                    <Text size="md" fw="600">
+                      {formatCurrency(productPrice)}
+                    </Text>
+                  )}
+                </Stack>
               </Stack>
-            </Stack>
-          ) : (
-            <Text size="sm" c="dimmed">
-              {t('selectAllOptions') || 'Select all options to view price'}
-            </Text>
-          )}
-        </DrawerSection>
+            ) : (
+              <Text size="sm" c="dimmed">
+                {t('selectAllOptions') || 'Select all options to view price'}
+              </Text>
+            )}
+          </DrawerSection>
+        )}
 
         {/* Gender Selector - Only show if multiple genders available */}
         {showGenderSelector && (

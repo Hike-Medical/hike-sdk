@@ -1,7 +1,12 @@
 'use client';
 
 import { formatCurrency, OrthofeetProductStyle } from '@hike/sdk';
-import { useOrthofeetFilters, useOrthofeetProductStyles, useOrthofeetProductStyleVariants } from '@hike/ui';
+import {
+  useOrthofeetFilters,
+  useOrthofeetProductStyles,
+  useOrthofeetProductStyleVariants,
+  usePreferences
+} from '@hike/ui';
 import { Alert, Box, Button, Group, LoadingOverlay, Stack } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
@@ -54,6 +59,7 @@ export const OrthofeetCatalog = ({
   const tSuppliers = useTranslations('suppliers');
 
   const { data: filters } = useOrthofeetFilters();
+  const { data: preferences } = usePreferences();
 
   // Fetch filtered products
   const {
@@ -73,7 +79,6 @@ export const OrthofeetCatalog = ({
   });
 
   const totalPages = products ? Math.ceil(products.total / pageSize) : 0;
-
   // Fetch selected product variants to build product object
   const { data: selectedProductVariants } = useOrthofeetProductStyleVariants({
     params: { sku: selectedSku || '' },
@@ -160,16 +165,18 @@ export const OrthofeetCatalog = ({
 
             {/* Filter Buttons */}
             <Group gap="xs" wrap="wrap">
-              <Button
-                size="compact-sm"
-                variant={maxPrice ? 'filled' : 'light'}
-                color="indigo"
-                onClick={() => setMaxPrice((current) => toggleFilter(current, ORTHOFEET_MAX_PRICE_FILTER))}
-              >
-                {maxPrice
-                  ? t('viewingUnder', { price: formatCurrency(ORTHOFEET_MAX_PRICE_FILTER, 'USD', true) })
-                  : t('viewAllPrices')}
-              </Button>
+              {!preferences?.pricing?.removeShoeCatalogPricing && (
+                <Button
+                  size="compact-sm"
+                  variant={maxPrice ? 'filled' : 'light'}
+                  color="indigo"
+                  onClick={() => setMaxPrice((current) => toggleFilter(current, ORTHOFEET_MAX_PRICE_FILTER))}
+                >
+                  {maxPrice
+                    ? t('viewingUnder', { price: formatCurrency(ORTHOFEET_MAX_PRICE_FILTER, 'USD', true) })
+                    : t('viewAllPrices')}
+                </Button>
+              )}
               {filters?.genders?.map((gender) => (
                 <Button
                   key={gender.value}
