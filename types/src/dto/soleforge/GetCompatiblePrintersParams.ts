@@ -5,6 +5,4 @@ export interface GetCompatiblePrintersParams {
   laneId?: string;
   limit?: number;
   statuses?: MachineStatus[];
-  /** If true, returns [] when laneId is missing or has no printers */
-  mustUseLane?: boolean;
 }
