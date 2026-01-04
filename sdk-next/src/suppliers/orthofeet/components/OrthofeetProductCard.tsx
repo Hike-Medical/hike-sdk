@@ -1,6 +1,7 @@
 'use client';
 
 import { OrthofeetProductStyle, formatCurrency } from '@hike/sdk';
+import { usePreferences } from '@hike/ui';
 import { Avatar, Badge, Box, Button, Group, Paper, Stack, Text, Tooltip, rem, useMantineTheme } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -16,7 +17,7 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
   const imageUrl = productStyle.image || '/images/shoe-placeholder.png';
   const price = productStyle.price ?? 0;
   const t = useTranslations('suppliers.orthofeet.productCard');
-
+  const { data: preferences } = usePreferences();
   return (
     <Paper flex={1} bg="gray.1" p="md" mih={rem(250)} pos="relative">
       {productStyle.featured && (
@@ -51,9 +52,11 @@ export const OrthofeetProductCard = ({ productStyle, onSelect }: OrthofeetProduc
           <Text size="md" truncate>
             {productStyle.name}
           </Text>
-          <Text size="md" fw="600">
-            {price > 0 ? formatCurrency(price) : '—'}
-          </Text>
+          {!preferences?.pricing?.removeShoeCatalogPricing && (
+            <Text size="md" fw="600">
+              {price > 0 ? formatCurrency(price) : '—'}
+            </Text>
+          )}
         </Stack>
 
         {/* Gender and Color Badges */}

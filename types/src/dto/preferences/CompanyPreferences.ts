@@ -41,6 +41,7 @@ export interface CompanyPreferences {
     paymentResponsibility?: PaymentResponsibility;
     supplierMarkupPercentage?: Record<string, number>;
     consumerReorderDiscount?: number;
+    removeShoeCatalogPricing?: boolean;
   };
   useHikeOrthofeetWarehouse?: boolean;
   noAuthNeeded?: boolean;

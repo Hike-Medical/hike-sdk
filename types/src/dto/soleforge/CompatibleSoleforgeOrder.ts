@@ -23,5 +23,7 @@ export interface CompatibleSoleforgeOrder {
   companySlug: string;
   orderType: 'CLINICAL' | 'CONSUMER';
   orderStatus: OrderStatus;
+  orderSide: number | null;
+  orderQuantity: string | null;
   printJobs: SoleforgeOrderPrintJob[];
 }
