@@ -1,5 +1,5 @@
 export interface UpdateLaneParams {
   laneId: string;
-  configurationId: string;
+  configurationId?: string;
+  active?: boolean;
 }
-
