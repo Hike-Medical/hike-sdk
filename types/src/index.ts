@@ -231,6 +231,7 @@ export * from './dto/soleforge/GetCompatiblePrintersParams';
 export * from './dto/soleforge/GetMachinesParams';
 export * from './dto/soleforge/GetPrinterHistoryParams';
 export * from './dto/soleforge/GetValidMachineStateTransitionsParams';
+export * from './dto/soleforge/MarkPrintJobAsFailedParams';
 export * from './dto/soleforge/QueuePrintJobsParams';
 export * from './dto/soleforge/RejectionQuantities';
 export * from './dto/soleforge/ShippingStationConfiguration';
