@@ -3,5 +3,3 @@ export enum ThroughputUnit {
   INSOLE = 'INSOLE',
   PAIR = 'PAIR'
 }
-
-

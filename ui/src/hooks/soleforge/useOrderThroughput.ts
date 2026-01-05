@@ -17,5 +17,3 @@ export const useOrderThroughput = (
     queryFn: async () => await getOrderThroughput(params),
     ...options
   });
-
-
