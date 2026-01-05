@@ -25,6 +25,7 @@ export const useUpdateWorkflowAttachment = ({
       updateWorkflowAttachment(workflowId, attachmentId, params),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['workflow', workflowId] });
+      queryClient.invalidateQueries({ queryKey: ['workflow-attachments', workflowId] });
       queryClient.invalidateQueries({ queryKey: ['workflow-logs', workflowId] });
       onSuccess?.(data);
     },
