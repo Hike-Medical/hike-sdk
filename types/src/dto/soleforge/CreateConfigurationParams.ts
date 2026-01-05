@@ -4,3 +4,4 @@ export interface CreateConfigurationParams {
   attributes: Record<string, unknown>;
 }
 
+

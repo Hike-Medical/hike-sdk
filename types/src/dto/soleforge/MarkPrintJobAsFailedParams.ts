@@ -9,3 +9,4 @@ export interface MarkPrintJobAsFailedResponse {
   requeuedJob: { id: string; printerId: string; printerName: string };
 }
 
+
