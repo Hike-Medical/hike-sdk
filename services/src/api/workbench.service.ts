@@ -163,9 +163,17 @@ export const approveWorkbench = async (workbenchId: string): Promise<Asset[]> =>
   }
 };
 
-export const failWorkbench = async (workbenchId: string, companyIds?: string[]): Promise<Workbench> => {
+export const updateWorkbenchStatus = async (
+  workbenchId: string,
+  status: WorkbenchStatus,
+  companyIds?: string[]
+): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/fail`, {}, { headers: addHeaders(companyIds) });
+    const response = await backendApi.post(
+      `workbench/${workbenchId}/status`,
+      { status },
+      { headers: addHeaders(companyIds) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);

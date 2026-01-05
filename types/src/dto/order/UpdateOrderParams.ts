@@ -9,5 +9,5 @@ export interface UpdateOrderParams {
   shippingAddressId?: string;
   parcelId?: string;
   shippingLabelId?: string;
-  laneId?: string;
+  laneId?: string | null;
 }
