@@ -118,6 +118,7 @@ export interface CompanyPreferences {
       color?: string;
       facilityRequired?: boolean;
       facilityType?: FacilityType;
+      idpOnly?: boolean;
     };
     showLogo?: boolean;
   };
