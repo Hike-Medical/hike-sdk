@@ -149,7 +149,7 @@ export const fetchNotificationEnrollPatients = async (
   return response.data;
 };
 
-export const fetchNotificationContent = async (historyId: string): Promise<PresignedFile> => {
+export const fetchNotificationContent = async (historyId: string): Promise<PresignedFile[]> => {
   try {
     const response = await backendApi.get(`notification/content/${historyId}`);
     return response.data;

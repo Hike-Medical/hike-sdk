@@ -37,6 +37,8 @@ export interface ManufacturingWorkbench {
   gluingCompletedBy: string | null;
   addonCompletedAt: Date | null;
   addonCompletedBy: string | null;
+  finishingCompletedAt: Date | null;
+  finishingCompletedBy: string | null;
   isOutsideClinic?: boolean;
   leftFootAssetS3Arn?: string | null;
   rightFootAssetS3Arn?: string | null;

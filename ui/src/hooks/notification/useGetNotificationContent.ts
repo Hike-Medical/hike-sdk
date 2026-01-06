@@ -3,7 +3,7 @@ import { HikeError, PresignedFile } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetNotificationContentOptions
-  extends Omit<UseQueryOptions<PresignedFile, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PresignedFile[], HikeError<null>>, 'queryKey' | 'queryFn'> {
   historyId: string;
   queryKey?: QueryKey;
 }
