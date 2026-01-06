@@ -1,14 +1,16 @@
 import type { PagedParams } from '../PagedParams';
 
+export type NotificationAudienceStatus = 'ACTIVE' | 'RETURNING' | 'INACTIVE';
+
 export interface NotificationEnrollAnalyticsParams extends PagedParams {
-  status: 'ACTIVE' | 'INACTIVE';
+  status: NotificationAudienceStatus;
   search?: string;
   opened?: 'opened' | 'unopened' | 'undefined';
   notificationId?: string;
 }
 
 export interface ExportNotificationEnrollAnalyticsParams {
-  status: 'ACTIVE' | 'INACTIVE';
+  status: NotificationAudienceStatus;
   search?: string;
   patientIds?: string[];
   opened?: 'opened' | 'unopened' | 'undefined';

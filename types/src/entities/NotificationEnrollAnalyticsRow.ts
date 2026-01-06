@@ -1,3 +1,5 @@
+import type { NotificationAudienceStatus } from '../dto/notification/NotificationEnrollAnalyticsParams';
+
 export interface NotificationEnrollAnalyticsRow {
   patientId: string;
   companyId: string;
@@ -7,5 +9,5 @@ export interface NotificationEnrollAnalyticsRow {
   email: string | null;
   phone: string | null;
   shippingAddress: string | null;
-  status: 'ACTIVE' | 'INACTIVE';
+  status: NotificationAudienceStatus;
 }
