@@ -91,6 +91,7 @@ export interface WorkflowAttachmentDto {
   companyId: string;
   metadata?: any;
   isComplete?: boolean;
+  createdAt?: string;
 }
 
 export interface WorkflowErrorDto {

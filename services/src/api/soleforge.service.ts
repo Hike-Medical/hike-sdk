@@ -15,6 +15,8 @@ import {
   GetValidMachineStateTransitionsParams,
   Lane,
   Machine,
+  MarkPrintJobAsFailedParams,
+  MarkPrintJobAsFailedResponse,
   Printer3D,
   PrintJob,
   QueuePrintJobsParams,
@@ -26,6 +28,7 @@ import {
   UpdateMachineStatusParams,
   ValidMachineStateTransitions
 } from '@hike/types';
+import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
@@ -215,6 +218,22 @@ export const getPrinterHistory = async (params: GetPrinterHistoryParams): Promis
   try {
     const { printerId, ...queryParams } = params;
     const response = await backendApi.get(`soleforge/printers/${printerId}/history`, { params: queryParams });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const markPrintJobAsFailed = async (
+  params: MarkPrintJobAsFailedParams
+): Promise<MarkPrintJobAsFailedResponse> => {
+  try {
+    const { printJobId, failureReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/print-jobs/${printJobId}/fail`,
+      { failureReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
     return response.data;
   } catch (error) {
     throw toHikeError(error);

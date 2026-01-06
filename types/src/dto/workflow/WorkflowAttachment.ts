@@ -23,4 +23,5 @@ export interface UpdateWorkflowAttachmentParams {
   types: EvaluationAttachmentType[];
   metadata?: Record<string, unknown>;
   isComplete?: boolean;
+  deactivateFacts?: boolean;
 }

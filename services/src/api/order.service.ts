@@ -1,6 +1,8 @@
 import type {
   CreateOrderParams,
   DeliverOrderParams,
+  FlattenedWorkbench,
+  GetAggregatedParams,
   GetOrdersByTypeParams,
   GetOrdersParams,
   ModifyOrderAuthorizationParams,
@@ -122,6 +124,22 @@ export const modifyOrderAuthorization = async ({
 export const deliverOrder = async (params: DeliverOrderParams): Promise<Order> => {
   try {
     const response = await backendApi.post('order/deliver', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Fetches employer orders directly from the Order model.
+ * This provides the same data format as getAggregatedWorkbenches but queries orders directly.
+ */
+export const getEmployerOrders = async (
+  params?: GetAggregatedParams,
+  companyIds?: string[]
+): Promise<PagedResponse<FlattenedWorkbench[]>> => {
+  try {
+    const response = await backendApi.get('order/employer', { params, headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
