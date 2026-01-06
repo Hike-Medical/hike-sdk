@@ -174,6 +174,7 @@ export * from './hooks/notification/useUpdateNotificationMessage';
 export * from './hooks/orders/useCreateOrder';
 export * from './hooks/orders/useModifyOrderAuthorization';
 export * from './hooks/orders/useOrders';
+export * from './hooks/orders/useEmployerOrders';
 export * from './hooks/orders/useOrdersByLabelId';
 export * from './hooks/orders/useOrdersByType';
 export * from './hooks/orders/useOrdersStats';

@@ -7,7 +7,7 @@ export interface SendTimeWindow {
 
 export interface EnrollPatientsParams {
   patientIds?: string[];
-  status?: 'ALL' | 'ACTIVE' | 'INACTIVE';
+  status?: 'ALL' | 'ACTIVE' | 'RETURNING' | 'INACTIVE';
   tags?: string[];
   departmentIds?: string[];
   facilityIds?: string[];
