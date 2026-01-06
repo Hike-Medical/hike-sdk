@@ -4,6 +4,7 @@ export interface SoleforgePrintJob extends PrintJob {
   order: Order & {
     workbench: Workbench & {
       evaluation: {
+        poNumber: string | null;
         company: { id: string; name: string; slug: string };
         patient: { id: string; firstName: string | null; lastName: string | null };
       };
