@@ -44,17 +44,7 @@ export interface WorkflowStatusUpdateDto {
 }
 
 export interface WorkflowStateDto {
-  facts: {
-    id: string;
-    key: string;
-    value: any;
-    source: string;
-    sourceAttachmentId?: string;
-    metadata?: any;
-    version: number;
-    acquiredAt: string;
-    updatedAt: string;
-  }[];
+  facts: WorkflowFactDto[];
   attachments: WorkflowAttachmentDto[];
   calculations?: {
     key: string;
