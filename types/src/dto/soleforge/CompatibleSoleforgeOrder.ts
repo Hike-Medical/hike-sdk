@@ -12,6 +12,7 @@ export interface SoleforgeOrderPrintJob {
   printerId: string;
   actualStartTime: Date | null;
   actualEndTime: Date | null;
+  failureReason: string | null;
 }
 
 export interface CompatibleSoleforgeOrder {
