@@ -206,8 +206,8 @@ export const getValidMachineStateTransitions = async (
 
 export const updateMachineStatus = async (params: UpdateMachineStatusParams): Promise<Machine> => {
   try {
-    const { machineId, status } = params;
-    const response = await backendApi.patch(`soleforge/machines/${machineId}/status`, { status });
+    const { machineId, ...body } = params;
+    const response = await backendApi.patch(`soleforge/machines/${machineId}/status`, body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
