@@ -185,7 +185,7 @@ export const OrthofeetProductDetail = ({
     enabled: !!currentVariantSku && enableInventoryCheck && isFullySelected
   });
 
-  const inventoryQuantity = inventory?.products[currentVariantSku]?.quantity ?? 0;
+  const inventoryQuantity = inventory?.[currentVariantSku] ?? 0;
   const isInStock = inventoryQuantity > inventoryBuffer;
 
   // Reset downstream selections when upstream filters change
