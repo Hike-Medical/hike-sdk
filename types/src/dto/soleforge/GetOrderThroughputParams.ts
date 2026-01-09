@@ -1,6 +1,9 @@
 import { OrderStatus } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
+export type ThroughputOrderType = 'CLINICAL' | 'CONSUMER';
+export type ThroughputProductBaseType = 'Functional' | 'Diabetic';
+
 export interface GetOrderThroughputParams {
   startDate: string;
   endDate: string;
@@ -13,4 +16,12 @@ export interface GetOrderThroughputParams {
   includeComparison?: boolean;
   /** Group results by lane. When true, returns byLane array instead of single count. */
   groupByLane?: boolean;
+  /** Filter by pair counts (e.g., [1, 2, 3] for 1-pair, 2-pair, 3-pair orders). */
+  pairCounts?: number[];
+  /** Filter by order types (CLINICAL = admin-web, CONSUMER = consumer-web/insoles-web). */
+  orderTypes?: ThroughputOrderType[];
+  /** Filter by company IDs. */
+  companyIds?: string[];
+  /** Filter by product base types (Functional or Diabetic). */
+  productBaseTypes?: ThroughputProductBaseType[];
 }
