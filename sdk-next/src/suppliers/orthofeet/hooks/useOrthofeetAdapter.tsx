@@ -1,6 +1,6 @@
 'use client';
 
-import { useFetchPricingByProductType } from '@hike/ui';
+import { useFetchPricingByProductType, usePreferences } from '@hike/ui';
 import type { UseSupplierAdapterParams } from '../../hooks/useSupplierAdapter';
 import type { SupplierAdapter } from '../../types';
 import { OrthofeetCatalog } from '../components/OrthofeetCatalog';
@@ -8,6 +8,12 @@ import { ORTHOFEET_FORM_FIELDS, ORTHOFEET_INVENTORY_BUFFER, ORTHOFEET_SUPPLIER_I
 
 export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierAdapter => {
   const { formSubmissionData, upsertSubmission, workbenchId, schemaId, isPreFabOrHeatMoldable } = params;
+
+  const { data: preferences } = usePreferences();
+
+  // When using Hike's Orthofeet warehouse, orders are placed via API with real-time inventory
+  // deduction, so no buffer is needed. Otherwise, use the default buffer to prevent overselling.
+  const inventoryBuffer = preferences?.useHikeOrthofeetWarehouse ? 0 : ORTHOFEET_INVENTORY_BUFFER;
 
   // Fetch prefab insert pricing if applicable
   const { data: prefabInsertPricing, isLoading: isPrefabInsertPricingLoading } = useFetchPricingByProductType({
@@ -79,7 +85,7 @@ export const useOrthofeetAdapter = (params: UseSupplierAdapterParams): SupplierA
           isPreFabOrHeatMoldable && prefabInsertPricing?.amount ? prefabInsertPricing.amount : undefined
         }
         prefabInsertQuantity={prefabInsertQuantity}
-        inventoryBuffer={ORTHOFEET_INVENTORY_BUFFER}
+        inventoryBuffer={inventoryBuffer}
         enableInventoryCheck
         isLoading={false}
         onAddToCart={handleAddToCartInternal}
