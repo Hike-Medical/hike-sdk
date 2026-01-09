@@ -243,6 +243,7 @@ export * from './dto/soleforge/ThroughputUnit';
 export * from './dto/soleforge/UpdateLaneParams';
 export * from './dto/soleforge/UpdateMachineConfigurationParams';
 export * from './dto/soleforge/UpdateMachineStatusParams';
+export * from './dto/soleforge/UpdatePrintJobParams';
 export * from './dto/soleforge/ValidMachineStateTransitions';
 export * from './dto/supplier/GetSuppliersParams';
 export * from './dto/supplier/orthofeet/GetOrthofeetInventoryParams';

@@ -6,7 +6,6 @@ export interface MarkPrintJobAsFailedParams {
 
 export interface MarkPrintJobAsFailedResponse {
   failedJob: { id: string; status: string };
-  requeuedJob: { id: string; printerId: string; printerName: string };
 }
 
 

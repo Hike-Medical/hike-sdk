@@ -12,6 +12,7 @@ export interface SoleforgeOrderPrintJob {
   printerId: string;
   actualStartTime: Date | null;
   actualEndTime: Date | null;
+  failureReason: string | null;
 }
 
 export interface CompatibleSoleforgeOrder {
@@ -25,5 +26,9 @@ export interface CompatibleSoleforgeOrder {
   orderStatus: OrderStatus;
   orderSide: number | null;
   orderQuantity: string | null;
+  committedDeliveryAt: Date | string | null;
+  shoeSize: number | null;
+  leftQuantity: string | number | null;
+  rightQuantity: string | number | null;
   printJobs: SoleforgeOrderPrintJob[];
 }
