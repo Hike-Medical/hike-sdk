@@ -5,6 +5,14 @@ export interface OrderThroughputOrder {
   transitionedAt: Date;
   leftCount: number;
   rightCount: number;
+  /** Committed delivery date for the order */
+  committedDeliveryAt: Date | null;
+  /** Date the order was created */
+  createdAt: Date;
+  /** PO number from the evaluation */
+  poNumber: string | null;
+  /** Workbench ID for the order */
+  workbenchId: string;
 }
 
 export interface OrderThroughputComparison {
@@ -31,6 +39,15 @@ export interface OrderThroughputByCompany {
   comparison?: OrderThroughputComparison;
 }
 
+export interface OrderThroughputBySLA {
+  /** Bucket identifier (e.g., 'past_committed', 'same_day') */
+  bucket: string;
+  /** Human-readable label */
+  label: string;
+  /** Count in selected unit */
+  count: number;
+}
+
 export interface OrderThroughputResponse {
   count: number;
   unit: ThroughputUnit;
@@ -40,4 +57,6 @@ export interface OrderThroughputResponse {
   byLane?: OrderThroughputByLane[];
   /** Results grouped by company. Only present when groupByCompany is true. */
   byCompany?: OrderThroughputByCompany[];
+  /** Results grouped by SLA bucket. Only present when includeSLAMetrics is true. */
+  bySLA?: OrderThroughputBySLA[];
 }

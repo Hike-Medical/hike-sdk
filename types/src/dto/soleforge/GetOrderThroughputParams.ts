@@ -26,4 +26,6 @@ export interface GetOrderThroughputParams {
   companyIds?: string[];
   /** Filter by product base types (Functional or Diabetic). */
   productBaseTypes?: ThroughputProductBaseType[];
+  /** Include SLA bucket metrics (orders grouped by days relative to committed date). */
+  includeSLAMetrics?: boolean;
 }
