@@ -46,6 +46,8 @@ export interface OrderThroughputBySLA {
   label: string;
   /** Count in selected unit */
   count: number;
+  /** Orders in this SLA bucket. Only present when includeOrders is true. */
+  orders?: OrderThroughputOrder[];
 }
 
 export interface OrderThroughputResponse {
