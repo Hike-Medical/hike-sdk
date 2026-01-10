@@ -16,6 +16,8 @@ export interface GetOrderThroughputParams {
   includeComparison?: boolean;
   /** Group results by lane. When true, returns byLane array instead of single count. */
   groupByLane?: boolean;
+  /** Group results by company. When true, returns byCompany array. */
+  groupByCompany?: boolean;
   /** Filter by pair counts (e.g., [1, 2, 3] for 1-pair, 2-pair, 3-pair orders). */
   pairCounts?: number[];
   /** Filter by order types (CLINICAL = admin-web, CONSUMER = consumer-web/insoles-web). */

@@ -21,6 +21,16 @@ export interface OrderThroughputByLane {
   comparison?: OrderThroughputComparison;
 }
 
+export interface OrderThroughputByCompany {
+  companyId: string | null;
+  companyName: string | null;
+  count: number;
+  /** Whether this company's orders are clinical (true) or consumer (false). */
+  isClinical: boolean;
+  orders?: OrderThroughputOrder[];
+  comparison?: OrderThroughputComparison;
+}
+
 export interface OrderThroughputResponse {
   count: number;
   unit: ThroughputUnit;
@@ -28,4 +38,6 @@ export interface OrderThroughputResponse {
   comparison?: OrderThroughputComparison;
   /** Results grouped by lane. Only present when groupByLane is true. */
   byLane?: OrderThroughputByLane[];
+  /** Results grouped by company. Only present when groupByCompany is true. */
+  byCompany?: OrderThroughputByCompany[];
 }
