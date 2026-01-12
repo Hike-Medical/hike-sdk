@@ -50,6 +50,13 @@ export interface OrderThroughputBySLA {
   orders?: OrderThroughputOrder[];
 }
 
+export interface QualityRateMetrics {
+  /** Total count in the selected unit (orders, pairs, or insoles) */
+  totalCount: number;
+  /** Count that had at least one reprint in the selected unit */
+  countWithReprints: number;
+}
+
 export interface OrderThroughputResponse {
   count: number;
   unit: ThroughputUnit;
@@ -61,4 +68,6 @@ export interface OrderThroughputResponse {
   byCompany?: OrderThroughputByCompany[];
   /** Results grouped by SLA bucket. Only present when includeSLAMetrics is true. */
   bySLA?: OrderThroughputBySLA[];
+  /** Quality rate metrics for OEE calculation. Only present when includeQualityRateMetrics is true. */
+  qualityRateMetrics?: QualityRateMetrics;
 }

@@ -30,4 +30,6 @@ export interface GetOrderThroughputParams {
   includeSLAMetrics?: boolean;
   /** Include Solemate data (orders without a lane ID). Defaults to true. */
   includeSolemateData?: boolean;
+  /** Include quality rate metrics (totalOrders, ordersWithReprints). Defaults to false. */
+  includeQualityRateMetrics?: boolean;
 }
