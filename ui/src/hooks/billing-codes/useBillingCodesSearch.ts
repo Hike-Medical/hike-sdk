@@ -5,15 +5,26 @@ import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 interface UseBillingCodesSearchOptions
   extends Omit<UseQueryOptions<PagedResponse<BillingCode[]> | null, HikeError<null>>, 'queryKey' | 'queryFn'> {
   searchTerm?: string | null;
+  codes?: string[];
   queryKey?: QueryKey;
 }
 
-export const useBillingCodesSearch = ({ searchTerm, queryKey = [], ...options }: UseBillingCodesSearchOptions) => {
-  const key = ['useBillingCodesSearch', ...(searchTerm ? [searchTerm] : []), ...queryKey];
+export const useBillingCodesSearch = ({
+  searchTerm,
+  codes,
+  queryKey = [],
+  ...options
+}: UseBillingCodesSearchOptions) => {
+  const key = ['useBillingCodesSearch', ...(searchTerm ? [searchTerm] : []), ...(codes ?? []), ...queryKey];
 
   const query = useQuery({
     queryKey: key,
-    queryFn: async () => (searchTerm ? await searchBillingCodes({ term: searchTerm }) : await fetchBillingCodes()),
+    queryFn: async () => {
+      if (searchTerm) {
+        return await searchBillingCodes({ term: searchTerm });
+      }
+      return await fetchBillingCodes({ codes: codes ?? [] });
+    },
     ...options
   });
 
