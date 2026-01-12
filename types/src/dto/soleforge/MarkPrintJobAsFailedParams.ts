@@ -8,3 +8,4 @@ export interface MarkPrintJobAsFailedResponse {
   failedJob: { id: string; status: string };
 }
 
+

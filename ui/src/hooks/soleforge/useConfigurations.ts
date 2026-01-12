@@ -14,3 +14,4 @@ export const useConfigurations = ({ queryKey = [], ...options }: UseConfiguratio
     ...options
   });
 
+

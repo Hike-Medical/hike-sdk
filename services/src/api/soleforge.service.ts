@@ -11,12 +11,14 @@ import {
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
   GetMachinesParams,
+  GetOrderThroughputParams,
   GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
   Lane,
   Machine,
   MarkPrintJobAsFailedParams,
   MarkPrintJobAsFailedResponse,
+  OrderThroughputResponse,
   Printer3D,
   PrintJob,
   QueuePrintJobsParams,
@@ -174,6 +176,15 @@ export const updateMachineConfiguration = async (params: UpdateMachineConfigurat
 export const getCompatibleOrders = async (params?: GetCompatibleOrdersParams): Promise<CompatibleSoleforgeOrder[]> => {
   try {
     const response = await backendApi.get('soleforge/compatible-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrderThroughput = async (params: GetOrderThroughputParams): Promise<OrderThroughputResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/throughput', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -14,3 +14,4 @@ export const usePrinterHistory = (params: GetPrinterHistoryParams, options?: Use
     enabled: !!params.printerId,
     ...options
   });
+
