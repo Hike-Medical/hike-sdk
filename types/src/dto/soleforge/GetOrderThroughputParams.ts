@@ -28,4 +28,6 @@ export interface GetOrderThroughputParams {
   productBaseTypes?: ThroughputProductBaseType[];
   /** Include SLA bucket metrics (orders grouped by days relative to committed date). */
   includeSLAMetrics?: boolean;
+  /** Include Solemate data (orders without a lane ID). Defaults to true. */
+  includeSolemateData?: boolean;
 }
