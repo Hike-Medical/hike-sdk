@@ -32,4 +32,8 @@ export interface GetOrderThroughputParams {
   includeSolemateData?: boolean;
   /** Include quality rate metrics (totalOrders, ordersWithReprints). Defaults to false. */
   includeQualityRateMetrics?: boolean;
+  /** Group results by pair count (1, 2, 3 pairs). When true, returns byPairCount array. */
+  groupByPairCount?: boolean;
+  /** Group results by clinical addon type. When true, returns byAddon array. Clinical orders only. */
+  groupByAddon?: boolean;
 }
