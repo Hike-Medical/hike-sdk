@@ -19,6 +19,8 @@ export interface OrderThroughputComparison {
   previousCount: number;
   /** Percent change from previous period. E.g., 15.5 means +15.5%, -10.2 means -10.2% */
   percentChange: number;
+  /** True when previousCount was 0 and current count > 0 (infinite growth from zero baseline) */
+  isNew?: boolean;
 }
 
 export interface OrderThroughputByLane {
