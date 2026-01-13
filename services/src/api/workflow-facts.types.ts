@@ -972,6 +972,15 @@ export const FactRegistry = {
   },
 
   // diabetic interview
+  'diabetic_interview.call.status': {
+    displayName: 'Call Status',
+    description: 'Status of the call',
+    category: 'Diabetic Interview',
+    required: false,
+    schema: z.string(),
+    metadata: defaultMetadataSchema
+  },
+
   'diabetic_interview.received_shoes_this_year': {
     displayName: 'Received Shoes This Year',
     description:
