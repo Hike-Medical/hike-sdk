@@ -180,12 +180,13 @@ export const createWorkflowWithFile = async (data: {
   }
 };
 
-export const createWorkflowByName = async (
-  workflowName: string,
-  params?: { parentWorkflowId?: string }
-): Promise<Workflow> => {
+export interface StartWorkflowParams {
+  parentWorkflowId?: string;
+}
+
+export const createWorkflowByName = async (workflowName: string, params?: StartWorkflowParams): Promise<Workflow> => {
   try {
-    const response = await backendApi.post(`workflow/name/${workflowName}`, params || {});
+    const response = await backendApi.post(`workflow/name/${workflowName}`, params ?? {});
     return response.data;
   } catch (error) {
     throw toHikeError(error);
