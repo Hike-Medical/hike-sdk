@@ -4,6 +4,7 @@ import type {
   PagedResponse,
   SearchWorkflowsParams,
   UpdateWorkflowAttachmentParams,
+  Workflow,
   WorkflowAttachment,
   WorkflowDto,
   WorkflowSearchResult,
@@ -173,6 +174,19 @@ export const createWorkflowWithFile = async (data: {
 }): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.post('workflow/create-with-file', data);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export interface StartWorkflowParams {
+  parentWorkflowId?: string;
+}
+
+export const createWorkflowByName = async (workflowName: string, params?: StartWorkflowParams): Promise<Workflow> => {
+  try {
+    const response = await backendApi.post(`workflow/name/${workflowName}`, params ?? {});
     return response.data;
   } catch (error) {
     throw toHikeError(error);
