@@ -1,17 +1,18 @@
-import { createWorkflowByName } from '@hike/services';
+import { createWorkflowByName, StartWorkflowParams } from '@hike/services';
 import type { HikeError, Workflow } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
-interface CreateWorkflowByNameParams {
+interface UseCreateWorkflowByNameParams {
   workflowName: string;
-  parentWorkflowId?: string;
+  params?: StartWorkflowParams;
 }
 
 export const useCreateWorkflowByName = (
-  options?: Omit<UseMutationOptions<Workflow, HikeError<null>, CreateWorkflowByNameParams>, 'mutationFn'>
-) =>
-  useMutation({
-    mutationFn: ({ workflowName, parentWorkflowId }: CreateWorkflowByNameParams) =>
-      createWorkflowByName(workflowName, { parentWorkflowId }),
+  options?: Omit<UseMutationOptions<Workflow, HikeError<null>, UseCreateWorkflowByNameParams>, 'mutationFn'>
+) => {
+  return useMutation({
+    mutationFn: ({ workflowName, params }: UseCreateWorkflowByNameParams) => createWorkflowByName(workflowName, params),
+
     ...options
   });
+};
