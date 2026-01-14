@@ -301,6 +301,7 @@ export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
 export * from './hooks/workflows/useAttachmentPresignedUrl';
+export * from './hooks/workflows/useCreateWorkflowByName';
 export * from './hooks/workflows/useCreateWorkflowWithFile';
 export * from './hooks/workflows/useFactHistory';
 export * from './hooks/workflows/useFactsByIds';
