@@ -12,9 +12,10 @@ export const printGcode = async (body: SendGcodeToPrinterParams, companyIds: str
   }
 };
 
-export const sendPrinterLabel = async (workbenchId: string, companyIds: string[]) => {
+export const sendPrinterLabel = async (workbenchId: string, companyIds: string[], printerSn?: string) => {
   try {
-    const response = await backendApi.post(`printer/${workbenchId}/label`, { headers: addHeaders(companyIds) });
+    const params = printerSn ? `?printerSn=${encodeURIComponent(printerSn)}` : '';
+    const response = await backendApi.post(`printer/${workbenchId}/label${params}`, {}, { headers: addHeaders(companyIds) });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
