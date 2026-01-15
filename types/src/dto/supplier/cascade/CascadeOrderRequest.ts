@@ -12,7 +12,7 @@ export interface CascadeOrderRequest {
   shipToCountry: string;
   shipToMailAddress?: string;
   line: {
-    itemId: number;
+    itemId: string;
     unitQuantity: number;
     note?: string;
   };
