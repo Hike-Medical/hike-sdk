@@ -1,6 +1,12 @@
 import type {
+  CascadeAvailabilityResponse,
+  CascadeOrderHistoryResponse,
+  CascadeOrderRequest,
+  CascadeOrderResponse,
+  CascadePriceResponse,
   CatalogProductExtended,
   CatalogSupplier,
+  GetCascadeItemPricesParams,
   GetOrthofeetProductStylesParams,
   GetOrthofeetProductStyleVariantsParams,
   GetSuppliersParams,
@@ -58,6 +64,49 @@ export const fetchOrthofeetProductStyleVariants = async (
 ): Promise<CatalogProductExtended[]> => {
   try {
     const response = await backendApi.get('supplier/orthofeet/product/style/variants', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Cascade
+
+export const fetchCascadeItemInventory = async (itemIds: (string | number)[]): Promise<CascadeAvailabilityResponse> => {
+  try {
+    const response = await backendApi.get('supplier/cascade/inventory', {
+      params: { itemIds: itemIds.join(',') }
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchCascadeItemPrices = async (params: GetCascadeItemPricesParams): Promise<CascadePriceResponse> => {
+  try {
+    const response = await backendApi.post('supplier/cascade/prices', {
+      itemIds: params.itemIds,
+      quantity: params.quantity ?? 1
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createCascadeOrder = async (body: CascadeOrderRequest): Promise<CascadeOrderResponse> => {
+  try {
+    const response = await backendApi.post('supplier/cascade/order', body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchCascadeOrderHistory = async (orderNumber: string): Promise<CascadeOrderHistoryResponse> => {
+  try {
+    const response = await backendApi.get(`supplier/cascade/order/history/${orderNumber}`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
