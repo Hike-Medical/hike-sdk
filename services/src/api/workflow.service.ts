@@ -1,5 +1,7 @@
 import type {
   AttachmentPresignedUrl,
+  CommentDto,
+  CreateWorkflowCommentParams,
   EvaluationAttachmentType,
   PagedResponse,
   SearchWorkflowsParams,
@@ -229,6 +231,27 @@ export const updateWorkflowStatus = async (
 ): Promise<WorkflowDto> => {
   try {
     const response = await backendApi.post(`workflow/${workflowId}/status`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const createWorkflowComment = async (
+  workflowId: string,
+  params: CreateWorkflowCommentParams
+): Promise<CommentDto> => {
+  try {
+    const response = await backendApi.post(`workflow/${workflowId}/comments`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getWorkflowComments = async (workflowId: string): Promise<CommentDto[]> => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/comments`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
