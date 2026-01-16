@@ -3,7 +3,7 @@ export interface CommentDto {
   workflowId: string;
   content: string;
   createdAt: string;
-  createdByUser?: {
+  createdByUser: {
     id: string;
     firstName?: string;
     lastName?: string;
