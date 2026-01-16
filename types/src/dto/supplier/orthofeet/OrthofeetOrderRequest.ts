@@ -5,6 +5,7 @@ export interface OrthofeetOrderItem {
 
 export interface OrthofeetOrderRequest {
   account_id: string;
+  company_id: string;
   customer_po: string;
   customer_name: string;
   address_line_1: string;

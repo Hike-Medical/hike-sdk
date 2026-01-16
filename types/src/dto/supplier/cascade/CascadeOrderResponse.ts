@@ -1,0 +1,83 @@
+export interface CascadeOrderResponse {
+  apiInformation: unknown;
+  lines: {
+    list: unknown[];
+  };
+  notes: {
+    list: unknown[];
+  };
+  salesreps: {
+    list: unknown[];
+  };
+  builderSelectionSheets: {
+    list: unknown[];
+  };
+  samples: {
+    list: unknown[];
+  };
+  customerId: number;
+  companyId: string;
+  locationId: number;
+  poNo: string;
+  contactId: string;
+  taker: string;
+  jobName: string;
+  orderDate: number;
+  requestedDate: number;
+  approved: boolean;
+  shipToId: number;
+  shipToName: string;
+  shipToAddress1: string;
+  shipToAddress2: string;
+  shipToAddress3: string;
+  shipToCity: string;
+  oeHdrShip2State: string;
+  zipCode: string;
+  shipToCountry: string;
+  shipToMailAddress: string;
+  sourceLocationId: number;
+  carrierId: number;
+  route: string;
+  packingBasis: string;
+  deliveryInstructions: string;
+  terms: string;
+  willCall: string;
+  class1id: string;
+  class2id: string;
+  class3id: string;
+  class4id: string;
+  class5id: string;
+  rma: string;
+  freightCd: string;
+  billingDescription: string;
+  captureUsage: boolean;
+  jobNo: string;
+  invoiceBatchNumber: number;
+  invoiceExchangeRateSource: string;
+  shipToPhone: string;
+  applyBuilderAllowanceFlag: string;
+  quoteExpirationDate: number | null;
+  promiseDate: number;
+  createInvoice: boolean;
+  cStrategicPriceLibraryId: string;
+  merchandiseCreditFlag: string;
+  orderPriorityId: string;
+  upsCode: string;
+  placedByName: string;
+  requiredPaymentUponRelease: string;
+  freightOut: number;
+  orderNo: string;
+  pickTicketType: string;
+  oeHdrUid: number;
+  thirdPartyBilling: string;
+  userDefinedFields: Record<string, unknown>;
+  currencyID: string;
+  completed: string;
+  quote: string;
+  deletedFlag: string;
+  cancelledFlag: string;
+  invoiceNo: string;
+  quoteType: string | null;
+  webReferenceNo: string;
+  objectName: string;
+}
