@@ -1,6 +1,7 @@
+import { OrderStatus } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
-export interface OrderThroughputOrder {
+export interface OperationAnalyticsOrder {
   orderId: string;
   transitionedAt: Date;
   leftCount: number;
@@ -27,7 +28,7 @@ export interface OrderThroughputByLane {
   laneId: string | null;
   laneName: string | null;
   count: number;
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
   comparison?: OrderThroughputComparison;
 }
 
@@ -37,7 +38,7 @@ export interface OrderThroughputByCompany {
   count: number;
   /** Whether this company's orders are clinical (true) or consumer (false). */
   isClinical: boolean;
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
   comparison?: OrderThroughputComparison;
 }
 
@@ -49,7 +50,7 @@ export interface OrderThroughputBySLA {
   /** Count in selected unit */
   count: number;
   /** Orders in this SLA bucket. Only present when includeOrders is true. */
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
 }
 
 /** Addon types that can be tracked in order throughput (clinical orders only) */
@@ -70,7 +71,7 @@ export interface OrderThroughputByPairCount {
   /** Count in selected unit */
   count: number;
   /** Orders in this pair count bucket */
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
   comparison?: OrderThroughputComparison;
 }
 
@@ -82,7 +83,7 @@ export interface OrderThroughputByAddon {
   /** Count in selected unit */
   count: number;
   /** Orders with this addon */
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
   comparison?: OrderThroughputComparison;
 }
 
@@ -96,7 +97,7 @@ export interface QualityRateMetrics {
 export interface OrderThroughputResponse {
   count: number;
   unit: ThroughputUnit;
-  orders?: OrderThroughputOrder[];
+  orders?: OperationAnalyticsOrder[];
   comparison?: OrderThroughputComparison;
   /** Results grouped by lane. Only present when groupByLane is true. */
   byLane?: OrderThroughputByLane[];
@@ -111,3 +112,17 @@ export interface OrderThroughputResponse {
   /** Results grouped by clinical addon type. Only present when groupByAddon is true. */
   byAddon?: OrderThroughputByAddon[];
 }
+
+export interface OrderStatusCount {
+  status: OrderStatus;
+  count: number;
+  orders?: OperationAnalyticsOrder[];
+}
+
+export interface GetOrderStatusCountsParams {
+  /** Statuses to exclude from the results */
+  excludeStatus?: OrderStatus[];
+}
+
+/** @deprecated Use OperationAnalyticsOrder instead */
+export type OrderThroughputOrder = OperationAnalyticsOrder;

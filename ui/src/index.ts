@@ -223,6 +223,7 @@ export * from './hooks/soleforge/useAddLabelPrinter';
 export * from './hooks/soleforge/useAddPrinter3D';
 export * from './hooks/soleforge/useAssignMachineToLane';
 export * from './hooks/soleforge/useBulkAddPrinter3D';
+export * from './hooks/soleforge/useCancelPrintJob';
 export * from './hooks/soleforge/useCompatibleOrders';
 export * from './hooks/soleforge/useCompatiblePrinters';
 export * from './hooks/soleforge/useConfigurations';
@@ -232,6 +233,11 @@ export * from './hooks/soleforge/useDeleteLane';
 export * from './hooks/soleforge/useLanes';
 export * from './hooks/soleforge/useMachines';
 export * from './hooks/soleforge/useMarkPrintJobAsFailed';
+<<<<<<< HEAD
+=======
+export * from './hooks/soleforge/useOrdersBySLA';
+export * from './hooks/soleforge/useOrderStatusCounts';
+>>>>>>> dd849bc (feat(soleforge): add at-risk SLA dashboard for proactive order monitoring)
 export * from './hooks/soleforge/useOrderThroughput';
 export * from './hooks/soleforge/usePrinterHistory';
 export * from './hooks/soleforge/useQueuePrintJobs';
