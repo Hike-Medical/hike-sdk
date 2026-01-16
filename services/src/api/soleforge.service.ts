@@ -3,6 +3,8 @@ import {
   AddPrinter3DParams,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
+  CancelPrintJobParams,
+  CancelPrintJobResponse,
   CompatiblePrinter,
   CompatibleSoleforgeOrder,
   Configuration,
@@ -11,6 +13,8 @@ import {
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
   GetMachinesParams,
+  GetOrdersBySLAParams,
+  GetOrderStatusCountsParams,
   GetOrderThroughputParams,
   GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
@@ -18,6 +22,8 @@ import {
   Machine,
   MarkPrintJobAsFailedParams,
   MarkPrintJobAsFailedResponse,
+  OrdersBySLAResponse,
+  OrderStatusCount,
   OrderThroughputResponse,
   Printer3D,
   PrintJob,
@@ -191,6 +197,24 @@ export const getOrderThroughput = async (params: GetOrderThroughputParams): Prom
   }
 };
 
+export const getOrderStatusCounts = async (params?: GetOrderStatusCountsParams): Promise<OrderStatusCount[]> => {
+  try {
+    const response = await backendApi.get('soleforge/order-status-counts', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getOrdersBySLA = async (params?: GetOrdersBySLAParams): Promise<OrdersBySLAResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/get-orders-by-sla', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getCompatiblePrinters = async (params: GetCompatiblePrintersParams): Promise<CompatiblePrinter[]> => {
   try {
     const { orderId, ...queryParams } = params;
@@ -243,6 +267,20 @@ export const markPrintJobAsFailed = async (
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
       { failureReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<CancelPrintJobResponse> => {
+  try {
+    const { printJobId, cancellationReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/print-jobs/${printJobId}/cancel`,
+      { cancellationReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
