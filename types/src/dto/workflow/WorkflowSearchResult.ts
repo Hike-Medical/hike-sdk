@@ -8,6 +8,16 @@ export interface WorkflowSearchResult {
   expirationTime?: Date;
   status: string;
   statusReason?: string;
+  latestComment?: {
+    content: string;
+    createdAt: Date;
+    createdBy?: {
+      id: string;
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+    };
+  };
   statusUpdates: {
     status: string;
     updatedAt: Date;

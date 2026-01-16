@@ -106,6 +106,12 @@ export interface WorkflowStepReportDto {
   unmetExplanations: string[];
 }
 
+export interface WorkflowTagDto {
+  id: string;
+  name: string;
+  description?: string;
+}
+
 export interface WorkflowDto {
   workflowId: string;
   workflowName: string;
@@ -132,4 +138,5 @@ export interface WorkflowDto {
     };
   }[];
   stepReports?: WorkflowStepReportDto[];
+  tags?: WorkflowTagDto[];
 }
