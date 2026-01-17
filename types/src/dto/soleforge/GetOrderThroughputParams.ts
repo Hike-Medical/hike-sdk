@@ -1,4 +1,4 @@
-import { OrderStatus } from '../../../prisma';
+import { OrderStatus, ProductType } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
 export type ThroughputOrderType = 'CLINICAL' | 'CONSUMER';
@@ -36,4 +36,6 @@ export interface GetOrderThroughputParams {
   groupByPairCount?: boolean;
   /** Group results by clinical addon type. When true, returns byAddon array. Clinical orders only. */
   groupByAddon?: boolean;
+  /** Filter by product types (e.g., INSOLE). Only orders with matching product types are included. */
+  productTypes?: ProductType[];
 }

@@ -1,4 +1,4 @@
-import { OrderStatus } from '../../../prisma';
+import { OrderStatus, ProductType } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
 export interface OperationAnalyticsOrder {
@@ -122,6 +122,8 @@ export interface OrderStatusCount {
 export interface GetOrderStatusCountsParams {
   /** Statuses to exclude from the results */
   excludeStatus?: OrderStatus[];
+  /** Filter by product types (e.g., INSOLE). Only orders with matching product types are included. */
+  productTypes?: ProductType[];
 }
 
 /** @deprecated Use OperationAnalyticsOrder instead */
