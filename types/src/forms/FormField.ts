@@ -25,6 +25,7 @@ export interface FormFieldOption {
   value: string;
   description?: string;
   icon?: string;
+  group?: string;
   alias?: Record<string, FormFieldValue>;
 }
 
@@ -34,6 +35,7 @@ export type FormField =
       suffix?: string;
       keyboard?: 'email' | 'url' | 'phone' | 'punctuation';
       hidden?: boolean;
+      allowedValues?: string[];
     })
   | (BaseFormField<number> & {
       type: 'number';
@@ -69,7 +71,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'select:device-type-side' })
   | (BaseFormField<string> & { type: 'select:device-type-position' })
   | (BaseFormField<string> & { type: 'select:physician' })
-  | (BaseFormField<string> & { type: 'select:diagnosis' })
+  | (BaseFormField<string> & { type: 'select:diagnosis'; allowedValues?: string[] })
   | (BaseFormField<string> & { type: 'select:facility' })
   | (BaseFormField<string> & { type: 'select:patient' })
   | (BaseFormField<string> & { type: 'multiselect:billingCodes'; allowedCodes?: string[] })
