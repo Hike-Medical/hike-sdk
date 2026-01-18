@@ -1,3 +1,4 @@
+import { OrderStatus, ProductType } from '../../../prisma';
 import { OperationAnalyticsOrder } from './OperationAnalyticsResponse';
 
 export type SLARiskBucket =
@@ -23,4 +24,8 @@ export interface OrdersBySLAResponse {
 export interface GetOrdersBySLAParams {
   /** Whether to include order details in the response */
   includeOrders?: boolean;
+  /** Statuses to exclude from the results */
+  excludeStatus?: OrderStatus[];
+  /** Filter by product types (e.g., INSOLE). Only orders with matching product types are included. */
+  productTypes?: ProductType[];
 }
