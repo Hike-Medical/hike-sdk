@@ -14,6 +14,10 @@ export interface OperationAnalyticsOrder {
   poNumber: string | null;
   /** Workbench ID for the order */
   workbenchId: string;
+  /** Order status (e.g., TOE_FILLER, NEEDS_MANUFACTURING) */
+  status?: OrderStatus;
+  /** Date the order was authorized (when authorizationStatus is APPROVED) */
+  authorizedAt?: Date | null;
 }
 
 export interface OrderThroughputComparison {
