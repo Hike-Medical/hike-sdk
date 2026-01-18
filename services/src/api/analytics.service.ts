@@ -96,26 +96,6 @@ export const getOrderMetricsBreakdown = async (
   }
 };
 
-export const getCompanyTurnaroundStats = async (body: DateFilter, companyIds: string[]) => {
-  try {
-    const response = await backendApi.post(
-      'analytics/orders/turnaround',
-      {
-        ...body,
-        startDate: body.startDate,
-        endDate: body.endDate
-      },
-      {
-        headers: addHeaders(companyIds)
-      }
-    );
-
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
 export const getEmployerDashboardStats = async (
   params?: EmployerDashboardStatsOptions
 ): Promise<Record<EmployerDashboardStatus, number>> => {
