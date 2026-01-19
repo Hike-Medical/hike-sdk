@@ -1,15 +1,16 @@
 import { fetchEmailTemplates } from '@hike/services';
-import { EmailTemplateExtended, HikeError } from '@hike/types';
+import { EmailTemplateExtended, GetEmailTemplatesParams, HikeError, PagedResponse } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseGetEmailTemplatesOptions
-  extends Omit<UseQueryOptions<EmailTemplateExtended[], HikeError<null>>, 'queryKey' | 'queryFn'> {
+  extends Omit<UseQueryOptions<PagedResponse<EmailTemplateExtended[]>, HikeError<null>>, 'queryKey' | 'queryFn'> {
+  params?: GetEmailTemplatesParams;
   queryKey?: QueryKey;
 }
 
-export const useGetEmailTemplates = ({ queryKey = [], ...options }: UseGetEmailTemplatesOptions = {}) =>
+export const useGetEmailTemplates = ({ params, queryKey = [], ...options }: UseGetEmailTemplatesOptions = {}) =>
   useQuery({
-    queryKey: ['emailTemplates', queryKey],
-    queryFn: async () => await fetchEmailTemplates(),
+    queryKey: ['emailTemplates', params, queryKey],
+    queryFn: async () => await fetchEmailTemplates(params),
     ...options
   });

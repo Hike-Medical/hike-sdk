@@ -1,15 +1,19 @@
 import type {
   EmailTemplate,
   EmailTemplateExtended,
+  GetEmailTemplatesParams,
+  PagedResponse,
   SendEmailTemplateParams,
   UpsertEmailTemplateParams
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const fetchEmailTemplates = async (): Promise<EmailTemplateExtended[]> => {
+export const fetchEmailTemplates = async (
+  params?: GetEmailTemplatesParams
+): Promise<PagedResponse<EmailTemplateExtended[]>> => {
   try {
-    const response = await backendApi.get('email-template');
+    const response = await backendApi.get('email-template', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
