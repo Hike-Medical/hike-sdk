@@ -97,6 +97,7 @@ export * from './dto/contact/TransformedContact';
 export * from './dto/department/CreateDepartmentParams';
 export * from './dto/department/GetDepartmentsParams';
 export * from './dto/department/UpdateDepartmentParams';
+export * from './dto/email-template/GetEmailTemplatesParams';
 export * from './dto/email-template/SendEmailTemplateParams';
 export * from './dto/email-template/UpsertEmailTemplateParams';
 export * from './dto/enrollment/CheckEnrollmentEligibilityParams';
