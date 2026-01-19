@@ -96,6 +96,8 @@ export interface QualityRateMetrics {
   totalCount: number;
   /** Count that had at least one reprint in the selected unit */
   countWithReprints: number;
+  /** Orders that had at least one reprint. Only present when includeOrders is true. */
+  reprintOrders?: OperationAnalyticsOrder[];
 }
 
 export interface OrderThroughputResponse {
