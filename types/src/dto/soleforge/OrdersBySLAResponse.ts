@@ -2,6 +2,7 @@ import { OrderStatus, ProductType } from '../../../prisma';
 import { OperationAnalyticsOrder } from './OperationAnalyticsResponse';
 
 export type SLARiskBucket =
+  | 'no_committed_date'
   | 'breached'
   | 'critical_2d'
   | 'warning_2_7d'
@@ -19,6 +20,8 @@ export interface OrdersBySLAResponse {
   buckets: SLARiskBucketData[];
   /** Sum of breached + critical_2d + warning_2_7d */
   totalAtRisk: number;
+  /** Count of orders without a committed delivery date */
+  totalNoCommittedDate: number;
 }
 
 export interface GetOrdersBySLAParams {
