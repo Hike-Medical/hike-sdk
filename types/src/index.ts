@@ -229,6 +229,7 @@ export * from './dto/soleforge/CreateConfigurationParams';
 export * from './dto/soleforge/CreateLaneParams';
 export * from './dto/soleforge/GetCompatibleOrdersParams';
 export * from './dto/soleforge/GetCompatiblePrintersParams';
+export * from './dto/soleforge/GetLanesParams';
 export * from './dto/soleforge/GetMachinesParams';
 export * from './dto/soleforge/GetOrderThroughputParams';
 export * from './dto/soleforge/GetPrinterHistoryParams';
