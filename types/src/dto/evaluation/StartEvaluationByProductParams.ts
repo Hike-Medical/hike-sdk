@@ -10,4 +10,5 @@ export interface StartEvaluationByProductParams {
   sides?: Side[];
   referringPatientId?: string;
   customization?: WorkbenchCustomization;
+  submittedExternalId?: string;
 }
