@@ -222,6 +222,7 @@ export * from './dto/soleforge/AddLabelPrinterParams';
 export * from './dto/soleforge/AddPrinter3DParams';
 export * from './dto/soleforge/AssignMachineToLaneParams';
 export * from './dto/soleforge/BulkAddPrinter3DParams';
+export * from './dto/soleforge/BulkMarkPrintJobsAsFailedParams';
 export * from './dto/soleforge/CancelPrintJobParams';
 export * from './dto/soleforge/CompatiblePrinter';
 export * from './dto/soleforge/CompatibleSoleforgeOrder';

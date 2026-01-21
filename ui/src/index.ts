@@ -221,6 +221,7 @@ export * from './hooks/soleforge/useAddLabelPrinter';
 export * from './hooks/soleforge/useAddPrinter3D';
 export * from './hooks/soleforge/useAssignMachineToLane';
 export * from './hooks/soleforge/useBulkAddPrinter3D';
+export * from './hooks/soleforge/useBulkMarkPrintJobsAsFailed';
 export * from './hooks/soleforge/useCancelPrintJob';
 export * from './hooks/soleforge/useCompatibleOrders';
 export * from './hooks/soleforge/useCompatiblePrinters';

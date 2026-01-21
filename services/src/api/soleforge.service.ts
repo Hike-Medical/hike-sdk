@@ -3,6 +3,8 @@ import {
   AddPrinter3DParams,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
+  BulkMarkPrintJobsAsFailedParams,
+  BulkMarkPrintJobsAsFailedResponse,
   CancelPrintJobParams,
   CancelPrintJobResponse,
   CompatiblePrinter,
@@ -268,6 +270,22 @@ export const markPrintJobAsFailed = async (
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
       { failureReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const bulkMarkPrintJobsAsFailed = async (
+  params: BulkMarkPrintJobsAsFailedParams
+): Promise<BulkMarkPrintJobsAsFailedResponse> => {
+  try {
+    const { printJobIds, ticketId, failureReason, jwtToken } = params;
+    const response = await backendApi.post(
+      'soleforge/print-jobs/bulk-fail',
+      { printJobIds, ticketId, failureReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
