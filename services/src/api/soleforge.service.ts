@@ -31,6 +31,8 @@ import {
   Printer3D,
   PrintJob,
   QueuePrintJobsParams,
+  RevertOrderToPrintingParams,
+  RevertOrderToPrintingResponse,
   ShippingStationConfiguration,
   SoleforgeDashboard,
   SoleforgePrintJobWithAsset,
@@ -300,6 +302,22 @@ export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<Canc
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/cancel`,
       { cancellationReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertOrderToPrinting = async (
+  params: RevertOrderToPrintingParams
+): Promise<RevertOrderToPrintingResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-to-printing`,
+      { ticketId, revertReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;

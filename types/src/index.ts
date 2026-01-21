@@ -240,6 +240,7 @@ export * from './dto/soleforge/OperationAnalyticsResponse';
 export * from './dto/soleforge/OrdersBySLAResponse';
 export * from './dto/soleforge/QueuePrintJobsParams';
 export * from './dto/soleforge/RejectionQuantities';
+export * from './dto/soleforge/RevertOrderToPrintingParams';
 export * from './dto/soleforge/ShippingStationConfiguration';
 export * from './dto/soleforge/SoleforgeDashboard';
 export * from './dto/soleforge/SoleforgePrintJobWithAsset';

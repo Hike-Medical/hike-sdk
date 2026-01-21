@@ -237,6 +237,7 @@ export * from './hooks/soleforge/useOrderStatusCounts';
 export * from './hooks/soleforge/useOrderThroughput';
 export * from './hooks/soleforge/usePrinterHistory';
 export * from './hooks/soleforge/useQueuePrintJobs';
+export * from './hooks/soleforge/useRevertOrderToPrinting';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/soleforge/useSoleforgeDashboard';
 export * from './hooks/soleforge/useUpdateLane';
