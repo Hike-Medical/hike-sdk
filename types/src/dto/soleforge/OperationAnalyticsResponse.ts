@@ -1,6 +1,9 @@
 import { OrderStatus, ProductType } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
+/** SubStatus for DRAFT orders indicating validation stage */
+export type DraftSubStatus = 'DEV_VALIDATION' | 'PROD_VALIDATION' | 'VALIDATION_COMPLETE';
+
 export interface OperationAnalyticsOrder {
   orderId: string;
   transitionedAt: Date;
@@ -18,6 +21,8 @@ export interface OperationAnalyticsOrder {
   status?: OrderStatus;
   /** Date the order was authorized (when authorizationStatus is APPROVED) */
   authorizedAt?: Date | null;
+  /** SubStatus for DRAFT orders indicating validation stage (DEV_VALIDATION, PROD_VALIDATION, VALIDATION_COMPLETE) */
+  subStatus?: DraftSubStatus;
 }
 
 export interface OrderThroughputComparison {
@@ -123,6 +128,8 @@ export interface OrderStatusCount {
   status: OrderStatus;
   count: number;
   orders?: OperationAnalyticsOrder[];
+  /** SubStatus grouping for DRAFT orders - when present, this entry represents a specific validation stage */
+  subStatus?: DraftSubStatus;
 }
 
 export interface GetOrderStatusCountsParams {
