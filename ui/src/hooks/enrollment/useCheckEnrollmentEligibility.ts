@@ -14,7 +14,7 @@ export const useCheckEnrollmentEligibility = ({
   ...options
 }: UseCheckEnrollmentEligibilityOptions) =>
   useQuery({
-    queryKey: ['checkEnrollmentEligibility', params.patientId, params.externalId, queryKey],
+    queryKey: ['checkEnrollmentEligibility', params.patientId, params.externalId, params.workbenchId, queryKey],
     queryFn: async () => await checkEnrollmentEligibility(params),
     ...options
   });

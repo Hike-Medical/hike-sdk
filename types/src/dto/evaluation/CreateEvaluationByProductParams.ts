@@ -7,4 +7,5 @@ export interface CreateEvaluationByProductParams extends CreateEvaluationParams 
   sides?: Side[];
   referringPatientId?: string;
   customization?: WorkbenchCustomization;
+  submittedExternalId?: string;
 }

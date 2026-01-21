@@ -19,8 +19,8 @@ export const checkEnrollmentEligibility = async (
   params: CheckEnrollmentEligibilityParams
 ): Promise<CheckEnrollmentEligibilityResponse> => {
   try {
-    const { patientId, externalId } = params;
-    const response = await backendApi.post(`enrollment/eligibility/${patientId}`, { externalId });
+    const { patientId, externalId, workbenchId } = params;
+    const response = await backendApi.post(`enrollment/eligibility/${patientId}`, { externalId, workbenchId });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
