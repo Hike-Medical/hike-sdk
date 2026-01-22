@@ -5,4 +5,13 @@ export interface CheckoutSessionInfo {
   employerDiscounted: number;
   isReorder: boolean;
   insuranceEligibility?: string;
+  appliedCoupon?: {
+    code: string;
+    name: string;
+    discount: number;
+  };
+}
+
+export interface GetCheckoutSessionInfoParams {
+  couponCode?: string;
 }
