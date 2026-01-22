@@ -1,15 +1,15 @@
 import { getLanes } from '@hike/services';
-import { FactoryId, HikeError, Lane } from '@hike/types';
+import { FactoryName, HikeError, Lane } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseLanesOptions extends Omit<UseQueryOptions<Lane[], HikeError<null>>, 'queryFn' | 'queryKey'> {
-  factoryIds?: FactoryId[];
+  factoryNames?: FactoryName[];
   queryKey?: QueryKey;
 }
 
-export const useLanes = ({ factoryIds, queryKey = [], ...options }: UseLanesOptions = {}) =>
+export const useLanes = ({ factoryNames, queryKey = [], ...options }: UseLanesOptions = {}) =>
   useQuery<Lane[], HikeError<null>>({
-    queryKey: ['lanes', factoryIds, queryKey],
-    queryFn: async () => await getLanes({ factoryIds }),
+    queryKey: ['lanes', factoryNames, queryKey],
+    queryFn: async () => await getLanes({ factoryNames }),
     ...options
   });
