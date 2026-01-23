@@ -3,6 +3,8 @@ import {
   AddPrinter3DParams,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
+  BulkMarkPrintJobsAsFailedParams,
+  BulkMarkPrintJobsAsFailedResponse,
   CancelPrintJobParams,
   CancelPrintJobResponse,
   CompatiblePrinter,
@@ -12,6 +14,7 @@ import {
   CreateLaneParams,
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
+  GetLanesParams,
   GetMachinesParams,
   GetOrdersBySLAParams,
   GetOrderStatusCountsParams,
@@ -28,6 +31,8 @@ import {
   Printer3D,
   PrintJob,
   QueuePrintJobsParams,
+  RevertOrderToPrintingParams,
+  RevertOrderToPrintingResponse,
   ShippingStationConfiguration,
   SoleforgeDashboard,
   SoleforgePrintJobWithAsset,
@@ -40,9 +45,9 @@ import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const getLanes = async (): Promise<Lane[]> => {
+export const getLanes = async (params?: GetLanesParams): Promise<Lane[]> => {
   try {
-    const response = await backendApi.get('soleforge/lanes');
+    const response = await backendApi.get('soleforge/lanes', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -67,9 +72,9 @@ export const getShippingStationConfigurations = async (): Promise<ShippingStatio
   }
 };
 
-export const getSoleforgeDashboard = async (): Promise<SoleforgeDashboard> => {
+export const getSoleforgeDashboard = async (params?: GetLanesParams): Promise<SoleforgeDashboard> => {
   try {
-    const response = await backendApi.get('soleforge/dashboard');
+    const response = await backendApi.get('soleforge/dashboard', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -275,12 +280,44 @@ export const markPrintJobAsFailed = async (
   }
 };
 
+export const bulkMarkPrintJobsAsFailed = async (
+  params: BulkMarkPrintJobsAsFailedParams
+): Promise<BulkMarkPrintJobsAsFailedResponse> => {
+  try {
+    const { printJobIds, ticketId, failureReason, jwtToken } = params;
+    const response = await backendApi.post(
+      'soleforge/print-jobs/bulk-fail',
+      { printJobIds, ticketId, failureReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<CancelPrintJobResponse> => {
   try {
     const { printJobId, cancellationReason, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/cancel`,
       { cancellationReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertOrderToPrinting = async (
+  params: RevertOrderToPrintingParams
+): Promise<RevertOrderToPrintingResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-to-printing`,
+      { ticketId, revertReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;

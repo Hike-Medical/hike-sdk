@@ -9,9 +9,7 @@ interface UseCompatibleOrdersOptions
 
 export const useCompatibleOrders = (params?: GetCompatibleOrdersParams, options?: UseCompatibleOrdersOptions) =>
   useQuery<CompatibleSoleforgeOrder[], HikeError<null>>({
-    queryKey: ['compatibleSoleforgeOrders', params?.statuses, options?.queryKey],
+    queryKey: ['compatibleSoleforgeOrders', params?.statuses, params?.factoryNames, options?.queryKey],
     queryFn: async () => await getCompatibleOrders(params),
     ...options
   });
-
-
