@@ -30,7 +30,8 @@ export const PylonProvider = ({ appId, pylonId, children }: PylonProviderProps) 
 
   const { data } = useCurrentPatient({
     params: { slug: params.slug },
-    enabled: appId === '@hike/consumer-web' && status === 'AUTHENTICATED' && !!params.slug
+    enabled:
+      ['@hike/insoles-web', '@hike/consumer-web'].indexOf(appId) !== -1 && status === 'AUTHENTICATED' && !!params.slug
   });
 
   // Fetch Pylon email hash for identity verification
