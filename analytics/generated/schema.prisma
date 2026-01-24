@@ -1,0 +1,71 @@
+// Analytics Database Schema
+// This schema is for the dedicated analytics Aurora Serverless v2 cluster.
+// It stores pre-computed metrics and tracks compute job runs.
+//
+// The replicated tables (Company, Patient, etc.) are managed by AWS DMS, not Prisma.
+// Only the analytics-specific tables below are defined here for type generation.
+//
+// Usage:
+//   pnpm prisma generate --schema=apps/backend/prisma/analytics/analytics.prisma
+//   DO NOT use db push - create tables via SQL instead
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../packages/hike-sdk/analytics/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("ANALYTICS_DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Pre-computed metrics for POST /analytics/orders
+// Stores daily order counts by company for instant dashboard reads.
+// Daily grain allows flexible aggregation: day-over-day, week-over-week, etc.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model MetricsOrdersByCompany {
+  id         String   @id @default(uuid())
+  computedAt DateTime @default(now())
+
+  /// Company identifier (matches primary DB Company.id)
+  companyId   String
+  /// Company name at time of computation
+  companyName String?
+
+  /// The date this metric represents (daily grain)
+  date DateTime @db.Date
+
+  /// Orders submitted on this date
+  orderCount Int
+
+  @@unique([companyId, date])
+  @@index([date(sort: Desc)])
+  @@index([companyId, date(sort: Desc)])
+  @@map("metrics_orders_by_company")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Compute job tracking
+// Tracks when metrics were computed, status, and any errors.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model ComputeRun {
+  id               String    @id @default(uuid())
+  /// Type of metric being computed (e.g., 'orders_by_company')
+  metricType       String
+  /// When the compute job started
+  startedAt        DateTime  @default(now())
+  /// When the compute job completed (null if still running or failed)
+  completedAt      DateTime?
+  /// Status: 'running', 'completed', 'failed'
+  status           String    @default("running")
+  /// Number of records processed
+  recordsProcessed Int?
+  /// Error message if status is 'failed'
+  error            String?
+
+  @@index([metricType, startedAt(sort: Desc)])
+  @@map("compute_run")
+}

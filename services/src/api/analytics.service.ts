@@ -124,3 +124,17 @@ export const getWorkflowChartData = async (params: GetWorkflowChartDataParams): 
     throw toHikeError(error);
   }
 };
+
+export interface AnalyticsMetadata {
+  lastUpdated: string | null;
+  availableDateRange: { minDate: string; maxDate: string } | null;
+}
+
+export const getAnalyticsMetadata = async (): Promise<AnalyticsMetadata> => {
+  try {
+    const response = await backendApi.get('analytics/metadata');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
