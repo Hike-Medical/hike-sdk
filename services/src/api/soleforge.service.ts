@@ -23,6 +23,9 @@ import {
   GetValidMachineStateTransitionsParams,
   Lane,
   Machine,
+  ManualReprintOrdersResponse,
+  MarkManualReprintOrderAsPrintingParams,
+  MarkManualReprintOrderAsPrintingResponse,
   MarkPrintJobAsFailedParams,
   MarkPrintJobAsFailedResponse,
   OrdersByShipByAgeResponse,
@@ -31,6 +34,10 @@ import {
   Printer3D,
   PrintJob,
   QueuePrintJobsParams,
+  RevertGrindingOrderParams,
+  RevertGrindingOrderResponse,
+  RevertManualReprintOrderParams,
+  RevertManualReprintOrderResponse,
   RevertOrderToPrintingParams,
   RevertOrderToPrintingResponse,
   ShippingStationConfiguration,
@@ -193,6 +200,17 @@ export const getCompatibleOrders = async (params?: GetCompatibleOrdersParams): P
   }
 };
 
+export const getManualReprintOrders = async (
+  params?: Pick<GetCompatibleOrdersParams, 'statuses'>
+): Promise<ManualReprintOrdersResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/manual-reprint-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getOrderThroughput = async (params: GetOrderThroughputParams): Promise<OrderThroughputResponse> => {
   try {
     const response = await backendApi.get('soleforge/throughput', { params });
@@ -317,6 +335,54 @@ export const revertOrderToPrinting = async (
     const { orderId, ticketId, revertReason, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-to-printing`,
+      { ticketId, revertReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const markManualReprintOrderAsPrinting = async (
+  params: MarkManualReprintOrderAsPrintingParams
+): Promise<MarkManualReprintOrderAsPrintingResponse> => {
+  try {
+    const { orderId, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/mark-manual-reprint-as-printing`,
+      {},
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertManualReprintOrderToManufacturing = async (
+  params: RevertManualReprintOrderParams
+): Promise<RevertManualReprintOrderResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-manual-reprint-to-manufacturing`,
+      { ticketId, revertReason },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertGrindingOrderToManufacturing = async (
+  params: RevertGrindingOrderParams
+): Promise<RevertGrindingOrderResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-grinding-to-manufacturing`,
       { ticketId, revertReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
