@@ -16,7 +16,7 @@ import {
   GetCompatiblePrintersParams,
   GetLanesParams,
   GetMachinesParams,
-  GetOrdersBySLAParams,
+  GetOrdersByShipByAgeParams,
   GetOrderStatusCountsParams,
   GetOrderThroughputParams,
   GetPrinterHistoryParams,
@@ -25,7 +25,7 @@ import {
   Machine,
   MarkPrintJobAsFailedParams,
   MarkPrintJobAsFailedResponse,
-  OrdersBySLAResponse,
+  OrdersByShipByAgeResponse,
   OrderStatusCount,
   OrderThroughputResponse,
   Printer3D,
@@ -211,9 +211,9 @@ export const getOrderStatusCounts = async (params?: GetOrderStatusCountsParams):
   }
 };
 
-export const getOrdersBySLA = async (params?: GetOrdersBySLAParams): Promise<OrdersBySLAResponse> => {
+export const getOrdersByShipByAge = async (params?: GetOrdersByShipByAgeParams): Promise<OrdersByShipByAgeResponse> => {
   try {
-    const response = await backendApi.get('soleforge/get-orders-by-sla', { params });
+    const response = await backendApi.get('soleforge/get-orders-by-ship-by-age', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

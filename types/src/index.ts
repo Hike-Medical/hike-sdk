@@ -237,7 +237,7 @@ export * from './dto/soleforge/GetPrinterHistoryParams';
 export * from './dto/soleforge/GetValidMachineStateTransitionsParams';
 export * from './dto/soleforge/MarkPrintJobAsFailedParams';
 export * from './dto/soleforge/OperationAnalyticsResponse';
-export * from './dto/soleforge/OrdersBySLAResponse';
+export * from './dto/soleforge/OrdersByShipByAgeResponse';
 export * from './dto/soleforge/QueuePrintJobsParams';
 export * from './dto/soleforge/RejectionQuantities';
 export * from './dto/soleforge/RevertOrderToPrintingParams';
