@@ -15,6 +15,6 @@ export const useOrdersByShipByAge = (
   useQuery({
     queryKey: options?.queryKey ?? ['ordersByShipByAge', params],
     queryFn: async () => await getOrdersByShipByAge(params),
-    refetchInterval: 30000, // Real-time 30s refresh
+    refetchInterval: 3000, // Real-time 30s refresh
     ...options
   });
