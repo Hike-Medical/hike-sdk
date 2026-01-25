@@ -31,6 +31,8 @@ export interface GetOrdersByShipByAgeParams {
   includeOrders?: boolean;
   /** Statuses to exclude from the results */
   excludeStatus?: OrderStatus[];
+  /** Statuses to include in the results (if provided, only these statuses are included, except for always-excluded terminal statuses) */
+  includeStatus?: OrderStatus[];
   /** Filter by product types (e.g., INSOLE). Only orders with matching product types are included. */
   productTypes?: ProductType[];
 }
