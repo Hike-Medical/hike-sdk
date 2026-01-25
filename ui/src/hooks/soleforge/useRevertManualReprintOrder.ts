@@ -3,11 +3,7 @@ import { HikeError, RevertManualReprintOrderParams, RevertManualReprintOrderResp
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 export const useRevertManualReprintOrder = (
-  options?: UseMutationOptions<
-    RevertManualReprintOrderResponse,
-    HikeError<null>,
-    RevertManualReprintOrderParams
-  >
+  options?: UseMutationOptions<RevertManualReprintOrderResponse, HikeError<null>, RevertManualReprintOrderParams>
 ) =>
   useMutation({
     mutationKey: ['revertManualReprintOrder'],
