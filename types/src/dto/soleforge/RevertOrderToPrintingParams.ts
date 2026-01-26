@@ -4,6 +4,7 @@ export interface RevertOrderToPrintingParams {
   orderId: string;
   ticketId: string;
   revertReason: string;
+  source?: string;
   jwtToken?: string;
 }
 
