@@ -30,5 +30,6 @@ export interface CompatibleSoleforgeOrder {
   shoeSize: number | null;
   leftQuantity: string | number | null;
   rightQuantity: string | number | null;
+  slicerProfile: string | null;
   printJobs: SoleforgeOrderPrintJob[];
 }
