@@ -9,6 +9,7 @@ export interface EnrollPatientsParams {
   patientIds?: string[];
   status?: 'ALL' | 'ACTIVE' | 'RETURNING' | 'INACTIVE';
   tags?: string[];
+  excludedTags?: string[];
   departmentIds?: string[];
   facilityIds?: string[];
   onlyExternalId?: boolean;
