@@ -35,3 +35,6 @@ keys.json
 
 # typescript
 *.tsbuildinfo
+
+# generated
+analytics/generated/

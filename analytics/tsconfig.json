@@ -9,5 +9,5 @@
     "removeComments": false
   },
   "include": ["./src"],
-  "exclude": ["node_modules", "dist", "generated", "eslint.config.mjs"]
+  "exclude": ["node_modules", "dist", "eslint.config.mjs"]
 }

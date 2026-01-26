@@ -8,5 +8,4 @@
  *   pnpm prisma generate --schema=apps/backend/prisma/analytics/analytics.prisma
  */
 
-export { PrismaClient } from '../generated';
-export * from '../generated';
+export * from '../generated/client';
