@@ -1,6 +1,6 @@
 import { Order } from '../../../prisma';
 
-export interface RevertOrderToPrintingParams {
+export interface RevertManualReprintOrderParams {
   orderId: string;
   ticketId: string;
   revertReason: string;
@@ -8,4 +8,4 @@ export interface RevertOrderToPrintingParams {
   jwtToken?: string;
 }
 
-export type RevertOrderToPrintingResponse = Order;
+export type RevertManualReprintOrderResponse = Order;
