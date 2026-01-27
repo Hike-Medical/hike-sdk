@@ -1,4 +1,5 @@
 import {
+  ANALYTICS_ENDPOINT_NAME,
   AnalyticsDateRangeParams,
   AnalyticsEndpointName,
   AnalyticsMetadataByEndpointsResponse,
@@ -7,6 +8,7 @@ import {
   EmployerDashboardStatus,
   GetWorkflowChartDataParams,
   HourlyOptions,
+  HourlyResponse,
   OrderMetricsBreakdownOptions,
   OrderMetricsBreakdownResponse,
   OrderMetricsOptions,
@@ -19,14 +21,18 @@ import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: string[]) => {
+export const getOrderStatusesPerHour = async (
+  body: HourlyOptions,
+  companyIds: string[]
+): Promise<HourlyResponse[]> => {
   try {
     const response = await backendApi.post(
-      'analytics/orders/statuses/hourly',
+      `analytics/name/${ANALYTICS_ENDPOINT_NAME.COMPUTE_ORDER_STATUSES_HOURLY}`,
       {
-        ...body,
         startDate: body.dateFilters.startDate,
-        endDate: body.dateFilters.endDate
+        endDate: body.dateFilters.endDate,
+        orderStatuses: body.orderStatuses,
+        removeWeekends: body.removeWeekends
       },
       {
         headers: addHeaders(companyIds)
