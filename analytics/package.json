@@ -1,0 +1,40 @@
+{
+  "name": "@hike/analytics",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Hike Analytics Prisma client for the analytics database.",
+  "keywords": [
+    "analytics",
+    "prisma",
+    "database"
+  ],
+  "author": "support@hikemedical.com",
+  "license": "Apache-2.0",
+  "types": "./dist/src/index.d.ts",
+  "main": "./dist/cjs/src/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "require": "./dist/cjs/src/index.js",
+      "default": "./dist/cjs/src/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build && tsc --project tsconfig.cjs.json && node ./scripts/patch-prisma-cjs.js",
+    "dev": "tsc --watch",
+    "lint": "eslint \"src/**/*.{ts,js}\"",
+    "format": "npx prettier --check . --ignore-path ../../../.gitignore",
+    "clean": "rm -rf node_modules dist"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.0"
+  },
+  "devDependencies": {
+    "@hike/config": "workspace:*",
+    "eslint": "^9.26.0",
+    "prisma": "^6.3.0"
+  }
+}
