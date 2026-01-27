@@ -20,7 +20,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "generated"
   ],
   "scripts": {
     "build": "tsc --build && tsc --project tsconfig.cjs.json && node ./scripts/patch-prisma-cjs.js",
