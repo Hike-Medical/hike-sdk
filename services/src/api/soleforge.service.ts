@@ -286,10 +286,10 @@ export const markPrintJobAsFailed = async (
   params: MarkPrintJobAsFailedParams
 ): Promise<MarkPrintJobAsFailedResponse> => {
   try {
-    const { printJobId, failureReason, jwtToken } = params;
+    const { printJobId, ticketId, failureReason, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
-      { failureReason },
+      { ticketId, failureReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
