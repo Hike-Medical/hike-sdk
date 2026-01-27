@@ -1,6 +1,8 @@
 import type {
+  AnnotationDto,
   AttachmentPresignedUrl,
   CommentDto,
+  CreateAnnotationParams,
   CreateWorkflowCommentParams,
   EvaluationAttachmentType,
   PagedResponse,
@@ -252,6 +254,38 @@ export const createWorkflowComment = async (
 export const getWorkflowComments = async (workflowId: string): Promise<CommentDto[]> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/comments`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Adds an annotation to an attachment.
+ * The backend enforces a unique constraint (attachmentId, userId) to prevent duplicate annotations.
+ */
+export const addAnnotation = async (
+  workflowId: string,
+  attachmentId: string,
+  params: CreateAnnotationParams
+): Promise<AnnotationDto> => {
+  try {
+    const response = await backendApi.post(
+      `workflow/${workflowId}/attachments/${attachmentId}/annotations`,
+      params
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Gets all annotations for an attachment.
+ */
+export const getAnnotations = async (workflowId: string, attachmentId: string): Promise<AnnotationDto[]> => {
+  try {
+    const response = await backendApi.get(`workflow/${workflowId}/attachments/${attachmentId}/annotations`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

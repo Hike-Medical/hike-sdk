@@ -314,6 +314,8 @@ export * from './hooks/workbenches/useValidationResults';
 export * from './hooks/workbenches/useWorkbenchDevSummary';
 export * from './hooks/workbenches/useWorkbenchStats';
 export * from './hooks/workbenches/useWorkbenchSummary';
+export * from './hooks/workflows/useAddAnnotation';
+export * from './hooks/workflows/useAnnotations';
 export * from './hooks/workflows/useAttachmentPresignedUrl';
 export * from './hooks/workflows/useCreateWorkflowByName';
 export * from './hooks/workflows/useCreateWorkflowComment';

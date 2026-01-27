@@ -18,6 +18,13 @@ export enum FactMatchMode {
   OR = 'OR'
 }
 
+export enum AnnotationFilter {
+  /** Workflows with attachments that have no annotations */
+  NOT_ANNOTATED = 'NOT_ANNOTATED',
+  /** Workflows with attachments not annotated by the current user */
+  NOT_ANNOTATED_BY_USER = 'NOT_ANNOTATED_BY_USER'
+}
+
 export interface SearchWorkflowFilter {
   workflowNames?: string[];
   status?: string[];
@@ -31,6 +38,7 @@ export interface SearchWorkflowFilter {
   toEndTime?: string;
   tags?: string[];
   searchQuery?: string;
+  annotationFilter?: AnnotationFilter;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
