@@ -8,5 +8,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/MetricsOrdersByCompany.js'
+export type * from './models/MetricsOrderStatusesHourly.js'
 export type * from './models/ComputeRun.js'
 export type * from './commonInputTypes.js'

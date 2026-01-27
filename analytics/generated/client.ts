@@ -51,6 +51,11 @@ path.join(process.cwd(), "../../packages/hike-sdk/analytics/generated/libquery_e
  */
 export type MetricsOrdersByCompany = Prisma.MetricsOrdersByCompanyModel
 /**
+ * Model MetricsOrderStatusesHourly
+ * 
+ */
+export type MetricsOrderStatusesHourly = Prisma.MetricsOrderStatusesHourlyModel
+/**
  * Model ComputeRun
  * 
  */

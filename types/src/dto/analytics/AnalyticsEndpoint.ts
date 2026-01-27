@@ -7,7 +7,8 @@
  * const endpoint = ANALYTICS_ENDPOINT_NAME.TOTAL_ORDERS_BY_COMPANY;
  */
 export const ANALYTICS_ENDPOINT_NAME = {
-  TOTAL_ORDERS_BY_COMPANY: 'total-orders-by-company'
+  TOTAL_ORDERS_BY_COMPANY: 'total-orders-by-company',
+  COMPUTE_ORDER_STATUSES_HOURLY: 'compute-order-statuses-hourly'
 } as const;
 
 /**
