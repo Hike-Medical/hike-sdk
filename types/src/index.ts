@@ -8,6 +8,7 @@ export * from './auth/SamlTypes';
 export * from './config/AppId';
 export * from './config/HikeConfig';
 export * from './config/HikeEnvironment';
+export * from './dto/analytics/AnalyticsEndpoint';
 export * from './dto/analytics/EmployerDashboardStatsOptions';
 export * from './dto/analytics/EmployerDashboardStatus';
 export * from './dto/analytics/HourlyOptions';
