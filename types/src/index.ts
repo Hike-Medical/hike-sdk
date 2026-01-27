@@ -12,6 +12,7 @@ export * from './dto/analytics/AnalyticsEndpoint';
 export * from './dto/analytics/EmployerDashboardStatsOptions';
 export * from './dto/analytics/EmployerDashboardStatus';
 export * from './dto/analytics/HourlyOptions';
+export * from './dto/analytics/HourlyResponse';
 export * from './dto/analytics/marketingUtmParams';
 export * from './dto/analytics/OrderMetricsBreakdownOptions';
 export * from './dto/analytics/OrderMetricsBreakdownResponse';
