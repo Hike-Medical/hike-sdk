@@ -23,24 +23,26 @@ export interface AttachmentPageClassification {
   classifications: string[];
 }
 
-/** @deprecated Use AnnotationDto with the new Annotation table instead */
-export interface AttachmentClassification {
-  userId: string;
-  date: string;
-  pageClassifications: AttachmentPageClassification[];
-}
-
-/** @deprecated Use AnnotationClassifications with the new Annotation table instead */
-export interface AttachmentAnnotations {
-  classifications: AttachmentClassification[];
+/**
+ * Annotation types supported by the system
+ */
+export enum AnnotationType {
+  /** Page-by-page document classification */
+  CLASSIFICATION = 'CLASSIFICATION',
+  /** Annotation about document content, linked to a Fact record */
+  FACT = 'FACT',
+  /** Review of another annotation for disagreement resolution */
+  REVIEW = 'REVIEW'
 }
 
 /**
- * The JSON structure stored in the Annotation table's classifications field
+ * Content structure for CLASSIFICATION annotations
  */
-export interface AnnotationClassifications {
+export interface ClassificationContent {
   pageClassifications: AttachmentPageClassification[];
 }
+
+type AnnotationContent = ClassificationContent;
 
 /**
  * User info included in annotation responses
@@ -59,8 +61,9 @@ export interface AnnotationDto {
   id: string;
   attachmentId: string;
   userId: string;
+  type: AnnotationType;
+  content: AnnotationContent;
   createdAt: string;
-  classifications: AnnotationClassifications;
   user?: AnnotationUser;
 }
 
@@ -68,7 +71,8 @@ export interface AnnotationDto {
  * Parameters for creating a new annotation
  */
 export interface CreateAnnotationParams {
-  classifications: AnnotationClassifications;
+  type: AnnotationType;
+  content: AnnotationContent;
 }
 
 export interface UpdateWorkflowAttachmentParams {
@@ -78,6 +82,4 @@ export interface UpdateWorkflowAttachmentParams {
   metadata?: Record<string, unknown>;
   isComplete?: boolean;
   deactivateFacts?: boolean;
-  /** @deprecated Use the dedicated annotation endpoint instead */
-  annotations?: AttachmentAnnotations;
 }

@@ -262,7 +262,7 @@ export const getWorkflowComments = async (workflowId: string): Promise<CommentDt
 
 /**
  * Adds an annotation to an attachment.
- * The backend enforces a unique constraint (attachmentId, userId) to prevent duplicate annotations.
+ * Supports different annotation types: CLASSIFICATION, FACT, and REVIEW.
  */
 export const addAnnotation = async (
   workflowId: string,

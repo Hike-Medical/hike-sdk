@@ -1,4 +1,5 @@
 import { PagedParams } from '../PagedParams';
+import { AnnotationType } from './WorkflowAttachment';
 
 export enum WorkflowSortBy {
   CREATED_AT = 'createdAt',
@@ -39,6 +40,8 @@ export interface SearchWorkflowFilter {
   tags?: string[];
   searchQuery?: string;
   annotationFilter?: AnnotationFilter;
+  /** Filter by specific annotation type */
+  annotationType?: AnnotationType;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
