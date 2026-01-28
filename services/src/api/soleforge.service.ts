@@ -310,10 +310,10 @@ export const markPrintJobAsFailed = async (
   params: MarkPrintJobAsFailedParams
 ): Promise<MarkPrintJobAsFailedResponse> => {
   try {
-    const { printJobId, ticketId, failureReason, jwtToken } = params;
+    const { printJobId, ticketId, failureReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
-      { ticketId, failureReason },
+      { ticketId, failureReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -326,10 +326,10 @@ export const bulkMarkPrintJobsAsFailed = async (
   params: BulkMarkPrintJobsAsFailedParams
 ): Promise<BulkMarkPrintJobsAsFailedResponse> => {
   try {
-    const { printJobIds, ticketId, failureReason, jwtToken } = params;
+    const { printJobIds, ticketId, failureReason, source, jwtToken } = params;
     const response = await backendApi.post(
       'soleforge/print-jobs/bulk-fail',
-      { printJobIds, ticketId, failureReason },
+      { printJobIds, ticketId, failureReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -340,10 +340,10 @@ export const bulkMarkPrintJobsAsFailed = async (
 
 export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<CancelPrintJobResponse> => {
   try {
-    const { printJobId, ticketId, cancellationReason, jwtToken } = params;
+    const { printJobId, ticketId, cancellationReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/cancel`,
-      { ticketId, cancellationReason },
+      { ticketId, cancellationReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
