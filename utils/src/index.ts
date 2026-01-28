@@ -26,6 +26,7 @@ export * from './geography';
 export * from './geography/utils/normalizeGeography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
+export * from './helpers/businessDaysDiff';
 export * from './helpers/colorMapper';
 export * from './helpers/companyUtils';
 export * from './helpers/currentPaginatedPage';

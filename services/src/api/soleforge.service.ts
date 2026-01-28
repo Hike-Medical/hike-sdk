@@ -1,6 +1,7 @@
 import {
   AddLabelPrinterParams,
   AddPrinter3DParams,
+  AnomalyOrdersResponse,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
   BulkMarkPrintJobsAsFailedParams,
@@ -12,6 +13,7 @@ import {
   Configuration,
   CreateConfigurationParams,
   CreateLaneParams,
+  GetAnomalyOrdersParams,
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
   GetLanesParams,
@@ -208,6 +210,15 @@ export const getManualReprintOrders = async (
 ): Promise<ManualReprintOrdersResponse> => {
   try {
     const response = await backendApi.get('soleforge/manual-reprint-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getAnomalyOrders = async (params?: GetAnomalyOrdersParams): Promise<AnomalyOrdersResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/anomaly-orders', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

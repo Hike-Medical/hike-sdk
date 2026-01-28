@@ -222,6 +222,8 @@ export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/ValidateAddressBody';
 export * from './dto/soleforge/AddLabelPrinterParams';
 export * from './dto/soleforge/AddPrinter3DParams';
+export * from './dto/soleforge/AnomalyOrder';
+export * from './dto/soleforge/GetAnomalyOrdersParams';
 export * from './dto/soleforge/AssignMachineToLaneParams';
 export * from './dto/soleforge/BulkAddPrinter3DParams';
 export * from './dto/soleforge/BulkMarkPrintJobsAsFailedParams';
