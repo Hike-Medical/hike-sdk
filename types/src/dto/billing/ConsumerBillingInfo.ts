@@ -9,9 +9,14 @@ export interface CheckoutSessionInfo {
     code: string;
     name: string;
     discount: number;
+    promotionCodeId: string;
   };
 }
 
 export interface GetCheckoutSessionInfoParams {
+  couponCode?: string;
+}
+
+export interface ConsumerSubmitParams {
   couponCode?: string;
 }
