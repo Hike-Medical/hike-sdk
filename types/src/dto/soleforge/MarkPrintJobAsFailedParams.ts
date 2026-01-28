@@ -1,5 +1,6 @@
 export interface MarkPrintJobAsFailedParams {
   printJobId: string;
+  ticketId: string;
   failureReason: string;
   jwtToken?: string;
 }
