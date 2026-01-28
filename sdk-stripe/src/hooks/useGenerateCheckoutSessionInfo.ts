@@ -5,17 +5,19 @@ import { generateCheckoutSessionInfo } from '../api/billing.service';
 interface UseGenerateCheckoutSessionInfoOptions
   extends Omit<UseQueryOptions<CheckoutSessionInfo, HikeError<null>>, 'queryKey' | 'queryFn'> {
   workbenchId: string;
+  couponCode?: string;
   queryKey?: QueryKey;
 }
 
 export const useGenerateCheckoutSessionInfo = ({
   queryKey = [],
   workbenchId,
+  couponCode,
   ...options
 }: UseGenerateCheckoutSessionInfoOptions) =>
   useQuery({
-    queryKey: ['generateCheckoutSessionInfo', workbenchId, queryKey],
-    queryFn: async () => await generateCheckoutSessionInfo(workbenchId),
-    staleTime: 15 * 60 * 1000, // 15 minutes - eligibility unlikely to change during scan flow
+    queryKey: ['generateCheckoutSessionInfo', workbenchId, couponCode, queryKey],
+    queryFn: async () => await generateCheckoutSessionInfo(workbenchId, couponCode),
+    staleTime: couponCode ? 0 : 15 * 60 * 1000, // No stale time when coupon is being validated
     ...options
   });
