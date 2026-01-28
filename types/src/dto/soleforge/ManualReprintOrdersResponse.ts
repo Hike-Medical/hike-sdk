@@ -1,4 +1,11 @@
+import { Side } from '../../../prisma';
 import { CompatibleSoleforgeOrder } from './CompatibleSoleforgeOrder';
+
+export interface ManualReprintGcodeAsset {
+  id: string;
+  side: Side | null;
+  printerType: string | null;
+}
 
 export interface ManualReprintOrder extends CompatibleSoleforgeOrder {
   /**
@@ -6,6 +13,10 @@ export interface ManualReprintOrder extends CompatibleSoleforgeOrder {
    * Examples: 'SIZE_OVER_13', 'SPECIAL_MATERIAL', etc.
    */
   manualReprintReason: string;
+  /**
+   * G-code assets available for this order, for direct file download.
+   */
+  gcodeAssets: ManualReprintGcodeAsset[];
 }
 
 export interface ManualReprintFilterReason {
