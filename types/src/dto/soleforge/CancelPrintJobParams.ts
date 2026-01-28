@@ -1,5 +1,6 @@
 export interface CancelPrintJobParams {
   printJobId: string;
+  ticketId: string;
   cancellationReason: string;
   jwtToken?: string;
 }
