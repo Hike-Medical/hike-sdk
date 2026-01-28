@@ -286,10 +286,10 @@ export const markPrintJobAsFailed = async (
   params: MarkPrintJobAsFailedParams
 ): Promise<MarkPrintJobAsFailedResponse> => {
   try {
-    const { printJobId, failureReason, jwtToken } = params;
+    const { printJobId, ticketId, failureReason, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
-      { failureReason },
+      { ticketId, failureReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -316,10 +316,10 @@ export const bulkMarkPrintJobsAsFailed = async (
 
 export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<CancelPrintJobResponse> => {
   try {
-    const { printJobId, cancellationReason, jwtToken } = params;
+    const { printJobId, ticketId, cancellationReason, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/cancel`,
-      { cancellationReason },
+      { ticketId, cancellationReason },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -332,10 +332,10 @@ export const revertOrderToPrinting = async (
   params: RevertOrderToPrintingParams
 ): Promise<RevertOrderToPrintingResponse> => {
   try {
-    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const { orderId, ticketId, revertReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-to-printing`,
-      { ticketId, revertReason },
+      { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -364,10 +364,10 @@ export const revertManualReprintOrderToManufacturing = async (
   params: RevertManualReprintOrderParams
 ): Promise<RevertManualReprintOrderResponse> => {
   try {
-    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const { orderId, ticketId, revertReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-manual-reprint-to-manufacturing`,
-      { ticketId, revertReason },
+      { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -380,10 +380,10 @@ export const revertGrindingOrderToManufacturing = async (
   params: RevertGrindingOrderParams
 ): Promise<RevertGrindingOrderResponse> => {
   try {
-    const { orderId, ticketId, revertReason, jwtToken } = params;
+    const { orderId, ticketId, revertReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-grinding-to-manufacturing`,
-      { ticketId, revertReason },
+      { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
