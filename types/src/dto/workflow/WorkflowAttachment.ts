@@ -1,4 +1,4 @@
-import { EvaluationAttachmentStatus, EvaluationAttachmentType } from '../../../prisma';
+import { AnnotationType, EvaluationAttachmentStatus, EvaluationAttachmentType } from '../../../prisma';
 
 export interface WorkflowAttachment {
   id: string;
@@ -24,25 +24,13 @@ export interface AttachmentPageClassification {
 }
 
 /**
- * Annotation types supported by the system
- */
-export enum AnnotationType {
-  /** Page-by-page document classification */
-  CLASSIFICATION = 'CLASSIFICATION',
-  /** Annotation about document content, linked to a Fact record */
-  FACT = 'FACT',
-  /** Review of another annotation for disagreement resolution */
-  REVIEW = 'REVIEW'
-}
-
-/**
  * Content structure for CLASSIFICATION annotations
  */
 export interface ClassificationContent {
   pageClassifications: AttachmentPageClassification[];
 }
 
-type AnnotationContent = ClassificationContent;
+export type AnnotationContent = ClassificationContent;
 
 /**
  * User info included in annotation responses

@@ -1,5 +1,4 @@
 import { PagedParams } from '../PagedParams';
-import { AnnotationType } from './WorkflowAttachment';
 
 export enum WorkflowSortBy {
   CREATED_AT = 'createdAt',
@@ -20,10 +19,8 @@ export enum FactMatchMode {
 }
 
 export enum AnnotationFilter {
-  /** Workflows with attachments that have no annotations */
-  NOT_ANNOTATED = 'NOT_ANNOTATED',
-  /** Workflows with attachments not annotated by the current user */
-  NOT_ANNOTATED_BY_USER = 'NOT_ANNOTATED_BY_USER'
+  NO_CLASSIFICATION_ANNOTATIONS = 'NO_CLASSIFICATION_ANNOTATIONS',
+  NO_CLASSIFICATION_ANNOTATIONS_BY_USER = 'NO_CLASSIFICATION_ANNOTATIONS_BY_USER'
 }
 
 export interface SearchWorkflowFilter {
@@ -40,8 +37,6 @@ export interface SearchWorkflowFilter {
   tags?: string[];
   searchQuery?: string;
   annotationFilter?: AnnotationFilter;
-  /** Filter by specific annotation type */
-  annotationType?: AnnotationType;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
