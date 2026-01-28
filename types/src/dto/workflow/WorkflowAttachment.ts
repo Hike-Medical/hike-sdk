@@ -1,7 +1,8 @@
-import { AnnotationType, EvaluationAttachmentStatus, EvaluationAttachmentType } from '../../../prisma';
+import { EvaluationAttachmentStatus, EvaluationAttachmentType, AnnotationType } from '../../../prisma';
 
 export interface WorkflowAttachment {
   id: string;
+  workflowId?: string;
   name: string;
   types: string[];
   status: string;

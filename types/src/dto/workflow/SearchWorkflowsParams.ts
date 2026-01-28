@@ -1,3 +1,4 @@
+import { EvaluationAttachmentType } from '../../../prisma';
 import { PagedParams } from '../PagedParams';
 
 export enum WorkflowSortBy {
@@ -19,7 +20,9 @@ export enum FactMatchMode {
 }
 
 export enum AnnotationFilter {
+  /** Attachments with no classification annotations */
   NO_CLASSIFICATION_ANNOTATIONS = 'NO_CLASSIFICATION_ANNOTATIONS',
+  /** Attachments not classified by the current user */
   NO_CLASSIFICATION_ANNOTATIONS_BY_USER = 'NO_CLASSIFICATION_ANNOTATIONS_BY_USER'
 }
 
@@ -36,7 +39,6 @@ export interface SearchWorkflowFilter {
   toEndTime?: string;
   tags?: string[];
   searchQuery?: string;
-  annotationFilter?: AnnotationFilter;
 }
 
 export interface SearchWorkflowsParams extends PagedParams {
@@ -44,4 +46,19 @@ export interface SearchWorkflowsParams extends PagedParams {
   sortBy?: WorkflowSortBy;
   sortOrder?: 'asc' | 'desc';
   factsToInclude?: string[];
+}
+
+/**
+ * Filter options for searching attachments
+ */
+export interface SearchAttachmentsFilter {
+  type?: EvaluationAttachmentType;
+  annotationFilter?: AnnotationFilter;
+}
+
+/**
+ * Parameters for searching attachments
+ */
+export interface SearchAttachmentsParams extends PagedParams {
+  filter?: SearchAttachmentsFilter;
 }

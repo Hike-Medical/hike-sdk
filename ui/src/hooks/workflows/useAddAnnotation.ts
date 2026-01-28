@@ -3,7 +3,6 @@ import type { AnnotationDto, CreateAnnotationParams, HikeError } from '@hike/typ
 import { UseMutationOptions, useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface AddAnnotationVariables {
-  workflowId: string;
   attachmentId: string;
   params: CreateAnnotationParams;
 }
@@ -15,15 +14,10 @@ export const useAddAnnotation = (
 
   return useMutation({
     mutationKey: ['addAnnotation'],
-    mutationFn: async ({ workflowId, attachmentId, params }) =>
-      await addAnnotation(workflowId, attachmentId, params),
+    mutationFn: async ({ attachmentId, params }) => await addAnnotation(attachmentId, params),
     onSuccess: (data, variables, context) => {
-      // Invalidate workflow queries to refresh annotation data
-      queryClient.invalidateQueries({ queryKey: ['workflow', variables.workflowId] });
-      queryClient.invalidateQueries({ queryKey: ['workflow-attachments', variables.workflowId] });
-      queryClient.invalidateQueries({
-        queryKey: ['annotations', variables.workflowId, variables.attachmentId]
-      });
+      // Invalidate search-attachments queries to refresh the list
+      queryClient.invalidateQueries({ queryKey: ['search-attachments'] });
       options?.onSuccess?.(data, variables, context);
     },
     ...options
