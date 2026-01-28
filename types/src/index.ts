@@ -251,6 +251,7 @@ export * from './dto/soleforge/ShippingStationConfiguration';
 export * from './dto/soleforge/SoleforgeDashboard';
 export * from './dto/soleforge/SoleforgePrintJobWithAsset';
 export * from './dto/soleforge/ThroughputUnit';
+export * from './dto/soleforge/TriggerPrinterReadyParams';
 export * from './dto/soleforge/UpdateLaneParams';
 export * from './dto/soleforge/UpdateMachineConfigurationParams';
 export * from './dto/soleforge/UpdateMachineStatusParams';

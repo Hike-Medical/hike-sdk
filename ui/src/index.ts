@@ -247,6 +247,7 @@ export * from './hooks/soleforge/useRevertManualReprintOrder';
 export * from './hooks/soleforge/useRevertOrderToPrinting';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/soleforge/useSoleforgeDashboard';
+export * from './hooks/soleforge/useTriggerPrinterReady';
 export * from './hooks/soleforge/useUpdateLane';
 export * from './hooks/soleforge/useUpdateMachineConfiguration';
 export * from './hooks/soleforge/useUpdateMachineStatus';

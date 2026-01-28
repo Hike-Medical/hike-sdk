@@ -43,6 +43,8 @@ import {
   ShippingStationConfiguration,
   SoleforgeDashboard,
   SoleforgePrintJobWithAsset,
+  TriggerPrinterReadyParams,
+  TriggerPrinterReadyResponse,
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
   UpdateMachineStatusParams,
@@ -386,6 +388,17 @@ export const revertGrindingOrderToManufacturing = async (
       { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const triggerPrinterReady = async (
+  params: TriggerPrinterReadyParams
+): Promise<TriggerPrinterReadyResponse> => {
+  try {
+    const response = await backendApi.post(`soleforge/printers/${params.printerId}/trigger-ready`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
