@@ -251,6 +251,7 @@ export * from './hooks/soleforge/useTriggerPrinterReady';
 export * from './hooks/soleforge/useUpdateLane';
 export * from './hooks/soleforge/useUpdateMachineConfiguration';
 export * from './hooks/soleforge/useUpdateMachineStatus';
+export * from './hooks/soleforge/useUpdatePrinterNotes';
 export * from './hooks/soleforge/useValidMachineStateTransitions';
 export * from './hooks/supplier/cascade/useCascadeItemInventory';
 export * from './hooks/supplier/cascade/useCascadeItemPrices';

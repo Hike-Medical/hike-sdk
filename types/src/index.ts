@@ -255,6 +255,7 @@ export * from './dto/soleforge/TriggerPrinterReadyParams';
 export * from './dto/soleforge/UpdateLaneParams';
 export * from './dto/soleforge/UpdateMachineConfigurationParams';
 export * from './dto/soleforge/UpdateMachineStatusParams';
+export * from './dto/soleforge/UpdatePrinterNotesParams';
 export * from './dto/soleforge/UpdatePrintJobParams';
 export * from './dto/soleforge/ValidMachineStateTransitions';
 export * from './dto/supplier/cascade/CascadeAvailabilityResponse';

@@ -48,6 +48,7 @@ import {
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
   UpdateMachineStatusParams,
+  UpdatePrinterNotesParams,
   ValidMachineStateTransitions
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -274,6 +275,16 @@ export const updateMachineStatus = async (params: UpdateMachineStatusParams): Pr
   }
 };
 
+export const updatePrinterNotes = async (params: UpdatePrinterNotesParams): Promise<Printer3D> => {
+  try {
+    const { printerId, notes } = params;
+    const response = await backendApi.patch(`soleforge/printers-3d/${printerId}/notes`, { notes });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getPrinterHistory = async (params: GetPrinterHistoryParams): Promise<SoleforgePrintJobWithAsset[]> => {
   try {
     const { printerId, ...queryParams } = params;
@@ -394,9 +405,7 @@ export const revertGrindingOrderToManufacturing = async (
   }
 };
 
-export const triggerPrinterReady = async (
-  params: TriggerPrinterReadyParams
-): Promise<TriggerPrinterReadyResponse> => {
+export const triggerPrinterReady = async (params: TriggerPrinterReadyParams): Promise<TriggerPrinterReadyResponse> => {
   try {
     const response = await backendApi.post(`soleforge/printers/${params.printerId}/trigger-ready`);
     return response.data;
