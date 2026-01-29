@@ -9,10 +9,11 @@ export interface ManualReprintGcodeAsset {
 
 export interface ManualReprintOrder extends CompatibleSoleforgeOrder {
   /**
-   * The reason this order requires manual reprinting.
-   * Examples: 'SIZE_OVER_13', 'SPECIAL_MATERIAL', etc.
+   * The reasons this order requires manual reprinting.
+   * Examples: 'SIZE_OVER_13', 'SHELL', etc.
+   * An order can have multiple reasons.
    */
-  manualReprintReason: string;
+  manualReprintReasons: string[];
   /**
    * G-code assets available for this order, for direct file download.
    */

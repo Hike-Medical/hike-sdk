@@ -1,6 +1,9 @@
 import {
   AddLabelPrinterParams,
   AddPrinter3DParams,
+  AdvanceManualReprintOrderToGrindingParams,
+  AdvanceManualReprintOrderToGrindingResponse,
+  AnomalyOrdersResponse,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
   BulkMarkPrintJobsAsFailedParams,
@@ -12,6 +15,7 @@ import {
   Configuration,
   CreateConfigurationParams,
   CreateLaneParams,
+  GetAnomalyOrdersParams,
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
   GetLanesParams,
@@ -43,9 +47,12 @@ import {
   ShippingStationConfiguration,
   SoleforgeDashboard,
   SoleforgePrintJobWithAsset,
+  TriggerPrinterReadyParams,
+  TriggerPrinterReadyResponse,
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
   UpdateMachineStatusParams,
+  UpdatePrinterNotesParams,
   ValidMachineStateTransitions
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -211,6 +218,15 @@ export const getManualReprintOrders = async (
   }
 };
 
+export const getAnomalyOrders = async (params?: GetAnomalyOrdersParams): Promise<AnomalyOrdersResponse> => {
+  try {
+    const response = await backendApi.get('soleforge/anomaly-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getOrderThroughput = async (params: GetOrderThroughputParams): Promise<OrderThroughputResponse> => {
   try {
     const response = await backendApi.get('soleforge/throughput', { params });
@@ -272,6 +288,16 @@ export const updateMachineStatus = async (params: UpdateMachineStatusParams): Pr
   }
 };
 
+export const updatePrinterNotes = async (params: UpdatePrinterNotesParams): Promise<Printer3D> => {
+  try {
+    const { printerId, notes } = params;
+    const response = await backendApi.patch(`soleforge/printers-3d/${printerId}/notes`, { notes });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getPrinterHistory = async (params: GetPrinterHistoryParams): Promise<SoleforgePrintJobWithAsset[]> => {
   try {
     const { printerId, ...queryParams } = params;
@@ -286,10 +312,10 @@ export const markPrintJobAsFailed = async (
   params: MarkPrintJobAsFailedParams
 ): Promise<MarkPrintJobAsFailedResponse> => {
   try {
-    const { printJobId, ticketId, failureReason, jwtToken } = params;
+    const { printJobId, ticketId, failureReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/fail`,
-      { ticketId, failureReason },
+      { ticketId, failureReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -302,10 +328,10 @@ export const bulkMarkPrintJobsAsFailed = async (
   params: BulkMarkPrintJobsAsFailedParams
 ): Promise<BulkMarkPrintJobsAsFailedResponse> => {
   try {
-    const { printJobIds, ticketId, failureReason, jwtToken } = params;
+    const { printJobIds, ticketId, failureReason, source, jwtToken } = params;
     const response = await backendApi.post(
       'soleforge/print-jobs/bulk-fail',
-      { printJobIds, ticketId, failureReason },
+      { printJobIds, ticketId, failureReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -316,10 +342,10 @@ export const bulkMarkPrintJobsAsFailed = async (
 
 export const cancelPrintJob = async (params: CancelPrintJobParams): Promise<CancelPrintJobResponse> => {
   try {
-    const { printJobId, ticketId, cancellationReason, jwtToken } = params;
+    const { printJobId, ticketId, cancellationReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/print-jobs/${printJobId}/cancel`,
-      { ticketId, cancellationReason },
+      { ticketId, cancellationReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
@@ -360,6 +386,22 @@ export const markManualReprintOrderAsPrinting = async (
   }
 };
 
+export const advanceManualReprintOrderToGrinding = async (
+  params: AdvanceManualReprintOrderToGrindingParams
+): Promise<AdvanceManualReprintOrderToGrindingResponse> => {
+  try {
+    const { orderId, ticketId, advanceReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/advance-manual-reprint-to-grinding`,
+      { ticketId, advanceReason, source },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const revertManualReprintOrderToManufacturing = async (
   params: RevertManualReprintOrderParams
 ): Promise<RevertManualReprintOrderResponse> => {
@@ -386,6 +428,15 @@ export const revertGrindingOrderToManufacturing = async (
       { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const triggerPrinterReady = async (params: TriggerPrinterReadyParams): Promise<TriggerPrinterReadyResponse> => {
+  try {
+    const response = await backendApi.post(`soleforge/printers/${params.printerId}/trigger-ready`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
