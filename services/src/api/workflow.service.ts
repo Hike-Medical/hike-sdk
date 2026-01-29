@@ -291,9 +291,9 @@ export const addAnnotation = async (attachmentId: string, params: CreateAnnotati
 /**
  * Gets all annotations for an attachment.
  */
-export const getAnnotations = async (workflowId: string, attachmentId: string): Promise<AnnotationDto[]> => {
+export const getAnnotations = async (attachmentId: string): Promise<AnnotationDto[]> => {
   try {
-    const response = await backendApi.get(`workflow/${workflowId}/attachments/${attachmentId}/annotations`);
+    const response = await backendApi.get(`workflow/attachments/${attachmentId}/annotations`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
