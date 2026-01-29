@@ -240,6 +240,7 @@ export * from './dto/soleforge/GetOrderThroughputParams';
 export * from './dto/soleforge/GetPrinterHistoryParams';
 export * from './dto/soleforge/GetValidMachineStateTransitionsParams';
 export * from './dto/soleforge/ManualReprintOrdersResponse';
+export * from './dto/soleforge/AdvanceManualReprintOrderToGrindingParams';
 export * from './dto/soleforge/MarkManualReprintOrderAsPrintingParams';
 export * from './dto/soleforge/MarkPrintJobAsFailedParams';
 export * from './dto/soleforge/OperationAnalyticsResponse';

@@ -234,6 +234,7 @@ export * from './hooks/soleforge/useCreateConfiguration';
 export * from './hooks/soleforge/useCreateLane';
 export * from './hooks/soleforge/useDeleteLane';
 export * from './hooks/soleforge/useLanes';
+export * from './hooks/soleforge/useAdvanceManualReprintOrderToGrinding';
 export * from './hooks/soleforge/useMachines';
 export * from './hooks/soleforge/useManualReprintOrders';
 export * from './hooks/soleforge/useMarkManualReprintOrderAsPrinting';

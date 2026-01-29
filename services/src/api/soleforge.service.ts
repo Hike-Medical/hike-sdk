@@ -1,6 +1,8 @@
 import {
   AddLabelPrinterParams,
   AddPrinter3DParams,
+  AdvanceManualReprintOrderToGrindingParams,
+  AdvanceManualReprintOrderToGrindingResponse,
   AnomalyOrdersResponse,
   AssignMachineToLaneParams,
   BulkAddPrinter3DParams,
@@ -376,6 +378,22 @@ export const markManualReprintOrderAsPrinting = async (
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/mark-manual-reprint-as-printing`,
       {},
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const advanceManualReprintOrderToGrinding = async (
+  params: AdvanceManualReprintOrderToGrindingParams
+): Promise<AdvanceManualReprintOrderToGrindingResponse> => {
+  try {
+    const { orderId, ticketId, advanceReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/advance-manual-reprint-to-grinding`,
+      { ticketId, advanceReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
