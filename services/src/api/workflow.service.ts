@@ -1,9 +1,12 @@
 import type {
+  AnnotationDto,
   AttachmentPresignedUrl,
   CommentDto,
+  CreateAnnotationParams,
   CreateWorkflowCommentParams,
   EvaluationAttachmentType,
   PagedResponse,
+  SearchAttachmentsParams,
   SearchWorkflowsParams,
   UpdateWorkflowAttachmentParams,
   Workflow,
@@ -22,6 +25,20 @@ export const searchWorkflows = async (
 ): Promise<PagedResponse<WorkflowSearchResult[]>> => {
   try {
     const response = await backendApi.post('workflow/search', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Searches attachments with annotation-based filtering.
+ */
+export const searchAttachments = async (
+  params: SearchAttachmentsParams
+): Promise<PagedResponse<WorkflowAttachment[]>> => {
+  try {
+    const response = await backendApi.post('workflow/attachments/search', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -252,6 +269,31 @@ export const createWorkflowComment = async (
 export const getWorkflowComments = async (workflowId: string): Promise<CommentDto[]> => {
   try {
     const response = await backendApi.get(`workflow/${workflowId}/comments`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Adds an annotation to an attachment.
+ * Supports different annotation types: CLASSIFICATION, FACT, and REVIEW.
+ */
+export const addAnnotation = async (attachmentId: string, params: CreateAnnotationParams): Promise<AnnotationDto> => {
+  try {
+    const response = await backendApi.post(`workflow/attachments/${attachmentId}/annotations`, params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Gets all annotations for an attachment.
+ */
+export const getAnnotations = async (attachmentId: string): Promise<AnnotationDto[]> => {
+  try {
+    const response = await backendApi.get(`workflow/attachments/${attachmentId}/annotations`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
