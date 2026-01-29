@@ -377,8 +377,8 @@ export const FactRegistry = {
   },
 
   'prescriber.notes.certifying_agreement.signature': {
-    displayName: 'Certifying Agreement Signature',
-    description: 'Signature of certifying physician agreeing with foot exam findings',
+    displayName: 'Certifying Agreement Signature on Prescriber Notes',
+    description: "Signature of certifying physician agreeing with the prescriber's foot exam findings",
     category: 'Certifying Agreement',
     required: false,
     schema: z.boolean(),
@@ -389,8 +389,8 @@ export const FactRegistry = {
     )
   },
   'prescriber.notes.certifying_agreement.date': {
-    displayName: 'Certifying Agreement Date',
-    description: 'Date when certifying physician agreed with foot exam findings',
+    displayName: 'Date of Certifying Agreement Signature on Prescriber Notes',
+    description: "Date when certifying physician agreed with foot exam findings on the prescriber's notes",
     category: 'Certifying Agreement',
     required: false,
     schema: dateISO,
@@ -474,8 +474,9 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
   'cert.notes.certifying_agreement.signature': {
-    displayName: 'Certifying Agreement Signature',
-    description: 'Signature of certifying physician agreeing with foot exam findings',
+    displayName: "MD's signature indicating agreement with PA/NP certifier notes.",
+    description:
+      "If the person managing the patient's diabetes is a PA or NP, this signature indicates that a physician agrees with their notes.",
     category: 'Certifying Agreement',
     required: false,
     schema: z.boolean(),
@@ -486,8 +487,9 @@ export const FactRegistry = {
     )
   },
   'cert.notes.certifying_agreement.date': {
-    displayName: 'Certifying Agreement Date',
-    description: 'Date when certifying physician agreed with foot exam findings',
+    displayName: "Date of the MD's signature indicating agreement with PA/NP certifier notes.",
+    description:
+      "If the person managing the patient's diabetes is a PA or NP, this is the date when a physician signed the note to indicate their agreement.",
     category: 'Certifying Agreement',
     required: false,
     schema: dateISO,
@@ -602,8 +604,8 @@ export const FactRegistry = {
   },
 
   'cert.statement.qualifying_condition.list': {
-    displayName: 'Qualifying Conditions',
-    description: 'List of qualifying foot-risk conditions',
+    displayName: 'Qualifying conditions listed on the certifying statement',
+    description: 'List of qualifying foot-risk conditions that are marked on the certifying statement',
     category: 'Certifying Statement',
     required: false,
     schema: z
@@ -621,9 +623,10 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema,
     transform: (value: string[]) => value.sort()
   },
+  // DEPRECATED
   'cert.statement.certifying_agreement.signature': {
-    displayName: 'Certifying Agreement Signature',
-    description: 'Signature of certifying physician agreeing with foot exam findings',
+    displayName: 'DEPRECATED -- Certifying Agreement Signature',
+    description: 'DEPRECATED -- Signature of certifying physician agreeing with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
     schema: z.boolean(),
@@ -631,15 +634,18 @@ export const FactRegistry = {
       z.object({
         'cert.statement.certifying_agreement.note': z.string().min(1)
       })
-    )
+    ),
+    deprecated: true
   },
+  // DEPRECATED
   'cert.statement.certifying_agreement.date': {
-    displayName: 'Certifying Agreement Date',
-    description: 'Date when certifying physician agreed with foot exam findings',
+    displayName: 'DEPRECATED -- Certifying Agreement Date',
+    description: 'DEPRECATED -- Date when certifying physician agreed with foot exam findings',
     category: 'Certifying Agreement',
     required: false,
     schema: dateISO,
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true
   },
 
   // Initial Prescription
@@ -665,7 +671,7 @@ export const FactRegistry = {
   },
   'rx.has_diagnosis': {
     displayName: 'Diagnosis Description',
-    description: 'Description of the diagnosis',
+    description: 'Whether the initial prescription has a diagnosis',
     category: 'Diagnosis Information',
     required: true,
     schema: z.boolean(),
@@ -686,7 +692,7 @@ export const FactRegistry = {
   },
   'rx.initial.signature': {
     displayName: 'Initial Rx Signature',
-    description: 'Digital signature on the initial prescription',
+    description: 'Signature on the initial prescription',
     category: 'Initial Prescription',
     required: true,
     schema: z.boolean(),
