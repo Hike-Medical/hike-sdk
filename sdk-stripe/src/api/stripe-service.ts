@@ -23,7 +23,7 @@ export class StripeService {
         nextBillingDate = currentDate.add(increment, 'week');
         break;
       case 'month':
-        nextBillingDate = currentDate.add(increment, 'month');
+        nextBillingDate = currentDate.add(increment, 'month').startOf('month');
         break;
       case 'year':
         nextBillingDate = currentDate.add(increment, 'year');
