@@ -231,6 +231,139 @@ export class StripeService {
     return await this.stripe.coupons.retrieve(couponId);
   }
 
+  /**
+   * Validate a customer-facing promotion code
+   * @param code - The promotion code string entered by the customer
+   * @param amount - The transaction amount in cents (for minimum amount validation)
+   * @returns Validation result with coupon info if valid
+   */
+  async validatePromotionCode(
+    code: string,
+    amount: number,
+    companySlug: string
+  ): Promise<{
+    valid: boolean;
+    reason?: string;
+    couponName?: string;
+    couponDiscount?: number;
+    promotionCodeId?: string;
+  }> {
+    try {
+      // Find the promotion code by the customer-facing code string
+      const list = await this.stripe.promotionCodes.list({
+        code,
+        active: true,
+        limit: 1
+      });
+
+      const promo = list.data[0];
+      if (!promo) {
+        return { valid: false, reason: 'Code not found or not active' };
+      }
+
+      // Check promotion code expiration and redemption limits
+      if (!this.isPromotionCodeValid(promo)) {
+        return { valid: false, reason: 'Code expired or redemption limit reached' };
+      }
+
+      // Check underlying coupon validity using existing method
+      const coupon = promo.coupon;
+      if (!this.isCouponValid(coupon)) {
+        return { valid: false, reason: 'Coupon is invalid or expired' };
+      }
+
+      // Verify the coupon is valid for this company by checking if the coupon ID contains the company slug
+      const couponId = coupon.id.toLowerCase();
+      const slug = companySlug.toLowerCase();
+      if (!couponId.includes(slug)) {
+        return { valid: false, reason: 'Code not valid for this company' };
+      }
+
+      // Check minimum amount restriction
+      if (promo.restrictions?.minimum_amount && amount < promo.restrictions.minimum_amount) {
+        return {
+          valid: false,
+          reason: `Minimum amount of ${promo.restrictions.minimum_amount / 100} required`
+        };
+      }
+
+      // Calculate the discount amount
+      const discountAmount = this.calculateCouponDiscount(coupon, amount);
+
+      return {
+        valid: true,
+        couponName: coupon.name ?? code,
+        couponDiscount: discountAmount,
+        promotionCodeId: promo.id
+      };
+    } catch (error) {
+      console.error('Error validating promotion code:', error);
+      return { valid: false, reason: 'Error validating code' };
+    }
+  }
+
+  /**
+   * Redeems a promotion code in Stripe by creating and finalizing an invoice with the promotion code applied.
+   * Uses a dedicated system customer to avoid cluttering actual customer accounts.
+   * This properly increments the promotion code's times_redeemed counter in Stripe.
+   */
+  async redeemPromotionCode(
+    promotionCodeId: string,
+    customerId: string,
+    metadata?: Record<string, string>
+  ): Promise<{ success: boolean; invoiceId?: string; error?: string }> {
+    try {
+      // Create an invoice item for $0 to attach the promotion code
+      await this.stripe.invoiceItems.create({
+        customer: customerId,
+        amount: 0,
+        currency: 'usd',
+        description: 'Promotion code redemption'
+      });
+
+      // Create the invoice with the promotion code applied
+      // auto_advance: true will auto-finalize $0 invoices, which increments times_redeemed
+      const invoice = await this.stripe.invoices.create({
+        customer: customerId,
+        discounts: [{ promotion_code: promotionCodeId }],
+        metadata: {
+          ...metadata,
+          type: 'coupon_redemption'
+        },
+        auto_advance: true
+      });
+
+      return { success: true, invoiceId: invoice.id };
+    } catch (error) {
+      console.error('Error redeeming promotion code:', error);
+      return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+    }
+  }
+
+  private isPromotionCodeValid(promo: Stripe.PromotionCode): boolean {
+    const now = Math.floor(Date.now() / 1000);
+    if (promo.expires_at && now > promo.expires_at) {
+      return false;
+    }
+    if (promo.max_redemptions && promo.times_redeemed >= promo.max_redemptions) {
+      return false;
+    }
+    return true;
+  }
+
+  private calculateCouponDiscount(coupon: Stripe.Coupon, amount?: number): number {
+    if (!amount) {
+      return 0;
+    }
+    if (coupon.percent_off) {
+      return Math.round(amount * (coupon.percent_off / 100));
+    }
+    if (coupon.amount_off) {
+      return Math.min(coupon.amount_off, amount);
+    }
+    return 0;
+  }
+
   async getValidCoupons(couponIds: string[]): Promise<Stripe.Coupon[]> {
     const coupons = await Promise.all(
       couponIds.map(async (couponId) => {
