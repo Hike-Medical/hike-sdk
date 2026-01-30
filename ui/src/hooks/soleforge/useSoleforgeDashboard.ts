@@ -1,8 +1,9 @@
 import { getSoleforgeDashboard } from '@hike/services';
-import { HikeError, SoleforgeDashboard } from '@hike/types';
+import { FactoryName, HikeError, SoleforgeDashboard } from '@hike/types';
 import { QueryKey, UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 interface UseSoleforgeDashboardOptions {
+  factoryNames?: FactoryName[];
   queryKey?: QueryKey;
   enabled?: boolean;
 }
@@ -12,7 +13,7 @@ export const useSoleforgeDashboard = (
     Omit<UseQueryOptions<SoleforgeDashboard, HikeError<null>>, 'queryKey' | 'queryFn'>
 ) =>
   useQuery({
-    queryKey: options?.queryKey ?? ['soleforgeDashboard'],
-    queryFn: async () => await getSoleforgeDashboard(),
+    queryKey: options?.queryKey ?? ['soleforgeDashboard', options?.factoryNames],
+    queryFn: async () => await getSoleforgeDashboard({ factoryNames: options?.factoryNames }),
     ...options
   });

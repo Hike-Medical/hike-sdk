@@ -1,3 +1,4 @@
+export * from './analytics';
 export * from './clients/ExternalApiClient';
 export * from './constants';
 export * from './converters/flattenObject';
@@ -25,6 +26,7 @@ export * from './geography';
 export * from './geography/utils/normalizeGeography';
 export * from './helpers/addHeaders';
 export * from './helpers/appUtils';
+export * from './helpers/businessDaysDiff';
 export * from './helpers/colorMapper';
 export * from './helpers/companyUtils';
 export * from './helpers/currentPaginatedPage';
@@ -51,4 +53,3 @@ export * from './helpers/streamToString';
 export * from './helpers/truncateMiddle';
 export * from './helpers/validateEmail';
 export * from './helpers/validatePhone';
-

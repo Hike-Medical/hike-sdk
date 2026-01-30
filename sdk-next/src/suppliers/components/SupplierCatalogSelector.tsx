@@ -20,6 +20,7 @@ interface SupplierCatalogRendererProps {
   workbenchId: string;
   schemaId: string;
   supplierOptions: { value: string; label: string }[];
+  onSupplierChange: (supplierId: string) => void;
 }
 
 /**
@@ -30,12 +31,11 @@ const SupplierCatalogRenderer = ({
   supplierId,
   workbenchId,
   schemaId,
-  supplierOptions
+  supplierOptions,
+  onSupplierChange
 }: SupplierCatalogRendererProps) => {
-  const [activeSupplierId, setActiveSupplierId] = useState(supplierId);
-
   const { catalog, isLoading, isProductSelected } = useSupplierAdapter({
-    supplierId: activeSupplierId,
+    supplierId,
     workbenchId,
     schemaId
   });
@@ -49,8 +49,8 @@ const SupplierCatalogRenderer = ({
       {supplierOptions.length > 1 && !isProductSelected && (
         <Select
           data={supplierOptions}
-          value={activeSupplierId}
-          onChange={(value) => setActiveSupplierId(value!)}
+          value={supplierId}
+          onChange={(value) => value && onSupplierChange(value)}
           label="Select Brand"
           placeholder="Choose a supplier"
           leftSection={<IconBuilding size={18} />}
@@ -121,6 +121,7 @@ export const SupplierCatalogSelector = ({ suppliers = [] }: SupplierCatalogSelec
       workbenchId={params.workbenchId}
       schemaId={params.schemaId}
       supplierOptions={supplierOptions}
+      onSupplierChange={setActiveSupplier}
     />
   );
 };

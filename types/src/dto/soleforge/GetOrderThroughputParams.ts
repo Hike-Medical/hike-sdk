@@ -1,4 +1,4 @@
-import { OrderStatus, ProductType } from '../../../prisma';
+import { FactoryName, OrderStatus, ProductType } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
 export type ThroughputOrderType = 'CLINICAL' | 'CONSUMER';
@@ -28,8 +28,8 @@ export interface GetOrderThroughputParams {
   productBaseTypes?: ThroughputProductBaseType[];
   /** Include SLA bucket metrics (orders grouped by days relative to committed date). */
   includeSLAMetrics?: boolean;
-  /** Include Solemate data (orders without a lane ID). Defaults to true. */
-  includeSolemateData?: boolean;
+  /** Filter by factory names (SOLEFORGE, SOLEMATE). Legacy orders (no lane) are included with SOLEMATE. */
+  factoryNames?: FactoryName[];
   /** Include quality rate metrics (totalOrders, ordersWithReprints). Defaults to false. */
   includeQualityRateMetrics?: boolean;
   /** Group results by pair count (1, 2, 3 pairs). When true, returns byPairCount array. */

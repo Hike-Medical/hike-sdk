@@ -21,6 +21,7 @@ export interface CompatibleSoleforgeOrder {
   patientFirstName: string | null;
   patientLastName: string | null;
   poNumber: string | null;
+  companyId: string;
   companySlug: string;
   orderType: 'CLINICAL' | 'CONSUMER';
   orderStatus: OrderStatus;
@@ -30,5 +31,6 @@ export interface CompatibleSoleforgeOrder {
   shoeSize: number | null;
   leftQuantity: string | number | null;
   rightQuantity: string | number | null;
+  slicerProfile: string | null;
   printJobs: SoleforgeOrderPrintJob[];
 }
