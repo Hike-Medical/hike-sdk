@@ -1,17 +1,6 @@
 import { getOrderStatusesPerHour } from '@hike/services';
-import { HikeError, HourlyOptions, OrderStatus } from '@hike/types';
+import { HikeError, HourlyOptions, HourlyResponse } from '@hike/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-interface HourlyResponse {
-  status: OrderStatus;
-  countsPerHour: Record<
-    string,
-    {
-      total: number;
-      users: Record<string, number>;
-    }
-  >;
-}
 
 interface UseGetOrderStatusesHourlyOptions
   extends Omit<UseQueryOptions<HourlyResponse[], HikeError<null>>, 'queryKey' | 'queryFn'> {}

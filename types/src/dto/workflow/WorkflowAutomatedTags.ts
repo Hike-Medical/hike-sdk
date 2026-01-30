@@ -11,7 +11,9 @@ export const REVIEW_TAGS = {
   OFFICE_NOTE: 'Unresolved Office Note',
   NO_RESPONSE: '3+ Outgoing Faxes With No Response',
   DVF_ISSUE: 'DVF/Co-sign Issue',
-  INVALID_DATE: 'Invalid Date'
+  INVALID_DATE: 'Invalid Date',
+  EXPIRES_SOON: 'Expires Soon',
+  EXPIRED: 'Expired'
 } as const;
 
 export type ReviewTagKey = keyof typeof REVIEW_TAGS;
