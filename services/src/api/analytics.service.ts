@@ -14,7 +14,7 @@ import {
   OrderMetricsOptions,
   OrderMetricsResponse,
   OrdersByCompaniesResponse,
-  QueueStatus,
+  QueueStatsResponse,
   WorkflowChartData,
   WorkflowDashboardStats
 } from '@hike/types';
@@ -43,7 +43,7 @@ export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: s
   }
 };
 
-export const getQueueStats = async (): Promise<Record<QueueStatus, number>> => {
+export const getQueueStats = async (): Promise<QueueStatsResponse> => {
   try {
     const response = await backendApi.get('analytics/queue-stats');
     return response.data;

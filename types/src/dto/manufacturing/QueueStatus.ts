@@ -5,3 +5,14 @@ export enum QueueStatus {
   IN_MANUFACTURING = 'IN_MANUFACTURING',
   NEEDS_SHIPPING = 'NEEDS_SHIPPING'
 }
+
+export interface QueueStatsItem {
+  count: number;
+  previousHourCount: number;
+  change: number; // current - previous (positive = increase, negative = decrease)
+}
+
+export interface QueueStatsResponse {
+  stats: Record<QueueStatus, QueueStatsItem>;
+  lastUpdatedAt: string | null;
+}
