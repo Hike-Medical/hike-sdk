@@ -43,12 +43,9 @@ export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: s
   }
 };
 
-export const getQueueStats = async (companyIds: string[]): Promise<Record<QueueStatus, number>> => {
+export const getQueueStats = async (): Promise<Record<QueueStatus, number>> => {
   try {
-    const response = await backendApi.get('analytics/queue-stats', {
-      headers: addHeaders(companyIds)
-    });
-
+    const response = await backendApi.get('analytics/queue-stats');
     return response.data;
   } catch (error) {
     throw toHikeError(error);

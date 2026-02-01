@@ -5,9 +5,9 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 interface UseGetQueueStatsOptions
   extends Omit<UseQueryOptions<Record<QueueStatus, number>, HikeError<null>>, 'queryKey' | 'queryFn'> {}
 
-export const useGetQueueStats = (companyIds: string[], queryOptions?: UseGetQueueStatsOptions) =>
+export const useGetQueueStats = (queryOptions?: UseGetQueueStatsOptions) =>
   useQuery({
-    queryKey: ['queueStats', companyIds],
-    queryFn: async () => await getQueueStats(companyIds),
+    queryKey: ['queueStats'],
+    queryFn: async () => await getQueueStats(),
     ...queryOptions
   });
