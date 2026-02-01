@@ -9,10 +9,9 @@ interface UseCreateWorkflowByNameParams {
 
 export const useCreateWorkflowByName = (
   options?: Omit<UseMutationOptions<Workflow, HikeError<null>, UseCreateWorkflowByNameParams>, 'mutationFn'>
-) => {
-  return useMutation({
+) =>
+  useMutation({
     mutationFn: ({ workflowName, params }: UseCreateWorkflowByNameParams) => createWorkflowByName(workflowName, params),
 
     ...options
   });
-};

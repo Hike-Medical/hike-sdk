@@ -4,6 +4,7 @@ import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface SubmitConsumerOrderContext {
   workbenchId: string;
+  couponCode?: string;
 }
 
 export const useSubmitConsumerOrder = (
@@ -11,6 +12,6 @@ export const useSubmitConsumerOrder = (
 ) =>
   useMutation({
     mutationKey: ['submitConsumerOrder'],
-    mutationFn: async ({ workbenchId }) => await submitConsumerOrder(workbenchId),
+    mutationFn: async ({ workbenchId, couponCode }) => await submitConsumerOrder(workbenchId, couponCode),
     ...options
   });

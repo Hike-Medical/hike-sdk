@@ -80,9 +80,16 @@ export const generateCheckoutSession = async (workbenchId: string, params: Check
   }
 };
 
-export const createPaymentIntent = async (workbenchId: string, captureMethod?: Stripe.PaymentIntent.CaptureMethod) => {
+export const createPaymentIntent = async (
+  workbenchId: string,
+  captureMethod?: Stripe.PaymentIntent.CaptureMethod,
+  couponCode?: string
+) => {
   try {
-    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`, { captureMethod });
+    const response = await backendApi.post(`billing/create-payment-intent/${workbenchId}`, {
+      captureMethod,
+      couponCode
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -98,9 +105,11 @@ export const createInvoiceForProductType = async (stripeProductType: StripeProdu
   }
 };
 
-export const generateCheckoutSessionInfo = async (workbenchId: string) => {
+export const generateCheckoutSessionInfo = async (workbenchId: string, couponCode?: string) => {
   try {
-    const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`);
+    const response = await backendApi.get(`billing/checkout-session-info/${workbenchId}`, {
+      params: couponCode ? { couponCode } : undefined
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

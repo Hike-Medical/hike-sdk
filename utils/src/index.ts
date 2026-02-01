@@ -1,3 +1,4 @@
+export * from './analytics';
 export * from './clients/ExternalApiClient';
 export * from './constants';
 export * from './converters/flattenObject';
