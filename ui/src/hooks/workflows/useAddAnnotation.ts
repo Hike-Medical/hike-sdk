@@ -15,10 +15,10 @@ export const useAddAnnotation = (
   return useMutation({
     mutationKey: ['addAnnotation'],
     mutationFn: async ({ attachmentId, params }) => await addAnnotation(attachmentId, params),
-    onSuccess: (data, variables, onMutateResult, mutationContext) => {
+    onSuccess: (data, variables, onMutateResult) => {
       // Invalidate search-attachments queries to refresh the list
       queryClient.invalidateQueries({ queryKey: ['search-attachments'] });
-      options?.onSuccess?.(data, variables, onMutateResult, mutationContext);
+      options?.onSuccess?.(data, variables, onMutateResult);
     },
     ...options
   });
