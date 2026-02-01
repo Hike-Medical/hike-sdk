@@ -13,8 +13,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model WorkbenchCore
- * Materialized view for base workbench data with simple joins
- * Refreshed every hour at :00
+ * 
  */
 export type WorkbenchCoreModel = runtime.Types.Result.DefaultSelection<Prisma.$WorkbenchCorePayload>
 

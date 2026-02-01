@@ -56,6 +56,11 @@ export type MetricsOrdersByCompany = Prisma.MetricsOrdersByCompanyModel
  */
 export type MetricsOrderStatusesHourly = Prisma.MetricsOrderStatusesHourlyModel
 /**
+ * Model MetricsQueueStatsHourly
+ * 
+ */
+export type MetricsQueueStatsHourly = Prisma.MetricsQueueStatsHourlyModel
+/**
  * Model ComputeRun
  * 
  */
@@ -67,26 +72,22 @@ export type ComputeRun = Prisma.ComputeRunModel
 export type WorkbenchFormSubmissionData = Prisma.WorkbenchFormSubmissionDataModel
 /**
  * Model WorkbenchCore
- * Materialized view for base workbench data with simple joins
- * Refreshed every hour at :00
+ * 
  */
 export type WorkbenchCore = Prisma.WorkbenchCoreModel
 /**
  * Model WorkbenchOrderTimeline
- * Materialized view for order timeline and status transitions
- * Refreshed every 6 hours at :45
+ * 
  */
 export type WorkbenchOrderTimeline = Prisma.WorkbenchOrderTimelineModel
 /**
  * Model WorkbenchAssets
- * Materialized view for asset aggregations
- * Refreshed every 3 hours at :30
+ * 
  */
 export type WorkbenchAssets = Prisma.WorkbenchAssetsModel
 /**
  * Model WorkbenchFormData
- * Materialized view for form submission data
- * Refreshed every 2 hours at :15
+ * 
  */
 export type WorkbenchFormData = Prisma.WorkbenchFormDataModel
 

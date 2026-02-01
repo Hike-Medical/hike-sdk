@@ -13,8 +13,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model WorkbenchOrderTimeline
- * Materialized view for order timeline and status transitions
- * Refreshed every 6 hours at :45
+ * 
  */
 export type WorkbenchOrderTimelineModel = runtime.Types.Result.DefaultSelection<Prisma.$WorkbenchOrderTimelinePayload>
 

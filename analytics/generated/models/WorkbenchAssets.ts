@@ -13,8 +13,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model WorkbenchAssets
- * Materialized view for asset aggregations
- * Refreshed every 3 hours at :30
+ * 
  */
 export type WorkbenchAssetsModel = runtime.Types.Result.DefaultSelection<Prisma.$WorkbenchAssetsPayload>
 

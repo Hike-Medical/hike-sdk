@@ -13,8 +13,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model WorkbenchFormData
- * Materialized view for form submission data
- * Refreshed every 2 hours at :15
+ * 
  */
 export type WorkbenchFormDataModel = runtime.Types.Result.DefaultSelection<Prisma.$WorkbenchFormDataPayload>
 
