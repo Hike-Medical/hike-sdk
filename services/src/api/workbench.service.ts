@@ -91,9 +91,9 @@ export const submitClinicalOrder = async (workbenchId: string, body: SubmitOrder
   }
 };
 
-export const submitConsumerOrder = async (workbenchId: string): Promise<Workbench> => {
+export const submitConsumerOrder = async (workbenchId: string, couponCode?: string): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`);
+    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`, { couponCode });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -75,6 +75,7 @@ export interface CompanyPreferences {
     globalSearchAssignedOnly?: boolean;
     canModifyFlowTypeOnWorkbench?: boolean;
     autoAttachFormSchemaIds?: string[];
+    monthlyOrderQuantity?: number;
   };
   webhook?: {
     url: string;
@@ -87,7 +88,6 @@ export interface CompanyPreferences {
   allowPatientIdEditable?: boolean;
   orderDeliveryETA?: Record<string, number>;
   diabeticPatients?: string;
-  patientVolume?: string;
   portals?: CompanyPortal[];
   ui?: {
     theme?: CompanyTheme;
@@ -128,4 +128,5 @@ export interface CompanyPreferences {
     tradingPartnerName: string;
     groupNumber?: string; // Eligibility fails when group numbers mismatch
   };
+  consumerPaymentCoupon?: boolean;
 }
