@@ -56,12 +56,12 @@ export type MetricsOrdersByCompany = Prisma.MetricsOrdersByCompanyModel
  */
 export type MetricsOrderStatusesHourly = Prisma.MetricsOrderStatusesHourlyModel
 /**
- * Model MetricsQueueStatsDaily
- * Stores daily queue status counts (global totals across all companies).
+ * Model MetricsQueueStatsHourly
+ * Stores hourly queue status counts (global totals across all companies).
  * Used by the queue-stats API endpoint for fast lookups.
- * Computed daily by the queue-stats-daily Lambda.
+ * Computed hourly by the queue-stats-hourly Lambda.
  */
-export type MetricsQueueStatsDaily = Prisma.MetricsQueueStatsDailyModel
+export type MetricsQueueStatsHourly = Prisma.MetricsQueueStatsHourlyModel
 /**
  * Model ComputeRun
  * 

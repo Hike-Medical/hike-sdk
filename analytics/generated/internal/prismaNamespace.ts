@@ -396,7 +396,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   MetricsOrdersByCompany: 'MetricsOrdersByCompany',
   MetricsOrderStatusesHourly: 'MetricsOrderStatusesHourly',
-  MetricsQueueStatsDaily: 'MetricsQueueStatsDaily',
+  MetricsQueueStatsHourly: 'MetricsQueueStatsHourly',
   ComputeRun: 'ComputeRun',
   WorkbenchFormSubmissionData: 'WorkbenchFormSubmissionData',
   WorkbenchCore: 'WorkbenchCore',
@@ -418,7 +418,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "metricsOrdersByCompany" | "metricsOrderStatusesHourly" | "metricsQueueStatsDaily" | "computeRun" | "workbenchFormSubmissionData" | "workbenchCore" | "workbenchOrderTimeline" | "workbenchAssets" | "workbenchFormData"
+    modelProps: "metricsOrdersByCompany" | "metricsOrderStatusesHourly" | "metricsQueueStatsHourly" | "computeRun" | "workbenchFormSubmissionData" | "workbenchCore" | "workbenchOrderTimeline" | "workbenchAssets" | "workbenchFormData"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -570,77 +570,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    MetricsQueueStatsDaily: {
-      payload: Prisma.$MetricsQueueStatsDailyPayload<ExtArgs>
-      fields: Prisma.MetricsQueueStatsDailyFieldRefs
+    MetricsQueueStatsHourly: {
+      payload: Prisma.$MetricsQueueStatsHourlyPayload<ExtArgs>
+      fields: Prisma.MetricsQueueStatsHourlyFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.MetricsQueueStatsDailyFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload> | null
+          args: Prisma.MetricsQueueStatsHourlyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.MetricsQueueStatsDailyFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         findFirst: {
-          args: Prisma.MetricsQueueStatsDailyFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload> | null
+          args: Prisma.MetricsQueueStatsHourlyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.MetricsQueueStatsDailyFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         findMany: {
-          args: Prisma.MetricsQueueStatsDailyFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>[]
+          args: Prisma.MetricsQueueStatsHourlyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
         }
         create: {
-          args: Prisma.MetricsQueueStatsDailyCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         createMany: {
-          args: Prisma.MetricsQueueStatsDailyCreateManyArgs<ExtArgs>
+          args: Prisma.MetricsQueueStatsHourlyCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.MetricsQueueStatsDailyCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>[]
+          args: Prisma.MetricsQueueStatsHourlyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
         }
         delete: {
-          args: Prisma.MetricsQueueStatsDailyDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         update: {
-          args: Prisma.MetricsQueueStatsDailyUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         deleteMany: {
-          args: Prisma.MetricsQueueStatsDailyDeleteManyArgs<ExtArgs>
+          args: Prisma.MetricsQueueStatsHourlyDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.MetricsQueueStatsDailyUpdateManyArgs<ExtArgs>
+          args: Prisma.MetricsQueueStatsHourlyUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.MetricsQueueStatsDailyUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>[]
+          args: Prisma.MetricsQueueStatsHourlyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
         }
         upsert: {
-          args: Prisma.MetricsQueueStatsDailyUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsDailyPayload>
+          args: Prisma.MetricsQueueStatsHourlyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
         }
         aggregate: {
-          args: Prisma.MetricsQueueStatsDailyAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMetricsQueueStatsDaily>
+          args: Prisma.MetricsQueueStatsHourlyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMetricsQueueStatsHourly>
         }
         groupBy: {
-          args: Prisma.MetricsQueueStatsDailyGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsDailyGroupByOutputType>[]
+          args: Prisma.MetricsQueueStatsHourlyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsHourlyGroupByOutputType>[]
         }
         count: {
-          args: Prisma.MetricsQueueStatsDailyCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsDailyCountAggregateOutputType> | number
+          args: Prisma.MetricsQueueStatsHourlyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsHourlyCountAggregateOutputType> | number
         }
       }
     }
@@ -1152,15 +1152,15 @@ export const MetricsOrderStatusesHourlyScalarFieldEnum = {
 export type MetricsOrderStatusesHourlyScalarFieldEnum = (typeof MetricsOrderStatusesHourlyScalarFieldEnum)[keyof typeof MetricsOrderStatusesHourlyScalarFieldEnum]
 
 
-export const MetricsQueueStatsDailyScalarFieldEnum = {
+export const MetricsQueueStatsHourlyScalarFieldEnum = {
   id: 'id',
   computedAt: 'computedAt',
   status: 'status',
-  date: 'date',
+  hour: 'hour',
   total: 'total'
 } as const
 
-export type MetricsQueueStatsDailyScalarFieldEnum = (typeof MetricsQueueStatsDailyScalarFieldEnum)[keyof typeof MetricsQueueStatsDailyScalarFieldEnum]
+export type MetricsQueueStatsHourlyScalarFieldEnum = (typeof MetricsQueueStatsHourlyScalarFieldEnum)[keyof typeof MetricsQueueStatsHourlyScalarFieldEnum]
 
 
 export const ComputeRunScalarFieldEnum = {
@@ -1484,7 +1484,7 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   metricsOrdersByCompany?: Prisma.MetricsOrdersByCompanyOmit
   metricsOrderStatusesHourly?: Prisma.MetricsOrderStatusesHourlyOmit
-  metricsQueueStatsDaily?: Prisma.MetricsQueueStatsDailyOmit
+  metricsQueueStatsHourly?: Prisma.MetricsQueueStatsHourlyOmit
   computeRun?: Prisma.ComputeRunOmit
   workbenchFormSubmissionData?: Prisma.WorkbenchFormSubmissionDataOmit
   workbenchCore?: Prisma.WorkbenchCoreOmit
