@@ -28,6 +28,7 @@ export type EvaluationExtended = Evaluation & {
   facility?: FacilityExtended | null;
   clinicians?: Clinician[] | null;
   status?: EvaluationStatus;
+  poNumber?: string | null;
   authorizedAt?: Date | null;
   completedAt?: Date | null;
 };
