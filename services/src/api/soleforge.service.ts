@@ -8,6 +8,8 @@ import {
   BulkAddPrinter3DParams,
   BulkMarkPrintJobsAsFailedParams,
   BulkMarkPrintJobsAsFailedResponse,
+  CancelLaneQueuedJobParams,
+  CancelLaneQueuedJobResponse,
   CancelPrintJobParams,
   CancelPrintJobResponse,
   CompatiblePrinter,
@@ -26,6 +28,8 @@ import {
   GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
   Lane,
+  LaneQueuedJobCountResponse,
+  LaneQueueEntry,
   Machine,
   ManualReprintOrdersResponse,
   MarkManualReprintOrderAsPrintingParams,
@@ -37,6 +41,8 @@ import {
   OrderThroughputResponse,
   Printer3D,
   PrintJob,
+  QueueOrderToLaneParams,
+  QueueOrderToLaneResponse,
   QueuePrintJobsParams,
   RevertGrindingOrderParams,
   RevertGrindingOrderResponse,
@@ -437,6 +443,62 @@ export const revertGrindingOrderToManufacturing = async (
 export const triggerPrinterReady = async (params: TriggerPrinterReadyParams): Promise<TriggerPrinterReadyResponse> => {
   try {
     const response = await backendApi.post(`soleforge/printers/${params.printerId}/trigger-ready`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Queue an order to a lane, creating lane-queued print jobs.
+ */
+export const queueOrderToLane = async (params: QueueOrderToLaneParams): Promise<QueueOrderToLaneResponse> => {
+  try {
+    const { jwtToken, ...body } = params;
+    const response = await backendApi.post('soleforge/queue-order-to-lane', body, {
+      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Get the queue of print jobs for a specific lane.
+ */
+export const getLaneQueue = async (laneId: string): Promise<LaneQueueEntry[]> => {
+  try {
+    const response = await backendApi.get(`soleforge/lanes/${laneId}/queue`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Cancel a lane-queued job with confirmation details.
+ */
+export const cancelLaneQueuedJob = async (params: CancelLaneQueuedJobParams): Promise<CancelLaneQueuedJobResponse> => {
+  try {
+    const { jobId, jwtToken, ...body } = params;
+    const response = await backendApi.delete(`soleforge/lane-queued-jobs/${jobId}`, {
+      data: body,
+      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Get the count of queued jobs for a specific lane.
+ * Useful for displaying warnings when modifying lane configuration.
+ */
+export const getLaneQueuedJobCount = async (laneId: string): Promise<LaneQueuedJobCountResponse> => {
+  try {
+    const response = await backendApi.get(`soleforge/lanes/${laneId}/queue/count`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
