@@ -392,7 +392,13 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   MetricsOrdersByCompany: 'MetricsOrdersByCompany',
   MetricsOrderStatusesHourly: 'MetricsOrderStatusesHourly',
-  ComputeRun: 'ComputeRun'
+  MetricsQueueStatsHourly: 'MetricsQueueStatsHourly',
+  ComputeRun: 'ComputeRun',
+  WorkbenchFormSubmissionData: 'WorkbenchFormSubmissionData',
+  WorkbenchCore: 'WorkbenchCore',
+  WorkbenchOrderTimeline: 'WorkbenchOrderTimeline',
+  WorkbenchAssets: 'WorkbenchAssets',
+  WorkbenchFormData: 'WorkbenchFormData'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "metricsOrdersByCompany" | "metricsOrderStatusesHourly" | "computeRun"
+    modelProps: "metricsOrdersByCompany" | "metricsOrderStatusesHourly" | "metricsQueueStatsHourly" | "computeRun" | "workbenchFormSubmissionData" | "workbenchCore" | "workbenchOrderTimeline" | "workbenchAssets" | "workbenchFormData"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -560,6 +566,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MetricsQueueStatsHourly: {
+      payload: Prisma.$MetricsQueueStatsHourlyPayload<ExtArgs>
+      fields: Prisma.MetricsQueueStatsHourlyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MetricsQueueStatsHourlyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MetricsQueueStatsHourlyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        findFirst: {
+          args: Prisma.MetricsQueueStatsHourlyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MetricsQueueStatsHourlyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        findMany: {
+          args: Prisma.MetricsQueueStatsHourlyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
+        }
+        create: {
+          args: Prisma.MetricsQueueStatsHourlyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        createMany: {
+          args: Prisma.MetricsQueueStatsHourlyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MetricsQueueStatsHourlyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
+        }
+        delete: {
+          args: Prisma.MetricsQueueStatsHourlyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        update: {
+          args: Prisma.MetricsQueueStatsHourlyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        deleteMany: {
+          args: Prisma.MetricsQueueStatsHourlyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MetricsQueueStatsHourlyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MetricsQueueStatsHourlyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>[]
+        }
+        upsert: {
+          args: Prisma.MetricsQueueStatsHourlyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetricsQueueStatsHourlyPayload>
+        }
+        aggregate: {
+          args: Prisma.MetricsQueueStatsHourlyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMetricsQueueStatsHourly>
+        }
+        groupBy: {
+          args: Prisma.MetricsQueueStatsHourlyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsHourlyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MetricsQueueStatsHourlyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetricsQueueStatsHourlyCountAggregateOutputType> | number
+        }
+      }
+    }
     ComputeRun: {
       payload: Prisma.$ComputeRunPayload<ExtArgs>
       fields: Prisma.ComputeRunFieldRefs
@@ -634,6 +714,232 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    WorkbenchFormSubmissionData: {
+      payload: Prisma.$WorkbenchFormSubmissionDataPayload<ExtArgs>
+      fields: Prisma.WorkbenchFormSubmissionDataFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkbenchFormSubmissionDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkbenchFormSubmissionDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        findFirst: {
+          args: Prisma.WorkbenchFormSubmissionDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkbenchFormSubmissionDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        findMany: {
+          args: Prisma.WorkbenchFormSubmissionDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>[]
+        }
+        create: {
+          args: Prisma.WorkbenchFormSubmissionDataCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        createMany: {
+          args: Prisma.WorkbenchFormSubmissionDataCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.WorkbenchFormSubmissionDataCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>[]
+        }
+        delete: {
+          args: Prisma.WorkbenchFormSubmissionDataDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        update: {
+          args: Prisma.WorkbenchFormSubmissionDataUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        deleteMany: {
+          args: Prisma.WorkbenchFormSubmissionDataDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WorkbenchFormSubmissionDataUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.WorkbenchFormSubmissionDataUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>[]
+        }
+        upsert: {
+          args: Prisma.WorkbenchFormSubmissionDataUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormSubmissionDataPayload>
+        }
+        aggregate: {
+          args: Prisma.WorkbenchFormSubmissionDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWorkbenchFormSubmissionData>
+        }
+        groupBy: {
+          args: Prisma.WorkbenchFormSubmissionDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchFormSubmissionDataGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkbenchFormSubmissionDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchFormSubmissionDataCountAggregateOutputType> | number
+        }
+      }
+    }
+    WorkbenchCore: {
+      payload: Prisma.$WorkbenchCorePayload<ExtArgs>
+      fields: Prisma.WorkbenchCoreFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkbenchCoreFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchCorePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkbenchCoreFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchCorePayload>
+        }
+        findFirst: {
+          args: Prisma.WorkbenchCoreFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchCorePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkbenchCoreFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchCorePayload>
+        }
+        findMany: {
+          args: Prisma.WorkbenchCoreFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchCorePayload>[]
+        }
+        aggregate: {
+          args: Prisma.WorkbenchCoreAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWorkbenchCore>
+        }
+        groupBy: {
+          args: Prisma.WorkbenchCoreGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchCoreGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkbenchCoreCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchCoreCountAggregateOutputType> | number
+        }
+      }
+    }
+    WorkbenchOrderTimeline: {
+      payload: Prisma.$WorkbenchOrderTimelinePayload<ExtArgs>
+      fields: Prisma.WorkbenchOrderTimelineFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkbenchOrderTimelineFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchOrderTimelinePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkbenchOrderTimelineFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchOrderTimelinePayload>
+        }
+        findFirst: {
+          args: Prisma.WorkbenchOrderTimelineFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchOrderTimelinePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkbenchOrderTimelineFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchOrderTimelinePayload>
+        }
+        findMany: {
+          args: Prisma.WorkbenchOrderTimelineFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchOrderTimelinePayload>[]
+        }
+        aggregate: {
+          args: Prisma.WorkbenchOrderTimelineAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWorkbenchOrderTimeline>
+        }
+        groupBy: {
+          args: Prisma.WorkbenchOrderTimelineGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchOrderTimelineGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkbenchOrderTimelineCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchOrderTimelineCountAggregateOutputType> | number
+        }
+      }
+    }
+    WorkbenchAssets: {
+      payload: Prisma.$WorkbenchAssetsPayload<ExtArgs>
+      fields: Prisma.WorkbenchAssetsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkbenchAssetsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchAssetsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkbenchAssetsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchAssetsPayload>
+        }
+        findFirst: {
+          args: Prisma.WorkbenchAssetsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchAssetsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkbenchAssetsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchAssetsPayload>
+        }
+        findMany: {
+          args: Prisma.WorkbenchAssetsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchAssetsPayload>[]
+        }
+        aggregate: {
+          args: Prisma.WorkbenchAssetsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWorkbenchAssets>
+        }
+        groupBy: {
+          args: Prisma.WorkbenchAssetsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchAssetsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkbenchAssetsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchAssetsCountAggregateOutputType> | number
+        }
+      }
+    }
+    WorkbenchFormData: {
+      payload: Prisma.$WorkbenchFormDataPayload<ExtArgs>
+      fields: Prisma.WorkbenchFormDataFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkbenchFormDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormDataPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkbenchFormDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormDataPayload>
+        }
+        findFirst: {
+          args: Prisma.WorkbenchFormDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormDataPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkbenchFormDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormDataPayload>
+        }
+        findMany: {
+          args: Prisma.WorkbenchFormDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkbenchFormDataPayload>[]
+        }
+        aggregate: {
+          args: Prisma.WorkbenchFormDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWorkbenchFormData>
+        }
+        groupBy: {
+          args: Prisma.WorkbenchFormDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchFormDataGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkbenchFormDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkbenchFormDataCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -698,6 +1004,17 @@ export const MetricsOrderStatusesHourlyScalarFieldEnum = {
 export type MetricsOrderStatusesHourlyScalarFieldEnum = (typeof MetricsOrderStatusesHourlyScalarFieldEnum)[keyof typeof MetricsOrderStatusesHourlyScalarFieldEnum]
 
 
+export const MetricsQueueStatsHourlyScalarFieldEnum = {
+  id: 'id',
+  computedAt: 'computedAt',
+  status: 'status',
+  hour: 'hour',
+  total: 'total'
+} as const
+
+export type MetricsQueueStatsHourlyScalarFieldEnum = (typeof MetricsQueueStatsHourlyScalarFieldEnum)[keyof typeof MetricsQueueStatsHourlyScalarFieldEnum]
+
+
 export const ComputeRunScalarFieldEnum = {
   id: 'id',
   metricType: 'metricType',
@@ -709,6 +1026,114 @@ export const ComputeRunScalarFieldEnum = {
 } as const
 
 export type ComputeRunScalarFieldEnum = (typeof ComputeRunScalarFieldEnum)[keyof typeof ComputeRunScalarFieldEnum]
+
+
+export const WorkbenchFormSubmissionDataScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  computedAt: 'computedAt',
+  isDiffSizes: 'isDiffSizes',
+  orderQuantity: 'orderQuantity',
+  leftShoeSize: 'leftShoeSize',
+  rightShoeSize: 'rightShoeSize',
+  leftShoeWidth: 'leftShoeWidth',
+  rightShoeWidth: 'rightShoeWidth',
+  leftShoeGender: 'leftShoeGender',
+  rightShoeGender: 'rightShoeGender'
+} as const
+
+export type WorkbenchFormSubmissionDataScalarFieldEnum = (typeof WorkbenchFormSubmissionDataScalarFieldEnum)[keyof typeof WorkbenchFormSubmissionDataScalarFieldEnum]
+
+
+export const WorkbenchCoreScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  workbenchCreatedAt: 'workbenchCreatedAt',
+  workbenchStatus: 'workbenchStatus',
+  createdReason: 'createdReason',
+  submittedAt: 'submittedAt',
+  orderSide: 'orderSide',
+  appId: 'appId',
+  orderId: 'orderId',
+  orderStatus: 'orderStatus',
+  orderAuthorizationStatus: 'orderAuthorizationStatus',
+  orderCreatedAt: 'orderCreatedAt',
+  authorizationUpdatedAt: 'authorizationUpdatedAt',
+  orderCompletedAt: 'orderCompletedAt',
+  committedDeliveryAt: 'committedDeliveryAt',
+  evaluationId: 'evaluationId',
+  poNumber: 'poNumber',
+  isDiabetic: 'isDiabetic',
+  companyId: 'companyId',
+  companyName: 'companyName',
+  companySlug: 'companySlug',
+  externalId: 'externalId',
+  patientId: 'patientId',
+  patientFirstName: 'patientFirstName',
+  patientLastName: 'patientLastName',
+  clinicianId: 'clinicianId',
+  clinicianName: 'clinicianName',
+  facilityId: 'facilityId',
+  facilityName: 'facilityName',
+  deviceTypeName: 'deviceTypeName',
+  productType: 'productType',
+  labelId: 'labelId',
+  trackingStatus: 'trackingStatus'
+} as const
+
+export type WorkbenchCoreScalarFieldEnum = (typeof WorkbenchCoreScalarFieldEnum)[keyof typeof WorkbenchCoreScalarFieldEnum]
+
+
+export const WorkbenchOrderTimelineScalarFieldEnum = {
+  orderId: 'orderId',
+  workbenchId: 'workbenchId',
+  printingStartedAt: 'printingStartedAt',
+  printingStartedBy: 'printingStartedBy',
+  printingCompletedAt: 'printingCompletedAt',
+  printingCompletedBy: 'printingCompletedBy',
+  grindingCompletedAt: 'grindingCompletedAt',
+  grindingCompletedBy: 'grindingCompletedBy',
+  gluingCompletedAt: 'gluingCompletedAt',
+  gluingCompletedBy: 'gluingCompletedBy',
+  finishingCompletedAt: 'finishingCompletedAt',
+  finishingCompletedBy: 'finishingCompletedBy',
+  shippingCompletedAt: 'shippingCompletedAt',
+  shippingCompletedBy: 'shippingCompletedBy',
+  addonCompletedAt: 'addonCompletedAt',
+  addonCompletedBy: 'addonCompletedBy',
+  isReprint: 'isReprint',
+  rushedAt: 'rushedAt',
+  createdNotes: 'createdNotes'
+} as const
+
+export type WorkbenchOrderTimelineScalarFieldEnum = (typeof WorkbenchOrderTimelineScalarFieldEnum)[keyof typeof WorkbenchOrderTimelineScalarFieldEnum]
+
+
+export const WorkbenchAssetsScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  validationStatus: 'validationStatus',
+  needsDevValidation: 'needsDevValidation',
+  taikaId: 'taikaId',
+  taikaDevId: 'taikaDevId',
+  slicerProfile: 'slicerProfile',
+  validatedAt: 'validatedAt',
+  leftRenderScore: 'leftRenderScore',
+  rightRenderScore: 'rightRenderScore',
+  renderScore: 'renderScore',
+  isImpressionBox: 'isImpressionBox'
+} as const
+
+export type WorkbenchAssetsScalarFieldEnum = (typeof WorkbenchAssetsScalarFieldEnum)[keyof typeof WorkbenchAssetsScalarFieldEnum]
+
+
+export const WorkbenchFormDataScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  isDiffSizes: 'isDiffSizes',
+  orderQuantity: 'orderQuantity',
+  orderShoeSize: 'orderShoeSize',
+  orderGender: 'orderGender',
+  orderShoeWidth: 'orderShoeWidth'
+} as const
+
+export type WorkbenchFormDataScalarFieldEnum = (typeof WorkbenchFormDataScalarFieldEnum)[keyof typeof WorkbenchFormDataScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -815,6 +1240,13 @@ export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
 
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -916,7 +1348,13 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   metricsOrdersByCompany?: Prisma.MetricsOrdersByCompanyOmit
   metricsOrderStatusesHourly?: Prisma.MetricsOrderStatusesHourlyOmit
+  metricsQueueStatsHourly?: Prisma.MetricsQueueStatsHourlyOmit
   computeRun?: Prisma.ComputeRunOmit
+  workbenchFormSubmissionData?: Prisma.WorkbenchFormSubmissionDataOmit
+  workbenchCore?: Prisma.WorkbenchCoreOmit
+  workbenchOrderTimeline?: Prisma.WorkbenchOrderTimelineOmit
+  workbenchAssets?: Prisma.WorkbenchAssetsOmit
+  workbenchFormData?: Prisma.WorkbenchFormDataOmit
 }
 
 /* Types for Logging */

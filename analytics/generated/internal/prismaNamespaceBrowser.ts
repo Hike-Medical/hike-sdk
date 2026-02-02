@@ -51,7 +51,13 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   MetricsOrdersByCompany: 'MetricsOrdersByCompany',
   MetricsOrderStatusesHourly: 'MetricsOrderStatusesHourly',
-  ComputeRun: 'ComputeRun'
+  MetricsQueueStatsHourly: 'MetricsQueueStatsHourly',
+  ComputeRun: 'ComputeRun',
+  WorkbenchFormSubmissionData: 'WorkbenchFormSubmissionData',
+  WorkbenchCore: 'WorkbenchCore',
+  WorkbenchOrderTimeline: 'WorkbenchOrderTimeline',
+  WorkbenchAssets: 'WorkbenchAssets',
+  WorkbenchFormData: 'WorkbenchFormData'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -95,6 +101,17 @@ export const MetricsOrderStatusesHourlyScalarFieldEnum = {
 export type MetricsOrderStatusesHourlyScalarFieldEnum = (typeof MetricsOrderStatusesHourlyScalarFieldEnum)[keyof typeof MetricsOrderStatusesHourlyScalarFieldEnum]
 
 
+export const MetricsQueueStatsHourlyScalarFieldEnum = {
+  id: 'id',
+  computedAt: 'computedAt',
+  status: 'status',
+  hour: 'hour',
+  total: 'total'
+} as const
+
+export type MetricsQueueStatsHourlyScalarFieldEnum = (typeof MetricsQueueStatsHourlyScalarFieldEnum)[keyof typeof MetricsQueueStatsHourlyScalarFieldEnum]
+
+
 export const ComputeRunScalarFieldEnum = {
   id: 'id',
   metricType: 'metricType',
@@ -106,6 +123,114 @@ export const ComputeRunScalarFieldEnum = {
 } as const
 
 export type ComputeRunScalarFieldEnum = (typeof ComputeRunScalarFieldEnum)[keyof typeof ComputeRunScalarFieldEnum]
+
+
+export const WorkbenchFormSubmissionDataScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  computedAt: 'computedAt',
+  isDiffSizes: 'isDiffSizes',
+  orderQuantity: 'orderQuantity',
+  leftShoeSize: 'leftShoeSize',
+  rightShoeSize: 'rightShoeSize',
+  leftShoeWidth: 'leftShoeWidth',
+  rightShoeWidth: 'rightShoeWidth',
+  leftShoeGender: 'leftShoeGender',
+  rightShoeGender: 'rightShoeGender'
+} as const
+
+export type WorkbenchFormSubmissionDataScalarFieldEnum = (typeof WorkbenchFormSubmissionDataScalarFieldEnum)[keyof typeof WorkbenchFormSubmissionDataScalarFieldEnum]
+
+
+export const WorkbenchCoreScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  workbenchCreatedAt: 'workbenchCreatedAt',
+  workbenchStatus: 'workbenchStatus',
+  createdReason: 'createdReason',
+  submittedAt: 'submittedAt',
+  orderSide: 'orderSide',
+  appId: 'appId',
+  orderId: 'orderId',
+  orderStatus: 'orderStatus',
+  orderAuthorizationStatus: 'orderAuthorizationStatus',
+  orderCreatedAt: 'orderCreatedAt',
+  authorizationUpdatedAt: 'authorizationUpdatedAt',
+  orderCompletedAt: 'orderCompletedAt',
+  committedDeliveryAt: 'committedDeliveryAt',
+  evaluationId: 'evaluationId',
+  poNumber: 'poNumber',
+  isDiabetic: 'isDiabetic',
+  companyId: 'companyId',
+  companyName: 'companyName',
+  companySlug: 'companySlug',
+  externalId: 'externalId',
+  patientId: 'patientId',
+  patientFirstName: 'patientFirstName',
+  patientLastName: 'patientLastName',
+  clinicianId: 'clinicianId',
+  clinicianName: 'clinicianName',
+  facilityId: 'facilityId',
+  facilityName: 'facilityName',
+  deviceTypeName: 'deviceTypeName',
+  productType: 'productType',
+  labelId: 'labelId',
+  trackingStatus: 'trackingStatus'
+} as const
+
+export type WorkbenchCoreScalarFieldEnum = (typeof WorkbenchCoreScalarFieldEnum)[keyof typeof WorkbenchCoreScalarFieldEnum]
+
+
+export const WorkbenchOrderTimelineScalarFieldEnum = {
+  orderId: 'orderId',
+  workbenchId: 'workbenchId',
+  printingStartedAt: 'printingStartedAt',
+  printingStartedBy: 'printingStartedBy',
+  printingCompletedAt: 'printingCompletedAt',
+  printingCompletedBy: 'printingCompletedBy',
+  grindingCompletedAt: 'grindingCompletedAt',
+  grindingCompletedBy: 'grindingCompletedBy',
+  gluingCompletedAt: 'gluingCompletedAt',
+  gluingCompletedBy: 'gluingCompletedBy',
+  finishingCompletedAt: 'finishingCompletedAt',
+  finishingCompletedBy: 'finishingCompletedBy',
+  shippingCompletedAt: 'shippingCompletedAt',
+  shippingCompletedBy: 'shippingCompletedBy',
+  addonCompletedAt: 'addonCompletedAt',
+  addonCompletedBy: 'addonCompletedBy',
+  isReprint: 'isReprint',
+  rushedAt: 'rushedAt',
+  createdNotes: 'createdNotes'
+} as const
+
+export type WorkbenchOrderTimelineScalarFieldEnum = (typeof WorkbenchOrderTimelineScalarFieldEnum)[keyof typeof WorkbenchOrderTimelineScalarFieldEnum]
+
+
+export const WorkbenchAssetsScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  validationStatus: 'validationStatus',
+  needsDevValidation: 'needsDevValidation',
+  taikaId: 'taikaId',
+  taikaDevId: 'taikaDevId',
+  slicerProfile: 'slicerProfile',
+  validatedAt: 'validatedAt',
+  leftRenderScore: 'leftRenderScore',
+  rightRenderScore: 'rightRenderScore',
+  renderScore: 'renderScore',
+  isImpressionBox: 'isImpressionBox'
+} as const
+
+export type WorkbenchAssetsScalarFieldEnum = (typeof WorkbenchAssetsScalarFieldEnum)[keyof typeof WorkbenchAssetsScalarFieldEnum]
+
+
+export const WorkbenchFormDataScalarFieldEnum = {
+  workbenchId: 'workbenchId',
+  isDiffSizes: 'isDiffSizes',
+  orderQuantity: 'orderQuantity',
+  orderShoeSize: 'orderShoeSize',
+  orderGender: 'orderGender',
+  orderShoeWidth: 'orderShoeWidth'
+} as const
+
+export type WorkbenchFormDataScalarFieldEnum = (typeof WorkbenchFormDataScalarFieldEnum)[keyof typeof WorkbenchFormDataScalarFieldEnum]
 
 
 export const SortOrder = {

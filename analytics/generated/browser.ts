@@ -28,7 +28,39 @@ export type MetricsOrdersByCompany = Prisma.MetricsOrdersByCompanyModel
  */
 export type MetricsOrderStatusesHourly = Prisma.MetricsOrderStatusesHourlyModel
 /**
+ * Model MetricsQueueStatsHourly
+ * Stores hourly queue status counts (global totals across all companies).
+ * Used by the queue-stats API endpoint for fast lookups.
+ * Computed hourly by the queue-stats-hourly Lambda.
+ */
+export type MetricsQueueStatsHourly = Prisma.MetricsQueueStatsHourlyModel
+/**
  * Model ComputeRun
  * 
  */
 export type ComputeRun = Prisma.ComputeRunModel
+/**
+ * Model WorkbenchFormSubmissionData
+ * 
+ */
+export type WorkbenchFormSubmissionData = Prisma.WorkbenchFormSubmissionDataModel
+/**
+ * Model WorkbenchCore
+ * 
+ */
+export type WorkbenchCore = Prisma.WorkbenchCoreModel
+/**
+ * Model WorkbenchOrderTimeline
+ * 
+ */
+export type WorkbenchOrderTimeline = Prisma.WorkbenchOrderTimelineModel
+/**
+ * Model WorkbenchAssets
+ * 
+ */
+export type WorkbenchAssets = Prisma.WorkbenchAssetsModel
+/**
+ * Model WorkbenchFormData
+ * 
+ */
+export type WorkbenchFormData = Prisma.WorkbenchFormDataModel

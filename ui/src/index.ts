@@ -13,7 +13,7 @@ export * from './hooks/analytics/useGetOrderMetricsBreakdown';
 export * from './hooks/analytics/useGetOrderMetricsByWeek';
 export * from './hooks/analytics/useGetOrdersByCompanies';
 export * from './hooks/analytics/useGetOrderStatusesHourly';
-export * from './hooks/analytics/useGetSolemateStats';
+export * from './hooks/analytics/useGetQueueStats';
 export * from './hooks/analytics/useGetWorkflowDashboardStats';
 export * from './hooks/api-key/useApiKeys';
 export * from './hooks/api-key/useCreateApiKey';
