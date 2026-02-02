@@ -20,6 +20,7 @@ import {
   GetAnomalyOrdersParams,
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
+  GetLabelPrintersParams,
   GetLanesParams,
   GetMachinesParams,
   GetOrdersByShipByAgeParams,
@@ -27,6 +28,7 @@ import {
   GetOrderThroughputParams,
   GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
+  LabelPrinter,
   Lane,
   LaneQueuedJobCountResponse,
   LaneQueueEntry,
@@ -41,6 +43,8 @@ import {
   OrderThroughputResponse,
   Printer3D,
   PrintJob,
+  PrintOrderLabelParams,
+  PrintOrderLabelResponse,
   QueueOrderToLaneParams,
   QueueOrderToLaneResponse,
   QueuePrintJobsParams,
@@ -449,6 +453,15 @@ export const triggerPrinterReady = async (params: TriggerPrinterReadyParams): Pr
   }
 };
 
+export const getLabelPrinters = async (params?: GetLabelPrintersParams): Promise<LabelPrinter[]> => {
+  try {
+    const response = await backendApi.get('soleforge/label-printers', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 /**
  * Queue an order to a lane, creating lane-queued print jobs.
  */
@@ -458,6 +471,18 @@ export const queueOrderToLane = async (params: QueueOrderToLaneParams): Promise<
     const response = await backendApi.post('soleforge/queue-order-to-lane', body, {
       headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
     });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const printOrderLabel = async (
+  orderId: string,
+  params: PrintOrderLabelParams
+): Promise<PrintOrderLabelResponse> => {
+  try {
+    const response = await backendApi.post(`soleforge/orders/${orderId}/print-label`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
