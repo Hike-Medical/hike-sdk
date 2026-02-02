@@ -22,6 +22,7 @@ export interface AnomalyReason {
 export interface AnomalyOrder {
   orderId: string;
   poNumber: string | null;
+  companyId: string | null;
   companySlug: string | null;
   orderStatus: string;
   patientFirstName: string | null;

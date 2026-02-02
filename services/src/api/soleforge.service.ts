@@ -18,6 +18,7 @@ import {
   GetAnomalyOrdersParams,
   GetCompatibleOrdersParams,
   GetCompatiblePrintersParams,
+  GetLabelPrintersParams,
   GetLanesParams,
   GetMachinesParams,
   GetOrdersByShipByAgeParams,
@@ -25,6 +26,7 @@ import {
   GetOrderThroughputParams,
   GetPrinterHistoryParams,
   GetValidMachineStateTransitionsParams,
+  LabelPrinter,
   Lane,
   Machine,
   ManualReprintOrdersResponse,
@@ -37,6 +39,8 @@ import {
   OrderThroughputResponse,
   Printer3D,
   PrintJob,
+  PrintOrderLabelParams,
+  PrintOrderLabelResponse,
   QueuePrintJobsParams,
   RevertGrindingOrderParams,
   RevertGrindingOrderResponse,
@@ -437,6 +441,27 @@ export const revertGrindingOrderToManufacturing = async (
 export const triggerPrinterReady = async (params: TriggerPrinterReadyParams): Promise<TriggerPrinterReadyResponse> => {
   try {
     const response = await backendApi.post(`soleforge/printers/${params.printerId}/trigger-ready`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getLabelPrinters = async (params?: GetLabelPrintersParams): Promise<LabelPrinter[]> => {
+  try {
+    const response = await backendApi.get('soleforge/label-printers', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const printOrderLabel = async (
+  orderId: string,
+  params: PrintOrderLabelParams
+): Promise<PrintOrderLabelResponse> => {
+  try {
+    const response = await backendApi.post(`soleforge/orders/${orderId}/print-label`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
