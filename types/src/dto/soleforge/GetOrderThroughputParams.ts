@@ -36,6 +36,8 @@ export interface GetOrderThroughputParams {
   groupByPairCount?: boolean;
   /** Group results by clinical addon type. When true, returns byAddon array. Clinical orders only. */
   groupByAddon?: boolean;
+  /** Group results by product base type (Functional vs Diabetic). When true, returns byProductBaseType array. */
+  groupByProductBaseType?: boolean;
   /** Filter by product types (e.g., INSOLE). Only orders with matching product types are included. */
   productTypes?: ProductType[];
 }
