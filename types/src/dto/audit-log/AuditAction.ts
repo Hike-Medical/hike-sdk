@@ -9,7 +9,10 @@ export const AuditAction = {
   TAG_ADD: 'TAG_ADD',
   TAG_REMOVE: 'TAG_REMOVE',
   LABEL_PRINT: 'LABEL_PRINT',
-  LABEL_REPRINT: 'LABEL_REPRINT'
+  LABEL_REPRINT: 'LABEL_REPRINT',
+  REVIEW: 'REVIEW',
+  SEND_REPRINT_JOB: 'SEND_REPRINT_JOB',
+  KT_COMPLETE: 'KT_COMPLETE'
 } as const;
 
 export type AuditAction = (typeof AuditAction)[keyof typeof AuditAction];
