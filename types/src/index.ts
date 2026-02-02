@@ -261,6 +261,8 @@ export * from './dto/soleforge/UpdateMachineStatusParams';
 export * from './dto/soleforge/UpdatePrinterNotesParams';
 export * from './dto/soleforge/UpdatePrintJobParams';
 export * from './dto/soleforge/ValidMachineStateTransitions';
+export * from './dto/soleforge/LabelPrinter';
+export * from './dto/soleforge/PrintOrderLabelParams';
 export * from './dto/supplier/cascade/CascadeAvailabilityResponse';
 export * from './dto/supplier/cascade/CascadeOrderHistoryResponse';
 export * from './dto/supplier/cascade/CascadeOrderRequest';
