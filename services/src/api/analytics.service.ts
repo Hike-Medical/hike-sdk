@@ -14,6 +14,7 @@ import {
   OrderMetricsOptions,
   OrderMetricsResponse,
   OrdersByCompaniesResponse,
+  QueueStatsResponse,
   WorkflowChartData,
   WorkflowDashboardStats
 } from '@hike/types';
@@ -21,10 +22,7 @@ import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
 
-export const getOrderStatusesPerHour = async (
-  body: HourlyOptions,
-  companyIds: string[]
-): Promise<HourlyResponse[]> => {
+export const getOrderStatusesPerHour = async (body: HourlyOptions, companyIds: string[]): Promise<HourlyResponse[]> => {
   try {
     const response = await backendApi.post(
       `analytics/name/${ANALYTICS_ENDPOINT_NAME.COMPUTE_ORDER_STATUSES_HOURLY}`,
@@ -45,12 +43,9 @@ export const getOrderStatusesPerHour = async (
   }
 };
 
-export const getSolemateStats = async (companyIds: string[]) => {
+export const getQueueStats = async (): Promise<QueueStatsResponse> => {
   try {
-    const response = await backendApi.get('analytics/solemate-stats', {
-      headers: addHeaders(companyIds)
-    });
-
+    const response = await backendApi.get('analytics/queue-stats');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
