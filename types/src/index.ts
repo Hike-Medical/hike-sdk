@@ -198,6 +198,7 @@ export * from './dto/qc-rejection/GetQCRejectionsParams';
 export * from './dto/qc-rejection/MarkKTCompleteParams';
 export type { QCRejectionWithRelations } from './dto/qc-rejection/QCRejection';
 export type { QCRejectionCountsResponse } from './dto/qc-rejection/QCRejectionCountsResponse';
+export type { QCRejectionReasonStation, QCRejectionReasonWithStations } from './dto/qc-rejection/QCRejectionReason';
 export { QCRejectionStatus as QCRejectionStatusValues } from './dto/qc-rejection/QCRejectionStatus';
 export type { QCRejectionStatus as QCRejectionStatusValue } from './dto/qc-rejection/QCRejectionStatus';
 export * from './dto/qc-rejection/ReviewQCRejectionParams';

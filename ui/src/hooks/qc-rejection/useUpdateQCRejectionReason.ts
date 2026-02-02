@@ -1,9 +1,9 @@
 import { updateQCRejectionReason } from '@hike/services';
-import type { HikeError, QCRejectionReason, UpdateQCRejectionReasonParams } from '@hike/types';
+import type { HikeError, QCRejectionReasonWithStations, UpdateQCRejectionReasonParams } from '@hike/types';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useUpdateQCRejectionReason = (
-  options?: UseMutationOptions<QCRejectionReason, HikeError<null>, UpdateQCRejectionReasonParams>
+  options?: UseMutationOptions<QCRejectionReasonWithStations, HikeError<null>, UpdateQCRejectionReasonParams>
 ) =>
   useMutation({
     mutationKey: ['updateQCRejectionReason'],

@@ -7,7 +7,7 @@ import type {
   MarkKTCompleteParams,
   QCRejection,
   QCRejectionCountsResponse,
-  QCRejectionReason,
+  QCRejectionReasonWithStations,
   QCRejectionWithRelations,
   ReviewQCRejectionParams,
   SendReprintJobParams,
@@ -82,7 +82,9 @@ export const markKTComplete = async (
   }
 };
 
-export const getQCRejectionReasons = async (params?: GetQCRejectionReasonsParams): Promise<QCRejectionReason[]> => {
+export const getQCRejectionReasons = async (
+  params?: GetQCRejectionReasonsParams
+): Promise<QCRejectionReasonWithStations[]> => {
   try {
     const response = await backendApi.get('soleforge/qc-rejection/reasons', { params });
     return response.data;
@@ -91,7 +93,9 @@ export const getQCRejectionReasons = async (params?: GetQCRejectionReasonsParams
   }
 };
 
-export const createQCRejectionReason = async (params: CreateQCRejectionReasonParams): Promise<QCRejectionReason> => {
+export const createQCRejectionReason = async (
+  params: CreateQCRejectionReasonParams
+): Promise<QCRejectionReasonWithStations> => {
   try {
     const response = await backendApi.post('soleforge/qc-rejection/reasons', params);
     return response.data;
@@ -100,7 +104,9 @@ export const createQCRejectionReason = async (params: CreateQCRejectionReasonPar
   }
 };
 
-export const updateQCRejectionReason = async (params: UpdateQCRejectionReasonParams): Promise<QCRejectionReason> => {
+export const updateQCRejectionReason = async (
+  params: UpdateQCRejectionReasonParams
+): Promise<QCRejectionReasonWithStations> => {
   try {
     const { reasonId, ...body } = params;
     const response = await backendApi.patch(`soleforge/qc-rejection/reasons/${reasonId}`, body);

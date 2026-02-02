@@ -7,7 +7,7 @@ export interface QCRejectionReasonStation {
   createdAt: Date;
 }
 
-export interface QCRejectionReason {
+export interface QCRejectionReasonWithStations {
   id: string;
   label: string;
   description: string | null;

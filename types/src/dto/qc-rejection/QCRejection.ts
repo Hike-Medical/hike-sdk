@@ -1,5 +1,5 @@
 import type { Order, OrderStatus, User, Workbench } from '../../../prisma';
-import type { QCRejectionReason } from './QCRejectionReason';
+import type { QCRejectionReasonWithStations } from './QCRejectionReason';
 import type { QCRejectionStatus } from './QCRejectionStatus';
 
 export interface QCRejection {
@@ -34,8 +34,8 @@ export interface QCRejectionWithRelations extends QCRejection {
       evaluation: { id: string; companyId: string; poNumber: string | null };
     };
   };
-  reason: QCRejectionReason | null;
-  correctedReasonRef: QCRejectionReason | null;
+  reason: QCRejectionReasonWithStations | null;
+  correctedReasonRef: QCRejectionReasonWithStations | null;
   createdBy: Pick<User, 'id' | 'firstName' | 'lastName' | 'email'>;
   reviewedBy: Pick<User, 'id' | 'firstName' | 'lastName' | 'email'> | null;
   ktAcknowledgedBy: Pick<User, 'id' | 'firstName' | 'lastName' | 'email'> | null;
