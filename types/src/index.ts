@@ -344,6 +344,7 @@ export * from './dto/workbench/WorkbenchPdfs';
 export * from './dto/workbench/WorkbenchPdfType';
 export * from './dto/workbench/WorkbenchSummary';
 export * from './dto/workbench/WorkbenchValidationResult';
+export * from './dto/workflow/Annotation';
 export * from './dto/workflow/Attachment';
 export * from './dto/workflow/CommentDto';
 export * from './dto/workflow/FactWithAttachment';
