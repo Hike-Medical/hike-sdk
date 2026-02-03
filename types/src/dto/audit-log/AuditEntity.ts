@@ -12,7 +12,9 @@ export const AuditEntity = {
   WORKFLOW: 'WORKFLOW',
   CATALOG: 'CATALOG',
   PRINT_JOB: 'PRINT_JOB',
-  MACHINE: 'MACHINE'
+  MACHINE: 'MACHINE',
+  QC_REJECTION: 'QCRejection',
+  QC_REJECTION_REASON: 'QCRejectionReason'
 } as const;
 
 export type AuditEntity = (typeof AuditEntity)[keyof typeof AuditEntity];
