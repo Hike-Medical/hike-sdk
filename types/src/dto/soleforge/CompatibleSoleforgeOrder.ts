@@ -8,8 +8,9 @@ export interface SoleforgeOrderPrintJob {
   fileName: string | null;
   laneId: string | null;
   laneName: string | null;
-  printerName: string;
-  printerId: string;
+  laneQueuePosition: number | null;
+  printerName: string | null;
+  printerId: string | null;
   actualStartTime: Date | null;
   actualEndTime: Date | null;
   failureReason: string | null;
