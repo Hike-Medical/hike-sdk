@@ -5,6 +5,7 @@ import type {
   GetQCRejectionReasonsParams,
   GetQCRejectionsParams,
   MarkKTCompleteParams,
+  PrintJobWithDetails,
   QCRejection,
   QCRejectionCountsResponse,
   QCRejectionReasonWithStations,
@@ -62,6 +63,15 @@ export const sendQCRejectionReprintJob = async (params: SendReprintJobParams): P
     const response = await backendApi.post(`soleforge/qc-rejection/${rejectionId}/send-reprint-job`, body, {
       headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
     });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getRejectionPrintjobs = async (rejectionId: string): Promise<PrintJobWithDetails[]> => {
+  try {
+    const response = await backendApi.get(`soleforge/qc-rejection/${rejectionId}/printjobs`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

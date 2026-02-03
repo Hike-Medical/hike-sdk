@@ -203,6 +203,7 @@ export * from './hooks/qc-rejection/useMarkKTComplete';
 export * from './hooks/qc-rejection/useQCRejectionCounts';
 export * from './hooks/qc-rejection/useQCRejectionReasons';
 export * from './hooks/qc-rejection/useQCRejections';
+export * from './hooks/qc-rejection/useRejectionPrintjobs';
 export * from './hooks/qc-rejection/useReviewQCRejection';
 export * from './hooks/qc-rejection/useSendQCRejectionReprintJob';
 export * from './hooks/qc-rejection/useUpdateQCRejectionReason';
