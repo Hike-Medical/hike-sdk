@@ -5,6 +5,8 @@ export interface QueueOrderToLaneParams {
   leftQty: number;
   /** Number of right insole prints to queue (0-10) */
   rightQty: number;
+  /** Whether this is a reprint job (affects file naming and label printing) */
+  isReprint?: boolean;
   /** JWT token for authorization */
   jwtToken?: string;
 }
