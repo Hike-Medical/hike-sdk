@@ -11,5 +11,5 @@ export interface FormSection {
   rule?: FormRule;
   required?: boolean;
   disabled?: boolean;
-  ui?: 'accordion' | 'accordion:toggle';
+  ui?: 'accordion' | 'accordion:toggle' | 'route';
 }
