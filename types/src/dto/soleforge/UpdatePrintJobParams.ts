@@ -7,6 +7,7 @@ export interface UpdatePrintJobParams {
   queuePosition?: number;
   actualStartTime?: Date | string;
   actualEndTime?: Date | string;
+  collectedAt?: Date | string;
   actualMaterialG?: number;
   failureReason?: string;
 }
