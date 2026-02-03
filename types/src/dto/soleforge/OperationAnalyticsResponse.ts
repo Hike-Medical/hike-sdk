@@ -96,6 +96,18 @@ export interface OrderThroughputByAddon {
   comparison?: OrderThroughputComparison;
 }
 
+export interface OrderThroughputByProductBaseType {
+  /** Product base type: 'Functional' or 'Diabetic' */
+  productBaseType: 'Functional' | 'Diabetic';
+  /** Human-readable label */
+  label: string;
+  /** Count in selected unit */
+  count: number;
+  /** Orders in this bucket */
+  orders?: OperationAnalyticsOrder[];
+  comparison?: OrderThroughputComparison;
+}
+
 export interface QualityRateMetrics {
   /** Total count in the selected unit (orders, pairs, or insoles) */
   totalCount: number;
@@ -122,6 +134,8 @@ export interface OrderThroughputResponse {
   byPairCount?: OrderThroughputByPairCount[];
   /** Results grouped by clinical addon type. Only present when groupByAddon is true. */
   byAddon?: OrderThroughputByAddon[];
+  /** Results grouped by product base type. Only present when groupByProductBaseType is true. */
+  byProductBaseType?: OrderThroughputByProductBaseType[];
 }
 
 export interface OrderStatusCount {
