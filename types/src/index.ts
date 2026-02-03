@@ -190,6 +190,7 @@ export * from './dto/preferences/CompanyTheme';
 export * from './dto/preferences/PaymentResponsibility';
 export * from './dto/printer/SendGcodeToPrinterParams';
 export * from './dto/printer/SlicerProfile';
+export * from './dto/qc-rejection/ConfirmOrderMovedParams';
 export * from './dto/qc-rejection/CreateQCRejectionParams';
 export * from './dto/qc-rejection/CreateQCRejectionReasonParams';
 export * from './dto/qc-rejection/GetQCRejectionCountsParams';

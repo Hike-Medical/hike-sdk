@@ -199,6 +199,7 @@ export * from './hooks/printer/usePrintGcode';
 export * from './hooks/printer/useSendPrinterToLabel';
 export * from './hooks/qc-rejection/useCreateQCRejection';
 export * from './hooks/qc-rejection/useCreateQCRejectionReason';
+export * from './hooks/qc-rejection/useConfirmOrderMoved';
 export * from './hooks/qc-rejection/useMarkKTComplete';
 export * from './hooks/qc-rejection/useQCRejectionCounts';
 export * from './hooks/qc-rejection/useQCRejectionReasons';

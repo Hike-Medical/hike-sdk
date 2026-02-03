@@ -1,4 +1,5 @@
 import type {
+  ConfirmOrderMovedParams,
   CreateQCRejectionParams,
   CreateQCRejectionReasonParams,
   GetQCRejectionCountsParams,
@@ -72,6 +73,18 @@ export const sendQCRejectionReprintJob = async (params: SendReprintJobParams): P
 export const getRejectionPrintjobs = async (rejectionId: string): Promise<PrintJobWithDetails[]> => {
   try {
     const response = await backendApi.get(`soleforge/qc-rejection/${rejectionId}/printjobs`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const confirmOrderMoved = async (params: ConfirmOrderMovedParams): Promise<QCRejection> => {
+  try {
+    const { rejectionId, jwtToken, ...body } = params;
+    const response = await backendApi.post(`soleforge/qc-rejection/${rejectionId}/confirm-order-moved`, body, {
+      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
