@@ -48,6 +48,8 @@ import {
   QueueOrderToLaneParams,
   QueueOrderToLaneResponse,
   QueuePrintJobsParams,
+  RejectPrintJobAndReprintParams,
+  RejectPrintJobAndReprintResponse,
   RevertGrindingOrderParams,
   RevertGrindingOrderResponse,
   RevertManualReprintOrderParams,
@@ -524,6 +526,22 @@ export const cancelLaneQueuedJob = async (params: CancelLaneQueuedJobParams): Pr
 export const getLaneQueuedJobCount = async (laneId: string): Promise<LaneQueuedJobCountResponse> => {
   try {
     const response = await backendApi.get(`soleforge/lanes/${laneId}/queue/count`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Reject a print job and queue a reprint to a specified lane.
+ * Creates a QCRejection record for audit tracking.
+ */
+export const rejectPrintJobAndReprint = async (
+  params: RejectPrintJobAndReprintParams
+): Promise<RejectPrintJobAndReprintResponse> => {
+  try {
+    const { printJobId, ...body } = params;
+    const response = await backendApi.post(`soleforge/print-jobs/${printJobId}/reject-and-reprint`, body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);

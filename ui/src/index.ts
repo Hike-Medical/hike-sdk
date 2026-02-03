@@ -261,6 +261,7 @@ export * from './hooks/soleforge/usePrinterHistory';
 export * from './hooks/soleforge/usePrintOrderLabel';
 export * from './hooks/soleforge/useQueueOrderToLane';
 export * from './hooks/soleforge/useQueuePrintJobs';
+export * from './hooks/soleforge/useRejectPrintJobAndReprint';
 export * from './hooks/soleforge/useRevertGrindingOrder';
 export * from './hooks/soleforge/useRevertManualReprintOrder';
 export * from './hooks/soleforge/useRevertOrderToPrinting';

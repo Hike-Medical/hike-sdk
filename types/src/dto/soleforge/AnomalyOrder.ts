@@ -7,7 +7,8 @@ export type AnomalyReasonType =
   | 'ORDER_GRINDING_TOO_LONG'
   | 'ORDER_GLUING_TOO_LONG'
   | 'ORDER_FINISHING_TOO_LONG'
-  | 'ORDER_SHIPPING_TOO_LONG';
+  | 'ORDER_SHIPPING_TOO_LONG'
+  | 'BLOCKED_JOBS';
 
 export interface AnomalyReason {
   type: AnomalyReasonType;
@@ -17,6 +18,12 @@ export interface AnomalyReason {
   printJobStatus?: string;
   /** How long the entity has been in the anomalous state, in minutes */
   durationMinutes: number;
+  /** For BLOCKED_JOBS: number of COMPLETED jobs */
+  completedCount?: number;
+  /** For BLOCKED_JOBS: number of in-progress jobs (PRINTING, QUEUED, DISPATCHED) */
+  inProgressCount?: number;
+  /** For BLOCKED_JOBS: required quantity for the order */
+  requiredQuantity?: number;
 }
 
 export interface AnomalyOrder {
