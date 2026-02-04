@@ -7,4 +7,6 @@ export interface GetCompatiblePrintersParams {
   statuses?: MachineStatus[];
   /** If true, returns [] when laneId is missing or has no printers */
   mustUseLane?: boolean;
+  /** If true, skips order status check (for reprint approval where order may be past PRINTING) */
+  skipStatusCheck?: boolean;
 }
