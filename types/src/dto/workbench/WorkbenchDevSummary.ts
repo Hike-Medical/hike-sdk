@@ -8,6 +8,7 @@ export interface WorkbenchDevSummary {
   workbenchStatus: string;
   leftRenderScore: number | null;
   rightRenderScore: number | null;
+  companyId: string;
   companySlug: string | null;
   poNumber: string | null;
   taikaDevId: string | null;
