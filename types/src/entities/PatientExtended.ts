@@ -9,5 +9,8 @@ export type PatientExtended = Patient & {
         })
       | null;
   })[];
-  evaluations?: Pick<Evaluation, 'id' | 'isDiabetic' | 'isVeteran' | 'startedAt' | 'cancelledAt' | 'submittedAt'>[];
+  evaluations?: Pick<
+    Evaluation,
+    'id' | 'isDiabetic' | 'isVeteran' | 'startedAt' | 'cancelledAt' | 'submittedAt' | 'poNumber'
+  >[];
 };
