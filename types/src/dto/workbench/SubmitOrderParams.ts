@@ -4,4 +4,5 @@ export interface SubmitOrderParams {
   signatureBase64Data?: string;
   overwriteSignature?: boolean;
   orderAuthorizationStatus?: OrderAuthorizationStatus;
+  version: number;
 }
