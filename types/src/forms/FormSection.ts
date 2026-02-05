@@ -5,6 +5,7 @@ export interface FormSection {
   id?: string;
   title: string;
   description?: string;
+  subtext?: string;
   badge?: string;
   fields: FormField[];
   meta?: Record<string, FormFieldValue>;
