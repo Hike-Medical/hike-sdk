@@ -547,3 +547,23 @@ export const rejectPrintJobAndReprint = async (
     throw toHikeError(error);
   }
 };
+
+/**
+ * Report a missing INSOLE_RENDER (STL) asset for a manual reprint order.
+ * Sends a Slack notification to the printfarm channel.
+ */
+export const reportMissingStl = async (params: {
+  orderId: string;
+  poNumber: string;
+  workbenchId: string;
+}): Promise<{ reported: boolean }> => {
+  try {
+    const response = await backendApi.post(`soleforge/orders/${params.orderId}/report-missing-stl`, {
+      poNumber: params.poNumber,
+      workbenchId: params.workbenchId
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
