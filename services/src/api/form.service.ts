@@ -58,6 +58,18 @@ export const findFormSubmissions = async (workbenchId: string): Promise<FormSubm
   }
 };
 
+export const findFormSubmissionsBySchemaType = async (
+  workbenchId: string,
+  schemaType: string
+): Promise<FormSubmissionTyped[]> => {
+  try {
+    const response = await backendApi.get(`form/workbench/${workbenchId}/submission/${schemaType}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const upsertFormSubmission = async (params: UpsertFormSubmissionParams): Promise<FormSubmissionTyped> => {
   try {
     const response = await backendApi.post('form/submission', params);
