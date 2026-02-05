@@ -8,8 +8,9 @@ export interface FormSection {
   badge?: string;
   fields: FormField[];
   meta?: Record<string, FormFieldValue>;
-  rule?: FormRule;
+  rule?: FormRule | FormRule[];
   required?: boolean;
   disabled?: boolean;
-  ui?: 'accordion' | 'accordion:toggle' | 'route';
+  ui?: 'accordion' | 'accordion:toggle';
+  route?: string;
 }
