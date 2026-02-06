@@ -14,7 +14,7 @@ interface BaseFormField<T extends FormFieldValue> {
   print?: boolean | Record<string, FieldPrint>;
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
-  rule?: FormRule;
+  rule?: FormRule | FormRule[];
   templateable?: boolean;
   reviewable?: number;
   meta?: Record<string, FormFieldValue>;

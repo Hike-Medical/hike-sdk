@@ -5,12 +5,13 @@ export interface FormSection {
   id?: string;
   title: string;
   description?: string;
+  subtext?: string;
   badge?: string;
   fields: FormField[];
   meta?: Record<string, FormFieldValue>;
-  rule?: FormRule;
+  rule?: FormRule | FormRule[];
   required?: boolean;
   disabled?: boolean;
-  route?: string;
   ui?: 'accordion' | 'accordion:toggle';
+  route?: string;
 }

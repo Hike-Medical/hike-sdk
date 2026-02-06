@@ -47,18 +47,12 @@ export const isFormSectionDisplayed = (
   return isFormRuleDisplayed(section, state, options);
 };
 
-export const isFormRuleDisplayed = (
-  formItem: { rule?: FormRule },
+const evaluateSingleRule = (
+  rule: FormRule,
   state: Record<string, FormFieldValue>,
-  options?: {
-    activeFoot?: string;
-  }
+  options?: { activeFoot?: string }
 ): boolean => {
-  if (!formItem.rule || !state) {
-    return true;
-  }
-
-  const { effect, condition } = formItem.rule;
+  const { effect, condition } = rule;
   const conditionValue = condition.value;
   const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
 
@@ -106,6 +100,26 @@ export const isFormRuleDisplayed = (
   }
 
   return true;
+};
+
+export const isFormRuleDisplayed = (
+  formItem: { rule?: FormRule | FormRule[] },
+  state: Record<string, FormFieldValue>,
+  options?: {
+    activeFoot?: string;
+  }
+): boolean => {
+  if (!formItem.rule || !state) {
+    return true;
+  }
+
+  // Handle array of rules - all rules must pass (AND logic)
+  if (Array.isArray(formItem.rule)) {
+    return formItem.rule.every((rule) => evaluateSingleRule(rule, state, options));
+  }
+
+  // Handle single rule
+  return evaluateSingleRule(formItem.rule, state, options);
 };
 
 /**
