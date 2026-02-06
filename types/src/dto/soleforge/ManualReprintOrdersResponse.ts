@@ -7,6 +7,11 @@ export interface ManualReprintGcodeAsset {
   printerType: string | null;
 }
 
+export interface ManualReprintStlAsset {
+  id: string;
+  side: Side | null;
+}
+
 export interface ManualReprintOrder extends CompatibleSoleforgeOrder {
   /**
    * The reasons this order requires manual reprinting.
@@ -18,6 +23,10 @@ export interface ManualReprintOrder extends CompatibleSoleforgeOrder {
    * G-code assets available for this order, for direct file download.
    */
   gcodeAssets: ManualReprintGcodeAsset[];
+  /**
+   * STL (Insole Render) assets available for this order, for manual slicing.
+   */
+  stlAssets: ManualReprintStlAsset[];
 }
 
 export interface ManualReprintFilterReason {
