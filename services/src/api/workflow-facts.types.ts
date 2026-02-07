@@ -22,7 +22,7 @@ const dobISOSchema = z
   .refine((val) => dayjs(val).isValid() && dayjs(val).isBefore(dayjs('2020-01-01')), {
     message: 'Date of birth must be before 2020-01-01'
   });
-const icd10Code = z.string().regex(/^[A-Z][0-9][A-Z0-9](?:\.?[A-Z0-9]{1,4})?$/, 'ICD-10 code');
+const icd10Code = z.string().regex(/^[A-Z][0-9][A-Z0-9](?:\.?[A-Za-z0-9]{1,4})?$/, 'ICD-10 code');
 const npi10 = z.string().regex(/^\d{10}$/, '10-digit NPI');
 const hcpcsCode = z.string().regex(/^[A-VY][0-9]{4}$/, 'HCPCS code (e.g., A5512)');
 const usOrCAPhoneNumber = z.string().regex(/^\+1\d{10}$/, 'US or Canada phone number');
@@ -554,18 +554,16 @@ export const FactRegistry = {
     category: 'Diagnosis Information',
     required: false,
     transform: (value: string[]) => value.sort(),
-    schema: z
-      .array(
-        z.enum([
-          'amputation_history',
-          'previous_foot_ulcer',
-          'pre_ulcerative_callus',
-          'peripheral_neuropathy_with_callus',
-          'foot_deformity',
-          'poor_circulation'
-        ])
-      )
-      .min(1),
+    schema: z.array(
+      z.enum([
+        'amputation_history',
+        'previous_foot_ulcer',
+        'pre_ulcerative_callus',
+        'peripheral_neuropathy_with_callus',
+        'foot_deformity',
+        'poor_circulation'
+      ])
+    ),
     metadata: defaultMetadataSchema.merge(
       z.object({
         details: z.array(
@@ -608,18 +606,16 @@ export const FactRegistry = {
     description: 'List of qualifying foot-risk conditions that are marked on the certifying statement',
     category: 'Certifying Statement',
     required: false,
-    schema: z
-      .array(
-        z.enum([
-          'amputation_history',
-          'previous_foot_ulcer',
-          'pre_ulcerative_callus',
-          'peripheral_neuropathy_with_callus',
-          'foot_deformity',
-          'poor_circulation'
-        ])
-      )
-      .min(1),
+    schema: z.array(
+      z.enum([
+        'amputation_history',
+        'previous_foot_ulcer',
+        'pre_ulcerative_callus',
+        'peripheral_neuropathy_with_callus',
+        'foot_deformity',
+        'poor_circulation'
+      ])
+    ),
     metadata: defaultMetadataSchema,
     transform: (value: string[]) => value.sort()
   },
