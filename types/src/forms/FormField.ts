@@ -28,6 +28,8 @@ export interface FormFieldOption {
   group?: string;
   alias?: Record<string, FormFieldValue>;
   route?: string;
+  /** Same as field/section: show or hide this option based on form state. */
+  rule?: FormRule | FormRule[];
 }
 
 export type FormField =

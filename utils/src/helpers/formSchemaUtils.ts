@@ -1,5 +1,6 @@
 import type {
   FormField,
+  FormFieldOption,
   FormFieldValue,
   FormRule,
   FormSchemaTyped,
@@ -8,6 +9,23 @@ import type {
 } from '@hike/types';
 import { asStringArray, isStringArray } from '@hike/types';
 import { isAddressFieldValid } from './formAddressUtils';
+
+/**
+ * Returns options visible for the current form state, using the same rule system as fields/sections.
+ * Options with no rule are shown. Options with rule are shown only when isFormRuleDisplayed passes.
+ * Pass flowType in options to inject clinicalFlowType into state for rule evaluation (e.g. hide when flowType is "prefab").
+ */
+export const getVisibleOptions = (
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  options?: { activeFoot?: string; flowType?: string }
+): FormFieldOption[] => {
+  if (!('options' in field) || !Array.isArray(field.options)) return [];
+  const stateForRules = options?.flowType != null ? { ...state, clinicalFlowType: options.flowType } : state;
+  return field.options.filter((opt) =>
+    opt.rule ? isFormRuleDisplayed(opt, stateForRules, { activeFoot: options?.activeFoot }) : true
+  );
+};
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
