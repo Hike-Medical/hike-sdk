@@ -1,4 +1,6 @@
 import type {
+  AnodyneFiltersResponse,
+  AnodyneProductStyle,
   CascadeAvailabilityResponse,
   CascadeOrderHistoryResponse,
   CascadeOrderRequest,
@@ -6,6 +8,8 @@ import type {
   CascadePriceResponse,
   CatalogProductExtended,
   CatalogSupplier,
+  GetAnodyneProductStylesParams,
+  GetAnodyneProductStyleVariantsParams,
   GetCascadeItemPricesParams,
   GetOrthofeetProductStylesParams,
   GetOrthofeetProductStyleVariantsParams,
@@ -64,6 +68,39 @@ export const fetchOrthofeetProductStyleVariants = async (
 ): Promise<CatalogProductExtended[]> => {
   try {
     const response = await backendApi.get('supplier/orthofeet/product/style/variants', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+// Anodyne
+
+export const fetchAnodyneFilters = async (): Promise<AnodyneFiltersResponse> => {
+  try {
+    const response = await backendApi.get('supplier/anodyne/filters');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchAnodyneProductStyles = async (
+  params: GetAnodyneProductStylesParams
+): Promise<PagedResponse<AnodyneProductStyle[]>> => {
+  try {
+    const response = await backendApi.get('supplier/anodyne/product/style', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchAnodyneProductStyleVariants = async (
+  params: GetAnodyneProductStyleVariantsParams
+): Promise<CatalogProductExtended[]> => {
+  try {
+    const response = await backendApi.get('supplier/anodyne/product/style/variants', { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
