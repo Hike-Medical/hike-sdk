@@ -80,6 +80,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'multiselect:billingCodes'; allowedCodes?: string[] })
   | (BaseFormField<string> & { type: 'signature' })
   | (BaseFormField<string> & { type: 'custom:orthofeet' })
+  | (BaseFormField<string> & { type: 'custom:catalog'; supplierIds: string[]; categoryIds?: string[] })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';
