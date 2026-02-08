@@ -51,7 +51,7 @@ export const appUrls = (appId: AppId, environment: HikeEnvironment): [string, ..
         case 'development':
           return ['http://localhost:3001'];
         case 'staging':
-          return ['https://app-staging.insoles.ai'];
+          return ['https://clinical-staging.hike-medical-server.com', 'https://app-staging.insoles.ai'];
         default:
           return ['https://clinical.hikemedical.com', 'https://app.hikemedical.com', 'https://app.insoles.ai'];
       }
