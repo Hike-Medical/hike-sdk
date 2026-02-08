@@ -23,13 +23,6 @@ export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
   }
 
   switch (appId) {
-    case '@hike/insoles-web':
-      switch (environment) {
-        case 'staging':
-          return 'https://api-staging.insoles.ai';
-        default:
-          return 'https://api.insoles.ai';
-      }
     case '@hike/stepzero-web':
       switch (environment) {
         case 'staging':
