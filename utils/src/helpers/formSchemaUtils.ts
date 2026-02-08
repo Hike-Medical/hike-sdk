@@ -157,6 +157,82 @@ export const isFieldValid = (
       )) ||
   !isFormFieldDisplayed(field, state, { activeFoot });
 
+const FOOT_SUFFIXES = ['', 'Bilateral', 'Left', 'Right'];
+
+function getSelectedValueForField(
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
+): FormFieldValue | undefined {
+  const suffixes = activeFoot != null ? [activeFoot] : FOOT_SUFFIXES;
+  for (const suffix of suffixes) {
+    const key = `${field.name}${suffix}`;
+    const value = state[key];
+    if (value !== undefined && value !== null && (value !== '' || (Array.isArray(value) && value.length > 0))) {
+      return value;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Like isFieldValid, but when the field is a select/multiselect and the chosen value
+ * corresponds to an option with a route, the field is only valid if that route is
+ * complete (via isRouteComplete). Use this when validating sections that contain
+ * route-leading choices.
+ */
+export const isFieldValidWithRoute = (
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  options: {
+    isOnlyField?: boolean;
+    activeFoot?: string;
+    isRouteComplete: (route: string) => boolean;
+  }
+): boolean => {
+  const { isOnlyField, activeFoot, isRouteComplete } = options;
+  if (!isFieldValid(field, state, isOnlyField, activeFoot)) {
+    return false;
+  }
+
+  if (field.type !== 'select' && field.type !== 'multiselect') {
+    return true;
+  }
+  if (!('options' in field) || !Array.isArray(field.options)) {
+    return true;
+  }
+
+  const selectedValue = getSelectedValueForField(field, state, activeFoot);
+  if (selectedValue === undefined) {
+    return true;
+  }
+
+  const optionsWithRoute = field.options.filter((opt): opt is FormFieldOption & { route: string } =>
+    Boolean(opt.route)
+  );
+
+  if (field.type === 'select') {
+    const valueStr = typeof selectedValue === 'string' ? selectedValue : String(selectedValue);
+    const chosenOption = optionsWithRoute.find((opt) => opt.value === valueStr);
+    if (chosenOption) {
+      return isRouteComplete(chosenOption.route);
+    }
+    return true;
+  }
+
+  // multiselect: every selected option that has a route must have that route complete
+  const selectedValues = Array.isArray(selectedValue)
+    ? (selectedValue as string[]).map(String)
+    : [String(selectedValue)];
+  const routesToCheck = selectedValues
+    .map((val) => optionsWithRoute.find((opt) => opt.value === val)?.route)
+    .filter((r): r is string => r != null);
+  if (routesToCheck.length === 0) {
+    return true;
+  }
+  return routesToCheck.some((route) => isRouteComplete(route));
+};
+
 /**
  * Determines if all the required fields in the form are answered.
  */
