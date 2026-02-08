@@ -22,7 +22,7 @@ export enum FactMatchMode {
 export enum AnnotationFilter {
   /** Attachments with no classification annotations */
   NO_CLASSIFICATION_ANNOTATIONS = 'NO_CLASSIFICATION_ANNOTATIONS',
-  /** Attachments not classified by the current user */
+  /** Attachments with fewer than 3 classification annotations that the current user has not classified */
   NO_CLASSIFICATION_ANNOTATIONS_BY_USER = 'NO_CLASSIFICATION_ANNOTATIONS_BY_USER'
 }
 
