@@ -148,14 +148,21 @@ export const isFieldValid = (
   state: Record<string, FormFieldValue>,
   isOnlyField?: boolean,
   activeFoot?: string
-): boolean =>
-  (!field.required && !isOnlyField) ||
-  (field.type === 'address'
-    ? isAddressFieldValid(field.name, state)
-    : Object.keys(state).some(
-        (key) => key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
-      )) ||
-  !isFormFieldDisplayed(field, state, { activeFoot });
+): boolean => {
+  const safeState = state ?? {};
+  return (
+    (!field.required && !isOnlyField) ||
+    (field.type === 'address'
+      ? isAddressFieldValid(field.name, safeState)
+      : Object.keys(safeState).some(
+          (key) =>
+            key.startsWith(field.name) &&
+            safeState[key] != null &&
+            (safeState[key]?.toString() !== '' || !field.required)
+        )) ||
+    !isFormFieldDisplayed(field, safeState, { activeFoot })
+  );
+};
 
 const FOOT_SUFFIXES = ['', 'Bilateral', 'Left', 'Right'];
 
