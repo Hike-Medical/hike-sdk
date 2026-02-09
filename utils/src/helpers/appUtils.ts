@@ -23,13 +23,6 @@ export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
   }
 
   switch (appId) {
-    case '@hike/insoles-web':
-      switch (environment) {
-        case 'staging':
-          return 'https://api-staging.insoles.ai';
-        default:
-          return 'https://api.insoles.ai';
-      }
     case '@hike/stepzero-web':
       switch (environment) {
         case 'staging':
@@ -48,57 +41,63 @@ export const apiUrl = (appId: AppId, environment: HikeEnvironment) => {
 };
 
 /**
- * Returns the app url for the given app and environment.
+ * Returns all valid app urls for the given app and environment.
+ * The first element is the canonical (primary) url; the rest are legacy aliases.
  */
-export const appUrl = (appId: AppId, environment: HikeEnvironment) => {
+export const appUrls = (appId: AppId, environment: HikeEnvironment): [string, ...string[]] => {
   switch (appId) {
     case '@hike/insoles-web':
       switch (environment) {
         case 'development':
-          return 'http://localhost:3001';
+          return ['http://localhost:3001'];
         case 'staging':
-          return 'https://app-staging.insoles.ai';
+          return ['https://clinical-staging.hike-medical-server.com', 'https://app-staging.insoles.ai'];
         default:
-          return 'https://app.insoles.ai';
+          return ['https://clinical.hikemedical.com', 'https://app.insoles.ai'];
       }
     case '@hike/consumer-web':
       switch (environment) {
         case 'development':
-          return 'http://localhost:3002';
+          return ['http://localhost:3002'];
         case 'staging':
-          return 'https://app-staging.hike-medical-server.com';
+          return ['https://app-staging.hike-medical-server.com'];
         default:
-          return 'https://app.hikemedical.com';
+          return ['https://app.hikemedical.com'];
       }
     case '@hike/stepzero-web':
       switch (environment) {
         case 'development':
-          return 'http://localhost:3012';
+          return ['http://localhost:3012'];
         case 'staging':
-          return 'https://app-staging.step-zero.dev';
+          return ['https://app-staging.step-zero.dev'];
         default:
-          return 'https://app.stepzero.ai';
+          return ['https://app.stepzero.ai'];
       }
     case '@hike/backend':
       switch (environment) {
         case 'development':
-          return 'http://localhost:8000';
+          return ['http://localhost:8000'];
         case 'staging':
-          return 'https://api-staging.hike-medical-server.com';
+          return ['https://api-staging.hike-medical-server.com'];
         default:
-          return 'https://api.hikemedical.com';
+          return ['https://api.hikemedical.com'];
       }
     default:
       switch (environment) {
         case 'development':
-          return 'http://localhost:8001';
+          return ['http://localhost:8001'];
         case 'staging':
-          return 'https://admin-staging.hike-medical-server.com';
+          return ['https://admin-staging.hike-medical-server.com'];
         default:
-          return 'https://admin.hikemedical.com';
+          return ['https://admin.hikemedical.com'];
       }
   }
 };
+
+/**
+ * Returns the canonical (primary) app url for the given app and environment.
+ */
+export const appUrl = (appId: AppId, environment: HikeEnvironment): string => appUrls(appId, environment)[0];
 
 /**
  * Generates base URLs.
