@@ -28,8 +28,8 @@ export interface GetOrderThroughputParams {
   productBaseTypes?: ThroughputProductBaseType[];
   /** Include SLA bucket metrics (orders grouped by days relative to committed date). */
   includeSLAMetrics?: boolean;
-  /** Filter by factory names (SOLEFORGE, SOLEMATE). Legacy orders (no lane) are included with SOLEMATE. */
-  factoryNames?: FactoryName[];
+  /** Filter by factory types (SOLEFORGE, SOLEMATE). Legacy orders (no lane) are included with SOLEMATE. */
+  factoryTypes?: FactoryName[];
   /** Include quality rate metrics (totalOrders, ordersWithReprints). Defaults to false. */
   includeQualityRateMetrics?: boolean;
   /** Group results by pair count (1, 2, 3 pairs). When true, returns byPairCount array. */
