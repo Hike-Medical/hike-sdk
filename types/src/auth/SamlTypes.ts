@@ -1,3 +1,4 @@
+import type { AppId } from '../config/AppId';
 import type { CompanyPreferences } from '../dto/preferences/CompanyPreferences';
 import type { AuthUser } from './AuthUser';
 
@@ -12,6 +13,8 @@ import type { AuthUser } from './AuthUser';
  */
 export interface SamlUser extends AuthUser {
   patientId?: string;
+  /** When true, the user needs to complete clinical onboarding (e.g., provide name for Clinician record). */
+  needsOnboarding?: boolean;
 }
 
 /**
@@ -58,6 +61,8 @@ export interface SamlContext {
   };
   provider: SamlProviderConfig;
   authPreferences: CompanyPreferences['auth'];
+  /** The app that initiated the SAML flow (parsed from RelayState). */
+  appId?: AppId;
 }
 
 /**

@@ -299,6 +299,22 @@ export const getSamlMetadata = async (companyId?: string): Promise<string> => {
   }
 };
 
+/**
+ * Completes SAML clinical onboarding by providing the clinician's name.
+ * Called after SAML authentication on insoles-web when the user needs to create a Clinician record.
+ */
+export const completeSamlOnboarding = async (params: {
+  firstName: string;
+  lastName: string;
+}): Promise<UserExtended> => {
+  try {
+    const response = await backendApi.post('auth/saml/complete-onboarding', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const findAuthPreferences = async (companyId?: string): Promise<AuthPreferences> => {
   try {
     const response = await backendApi.get('auth/preferences', {
