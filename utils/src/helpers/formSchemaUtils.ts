@@ -1,5 +1,6 @@
 import type {
   FormField,
+  FormFieldOption,
   FormFieldValue,
   FormRule,
   FormSchemaTyped,
@@ -8,6 +9,23 @@ import type {
 } from '@hike/types';
 import { asStringArray, isStringArray } from '@hike/types';
 import { isAddressFieldValid } from './formAddressUtils';
+
+/**
+ * Returns options visible for the current form state, using the same rule system as fields/sections.
+ * Options with no rule are shown. Options with rule are shown only when isFormRuleDisplayed passes.
+ * Pass flowType in options to inject clinicalFlowType into state for rule evaluation (e.g. hide when flowType is "prefab").
+ */
+export const getVisibleOptions = (
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  options?: { activeFoot?: string; flowType?: string }
+): FormFieldOption[] => {
+  if (!('options' in field) || !Array.isArray(field.options)) return [];
+  const stateForRules = options?.flowType != null ? { ...state, clinicalFlowType: options.flowType } : state;
+  return field.options.filter((opt) =>
+    opt.rule ? isFormRuleDisplayed(opt, stateForRules, { activeFoot: options?.activeFoot }) : true
+  );
+};
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
@@ -47,18 +65,12 @@ export const isFormSectionDisplayed = (
   return isFormRuleDisplayed(section, state, options);
 };
 
-export const isFormRuleDisplayed = (
-  formItem: { rule?: FormRule },
+const evaluateSingleRule = (
+  rule: FormRule,
   state: Record<string, FormFieldValue>,
-  options?: {
-    activeFoot?: string;
-  }
+  options?: { activeFoot?: string }
 ): boolean => {
-  if (!formItem.rule || !state) {
-    return true;
-  }
-
-  const { effect, condition } = formItem.rule;
+  const { effect, condition } = rule;
   const conditionValue = condition.value;
   const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
 
@@ -108,6 +120,26 @@ export const isFormRuleDisplayed = (
   return true;
 };
 
+export const isFormRuleDisplayed = (
+  formItem: { rule?: FormRule | FormRule[] },
+  state: Record<string, FormFieldValue>,
+  options?: {
+    activeFoot?: string;
+  }
+): boolean => {
+  if (!formItem.rule || !state) {
+    return true;
+  }
+
+  // Handle array of rules - all rules must pass (AND logic)
+  if (Array.isArray(formItem.rule)) {
+    return formItem.rule.every((rule) => evaluateSingleRule(rule, state, options));
+  }
+
+  // Handle single rule
+  return evaluateSingleRule(formItem.rule, state, options);
+};
+
 /**
  * Determines if a given form field is complete based on its requirements and visibility.
  */
@@ -116,14 +148,97 @@ export const isFieldValid = (
   state: Record<string, FormFieldValue>,
   isOnlyField?: boolean,
   activeFoot?: string
-): boolean =>
-  (!field.required && !isOnlyField) ||
-  (field.type === 'address'
-    ? isAddressFieldValid(field.name, state)
-    : Object.keys(state).some(
-        (key) => key.startsWith(field.name) && state[key] != null && (state[key]?.toString() !== '' || !field.required)
-      )) ||
-  !isFormFieldDisplayed(field, state, { activeFoot });
+): boolean => {
+  const safeState = state ?? {};
+  return (
+    (!field.required && !isOnlyField) ||
+    (field.type === 'address'
+      ? isAddressFieldValid(field.name, safeState)
+      : Object.keys(safeState).some(
+          (key) =>
+            key.startsWith(field.name) &&
+            safeState[key] != null &&
+            (safeState[key]?.toString() !== '' || !field.required)
+        )) ||
+    !isFormFieldDisplayed(field, safeState, { activeFoot })
+  );
+};
+
+const FOOT_SUFFIXES = ['', 'Bilateral', 'Left', 'Right'];
+
+function getSelectedValueForField(
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  activeFoot?: string
+): FormFieldValue | undefined {
+  const suffixes = activeFoot != null ? [activeFoot] : FOOT_SUFFIXES;
+  for (const suffix of suffixes) {
+    const key = `${field.name}${suffix}`;
+    const value = state[key];
+    if (value !== undefined && value !== null && (value !== '' || (Array.isArray(value) && value.length > 0))) {
+      return value;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Like isFieldValid, but when the field is a select/multiselect and the chosen value
+ * corresponds to an option with a route, the field is only valid if that route is
+ * complete (via isRouteComplete). Use this when validating sections that contain
+ * route-leading choices.
+ */
+export const isFieldValidWithRoute = (
+  field: FormField,
+  state: Record<string, FormFieldValue>,
+  options: {
+    isOnlyField?: boolean;
+    activeFoot?: string;
+    isRouteComplete: (route: string) => boolean;
+  }
+): boolean => {
+  const { isOnlyField, activeFoot, isRouteComplete } = options;
+  if (!isFieldValid(field, state, isOnlyField, activeFoot)) {
+    return false;
+  }
+
+  if (field.type !== 'select' && field.type !== 'multiselect') {
+    return true;
+  }
+  if (!('options' in field) || !Array.isArray(field.options)) {
+    return true;
+  }
+
+  const selectedValue = getSelectedValueForField(field, state, activeFoot);
+  if (selectedValue === undefined) {
+    return true;
+  }
+
+  const optionsWithRoute = field.options.filter((opt): opt is FormFieldOption & { route: string } =>
+    Boolean(opt.route)
+  );
+
+  if (field.type === 'select') {
+    const valueStr = typeof selectedValue === 'string' ? selectedValue : String(selectedValue);
+    const chosenOption = optionsWithRoute.find((opt) => opt.value === valueStr);
+    if (chosenOption) {
+      return isRouteComplete(chosenOption.route);
+    }
+    return true;
+  }
+
+  // multiselect: every selected option that has a route must have that route complete
+  const selectedValues = Array.isArray(selectedValue)
+    ? (selectedValue as string[]).map(String)
+    : [String(selectedValue)];
+  const routesToCheck = selectedValues
+    .map((val) => optionsWithRoute.find((opt) => opt.value === val)?.route)
+    .filter((r): r is string => r != null);
+  if (routesToCheck.length === 0) {
+    return true;
+  }
+  return routesToCheck.some((route) => isRouteComplete(route));
+};
 
 /**
  * Determines if all the required fields in the form are answered.

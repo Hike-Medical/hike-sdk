@@ -31,7 +31,14 @@ export interface ClassificationContent {
   pageClassifications: AttachmentPageClassification[];
 }
 
-export type AnnotationContent = ClassificationContent;
+/**
+ * Content structure for skipped CLASSIFICATION annotations
+ */
+export interface SkippedClassificationContent {
+  skipped: true;
+}
+
+export type AnnotationContent = ClassificationContent | SkippedClassificationContent;
 
 /**
  * User info included in annotation responses

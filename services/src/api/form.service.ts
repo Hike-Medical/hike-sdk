@@ -1,6 +1,5 @@
 import type {
   CreateFormTemplateBody,
-  FormSchemaType,
   FormSchemaTyped,
   FormSubmissionTyped,
   FormTemplateResponse,
@@ -61,7 +60,7 @@ export const findFormSubmissions = async (workbenchId: string): Promise<FormSubm
 
 export const findFormSubmissionsBySchemaType = async (
   workbenchId: string,
-  schemaType: FormSchemaType
+  schemaType: string
 ): Promise<FormSubmissionTyped[]> => {
   try {
     const response = await backendApi.get(`form/workbench/${workbenchId}/submission/${schemaType}`);

@@ -60,6 +60,23 @@ export interface CompanyPreferences {
   };
   catalog?: {
     columnMapping: Record<string, Partial<Record<keyof CatalogProductCsvRecord, string[]>>>;
+    /**
+     * Product filters per supplier. Allows companies to restrict which products are shown in the catalog.
+     * Key is the supplier ID.
+     */
+    productFilters?: Record<
+      string,
+      {
+        /** 'include' = whitelist (only show these), 'exclude' = blacklist (hide these) */
+        mode: 'include' | 'exclude';
+        /** Filter by specific product IDs (parent products) */
+        productIds?: string[];
+        /** Filter by category IDs */
+        categoryIds?: string[];
+        /** Filter by style_name attribute (Orthofeet-specific) */
+        styleNames?: string[];
+      }
+    >;
   };
   rushAll?: boolean;
   hideInEnrollList?: boolean;

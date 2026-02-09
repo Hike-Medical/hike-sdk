@@ -14,7 +14,7 @@ interface BaseFormField<T extends FormFieldValue> {
   print?: boolean | Record<string, FieldPrint>;
   default?: T;
   dbField?: { table: string; column: string; unique?: string[] };
-  rule?: FormRule;
+  rule?: FormRule | FormRule[];
   templateable?: boolean;
   reviewable?: number;
   meta?: Record<string, FormFieldValue>;
@@ -28,6 +28,8 @@ export interface FormFieldOption {
   group?: string;
   alias?: Record<string, FormFieldValue>;
   route?: string;
+  /** Same as field/section: show or hide this option based on form state. */
+  rule?: FormRule | FormRule[];
 }
 
 export type FormField =
@@ -78,6 +80,7 @@ export type FormField =
   | (BaseFormField<string> & { type: 'multiselect:billingCodes'; allowedCodes?: string[] })
   | (BaseFormField<string> & { type: 'signature' })
   | (BaseFormField<string> & { type: 'custom:orthofeet' })
+  | (BaseFormField<string> & { type: 'custom:catalog'; supplierIds: string[]; categoryIds?: string[] })
   | (BaseFormField<string[]> & { type: 'array' })
   | (BaseFormField<string[]> & {
       type: 'multiselect';
