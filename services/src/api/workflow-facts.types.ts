@@ -842,6 +842,49 @@ export const FactRegistry = {
     metadata: defaultMetadataSchema
   },
 
+  'internal.extraction.standard.parsed': {
+    displayName: 'Standard Extraction Results Parsed',
+    description: 'Standard extraction results have been parsed (hanger workflow)',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      parsed: z.boolean(),
+      attachmentId: z.string().min(1),
+      docTypes: z.array(z.string())
+    }),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
+  'internal.extraction.embeddings.parsed': {
+    displayName: 'Embeddings Extraction Results Parsed',
+    description: 'Embeddings extraction results have been parsed (hanger workflow)',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      parsed: z.boolean(),
+      attachmentId: z.string().min(1),
+      docTypes: z.array(z.string())
+    }),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
+  'internal.classification.selected': {
+    displayName: 'Classification Selected',
+    description: 'Classification has been selected from extraction results (hanger workflow)',
+    category: 'Workflow Information',
+    required: false,
+    schema: z.object({
+      selected: z.boolean(),
+      selectedType: z.enum(['standard', 'embeddings']),
+      selectedAttachmentId: z.string().min(1),
+      docTypes: z.array(z.string())
+    }),
+    hideInUX: true,
+    metadata: defaultMetadataSchema
+  },
+
   // Payer information
   'payer_info.payer.primary.name': {
     displayName: 'Primary Payer Name',
