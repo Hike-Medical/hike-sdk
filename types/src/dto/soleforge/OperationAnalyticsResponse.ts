@@ -1,4 +1,4 @@
-import { OrderStatus, ProductType } from '../../../prisma';
+import { FactoryName, OrderStatus, ProductType } from '../../../prisma';
 import { ThroughputUnit } from './ThroughputUnit';
 
 /** SubStatus for DRAFT orders indicating validation stage */
@@ -25,6 +25,8 @@ export interface OperationAnalyticsOrder {
   goLiveDate?: Date | null;
   /** SubStatus for DRAFT orders indicating validation stage (DEV_VALIDATION, PROD_VALIDATION, VALIDATION_COMPLETE) */
   subStatus?: DraftSubStatus;
+  /** Factory name from the order's lane (SOLEFORGE or SOLEMATE). Null if order is not assigned to a lane. */
+  factoryName?: FactoryName | null;
 }
 
 export interface OrderThroughputComparison {
