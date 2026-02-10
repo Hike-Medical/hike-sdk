@@ -50,6 +50,7 @@ export type FormField =
   | (BaseFormField<boolean> & { type: 'boolean'; ui?: 'toggle' | 'radio' })
   | (BaseFormField<string> & { type: 'date'; mode?: 'date' | 'datetime' | 'time'; min?: string; max?: string })
   | (BaseFormField<string> & { type: 'address' })
+  | (BaseFormField<string> & { type: 'address:clinic' })
   | (BaseFormField<string[]> & { type: 'image'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'file'; multiple?: boolean })
   | (BaseFormField<string[]> & { type: 'lidar' })
