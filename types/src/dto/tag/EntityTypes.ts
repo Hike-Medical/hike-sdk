@@ -7,7 +7,8 @@ export const EntityTypeEnum = {
   CLINICIAN: 'CLINICIAN',
   PATIENT: 'PATIENT',
   USER: 'USER',
-  WORKFLOW: 'WORKFLOW'
+  WORKFLOW: 'WORKFLOW',
+  ORDER: 'ORDER'
 } as const satisfies Record<EntityType, EntityType> & {
   [K in EntityType]: K;
 };

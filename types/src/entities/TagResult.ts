@@ -1,4 +1,4 @@
-import { Clinician, Department, Facility, Patient } from '../../prisma';
+import { Clinician, Department, Facility, Order, Patient } from '../../prisma';
 import { SafeCompany } from './SafeCompany';
 import { SafeUser } from './SafeUser';
 
@@ -9,4 +9,5 @@ export interface TagResult {
   companies?: SafeCompany[];
   departments?: Department[];
   facilities?: Facility[];
+  orders?: Order[];
 }
