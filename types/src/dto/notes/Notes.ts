@@ -7,6 +7,7 @@ export interface Block {
   width?: number;
   height?: number;
   canvas: any[];
+  rotation?: number;
 }
 
 export interface Notes extends Omit<PrismaWorkbenchNotes, 'blocks'> {
