@@ -18,4 +18,9 @@ export interface AnodyneProductStyle {
    * The unique colors available for this style.
    */
   colors: string[];
+
+  /**
+   * Category IDs this style belongs to (used to exclude e.g. prefab when not filtering by that category).
+   */
+  categoryIds?: string[];
 }
