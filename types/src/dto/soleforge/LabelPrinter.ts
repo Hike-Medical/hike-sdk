@@ -22,6 +22,6 @@ export interface LabelPrinter {
 export interface GetLabelPrintersParams {
   /** Filter by lane IDs (for CompatibleOrders - show printers from these lanes) */
   laneIds?: string[];
-  /** Filter by factory type (for ManualReprintOrders - show all printers in factory) */
-  factoryType?: FactoryName;
+  /** Filter by factory name (for ManualReprintOrders - show all printers in factory) */
+  factoryName?: FactoryName;
 }

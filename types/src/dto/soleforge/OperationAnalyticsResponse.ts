@@ -21,6 +21,8 @@ export interface OperationAnalyticsOrder {
   status?: OrderStatus;
   /** Date the order was authorized (when authorizationStatus is APPROVED) */
   authorizedAt?: Date | null;
+  /** Go-live date: authorization date for clinical orders, workbench submission date for consumer orders */
+  goLiveDate?: Date | null;
   /** SubStatus for DRAFT orders indicating validation stage (DEV_VALIDATION, PROD_VALIDATION, VALIDATION_COMPLETE) */
   subStatus?: DraftSubStatus;
 }
