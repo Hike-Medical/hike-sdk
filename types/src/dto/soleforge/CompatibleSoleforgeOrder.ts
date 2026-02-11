@@ -16,6 +16,11 @@ export interface SoleforgeOrderPrintJob {
   failureReason: string | null;
 }
 
+export interface SoleforgeStlAsset {
+  id: string;
+  side: Side | null;
+}
+
 export interface CompatibleSoleforgeOrder {
   workbenchId: string;
   orderId: string;
@@ -34,4 +39,5 @@ export interface CompatibleSoleforgeOrder {
   rightQuantity: string | number | null;
   slicerProfile: string | null;
   printJobs: SoleforgeOrderPrintJob[];
+  stlAssets: SoleforgeStlAsset[];
 }
