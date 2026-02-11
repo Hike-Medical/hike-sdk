@@ -24,4 +24,6 @@ export interface WorkbenchDevSummary {
   orderGender: string | null;
   orderSide: number | null;
   isOutsideClinic?: boolean;
+  prodRejectedAt?: Date | null;
+  prodRejectReasons?: { left?: string; right?: string } | null;
 }
