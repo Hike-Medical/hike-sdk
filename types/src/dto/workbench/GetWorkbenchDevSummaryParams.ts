@@ -12,4 +12,7 @@ export interface GetWorkbenchDevSummaryParams extends PagedParams {
   companySlugs?: string[];
   orderAuthorizationStatus?: string[];
   devValidationStatus?: boolean | null;
+  /** Filter: prod rejected at date range (inclusive). */
+  prodRejectedAtFrom?: string;
+  prodRejectedAtTo?: string;
 }
