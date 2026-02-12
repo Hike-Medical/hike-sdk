@@ -37,6 +37,8 @@ export interface AnomalyOrder {
   anomalyReasons: AnomalyReason[];
   /** When the order/job entered the current status (used for display) */
   stuckSince: Date | null;
+  /** When the workbench was submitted (committed date) */
+  submittedAt: Date | null;
 }
 
 export interface AnomalyOrdersResponse {
