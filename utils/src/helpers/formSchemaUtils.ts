@@ -156,7 +156,7 @@ export const isFieldValid = (
       ? isAddressFieldValid(field.name, safeState)
       : Object.keys(safeState).some(
           (key) =>
-            key.startsWith(field.name) &&
+            key.startsWith(`${field.name}${activeFoot ?? ''}`) &&
             safeState[key] != null &&
             (safeState[key]?.toString() !== '' || !field.required)
         )) ||

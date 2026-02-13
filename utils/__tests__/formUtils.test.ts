@@ -320,6 +320,36 @@ describe('Form Schema Utils', () => {
       const isComplete = isFieldValid(field, state);
       expect(isComplete).toBe(true);
     });
+
+    it('should scope validation to the active foot when activeFoot is provided', () => {
+      const field: FormField = { name: 'ankleType', label: 'Ankle Type', type: 'text', required: true };
+      const state = { ankleTypeLeft: 'rigid' };
+
+      // Without activeFoot, matches any key starting with field name
+      expect(isFieldValid(field, state)).toBe(true);
+
+      // With activeFoot='Left', matches ankleTypeLeft
+      expect(isFieldValid(field, state, false, 'Left')).toBe(true);
+
+      // With activeFoot='Right', does NOT match ankleTypeLeft
+      expect(isFieldValid(field, state, false, 'Right')).toBe(false);
+    });
+
+    it('should return false for required foot field when only another foot has data', () => {
+      const field: FormField = {
+        name: 'deviceType',
+        label: 'Device Type',
+        type: 'select',
+        required: true,
+        options: [{ label: 'Custom', value: 'custom' }]
+      };
+      const state = { deviceTypeBilateral: 'custom' };
+
+      // Bilateral has data, Left does not
+      expect(isFieldValid(field, state, false, 'Bilateral')).toBe(true);
+      expect(isFieldValid(field, state, false, 'Left')).toBe(false);
+      expect(isFieldValid(field, state, false, 'Right')).toBe(false);
+    });
   });
 
   describe('schemaStats', () => {
