@@ -38,7 +38,71 @@ export interface SkippedClassificationContent {
   skipped: true;
 }
 
-export type AnnotationContent = ClassificationContent | SkippedClassificationContent;
+/**
+ * A single fact verification entry within a FACT annotation.
+ * Records whether an extracted fact is correct, along with metadata.
+ */
+export interface FactVerificationEntry {
+  /** The Fact record ID being verified */
+  factId: string;
+  /** The fact key (e.g. "patient.first_name") */
+  key: string;
+  /** The annotator's verdict on this fact */
+  status: 'correct' | 'incorrect' | 'missing';
+  /** The value the annotator found -- required when status is 'incorrect' */
+  correctedValue?: string;
+  /** Per-fact annotation metadata */
+  metadata?: {
+    isHandwritten?: boolean;
+    /** Free-text notes from the annotator */
+    notes?: string;
+  };
+}
+
+/**
+ * Content structure for FACT annotations (verification flow)
+ */
+export interface FactAnnotationContent {
+  verifications: FactVerificationEntry[];
+}
+
+/**
+ * Content structure for skipped FACT annotations
+ */
+export interface SkippedFactAnnotationContent {
+  skipped: true;
+}
+
+/**
+ * A single resolved fact within a REVIEW annotation.
+ * Records the final verdict after comparing multiple annotators.
+ */
+export interface FactResolution {
+  /** The Fact record ID that was resolved */
+  factId: string;
+  /** The fact key (e.g. "patient.first_name") */
+  key: string;
+  /** The final resolved status */
+  resolvedStatus: 'correct' | 'incorrect' | 'missing';
+  /** The resolved correct value when resolvedStatus is 'incorrect' */
+  resolvedValue?: string;
+  /** How this fact was resolved */
+  method: 'consensus' | 'majority' | 'manual';
+}
+
+/**
+ * Content structure for REVIEW annotations (conflict resolution)
+ */
+export interface FactReviewContent {
+  resolutions: FactResolution[];
+}
+
+export type AnnotationContent =
+  | ClassificationContent
+  | SkippedClassificationContent
+  | FactAnnotationContent
+  | SkippedFactAnnotationContent
+  | FactReviewContent;
 
 /**
  * User info included in annotation responses
