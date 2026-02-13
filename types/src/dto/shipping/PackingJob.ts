@@ -9,6 +9,7 @@ export interface PackingJobOrder {
   productType: string | null;
   leftQuantity: string | null;
   rightQuantity: string | null;
+  committedDeliveryAt: string | null;
 }
 
 export interface PackingJob {
@@ -16,6 +17,7 @@ export interface PackingJob {
   facilityName: string;
   orders: PackingJobOrder[];
   totalOrders: number;
+  earliestCommitDate: string | null;
 }
 
 export type PackingJobsResponse = PackingJob[];
