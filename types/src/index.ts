@@ -169,6 +169,7 @@ export * from './dto/order/OrdersStats';
 export * from './dto/order/OrderStatus';
 export * from './dto/order/OrderType';
 export * from './dto/order/ProductType';
+export * from './dto/order/SetOrderDestinationFacilityParams';
 export * from './dto/order/UpdateOrderParams';
 export * from './dto/PagedParams';
 export * from './dto/PagedResponse';

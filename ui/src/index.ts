@@ -181,6 +181,7 @@ export * from './hooks/orders/useOrdersByLabelId';
 export * from './hooks/orders/useOrdersByType';
 export * from './hooks/orders/useOrdersStats';
 export * from './hooks/orders/useOrderUpdate';
+export * from './hooks/orders/useSetOrderDestinationFacility';
 export * from './hooks/orders/useSubmitClinicalOrder';
 export * from './hooks/orders/useSubmitConsumerOrder';
 export * from './hooks/orders/useSubmitSimplrOrder';
