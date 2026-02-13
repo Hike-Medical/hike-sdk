@@ -1,6 +1,6 @@
 export interface RejectPrintJobAndReprintParams {
   printJobId: string;
-  laneId: string;
+  laneId?: string;
   reasonId?: string;
   customReason?: string;
   ticketId?: string;
@@ -9,6 +9,6 @@ export interface RejectPrintJobAndReprintParams {
 
 export interface RejectPrintJobAndReprintResponse {
   qcRejectionId: string;
-  newPrintJobId: string;
+  newPrintJobId: string | null;
   orderId: string;
 }

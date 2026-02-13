@@ -1,4 +1,5 @@
 import type {
+  AcknowledgeManualReprintParams,
   ConfirmOrderMovedParams,
   CreateQCRejectionParams,
   CreateQCRejectionReasonParams,
@@ -133,6 +134,18 @@ export const updateQCRejectionReason = async (
   try {
     const { reasonId, ...body } = params;
     const response = await backendApi.patch(`soleforge/qc-rejection/reasons/${reasonId}`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const acknowledgeManualReprint = async (params: AcknowledgeManualReprintParams): Promise<QCRejection> => {
+  try {
+    const { rejectionId, jwtToken, ...body } = params;
+    const response = await backendApi.post(`soleforge/qc-rejection/${rejectionId}/acknowledge-manual-reprint`, body, {
+      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

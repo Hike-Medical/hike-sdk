@@ -197,6 +197,8 @@ export * from './hooks/preferences/usePreferences';
 export * from './hooks/printer/useGetPrinters';
 export * from './hooks/printer/usePrintGcode';
 export * from './hooks/printer/useSendPrinterToLabel';
+export * from './hooks/qc-rejection/useAcknowledgeManualReprint';
+export * from './hooks/qc-rejection/useCheckIfManualPrintRequired';
 export * from './hooks/qc-rejection/useConfirmOrderMoved';
 export * from './hooks/qc-rejection/useCreateQCRejection';
 export * from './hooks/qc-rejection/useCreateQCRejectionReason';
