@@ -230,6 +230,15 @@ export const getManualReprintOrders = async (
   }
 };
 
+export const checkIfManualPrintRequired = async (orderId: string): Promise<{ isManualPrint: boolean }> => {
+  try {
+    const response = await backendApi.get(`soleforge/orders/${orderId}/check-if-manual-print-required`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const getAnomalyOrders = async (params?: GetAnomalyOrdersParams): Promise<AnomalyOrdersResponse> => {
   try {
     const response = await backendApi.get('soleforge/anomaly-orders', { params });
