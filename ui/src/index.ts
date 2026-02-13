@@ -75,6 +75,7 @@ export * from './hooks/clinician/useClinicians';
 export * from './hooks/clinician/useCreateClinician';
 export * from './hooks/clinician/useUnassignedClinician';
 export * from './hooks/clinician/useUnassignedClinicians';
+export * from './hooks/clinician/useUpdateClinician';
 export * from './hooks/company/useAddCompany';
 export * from './hooks/company/useCompanies';
 export * from './hooks/company/useCompaniesByName';
