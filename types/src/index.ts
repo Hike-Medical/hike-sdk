@@ -230,6 +230,7 @@ export * from './dto/search/GetSearchParams';
 export * from './dto/search/SearchResponse';
 export * from './dto/search/sqlQueryParms';
 export * from './dto/shipping/GeneratePackingSlip';
+export * from './dto/shipping/PackingJob';
 export * from './dto/shipping/GetLabelsResponse';
 export * from './dto/shipping/GetLabelTrackingInfo';
 export * from './dto/shipping/GetRatesResponse';

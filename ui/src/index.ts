@@ -226,6 +226,7 @@ export * from './hooks/shipping/useCompanyPackages';
 export * from './hooks/shipping/useGetLabelByShippingId';
 export * from './hooks/shipping/useGetPackingSlip';
 export * from './hooks/shipping/useGetPendingLabels';
+export * from './hooks/shipping/usePackingJobs';
 export * from './hooks/shipping/useGetShippingRates';
 export * from './hooks/shipping/useLabels';
 export * from './hooks/shipping/usePurchaseLabel';

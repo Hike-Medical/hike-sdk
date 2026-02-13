@@ -4,6 +4,7 @@ import {
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
   LabelsResponse,
+  PackingJobsResponse,
   SaveTrackingInfoParams,
   ShipEngineValidateAddressResponse,
   ShippingAddressBody,
@@ -139,6 +140,15 @@ export const findShippingLabels = async (query: string): Promise<ShippingLabel[]
 export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLabelResponseByShipmentId> => {
   try {
     const response = await backendApi.get(`shipping/orders/${labelId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPackingJobs = async (): Promise<PackingJobsResponse> => {
+  try {
+    const response = await backendApi.get('shipping/packing-jobs');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
