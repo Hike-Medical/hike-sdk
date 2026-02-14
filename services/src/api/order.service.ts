@@ -11,6 +11,7 @@ import type {
   OrderType,
   OrdersStats,
   PagedResponse,
+  SetOrderDestinationFacilityParams,
   UpdateOrderParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -96,6 +97,21 @@ export const updateOrder = async (
   try {
     const response = await backendApi.patch(`order/${orderId}`, params, {
       headers: addHeaders(companyIds, { Authorization: jwtToken && `Bearer ${jwtToken}` })
+    });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const setOrderDestinationFacility = async (
+  orderId: string,
+  params: SetOrderDestinationFacilityParams,
+  companyIds?: string[]
+): Promise<OrderExtended> => {
+  try {
+    const response = await backendApi.patch(`order/${orderId}/destination-facility`, params, {
+      headers: addHeaders(companyIds)
     });
     return response.data;
   } catch (error) {
