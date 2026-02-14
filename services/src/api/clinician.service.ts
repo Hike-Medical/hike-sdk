@@ -4,6 +4,8 @@ import {
   ClinicianExtended,
   CreateClinicianParams,
   GetCliniciansParams,
+  SendCoInviteParams,
+  AccountVerification,
   PagedResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
@@ -12,6 +14,17 @@ import { backendApi } from '../utils/backendApi';
 export const createClinician = async (params: CreateClinicianParams): Promise<Clinician> => {
   try {
     const response = await backendApi.post('clinician', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendCoInvite = async (
+  params: SendCoInviteParams
+): Promise<Omit<AccountVerification, 'token'>[]> => {
+  try {
+    const response = await backendApi.post('clinician/co-invite', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
