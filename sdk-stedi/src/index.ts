@@ -1,5 +1,7 @@
 export * from './client/StediClient';
 export * from './errors/errorCodes';
+export * from './types/claimAcknowledgment';
+export * from './types/claims';
 export * from './types/eligibility';
 export * from './types/mbi';
 export * from './types/patient';

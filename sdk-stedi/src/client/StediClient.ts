@@ -1,4 +1,6 @@
 import { ExternalApiClient, Logger } from '@hike/sdk';
+import { ClaimAcknowledgmentClient } from './ClaimAcknowledgmentClient';
+import { ClaimsClient } from './ClaimsClient';
 import { EligibilityClient } from './EligibilityClient';
 import { MbiLookupClient } from './MbiLookupClient';
 import { PayerClient } from './PayerClient';
@@ -12,6 +14,8 @@ export interface StediClientConfig {
 
 export class StediClient extends ExternalApiClient {
   public readonly eligibility: EligibilityClient;
+  public readonly claims: ClaimsClient;
+  public readonly claimAcknowledgment: ClaimAcknowledgmentClient;
   public readonly mbiLookup: MbiLookupClient;
   public readonly payer: PayerClient;
 
@@ -33,6 +37,8 @@ export class StediClient extends ExternalApiClient {
 
     // Initialize sub-clients with the shared axios instance
     this.eligibility = new EligibilityClient(this.axiosInstance, config.logger);
+    this.claims = new ClaimsClient(this.axiosInstance, config.logger);
+    this.claimAcknowledgment = new ClaimAcknowledgmentClient(this.axiosInstance, config.logger);
     this.mbiLookup = new MbiLookupClient(this.axiosInstance, config.logger);
     this.payer = new PayerClient(this.axiosInstance, config.logger);
   }

@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "/Users/amrithbalachander/Desktop/hike-mono/packages/hike-sdk/analytics/generated",
+      "value": "/Users/gupta/Desktop/Hike Medical 2026/hike-mono/packages/hike-sdk/analytics/generated",
       "fromEnvVar": null
     },
     "config": {
@@ -42,7 +42,7 @@ const config: runtime.GetPrismaClientConfig = {
     "previewFeatures": [
       "views"
     ],
-    "sourceFilePath": "/Users/amrithbalachander/Desktop/hike-mono/apps/backend/prisma/analytics/analytics.prisma",
+    "sourceFilePath": "/Users/gupta/Desktop/Hike Medical 2026/hike-mono/apps/backend/prisma/analytics/analytics.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../../../apps/backend/prisma/analytics",
