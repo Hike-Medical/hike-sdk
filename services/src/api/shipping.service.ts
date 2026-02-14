@@ -1,4 +1,6 @@
 import {
+  CompletePackingJobBody,
+  CompletePackingJobResponse,
   GetShipengineLabelsParams,
   GetShipengineLabelsResponse,
   GetShipengineShipmentsParams,
@@ -34,6 +36,15 @@ export interface GetRatesOrLabels {
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
   try {
     const response = await backendApi.get('shipping/packageTypes');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPackagesForOrders = async (orderIds: string[]): Promise<ShippingPackage[]> => {
+  try {
+    const response = await backendApi.post('shipping/packages-for-orders', { orderIds });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -149,6 +160,15 @@ export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLab
 export const fetchPackingJobs = async (): Promise<PackingJobsResponse> => {
   try {
     const response = await backendApi.get('shipping/packing-jobs');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const completePackingJob = async (body: CompletePackingJobBody): Promise<CompletePackingJobResponse> => {
+  try {
+    const response = await backendApi.post('shipping/packing-jobs/complete', body);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
