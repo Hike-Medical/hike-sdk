@@ -1,6 +1,7 @@
 import {
   CompletePackingJobBody,
   CompletePackingJobResponse,
+  ConfirmPackedOrdersBody,
   GetShipengineLabelsParams,
   GetShipengineLabelsResponse,
   GetShipengineShipmentsParams,
@@ -170,6 +171,14 @@ export const completePackingJob = async (body: CompletePackingJobBody): Promise<
   try {
     const response = await backendApi.post('shipping/packing-jobs/complete', body);
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const confirmPackedOrders = async (body: ConfirmPackedOrdersBody): Promise<void> => {
+  try {
+    await backendApi.post('shipping/packing-jobs/confirm-packed', body);
   } catch (error) {
     throw toHikeError(error);
   }

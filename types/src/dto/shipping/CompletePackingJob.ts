@@ -9,3 +9,9 @@ export interface CompletePackingJobResponse {
   trackingNumber: string;
   labelId: string;
 }
+
+export interface ConfirmPackedOrdersBody {
+  orderIds: string[];
+  shippingLabelId: string;
+  missingOrderIds?: string[];
+}
