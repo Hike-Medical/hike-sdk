@@ -151,15 +151,3 @@ export const updateQCRejectionReason = async (
     throw toHikeError(error);
   }
 };
-
-export const acknowledgeManualReprint = async (params: AcknowledgeManualReprintParams): Promise<QCRejection> => {
-  try {
-    const { rejectionId, jwtToken, ...body } = params;
-    const response = await backendApi.post(`soleforge/qc-rejection/${rejectionId}/acknowledge-manual-reprint`, body, {
-      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
-    });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
