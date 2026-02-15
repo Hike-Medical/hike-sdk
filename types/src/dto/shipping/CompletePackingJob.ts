@@ -1,13 +1,16 @@
 export interface CompletePackingJobBody {
-  facilityId: string;
+  configurationId: string;
   orderIds: string[];
   shippingPackageId: string;
 }
 
 export interface CompletePackingJobResponse {
-  pdfUrl: string;
   trackingNumber: string;
   labelId: string;
+  labelPrintSuccess: boolean;
+  packingSlipPrintSuccess: boolean;
+  labelPdfUrl: string | null;
+  packingSlipPdfUrl: string | null;
 }
 
 export interface ConfirmPackedOrdersBody {
