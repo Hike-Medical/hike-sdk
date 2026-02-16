@@ -217,6 +217,8 @@ export * from './hooks/roster/useParseRosterColumns';
 export * from './hooks/roster/useRosterDeactivateJob';
 export * from './hooks/roster/useRosterImportJob';
 export * from './hooks/s3/useUploadFileToS3';
+export * from './hooks/sample-kit-orders/useCreateSampleKitOrder';
+export * from './hooks/sample-kit-orders/useSampleKitOrders';
 export * from './hooks/scan/useUploadFootRender';
 export * from './hooks/schema/useEnumValues';
 export * from './hooks/schema/useSchemaInfo';
