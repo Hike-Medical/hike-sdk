@@ -242,6 +242,7 @@ export * from './dto/shipping/GetShippingLabelLegacyResponse';
 export * from './dto/shipping/MissingOrder';
 export * from './dto/shipping/PackingJob';
 export * from './dto/shipping/SaveTrackingInfoParams';
+export * from './dto/shipping/StartPackingJob';
 export * from './dto/shipping/ValidateAddressBody';
 export * from './dto/soleforge/AddLabelPrinterParams';
 export * from './dto/soleforge/AddPrinter3DParams';

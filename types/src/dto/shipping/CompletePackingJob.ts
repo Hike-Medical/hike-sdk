@@ -18,4 +18,7 @@ export interface ConfirmPackedOrdersBody {
   orderIds: string[];
   shippingLabelId: string;
   missingOrderIds?: string[];
+  facilityId: string;
+  facilityName: string;
+  trackingNumber: string;
 }

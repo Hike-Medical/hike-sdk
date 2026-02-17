@@ -14,6 +14,7 @@ import {
   ShippingAddressBody,
   ShippingLabel,
   ShippingLabelResponseByShipmentId,
+  StartPackingJobBody,
   ShippingPackage,
   ValidateAddressBody
 } from '@hike/types';
@@ -163,6 +164,14 @@ export const fetchPackingJobs = async (): Promise<PackingJobsResponse> => {
   try {
     const response = await backendApi.get('shipping/packing-jobs');
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const startPackingJob = async (body: StartPackingJobBody): Promise<void> => {
+  try {
+    await backendApi.post('shipping/packing-jobs/start', body);
   } catch (error) {
     throw toHikeError(error);
   }
