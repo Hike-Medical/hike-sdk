@@ -239,6 +239,7 @@ export * from './dto/shipping/GetShipengineLabelsResponse';
 export * from './dto/shipping/GetShipengineShipmentParams';
 export * from './dto/shipping/GetShipengineShippingResponse';
 export * from './dto/shipping/GetShippingLabelLegacyResponse';
+export * from './dto/shipping/MissingOrder';
 export * from './dto/shipping/PackingJob';
 export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/ValidateAddressBody';

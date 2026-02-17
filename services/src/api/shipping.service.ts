@@ -7,6 +7,7 @@ import {
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
   LabelsResponse,
+  MissingOrdersResponse,
   PackingJobsResponse,
   SaveTrackingInfoParams,
   ShipEngineValidateAddressResponse,
@@ -179,6 +180,23 @@ export const completePackingJob = async (body: CompletePackingJobBody): Promise<
 export const confirmPackedOrders = async (body: ConfirmPackedOrdersBody): Promise<void> => {
   try {
     await backendApi.post('shipping/packing-jobs/confirm-packed', body);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchMissingOrders = async (): Promise<MissingOrdersResponse> => {
+  try {
+    const response = await backendApi.get('shipping/missing-orders');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const resolveMissingOrder = async (orderId: string): Promise<void> => {
+  try {
+    await backendApi.post(`shipping/missing-orders/${orderId}/resolve`);
   } catch (error) {
     throw toHikeError(error);
   }
