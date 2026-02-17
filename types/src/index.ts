@@ -343,6 +343,7 @@ export * from './dto/workbench/GetPrintFarmWorkbenchParams';
 export * from './dto/workbench/GetProjectMidnightHammerWorkbenchParams';
 export * from './dto/workbench/GetStationsParams';
 export * from './dto/workbench/GetWorkbenchDevSummaryParams';
+export * from './dto/workbench/GetCompleteWorkbenchParams';
 export * from './dto/workbench/GetWorkbenchSummaryParams';
 export * from './dto/workbench/ManufacturingWorkbench';
 export * from './dto/workbench/PatientWorkbenchResponse';
