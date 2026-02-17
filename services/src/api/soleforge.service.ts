@@ -230,6 +230,9 @@ export const getManualReprintOrders = async (
   }
 };
 
+/**
+ * Check if an order requires manual printing (shoe size > 13 or SHELL slicer profile).
+ */
 export const checkIfManualPrintRequired = async (orderId: string): Promise<{ isManualPrint: boolean }> => {
   try {
     const response = await backendApi.get(`soleforge/orders/${orderId}/check-if-manual-print-required`);
