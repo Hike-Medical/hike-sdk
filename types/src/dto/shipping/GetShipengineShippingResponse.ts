@@ -57,7 +57,7 @@ export interface TaxIdentifier {
 
 export interface ShipTo {
   name: string;
-  phone: string;
+  phone?: string;
   email: string;
   company_name: string;
   address_line1: string;
@@ -79,7 +79,7 @@ export interface Geolocation {
 
 export interface ShipFrom {
   name: string;
-  phone: string;
+  phone?: string;
   email: string;
   company_name: string;
   address_line1: string;
