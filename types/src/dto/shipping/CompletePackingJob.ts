@@ -2,6 +2,7 @@ export interface CompletePackingJobBody {
   configurationId: string;
   orderIds: string[];
   shippingPackageId: string;
+  weight: number;
 }
 
 export interface CompletePackingJobResponse {
