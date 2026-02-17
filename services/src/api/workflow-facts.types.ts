@@ -1119,6 +1119,66 @@ export const FactRegistry = {
     required: false,
     schema: dateISO,
     metadata: defaultMetadataSchema
+  },
+
+  // Hanger Encounter Information
+  'hanger.encounter.facility_name': {
+    displayName: 'Facility Name',
+    description: 'Name of the encounter facility',
+    category: 'Hanger Information',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+  'hanger.encounter.mrn': {
+    displayName: 'MRN',
+    description: 'Medical record number for the encounter',
+    category: 'Hanger Information',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+  'hanger.encounter.encounter_date': {
+    displayName: 'Encounter Date',
+    description: 'Date of the encounter',
+    category: 'Hanger Information',
+    required: false,
+    schema: dateISO,
+    metadata: defaultMetadataSchema
+  },
+  'hanger.encounter.room': {
+    displayName: 'Room Number',
+    description: 'Room number or name for the encounter',
+    category: 'Hanger Information',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+  'hanger.encounter.bed': {
+    displayName: 'Bed Number',
+    description: 'Bed number or identifier for the encounter',
+    category: 'Hanger Information',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+
+  // Hanger Referring Physician
+  'hanger.referring_physician.name': {
+    displayName: 'Referring Physician Name',
+    description: 'Name of the referring physician',
+    category: 'Hanger Referring Physician',
+    required: false,
+    schema: z.string().min(1),
+    metadata: defaultMetadataSchema
+  },
+  'hanger.referring_physician.npi': {
+    displayName: 'Referring Physician NPI',
+    description: 'NPI of the referring physician',
+    category: 'Hanger Referring Physician',
+    required: false,
+    schema: npi10,
+    metadata: defaultMetadataSchema
   }
 } as const;
 
