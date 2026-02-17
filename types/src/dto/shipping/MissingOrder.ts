@@ -9,6 +9,8 @@ export interface MissingOrder {
   productType: string | null;
   facilityId: string | null;
   facilityName: string | null;
+  shipFromFacilityId: string | null;
+  shipFromFacilityName: string | null;
   missingAt: string;
   committedDeliveryAt: string | null;
 }

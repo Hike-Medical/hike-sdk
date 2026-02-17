@@ -15,6 +15,8 @@ export interface PackingJobOrder {
 export interface PackingJob {
   facilityId: string;
   facilityName: string;
+  shipFromFacilityId: string | null;
+  shipFromFacilityName: string | null;
   orders: PackingJobOrder[];
   totalOrders: number;
   earliestCommitDate: string | null;
