@@ -266,6 +266,7 @@ export * from './hooks/soleforge/useQueuePrintJobs';
 export * from './hooks/soleforge/useRejectPrintJobAndReprint';
 export * from './hooks/soleforge/useRevertGrindingOrder';
 export * from './hooks/soleforge/useRevertManualReprintOrder';
+export * from './hooks/soleforge/useRevertOrderToManufacturing';
 export * from './hooks/soleforge/useRevertOrderToPrinting';
 export * from './hooks/soleforge/useShippingStationConfigurations';
 export * from './hooks/soleforge/useSoleforgeDashboard';

@@ -54,6 +54,8 @@ import {
   RevertGrindingOrderResponse,
   RevertManualReprintOrderParams,
   RevertManualReprintOrderResponse,
+  RevertOrderToManufacturingParams,
+  RevertOrderToManufacturingResponse,
   RevertOrderToPrintingParams,
   RevertOrderToPrintingResponse,
   ShippingStationConfiguration,
@@ -449,6 +451,22 @@ export const revertGrindingOrderToManufacturing = async (
     const { orderId, ticketId, revertReason, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-grinding-to-manufacturing`,
+      { ticketId, revertReason, source },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertOrderToManufacturing = async (
+  params: RevertOrderToManufacturingParams
+): Promise<RevertOrderToManufacturingResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-to-manufacturing`,
       { ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
