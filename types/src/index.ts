@@ -275,6 +275,7 @@ export * from './dto/soleforge/QueuePrintJobsParams';
 export * from './dto/soleforge/RejectionQuantities';
 export * from './dto/soleforge/RejectPrintJobAndReprintParams';
 export * from './dto/soleforge/RevertGrindingOrderParams';
+export * from './dto/soleforge/RevertCompletedOrderParams';
 export * from './dto/soleforge/RevertManualReprintOrderParams';
 export * from './dto/soleforge/RevertOrderToManufacturingParams';
 export * from './dto/soleforge/RevertOrderToPrintingParams';

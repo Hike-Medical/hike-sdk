@@ -50,6 +50,8 @@ import {
   QueuePrintJobsParams,
   RejectPrintJobAndReprintParams,
   RejectPrintJobAndReprintResponse,
+  RevertCompletedOrderParams,
+  RevertCompletedOrderResponse,
   RevertGrindingOrderParams,
   RevertGrindingOrderResponse,
   RevertManualReprintOrderParams,
@@ -468,6 +470,22 @@ export const revertOrderToManufacturing = async (
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-to-manufacturing`,
       { ticketId, revertReason, source },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertCompletedOrder = async (
+  params: RevertCompletedOrderParams
+): Promise<RevertCompletedOrderResponse> => {
+  try {
+    const { orderId, targetStatus, ticketId, revertReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-completed-order`,
+      { targetStatus, ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
