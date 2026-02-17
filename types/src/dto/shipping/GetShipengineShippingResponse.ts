@@ -59,7 +59,7 @@ export interface ShipTo {
   name: string;
   phone: string;
   email: string;
-  compunknown_name: string;
+  company_name: string;
   address_line1: string;
   address_line2: string;
   address_line3: string;
@@ -81,7 +81,7 @@ export interface ShipFrom {
   name: string;
   phone: string;
   email: string;
-  compunknown_name: string;
+  company_name: string;
   address_line1: string;
   address_line2: string;
   address_line3: string;
@@ -97,7 +97,7 @@ export interface ReturnTo {
   name: string;
   phone: string;
   email: string;
-  compunknown_name: string;
+  company_name: string;
   address_line1: string;
   address_line2: string;
   address_line3: string;
@@ -152,7 +152,7 @@ export interface ImporterOfRecord {
   name: string;
   phone: string;
   email: string;
-  compunknown_name: string;
+  company_name: string;
   address_line1: string;
   address_line2: string;
   address_line3: string;
