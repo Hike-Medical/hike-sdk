@@ -30,6 +30,8 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   gluingCompletedBy?: string | null;
   finishingCompletedAt?: Date | null;
   finishingCompletedBy?: string | null;
+  qualityControlCompletedAt?: Date | null;
+  qualityControlCompletedBy?: string | null;
   shippingCompletedAt?: Date | null;
   shippingCompletedBy?: string | null;
   rushedAt?: Date | null;
@@ -75,6 +77,7 @@ export type StationWorkbenchOrderBy =
   | 'grindingCompletedAt'
   | 'gluingCompletedAt'
   | 'finishingCompletedAt'
+  | 'qualityControlCompletedAt'
   | 'shippingCompletedAt'
   | 'addonCompletedAt';
 
