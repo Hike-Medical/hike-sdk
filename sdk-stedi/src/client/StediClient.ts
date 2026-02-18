@@ -2,6 +2,7 @@ import { ExternalApiClient, Logger } from '@hike/sdk';
 import { ClaimAcknowledgmentClient } from './ClaimAcknowledgmentClient';
 import { ClaimsClient } from './ClaimsClient';
 import { EligibilityClient } from './EligibilityClient';
+import { ERAClient } from './ERAClient';
 import { MbiLookupClient } from './MbiLookupClient';
 import { PayerClient } from './PayerClient';
 
@@ -16,6 +17,7 @@ export class StediClient extends ExternalApiClient {
   public readonly eligibility: EligibilityClient;
   public readonly claims: ClaimsClient;
   public readonly claimAcknowledgment: ClaimAcknowledgmentClient;
+  public readonly era: ERAClient;
   public readonly mbiLookup: MbiLookupClient;
   public readonly payer: PayerClient;
 
@@ -39,6 +41,7 @@ export class StediClient extends ExternalApiClient {
     this.eligibility = new EligibilityClient(this.axiosInstance, config.logger);
     this.claims = new ClaimsClient(this.axiosInstance, config.logger);
     this.claimAcknowledgment = new ClaimAcknowledgmentClient(this.axiosInstance, config.logger);
+    this.era = new ERAClient(this.axiosInstance, config.logger);
     this.mbiLookup = new MbiLookupClient(this.axiosInstance, config.logger);
     this.payer = new PayerClient(this.axiosInstance, config.logger);
   }

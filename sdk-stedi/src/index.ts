@@ -3,9 +3,11 @@ export * from './errors/errorCodes';
 export * from './types/claimAcknowledgment';
 export * from './types/claims';
 export * from './types/eligibility';
+export * from './types/era';
 export * from './types/mbi';
 export * from './types/patient';
 export * from './types/payer';
 export * from './types/provider';
 export * from './types/serviceTypes';
 export * from './utils/patientResponsibility';
+
