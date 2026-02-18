@@ -50,10 +50,14 @@ import {
   QueuePrintJobsParams,
   RejectPrintJobAndReprintParams,
   RejectPrintJobAndReprintResponse,
+  RevertCompletedOrderParams,
+  RevertCompletedOrderResponse,
   RevertGrindingOrderParams,
   RevertGrindingOrderResponse,
   RevertManualReprintOrderParams,
   RevertManualReprintOrderResponse,
+  RevertOrderToManufacturingParams,
+  RevertOrderToManufacturingResponse,
   RevertOrderToPrintingParams,
   RevertOrderToPrintingResponse,
   ShippingStationConfiguration,
@@ -224,6 +228,18 @@ export const getManualReprintOrders = async (
 ): Promise<ManualReprintOrdersResponse> => {
   try {
     const response = await backendApi.get('soleforge/manual-reprint-orders', { params });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+/**
+ * Check if an order requires manual printing (shoe size > 13 or SHELL slicer profile).
+ */
+export const checkIfManualPrintRequired = async (orderId: string): Promise<{ isManualPrint: boolean }> => {
+  try {
+    const response = await backendApi.get(`soleforge/orders/${orderId}/check-if-manual-print-required`);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -438,6 +454,38 @@ export const revertGrindingOrderToManufacturing = async (
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/revert-grinding-to-manufacturing`,
       { ticketId, revertReason, source },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertOrderToManufacturing = async (
+  params: RevertOrderToManufacturingParams
+): Promise<RevertOrderToManufacturingResponse> => {
+  try {
+    const { orderId, ticketId, revertReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-to-manufacturing`,
+      { ticketId, revertReason, source },
+      { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
+    );
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const revertCompletedOrder = async (
+  params: RevertCompletedOrderParams
+): Promise<RevertCompletedOrderResponse> => {
+  try {
+    const { orderId, targetStatus, ticketId, revertReason, source, jwtToken } = params;
+    const response = await backendApi.post(
+      `soleforge/orders/${orderId}/revert-completed-order`,
+      { targetStatus, ticketId, revertReason, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;

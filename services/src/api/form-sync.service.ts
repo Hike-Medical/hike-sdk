@@ -73,10 +73,24 @@ export const formSubmissionToEvaluation = async (evaluationId: string, formState
   });
 
 export const formSubmissionToFoot = async (workbenchId: string, formState: Record<string, FormFieldValue>) => {
-  const isToeFiller = formState.isToeFiller ? (formState.isToeFiller as string) === 'Yes' : undefined;
-  const isPreFabOrHeatMoldable = formState.isPreFabOrHeatMoldable
+  let isToeFiller = formState.isToeFiller ? (formState.isToeFiller as string) === 'Yes' : undefined;
+  let isPreFabOrHeatMoldable = formState.isPreFabOrHeatMoldable
     ? (formState.isPreFabOrHeatMoldable as string) === 'Yes'
     : undefined;
+
+  if (formState.clinicalProducts) {
+    if (formState.clinicalProducts.toString().includes('Toe Filler')) {
+      isToeFiller = true;
+    } else {
+      isToeFiller = false;
+    }
+
+    if (formState.clinicalProducts.toString().includes('Pre-fabricated, or heat moldable orthotics')) {
+      isPreFabOrHeatMoldable = true;
+    } else {
+      isPreFabOrHeatMoldable = false;
+    }
+  }
 
   const patientAmputation =
     formState.patientAmputation !== undefined && formState.patientAmputation !== ''

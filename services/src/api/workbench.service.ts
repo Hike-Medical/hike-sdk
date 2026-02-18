@@ -7,6 +7,7 @@ import {
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
   GetCompletedStationParams,
+  GetCompleteWorkbenchParams,
   GetManufacturingWorkbenchParams,
   GetPastTenseStationsParams,
   GetPrintFarmWorkbenchParams,
@@ -73,9 +74,12 @@ export const getWorkbench = async (workbenchId: string, companyIds?: string[]): 
   }
 };
 
-export const getWorkbenchComplete = async (workbenchId: string): Promise<WorkbenchExtended> => {
+export const getWorkbenchComplete = async (
+  workbenchId: string,
+  params?: GetCompleteWorkbenchParams
+): Promise<WorkbenchExtended> => {
   try {
-    const response = await backendApi.get(`workbench/${workbenchId}/complete`);
+    const response = await backendApi.get(`workbench/${workbenchId}/complete`, { params });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
