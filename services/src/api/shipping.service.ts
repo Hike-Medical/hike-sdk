@@ -16,7 +16,8 @@ import {
   ShippingLabelResponseByShipmentId,
   StartPackingJobBody,
   ShippingPackage,
-  ValidateAddressBody
+  ValidateAddressBody,
+  ValidateOrderBeforePackingResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -206,6 +207,17 @@ export const fetchMissingOrders = async (): Promise<MissingOrdersResponse> => {
 export const resolveMissingOrder = async (orderId: string): Promise<void> => {
   try {
     await backendApi.post(`shipping/missing-orders/${orderId}/resolve`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const validateOrderBeforePacking = async (poNumber: string): Promise<ValidateOrderBeforePackingResponse> => {
+  try {
+    const response = await backendApi.get('shipping/validate-order-for-packing', {
+      params: { poNumber }
+    });
+    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }

@@ -239,6 +239,7 @@ export * from './hooks/shipping/useSearchShippingLabels';
 export * from './hooks/shipping/useShipments';
 export * from './hooks/shipping/useStartPackingJob';
 export * from './hooks/shipping/useUpdateTrackingInfo';
+export * from './hooks/shipping/useValidateOrderBeforePacking';
 export * from './hooks/shipping/useValidateShippingAddress';
 export * from './hooks/shipping/useVoidLabel';
 export * from './hooks/soleforge/useAddLabelPrinter';

@@ -244,6 +244,7 @@ export * from './dto/shipping/PackingJob';
 export * from './dto/shipping/SaveTrackingInfoParams';
 export * from './dto/shipping/StartPackingJob';
 export * from './dto/shipping/ValidateAddressBody';
+export * from './dto/shipping/ValidateOrderBeforePacking';
 export * from './dto/soleforge/AddLabelPrinterParams';
 export * from './dto/soleforge/AddPrinter3DParams';
 export * from './dto/soleforge/AdvanceManualReprintOrderToGrindingParams';
