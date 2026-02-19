@@ -285,7 +285,6 @@ export * from './hooks/soleforge/useUpdateLane';
 export * from './hooks/soleforge/useUpdateMachineConfiguration';
 export * from './hooks/soleforge/useUpdateMachineStatus';
 export * from './hooks/soleforge/useUpdatePrinterNotes';
-export * from './hooks/soleforge/useValidMachineStateTransitions';
 export * from './hooks/supplier/anodyne/useAnodyneFilters';
 export * from './hooks/supplier/anodyne/useAnodyneProductStyles';
 export * from './hooks/supplier/anodyne/useAnodyneProductStyleVariants';
