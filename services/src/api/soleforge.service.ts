@@ -27,7 +27,6 @@ import {
   GetOrderStatusCountsParams,
   GetOrderThroughputParams,
   GetPrinterHistoryParams,
-  GetValidMachineStateTransitionsParams,
   LabelPrinter,
   Lane,
   LaneQueuedJobCountResponse,
@@ -68,8 +67,7 @@ import {
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
   UpdateMachineStatusParams,
-  UpdatePrinterNotesParams,
-  ValidMachineStateTransitions
+  UpdatePrinterNotesParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
 import { toHikeError } from '../errors/toHikeError';
@@ -286,20 +284,6 @@ export const getCompatiblePrinters = async (params: GetCompatiblePrintersParams)
   try {
     const { orderId, ...queryParams } = params;
     const response = await backendApi.get(`soleforge/orders/${orderId}/compatible-printers`, { params: queryParams });
-    return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const getValidMachineStateTransitions = async (
-  params: GetValidMachineStateTransitionsParams
-): Promise<ValidMachineStateTransitions> => {
-  try {
-    const { machineId, ...queryParams } = params;
-    const response = await backendApi.get(`soleforge/machines/${machineId}/valid-state-transitions`, {
-      params: queryParams
-    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
