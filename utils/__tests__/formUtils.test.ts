@@ -180,14 +180,14 @@ describe('Form Schema Utils', () => {
       expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(true);
     });
 
-    it('should hide field when taggedOnly is set and field has no meta.tags', () => {
+    it('should show field when taggedOnly is set and field has no meta.tags', () => {
       const field: FormField = {
         name: 'testField',
         label: 'Test Field',
         type: 'text'
       };
       const state = {};
-      expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(false);
+      expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(true);
     });
   });
 
