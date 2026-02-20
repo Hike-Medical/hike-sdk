@@ -20,6 +20,7 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   committedDeliveryAt: Date | null;
   orderCompletedAt: Date | null;
   quantity: string | null;
+  destinationFacilityId?: string | null;
   addonCompletedAt?: Date | null;
   addonCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
@@ -67,6 +68,7 @@ export type OrderSlim = Prisma.OrderGetPayload<{
     committedDeliveryAt: true;
     authorizationUpdatedAt: true;
     authorizationStatus: true;
+    destinationFacilityId: true;
   };
 }>;
 
