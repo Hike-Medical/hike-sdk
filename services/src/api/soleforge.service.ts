@@ -91,9 +91,18 @@ export const getMachines = async (params: GetMachinesParams): Promise<Machine[]>
   }
 };
 
-export const getShippingStationConfigurations = async (): Promise<ShippingStationConfiguration[]> => {
+export const getConsolidatedShippingStationConfigurations = async (): Promise<ShippingStationConfiguration[]> => {
   try {
     const response = await backendApi.get('soleforge/shipping-station-configurations');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const getConsumerShippingStationConfigurations = async (): Promise<ShippingStationConfiguration[]> => {
+  try {
+    const response = await backendApi.get('soleforge/consumer-shipping-station-configurations');
     return response.data;
   } catch (error) {
     throw toHikeError(error);
