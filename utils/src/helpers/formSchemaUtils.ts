@@ -42,7 +42,9 @@ export const isFormFieldDisplayed = (
   // Show only fields that have been tagged when taggedOnly is specified (same behavior as sections)
   if (
     options?.taggedOnly &&
-    (!field.meta?.tags || (isStringArray(field.meta?.tags) && !field.meta.tags.includes(options.taggedOnly)))
+    field.meta?.tags &&
+    isStringArray(field.meta?.tags) &&
+    !field.meta.tags.includes(options.taggedOnly)
   ) {
     return false;
   }
@@ -311,9 +313,7 @@ export const completedSections = (
     const fieldOpts = { taggedOnly: options?.taggedOnly };
     return section.fields
       .filter((field) => isFormFieldDisplayed(field, state, fieldOpts))
-      .every((field, _, fields) =>
-        isFieldValid(field, state, fields.length === 1, undefined, options?.taggedOnly)
-      );
+      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, undefined, options?.taggedOnly));
   });
 
 export const getInvalidSections = (
@@ -381,8 +381,8 @@ export const schemaStats = (
   const sectionNext = validSections.find((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state, fieldDisplayOptions))
-      .some((field, _, fields) =>
-        !isFieldValid(field, state, fields.length === 1, options?.activeFoot, options?.taggedOnly)
+      .some(
+        (field, _, fields) => !isFieldValid(field, state, fields.length === 1, options?.activeFoot, options?.taggedOnly)
       )
   );
 
@@ -402,10 +402,7 @@ export const formValidator = (
     index: sections.indexOf(section),
     title: section.title,
     fields: section.fields
-      .filter(
-        (field) =>
-          !isFieldValid(field, state, section.fields.length === 1, undefined, options?.taggedOnly)
-      )
+      .filter((field) => !isFieldValid(field, state, section.fields.length === 1, undefined, options?.taggedOnly))
       .map((field) => ({
         name: field.name,
         label: field.label
