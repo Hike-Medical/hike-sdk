@@ -29,14 +29,26 @@ export const getVisibleOptions = (
 
 /**
  * Determines if a given form field should be displayed based on its rule and current form state.
+ * When options.taggedOnly is set, only fields whose meta.tags include that tag are shown (same as sections).
  */
 export const isFormFieldDisplayed = (
   field: FormField,
   state: Record<string, FormFieldValue>,
   options?: {
+    taggedOnly?: string;
     activeFoot?: string;
   }
-): boolean => isFormRuleDisplayed(field, state, options);
+): boolean => {
+  // Show only fields that have been tagged when taggedOnly is specified (same behavior as sections)
+  if (
+    options?.taggedOnly &&
+    (!field.meta?.tags || (isStringArray(field.meta?.tags) && !field.meta.tags.includes(options.taggedOnly)))
+  ) {
+    return false;
+  }
+
+  return isFormRuleDisplayed(field, state, options);
+};
 
 /**
  * Determines if a given form section should be displayed based on its rule and current form state.
@@ -147,7 +159,8 @@ export const isFieldValid = (
   field: FormField,
   state: Record<string, FormFieldValue>,
   isOnlyField?: boolean,
-  activeFoot?: string
+  activeFoot?: string,
+  taggedOnly?: string
 ): boolean => {
   const safeState = state ?? {};
   return (
@@ -160,7 +173,7 @@ export const isFieldValid = (
             safeState[key] != null &&
             (safeState[key]?.toString() !== '' || !field.required)
         )) ||
-    !isFormFieldDisplayed(field, safeState, { activeFoot })
+    !isFormFieldDisplayed(field, safeState, { activeFoot, taggedOnly })
   );
 };
 
@@ -255,7 +268,9 @@ export const isFormValid = (
   sections
     .filter((section) => isFormSectionDisplayed(section, state, options))
     .flatMap((section) => section.fields)
-    .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot));
+    .every((field, _, fields) =>
+      isFieldValid(field, state, fields.length === 1, options?.activeFoot, options?.taggedOnly)
+    );
 
 /**
  * The initial values for the form fields based on the schema and submission.
@@ -287,34 +302,49 @@ export const initialFormValues = (
       { ...submission } // Capture submissions not in schema
     ) ?? {};
 
-export const completedSections = (validSections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
-  validSections.filter((section) =>
-    section.fields
-      .filter((field) => isFormFieldDisplayed(field, state))
-      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1))
-  );
+export const completedSections = (
+  validSections: FormSection[],
+  state: Record<string, FormFieldValue>,
+  options?: { taggedOnly?: string; slug?: string }
+): FormSection[] =>
+  validSections.filter((section) => {
+    const fieldOpts = { taggedOnly: options?.taggedOnly };
+    return section.fields
+      .filter((field) => isFormFieldDisplayed(field, state, fieldOpts))
+      .every((field, _, fields) =>
+        isFieldValid(field, state, fields.length === 1, undefined, options?.taggedOnly)
+      );
+  });
 
-export const getInvalidSections = (sections: FormSection[], state: Record<string, FormFieldValue>): FormSection[] =>
+export const getInvalidSections = (
+  sections: FormSection[],
+  state: Record<string, FormFieldValue>,
+  options?: { taggedOnly?: string; slug?: string }
+): FormSection[] =>
   sections
-    .filter((section) => isFormSectionDisplayed(section, state))
-    .filter((section) =>
-      section.fields
-        .filter((field) => isFormFieldDisplayed(field, state) && field.required)
-        .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1))
-    );
+    .filter((section) => isFormSectionDisplayed(section, state, options))
+    .filter((section) => {
+      const fieldOpts = { taggedOnly: options?.taggedOnly };
+      return section.fields
+        .filter((field) => isFormFieldDisplayed(field, state, fieldOpts) && field.required)
+        .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, undefined, options?.taggedOnly));
+    });
 
 export const getVisibleSections = ({
   sections,
   state,
-  slug
+  slug,
+  taggedOnly
 }: {
   sections: FormSection[] | null | undefined;
   state: Record<string, FormFieldValue>;
   slug?: string;
+  taggedOnly?: string;
 }): FormSection[] =>
   sections?.filter(
     (section) =>
-      isFormSectionDisplayed(section, state) && !asStringArray(section.meta?.excludedSlugs)?.includes(slug ?? '')
+      isFormSectionDisplayed(section, state, { slug, taggedOnly }) &&
+      !asStringArray(section.meta?.excludedSlugs)?.includes(slug ?? '')
   ) ?? [];
 
 export const getSectionId = (section: FormSection) => section.id ?? encodeURIComponent(section.title);
@@ -339,16 +369,21 @@ export const schemaStats = (
   sectionNext: FormSection | null;
 } => {
   const validSections = sections.filter((section) => isFormSectionDisplayed(section, state, options));
+  const fieldDisplayOptions = { activeFoot: options?.activeFoot, taggedOnly: options?.taggedOnly };
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
-      .every((field, _, fields) => isFieldValid(field, state, fields.length === 1, options?.activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, fieldDisplayOptions))
+      .every((field, _, fields) =>
+        isFieldValid(field, state, fields.length === 1, options?.activeFoot, options?.taggedOnly)
+      )
   ).length;
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
-      .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, options?.activeFoot))
+      .filter((field) => isFormFieldDisplayed(field, state, fieldDisplayOptions))
+      .some((field, _, fields) =>
+        !isFieldValid(field, state, fields.length === 1, options?.activeFoot, options?.taggedOnly)
+      )
   );
 
   return {
@@ -358,12 +393,19 @@ export const schemaStats = (
   };
 };
 
-export const formValidator = (sections: FormSection[], state: Record<string, FormFieldValue>): InvalidFormSection[] =>
-  getInvalidSections(sections, state).map((section) => ({
+export const formValidator = (
+  sections: FormSection[],
+  state: Record<string, FormFieldValue>,
+  options?: { taggedOnly?: string; slug?: string }
+): InvalidFormSection[] =>
+  getInvalidSections(sections, state, options).map((section) => ({
     index: sections.indexOf(section),
     title: section.title,
     fields: section.fields
-      .filter((field) => !isFieldValid(field, state, section.fields.length === 1))
+      .filter(
+        (field) =>
+          !isFieldValid(field, state, section.fields.length === 1, undefined, options?.taggedOnly)
+      )
       .map((field) => ({
         name: field.name,
         label: field.label

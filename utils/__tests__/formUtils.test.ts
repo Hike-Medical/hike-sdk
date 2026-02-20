@@ -157,6 +157,38 @@ describe('Form Schema Utils', () => {
       const state = { testCondition: ['value3'] };
       expect(isFormFieldDisplayed(field, state)).toBe(true);
     });
+
+    it('should hide field when taggedOnly is set and field has no matching tag', () => {
+      const field: FormField = {
+        name: 'testField',
+        label: 'Test Field',
+        type: 'text',
+        meta: { tags: ['other'] }
+      };
+      const state = {};
+      expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(false);
+    });
+
+    it('should show field when taggedOnly is set and field has the tag', () => {
+      const field: FormField = {
+        name: 'testField',
+        label: 'Test Field',
+        type: 'text',
+        meta: { tags: ['core', 'enterprise'] }
+      };
+      const state = {};
+      expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(true);
+    });
+
+    it('should hide field when taggedOnly is set and field has no meta.tags', () => {
+      const field: FormField = {
+        name: 'testField',
+        label: 'Test Field',
+        type: 'text'
+      };
+      const state = {};
+      expect(isFormFieldDisplayed(field, state, { taggedOnly: 'core' })).toBe(false);
+    });
   });
 
   describe('isFormValid', () => {
