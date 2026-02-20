@@ -1,16 +1,23 @@
 import {
+  CompletePackingJobBody,
+  CompletePackingJobResponse,
+  ConfirmPackedOrdersBody,
   GetShipengineLabelsParams,
   GetShipengineLabelsResponse,
   GetShipengineShipmentsParams,
   GetShipengineShipmentsResponse,
   LabelsResponse,
+  MissingOrdersResponse,
+  PackingJobsResponse,
   SaveTrackingInfoParams,
   ShipEngineValidateAddressResponse,
   ShippingAddressBody,
   ShippingLabel,
   ShippingLabelResponseByShipmentId,
+  StartPackingJobBody,
   ShippingPackage,
-  ValidateAddressBody
+  ValidateAddressBody,
+  ValidateOrderBeforePackingResponse
 } from '@hike/types';
 import { toHikeError } from '../errors/toHikeError';
 import { backendApi } from '../utils/backendApi';
@@ -33,6 +40,15 @@ export interface GetRatesOrLabels {
 export const fetchCompanyPackages = async (): Promise<ShippingPackage[]> => {
   try {
     const response = await backendApi.get('shipping/packageTypes');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPackagesForOrders = async (orderIds: string[]): Promise<ShippingPackage[]> => {
+  try {
+    const response = await backendApi.post('shipping/packages-for-orders', { orderIds });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -139,6 +155,68 @@ export const findShippingLabels = async (query: string): Promise<ShippingLabel[]
 export const fetchOrdersByLabelId = async (labelId: string): Promise<ShippingLabelResponseByShipmentId> => {
   try {
     const response = await backendApi.get(`shipping/orders/${labelId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchPackingJobs = async (): Promise<PackingJobsResponse> => {
+  try {
+    const response = await backendApi.get('shipping/packing-jobs');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const startPackingJob = async (body: StartPackingJobBody): Promise<void> => {
+  try {
+    await backendApi.post('shipping/packing-jobs/start', body);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const completePackingJob = async (body: CompletePackingJobBody): Promise<CompletePackingJobResponse> => {
+  try {
+    const response = await backendApi.post('shipping/packing-jobs/complete', body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const confirmPackedOrders = async (body: ConfirmPackedOrdersBody): Promise<void> => {
+  try {
+    await backendApi.post('shipping/packing-jobs/confirm-packed', body);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const fetchMissingOrders = async (): Promise<MissingOrdersResponse> => {
+  try {
+    const response = await backendApi.get('shipping/missing-orders');
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const resolveMissingOrder = async (orderId: string): Promise<void> => {
+  try {
+    await backendApi.post(`shipping/missing-orders/${orderId}/resolve`);
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const validateOrderBeforePacking = async (poNumber: string): Promise<ValidateOrderBeforePackingResponse> => {
+  try {
+    const response = await backendApi.get('shipping/validate-order-for-packing', {
+      params: { poNumber }
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -4,4 +4,5 @@ export interface GetPastTenseStationsParams extends PagedParams {
   previousStatus: string;
   searchQuery?: string;
   laneId?: string | null;
+  excludeDestinationFacility?: boolean;
 }

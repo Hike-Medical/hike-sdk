@@ -20,6 +20,7 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   committedDeliveryAt: Date | null;
   orderCompletedAt: Date | null;
   quantity: string | null;
+  destinationFacilityId?: string | null;
   addonCompletedAt?: Date | null;
   addonCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
@@ -30,6 +31,8 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   gluingCompletedBy?: string | null;
   finishingCompletedAt?: Date | null;
   finishingCompletedBy?: string | null;
+  qualityControlCompletedAt?: Date | null;
+  qualityControlCompletedBy?: string | null;
   shippingCompletedAt?: Date | null;
   shippingCompletedBy?: string | null;
   rushedAt?: Date | null;
@@ -65,6 +68,7 @@ export type OrderSlim = Prisma.OrderGetPayload<{
     committedDeliveryAt: true;
     authorizationUpdatedAt: true;
     authorizationStatus: true;
+    destinationFacilityId: true;
   };
 }>;
 
@@ -75,6 +79,7 @@ export type StationWorkbenchOrderBy =
   | 'grindingCompletedAt'
   | 'gluingCompletedAt'
   | 'finishingCompletedAt'
+  | 'qualityControlCompletedAt'
   | 'shippingCompletedAt'
   | 'addonCompletedAt';
 
