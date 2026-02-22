@@ -3,6 +3,7 @@ import {
   Clinician,
   ClinicianExtended,
   CreateClinicianParams,
+  UpdateClinicianParams,
   GetCliniciansParams,
   PagedResponse
 } from '@hike/types';
@@ -48,6 +49,18 @@ export const fetchUnassignedClinicians = async (name: string): Promise<Clinician
 export const assignClinician = async ({ clinicianId, userId }: AssignClinicianParams): Promise<Clinician> => {
   try {
     const response = await backendApi.post(`clinician/assign/${clinicianId}/user/${userId}`);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateClinician = async (
+  clinicianId: string,
+  params: UpdateClinicianParams
+): Promise<Clinician> => {
+  try {
+    const response = await backendApi.patch(`clinician/${clinicianId}`, params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
