@@ -116,6 +116,8 @@ export interface CompanyPreferences {
       name: string;
       value: string;
     };
+    /** Delay in minutes before sending a fax, allowing time for incoming documents to be processed. Defaults to 5 minutes. */
+    faxDelayMinutes?: number;
   };
   auth?: {
     allowlist?: {
