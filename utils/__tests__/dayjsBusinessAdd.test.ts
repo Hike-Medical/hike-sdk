@@ -17,10 +17,10 @@ const chicagoTime = (dateStr: string) => dayjs.tz(dateStr, 'America/Chicago');
 
 describe('dayjsBusinessAdd', () => {
   describe('day unit', () => {
-    test('adds business days', () => {
+    test('handles businessAdd 0', () => {
       businessAdd(NO_HOLIDAYS, dayjs, dayjs);
-      const result = chicagoTime('2024-06-06').businessAdd(1);
-      expect(result.format('YYYY-MM-DD')).toBe('2024-06-07');
+      const result = chicagoTime('2024-06-06').businessAdd(0);
+      expect(result.format('YYYY-MM-DD')).toBe('2024-06-06');
     });
 
     test('defaults to day unit when unit is omitted', () => {
@@ -221,6 +221,18 @@ describe('dayjsBusinessAdd', () => {
       businessAdd(NO_HOLIDAYS, dayjs, dayjs);
       expect(() => chicagoTime('2024-06-06 10:00').businessAdd(-30, 'minute')).toThrow(
         'businessAdd does not support negative values'
+      );
+    });
+  });
+
+  describe('infinite loop safeguard', () => {
+    test('throws when no business day can be found within 365 days', () => {
+      const everyDayHolidays = Array.from({ length: 366 }, (_, index) =>
+        dayjs('2024-06-06').add(index, 'day').format('YYYY-MM-DD')
+      );
+      businessAdd({ holidays: everyDayHolidays }, dayjs, dayjs);
+      expect(() => chicagoTime('2024-06-06 16:30').businessAdd(1, 'hour')).toThrow(
+        'Unable to find a business day within 365 days'
       );
     });
   });

@@ -140,8 +140,12 @@ export const dayjsBusinessAdd: PluginFunc<BusinessAddOptions> = (opts, dayjsClas
     workingWeek[dayName(date)] !== undefined && !holidaySet.has(date.format('YYYY-MM-DD'));
 
   const advanceToNextBusinessDayStart = (date: Dayjs): Dayjs => {
+    const limit = date.add(365, 'day');
     let next = date.add(1, 'day').startOf('day');
     while (!isBusinessDay(next)) {
+      if (next.isAfter(limit)) {
+        throw new Error('Unable to find a business day within 365 days; check workingWeek and holidays configuration');
+      }
       next = next.add(1, 'day');
     }
     const schedule = workingWeek[dayName(next)] as WorkingDay;
