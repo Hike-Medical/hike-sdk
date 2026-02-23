@@ -35,6 +35,7 @@ export const isFormFieldDisplayed = (
   state: Record<string, FormFieldValue>,
   options?: {
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean => isFormRuleDisplayed(field, state, options);
 
@@ -68,11 +69,11 @@ export const isFormSectionDisplayed = (
 const evaluateSingleRule = (
   rule: FormRule,
   state: Record<string, FormFieldValue>,
-  options?: { activeFoot?: string }
+  options?: { activeFoot?: string; slug?: string }
 ): boolean => {
   const { effect, condition } = rule;
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
+  const selectedValue = condition.name === 'slug' ? options?.slug : state[condition.name + (options?.activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -125,6 +126,7 @@ export const isFormRuleDisplayed = (
   state: Record<string, FormFieldValue>,
   options?: {
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean => {
   if (!formItem.rule || !state) {
@@ -314,7 +316,8 @@ export const getVisibleSections = ({
 }): FormSection[] =>
   sections?.filter(
     (section) =>
-      isFormSectionDisplayed(section, state) && !asStringArray(section.meta?.excludedSlugs)?.includes(slug ?? '')
+      isFormSectionDisplayed(section, state, { slug }) &&
+      !asStringArray(section.meta?.excludedSlugs)?.includes(slug ?? '')
   ) ?? [];
 
 export const getSectionId = (section: FormSection) => section.id ?? encodeURIComponent(section.title);
@@ -347,7 +350,12 @@ export const schemaStats = (
 
   const sectionNext = validSections.find((section) =>
     section.fields
-      .filter((field) => isFormFieldDisplayed(field, state, { activeFoot: options?.activeFoot }))
+      .filter((field) =>
+        isFormFieldDisplayed(field, state, {
+          activeFoot: options?.activeFoot,
+          ...(options?.slug ? { slug: options.slug } : {})
+        })
+      )
       .some((field, _, fields) => !isFieldValid(field, state, fields.length === 1, options?.activeFoot))
   );
 
