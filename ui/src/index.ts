@@ -127,6 +127,7 @@ export * from './hooks/forms/useFormSubmission';
 export * from './hooks/forms/useFormSubmissions';
 export * from './hooks/forms/useFormTemplateById';
 export * from './hooks/forms/useFormTemplates';
+export * from './hooks/forms/useUpdateFormSchema';
 export * from './hooks/forms/useUpdateFormTemplate';
 export * from './hooks/forms/useUpsertFormSubmission';
 export * from './hooks/incentive/useGetIncentiveByType';
