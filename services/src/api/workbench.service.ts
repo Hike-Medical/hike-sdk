@@ -137,7 +137,7 @@ export const updateRenderType = async (
   }
 };
 
-export const printShippingInfo = async (
+export const printConsumerShippingDocuments = async (
   workbenchId: string,
   data: PrintShippingParams
 ): Promise<PrintShippingResult> => {
