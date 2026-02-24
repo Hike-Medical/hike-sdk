@@ -2,6 +2,7 @@ export interface PrintShippingParams {
   withShippingLabel: boolean;
   withPamphlet: boolean;
   configurationId?: string;
+  existingLabelId?: string;
 }
 
 export interface PrintShippingResult {
