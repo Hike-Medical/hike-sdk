@@ -1,5 +1,5 @@
 import { printShippingInfo } from '@hike/services';
-import { HikeError, PrintShippingParams, ShippingLabel } from '@hike/types';
+import { HikeError, PrintShippingParams, PrintShippingResult } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface PrintShippingInfoContext {
@@ -8,7 +8,7 @@ interface PrintShippingInfoContext {
 }
 
 export const usePrintShippingInfo = (
-  options?: UseMutationOptions<ShippingLabel | null, HikeError<null>, PrintShippingInfoContext>
+  options?: UseMutationOptions<PrintShippingResult, HikeError<null>, PrintShippingInfoContext>
 ) =>
   useMutation({
     mutationKey: ['printShippingInfo'],
