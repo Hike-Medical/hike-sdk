@@ -449,13 +449,16 @@ export const FactRegistry = {
     schema: z.boolean(),
     metadata: defaultMetadataSchema
   },
+  // DEPRECATED - see ENG-2944 - no longer needed for compliance
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
     description: 'Whether the visit was conducted in-person',
     category: 'Certifier Notes',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true,
+    showInUX: false
   },
   'cert.notes.signature': {
     displayName: 'Certifier Notes Signature',
@@ -631,7 +634,8 @@ export const FactRegistry = {
         'cert.statement.certifying_agreement.note': z.string().min(1)
       })
     ),
-    deprecated: true
+    deprecated: true,
+    showInUX: false
   },
   // DEPRECATED
   'cert.statement.certifying_agreement.date': {
@@ -641,7 +645,8 @@ export const FactRegistry = {
     required: false,
     schema: dateISO,
     metadata: defaultMetadataSchema,
-    deprecated: true
+    deprecated: true,
+    showInUX: false
   },
 
   // Initial Prescription
