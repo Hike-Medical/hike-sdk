@@ -338,7 +338,7 @@ export * from './hooks/workbenches/usePastTenseStations';
 export * from './hooks/workbenches/usePatientWorkbenchInformation';
 export * from './hooks/workbenches/usePrintFarmWorkbench';
 export * from './hooks/workbenches/usePrintProjectMidnightHammer';
-export * from './hooks/workbenches/usePrintShippingInfo';
+export * from './hooks/workbenches/usePrintConsumerShippingDocuments';
 export * from './hooks/workbenches/useProjectMidnightHammerWorkbenches';
 export * from './hooks/workbenches/useReconcileRemakeWorkbench';
 export * from './hooks/workbenches/useResetWorkbench';
