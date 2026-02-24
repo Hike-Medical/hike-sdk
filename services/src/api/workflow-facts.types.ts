@@ -458,7 +458,7 @@ export const FactRegistry = {
     schema: z.boolean(),
     metadata: defaultMetadataSchema,
     deprecated: true,
-    showInUX: false
+    hideInUX: true
   },
   'cert.notes.signature': {
     displayName: 'Certifier Notes Signature',
@@ -635,7 +635,7 @@ export const FactRegistry = {
       })
     ),
     deprecated: true,
-    showInUX: false
+    hideInUX: true
   },
   // DEPRECATED
   'cert.statement.certifying_agreement.date': {
@@ -646,7 +646,7 @@ export const FactRegistry = {
     schema: dateISO,
     metadata: defaultMetadataSchema,
     deprecated: true,
-    showInUX: false
+    hideInUX: true
   },
 
   // Initial Prescription
