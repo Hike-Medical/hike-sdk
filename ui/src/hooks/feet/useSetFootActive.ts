@@ -14,13 +14,10 @@ export const useSetFootActive = (
   return useMutation({
     mutationKey: ['setFootActive'],
     mutationFn: async (params) => await setFootActive(params.footId),
-    onSuccess: (data, variables, onMutateResult) => {
-      // Invalidate detection status queries to ensure fresh data
+    onSuccess: (data, variables, onMutateResult, context) => {
       queryClient.invalidateQueries({ queryKey: ['detectionStatus'] });
       queryClient.invalidateQueries({ queryKey: ['feet'] });
-
-      // Call the user-provided onSuccess if it exists
-      options?.onSuccess?.(data, variables, onMutateResult);
+      options?.onSuccess?.(data, variables, onMutateResult, context);
     },
     ...options
   });
