@@ -20,6 +20,7 @@ export interface PackingJob {
   orders: PackingJobOrder[];
   totalOrders: number;
   earliestCommitDate: string | null;
+  hasShippingContact: boolean;
 }
 
 export type PackingJobsResponse = PackingJob[];
