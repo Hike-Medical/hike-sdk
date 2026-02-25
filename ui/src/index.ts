@@ -322,6 +322,7 @@ export * from './hooks/users/useUpsertUserPermissions';
 export * from './hooks/users/useUsers';
 export * from './hooks/useSearch';
 export * from './hooks/work-order/useCreateWorkOrders';
+export * from './hooks/work-order/useWorkOrders';
 export * from './hooks/workbenches/useAggregatedWorkbenches';
 export * from './hooks/workbenches/useApproveWorkbench';
 export * from './hooks/workbenches/useCompletedStation';
