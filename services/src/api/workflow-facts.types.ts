@@ -1244,6 +1244,113 @@ export function getFieldCategory(fieldKey: string): string {
   return mapping?.category || 'Other';
 }
 
+const PRESCRIBER_EXPECTED_FACTS: FactKey[] = [
+  'patient.first_name',
+  'patient.last_name',
+  'patient.dob',
+  'patient.sex',
+  'patient.medicare_mbi',
+  'patient.phone',
+  'patient.address',
+  'payer_info.payer.primary.name',
+  'payer_info.payer.primary.member_id',
+  'payer_info.payer.secondary.name',
+  'payer_info.payer.secondary.member_id',
+  'prescriber.first_name',
+  'prescriber.last_name',
+  'prescriber.npi',
+  'prescriber.role',
+  'prescriber.phone',
+  'prescriber.fax',
+  'prescriber.notes.dx.icd_codes',
+  'prescriber.notes.examiner.first_name',
+  'prescriber.notes.examiner.last_name',
+  'prescriber.notes.examiner.role',
+  'prescriber.notes.signature',
+  'prescriber.notes.signature_date',
+  'prescriber.notes.certifying_agreement.signature',
+  'prescriber.notes.certifying_agreement.date',
+  'foot_exam.date',
+  'foot_exam.examiner.first_name',
+  'foot_exam.examiner.last_name',
+  'foot_exam.examiner.role',
+  'foot_exam.examiner.signature',
+  'foot_exam.examiner.signature_date',
+  'foot_exam.examiner.qualifying_condition.list'
+];
+
+export const EXPECTED_FACTS_BY_ATTACHMENT_TYPE: Partial<Record<string, FactKey[]>> = {
+  PRESCRIBER_NOTES: PRESCRIBER_EXPECTED_FACTS,
+  COSIGNED_NOTES: PRESCRIBER_EXPECTED_FACTS,
+  CERTIFIER_NOTES: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'patient.sex',
+    'patient.medicare_mbi',
+    'patient.phone',
+    'patient.address',
+    'payer_info.payer.primary.name',
+    'payer_info.payer.primary.member_id',
+    'payer_info.payer.secondary.name',
+    'payer_info.payer.secondary.member_id',
+    'certifier.notes.dx.icd_codes',
+    'cert.notes.examiner.first_name',
+    'cert.notes.examiner.last_name',
+    'cert.notes.examiner.role',
+    'cert.notes.visit_in_person',
+    'cert.notes.last_dm_visit_date',
+    'cert.notes.manages_diabetes',
+    'cert.notes.signature',
+    'cert.notes.signature_date',
+    'cert.notes.certifying_agreement.signature',
+    'cert.notes.certifying_agreement.date'
+  ],
+  CERTIFYING_STATEMENT: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'patient.sex',
+    'patient.medicare_mbi',
+    'patient.phone',
+    'patient.address',
+    'payer_info.payer.primary.name',
+    'payer_info.payer.primary.member_id',
+    'payer_info.payer.secondary.name',
+    'payer_info.payer.secondary.member_id',
+    'cert.statement.qualifying_condition.list',
+    'cert.statement.signature',
+    'cert.statement.signature_date'
+  ],
+  PRESCRIPTION: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'patient.sex',
+    'patient.medicare_mbi',
+    'patient.phone',
+    'patient.address',
+    'payer_info.payer.primary.name',
+    'payer_info.payer.primary.member_id',
+    'payer_info.payer.secondary.name',
+    'payer_info.payer.secondary.member_id',
+    'rx.initial.order_date',
+    'rx.dx.icd_codes',
+    'rx.order_specifies_diabetic_footwear',
+    'rx.has_diagnosis',
+    'rx.initial.signature',
+    'rx.initial.signature_date'
+  ]
+};
+
+/**
+ * Returns the expected fact keys for an attachment based on its document types.
+ * Merges expected facts from all applicable types and deduplicates.
+ */
+export function getExpectedFactKeys(attachmentTypes: string[]): FactKey[] {
+  return [...new Set(attachmentTypes.flatMap((type) => EXPECTED_FACTS_BY_ATTACHMENT_TYPE[type] ?? []))];
+}
+
 export const ZOHO_SOURCE = 'ZOHO';
 export const NPI_LOOKUP_SOURCE = 'NPI_LOOKUP';
 export const MANUAL_SOURCE = 'manual';
