@@ -1,4 +1,4 @@
-export const downloadFile = (data: BlobPart | BlobPart[], filename: string, type: string, revokeTimeoutMs = 100) => {
+export const downloadFile = (data: BlobPart | BlobPart[], filename: string, type: string, revokeTimeoutMs = 30_000) => {
   if (typeof window === 'undefined' || typeof document === 'undefined') {
     return;
   }
