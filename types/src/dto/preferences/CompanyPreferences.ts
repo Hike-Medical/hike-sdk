@@ -112,6 +112,7 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    faxDelayMinutes?: number;
     npi?: {
       name: string;
       value: string;
@@ -146,4 +147,5 @@ export interface CompanyPreferences {
     groupNumber?: string; // Eligibility fails when group numbers mismatch
   };
   consumerPaymentCoupon?: boolean;
+  destinationFacilityId?: string;
 }

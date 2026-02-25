@@ -20,6 +20,7 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   committedDeliveryAt: Date | null;
   orderCompletedAt: Date | null;
   quantity: string | null;
+  destinationFacilityId?: string | null;
   addonCompletedAt?: Date | null;
   addonCompletedBy?: string | null;
   printingCompletedAt?: Date | null;
@@ -37,6 +38,7 @@ export interface StationWorkbench extends WorkbenchPdfUrls {
   rushedAt?: Date | null;
   isOutsideClinic?: boolean;
   isRejected?: boolean;
+  shippingAddress?: string | null;
   formSubmissions?: (FormSubmissionTyped & { schema?: FormSchemaTyped })[];
 }
 
@@ -51,7 +53,21 @@ export type WorkbenchWithRelations = Prisma.WorkbenchGetPayload<{
     };
     patient: {
       include: {
-        companies: { select: { externalId: true }; take: 1 };
+        companies: {
+          select: {
+            externalId: true;
+            contact: {
+              select: {
+                addressLine1: true;
+                addressLine2: true;
+                city: true;
+                stateOrProvince: true;
+                postalCode: true;
+              };
+            };
+          };
+          take: 1;
+        };
       };
     };
     product: { select: { type: true } };
@@ -67,6 +83,7 @@ export type OrderSlim = Prisma.OrderGetPayload<{
     committedDeliveryAt: true;
     authorizationUpdatedAt: true;
     authorizationStatus: true;
+    destinationFacilityId: true;
   };
 }>;
 
