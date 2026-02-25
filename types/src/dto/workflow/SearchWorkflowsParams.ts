@@ -23,7 +23,9 @@ export enum AnnotationFilter {
   /** Attachments with no classification annotations */
   NO_CLASSIFICATION_ANNOTATIONS = 'NO_CLASSIFICATION_ANNOTATIONS',
   /** Attachments with fewer than 3 classification annotations that the current user has not classified */
-  NO_CLASSIFICATION_ANNOTATIONS_BY_USER = 'NO_CLASSIFICATION_ANNOTATIONS_BY_USER'
+  NO_CLASSIFICATION_ANNOTATIONS_BY_USER = 'NO_CLASSIFICATION_ANNOTATIONS_BY_USER',
+  /** Attachments with fewer than 3 fact annotations that the current user has not fact-annotated */
+  NO_FACT_ANNOTATIONS_BY_USER = 'NO_FACT_ANNOTATIONS_BY_USER'
 }
 
 export interface SearchWorkflowFilter {
