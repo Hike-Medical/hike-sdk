@@ -3,6 +3,7 @@ export interface GetWorkOrdersParams {
   limit?: number;
   sortBy?: string;
   sortOrder?: 'asc' | 'desc';
+  filter?: Partial<Record<string, string>>;
 }
 
 export interface WorkOrderListItem {
