@@ -7,6 +7,7 @@ const INVENTORY_DELIVERY_BUSINESS_DAYS = 4;
 const GCODE_FILE_KEY = 'gcodeFileKey';
 const PRINTER_TYPE_KEY = 'printerType';
 const FORM_FIELDS_KEY = 'formFields';
+const SLICER_PROFILE_KEY = 'slicerProfile';
 
 export const INVENTORY_CONSTANTS = {
   MAX_PAIRS_PER_WORK_ORDER,
@@ -15,6 +16,7 @@ export const INVENTORY_CONSTANTS = {
   GCODE_FILE_KEY,
   PRINTER_TYPE_KEY,
   FORM_FIELDS_KEY,
+  SLICER_PROFILE_KEY,
   INVENTORY_PATIENT_FIRST_NAME: 'Hike',
   INVENTORY_PATIENT_LAST_NAME: 'Inventory'
 } as const;
@@ -49,11 +51,19 @@ export function extractGcodeFileKey(attributes: Pick<CatalogProductAttribute, 'k
 export function extractGcodeMetadata(
   attributes: Pick<CatalogProductAttribute, 'key' | 'value'>[]
 ): Record<string, string> {
-  const attr = attributes.find((a) => a.key === PRINTER_TYPE_KEY);
-  if (!attr) {
-    return {};
+  const metadata: Record<string, string> = {};
+
+  const printerAttr = attributes.find((a) => a.key === PRINTER_TYPE_KEY);
+  if (printerAttr) {
+    metadata.printerType = printerAttr.value;
   }
-  return { printerType: attr.value };
+
+  const slicerAttr = attributes.find((a) => a.key === SLICER_PROFILE_KEY);
+  if (slicerAttr) {
+    metadata.slicerProfile = slicerAttr.value;
+  }
+
+  return metadata;
 }
 
 /**
