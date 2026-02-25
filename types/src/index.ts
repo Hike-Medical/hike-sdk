@@ -298,6 +298,7 @@ export * from './dto/soleforge/UpdatePrintJobParams';
 export * from './dto/supplier/anodyne/AnodyneFiltersResponse';
 export * from './dto/supplier/anodyne/AnodyneProductStyle';
 export * from './dto/supplier/anodyne/GetAnodyneProductStylesParams';
+export * from './dto/supplier/anodyne/GetAnodyneInventoryResponse';
 export * from './dto/supplier/anodyne/GetAnodyneProductStyleVariantsParams';
 export * from './dto/supplier/cascade/CascadeAvailabilityResponse';
 export * from './dto/supplier/cascade/CascadeOrderHistoryResponse';
