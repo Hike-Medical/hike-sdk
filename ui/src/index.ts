@@ -287,6 +287,7 @@ export * from './hooks/soleforge/useUpdateMachineConfiguration';
 export * from './hooks/soleforge/useUpdateMachineStatus';
 export * from './hooks/soleforge/useUpdatePrinterNotes';
 export * from './hooks/supplier/anodyne/useAnodyneFilters';
+export * from './hooks/supplier/anodyne/useAnodyneInventory';
 export * from './hooks/supplier/anodyne/useAnodyneProductStyles';
 export * from './hooks/supplier/anodyne/useAnodyneProductStyleVariants';
 export * from './hooks/supplier/cascade/useCascadeItemInventory';

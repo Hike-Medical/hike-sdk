@@ -8,6 +8,7 @@ import type {
   CascadePriceResponse,
   CatalogProductExtended,
   CatalogSupplier,
+  GetAnodyneInventoryResponse,
   GetAnodyneProductStylesParams,
   GetAnodyneProductStyleVariantsParams,
   GetCascadeItemPricesParams,
@@ -75,6 +76,16 @@ export const fetchOrthofeetProductStyleVariants = async (
 };
 
 // Anodyne
+
+export const fetchAnodyneInventory = async (sku: string | string[]): Promise<GetAnodyneInventoryResponse> => {
+  try {
+    const skus = Array.isArray(sku) ? sku : [sku];
+    const response = await backendApi.get('supplier/anodyne/inventory', { params: { skus } });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
 
 export const fetchAnodyneFilters = async (): Promise<AnodyneFiltersResponse> => {
   try {
