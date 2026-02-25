@@ -12,16 +12,13 @@ export const useSetFootInactive = (
   const queryClient = useQueryClient();
 
   return useMutation({
+    ...options,
     mutationKey: ['setFootInactive'],
     mutationFn: async ({ footId, inactiveReason }) => await setFootInactive(footId, { inactiveReason }),
-    onSuccess: (data, variables, onMutateResult) => {
-      // Invalidate detection status queries to ensure fresh data
+    onSuccess: (...args) => {
       queryClient.invalidateQueries({ queryKey: ['detectionStatus'] });
       queryClient.invalidateQueries({ queryKey: ['feet'] });
-
-      // Call the user-provided onSuccess if it exists
-      options?.onSuccess?.(data, variables, onMutateResult);
-    },
-    ...options
+      options?.onSuccess?.(...args);
+    }
   });
 };

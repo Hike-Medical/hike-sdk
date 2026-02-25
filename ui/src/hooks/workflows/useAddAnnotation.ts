@@ -11,16 +11,13 @@ export const useAddAnnotation = (
   options?: UseMutationOptions<AnnotationDto, HikeError<null>, AddAnnotationVariables>
 ) => {
   const queryClient = useQueryClient();
-  const { onSuccess, ...restOptions } = options ?? {};
-
   return useMutation({
+    ...options,
     mutationKey: ['addAnnotation'],
     mutationFn: async ({ attachmentId, params }) => await addAnnotation(attachmentId, params),
-    ...restOptions,
-    onSuccess: (data, variables, onMutateResult) => {
-      // Invalidate search-attachments queries to refresh the list
+    onSuccess: (...args) => {
       queryClient.invalidateQueries({ queryKey: ['search-attachments'] });
-      onSuccess?.(data, variables, onMutateResult);
+      options?.onSuccess?.(...args);
     }
   });
 };
