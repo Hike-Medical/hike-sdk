@@ -1256,7 +1256,6 @@ const PRESCRIBER_EXPECTED_FACTS: FactKey[] = [
   'prescriber.role',
   'prescriber.phone',
   'prescriber.fax',
-  'prescriber.notes.dx.icd_codes',
   'prescriber.notes.examiner.first_name',
   'prescriber.notes.examiner.last_name',
   'prescriber.notes.examiner.role',
@@ -1264,12 +1263,6 @@ const PRESCRIBER_EXPECTED_FACTS: FactKey[] = [
   'prescriber.notes.signature_date',
   'prescriber.notes.certifying_agreement.signature',
   'prescriber.notes.certifying_agreement.date',
-  'foot_exam.date',
-  'foot_exam.examiner.first_name',
-  'foot_exam.examiner.last_name',
-  'foot_exam.examiner.role',
-  'foot_exam.examiner.signature',
-  'foot_exam.examiner.signature_date',
   'foot_exam.examiner.qualifying_condition.list'
 ];
 
@@ -1282,7 +1275,6 @@ export const EXPECTED_FACTS_BY_ATTACHMENT_TYPE: Partial<Record<string, FactKey[]
     'patient.dob',
     'patient.sex',
     'patient.medicare_mbi',
-    'certifier.notes.dx.icd_codes',
     'cert.notes.examiner.first_name',
     'cert.notes.examiner.last_name',
     'cert.notes.examiner.role',
@@ -1308,7 +1300,6 @@ export const EXPECTED_FACTS_BY_ATTACHMENT_TYPE: Partial<Record<string, FactKey[]
     'patient.sex',
     'patient.medicare_mbi',
     'rx.initial.order_date',
-    'rx.dx.icd_codes',
     'rx.order_specifies_diabetic_footwear',
     'rx.has_diagnosis',
     'rx.initial.signature',
