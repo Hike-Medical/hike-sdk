@@ -21,6 +21,7 @@ export interface PackingJob {
   totalOrders: number;
   earliestCommitDate: string | null;
   hasShippingContact: boolean;
+  isFacilityActive: boolean;
 }
 
 export type PackingJobsResponse = PackingJob[];
