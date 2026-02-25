@@ -395,10 +395,10 @@ export const markManualReprintOrderAsPrinting = async (
   params: MarkManualReprintOrderAsPrintingParams
 ): Promise<MarkManualReprintOrderAsPrintingResponse> => {
   try {
-    const { orderId, jwtToken } = params;
+    const { orderId, laneId, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/mark-manual-reprint-as-printing`,
-      {},
+      { laneId, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
