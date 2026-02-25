@@ -11,6 +11,7 @@ export interface WorkOrderListItem {
   evaluationId: string;
   workbenchId: string;
   poNumber: string | null;
+  orderQuantity: string | null;
   status: string;
   workbenchStatus: string;
   committedDeliveryAt: string | null;
