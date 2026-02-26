@@ -41,6 +41,7 @@ export * from './helpers/formSubmissionUtils';
 export * from './helpers/getIntervalDateRange';
 export * from './helpers/getLocalizedDateFormat';
 export * from './helpers/httpUtils';
+export * from './helpers/inventoryHelpers';
 export * from './helpers/isIOS';
 export * from './helpers/localeUtils';
 export * from './helpers/postMessageToSlack';

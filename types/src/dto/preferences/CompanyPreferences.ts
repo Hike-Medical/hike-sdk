@@ -147,5 +147,6 @@ export interface CompanyPreferences {
     groupNumber?: string; // Eligibility fails when group numbers mismatch
   };
   consumerPaymentCoupon?: boolean;
+  consumerRemovePricing?: boolean;
   destinationFacilityId?: string;
 }
