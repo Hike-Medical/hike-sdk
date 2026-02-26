@@ -449,13 +449,16 @@ export const FactRegistry = {
     schema: z.boolean(),
     metadata: defaultMetadataSchema
   },
+  // DEPRECATED - see ENG-2944 - no longer needed for compliance
   'cert.notes.visit_in_person': {
     displayName: 'In-Person Visit',
     description: 'Whether the visit was conducted in-person',
     category: 'Certifier Notes',
     required: true,
     schema: z.boolean(),
-    metadata: defaultMetadataSchema
+    metadata: defaultMetadataSchema,
+    deprecated: true,
+    hideInUX: true
   },
   'cert.notes.signature': {
     displayName: 'Certifier Notes Signature',
@@ -631,7 +634,8 @@ export const FactRegistry = {
         'cert.statement.certifying_agreement.note': z.string().min(1)
       })
     ),
-    deprecated: true
+    deprecated: true,
+    hideInUX: true
   },
   // DEPRECATED
   'cert.statement.certifying_agreement.date': {
@@ -641,7 +645,8 @@ export const FactRegistry = {
     required: false,
     schema: dateISO,
     metadata: defaultMetadataSchema,
-    deprecated: true
+    deprecated: true,
+    hideInUX: true
   },
 
   // Initial Prescription
@@ -1237,6 +1242,77 @@ export function getFieldDescription(fieldKey: string): string {
 export function getFieldCategory(fieldKey: string): string {
   const mapping = getFieldMapping(fieldKey);
   return mapping?.category || 'Other';
+}
+
+const PRESCRIBER_EXPECTED_FACTS: FactKey[] = [
+  'patient.first_name',
+  'patient.last_name',
+  'patient.dob',
+  'patient.sex',
+  'patient.medicare_mbi',
+  'prescriber.first_name',
+  'prescriber.last_name',
+  'prescriber.npi',
+  'prescriber.role',
+  'prescriber.phone',
+  'prescriber.fax',
+  'prescriber.notes.examiner.first_name',
+  'prescriber.notes.examiner.last_name',
+  'prescriber.notes.examiner.role',
+  'prescriber.notes.signature',
+  'prescriber.notes.signature_date',
+  'prescriber.notes.certifying_agreement.signature',
+  'prescriber.notes.certifying_agreement.date',
+  'foot_exam.examiner.qualifying_condition.list'
+];
+
+export const EXPECTED_FACTS_BY_ATTACHMENT_TYPE: Partial<Record<string, FactKey[]>> = {
+  PRESCRIBER_NOTES: PRESCRIBER_EXPECTED_FACTS,
+  COSIGNED_NOTES: PRESCRIBER_EXPECTED_FACTS,
+  CERTIFIER_NOTES: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'patient.sex',
+    'patient.medicare_mbi',
+    'cert.notes.examiner.first_name',
+    'cert.notes.examiner.last_name',
+    'cert.notes.examiner.role',
+    'cert.notes.last_dm_visit_date',
+    'cert.notes.manages_diabetes',
+    'cert.notes.signature',
+    'cert.notes.signature_date',
+    'cert.notes.certifying_agreement.signature',
+    'cert.notes.certifying_agreement.date'
+  ],
+  CERTIFYING_STATEMENT: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'cert.statement.qualifying_condition.list',
+    'cert.statement.signature',
+    'cert.statement.signature_date'
+  ],
+  PRESCRIPTION: [
+    'patient.first_name',
+    'patient.last_name',
+    'patient.dob',
+    'patient.sex',
+    'patient.medicare_mbi',
+    'rx.initial.order_date',
+    'rx.order_specifies_diabetic_footwear',
+    'rx.has_diagnosis',
+    'rx.initial.signature',
+    'rx.initial.signature_date'
+  ]
+};
+
+/**
+ * Returns the expected fact keys for an attachment based on its document types.
+ * Merges expected facts from all applicable types and deduplicates.
+ */
+export function getExpectedFactKeys(attachmentTypes: string[]): FactKey[] {
+  return [...new Set(attachmentTypes.flatMap((type) => EXPECTED_FACTS_BY_ATTACHMENT_TYPE[type] ?? []))];
 }
 
 export const ZOHO_SOURCE = 'ZOHO';
