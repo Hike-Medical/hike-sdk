@@ -2,6 +2,8 @@ import type {
   CreateWorkOrderParams,
   GetWorkOrdersParams,
   PagedResponse,
+  ShipWorkOrdersParams,
+  ShipWorkOrdersResult,
   WorkOrderListItem,
   WorkOrderResult
 } from '@hike/types';
@@ -22,6 +24,15 @@ export const fetchWorkOrders = async (
 export const createWorkOrders = async (params: CreateWorkOrderParams): Promise<WorkOrderResult[]> => {
   try {
     const response = await backendApi.post('work-orders', params);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const shipWorkOrders = async (params: ShipWorkOrdersParams): Promise<ShipWorkOrdersResult[]> => {
+  try {
+    const response = await backendApi.post('work-orders/ship', params);
     return response.data;
   } catch (error) {
     throw toHikeError(error);
