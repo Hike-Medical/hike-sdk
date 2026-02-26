@@ -64,8 +64,10 @@ import {
   SoleforgePrintJobWithAsset,
   TriggerPrinterReadyParams,
   TriggerPrinterReadyResponse,
+  UpdateConfigurationParams,
   UpdateLaneParams,
   UpdateMachineConfigurationParams,
+  UpdateMachineExternalIdParams,
   UpdateMachineStatusParams,
   UpdatePrinterNotesParams
 } from '@hike/types';
@@ -145,6 +147,16 @@ export const createConfiguration = async (params: CreateConfigurationParams): Pr
   }
 };
 
+export const updateConfiguration = async (params: UpdateConfigurationParams): Promise<Configuration> => {
+  try {
+    const { configurationId, ...body } = params;
+    const response = await backendApi.patch(`soleforge/configurations/${configurationId}`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
 export const createLane = async (params: CreateLaneParams): Promise<Lane> => {
   try {
     const response = await backendApi.post('soleforge/lanes', params);
@@ -205,6 +217,16 @@ export const assignMachineToLane = async (params: AssignMachineToLaneParams): Pr
   try {
     const { machineId, laneId } = params;
     const response = await backendApi.patch(`soleforge/machines/${machineId}/lane`, { laneId });
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const updateMachineExternalId = async (params: UpdateMachineExternalIdParams): Promise<Machine> => {
+  try {
+    const { machineId, externalId } = params;
+    const response = await backendApi.patch(`soleforge/machines/${machineId}/external-id`, { externalId });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
@@ -395,10 +417,10 @@ export const markManualReprintOrderAsPrinting = async (
   params: MarkManualReprintOrderAsPrintingParams
 ): Promise<MarkManualReprintOrderAsPrintingResponse> => {
   try {
-    const { orderId, jwtToken } = params;
+    const { orderId, laneId, source, jwtToken } = params;
     const response = await backendApi.post(
       `soleforge/orders/${orderId}/mark-manual-reprint-as-printing`,
-      {},
+      { laneId, source },
       { headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined }) }
     );
     return response.data;
