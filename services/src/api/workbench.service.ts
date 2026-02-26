@@ -4,6 +4,7 @@ import {
   DetectionStatusResponse,
   FlattenedWorkbench,
   Foot,
+  FormFieldValue,
   GenerateWorkbenchPdfParams,
   GetAggregatedParams,
   GetCompletedStationParams,
@@ -95,9 +96,16 @@ export const submitClinicalOrder = async (workbenchId: string, body: SubmitOrder
   }
 };
 
-export const submitConsumerOrder = async (workbenchId: string, couponCode?: string): Promise<Workbench> => {
+export const submitConsumerOrder = async (
+  workbenchId: string,
+  couponCode?: string,
+  orderFormData?: Record<string, FormFieldValue>
+): Promise<Workbench> => {
   try {
-    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`, { couponCode });
+    const response = await backendApi.post(`workbench/${workbenchId}/consumer/submit`, {
+      couponCode,
+      orderFormData
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);
