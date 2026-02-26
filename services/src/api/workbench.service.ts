@@ -22,9 +22,9 @@ import {
   PatientWorkbenchResponse,
   PrintFarmWorkbench,
   PrintShippingParams,
+  PrintShippingResult,
   ResetWorkbenchParams,
   SearchWorkbenchParams,
-  ShippingLabel,
   StationWorkbench,
   SubmitDeliveryParams,
   SubmitOrderParams,
@@ -145,13 +145,22 @@ export const updateRenderType = async (
   }
 };
 
-export const printShippingInfo = async (
+export const printConsumerShippingDocuments = async (
   workbenchId: string,
   data: PrintShippingParams
-): Promise<ShippingLabel | null> => {
+): Promise<PrintShippingResult> => {
   try {
     const response = await backendApi.post(`workbench/${workbenchId}/print/shipping`, data);
     return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const downloadPamphletPdf = async (workbenchId: string): Promise<string> => {
+  try {
+    const response = await backendApi.get(`workbench/${workbenchId}/pamphlet/download`);
+    return response.data.pdfBase64;
   } catch (error) {
     throw toHikeError(error);
   }

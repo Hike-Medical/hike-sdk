@@ -50,6 +50,7 @@ export * from './api/tag.service';
 export * from './api/terms.service';
 export * from './api/twofa.service';
 export * from './api/user.service';
+export * from './api/work-order.service';
 export * from './api/workbench.service';
 export * from './api/workflow-facts.service';
 export * from './api/workflow-facts.types';

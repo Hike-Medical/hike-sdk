@@ -112,6 +112,7 @@ export interface CompanyPreferences {
   compliance?: {
     fromFaxNumber?: string;
     forwardFaxNumber?: string;
+    faxDelayMinutes?: number;
     npi?: {
       name: string;
       value: string;
@@ -147,4 +148,5 @@ export interface CompanyPreferences {
   };
   consumerPaymentCoupon?: boolean;
   consumerRemovePricing?: boolean;
+  destinationFacilityId?: string;
 }
