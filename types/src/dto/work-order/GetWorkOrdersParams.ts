@@ -15,6 +15,7 @@ export interface WorkOrderListItem {
   catalogProductName: string | null;
   status: string;
   workbenchStatus: string;
+  shippingLabelId: string | null;
   committedDeliveryAt: string | null;
   createdAt: string;
 }
