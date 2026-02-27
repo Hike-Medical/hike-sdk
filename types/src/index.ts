@@ -128,6 +128,7 @@ export * from './dto/foot/UpdateFootFromWorkbenchId';
 export * from './dto/form/CreateFormTemplateBody';
 export * from './dto/form/FormTemplateResponse';
 export * from './dto/form/GetFormSchemasParams';
+export * from './dto/form/UpdateFormSchemaBody';
 export * from './dto/form/UpdateFormTemplateBody';
 export * from './dto/form/UpsertFormSubmissionParams';
 export * from './dto/invitation/ApprovePatientParams';
