@@ -247,6 +247,7 @@ export class StripeService {
     couponName?: string;
     couponDiscount?: number;
     promotionCodeId?: string;
+    couponId?: string;
   }> {
     try {
       // Find the promotion code by the customer-facing code string
@@ -294,7 +295,8 @@ export class StripeService {
         valid: true,
         couponName: coupon.name ?? code,
         couponDiscount: discountAmount,
-        promotionCodeId: promo.id
+        promotionCodeId: promo.id,
+        couponId: coupon.id
       };
     } catch (error) {
       console.error('Error validating promotion code:', error);
