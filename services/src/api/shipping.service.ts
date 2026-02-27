@@ -90,9 +90,10 @@ export const voidLabel = async (labelId: string, voidShippedLabel?: boolean) => 
   }
 };
 
-export const updateTrackingInfo = async (labelId: string, params: SaveTrackingInfoParams) => {
+export const updateTrackingInfo = async (labelId: string, params: SaveTrackingInfoParams): Promise<ShippingLabel> => {
   try {
-    await backendApi.post(`shipping/labels/${labelId}/tracking`, params);
+    const response = await backendApi.post(`shipping/labels/${labelId}/tracking`, params);
+    return response.data;
   } catch (error) {
     throw toHikeError(error);
   }

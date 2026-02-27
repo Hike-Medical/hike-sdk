@@ -1,5 +1,6 @@
 export interface ShipWorkOrdersParams {
   orderIds: string[];
+  shippingLabelId?: string;
 }
 
 export interface ShipWorkOrdersResult {
