@@ -26,3 +26,15 @@ export const WorkflowStatusEnum = {
 
 export type WorkflowStatus = (typeof WorkflowStatusEnum)[keyof typeof WorkflowStatusEnum];
 export const WorkflowStatusList = Object.values(WorkflowStatusEnum);
+
+/**
+ * Workflow statuses that represent active (non-terminal) workflows.
+ * Excludes terminal states: SUCCEEDED, FAILED, CANCELLED, COMPLETED.
+ */
+export const ACTIVE_WORKFLOW_STATUSES = [
+  WorkflowStatusEnum.CREATED,
+  WorkflowStatusEnum.ACTIVE,
+  WorkflowStatusEnum.IN_PROGRESS,
+  WorkflowStatusEnum.AWAITING_RESPONSE,
+  WorkflowStatusEnum.IDLE
+] as const;

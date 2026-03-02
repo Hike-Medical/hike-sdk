@@ -12,6 +12,7 @@ export interface CheckoutSessionInfo {
     name: string;
     discount: number;
     promotionCodeId: string;
+    couponId?: string;
   };
 }
 
