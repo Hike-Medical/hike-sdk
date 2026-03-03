@@ -208,6 +208,7 @@ export { QCRejectionStatus as QCRejectionStatusValues } from './dto/qc-rejection
 export type { QCRejectionStatus as QCRejectionStatusValue } from './dto/qc-rejection/QCRejectionStatus';
 export * from './dto/qc-rejection/ReviewQCRejectionParams';
 export * from './dto/qc-rejection/SendReprintJobParams';
+export * from './dto/qc-rejection/SendToInsoleDesignParams';
 export * from './dto/qc-rejection/UpdateQCRejectionReasonParams';
 export * from './dto/reward/RewardInfo';
 export * from './dto/roster/DeactivateRosterParams';
