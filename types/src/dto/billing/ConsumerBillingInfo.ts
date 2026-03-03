@@ -1,3 +1,5 @@
+import type { FormFieldValue } from '../../forms/FormField';
+
 export interface CheckoutSessionInfo {
   employeeOriginal: number;
   employeeDiscounted: number;
@@ -10,6 +12,7 @@ export interface CheckoutSessionInfo {
     name: string;
     discount: number;
     promotionCodeId: string;
+    couponId?: string;
   };
 }
 
@@ -19,4 +22,5 @@ export interface GetCheckoutSessionInfoParams {
 
 export interface ConsumerSubmitParams {
   couponCode?: string;
+  orderFormData?: Record<string, FormFieldValue>;
 }

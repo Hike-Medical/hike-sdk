@@ -12,6 +12,14 @@ export enum WorkflowSortBy {
 export interface FactFilter {
   factName: string;
   factValue: string;
+  matchMode?: FactStringMatchMode;
+}
+
+export enum FactStringMatchMode {
+  EXACT = 'exact',
+  STARTS_WITH = 'startsWith',
+  ENDS_WITH = 'endsWith',
+  CONTAINS = 'contains'
 }
 
 export enum FactMatchMode {

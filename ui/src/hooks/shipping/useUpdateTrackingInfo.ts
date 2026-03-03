@@ -1,5 +1,5 @@
 import { updateTrackingInfo } from '@hike/services';
-import { HikeError, SaveTrackingInfoParams } from '@hike/types';
+import { HikeError, SaveTrackingInfoParams, ShippingLabel } from '@hike/types';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 
 interface UseSaveTrackingInfoContext {
@@ -8,7 +8,7 @@ interface UseSaveTrackingInfoContext {
 }
 
 export const useUpdateTrackingInfo = (
-  options?: UseMutationOptions<void, HikeError<null>, UseSaveTrackingInfoContext>
+  options?: UseMutationOptions<ShippingLabel, HikeError<null>, UseSaveTrackingInfoContext>
 ) =>
   useMutation({
     mutationKey: ['updateTrackingInfo'],

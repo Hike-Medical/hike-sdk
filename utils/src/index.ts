@@ -32,6 +32,7 @@ export * from './helpers/companyUtils';
 export * from './helpers/currentPaginatedPage';
 export * from './helpers/currentUrl';
 export * from './helpers/dayjsBusinessAdd';
+export * from './helpers/downloadFile';
 export * from './helpers/extractDomain';
 export * from './helpers/findKeyInNested';
 export * from './helpers/formAddressUtils';

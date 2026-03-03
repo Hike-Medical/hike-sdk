@@ -37,6 +37,7 @@ export const isFormFieldDisplayed = (
   options?: {
     taggedOnly?: string;
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean => {
   // Show only fields that have been tagged when taggedOnly is specified (same behavior as sections)
@@ -82,11 +83,11 @@ export const isFormSectionDisplayed = (
 const evaluateSingleRule = (
   rule: FormRule,
   state: Record<string, FormFieldValue>,
-  options?: { activeFoot?: string }
+  options?: { activeFoot?: string; slug?: string }
 ): boolean => {
   const { effect, condition } = rule;
   const conditionValue = condition.value;
-  const selectedValue = state[condition.name + (options?.activeFoot ?? '')];
+  const selectedValue = condition.name === 'slug' ? options?.slug : state[condition.name + (options?.activeFoot ?? '')];
 
   switch (effect) {
     case 'show':
@@ -139,6 +140,7 @@ export const isFormRuleDisplayed = (
   state: Record<string, FormFieldValue>,
   options?: {
     activeFoot?: string;
+    slug?: string;
   }
 ): boolean => {
   if (!formItem.rule || !state) {
@@ -369,7 +371,12 @@ export const schemaStats = (
   sectionNext: FormSection | null;
 } => {
   const validSections = sections.filter((section) => isFormSectionDisplayed(section, state, options));
-  const fieldDisplayOptions = { activeFoot: options?.activeFoot, taggedOnly: options?.taggedOnly };
+  const fieldDisplayOptions = {
+    activeFoot: options?.activeFoot,
+    taggedOnly: options?.taggedOnly,
+    ...(options?.slug ? { slug: options.slug } : {})
+  };
+
   const sectionsCompleted = validSections.filter((section) =>
     section.fields
       .filter((field) => isFormFieldDisplayed(field, state, fieldDisplayOptions))

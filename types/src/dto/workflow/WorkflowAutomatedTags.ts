@@ -13,7 +13,8 @@ export const REVIEW_TAGS = {
   DVF_ISSUE: 'DVF/Co-sign Issue',
   INVALID_DATE: 'Invalid Date',
   EXPIRES_SOON: 'Expires Soon',
-  EXPIRED: 'Expired'
+  EXPIRED: 'Expired',
+  RE_OPENED: 'Re-opened'
 } as const;
 
 export type ReviewTagKey = keyof typeof REVIEW_TAGS;
