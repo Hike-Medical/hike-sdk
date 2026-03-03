@@ -14,6 +14,7 @@ import type {
   QCRejectionWithRelations,
   ReviewQCRejectionParams,
   SendReprintJobParams,
+  SendToInsoleDesignParams,
   UpdateQCRejectionReasonParams
 } from '@hike/types';
 import { addHeaders } from '@hike/utils';
@@ -146,6 +147,18 @@ export const updateQCRejectionReason = async (
   try {
     const { reasonId, ...body } = params;
     const response = await backendApi.patch(`soleforge/qc-rejection/reasons/${reasonId}`, body);
+    return response.data;
+  } catch (error) {
+    throw toHikeError(error);
+  }
+};
+
+export const sendOrderToInsoleDesign = async (params: SendToInsoleDesignParams): Promise<QCRejection> => {
+  try {
+    const { rejectionId, jwtToken, ...body } = params;
+    const response = await backendApi.post(`soleforge/qc-rejection/${rejectionId}/send-to-insole-design`, body, {
+      headers: addHeaders(undefined, { Authorization: jwtToken ? `Bearer ${jwtToken}` : undefined })
+    });
     return response.data;
   } catch (error) {
     throw toHikeError(error);

@@ -210,6 +210,7 @@ export * from './hooks/qc-rejection/useQCRejectionReasons';
 export * from './hooks/qc-rejection/useQCRejections';
 export * from './hooks/qc-rejection/useRejectionPrintjobs';
 export * from './hooks/qc-rejection/useReviewQCRejection';
+export * from './hooks/qc-rejection/useSendOrderToInsoleDesign';
 export * from './hooks/qc-rejection/useSendQCRejectionReprintJob';
 export * from './hooks/qc-rejection/useUpdateQCRejectionReason';
 export * from './hooks/reward/useFetchPatientPoints';

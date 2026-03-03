@@ -18,6 +18,7 @@ export interface QCRejection {
   reviewNotes: string | null;
   correctedReasonId: string | null;
   correctedReason: string | null;
+  correctedTargetStation: OrderStatus | null;
   needsReprint: boolean;
   ktAcknowledgedById: string | null;
   ktAcknowledgedAt: Date | null;
