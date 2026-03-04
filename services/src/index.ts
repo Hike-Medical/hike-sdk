@@ -12,6 +12,7 @@ export * from './api/billing.service';
 export * from './api/catalog.service';
 export * from './api/clinician.service';
 export * from './api/company.service';
+export * from './api/custom-fax.service';
 export * from './api/department.service';
 export * from './api/device-type.service';
 export * from './api/diagnosis.service';
