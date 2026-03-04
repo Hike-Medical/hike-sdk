@@ -1,3 +1,4 @@
+import type { OrderStatus } from '../../../prisma';
 import type { QCRejectionStatus } from './QCRejectionStatus';
 
 export interface ReviewQCRejectionParams {
@@ -6,5 +7,6 @@ export interface ReviewQCRejectionParams {
   reviewNotes?: string;
   correctedReasonId?: string;
   correctedReason?: string;
+  correctedTargetStation?: OrderStatus;
   jwtToken?: string;
 }
