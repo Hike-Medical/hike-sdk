@@ -10,9 +10,7 @@ export interface AcceptInvitationCompanyParams {
   };
   company: {
     name: string;
-    preferences: Pick<CompanyPreferences, 'diabeticPatients'> & {
-      monthlyOrderQuantity?: number;
-    };
+    preferences: Pick<CompanyPreferences, 'diabeticPatients' | 'freeTrialOrders' | 'clinicalCustomization'>;
   };
   isTermsAccepted?: boolean;
 }
