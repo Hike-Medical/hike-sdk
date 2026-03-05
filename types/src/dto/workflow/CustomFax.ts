@@ -2,6 +2,7 @@ export interface FaxTemplateFieldDto {
   key: string;
   label: string;
   editable: boolean;
+  required?: boolean;
   value: string;
 }
 
