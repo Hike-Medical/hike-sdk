@@ -1,7 +1,7 @@
 import type { CatalogProductAttribute } from '@hike/types';
 
-const MAX_PAIRS_PER_WORK_ORDER = 3;
-const MAX_PAIRS_ALLOWED = 12;
+const MAX_INSOLES_PER_WORK_ORDER = 3;
+const MAX_INSOLES_ALLOWED = 12;
 const INVENTORY_DELIVERY_BUSINESS_DAYS = 4;
 
 const GCODE_FILE_KEY = 'gcodeFileKey';
@@ -10,8 +10,8 @@ const FORM_FIELDS_KEY = 'formFields';
 const SLICER_PROFILE_KEY = 'slicerProfile';
 
 export const INVENTORY_CONSTANTS = {
-  MAX_PAIRS_PER_WORK_ORDER,
-  MAX_PAIRS_ALLOWED,
+  MAX_INSOLES_PER_WORK_ORDER,
+  MAX_INSOLES_ALLOWED,
   INVENTORY_DELIVERY_BUSINESS_DAYS,
   GCODE_FILE_KEY,
   PRINTER_TYPE_KEY,
@@ -22,16 +22,16 @@ export const INVENTORY_CONSTANTS = {
 } as const;
 
 /**
- * Splits a total pair count into batches respecting the max per work order constraint.
- * E.g. 10 pairs with max 3 → [3, 3, 3, 1]
+ * Splits a total insole count into batches respecting the max per work order constraint.
+ * E.g. 10 insoles with max 3 → [3, 3, 3, 1]
  */
-export function splitIntoBatches(totalPairs: number, maxPerBatch: number = MAX_PAIRS_PER_WORK_ORDER): number[] {
-  if (totalPairs <= 0 || maxPerBatch <= 0) {
+export function splitIntoBatches(totalInsoles: number, maxPerBatch: number = MAX_INSOLES_PER_WORK_ORDER): number[] {
+  if (totalInsoles <= 0 || maxPerBatch <= 0) {
     return [];
   }
 
-  const fullBatches = Math.floor(totalPairs / maxPerBatch);
-  const remainder = totalPairs % maxPerBatch;
+  const fullBatches = Math.floor(totalInsoles / maxPerBatch);
+  const remainder = totalInsoles % maxPerBatch;
 
   return [...Array.from({ length: fullBatches }, () => maxPerBatch), ...(remainder > 0 ? [remainder] : [])];
 }
