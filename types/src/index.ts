@@ -377,6 +377,7 @@ export * from './dto/work-order/ShipWorkOrdersParams';
 export * from './dto/workflow/Annotation';
 export * from './dto/workflow/Attachment';
 export * from './dto/workflow/CommentDto';
+export * from './dto/workflow/CustomFax';
 export * from './dto/workflow/FactWithAttachment';
 export * from './dto/workflow/SearchWorkflowsParams';
 export * from './dto/workflow/WorkflowAttachment';
