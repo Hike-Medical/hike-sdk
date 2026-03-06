@@ -5,7 +5,7 @@ export interface ValidateOrderBeforePackingParams {
 }
 
 export type PackingValidationResult =
-  | { valid: true }
+  | { valid: true; destinationFacilityName: string | null }
   | { valid: false; reason: 'NOT_FOUND' }
   | { valid: false; reason: 'MISSING'; destinationFacilityName: string | null }
   | { valid: false; reason: 'WRONG_STATUS'; status: OrderStatus };
