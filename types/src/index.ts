@@ -231,7 +231,6 @@ export * from './dto/schema/SchemaInfo';
 export * from './dto/search/GetSearchParams';
 export * from './dto/search/SearchResponse';
 export * from './dto/search/sqlQueryParms';
-export * from './dto/shipping/AcknowledgePackingScan';
 export * from './dto/shipping/CompletePackingJob';
 export * from './dto/shipping/GeneratePackingSlip';
 export * from './dto/shipping/GetLabelsResponse';

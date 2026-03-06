@@ -225,7 +225,6 @@ export * from './hooks/schema/useEnumValues';
 export * from './hooks/schema/useSchemaInfo';
 export * from './hooks/search/useSqlSearchQuery';
 export * from './hooks/shipping/useCompanyPackages';
-export * from './hooks/shipping/useAcknowledgePackingScan';
 export * from './hooks/shipping/useCompletePackingJob';
 export * from './hooks/shipping/useConfirmPackedOrders';
 export * from './hooks/shipping/useGetLabelByShippingId';

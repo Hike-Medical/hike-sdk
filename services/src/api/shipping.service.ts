@@ -1,5 +1,4 @@
 import {
-  AcknowledgePackingScanBody,
   CompletePackingJobBody,
   CompletePackingJobResponse,
   ConfirmPackedOrdersBody,
@@ -167,14 +166,6 @@ export const fetchPackingJobs = async (): Promise<PackingJobsResponse> => {
   try {
     const response = await backendApi.get('shipping/packing-jobs');
     return response.data;
-  } catch (error) {
-    throw toHikeError(error);
-  }
-};
-
-export const acknowledgePackingScan = async (body: AcknowledgePackingScanBody): Promise<void> => {
-  try {
-    await backendApi.post('shipping/packing-jobs/acknowledge-scan', body);
   } catch (error) {
     throw toHikeError(error);
   }
